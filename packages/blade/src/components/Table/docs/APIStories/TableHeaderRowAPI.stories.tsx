@@ -1,36 +1,32 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import type { TableData, TableProps } from '../Table';
-import { Table as TableComponent } from '../Table';
-import { TableHeader, TableHeaderRow, TableHeaderCell } from '../TableHeader';
-import { TableBody, TableRow, TableCell } from '../TableBody';
-import { TableFooter, TableFooterRow, TableFooterCell } from '../TableFooter';
-import { TablePagination } from '../TablePagination';
-import { TableToolbarActions, TableToolbar } from '../TableToolbar';
+import type { TableData } from '../../Table';
+import { Table as TableComponent } from '../../Table';
+import { TableHeader, TableHeaderRow, TableHeaderCell } from '../../TableHeader';
+import { TableBody, TableRow, TableCell } from '../../TableBody';
+import { TableFooter, TableFooterRow, TableFooterCell } from '../../TableFooter';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
-import { Button } from '~components/Button';
-import { useTheme } from '~utils';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 export default {
-  title: 'Components/Table/SimpleTable',
-  component: TableComponent,
-  args: {
-    selectionType: undefined,
-    rowDensity: 'normal',
-  },
-  argTypes: {
-    ...getStyledPropsArgTypes(),
-  },
+  title: 'Components/Table/API',
+  component: TableHeaderRow,
+  args: {},
+  argTypes: {},
   parameters: {
     docs: {
-      page: () => <StoryPageWrapper componentDescription="" componentName="Table" />,
+      page: () => (
+        <StoryPageWrapper
+          componentDescription="You can find a complete list of TableHeaderRow props here"
+          componentName="TableHeaderRow"
+          apiDecisionComponentName="Table"
+        />
+      ),
     },
   },
-} as Meta<TableProps<unknown>>;
+} as Meta<typeof TableHeaderRow>;
 
 const nodes: Item[] = [
   ...Array.from({ length: 200 }, (_, i) => ({
@@ -73,9 +69,6 @@ const data: TableData<Item> = {
 };
 
 const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
-  const { platform } = useTheme();
-  const onMobile = platform === 'onMobile';
-
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"
@@ -83,53 +76,17 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
       overflow="auto"
       minHeight="400px"
     >
-      <TableComponent
-        {...args}
-        height="400px"
-        data={data}
-        onSelectionChange={({ values }) => console.log('Selected Rows:', values)}
-        sortFunctions={{
-          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
-          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
-          ACCOUNT: (array) => array.sort((a, b) => Number(a.account) - Number(b.account)),
-          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
-          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
-          METHOD: (array) => array.sort((a, b) => a.method.localeCompare(b.method)),
-          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
-        }}
-        onSortChange={({ sortKey, isSortReversed }) =>
-          console.log('Sort Key:', sortKey, 'Sort Reversed:', isSortReversed)
-        }
-        toolbar={
-          <TableToolbar>
-            <TableToolbarActions>
-              <Button variant="secondary" marginRight="spacing.2" isFullWidth={onMobile}>
-                Export
-              </Button>
-              <Button isFullWidth={onMobile}>Payout</Button>
-            </TableToolbarActions>
-          </TableToolbar>
-        }
-        pagination={
-          <TablePagination
-            onPageChange={console.log}
-            defaultPageSize={10}
-            onPageSizeChange={console.log}
-            showPageSizePicker
-            showPageNumberSelector
-          />
-        }
-      >
+      <TableComponent height="400px" data={data}>
         {(tableData) => (
           <>
             <TableHeader>
-              <TableHeaderRow>
-                <TableHeaderCell headerKey="PAYMENT_ID">ID</TableHeaderCell>
-                <TableHeaderCell headerKey="AMOUNT">Amount</TableHeaderCell>
-                <TableHeaderCell headerKey="ACCOUNT">Account</TableHeaderCell>
-                <TableHeaderCell headerKey="DATE">Date</TableHeaderCell>
-                <TableHeaderCell headerKey="METHOD">Method</TableHeaderCell>
-                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+              <TableHeaderRow {...args}>
+                <TableHeaderCell>ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Account</TableHeaderCell>
+                <TableHeaderCell>Date</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
               </TableHeaderRow>
             </TableHeader>
             <TableBody>
@@ -171,7 +128,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
             </TableBody>
             <TableFooter>
               <TableFooterRow>
-                {args.selectionType === 'multiple' && <TableFooterCell>-</TableFooterCell>}
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
@@ -187,6 +143,6 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
   );
 };
 
-export const Table = TableTemplate.bind({});
+export const TableHeaderRowStory = TableTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
-Table.storyName = 'Simple Table';
+TableHeaderRowStory.storyName = 'TableHeaderRow';
