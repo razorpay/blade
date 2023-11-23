@@ -139,3 +139,4 @@ const TableToolbar = assignWithoutSideEffects(_TableToolbar, {
 });
 
 export { TableToolbar, TableToolbarActions };
+export type { TableToolbarProps, TableToolbarActionsProps };
