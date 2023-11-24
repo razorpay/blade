@@ -82,11 +82,11 @@ const TableHeader = assignWithoutSideEffects(_TableHeader, {
 });
 
 const StyledHeaderCell = styled(HeaderCell)<{
-  surfaceLevel: SurfaceLevels;
-  isSortable: boolean;
-}>(({ theme, surfaceLevel, isSortable }) => ({
+  $surfaceLevel: SurfaceLevels;
+  $isSortable: boolean;
+}>(({ theme, $surfaceLevel, $isSortable }) => ({
   '&&&': {
-    backgroundColor: getIn(theme.colors, `surface.background.level${surfaceLevel}.lowContrast`),
+    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
     height: '100%',
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
@@ -94,7 +94,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
     borderTopColor: getIn(theme.colors, tableHeader.borderBottomAndTopColor),
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
-    cursor: isSortable ? 'pointer' : 'auto',
+    cursor: $isSortable ? 'pointer' : 'auto',
     '> div': {
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
@@ -122,8 +122,8 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
   return (
     <StyledHeaderCell
       tabIndex={0}
-      surfaceLevel={surfaceLevel}
-      isSortable={isSortable}
+      $surfaceLevel={surfaceLevel}
+      $isSortable={isSortable}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);

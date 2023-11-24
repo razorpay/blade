@@ -44,11 +44,11 @@ const TableFooterRow = assignWithoutSideEffects(_TableFooterRow, {
 });
 
 const StyledFooterCell = styled(FooterCell)<{
-  surfaceLevel: SurfaceLevels;
-}>(({ theme, surfaceLevel }) => ({
+  $surfaceLevel: SurfaceLevels;
+}>(({ theme, $surfaceLevel }) => ({
   '&&&': {
     height: '100%',
-    backgroundColor: getIn(theme.colors, `surface.background.level${surfaceLevel}.lowContrast`),
+    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderBottomColor: getIn(theme.colors, tableFooter.borderBottomAndTopColor),
@@ -73,7 +73,7 @@ const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElemen
   const isChildrenString = typeof children === 'string';
   return (
     <StyledFooterCell
-      surfaceLevel={surfaceLevel}
+      $surfaceLevel={surfaceLevel}
       {...metaAttribute({ name: MetaConstants.TableFooterCell })}
     >
       {isChildrenString ? (

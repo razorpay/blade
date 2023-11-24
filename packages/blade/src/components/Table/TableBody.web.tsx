@@ -15,8 +15,8 @@ import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const StyledBody = styled(Body)<{ isSelectable: boolean; showStripedRows: boolean }>(
-  ({ theme, showStripedRows, isSelectable }) => {
+const StyledBody = styled(Body)<{ $isSelectable: boolean; $showStripedRows: boolean }>(
+  ({ theme, $showStripedRows, $isSelectable }) => {
     const rowBackgroundTransition = `background-color ${makeMotionTime(
       getIn(theme.motion, tableRow.backgroundColorMotionDuration),
     )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
@@ -42,13 +42,13 @@ const StyledBody = styled(Body)<{ isSelectable: boolean; showStripedRows: boolea
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedActive),
         },
 
-        ...(isSelectable && {
+        ...($isSelectable && {
           '& tr:active:not(.disabled-row) .cell-wrapper': {
             backgroundColor: getIn(theme.colors, tableRow.nonStripeWrapper.backgroundColorActive),
           },
         }),
 
-        ...(showStripedRows && {
+        ...($showStripedRows && {
           '& tr:nth-child(even) .cell-wrapper': {
             backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColor),
           },
@@ -57,8 +57,8 @@ const StyledBody = styled(Body)<{ isSelectable: boolean; showStripedRows: boolea
           },
         }),
 
-        ...(showStripedRows &&
-          isSelectable && {
+        ...($showStripedRows &&
+          $isSelectable && {
             '& tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper': {
               backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColorHover),
             },
@@ -124,8 +124,8 @@ const _TableBody = ({ children }: TableBodyProps): React.ReactElement => {
 
   return (
     <StyledBody
-      isSelectable={isSelectable}
-      showStripedRows={showStripedRows}
+      $isSelectable={isSelectable}
+      $showStripedRows={showStripedRows}
       {...metaAttribute({ name: MetaConstants.TableBody })}
     >
       {children}
@@ -138,11 +138,11 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
 });
 
 const StyledCell = styled(Cell)<{
-  surfaceLevel: SurfaceLevels;
-}>(({ theme, surfaceLevel }) => ({
+  $surfaceLevel: SurfaceLevels;
+}>(({ theme, $surfaceLevel }) => ({
   '&&&': {
     height: '100%',
-    backgroundColor: getIn(theme.colors, `surface.background.level${surfaceLevel}.lowContrast`),
+    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
@@ -187,7 +187,7 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
   return (
     <StyledCell
       tabIndex={0}
-      surfaceLevel={surfaceLevel}
+      $surfaceLevel={surfaceLevel}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
       <CellWrapper
@@ -234,40 +234,38 @@ const TableCheckboxCell = ({
   );
 };
 
-const StyledRow = styled(Row)<{ isSelectable: boolean; showStripedRows?: boolean }>(
-  ({ theme, isSelectable }) => {
-    const rowBackgroundTransition = `background-color ${makeMotionTime(
-      getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-    )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
+const StyledRow = styled(Row)<{ $isSelectable: boolean }>(({ theme, $isSelectable }) => {
+  const rowBackgroundTransition = `background-color ${makeMotionTime(
+    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
 
-    return {
-      '&&&': {
-        backgroundColor: 'transparent',
-        ...(isSelectable && {
-          '&:hover:not(.disabled-row) td': {
-            transition: rowBackgroundTransition,
-            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
-            cursor: 'pointer',
-          },
-          '&:focus:not(.disabled-row) td': {
-            transition: rowBackgroundTransition,
-            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorFocus),
-            cursor: 'pointer',
-          },
-          '&:active:not(.disabled-row) td': {
-            transition: rowBackgroundTransition,
-            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
-            cursor: 'pointer',
-          },
-        }),
-        '&:focus': {
-          outline: 'none',
-          boxShadow: `0 0 0 2px ${getIn(theme.colors, 'brand.primary.300')}`,
+  return {
+    '&&&': {
+      backgroundColor: 'transparent',
+      ...($isSelectable && {
+        '&:hover:not(.disabled-row) td': {
+          transition: rowBackgroundTransition,
+          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
+          cursor: 'pointer',
         },
+        '&:focus:not(.disabled-row) td': {
+          transition: rowBackgroundTransition,
+          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorFocus),
+          cursor: 'pointer',
+        },
+        '&:active:not(.disabled-row) td': {
+          transition: rowBackgroundTransition,
+          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
+          cursor: 'pointer',
+        },
+      }),
+      '&:focus': {
+        outline: 'none',
+        boxShadow: `0 0 0 2px ${getIn(theme.colors, 'brand.primary.300')}`,
       },
-    };
-  },
-);
+    },
+  };
+});
 
 const _TableRow = <Item,>({
   children,
@@ -278,7 +276,6 @@ const _TableRow = <Item,>({
     selectionType,
     selectedRows,
     toggleRowSelectionById,
-    showStripedRows,
     setDisabledRows,
   } = useTableContext();
   const isSelectable = selectionType !== 'none';
@@ -293,8 +290,7 @@ const _TableRow = <Item,>({
   return (
     <StyledRow
       disabled={isDisabled}
-      isSelectable={isDisabled ? false : isSelectable}
-      showStripedRows={showStripedRows}
+      $isSelectable={isDisabled ? false : isSelectable}
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
       {...metaAttribute({ name: MetaConstants.TableRow })}
