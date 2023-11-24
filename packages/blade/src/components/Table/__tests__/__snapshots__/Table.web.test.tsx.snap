@@ -17,6 +17,21 @@ exports[`<Table /> should render table 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  height: 100%;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
   pointer-events: auto;
 }
 
@@ -33,7 +48,7 @@ exports[`<Table /> should render table 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c10 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -52,27 +67,27 @@ exports[`<Table /> should render table 1`] = `
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4 tr:last-child td {
+.c4.c4.c4 tr:last-child .cell-wrapper {
   border-bottom: none;
 }
 
-.c4.c4.c4 .row-select-single-selected td,
-.c4.c4.c4 .row-select-selected td {
+.c4.c4.c4 .row-select-single-selected .cell-wrapper-base,
+.c4.c4.c4 .row-select-selected .cell-wrapper-base {
   background-color: hsla(218,89%,51%,0.09);
 }
 
-.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) td,
-.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) td {
+.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(218,89%,51%,0.18);
 }
 
-.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) td,
-.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) td {
+.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(218,89%,51%,0.09);
 }
 
-.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) td,
-.c4.c4.c4 .row-select-selected:active:not(.disabled-row) td {
+.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(218,89%,51%,0.18);
 }
 
@@ -92,7 +107,7 @@ exports[`<Table /> should render table 1`] = `
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
 }
 
-.c8.c8.c8 {
+.c9.c9.c9 {
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
@@ -115,15 +130,15 @@ exports[`<Table /> should render table 1`] = `
   box-shadow: 0 0 0 2px hsla(218,89%,51%,0.09);
 }
 
-.c10.c10.c10 {
+.c11.c11.c11 {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c10.c10.c10 tr:last-child th {
+.c11.c11.c11 tr:last-child th {
   border-bottom: none;
 }
 
-.c11.c11.c11 {
+.c12.c12.c12 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
@@ -134,7 +149,7 @@ exports[`<Table /> should render table 1`] = `
   border-top-style: solid;
 }
 
-.c11.c11.c11 > div {
+.c12.c12.c12 > div {
   background-color: hsla(216,15%,54%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
@@ -196,31 +211,31 @@ exports[`<Table /> should render table 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c7 {
+  .c8 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c7 {
+  .c8 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c7 {
+  .c8 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c7 {
+  .c8 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c7 {
+  .c8 {
     pointer-events: auto;
   }
 }
@@ -378,16 +393,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  rzp01
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    rzp01
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -400,11 +420,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                100
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  100
+                </div>
               </div>
             </div>
           </td>
@@ -417,16 +442,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  success
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -439,16 +469,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  credit
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -461,16 +496,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  Netbanking
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    Netbanking
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -483,16 +523,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  John Doe
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    John Doe
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -512,16 +557,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  rzp02
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    rzp02
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -534,11 +584,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                240
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  240
+                </div>
               </div>
             </div>
           </td>
@@ -551,16 +606,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  pending
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -573,16 +633,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  credit
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -595,16 +660,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  UPI
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    UPI
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -617,16 +687,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  Jane Doe
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    Jane Doe
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -646,16 +721,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  rzp03
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    rzp03
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -668,11 +748,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                120
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  120
+                </div>
               </div>
             </div>
           </td>
@@ -685,16 +770,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  failed
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    failed
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -707,16 +797,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  debit
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    debit
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -729,16 +824,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  Debit Card
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    Debit Card
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -751,16 +851,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  Alice Smith
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    Alice Smith
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -780,16 +885,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  rzp04
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    rzp04
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -802,11 +912,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                300
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  300
+                </div>
               </div>
             </div>
           </td>
@@ -819,16 +934,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  success
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -841,16 +961,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  credit
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -863,16 +988,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  Credit Card
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    Credit Card
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -885,16 +1015,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  Bob Smith
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    Bob Smith
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -914,16 +1049,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  rzp05
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    rzp05
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -936,11 +1076,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                200
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  200
+                </div>
               </div>
             </div>
           </td>
@@ -953,16 +1098,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  success
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -975,16 +1125,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  credit
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -997,16 +1152,21 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  Netbanking
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    Netbanking
+                  </p>
+                </div>
               </div>
             </div>
           </td>
@@ -1019,23 +1179,28 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 c8 cell-wrapper"
+                class="c7 cell-wrapper-base"
                 data-blade-component="base-box"
-                pointer-events="auto"
               >
-                <p
-                  class="c9"
-                  data-blade-component="text"
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
                 >
-                  John Doe
-                </p>
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    John Doe
+                  </p>
+                </div>
               </div>
             </div>
           </td>
         </tr>
       </tbody>
       <tfoot
-        class="c10 css-1a28xfp-Header"
+        class="c11 css-1a28xfp-Header"
         data-blade-component="table-footer"
         role="rowgroup"
       >
@@ -1046,7 +1211,7 @@ exports[`<Table /> should render table 1`] = `
           role="rowfooter"
         >
           <th
-            class="th c11 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1063,7 +1228,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c11 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1080,7 +1245,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c11 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1097,7 +1262,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c11 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1114,7 +1279,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c11 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1131,7 +1296,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c11 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
