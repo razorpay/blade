@@ -436,6 +436,9 @@ describe('<Table />', () => {
     if (secondSelectableRow) await user.click(secondSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0], nodes[1]] });
     expect(getByText('2 Items Selected')).toBeInTheDocument();
+    const deselectButton = getByText('Deselect');
+    await user.click(deselectButton);
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [] });
   });
 
   it('should render table with pagination', async () => {
