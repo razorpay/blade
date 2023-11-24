@@ -242,6 +242,7 @@
   },
   "peerDependencies": {
     "@table-library/react-table-library": "4.1.7",
+    "@emotion/react": "11.11.1",
     "@gorhom/bottom-sheet": "^4",
     "@gorhom/portal": "1.0.14",
     "@floating-ui/react": "0.25.4",
@@ -267,6 +268,9 @@
       "optional": true
     },
     "@table-library/react-table-library": {
+      "optional": true
+    },
+    "@emotion/react": {
       "optional": true
     }
   },
