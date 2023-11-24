@@ -5,6 +5,7 @@ import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-librar
 import { tableHeader } from './tokens';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
+import type { TableHeaderRowProps, TableHeaderCellProps } from './types';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
@@ -62,19 +63,6 @@ const SortIcon = ({
   );
 };
 
-type TableHeaderProps = {
-  /**
-   * The children of TableHeader should be TableHeaderRow
-   * @example
-   * <TableHeader>
-   *   <TableHeaderRow>
-   *     <TableHeaderCell>Header Cell 1</TableHeaderCell>
-   *   </TableHeaderRow>
-   * </TableHeader>
-   **/
-  children: React.ReactNode;
-};
-
 const StyledHeader = styled(Header)({
   '&&&': {
     '& tr:first-child th': {
@@ -83,7 +71,7 @@ const StyledHeader = styled(Header)({
   },
 });
 
-const _TableHeader = ({ children }: TableHeaderProps): React.ReactElement => {
+const _TableHeader = ({ children }: TableHeaderRowProps): React.ReactElement => {
   return (
     <StyledHeader {...metaAttribute({ name: MetaConstants.TableHeader })}>{children}</StyledHeader>
   );
@@ -93,25 +81,12 @@ const TableHeader = assignWithoutSideEffects(_TableHeader, {
   componentId: ComponentIds.TableHeader,
 });
 
-type TableHeaderCellProps = {
-  /**
-   * The children of TableHeaderCell can be a string or a ReactNode.
-   **/
-  children: string | React.ReactNode;
-  /**
-   * The unique key of the column.
-   * This is used to identify the column for sorting in sortFunctions prop of Table.
-   * Sorting is enabled only for columns whose key is present in sortableColumns prop of Table.
-   **/
-  headerKey?: string;
-};
-
 const StyledHeaderCell = styled(HeaderCell)<{
-  surfaceLevel: SurfaceLevels;
-  isSortable: boolean;
-}>(({ theme, surfaceLevel, isSortable }) => ({
+  $surfaceLevel: SurfaceLevels;
+  $isSortable: boolean;
+}>(({ theme, $surfaceLevel, $isSortable }) => ({
   '&&&': {
-    backgroundColor: getIn(theme.colors, `surface.background.level${surfaceLevel}.lowContrast`),
+    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
     height: '100%',
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
@@ -119,7 +94,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
     borderTopColor: getIn(theme.colors, tableHeader.borderBottomAndTopColor),
     borderBottomStyle: 'solid',
     borderTopStyle: 'solid',
-    cursor: isSortable ? 'pointer' : 'auto',
+    cursor: $isSortable ? 'pointer' : 'auto',
     '> div': {
       backgroundColor: getIn(theme.colors, tableHeader.backgroundColor),
       display: 'flex',
@@ -147,8 +122,8 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
   return (
     <StyledHeaderCell
       tabIndex={0}
-      surfaceLevel={surfaceLevel}
-      isSortable={isSortable}
+      $surfaceLevel={surfaceLevel}
+      $isSortable={isSortable}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);
@@ -196,18 +171,6 @@ const TableHeaderCellCheckbox = ({
     </TableHeaderCell>
   );
 };
-type TableHeaderRowProps = {
-  /**
-   * The children of TableHeaderRow should be TableHeaderCell
-   * @example
-   * <TableHeader>
-   *   <TableHeaderRow>
-   *     <TableHeaderCell>Header Cell 1</TableHeaderCell>
-   *   </TableHeaderRow>
-   * </TableHeader>
-   **/
-  children: React.ReactNode;
-};
 
 const _TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement => {
   const { selectionType, selectedRows, totalItems, toggleAllRowsSelection } = useTableContext();
@@ -232,5 +195,4 @@ const TableHeaderRow = assignWithoutSideEffects(_TableHeaderRow, {
   componentId: ComponentIds.TableHeaderRow,
 });
 
-export { TableHeader, TableHeaderRow, TableHeaderCell, TableHeaderCellCheckbox };
-export type { TableHeaderProps, TableHeaderRowProps, TableHeaderCellProps };
+export { TableHeader, TableHeaderRow, TableHeaderCell };

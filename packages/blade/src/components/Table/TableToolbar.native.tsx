@@ -10,4 +10,3 @@ const TablePagination = (props: TablePaginationProps): React.ReactElement => {
 };
 
 export { TablePagination };
-export type { TablePaginationProps };

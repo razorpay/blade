@@ -4,23 +4,13 @@ import getIn from 'lodash/get';
 import styled from 'styled-components';
 import { tableFooter } from './tokens';
 import { useTableContext } from './TableContext';
+import { ComponentIds } from './componentIds';
+import type { TableFooterProps, TableFooterRowProps, TableFooterCellProps } from './types';
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SurfaceLevels } from '~tokens/theme/theme';
-
-type TableFooterProps = {
-  /**
-   * The children of TableFooter should be TableFooterRow
-   * @example
-   * <TableFooter>
-   *   <TableFooterRow>
-   *     <TableFooterCell>Footer Cell 1</TableFooterCell>
-   *   </TableFooterRow>
-   * </TableFooter>
-   **/
-  children: React.ReactNode;
-};
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const StyledFooter = styled(Footer)(({ theme }) => ({
   '&&&': {
@@ -31,7 +21,7 @@ const StyledFooter = styled(Footer)(({ theme }) => ({
   },
 }));
 
-const TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
+const _TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
   return (
     <StyledFooter isFooter {...metaAttribute({ name: MetaConstants.TableFooter })}>
       {children}
@@ -39,38 +29,26 @@ const TableFooter = ({ children }: TableFooterProps): React.ReactElement => {
   );
 };
 
-type TableFooterRowProps = {
-  /**
-   * The children of TableFooterRow should be TableFooterCell
-   * @example
-   * <TableFooter>
-   *   <TableFooterRow>
-   *     <TableFooterCell>Footer Cell 1</TableFooterCell>
-   *   </TableFooterRow>
-   * </TableFooter>
-   **/
-  children: React.ReactNode;
-};
+const TableFooter = assignWithoutSideEffects(_TableFooter, {
+  componentId: ComponentIds.TableFooter,
+});
 
-const TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement => {
+const _TableFooterRow = ({ children }: TableFooterRowProps): React.ReactElement => {
   return (
     <FooterRow {...metaAttribute({ name: MetaConstants.TableFooterRow })}>{children}</FooterRow>
   );
 };
 
-type TableFooterCellProps = {
-  /**
-   * The children of TableHeaderCell can be a string or a ReactNode.
-   **/
-  children: string | React.ReactNode;
-};
+const TableFooterRow = assignWithoutSideEffects(_TableFooterRow, {
+  componentId: ComponentIds.TableFooterRow,
+});
 
 const StyledFooterCell = styled(FooterCell)<{
-  surfaceLevel: SurfaceLevels;
-}>(({ theme, surfaceLevel }) => ({
+  $surfaceLevel: SurfaceLevels;
+}>(({ theme, $surfaceLevel }) => ({
   '&&&': {
     height: '100%',
-    backgroundColor: getIn(theme.colors, `surface.background.level${surfaceLevel}.lowContrast`),
+    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderBottomColor: getIn(theme.colors, tableFooter.borderBottomAndTopColor),
@@ -90,12 +68,12 @@ const StyledFooterCell = styled(FooterCell)<{
   },
 }));
 
-const TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement => {
+const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement => {
   const { surfaceLevel } = useTableContext();
   const isChildrenString = typeof children === 'string';
   return (
     <StyledFooterCell
-      surfaceLevel={surfaceLevel}
+      $surfaceLevel={surfaceLevel}
       {...metaAttribute({ name: MetaConstants.TableFooterCell })}
     >
       {isChildrenString ? (
@@ -109,5 +87,8 @@ const TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement
   );
 };
 
+const TableFooterCell = assignWithoutSideEffects(_TableFooterCell, {
+  componentId: ComponentIds.TableFooterCell,
+});
+
 export { TableFooter, TableFooterRow, TableFooterCell };
-export type { TableFooterProps, TableFooterRowProps, TableFooterCellProps };

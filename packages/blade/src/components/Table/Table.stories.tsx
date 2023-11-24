@@ -1,5 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import type { TableProps } from './Table';
+import type { TableProps } from './types';
 import { Table as TableComponent } from './Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from './TableHeader';
 import { TableBody, TableRow, TableCell } from './TableBody';
