@@ -7,6 +7,7 @@ import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
 import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import { Amount } from '~components/Amount';
 
 type Item = {
   id: string;
@@ -298,6 +299,50 @@ describe('<Table />', () => {
     expect(getAllByRole('columnfooter')).toHaveLength(6);
   });
 
+  it('should render table with comfortable rowDensity', () => {
+    const { container } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 2) }} rowDensity="comfortable">
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
+      </Table>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render table with sorting', () => {
     const { getByLabelText, getAllByRole } = renderWithTheme(
       <Table
@@ -414,7 +459,9 @@ describe('<Table />', () => {
               {tableData.map((tableItem, index) => (
                 <TableRow item={tableItem} key={index}>
                   <TableCell>{tableItem.paymentId}</TableCell>
-                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
                   <TableCell>{tableItem.status}</TableCell>
                   <TableCell>{tableItem.type}</TableCell>
                   <TableCell>{tableItem.method}</TableCell>
