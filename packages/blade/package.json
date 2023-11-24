@@ -123,7 +123,6 @@
     "@floating-ui/react-native": "0.10.1",
     "patch-package": "7.0.0",
     "tinycolor2": "1.6.0",
-    "@table-library/react-table-library": "4.1.7",
     "react-native-tab-view": "3.5.2",
     "react-native-pager-view": "6.2.1"
   },
@@ -241,6 +240,7 @@
     "typescript-transform-paths": "3.4.6"
   },
   "peerDependencies": {
+    "@table-library/react-table-library": "4.1.7",
     "@gorhom/bottom-sheet": "^4",
     "@gorhom/portal": "1.0.14",
     "@floating-ui/react": "0.25.4",
@@ -263,6 +263,9 @@
       "optional": true
     },
     "@gorhom/bottom-sheet": {
+      "optional": true
+    },
+    "@table-library/react-table-library": {
       "optional": true
     }
   },
@@ -313,14 +316,14 @@
       "name": "Import Button only",
       "path": "./build/components/index.production.web.js",
       "import": "{ Button }",
-      "limit": "30 kb",
+      "limit": "20 kb",
       "running": false
     },
     {
       "name": "Import Text only",
       "path": "./build/components/index.production.web.js",
       "import": "{ Text }",
-      "limit": "25 kb",
+      "limit": "15 kb",
       "running": false
     }
   ]
