@@ -366,9 +366,11 @@ const componentData: ComponentStatusDataType = [
       'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
   },
   {
-    name: 'Data Table',
-    status: 'in-development',
-    description: 'DataTable will allow you to display your data in tabular manner',
+    name: 'Table',
+    status: 'released',
+    releasedIn: '10.19.0',
+    storybookLink: 'Components/Table',
+    description: 'Table will allow you to display your data in tabular manner',
   },
   {
     name: 'Date Picker',
