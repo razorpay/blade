@@ -652,7 +652,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="textarea-91-input-92"
+          for="textarea-109-input-110"
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
@@ -693,7 +693,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
           aria-required="false"
           class="c8"
           data-blade-component="styled-base-input"
-          id="textarea-91-input-92"
+          id="textarea-109-input-110"
           rows="3"
           type="text"
         />
