@@ -1,9 +1,10 @@
 import userEvent from '@testing-library/user-event';
-import { fireEvent, waitFor, act, getByLabelText, getByText } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
 import { TableBody, TableCell, TableRow } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
 import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
+import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
@@ -248,7 +249,7 @@ const nodes: Item[] = [
 describe('<Table />', () => {
   it('should render table', () => {
     const { container, getAllByRole } = renderWithTheme(
-      <Table data={{ nodes: nodes.slice(0, 5) }}>
+      <Table data={{ nodes: nodes.slice(0, 5) }} toolbar={<TableToolbar />}>
         {(tableData) => (
           <>
             <TableHeader>
@@ -385,6 +386,56 @@ describe('<Table />', () => {
     const secondSelectableRow = getByText('rzp02').closest('td');
     if (secondSelectableRow) await user.click(secondSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[1]] });
+  });
+
+  it('should render table with multi select', async () => {
+    const onSelectionChange = jest.fn();
+    const user = userEvent.setup();
+    const { getByText, getAllByRole } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 5) }}
+        selectionType="multiple"
+        onSelectionChange={onSelectionChange}
+        toolbar={<TableToolbar />}
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    expect(getByText('Showing 1-5 Items')).toBeInTheDocument();
+    expect(getAllByRole('checkbox')).toHaveLength(6);
+    const firstSelectableRow = getByText('rzp01').closest('td');
+    if (firstSelectableRow) await user.click(firstSelectableRow);
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]] });
+    const secondSelectableRow = getByText('rzp02').closest('td');
+    if (secondSelectableRow) await user.click(secondSelectableRow);
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0], nodes[1]] });
+    expect(getByText('2 Items Selected')).toBeInTheDocument();
   });
 
   it('should render table with pagination', async () => {

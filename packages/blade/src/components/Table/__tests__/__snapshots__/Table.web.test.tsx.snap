@@ -8,7 +8,41 @@ exports[`<Table /> should render table 1`] = `
   position: relative;
 }
 
-.c7 {
+.c1 {
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 12px;
+  gap: 16px;
+  background-color: transparent;
+}
+
+.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -20,7 +54,7 @@ exports[`<Table /> should render table 1`] = `
   height: 100%;
 }
 
-.c8 {
+.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -35,7 +69,7 @@ exports[`<Table /> should render table 1`] = `
   pointer-events: auto;
 }
 
-.c3 {
+.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -48,7 +82,7 @@ exports[`<Table /> should render table 1`] = `
   padding: 0;
 }
 
-.c10 {
+.c14 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -61,53 +95,53 @@ exports[`<Table /> should render table 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4 {
+.c8.c8.c8 {
   border: none;
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4 tr:last-child .cell-wrapper {
+.c8.c8.c8 tr:last-child .cell-wrapper {
   border-bottom: none;
 }
 
-.c4.c4.c4 .row-select-single-selected .cell-wrapper-base,
-.c4.c4.c4 .row-select-selected .cell-wrapper-base {
+.c8.c8.c8 .row-select-single-selected .cell-wrapper-base,
+.c8.c8.c8 .row-select-selected .cell-wrapper-base {
   background-color: hsla(218,89%,51%,0.09);
 }
 
-.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+.c8.c8.c8 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c8.c8.c8 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(218,89%,51%,0.18);
 }
 
-.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+.c8.c8.c8 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c8.c8.c8 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(218,89%,51%,0.09);
 }
 
-.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+.c8.c8.c8 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c8.c8.c8 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
   background-color: hsla(218,89%,51%,0.18);
 }
 
-.c6.c6.c6 {
+.c10.c10.c10 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
 }
 
-.c6.c6.c6 > div:first-child {
+.c10.c10.c10 > div:first-child {
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
 }
 
-.c6.c6.c6:focus-visible {
+.c10.c10.c10:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
 }
 
-.c9.c9.c9 {
+.c13.c13.c13 {
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
@@ -121,24 +155,24 @@ exports[`<Table /> should render table 1`] = `
   border-bottom-style: solid;
 }
 
-.c5.c5.c5 {
+.c9.c9.c9 {
   background-color: transparent;
 }
 
-.c5.c5.c5:focus {
+.c9.c9.c9:focus {
   outline: none;
   box-shadow: 0 0 0 2px hsla(218,89%,51%,0.09);
 }
 
-.c11.c11.c11 {
+.c15.c15.c15 {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c11.c11.c11 tr:last-child th {
+.c15.c15.c15 tr:last-child th {
   border-bottom: none;
 }
 
-.c12.c12.c12 {
+.c16.c16.c16 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
@@ -149,7 +183,7 @@ exports[`<Table /> should render table 1`] = `
   border-top-style: solid;
 }
 
-.c12.c12.c12 > div {
+.c16.c16.c16 > div {
   background-color: hsla(216,15%,54%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
@@ -165,11 +199,11 @@ exports[`<Table /> should render table 1`] = `
   padding-right: 12px;
 }
 
-.c1.c1.c1 tr:first-child th {
+.c6.c6.c6 tr:first-child th {
   border-top: none;
 }
 
-.c2.c2.c2 {
+.c7.c7.c7 {
   background-color: hsla(0,0%,100%,1);
   height: 100%;
   border-bottom-width: 1px;
@@ -181,7 +215,7 @@ exports[`<Table /> should render table 1`] = `
   cursor: auto;
 }
 
-.c2.c2.c2 > div {
+.c7.c7.c7 > div {
   background-color: hsla(216,15%,54%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
@@ -205,37 +239,42 @@ exports[`<Table /> should render table 1`] = `
   padding-right: 12px;
 }
 
-.c2.c2.c2:focus-visible {
+.c7.c7.c7:focus-visible {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
   outline: none;
 }
 
+.c3 {
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
 @media screen and (min-width:320px) {
-  .c8 {
+  .c12 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c8 {
+  .c12 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c8 {
+  .c12 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c8 {
+  .c12 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c8 {
+  .c12 {
     pointer-events: auto;
   }
 }
@@ -245,6 +284,32 @@ exports[`<Table /> should render table 1`] = `
     class="c0"
     data-blade-component="table"
   >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c2 c3"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class=""
+            data-blade-component="base-box"
+          >
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              Showing 1-5 Items
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <table
       class="css-1ja8l55-Table"
       data-blade-component="table"
@@ -253,7 +318,7 @@ exports[`<Table /> should render table 1`] = `
       style="--data-table-library_grid-template-columns: 150px 150px 150px 150px 150px 150px;"
     >
       <thead
-        class="c1 css-1a28xfp-Header"
+        class="c6 css-1a28xfp-Header"
         data-blade-component="table-header"
         role="rowgroup"
       >
@@ -264,7 +329,7 @@ exports[`<Table /> should render table 1`] = `
           role="rowheader"
         >
           <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -274,7 +339,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 Payment ID
@@ -282,7 +347,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -292,7 +357,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 Amount
@@ -300,7 +365,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -310,7 +375,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 Status
@@ -318,7 +383,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -328,7 +393,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 Type
@@ -336,7 +401,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -346,7 +411,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 Method
@@ -354,7 +419,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c7 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-header-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -364,7 +429,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 Name
@@ -374,18 +439,18 @@ exports[`<Table /> should render table 1`] = `
         </tr>
       </thead>
       <tbody
-        class="c4 css-8eb0m3-Body"
+        class="c8 css-8eb0m3-Body"
         data-blade-component="table-body"
         data-table-library_body=""
       >
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -393,16 +458,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     rzp01
@@ -412,7 +477,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -420,11 +485,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -434,7 +499,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -442,16 +507,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     pending
@@ -461,7 +526,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -469,16 +534,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     credit
@@ -488,7 +553,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -496,16 +561,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     Netbanking
@@ -515,7 +580,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -523,16 +588,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     John Doe
@@ -543,13 +608,13 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -557,16 +622,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     rzp02
@@ -576,7 +641,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -584,11 +649,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -598,7 +663,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -606,16 +671,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     pending
@@ -625,7 +690,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -633,16 +698,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     credit
@@ -652,7 +717,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -660,16 +725,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     UPI
@@ -679,7 +744,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -687,16 +752,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     Jane Doe
@@ -707,13 +772,13 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -721,16 +786,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     rzp03
@@ -740,7 +805,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -748,11 +813,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -762,7 +827,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -770,16 +835,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     failed
@@ -789,7 +854,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -797,16 +862,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     debit
@@ -816,7 +881,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -824,16 +889,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     Debit Card
@@ -843,7 +908,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -851,16 +916,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     Alice Smith
@@ -871,13 +936,13 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -885,16 +950,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     rzp04
@@ -904,7 +969,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -912,11 +977,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -926,7 +991,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -934,16 +999,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     completed
@@ -953,7 +1018,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -961,16 +1026,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     credit
@@ -980,7 +1045,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -988,16 +1053,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     Credit Card
@@ -1007,7 +1072,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1015,16 +1080,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     Bob Smith
@@ -1035,13 +1100,13 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1049,16 +1114,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     rzp05
@@ -1068,7 +1133,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1076,11 +1141,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -1090,7 +1155,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1098,16 +1163,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     completed
@@ -1117,7 +1182,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1125,16 +1190,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     credit
@@ -1144,7 +1209,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1152,16 +1217,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     Netbanking
@@ -1171,7 +1236,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1179,16 +1244,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c7 cell-wrapper-base"
+                class="c11 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c8 c9 cell-wrapper"
+                  class="c12 c13 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c10"
+                    class="c14"
                     data-blade-component="text"
                   >
                     John Doe
@@ -1200,7 +1265,7 @@ exports[`<Table /> should render table 1`] = `
         </tr>
       </tbody>
       <tfoot
-        class="c11 css-1a28xfp-Header"
+        class="c15 css-1a28xfp-Header"
         data-blade-component="table-footer"
         role="rowgroup"
       >
@@ -1211,7 +1276,7 @@ exports[`<Table /> should render table 1`] = `
           role="rowfooter"
         >
           <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1220,7 +1285,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 -
@@ -1228,7 +1293,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1237,7 +1302,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 -
@@ -1245,7 +1310,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1254,7 +1319,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 -
@@ -1262,7 +1327,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1271,7 +1336,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 -
@@ -1279,7 +1344,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1288,7 +1353,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 -
@@ -1296,7 +1361,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1305,7 +1370,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c3"
+                class="c5"
                 data-blade-component="text"
               >
                 -
