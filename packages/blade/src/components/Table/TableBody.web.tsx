@@ -25,20 +25,20 @@ const StyledBody = styled(Body)<{ $isSelectable: boolean; $showStripedRows: bool
       '&&&': {
         border: 'none',
         transition: rowBackgroundTransition,
-        '& tr:last-child td': {
+        '& tr:last-child .cell-wrapper': {
           borderBottom: 'none',
         },
 
-        '& .row-select-single-selected td, .row-select-selected td': {
+        '& .row-select-single-selected .cell-wrapper-base, .row-select-selected .cell-wrapper-base': {
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelected),
         },
-        '& .row-select-single-selected:hover:not(.disabled-row) td, .row-select-selected:hover:not(.disabled-row) td': {
+        '& .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base': {
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedHover),
         },
-        '& .row-select-single-selected:focus:not(.disabled-row) td, .row-select-selected:focus:not(.disabled-row) td': {
+        '& .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base': {
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedFocus),
         },
-        '& .row-select-single-selected:active:not(.disabled-row) td, .row-select-selected:active:not(.disabled-row) td': {
+        '& .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:active:not(.disabled-row) .cell-wrapper-base': {
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorSelectedActive),
         },
 
@@ -52,7 +52,7 @@ const StyledBody = styled(Body)<{ $isSelectable: boolean; $showStripedRows: bool
           '& tr:nth-child(even) .cell-wrapper': {
             backgroundColor: getIn(theme.colors, tableRow.stripeWrapper.backgroundColor),
           },
-          '& tr:nth-child(even) td': {
+          '& tr:nth-child(even) .cell-wrapper-base': {
             backgroundColor: tableRow.stripe.backgroundColor,
           },
         }),
@@ -90,26 +90,26 @@ const StyledBody = styled(Body)<{ $isSelectable: boolean; $showStripedRows: bool
               ),
             },
 
-            '& tr:nth-child(even):hover:not(.disabled-row) td': {
+            '& tr:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base': {
               backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorHover),
             },
-            '& tr:nth-child(even):focus:not(.disabled-row) td': {
+            '& tr:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base': {
               backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorFocus),
             },
-            '& tr:nth-child(even):active:not(.disabled-row) td': {
+            '& tr:nth-child(even):active:not(.disabled-row) .cell-wrapper-base': {
               backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorActive),
             },
 
-            '& .row-select-single-selected:nth-child(even) td, .row-select-selected:nth-child(even) td ': {
+            '& .row-select-single-selected:nth-child(even) .cell-wrapper-base, .row-select-selected:nth-child(even) .cell-wrapper-base ': {
               backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelected),
             },
-            '& .row-select-single-selected:nth-child(even):hover:not(.disabled-row) td, .row-select-selected:nth-child(even):hover:not(.disabled-row) td ': {
+            '& .row-select-single-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):hover:not(.disabled-row) .cell-wrapper-base ': {
               backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedHover),
             },
-            '& .row-select-single-selected:nth-child(even):focus:not(.disabled-row) td, .row-select-selected:nth-child(even):focus:not(.disabled-row) td ': {
+            '& .row-select-single-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):focus:not(.disabled-row) .cell-wrapper-base ': {
               backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedFocus),
             },
-            '& .row-select-single-selected:nth-child(even):active:not(.disabled-row) td, .row-select-selected:nth-child(even):active:not(.disabled-row) td ': {
+            '& .row-select-single-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base, .row-select-selected:nth-child(even):active:not(.disabled-row) .cell-wrapper-base ': {
               backgroundColor: getIn(theme.colors, tableRow.stripe.backgroundColorSelectedActive),
             },
           }),
@@ -190,18 +190,21 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
       $surfaceLevel={surfaceLevel}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
-      <CellWrapper
-        className="cell-wrapper"
-        rowDensity={rowDensity}
-        showStripedRows={showStripedRows}
-        display="flex"
-        alignItems="center"
-        // when a direct string child is passed we want to disable pointer events
-        // for custom cells components, consumers can handle pointer events themselves
-        pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
-      >
-        {isChildrenString ? <Text size="medium">{children}</Text> : children}
-      </CellWrapper>
+      <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
+        <CellWrapper
+          className="cell-wrapper"
+          rowDensity={rowDensity}
+          showStripedRows={showStripedRows}
+          display="flex"
+          alignItems="center"
+          flex={1}
+          // when a direct string child is passed we want to disable pointer events
+          // for custom cells components, consumers can handle pointer events themselves
+          pointerEvents={isChildrenString && isSelectable ? 'none' : 'auto'}
+        >
+          {isChildrenString ? <Text size="medium">{children}</Text> : children}
+        </CellWrapper>
+      </BaseBox>
     </StyledCell>
   );
 };
@@ -243,17 +246,17 @@ const StyledRow = styled(Row)<{ $isSelectable: boolean }>(({ theme, $isSelectabl
     '&&&': {
       backgroundColor: 'transparent',
       ...($isSelectable && {
-        '&:hover:not(.disabled-row) td': {
+        '&:hover:not(.disabled-row) .cell-wrapper-base': {
           transition: rowBackgroundTransition,
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
           cursor: 'pointer',
         },
-        '&:focus:not(.disabled-row) td': {
+        '&:focus:not(.disabled-row) .cell-wrapper-base': {
           transition: rowBackgroundTransition,
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorFocus),
           cursor: 'pointer',
         },
-        '&:active:not(.disabled-row) td': {
+        '&:active:not(.disabled-row) .cell-wrapper-base': {
           transition: rowBackgroundTransition,
           backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
           cursor: 'pointer',
