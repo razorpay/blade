@@ -724,7 +724,9 @@ describe('<Table />', () => {
     const user = userEvent.setup();
     const { getByLabelText, queryByText, getByRole, getAllByRole } = renderWithTheme(
       <Table
-        data={{ nodes }}
+        data={{
+          nodes: [...nodes, ...nodes, ...nodes, ...nodes, ...nodes, ...nodes, ...nodes, ...nodes],
+        }}
         pagination={
           <TablePagination
             onPageChange={onPageChange}
@@ -775,9 +777,11 @@ describe('<Table />', () => {
     );
     const nextPageButton = getByLabelText('Next Page');
     const previousPageButton = getByLabelText('Previous Page');
+    const goForward5PagesButton = getByLabelText('Go forward 5 pages');
     // Check if pagination buttons work
     expect(nextPageButton).toBeInTheDocument();
     expect(previousPageButton).toBeInTheDocument();
+    expect(goForward5PagesButton).toBeInTheDocument();
     expect(queryByText('rzp01')).toBeInTheDocument();
     // Go to next page
     fireEvent.click(nextPageButton);
@@ -796,5 +800,10 @@ describe('<Table />', () => {
     await waitFor(() => expect(getByRole('listbox')).toBeVisible());
     await user.click(getByRole('option', { name: '25' }));
     expect(getAllByRole('row')).toHaveLength(25);
+    await user.click(goForward5PagesButton);
+    expect(onPageChange).toHaveBeenLastCalledWith({ page: 5 });
+    const goBack5PagesButton = getByLabelText('Go back 5 pages');
+    fireEvent.click(goBack5PagesButton);
+    expect(onPageChange).toHaveBeenLastCalledWith({ page: 0 });
   });
 });
