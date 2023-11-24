@@ -14,8 +14,9 @@ const baseConfig = {
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
   testMatch: ['**/*.test.{ts,tsx}'],
   transform: {
-    '\\.(js|ts|tsx)?$': 'babel-jest',
+    '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },
+  transformIgnorePatterns: ['/node_modules/(?!(@table-library)/)'],
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './jest-setup.web.js'],
   moduleNameMapper: {
