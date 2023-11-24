@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.19.0
+
+### Minor Changes
+
+- 23a3e111: feat: Add `Table` component
+
 ## 10.18.2
 
 ### Patch Changes
