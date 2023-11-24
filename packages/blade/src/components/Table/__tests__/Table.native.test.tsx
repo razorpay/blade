@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react';
 import { Table } from '../Table';
-import type { TableProps } from '../Table';
+import type { TableProps } from '../types';
 import { TableBody, TableRow, TableCell } from '../TableBody';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 

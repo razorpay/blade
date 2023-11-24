@@ -1,5 +1,5 @@
 import { Table } from '../Table';
-import type { TableProps } from '../Table';
+import type { TableProps } from '../types';
 import { TableBody, TableCell, TableRow } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
 import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
