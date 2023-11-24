@@ -72,12 +72,12 @@ const getTableHeaderCellCount = (children: (data: []) => React.ReactElement): nu
   return 0;
 };
 
-const StyledReactTable = styled(ReactTable)<{ styledProps?: { height?: BoxProps['height'] } }>(
-  ({ styledProps }) => {
+const StyledReactTable = styled(ReactTable)<{ $styledProps?: { height?: BoxProps['height'] } }>(
+  ({ $styledProps }) => {
     const { theme } = useTheme();
     const styledPropsCSSObject = getBaseBoxStyles({
       theme,
-      height: styledProps?.height,
+      height: $styledProps?.height,
     });
 
     return {
@@ -443,7 +443,7 @@ const _Table = <Item,>({
             theme={tableTheme}
             select={selectionType !== 'none' ? rowSelectConfig : null}
             sort={sortFunctions ? sort : null}
-            styledProps={{
+            $styledProps={{
               height,
             }}
             pagination={hasPagination ? paginationConfig : null}
