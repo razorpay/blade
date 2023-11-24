@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import { fireEvent, waitFor, act, getByLabelText } from '@testing-library/react';
+import { fireEvent, waitFor, act, getByLabelText, getByText } from '@testing-library/react';
 import { Table } from '../Table';
 import { TableBody, TableCell, TableRow } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
@@ -339,6 +339,50 @@ describe('<Table />', () => {
     expect(getAllByRole('row')[0]).toHaveTextContent('pending');
     fireEvent.click(sortButton);
     expect(getAllByRole('row')[0]).toHaveTextContent('completed');
+  });
+
+  it('should render table with single select', async () => {
+    const onSelectionChange = jest.fn();
+    const user = userEvent.setup();
+    const { getByText } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 5) }}
+        selectionType="single"
+        onSelectionChange={onSelectionChange}
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const selectableRow = getByText('rzp01').closest('td');
+    if (selectableRow) await user.click(selectableRow);
+    expect(onSelectionChange).toHaveBeenCalledTimes(1);
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]] });
   });
 
   it('should render table with pagination', async () => {
