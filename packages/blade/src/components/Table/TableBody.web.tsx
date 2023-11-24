@@ -187,6 +187,7 @@ const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
   return (
     <StyledCell
       tabIndex={0}
+      role="cell"
       $surfaceLevel={surfaceLevel}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >

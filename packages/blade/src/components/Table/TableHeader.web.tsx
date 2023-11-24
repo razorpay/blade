@@ -178,7 +178,7 @@ const _TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement 
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
   const isIndeterminate = selectedRows && selectedRows.length > 0 && !isAllSelected;
   return (
-    <HeaderRow role="row" {...metaAttribute({ name: MetaConstants.TableHeaderRow })}>
+    <HeaderRow role="rowheader" {...metaAttribute({ name: MetaConstants.TableHeaderRow })}>
       {isMultiSelect && (
         <TableHeaderCellCheckbox
           isChecked={isAllSelected}

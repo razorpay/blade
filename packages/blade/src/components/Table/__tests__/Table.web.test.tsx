@@ -1,8 +1,10 @@
+import userEvent from '@testing-library/user-event';
+import { fireEvent, waitFor, act } from '@testing-library/react';
 import { Table } from '../Table';
-import type { TableProps } from '../Table';
 import { TableBody, TableCell, TableRow } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
 import { TableHeader, TableHeaderCell, TableHeaderRow } from '../TableHeader';
+import { TablePagination } from '../TablePagination';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 type Item = {
@@ -196,16 +198,57 @@ const nodes: Item[] = [
     method: 'Credit Card',
     name: 'Bob Smith',
   },
+  {
+    id: '21',
+    paymentId: 'rzp21',
+    amount: 200,
+    status: 'success',
+    type: 'credit',
+    method: 'Netbanking',
+    name: 'John Doe',
+  },
+  {
+    id: '22',
+    paymentId: 'rzp22',
+    amount: 240,
+    status: 'pending',
+    type: 'credit',
+    method: 'UPI',
+    name: 'Jane Doe',
+  },
+  {
+    id: '23',
+    paymentId: 'rzp23',
+    amount: 120,
+    status: 'failed',
+    type: 'debit',
+    method: 'Debit Card',
+    name: 'Alice Smith',
+  },
+  {
+    id: '24',
+    paymentId: 'rzp24',
+    amount: 300,
+    status: 'success',
+    type: 'credit',
+    method: 'Credit Card',
+    name: 'Bob Smith',
+  },
+  {
+    id: '25',
+    paymentId: 'rzp25',
+    amount: 200,
+    status: 'success',
+    type: 'credit',
+    method: 'Netbanking',
+    name: 'John Doe',
+  },
 ];
-
-const data: TableProps<Item>['data'] = {
-  nodes,
-};
 
 describe('<Table />', () => {
   it('should render table', () => {
-    const { container } = renderWithTheme(
-      <Table data={data}>
+    const { container, getAllByRole } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 5) }}>
         {(tableData) => (
           <>
             <TableHeader>
@@ -245,5 +288,92 @@ describe('<Table />', () => {
       </Table>,
     );
     expect(container).toMatchSnapshot();
+    expect(getAllByRole('row')).toHaveLength(5);
+    expect(getAllByRole('rowgroup')).toHaveLength(3);
+    expect(getAllByRole('columnheader')).toHaveLength(6);
+    expect(getAllByRole('cell')).toHaveLength(30);
+    expect(getAllByRole('rowheader')).toHaveLength(1);
+    expect(getAllByRole('rowfooter')).toHaveLength(1);
+    expect(getAllByRole('columnfooter')).toHaveLength(6);
+  });
+
+  it('should render table with pagination', async () => {
+    const onPageChange = jest.fn();
+    const onPageSizeChange = jest.fn();
+    const user = userEvent.setup();
+    const { getByLabelText, queryByText, getByRole, getAllByRole } = renderWithTheme(
+      <Table
+        data={{ nodes }}
+        pagination={
+          <TablePagination
+            onPageChange={onPageChange}
+            defaultPageSize={10}
+            onPageSizeChange={onPageSizeChange}
+            showPageSizePicker
+            showPageNumberSelector
+          />
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
+          </>
+        )}
+      </Table>,
+    );
+    const nextPageButton = getByLabelText('Next Page');
+    const previousPageButton = getByLabelText('Previous Page');
+    // Check if pagination buttons work
+    expect(nextPageButton).toBeInTheDocument();
+    expect(previousPageButton).toBeInTheDocument();
+    expect(queryByText('rzp01')).toBeInTheDocument();
+    // Go to next page
+    fireEvent.click(nextPageButton);
+    expect(queryByText('rzp01')).not.toBeInTheDocument();
+    expect(queryByText('rzp11')).toBeInTheDocument();
+    expect(onPageChange).toHaveBeenCalledTimes(1);
+    // Go to previous page
+    fireEvent.click(previousPageButton);
+    expect(queryByText('rzp01')).toBeInTheDocument();
+
+    // Check if page size picker works
+    const selectInput = getByRole('combobox', { name: 'Select pages per row' });
+    expect(getAllByRole('row')).toHaveLength(10);
+    expect(selectInput).toBeInTheDocument();
+    await user.click(selectInput);
+    await waitFor(() => expect(getByRole('listbox')).toBeVisible());
+    await user.click(getByRole('option', { name: '25' }));
+    expect(getAllByRole('row')).toHaveLength(25);
   });
 });
