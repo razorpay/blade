@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import { fireEvent, waitFor, act } from '@testing-library/react';
+import { fireEvent, waitFor, act, getByLabelText } from '@testing-library/react';
 import { Table } from '../Table';
 import { TableBody, TableCell, TableRow } from '../TableBody';
 import { TableFooter, TableFooterCell, TableFooterRow } from '../TableFooter';
@@ -22,7 +22,7 @@ const nodes: Item[] = [
     id: '1',
     paymentId: 'rzp01',
     amount: 100,
-    status: 'success',
+    status: 'pending',
     type: 'credit',
     method: 'Netbanking',
     name: 'John Doe',
@@ -49,7 +49,7 @@ const nodes: Item[] = [
     id: '4',
     paymentId: 'rzp04',
     amount: 300,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Credit Card',
     name: 'Bob Smith',
@@ -58,7 +58,7 @@ const nodes: Item[] = [
     id: '5',
     paymentId: 'rzp05',
     amount: 200,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Netbanking',
     name: 'John Doe',
@@ -85,7 +85,7 @@ const nodes: Item[] = [
     id: '8',
     paymentId: 'rzp08',
     amount: 300,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Credit Card',
     name: 'Bob Smith',
@@ -94,7 +94,7 @@ const nodes: Item[] = [
     id: '9',
     paymentId: 'rzp09',
     amount: 200,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Netbanking',
     name: 'John Doe',
@@ -121,7 +121,7 @@ const nodes: Item[] = [
     id: '12',
     paymentId: 'rzp12',
     amount: 300,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Credit Card',
     name: 'Bob Smith',
@@ -130,7 +130,7 @@ const nodes: Item[] = [
     id: '13',
     paymentId: 'rzp13',
     amount: 200,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Netbanking',
     name: 'John Doe',
@@ -157,7 +157,7 @@ const nodes: Item[] = [
     id: '16',
     paymentId: 'rzp16',
     amount: 300,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Credit Card',
     name: 'Bob Smith',
@@ -166,7 +166,7 @@ const nodes: Item[] = [
     id: '17',
     paymentId: 'rzp17',
     amount: 200,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Netbanking',
     name: 'John Doe',
@@ -193,7 +193,7 @@ const nodes: Item[] = [
     id: '20',
     paymentId: 'rzp20',
     amount: 300,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Credit Card',
     name: 'Bob Smith',
@@ -202,7 +202,7 @@ const nodes: Item[] = [
     id: '21',
     paymentId: 'rzp21',
     amount: 200,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Netbanking',
     name: 'John Doe',
@@ -229,7 +229,7 @@ const nodes: Item[] = [
     id: '24',
     paymentId: 'rzp24',
     amount: 300,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Credit Card',
     name: 'Bob Smith',
@@ -238,7 +238,7 @@ const nodes: Item[] = [
     id: '25',
     paymentId: 'rzp25',
     amount: 200,
-    status: 'success',
+    status: 'completed',
     type: 'credit',
     method: 'Netbanking',
     name: 'John Doe',
@@ -295,6 +295,50 @@ describe('<Table />', () => {
     expect(getAllByRole('rowheader')).toHaveLength(1);
     expect(getAllByRole('rowfooter')).toHaveLength(1);
     expect(getAllByRole('columnfooter')).toHaveLength(6);
+  });
+
+  it('should render table with sorting', () => {
+    const { getByLabelText, getAllByRole } = renderWithTheme(
+      <Table
+        data={{ nodes: nodes.slice(0, 5) }}
+        sortFunctions={{
+          STATUS: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+        }}
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell headerKey="STATUS">Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+    const sortButton = getByLabelText('Toggle Sort');
+    expect(sortButton).toBeInTheDocument();
+    fireEvent.click(sortButton);
+    expect(getAllByRole('row')[0]).toHaveTextContent('pending');
+    fireEvent.click(sortButton);
+    expect(getAllByRole('row')[0]).toHaveTextContent('completed');
   });
 
   it('should render table with pagination', async () => {
