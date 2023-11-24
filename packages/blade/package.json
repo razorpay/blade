@@ -241,8 +241,8 @@
     "typescript-transform-paths": "3.4.6"
   },
   "peerDependencies": {
-    "@table-library/react-table-library": "4.1.7",
-    "@emotion/react": "11.11.1",
+    "@table-library/react-table-library": "^4.1.7",
+    "@emotion/react": "^11.11.1",
     "@gorhom/bottom-sheet": "^4",
     "@gorhom/portal": "1.0.14",
     "@floating-ui/react": "0.25.4",
