@@ -394,12 +394,14 @@ describe('<Table />', () => {
   });
 
   it('should render table with sorting', () => {
+    const onSortChange = jest.fn();
     const { getByLabelText, getAllByRole } = renderWithTheme(
       <Table
         data={{ nodes: nodes.slice(0, 5) }}
         sortFunctions={{
           STATUS: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
         }}
+        onSortChange={onSortChange}
       >
         {(tableData) => (
           <>
@@ -433,7 +435,9 @@ describe('<Table />', () => {
     expect(sortButton).toBeInTheDocument();
     fireEvent.click(sortButton);
     expect(getAllByRole('row')[0]).toHaveTextContent('pending');
+    expect(onSortChange).toHaveBeenCalledWith({ sortKey: 'STATUS', isSortReversed: false });
     fireEvent.click(sortButton);
+    expect(onSortChange).toHaveBeenCalledWith({ sortKey: 'STATUS', isSortReversed: true });
     expect(getAllByRole('row')[0]).toHaveTextContent('completed');
   });
 
