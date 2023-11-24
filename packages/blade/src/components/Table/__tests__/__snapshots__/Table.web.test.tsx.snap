@@ -2210,3 +2210,2146 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   </div>
 </div>
 `;
+
+exports[`<Table /> should render table with sticky header, footer & first column 1`] = `
+.c0 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.c9 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.c4 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c11 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1 {
+  height: 300px;
+}
+
+.c5.c5.c5 {
+  border: none;
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c5.c5.c5 tr:last-child .cell-wrapper {
+  border-bottom: none;
+}
+
+.c5.c5.c5 .row-select-single-selected .cell-wrapper-base,
+.c5.c5.c5 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.18);
+}
+
+.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(218,89%,51%,0.18);
+}
+
+.c7.c7.c7 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c7.c7.c7 > div:first-child {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c7.c7.c7:focus-visible {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
+}
+
+.c10.c10.c10 {
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+  height: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-style: solid;
+}
+
+.c6.c6.c6 {
+  background-color: transparent;
+}
+
+.c6.c6.c6:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px hsla(218,89%,51%,0.09);
+}
+
+.c12.c12.c12 {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c12.c12.c12 tr:last-child th {
+  border-bottom: none;
+}
+
+.c13.c13.c13 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+}
+
+.c13.c13.c13 > div {
+  background-color: hsla(216,15%,54%,0.09);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.c2.c2.c2 tr:first-child th {
+  border-top: none;
+}
+
+.c3.c3.c3 {
+  background-color: hsla(0,0%,100%,1);
+  height: 100%;
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+  cursor: auto;
+}
+
+.c3.c3.c3 > div {
+  background-color: hsla(216,15%,54%,0.09);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.c3.c3.c3:focus-visible {
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
+  outline: none;
+}
+
+@media screen and (min-width:320px) {
+  .c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c9 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c9 {
+    pointer-events: auto;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="table"
+  >
+    <table
+      class="c1 css-adg849-Table"
+      data-blade-component="table"
+      data-table-library_table=""
+      role="table"
+      style="--data-table-library_grid-template-columns: 150px 150px 150px 150px 150px 150px;"
+    >
+      <thead
+        class="c2 css-1a28xfp-Header"
+        data-blade-component="table-header"
+        role="rowgroup"
+      >
+        <tr
+          class="tr tr-header css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
+          data-blade-component="table-header-row"
+          data-table-library_tr-header=""
+          role="rowheader"
+        >
+          <th
+            class="th c3 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Payment ID
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Amount
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Status
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Type
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Method
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c3 css-2ilrvh-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                Name
+              </p>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="c5 css-8eb0m3-Body"
+        data-blade-component="table-body"
+        data-table-library_body=""
+      >
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp01
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  100
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Netbanking
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    John Doe
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp02
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  240
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    UPI
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Jane Doe
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp03
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  120
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    failed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    debit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Debit Card
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Alice Smith
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp04
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  300
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Credit Card
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Bob Smith
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp05
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  200
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Netbanking
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    John Doe
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp06
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  240
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    UPI
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Jane Doe
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp07
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  120
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    failed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    debit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Debit Card
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Alice Smith
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp08
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  300
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Credit Card
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Bob Smith
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp09
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  200
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    completed
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Netbanking
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    John Doe
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    rzp10
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  240
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    UPI
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c7 css-w02rke-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c8 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c9 c10 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c11"
+                    data-blade-component="text"
+                  >
+                    Jane Doe
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot
+        class="c12 css-1a28xfp-Header"
+        data-blade-component="table-footer"
+        role="rowgroup"
+      >
+        <tr
+          class="tr tr-footer css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
+          data-blade-component="table-footer-row"
+          data-table-library_tr-header=""
+          role="rowfooter"
+        >
+          <th
+            class="th c13 css-c0u6i8-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c13 css-c0u6i8-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c13 css-c0u6i8-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c13 css-c0u6i8-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c13 css-c0u6i8-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c13 css-c0u6i8-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c4"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+`;
