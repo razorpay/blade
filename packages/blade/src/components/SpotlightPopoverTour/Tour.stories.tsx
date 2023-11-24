@@ -436,7 +436,8 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
 export const Default = TourTemplate.bind({});
 Default.storyName = 'Default';
 Default.parameters = {
-  docs: { disable: true },
+  docs: { disable: false },
+  viewMode: 'docs',
 };
 
 export const CustomPlacement = () => {
