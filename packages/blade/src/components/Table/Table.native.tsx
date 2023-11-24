@@ -13,7 +13,6 @@ const Table = <Item,>(props: TableProps<Item>): React.ReactElement => {
       message: 'Table Component is not available for Native mobile apps.',
     });
   }
-
   return <Text>Table Component is not available for Native mobile apps.</Text>;
 };
 

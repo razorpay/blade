@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 10.18.2
+
+### Patch Changes
+
+- 9967cd96: fix: set default breakpoint without computing
+
+## 10.18.1
+
+### Patch Changes
+
+- 77b31aa1: fix(blade): remove extra margin left on carousel
+
 ## 10.18.0
 
 ### Minor Changes

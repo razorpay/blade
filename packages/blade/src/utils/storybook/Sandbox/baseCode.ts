@@ -57,6 +57,8 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
       'react-scripts': '4.0.3',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
+      '@emotion/react': '11.11.1',
+      '@table-library/react-table-library': '4.1.7',
     },
   };
 };
@@ -70,6 +72,8 @@ const getViteReactTSDependencies = (): Dependencies => {
       '@types/react-dom': '^18',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
+      '@emotion/react': '11.11.1',
+      '@table-library/react-table-library': '4.1.7',
     },
     devDependencies: {
       vite: '4.5.0',
@@ -85,7 +89,7 @@ export const vitePackageJSON = JSON.stringify(
       build: 'vite build',
     },
     stackblitz: {
-      startCommand: 'pnpm install && pnpm dev',
+      startCommand: 'yarn install && yarn dev',
       installDependencies: false,
     },
     ...getViteReactTSDependencies(),
