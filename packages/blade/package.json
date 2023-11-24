@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.18.0-5",
+  "version": "10.18.0-11",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -30,43 +30,43 @@
     "razorpay",
     "blade"
   ],
-  "main": "./build/web/components/index.js",
-  "types": "./build/web/types/components/index.d.ts",
+  "main": "./build/lib/web/components/index.js",
+  "types": "./build/types/components/index.d.ts",
   "exports": {
     "./components": {
       "react-native": {
-        "types": "./build/types/native/components/index.d.ts",
-        "default": "./build/native/components/index.js"
+        "types": "./build/types/components/index.native.d.ts",
+        "default": "./build/lib/native/components/index.js"
       },
       "default": {
-        "types": "./build/web/types/components/index.d.ts",
-        "development": "./build/web/components/index.js",
-        "production": "./build/web/components/index.js",
-        "default": "./build/web/components/index.js"
+        "types": "./build/types/components/index.d.ts",
+        "development": "./build/lib/web/components/index.js",
+        "production": "./build/lib/web/components/index.js",
+        "default": "./build/lib/web/components/index.js"
       }
     },
     "./tokens": {
       "react-native": {
-        "types": "./build/types/native/tokens/index.d.ts",
-        "default": "./build/native/tokens/index.js"
+        "types": "./build/types/tokens/index.native.d.ts",
+        "default": "./build/lib/native/tokens/index.js"
       },
       "default": {
-        "types": "./build/web/types/tokens/index.d.ts",
-        "development": "./build/web/tokens/index.js",
-        "production": "./build/web/tokens/index.js",
-        "default": "./build/web/tokens/index.js"
+        "types": "./build/types/tokens/index.d.ts",
+        "development": "./build/lib/web/tokens/index.js",
+        "production": "./build/lib/web/tokens/index.js",
+        "default": "./build/lib/web/tokens/index.js"
       }
     },
     "./utils": {
       "react-native": {
-        "types": "./build/types/native/utils/index.d.ts",
-        "default": "./build/native/utils/index.js"
+        "types": "./build/types/utils/index.native.d.ts",
+        "default": "./build/lib/native/utils/index.js"
       },
       "default": {
-        "types": "./build/web/types/utils/index.d.ts",
-        "development": "./build/web/utils/index.js",
-        "production": "./build/web/utils/index.js",
-        "default": "./build/web/utils/index.js"
+        "types": "./build/types/utils/index.d.ts",
+        "development": "./build/lib/web/utils/index.js",
+        "production": "./build/lib/web/utils/index.js",
+        "default": "./build/lib/web/utils/index.js"
       }
     }
   },
@@ -76,7 +76,7 @@
     "prepare": "yarn build:clean && yarn quickbuild",
     "build": "run-s build:*",
     "clearCache": "jest --clearCache",
-    "quickbuild": "yarn build:clean && yarn build:generate-types && yarn build:react-prod && yarn build:react-native",
+    "quickbuild": "yarn build:clean && yarn build:generate-types && yarn build:react-prod && yarn build:react-native && yarn build:clean-declarations",
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
     "build:copy-declarations": "run-s types:copy-declarations:*",
@@ -87,7 +87,7 @@
     "types:copy-declarations:web": "copyfiles -u 1 build/types/web/components/**/*.d.ts build/components/**/*",
     "types:copy-declarations:native": "copyfiles -u 1 build/types/native/components/**/*.d.ts build/components/**/*",
     "build:generate-root-imports": "node ./scripts/generateRootImports.js",
-    "build:clean-declarations": "rm -rf build/types",
+    "build:clean-declarations": "rm -rf build/generated-types",
     "xbuild:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
     "build:react-native": "cross-env FRAMEWORK=REACT_NATIVE rollup -c",
@@ -120,6 +120,7 @@
     "@types/body-scroll-lock": "3.1.0",
     "body-scroll-lock": "4.0.0-beta.0",
     "use-presence": "1.1.0",
+    "@use-gesture/react": "10.2.24",
     "@floating-ui/react": "0.25.4",
     "@floating-ui/react-native": "0.10.1",
     "patch-package": "7.0.0",
@@ -243,11 +244,11 @@
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",
-    "@gorhom/portal": "1.0.14",
-    "@use-gesture/react": "10.2.24",
+    "@gorhom/portal": "^1.0.14",
+    "@use-gesture/react": "^10.2.24",
     "@floating-ui/react": "0.25.4",
     "@floating-ui/react-native": "0.10.0",
-    "tinycolor2": "1.6.0",
+    "tinycolor2": "^1.6.0",
     "react": ">=18",
     "react-dom": ">=18",
     "react-native": "^0.72",

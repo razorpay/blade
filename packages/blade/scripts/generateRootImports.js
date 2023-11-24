@@ -9,12 +9,12 @@ const buildDirectory = 'build';
 try {
   exportCategories.forEach((exportCategory) => {
     // generate root export for js
-    const exportCategoryContent = `export * from './${buildDirectory}/web/${exportCategory}';\n`;
+    const exportCategoryContent = `export * from './${buildDirectory}/lib/web/${exportCategory}';\n`;
     const exportCategoryFile = path.resolve(__dirname, `../${exportCategory}.js`);
     fs.writeFileSync(exportCategoryFile, exportCategoryContent);
 
     // generate root export for typings
-    const typingsContent = `export * from './${buildDirectory}/web/types/${exportCategory}';\n`;
+    const typingsContent = `export * from './${buildDirectory}/types/${exportCategory}';\n`;
     const typingsFile = path.resolve(__dirname, `../${exportCategory}.d.ts`);
     fs.writeFileSync(typingsFile, typingsContent);
   });
