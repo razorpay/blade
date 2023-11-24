@@ -44,7 +44,6 @@ export default {
     docs: {
       page: () => (
         <StoryPageWrapper
-          note="Make sure you have installed '@table-library/react-table-library' and '@emotion/react' packages before using the Table component. Refer Installation Guide for more detailed instructions."
           componentDescription="A table component helps in displaying data in a grid format, through rows and columns of cells. Table facilitates data organisation and allow users to: scan, sort, compare, and take action on large amounts of data."
           componentName="Table"
         />
