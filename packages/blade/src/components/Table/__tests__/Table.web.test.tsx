@@ -379,10 +379,12 @@ describe('<Table />', () => {
       </Table>,
     );
 
-    const selectableRow = getByText('rzp01').closest('td');
-    if (selectableRow) await user.click(selectableRow);
-    expect(onSelectionChange).toHaveBeenCalledTimes(1);
+    const firstSelectableRow = getByText('rzp01').closest('td');
+    if (firstSelectableRow) await user.click(firstSelectableRow);
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[0]] });
+    const secondSelectableRow = getByText('rzp02').closest('td');
+    if (secondSelectableRow) await user.click(secondSelectableRow);
+    expect(onSelectionChange).toHaveBeenCalledWith({ values: [nodes[1]] });
   });
 
   it('should render table with pagination', async () => {
