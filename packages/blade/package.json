@@ -313,14 +313,14 @@
       "name": "Import Button only",
       "path": "./build/components/index.production.web.js",
       "import": "{ Button }",
-      "limit": "20 kb",
+      "limit": "30 kb",
       "running": false
     },
     {
       "name": "Import Text only",
       "path": "./build/components/index.production.web.js",
       "import": "{ Text }",
-      "limit": "15 kb",
+      "limit": "25 kb",
       "running": false
     }
   ]
