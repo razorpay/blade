@@ -7,7 +7,7 @@
  */
 
 import isPrimitive from 'is-primitive';
-import isPlainObject from 'is-plain-object';
+import { isPlainObject } from 'is-plain-object';
 const { deleteProperty } = Reflect;
 
 const isObject = (value) => {

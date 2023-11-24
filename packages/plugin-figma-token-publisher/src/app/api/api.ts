@@ -23,7 +23,13 @@ export const uploadTokens = async ({
 }): Promise<void> => {
   const API_URL = `${GITHUB_BASE_URL}/${orgName}/${repoName}/actions/workflows/${workflowFileName}/dispatches`;
 
-  const getFetchOptions = (colorTokens: ColorTokens, tokenType: TokenType) => ({
+  const getFetchOptions = ({
+    colorTokens,
+    tokenType,
+  }: {
+    colorTokens: ColorTokens;
+    tokenType?: TokenType;
+  }) => ({
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -40,7 +46,7 @@ export const uploadTokens = async ({
   });
 
   try {
-    const response = await fetch(API_URL, getFetchOptions(colorTokens, tokenType));
+    const response = await fetch(API_URL, getFetchOptions({ colorTokens, tokenType }));
 
     const isRequestSuccess = response.status === 204;
     if (isRequestSuccess) {

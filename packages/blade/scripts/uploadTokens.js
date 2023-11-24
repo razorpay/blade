@@ -10,40 +10,39 @@ const uploadColorTokens = async () => {
   try {
     // 1. read the tokens object
     const colorTokens = JSON.parse(process.argv[2]);
+    const tokenType = process.argv[3];
 
-    const colorRegex = /const colors: ColorsWithModes = {(.|\n)+?};/gm;
+    if (tokenType === 'themeColorTokens') {
+      const themeColorTokensRegex = /const colors: ColorsWithModes = {(.|\n)+?};/gm;
+      // 2. read the bladeTheme File
+      const bladeThemePath = path.resolve(__dirname, '../src/tokens/theme/bladeTheme.ts');
+      const bladeTheme = fs.readFileSync(bladeThemePath, 'utf8');
 
-    // if (tokens.bladeThemeColors) {
-    // 2. read the bladeTheme File
-    const bladeThemePath = path.resolve(__dirname, '../src/tokens/theme/bladeTheme.ts');
-    const bladeTheme = fs.readFileSync(bladeThemePath, 'utf8');
+      // 3. write the new tokens to bladeTheme file
+      const updatedbladeThemeColors = JSON.stringify(colorTokens).replace(/"/g, '');
+      const updatedbladeTheme = bladeTheme.replace(
+        themeColorTokensRegex,
+        `const colors: ColorsWithModes = ${updatedbladeThemeColors};`,
+      );
+      fs.writeFileSync(bladeThemePath, updatedbladeTheme);
+      // prettify the file
+      execa.commandSync('yarn prettier --write src/tokens/theme/bladeTheme.ts');
+    } else if (tokenType === 'globalColorTokens') {
+      const globalColorTokensRegex = /export const colors: Color = {(.|\n)+?};/gm;
+      // 2. read the bladeTheme File
+      const globalColorTokensPath = path.resolve(__dirname, '../src/tokens/global/colors.ts');
+      const globalColorTokensFile = fs.readFileSync(globalColorTokensPath, 'utf8');
 
-    // 3. write the new tokens to bladeTheme file
-    console.log(colorTokens);
-    const updatedbladeThemeColors = JSON.stringify(colorTokens).replace(/"/g, '');
-    const updatedbladeTheme = bladeTheme.replace(
-      colorRegex,
-      `const colors: ColorsWithModes = ${updatedbladeThemeColors};`,
-    );
-    fs.writeFileSync(bladeThemePath, updatedbladeTheme);
-    // }
-
-    // if (tokens.bankingThemeColors) {
-    //   // 4. read the bankingTheme File
-    //   const bankingThemePath = path.resolve(__dirname, '../src/tokens/theme/bankingTheme.ts');
-    //   const bankingTheme = fs.readFileSync(bankingThemePath, 'utf8');
-
-    //   // 5. write the new tokens to bankingTheme file
-    //   const updatedBankingThemeColors = JSON.stringify(tokens.bankingThemeColors.colors).replace(
-    //     /"/g,
-    //     '',
-    //   );
-    //   const updatedBankingTheme = bankingTheme.replace(
-    //     colorRegex,
-    //     `const colors: ColorsWithModes = ${updatedBankingThemeColors};`,
-    //   );
-    //   fs.writeFileSync(bankingThemePath, updatedBankingTheme);
-    // }
+      // 3. write the new tokens to bladeTheme file
+      const updatedGlobalColorTokens = JSON.stringify(colorTokens).replace(/"/g, '');
+      const updatedGlobalColorTokensFile = globalColorTokensFile.replace(
+        globalColorTokensRegex,
+        `export const colors: Color = ${updatedGlobalColorTokens};`,
+      );
+      fs.writeFileSync(globalColorTokensPath, updatedGlobalColorTokensFile);
+      // prettify the file
+      execa.commandSync('yarn prettier --write src/tokens/global/colors.ts');
+    }
 
     // 6. create branch
     const branchName = randomNameGenerator
@@ -54,7 +53,6 @@ const uploadColorTokens = async () => {
     execa.commandSync(`git config user.name ${GITHUB_BOT_USERNAME}`);
 
     // 7. Commit all changes
-    execa.commandSync('yarn prettier --write src/tokens/theme/bladeTheme.ts');
     execa.commandSync('git status');
     execa.commandSync('git add -A');
     execa.commandSync(`git commit -m feat(tokens):\\ add\\ new\\ tokens`, {

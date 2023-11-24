@@ -48,7 +48,7 @@ const makeThemeColorTokens = (): void => {
         const variableModeValue: VariableValue = variable.valuesByMode[modeId as string];
         // if the variable references another variable then we take the name of the referenced variable
         // eg: surface.background.neutral.subtle -> globalColors.gray.200
-        if (variableModeValue.id) {
+        if (typeof variableModeValue === 'object' && 'id' in variableModeValue) {
           setValue(
             colorTokens[modeName],
             tokenName,
