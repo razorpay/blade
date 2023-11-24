@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.18.2
+
+### Patch Changes
+
+- 9967cd96: fix: set default breakpoint without computing
+
 ## 10.18.1
 
 ### Patch Changes
