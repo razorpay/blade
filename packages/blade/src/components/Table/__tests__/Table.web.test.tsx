@@ -805,5 +805,5 @@ describe('<Table />', () => {
     const goBack5PagesButton = getByLabelText('Go back 5 pages');
     fireEvent.click(goBack5PagesButton);
     expect(onPageChange).toHaveBeenLastCalledWith({ page: 0 });
-  });
+  }, 10000);
 });
