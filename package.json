@@ -9,7 +9,7 @@
   "workspaces": {
     "packages": [
       "packages/blade",
-      "packages/token-publisher",
+      "packages/plugin-figma-token-publisher",
       "packages/razorsharp",
       "packages/eslint-plugin-blade"
     ],
