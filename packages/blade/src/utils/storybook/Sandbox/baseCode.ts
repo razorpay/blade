@@ -85,7 +85,7 @@ export const vitePackageJSON = JSON.stringify(
       build: 'vite build',
     },
     stackblitz: {
-      startCommand: 'yarn install && yarn dev',
+      startCommand: 'pnpm install && pnpm dev',
       installDependencies: false,
     },
     ...getViteReactTSDependencies(),
