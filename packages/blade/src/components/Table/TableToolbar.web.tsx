@@ -66,7 +66,7 @@ const _TableToolbar = ({
     ? `Showing ${currentPaginationState.page * currentPaginationState.size + 1}-${
         currentPaginationState.page * currentPaginationState.size + currentPaginationState.size
       } Items`
-    : `Showing 1 to ${totalItems} Items`;
+    : `Showing 1-${totalItems} Items`;
   const selectedItemsCount = selectedRows ? selectedRows.length : 0;
   const selectedTitle = isSelected
     ? controlledSelectedTitle ??

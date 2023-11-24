@@ -388,7 +388,6 @@ const _TablePagination = ({
             accessibilityLabel="Next Page"
             onClick={() => {
               handlePageChange(currentPage + 1);
-              console.log('next page');
             }}
             isDisabled={shouldDisableNextPage()}
           />
