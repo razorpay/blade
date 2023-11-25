@@ -15,7 +15,10 @@ import showNotification from './showNotification';
 const COLLECTION_NAME = 'Colors';
 
 const makeTokenName = (variableName: string): string => {
-  return variableName.replace(/\//g, '.');
+  return variableName
+    .replace(/\//g, '.')
+    .replace('_global-colors', 'globalColors')
+    .replace('-', '.');
 };
 
 const makeThemeColorTokens = (): void => {
@@ -55,7 +58,11 @@ const makeThemeColorTokens = (): void => {
             makeTokenName(figma.variables.getVariableById(variableModeValue.id).name),
           );
         } else {
-          setValue(colorTokens[modeName], tokenName, variableModeValue);
+          console.error(
+            'the theme variable token has hardcoded value',
+            tokenName,
+            variableModeValue,
+          );
         }
       }
     });
