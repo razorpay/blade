@@ -1,5 +1,5 @@
 import { composeStories } from '@storybook/react';
-import * as tourStories from './Tour.stories';
+import * as tourStories from './docs/Tour.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 
