@@ -195,6 +195,16 @@ Cons from all of the above 🙈
 
 ## Implementation Details
 
+### Font Size Optimization
+
+To optimize on font-size, we are splitting fonts into multiple files.
+
+- inter-latin-rzp.woff2 (alphabets, numbers, common symbols, currency)
+- inter-latin-extra-rzp.woff2 (rare symbols, extra glyphs)
+- Other bundles of greek, vietnamese, cyrillic files
+
+we are defining these files using [`unicode-range`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range) so most sites would always load only one `inter-latin-rzp.woff2` file.
+
 ### Variable Fonts vs Static Fonts
 
 Should Blade load variable fonts or static-fonts?
@@ -210,10 +220,10 @@ These are the weights and styles being used right now
 
 We'll be using variable fonts in both Tasa and Inter based on the size below-
 
-|                  | **Static**                 | **Variable**  |
-| ---------------- | -------------------------- | ------------- |
-| **Inter**        | 70kb \* 3 weights = ~210kb | ✅ **~215kb** |
-| **TASA Orbiter** | 30kb \* 3 weights = ~90kb  | ✅ **~32kb**  |
+|                  | **Static**                 | **Variable**                   |
+| ---------------- | -------------------------- | ------------------------------ |
+| **Inter**        | 70kb \* 3 weights = ~210kb | ✅ **~215kb (80kb base file)** |
+| **TASA Orbiter** | 30kb \* 3 weights = ~90kb  | ✅ **~32kb**                   |
 
 > **Note**
 >
