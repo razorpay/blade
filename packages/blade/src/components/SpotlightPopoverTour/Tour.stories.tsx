@@ -43,8 +43,6 @@ const Page = (): React.ReactElement => {
           SpotlightPopoverTour,
           SpotlightPopoverTourStep,
           SpotlightPopoverTourFooter,
-          SpotlightPopoverStepRenderProps,
-          SpotlightPopoverTourSteps,
           Box,
           Text,
           Button
