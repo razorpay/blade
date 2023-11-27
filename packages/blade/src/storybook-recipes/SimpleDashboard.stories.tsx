@@ -1,5 +1,5 @@
 import type { Meta } from '@storybook/react';
-import { RecipeSandbox } from '~utils/storybook/Sandbox';
+import { RecipeSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
 import parameters from '~utils/storybook/recipeParameters';
 
 export function SimpleDashboard(): JSX.Element {
