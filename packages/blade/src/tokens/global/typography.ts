@@ -20,17 +20,17 @@ export type FontSize = {
    *
    * mobile: 10(px/rem/pt)
    */
-  10: number;
+  25: number;
   /** desktop: 11(px/rem/pt)
    *
    * mobile: 11(px/rem/pt)
    */
-  25: number;
+  50: number;
   /** desktop: 12(px/rem/pt)
    *
    * mobile: 12(px/rem/pt)
    */
-  50: number;
+  75: number;
   /** desktop: 14(px/rem/pt)
    *
    * mobile: 14(px/rem/pt)
@@ -197,9 +197,9 @@ export const typography: TypographyWithPlatforms = {
         ...fontFamily,
       },
       size: {
-        10: 10,
-        25: 11,
-        50: 12,
+        25: 10,
+        50: 11,
+        75: 12,
         100: 14,
         200: 16,
         300: 18,
@@ -244,9 +244,9 @@ export const typography: TypographyWithPlatforms = {
         ...fontFamily,
       },
       size: {
-        10: 10,
-        25: 11,
-        50: 12,
+        25: 10,
+        50: 11,
+        75: 12,
         100: 14,
         200: 16,
         300: 16,
