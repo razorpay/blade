@@ -4,7 +4,11 @@ import BaseBox from './BaseBox';
 import { Box } from '.';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text } from '~components/Typography';
-import { Sandbox, SandboxProvider, SandboxHighlighter } from '~utils/storybook/Sandbox';
+import {
+  Sandbox,
+  SandboxProvider,
+  SandboxHighlighter,
+} from '~utils/storybook/Sandbox/SandpackEditor';
 import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
 import { castWebType } from '~utils';

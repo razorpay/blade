@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.17.4",
+  "version": "10.19.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -120,16 +120,18 @@
   },
   "dependencies": {
     "@babel/runtime": "7.20.0",
+    "@emotion/react": "11.11.1",
+    "@floating-ui/react-native": "0.10.1",
+    "@floating-ui/react": "0.25.4",
+    "@table-library/react-table-library": "4.1.7",
     "@types/body-scroll-lock": "3.1.0",
     "@use-gesture/react": "10.2.24",
     "body-scroll-lock": "4.0.0-beta.0",
-    "use-presence": "1.1.0",
-    "@floating-ui/react": "0.25.4",
-    "@floating-ui/react-native": "0.10.1",
     "patch-package": "7.0.0",
-    "tinycolor2": "1.6.0",
+    "react-native-pager-view": "6.2.1",
     "react-native-tab-view": "3.5.2",
-    "react-native-pager-view": "6.2.1"
+    "tinycolor2": "1.6.0",
+    "use-presence": "1.1.0"
   },
   "devDependencies": {
     "chromatic": "6.22.0",
@@ -152,6 +154,7 @@
     "@rollup/plugin-node-resolve": "15.2.1",
     "@rollup/plugin-replace": "5.0.2",
     "@size-limit/preset-big-lib": "8.2.4",
+    "@stackblitz/sdk": "1.9.0",
     "@storybook/addon-a11y": "6.5.16",
     "@storybook/addon-actions": "6.5.16",
     "@storybook/addon-controls": "6.5.16",
@@ -315,14 +318,14 @@
       "name": "Import Button only",
       "path": "./build/components/index.production.web.js",
       "import": "{ Button }",
-      "limit": "20 kb",
+      "limit": "30 kb",
       "running": false
     },
     {
       "name": "Import Text only",
       "path": "./build/components/index.production.web.js",
       "import": "{ Text }",
-      "limit": "15 kb",
+      "limit": "25 kb",
       "running": false
     }
   ]

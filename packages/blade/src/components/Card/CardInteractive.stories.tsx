@@ -2,7 +2,6 @@
 /* eslint-disable no-alert */
 import type { Meta, ComponentStory } from '@storybook/react';
 import React from 'react';
-import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbox/sandpack-react';
 import type { CardProps } from './Card';
 import {
   CardBody,
@@ -24,9 +23,9 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Amount } from '~components/Amount';
-import { castWebType, isReactNative } from '~utils';
+import { isReactNative } from '~utils';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { SandboxProvider } from '~utils/storybook/Sandbox';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { Badge } from '~components/Badge';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Checkbox, CheckboxGroup } from '~components/Checkbox';
@@ -45,8 +44,8 @@ const Page = (): React.ReactElement => {
     >
       <Heading size="large">Usage</Heading>
       <Box marginY="spacing.6">
-        <SandboxProvider
-          code={`
+        <Sandbox>
+          {`
         import React from 'react';
         import { Card, CardBody, Box, Text, Amount, VisuallyHidden } from '@razorpay/blade/components';
 
@@ -158,14 +157,7 @@ const Page = (): React.ReactElement => {
 
         export default App;
         `}
-        >
-          <SandpackLayout>
-            <SandpackCodeEditor />
-            <Box display={castWebType({ base: 'none', m: 'block' })} height="200px" width="100%">
-              <SandpackPreview style={{ width: '100%', height: '100%' }} />
-            </Box>
-          </SandpackLayout>
-        </SandboxProvider>
+        </Sandbox>
       </Box>
     </StoryPageWrapper>
   );
