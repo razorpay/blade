@@ -1,0 +1,583 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tour /> should render 1`] = `
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c6 {
+  z-index: 1100;
+}
+
+.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 12px;
+  gap: 12px;
+}
+
+.c9 {
+  position: absolute;
+  z-index: 1;
+  padding: 4px;
+  top: 4px;
+  right: 4px;
+  border-radius: 9999px;
+}
+
+.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 12px;
+}
+
+.c7 {
+  width: 100%;
+  max-width: 328px;
+  position: relative;
+  background-color: hsla(0,0%,100%,1);
+  border-width: 1px;
+  border-radius: 8px;
+  border-color: hsla(216,19%,89%,1);
+  border-style: solid;
+  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  opacity: 0;
+  -webkit-transform: translateY(-4px);
+  -ms-transform: translateY(-4px);
+  transform: translateY(-4px);
+}
+
+.c10 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(214,18%,69%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c10:hover {
+  color: hsla(217,18%,45%,1);
+}
+
+.c10:focus-visible {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  color: hsla(217,18%,45%,1);
+}
+
+.c10:active {
+  color: hsla(217,18%,45%,1);
+}
+
+.c3 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c4 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c12 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c15 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c5 {
+  -webkit-animation: iNqBts 2s;
+  animation: iNqBts 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+}
+
+.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.c0:hover {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+}
+
+.c0:active {
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
+}
+
+.c0:focus-visible {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c14 {
+  min-height: 32px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 12px;
+  padding-right: 12px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c14:hover {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+}
+
+.c14:active {
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
+}
+
+.c14:focus-visible {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c14 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c2 {
+  opacity: 1;
+}
+
+<body
+  style="overflow: hidden;"
+>
+  <div
+    aria-hidden="true"
+    data-floating-ui-inert=""
+  >
+    <div
+      class=""
+      data-blade-component="box"
+    >
+      <button
+        class="c0"
+        data-blade-component="button"
+        role="button"
+        type="button"
+      >
+        <div
+          class="c1 c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-text"
+          >
+            Open Tour
+          </div>
+        </div>
+      </button>
+      <div
+        class=""
+        data-blade-component="box"
+      >
+        <p
+          class="c4"
+          data-blade-component="text"
+        >
+          Trigger 1
+        </p>
+      </div>
+      <div
+        class=""
+        data-blade-component="box"
+      >
+        <p
+          class="c4"
+          data-blade-component="text"
+        >
+          Trigger 2
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-hidden="true"
+    data-floating-ui-inert=""
+    data-floating-ui-portal=""
+    id=":r0:"
+  >
+    <svg
+      data-blade-component="tour-mask"
+      fill="none"
+      stroke="none"
+      style="position: fixed; top: 0px; left: 0px; bottom: 0px; right: 0px; z-index: 1100;"
+      viewBox="0 0 1024 768"
+    >
+      <rect
+        class="c5"
+        fill="transparent"
+        height="10"
+        opacity="0"
+        rx="3"
+        ry="3"
+        stroke="hsla(218, 89%, 51%, 1)"
+        stroke-width="2px"
+        width="10"
+        x="-5"
+        y="-5"
+      />
+      <mask
+        height="100%"
+        id="tour-mask"
+        stroke="none"
+        width="100%"
+        x="0"
+        y="0"
+      >
+        <rect
+          fill="#fff"
+          height="100%"
+          width="100%"
+        />
+      </mask>
+      <rect
+        fill="hsla(214, 15%, 18%, 0.64)"
+        height="100%"
+        mask="url(#tour-mask)"
+        width="100%"
+      />
+    </svg>
+  </div>
+  <div
+    data-floating-ui-portal=""
+    id=":r3:"
+  >
+    <span
+      aria-hidden="true"
+      data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
+      data-type="inside"
+      role="button"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+      tabindex="0"
+    />
+    <div
+      aria-labelledby="popover-title-1"
+      class="c6"
+      data-blade-component="tour-popover"
+      id=":r1:"
+      role="dialog"
+      style="position: fixed; left: 0px; top: 0px; pointer-events: auto; transform: translate(12px, 19px);"
+      tabindex="-1"
+    >
+      <div
+        class=" c7"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c8"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c9"
+            data-blade-component="base-box"
+          >
+            <button
+              aria-label="Close"
+              class="c10"
+              data-blade-component="icon-button"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="Svgweb__StyledSvg-vcmjs8-0"
+                data-blade-component="icon"
+                fill="none"
+                height="20px"
+                viewBox="0 0 24 24"
+                width="20px"
+              >
+                <path
+                  d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                  data-blade-component="svg-path"
+                  fill="currentColor"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class=""
+            data-blade-component="base-box"
+          >
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              Step 1
+            </p>
+          </div>
+          <div
+            class=""
+            data-blade-component="base-box"
+          >
+            <div
+              class="c11"
+              data-blade-component="box"
+            >
+              <p
+                class="c12"
+                data-blade-component="text"
+              >
+                1
+                 / 
+                2
+              </p>
+              <div
+                class="c13"
+                data-blade-component="box"
+              >
+                <button
+                  class="c14"
+                  data-blade-component="button"
+                  role="button"
+                  type="button"
+                >
+                  <div
+                    class="c1 c2"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c15"
+                      data-blade-component="base-text"
+                    >
+                      Next
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <svg
+          aria-hidden="true"
+          fill="hsla(0, 0%, 100%, 1)"
+          height="14"
+          style="position: absolute; pointer-events: none; bottom: 100%; transform: rotate(180deg); left: -1px;"
+          viewBox="0 0 14 14"
+          width="16"
+        >
+          <path
+            clip-path="url(#:r7:)"
+            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+            fill="none"
+            stroke="hsla(216, 19%, 89%, 1)"
+            stroke-width="3"
+          />
+          <path
+            d="M0,0 H14 L7,7 Q7,7 7,7 Z"
+            stroke="hsla(0, 0%, 100%, 1)"
+          />
+          <clippath
+            id=":r7:"
+          >
+            <rect
+              height="14"
+              width="16"
+              x="-1"
+              y="1"
+            />
+          </clippath>
+        </svg>
+      </div>
+    </div>
+    <span
+      aria-hidden="true"
+      data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
+      data-type="inside"
+      role="button"
+      style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
+      tabindex="0"
+    />
+  </div>
+  <div
+    aria-hidden="true"
+    data-floating-ui-inert=""
+    data-floating-ui-portal=""
+    id=":r6:"
+  />
+</body>
+`;

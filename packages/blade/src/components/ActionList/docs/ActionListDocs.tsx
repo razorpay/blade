@@ -3,7 +3,7 @@ import { ActionList, ActionListItem, ActionListSection, Playground } from './sto
 import { actionListPropsTables } from './propsTable';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Text, Title } from '~components/Typography';
-import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox';
+import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { ArgsTable } from '~utils/storybook/ArgsTable';
