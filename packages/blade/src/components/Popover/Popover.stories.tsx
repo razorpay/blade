@@ -41,7 +41,7 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox>
         {`
         import { Popover, Button } from '@razorpay/blade/components'
         

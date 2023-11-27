@@ -24,43 +24,32 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { useState } from 'react';
-        import { Alert, Button, Box } from '@razorpay/blade/components';
+        import { Alert } from '@razorpay/blade/components';
 
         function App() {
-          const [showAlert, setShowAlert] = useState(false);
           return (
-            <Box>
-              <Button onClick={() => setShowAlert(!showAlert)}>
-                Click to be alerted!
-              </Button>
-              { 
-                showAlert 
-                ? <Alert 
-                    title="The Button is Clicked 👀" 
-                    description="Click the Button again to hide alert"
-                    marginTop="spacing.4"
-                    actions={{
-                      primary: {
-                        onClick: () => {
-                          alert('Alert from the alert hehe')
-                        },
-                        text: 'Primary Action'
-                      },
-                      secondary: {
-                        href: 'https://razorpay.com',
-                        target: '_blank',
-                        text: 'Go to Razorpay.com'
-                      }
-                    }}
-                  /> 
-                : null 
-              }
-            </Box>
-          )
+            <Alert
+              title="Alert Title"
+              description="Add your description message here"
+              marginTop="spacing.4"
+              actions={{
+                primary: {
+                  onClick: () => {
+                    alert('Alert from the alert hehe');
+                  },
+                  text: 'Primary Action',
+                },
+                secondary: {
+                  href: 'https://razorpay.com',
+                  target: '_blank',
+                  text: 'Go to Razorpay.com',
+                },
+              }}
+            />
+          );
         }
-
-        export default App;
+        
+        export default App;        
         `}
       </Sandbox>
     </StoryPageWrapper>

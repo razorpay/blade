@@ -10,7 +10,7 @@ import { Tooltip } from '~components/Tooltip';
 import { Heading, Text } from '~components/Typography';
 import type { ColorSchemeNames } from '~tokens/theme';
 import { makeBorderSize, useTheme } from '~utils';
-import { SandboxHighlighter } from '~utils/storybook/Sandbox';
+import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 
 const ColorSelection = styled.button<{ color: string; isSelected?: boolean }>(
   ({ color, isSelected, theme }) => ({

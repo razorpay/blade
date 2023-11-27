@@ -96,11 +96,11 @@ const getTextProps = <T extends { variant: TextVariant }>({
 
   if (variant === 'body') {
     if (size === 'xsmall') {
-      props.fontSize = 10;
+      props.fontSize = 25;
       props.lineHeight = 25;
     }
     if (size === 'small') {
-      props.fontSize = 50;
+      props.fontSize = 75;
       props.lineHeight = 75;
     }
     if (size === 'medium') {
@@ -114,7 +114,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
   }
   if (variant === 'caption') {
     if (size === 'medium') {
-      props.fontSize = 25;
+      props.fontSize = 50;
       props.lineHeight = 50;
       props.fontWeight = 'semibold';
     } else if (__DEV__) {

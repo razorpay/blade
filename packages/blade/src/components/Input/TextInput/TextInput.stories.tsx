@@ -230,7 +230,7 @@ export default {
           }}
         >
           <Title>Usage</Title>
-          <Sandbox showConsole>
+          <Sandbox>
             {`
               import { TextInput } from '@razorpay/blade/components';
 

@@ -71,9 +71,9 @@ const getCodeFontSizeAndLineHeight = (
 ): { fontSize: keyof FontSize; lineHeight: keyof Typography['lineHeights'] } | undefined => {
   switch (size) {
     case 'medium':
-      return { fontSize: 50, lineHeight: 75 };
+      return { fontSize: 75, lineHeight: 75 };
     case 'small':
-      return { fontSize: 10, lineHeight: 25 };
+      return { fontSize: 25, lineHeight: 25 };
     default:
       if (__DEV__) {
         throwBladeError({

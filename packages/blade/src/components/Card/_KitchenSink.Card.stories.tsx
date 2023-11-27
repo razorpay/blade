@@ -1,9 +1,13 @@
 import { composeStories } from '@storybook/react';
 import * as cardStories from './Card.stories';
+import * as interactiveCardStories from './CardInteractive.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 
-const allStories = Object.values(composeStories(cardStories));
+const allStories = [
+  ...Object.values(composeStories(cardStories)),
+  ...Object.values(composeStories(interactiveCardStories)),
+];
 
 export const Card = (): JSX.Element => {
   return (

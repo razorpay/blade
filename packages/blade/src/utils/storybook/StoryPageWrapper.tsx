@@ -3,7 +3,7 @@ import { ArgsTable, Primary, PRIMARY_STORY, Stories } from '@storybook/addon-doc
 import styled from 'styled-components';
 import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
-import { SandboxHighlighter } from './Sandbox';
+import { SandboxHighlighter } from './Sandbox/SandpackEditor';
 import { componentData } from './componentStatusData';
 import BaseBox from '~components/Box/BaseBox';
 import { Alert } from '~components/Alert';
@@ -40,6 +40,10 @@ type StoryPageWrapperTypes = {
    * Use this to override default imports
    */
   imports?: string;
+  /**
+   * Use this to override default API decision component name
+   */
+  apiDecisionComponentName?: string;
 };
 
 // Global Styles are not applied by default on `.mdx` pages of storybook. So just overriding few global styles here which are applied to both, stories and guide pages
@@ -164,7 +168,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                           `https://github.com/razorpay/blade/blob/master/packages/blade/src/components/${props.componentName}/_decisions/decisions.md`
                         }
                       >
-                        API Decisions for {props.componentName}
+                        API Decisions for {props.apiDecisionComponentName ?? props.componentName}
                       </Link>
                     </Text>
                   )}

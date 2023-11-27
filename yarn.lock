@@ -3332,7 +3332,7 @@
   dependencies:
     css-to-react-native "^3.0.0"
 
-"@emotion/react@^11.11.1":
+"@emotion/react@11.11.1", "@emotion/react@^11.11.1":
   version "11.11.1"
   resolved "https://registry.yarnpkg.com/@emotion/react/-/react-11.11.1.tgz#b2c36afac95b184f73b08da8c214fdf861fa4157"
   integrity sha512-5mlW1DquU5HaxjLkfkGN1GA/fvVGdyHURRiX/0FHl2cfIfRxSOfmxEH5YS43edp0OldZrZ+dkBKbngxcNCdZvA==
@@ -3444,15 +3444,15 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.40.0.tgz#3ba73359e11f5a7bd3e407f70b3528abfae69cec"
   integrity sha512-ElyB54bJIhXQYVKjDSvCkPO1iU1tSAeVQJbllWJq1XQSmmA4dgFk8CbiBGpiOPxleE48vDogxCtmMYku4HSVLA==
 
-"@figma/plugin-typings@1.19.0":
-  version "1.19.0"
-  resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.19.0.tgz#9eec4e6750c53a7ca5464b57d77db7be84143a4a"
-  integrity sha512-CioK7sIBXrpgbYsbzTS6clGwuO+97DjM16PqDmXKtcTBJhg8AjTiZ7XIDeJ078Kpwh0QiLDuG+D2ukKbFpBw7g==
-
 "@figma/plugin-typings@1.69.0":
   version "1.69.0"
   resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.69.0.tgz#1f3b26712af90d14175f580c794f7ebac739e48e"
   integrity sha512-DAGuGGxM1saT8OVm7gqAldQCyRswRDWeHL/oodDQbus6jK3ypYMl722ItFxc/yWr5HDJbC3FO0u/bvxw2/xqGA==
+
+"@figma/plugin-typings@1.81.0":
+  version "1.81.0"
+  resolved "https://registry.yarnpkg.com/@figma/plugin-typings/-/plugin-typings-1.81.0.tgz#ef1c83795bd965c532b40c1345d657a5742caa82"
+  integrity sha512-gy/q4Aa/oVmN9PxdrUyuiMpoBpXAkGIpbe4nqHiKK1TDjrxW3ZBwmYzCM3uGUTC63xhwk99vExbBxaHsoSrAGw==
 
 "@floating-ui/core@^1.3.0", "@floating-ui/core@^1.4.2":
   version "1.5.0"
@@ -5811,6 +5811,11 @@
     nanoid "^3.3.4"
     webpack "^5.75.0"
 
+"@stackblitz/sdk@1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@stackblitz/sdk/-/sdk-1.9.0.tgz#b5174f3f45a51b6c1b9e67f1ef4e2e783ab105e9"
+  integrity sha512-3m6C7f8pnR5KXys/Hqx2x6ylnpqOak6HtnZI6T5keEO0yT+E4Spkw37VEbdwuC+2oxmjdgq6YZEgiKX7hM1GmQ==
+
 "@stitches/core@^1.2.6":
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/@stitches/core/-/core-1.2.8.tgz#dce3b8fdc764fbc6dbea30c83b73bfb52cf96173"
@@ -6911,6 +6916,15 @@
     "@svgr/plugin-jsx" "^5.5.0"
     "@svgr/plugin-svgo" "^5.5.0"
     loader-utils "^2.0.0"
+
+"@table-library/react-table-library@4.1.7":
+  version "4.1.7"
+  resolved "https://registry.yarnpkg.com/@table-library/react-table-library/-/react-table-library-4.1.7.tgz#90b71f959228f420d2deffeecc9eace879cb4c2e"
+  integrity sha512-KKFjdACvEUeD9yhgXBjZUJSdE9pxUbJdou4Pp71FW8dxQWc7LcMcSxpveSfGXw8KlcWY0hThJOwyjQb+UKOmnw==
+  dependencies:
+    clsx "1.1.1"
+    react-virtualized-auto-sizer "1.0.7"
+    react-window "1.8.7"
 
 "@testing-library/dom@^7.31.2":
   version "7.31.2"
@@ -10806,6 +10820,11 @@ clone@^1.0.2:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
+
+clsx@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
+  integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
 
 cmd-shim@^4.1.0:
   version "4.1.0"
@@ -19414,7 +19433,7 @@ memfs@^3.1.2:
   dependencies:
     fs-monkey "1.0.3"
 
-memoize-one@^5.0.0:
+"memoize-one@>=3.1.1 <6", memoize-one@^5.0.0:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
   integrity sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==
@@ -23746,6 +23765,19 @@ react-test-renderer@18.2.0:
     react-is "^18.2.0"
     react-shallow-renderer "^16.15.0"
     scheduler "^0.23.0"
+
+react-virtualized-auto-sizer@1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.7.tgz#bfb8414698ad1597912473de3e2e5f82180c1195"
+  integrity sha512-Mxi6lwOmjwIjC1X4gABXMJcKHsOo0xWl3E3ugOgufB8GJU+MqrtY35aBuvCYv/razQ1Vbp7h1gWJjGjoNN5pmA==
+
+react-window@1.8.7:
+  version "1.8.7"
+  resolved "https://registry.yarnpkg.com/react-window/-/react-window-1.8.7.tgz#5e9fd0d23f48f432d7022cdb327219353a15f0d4"
+  integrity sha512-JHEZbPXBpKMmoNO1bNhoXOOLg/ujhL/BU4IqVU9r8eQPcy5KQnGHIHDRkJ0ns9IM5+Aq5LNwt3j8t3tIrePQzA==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    memoize-one ">=3.1.1 <6"
 
 react@17.0.1:
   version "17.0.1"

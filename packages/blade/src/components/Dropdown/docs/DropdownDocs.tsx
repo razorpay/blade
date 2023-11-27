@@ -9,7 +9,7 @@ import {
 import { getSimpleAutoComplete } from './autoCompleteStories';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text } from '~components/Typography';
-import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox';
+import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
 import { Box } from '~components/Box';
 import { ArgsTable } from '~utils/storybook/ArgsTable';
 import { List, ListItem, ListItemLink } from '~components/List';
