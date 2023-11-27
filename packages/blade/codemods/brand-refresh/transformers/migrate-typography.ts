@@ -1,4 +1,8 @@
-import type { Transform } from 'jscodeshift';
+import type { Transform, JSXAttribute, JSXExpressionContainer } from 'jscodeshift';
+
+const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
+  return (prop as JSXAttribute)?.value?.type === 'JSXExpressionContainer';
+};
 
 const transformer: Transform = (file, api, options) => {
   const titleToHeadingMap = {
@@ -58,11 +62,16 @@ const transformer: Transform = (file, api, options) => {
     );
 
   const j = api.jscodeshift;
-  const root = j(newSource);
+  const root = j.withParser('tsx')(newSource);
+
+  const typographyJSXElements = root
+    .find(j.JSXElement)
+    .filter((path) =>
+      ['Text', 'Title', 'Code', 'Display', 'Heading'].includes(path.value.openingElement.name.name),
+    );
 
   // Change <Title size="medium"> to <Heading size="xlarge">
-  root
-    .find(j.JSXElement)
+  typographyJSXElements
     .filter((path) => path.value.openingElement.name.name === 'Title')
     // replace with Heading
     .replaceWith((path) => {
@@ -75,38 +84,37 @@ const transformer: Transform = (file, api, options) => {
     })
     .find(j.JSXAttribute)
     .filter((path) => path.node.name.name === 'size')
-    .replaceWith((path) =>
-      j.jsxAttribute(
-        j.jsxIdentifier('size'),
-        j.stringLiteral(titleToHeadingMap[path.node.value.value]),
-      ),
-    );
+    .replaceWith((path) => {
+      if (!path.node) return;
+      if (isExpression(path.node)) return path.node;
+
+      path.node.value.value = titleToHeadingMap[path.node.value.value] || 'large';
+
+      return path.node;
+    });
 
   // `type=` prop will be removed from Typography Components
-  root
-    .find(j.JSXElement)
-    .filter((path) =>
-      ['Text', 'Title', 'Code', 'Display', 'Heading'].includes(path.value.openingElement.name.name),
-    )
+  typographyJSXElements
     .find(j.JSXAttribute) // Find all JSX props
     .filter((path) => path.node.name.name === 'type') // (2) Filter by name `type`
     .remove();
 
   // `variant=` prop will be removed from Typography Components
-  root
-    .find(j.JSXElement)
-    .filter((path) => ['Heading'].includes(path.value.openingElement.name.name))
+  typographyJSXElements
+    .filter((path) => path.value.openingElement.name.name === 'Heading')
     .find(j.JSXAttribute) // Find all Heading props
     .filter((path) => path.node.name.name === 'variant') // (2) Filter by name `variant`
     .remove();
 
-  // weight=”bold” to weight=”semibold” in Heading, Text
-  root
-    .find(j.JSXElement)
-    .filter((path) => ['Heading', 'Text'].includes(path.value.openingElement.name.name))
+  // weight=”bold” to weight=”semibold” in Heading, Text, Display
+  typographyJSXElements
+    .filter((path) => ['Heading', 'Text', 'Display'].includes(path.value.openingElement.name.name))
     .find(j.JSXAttribute)
     .filter((path) => path.node.name.name === 'weight' && path.node.value.value === 'bold')
-    .replaceWith(() => j.jsxAttribute(j.jsxIdentifier('weight'), j.stringLiteral('semibold')));
+    .replaceWith((path) => {
+      path.node.value.value = 'semibold';
+      return path.node;
+    });
 
   return root.toSource(options.printOptions);
 };
