@@ -1,4 +1,5 @@
 /* eslint-disable no-use-before-define */
+/* eslint-disable import/no-unresolved */
 /*!
  * slight modified version of set-value <https://github.com/jonschlinkert/set-value>
  * The reason for this modification was needed because given the key
