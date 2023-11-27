@@ -45,10 +45,11 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -72,10 +73,11 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -101,10 +103,11 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -133,10 +136,11 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -204,10 +208,11 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -231,10 +236,11 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -260,10 +266,11 @@ exports[`<Amount /> should render Amount with default props 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -292,10 +299,11 @@ exports[`<Amount /> should render Amount with default props 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -363,10 +371,11 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -390,10 +399,11 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -419,10 +429,11 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -451,10 +462,11 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -522,10 +534,11 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -549,10 +562,11 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -578,10 +592,11 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -610,10 +625,11 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -681,10 +697,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -708,10 +725,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -737,10 +755,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -769,10 +788,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -829,10 +849,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -856,10 +877,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -885,10 +907,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "700",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -917,10 +940,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -977,10 +1001,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1004,10 +1029,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1033,10 +1059,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1065,10 +1092,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1125,10 +1153,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1152,10 +1181,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1181,10 +1211,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "700",
+                "letterSpacing": 0,
                 "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1213,10 +1244,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1273,10 +1305,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1300,10 +1333,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1329,10 +1363,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 24,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1361,10 +1396,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1421,10 +1457,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1448,10 +1485,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1477,10 +1515,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "700",
+                "letterSpacing": 0,
                 "lineHeight": 24,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1509,10 +1548,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1569,10 +1609,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1596,10 +1637,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1625,11 +1667,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 24,
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1657,10 +1700,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1717,10 +1761,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1744,10 +1789,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1773,11 +1819,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "700",
-                "lineHeight": 24,
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1805,10 +1852,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1865,10 +1913,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 18,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1892,10 +1941,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1921,10 +1971,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 24,
+                "fontFamily": "Inter",
+                "fontSize": 32,
                 "fontStyle": "normal",
                 "fontWeight": "700",
+                "letterSpacing": 0,
                 "lineHeight": 32,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1953,10 +2004,11 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 18,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -2024,10 +2076,11 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2051,10 +2104,11 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2080,11 +2134,12 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 24,
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2112,10 +2167,11 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
             [
               {
                 "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -2183,10 +2239,11 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2214,11 +2271,12 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "letterSpacing": 0,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -2284,10 +2342,11 @@ exports[`<Amount /> should render information intent Amount  1`] = `
           [
             {
               "color": "hsla(193, 100%, 35%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2315,10 +2374,11 @@ exports[`<Amount /> should render information intent Amount  1`] = `
           [
             {
               "color": "hsla(193, 100%, 35%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2385,10 +2445,11 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           [
             {
               "color": "hsla(160, 100%, 26%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2412,10 +2473,11 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           [
             {
               "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2441,10 +2503,11 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
             [
               {
                 "color": "hsla(160, 100%, 26%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2473,10 +2536,11 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
             [
               {
                 "color": "hsla(160, 100%, 26%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,

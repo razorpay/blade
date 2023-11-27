@@ -14,19 +14,20 @@ exports[`<Heading /> should render Heading with color 1`] = `
     color="surface.text.placeholder.lowContrast"
     data-blade-component="heading"
     fontFamily="text"
-    fontSize={200}
+    fontSize={300}
     fontStyle="normal"
-    fontWeight="bold"
+    fontWeight="semibold"
     lineHeight={300}
     style={
       [
         {
           "color": "hsla(214, 18%, 69%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 24,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -59,19 +60,20 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
     color="surface.text.normal.lowContrast"
     data-blade-component="heading"
     fontFamily="text"
-    fontSize={200}
+    fontSize={300}
     fontStyle="normal"
-    fontWeight="bold"
+    fontWeight="semibold"
     lineHeight={300}
     style={
       [
         {
           "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 24,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -104,19 +106,20 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
     color="surface.text.normal.lowContrast"
     data-blade-component="heading"
     fontFamily="text"
-    fontSize={200}
+    fontSize={300}
     fontStyle="normal"
-    fontWeight="bold"
+    fontWeight="semibold"
     lineHeight={300}
     style={
       [
         {
           "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 24,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -138,19 +141,20 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
       color="feedback.information.action.text.primary.default.lowContrast"
       data-blade-component="heading"
       fontFamily="text"
-      fontSize={200}
+      fontSize={300}
       fontStyle="normal"
-      fontWeight="bold"
+      fontWeight="semibold"
       lineHeight={300}
       style={
         [
           {
             "color": "hsla(195, 100%, 31%, 1)",
-            "fontFamily": "Lato",
+            "fontFamily": "Inter",
             "fontSize": 16,
             "fontStyle": "normal",
-            "fontWeight": "700",
-            "lineHeight": 24,
+            "fontWeight": "600",
+            "letterSpacing": 0,
+            "lineHeight": 22,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -184,19 +188,20 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
     color="surface.text.subdued.lowContrast"
     data-blade-component="heading"
     fontFamily="text"
-    fontSize={400}
+    fontSize={500}
     fontStyle="normal"
     fontWeight="regular"
-    lineHeight={400}
+    lineHeight={500}
     style={
       [
         {
           "color": "hsla(217, 18%, 45%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 18,
+          "fontFamily": "Inter",
+          "fontSize": 20,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "letterSpacing": 0,
+          "lineHeight": 26,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -229,19 +234,20 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
     color="surface.text.muted.lowContrast"
     data-blade-component="heading"
     fontFamily="text"
-    fontSize={300}
+    fontSize={400}
     fontStyle="normal"
     fontWeight="regular"
-    lineHeight={200}
+    lineHeight={400}
     style={
       [
         {
           "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 16,
+          "fontFamily": "Inter",
+          "fontSize": 18,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 20,
+          "letterSpacing": 0,
+          "lineHeight": 24,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -274,7 +280,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
     color="surface.text.normal.lowContrast"
     data-blade-component="heading"
     fontFamily="text"
-    fontSize={200}
+    fontSize={300}
     fontStyle="normal"
     fontWeight="regular"
     lineHeight={300}
@@ -282,11 +288,12 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
       [
         {
           "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -319,7 +326,7 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
     color="surface.text.normal.highContrast"
     data-blade-component="heading"
     fontFamily="text"
-    fontSize={200}
+    fontSize={300}
     fontStyle="normal"
     fontWeight="regular"
     lineHeight={300}
@@ -327,11 +334,12 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
       [
         {
           "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -364,19 +372,20 @@ exports[`<Heading /> should render Heading with variant "subheading" and weight 
     color="surface.text.subdued.lowContrast"
     data-blade-component="heading"
     fontFamily="text"
-    fontSize={75}
+    fontSize={300}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={50}
+    fontWeight="semibold"
+    lineHeight={300}
     style={
       [
         {
           "color": "hsla(217, 18%, 45%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
+          "fontFamily": "Inter",
+          "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,

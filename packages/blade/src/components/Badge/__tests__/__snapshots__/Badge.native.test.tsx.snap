@@ -157,17 +157,18 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -259,18 +260,19 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="bold"
-          lineHeight={50}
+          fontWeight="semibold"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 16,
+                "fontWeight": "600",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -363,17 +365,18 @@ exports[`<Badge /> should render Badge with default props 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -466,17 +469,18 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -569,17 +573,18 @@ exports[`<Badge /> should render high contrast default color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -672,17 +677,18 @@ exports[`<Badge /> should render high contrast information color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -775,17 +781,18 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -878,17 +885,18 @@ exports[`<Badge /> should render high contrast negative color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -981,17 +989,18 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1084,17 +1093,18 @@ exports[`<Badge /> should render high contrast neutral color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1187,17 +1197,18 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1290,17 +1301,18 @@ exports[`<Badge /> should render high contrast notice color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1393,17 +1405,18 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1496,17 +1509,18 @@ exports[`<Badge /> should render high contrast positive color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1599,17 +1613,18 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1702,17 +1717,18 @@ exports[`<Badge /> should render large size Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1805,17 +1821,18 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(218, 89%, 51%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1908,17 +1925,18 @@ exports[`<Badge /> should render low contrast default color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(218, 89%, 51%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2011,17 +2029,18 @@ exports[`<Badge /> should render low contrast information color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(193, 100%, 35%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2114,17 +2133,18 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(193, 100%, 35%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2217,17 +2237,18 @@ exports[`<Badge /> should render low contrast negative color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(8, 73%, 47%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2320,17 +2341,18 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(8, 73%, 47%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2423,17 +2445,18 @@ exports[`<Badge /> should render low contrast neutral color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2526,17 +2549,18 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2629,17 +2653,18 @@ exports[`<Badge /> should render low contrast notice color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(38, 97%, 38%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2732,17 +2757,18 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(38, 97%, 38%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2835,17 +2861,18 @@ exports[`<Badge /> should render low contrast positive color Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(160, 100%, 26%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2938,17 +2965,18 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(160, 100%, 26%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3041,17 +3069,18 @@ exports[`<Badge /> should render medium size Badge 1`] = `
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -3144,17 +3173,18 @@ exports[`<Badge /> should render small size Badge 1`] = `
           fontSize={25}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={25}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 14,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
