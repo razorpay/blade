@@ -42,6 +42,10 @@ type StoryPageWrapperTypes = {
    * Use this to override default imports
    */
   imports?: string;
+  /**
+   * Use this to override default API decision component name
+   */
+  apiDecisionComponentName?: string;
 };
 
 // Global Styles are not applied by default on `.mdx` pages of storybook. So just overriding few global styles here which are applied to both, stories and guide pages
@@ -170,7 +174,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                           `https://github.com/razorpay/blade/blob/master/packages/blade/src/components/${props.componentName}/_decisions/decisions.md`
                         }
                       >
-                        API Decisions for {props.componentName}
+                        API Decisions for {props.apiDecisionComponentName ?? props.componentName}
                       </Link>
                     </Text>
                   )}
