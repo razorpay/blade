@@ -433,11 +433,13 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
   );
 };
 
-export const Default = TourTemplate.bind({});
-Default.storyName = 'Default';
-Default.parameters = {
+export { TourTemplate };
+
+export const Basic = TourTemplate.bind({});
+Basic.storyName = 'Basic';
+Basic.parameters = {
   docs: { disable: false },
-  viewMode: 'docs',
+  viewMode: 'story',
 };
 
 export const CustomPlacement = () => {

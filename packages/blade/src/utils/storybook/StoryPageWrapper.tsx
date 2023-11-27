@@ -25,6 +25,7 @@ type StoryPageWrapperTypes = {
     paymentTheme: string;
     bankingTheme: string;
   };
+  argTableComponent?: unknown;
   componentDescription: string;
   propsDescription?: string;
   componentName: string;
@@ -185,7 +186,10 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                     </Box>
                   ) : null}
                 </BaseBox>
-                <ArgsTable story={PRIMARY_STORY} />
+                <ArgsTable
+                  story={props.argTableComponent ? undefined : PRIMARY_STORY}
+                  of={props.argTableComponent}
+                />
               </>
             ) : null}
 
