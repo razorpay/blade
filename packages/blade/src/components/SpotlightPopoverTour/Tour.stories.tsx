@@ -433,8 +433,6 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
   );
 };
 
-export { TourTemplate };
-
 export const Basic = TourTemplate.bind({});
 Basic.storyName = 'Basic';
 Basic.parameters = {
