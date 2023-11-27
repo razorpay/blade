@@ -1,5 +1,5 @@
 import React from 'react';
-import { BasicExample } from './docs/examples';
+import { BasicExample } from './examples';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Code, Heading, Text, Title } from '~components/Typography';
 import { Box } from '~components/Box';
