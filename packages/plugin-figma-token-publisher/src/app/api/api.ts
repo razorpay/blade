@@ -3,16 +3,33 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const GITHUB_BASE_URL = 'https://api.github.com/repos';
 
+export type TokenType = 'themeColorTokens' | 'globalColorTokens';
+type ColorTokens = Record<string, any>;
+
 export const uploadTokens = async ({
   orgName = 'razorpay',
   repoName,
   workflowFileName,
-  tokens,
   personalAccessToken,
-}: any): Promise<void> => {
+  colorTokens,
+  tokenType,
+}: {
+  orgName: string;
+  repoName: string;
+  workflowFileName: string;
+  personalAccessToken: string;
+  colorTokens: ColorTokens;
+  tokenType?: TokenType;
+}): Promise<void> => {
   const API_URL = `${GITHUB_BASE_URL}/${orgName}/${repoName}/actions/workflows/${workflowFileName}/dispatches`;
 
-  const getFetchOptions = ({ themeKey, tokens }: any) => ({
+  const getFetchOptions = ({
+    colorTokens,
+    tokenType,
+  }: {
+    colorTokens: ColorTokens;
+    tokenType?: TokenType;
+  }) => ({
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,48 +39,39 @@ export const uploadTokens = async ({
     body: JSON.stringify({
       ref: 'master',
       inputs: {
-        tokens: JSON.stringify({ [themeKey]: tokens }),
+        tokens: JSON.stringify(colorTokens),
+        tokenType,
       },
     }),
   });
 
   try {
-    const responses = await Promise.all([
-      fetch(
-        API_URL,
-        getFetchOptions({ themeKey: 'paymentThemeColors', tokens: tokens.paymentThemeColors }),
-      ),
-      fetch(
-        API_URL,
-        getFetchOptions({ themeKey: 'bankingThemeColors', tokens: tokens.bankingThemeColors }),
-      ),
-    ]);
-    const isRequestSuccess = responses.every((response) => response.status === 204);
+    const response = await fetch(API_URL, getFetchOptions({ colorTokens, tokenType }));
+
+    const isRequestSuccess = response.status === 204;
     if (isRequestSuccess) {
       // nosemgrep
       parent.postMessage(
         {
           pluginMessage: {
             type: 'success',
-            text: '🎉 Theme color tokens published to server',
+            text: '🎉 Color tokens published to server',
           },
         },
         '*',
       );
     } else {
-      responses.forEach(async (response) => {
-        const responseJson = await response.json();
-        // nosemgrep
-        parent.postMessage(
-          {
-            pluginMessage: {
-              type: 'error',
-              text: `⛔️ ${responseJson.message}`,
-            },
+      const responseJson = await response.json();
+      // nosemgrep
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: 'error',
+            text: `⛔️ ${responseJson.message}`,
           },
-          '*',
-        );
-      });
+        },
+        '*',
+      );
     }
   } catch (error: any) {
     throw new Error(error);
