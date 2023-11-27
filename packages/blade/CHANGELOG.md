@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 10.19.0
+
+### Minor Changes
+
+- 23a3e111: feat: Add `Table` component
+
+## 10.18.2
+
+### Patch Changes
+
+- 9967cd96: fix: set default breakpoint without computing
+
 ## 10.18.1
 
 ### Patch Changes
