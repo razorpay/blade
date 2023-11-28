@@ -2,6 +2,36 @@ import { applyTransform } from '@hypermod/utils';
 
 import * as transformer from '../migrate-typography';
 
+it('should update the lineHeight & fontSize tokens', async () => {
+  const result = await applyTransform(
+    transformer,
+    `
+        const CustomHeading = styled(Heading)\`
+            font-size: \${theme.typography.fonts.size['1600']};
+            line-height: \${theme.typography.lineHeights['1500']};
+        \`  
+        const App = () => (
+            <>
+              <CustomHeading> Lorem ipsum </CustomHeading>  
+            </>
+          );
+        `,
+    { parser: 'tsx' },
+  );
+
+  expect(result).toMatchInlineSnapshot(`
+    "const CustomHeading = styled(Heading)\`
+                font-size: \${theme.typography.fonts.size[1100]};
+                line-height: \${theme.typography.lineHeights[1100]};
+            \`  
+            const App = () => (
+                <>
+                  <CustomHeading> Lorem ipsum </CustomHeading>  
+                </>
+              );"
+  `);
+});
+
 it('should remove the "type" prop and change weight="bold" to weight="semibold"', async () => {
   const result = await applyTransform(
     transformer,
@@ -56,10 +86,11 @@ it('should remove the "variant" prop from Heading', async () => {
   `);
 });
 
-it('should correctly covert Title to Heading component', async () => {
+it('should correctly convert Title to Heading component', async () => {
   const result = await applyTransform(
     transformer,
     `
+      import { Title, Heading } from '@razorpay/blade/components';
       const App = () => (
         <>
             <Title type="body" weight="bold" size="xlarge" > Lorem ipsum </Title>
@@ -74,7 +105,8 @@ it('should correctly covert Title to Heading component', async () => {
   );
 
   expect(result).toMatchInlineSnapshot(`
-    "const App = () => (
+    "import { Heading } from '@razorpay/blade/components';
+          const App = () => (
             <>
                 <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading>
                 <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>

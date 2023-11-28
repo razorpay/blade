@@ -93,6 +93,28 @@ const transformer: Transform = (file, api, options) => {
       return path.node;
     });
 
+  // Remove/Update the Title import from "@razorpay/blade/components"
+  root
+    .find(j.ImportDeclaration)
+    .filter((path) => path.value.source.value === '@razorpay/blade/components')
+    .find(j.ImportSpecifier)
+    .filter((path) => path.value.imported.name === 'Title')
+    .replaceWith((path) => {
+      const isHeadingImportPresent = path.parent.value.specifiers.some(
+        (node) => node.imported.name === 'Heading',
+      );
+      // Remove the Title import if isHeadingImportPresent is true, otherwise change Title to Heading
+      if (!isHeadingImportPresent) {
+        path.value.imported.name = 'Heading';
+      } else {
+        path.parent.value.specifiers = path.parent.value.specifiers.filter(
+          (node) => node.imported.name !== 'Title',
+        );
+      }
+
+      return path.node;
+    });
+
   // `type=` prop will be removed from Typography Components
   typographyJSXElements
     .find(j.JSXAttribute) // Find all JSX props
