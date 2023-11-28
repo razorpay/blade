@@ -47,7 +47,7 @@ const getProps = ({
     fontWeight: weight ?? 'semibold',
     fontStyle: 'normal',
     lineHeight: 300,
-    fontFamily: 'text',
+    fontFamily: 'heading',
     accessibilityProps: isReactNative() ? { role: 'heading' } : {},
     componentName: 'heading',
     testID,
