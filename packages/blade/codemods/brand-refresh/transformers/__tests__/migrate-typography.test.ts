@@ -1,5 +1,5 @@
 import { applyTransform } from '@hypermod/utils';
-import * as transformer from '../migrate-typography';
+import * as transformer from '..';
 
 it('should update the lineHeight & fontSize tokens', async () => {
   const result = await applyTransform(
