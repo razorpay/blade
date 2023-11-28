@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.18.0-11",
+  "version": "10.18.0-13",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -30,16 +30,14 @@
     "razorpay",
     "blade"
   ],
-  "main": "./build/lib/web/components/index.js",
-  "types": "./build/types/components/index.d.ts",
   "exports": {
     "./components": {
       "react-native": {
-        "types": "./build/types/components/index.native.d.ts",
+        "types": "./components.d.ts",
         "default": "./build/lib/native/components/index.js"
       },
       "default": {
-        "types": "./build/types/components/index.d.ts",
+        "types": "./components.d.ts",
         "development": "./build/lib/web/components/index.js",
         "production": "./build/lib/web/components/index.js",
         "default": "./build/lib/web/components/index.js"
@@ -47,11 +45,11 @@
     },
     "./tokens": {
       "react-native": {
-        "types": "./build/types/tokens/index.native.d.ts",
+        "types": "./tokens.d.ts",
         "default": "./build/lib/native/tokens/index.js"
       },
       "default": {
-        "types": "./build/types/tokens/index.d.ts",
+        "types": "./tokens.d.ts",
         "development": "./build/lib/web/tokens/index.js",
         "production": "./build/lib/web/tokens/index.js",
         "default": "./build/lib/web/tokens/index.js"
@@ -59,11 +57,11 @@
     },
     "./utils": {
       "react-native": {
-        "types": "./build/types/utils/index.native.d.ts",
+        "types": "./utils.d.ts",
         "default": "./build/lib/native/utils/index.js"
       },
       "default": {
-        "types": "./build/types/utils/index.d.ts",
+        "types": "./utils.d.ts",
         "development": "./build/lib/web/utils/index.js",
         "production": "./build/lib/web/utils/index.js",
         "default": "./build/lib/web/utils/index.js"
