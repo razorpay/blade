@@ -79,14 +79,22 @@ const aliases = pluginAlias({
   ],
 });
 
+// - lib
+//   - web
+//    - production
+//    - development
+//   - native
+//    - production
+//    - development
 const getWebConfig = (inputs) => {
   const platform = 'web';
+  const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
   return {
     input: inputs,
     output: [
       {
-        dir: `${outputRootDirectory}/${libDirectory}/${platform}`,
+        dir: `${outputRootDirectory}/${libDirectory}/${platform}/${mode}`,
         format: 'es',
         sourcemap: true,
         preserveModules: true,
@@ -165,7 +173,6 @@ const getNativeConfig = (inputs) => {
 
 const getDeclarationsConfig = ({ exportCategory, isNative }) => {
   const platform = isNative ? 'native' : 'web';
-  console.log(platform);
 
   // Need to resolve paths in d.ts files
   // https://github.com/Swatinem/rollup-plugin-dts/issues/169

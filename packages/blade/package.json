@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.18.0-13",
+  "version": "10.18.0-14",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -38,9 +38,9 @@
       },
       "default": {
         "types": "./components.d.ts",
-        "development": "./build/lib/web/components/index.js",
-        "production": "./build/lib/web/components/index.js",
-        "default": "./build/lib/web/components/index.js"
+        "development": "./build/lib/web/development/components/index.js",
+        "production": "./build/lib/web/production/components/index.js",
+        "default": "./build/lib/web/production/components/index.js"
       }
     },
     "./tokens": {
@@ -50,9 +50,9 @@
       },
       "default": {
         "types": "./tokens.d.ts",
-        "development": "./build/lib/web/tokens/index.js",
-        "production": "./build/lib/web/tokens/index.js",
-        "default": "./build/lib/web/tokens/index.js"
+        "development": "./build/lib/web/development/tokens/index.js",
+        "production": "./build/lib/web/production/tokens/index.js",
+        "default": "./build/lib/web/production/tokens/index.js"
       }
     },
     "./utils": {
@@ -62,9 +62,9 @@
       },
       "default": {
         "types": "./utils.d.ts",
-        "development": "./build/lib/web/utils/index.js",
-        "production": "./build/lib/web/utils/index.js",
-        "default": "./build/lib/web/utils/index.js"
+        "development": "./build/lib/web/development/utils/index.js",
+        "production": "./build/lib/web/production/utils/index.js",
+        "default": "./build/lib/web/production/utils/index.js"
       }
     }
   },
@@ -74,7 +74,7 @@
     "prepare": "yarn build:clean && yarn quickbuild",
     "build": "run-s build:*",
     "clearCache": "jest --clearCache",
-    "quickbuild": "yarn build:clean && yarn build:generate-types && yarn build:react-prod && yarn build:react-native && yarn build:clean-declarations",
+    "quickbuild": "./scripts/buildBlade.sh",
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
     "build:copy-declarations": "run-s types:copy-declarations:*",
@@ -86,7 +86,7 @@
     "types:copy-declarations:native": "copyfiles -u 1 build/types/native/components/**/*.d.ts build/components/**/*",
     "build:generate-root-imports": "node ./scripts/generateRootImports.js",
     "build:clean-declarations": "rm -rf build/generated-types",
-    "xbuild:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
+    "build:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
     "build:react-native": "cross-env FRAMEWORK=REACT_NATIVE rollup -c",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
