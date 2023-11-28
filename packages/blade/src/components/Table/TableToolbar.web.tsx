@@ -95,7 +95,7 @@ const _TableToolbar = ({
       >
         <BaseBox display="flex" alignItems="center" flex={1}>
           <BaseBox>
-            <Text size="medium" weight="bold">
+            <Text size="medium" weight="semibold">
               {selectedTitle ?? title ?? defaultTitle}
             </Text>
           </BaseBox>

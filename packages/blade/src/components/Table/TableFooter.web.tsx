@@ -77,7 +77,7 @@ const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElemen
       {...metaAttribute({ name: MetaConstants.TableFooterCell })}
     >
       {isChildrenString ? (
-        <Text size="medium" weight="bold">
+        <Text size="medium" weight="semibold">
           {children}
         </Text>
       ) : (
