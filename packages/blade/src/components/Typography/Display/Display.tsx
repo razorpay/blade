@@ -19,11 +19,6 @@ export type DisplayProps = {
   color?: BaseTextProps['color'];
   size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge'>;
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
-  /**
-   *
-   * @default - 0% when weight is semibold, otherwise -1%
-   */
-  letterSpacing?: BaseTextProps['letterSpacing'];
   contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: React.ReactNode;
@@ -38,16 +33,15 @@ const getProps = ({
   type,
   contrast,
   weight,
-  letterSpacing,
   color,
   testID,
-}: Pick<
-  DisplayProps,
-  'as' | 'size' | 'type' | 'color' | 'contrast' | 'weight' | 'letterSpacing' | 'testID'
->): Omit<BaseTextProps, 'children'> => {
+}: Pick<DisplayProps, 'as' | 'size' | 'type' | 'color' | 'contrast' | 'weight' | 'testID'>): Omit<
+  BaseTextProps,
+  'children'
+> => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast}Contrast` : 'lowContrast';
-  const defaultLetterSpacing = weight === 'medium' || weight === 'regular' ? 50 : 100;
+  const letterSpacing = weight === 'medium' || weight === 'regular' ? 50 : 100;
   const props: Omit<BaseTextProps, 'children'> = {
     color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
     fontSize: 800,
@@ -58,7 +52,7 @@ const getProps = ({
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
     componentName: 'display',
     testID,
-    letterSpacing: letterSpacing ?? defaultLetterSpacing,
+    letterSpacing,
   };
 
   if (size === 'small') {
@@ -87,7 +81,6 @@ export const Display = ({
   type = 'normal',
   contrast = 'low',
   weight = 'semibold',
-  letterSpacing,
   color,
   children,
   testID,
@@ -97,7 +90,7 @@ export const Display = ({
 }: DisplayProps): ReactElement => {
   useValidateAsProp({ componentName: 'Display', as, validAsValues });
 
-  const props = getProps({ as, size, type, contrast, color, weight, letterSpacing, testID });
+  const props = getProps({ as, size, type, contrast, color, weight, testID });
 
   return (
     <BaseText

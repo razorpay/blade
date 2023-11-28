@@ -18,7 +18,7 @@ type TextCommonProps = {
   contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
   children: React.ReactNode;
-  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'semibold'>;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
   /**
    * Overrides the color of the Text component.
    *

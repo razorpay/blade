@@ -35,11 +35,11 @@ const ActionListDocs = (): React.ReactElement => {
         <ArgsTable data={actionListPropsTables.ActionList} />
       </Box>
       <BaseBox as="section" paddingBottom="spacing.9" id="actionlistitem">
-        <Heading size="xlarge">ActionListItem</Heading>
+        <Heading size="large">ActionListItem</Heading>
         <VerticalSandbox code={ActionListItem} />
         <ArgsTable data={actionListPropsTables.ActionListItem} />
         <BaseBox id="actionlistitemicon">
-          <Heading size="xlarge">ActionListItemIcon</Heading>
+          <Heading size="large">ActionListItemIcon</Heading>
           <ArgsTable
             data={{
               icon: <Code>IconComponent</Code>,
