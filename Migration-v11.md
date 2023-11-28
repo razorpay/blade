@@ -12,13 +12,13 @@
 npx jscodeshift ./YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/brand-refresh/transformers/index.ts --ignore-pattern="**/node_modules/**"
 ```
 
-> **warning**
+> [!WARNING]
 >
 > While this codemod covers most cases, it's always good to double-check and test your code to catch any missed nuances.
 
 ### 🚧 Watch Out for Limitations & Edge Cases
 
-> **Note**
+> [!IMPORTANT]
 >
 > There might be some situations where the codemod falls short. If you encounter errors, handle those cases manually for a seamless transition. Happy coding!
 

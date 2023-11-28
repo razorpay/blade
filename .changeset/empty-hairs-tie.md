@@ -4,7 +4,7 @@
 
 feat: brand refresh changes
 
-> **Warning**
+> [!WARNING]
 >
 > Breaking Change!
 > This is a breaking change for all components in the library.
