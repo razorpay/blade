@@ -183,6 +183,11 @@ export default {
     },
   },
   parameters: {
+    options: {
+      storySort: {
+        order: ['Docs', '*'],
+      },
+    },
     docs: {
       page: Page,
     },
