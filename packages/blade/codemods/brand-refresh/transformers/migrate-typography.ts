@@ -5,6 +5,7 @@ const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
 };
 
 const transformer: Transform = (file, api, options) => {
+  // Maps to transform Title sizes to Heading sizes
   const titleToHeadingMap = {
     xlarge: '2xlarge',
     large: 'xlarge',
@@ -12,6 +13,7 @@ const transformer: Transform = (file, api, options) => {
     small: 'large',
   };
 
+  // Maps for fontSize, lineHeight, and token prefixes
   const fontSizeMap = {
     600: 500,
     700: 600,
@@ -35,6 +37,8 @@ const transformer: Transform = (file, api, options) => {
 
   const fontTokenPrefix = 'theme.typography.fonts.size';
   const lineHeightTokenPrefix = 'theme.typography.lineHeights';
+
+  // Replace font sizes & line height in the source code with corresponding token references
   const newSource = file.source
     .replace(
       // gets both .50 and ['50'] or ["50"]
@@ -64,13 +68,15 @@ const transformer: Transform = (file, api, options) => {
   const j = api.jscodeshift;
   const root = j.withParser('tsx')(newSource);
 
+  // Select Typography elements based on their names
   const typographyJSXElements = root
     .find(j.JSXElement)
     .filter((path) =>
       ['Text', 'Title', 'Code', 'Display', 'Heading'].includes(path.value.openingElement.name.name),
     );
 
-  // Change <Title size="medium"> to <Heading size="xlarge">
+  // Replace Title with Heading and update the 'size' attribute
+  // <Title size="medium"> to <Heading size="xlarge">
   typographyJSXElements
     .filter((path) => path.value.openingElement.name.name === 'Title')
     // replace with Heading
@@ -99,13 +105,15 @@ const transformer: Transform = (file, api, options) => {
     .find(j.ImportSpecifier)
     .filter((path) => path.value.imported.name === 'Title')
     .replaceWith((path) => {
+      // Check if Heading import is already present
       const isHeadingImportPresent = path.parent.value.specifiers.some(
         (node) => node.imported.name === 'Heading',
       );
-      // Remove the Title import if isHeadingImportPresent is true, otherwise change Title to Heading
+      // // If Heading import is not present, update the "Title" import to use "Heading"
       if (!isHeadingImportPresent) {
         path.value.imported.name = 'Heading';
       } else {
+        // If "Heading" import is present, remove the "Title" import
         path.parent.value.specifiers = path.parent.value.specifiers.filter(
           (node) => node.imported.name !== 'Title',
         );
@@ -114,7 +122,7 @@ const transformer: Transform = (file, api, options) => {
       return path.node;
     });
 
-  // `type=` prop will be removed from Typography Components
+  // Remove `type` prop from Typography Components
   typographyJSXElements
     .find(j.JSXAttribute) // Find all JSX props
     .filter(
@@ -124,7 +132,7 @@ const transformer: Transform = (file, api, options) => {
     ) // Filter by name `type` and remove any duplicates
     .remove();
 
-  // `variant=` prop will be removed from Heading Component
+  // Remove `variant` prop from Heading Component
   typographyJSXElements
     .filter((path) => path.value.openingElement.name.name === 'Heading')
     .find(j.JSXAttribute) // Find all Heading props
@@ -135,7 +143,8 @@ const transformer: Transform = (file, api, options) => {
     ) // Filter by name `type` and remove any duplicates
     .remove();
 
-  // weight=”bold” to weight=”semibold” in Heading, Text, Display
+  // Change 'weight="bold"' to 'weight="semibold"' in Heading, Text, Display
+  // Code still uses 'weight="bold"' and Title has been modified to the Heading Component
   typographyJSXElements
     .filter((path) => ['Heading', 'Text', 'Display'].includes(path.value.openingElement.name.name))
     .find(j.JSXAttribute)
@@ -145,6 +154,7 @@ const transformer: Transform = (file, api, options) => {
       return path.node;
     });
 
+  // Return the updated source code
   return root.toSource(options.printOptions);
 };
 
