@@ -85,7 +85,6 @@ const transformer: Transform = (file, api, options) => {
     .find(j.JSXAttribute)
     .filter((path) => path.node.name.name === 'size')
     .replaceWith((path) => {
-      if (!path.node) return;
       if (isExpression(path.node)) return path.node;
 
       path.node.value.value = titleToHeadingMap[path.node.value.value] || 'large';
@@ -118,14 +117,22 @@ const transformer: Transform = (file, api, options) => {
   // `type=` prop will be removed from Typography Components
   typographyJSXElements
     .find(j.JSXAttribute) // Find all JSX props
-    .filter((path) => path.node.name.name === 'type') // (2) Filter by name `type`
+    .filter(
+      (path, index, self) =>
+        path.node.name.name === 'type' &&
+        index === self.findIndex((obj) => path.node.start === obj.node.start),
+    ) // Filter by name `type` and remove any duplicates
     .remove();
 
-  // `variant=` prop will be removed from Typography Components
+  // `variant=` prop will be removed from Heading Component
   typographyJSXElements
     .filter((path) => path.value.openingElement.name.name === 'Heading')
     .find(j.JSXAttribute) // Find all Heading props
-    .filter((path) => path.node.name.name === 'variant') // (2) Filter by name `variant`
+    .filter(
+      (path, index, self) =>
+        path.node.name.name === 'variant' &&
+        index === self.findIndex((obj) => path.node.start === obj.node.start),
+    ) // Filter by name `type` and remove any duplicates
     .remove();
 
   // weight=”bold” to weight=”semibold” in Heading, Text, Display

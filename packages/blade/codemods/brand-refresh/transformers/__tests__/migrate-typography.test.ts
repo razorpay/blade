@@ -1,5 +1,4 @@
 import { applyTransform } from '@hypermod/utils';
-
 import * as transformer from '../migrate-typography';
 
 it('should update the lineHeight & fontSize tokens', async () => {
@@ -86,34 +85,78 @@ it('should remove the "variant" prop from Heading', async () => {
   `);
 });
 
+it('should remove the "type" & "variant" prop with nested components', async () => {
+  const result = await applyTransform(
+    transformer,
+    `
+    const App = () => (
+      <>
+        <Display type="normal" size="large" marginTop="120px">
+            Lorem ipsum
+            <Display type="normal" as="span"size="large" color="brand.secondary.500">
+                Lorem ipsum
+            </Display>
+        </Display>
+        <Heading type="normal" variant="regular" size="large" marginTop="120px">
+            Lorem ipsum
+            <Heading type="normal" variant="subheading" as="span"size="large" color="brand.secondary.500">
+                Lorem ipsum
+            </Heading>
+        </Heading>
+      </>
+    );
+    `,
+    { parser: 'tsx' },
+  );
+
+  expect(result).toMatchInlineSnapshot(`
+    "const App = () => (
+          <>
+            <Display size="large" marginTop="120px">
+                Lorem ipsum
+                <Display as="span" size="large" color="brand.secondary.500">
+                    Lorem ipsum
+                </Display>
+            </Display>
+            <Heading size="large" marginTop="120px">
+                Lorem ipsum
+                <Heading as="span" size="large" color="brand.secondary.500">
+                    Lorem ipsum
+                </Heading>
+            </Heading>
+          </>
+        );"
+  `);
+});
+
 it('should correctly convert Title to Heading component', async () => {
   const result = await applyTransform(
     transformer,
     `
-      import { Title, Heading } from '@razorpay/blade/components';
-      const App = () => (
-        <>
-            <Title type="body" weight="bold" size="xlarge" > Lorem ipsum </Title>
-            <Title type="body" weight="bold" size="large" > Lorem ipsum </Title>
-            <Title type="body" weight="bold" size="medium" > Lorem ipsum </Title>
-            <Title type="body" weight="bold" size="small" > Lorem ipsum </Title>
-            <Title type="body" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title>
-        </>
-      );
+    import { Title, Heading } from '@razorpay/blade/components';
+    const App = () => (
+      <>
+        <Title type="body" weight="bold" size="xlarge" > Lorem ipsum </Title>
+        <Title type="body" weight="bold" size="large" > Lorem ipsum </Title>
+        <Title type="body" weight="bold" size="medium" > Lorem ipsum </Title>
+        <Title type="body" weight="bold" size="small" > Lorem ipsum </Title>
+        <Title type="body" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title>
+      </>
+    );
     `,
     { parser: 'tsx' },
   );
 
   expect(result).toMatchInlineSnapshot(`
     "import { Heading } from '@razorpay/blade/components';
-          const App = () => (
-            <>
-                <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading>
-                <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
-                <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
-                <Heading weight="semibold" size="large"> Lorem ipsum </Heading>
-                <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> Lorem ipsum </Heading>
-            </>
-          );"
+        const App = () => (
+          <>
+            <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading>
+            <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
+            <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
+            <Heading weight="semibold" size="large"> Lorem ipsum </Heading>
+            <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> Lorem ipsum </Heading>
+          </>
+        );"
   `);
 });
