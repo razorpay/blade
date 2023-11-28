@@ -137,7 +137,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         {props.children}
         {props.imports === '' ? null : (
           <>
-            <Display size="small">Imports</Display>
+            <Heading size="xlarge">Imports</Heading>
             <SandboxHighlighter showLineNumbers={false} showTabs={false}>
               {props.imports
                 ? props.imports
@@ -149,7 +149,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         )}
         {showStorybookControls ? (
           <>
-            <Display size="small">Example</Display>
+            <Heading size="xlarge">Example</Heading>
             <Subtitle size="medium" marginY="spacing.4">
               {`This is the default ${props.componentName}. You can change the properties using the controls below.`}
             </Subtitle>
@@ -157,7 +157,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             {showArgsTable ? (
               <>
                 <BaseBox id="properties-ref">
-                  <Display size="small">Properties</Display>
+                  <Heading size="xlarge">Properties</Heading>
                   {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (
                     <Text marginY="spacing.5">
                       Check out{' '}
