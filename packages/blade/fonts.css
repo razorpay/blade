@@ -64,7 +64,7 @@
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
-  src: url(./fonts/inter-variable/inter-latin-extra-blade.woff2) format('woff2-variations');
+  src: url(./fonts/inter-variable/inter-latin-blade-extra.woff2) format('woff2-variations');
   unicode-range: U+0100-02AF, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1E00-1EFF,
     U+2020, U+20C1-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
