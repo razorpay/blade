@@ -167,7 +167,7 @@ TASA Orbiter is compatible with license requirements of fontsource. Thus we can 
 - Changing font weights, font styles, variants will require consumer migration of imports
 - Dependency on fontsource reviews thus can take time to implement
 
-> **Note**
+> [!Note]
 >
 > We will be contributing TASA Orbiter to fontsouce although we'll go with method 2 due to the cons mentioned above.
 
@@ -199,11 +199,11 @@ Cons from all of the above 🙈
 
 To optimize on font-size, we are splitting fonts into multiple files.
 
-- inter-latin-rzp.woff2 (alphabets, numbers, common symbols, currency)
-- inter-latin-extra-rzp.woff2 (rare symbols, extra glyphs)
+- `inter-latin-blade.woff2` (alphabets, numbers, common symbols, currency) [~80kb]
+- `inter-latin-blade-extra.woff2` (rare symbols, extra glyphs) [~100kb]
 - Other bundles of greek, vietnamese, cyrillic files
 
-we are defining these files using [`unicode-range`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range) so most sites would always load only one `inter-latin-rzp.woff2` file.
+we are defining these files using [`unicode-range`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/unicode-range) so most sites will always load only one `inter-latin-blade.woff2` file.
 
 ### Variable Fonts vs Static Fonts
 
@@ -220,14 +220,14 @@ These are the weights and styles being used right now
 
 We'll be using variable fonts in both Tasa and Inter based on the size below-
 
-|                  | **Static**                 | **Variable**                   |
-| ---------------- | -------------------------- | ------------------------------ |
-| **Inter**        | 70kb \* 3 weights = ~210kb | ✅ **~215kb (80kb base file)** |
-| **TASA Orbiter** | 30kb \* 3 weights = ~90kb  | ✅ **~32kb**                   |
+|                  | **Static**                 | **Variable**                    |
+| ---------------- | -------------------------- | ------------------------------- |
+| **Inter**        | 70kb \* 3 weights = ~210kb | ✅ **~215kb (80kb latin file)** |
+| **TASA Orbiter** | 30kb \* 3 weights = ~90kb  | ✅ **~32kb**                    |
 
-> **Note**
+> [!Note]
 >
-> The sizes in the table of Inter are taken from font files of fontsource which has comparitively smaller font size than Google Fonts
+> The 80kb file size of Inter comes from our custom glyphs that we're using in Razorpay as mentioned in [Font Size Optimization](#font-size-optimization).
 
 ### Font Fallbacks
 
