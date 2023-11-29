@@ -21,7 +21,9 @@
     "tokens.d.ts",
     "tokens.js",
     "utils.d.ts",
-    "utils.js"
+    "utils.js",
+    "fonts",
+    "fonts.css"
   ],
   "keywords": [
     "design system",
@@ -32,6 +34,9 @@
   ],
   "main": "./build/components/index.web.js",
   "exports": {
+    "./fonts.css": {
+      "default": "./fonts.css"
+    },
     "./components": {
       "react-native": {
         "types": "./build/components/index.native.d.ts",
