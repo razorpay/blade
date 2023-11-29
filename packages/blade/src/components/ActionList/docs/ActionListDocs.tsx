@@ -2,7 +2,7 @@ import React from 'react';
 import { ActionList, ActionListItem, ActionListSection, Playground } from './stories';
 import { actionListPropsTables } from './propsTable';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Code, Text, Title } from '~components/Typography';
+import { Code, Text, Heading } from '~components/Typography';
 import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
@@ -26,20 +26,20 @@ const ActionListDocs = (): React.ReactElement => {
       }}
     >
       <Box as="section">
-        <Title size="medium">Playground</Title>
+        <Heading size="xlarge">Playground</Heading>
         <Sandbox editorHeight={400}>{Playground}</Sandbox>
       </Box>
       <Box as="section" paddingBottom="spacing.9">
-        <Title size="medium">ActionList</Title>
+        <Heading size="xlarge">ActionList</Heading>
         <VerticalSandbox code={ActionList} />
         <ArgsTable data={actionListPropsTables.ActionList} />
       </Box>
       <BaseBox as="section" paddingBottom="spacing.9" id="actionlistitem">
-        <Title size="medium">ActionListItem</Title>
+        <Heading size="large">ActionListItem</Heading>
         <VerticalSandbox code={ActionListItem} />
         <ArgsTable data={actionListPropsTables.ActionListItem} />
         <BaseBox id="actionlistitemicon">
-          <Title size="small">ActionListItemIcon</Title>
+          <Heading size="large">ActionListItemIcon</Heading>
           <ArgsTable
             data={{
               icon: <Code>IconComponent</Code>,
@@ -47,15 +47,15 @@ const ActionListDocs = (): React.ReactElement => {
           />
         </BaseBox>
         <BaseBox id="actionlistitemtext">
-          <Title size="small">ActionListItemText</Title>
+          <Heading size="large">ActionListItemText</Heading>
           <ArgsTable data={{ children: 'string' }} />
         </BaseBox>
         <BaseBox id="actionlistitemasset">
-          <Title size="small">ActionListItemAsset</Title>
+          <Heading size="large">ActionListItemAsset</Heading>
           <ArgsTable data={{ href: 'string', alt: 'string' }} />
         </BaseBox>
         <BaseBox id="actionlistitembadgegroup">
-          <Title size="small">ActionListItemBadgeGroup</Title>
+          <Heading size="large">ActionListItemBadgeGroup</Heading>
           <ArgsTable
             data={{
               children: (
@@ -65,7 +65,7 @@ const ActionListDocs = (): React.ReactElement => {
           />
         </BaseBox>
         <BaseBox id="actionlistitembadge">
-          <Title size="small">ActionListItemBadge</Title>
+          <Heading size="large">ActionListItemBadge</Heading>
           <Text marginTop="spacing.3">
             Shares same props as <Link href="/?path=/docs/components-badge--badge">Badge</Link>
           </Text>
@@ -79,7 +79,7 @@ const ActionListDocs = (): React.ReactElement => {
         </BaseBox>
       </BaseBox>
       <BaseBox as="section" id="actionlistsection">
-        <Title size="medium">ActionListSection</Title>
+        <Heading size="xlarge">ActionListSection</Heading>
         <VerticalSandbox minHeight="250px" code={ActionListSection} />
         <ArgsTable data={actionListPropsTables.ActionListSection} />
       </BaseBox>

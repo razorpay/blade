@@ -12,7 +12,7 @@ import {
   CardHeaderTrailing,
 } from '~components/Card';
 import { Box } from '~components/Box';
-import { Code, Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import { Amount } from '~components/Amount';
 import { Button } from '~components/Button';
 import { Alert } from '~components/Alert';
@@ -36,7 +36,7 @@ const Page = (): React.ReactElement => {
       componentName="Skeleton"
       componentDescription="Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view."
     >
-      <Title>Usage</Title>
+      <Heading size="large">Usage</Heading>{' '}
       <Sandbox>
         {`
         import { Skeleton } from '@razorpay/blade/components';

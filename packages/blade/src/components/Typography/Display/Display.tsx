@@ -18,6 +18,7 @@ export type DisplayProps = {
    */
   color?: BaseTextProps['color'];
   size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge'>;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
   contrast?: ColorContrastTypes;
   type?: TextTypes;
   children: React.ReactNode;
@@ -31,38 +32,41 @@ const getProps = ({
   size,
   type,
   contrast,
+  weight,
   color,
   testID,
-}: Pick<DisplayProps, 'as' | 'size' | 'type' | 'color' | 'contrast' | 'testID'>): Omit<
+}: Pick<DisplayProps, 'as' | 'size' | 'type' | 'color' | 'contrast' | 'weight' | 'testID'>): Omit<
   BaseTextProps,
   'children'
 > => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
   const colorContrast: keyof ColorContrast = contrast ? `${contrast}Contrast` : 'lowContrast';
+  const letterSpacing = weight === 'medium' || weight === 'regular' ? 50 : 100;
   const props: Omit<BaseTextProps, 'children'> = {
     color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
-    fontSize: 1100,
-    fontWeight: 'bold',
+    fontSize: 800,
+    fontWeight: weight,
     fontStyle: 'normal',
-    lineHeight: 900,
-    fontFamily: 'text',
+    lineHeight: 800,
+    fontFamily: 'heading',
     accessibilityProps: isPlatformWeb ? {} : { role: 'heading' },
     componentName: 'display',
     testID,
+    letterSpacing,
   };
 
   if (size === 'small') {
-    props.fontSize = 1100;
-    props.lineHeight = 900;
+    props.fontSize = 800;
+    props.lineHeight = 800;
   } else if (size === 'medium') {
-    props.fontSize = 1200;
-    props.lineHeight = 1000;
+    props.fontSize = 900;
+    props.lineHeight = 900;
   } else if (size === 'large') {
-    props.fontSize = 1300;
-    props.lineHeight = 1100;
+    props.fontSize = 1000;
+    props.lineHeight = 1000;
   } else if (size === 'xlarge') {
-    props.fontSize = 1600;
-    props.lineHeight = 1500;
+    props.fontSize = 1100;
+    props.lineHeight = 1100;
   }
 
   props.as = isPlatformWeb ? 'h1' : undefined;
@@ -76,6 +80,7 @@ export const Display = ({
   size = 'small',
   type = 'normal',
   contrast = 'low',
+  weight = 'semibold',
   color,
   children,
   testID,
@@ -85,7 +90,7 @@ export const Display = ({
 }: DisplayProps): ReactElement => {
   useValidateAsProp({ componentName: 'Display', as, validAsValues });
 
-  const props = getProps({ as, size, type, contrast, color, testID });
+  const props = getProps({ as, size, type, contrast, color, weight, testID });
 
   return (
     <BaseText

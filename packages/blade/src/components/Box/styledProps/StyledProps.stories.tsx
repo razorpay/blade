@@ -4,7 +4,7 @@ import { getStyledPropsArgTypes } from '../BaseBox/storybookArgTypes';
 import type { BoxProps } from '..';
 import { Box } from '..';
 import type { StyledPropsBlade as StyledPropsType } from './getStyledProps';
-import { Text, Title } from '~components/Typography';
+import { Text, Heading } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Link } from '~components/Link';
 import { Button } from '~components/Button';
@@ -34,7 +34,7 @@ const BoxStoryMeta = {
             marginBottom="spacing.8"
           />
           <Box paddingBottom="spacing.8">
-            <Title size="medium">Layout Primitives Documentation</Title>
+            <Heading size="xlarge">Layout Primitives Documentation</Heading>
             <Text marginTop="spacing.3">
               Check Out{' '}
               <Link href="/?path=/docs/components-layout-primitives-box-how-to-create-layouts--page#styled-props">

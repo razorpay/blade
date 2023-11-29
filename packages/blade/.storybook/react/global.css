@@ -2,3 +2,14 @@
   /* Need this to ensure mdx stories don't break visually */
   box-sizing: border-box;
 }
+
+.sbdocs-h1,
+.sbdocs-h2,
+.sbdocs-h3,
+.sbdocs-h4,
+.sbdocs-h5,
+.sbdocs-h6 {
+  font-family: 'Tasa Orbiter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto,
+    Helvetica Neue, sans-serif !important;
+  font-weight: 600 !important;
+}

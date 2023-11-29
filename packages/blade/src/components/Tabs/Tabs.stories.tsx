@@ -6,7 +6,7 @@ import StoryRouter from 'storybook-react-router';
 import { Route, useHistory } from 'react-router-dom';
 import type { TabItemProps, TabsProps } from './types';
 import { Tabs, TabItem, TabList, TabPanel } from './';
-import { Code, Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import {
   ExternalLinkIcon,
@@ -46,7 +46,7 @@ const Page = (): React.ReactElement => {
           'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=19064%3A77449&mode=dev',
       }}
     >
-      <Title>Usage</Title>
+      <Heading size="large">Usage</Heading>{' '}
       <Sandbox editorHeight={500}>
         {`
         import {

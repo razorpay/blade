@@ -12,11 +12,11 @@ import { paymentTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Link } from '~components/Link';
 import type { HeadingProps } from '~components/Typography';
-import { Title, Text, Heading } from '~components/Typography';
+import { Display, Text, Heading } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { AnnouncementIcon } from '~components/Icons';
 
-const Subtitle = (props: HeadingProps<{ variant: 'regular' }>): React.ReactElement => {
+const Subtitle = (props: HeadingProps): React.ReactElement => {
   return <Heading type="subtle" size="large" weight="regular" as="span" {...props} />;
 };
 
@@ -101,9 +101,9 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
   return (
     <BladeProvider themeTokens={paymentTheme}>
       <WithGlobalStyles>
-        <Title size="xlarge" marginBottom="spacing.3">
+        <Display size="small" marginBottom="spacing.3">
           {props.componentName}
-        </Title>
+        </Display>
         <Box marginBottom="spacing.4" paddingLeft="spacing.1">
           <Heading type="subtle" size="large" weight="regular" as="span">
             {props.componentDescription}
@@ -137,7 +137,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         {props.children}
         {props.imports === '' ? null : (
           <>
-            <Title size="large">Imports</Title>
+            <Heading size="xlarge">Imports</Heading>
             <SandboxHighlighter showLineNumbers={false} showTabs={false}>
               {props.imports
                 ? props.imports
@@ -149,7 +149,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         )}
         {showStorybookControls ? (
           <>
-            <Title size="large">Example</Title>
+            <Heading size="xlarge">Example</Heading>
             <Subtitle size="medium" marginY="spacing.4">
               {`This is the default ${props.componentName}. You can change the properties using the controls below.`}
             </Subtitle>
@@ -157,7 +157,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             {showArgsTable ? (
               <>
                 <BaseBox id="properties-ref">
-                  <Title size="large">Properties</Title>
+                  <Heading size="xlarge">Properties</Heading>
                   {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (
                     <Text marginY="spacing.5">
                       Check out{' '}

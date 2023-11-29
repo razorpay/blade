@@ -56,6 +56,7 @@ export type BaseTextProps = {
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
+  letterSpacing?: keyof Theme['typography']['letterSpacings'];
   /**
    * Web only
    */
@@ -83,10 +84,11 @@ export type StyledBaseTextProps = Pick<
   | 'fontStyle'
   | 'textDecorationLine'
   | 'lineHeight'
+  | 'letterSpacing'
   | 'as'
   | 'textAlign'
   | 'numberOfLines'
   | 'truncateAfterLines'
 > & { theme: Theme };
 
-export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
