@@ -22,7 +22,6 @@ import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useDidUpdate } from '~utils/useDidUpdate';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
 type ControlsProp = Required<
@@ -244,6 +243,7 @@ const Carousel = ({
   const [startEndMargin, setStartEndMargin] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isMobile = platform === 'onMobile';
+  const [isTouchDown, setIsTouchDown] = React.useState(false);
   const id = useId('carousel');
 
   useVerifyAllowedChildren({
@@ -404,6 +404,10 @@ const Carousel = ({
       const goTo = Math.ceil(slideIndex / _visibleItems);
       setActiveIndicator(goTo);
       setActiveSlide(goTo);
+      // We don't want to trigger onChange when the user is actively dragging on the carousel
+      if (!isTouchDown) {
+        onChange?.(goTo);
+      }
     }, 50);
 
     carouselContainer.addEventListener('scroll', handleScroll);
@@ -411,7 +415,31 @@ const Carousel = ({
     return () => {
       carouselContainer?.removeEventListener('scroll', handleScroll);
     };
-  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing]);
+  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing, onChange, isTouchDown]);
+
+  // Keep track of touch events
+  React.useEffect(() => {
+    const onTouchStart = () => {
+      setIsTouchDown(true);
+    };
+
+    const onTouchEnd = () => {
+      setIsTouchDown(false);
+    };
+
+    const carouselContainer = containerRef.current;
+    if (!carouselContainer) return;
+
+    carouselContainer.addEventListener('touchstart', onTouchStart);
+    carouselContainer.addEventListener('touchend', onTouchEnd);
+    carouselContainer.addEventListener('touchcancel', onTouchEnd);
+
+    return () => {
+      carouselContainer?.removeEventListener('touchstart', onTouchStart);
+      carouselContainer?.removeEventListener('touchend', onTouchEnd);
+      carouselContainer?.removeEventListener('touchcancel', onTouchEnd);
+    };
+  }, []);
 
   // auto play
   useInterval(
@@ -448,10 +476,6 @@ const Carousel = ({
     activeSlide,
     shouldAddStartEndSpacing,
   ]);
-
-  useDidUpdate(() => {
-    onChange?.(activeSlide);
-  }, [activeSlide, onChange]);
 
   return (
     <CarouselContext.Provider value={carouselContext}>
