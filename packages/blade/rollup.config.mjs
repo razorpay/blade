@@ -79,19 +79,33 @@ const aliases = pluginAlias({
   ],
 });
 
-// - lib
-//   - web
-//    - production
-//    - development
-//   - native
-//    - production
-//    - development
+/*
+Build structure: 
+
+  - build
+    - lib
+      - web
+        - production
+        - development
+      - native
+        - production
+        - development
+    - types
+      - components
+      - tokens
+      - utils
+*/
 const getWebConfig = (inputs) => {
   const platform = 'web';
   const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
   return {
     input: inputs,
+    // Since we individually bundle each export category (components, tokens, utils)
+    // it is possible that some function of `utils` is used in `components` but
+    // rollup will have no idea about it and tree shake it away.
+    // So we disable tree shaking, this should not cause any issues since consumers will do their own tree shaking.
+    treeshake: false,
     output: [
       {
         dir: `${outputRootDirectory}/${libDirectory}/${platform}/${mode}`,
