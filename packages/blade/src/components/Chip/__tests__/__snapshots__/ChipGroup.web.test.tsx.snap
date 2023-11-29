@@ -299,7 +299,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
     data-blade-component="base-box"
   >
     <div
-      aria-labelledby="chip-group-104-label"
+      aria-labelledby="chip-group-180-label"
       class="c0"
       data-blade-component="chip-group"
       role="group"

@@ -475,7 +475,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
     data-blade-component="base-box"
   >
     <div
-      aria-labelledby="radio-group-10-label"
+      aria-labelledby="radio-group-13-label"
       class="c0"
       data-blade-component="radio-group"
       role="radiogroup"
