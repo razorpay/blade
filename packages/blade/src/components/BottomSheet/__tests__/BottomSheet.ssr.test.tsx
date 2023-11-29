@@ -6,6 +6,7 @@ import { Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Counter } from '~components/Counter';
 import { Button } from '~components/Button';
+jest.useFakeTimers();
 
 describe('<BottomSheet />', () => {
   it('should render a BottomSheet ssr', () => {
