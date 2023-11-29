@@ -5,7 +5,6 @@ import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { size } from '~tokens/global';
-import { isReactNative } from '~utils';
 
 const MAX_WIDTH = size[584];
 
@@ -15,9 +14,6 @@ export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject
   const feedbackColors = theme.colors.feedback;
 
   return {
-    ...(!isReactNative() && {
-      all: 'unset',
-    }),
     background: feedbackColors.background[color][contrastType],
     padding: isFullWidth
       ? `${makeSpace(theme.spacing[4])} ${makeSpace(theme.spacing[5])}`

@@ -10,7 +10,6 @@ import { makeMotionTime } from '~utils/makeMotionTime';
 
 const StyledBottomSheetBackdrop = styled(BaseBox)<{ isOpen: boolean }>(({ theme, isOpen }) => {
   return {
-    all: 'unset',
     transitionDuration: `${makeMotionTime(theme.motion.duration.moderate)}`,
     transitionTimingFunction: isOpen
       ? castWebType(theme.motion.easing.entrance.revealing)

@@ -12,7 +12,6 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
   const { theme, isExpanded } = props;
   const commonStyles = getCommonAccordionButtonStyles(props);
   return {
-    all: 'unset',
     ...commonStyles,
     backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: false }),
     transitionProperty: 'background-color, box-shadow, border-radius, color',

@@ -5,7 +5,6 @@ import BaseBox from '~components/Box/BaseBox';
 
 const StyledActionListItem = styled(BaseBox)<StyledActionListItemProps>((props) => {
   return {
-    all: 'unset',
     ...getBaseActionListItemStyles(props),
     // fixes bug in web where the if rendered as a link it's messing the styles
     display: props.isVisible ? 'block' : 'none',

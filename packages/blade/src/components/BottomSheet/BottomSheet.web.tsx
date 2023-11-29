@@ -40,7 +40,6 @@ const BottomSheetSurface = styled.div<{
   isDragging: boolean;
 }>(({ theme, windowHeight, isDragging }) => {
   return {
-    all: 'unset',
     background: theme.colors.surface.background.level2.lowContrast,
     borderTopLeftRadius: makeSize(size[16]),
     borderTopRightRadius: makeSize(size[16]),

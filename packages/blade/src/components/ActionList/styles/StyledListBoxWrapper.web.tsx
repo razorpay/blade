@@ -8,7 +8,6 @@ const StyledListBoxWrapper = styled(BaseBox)<
   Partial<SectionListProps<any, any>> & { isInBottomSheet: boolean }
 >((props) => {
   return {
-    all: 'unset',
     // Hides the last Divider (we don't want divider on last section)
     [`& [role=group]:last-child > [role=separator]:last-child`]: {
       display: 'none',

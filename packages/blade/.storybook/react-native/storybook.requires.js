@@ -100,7 +100,6 @@ const getStories = () => {
     './src/components/SkipNav/SkipNav.stories.tsx': require('../../src/components/SkipNav/SkipNav.stories.tsx'),
     './src/components/Spinner/BaseSpinner/BaseSpinner.stories.tsx': require('../../src/components/Spinner/BaseSpinner/BaseSpinner.stories.tsx'),
     './src/components/Spinner/Spinner/Spinner.stories.tsx': require('../../src/components/Spinner/Spinner/Spinner.stories.tsx'),
-    './src/components/SpotlightPopoverTour/Tour.stories.tsx': require('../../src/components/SpotlightPopoverTour/Tour.stories.tsx'),
     './src/components/Switch/Switch.stories.tsx': require('../../src/components/Switch/Switch.stories.tsx'),
     './src/components/Table/docs/Table.stories.tsx': require('../../src/components/Table/docs/Table.stories.tsx'),
     './src/components/Table/docs/TableExamples.stories.tsx': require('../../src/components/Table/docs/TableExamples.stories.tsx'),
