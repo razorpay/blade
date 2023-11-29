@@ -3,13 +3,13 @@
   box-sizing: border-box;
 }
 
-body h1,
-body h2,
-h3,
-h4,
-h5,
-h6 {
+.sbdocs-h1,
+.sbdocs-h2,
+.sbdocs-h3,
+.sbdocs-h4,
+.sbdocs-h5,
+.sbdocs-h6 {
   font-family: 'Tasa Orbiter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto,
     Helvetica Neue, sans-serif !important;
-  font-weight: 600;
+  font-weight: 600 !important;
 }
