@@ -132,7 +132,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
       {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
     >
       {isChildrenString ? (
-        <Text size="medium" weight="bold">
+        <Text size="medium" weight="semibold">
           {children}
         </Text>
       ) : (

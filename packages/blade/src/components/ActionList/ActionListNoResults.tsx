@@ -12,7 +12,7 @@ const ActionListNoResults = (): React.ReactElement => {
       padding="spacing.5"
     >
       <SearchIcon size="xlarge" color="surface.text.normal.lowContrast" />
-      <Text marginTop="spacing.5" weight="bold">
+      <Text marginTop="spacing.5" weight="semibold">
         No Search Result Found
       </Text>
       <Text marginTop="spacing.3" size="small" type="subtle">
