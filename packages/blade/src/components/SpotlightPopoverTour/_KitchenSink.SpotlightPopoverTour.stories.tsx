@@ -1,11 +1,11 @@
 import { composeStories } from '@storybook/react';
-import * as tourStories from './Tour.stories';
+import * as tourStories from './docs/Tour.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 
 const allStories = Object.values(composeStories(tourStories));
 
-export const Tour = (): JSX.Element => {
+export const SpotlightPopoverTour = (): JSX.Element => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
       {allStories.map((Story) => {
@@ -21,8 +21,8 @@ export const Tour = (): JSX.Element => {
 };
 
 export default {
-  title: 'Components/KitchenSink/Tour',
-  component: Tour,
+  title: 'Components/KitchenSink/SpotlightPopoverTour',
+  component: SpotlightPopoverTour,
   parameters: {
     // enable Chromatic's snapshotting only for kitchensink
     chromatic: { disableSnapshot: false },

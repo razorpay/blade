@@ -13,3 +13,8 @@
     Helvetica Neue, sans-serif !important;
   font-weight: 600 !important;
 }
+
+body {
+  width: 100%;
+  height: 100%;
+}
