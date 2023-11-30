@@ -40,67 +40,74 @@ Before you install the package, make sure that you have performed the following 
 
 ## ⬇ Add blade to your application
 
-1. Install blade as a dependency. 
-Blade has a peer dependency on a few libraries, you can skip adding it if you already have it installed in your project.
+1. Install blade as a dependency.
+   Blade has a peer dependency on a few libraries, you can skip adding it if you already have it installed in your project.
 
-  - `styled-components`
+- `styled-components`
   > **Note**
   >
   > Currently, blade only supports styled-components v5 only
-  - `@floating-ui/react`
-   ```shell
-   yarn add @razorpay/blade styled-components@5.3.11 @floating-ui/react
-   ```
+- `@floating-ui/react`
+
+```shell
+yarn add @razorpay/blade styled-components@5.3.11 @floating-ui/react
+```
+
 2. Follow [this guide](#-install-fonts) to install the fonts.
 
-3. For **React Native** projects you need to do additional setup for the peer dependencies: 
+3. For **React Native** projects you need to do additional setup for the peer dependencies:
 
-    - react-native-reanimated
-      - Follow [this guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) to install it on Android & iOS which is required by Blade.
-    - react-native-svg
-      - Follow [this guide](https://github.com/react-native-svg/react-native-svg#with-react-native-cli) to install it on Android & iOS which is required by Blade.
-    - react-native-gesture-handler
-      - Follow [this guide](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) to install it, note that you don't need to add `<GestureHandlerRootView style={{ flex: 1 }}>` again on the root because BladeProvider already adds that out of the box.
-    - @gorhom/bottom-sheet
-      - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
-    - @gorhom/portal
-      - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
-    - @floating-ui/react-native
-      - Add this as peer dependency, no need to do additional setup.
+   - react-native-reanimated
+     - Follow [this guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) to install it on Android & iOS which is required by Blade.
+   - react-native-svg
+     - Follow [this guide](https://github.com/react-native-svg/react-native-svg#with-react-native-cli) to install it on Android & iOS which is required by Blade.
+   - react-native-gesture-handler
+     - Follow [this guide](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) to install it, note that you don't need to add `<GestureHandlerRootView style={{ flex: 1 }}>` again on the root because BladeProvider already adds that out of the box.
+   - @gorhom/bottom-sheet
+     - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
+   - @gorhom/portal
+     - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
+   - @floating-ui/react-native
+     - Add this as peer dependency, no need to do additional setup.
 
 ## 🔜 Add blade libraries to your Figma project
 
 Coming Soon
 
-## 🔡 Install Fonts
+## 🔡 Installing Fonts
 
-We are using `Lato` font family which is not a system font so we need to perform some additional steps to download, install and configure it.
+We use 2 fonts. [Tasa Orbiter](https://tasatype.localremote.co/) (for our headings), and [Inter](https://rsms.me/inter/) (for other text elements).
 
 ### Web Projects
 
-For web projects, we can either use Google fonts or self-hosted fonts. Self-hosted fonts have certain benefits that you can find [here](https://fontsource.org/docs/getting-started/introduction)
+To add these fonts to your project, you can import them from blade package in your root entry file.
 
-#### Self-Hosted (Recommended)
+```ts
+// Somewhere in root index.ts or entryBrowser.tsx file
+import '@razorpay/blade/fonts.css';
+```
 
-We recommend using self-hosted fonts. We'll use [Fontsource](https://fontsource.org/) which provides fonts as npm packages.
+While Blade handles setting font-family for its own components, you can set font-family globally as well in your global styles for any custom components or exceptions
 
-- Install `Lato` font
+```ts
+import { createGlobalStyle } from 'styled-components';
 
-  ```shell
-  yarn add @fontsource/lato
-  ```
+const GlobalStyles = createGlobalStyle`
+* { 
+  box-sizing: border-box;
+}
 
-- Import within your app entry file(eg: `App.tsx`, `entryBrowser.tsx` etc.).
-  ```js
-  import '@fontsource/lato/400.css';
-  import '@fontsource/lato/400-italic.css';
-  import '@fontsource/lato/700.css';
-  import '@fontsource/lato/700-italic.css';
-  ```
+body {
+  margin: 0;
+  padding: 0;
+  font-family: ${(props) => props.theme.typography.fonts.family.text}
+}
 
-#### Google Fonts
-
-There are downsides to using Google fonts which can be found [here](https://fontsource.org/docs/getting-started/introduction) but still for some reason if you have some use case where Google fonts makes more sense then you can [click this link](https://fonts.google.com/share?selection.family=Lato:ital,wght@0,400;0,700;1,400;1,700) and follow the instructions there to configure `Lato` for your applications.
+h1, h2, h3, h4, h5, h6 {
+  font-family: ${(props) => props.theme.typography.fonts.family.heading};
+}
+`;
+```
 
 ### React Native Projects
 
@@ -124,7 +131,7 @@ Follow the next steps mentioned below for configuring fonts to work on Android:
 - Rename the font files (**mind the casing and underscores**):
   - ~~`Lato-Regular.ttf`~~ ➡️ `lato_regular.ttf`
   - ~~`Lato-RegularItalic.ttf`~~ ➡️ `lato_regular_italic.ttf`
-  - ~~`Lato-Bold.ttf`~~ ➡️`lato_bold.ttf` 
+  - ~~`Lato-Bold.ttf`~~ ➡️`lato_bold.ttf`
   - ~~`Lato-BoldItalic.ttf`~~ ➡️ `lato_bold_italic.ttf`
 - Create a file `lato.xml` under `/android/app/src/main/res/font/lato.xml` and copy the following contents to it
   ```xml
