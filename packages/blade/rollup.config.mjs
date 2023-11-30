@@ -13,13 +13,6 @@ import pluginReplace from '@rollup/plugin-replace';
 import ts from 'typescript';
 import glob from 'glob';
 
-// lib
-// - components
-// - web
-// types
-// - native
-// - web
-
 const webExtensions = [
   '.web.js',
   '.web.ts',
@@ -82,18 +75,16 @@ const aliases = pluginAlias({
 /*
 Build structure: 
 
-  - build
-    - lib
-      - web
-        - production
-        - development
-      - native
-        - production
-        - development
-    - types
-      - components
-      - tokens
-      - utils
+- build
+  - lib
+    - web
+      - production
+      - development
+    - native
+  - types
+    - components
+    - tokens
+    - utils
 */
 const getWebConfig = (inputs) => {
   const platform = 'web';
