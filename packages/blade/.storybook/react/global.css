@@ -2,3 +2,8 @@
   /* Need this to ensure mdx stories don't break visually */
   box-sizing: border-box;
 }
+
+body {
+  width: 100%;
+  height: 100%;
+}

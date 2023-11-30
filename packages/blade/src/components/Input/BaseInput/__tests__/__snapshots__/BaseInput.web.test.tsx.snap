@@ -673,7 +673,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="name-31-input-32"
+          for="name-49-input-50"
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
@@ -748,7 +748,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           aria-required="false"
           class="c10"
           data-blade-component="styled-base-input"
-          id="name-31-input-32"
+          id="name-49-input-50"
           placeholder="First Last"
           type="text"
           value=""

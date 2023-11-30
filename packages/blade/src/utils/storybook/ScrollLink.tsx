@@ -1,8 +1,16 @@
 import { Link } from '~components/Link';
 
-const ScrollLink = ({ children, href }: { children: string; href: string }): JSX.Element => (
+const ScrollLink = ({
+  children,
+  href,
+  size = 'small',
+}: {
+  children: string;
+  href: string;
+  size?: 'small' | 'medium';
+}): JSX.Element => (
   <Link
-    size="small"
+    size={size}
     variant="button"
     onClick={() => {
       document.querySelector(href)?.scrollIntoView({

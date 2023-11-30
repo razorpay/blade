@@ -1,5 +1,33 @@
 # @razorpay/blade
 
+## 10.19.1
+
+### Patch Changes
+
+- 0d0e72ea: fix(blade): fixed SpotlightPopoverTour bugs
+
+  - Safari body-scroll-lock causing the page to get clipped because storybook doesn't set width/height on body - fixed by setting width/height
+  - Initial delay of opening the mask - fixed by immediately updating the mask size on initial render
+  - Delay of transitioning between steps which occurs because we need to wait for the animation to finish before scrolling otherwise the scroll gets interrupted - fixed by reduced this to 100ms
+
+## 10.19.0
+
+### Minor Changes
+
+- 23a3e111: feat: Add `Table` component
+
+## 10.18.2
+
+### Patch Changes
+
+- 9967cd96: fix: set default breakpoint without computing
+
+## 10.18.1
+
+### Patch Changes
+
+- 77b31aa1: fix(blade): remove extra margin left on carousel
+
 ## 10.18.0
 
 ### Minor Changes

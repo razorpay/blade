@@ -689,7 +689,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="textinput-31-input-32"
+          for="textinput-49-input-50"
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
@@ -781,7 +781,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
           class="c12"
           data-blade-component="styled-base-input"
           enterkeyhint="go"
-          id="textinput-31-input-32"
+          id="textinput-49-input-50"
           inputmode="url"
           placeholder="something"
           prefix="https://"

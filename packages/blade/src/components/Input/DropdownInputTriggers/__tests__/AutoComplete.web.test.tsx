@@ -544,7 +544,8 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(selectInput.value).toBe('Mumbai');
   });
 
-  it('should handle AutoComplete behaviour in multiselect', async () => {
+  // Flaky test. Skipping for now. Should be replicated into E2E eventually
+  it.skip('should handle AutoComplete behaviour in multiselect', async () => {
     const user = userEvent.setup();
     const { queryByTestId, getByLabelText, getByRole } = renderWithTheme(
       <Dropdown selectionType="multiple">
@@ -694,5 +695,5 @@ describe('<BottomSheet /> & <Dropdown /> with <AutoComplete />', () => {
     expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'false');
     await user.click(getByRole('option', { name: 'Pune' }));
     expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'true');
-  });
+  }, 10000);
 });

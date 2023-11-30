@@ -6,12 +6,12 @@
     "build:blade": "cd ../../blade && yarn build",
     "build:app": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "analyze:only": "source-map-explorer 'build/static/js/*.js' --gzip",
-    "analyze": "yarn build:app && yarn analyze:only",
-    "visualize": "npx import-graph-visualizer --entry-points src/index.tsx",
-    "cruise": "npx depcruise src --output-type dot | dot -T svg > dependency-graph.svg"
+    "analyze": "yarn build && yarn analyze:only",
+    "postinstall": "rm -rf node_modules/@razorpay/blade/node_modules"
   },
   "dependencies": {
-    "@razorpay/blade": "/Users/anurag.hazra/Documents/razorpay/projects/blade/packages/blade/razorpay-blade-v10.18.0-2.tgz",
+    "@razorpay/blade": "../../blade",
+    "@fontsource/lato": "^4.5.10",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "react": "18.2.0",
