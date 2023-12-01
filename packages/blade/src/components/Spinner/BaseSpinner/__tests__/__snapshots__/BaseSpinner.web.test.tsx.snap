@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -15,7 +15,7 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -24,8 +24,8 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -76,7 +76,7 @@ exports[`<BaseSpinner /> should render BaseSpinner with default props 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render default color BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -90,7 +90,7 @@ exports[`<BaseSpinner /> should render default color BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -99,8 +99,8 @@ exports[`<BaseSpinner /> should render default color BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -151,7 +151,7 @@ exports[`<BaseSpinner /> should render default color BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -165,7 +165,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -174,8 +174,8 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -226,7 +226,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom label 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -240,12 +240,12 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-top: 8px;
   margin-left: 0px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -254,11 +254,11 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -330,7 +330,7 @@ exports[`<BaseSpinner /> should render high contrast BaseSpinner with bottom lab
 `;
 
 exports[`<BaseSpinner /> should render information color BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -344,7 +344,7 @@ exports[`<BaseSpinner /> should render information color BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -353,8 +353,8 @@ exports[`<BaseSpinner /> should render information color BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -405,7 +405,7 @@ exports[`<BaseSpinner /> should render information color BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -419,7 +419,7 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -428,8 +428,8 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -480,7 +480,7 @@ exports[`<BaseSpinner /> should render large size BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -494,7 +494,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -503,8 +503,8 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -555,7 +555,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -569,12 +569,12 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-top: 0px;
   margin-left: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -583,11 +583,11 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -659,7 +659,7 @@ exports[`<BaseSpinner /> should render low contrast BaseSpinner with right label
 `;
 
 exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -673,7 +673,7 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -682,8 +682,8 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -734,7 +734,7 @@ exports[`<BaseSpinner /> should render medium size BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render negative color BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -748,7 +748,7 @@ exports[`<BaseSpinner /> should render negative color BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -757,8 +757,8 @@ exports[`<BaseSpinner /> should render negative color BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -809,7 +809,7 @@ exports[`<BaseSpinner /> should render negative color BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render neutral color BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -823,7 +823,7 @@ exports[`<BaseSpinner /> should render neutral color BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -832,8 +832,8 @@ exports[`<BaseSpinner /> should render neutral color BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -884,7 +884,7 @@ exports[`<BaseSpinner /> should render neutral color BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render notice color BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -898,7 +898,7 @@ exports[`<BaseSpinner /> should render notice color BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -907,8 +907,8 @@ exports[`<BaseSpinner /> should render notice color BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -959,7 +959,7 @@ exports[`<BaseSpinner /> should render notice color BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render positive color BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -973,7 +973,7 @@ exports[`<BaseSpinner /> should render positive color BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -982,8 +982,8 @@ exports[`<BaseSpinner /> should render positive color BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -1034,7 +1034,7 @@ exports[`<BaseSpinner /> should render positive color BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render white color BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1048,7 +1048,7 @@ exports[`<BaseSpinner /> should render white color BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1057,8 +1057,8 @@ exports[`<BaseSpinner /> should render white color BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>
@@ -1109,7 +1109,7 @@ exports[`<BaseSpinner /> should render white color BaseSpinner 1`] = `
 `;
 
 exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1123,7 +1123,7 @@ exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
   align-items: center;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   padding: 1px;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -1132,8 +1132,8 @@ exports[`<BaseSpinner /> should render xlarge size BaseSpinner 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
-  animation: eoUyJr 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  -webkit-animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
+  animation: eoUyJr-450290765 900ms cubic-bezier(0.5,0,0.3,1.5) infinite;
 }
 
 <div>

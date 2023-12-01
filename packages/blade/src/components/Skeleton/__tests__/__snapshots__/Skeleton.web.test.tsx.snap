@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Skeleton /> should render skeleton 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   height: 50px;
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   opacity: 0;
   background-color: hsla(216,15%,54%,0.18);
-  -webkit-animation-name: lbWRkT,fZZrNN;
-  animation-name: lbWRkT,fZZrNN;
+  -webkit-animation-name: lbWRkT-450290765,fZZrNN-450290765;
+  animation-name: lbWRkT-450290765,fZZrNN-450290765;
   -webkit-animation-duration: 900ms,1200ms;
   animation-duration: 900ms,1200ms;
   -webkit-animation-delay: 0ms,900ms;
@@ -35,24 +35,24 @@ exports[`<Skeleton /> should render skeleton 1`] = `
 `;
 
 exports[`<Skeleton /> should support margin and other layout props 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin: 4px;
   height: 50px;
   width: 100%;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 0;
   background-color: hsla(216,15%,54%,0.18);
-  -webkit-animation-name: lbWRkT,fZZrNN;
-  animation-name: lbWRkT,fZZrNN;
+  -webkit-animation-name: lbWRkT-450290765,fZZrNN-450290765;
+  animation-name: lbWRkT-450290765,fZZrNN-450290765;
   -webkit-animation-duration: 900ms,1200ms;
   animation-duration: 900ms,1200ms;
   -webkit-animation-delay: 0ms,900ms;
