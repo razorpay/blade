@@ -25,12 +25,14 @@ type StoryPageWrapperTypes = {
     paymentTheme: string;
     bankingTheme: string;
   };
+  argTableComponent?: unknown;
   componentDescription: string;
   propsDescription?: string;
   componentName: string;
   children?: React.ReactNode;
   note?: React.ReactChild;
   showStorybookControls?: boolean;
+  showDefaultExample?: boolean;
   showArgsTable?: boolean;
   /**
    * Use this to override default API decision link generated from componentName
@@ -96,7 +98,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
     (componentInfo) => componentInfo.name === props.componentName,
   );
 
-  const { showStorybookControls = true, showArgsTable = true } = props;
+  const { showStorybookControls = true, showArgsTable = true, showDefaultExample = true } = props;
 
   return (
     <BladeProvider themeTokens={paymentTheme}>
@@ -149,11 +151,15 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         )}
         {showStorybookControls ? (
           <>
-            <Title size="large">Example</Title>
-            <Subtitle size="medium" marginY="spacing.4">
-              {`This is the default ${props.componentName}. You can change the properties using the controls below.`}
-            </Subtitle>
-            <Primary />
+            {showDefaultExample ? (
+              <>
+                <Title size="large">Example</Title>
+                <Subtitle size="medium" marginY="spacing.4">
+                  {`This is the default ${props.componentName}. You can change the properties using the controls below.`}
+                </Subtitle>
+                <Primary />
+              </>
+            ) : null}
             {showArgsTable ? (
               <>
                 <BaseBox id="properties-ref">
@@ -184,7 +190,10 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                     </Box>
                   ) : null}
                 </BaseBox>
-                <ArgsTable story={PRIMARY_STORY} />
+                <ArgsTable
+                  story={props.argTableComponent ? undefined : PRIMARY_STORY}
+                  of={props.argTableComponent}
+                />
               </>
             ) : null}
 

@@ -1,33 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Card /> should render a Card with Footer 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   margin-top: auto;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   margin-top: 24px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -46,11 +46,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-top: 24px;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   text-align: left;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -65,14 +65,14 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   margin-left: 16px;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -93,11 +93,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   justify-content: center;
 }
 
-.c19 {
+.c19.c19.c19.c19.c19 {
   margin-left: 16px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -111,7 +111,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   box-sizing: border-box;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -122,17 +122,17 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -145,7 +145,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -158,7 +158,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -171,7 +171,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c18 {
+.c18.c18.c18.c18.c18 {
   color: hsla(218,89%,51%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -185,7 +185,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c21 {
+.c21.c21.c21.c21.c21 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -199,7 +199,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -235,24 +235,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   position: relative;
 }
 
-.c15:hover {
+.c15.c15.c15.c15.c15:hover {
   background-color: hsla(218,89%,51%,0.09);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c15:active {
+.c15.c15.c15.c15.c15:active {
   background-color: hsla(218,89%,51%,0.32);
   border-color: hsla(218,89%,51%,1);
 }
 
-.c15:focus-visible {
+.c15.c15.c15.c15.c15:focus-visible {
   background-color: hsla(218,89%,51%,0.18);
   border-color: hsla(218,89%,51%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c15 * {
+.c15.c15.c15.c15.c15 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -261,7 +261,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c20 {
+.c20.c20.c20.c20.c20 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -297,24 +297,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   position: relative;
 }
 
-.c20:hover {
+.c20.c20.c20.c20.c20:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c20:active {
+.c20.c20.c20.c20.c20:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c20:focus-visible {
+.c20.c20.c20.c20.c20:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c20 * {
+.c20.c20.c20.c20.c20 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -323,11 +323,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c17 {
+.c17.c17.c17.c17.c17 {
   opacity: 1;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -337,31 +337,31 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c7 {
+  .c7.c7.c7.c7.c7 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c7 {
+  .c7.c7.c7.c7.c7 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c7 {
+  .c7.c7.c7.c7.c7 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c7 {
+  .c7.c7.c7.c7.c7 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c7 {
+  .c7.c7.c7.c7.c7 {
     border-style: solid;
   }
 }
@@ -484,23 +484,23 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 `;
 
 exports[`<Card /> should render a Card with Header 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   margin-bottom: 24px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -515,7 +515,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   margin-bottom: 24px;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -528,7 +528,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   flex-direction: row;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -539,11 +539,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
   margin-right: 8px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   margin-right: 16px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -560,22 +560,22 @@ exports[`<Card /> should render a Card with Header 1`] = `
   align-items: center;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   margin-left: 8px;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -598,24 +598,24 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding-left: 8px;
 }
 
-.c18 {
+.c18.c18.c18.c18.c18 {
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
 }
 
-.c19 {
+.c19.c19.c19.c19.c19 {
   text-align: left;
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c22 {
+.c22.c22.c22.c22.c22 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -629,7 +629,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   box-sizing: border-box;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -640,17 +640,17 @@ exports[`<Card /> should render a Card with Header 1`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c20 {
+.c20.c20.c20.c20.c20 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -665,7 +665,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   width: fit-content;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -678,7 +678,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding: 0;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -697,7 +697,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c17 {
+.c17.c17.c17.c17.c17 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -711,7 +711,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding: 0;
 }
 
-.c21 {
+.c21.c21.c21.c21.c21 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -729,7 +729,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c24 {
+.c24.c24.c24.c24.c24 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -742,7 +742,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   padding: 0;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   background-color: hsla(216,15%,54%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -758,7 +758,7 @@ exports[`<Card /> should render a Card with Header 1`] = `
   width: fit-content;
 }
 
-.c23 {
+.c23.c23.c23.c23.c23 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -768,31 +768,31 @@ exports[`<Card /> should render a Card with Header 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c22 {
+  .c22.c22.c22.c22.c22 {
     border-style: solid;
   }
 }
@@ -950,19 +950,19 @@ exports[`<Card /> should render a Card with Header 1`] = `
 `;
 
 exports[`<Card /> should render a Card without 0 padding 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 0px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -976,7 +976,7 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   box-sizing: border-box;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -987,12 +987,12 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
@@ -1019,19 +1019,19 @@ exports[`<Card /> should render a Card without 0 padding 1`] = `
 `;
 
 exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: none;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1048,7 +1048,7 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   box-sizing: border-box;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -1059,12 +1059,12 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
@@ -1091,19 +1091,19 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
 `;
 
 exports[`<Card /> should render a plain Card 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1117,7 +1117,7 @@ exports[`<Card /> should render a plain Card 1`] = `
   box-sizing: border-box;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -1128,12 +1128,12 @@ exports[`<Card /> should render a plain Card 1`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
