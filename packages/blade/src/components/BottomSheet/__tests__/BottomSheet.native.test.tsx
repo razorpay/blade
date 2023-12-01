@@ -6,6 +6,7 @@ import { Counter } from '../../Counter';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
+jest.useFakeTimers();
 
 describe('<BottomSheet />', () => {
   test('should render Header/Footer/Body properly', () => {

@@ -14,13 +14,16 @@ import { useScrollLock } from '~utils/useScrollLock';
  * This is used to delay the active step change to allow for transitions to finish
  * This prevents the popover's footer from changing it's JSX while it's transitioning
  */
-function useDelayedState<T>(initialState: T, delay: number): T {
-  const [delayedState, setDelayedState] = React.useState(initialState);
+function useDelayedState<T>(
+  initialState: T,
+  delay: number,
+): [T, React.Dispatch<React.SetStateAction<T>>] {
+  const [delayedState, _setDelayedState] = React.useState(initialState);
   const timeoutRef = React.useRef<number | undefined>(undefined);
 
   React.useEffect(() => {
     timeoutRef.current = window.setTimeout(() => {
-      setDelayedState(initialState);
+      _setDelayedState(initialState);
     }, delay);
 
     return () => {
@@ -28,7 +31,12 @@ function useDelayedState<T>(initialState: T, delay: number): T {
     };
   }, [delay, initialState]);
 
-  return delayedState;
+  const setDelayedState = React.useCallback((newState: React.SetStateAction<T>) => {
+    _setDelayedState(newState);
+    window.clearTimeout(timeoutRef.current);
+  }, []);
+
+  return [delayedState, setDelayedState];
 }
 
 /**

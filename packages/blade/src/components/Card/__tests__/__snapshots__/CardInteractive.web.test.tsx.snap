@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Card /> should render a clickable Card 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -27,7 +27,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
   box-sizing: border-box;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   all: unset;
   cursor: pointer;
   -webkit-appearance: none;
@@ -38,7 +38,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
   position: static;
 }
 
-.c4:before {
+.c4.c4.c4.c4.c4:before {
   content: '';
   cursor: inherit;
   display: block;
@@ -50,7 +50,7 @@ exports[`<Card /> should render a clickable Card 1`] = `
   height: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -61,12 +61,12 @@ exports[`<Card /> should render a clickable Card 1`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
@@ -98,19 +98,19 @@ exports[`<Card /> should render a clickable Card 1`] = `
 `;
 
 exports[`<Card /> should render a linkable Card 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -124,7 +124,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
   box-sizing: border-box;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   all: unset;
   cursor: pointer;
   -webkit-appearance: none;
@@ -135,7 +135,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
   position: static;
 }
 
-.c4:before {
+.c4.c4.c4.c4.c4:before {
   content: '';
   cursor: inherit;
   display: block;
@@ -147,7 +147,7 @@ exports[`<Card /> should render a linkable Card 1`] = `
   height: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -158,12 +158,12 @@ exports[`<Card /> should render a linkable Card 1`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
@@ -197,19 +197,19 @@ exports[`<Card /> should render a linkable Card 1`] = `
 `;
 
 exports[`<Card /> should render a linkable Card with onClick 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -223,7 +223,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
   box-sizing: border-box;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   all: unset;
   cursor: pointer;
   -webkit-appearance: none;
@@ -234,7 +234,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
   position: static;
 }
 
-.c4:before {
+.c4.c4.c4.c4.c4:before {
   content: '';
   cursor: inherit;
   display: block;
@@ -246,7 +246,7 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
   height: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px transparent;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -257,12 +257,12 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
@@ -296,19 +296,19 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 `;
 
 exports[`<Card /> should render an interactive Card 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   border-radius: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
   border-radius: 4px;
   box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -322,7 +322,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
   box-sizing: border-box;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   all: unset;
   cursor: pointer;
   -webkit-appearance: none;
@@ -333,7 +333,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
   position: static;
 }
 
-.c4:before {
+.c4.c4.c4.c4.c4:before {
   content: '';
   cursor: inherit;
   display: block;
@@ -345,7 +345,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
   height: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   box-shadow: 0px 0px 0px 2px hsla(218,89%,51%,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -356,18 +356,18 @@ exports[`<Card /> should render an interactive Card 1`] = `
   transition-property: transform,box-shadow;
 }
 
-.c1:hover {
+.c1.c1.c1.c1.c1:hover {
   -webkit-transform: scale(1.05);
   -ms-transform: scale(1.05);
   transform: scale(1.05);
 }
 
-.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 a[href]:not(a[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }
 
-.c1 button:not(button[data-blade-component="card-link-overlay"]) {
+.c1.c1.c1.c1.c1 button:not(button[data-blade-component="card-link-overlay"]) {
   z-index: 2;
   position: relative;
 }

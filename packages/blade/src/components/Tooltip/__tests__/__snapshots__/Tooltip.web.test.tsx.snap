@@ -11,7 +11,7 @@ exports[`<Tooltip /> should not override trigger's aria-label attribute 1`] = `
 `;
 
 exports[`<Tooltip /> should render 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -32,12 +32,12 @@ exports[`<Tooltip /> should render 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   z-index: 1100;
   pointer-events: none;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   position: relative;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -46,7 +46,7 @@ exports[`<Tooltip /> should render 1`] = `
   max-width: 200px;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   background-color: hsla(216,33%,29%,1);
   border-width: 1px;
   border-radius: 4px;
@@ -59,7 +59,7 @@ exports[`<Tooltip /> should render 1`] = `
   transform: translateY(4px);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -73,7 +73,7 @@ exports[`<Tooltip /> should render 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -86,7 +86,7 @@ exports[`<Tooltip /> should render 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -122,24 +122,24 @@ exports[`<Tooltip /> should render 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -148,36 +148,36 @@ exports[`<Tooltip /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
 @media screen and (min-width:320px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
@@ -264,7 +264,7 @@ exports[`<Tooltip /> should render 1`] = `
 `;
 
 exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -285,12 +285,12 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   z-index: 9999;
   pointer-events: none;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   position: relative;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -299,7 +299,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   max-width: 200px;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   background-color: hsla(216,33%,29%,1);
   border-width: 1px;
   border-radius: 4px;
@@ -312,7 +312,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   transform: translateY(4px);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -326,7 +326,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -339,7 +339,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -375,24 +375,24 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -401,36 +401,36 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
 @media screen and (min-width:320px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
@@ -517,7 +517,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 `;
 
 exports[`<Tooltip /> should render with title 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -538,12 +538,12 @@ exports[`<Tooltip /> should render with title 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   z-index: 1100;
   pointer-events: none;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   position: relative;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -552,7 +552,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   max-width: 200px;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   background-color: hsla(216,33%,29%,1);
   border-width: 1px;
   border-radius: 4px;
@@ -565,7 +565,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   transform: translateY(4px);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -579,7 +579,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -592,7 +592,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   padding: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -605,7 +605,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -641,24 +641,24 @@ exports[`<Tooltip /> should render with title 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -667,36 +667,36 @@ exports[`<Tooltip /> should render with title 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
 @media screen and (min-width:320px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     pointer-events: none;
   }
 }

@@ -15,7 +15,7 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -43,7 +43,7 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         display: block;
       }
 
