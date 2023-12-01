@@ -56,6 +56,7 @@ export type BaseTextProps = {
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
   /**
    * Web only
    */
@@ -87,6 +88,7 @@ export type StyledBaseTextProps = Pick<
   | 'textAlign'
   | 'numberOfLines'
   | 'truncateAfterLines'
+  | 'wordBreak'
 > & { theme: Theme };
 
 export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';

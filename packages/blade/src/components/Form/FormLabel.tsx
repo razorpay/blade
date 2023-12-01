@@ -112,6 +112,7 @@ const FormLabel = ({
         size={isLabelLeftPositioned ? 'medium' : 'small'}
         truncateAfterLines={2}
         weight="bold"
+        wordBreak={isLabelLeftPositioned ? 'break-word' : undefined}
       >
         {children}
       </Text>
