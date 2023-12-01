@@ -6,8 +6,7 @@
   "ui": "dist/ui.html",
   "editorType": ["figma"],
   "menu": [
-    { "name": "Publish Global Color Tokens", "command": "globalColorTokens" },
-    { "name": "Publish Theme Color Tokens", "command": "themeColorTokens" },
+    { "name": "Publish Color Tokens", "command": "colorTokens" },
     { "name": "Generate Token's Dev Names", "command": "devTokenNames" }
   ]
 }

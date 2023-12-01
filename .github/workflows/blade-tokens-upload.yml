@@ -6,14 +6,10 @@ on:
       tokens:
         description: 'Token Object'
         required: true
-      tokenType:
-        description: 'Token type: theme or global'
-        required: true
 
 env:
   GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
   TOKEN_DATA: ${{ github.event.inputs.tokens }}
-  TOKEN_TYPE: ${{ github.event.inputs.tokenType }}
 
 jobs:
   token-upload:
@@ -32,6 +28,6 @@ jobs:
         uses: ./.github/actions/install-dependencies
       - name: Upload Tokens
         working-directory: packages/blade
-        run: node ./scripts/uploadTokens.js '${{ env.TOKEN_DATA }}' '${{ env.TOKEN_TYPE }}'
+        run: node ./scripts/uploadTokens.js '${{ env.TOKEN_DATA }}'
         env: 
           GITHUB_TOKEN: ${{ secrets.CI_BOT_TOKEN }}

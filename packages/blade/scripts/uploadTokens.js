@@ -10,16 +10,21 @@ const uploadColorTokens = async () => {
   try {
     // 1. read the tokens object
     const colorTokens = JSON.parse(process.argv[2]);
-    const tokenType = process.argv[3];
 
-    if (tokenType === 'themeColorTokens') {
+    if (
+      Object.keys(colorTokens?.themeColorTokens?.onLight).length &&
+      Object.keys(colorTokens?.themeColorTokens?.onDark).length
+    ) {
       const themeColorTokensRegex = /const colors: ColorsWithModes = {(.|\n)+?};/gm;
       // 2. read the bladeTheme File
       const bladeThemePath = path.resolve(__dirname, '../src/tokens/theme/bladeTheme.ts');
       const bladeTheme = fs.readFileSync(bladeThemePath, 'utf8');
 
       // 3. write the new tokens to bladeTheme file
-      const updatedbladeThemeColors = JSON.stringify(colorTokens).replace(/"/g, '');
+      const updatedbladeThemeColors = JSON.stringify(colorTokens.themeColorTokens).replace(
+        /"/g,
+        '',
+      );
       const updatedbladeTheme = bladeTheme.replace(
         themeColorTokensRegex,
         `const colors: ColorsWithModes = ${updatedbladeThemeColors};`,
@@ -27,14 +32,19 @@ const uploadColorTokens = async () => {
       fs.writeFileSync(bladeThemePath, updatedbladeTheme);
       // prettify the file
       execa.commandSync('yarn prettier --write src/tokens/theme/bladeTheme.ts');
-    } else if (tokenType === 'globalColorTokens') {
+    }
+
+    if (Object.keys(colorTokens?.globalColorTokens).length) {
       const globalColorTokensRegex = /export const colors: Color = {(.|\n)+?};/gm;
       // 2. read the bladeTheme File
       const globalColorTokensPath = path.resolve(__dirname, '../src/tokens/global/colors.ts');
       const globalColorTokensFile = fs.readFileSync(globalColorTokensPath, 'utf8');
 
       // 3. write the new tokens to bladeTheme file
-      const updatedGlobalColorTokens = JSON.stringify(colorTokens).replace(/"/g, '');
+      const updatedGlobalColorTokens = JSON.stringify(colorTokens.globalColorTokens).replace(
+        /"/g,
+        '',
+      );
       const updatedGlobalColorTokensFile = globalColorTokensFile.replace(
         globalColorTokensRegex,
         `export const colors: Color = ${updatedGlobalColorTokens};`,

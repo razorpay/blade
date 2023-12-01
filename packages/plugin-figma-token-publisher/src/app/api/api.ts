@@ -3,7 +3,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const GITHUB_BASE_URL = 'https://api.github.com/repos';
 
-export type TokenType = 'themeColorTokens' | 'globalColorTokens';
 type ColorTokens = Record<string, any>;
 
 export const uploadTokens = async ({
@@ -12,24 +11,16 @@ export const uploadTokens = async ({
   workflowFileName,
   personalAccessToken,
   colorTokens,
-  tokenType,
 }: {
   orgName: string;
   repoName: string;
   workflowFileName: string;
   personalAccessToken: string;
   colorTokens: ColorTokens;
-  tokenType?: TokenType;
 }): Promise<void> => {
   const API_URL = `${GITHUB_BASE_URL}/${orgName}/${repoName}/actions/workflows/${workflowFileName}/dispatches`;
 
-  const getFetchOptions = ({
-    colorTokens,
-    tokenType,
-  }: {
-    colorTokens: ColorTokens;
-    tokenType?: TokenType;
-  }) => ({
+  const getFetchOptions = (colorTokens: ColorTokens) => ({
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -40,13 +31,12 @@ export const uploadTokens = async ({
       ref: 'master',
       inputs: {
         tokens: JSON.stringify(colorTokens),
-        tokenType,
       },
     }),
   });
 
   try {
-    const response = await fetch(API_URL, getFetchOptions({ colorTokens, tokenType }));
+    const response = await fetch(API_URL, getFetchOptions(colorTokens));
 
     const isRequestSuccess = response.status === 204;
     if (isRequestSuccess) {
