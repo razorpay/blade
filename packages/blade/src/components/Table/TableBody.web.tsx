@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { Body, Row, Cell } from '@table-library/react-table-library/table';
 import styled from 'styled-components';
-import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { checkboxCellWidth, tableRow } from './tokens';
 import { ComponentIds } from './componentIds';
 import type { TableProps, TableBodyProps, TableRowProps, TableCellProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
