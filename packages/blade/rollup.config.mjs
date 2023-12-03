@@ -11,7 +11,7 @@ import pluginDeclarations from 'rollup-plugin-dts';
 import pluginAlias from '@rollup/plugin-alias';
 import pluginReplace from '@rollup/plugin-replace';
 import ts from 'typescript';
-import glob from 'glob';
+import { glob } from 'glob';
 
 const webExtensions = [
   '.web.js',

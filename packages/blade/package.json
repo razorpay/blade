@@ -1,7 +1,8 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.19.1-6",
+  "version": "10.19.1",
+  "sideEffects": false,
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -113,24 +114,14 @@
     "chromatic": "npx chromatic",
     "publish-npm": "node ./scripts/publishToNpm.js",
     "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
-    "postinstall": "patch-package",
-    "viz": "import-graph-visualizer --entry-points build/components/index.js --ts-config tsconfig.json"
+    "postinstall": "patch-package"
   },
   "dependencies": {
-    "@babel/runtime": "7.20.0",
-    "@floating-ui/react-native": "0.10.1",
-    "@floating-ui/react": "0.25.4",
-    "@types/body-scroll-lock": "3.1.0",
-    "body-scroll-lock": "4.0.0-beta.0",
-    "@use-gesture/react": "10.2.24",
-    "ts-deepmerge": "6.2.0",
     "patch-package": "7.0.0",
-    "react-native-pager-view": "6.2.1",
-    "react-native-tab-view": "3.5.2",
-    "tinycolor2": "1.6.0",
-    "use-presence": "1.1.0",
-    "@emotion/react": "11.11.1",
-    "@table-library/react-table-library": "4.1.7"
+    "@babel/runtime": "7.20.0",
+    "body-scroll-lock": "4.0.0-beta.0",
+    "ts-deepmerge": "6.2.0",
+    "use-presence": "1.1.0"
   },
   "devDependencies": {
     "chromatic": "6.22.0",
@@ -178,7 +169,6 @@
     "@testing-library/react-hooks": "8.0.1",
     "@testing-library/react-native": "12.2.0",
     "@testing-library/user-event": "14.4.3",
-    "@types/body-scroll-lock": "3.1.0",
     "@types/dedent": "0.7.0",
     "@types/jest": "29.5.3",
     "@types/jest-axe": "3.5.5",
@@ -226,8 +216,6 @@
     "react-native-gesture-handler": "2.9.0",
     "react-native-reanimated": "3.4.1",
     "react-native-svg": "12.3.0",
-    "react-native-tab-view": "3.5.2",
-    "react-native-pager-view": "6.2.1",
     "react-scripts": "4.0.3",
     "react-test-renderer": "18.2.0",
     "rollup": "3.28.1",
@@ -241,7 +229,18 @@
     "postinstall-postinstall": "2.1.0",
     "react-native-safe-area-context": "3.4.1",
     "ttypescript": "1.5.15",
-    "typescript-transform-paths": "3.4.6"
+    "typescript": "4.9",
+    "typescript-transform-paths": "3.4.6",
+    "@use-gesture/react": "10.2.24",
+    "@types/body-scroll-lock": "3.1.0",
+    "@floating-ui/react-native": "0.10.1",
+    "@floating-ui/react": "0.25.4",
+    "react-native-pager-view": "6.2.1",
+    "react-native-tab-view": "3.5.2",
+    "tinycolor2": "1.6.0",
+    "@emotion/react": "11.11.1",
+    "@table-library/react-table-library": "4.1.7",
+    "glob": "10.3.10"
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",
@@ -276,6 +275,9 @@
       "optional": true
     },
     "@emotion/react": {
+      "optional": true
+    },
+    "tinycolor2": {
       "optional": true
     }
   },
