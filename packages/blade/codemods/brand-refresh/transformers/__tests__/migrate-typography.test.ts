@@ -47,7 +47,7 @@ it('should remove the "variant" prop from Heading', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Heading weight="semibold" marginTop="spacing.2"> Lorem ipsum </Heading>  
+                <Text weight="semibold" size="small" marginTop="spacing.2"> Lorem ipsum </Text>  
               </>
             );"
   `);
@@ -118,14 +118,121 @@ it('should remove the "type" & "variant" prop with nested components', async () 
                     Lorem ipsum
                 </Display>
             </Display>
-            <Heading size="large" marginTop="120px">
+            <Heading size="medium" marginTop="120px">
                 Lorem ipsum
-                <Heading as="span" size="large" color="brand.secondary.500">
+                <Text size="large" as="span" size="small" color="brand.secondary.500">
                     Lorem ipsum
-                </Heading>
+                </Text>
             </Heading>
           </>
         );"
+  `);
+});
+
+it('should update <Heading size="large|medium"> to <Heading size="medium|small">', async () => {
+  const result = await applyTransform(
+    transformer,
+    `
+        const App = () => (
+          <>
+            <Heading size="large"> Lorem ipsum </Heading>
+            <Heading size="medium"> Lorem ipsum </Heading>
+
+            <Heading size="large"> Lorem ipsum <Heading size="large"> Lorem ipsum </Heading> </Heading>
+            <Heading size="medium"> Lorem ipsum <Heading size="medium"> Lorem ipsum </Heading> </Heading>
+          </>
+        );
+      `,
+    { parser: 'tsx' },
+  );
+
+  expect(result).toMatchInlineSnapshot(`
+    "const App = () => (
+              <>
+                <Heading size="medium"> Lorem ipsum </Heading>
+                <Heading size="small"> Lorem ipsum </Heading>
+
+                <Heading size="medium"> Lorem ipsum <Heading size="small"> Lorem ipsum </Heading> </Heading>
+                <Heading size="small"> Lorem ipsum <Heading size="large"> Lorem ipsum </Heading> </Heading>
+              </>
+            );"
+  `);
+});
+
+it('should update <Heading size="small"> to <Text size="large">', async () => {
+  const result = await applyTransform(
+    transformer,
+    `
+        const App = () => (
+          <>
+            <Heading size="small"> Lorem ipsum </Heading>
+
+            <Heading size="small"> Lorem ipsum <Heading size="small"> Lorem ipsum </Heading> </Heading>
+          </>
+        );
+      `,
+    { parser: 'tsx' },
+  );
+
+  expect(result).toMatchInlineSnapshot(`
+    "const App = () => (
+              <>
+                <Text size="large"> Lorem ipsum </Text>
+
+                <Text size="large"> Lorem ipsum <Text size="medium"> Lorem ipsum </Text> </Text>
+              </>
+            );"
+  `);
+});
+
+it('should update <Heading variant="subheading"> to <Text size="small">', async () => {
+  const result = await applyTransform(
+    transformer,
+    `
+        const App = () => (
+          <>
+            <Heading variant="regular"> Lorem ipsum </Heading>  
+            <Heading variant="subheading"> Lorem ipsum </Heading>
+            <Heading variant="subheading"> Lorem ipsum <Heading variant="subheading"> Lorem ipsum </Heading> </Heading>
+          </>
+        );
+      `,
+    { parser: 'tsx' },
+  );
+
+  expect(result).toMatchInlineSnapshot(`
+    "const App = () => (
+              <>
+                <Text size="small"> Lorem ipsum </Text>
+                <Text size="small"> Lorem ipsum <Text size="large"> Lorem ipsum </Text> </Text>
+              </>
+            );"
+  `);
+});
+
+it('should update <Heading size="small"> to <Text size="large">', async () => {
+  const result = await applyTransform(
+    transformer,
+    `
+        const App = () => (
+          <>
+            <Heading size="small"> Lorem ipsum </Heading>
+
+            <Heading size="small"> Lorem ipsum <Heading size="small"> Lorem ipsum </Heading> </Heading>
+          </>
+        );
+      `,
+    { parser: 'tsx' },
+  );
+
+  expect(result).toMatchInlineSnapshot(`
+    "const App = () => (
+              <>
+                <Text size="large"> Lorem ipsum </Text>
+
+                <Text size="large"> Lorem ipsum <Text size="medium"> Lorem ipsum </Text> </Text>
+              </>
+            );"
   `);
 });
 
@@ -136,12 +243,21 @@ it('should correctly convert Title to Heading component', async () => {
     import { Title, Heading } from '@razorpay/blade/components';
     const App = () => (
       <>
+        <Title> Lorem ipsum </Title>  
         <Title type="body" weight="bold" size="xlarge" > Lorem ipsum </Title>
         <Title type="body" weight="bold" size="large" > Lorem ipsum </Title>
         <Title type="body" weight="bold" size="medium" > Lorem ipsum </Title>
         <Title type="body" weight="bold" size="small" > Lorem ipsum </Title>
         // Conditional expression props should not be changed
         <Title type="body" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title>
+
+        // TODO: fix me when nested
+        <Title type="body" weight="bold" size="xlarge" > Lorem ipsum <Title type="body" weight="bold" size="xlarge" > Lorem ipsum  </Title>  </Title>
+        <Title type="body" weight="bold" size="large" > Lorem ipsum <Title type="body" weight="bold" size="large" > Lorem ipsum </Title> </Title>
+        <Title type="body" weight="bold" size="medium" > Lorem ipsum <Title type="body" weight="bold" size="medium" > Lorem ipsum </Title> </Title>
+        <Title type="body" weight="bold" size="small" > Lorem ipsum <Title type="body" weight="bold" size="small" > Lorem ipsum </Title> </Title>
+        // Conditional expression props should not be changed
+        <Title type="body" weight="bold" size={isMobile ? 'medium' : 'large'} > <Title type="body" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title> Lorem ipsum </Title>
       </>
     );
     `,
@@ -158,6 +274,14 @@ it('should correctly convert Title to Heading component', async () => {
             <Heading weight="semibold" size="large"> Lorem ipsum </Heading>
             // Conditional expression props should not be changed
             <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> Lorem ipsum </Heading>
+
+            // TODO: fix me when nested
+            <Heading weight="semibold" size="2xlarge"> Lorem ipsum <Heading weight="semibold" size="large"> Lorem ipsum  </Heading>  </Heading>
+            <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading> </Heading>
+            <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading> </Heading>
+            <Heading weight="semibold" size="large"> Lorem ipsum <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading> </Heading>
+            // Conditional expression props should not be changed
+            <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> Lorem ipsum </Heading> Lorem ipsum </Heading>
           </>
         );"
   `);

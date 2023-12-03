@@ -13,6 +13,11 @@ const transformer: Transform = (file, api, options) => {
     small: 'large',
   };
 
+  const newHeadingSizeMap = {
+    large: 'medium',
+    medium: 'small',
+  };
+
   // Maps for fontSize, lineHeight, and token prefixes
   const fontSizeMap = {
     600: 500,
@@ -75,6 +80,69 @@ const transformer: Transform = (file, api, options) => {
       ['Text', 'Title', 'Code', 'Display', 'Heading'].includes(path.value.openingElement.name.name),
     );
 
+  // Update <Heading size="large|medium"> to <Heading size="medium|small">,
+  // <Heading size="small"> to <Text size="large">, and
+  // <Heading variant="subheading"> to <Text size="small">
+  // <Heading variant="regular"> to <Heading size="small">
+  typographyJSXElements
+    .filter((path) => path.value.openingElement.name.name === 'Heading')
+    // replace with Heading
+    .replaceWith((path) => {
+      const { node } = path;
+
+      const sizeAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'size',
+      );
+
+      const variantAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'variant',
+      );
+
+      if (
+        !sizeAttribute ||
+        (sizeAttribute && sizeAttribute.value.value === 'small') ||
+        (variantAttribute && variantAttribute.value.value === 'subheading')
+      ) {
+        node.openingElement.name.name = 'Text';
+        node.closingElement.name.name = 'Text';
+      }
+
+      if (!sizeAttribute) {
+        node.openingElement.attributes = [
+          ...node.openingElement.attributes,
+          // build and insert our new prop
+          j.jsxAttribute(j.jsxIdentifier('size'), j.literal('large')),
+        ];
+      }
+
+      return node;
+    })
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name === 'size' || path.node.name.name === 'variant')
+    .replaceWith((path) => {
+      if (isExpression(path.node)) {
+        console.log(
+          'Expression found in size attribute, please update manually:',
+          `${file.path}:${path.node.loc.start.line}`,
+        );
+        return path.node;
+      }
+      const isSizeAttribute = path.node.name.name === 'size';
+
+      if (isSizeAttribute) {
+        if (path.node.value.value === 'small') {
+          path.node.value.value = 'large';
+        } else if (path.node.value.value === 'large' || path.node.value.value === 'medium') {
+          path.node.value.value = newHeadingSizeMap[path.node.value.value];
+        }
+      } else if (path.node.value.value === 'subheading') {
+        path.node.value.value = 'small';
+        path.node.name.name = 'size';
+      }
+
+      return path.node;
+    });
+
   // Replace Title with Heading and update the 'size' attribute
   // <Title size="medium"> to <Heading size="xlarge">
   typographyJSXElements
@@ -91,7 +159,13 @@ const transformer: Transform = (file, api, options) => {
     .find(j.JSXAttribute)
     .filter((path) => path.node.name.name === 'size')
     .replaceWith((path) => {
-      if (isExpression(path.node)) return path.node;
+      if (isExpression(path.node)) {
+        console.log(
+          'Expression found in size attribute, please update manually:',
+          `${file.path}:${path.node.loc.start.line}`,
+        );
+        return path.node;
+      }
 
       path.node.value.value = titleToHeadingMap[path.node.value.value] || 'large';
 
