@@ -3,6 +3,6 @@ import type { FontFamily } from './types';
 
 export const fontFamily: FontFamily = {
   text: 'Inter',
-  heading: 'Tasa Orbiter',
+  heading: 'TASA Orbiter Display',
   code: Platform.OS === 'ios' ? 'Menlo' : 'monospace',
 };

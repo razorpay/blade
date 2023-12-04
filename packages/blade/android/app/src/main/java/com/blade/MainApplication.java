@@ -57,7 +57,7 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     public void onCreate() {
         ReactFontManager.getInstance().addCustomFont(this, "Inter", R.font.inter);
-        ReactFontManager.getInstance().addCustomFont(this, "Tasa Orbiter", R.font.tasa);
+        ReactFontManager.getInstance().addCustomFont(this, "Tasa Orbiter Display", R.font.tasa);
         super.onCreate();
         SoLoader.init(this, /* native exopackage */ false);
         if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {

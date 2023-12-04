@@ -14,27 +14,15 @@
       "sha1": "d48310d2f04c57af1bce0851e053be7b58b25dca"
     },
     {
-      "path": "public/fonts/Lato-Bold.ttf",
-      "sha1": "d67fee08c79a82ce375ab9629ae5a903da8bb321"
-    },
-    {
-      "path": "public/fonts/Lato-Italic.ttf",
-      "sha1": "190187b720ec2f2ff2e4281237e301000e09673f"
-    },
-    {
-      "path": "public/fonts/Lato-Regular.ttf",
-      "sha1": "83dc5921761a7c3d1ee7badba3fc7e1e1f5ed803"
-    },
-    {
-      "path": "public/fonts/TASAOrbiterDisplay-Medium.otf",
+      "path": "public/fonts/TASAOrbiter-Medium.otf",
       "sha1": "8654f4d9102bf662bba51400d0d7b0620f0fe02b"
     },
     {
-      "path": "public/fonts/TASAOrbiterDisplay-Regular.otf",
+      "path": "public/fonts/TASAOrbiter-Regular.otf",
       "sha1": "d0a82c67a1c5f2885eec09d1880ce67ec8e7c477"
     },
     {
-      "path": "public/fonts/TASAOrbiterDisplay-SemiBold.otf",
+      "path": "public/fonts/TASAOrbiter-SemiBold.otf",
       "sha1": "11e3f961d67d495814c3eab7c6ce6712f2ce4da6"
     }
   ]
