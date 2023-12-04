@@ -47,7 +47,7 @@ it('should remove the "variant" prop from Heading', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text weight="semibold" size="small" marginTop="spacing.2"> Lorem ipsum </Text>  
+                <Text weight="semibold" size="small" marginTop="spacing.2" size="medium"> Lorem ipsum </Text>  
               </>
             );"
   `);
@@ -75,7 +75,7 @@ it('should remove the "type" prop and change weight="bold" to weight="semibold"'
     "const App = () => (
                 <>
                     <Text weight="semibold"> Lorem ipsum </Text>
-                    <Heading weight="semibold"> Lorem ipsum </Heading>
+                    <Text weight="semibold" size="medium"> Lorem ipsum </Text>
                     <Heading weight="semibold"> Lorem ipsum </Heading>
                     <Display weight="semibold"> Lorem ipsum </Display>
                     // weight="bold" should not be changed
@@ -203,8 +203,9 @@ it('should update <Heading variant="subheading"> to <Text size="small">', async 
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text size="small"> Lorem ipsum </Text>
-                <Text size="small"> Lorem ipsum <Text size="large"> Lorem ipsum </Text> </Text>
+                <Text variant="regular" size="medium"> Lorem ipsum </Text>  
+                <Text size="small" size="medium"> Lorem ipsum </Text>
+                <Text size="small" size="medium"> Lorem ipsum <Text size="large" size="small"> Lorem ipsum </Text> </Text>
               </>
             );"
   `);
@@ -268,6 +269,7 @@ it('should correctly convert Title to Heading component', async () => {
     "import { Heading } from '@razorpay/blade/components';
         const App = () => (
           <>
+            <Heading> Lorem ipsum </Heading>  
             <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading>
             <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
             <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
@@ -276,10 +278,10 @@ it('should correctly convert Title to Heading component', async () => {
             <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> Lorem ipsum </Heading>
 
             // TODO: fix me when nested
-            <Heading weight="semibold" size="2xlarge"> Lorem ipsum <Heading weight="semibold" size="large"> Lorem ipsum  </Heading>  </Heading>
-            <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading> </Heading>
-            <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading> </Heading>
-            <Heading weight="semibold" size="large"> Lorem ipsum <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading> </Heading>
+            <Heading weight="semibold" size="2xlarge"> Lorem ipsum <Heading weight="semibold" size="2xlarge"> Lorem ipsum  </Heading>  </Heading>
+            <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading> </Heading>
+            <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading> </Heading>
+            <Heading weight="semibold" size="large"> Lorem ipsum <Heading weight="semibold" size="large"> Lorem ipsum </Heading> </Heading>
             // Conditional expression props should not be changed
             <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> Lorem ipsum </Heading> Lorem ipsum </Heading>
           </>

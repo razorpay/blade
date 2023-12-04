@@ -157,7 +157,11 @@ const transformer: Transform = (file, api, options) => {
       return node;
     })
     .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name === 'size')
+    .filter(
+      (path, index, self) =>
+        path.node.name.name === 'size' &&
+        index === self.findIndex((obj) => path.node.start === obj.node.start),
+    ) // Filter by name `type` and remove any duplicates
     .replaceWith((path) => {
       if (isExpression(path.node)) {
         console.log(
