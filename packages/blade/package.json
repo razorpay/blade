@@ -94,6 +94,7 @@
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
     "build:react-native": "cross-env FRAMEWORK=REACT_NATIVE rollup -c",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
+    "build:generate-css-variables": "cross-env GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-android",
     "react-native:storybook:ios": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-ios",

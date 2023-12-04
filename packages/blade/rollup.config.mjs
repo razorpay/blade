@@ -1,6 +1,5 @@
 /* eslint-disable consistent-return */
 /* eslint-disable prefer-template */
-/* eslint-disable import/extensions */
 import fs from 'fs';
 import { fileURLToPath } from 'node:url';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
@@ -51,8 +50,7 @@ const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
 const libDirectory = 'lib';
 const typesDirectory = 'types';
-// const exportCategories = ['components', 'tokens', 'utils'];
-// const themeBundleCategories = ['tokens', 'utils'];
+const themeBundleCategories = ['tokens', 'utils'];
 
 const aliases = pluginAlias({
   entries: [
@@ -211,35 +209,35 @@ const getDeclarationsConfig = ({ exportCategory, isNative }) => {
   };
 };
 
-// const getCSSVariablesConfig = ({ exportCategory }) => ({
-//   input: `src/${exportCategory}/index.ts`,
-//   output: {
-//     file: `${outputRootDirectory}/js-bundle-for-css/${exportCategory}Bundle.js`,
-//     format: 'cjs',
-//   },
-//   plugins: [
-//     pluginPeerDepsExternal(),
-//     pluginResolve({ extensions: webExtensions }),
-//     pluginCommonjs(),
-//     pluginBabel({
-//       exclude: 'node_modules/**',
-//       babelHelpers: 'runtime',
-//       envName: 'production',
-//       extensions: webExtensions,
-//     }),
-//     aliases,
-//   ],
-// });
+const getCSSVariablesConfig = ({ exportCategory }) => ({
+  input: `src/${exportCategory}/index.ts`,
+  output: {
+    file: `${outputRootDirectory}/js-bundle-for-css/${exportCategory}Bundle.js`,
+    format: 'cjs',
+  },
+  plugins: [
+    pluginPeerDepsExternal(),
+    pluginResolve({ extensions: webExtensions }),
+    pluginCommonjs(),
+    pluginBabel({
+      exclude: 'node_modules/**',
+      babelHelpers: 'runtime',
+      envName: 'production',
+      extensions: webExtensions,
+    }),
+    aliases,
+  ],
+});
 
 const config = () => {
   const framework = process.env.FRAMEWORK;
-  // const generateCSSVariables = process.env.GENERATE_CSS_VARIABLES;
+  const generateCSSVariables = process.env.GENERATE_CSS_VARIABLES;
 
-  // if (generateCSSVariables == 'true' && framework === 'REACT') {
-  //   return themeBundleCategories
-  //     .map((exportCategory) => [getCSSVariablesConfig({ exportCategory })])
-  //     .flat();
-  // }
+  if (generateCSSVariables == 'true' && framework === 'REACT') {
+    return themeBundleCategories
+      .map((exportCategory) => [getCSSVariablesConfig({ exportCategory })])
+      .flat();
+  }
 
   const components = glob.sync(`src/components/**/index.ts`);
   const tokens = glob.sync(`src/tokens/index.ts`);
@@ -268,16 +266,7 @@ const config = () => {
       getDeclarationsConfig({ exportCategory: 'tokens', isNative: true }),
       getDeclarationsConfig({ exportCategory: 'utils', isNative: true }),
     ].flat();
-    // return exportCategories.map((exportCategory) => [getNativeConfig({ exportCategory })]).flat();
   }
-
-  // return exportCategories
-  //   .map((exportCategory) => [
-  //     // bundle our declarations for each category `components`, `tokens` and `utils` and place it next to each category under `build`
-  //     getDeclarationsConfig({ exportCategory, isNative: false }),
-  //     getDeclarationsConfig({ exportCategory, isNative: true }),
-  //   ])
-  //   .flat();
 };
 
 export default config();

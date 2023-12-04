@@ -10,3 +10,5 @@ yarn build:react-dev
 yarn build:react-native
 yarn build:clean-declarations
 yarn build:generate-root-imports
+yarn build:generate-css-variables
+yarn build:clean-theme-bundle
