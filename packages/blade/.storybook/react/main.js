@@ -26,7 +26,13 @@ module.exports = {
     '@storybook/preset-create-react-app',
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
+    '@storybook/addon-interactions'
   ],
+
+  features: {
+    interactionsDebugger: true, // 👈 enable playback controls
+  },
+
   env: (config) => ({
     ...config,
     GITHUB_SHA: process.env.GITHUB_SHA,

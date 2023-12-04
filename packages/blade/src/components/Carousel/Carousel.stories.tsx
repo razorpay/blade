@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
 import { Title as AddonTitle } from '@storybook/addon-docs';
 import type { CarouselProps } from './';
 import { Carousel as CarouselComponent, CarouselItem } from './';
@@ -284,6 +285,29 @@ const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (p
 export const DefaultCarousel = CarouselTestimonialTemplate.bind({});
 DefaultCarousel.args = {
   carouselItemWidth: { base: '100%', m: '100%' },
+};
+DefaultCarousel.play = async ({ canvasElement }) => {
+  const { getByRole } = within(canvasElement);
+
+  const nextButton = getByRole('button', { name: 'Next Slide' });
+  const previousButton = getByRole('button', { name: 'Previous Slide' });
+  userEvent.click(nextButton);
+  userEvent.click(previousButton);
+
+  // const getTask = (name) => canvas.findByRole('listitem', { name });
+
+  // // Find the task to pin
+  // const itemToPin = await getTask('Export logo');
+
+  // // Find the pin button
+  // const pinButton = await findByRole(itemToPin, 'button', { name: 'pin' });
+
+  // // Click the pin button
+  // await userEvent.click(pinButton);
+
+  // // Check that the pin button is now a unpin button
+  // const unpinButton = within(itemToPin).getByRole('button', { name: 'unpin' });
+  // await expect(unpinButton).toBeInTheDocument();
 };
 
 export const VisibleItems: ComponentStory<typeof CarouselComponent> = (props) => {

@@ -99,6 +99,8 @@
     "react:storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
     "react:storybook:build": "cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
     "test:react": "cross-env FRAMEWORK=REACT jest -c ./jest.web.config.js --shard=$SHARD --forceExit",
+    "test:storybook": "test-storybook -c ./.storybook/react --url http://localhost:9009/",
+    "test:eject": "test-storybook --eject",
     "test:react-native": "cross-env FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js --shard=$SHARD --forceExit",
     "start:ios": "cross-env NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:ios",
     "start:android": "cross-env NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android",
@@ -129,6 +131,9 @@
     "use-presence": "1.1.0"
   },
   "devDependencies": {
+    "@storybook/addon-interactions": "6.5.16",
+    "@storybook/testing-library": "0.0.13",
+    "@storybook/test-runner": "0.16.0",
     "chromatic": "6.22.0",
     "@babel/core": "7.20.2",
     "@babel/plugin-transform-react-jsx": "7.16.5",
@@ -238,7 +243,8 @@
     "postinstall-postinstall": "2.1.0",
     "react-native-safe-area-context": "3.4.1",
     "ttypescript": "1.5.15",
-    "typescript-transform-paths": "3.4.6"
+    "typescript-transform-paths": "3.4.6",
+    "playwright": "1.40.1"
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",
