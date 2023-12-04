@@ -24,7 +24,9 @@
     "tokens.native.js",
     "utils.d.ts",
     "utils.js",
-    "utils.native.js"
+    "utils.native.js",
+    "getBladeCoverage.js",
+    "getBladeCoverage.d.ts"
   ],
   "keywords": [
     "design system",
@@ -68,6 +70,12 @@
         "development": "./build/lib/web/development/utils/index.js",
         "production": "./build/lib/web/production/utils/index.js",
         "default": "./build/lib/web/production/utils/index.js"
+      }
+    },
+    "./coverage": {
+      "default": {
+        "types": "./getBladeCoverage.d.ts",
+        "default": "./getBladeCoverage.js"
       }
     }
   },

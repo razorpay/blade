@@ -1,4 +1,3 @@
-export * from './getBladeCoverage';
 export * from './getColorScheme';
 export * from './getMediaQuery';
 export * from './getPlatformType';

@@ -1,8 +1,8 @@
-const getBladeCoverage = (): { bladeCoverage: number; totalNodes: number; bladeNodes: number } => {
+const getBladeCoverage = () => {
   /**
    * Checks if DOM node is hidden or not
    */
-  const isElementHidden = (element: Element): boolean => {
+  const isElementHidden = (element) => {
     if (element.parentElement && isElementHidden(element.parentElement)) {
       return true;
     }
@@ -19,7 +19,7 @@ const getBladeCoverage = (): { bladeCoverage: number; totalNodes: number; bladeN
   /**
    * Checks if DOM node is a media element or not
    */
-  const isMediaElement = (element: Element): boolean => {
+  const isMediaElement = (element) => {
     const mediaTags = ['img', 'video', 'audio', 'source', 'picture'];
     return mediaTags.includes(element.tagName.toLowerCase());
   };
@@ -27,7 +27,7 @@ const getBladeCoverage = (): { bladeCoverage: number; totalNodes: number; bladeN
   /**
    * Checks if DOM element is empty or not
    */
-  const isElementEmpty = (element: Element): boolean => {
+  const isElementEmpty = (element) => {
     if (!element) return true;
     if (!element.childNodes.length) {
       return true;
@@ -37,8 +37,8 @@ const getBladeCoverage = (): { bladeCoverage: number; totalNodes: number; bladeN
 
   const allDomElements = document.querySelectorAll('body *');
 
-  const bladeNodeElements: Element[] = [];
-  const totalNodeElements: Element[] = [];
+  const bladeNodeElements = [];
+  const totalNodeElements = [];
 
   allDomElements.forEach((elm) => {
     if (isElementHidden(elm)) return;
@@ -85,12 +85,11 @@ const getBladeCoverage = (): { bladeCoverage: number; totalNodes: number; bladeN
   };
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const assertBladeCoverage = async (page: any, threshold = 70): Promise<void> => {
-  const { bladeCoverage } = await page.evaluate((coverageFnStr: string) => {
+const assertBladeCoverage = async (page, threshold = 70) => {
+  const { bladeCoverage } = await page.evaluate((coverageFnStr) => {
     // eslint-disable-next-line @typescript-eslint/no-implied-eval, no-new-func
-    const getBladeCoverage = new Function(`return (${coverageFnStr})()`);
-    return getBladeCoverage();
+    const calculateBladeCoverage = new Function(`return (${coverageFnStr})()`);
+    return calculateBladeCoverage();
   }, getBladeCoverage.toString());
 
   expect(bladeCoverage).toBeGreaterThan(threshold);
