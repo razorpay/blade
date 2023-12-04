@@ -3,7 +3,6 @@ const getBladeCoverage = (): { bladeCoverage: number; totalNodes: number; bladeN
    * Checks if DOM node is hidden or not
    */
   const isElementHidden = (element: Element): boolean => {
-    console.log('🚀 ~ file: home.spec.ts:7 ~ isElementHidden ~ element:', element);
     if (element.parentElement && isElementHidden(element.parentElement)) {
       return true;
     }
@@ -86,7 +85,8 @@ const getBladeCoverage = (): { bladeCoverage: number; totalNodes: number; bladeN
   };
 };
 
-const assertBladeCoverage = async (page, threshold = 70): Promise<void> => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const assertBladeCoverage = async (page: any, threshold = 70): Promise<void> => {
   const { bladeCoverage } = await page.evaluate((coverageFnStr: string) => {
     // eslint-disable-next-line @typescript-eslint/no-implied-eval, no-new-func
     const getBladeCoverage = new Function(`return (${coverageFnStr})()`);
