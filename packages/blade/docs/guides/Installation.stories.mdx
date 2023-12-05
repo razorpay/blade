@@ -80,96 +80,74 @@ We use 2 fonts. [Tasa Orbiter](https://tasatype.localremote.co/) (for our headin
 
 ### Web Projects
 
-To add these fonts to your project, you can import them from blade package in your root entry file.
+- To add these fonts to your project, you can import them from blade package in your root entry file.
 
-```ts
-// Somewhere in root index.ts or entryBrowser.tsx file
-import '@razorpay/blade/fonts.css';
-```
+  ```ts
+  // Somewhere in root index.ts or entryBrowser.tsx file
+  import '@razorpay/blade/fonts.css';
+  ```
 
-While Blade handles setting font-family for its own components, you can set font-family globally as well in your global styles for any custom components or exceptions
+- While Blade handles setting font-family for its own components, you can set font-family globally as well in your global styles for any custom components or exceptions
 
-```ts
-import { createGlobalStyle } from 'styled-components';
+  ```ts
+  import { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
-* { 
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: ${(props) => props.theme.typography.fonts.family.text}
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: ${(props) => props.theme.typography.fonts.family.heading};
-}
-`;
-```
+  const GlobalStyles = createGlobalStyle`
+  * { 
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: ${(props) => props.theme.typography.fonts.family.text}
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: ${(props) => props.theme.typography.fonts.family.heading};
+  }
+  `;
+  ```
 
 ### React Native Projects
 
-- Download
+- Download fonts from [blade-fonts-react-native.zip]() and unzip.
 
-  - `Inter` from https://rsms.me/inter/
-  - `Tasa Orbiter` from https://tasatype.localremote.co/
+- #### For iOS
 
-- Copy the font files and paste them under the directory `<project_root>/public/fonts`(**create the directory if it doesn't exist**)
-- Create a React Native config file at the root of your project - `<project_root>/react-native.config.js` and add the following content to it
+  - Copy all font files from `ios-fonts` directory to `<project_root>/public/fonts` (**create the directory if it doesn't exist**)
+  - Create a React Native config file at the root of your project - `<project_root>/react-native.config.js` and add the following content to it
 
-  ```js
-  module.exports = {
-    // ... rest of the config
-    assets: ['./public/fonts/'],
-  };
-  ```
+    ```js
+    module.exports = {
+      // ... rest of the config
+      assets: ['./public/fonts/'],
+    };
+    ```
 
-#### android
+  - Run the following command to link fonts in ios
 
-Follow the next steps mentioned below for configuring fonts to work on Android:
+    ```shell
+    npx react-native-asset -ios-a
+    ```
 
-- Create a directory `font` under `/android/app/src/main/res/font`
-- Copy the font files `Lato-Regular` and `Lato-Bold` you had downloaded earlier and paste them under `/android/app/src/main/res/font`
-- Rename the font files (**mind the casing and underscores**):
-  - ~~`Lato-Regular.ttf`~~ ➡️ `lato_regular.ttf`
-  - ~~`Lato-RegularItalic.ttf`~~ ➡️ `lato_regular_italic.ttf`
-  - ~~`Lato-Bold.ttf`~~ ➡️`lato_bold.ttf`
-  - ~~`Lato-BoldItalic.ttf`~~ ➡️ `lato_bold_italic.ttf`
-- Create a file `lato.xml` under `/android/app/src/main/res/font/lato.xml` and copy the following contents to it
-  ```xml
-  <?xml version="1.0" encoding="utf-8"?>
-    <font-family xmlns:app="http://schemas.android.com/apk/res-auto">
-    <font app:fontStyle="normal" app:fontWeight="400" app:font="@font/lato_regular"/>
-    <font app:fontStyle="normal" app:fontWeight="700" app:font="@font/lato_bold" />
-    <font app:fontStyle="italic" app:fontWeight="400" app:font="@font/lato_regular_italic" />
-    <font app:fontStyle="italic" app:fontWeight="700" app:font="@font/lato_bold_italic" />
-  </font-family>
-  ```
-- Navigate to `/android/app/src/main/java/com/<your_package_name>/MainApplication.java` and add the following contents to it
+- #### For Android
 
-  ```js
-  // add the below import statement after all the import statements
-  import com.facebook.react.views.text.ReactFontManager;
-  ```
+  - Copy all files from `android-fonts` to `/android/app/src/main/res/font`
+  - Navigate to `/android/app/src/main/java/com/<your_package_name>/MainApplication.java` and add the following contents to it
 
-  Now search for `onCreate` method and add the following line to it
+    ```js
+    // add the below import statement after all the import statements
+    import com.facebook.react.views.text.ReactFontManager;
+    ```
 
-  ```js
-  public void onCreate() {
-    // add the below line as the first line
-    ReactFontManager.getInstance().addCustomFont(this, "Lato", R.font.lato);
-    // rest of the content of the method
-  }
-  ```
+  - Now search for `onCreate` method and add the following line to it
 
-#### iOS
-
-Follow the next steps mentioned below for configuring fonts to work on iOS:
-
-- Once you've copied the font files under `<project_root>/public/fonts` you need to link it using the following command
-
-  ```shell
-  npx react-native link --platforms ios
-  ```
+    ```js
+    public void onCreate() {
+      // add the below lines as the first lines
+      ReactFontManager.getInstance().addCustomFont(this, "Inter", R.font.inter);
+      ReactFontManager.getInstance().addCustomFont(this, "TASA Orbiter Display", R.font.tasa);
+      // rest of the content of the method
+    }
+    ```
