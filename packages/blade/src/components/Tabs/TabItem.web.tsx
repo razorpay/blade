@@ -117,17 +117,39 @@ const TabItem = ({
     baseId,
     variant,
     isVertical,
+    scrollIntoView,
+    shouldScrollIntoView,
   } = useTabsContext();
+
   const { currentInteraction, ...interactionProps } = useInteraction();
   const validatedTrailingComponent = useTabsItemPropRestriction(trailing, size!);
   const isSelected = selectedValue === value;
   const selectedState = isSelected ? 'selected' : 'unselected';
   const panelId = `${baseId}-${value}-tabpanel`;
   const tabItemId = `${baseId}-${value}-tabitem`;
+  const tabListScrollableAreaId = `${baseId}-tablist-scrollable-area`;
   const isFilled = variant === 'filled';
+  const ref = React.useRef<HTMLButtonElement>(null);
+
+  React.useEffect(() => {
+    if (!shouldScrollIntoView) return;
+    const target = ref.current;
+    const parent = document.getElementById(tabListScrollableAreaId);
+    if (!parent) return;
+    if (!target) return;
+
+    if (isSelected) {
+      scrollIntoView?.({
+        parent,
+        target,
+        alignment: 'center',
+      });
+    }
+  }, [isSelected, scrollIntoView, shouldScrollIntoView, tabListScrollableAreaId]);
 
   return (
     <CompositeItem
+      ref={ref}
       render={
         <StyledTabButton
           as={href ? 'a' : 'button'}

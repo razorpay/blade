@@ -428,23 +428,33 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
 };
 
 const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (args) => {
-  const isMobile = useIsMobile();
+  // const isMobile = useIsMobile();
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
-  const orientation = isMobile ? 'horizontal' : args.orientation;
-  const isVertical = orientation === 'vertical';
-  const isFilled = args.variant === 'filled';
+  // const orientation = isMobile ? 'horizontal' : args.orientation;
+  // const isVertical = orientation === 'vertical';
+  // const isFilled = args.variant === 'filled';
+  const [value, setValue] = React.useState('plans');
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setValue('Two');
+    }, 1000);
+
+    setTimeout(() => {
+      setValue('plans');
+    }, 3000);
+
+    setTimeout(() => {
+      setValue('Four');
+    }, 5000);
+  }, []);
 
   return (
     <Box height={isReactNative() ? '100%' : undefined}>
-      <Card elevation="none" padding="spacing.0">
-        <CardBody height="100%">
-          <Box
-            height="100%"
-            marginX="spacing.6"
-            marginBottom="spacing.6"
-            marginTop={isFilled || isVertical ? 'spacing.6' : 'spacing.2'}
-          >
-            <Tabs key={invalidationKey} {...args} orientation={orientation}>
+      <Box position="fixed" top="0px" left="0px" right="0px">
+        <Card elevation="none" padding="spacing.0">
+          <CardBody height="100%">
+            <Tabs key={invalidationKey} value={value} onChange={(v) => setValue(v)}>
               <TabList>
                 <TabItem value="subscriptions">Subscription</TabItem>
                 <TabItem
@@ -456,21 +466,105 @@ const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
                   {args.tabItemChildren}
                 </TabItem>
                 <TabItem value="settings">Settings</TabItem>
+                <TabItem value="One">One</TabItem>
+                <TabItem value="Two">Two</TabItem>
+                <TabItem value="Three">Three</TabItem>
+                <TabItem value="Four">Four</TabItem>
+                <TabItem value="Five">Five</TabItem>
               </TabList>
-
-              <TabPanel value="subscriptions">
-                <SubscriptionPanel isVertical={isVertical} />
-              </TabPanel>
-              <TabPanel value="plans">
-                <PlansPanel isVertical={isVertical} />
-              </TabPanel>
-              <TabPanel value="settings">
-                <SettingsPanel isVertical={isVertical} />
-              </TabPanel>
             </Tabs>
-          </Box>
-        </CardBody>
-      </Card>
+          </CardBody>
+        </Card>
+      </Box>
+
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
+      <Text marginY="spacing.11">
+        It is a long established fact that a reader will be distracted by the readable content of a
+        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+        more-or-less normal distribution of letters, as opposed to using 'Content here, content
+        here', making it look like readable English. Many desktop publishing packages and web page
+        editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+        uncover many web sites still in their infancy. Various versions have evolved over the years,
+        sometimes by accident, sometimes on purpose (injected humour and the like).
+      </Text>
+
+      <Text marginY="spacing.11">
+        It is a long established fact that a reader will be distracted by the readable content of a
+        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+        more-or-less normal distribution of letters, as opposed to using 'Content here, content
+        here', making it look like readable English. Many desktop publishing packages and web page
+        editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+        uncover many web sites still in their infancy. Various versions have evolved over the years,
+        sometimes by accident, sometimes on purpose (injected humour and the like).
+      </Text>
+
+      <Text marginY="spacing.11">
+        It is a long established fact that a reader will be distracted by the readable content of a
+        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+        more-or-less normal distribution of letters, as opposed to using 'Content here, content
+        here', making it look like readable English. Many desktop publishing packages and web page
+        editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+        uncover many web sites still in their infancy. Various versions have evolved over the years,
+        sometimes by accident, sometimes on purpose (injected humour and the like).
+      </Text>
+
+      <Text marginY="spacing.11">
+        It is a long established fact that a reader will be distracted by the readable content of a
+        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+        more-or-less normal distribution of letters, as opposed to using 'Content here, content
+        here', making it look like readable English. Many desktop publishing packages and web page
+        editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+        uncover many web sites still in their infancy. Various versions have evolved over the years,
+        sometimes by accident, sometimes on purpose (injected humour and the like).
+      </Text>
+
+      <Text marginY="spacing.11">
+        It is a long established fact that a reader will be distracted by the readable content of a
+        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+        more-or-less normal distribution of letters, as opposed to using 'Content here, content
+        here', making it look like readable English. Many desktop publishing packages and web page
+        editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+        uncover many web sites still in their infancy. Various versions have evolved over the years,
+        sometimes by accident, sometimes on purpose (injected humour and the like).
+      </Text>
+
+      <Text marginY="spacing.11">
+        It is a long established fact that a reader will be distracted by the readable content of a
+        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+        more-or-less normal distribution of letters, as opposed to using 'Content here, content
+        here', making it look like readable English. Many desktop publishing packages and web page
+        editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+        uncover many web sites still in their infancy. Various versions have evolved over the years,
+        sometimes by accident, sometimes on purpose (injected humour and the like).
+      </Text>
+
+      <Text marginY="spacing.11">
+        It is a long established fact that a reader will be distracted by the readable content of a
+        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+        more-or-less normal distribution of letters, as opposed to using 'Content here, content
+        here', making it look like readable English. Many desktop publishing packages and web page
+        editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+        uncover many web sites still in their infancy. Various versions have evolved over the years,
+        sometimes by accident, sometimes on purpose (injected humour and the like).
+      </Text>
+
+      <Text marginY="spacing.11">
+        It is a long established fact that a reader will be distracted by the readable content of a
+        page when looking at its layout. The point of using Lorem Ipsum is that it has a
+        more-or-less normal distribution of letters, as opposed to using 'Content here, content
+        here', making it look like readable English. Many desktop publishing packages and web page
+        editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+        uncover many web sites still in their infancy. Various versions have evolved over the years,
+        sometimes by accident, sometimes on purpose (injected humour and the like).
+      </Text>
     </Box>
   );
 };

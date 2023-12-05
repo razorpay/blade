@@ -1,5 +1,6 @@
 import React from 'react';
 import type { TabsProps } from './types';
+import type { ScrollIntoViewAnimation } from './useScrollIntoView';
 import { throwBladeError } from '~utils/logger';
 import type { ControllableStateSetter } from '~utils/useControllable';
 
@@ -9,6 +10,8 @@ type TabsContextProps =
       baseId: string;
       selectedValue: string;
       setSelectedValue?: ControllableStateSetter<string>;
+      scrollIntoView?: (props?: ScrollIntoViewAnimation) => void;
+      shouldScrollIntoView?: boolean;
     })
   | null;
 

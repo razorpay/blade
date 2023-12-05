@@ -52,6 +52,12 @@ type TabsProps = {
    * @default false
    */
   isLazy?: boolean;
+  /**
+   * If `true`, when the TabList is scrollable, the selected tab will be scrolled into view.
+   *
+   * @default false
+   */
+  shouldScrollIntoView?: boolean;
 };
 
 type TabItemProps = {

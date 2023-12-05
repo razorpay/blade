@@ -21,10 +21,11 @@ const TabList = ({
   children,
   ...props
 }: { children: React.ReactNode } & StyledPropsBlade): React.ReactElement => {
-  const { setSelectedValue, selectedValue, variant, isVertical } = useTabsContext();
+  const { setSelectedValue, selectedValue, variant, isVertical, baseId } = useTabsContext();
   const tabListContainerRef = React.useRef<HTMLDivElement>(null);
   const isBordered = variant === 'bordered';
   const isFilled = variant === 'filled';
+  const tabListScrollableAreaId = `${baseId}-tablist-scrollable-area`;
 
   // Set the first child as the selected value
   useIsomorphicLayoutEffect(() => {
@@ -50,6 +51,7 @@ const TabList = ({
         flex="1 1 auto"
         width="100%"
         overflow="auto hidden"
+        id={tabListScrollableAreaId}
       >
         <Composite
           render={(htmlProps) => {

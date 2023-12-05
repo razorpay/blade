@@ -1,6 +1,7 @@
 import React from 'react';
 import type { TabsProps } from './types';
 import { TabsContext } from './TabsContext';
+import { useScrollIntoView } from './useScrollIntoView';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 import BaseBox from '~components/Box/BaseBox';
@@ -46,6 +47,7 @@ const Tabs = ({
   variant = 'bordered',
   isFullWidthTabItem = false,
   isLazy = false,
+  shouldScrollIntoView = false,
 }: TabsProps): React.ReactElement => {
   const baseId = useId('tabs');
   const [selectedValue, setSelectedValue] = useControllableState({
@@ -55,6 +57,7 @@ const Tabs = ({
       onChange?.(value);
     },
   });
+  const { scrollIntoView } = useScrollIntoView({ axis: 'x' });
 
   const isVertical = orientation === 'vertical';
   const contextValue = React.useMemo(
@@ -67,6 +70,8 @@ const Tabs = ({
       isFullWidthTabItem,
       setSelectedValue,
       isLazy,
+      scrollIntoView,
+      shouldScrollIntoView,
     }),
     [
       isFullWidthTabItem,
@@ -77,6 +82,8 @@ const Tabs = ({
       size,
       variant,
       isLazy,
+      scrollIntoView,
+      shouldScrollIntoView,
     ],
   );
 
