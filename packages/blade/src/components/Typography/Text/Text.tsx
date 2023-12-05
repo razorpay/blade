@@ -116,7 +116,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     if (size === 'medium') {
       props.fontSize = 50;
       props.lineHeight = 50;
-      props.fontWeight = 'semibold';
+      props.fontWeight = 'regular';
     } else if (__DEV__) {
       throwBladeError({
         moduleName: 'Text',

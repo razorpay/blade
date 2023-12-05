@@ -2,8 +2,7 @@
 <font-family xmlns:app="http://schemas.android.com/apk/res-auto">
     <font
         app:font="@font/tasa_orbiter_display_regular"
-        app:fontWeight="400"
-        app:fontFamily="" />
+        app:fontWeight="400" />
     <font
         app:font="@font/tasa_orbiter_display_medium"
         app:fontWeight="500" />
