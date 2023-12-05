@@ -167,7 +167,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
         handleOnInput?.({ name, value: event });
       }}
-      onClick={handleOnClick}
+      onClick={(event) => {
+        handleOnClick?.({ name, value: event });
+      }}
       autoCapitalize={autoCapitalize}
       {...commonProps}
       {...props}
