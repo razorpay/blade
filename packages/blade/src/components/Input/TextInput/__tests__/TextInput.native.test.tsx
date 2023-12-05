@@ -141,7 +141,7 @@ describe('<TextInput />', () => {
     );
 
     const input = getByPlaceholderText(placeholder);
-    fireEvent.press(input);
+    fireEvent(input, 'focus', { nativeEvent: { text: '' } });
 
     expect(onClick).toHaveBeenCalledTimes(1);
   });
