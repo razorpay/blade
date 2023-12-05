@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable consistent-return */
 /* eslint-disable prefer-template */
 import fs from 'fs';
@@ -11,6 +12,7 @@ import pluginAlias from '@rollup/plugin-alias';
 import pluginReplace from '@rollup/plugin-replace';
 import ts from 'typescript';
 import { glob } from 'glob';
+import { depsExternalPlugin } from './dependencies-external-plugin.mjs';
 
 const webExtensions = [
   '.web.js',
@@ -44,6 +46,26 @@ const nativeExtensions = [
   '.jsx',
   '.tsx',
   '.mjs',
+];
+
+const externalDependencies = [
+  '@babel/runtime',
+  '@gorhom/bottom-sheet',
+  '@gorhom/portal',
+  '@use-gesture/react',
+  '@floating-ui/react',
+  '@floating-ui/react-native',
+  '@emotion/react',
+  '@table-library/react-table-library',
+  'tinycolor2',
+  'react-native-reanimated',
+  'react-native-tab-view',
+  'react-native-pager-view',
+  'react-native-svg',
+  'react-native-gesture-handler',
+  'use-presence',
+  'ts-deepmerge',
+  'body-scroll-lock',
 ];
 
 const inputRootDirectory = 'src';
@@ -102,25 +124,15 @@ const getWebConfig = (inputs) => {
         sourcemap: true,
         preserveModules: true,
         preserveModulesRoot: 'src',
-        // Because of preserveModules, rollup generates `node_module` directory inside the build folder
-        // for the external dependencies, which npm ignores when packing causing runtime error when the package is installed
-        // This renames the `node_module` directory to `external` and also updates the import paths
-        // https://github.com/rollup/rollup/issues/3684#issuecomment-1535836196
-        entryFileNames: (chunkInfo) => {
-          if (chunkInfo.name.includes('node_modules')) {
-            return chunkInfo.name.replace('node_modules', 'external') + '.js';
-          }
-          return '[name].js';
-        },
       },
     ],
-    external: (id) => id.includes('@babel/runtime'),
     plugins: [
       pluginReplace({
         __DEV__: process.env.NODE_ENV !== 'production',
         preventAssignment: true,
       }),
       pluginPeerDepsExternal(),
+      depsExternalPlugin({ externalDependencies }),
       pluginResolve({ extensions: webExtensions }),
       pluginCommonjs(),
       pluginBabel({
@@ -146,21 +158,11 @@ const getNativeConfig = (inputs) => {
         sourcemap: true,
         preserveModules: true,
         preserveModulesRoot: 'src',
-        // Because of preserveModules, rollup generates `node_module` directory inside the build folder
-        // for the external dependencies, which npm ignores when packing causing runtime error when the package is installed
-        // This renames the `node_module` directory to `external` and also updates the import paths
-        // https://github.com/rollup/rollup/issues/3684#issuecomment-1535836196
-        entryFileNames: (chunkInfo) => {
-          if (chunkInfo.name.includes('node_modules')) {
-            return chunkInfo.name.replace('node_modules', 'external') + '.js';
-          }
-          return '[name].js';
-        },
       },
     ],
-    external: (id) => id.includes('@babel/runtime'),
     plugins: [
       pluginPeerDepsExternal(),
+      depsExternalPlugin({ externalDependencies }),
       pluginResolve({ extensions: nativeExtensions }),
       pluginCommonjs(),
       pluginBabel({
