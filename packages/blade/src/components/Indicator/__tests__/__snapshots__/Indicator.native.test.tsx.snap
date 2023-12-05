@@ -126,10 +126,11 @@ exports[`<Indicator /> should render 1`] = `
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -273,16 +274,17 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           style={
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -419,10 +421,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -560,10 +563,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -701,10 +705,11 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
             [
               {
                 "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,

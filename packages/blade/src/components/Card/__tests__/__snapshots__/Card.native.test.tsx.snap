@@ -86,10 +86,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -186,16 +187,17 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
-              fontWeight="bold"
+              fontWeight="semibold"
               lineHeight={100}
               style={
                 [
                   {
                     "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -220,16 +222,17 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={75}
               style={
                 [
                   {
                     "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -393,10 +396,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       [
                         {
                           "color": "hsla(218, 89%, 51%, 1)",
-                          "fontFamily": "Lato",
+                          "fontFamily": "Inter",
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "700",
+                          "letterSpacing": 0,
                           "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -558,10 +562,11 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       [
                         {
                           "color": "hsla(0, 0%, 100%, 1)",
-                          "fontFamily": "Lato",
+                          "fontFamily": "Inter",
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "700",
+                          "letterSpacing": 0,
                           "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -814,23 +819,23 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 }
               >
                 <Text
-                  accessibilityRole="header"
                   accessible={true}
                   color="surface.text.normal.lowContrast"
-                  data-blade-component="heading"
+                  data-blade-component="text"
                   fontFamily="text"
                   fontSize={200}
                   fontStyle="normal"
-                  fontWeight="bold"
-                  lineHeight={300}
+                  fontWeight="regular"
+                  lineHeight={200}
                   style={
                     [
                       {
                         "color": "hsla(217, 56%, 17%, 1)",
-                        "fontFamily": "Lato",
+                        "fontFamily": "Inter",
                         "fontSize": 16,
                         "fontStyle": "normal",
-                        "fontWeight": "700",
+                        "fontWeight": "400",
+                        "letterSpacing": 0,
                         "lineHeight": 24,
                         "marginBottom": 0,
                         "marginLeft": 0,
@@ -920,17 +925,18 @@ exports[`<Card /> should render a Card with Header 1`] = `
                           fontSize={75}
                           fontStyle="normal"
                           fontWeight="regular"
-                          lineHeight={50}
+                          lineHeight={75}
                           numberOfLines={1}
                           style={
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 12,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "lineHeight": 16,
+                                "letterSpacing": 0,
+                                "lineHeight": 18,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
                                 "marginRight": 0,
@@ -961,16 +967,17 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 fontSize={75}
                 fontStyle="normal"
                 fontWeight="regular"
-                lineHeight={50}
+                lineHeight={75}
                 style={
                   [
                     {
                       "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "fontFamily": "Inter",
                       "fontSize": 12,
                       "fontStyle": "normal",
                       "fontWeight": "400",
-                      "lineHeight": 16,
+                      "letterSpacing": 0,
+                      "lineHeight": 18,
                       "marginBottom": 0,
                       "marginLeft": 0,
                       "marginRight": 0,
@@ -1064,17 +1071,18 @@ exports[`<Card /> should render a Card with Header 1`] = `
                     fontSize={75}
                     fontStyle="normal"
                     fontWeight="regular"
-                    lineHeight={50}
+                    lineHeight={75}
                     numberOfLines={1}
                     style={
                       [
                         {
                           "color": "hsla(216, 27%, 36%, 1)",
-                          "fontFamily": "Lato",
+                          "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -1140,10 +1148,11 @@ exports[`<Card /> should render a Card with Header 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1335,10 +1344,11 @@ exports[`<Card /> should render a border when elevation is \`none\` 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -1447,10 +1457,11 @@ exports[`<Card /> should render a plain Card 1`] = `
             [
               {
                 "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,

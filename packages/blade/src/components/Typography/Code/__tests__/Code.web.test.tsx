@@ -48,7 +48,7 @@ describe('<Code />', () => {
   it('should render medium Code', () => {
     const { container, getByText } = renderWithTheme(<Code size="medium">MEDIUM</Code>);
     expect(getByText('MEDIUM')).toHaveStyle(
-      `font-size: ${makeTypographySize(typography.onDesktop.fonts.size[50])}`,
+      `font-size: ${makeTypographySize(typography.onDesktop.fonts.size[75])}`,
     );
     expect(container).toMatchSnapshot();
   });
