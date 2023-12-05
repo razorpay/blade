@@ -1,16 +1,16 @@
-/* eslint-disable @typescript-eslint/no-explicit-any, one-var */
-export const getBladeCoverage: () => {
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export function getBladeCoverage(): {
   bladeCoverage: number;
   totalNodes: number;
   bladeNodes: number;
 };
 
-export const assertBladeCoverage: ({
+export function assertBladeCoverage({
   page,
   expect,
   threshold,
 }: {
   page: any;
   expect: any;
-  threshold: number;
-}) => Promise<void>;
+  threshold?: string;
+}): Promise<void>;

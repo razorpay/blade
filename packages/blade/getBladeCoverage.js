@@ -85,14 +85,14 @@ const getBladeCoverage = () => {
   };
 };
 
-const assertBladeCoverage = async (page, threshold = 70) => {
+const assertBladeCoverage = async ({ page, expect, threshold = '70' }) => {
   const { bladeCoverage } = await page.evaluate((coverageFnStr) => {
     // eslint-disable-next-line @typescript-eslint/no-implied-eval, no-new-func
     const calculateBladeCoverage = new Function(`return (${coverageFnStr})()`);
     return calculateBladeCoverage();
   }, getBladeCoverage.toString());
 
-  expect(bladeCoverage).toBeGreaterThan(threshold);
+  expect(bladeCoverage).toBeGreaterThanOrEqual(threshold);
 };
 
-export { getBladeCoverage, assertBladeCoverage };
+module.exports = { getBladeCoverage, assertBladeCoverage };
