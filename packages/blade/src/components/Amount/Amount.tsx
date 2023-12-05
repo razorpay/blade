@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import type { ReactElement } from 'react';
 import React from 'react';
 import { formatNumberByParts, getCurrencySymbol } from 'i18nify';
@@ -116,7 +117,6 @@ const AmountValue = ({
   const isReactNative = getPlatformType() === 'react-native';
   const affixFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
   const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
-  let formattedAmountByParts = {};
   try {
     if (suffix === 'decimals' && isAffixSubtle) {
       formattedAmountByParts = formatNumberByParts(value, { locale, currency });
@@ -263,67 +263,71 @@ const _Amount = ({
 
   try {
     currencyPrefix = prefix === 'currency-symbol' ? getCurrencySymbol(currency) : currency;
-    formattedAmountByParts = formatNumberByParts(value, { locale, currency });
-  } catch (err) {
-    console.log(err);
-  }
-  const renderedValue =
-    suffix === 'decimals' ? value.toString() : formatAmountWithSuffix({ suffix, value, currency });
-  const { amountValueColor, affixColor } = getTextColorProps({
-    intent,
-  });
+    const formattedAmountByParts = formatNumberByParts(value, { locale, currency });
 
-  const currencyColor = isAffixSubtle ? affixColor : amountValueColor;
-  const currencyFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
-  const currencyWeight = getCurrencyWeight(isAffixSubtle, size);
-  const isReactNative = getPlatformType() === 'react-native';
+    const renderedValue =
+      suffix === 'decimals'
+        ? value.toString()
+        : formatAmountWithSuffix({ suffix, value, currency });
+    const { amountValueColor, affixColor } = getTextColorProps({
+      intent,
+    });
 
-  return (
-    <BaseBox
-      display={(isReactNative ? 'flex' : 'inline-flex') as never}
-      {...metaAttribute({ name: MetaConstants.Amount, testID })}
-      {...getStyledProps(styledProps)}
-    >
+    const currencyColor = isAffixSubtle ? affixColor : amountValueColor;
+    const currencyFontSize = isAffixSubtle ? affixFontSizes[size] : amountFontSizes[size];
+    const currencyWeight = getCurrencyWeight(isAffixSubtle, size);
+    const isReactNative = getPlatformType() === 'react-native';
+
+    return (
       <BaseBox
         display={(isReactNative ? 'flex' : 'inline-flex') as never}
-        alignItems="baseline"
-        flexDirection="row"
+        {...metaAttribute({ name: MetaConstants.Amount, testID })}
+        {...getStyledProps(styledProps)}
       >
-        {formattedAmountByParts?.symbolAtFirst && (
-          <BaseText
-            marginRight="spacing.1"
-            fontWeight={currencyWeight}
-            fontSize={currencyFontSize}
-            color={currencyColor}
-            as={isReactNative ? undefined : 'span'}
-          >
-            {currencyPrefix}
-          </BaseText>
-        )}{' '}
-        <AmountValue
-          value={renderedValue}
-          amountValueColor={amountValueColor}
-          size={size}
-          isAffixSubtle={isAffixSubtle}
-          suffix={suffix}
-          affixColor={affixColor}
-          locale={locale}
-          currency={currency}
-        />
-        {!formattedAmountByParts?.symbolAtFirst && (
-          <BaseText
-            marginRight="spacing.1"
-            fontWeight={currencyWeight}
-            fontSize={currencyFontSize}
-            color={currencyColor}
-            as={isReactNative ? undefined : 'span'}
-          >
-            {currencyPrefix}
-          </BaseText>
-        )}
+        <BaseBox
+          display={(isReactNative ? 'flex' : 'inline-flex') as never}
+          alignItems="baseline"
+          flexDirection="row"
+        >
+          {formattedAmountByParts?.symbolAtFirst && (
+            <BaseText
+              marginRight="spacing.1"
+              fontWeight={currencyWeight}
+              fontSize={currencyFontSize}
+              color={currencyColor}
+              as={isReactNative ? undefined : 'span'}
+            >
+              {currencyPrefix}
+            </BaseText>
+          )}{' '}
+          <AmountValue
+            value={renderedValue}
+            amountValueColor={amountValueColor}
+            size={size}
+            isAffixSubtle={isAffixSubtle}
+            suffix={suffix}
+            affixColor={affixColor}
+            locale={locale}
+            currency={currency}
+          />
+          {!formattedAmountByParts?.symbolAtFirst && (
+            <BaseText
+              marginRight="spacing.1"
+              fontWeight={currencyWeight}
+              fontSize={currencyFontSize}
+              color={currencyColor}
+              as={isReactNative ? undefined : 'span'}
+            >
+              {currencyPrefix}
+            </BaseText>
+          )}
+        </BaseBox>
       </BaseBox>
-    </BaseBox>
-  );
+    );
+  } catch (err: unknown) {
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return <></>;
+  }
 };
 
 const Amount = assignWithoutSideEffects(_Amount, {
