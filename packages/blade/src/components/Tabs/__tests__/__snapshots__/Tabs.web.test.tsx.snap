@@ -286,6 +286,7 @@ exports[`Tabs should render 1`] = `
         <div
           class="c2 c3"
           data-blade-component="base-box"
+          id="tabs-1-tablist-scrollable-area"
         >
           <div
             class="c4"
@@ -751,6 +752,7 @@ exports[`Tabs should render with filled variant 1`] = `
         <div
           class="c2 c3"
           data-blade-component="base-box"
+          id="tabs-4-tablist-scrollable-area"
         >
           <div
             class="c4"
@@ -1132,6 +1134,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
         <div
           class="c2 c3"
           data-blade-component="base-box"
+          id="tabs-5-tablist-scrollable-area"
         >
           <div
             class="c4"
@@ -1513,6 +1516,7 @@ exports[`Tabs should render with size 1`] = `
         <div
           class="c2 c3"
           data-blade-component="base-box"
+          id="tabs-6-tablist-scrollable-area"
         >
           <div
             class="c4"
@@ -1885,6 +1889,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
         <div
           class="c2 c3"
           data-blade-component="base-box"
+          id="tabs-3-tablist-scrollable-area"
         >
           <div
             class="c0"
