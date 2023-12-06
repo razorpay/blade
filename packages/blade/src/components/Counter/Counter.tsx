@@ -1,6 +1,6 @@
 import { StyledCounter } from './StyledCounter';
 import type { StyledCounterProps } from './types';
-import { horizontalPadding, verticalPadding } from './counterTokens';
+import { counterHeight, horizontalPadding } from './counterTokens';
 import type { Feedback } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -10,7 +10,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
-import { isReactNative } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import { logger } from '~utils/logger';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
@@ -145,12 +145,14 @@ const _Counter = ({
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(styledProps)}
     >
-      <StyledCounter backgroundColor={backgroundColor} size={size} platform={platform}>
+      <StyledCounter
+        minHeight={makeSize(counterHeight[size])}
+        backgroundColor={backgroundColor}
+        size={size}
+        platform={platform}
+      >
         <BaseBox
-          paddingRight={horizontalPadding[size]}
-          paddingLeft={horizontalPadding[size]}
-          paddingTop={verticalPadding[size]}
-          paddingBottom={verticalPadding[size]}
+          paddingX={horizontalPadding[size]}
           display="flex"
           flexDirection="row"
           justifyContent="center"
