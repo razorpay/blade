@@ -135,7 +135,7 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>iOS Safari Specific Setup</Title>
+      <Heading size="large">iOS Safari Specific Setup</Heading>
       <Text marginTop="spacing.4">
         When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
         `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS
