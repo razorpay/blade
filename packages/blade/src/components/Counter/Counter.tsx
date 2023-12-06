@@ -163,7 +163,7 @@ const _Counter = ({
             {...counterTextSizes[size]}
             textAlign="center"
             type="normal"
-            weight="regular"
+            weight="medium"
             truncateAfterLines={1}
             color={textColor}
           >
