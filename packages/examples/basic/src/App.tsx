@@ -1,3 +1,4 @@
+import React from 'react';
 import { BladeProvider, Button } from '@razorpay/blade/components';
 import { paymentTheme } from '@razorpay/blade/tokens';
 

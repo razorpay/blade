@@ -6,11 +6,10 @@
     "build:blade": "cd ../../blade && yarn build",
     "build:app": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "analyze:only": "source-map-explorer 'build/static/js/*.js' --gzip",
-    "analyze": "yarn build && yarn analyze:only",
-    "postinstall": "rm -rf node_modules/@razorpay/blade/node_modules"
+    "analyze": "yarn build && yarn analyze:only"
   },
   "dependencies": {
-    "@razorpay/blade": "../../blade",
+    "@razorpay/blade": "../../blade/build",
     "@fontsource/lato": "^4.5.10",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
@@ -23,8 +22,6 @@
     "source-map-explorer": "2.5.3"
   },
   "browserslist": {
-    "@rx-angular/import-graph-visualizer": "^0.2.0",
-    "@floating-ui/react": "0.25.4",
     "production": [
       ">0.2%",
       "not dead",
