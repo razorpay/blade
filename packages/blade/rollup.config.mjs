@@ -11,7 +11,6 @@ import pluginDeclarations from 'rollup-plugin-dts';
 import pluginAlias from '@rollup/plugin-alias';
 import pluginReplace from '@rollup/plugin-replace';
 import ts from 'typescript';
-import { glob } from 'glob';
 import { depsExternalPlugin } from './dependencies-external-plugin.mjs';
 import packagejson from './package.json' assert { type: 'json' };
 
@@ -227,9 +226,9 @@ const config = () => {
       .flat();
   }
 
-  const components = glob.sync(`src/components/**/index.ts`);
-  const tokens = glob.sync(`src/tokens/index.ts`);
-  const utils = glob.sync(`src/utils/index.ts`);
+  const components = 'src/components/index.ts';
+  const tokens = 'src/tokens/index.ts';
+  const utils = 'src/utils/index.ts';
   if (framework === 'REACT') {
     return [
       getWebConfig(components),
