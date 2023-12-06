@@ -4,6 +4,6 @@ export const fontFamily: FontFamily = {
   text:
     '"Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif',
   heading:
-    '"Tasa Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif',
+    '"TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif',
   code: '"Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace',
 };
