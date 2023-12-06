@@ -33,6 +33,7 @@ const _DropdownOverlay = ({
   children,
   testID,
   zIndex = OVERLAY_ZINDEX,
+  width,
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
@@ -103,7 +104,7 @@ const _DropdownOverlay = ({
         isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
         elevation={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet ? undefined : 'midRaised'}
         style={{ ...styles }}
-        width="100%"
+        width={width ? width : '100%'}
         {...metaAttribute({ name: MetaConstants.DropdownOverlay, testID })}
       >
         {children}
