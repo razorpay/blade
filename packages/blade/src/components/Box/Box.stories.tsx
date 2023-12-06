@@ -77,8 +77,16 @@ export const Responsive = (args: BoxProps): React.ReactElement => {
 
 export const Elevations = (args: BoxProps): React.ReactElement => {
   return (
-    <Box {...args}>
-      <Text>Change controls to see the parameters change for the container</Text>
+    <Box display="flex" flexDirection="row" gap="spacing.8">
+      <Box {...args} backgroundColor="surface.background.level3.lowContrast" elevation="lowRaised">
+        <Text>Low </Text>
+      </Box>
+      <Box {...args} elevation="midRaised">
+        <Text>Mid</Text>
+      </Box>
+      <Box {...args} elevation="highRaised">
+        <Text>High</Text>
+      </Box>
     </Box>
   );
 };
