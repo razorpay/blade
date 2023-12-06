@@ -10,16 +10,15 @@
     "installDependencies": false
   },
   "dependencies": {
-    "@preact/compat": "17.1.2",
-    "@razorpay/blade": "./razorpay-blade-v10.18.0-2.tgz",
+    "@razorpay/blade": "../../blade/build",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "styled-components": "5.3.5",
     "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "preact": "^10.19.2",
-    "react-router-dom": "^6.19.0",
-    "styled-components": "^5"
+    "@types/react-dom": "^18.2.15"
   },
   "devDependencies": {
-    "@preact/preset-vite": "*",
+    "@vitejs/plugin-react": "4.2.1",
     "serve": "^14.2.1",
     "vite": "4.5.0",
     "vite-bundle-visualizer": "^0.11.0"
