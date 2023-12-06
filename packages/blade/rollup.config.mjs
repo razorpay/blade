@@ -13,6 +13,7 @@ import pluginReplace from '@rollup/plugin-replace';
 import ts from 'typescript';
 import { glob } from 'glob';
 import { depsExternalPlugin } from './dependencies-external-plugin.mjs';
+import packagejson from './package.json' assert { type: 'json' };
 
 const webExtensions = [
   '.web.js',
@@ -48,25 +49,10 @@ const nativeExtensions = [
   '.mjs',
 ];
 
-const externalDependencies = [
-  '@babel/runtime',
-  '@gorhom/bottom-sheet',
-  '@gorhom/portal',
-  '@use-gesture/react',
-  '@floating-ui/react',
-  '@floating-ui/react-native',
-  '@emotion/react',
-  '@table-library/react-table-library',
-  'tinycolor2',
-  'react-native-reanimated',
-  'react-native-tab-view',
-  'react-native-pager-view',
-  'react-native-svg',
-  'react-native-gesture-handler',
-  'use-presence',
-  'ts-deepmerge',
-  'body-scroll-lock',
-];
+const packageJsonDeps = Object.keys(packagejson.dependencies).filter(
+  (name) => name !== 'patch-package',
+);
+const externalDependencies = packageJsonDeps;
 
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
