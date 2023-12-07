@@ -10,6 +10,8 @@ import { useBladeProvider } from './useBladeProvider';
 import type { BladeProviderProps } from './types';
 import { BottomSheetStackProvider } from '~components/BottomSheet/BottomSheetStack';
 
+Object.defineProperty(stylisCSSHigherSpecificity, 'name', { value: 'stylisCSSHigherSpecificity' });
+
 const tooltipDelays = { open: 300, close: 300 };
 
 const BladeProvider = ({
