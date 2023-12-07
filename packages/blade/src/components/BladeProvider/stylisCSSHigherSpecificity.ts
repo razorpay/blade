@@ -9,5 +9,9 @@ export default function createStylisCSSHigherSpecificityPlugin(): StylisPlugin {
     selectors[0] = `${selector.repeat(5)}`;
   };
 
+  Object.defineProperty(stylisCSSHigherSpecificity, 'name', {
+    value: 'stylisCSSHigherSpecificity',
+  });
+
   return stylisCSSHigherSpecificity;
 }
