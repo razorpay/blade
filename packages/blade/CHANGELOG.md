@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 10.20.1
+
+### Patch Changes
+
+- e89018c4: feat(Dropdown): Support `width` prop on DropdownOverlay
+- 37fa68cb: fix: define stylis plugin name property
+
 ## 10.20.0
 
 ### Minor Changes
