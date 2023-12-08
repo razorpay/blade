@@ -3161,101 +3161,105 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
     "onDesktop": {
       "fonts": {
         "family": {
-          "code": "monospace",
-          "text": "Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"",
+          "code": ""Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace",
+          "heading": ""TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+          "text": ""Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
         },
         "size": {
-          "10": 9,
           "100": 14,
-          "1000": 40,
-          "1100": 48,
-          "1200": 56,
-          "1300": 64,
-          "1600": 88,
+          "1000": 64,
+          "1100": 72,
           "200": 16,
           "25": 10,
           "300": 18,
           "400": 20,
           "50": 11,
-          "500": 22,
-          "600": 24,
-          "700": 28,
+          "500": 24,
+          "600": 32,
+          "700": 40,
           "75": 12,
-          "800": 32,
-          "900": 36,
+          "800": 48,
+          "900": 56,
         },
         "weight": {
           "bold": 700,
+          "medium": 500,
           "regular": 400,
+          "semibold": 600,
         },
+      },
+      "letterSpacings": {
+        "100": 0,
+        "50": -1,
       },
       "lineHeights": {
         "0": 0,
         "100": 20,
-        "1000": 64,
-        "1100": 72,
-        "1500": 104,
+        "1000": 70,
+        "1100": 78,
         "200": 24,
         "25": 14,
         "300": 24,
-        "400": 28,
+        "400": 26,
         "50": 16,
         "500": 32,
-        "600": 40,
-        "700": 40,
+        "600": 38,
+        "700": 46,
         "75": 18,
-        "800": 48,
-        "900": 56,
+        "800": 56,
+        "900": 64,
       },
     },
     "onMobile": {
       "fonts": {
         "family": {
-          "code": "monospace",
-          "text": "Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"",
+          "code": ""Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace",
+          "heading": ""TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+          "text": ""Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
         },
         "size": {
-          "10": 9,
           "100": 14,
-          "1000": 32,
+          "1000": 38,
           "1100": 40,
-          "1200": 48,
-          "1300": 56,
-          "1600": 64,
           "200": 16,
           "25": 10,
           "300": 16,
           "400": 18,
           "50": 11,
           "500": 20,
-          "600": 20,
-          "700": 24,
+          "600": 24,
+          "700": 32,
           "75": 12,
-          "800": 28,
-          "900": 32,
+          "800": 34,
+          "900": 36,
         },
         "weight": {
           "bold": 700,
+          "medium": 500,
           "regular": 400,
+          "semibold": 600,
         },
+      },
+      "letterSpacings": {
+        "100": 0,
+        "50": -1,
       },
       "lineHeights": {
         "0": 0,
         "100": 20,
-        "1000": 56,
-        "1100": 64,
-        "1500": 72,
-        "200": 20,
+        "1000": 46,
+        "1100": 48,
+        "200": 24,
         "25": 14,
-        "300": 24,
+        "300": 22,
         "400": 24,
         "50": 16,
-        "500": 28,
+        "500": 26,
         "600": 32,
-        "700": 40,
+        "700": 38,
         "75": 18,
         "800": 40,
-        "900": 48,
+        "900": 42,
       },
     },
   },
@@ -3327,13 +3331,17 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
 
 .c3 {
   color: hsl(0,0%,100%);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -6545,101 +6553,105 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
     "onDesktop": {
       "fonts": {
         "family": {
-          "code": "monospace",
-          "text": "Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"",
+          "code": ""Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace",
+          "heading": ""TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+          "text": ""Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
         },
         "size": {
-          "10": 9,
           "100": 14,
-          "1000": 40,
-          "1100": 48,
-          "1200": 56,
-          "1300": 64,
-          "1600": 88,
+          "1000": 64,
+          "1100": 72,
           "200": 16,
           "25": 10,
           "300": 18,
           "400": 20,
           "50": 11,
-          "500": 22,
-          "600": 24,
-          "700": 28,
+          "500": 24,
+          "600": 32,
+          "700": 40,
           "75": 12,
-          "800": 32,
-          "900": 36,
+          "800": 48,
+          "900": 56,
         },
         "weight": {
           "bold": 700,
+          "medium": 500,
           "regular": 400,
+          "semibold": 600,
         },
+      },
+      "letterSpacings": {
+        "100": 0,
+        "50": -1,
       },
       "lineHeights": {
         "0": 0,
         "100": 20,
-        "1000": 64,
-        "1100": 72,
-        "1500": 104,
+        "1000": 70,
+        "1100": 78,
         "200": 24,
         "25": 14,
         "300": 24,
-        "400": 28,
+        "400": 26,
         "50": 16,
         "500": 32,
-        "600": 40,
-        "700": 40,
+        "600": 38,
+        "700": 46,
         "75": 18,
-        "800": 48,
-        "900": 56,
+        "800": 56,
+        "900": 64,
       },
     },
     "onMobile": {
       "fonts": {
         "family": {
-          "code": "monospace",
-          "text": "Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"",
+          "code": ""Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace",
+          "heading": ""TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+          "text": ""Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
         },
         "size": {
-          "10": 9,
           "100": 14,
-          "1000": 32,
+          "1000": 38,
           "1100": 40,
-          "1200": 48,
-          "1300": 56,
-          "1600": 64,
           "200": 16,
           "25": 10,
           "300": 16,
           "400": 18,
           "50": 11,
           "500": 20,
-          "600": 20,
-          "700": 24,
+          "600": 24,
+          "700": 32,
           "75": 12,
-          "800": 28,
-          "900": 32,
+          "800": 34,
+          "900": 36,
         },
         "weight": {
           "bold": 700,
+          "medium": 500,
           "regular": 400,
+          "semibold": 600,
         },
+      },
+      "letterSpacings": {
+        "100": 0,
+        "50": -1,
       },
       "lineHeights": {
         "0": 0,
         "100": 20,
-        "1000": 56,
-        "1100": 64,
-        "1500": 72,
-        "200": 20,
+        "1000": 46,
+        "1100": 48,
+        "200": 24,
         "25": 14,
-        "300": 24,
+        "300": 22,
         "400": 24,
         "50": 16,
-        "500": 28,
+        "500": 26,
         "600": 32,
-        "700": 40,
+        "700": 38,
         "75": 18,
         "800": 40,
-        "900": 48,
+        "900": 42,
       },
     },
   },
@@ -6711,13 +6723,17 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
 
 .c3 {
   color: hsl(219,41%,19%);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;

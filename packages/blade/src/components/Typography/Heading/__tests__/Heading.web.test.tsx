@@ -83,54 +83,6 @@ describe('<Heading />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "subheading" and weight "bold"', () => {
-    const displayText = 'Get Started With Payment Gateway';
-    const { container, getByText } = renderWithTheme(
-      <Heading type="subdued" weight="semibold">
-        {displayText}
-      </Heading>,
-    );
-    expect(getByText(displayText)).toBeInTheDocument();
-    expect(getByText(displayText).tagName).toBe('P');
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should throw error when variant is "subheading" but weight "regular" is passed', () => {
-    try {
-      const displayText = 'Get Started With Payment Gateway';
-      renderWithTheme(
-        // @ts-expect-error testing failure case when weight='regular' is passed with variant='subheading'
-        <Heading type="normal" variant="subheading" weight="regular">
-          {displayText}
-        </Heading>,
-      );
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        expect(error.message).toEqual(
-          `[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`,
-        );
-      }
-    }
-  });
-
-  it('should throw error when variant is "subheading" but size is defined', () => {
-    try {
-      const displayText = 'Get Started With Payment Gateway';
-      renderWithTheme(
-        // @ts-expect-error testing failure case when size is passed with variant='subheading'
-        <Heading type="normal" variant="subheading" size="large">
-          {displayText}
-        </Heading>,
-      );
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        expect(error.message).toMatchInlineSnapshot(
-          `"[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop"`,
-        );
-      }
-    }
-  });
-
   it('should accept as prop and render appropriate HTML tag', () => {
     const displayText = 'Displaying some text';
     const { getByText } = renderWithTheme(<Heading as="span">{displayText}</Heading>);

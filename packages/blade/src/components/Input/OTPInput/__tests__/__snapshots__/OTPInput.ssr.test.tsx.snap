@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<OTPInput /> should have hidden input for form submissions 1`] = `"<div id="root"><div data-blade-component="otp-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx etNGXF"><label for="otp-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx bqWBik"><div data-blade-component="base-box" class="BaseBox-bmPWx eeqPab"><p class="StyledBaseText-dVBfTO gaMIEc" data-blade-component="text">Enter OTP</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text"></p></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx djEyfF"><input hidden="" id="otp-undefined-input-undefined" name="otpInput" readonly="" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx goISJX"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-0-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Enter OTP character 1" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-1-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 2" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-2-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 3" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-3-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 4" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-4-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 5" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-5-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 6" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 dTyYCn" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jgxKDg"></div></div></div>"`;
+exports[`<OTPInput /> should have hidden input for form submissions 1`] = `"<div id="root"><div data-blade-component="otp-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx etNGXF"><label for="otp-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx bqWBik"><div data-blade-component="base-box" class="BaseBox-bmPWx eeqPab"><p class="StyledBaseText-dVBfTO eqbmTC" data-blade-component="text">Enter OTP</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 ijVANw"><p class="StyledBaseText-dVBfTO cxTQmj" data-blade-component="text"></p></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx djEyfF"><input hidden="" id="otp-undefined-input-undefined" name="otpInput" readonly="" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx goISJX"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-0-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Enter OTP character 1" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 bHCnJX" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-1-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 2" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 bHCnJX" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-2-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 3" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 bHCnJX" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-3-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 4" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 bHCnJX" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-4-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 5" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 bHCnJX" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kqrvPH"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx edjBu"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  exvuoO"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-5-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 6" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 bHCnJX" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  dGtNgo"></div></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx jgxKDg"></div></div></div>"`;
 
 exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 .c0 {
@@ -79,13 +79,17 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 
 .c3 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -97,26 +101,34 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 
 .c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c10 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -139,13 +151,17 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 
 .c10::-webkit-input-placeholder {
   color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -153,13 +169,17 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 
 .c10::-moz-placeholder {
   color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -167,13 +187,17 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 
 .c10:-ms-input-placeholder {
   color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -181,13 +205,17 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 
 .c10::placeholder {
   color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;

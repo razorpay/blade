@@ -85,18 +85,19 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
+              fontWeight="semibold"
+              lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
                     "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -154,10 +155,11 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
                   [
                     {
                       "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "letterSpacing": 0,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -193,16 +195,17 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -481,16 +484,17 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -647,16 +651,17 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -813,16 +818,17 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -979,16 +985,17 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1145,16 +1152,17 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1311,16 +1319,17 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1477,16 +1486,17 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1643,16 +1653,17 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1809,16 +1820,17 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1975,16 +1987,17 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2141,16 +2154,17 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2328,18 +2342,19 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
+              fontWeight="semibold"
+              lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
                     "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -2397,10 +2412,11 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
                   [
                     {
                       "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "letterSpacing": 0,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -2436,16 +2452,17 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2745,18 +2762,19 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
+              fontWeight="semibold"
+              lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
                     "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -2814,10 +2832,11 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
                   [
                     {
                       "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "letterSpacing": 0,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -2853,16 +2872,17 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -3083,10 +3103,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3184,18 +3205,19 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
+              fontWeight="semibold"
+              lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
                     "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -3253,10 +3275,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
                   [
                     {
                       "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "letterSpacing": 0,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -3292,16 +3315,17 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -3522,10 +3546,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3623,18 +3648,19 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
+              fontWeight="semibold"
+              lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
                     "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -3692,10 +3718,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
                   [
                     {
                       "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "letterSpacing": 0,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -3731,16 +3758,17 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
                   "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,

@@ -318,7 +318,7 @@
       "name": "Import Button only",
       "path": "./build/components/index.production.web.js",
       "import": "{ Button }",
-      "limit": "30 kb",
+      "limit": "31 kb",
       "running": false
     },
     {

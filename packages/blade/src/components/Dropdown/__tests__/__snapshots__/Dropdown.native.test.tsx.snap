@@ -121,18 +121,19 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                     fontFamily="text"
                     fontSize={75}
                     fontStyle="normal"
-                    fontWeight="bold"
-                    lineHeight={50}
+                    fontWeight="semibold"
+                    lineHeight={75}
                     numberOfLines={2}
                     style={
                       [
                         {
                           "color": "hsla(217, 18%, 45%, 1)",
-                          "fontFamily": "Lato",
+                          "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
-                          "fontWeight": "700",
-                          "lineHeight": 16,
+                          "fontWeight": "600",
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -190,10 +191,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         [
                           {
                             "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -360,11 +362,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Lato",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
                             "height": 36,
+                            "letterSpacing": 0,
                             "marginBottom": 0,
                             "marginLeft": 0,
                             "marginRight": 0,
@@ -395,10 +398,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             [
                               {
                                 "color": "hsla(214, 18%, 69%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -888,23 +892,23 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           }
                         >
                           <Text
-                            accessibilityRole="header"
                             accessible={true}
                             color="surface.text.normal.lowContrast"
-                            data-blade-component="heading"
+                            data-blade-component="text"
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="bold"
-                            lineHeight={300}
+                            fontWeight="semibold"
+                            lineHeight={200}
                             style={
                               [
                                 {
                                   "color": "hsla(217, 56%, 17%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1137,10 +1141,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               [
                                 {
                                   "color": "hsla(217, 56%, 17%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1296,10 +1301,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                               [
                                 {
                                   "color": "hsla(217, 56%, 17%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
