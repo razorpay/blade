@@ -74,8 +74,8 @@
     },
     "./coverage": {
       "default": {
-        "types": "./getBladeCoverage.d.ts",
-        "default": "./getBladeCoverage.js"
+        "types": "./coverage.d.ts",
+        "default": "./coverage.js"
       }
     }
   },

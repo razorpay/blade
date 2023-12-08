@@ -12,5 +12,5 @@ export function assertBladeCoverage({
 }: {
   page: any;
   expect: any;
-  threshold?: string;
+  threshold?: number;
 }): Promise<void>;
