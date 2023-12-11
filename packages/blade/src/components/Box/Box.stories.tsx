@@ -92,7 +92,7 @@ export const Elevations = (args: BoxProps): React.ReactElement => {
 };
 
 Elevations.args = {
-  padding: 'spacing.5',
+  padding: 'spacing.8',
   backgroundColor: 'surface.background.level1.lowContrast',
 } as BoxProps;
 
