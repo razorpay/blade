@@ -45,26 +45,26 @@ const Table = styled.table`
 const ComponentStatusBadge = ({ status }: { status: ComponentStatuses }): React.ReactElement => {
   const badgeVariants: Record<
     ComponentStatuses,
-    { label: string; variant: BadgeProps['variant']; icon: IconComponent }
+    { label: string; color: BadgeProps['color']; icon: IconComponent }
   > = {
-    released: { label: 'Released', variant: 'positive', icon: CheckIcon },
-    deprecated: { label: 'Deprecated', variant: 'negative', icon: AlertCircleIcon },
-    'to-be-decided': { label: 'TBD', variant: 'information', icon: StampIcon },
-    'in-design': { label: 'In Design', variant: 'notice', icon: LoaderIcon },
-    'in-api-spec': { label: 'API In Progress', variant: 'notice', icon: EditIcon },
-    'in-development': { label: 'In Development', variant: 'notice', icon: LoaderIcon },
-    'planned-Q1-dev': { label: 'Planned: Q1 Dev', variant: 'information', icon: ClockIcon },
-    'planned-Q2-dev': { label: 'Planned: Q2 Dev', variant: 'information', icon: ClockIcon },
-    'planned-Q3-dev': { label: 'Planned: Q3 Dev', variant: 'information', icon: ClockIcon },
-    'planned-Q4-dev': { label: 'Planned: Q4 Dev', variant: 'information', icon: ClockIcon },
-    'planned-Q1-design': { label: 'Planned: Q1 Design', variant: 'information', icon: ClockIcon },
-    'planned-Q2-design': { label: 'Planned: Q2 Design', variant: 'information', icon: ClockIcon },
-    'planned-Q3-design': { label: 'Planned: Q3 Design', variant: 'information', icon: ClockIcon },
-    'planned-Q4-design': { label: 'Planned: Q4 Design', variant: 'information', icon: ClockIcon },
+    released: { label: 'Released', color: 'positive', icon: CheckIcon },
+    deprecated: { label: 'Deprecated', color: 'negative', icon: AlertCircleIcon },
+    'to-be-decided': { label: 'TBD', color: 'information', icon: StampIcon },
+    'in-design': { label: 'In Design', color: 'notice', icon: LoaderIcon },
+    'in-api-spec': { label: 'API In Progress', color: 'notice', icon: EditIcon },
+    'in-development': { label: 'In Development', color: 'notice', icon: LoaderIcon },
+    'planned-Q1-dev': { label: 'Planned: Q1 Dev', color: 'information', icon: ClockIcon },
+    'planned-Q2-dev': { label: 'Planned: Q2 Dev', color: 'information', icon: ClockIcon },
+    'planned-Q3-dev': { label: 'Planned: Q3 Dev', color: 'information', icon: ClockIcon },
+    'planned-Q4-dev': { label: 'Planned: Q4 Dev', color: 'information', icon: ClockIcon },
+    'planned-Q1-design': { label: 'Planned: Q1 Design', color: 'information', icon: ClockIcon },
+    'planned-Q2-design': { label: 'Planned: Q2 Design', color: 'information', icon: ClockIcon },
+    'planned-Q3-design': { label: 'Planned: Q3 Design', color: 'information', icon: ClockIcon },
+    'planned-Q4-design': { label: 'Planned: Q4 Design', color: 'information', icon: ClockIcon },
   };
 
   return (
-    <Badge variant={badgeVariants[status].variant} icon={badgeVariants[status].icon}>
+    <Badge color={badgeVariants[status].color} icon={badgeVariants[status].icon}>
       {badgeVariants[status].label}
     </Badge>
   );
@@ -132,33 +132,33 @@ const ComponentStatusTable = (): React.ReactElement => {
       <BaseBox display="flex" flexDirection="row" marginBottom="spacing.7" gap="spacing.2">
         <Tooltip content="Not yet decided or planned" placement="bottom">
           <TooltipInteractiveWrapper>
-            <Badge variant="information" icon={StampIcon}>
+            <Badge color="information" icon={StampIcon}>
               TBD
             </Badge>
           </TooltipInteractiveWrapper>
         </Tooltip>
         ➡️
-        <Badge variant="information" icon={ClockIcon}>
+        <Badge color="information" icon={ClockIcon}>
           Planned: Qn Design
         </Badge>
         ➡️
-        <Badge variant="information" icon={ClockIcon}>
+        <Badge color="information" icon={ClockIcon}>
           Planned: Qn Dev
         </Badge>
         ➡️
-        <Badge variant="notice" icon={LoaderIcon}>
+        <Badge color="notice" icon={LoaderIcon}>
           In Design
         </Badge>
         ➡️
-        <Badge variant="notice" icon={EditIcon}>
+        <Badge color="notice" icon={EditIcon}>
           API In Progress
         </Badge>
         ➡️
-        <Badge variant="notice" icon={LoaderIcon}>
+        <Badge color="notice" icon={LoaderIcon}>
           In Development
         </Badge>
         ➡️
-        <Badge variant="positive" icon={CheckIcon}>
+        <Badge color="positive" icon={CheckIcon}>
           Released
         </Badge>
       </BaseBox>

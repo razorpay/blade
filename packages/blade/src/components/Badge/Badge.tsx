@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import type { StyledBadgeProps } from './types';
 import { StyledBadge } from './StyledBadge';
-import { iconPadding, iconSize, horizontalPadding, verticalPadding } from './badgeTokens';
+import { iconPadding, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import type { Feedback } from '~tokens/theme/theme';
@@ -13,7 +13,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { isReactNative } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import { throwBladeError } from '~utils/logger';
 
 type BadgeProps = {
@@ -23,24 +23,17 @@ type BadgeProps = {
    */
   children: StringChildrenType;
   /**
-   * This prop is deprecated in favor of `color`.
-   *
-   * @deprecated Use the `color` prop instead
-   * @default 'neutral'
-   */
-  variant?: Feedback | 'blue';
-  /**
    * Sets the color of the badge.
    *
    * @default 'neutral'
    */
-  color?: Feedback | 'default';
+  color?: Feedback | 'primary';
   /**
    * Sets the contrast of the badge.
    *
    * @default 'low'
    */
-  contrast?: 'low' | 'high';
+  emphasis?: 'low' | 'high';
   /**
    * Sets the size of the badge.
    *
@@ -53,12 +46,6 @@ type BadgeProps = {
    *
    */
   icon?: IconComponent;
-  /**
-   * Sets the fontWeight of the label.
-   *
-   * @default 'regular'
-   */
-  fontWeight?: 'regular' | 'medium' | 'semibold';
 } & TestID &
   StyledPropsBlade;
 
@@ -74,39 +61,36 @@ type ColorProps = {
 };
 
 const getColorProps = ({
-  variant,
-  contrast,
+  color,
+  emphasis,
 }: {
-  variant: NonNullable<BadgeProps['color'] | 'blue'>;
-  contrast: NonNullable<BadgeProps['contrast']>;
+  color: NonNullable<BadgeProps['color']>;
+  emphasis: NonNullable<BadgeProps['emphasis']>;
 }): ColorProps => {
-  const badgeVariant = variant === 'default' ? 'blue' : variant;
+  const badgeVariant = color === 'primary' ? 'blue' : color;
   const props: ColorProps = {
     iconColor: 'feedback.icon.neutral.lowContrast',
     textColor: 'feedback.text.neutral.lowContrast',
     backgroundColor: 'feedback.background.neutral.lowContrast',
   };
   if (isFeedbackVariant(badgeVariant)) {
-    props.iconColor = `feedback.icon.${badgeVariant}.${contrast}Contrast`;
-    props.textColor = `feedback.text.${badgeVariant}.${contrast}Contrast`;
-    props.backgroundColor = `feedback.background.${badgeVariant}.${contrast}Contrast`;
+    props.iconColor = `feedback.icon.${badgeVariant}.${emphasis}Contrast`;
+    props.textColor = `feedback.text.${badgeVariant}.${emphasis}Contrast`;
+    props.backgroundColor = `feedback.background.${badgeVariant}.${emphasis}Contrast`;
   } else {
-    props.iconColor = `badge.icon.${badgeVariant}.${contrast}Contrast`;
-    props.textColor = `badge.text.${badgeVariant}.${contrast}Contrast`;
-    props.backgroundColor = `badge.background.${badgeVariant}.${contrast}Contrast`;
+    props.iconColor = `badge.icon.${badgeVariant}.${emphasis}Contrast`;
+    props.textColor = `badge.text.${badgeVariant}.${emphasis}Contrast`;
+    props.backgroundColor = `badge.background.${badgeVariant}.${emphasis}Contrast`;
   }
   return props;
 };
 
 const _Badge = ({
   children,
-  contrast = 'low',
-  fontWeight = 'medium',
+  emphasis = 'low',
   icon: Icon,
   size = 'medium',
-  // TODO: Remove variant prop in next major release in favor of color prop
-  variant = 'neutral',
-  color,
+  color = 'neutral',
   testID,
   ...styledProps
 }: BadgeProps): ReactElement => {
@@ -120,10 +104,9 @@ const _Badge = ({
     }
   }
 
-  const badgeVariant = color ?? variant;
   const { backgroundColor, iconColor, textColor } = getColorProps({
-    variant: badgeVariant,
-    contrast,
+    color,
+    emphasis,
   });
 
   const badgeTextSizes = {
@@ -147,12 +130,14 @@ const _Badge = ({
       {...metaAttribute({ name: MetaConstants.Badge, testID })}
       {...getStyledProps(styledProps)}
     >
-      <StyledBadge backgroundColor={backgroundColor} size={size} textAlign={'left' as never}>
+      <StyledBadge
+        height={makeSize(badgeHeight[size])}
+        backgroundColor={backgroundColor}
+        size={size}
+        textAlign={'left' as never}
+      >
         <BaseBox
-          paddingRight={horizontalPadding[size]}
-          paddingLeft={horizontalPadding[size]}
-          paddingTop={verticalPadding[size]}
-          paddingBottom={verticalPadding[size]}
+          paddingX={horizontalPadding[size]}
           display="flex"
           flexDirection="row"
           justifyContent="center"
@@ -167,7 +152,7 @@ const _Badge = ({
           <Text
             {...badgeTextSizes[size]}
             type="normal"
-            weight={fontWeight}
+            weight="medium"
             truncateAfterLines={1}
             color={textColor}
           >

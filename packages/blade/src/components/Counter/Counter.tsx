@@ -11,7 +11,6 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
 import { isReactNative, makeSize } from '~utils';
-import { logger } from '~utils/logger';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 export type CounterProps = {
@@ -25,25 +24,11 @@ export type CounterProps = {
    */
   max?: number;
   /**
-   * This prop is deprecated in favor of `color`.
-   *
-   * @default 'neutral'
-   * @deprecated Use `color` instead
-   */
-  intent?: Feedback;
-  /**
-   * This prop is deprecated in favor of `color`.
-   *
-   * @default 'neutral'
-   * @deprecated Use `color` instead
-   */
-  variant?: Feedback | 'blue';
-  /**
    * Sets the color of the counter.
    *
    * @default 'neutral'
    */
-  color?: Feedback | 'default';
+  color?: Feedback | 'primary';
   /**
    * Sets the contrast of the counter.
    *
@@ -70,13 +55,13 @@ const isFeedbackVariant = (variant: string): variant is Feedback => {
 };
 
 const getColorProps = ({
-  variant = 'neutral',
+  color = 'neutral',
   contrast = 'low',
 }: {
-  variant: NonNullable<CounterProps['color'] | 'blue'>;
+  color: NonNullable<CounterProps['color'] | 'blue'>;
   contrast: NonNullable<CounterProps['contrast']>;
 }): ColorProps => {
-  const counterVariant = variant === 'default' ? 'blue' : variant;
+  const counterVariant = color === 'primary' ? 'blue' : color;
   const props: ColorProps = {
     textColor: 'feedback.text.neutral.lowContrast',
     backgroundColor: 'feedback.background.neutral.lowContrast',
@@ -94,9 +79,7 @@ const getColorProps = ({
 const _Counter = ({
   value,
   max,
-  intent,
-  variant = 'neutral',
-  color,
+  color = 'neutral',
   contrast = 'low',
   size = 'medium',
   testID,
@@ -109,20 +92,9 @@ const _Counter = ({
 
   const { platform } = useTheme();
   const { backgroundColor, textColor } = getColorProps({
-    variant: color ?? intent ?? variant,
+    color,
     contrast,
   });
-
-  if (__DEV__) {
-    if (intent) {
-      logger({
-        type: 'warn',
-        message:
-          'The prop `intent` is deprecated and will be removed in a future release. Please use `variant` instead.',
-        moduleName: 'Counter',
-      });
-    }
-  }
 
   const counterTextSizes = {
     small: {
