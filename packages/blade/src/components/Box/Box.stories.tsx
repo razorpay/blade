@@ -75,9 +75,22 @@ export const Responsive = (args: BoxProps): React.ReactElement => {
   );
 };
 
+Responsive.args = {
+  display: 'flex',
+  paddingY: 'spacing.6',
+  flexDirection: { base: 'column', m: 'row' },
+} as BoxProps;
+
 export const Elevations = (args: BoxProps): React.ReactElement => {
   return (
-    <Box display="flex" flexDirection="row" gap="spacing.8">
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      paddingY="spacing.11"
+      paddingX={isReactNative() ? 'spacing.0' : 'spacing.4'}
+      display="flex"
+      flexDirection="row"
+      gap="spacing.8"
+    >
       <Box {...args} elevation="lowRaised">
         <Text>Low </Text>
       </Box>
@@ -93,13 +106,8 @@ export const Elevations = (args: BoxProps): React.ReactElement => {
 
 Elevations.args = {
   padding: 'spacing.8',
-  backgroundColor: 'surface.background.level1.lowContrast',
-} as BoxProps;
-
-Responsive.args = {
-  display: 'flex',
-  paddingY: 'spacing.6',
-  flexDirection: { base: 'column', m: 'row' },
+  backgroundColor: 'surface.background.level2.lowContrast',
+  borderRadius: 'large',
 } as BoxProps;
 
 export const AsSection = (args: BoxProps): React.ReactElement => {
