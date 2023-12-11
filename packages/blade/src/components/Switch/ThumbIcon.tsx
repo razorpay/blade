@@ -1,8 +1,8 @@
-import isNumber from '~utils/lodashButBetter/isNumber';
-import getIn from '~utils/lodashButBetter/get';
 import type { SwitchProps } from './types';
 import { AnimatedThumbIcon } from './AnimatedThumbIcon';
 import { switchColors } from './switchTokens';
+import getIn from '~utils/lodashButBetter/get';
+import isNumber from '~utils/lodashButBetter/isNumber';
 import { useTheme } from '~components/BladeProvider';
 import { useBreakpoint } from '~utils';
 import { Path } from '~components/Icons/_Svg';

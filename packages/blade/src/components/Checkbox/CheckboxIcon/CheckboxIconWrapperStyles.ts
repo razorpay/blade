@@ -1,7 +1,7 @@
-import getIn from '~utils/lodashButBetter/get';
 import type { CSSObject } from 'styled-components';
 import { checkboxIconColors, checkboxSizes } from '../checkboxTokens';
 import type { CheckboxIconProps } from './CheckboxIcon';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';

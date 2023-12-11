@@ -1,6 +1,6 @@
 import type { CSSObject } from 'styled-components';
-import getIn from '~utils/lodashButBetter/get';
 import type { AnimatedChipProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import { makeBorderSize } from '~utils/makeBorderSize';
 
 const getAnimatedChipStyles = ({

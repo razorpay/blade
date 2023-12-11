@@ -1,6 +1,6 @@
 import React from 'react';
-import isUndefined from '~utils/lodashButBetter/isUndefined';
 import type { ChipGroupProps, ChipGroupContextType, State } from './types';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { useControllableState } from '~utils/useControllable';
 import { useId } from '~utils/useId';
 

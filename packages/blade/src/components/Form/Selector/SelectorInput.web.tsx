@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
-import getIn from '~utils/lodashButBetter/get';
 import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
 import type { HoverProps, SelectorInputProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';

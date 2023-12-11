@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react';
-import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';

@@ -1,5 +1,4 @@
 import type { CSSObject } from 'styled-components';
-import getIn from '~utils/lodashButBetter/get';
 import type {
   BaseBoxProps,
   MakeValueResponsive,
@@ -7,6 +6,7 @@ import type {
   ArrayOfMaxLength4,
 } from './types';
 import { getResponsiveValue } from './getResponsiveValue';
+import getIn from '~utils/lodashButBetter/get';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { Breakpoints } from '~tokens/global';
 import { breakpoints } from '~tokens/global';

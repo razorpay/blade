@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import getIn from '~utils/lodashButBetter/get';
 import type { SyntheticEvent } from 'react';
 import React, { useState } from 'react';
 import type { CSSObject } from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseLink from './StyledBaseLink';
+import getIn from '~utils/lodashButBetter/get';
 import useInteraction from '~utils/useInteraction';
 import type { IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';

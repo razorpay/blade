@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import getIn from '~utils/lodashButBetter/get';
 import { switchColors, switchMotion } from './switchTokens';
 import type { AnimatedThumbProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import { BaseBox } from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { makeBorderSize } from '~utils/makeBorderSize';

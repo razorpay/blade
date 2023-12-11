@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import getIn from '~utils/lodashButBetter/get';
 import React from 'react';
 import { useListContext } from './ListContext';
 import { UnorderedItemIcon } from './ListItemIcons';
@@ -13,6 +12,7 @@ import {
 } from './listTokens';
 import type { ListProps } from './List';
 import { getOrderedListItemBullet } from './getOrderedListItemBullet';
+import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import { useTheme } from '~components/BladeProvider';

@@ -1,5 +1,5 @@
-import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { MakeValueResponsive } from './types';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { Breakpoints } from '~tokens/global';
 
 /**

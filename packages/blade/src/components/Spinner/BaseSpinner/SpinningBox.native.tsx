@@ -1,4 +1,3 @@
-import getIn from '~utils/lodashButBetter/get';
 import React from 'react';
 import type { EasingFactoryFn } from 'react-native-reanimated';
 import Animated, {
@@ -9,6 +8,7 @@ import Animated, {
   withRepeat,
 } from 'react-native-reanimated';
 import { motion as spinnerMotion } from './spinnerTokens';
+import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
 import BaseBox from '~components/Box/BaseBox';

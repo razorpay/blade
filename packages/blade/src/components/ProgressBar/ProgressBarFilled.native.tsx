@@ -1,4 +1,3 @@
-import getIn from '~utils/lodashButBetter/get';
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Animated, {
@@ -13,6 +12,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { ProgressBarFilledProps } from './types';
 import { indeterminateAnimation, pulseAnimation } from './progressBarTokens';
+import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
