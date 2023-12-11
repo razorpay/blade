@@ -78,7 +78,7 @@ export const Responsive = (args: BoxProps): React.ReactElement => {
 export const Elevations = (args: BoxProps): React.ReactElement => {
   return (
     <Box display="flex" flexDirection="row" gap="spacing.8">
-      <Box {...args} backgroundColor="surface.background.level3.lowContrast" elevation="lowRaised">
+      <Box {...args} elevation="lowRaised">
         <Text>Low </Text>
       </Box>
       <Box {...args} elevation="midRaised">
@@ -93,8 +93,7 @@ export const Elevations = (args: BoxProps): React.ReactElement => {
 
 Elevations.args = {
   padding: 'spacing.5',
-  elevation: 'highRaised',
-  backgroundColor: 'surface.background.level3.lowContrast',
+  backgroundColor: 'surface.background.level1.lowContrast',
 } as BoxProps;
 
 Responsive.args = {
