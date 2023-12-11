@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock-upgrade';
 import React from 'react';
 
 type UseScrollLockProps = {
@@ -53,7 +53,7 @@ export function useScrollLock({
       return;
     }
 
-    const target = targetRef ? targetRef.current : document.body;
+    const target = (targetRef ? targetRef.current : document.body) as HTMLElement;
     active.current = false;
 
     ref.current = {

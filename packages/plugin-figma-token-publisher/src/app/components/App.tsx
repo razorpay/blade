@@ -4,13 +4,10 @@ import '../styles/ui.css';
 // eslint-disable-next-line import/extensions
 import 'figma-plugin-ds/dist/figma-plugin-ds.css';
 import { uploadTokens } from '../api/api';
-import type { TokenType } from '../api/api';
 
 const App = (): ReactElement => {
-  const [themeColorTokens, setThemeColorTokens] = useState({});
-  const [globalColorTokens, setGlobalColorTokens] = useState({});
+  const [colorTokens, setColorTokens] = useState({});
   const [personalAccessToken, setPersonalAccessToken] = useState('');
-  const tokenType = React.useRef<TokenType>();
 
   const handlePersonalAccessTokenChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setPersonalAccessToken(event.target.value);
@@ -22,10 +19,9 @@ const App = (): ReactElement => {
       repoName: 'blade',
       workflowFileName: 'blade-tokens-upload.yml',
       personalAccessToken,
-      colorTokens: tokenType.current === 'themeColorTokens' ? themeColorTokens : globalColorTokens,
-      tokenType: tokenType.current,
+      colorTokens,
     });
-  }, [themeColorTokens, globalColorTokens, personalAccessToken]);
+  }, [colorTokens, personalAccessToken]);
 
   const onCancel = React.useCallback(() => {
     // nosemgrep
@@ -35,12 +31,8 @@ const App = (): ReactElement => {
   React.useEffect(() => {
     window.onmessage = (event) => {
       const { type, data } = event.data.pluginMessage;
-      if (type === 'export-theme-color-tokens') {
-        tokenType.current = 'themeColorTokens';
-        setThemeColorTokens(data);
-      } else if (type === 'export-global-color-tokens') {
-        tokenType.current = 'globalColorTokens';
-        setGlobalColorTokens(data);
+      if (type === 'export-color-tokens') {
+        setColorTokens(data);
       }
     };
   }, []);

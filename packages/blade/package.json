@@ -1,8 +1,8 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.19.1",
   "sideEffects": false,
+  "version": "10.20.1",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -119,7 +119,7 @@
   "dependencies": {
     "patch-package": "7.0.0",
     "@babel/runtime": "7.20.0",
-    "body-scroll-lock": "4.0.0-beta.0",
+    "body-scroll-lock-upgrade": "1.1.0",
     "ts-deepmerge": "6.2.0",
     "use-presence": "1.1.0",
     "@use-gesture/react": "10.2.24",
