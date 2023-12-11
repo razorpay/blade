@@ -1,11 +1,12 @@
 {
   "private": "true",
   "scripts": {
-    "start": "react-scripts start"
+    "start": "react-scripts start",
+    "postinstall": "rm -rf node_modules/@razorpay/blade/node_modules"
   },
   "dependencies": {
     "@fontsource/lato": "^4.5.10",
-    "@razorpay/blade": "../../packages/blade/build/",
+    "@razorpay/blade": "file:../../blade",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "react": "^18.2.0",
