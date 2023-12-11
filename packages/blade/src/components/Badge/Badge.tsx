@@ -58,7 +58,7 @@ type BadgeProps = {
    *
    * @default 'regular'
    */
-  fontWeight?: 'regular' | 'semibold';
+  fontWeight?: 'regular' | 'medium' | 'semibold';
 } & TestID &
   StyledPropsBlade;
 
@@ -101,7 +101,7 @@ const getColorProps = ({
 const _Badge = ({
   children,
   contrast = 'low',
-  fontWeight = 'regular',
+  fontWeight = 'medium',
   icon: Icon,
   size = 'medium',
   // TODO: Remove variant prop in next major release in favor of color prop
