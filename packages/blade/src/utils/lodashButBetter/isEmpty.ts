@@ -17,6 +17,15 @@ export default function isEmpty(value: Collection): boolean {
     return true;
   }
 
+  if (Array.isArray(value)) {
+    return value.length === 0;
+  }
+
+  // Check if the value is a collection, map, or set and has zero size
+  if (value instanceof Map || value instanceof Set) {
+    return value.size === 0;
+  }
+
   // Check if the value is an object and has no own enumerable properties
   if (typeof value === 'object' && Object.keys(value).length === 0) {
     return true;
@@ -30,12 +39,6 @@ export default function isEmpty(value: Collection): boolean {
   // https://github.com/lodash/lodash/issues/496#issuecomment-37692727
   if (typeof value === 'number' || typeof value === 'boolean') {
     return true;
-  }
-
-  // Check if the value is a collection, map, or set and has zero size
-  if (value instanceof Map || value instanceof Set || Array.isArray(value)) {
-    // @ts-expect-error
-    return value.length === 0;
   }
 
   return false;
