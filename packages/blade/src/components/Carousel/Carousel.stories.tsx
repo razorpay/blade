@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ComponentStory, Meta } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 import { Title as AddonTitle } from '@storybook/addon-docs';
 import type { CarouselProps } from './';
 import { Carousel as CarouselComponent, CarouselItem } from './';
@@ -307,7 +308,7 @@ DefaultCarousel.play = async ({ canvasElement }) => {
 
   // // Check that the pin button is now a unpin button
   // const unpinButton = within(itemToPin).getByRole('button', { name: 'unpin' });
-  // await expect(unpinButton).toBeInTheDocument();
+  await expect(nextButton).toBeInTheDocument();
 };
 
 export const VisibleItems: ComponentStory<typeof CarouselComponent> = (props) => {

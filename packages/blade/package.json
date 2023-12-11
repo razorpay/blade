@@ -134,6 +134,7 @@
     "@storybook/addon-interactions": "6.5.16",
     "@storybook/testing-library": "0.0.13",
     "@storybook/test-runner": "0.16.0",
+    "@storybook/jest": "0.2.2",
     "chromatic": "6.22.0",
     "@babel/core": "7.20.2",
     "@babel/plugin-transform-react-jsx": "7.16.5",
