@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
-import { useEffect, useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { getPlatformType } from '../getPlatformType';
 import { getMediaQuery } from '../getMediaQuery';
 import type { Breakpoints } from '~tokens/global';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const deviceType = {
   desktop: 'desktop',
@@ -71,10 +72,12 @@ export const useBreakpoint = ({
           if (event?.media === mediaQuery) {
             return true;
           }
-          // this will run when the state is initialised for the first time and hence the event object will be empty so we'll fallback to browser's window object
+
+          // this will run when the state is initialised for the first time and hence the event object will be empty because the event listener wouldn't have triggered
           if (window.matchMedia(mediaQuery).matches) {
             return true;
           }
+
           return false;
         })?.token ?? undefined;
 
@@ -83,16 +86,20 @@ export const useBreakpoint = ({
     [breakpointsTokenAndQueryCollection],
   );
 
-  const [breakpointAndDevice, setBreakpointAndDevice] = useState(() => {
-    const matchedBreakpoint = getMatchedBreakpoint();
-    const matchedDeviceType = getMatchedDeviceType(matchedBreakpoint);
-    return {
-      matchedBreakpoint,
-      matchedDeviceType,
-    };
+  const [breakpointAndDevice, setBreakpointAndDevice] = useState<BreakpointAndDevice>({
+    matchedBreakpoint: undefined,
+    matchedDeviceType: deviceType.desktop,
   });
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
+    // set the breakpoint and devicetype for the first time because eventlisteners will only trigger after the screen is actually changed
+    setBreakpointAndDevice(() => {
+      const matchedBreakpoint = getMatchedBreakpoint();
+      const matchedDeviceType = getMatchedDeviceType(matchedBreakpoint);
+      return { matchedBreakpoint, matchedDeviceType };
+    });
+
+    // for react-native and SSR we don't need to register event listeners
     if (!supportsMatchMedia) {
       return undefined;
     }
@@ -101,7 +108,6 @@ export const useBreakpoint = ({
       setBreakpointAndDevice(() => {
         const matchedBreakpoint = getMatchedBreakpoint(event);
         const matchedDeviceType = getMatchedDeviceType(matchedBreakpoint);
-
         return { matchedBreakpoint, matchedDeviceType };
       });
     };
@@ -137,8 +143,6 @@ export const useBreakpoint = ({
     getMatchedDeviceType,
     supportsMatchMedia,
   ]);
-
-  // @TODO: handle SSR scenarios
   return breakpointAndDevice;
 };
 

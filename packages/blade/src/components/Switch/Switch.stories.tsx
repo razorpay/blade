@@ -31,18 +31,21 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox>
         {`
-        import { Switch } from '@razorpay/blade/components'
-        
+        import { Switch } from '@razorpay/blade/components';
+
         function App(): React.ReactElement {
           return (
             // Check console
-            <Switch onChange={(e) => console.log(e.isChecked)} accessibilityLabel="Toggle DarkMode" />
-          )
+            <Switch
+              onChange={(e) => console.log(e.isChecked)}
+              accessibilityLabel="Toggle DarkMode"
+            />
+          );
         }
-
-        export default App;
+        
+        export default App;        
       `}
       </Sandbox>
     </StoryPageWrapper>

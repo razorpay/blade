@@ -45,7 +45,7 @@ const Page = (): React.ReactElement => {
       }
     >
       <Title>Usage</Title>
-      <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
+      <Sandbox showConsole editorHeight={400}>
         {`
           import { Box, Chip, ChipGroup, Text } from '@razorpay/blade/components';
 

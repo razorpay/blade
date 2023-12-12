@@ -1,5 +1,64 @@
 # @razorpay/blade
 
+## 10.20.1
+
+### Patch Changes
+
+- e89018c4: feat(Dropdown): Support `width` prop on DropdownOverlay
+- 37fa68cb: fix: define stylis plugin name property
+
+## 10.20.0
+
+### Minor Changes
+
+- 87d9638b: feat: increase the CSS specificity of all components
+
+  > [!WARNING]
+  >
+  > **We've enhanced the specificity of styles for Blade components. If you've defined styles in separate CSS at a root level targeting blade components, please note that they may no longer take effect as expected.
+  > The styles within the blade components will now take precedence.**
+  >
+  > **Your existing component snapshots may update, there is no change in the visual appearance of components. Please feel free to add the updated snapshots.**
+
+### Patch Changes
+
+- 1da66413: fix(blade): page gets scrolled to top on iOS when bottomsheet open
+- 2219e9a1: fix: refined text input label truncation for single-word overflow
+
+## 10.19.1
+
+### Patch Changes
+
+- 0d0e72ea: fix(blade): fixed SpotlightPopoverTour bugs
+
+  - Safari body-scroll-lock causing the page to get clipped because storybook doesn't set width/height on body - fixed by setting width/height
+  - Initial delay of opening the mask - fixed by immediately updating the mask size on initial render
+  - Delay of transitioning between steps which occurs because we need to wait for the animation to finish before scrolling otherwise the scroll gets interrupted - fixed by reduced this to 100ms
+
+## 10.19.0
+
+### Minor Changes
+
+- 23a3e111: feat: Add `Table` component
+
+## 10.18.2
+
+### Patch Changes
+
+- 9967cd96: fix: set default breakpoint without computing
+
+## 10.18.1
+
+### Patch Changes
+
+- 77b31aa1: fix(blade): remove extra margin left on carousel
+
+## 10.18.0
+
+### Minor Changes
+
+- 88aba1d6: feat(blade): added SpotlightPopoverTour web implementation
+
 ## 10.17.4
 
 ### Patch Changes

@@ -36,7 +36,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       ...(isResponsive && {
         width: '100%',
         scrollSnapAlign: isMobile || !shouldAddStartEndSpacing ? 'start' : 'center',
-        marginLeft: shouldHaveStartSpacing ? '100%' : 0,
+        marginLeft: shouldHaveStartSpacing ? '40%' : 0,
       }),
     };
   },

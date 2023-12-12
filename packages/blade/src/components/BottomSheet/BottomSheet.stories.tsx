@@ -47,6 +47,7 @@ import { Link } from '~components/Link';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { isReactNative } from '~utils';
+import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 
 const Page = (): React.ReactElement => {
   return (
@@ -75,7 +76,7 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole editorHeight={600}>
+      <Sandbox editorHeight={600}>
         {`
           import React from 'react';
           import { 
@@ -134,6 +135,20 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
+      <Title>iOS Safari Specific Setup</Title>
+      <Text marginTop="spacing.4">
+        When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
+        `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS
+        safari where it won't compute the height of the body correctly.
+      </Text>
+      <SandboxHighlighter showLineNumbers={false} theme="light">
+        {`
+          body {
+            width: 100%;
+            height: 100%;
+          }
+        `}
+      </SandboxHighlighter>
     </StoryPageWrapper>
   );
 };
@@ -225,6 +240,51 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
   return (
     <BaseBox>
       <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
       <BottomSheetComponent
         {...args}
         isOpen={isOpen}
