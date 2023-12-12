@@ -37,16 +37,12 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   justify-content: center;
 }
 
-.c5 {
-  width: 100%;
-}
-
-.c7 {
+.c6 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c8 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -57,14 +53,14 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   min-width: 200px;
 }
 
-.c10 {
+.c9 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c11 {
+.c10 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -78,7 +74,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   align-items: baseline;
 }
 
-.c6 {
+.c5 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -167,7 +163,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c8 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -180,7 +176,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c11 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -194,7 +190,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   margin-right: 2px;
 }
 
-.c13 {
+.c12 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -207,7 +203,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c14 {
+.c13 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -274,51 +270,51 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class="c5"
+        class=""
         data-blade-component="collapsible-body"
         id="collapsible-body-1"
         role="region"
       >
         <div
-          class="c6"
+          class="c5"
         >
           <div
-            class="c7"
+            class="c6"
             data-blade-component="box"
           >
             <div
-              class="c8"
+              class="c7"
               data-blade-component="box"
             >
               <p
-                class="c9"
+                class="c8"
                 data-blade-component="text"
               >
                 Actual amount
               </p>
               <div
-                class="c10"
+                class="c9"
                 data-blade-component="amount"
               >
                 <div
-                  class="c11"
+                  class="c10"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c12"
+                    class="c11"
                     data-blade-component="base-text"
                   >
                     ₹
                   </span>
                   <span
-                    class="c13"
+                    class="c12"
                     data-blade-component="base-text"
                   >
                     1,000
                     .
                   </span>
                   <span
-                    class="c14"
+                    class="c13"
                     data-blade-component="base-text"
                   >
                     00
@@ -376,16 +372,12 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding-left: 4px;
 }
 
-.c6 {
-  width: 100%;
-}
-
-.c8 {
+.c7 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c9 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -396,14 +388,14 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   min-width: 200px;
 }
 
-.c11 {
+.c10 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c12 {
+.c11 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -417,7 +409,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   align-items: baseline;
 }
 
-.c7 {
+.c6 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -444,7 +436,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c10 {
+.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -457,7 +449,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c13 {
+.c12 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -471,7 +463,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   margin-right: 2px;
 }
 
-.c14 {
+.c13 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -484,7 +476,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c14 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -639,51 +631,51 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
       </button>
       <div
         aria-hidden="true"
-        class="c6"
+        class=""
         data-blade-component="collapsible-body"
         id="collapsible-body-3"
         role="region"
       >
         <div
-          class="c7"
+          class="c6"
         >
           <div
-            class="c8"
+            class="c7"
             data-blade-component="box"
           >
             <div
-              class="c9"
+              class="c8"
               data-blade-component="box"
             >
               <p
-                class="c10"
+                class="c9"
                 data-blade-component="text"
               >
                 Actual amount
               </p>
               <div
-                class="c11"
+                class="c10"
                 data-blade-component="amount"
               >
                 <div
-                  class="c12"
+                  class="c11"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c13"
+                    class="c12"
                     data-blade-component="base-text"
                   >
                     ₹
                   </span>
                   <span
-                    class="c14"
+                    class="c13"
                     data-blade-component="base-text"
                   >
                     1,000
                     .
                   </span>
                   <span
-                    class="c15"
+                    class="c14"
                     data-blade-component="base-text"
                   >
                     00

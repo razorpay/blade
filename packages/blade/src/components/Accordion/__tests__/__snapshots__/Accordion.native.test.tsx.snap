@@ -290,12 +290,9 @@ exports[`<Accordion /> should render 1`] = `
               importantForAccessibility="no-hide-descendants"
               style={
                 [
-                  {
-                    "width": "100%",
-                  },
+                  {},
                 ]
               }
-              width="100%"
             >
               <View
                 isExpanded={false}
@@ -706,12 +703,9 @@ exports[`<Accordion /> should render 1`] = `
               importantForAccessibility="no-hide-descendants"
               style={
                 [
-                  {
-                    "width": "100%",
-                  },
+                  {},
                 ]
               }
-              width="100%"
             >
               <View
                 isExpanded={false}
@@ -1122,12 +1116,9 @@ exports[`<Accordion /> should render 1`] = `
               importantForAccessibility="no-hide-descendants"
               style={
                 [
-                  {
-                    "width": "100%",
-                  },
+                  {},
                 ]
               }
-              width="100%"
             >
               <View
                 isExpanded={false}

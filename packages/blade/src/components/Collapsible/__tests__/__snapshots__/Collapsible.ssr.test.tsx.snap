@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id="root"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iBXzln"><button type="button" data-blade-component="button" role="button" aria-controls="collapsible-body-undefined" aria-expanded="true" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 biOBim"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"><div class="StyledBaseText-dVBfTO brGLEM" data-blade-component="base-text">View Price Breakdown</div></div></button><div id="collapsible-body-undefined" role="region" aria-hidden="false" data-blade-component="collapsible-body" class="BaseBox-bmPWx iGUFMG"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 gxKLCW"><div data-blade-component="box" class="BaseBox-bmPWx hgWdUa"><div data-blade-component="box" class="BaseBox-bmPWx lmtAaL"><div data-blade-component="box" class="BaseBox-bmPWx hfsNNB"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Actual amount</p><div data-blade-component="amount" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx dVzpVF"><span class="StyledBaseText-dVBfTO jKuOWA" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO chIjgb" data-blade-component="base-text">1,000<!-- -->.</span><span class="StyledBaseText-dVBfTO eDQkPo" data-blade-component="base-text">00</span></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx hfsNNB"><p class="StyledBaseText-dVBfTO ljwJlt" data-blade-component="text">Razorpay Platform Fees</p><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">2%</p></div><div data-blade-component="box" class="BaseBox-bmPWx hfsNNB"><p class="StyledBaseText-dVBfTO ljwJlt" data-blade-component="text">GST</p><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">18%</p></div></div></div></div></div></div></div></div>"`;
+exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id="root"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iBXzln"><button type="button" data-blade-component="button" role="button" aria-controls="collapsible-body-undefined" aria-expanded="true" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 biOBim"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"><div class="StyledBaseText-dVBfTO brGLEM" data-blade-component="base-text">View Price Breakdown</div></div></button><div id="collapsible-body-undefined" role="region" aria-hidden="false" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 gxKLCW"><div data-blade-component="box" class="BaseBox-bmPWx hgWdUa"><div data-blade-component="box" class="BaseBox-bmPWx lmtAaL"><div data-blade-component="box" class="BaseBox-bmPWx hfsNNB"><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">Actual amount</p><div data-blade-component="amount" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx dVzpVF"><span class="StyledBaseText-dVBfTO jKuOWA" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO chIjgb" data-blade-component="base-text">1,000<!-- -->.</span><span class="StyledBaseText-dVBfTO eDQkPo" data-blade-component="base-text">00</span></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx hfsNNB"><p class="StyledBaseText-dVBfTO ljwJlt" data-blade-component="text">Razorpay Platform Fees</p><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">2%</p></div><div data-blade-component="box" class="BaseBox-bmPWx hfsNNB"><p class="StyledBaseText-dVBfTO ljwJlt" data-blade-component="text">GST</p><p class="StyledBaseText-dVBfTO eIdQFo" data-blade-component="text">18%</p></div></div></div></div></div></div></div></div>"`;
 
 exports[`<Collapsible /> should render Collapsible on server 2`] = `
 .c0 {
@@ -39,16 +39,12 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   justify-content: center;
 }
 
-.c5 {
-  width: 100%;
-}
-
-.c7 {
+.c6 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c8 {
+.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,7 +55,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   min-width: 200px;
 }
 
-.c9 {
+.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,14 +73,14 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   justify-content: space-between;
 }
 
-.c11 {
+.c10 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c12 {
+.c11 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -174,7 +170,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   padding: 0;
 }
 
-.c10 {
+.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -187,7 +183,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   padding: 0;
 }
 
-.c13 {
+.c12 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -201,7 +197,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   margin-right: 2px;
 }
 
-.c14 {
+.c13 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -214,7 +210,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   padding: 0;
 }
 
-.c15 {
+.c14 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -228,7 +224,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   margin-left: 2px;
 }
 
-.c16 {
+.c15 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -246,7 +242,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   opacity: 1;
 }
 
-.c6 {
+.c5 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -310,48 +306,48 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
       </button>
       <div
         aria-hidden="false"
-        class="c5"
+        class=""
         data-blade-component="collapsible-body"
         id="collapsible-body-1"
         role="region"
       >
         <div
-          class="c6"
+          class="c5"
         >
           <div
-            class="c7"
+            class="c6"
             data-blade-component="box"
           >
             <div
-              class="c8"
+              class="c7"
               data-blade-component="box"
             >
               <div
-                class="c9"
+                class="c8"
                 data-blade-component="box"
               >
                 <p
-                  class="c10"
+                  class="c9"
                   data-blade-component="text"
                 >
                   Actual amount
                 </p>
                 <div
-                  class="c11"
+                  class="c10"
                   data-blade-component="amount"
                 >
                   <div
-                    class="c12"
+                    class="c11"
                     data-blade-component="base-box"
                   >
                     <span
-                      class="c13"
+                      class="c12"
                       data-blade-component="base-text"
                     >
                       ₹
                     </span>
                     <span
-                      class="c14"
+                      class="c13"
                       data-blade-component="base-text"
                     >
                       1,000
@@ -359,7 +355,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
                       .
                     </span>
                     <span
-                      class="c15"
+                      class="c14"
                       data-blade-component="base-text"
                     >
                       00
@@ -368,34 +364,34 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
                 </div>
               </div>
               <div
-                class="c9"
+                class="c8"
                 data-blade-component="box"
               >
                 <p
-                  class="c16"
+                  class="c15"
                   data-blade-component="text"
                 >
                   Razorpay Platform Fees
                 </p>
                 <p
-                  class="c10"
+                  class="c9"
                   data-blade-component="text"
                 >
                   2%
                 </p>
               </div>
               <div
-                class="c9"
+                class="c8"
                 data-blade-component="box"
               >
                 <p
-                  class="c16"
+                  class="c15"
                   data-blade-component="text"
                 >
                   GST
                 </p>
                 <p
-                  class="c10"
+                  class="c9"
                   data-blade-component="text"
                 >
                   18%
