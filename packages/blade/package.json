@@ -135,6 +135,8 @@
     "@storybook/testing-library": "0.0.13",
     "@storybook/test-runner": "0.16.0",
     "@storybook/jest": "0.2.2",
+    "@storybook/builder-webpack5": "6.5.16",
+    "@storybook/manager-webpack5": "6.5.16",
     "chromatic": "6.22.0",
     "@babel/core": "7.20.2",
     "@babel/plugin-transform-react-jsx": "7.16.5",
@@ -168,7 +170,7 @@
     "@storybook/addon-ondevice-notes": "6.5.5",
     "@storybook/design-system": "7.3.4",
     "@storybook/node-logger": "6.5.16",
-    "@storybook/preset-create-react-app": "3.2.0",
+    "@storybook/preset-create-react-app": "4.0.0",
     "@storybook/react": "6.5.16",
     "@storybook/react-native": "6.5.5",
     "storybook-react-router": "1.0.8",
@@ -231,7 +233,7 @@
     "react-native-svg": "12.3.0",
     "react-native-tab-view": "3.5.2",
     "react-native-pager-view": "6.2.1",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.1",
     "react-test-renderer": "18.2.0",
     "rollup": "3.28.1",
     "rollup-plugin-dts": "5.3.1",
@@ -245,7 +247,8 @@
     "react-native-safe-area-context": "3.4.1",
     "ttypescript": "1.5.15",
     "typescript-transform-paths": "3.4.6",
-    "playwright": "1.40.1"
+    "playwright": "1.40.1",
+    "react-docgen-typescript-plugin": "1.0.5"
   },
   "peerDependencies": {
     "@gorhom/bottom-sheet": "^4",
@@ -278,6 +281,7 @@
     "@storybook/**/react": "18.2.0",
     "react-dom": "18.2.0",
     "react": "18.2.0",
+    "@emotion/react": "11.11.1",
     "styled-components": "^5"
   },
   "bundlemon": {

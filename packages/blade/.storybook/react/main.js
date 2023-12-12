@@ -6,8 +6,13 @@ module.exports = {
   typescript: {
     check: true,
     checkOptions: {
-      tsconfig: path.resolve('./tsconfig-typecheck.web.json'),
+      typescript: {
+        configFile: path.resolve('./tsconfig-typecheck.web.json'),
+      },
     },
+  },
+  core: {
+    builder: 'webpack5',
   },
   refs: {
     '@storybook/design-system': { disable: true },
@@ -21,9 +26,9 @@ module.exports = {
     '../../src/**/*.stories.internal.@(ts|tsx|js|jsx)',
   ],
   addons: [
+    '@storybook/preset-create-react-app',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/preset-create-react-app',
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
     '@storybook/addon-interactions'
@@ -31,6 +36,10 @@ module.exports = {
 
   features: {
     interactionsDebugger: true, // 👈 enable playback controls
+  },
+
+  docs: {
+    autodocs: true,
   },
 
   env: (config) => ({
@@ -72,14 +81,14 @@ module.exports = {
 
     // config.module.rules[0].exclude = new RegExp('/node_modules/(?!(@stackblitz)).*/');
 
-    config.module.rules.push({
-      test: /@stackblitz\/sdk[\\/].*\.m?js$/,
-      loader: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env'],
-        plugins: ['@babel/plugin-proposal-optional-chaining'],
-      },
-    });
+    // config.module.rules.push({
+    //   test: /@stackblitz\/sdk[\\/].*\.m?js$/,
+    //   loader: 'babel-loader',
+    //   options: {
+    //     presets: ['@babel/preset-env'],
+    //     plugins: ['@babel/plugin-proposal-optional-chaining'],
+    //   },
+    // });
 
     // Return the altered config
     return {
