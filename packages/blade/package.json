@@ -309,14 +309,14 @@
   "size-limit": [
     {
       "name": "Import Button only",
-      "path": "./build/components/index.production.web.js",
+      "path": "./build/lib/web/production/components/index.js",
       "import": "{ Button }",
       "limit": "30 kb",
       "running": false
     },
     {
       "name": "Import Text only",
-      "path": "./build/components/index.production.web.js",
+      "path": "./build/lib/web/production/components/index.js",
       "import": "{ Text }",
       "limit": "25 kb",
       "running": false
