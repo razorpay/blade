@@ -10,10 +10,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type CollapsibleBodyProps = {
   children: ReactNode;
-
-  /**
-   * **Internal**: used for React Native specific workarounds. Collapsible automatically takes care of width, you shouldn't need to configure this
-   */
   width?: BaseBoxProps['width'];
 } & TestID;
 
