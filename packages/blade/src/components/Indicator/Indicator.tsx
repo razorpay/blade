@@ -112,7 +112,12 @@ const Indicator = ({
           <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
         </Svg>
         <BaseBox marginLeft="spacing.2">
-          <Text textAlign="left" contrast="low" type="subtle" size={dimensions.textSize}>
+          <Text
+            weight="medium"
+            color="surface.text.subtle.lowContrast"
+            textAlign="left"
+            size={dimensions.textSize}
+          >
             {children}
           </Text>
         </BaseBox>
