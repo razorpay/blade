@@ -2,10 +2,48 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Utils/coverage" />
 
+> **Note:** These functions are designed for web applications and should be used in a browser environment.
+
+## `assertBladeCoverage`
+
+This utility function asserts that the calculated blade coverage meets a specified threshold.
+
+Parameters:
+- **`page`:** Playwright page object.
+- **`expect`:** The `expect` function from `@playwright/test`.
+- **`threshold` (optional):** Minimum threshold for blade coverage (default is 70).
+
+### Usage
+
+- Ensure that you are using Blade v10.22.0 or above and playwright is properly set up.
+- Import and use `assertBladeCoverage` in your test files. Adjust the threshold based on your coverage requirements.
+
+  ```js dark
+  import { test, expect } from '@playwright/test';
+  import { assertBladeCoverage } from '@razorpay/blade/coverage';
+
+  test.describe.parallel('Test Home @flow=home', () => {
+    test('should have blade coverage more than 70% @priority=normal', async ({ page }) => {
+      await page.goto('/');
+
+      await assertBladeCoverage({ page, expect, threshold: 70 });
+    });
+  });
+  ```
+
+- Execute your tests using the Playwright Test runner.
+  
+  ```bash dark
+  npx playwright test
+  ```
+
+- Once your tests are passing and blade coverage is meeting expectations, you're good to go!
+
 ## `getBladeCoverage`
 
-This utility function calculates the blade usage coverage in percentage of the DOM elements on a web page.
+> Consider installing the [Blade Coverage Chrome Extension](https://chromewebstore.google.com/detail/blade-coverage-extension/cpmmcebielcknjffelmpbcbgkcjapipp). This extension provides a convenient way to visualize and analyze the blade coverage directly in the Chrome browser.
 
+This utility function calculates the blade usage coverage in percentage of the DOM elements on a web page.
 
 ```js dark
 import { getBladeCoverage } from '@razorpay/blade/coverage';
@@ -13,30 +51,6 @@ import { getBladeCoverage } from '@razorpay/blade/coverage';
 const { bladeCoverage, totalNodes, bladeNodes } = getBladeCoverage();
 ```
 
-- `bladeCoverage`: The percentage of blade nodes in the total nodes.
-- `totalNodes`: Total number of DOM nodes.
-- `bladeNodes`: Number of blade nodes.
-
-## `assertBladeCoverage`
-
-This utility function asserts that the calculated blade coverage meets a specified threshold.
-
-Parameters:
-- `page`: Playwright page object.
-- `expect`: @playwright/test expect function.
-- `threshold` (optional): Minimum threshold for blade coverage (default is 70).
-
-### Example
-
-```js dark
-import { test, expect } from '@playwright/test';
-import { assertBladeCoverage } from '@razorpay/blade/coverage';
-
-test.describe.parallel('Test Home @flow=home', () => {
-  test('should have blade coverage more than 70% @priority=normal', async ({ page }) => {
-    await page.goto('/');
-
-    await assertBladeCoverage({ page, expect, threshold: 70 });
-  });
-});
-```
+- **`bladeCoverage`:** The percentage of blade nodes in the total nodes.
+- **`totalNodes`:** Total number of DOM nodes.
+- **`bladeNodes`:** Number of blade nodes.
