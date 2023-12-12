@@ -4,7 +4,7 @@
 import setValue from '../utils/setValue';
 import showNotification from './showNotification';
 
-const THEME_TOKENS_COLLECTION = 'Colors';
+const THEME_TOKENS_COLLECTION = 'Blade Theme Tokens';
 
 const GLOBAL_TOKENS_COLLECTION = '_global-tokens';
 // const COLOR_MODE_VALUE_ID = '68259:0';
@@ -44,11 +44,14 @@ const makeThemeColorTokens = (): Record<string, any> => {
 
       // replace the "/" from token name with "." to store in json structure
       const tokenName = makeThemeTokenName(variable.name);
+      if (tokenName.includes('❌')) {
+        return;
+      }
 
       // prepare for storing variables in code in the format of dark and light modes
       for (const [modeName, modeId] of Object.entries(colorModes)) {
         const variableModeValue: VariableValue = variable.valuesByMode[modeId as string];
-        // if the variable references another variable then we take the name of the referenced variable
+        // if the variable references another variable then we take the name of the referenced variable and set that as a value
         // eg: surface.background.neutral.subtle -> globalColors.gray.200
         if (typeof variableModeValue === 'object' && 'id' in variableModeValue) {
           setValue(
