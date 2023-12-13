@@ -102,7 +102,6 @@ export const parameters = {
 const StoryCanvas = styled.div(
   ({ theme, context }) =>
     `
-      border: ${theme.border.width.thin}px solid ${theme.colors.surface.border.subtle.lowContrast};
       width: 100%;
       height: ${context.viewMode === 'story' ? '100vh' : '100%'};
       overflow: auto;
@@ -119,7 +118,6 @@ const StoryCanvas = styled.div(
           ? `${theme.border.radius.none}px`
           : `${theme.border.radius.medium}px`
       };
-      background: ${theme.colors.surface.background.level1.lowContrast};
     `,
 );
 
