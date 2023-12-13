@@ -1,4 +1,5 @@
 import type { Transform, JSXAttribute, JSXExpressionContainer } from 'jscodeshift';
+import colorTokensMapping from './colorTokensMapping';
 
 const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
   return (prop as JSXAttribute)?.value?.type === 'JSXExpressionContainer';
@@ -38,8 +39,20 @@ const transformer: Transform = (file, api, options) => {
   const fontTokenPrefix = 'theme.typography.fonts.size';
   const lineHeightTokenPrefix = 'theme.typography.lineHeights';
 
-  // Replace font sizes & line height in the source code with corresponding token references
+  // Replace old color tokens to new color tokens
   const newSource = file.source
+    .replace(
+      // gets both .50 and ['50'] or ["50"]
+      /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
+      (originalString) => {
+        const replacement = colorTokensMapping[originalString];
+        if (!replacement) {
+          return originalString;
+        }
+        return replacement;
+      },
+    )
+    // Replace old font sizes & line height in the source code with new font sizes & line height
     .replace(
       // gets both .50 and ['50'] or ["50"]
       /theme\.typography\.fonts\.size\.?((\w+)|(\W.*\]))/g,
