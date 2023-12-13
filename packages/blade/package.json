@@ -76,7 +76,7 @@
     "typecheck": "run-p types:typecheck:*",
     "test": "run-p test:*",
     "prepare": "yarn build",
-    "build": "./scripts/buildBlade.sh",
+    "build": "run-s build:clean build:generate-types build:react-prod build:react-dev build:react-native build:clean-declarations build:generate-root-imports build:generate-css-variables build:clean-theme-bundle",
     "clearCache": "jest --clearCache",
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
