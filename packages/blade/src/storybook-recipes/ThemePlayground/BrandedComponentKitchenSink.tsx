@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { composeStories } from '@storybook/react';
 import * as accordionStories from '../../components/Accordion/Accordion.stories';
 import * as buttonStories from '../../components/Button/Button/Button.stories';

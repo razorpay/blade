@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
-import clamp from 'lodash/clamp';
 import { ProgressBarFilled } from './ProgressBarFilled';
+import clamp from '~utils/lodashButBetter/clamp';
 import { FormLabel } from '~components/Form';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Text } from '~components/Typography/Text';

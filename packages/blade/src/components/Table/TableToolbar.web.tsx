@@ -1,5 +1,4 @@
 import React from 'react';
-import getIn from 'lodash/get';
 import styled from 'styled-components';
 import { ComponentIds } from './componentIds';
 import { tableToolbar } from './tokens';
@@ -11,7 +10,9 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Divider } from '~components/Divider';
 import { Link } from '~components/Link';
 import { getStyledProps } from '~components/Box/styledProps';
-import { makeMotionTime, useTheme } from '~utils';
+import { makeMotionTime } from '~utils';
+import { useTheme } from '~components/BladeProvider';
+import getIn from '~utils/lodashButBetter/get';
 
 /**
  * TableToolbarActions is a component that is used to render actions in the TableToolbar.

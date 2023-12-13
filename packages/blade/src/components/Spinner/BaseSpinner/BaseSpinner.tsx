@@ -1,8 +1,8 @@
-import getIn from 'lodash/get';
 import React from 'react';
 import { dimensions } from './spinnerTokens';
 import SpinnerIcon from './SpinnerIcon';
 import { SpinningBox } from './SpinningBox';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';

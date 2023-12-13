@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import isEmpty from 'lodash/isEmpty';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';

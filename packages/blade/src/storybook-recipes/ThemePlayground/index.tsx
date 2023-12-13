@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 import React, { useState } from 'react';
 import { CheckoutHome } from './Checkout/CheckoutHome';
 import { CheckoutCard } from './Checkout/CheckoutCard';
@@ -37,8 +38,11 @@ const ThemePlayground = (): React.ReactElement => {
         border: {
           radius: {
             none: 0,
+            // @ts-ignore
             small: Number(borderBase) * 1,
+            // @ts-ignore
             medium: Number(borderBase) * 2,
+            // @ts-ignore
             large: Number(borderBase) * 3,
             max: 9999,
             round: '50%',
