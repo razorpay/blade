@@ -1,7 +1,7 @@
 import React from 'react';
 import { FloatingArrow } from '@floating-ui/react';
 import type { PopupArrowProps } from './types';
-import { useTheme } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 const PopupArrow = React.forwardRef<SVGSVGElement, PopupArrowProps>(
   ({ context, width, height, fillColor, strokeColor }, arrowRef) => {

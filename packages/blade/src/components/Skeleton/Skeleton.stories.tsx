@@ -1,6 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import kebabCase from 'lodash/kebabCase';
 import type { SkeletonProps } from './';
 import { Skeleton, Skeleton as SkeletonComponent } from './';
 import {
@@ -23,6 +22,7 @@ import { announce } from '~components/LiveAnnouncer';
 import { List, ListItem, ListItemCode } from '~components/List';
 import { isReactNative } from '~utils';
 import { motion } from '~tokens/global';
+import { kebabCase } from '~utils/lodashButBetter/kebabCase';
 
 const Page = (): React.ReactElement => {
   return (

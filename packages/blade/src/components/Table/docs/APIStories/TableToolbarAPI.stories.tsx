@@ -8,10 +8,10 @@ import { TableToolbarActions, TableToolbar } from '../../TableToolbar';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { useTheme } from '~utils';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
+import { useTheme } from '~components/BladeProvider';
 
 export default {
   title: 'Components/Table/API',

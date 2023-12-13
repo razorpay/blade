@@ -1,5 +1,5 @@
-import isObject from 'lodash/isObject';
-import keys from 'lodash/keys';
+import isObject from '~utils/lodashButBetter/isObject';
+import keys from '~utils/lodashButBetter/keys';
 
 export interface ObjectWithKeys {
   [key: string | number]: ObjectWithKeys | number | string;

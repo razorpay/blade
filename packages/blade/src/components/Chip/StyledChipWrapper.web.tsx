@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import getIn from 'lodash/get';
 import type { StyledChipWrapperProps } from './types';
 import { chipMotionTokens, chipColorTokens } from './chipTokens';
+import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils';

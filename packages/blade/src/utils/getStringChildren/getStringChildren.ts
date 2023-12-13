@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/isEmpty';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { StringChildrenType } from '~utils/types';
 
 const getStringFromReactText = (

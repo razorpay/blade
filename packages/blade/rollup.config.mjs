@@ -1,4 +1,6 @@
-/* eslint-disable import/extensions */
+/* eslint-disable no-useless-escape */
+/* eslint-disable consistent-return */
+/* eslint-disable prefer-template */
 import fs from 'fs';
 import { fileURLToPath } from 'node:url';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
@@ -8,8 +10,9 @@ import pluginCommonjs from '@rollup/plugin-commonjs';
 import pluginDeclarations from 'rollup-plugin-dts';
 import pluginAlias from '@rollup/plugin-alias';
 import pluginReplace from '@rollup/plugin-replace';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import ts from 'typescript';
+import { depsExternalPlugin } from './dependencies-external-plugin.mjs';
+import packagejson from './package.json' assert { type: 'json' };
 
 const webExtensions = [
   '.web.js',
@@ -45,9 +48,15 @@ const nativeExtensions = [
   '.mjs',
 ];
 
+const packageJsonDeps = Object.keys(packagejson.dependencies).filter(
+  (name) => name !== 'patch-package',
+);
+const externalDependencies = packageJsonDeps;
+
 const inputRootDirectory = 'src';
 const outputRootDirectory = 'build';
-const exportCategories = ['components', 'tokens', 'utils'];
+const libDirectory = 'lib';
+const typesDirectory = 'types';
 const themeBundleCategories = ['tokens', 'utils'];
 
 const aliases = pluginAlias({
@@ -68,59 +77,89 @@ const aliases = pluginAlias({
   ],
 });
 
-const getWebConfig = ({ exportCategory }) => ({
-  input: `${inputRootDirectory}/${exportCategory}/index.ts`,
-  output: [
-    {
-      file: `${outputRootDirectory}/${exportCategory}/index.${
-        process.env.NODE_ENV || 'development'
-      }.web.js`,
-      format: 'esm',
-      sourcemap: true,
-    },
-  ],
-  external: (id) => id.includes('@babel/runtime'),
-  plugins: [
-    pluginReplace({
-      __DEV__: process.env.NODE_ENV !== 'production',
-      preventAssignment: true,
-    }),
-    pluginPeerDepsExternal(),
-    pluginResolve({ extensions: webExtensions }),
-    pluginCommonjs(),
-    pluginBabel({
-      exclude: 'node_modules/**',
-      babelHelpers: 'runtime',
-      envName: 'production',
-      extensions: webExtensions,
-    }),
-    aliases,
-  ],
-});
+/*
+Build structure: 
 
-const getNativeConfig = ({ exportCategory }) => ({
-  input: `${inputRootDirectory}/${exportCategory}/index.ts`,
-  output: [
-    {
-      file: `${outputRootDirectory}/${exportCategory}/index.native.js`,
-      format: 'esm',
-      sourcemap: true,
-    },
-  ],
-  external: (id) => id.includes('@babel/runtime'),
-  plugins: [
-    pluginPeerDepsExternal(),
-    pluginResolve({ extensions: nativeExtensions }),
-    pluginCommonjs(),
-    pluginBabel({
-      exclude: 'node_modules/**',
-      babelHelpers: 'runtime',
-      envName: 'production',
-      extensions: nativeExtensions,
-    }),
-    aliases,
-  ],
-});
+- build
+  - lib
+    - web
+      - production
+      - development
+    - native
+  - types
+    - components
+    - tokens
+    - utils
+*/
+const getWebConfig = (inputs) => {
+  const platform = 'web';
+  const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+  return {
+    input: inputs,
+    // Since we individually bundle each export category (components, tokens, utils)
+    // it is possible that some function of `utils` is used in `components` but
+    // rollup will have no idea about it and tree shake it away.
+    // So we disable tree shaking, this should not cause any issues since consumers will do their own tree shaking.
+    treeshake: false,
+    output: [
+      {
+        dir: `${outputRootDirectory}/${libDirectory}/${platform}/${mode}`,
+        format: 'es',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+      },
+    ],
+    plugins: [
+      pluginReplace({
+        __DEV__: process.env.NODE_ENV !== 'production',
+        preventAssignment: true,
+      }),
+      pluginPeerDepsExternal(),
+      depsExternalPlugin({ externalDependencies }),
+      pluginResolve({ extensions: webExtensions }),
+      pluginCommonjs(),
+      pluginBabel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'runtime',
+        envName: 'production',
+        extensions: webExtensions,
+      }),
+      aliases,
+    ],
+  };
+};
+
+const getNativeConfig = (inputs) => {
+  const platform = 'native';
+
+  return {
+    input: inputs,
+    output: [
+      {
+        dir: `${outputRootDirectory}/${libDirectory}/${platform}`,
+        format: 'es',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+      },
+    ],
+    plugins: [
+      pluginPeerDepsExternal(),
+      depsExternalPlugin({ externalDependencies }),
+      pluginResolve({ extensions: nativeExtensions }),
+      pluginCommonjs(),
+      pluginBabel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'runtime',
+        envName: 'production',
+        extensions: nativeExtensions,
+      }),
+      aliases,
+    ],
+  };
+};
 
 const getDeclarationsConfig = ({ exportCategory, isNative }) => {
   const platform = isNative ? 'native' : 'web';
@@ -139,11 +178,11 @@ const getDeclarationsConfig = ({ exportCategory, isNative }) => {
   return {
     // input will be the platform specific type which is generated by
     // `yarn build:generate-types`
-    input: `${outputRootDirectory}/types/${platform}/${exportCategory}/index.d.ts`,
+    input: `${outputRootDirectory}/generated-types/${platform}/${exportCategory}/index.d.ts`,
     output: [
       {
         // don't prefix web index export with .web, for backwards compatibility with TS<4.7
-        file: `${outputRootDirectory}/${exportCategory}/${
+        file: `${outputRootDirectory}/${typesDirectory}/${exportCategory}/${
           isNative ? 'index.native.d.ts' : 'index.d.ts'
         }`,
         format: 'esm',
@@ -186,21 +225,35 @@ const config = () => {
       .map((exportCategory) => [getCSSVariablesConfig({ exportCategory })])
       .flat();
   }
+
+  const components = 'src/components/index.ts';
+  const tokens = 'src/tokens/index.ts';
+  const utils = 'src/utils/index.ts';
   if (framework === 'REACT') {
-    return exportCategories.map((exportCategory) => [getWebConfig({ exportCategory })]).flat();
+    return [
+      getWebConfig(components),
+      getWebConfig(tokens),
+      getWebConfig(utils),
+      // Unfortunately we cannot just simply copy the tsc emited declarations and put it on build dir,
+      // because moduleSuffixes will cause typescript to resolve the d.ts files based on the user's tsconfig.json
+      // which will cause the build to fail because the user's tsconfig.json does not have the moduleSuffixes
+      // So we opt for the older approach of bundling the d.ts files as index.d.ts and index.native.d.ts and place it on build dir.
+      getDeclarationsConfig({ exportCategory: 'components', isNative: false }),
+      getDeclarationsConfig({ exportCategory: 'tokens', isNative: false }),
+      getDeclarationsConfig({ exportCategory: 'utils', isNative: false }),
+    ].flat();
   }
 
   if (framework === 'REACT_NATIVE') {
-    return exportCategories.map((exportCategory) => [getNativeConfig({ exportCategory })]).flat();
+    return [
+      getNativeConfig(components),
+      getNativeConfig(tokens),
+      getNativeConfig(utils),
+      getDeclarationsConfig({ exportCategory: 'components', isNative: true }),
+      getDeclarationsConfig({ exportCategory: 'tokens', isNative: true }),
+      getDeclarationsConfig({ exportCategory: 'utils', isNative: true }),
+    ].flat();
   }
-
-  return exportCategories
-    .map((exportCategory) => [
-      // bundle our declarations for each category `components`, `tokens` and `utils` and place it next to each category under `build`
-      getDeclarationsConfig({ exportCategory, isNative: false }),
-      getDeclarationsConfig({ exportCategory, isNative: true }),
-    ])
-    .flat();
 };
 
 export default config();

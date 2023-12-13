@@ -1,6 +1,6 @@
-import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import type { StyledBaseTextProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import { makeTypographySize } from '~utils/makeTypographySize';
 import { isReactNative } from '~utils';
 import { makeLetterSpacing } from '~utils/makeLetterSpacing';
