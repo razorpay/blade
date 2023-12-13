@@ -34,7 +34,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Dropdown, DropdownButton } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
-import { Heading, Text, Title } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { TextInput } from '~components/Input/TextInput';
 import { Radio, RadioGroup } from '~components/Radio';
@@ -75,8 +75,8 @@ const Page = (): React.ReactElement => {
           'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=16767-706689&t=6FVL3Ha33gwM45Cm-0',
       }}
     >
-      <Title>Usage</Title>
-      <Sandbox editorHeight={600}>
+      <Heading size="large">Usage</Heading>
+      <Sandbox showConsole editorHeight={600}>
         {`
           import React from 'react';
           import { 
@@ -135,7 +135,7 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>iOS Safari Specific Setup</Title>
+      <Heading size="large">iOS Safari Specific Setup</Heading>
       <Text marginTop="spacing.4">
         When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
         `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS

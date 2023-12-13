@@ -13,7 +13,7 @@ describe('<Text />', () => {
   it('should render Text with variant "body" and contrast "high"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text type="normal" variant="body" weight="bold" truncateAfterLines={3} contrast="high">
+      <Text type="normal" variant="body" weight="semibold" truncateAfterLines={3} contrast="high">
         {displayText}
       </Text>,
     );
@@ -23,7 +23,7 @@ describe('<Text />', () => {
   it('should render Text with variant "body"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text type="normal" variant="body" weight="bold" truncateAfterLines={3}>
+      <Text type="normal" variant="body" weight="semibold" truncateAfterLines={3}>
         {displayText}
       </Text>,
     );
@@ -41,7 +41,7 @@ describe('<Text />', () => {
   it('should render Text with variant "caption"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text type="normal" variant="body" weight="bold">
+      <Text type="normal" variant="body" weight="semibold">
         {displayText}
       </Text>,
     );
@@ -51,7 +51,7 @@ describe('<Text />', () => {
   it('should render Text with variant "body" and size "small"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text type="normal" variant="body" weight="bold" truncateAfterLines={3} size="small">
+      <Text type="normal" variant="body" weight="semibold" truncateAfterLines={3} size="small">
         {displayText}
       </Text>,
     );

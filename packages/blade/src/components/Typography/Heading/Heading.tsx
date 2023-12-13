@@ -6,15 +6,11 @@ import { useValidateAsProp } from '../utils';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { Theme } from '~components/BladeProvider';
 import { isReactNative } from '~utils';
 import type { TestID } from '~utils/types';
-import { throwBladeError } from '~utils/logger';
-
-type HeadingVariant = 'regular' | 'subheading';
 
 const validAsValues = ['span', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const;
-type HeadingCommonProps = {
+export type HeadingProps = {
   as?: typeof validAsValues[number];
   /**
    * Overrides the color of the Heading component.
@@ -23,104 +19,60 @@ type HeadingCommonProps = {
    */
   color?: BaseTextProps['color'];
   type?: TextTypes;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'semibold'>;
   contrast?: ColorContrastTypes;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
+  size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'>;
 } & TestID &
   StyledPropsBlade;
 
-type HeadingNormalVariant = HeadingCommonProps & {
-  variant?: Exclude<HeadingVariant, 'subheading'>;
-  /**
-   *
-   * @default small
-   */
-  size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large'>;
-  weight?: keyof Theme['typography']['fonts']['weight'];
-};
-
-type HeadingSubHeadingVariant = HeadingCommonProps & {
-  variant?: Extract<HeadingVariant, 'subheading'>;
-  /**
-   * `size` cannot be used with variant="subheading". Either change to variant="regular" or remove size prop
-   */
-  size?: undefined;
-  weight?: keyof Pick<Theme['typography']['fonts']['weight'], 'bold'>;
-};
-
-/**
- * Conditionally changing props based on variant.
- * Overloads or union gives wrong intellisense.
- */
-export type HeadingProps<T> = T extends {
-  variant: infer Variant;
-}
-  ? Variant extends Exclude<HeadingVariant, 'subheading'>
-    ? HeadingNormalVariant
-    : Variant extends 'subheading'
-    ? HeadingSubHeadingVariant
-    : T
-  : T;
-
-const getProps = <T extends { variant: HeadingVariant }>({
+const getProps = ({
   as,
-  variant,
   size,
   type,
   weight,
   contrast,
   color,
   testID,
-}: Pick<
-  HeadingProps<T>,
-  'as' | 'variant' | 'size' | 'type' | 'weight' | 'contrast' | 'color' | 'testID'
->): Omit<BaseTextProps, 'children'> => {
+}: Pick<HeadingProps, 'as' | 'size' | 'type' | 'weight' | 'contrast' | 'color' | 'testID'>): Omit<
+  BaseTextProps,
+  'children'
+> => {
   const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
     color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
-    fontSize: 200,
-    fontWeight: weight ?? 'bold',
+    fontSize: 300,
+    fontWeight: weight ?? 'semibold',
     fontStyle: 'normal',
     lineHeight: 300,
-    fontFamily: 'text',
+    fontFamily: 'heading',
     accessibilityProps: isReactNative() ? { role: 'heading' } : {},
     componentName: 'heading',
     testID,
   };
 
-  if (variant === 'regular') {
-    if (!size || size === 'small') {
-      props.fontSize = 200;
-      props.lineHeight = 300;
-      props.as = 'h6';
-    } else if (size === 'medium') {
-      props.fontSize = 300;
-      props.lineHeight = 200;
-      props.as = 'h5';
-    } else if (size === 'large') {
-      props.fontSize = 400;
-      props.lineHeight = 400;
-      props.as = 'h4';
-    }
-  } else if (variant === 'subheading') {
-    if (__DEV__) {
-      if (weight === 'regular') {
-        throwBladeError({
-          moduleName: 'Heading',
-          message: `weight cannot be 'regular' when variant is 'subheading'`,
-        });
-      }
-      if (size) {
-        throwBladeError({
-          moduleName: 'Heading',
-          message: `size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop`,
-        });
-      }
-    }
-    props.fontSize = 75;
-    props.lineHeight = 50;
-    props.as = 'p';
+  if (size === 'small') {
+    props.fontSize = 300;
+    props.lineHeight = 300;
+    props.as = 'h6';
+  } else if (size === 'medium') {
+    props.fontSize = 400;
+    props.lineHeight = 400;
+    props.as = 'h5';
+  } else if (size === 'large') {
+    props.fontSize = 500;
+    props.lineHeight = 500;
+    props.as = 'h4';
+  } else if (size === 'xlarge') {
+    props.fontSize = 600;
+    props.lineHeight = 600;
+    props.as = 'h3';
+  } else if (size === '2xlarge') {
+    props.fontSize = 700;
+    props.lineHeight = 700;
+    props.as = 'h2';
   }
 
   // override the computed `as` prop if user passed an `as` prop
@@ -128,12 +80,11 @@ const getProps = <T extends { variant: HeadingVariant }>({
   return props;
 };
 
-export const Heading = <T extends { variant: HeadingVariant }>({
+export const Heading = ({
   as,
-  variant = 'regular',
-  size, // Not setting default value since the `size` should be undefined with variant="subheading"
+  size = 'small',
   type = 'normal',
-  weight = 'bold',
+  weight = 'semibold',
   contrast = 'low',
   color,
   children,
@@ -141,10 +92,10 @@ export const Heading = <T extends { variant: HeadingVariant }>({
   textAlign,
   textDecorationLine,
   ...styledProps
-}: HeadingProps<T>): ReactElement => {
+}: HeadingProps): ReactElement => {
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
 
-  const props = getProps({ as, variant, size, type, weight, color, contrast, testID });
+  const props = getProps({ as, size, type, weight, color, contrast, testID });
 
   return (
     <BaseText

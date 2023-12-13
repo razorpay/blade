@@ -4,7 +4,6 @@ import React from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
-import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
@@ -19,7 +18,7 @@ type TextCommonProps = {
   contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
   children: React.ReactNode;
-  weight?: keyof Theme['typography']['fonts']['weight'];
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
   /**
    * Overrides the color of the Text component.
    *
@@ -99,11 +98,11 @@ const getTextProps = <T extends { variant: TextVariant }>({
   if (variant === 'body') {
     if (size === 'xsmall') {
       props.fontSize = 25;
-      props.lineHeight = 50;
+      props.lineHeight = 25;
     }
     if (size === 'small') {
       props.fontSize = 75;
-      props.lineHeight = 50;
+      props.lineHeight = 75;
     }
     if (size === 'medium') {
       props.fontSize = 100;
@@ -111,13 +110,14 @@ const getTextProps = <T extends { variant: TextVariant }>({
     }
     if (size === 'large') {
       props.fontSize = 200;
-      props.lineHeight = 300;
+      props.lineHeight = 200;
     }
   }
   if (variant === 'caption') {
     if (size === 'medium') {
       props.fontSize = 50;
       props.lineHeight = 50;
+      props.fontWeight = 'regular';
     } else if (__DEV__) {
       throwBladeError({
         moduleName: 'Text',

@@ -24,7 +24,7 @@ type CodeCommonProps = {
    * @default small
    */
   size?: Extract<BaseTextSizes, 'small' | 'medium'>;
-  weight?: 'regular' | 'bold';
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'bold'>;
   isHighlighted?: boolean;
   color?: BaseTextProps['color'];
 } & TestID &

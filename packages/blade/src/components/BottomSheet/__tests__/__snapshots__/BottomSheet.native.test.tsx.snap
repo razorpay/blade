@@ -362,10 +362,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           [
                             {
                               "color": "hsla(218, 89%, 51%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "700",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -574,23 +575,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         }
                       >
                         <Text
-                          accessibilityRole="header"
                           accessible={true}
                           color="surface.text.normal.lowContrast"
-                          data-blade-component="heading"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={200}
                           fontStyle="normal"
-                          fontWeight="bold"
-                          lineHeight={300}
+                          fontWeight="semibold"
+                          lineHeight={200}
                           style={
                             [
                               {
                                 "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 16,
                                 "fontStyle": "normal",
-                                "fontWeight": "700",
+                                "fontWeight": "600",
+                                "letterSpacing": 0,
                                 "lineHeight": 24,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -697,17 +698,18 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                     fontSize={75}
                                     fontStyle="normal"
                                     fontWeight="regular"
-                                    lineHeight={50}
+                                    lineHeight={75}
                                     numberOfLines={1}
                                     style={
                                       [
                                         {
                                           "color": "hsla(160, 100%, 26%, 1)",
-                                          "fontFamily": "Lato",
+                                          "fontFamily": "Inter",
                                           "fontSize": 12,
                                           "fontStyle": "normal",
                                           "fontWeight": "400",
-                                          "lineHeight": 16,
+                                          "letterSpacing": 0,
+                                          "lineHeight": 18,
                                           "marginBottom": 0,
                                           "marginLeft": 0,
                                           "marginRight": 0,
@@ -739,16 +741,17 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         fontSize={75}
                         fontStyle="normal"
                         fontWeight="regular"
-                        lineHeight={50}
+                        lineHeight={75}
                         style={
                           [
                             {
                               "color": "hsla(216, 16%, 60%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontStyle": "normal",
                               "fontWeight": "400",
-                              "lineHeight": 16,
+                              "letterSpacing": 0,
+                              "lineHeight": 18,
                               "marginBottom": 0,
                               "marginLeft": 0,
                               "marginRight": 0,
@@ -856,17 +859,18 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               fontSize={75}
                               fontStyle="normal"
                               fontWeight="regular"
-                              lineHeight={50}
+                              lineHeight={75}
                               numberOfLines={1}
                               style={
                                 [
                                   {
                                     "color": "hsla(160, 100%, 26%, 1)",
-                                    "fontFamily": "Lato",
+                                    "fontFamily": "Inter",
                                     "fontSize": 12,
                                     "fontStyle": "normal",
                                     "fontWeight": "400",
-                                    "lineHeight": 16,
+                                    "letterSpacing": 0,
+                                    "lineHeight": 18,
                                     "marginBottom": 0,
                                     "marginLeft": 0,
                                     "marginRight": 0,
@@ -1395,10 +1399,11 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                           [
                             {
                               "color": "hsla(218, 89%, 51%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "700",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,

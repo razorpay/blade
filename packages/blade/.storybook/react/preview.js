@@ -92,24 +92,8 @@ export const parameters = {
       summary: styled.summary`
         font-family: ${theme.fontBase};
         color: ${theme.textColor};
-        font-weight: normal;
-        cursor: pointer;
-      `,
-      li: styled.li`
-        :not(:first-child) {
-          padding-top: 12px;
-        }
         font-size: 14px;
-
-        & :not(pre) > code {
-          margin: 0 2px;
-          padding: 3px 5px;
-          white-space: nowrap;
-          border-radius: 3px;
-          font-size: 13px;
-          border: 1px solid #eeeeee;
-          background-color: #f8f8f8;
-        }
+        cursor: pointer;
       `,
     },
   },
