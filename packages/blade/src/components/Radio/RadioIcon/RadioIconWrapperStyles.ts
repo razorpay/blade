@@ -1,7 +1,7 @@
-import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import { radioIconColors, radioSizes } from '../radioTokens';
 import type { RadioIconProps } from './RadioIcon';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType, getPlatformType } from '~utils';
 import { makeSpace } from '~utils/makeSpace';

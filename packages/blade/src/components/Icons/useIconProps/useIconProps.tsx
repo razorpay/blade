@@ -1,5 +1,5 @@
-import get from 'lodash/get';
 import type { IconProps } from '..';
+import get from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';

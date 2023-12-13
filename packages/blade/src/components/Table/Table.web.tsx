@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { Table as ReactTable } from '@table-library/react-table-library/table';
 import { useTheme as useTableTheme } from '@table-library/react-table-library/theme';
-import filter from 'lodash/filter';
 import type { MiddlewareFunction } from '@table-library/react-table-library/types/common';
 import { useSort } from '@table-library/react-table-library/sort';
 import { usePagination } from '@table-library/react-table-library/pagination';
@@ -9,7 +8,7 @@ import { SelectTypes, useRowSelect } from '@table-library/react-table-library/se
 import styled from 'styled-components';
 import usePresence from 'use-presence';
 import type { TableContextType } from './TableContext';
-import { TableProvider } from './TableContext';
+import { TableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import {
   checkboxCellWidth,
@@ -18,7 +17,7 @@ import {
   tablePagination,
 } from './tokens';
 import type { TableProps, TableNode, Identifier } from './types';
-import { makeBorderSize, makeMotionTime, useTheme } from '~utils';
+import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import type { BoxProps } from '~components/Box';
@@ -28,6 +27,7 @@ import { Spinner } from '~components/Spinner';
 import { getStyledProps } from '~components/Box/styledProps';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useTheme } from '~components/BladeProvider';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -233,7 +233,7 @@ const _Table = <Item,>({
     const selectedIDs: Identifier[] = state.id ? [state.id] : state.ids ?? [];
     setSelectedRows(selectedIDs);
     onSelectionChange?.({
-      values: filter(data.nodes, (node) => selectedIDs.includes(node.id)),
+      values: data.nodes.filter((node) => selectedIDs.includes(node.id)),
     });
   };
 
@@ -397,7 +397,7 @@ const _Table = <Item,>({
   );
 
   return (
-    <TableProvider value={tableContext}>
+    <TableContext.Provider value={tableContext}>
       {isLoading ? (
         <BaseBox
           display="flex"
@@ -454,7 +454,7 @@ const _Table = <Item,>({
           {pagination}
         </BaseBox>
       )}
-    </TableProvider>
+    </TableContext.Provider>
   );
 };
 

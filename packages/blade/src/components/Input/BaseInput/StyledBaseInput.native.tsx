@@ -13,11 +13,11 @@ import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
 import { Text } from '~components/Typography';
+import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
 import type { Platform } from '~utils';
-import { useTheme } from '~utils';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'

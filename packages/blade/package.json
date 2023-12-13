@@ -18,10 +18,13 @@
     "codemods",
     "components.d.ts",
     "components.js",
+    "components.native.js",
     "tokens.d.ts",
     "tokens.js",
+    "tokens.native.js",
     "utils.d.ts",
-    "utils.js"
+    "utils.js",
+    "utils.native.js"
   ],
   "keywords": [
     "design system",
@@ -30,42 +33,41 @@
     "razorpay",
     "blade"
   ],
-  "main": "./build/components/index.web.js",
   "exports": {
     "./components": {
       "react-native": {
-        "types": "./build/components/index.native.d.ts",
-        "default": "./build/components/index.native.js"
+        "types": "./components.d.ts",
+        "default": "./build/lib/native/components/index.js"
       },
       "default": {
-        "types": "./build/components/index.d.ts",
-        "development": "./build/components/index.development.web.js",
-        "production": "./build/components/index.production.web.js",
-        "default": "./build/components/index.development.web.js"
+        "types": "./components.d.ts",
+        "development": "./build/lib/web/development/components/index.js",
+        "production": "./build/lib/web/production/components/index.js",
+        "default": "./build/lib/web/production/components/index.js"
       }
     },
     "./tokens": {
       "react-native": {
-        "types": "./build/tokens/index.native.d.ts",
-        "default": "./build/tokens/index.native.js"
+        "types": "./tokens.d.ts",
+        "default": "./build/lib/native/tokens/index.js"
       },
       "default": {
-        "types": "./build/tokens/index.d.ts",
-        "development": "./build/tokens/index.development.web.js",
-        "production": "./build/tokens/index.production.web.js",
-        "default": "./build/tokens/index.development.web.js"
+        "types": "./tokens.d.ts",
+        "development": "./build/lib/web/development/tokens/index.js",
+        "production": "./build/lib/web/production/tokens/index.js",
+        "default": "./build/lib/web/production/tokens/index.js"
       }
     },
     "./utils": {
       "react-native": {
-        "types": "./build/utils/index.native.d.ts",
-        "default": "./build/utils/index.native.js"
+        "types": "./utils.d.ts",
+        "default": "./build/lib/native/utils/index.js"
       },
       "default": {
-        "types": "./build/utils/index.d.ts",
-        "development": "./build/utils/index.development.web.js",
-        "production": "./build/utils/index.production.web.js",
-        "default": "./build/utils/index.development.web.js"
+        "types": "./utils.d.ts",
+        "development": "./build/lib/web/development/utils/index.js",
+        "production": "./build/lib/web/production/utils/index.js",
+        "default": "./build/lib/web/production/utils/index.js"
       }
     }
   },
@@ -73,7 +75,7 @@
     "typecheck": "run-p types:typecheck:*",
     "test": "run-p test:*",
     "prepare": "yarn build",
-    "build": "run-s build:*",
+    "build": "run-s build:clean build:generate-types build:react-prod build:react-dev build:react-native build:clean-declarations build:generate-root-imports build:generate-css-variables build:clean-theme-bundle",
     "clearCache": "jest --clearCache",
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
@@ -82,15 +84,15 @@
     "types:generate-types:native": "ttsc -p ./tsconfig-generate-types.native.json",
     "types:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
     "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
-    "types:copy-declarations:web": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/web",
-    "types:copy-declarations:native": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/native",
-    "build:generate-root-imports": "rollup -c && node ./scripts/generateRootImports.js",
-    "build:clean-declarations": "rm -rf build/types",
+    "types:copy-declarations:web": "copyfiles -u 1 build/types/web/components/**/*.d.ts build/components/**/*",
+    "types:copy-declarations:native": "copyfiles -u 1 build/types/native/components/**/*.d.ts build/components/**/*",
+    "build:generate-root-imports": "node ./scripts/generateRootImports.js",
+    "build:clean-declarations": "rm -rf build/generated-types",
     "build:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
     "build:react-native": "cross-env FRAMEWORK=REACT_NATIVE rollup -c",
-    "build:generate-css-variables": "cross-env GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
+    "build:generate-css-variables": "cross-env GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-android",
     "react-native:storybook:ios": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-ios",
@@ -114,22 +116,20 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@babel/runtime": "7.20.0",
-    "@emotion/react": "11.11.1",
-    "@floating-ui/react-native": "0.10.1",
-    "@floating-ui/react": "0.25.4",
-    "@table-library/react-table-library": "4.1.7",
-    "@types/body-scroll-lock": "3.1.0",
-    "@use-gesture/react": "10.2.24",
-    "body-scroll-lock-upgrade": "1.1.0",
     "patch-package": "7.0.0",
-    "react-native-pager-view": "6.2.1",
-    "react-native-tab-view": "3.5.2",
-    "tinycolor2": "1.6.0",
-    "use-presence": "1.1.0"
+    "@babel/runtime": "7.20.0",
+    "body-scroll-lock-upgrade": "1.1.0",
+    "ts-deepmerge": "6.2.0",
+    "use-presence": "1.1.0",
+    "@use-gesture/react": "10.2.24",
+    "@floating-ui/react": "0.25.4",
+    "@emotion/react": "11.11.1",
+    "@table-library/react-table-library": "4.1.7",
+    "tinycolor2": "1.6.0"
   },
   "devDependencies": {
     "chromatic": "6.22.0",
+    "@babel/cli": "7.23.0",
     "@babel/core": "7.20.2",
     "@babel/plugin-transform-react-jsx": "7.16.5",
     "@babel/plugin-transform-runtime": "7.16.5",
@@ -139,6 +139,9 @@
     "@codesandbox/sandpack-react": "1.16.0",
     "@gorhom/bottom-sheet": "4.4.6",
     "@gorhom/portal": "1.0.14",
+    "@floating-ui/react-native": "0.10.0",
+    "react-native-tab-view": "3.5.2",
+    "react-native-pager-view": "6.2.1",
     "@react-native/metro-config": "0.72.9",
     "@react-native-async-storage/async-storage": "1.19.1",
     "@react-native-community/datetimepicker": "5.0.1",
@@ -173,13 +176,11 @@
     "@testing-library/react-hooks": "8.0.1",
     "@testing-library/react-native": "12.2.0",
     "@testing-library/user-event": "14.4.3",
-    "@types/body-scroll-lock": "3.1.0",
     "@types/dedent": "0.7.0",
     "@types/jest": "29.5.3",
     "@types/jest-axe": "3.5.5",
     "@types/jscodeshift": "0.11.6",
     "@types/jsdom": "20.0.1",
-    "@types/lodash": "4.14.168",
     "@types/react": "17.0.38",
     "@types/react-native": "0.72.2",
     "@types/react-test-renderer": "17.0.1",
@@ -212,7 +213,6 @@
     "jest-useragent-mock": "0.1.1",
     "jscodeshift": "0.13.1",
     "jsdom": "20.0.2",
-    "lodash": "4.17.21",
     "metro-react-native-babel-preset": "0.76.7",
     "moniker": "0.1.2",
     "npm-run-all": "4.1.5",
@@ -223,8 +223,6 @@
     "react-native-gesture-handler": "2.9.0",
     "react-native-reanimated": "3.4.1",
     "react-native-svg": "12.3.0",
-    "react-native-tab-view": "3.5.2",
-    "react-native-pager-view": "6.2.1",
     "react-scripts": "4.0.3",
     "react-test-renderer": "18.2.0",
     "rollup": "3.28.1",
@@ -238,31 +236,30 @@
     "postinstall-postinstall": "2.1.0",
     "react-native-safe-area-context": "3.4.1",
     "ttypescript": "1.5.15",
-    "typescript-transform-paths": "3.4.6"
+    "typescript": "4.9",
+    "typescript-transform-paths": "3.4.6",
+    "@types/body-scroll-lock": "3.1.0",
+    "ramda": "0.29.1"
   },
   "peerDependencies": {
-    "@gorhom/bottom-sheet": "^4",
-    "@gorhom/portal": "1.0.14",
-    "@floating-ui/react": "0.25.4",
-    "@floating-ui/react-native": "0.10.0",
     "react": ">=18",
     "react-dom": ">=18",
-    "react-native": "^0.72",
-    "react-native-reanimated": "^3.4.1",
-    "react-native-tab-view": "3.5.2",
-    "react-native-pager-view": "6.2.1",
-    "react-native-svg": "^12.3.0",
     "styled-components": "^5",
-    "react-native-gesture-handler": "^2.9.0"
+    "react-native": "^0.72",
+    "@floating-ui/react-native": "^0.10.0",
+    "react-native-reanimated": "^3.4.1",
+    "react-native-tab-view": "^3.5.2",
+    "react-native-pager-view": "^6.2.1",
+    "react-native-svg": "^12.3.0",
+    "react-native-gesture-handler": "^2.9.0",
+    "@gorhom/bottom-sheet": "^4.4.6",
+    "@gorhom/portal": "^1.0.14"
   },
   "peerDependenciesMeta": {
     "react-native": {
       "optional": true
     },
     "react-native-reanimated": {
-      "optional": true
-    },
-    "@gorhom/bottom-sheet": {
       "optional": true
     }
   },
@@ -311,14 +308,14 @@
   "size-limit": [
     {
       "name": "Import Button only",
-      "path": "./build/components/index.production.web.js",
+      "path": "./build/lib/web/production/components/index.js",
       "import": "{ Button }",
       "limit": "30 kb",
       "running": false
     },
     {
       "name": "Import Text only",
-      "path": "./build/components/index.production.web.js",
+      "path": "./build/lib/web/production/components/index.js",
       "import": "{ Text }",
       "limit": "25 kb",
       "running": false

@@ -4,7 +4,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
-import { castWebType, makeMotionTime, useTheme } from '~utils';
+import { useTheme } from '~components/BladeProvider';
+import { castWebType, makeMotionTime } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';

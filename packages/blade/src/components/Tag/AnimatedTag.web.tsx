@@ -10,7 +10,8 @@ import {
   TAG_OPACITY_START,
 } from './tagAnimationConfig';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize, useTheme } from '~utils';
+import { useTheme } from '~components/BladeProvider';
+import { makeMotionTime, makeSize } from '~utils';
 
 const tagDissappearKeyframe = keyframes`
   0% {

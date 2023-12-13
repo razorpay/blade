@@ -17,7 +17,8 @@ import {
   TAG_OPACITY_START,
 } from './tagAnimationConfig';
 import type { AnimatedTagProps } from './types';
-import { castNativeType, makeMotionTime, useTheme } from '~utils';
+import { castNativeType, makeMotionTime } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 const useAnimatedTag = (
   onAnimationEndCallback: () => void,
