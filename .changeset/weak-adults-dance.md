@@ -4,7 +4,21 @@
 
 feat(blade): optimize bundle size with isolated modules & enable codesplitting
 
-**Changes:**
+**Migration:**
+
+## Jest
+
+In your jest config's [`transformIgnorePatterns`](https://jestjs.io/docs/configuration#transformignorepatterns-arraystring) add `@table-library` so that it gets transpiled by jest.
+
+```diff
+// jest.config.js
+transformIgnorePatterns: [
+-  '/node_modules/(?!(@razorpay/blade|commander)|uuid|@babel/runtime/)',
++  '/node_modules/(?!(@razorpay/blade|commander)|uuid|@babel/runtime|@table-library/)',
+],
+```
+
+## Third Party Libs
 
 While this change is not a breaking change, but we've made a few changes in how the dependencies are handled by blade internally. 
 
