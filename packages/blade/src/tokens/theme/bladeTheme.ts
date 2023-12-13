@@ -337,7 +337,7 @@ const colors: ColorsWithModes = {
       },
       border: {
         subtle: globalColors.neutral.blueGrayLight.a100,
-        Intense: globalColors.neutral.blueGrayLight[900],
+        intense: globalColors.neutral.blueGrayLight[900],
       },
     },
     feedback: {
@@ -376,7 +376,7 @@ const colors: ColorsWithModes = {
           subtle: globalColors.chromatic.cider.a100,
           intense: globalColors.chromatic.cider[700],
         },
-        Information: {
+        information: {
           subtle: globalColors.chromatic.sapphire.a100,
           intense: globalColors.chromatic.sapphire[700],
         },
@@ -758,7 +758,7 @@ const colors: ColorsWithModes = {
       },
       border: {
         subtle: globalColors.neutral.blueGrayDark.a100,
-        Intense: globalColors.neutral.blueGrayDark.a100,
+        intense: globalColors.neutral.blueGrayDark.a100,
       },
     },
     feedback: {
@@ -797,7 +797,7 @@ const colors: ColorsWithModes = {
           subtle: globalColors.chromatic.cider.a200,
           intense: globalColors.chromatic.cider[800],
         },
-        Information: {
+        information: {
           subtle: globalColors.chromatic.sapphire.a200,
           intense: globalColors.chromatic.sapphire[800],
         },
