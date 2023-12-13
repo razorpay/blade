@@ -8,6 +8,8 @@ feat(blade): optimize bundle size with isolated modules & enable codesplitting
 
 ## Jest
 
+**transformIgnorePatterns:**
+
 In your jest config's [`transformIgnorePatterns`](https://jestjs.io/docs/configuration#transformignorepatterns-arraystring) add `@table-library` so that it gets transpiled by jest.
 
 ```diff
@@ -16,6 +18,21 @@ transformIgnorePatterns: [
 -  '/node_modules/(?!(@razorpay/blade|commander)|uuid|@babel/runtime/)',
 +  '/node_modules/(?!(@razorpay/blade|commander)|uuid|@babel/runtime|@table-library/)',
 ],
+```
+
+**moduleNameMapper:**
+
+In your jest config's [`moduleNameMapper`](https://jestjs.io/docs/configuration#modulenamemapper-objectstring-string--arraystring), you can remove the aliased blade modules: 
+
+This is present in [x](https://github.com/razorpay/x/blob/master/jest.config.js#L49-L51), [frontend-website](https://github.com/razorpay/frontend-website/blob/master/jest.config.js#L14-L16) & [admin-dashboard](https://github.com/razorpay/admin-dashboard/blob/master/jest.config.js#L14-L16) repo.
+
+```diff
+moduleNameMapper: {
+  '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+-  '@razorpay/blade/tokens': '@razorpay/blade/build/tokens/index.development.web.js',
+-  '@razorpay/blade/utils': '@razorpay/blade/build/utils/index.development.web.js',
+-  '@razorpay/blade/components': '@razorpay/blade/build/components/index.development.web.js',
+},
 ```
 
 ## Third Party Libs
