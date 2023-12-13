@@ -15,7 +15,7 @@ type ColorSchemeModes = 'onDark' | 'onLight';
 
 type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
-type Contrasts = {
+type Emphasis = {
   subtle: string;
   moderate: string;
   intense: string;
@@ -24,7 +24,7 @@ type Contrasts = {
   disabled: string;
 };
 
-type SubtleOrIntense = Pick<Contrasts, 'subtle' | 'intense'>;
+type SubtleOrIntense = Pick<Emphasis, 'subtle' | 'intense'>;
 type PossibleInteractions = {
   default: string;
   highlighted: string;
@@ -34,26 +34,26 @@ type PossibleInteractions = {
 
 type InteractionKeys = Feedback | Exclude<keyof ColorFamilyType, 'onSea' | 'onCloud'>;
 
-type OnContrasts = {
+type OnEmphasis = {
   onSubtle: string;
   onIntense: string;
 };
 
 type ColorFamilyType = {
-  staticBlack: Pick<Contrasts, 'normal' | 'subtle' | 'muted' | 'disabled'>;
-  staticWhite: Pick<Contrasts, 'normal' | 'subtle' | 'muted' | 'disabled'>;
-  gray: Pick<Contrasts, 'normal' | 'subtle' | 'muted' | 'disabled'>;
-  onSea: Pick<OnContrasts, 'onSubtle' | 'onIntense'>;
-  onCloud: Pick<OnContrasts, 'onSubtle' | 'onIntense'>;
-  primary: Pick<Contrasts, 'normal'>;
+  staticBlack: Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>;
+  staticWhite: Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>;
+  gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>;
+  onSea: Pick<OnEmphasis, 'onSubtle' | 'onIntense'>;
+  onCloud: Pick<OnEmphasis, 'onSubtle' | 'onIntense'>;
+  primary: Pick<Emphasis, 'normal'>;
 };
 
 export type Colors = {
   interactive: {
     background: Record<InteractionKeys, PossibleInteractions>;
     border: Record<InteractionKeys, PossibleInteractions>;
-    text: Record<InteractionKeys, Pick<Contrasts, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
-    icon: Record<InteractionKeys, Pick<Contrasts, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
+    text: Record<InteractionKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
+    icon: Record<InteractionKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
   };
   feedback: {
     background: Record<Feedback, SubtleOrIntense>;
@@ -63,20 +63,20 @@ export type Colors = {
   };
   surface: {
     background: {
-      gray: Pick<Contrasts, 'subtle' | 'moderate' | 'intense'>;
+      gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
       primary: SubtleOrIntense;
       sea: SubtleOrIntense;
       cloud: SubtleOrIntense;
     };
     border: {
-      gray: Pick<Contrasts, 'normal' | 'subtle' | 'muted'>;
-      primary: Pick<Contrasts, 'normal' | 'muted'>;
+      gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
+      primary: Pick<Emphasis, 'normal' | 'muted'>;
     };
     text: ColorFamilyType;
     icon: ColorFamilyType;
   };
   overlay: {
-    background: Pick<Contrasts, 'moderate' | 'subtle'>;
+    background: Pick<Emphasis, 'moderate' | 'subtle'>;
   };
   popup: {
     background: SubtleOrIntense;
