@@ -8,8 +8,8 @@ import type {
   ElevationWithColorModes,
 } from '~tokens/global';
 
-type ColorSchemeNames = 'dark' | 'light';
-type ColorSchemeNamesInput = ColorSchemeNames | 'system';
+export type ColorSchemeNames = 'dark' | 'light';
+export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
 type ColorSchemeModes = 'onDark' | 'onLight';
 
