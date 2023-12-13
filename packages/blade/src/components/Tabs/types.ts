@@ -53,11 +53,11 @@ type TabsProps = {
    */
   isLazy?: boolean;
   /**
-   * If `true`, when the TabList is scrollable, the selected tab will be scrolled into view.
+   * If set, when the TabList is scrollable, the selected tab will be scrolled into view.
    *
-   * @default false
+   * @default 'none' - disabled
    */
-  shouldScrollIntoView?: boolean;
+  scrollIntoViewAlignment?: 'none' | 'start' | 'end' | 'center';
 };
 
 type TabItemProps = {

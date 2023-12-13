@@ -454,7 +454,12 @@ const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
       <Box position="fixed" top="0px" left="0px" right="0px">
         <Card elevation="none" padding="spacing.0">
           <CardBody height="100%">
-            <Tabs key={invalidationKey} value={value} onChange={(v) => setValue(v)}>
+            <Tabs
+              scrollIntoViewAlignment="start"
+              key={invalidationKey}
+              value={value}
+              onChange={(v) => setValue(v)}
+            >
               <TabList>
                 <TabItem value="subscriptions">Subscription</TabItem>
                 <TabItem

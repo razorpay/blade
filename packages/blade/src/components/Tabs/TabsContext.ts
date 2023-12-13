@@ -5,13 +5,15 @@ import { throwBladeError } from '~utils/logger';
 import type { ControllableStateSetter } from '~utils/useControllable';
 
 type TabsContextProps =
-  | (Pick<TabsProps, 'size' | 'variant' | 'isFullWidthTabItem' | 'isLazy'> & {
+  | (Pick<
+      TabsProps,
+      'size' | 'variant' | 'isFullWidthTabItem' | 'isLazy' | 'scrollIntoViewAlignment'
+    > & {
       isVertical: boolean;
       baseId: string;
       selectedValue: string;
       setSelectedValue?: ControllableStateSetter<string>;
       scrollIntoView?: (props?: ScrollIntoViewAnimation) => void;
-      shouldScrollIntoView?: boolean;
     })
   | null;
 

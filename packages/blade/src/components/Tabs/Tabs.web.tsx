@@ -47,7 +47,7 @@ const Tabs = ({
   variant = 'bordered',
   isFullWidthTabItem = false,
   isLazy = false,
-  shouldScrollIntoView = false,
+  scrollIntoViewAlignment = 'none',
 }: TabsProps): React.ReactElement => {
   const baseId = useId('tabs');
   const [selectedValue, setSelectedValue] = useControllableState({
@@ -71,7 +71,7 @@ const Tabs = ({
       setSelectedValue,
       isLazy,
       scrollIntoView,
-      shouldScrollIntoView,
+      scrollIntoViewAlignment,
     }),
     [
       isFullWidthTabItem,
@@ -83,7 +83,7 @@ const Tabs = ({
       variant,
       isLazy,
       scrollIntoView,
-      shouldScrollIntoView,
+      scrollIntoViewAlignment,
     ],
   );
 

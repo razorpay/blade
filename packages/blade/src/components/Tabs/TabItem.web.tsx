@@ -118,7 +118,7 @@ const TabItem = ({
     variant,
     isVertical,
     scrollIntoView,
-    shouldScrollIntoView,
+    scrollIntoViewAlignment,
   } = useTabsContext();
 
   const { currentInteraction, ...interactionProps } = useInteraction();
@@ -132,7 +132,7 @@ const TabItem = ({
   const ref = React.useRef<HTMLButtonElement>(null);
 
   React.useEffect(() => {
-    if (!shouldScrollIntoView) return;
+    if (scrollIntoViewAlignment === 'none') return;
     const target = ref.current;
     const parent = document.getElementById(tabListScrollableAreaId);
     if (!parent) return;
@@ -142,10 +142,10 @@ const TabItem = ({
       scrollIntoView?.({
         parent,
         target,
-        alignment: 'center',
+        alignment: scrollIntoViewAlignment,
       });
     }
-  }, [isSelected, scrollIntoView, shouldScrollIntoView, tabListScrollableAreaId]);
+  }, [isSelected, scrollIntoView, scrollIntoViewAlignment, tabListScrollableAreaId]);
 
   return (
     <CompositeItem
