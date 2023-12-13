@@ -154,7 +154,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c7.c7.c7.c7.c7:hover {
@@ -552,7 +552,7 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c6.c6.c6.c6.c6:hover {
@@ -901,7 +901,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c2.c2.c2.c2.c2:hover {
@@ -1267,7 +1267,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c8.c8.c8.c8.c8:hover {
@@ -1664,7 +1664,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c7.c7.c7.c7.c7:hover {
@@ -2087,7 +2087,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c6.c6.c6.c6.c6:hover {

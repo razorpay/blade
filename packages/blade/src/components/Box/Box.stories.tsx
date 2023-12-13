@@ -81,6 +81,35 @@ Responsive.args = {
   flexDirection: { base: 'column', m: 'row' },
 } as BoxProps;
 
+export const Elevations = (args: BoxProps): React.ReactElement => {
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      paddingY="spacing.11"
+      paddingX={isReactNative() ? 'spacing.0' : 'spacing.4'}
+      display="flex"
+      flexDirection="row"
+      gap="spacing.8"
+    >
+      <Box {...args} elevation="lowRaised">
+        <Text>Low </Text>
+      </Box>
+      <Box {...args} elevation="midRaised">
+        <Text>Mid</Text>
+      </Box>
+      <Box {...args} elevation="highRaised">
+        <Text>High</Text>
+      </Box>
+    </Box>
+  );
+};
+
+Elevations.args = {
+  padding: 'spacing.8',
+  backgroundColor: 'surface.background.level2.lowContrast',
+  borderRadius: 'large',
+} as BoxProps;
+
 export const AsSection = (args: BoxProps): React.ReactElement => {
   if (isReactNative()) {
     return (

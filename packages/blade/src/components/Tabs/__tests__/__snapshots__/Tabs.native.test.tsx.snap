@@ -302,16 +302,17 @@ exports[`Tabs should render 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(216, 16%, 60%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -389,16 +390,17 @@ exports[`Tabs should render 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(218, 89%, 51%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -558,16 +560,17 @@ exports[`Tabs should render 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(216, 16%, 60%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -645,16 +648,17 @@ exports[`Tabs should render 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(218, 89%, 51%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -754,10 +758,11 @@ exports[`Tabs should render 1`] = `
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1117,16 +1122,17 @@ exports[`Tabs should render with filled variant 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(216, 16%, 60%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1203,16 +1209,17 @@ exports[`Tabs should render with filled variant 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(218, 89%, 51%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1411,16 +1418,17 @@ exports[`Tabs should render with filled variant 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(216, 16%, 60%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1497,16 +1505,17 @@ exports[`Tabs should render with filled variant 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(218, 89%, 51%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1646,10 +1655,11 @@ exports[`Tabs should render with filled variant 1`] = `
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -2006,16 +2016,17 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(216, 16%, 60%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -2092,16 +2103,17 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(218, 89%, 51%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -2260,16 +2272,17 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(216, 16%, 60%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -2346,16 +2359,17 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             fontFamily="text"
                             fontSize={100}
                             fontStyle="normal"
-                            fontWeight="bold"
+                            fontWeight="semibold"
                             lineHeight={100}
                             style={
                               [
                                 {
                                   "color": "hsla(218, 89%, 51%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -2455,10 +2469,11 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -2822,16 +2837,17 @@ exports[`Tabs should render with large size 1`] = `
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="bold"
-                            lineHeight={300}
+                            fontWeight="semibold"
+                            lineHeight={200}
                             style={
                               [
                                 {
                                   "color": "hsla(216, 16%, 60%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -2909,16 +2925,17 @@ exports[`Tabs should render with large size 1`] = `
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="bold"
-                            lineHeight={300}
+                            fontWeight="semibold"
+                            lineHeight={200}
                             style={
                               [
                                 {
                                   "color": "hsla(218, 89%, 51%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -3078,16 +3095,17 @@ exports[`Tabs should render with large size 1`] = `
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="bold"
-                            lineHeight={300}
+                            fontWeight="semibold"
+                            lineHeight={200}
                             style={
                               [
                                 {
                                   "color": "hsla(216, 16%, 60%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -3165,16 +3183,17 @@ exports[`Tabs should render with large size 1`] = `
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="bold"
-                            lineHeight={300}
+                            fontWeight="semibold"
+                            lineHeight={200}
                             style={
                               [
                                 {
                                   "color": "hsla(218, 89%, 51%, 1)",
-                                  "fontFamily": "Lato",
+                                  "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -3274,10 +3293,11 @@ exports[`Tabs should render with large size 1`] = `
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,

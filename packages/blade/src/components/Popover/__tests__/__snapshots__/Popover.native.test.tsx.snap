@@ -128,10 +128,11 @@ exports[`<Popover /> should render 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -233,14 +234,14 @@ exports[`<Popover /> should render 1`] = `
               "zIndex": 1100,
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
           ]
         }
@@ -411,10 +412,11 @@ exports[`<Popover /> should render 1`] = `
                 [
                   {
                     "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -642,10 +644,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -747,14 +750,14 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
               "zIndex": 9999,
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
           ]
         }
@@ -925,10 +928,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
                 [
                   {
                     "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1156,10 +1160,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1261,14 +1266,14 @@ exports[`<Popover /> should render with title,footer 1`] = `
               "zIndex": 1100,
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
           ]
         }
@@ -1403,23 +1408,23 @@ exports[`<Popover /> should render with title,footer 1`] = `
               }
             >
               <Text
-                accessibilityRole="header"
                 accessible={true}
                 color="surface.text.normal.lowContrast"
-                data-blade-component="heading"
+                data-blade-component="text"
                 fontFamily="text"
                 fontSize={200}
                 fontStyle="normal"
-                fontWeight="bold"
-                lineHeight={300}
+                fontWeight="semibold"
+                lineHeight={200}
                 style={
                   [
                     {
                       "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "fontFamily": "Inter",
                       "fontSize": 16,
                       "fontStyle": "normal",
-                      "fontWeight": "700",
+                      "fontWeight": "600",
+                      "letterSpacing": 0,
                       "lineHeight": 24,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -1564,10 +1569,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 [
                   {
                     "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1606,10 +1612,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
                 [
                   {
                     "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,

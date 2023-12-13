@@ -86,10 +86,11 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
           [
             {
               "color": "hsla(268, 100%, 79%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -200,10 +201,11 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -314,10 +316,11 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -428,10 +431,11 @@ exports[`<BaseLink /> should render default color link 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -542,10 +546,11 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
           [
             {
               "color": "hsla(218, 19%, 81%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -656,10 +661,11 @@ exports[`<BaseLink /> should render disabled default color link 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -770,10 +776,11 @@ exports[`<BaseLink /> should render disabled information color link 1`] = `
           [
             {
               "color": "hsla(195, 100%, 31%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -884,10 +891,11 @@ exports[`<BaseLink /> should render disabled negative color link 1`] = `
           [
             {
               "color": "hsla(8, 73%, 47%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -998,10 +1006,11 @@ exports[`<BaseLink /> should render disabled neutral color link 1`] = `
           [
             {
               "color": "hsla(216, 27%, 36%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1112,10 +1121,11 @@ exports[`<BaseLink /> should render disabled notice color link 1`] = `
           [
             {
               "color": "hsla(38, 97%, 38%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1226,10 +1236,11 @@ exports[`<BaseLink /> should render disabled positive color link 1`] = `
           [
             {
               "color": "hsla(160, 100%, 26%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1340,10 +1351,11 @@ exports[`<BaseLink /> should render disabled white color link 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1542,10 +1554,11 @@ exports[`<BaseLink /> should render icon only link 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1654,10 +1667,11 @@ exports[`<BaseLink /> should render information color link 1`] = `
           [
             {
               "color": "hsla(195, 100%, 31%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1768,10 +1782,11 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1970,10 +1985,11 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2172,10 +2188,11 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2286,10 +2303,11 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2488,10 +2506,11 @@ exports[`<BaseLink /> should render negative color link 1`] = `
           [
             {
               "color": "hsla(8, 73%, 47%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2602,10 +2621,11 @@ exports[`<BaseLink /> should render neutral color link 1`] = `
           [
             {
               "color": "hsla(216, 27%, 36%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2716,10 +2736,11 @@ exports[`<BaseLink /> should render notice color link 1`] = `
           [
             {
               "color": "hsla(38, 97%, 38%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2830,10 +2851,11 @@ exports[`<BaseLink /> should render positive color link 1`] = `
           [
             {
               "color": "hsla(160, 100%, 26%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2944,10 +2966,11 @@ exports[`<BaseLink /> should render white color link 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
