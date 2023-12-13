@@ -17,7 +17,7 @@ export type ColorChromaticScale = Readonly<{
   a200: string;
 }>;
 
-export type ColorNeutralScale = Readonly<{
+export type ColorNeutralAshGray = Readonly<{
   0: string;
   50: string;
   100: string;
@@ -34,11 +34,32 @@ export type ColorNeutralScale = Readonly<{
   1200: string;
   1300: string;
   a50: string;
-  a75?: string;
   a100: string;
   a200: string;
-  a400?: string;
 }>;
+
+export type ColorNeutralBlueGray = {
+  0: string;
+  50: string;
+  100: string;
+  200: string;
+  300: string;
+  400: string;
+  500: string;
+  600: string;
+  700: string;
+  800: string;
+  900: string;
+  1000: string;
+  1100: string;
+  1200: string;
+  1300: string;
+  a50: string;
+  a75: string;
+  a100: string;
+  a200: string;
+  a400: string;
+};
 
 export type ColorNeutralStaticScale = Readonly<{
   10: string;
@@ -63,10 +84,10 @@ export type Color = Readonly<{
     forest: ColorChromaticScale;
   };
   neutral: {
-    blueGrayLight: ColorNeutralScale;
-    blueGrayDark: ColorNeutralScale;
-    ashGrayLight: ColorNeutralScale;
-    ashGrayDark: ColorNeutralScale;
+    blueGrayLight: ColorNeutralBlueGray;
+    blueGrayDark: ColorNeutralBlueGray;
+    ashGrayLight: ColorNeutralAshGray;
+    ashGrayDark: ColorNeutralAshGray;
     white: ColorNeutralStaticScale;
     black: ColorNeutralStaticScale;
   };
