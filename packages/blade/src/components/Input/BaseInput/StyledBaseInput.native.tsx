@@ -294,6 +294,8 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       placeholderTextColor={theme.colors.surface.text.placeholder.lowContrast}
       onFocus={(event): void => {
         handleOnFocus?.({ name, value: event?.nativeEvent.text });
+        // React Native does not have native onPress event on Input elements so for consistency of API we call it on onFocus which also gets triggered on clicks
+        handleOnClick?.({ name, value: event?.nativeEvent.text });
         setCurrentInteraction('active');
       }}
       onChangeText={(text): void => {

@@ -48,6 +48,7 @@ type TextInputCommonProps = Pick<
   | 'onSubmit'
   | 'autoCapitalize'
   | 'testID'
+  | 'onClick'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -223,6 +224,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     value,
     maxCharacters,
     onChange,
+    onClick,
     onFocus,
     onBlur,
     onSubmit,
@@ -317,6 +319,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
         onChange?.({ name, value });
       }}
+      onClick={onClick}
       onFocus={onFocus}
       onBlur={onBlur}
       onSubmit={onSubmit}
