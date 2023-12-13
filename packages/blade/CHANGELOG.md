@@ -1,5 +1,20 @@
 # @razorpay/blade
 
+## 10.21.0
+
+### Minor Changes
+
+- 32d188e6: feat(Collapsible): mark width prop as external
+
+  > [!WARNING]
+  >
+  > If you were using internal `_width` prop, you will have to rename it to `width`
+
+  ```diff
+  - <CollapsibleBody _width={} />
+  + <CollapsibleBody width={} />
+  ```
+
 ## 10.20.1
 
 ### Patch Changes
