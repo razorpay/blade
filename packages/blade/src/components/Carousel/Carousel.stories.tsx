@@ -211,12 +211,13 @@ const TestimonialCard = ({
   longQuote,
   role,
   company,
+  marginLeft,
+  marginRight,
 }: TestimonialData): React.ReactElement => {
   return (
-    <Card height="100%">
+    <Card marginLeft={marginLeft} marginRight={marginRight} height="100%">
       <CardBody height="100%">
         <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
-          <QuoteSvg />
           <Box>
             <Heading type="subtle" weight="bold" size="large">
               {quote}
@@ -258,14 +259,21 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
   return (
     <Box width="100%" height={isReactNative() ? '350px' : 'auto'}>
       <CarouselComponent
-        {...props}
         key={key}
+        visibleItems={1}
+        carouselItemWidth="92%"
         carouselItemAlignment="stretch"
         accessibilityLabel="Testimonials"
+        navigationButtonPosition="bottom"
+        carouselItemSpacing="spacing.0"
       >
-        {testimonialData.map((testimonial) => (
+        {testimonialData.map((testimonial, index) => (
           <CarouselItem key={testimonial.name}>
-            <TestimonialCard {...testimonial} />
+            <TestimonialCard
+              marginLeft="spacing.5"
+              marginRight={index === testimonialData.length - 1 ? 'spacing.5' : 'spacing.0'}
+              {...testimonial}
+            />
           </CarouselItem>
         ))}
       </CarouselComponent>
@@ -275,7 +283,7 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
 
 const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
   return (
-    <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
+    <Box margin="auto" width={{ base: '100%', m: '100%' }}>
       <CarouselExample {...props} />
     </Box>
   );

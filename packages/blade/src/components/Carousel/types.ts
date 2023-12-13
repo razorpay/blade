@@ -82,6 +82,10 @@ type CarouselProps = {
    */
   carouselItemAlignment?: BoxProps['alignItems'];
   /**
+   * Sets the gap between carousel items
+   */
+  carouselItemSpacing?: BoxProps['gap'];
+  /**
    * Callback which gets fired everytime a slide changes, useful for analytic events (only runs on user interaction not on autoPlay)
    *
    * @default undefined
