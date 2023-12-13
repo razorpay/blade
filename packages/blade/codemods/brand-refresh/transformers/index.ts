@@ -98,6 +98,7 @@ const transformer: Transform = (file, api, options) => {
         (attribute) => attribute.name.name === 'variant',
       );
 
+      // If size is small or variant is subheading, replace with Text
       if (
         !sizeAttribute ||
         (sizeAttribute && sizeAttribute.value.value === 'small') ||
@@ -119,6 +120,11 @@ const transformer: Transform = (file, api, options) => {
     })
     .find(j.JSXAttribute)
     .filter((path) => path.node.name.name === 'size' || path.node.name.name === 'variant')
+    .filter(
+      (path, index, self) =>
+        (path.node.name.name === 'size' || path.node.name.name === 'variant') &&
+        index === self.findIndex((obj) => path.node.start === obj.node.start),
+    ) // Filter by name `size/variant` and remove any duplicates
     .replaceWith((path) => {
       if (isExpression(path.node)) {
         console.log(
