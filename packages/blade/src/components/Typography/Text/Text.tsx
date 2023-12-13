@@ -27,6 +27,7 @@ type TextCommonProps = {
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
+  wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
   StyledPropsBlade;
 
@@ -142,11 +143,13 @@ const _Text = <T extends { variant: TextVariant }>({
   testID,
   textAlign,
   textDecorationLine,
+  wordBreak,
   ...styledProps
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> = {
     as,
     truncateAfterLines,
+    wordBreak,
     ...getTextProps({
       variant,
       type,

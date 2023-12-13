@@ -13,6 +13,7 @@ const getBaseTextStyles = ({
   fontStyle = 'normal',
   textDecorationLine = 'none',
   numberOfLines,
+  wordBreak,
   lineHeight = 100,
   letterSpacing = 100,
   textAlign,
@@ -28,6 +29,7 @@ const getBaseTextStyles = ({
     theme.typography.fonts.size[fontSize],
   );
   let truncateStyles: CSSObject = {};
+  let wordBreakStyles: CSSObject = {};
   if (numberOfLines !== undefined) {
     if (isReactNative()) {
       truncateStyles = {};
@@ -38,6 +40,15 @@ const getBaseTextStyles = ({
         'line-clamp': `${numberOfLines}`,
         '-webkit-line-clamp': `${numberOfLines}`,
         '-webkit-box-orient': 'vertical',
+      };
+    }
+  }
+  if (wordBreak !== undefined) {
+    if (isReactNative()) {
+      wordBreakStyles = {};
+    } else {
+      wordBreakStyles = {
+        wordBreak,
       };
     }
   }
@@ -58,6 +69,7 @@ const getBaseTextStyles = ({
     margin: 0,
     padding: 0,
     ...truncateStyles,
+    ...wordBreakStyles,
   };
 };
 

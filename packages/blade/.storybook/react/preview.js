@@ -102,15 +102,9 @@ export const parameters = {
 const StoryCanvas = styled.div(
   ({ theme, context }) =>
     `
-      position: ${context.viewMode === 'story' ? 'absolute' : 'relative'};
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      border-right: 'none';
       border: ${theme.border.width.thin}px solid ${theme.colors.surface.border.subtle.lowContrast};
       width: 100%;
-      height: 100%;
+      height: ${context.viewMode === 'story' ? '100vh' : '100%'};
       overflow: auto;
       padding: ${
         context.kind.includes('/Dropdown/With Select') ||
