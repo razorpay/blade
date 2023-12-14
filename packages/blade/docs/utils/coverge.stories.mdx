@@ -1,8 +1,12 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Utils/coverage" />
+<Meta title="Utils/Blade Coverage" />
 
-> **Note:** These functions are designed for web applications and should be used in a browser environment.
+# Blade Coverage Utils
+
+Blade coverage measures the percentage of blade nodes in a webpage's total DOM nodes. Apps at Razorpay must maintain a minimum blade coverage of 70%. Verify your app's coverage on the [Blade Coverage Dashboard](https://app.amplitude.com/analytics/razorpay-mobile/dashboard/texx2y4).
+
+Blade provides the following utils to help you calculate & test the coverage on a webpage. These functions are designed for web applications and should be used in a browser environment.
 
 ## `assertBladeCoverage`
 
@@ -20,7 +24,7 @@ Parameters:
 
   ```js dark
   import { test, expect } from '@playwright/test';
-  import { assertBladeCoverage } from '@razorpay/blade/coverage';
+  import { assertBladeCoverage } from '@razorpay/blade/coverageUtils';
 
   test.describe.parallel('Test Home @flow=home', () => {
     test('should have blade coverage more than 70% @priority=normal', async ({ page }) => {
@@ -46,7 +50,7 @@ Parameters:
 This utility function calculates the blade usage coverage in percentage of the DOM elements on a web page.
 
 ```js dark
-import { getBladeCoverage } from '@razorpay/blade/coverage';
+import { getBladeCoverage } from '@razorpay/blade/coverageUtils';
 
 const { bladeCoverage, totalNodes, bladeNodes } = getBladeCoverage();
 ```

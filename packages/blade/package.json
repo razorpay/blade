@@ -71,9 +71,9 @@
         "default": "./build/lib/web/production/utils/index.js"
       }
     },
-    "./coverage": {
+    "./coverageUtils": {
       "default": {
-        "types": "./coverage.d.ts",
+        "types": "./coverageUtils.d.ts",
         "default": "./build/lib/web/production/utils/bladeCoverage.js"
       }
     }
