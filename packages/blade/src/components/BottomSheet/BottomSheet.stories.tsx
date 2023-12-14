@@ -68,12 +68,7 @@ const Page = (): React.ReactElement => {
         BottomSheetHeaderProps
       } from '@razorpay/blade/components';
       `}
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=26477-578228&t=agFItKEmWAzA4N13-0',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=16767-706689&t=6FVL3Ha33gwM45Cm-0',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=26477-578228&t=agFItKEmWAzA4N13-0"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole editorHeight={600}>
