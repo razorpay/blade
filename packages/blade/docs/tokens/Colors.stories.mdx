@@ -1,6 +1,6 @@
 import { Meta, DocsContainer, ColorPalette, ColorItem } from '@storybook/addon-docs';
 import { useTheme, BladeProvider } from '../../src/components';
-import { paymentTheme, bankingTheme, colors } from '../../src/tokens';
+import { bladeTheme } from '../../src/tokens';
 import flat from 'flat';
 
 <Meta
@@ -9,13 +9,7 @@ import flat from 'flat';
     docs: {
       container: ({ children, context }) => {
         const getThemeTokens = () => {
-          if (context.globals.themeTokenName === 'paymentTheme') {
-            return paymentTheme;
-          }
-          if (context.globals.themeTokenName === 'bankingTheme') {
-            return bankingTheme;
-          }
-          return null;
+          return bladeTheme;
         };
         return (
           <DocsContainer context={context}>

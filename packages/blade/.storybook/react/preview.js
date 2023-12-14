@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme, toggleHiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components';
-import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
+import { bladeTheme } from '../../src/tokens/theme';
 import { createTheme } from '../../src/tokens/theme/createTheme';
 import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
@@ -68,12 +68,7 @@ export const parameters = {
         if (context.globals.brandColor) {
           return createTheme({ brandColor: context.globals.brandColor });
         }
-        if (context.globals.themeTokenName === 'paymentTheme') {
-          return paymentTheme;
-        }
-        if (context.globals.themeTokenName === 'bankingTheme') {
-          return bankingTheme;
-        }
+        return bladeTheme;
       };
       return (
         <DocsContainer context={context}>
@@ -130,12 +125,7 @@ export const decorators = [
       if (context.globals.brandColor) {
         return createTheme({ brandColor: context.globals.brandColor });
       }
-      if (context.globals.themeTokenName === 'paymentTheme') {
-        return paymentTheme;
-      }
-      if (context.globals.themeTokenName === 'bankingTheme') {
-        return bankingTheme;
-      }
+      return bladeTheme;
     };
 
     return (
@@ -159,14 +149,11 @@ export const globalTypes = {
   themeTokenName: {
     name: 'Theme Tokens',
     description: 'Theme Tokens for Blade',
-    defaultValue: 'paymentTheme',
+    defaultValue: 'bladeTheme',
     toolbar: {
       icon: 'paintbrush',
       // Array of plain string values or MenuItem shape (see below)
-      items: [
-        { value: 'paymentTheme', title: 'Payment' },
-        { value: 'bankingTheme', title: 'Banking' },
-      ],
+      items: [{ value: 'bladeTheme', title: 'Blade Default Theme' }],
       // Property that specifies if the name of the item will be displayed
       showName: true,
     },

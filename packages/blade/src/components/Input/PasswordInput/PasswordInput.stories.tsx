@@ -17,12 +17,7 @@ const Page = (): ReactElement => {
       componentName="PasswordInput"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/PasswordInput/_decisions/decisions.md"
       componentDescription="PasswordInput is an input field for entering passwords. The input is masked by default. On mobile devices the last typed letter is shown for a brief moment. The masking can be toggled using an optional reveal button."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A110176',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9995%3A180296',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A110176"
     >
       <Title>Usage</Title>
       <Sandbox>

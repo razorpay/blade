@@ -16,12 +16,7 @@ const ModalDocs = (): React.ReactElement => {
       componentDescription="Modals are often used to present information, notifications, or requests that require immediate attention or confirmation from the user"
       imports=""
       showStorybookControls={false}
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=39809-559333&t=j3ZK6zZSwP5CJ8Al-0',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=16459-684636&t=7KYEW7ENNS5GmLIO-0',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=39809-559333&t=j3ZK6zZSwP5CJ8Al-0"
     >
       <Box as="section">
         <Heading size="xlarge">Playground</Heading>

@@ -1,6 +1,6 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
 import { useTheme, BladeProvider, Box } from '../../src//components';
-import { paymentTheme, bankingTheme } from '../../src/tokens';
+import { bladeTheme } from '../../src/tokens';
 import { makeTypographySize } from '../../src/utils';
 import FigmaEmbed from '../../src/utils/storybook/FigmaEmbed';
 
@@ -10,13 +10,7 @@ import FigmaEmbed from '../../src/utils/storybook/FigmaEmbed';
     docs: {
       container: ({ children, context }) => {
         const getThemeTokens = () => {
-          if (context.globals.themeTokenName === 'paymentTheme') {
-            return paymentTheme;
-          }
-          if (context.globals.themeTokenName === 'bankingTheme') {
-            return bankingTheme;
-          }
-          return null;
+          return bladeTheme;
         };
         return (
           <DocsContainer context={context}>
