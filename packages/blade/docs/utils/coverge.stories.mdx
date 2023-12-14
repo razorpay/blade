@@ -4,9 +4,11 @@ import { Meta } from '@storybook/addon-docs';
 
 # Blade Coverage Utils
 
-Blade coverage measures the percentage of blade nodes in a webpage's total DOM nodes. Apps at Razorpay must maintain a minimum blade coverage of 70%. Verify your app's coverage on the [Blade Coverage Dashboard](https://app.amplitude.com/analytics/razorpay-mobile/dashboard/texx2y4).
+Blade coverage measures the percentage of a page built with Blade. It does so by calculating the DOM nodes built with Blade vs Non-Blade. All the apps within Razorpay org that are using Blade have the coverage script integrated and you can check the coverage for your app on Amplitude. [Blade Coverage Dashboard](https://app.amplitude.com/analytics/razorpay-mobile/dashboard/texx2y4).
 
-Blade provides the following utils to help you calculate & test the coverage on a webpage. These functions are designed for web applications and should be used in a browser environment.
+You can utilize the following utils to measure the coverage in different stages of your app development workflow.
+
+> These functions are designed for web applications and should be used in a browser environment.
 
 ## `assertBladeCoverage`
 
@@ -45,7 +47,7 @@ Parameters:
 
 ## `getBladeCoverage`
 
-> Consider installing the [Blade Coverage Chrome Extension](https://chromewebstore.google.com/detail/blade-coverage-extension/cpmmcebielcknjffelmpbcbgkcjapipp). This extension provides a convenient way to visualize and analyze the blade coverage directly in the Chrome browser.
+> Consider installing the [Blade Coverage Chrome Extension](https://chromewebstore.google.com/detail/blade-coverage-extension/cpmmcebielcknjffelmpbcbgkcjapipp). This extension provides a convenient way to visualize and analyze the blade coverage directly in the Chrome browser. We internally use the below utility function.
 
 This utility function calculates the blade usage coverage in percentage of the DOM elements on a web page.
 
