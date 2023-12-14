@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 10.23.0
+
+### Minor Changes
+
+- 469b2d72: feat: add `getBladeCoverage` and `assertBladeCoverage` utilities
+
+  Read more about it in the [Blade Coverage documentation](http://blade.razorpay.com/?path=/story/utils-blade-coverage--page).
+
 ## 10.22.0
 
 ### Minor Changes
@@ -2792,10 +2800,12 @@ Shift every spacing token other than the first one (`0th` index) by +1
 
 - 55ac5d3: feat(blade): add rollup to build blade
   :
+
   - '@razorpay/blade/tokens': '@razorpay/blade/build/tokens/index.development.web.js',
   - '@razorpay/blade/utils': '@razorpay/blade/build/utils/index.development.web.js',
   - '@razorpay/blade/components': '@razorpay/blade/build/components/index.development.web.js',
     },
+
   ```
 
   ## Third Party Libs
