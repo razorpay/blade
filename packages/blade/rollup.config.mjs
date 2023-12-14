@@ -131,6 +131,48 @@ const getWebConfig = (inputs) => {
   };
 };
 
+// This is a special config for bladeCoverage.ts
+// We need to bundle it as cjs so that we can use it in playwright tests https://github.com/microsoft/playwright/issues/23662
+const getBladeCoverageConfig = (inputs) => {
+  const platform = 'web';
+  const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+
+  return {
+    input: inputs,
+    // Since we individually bundle each export category (components, tokens, utils)
+    // it is possible that some function of `utils` is used in `components` but
+    // rollup will have no idea about it and tree shake it away.
+    // So we disable tree shaking, this should not cause any issues since consumers will do their own tree shaking.
+    treeshake: false,
+    output: [
+      {
+        dir: `${outputRootDirectory}/${libDirectory}/${platform}/${mode}`,
+        format: 'cjs',
+        sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
+      },
+    ],
+    plugins: [
+      pluginReplace({
+        __DEV__: process.env.NODE_ENV !== 'production',
+        preventAssignment: true,
+      }),
+      pluginPeerDepsExternal(),
+      depsExternalPlugin({ externalDependencies }),
+      pluginResolve({ extensions: webExtensions }),
+      pluginCommonjs(),
+      pluginBabel({
+        exclude: 'node_modules/**',
+        babelHelpers: 'runtime',
+        envName: 'production',
+        extensions: webExtensions,
+      }),
+      aliases,
+    ],
+  };
+};
+
 const getNativeConfig = (inputs) => {
   const platform = 'native';
 
@@ -229,12 +271,14 @@ const config = () => {
   const components = 'src/components/index.ts';
   const tokens = 'src/tokens/index.ts';
   const utils = 'src/utils/index.ts';
+  const bladeCoverage = 'src/utils/bladeCoverage.ts';
   if (framework === 'REACT') {
     return [
       getWebConfig(components),
       getWebConfig(tokens),
       getWebConfig(utils),
-      // Unfortunately we cannot just simply copy the tsc emited declarations and put it on build dir,
+      getBladeCoverageConfig(bladeCoverage),
+      // Unfortunately we cannot just simply copy the tsc emitted declarations and put it on build dir,
       // because moduleSuffixes will cause typescript to resolve the d.ts files based on the user's tsconfig.json
       // which will cause the build to fail because the user's tsconfig.json does not have the moduleSuffixes
       // So we opt for the older approach of bundling the d.ts files as index.d.ts and index.native.d.ts and place it on build dir.
