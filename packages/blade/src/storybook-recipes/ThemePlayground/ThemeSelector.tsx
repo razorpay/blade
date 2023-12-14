@@ -154,8 +154,7 @@ const ThemeSelector = ({
                   setSelectedColor(undefined);
                 }}
               >
-                <Radio value="paymentTheme">Payment Theme</Radio>
-                <Radio value="bankingTheme">Banking Theme</Radio>
+                <Radio value="bladeTheme">Blade Theme</Radio>
               </RadioGroup>
             </Box>
             <Box marginTop="spacing.8" />

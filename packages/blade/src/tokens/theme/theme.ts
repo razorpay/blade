@@ -25,7 +25,7 @@ type Emphasis = {
 };
 
 type SubtleOrIntense = Pick<Emphasis, 'subtle' | 'intense'>;
-type PossibleInteractions = {
+type InteractiveStates = {
   default: string;
   highlighted: string;
   disabled: string;
@@ -50,8 +50,8 @@ type ColorFamilyType = {
 
 export type Colors = {
   interactive: {
-    background: Record<InteractionKeys, PossibleInteractions>;
-    border: Record<InteractionKeys, PossibleInteractions>;
+    background: Record<InteractionKeys, InteractiveStates>;
+    border: Record<InteractionKeys, InteractiveStates>;
     text: Record<InteractionKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
     icon: Record<InteractionKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
   };
