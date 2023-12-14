@@ -131,6 +131,8 @@ const getWebConfig = (inputs) => {
   };
 };
 
+// This is a special config for bladeCoverage.ts
+// We need to bundle it as cjs so that we can use it in playwright tests https://github.com/microsoft/playwright/issues/23662
 const getBladeCoverageConfig = (inputs) => {
   const platform = 'web';
   const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
