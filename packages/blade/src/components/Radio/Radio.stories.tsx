@@ -18,12 +18,7 @@ const Page = (): React.ReactElement => {
       componentDescription="Radio & RadioGroup can be used in forms when a user needs to single value from several options."
       componentName="Radio"
       imports={`import { Radio, RadioGroup } from '@razorpay/blade/components';\nimport type { RadioProps, RadioGroupProps } from '@razorpay/blade/components';`}
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11314%3A278927',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709"
     >
       <Title>Usage</Title>
       <Sandbox showConsole editorHeight={400}>

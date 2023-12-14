@@ -3,7 +3,7 @@ const StyleDictionary = require('style-dictionary');
 const set = require('lodash/set');
 const cloneDeep = require('lodash/cloneDeep');
 
-const { paymentTheme, bankingTheme } = require('../build/js-bundle-for-css/tokensBundle');
+const { bladeTheme } = require('../build/js-bundle-for-css/tokensBundle');
 const {
   makeBorderSize,
   makeMotionTime,
