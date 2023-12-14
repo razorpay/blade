@@ -7,10 +7,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Text } from '~components/Typography/Text';
-import { Card, CardBody } from '~components/Card';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
-import { List, ListItem } from '~components/List';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
@@ -78,22 +76,13 @@ export default {
 
 const DividerDefaultTemplate: ComponentStory<typeof DividerComponent> = (args) => {
   return (
-    <Card>
-      <CardBody>
-        <BaseBox display="flex" flexDirection={args.orientation == 'vertical' ? 'row' : 'column'}>
-          <Heading margin="spacing.4">Payment Links</Heading>
-          <DividerComponent {...args} />
-          <Box margin="spacing.4">
-            <Text>Share payment link via:</Text>
-            <List>
-              <ListItem>Email</ListItem>
-              <ListItem>SMS</ListItem>
-              <ListItem>Messenger</ListItem>
-            </List>
-          </Box>
-        </BaseBox>
-      </CardBody>
-    </Card>
+    <BaseBox display="flex" flexDirection={args.orientation == 'vertical' ? 'row' : 'column'}>
+      <Heading margin="spacing.4">Payment Links</Heading>
+      <DividerComponent {...args} />
+      <Box margin="spacing.4">
+        <Text>Share payment link via:</Text>
+      </Box>
+    </BaseBox>
   );
 };
 
@@ -102,16 +91,14 @@ Divider.storyName = 'Default';
 
 const DividerHorizontalTemplate: ComponentStory<typeof DividerComponent> = () => {
   return (
-    <Card>
-      <CardBody>
-        <Heading marginBottom="spacing.2">Payment Links</Heading>
-        <DividerComponent />
-        <Text marginTop="spacing.3">
-          Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.
-          Accepting payments from customers is now just a link away.
-        </Text>
-      </CardBody>
-    </Card>
+    <>
+      <Heading marginBottom="spacing.2">Payment Links</Heading>
+      <DividerComponent />
+      <Text marginTop="spacing.3">
+        Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.
+        Accepting payments from customers is now just a link away.
+      </Text>
+    </>
   );
 };
 
@@ -122,29 +109,25 @@ DividerHorizontal.storyName = 'Horizontal';
 
 const DividerVerticalTemplate: ComponentStory<typeof DividerComponent> = () => {
   return (
-    <Card>
-      <CardBody>
-        <BaseBox
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          flexDirection="row"
-          height="50px"
-        >
-          <BaseBox display="flex" flex={1}>
-            <Button variant="secondary" marginRight="spacing.4" isFullWidth>
-              Sign up
-            </Button>
-          </BaseBox>
-          <DividerComponent orientation="vertical" />
-          <BaseBox display="flex" flex={1}>
-            <Button variant="primary" marginLeft="spacing.4" isFullWidth>
-              Login
-            </Button>
-          </BaseBox>
-        </BaseBox>
-      </CardBody>
-    </Card>
+    <BaseBox
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="row"
+      height="50px"
+    >
+      <BaseBox display="flex" flex={1}>
+        <Button variant="secondary" marginRight="spacing.4" isFullWidth>
+          Sign up
+        </Button>
+      </BaseBox>
+      <DividerComponent orientation="vertical" />
+      <BaseBox display="flex" flex={1}>
+        <Button variant="primary" marginLeft="spacing.4" isFullWidth>
+          Login
+        </Button>
+      </BaseBox>
+    </BaseBox>
   );
 };
 
@@ -155,38 +138,34 @@ DividerVertical.storyName = 'Vertical';
 
 const DividerWithTextTemplate: ComponentStory<typeof DividerComponent> = () => {
   return (
-    <Card>
-      <CardBody>
-        <BaseBox display="flex" flexDirection="column">
-          <Heading marginBottom="spacing.4">Explore multiple payment options</Heading>
-          <DividerComponent />
-          <BaseBox display="flex" gap="spacing.6" flexDirection="row">
-            <BaseBox width="30%">
-              <Text margin="spacing.4">
-                Accept payments with a custom-branded online store using Payment Pages. Accept
-                international and domestic payments with automated payment receipts. Take your store
-                online instantly with zero coding.
-              </Text>
-            </BaseBox>
-            <DividerComponent orientation="vertical" />
-            <BaseBox width="30%">
-              <Text margin="spacing.4">
-                Create payment links which can be shared via an email, SMS, messenger, chatbot etc.
-                and get paid immediately. Accepting payments from customers is now just a link away.
-              </Text>
-            </BaseBox>
-            <DividerComponent orientation="vertical" />
-            <BaseBox width="30%">
-              <Text margin="spacing.4">
-                Accept one time and subscription payments on your website in less than 5 minutes.
-                Thousands of NGOs, SMEs, and freelancers are collecting payments by adding a payment
-                button to their website on their own.
-              </Text>
-            </BaseBox>
-          </BaseBox>
+    <BaseBox display="flex" flexDirection="column">
+      <Heading marginBottom="spacing.4">Explore multiple payment options</Heading>
+      <DividerComponent />
+      <BaseBox display="flex" gap="spacing.6" flexDirection="row">
+        <BaseBox width="30%">
+          <Text margin="spacing.4">
+            Accept payments with a custom-branded online store using Payment Pages. Accept
+            international and domestic payments with automated payment receipts. Take your store
+            online instantly with zero coding.
+          </Text>
         </BaseBox>
-      </CardBody>
-    </Card>
+        <DividerComponent orientation="vertical" />
+        <BaseBox width="30%">
+          <Text margin="spacing.4">
+            Create payment links which can be shared via an email, SMS, messenger, chatbot etc. and
+            get paid immediately. Accepting payments from customers is now just a link away.
+          </Text>
+        </BaseBox>
+        <DividerComponent orientation="vertical" />
+        <BaseBox width="30%">
+          <Text margin="spacing.4">
+            Accept one time and subscription payments on your website in less than 5 minutes.
+            Thousands of NGOs, SMEs, and freelancers are collecting payments by adding a payment
+            button to their website on their own.
+          </Text>
+        </BaseBox>
+      </BaseBox>
+    </BaseBox>
   );
 };
 
