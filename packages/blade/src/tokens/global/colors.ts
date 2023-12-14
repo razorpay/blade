@@ -17,28 +17,7 @@ export type ColorChromaticScale = Readonly<{
   a200: string;
 }>;
 
-export type ColorNeutralAshGray = Readonly<{
-  0: string;
-  50: string;
-  100: string;
-  200: string;
-  300: string;
-  400: string;
-  500: string;
-  600: string;
-  700: string;
-  800: string;
-  900: string;
-  1000: string;
-  1100: string;
-  1200: string;
-  1300: string;
-  a50: string;
-  a100: string;
-  a200: string;
-}>;
-
-export type ColorNeutralBlueGray = {
+export type ColorNeutralGrayScale = Readonly<{
   0: string;
   50: string;
   100: string;
@@ -59,7 +38,7 @@ export type ColorNeutralBlueGray = {
   a100: string;
   a200: string;
   a400: string;
-};
+}>;
 
 export type ColorNeutralStaticScale = Readonly<{
   10: string;
@@ -84,10 +63,10 @@ export type Color = Readonly<{
     forest: ColorChromaticScale;
   };
   neutral: {
-    blueGrayLight: ColorNeutralBlueGray;
-    blueGrayDark: ColorNeutralBlueGray;
-    ashGrayLight: ColorNeutralAshGray;
-    ashGrayDark: ColorNeutralAshGray;
+    blueGrayLight: ColorNeutralGrayScale;
+    blueGrayDark: ColorNeutralGrayScale;
+    ashGrayLight: ColorNeutralGrayScale;
+    ashGrayDark: ColorNeutralGrayScale;
     white: ColorNeutralStaticScale;
     black: ColorNeutralStaticScale;
   };
@@ -286,8 +265,10 @@ export const colors: Color = {
       1200: `hsla(216, 15%, 13%, ${opacity[9]})`,
       1300: `hsla(214, 24%, 6%, ${opacity[9]})`,
       a50: `hsla(214, 6%, 55%, ${opacity[1]})`,
+      a75: `hsla(214, 6%, 55%, ${opacity[1]})`,
       a100: `hsla(214, 6%, 55%, ${opacity[3]})`,
       a200: `hsla(214, 6%, 55%, ${opacity[4]})`,
+      a400: `hsla(214, 6%, 55%, ${opacity[4]})`,
     },
     ashGrayDark: {
       0: `hsla(0, 0%, 99%, ${opacity[9]})`,
@@ -306,8 +287,10 @@ export const colors: Color = {
       1200: `hsla(231, 17%, 8%, ${opacity[9]})`,
       1300: `hsla(240, 5%, 4%, ${opacity[9]})`,
       a50: `hsla(228, 4%, 76%, ${opacity[1]})`,
+      a75: `hsla(228, 4%, 76%, ${opacity[1]})`,
       a100: `hsla(228, 4%, 76%, ${opacity[3]})`,
       a200: `hsla(228, 4%, 76%, ${opacity[4]})`,
+      a400: `hsla(228, 4%, 76%, ${opacity[4]})`,
     },
     white: {
       10: `hsla(0, 0%, 100%, ${opacity[1]})`,
