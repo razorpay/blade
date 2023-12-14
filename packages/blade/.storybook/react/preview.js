@@ -146,18 +146,6 @@ export const decorators = [
 ];
 
 export const globalTypes = {
-  themeTokenName: {
-    name: 'Theme Tokens',
-    description: 'Theme Tokens for Blade',
-    defaultValue: 'bladeTheme',
-    toolbar: {
-      icon: 'paintbrush',
-      // Array of plain string values or MenuItem shape (see below)
-      items: [{ value: 'bladeTheme', title: 'Blade Default Theme' }],
-      // Property that specifies if the name of the item will be displayed
-      showName: true,
-    },
-  },
   colorScheme: {
     name: 'Color Scheme',
     description: 'Color Scheme for Blade',

@@ -8,14 +8,11 @@ import { bladeTheme } from '../../src/tokens';
   parameters={{
     docs: {
       container: ({ children, context }) => {
-        const getThemeTokens = () => {
-          return bladeTheme;
-        };
         return (
           <DocsContainer context={context}>
             <BladeProvider
               key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
-              themeTokens={getThemeTokens()}
+              themeTokens={bladeTheme}
               colorScheme={context.globals.colorScheme}
             >
               {children}
