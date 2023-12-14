@@ -75,7 +75,7 @@
     "./coverage": {
       "default": {
         "types": "./coverage.d.ts",
-        "default": "./coverage.js"
+        "default": "./build/lib/web/production/utils/bladeCoverage.js"
       }
     }
   },
