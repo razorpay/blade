@@ -25,7 +25,7 @@
     "utils.d.ts",
     "utils.js",
     "utils.native.js",
-    "coverage.d.ts"
+    "coverageUtils.d.ts"
   ],
   "keywords": [
     "design system",
