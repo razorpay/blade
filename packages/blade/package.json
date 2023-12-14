@@ -25,8 +25,7 @@
     "utils.d.ts",
     "utils.js",
     "utils.native.js",
-    "getBladeCoverage.js",
-    "getBladeCoverage.d.ts"
+    "coverage.d.ts"
   ],
   "keywords": [
     "design system",
