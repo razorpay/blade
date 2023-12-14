@@ -15,7 +15,7 @@ import {
 import type { SpotlightPopoverTourMaskRect, SpotlightPopoverTourProps } from './types';
 import { SpotlightPopoverTourMask } from './TourMask';
 import { transitionDelay } from './tourTokens';
-import { useTheme } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 const SpotlightPopoverTour = ({

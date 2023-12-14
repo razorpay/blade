@@ -1,10 +1,12 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 import styled from 'styled-components';
-import { makeMotionTime, makeSpace, useTheme } from '../../../utils';
 import { Heading, Text, Box, Card, CardBody, ChevronRightIcon } from '../../../components';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 import BladeQRCode from './blade-qr-code.png';
 import { CheckoutShell } from './CheckoutShell';
+import { useTheme } from '~components/BladeProvider';
+import { makeMotionTime, makeSpace } from '~utils';
 
 const QRCodeImage = styled.img({
   width: '136px',
@@ -137,7 +139,7 @@ const CheckoutHome = (): React.ReactElement => {
                 />
               </Box>
               <Text>UPI - Google Pay</Text>
-              <Box display="flex" flex={1} alignItems="center" justifyContent={'flex-end'}>
+              <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
                 <ChevronRightIcon size="xlarge" color="brand.primary.500" />
               </Box>
             </ClickableRow>
@@ -149,7 +151,7 @@ const CheckoutHome = (): React.ReactElement => {
                 />
               </Box>
               <Text>UPI - Google Pay</Text>
-              <Box display="flex" flex={1} alignItems="center" justifyContent={'flex-end'}>
+              <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
                 <ChevronRightIcon size="xlarge" color="brand.primary.500" />
               </Box>
             </ClickableRow>
@@ -179,7 +181,7 @@ const CheckoutHome = (): React.ReactElement => {
                 </svg>
               </Box>
               <Text>Card</Text>
-              <Box display="flex" flex={1} alignItems="center" justifyContent={'flex-end'}>
+              <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
                 <ChevronRightIcon size="xlarge" color="brand.primary.500" />
               </Box>
             </ClickableRow>
@@ -202,7 +204,7 @@ const CheckoutHome = (): React.ReactElement => {
                 </svg>
               </Box>
               <Text>UPI / QR</Text>
-              <Box display="flex" flex={1} alignItems="center" justifyContent={'flex-end'}>
+              <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
                 <ChevronRightIcon size="xlarge" color="brand.primary.500" />
               </Box>
             </ClickableRow>
@@ -225,7 +227,7 @@ const CheckoutHome = (): React.ReactElement => {
                 </svg>
               </Box>
               <Text>Netbanking</Text>
-              <Box display="flex" flex={1} alignItems="center" justifyContent={'flex-end'}>
+              <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
                 <ChevronRightIcon size="xlarge" color="brand.primary.500" />
               </Box>
             </ClickableRow>
@@ -248,7 +250,7 @@ const CheckoutHome = (): React.ReactElement => {
                 </svg>
               </Box>
               <Text>Wallet</Text>
-              <Box display="flex" flex={1} alignItems="center" justifyContent={'flex-end'}>
+              <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
                 <ChevronRightIcon size="xlarge" color="brand.primary.500" />
               </Box>
             </ClickableRow>

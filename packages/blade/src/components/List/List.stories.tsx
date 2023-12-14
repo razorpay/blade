@@ -1,6 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import capitalize from 'lodash/capitalize';
 import type { ReactElement } from 'react';
 import type { ListProps } from './List';
 import { List } from './List';
@@ -15,6 +14,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { capitalize } from '~utils/lodashButBetter/capitalize';
 
 const listSizes: NonNullable<ListProps['size']>[] = ['small', 'medium', 'large'];
 

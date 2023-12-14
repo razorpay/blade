@@ -1,5 +1,4 @@
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
 import { useChipGroupContext } from './ChipGroupContext';
 import {
   chipIconSizes,
@@ -12,6 +11,7 @@ import {
 import type { ChipProps } from './types';
 import { AnimatedChip } from './AnimatedChip';
 import { StyledChipWrapper } from './StyledChipWrapper';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';

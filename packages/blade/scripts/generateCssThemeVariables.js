@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { getLeaves } = require('any-leaf');
 const StyleDictionary = require('style-dictionary');
 const set = require('lodash/set');
