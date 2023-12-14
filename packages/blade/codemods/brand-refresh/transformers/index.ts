@@ -226,10 +226,45 @@ const transformer: Transform = (file, api, options) => {
 
   // Remove `type` prop from Typography Components
   typographyJSXElements
-    .find(j.JSXAttribute) // Find all JSX props
+    .filter((path) => path.value.openingElement.name.name !== 'Code')
+    .replaceWith((path) => {
+      const { node } = path;
+
+      const typeAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'type',
+      );
+
+      const contrastAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'contrast',
+      );
+
+      const colorAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'color',
+      );
+
+      // If type and contrast are not present or color is present, return the node
+      // if (colorAttribute || !(typeAttribute && contrastAttribute)) {
+      //   return node;
+      // }
+
+      const typeValue = typeAttribute?.value.value || 'normal';
+      const contrastValue = contrastAttribute?.value.value || 'low';
+
+      const oldColorToken = `surface.text.${typeValue}.${contrastValue}Contrast`;
+      const newColorToken = colorTokensMapping[oldColorToken];
+
+      if (!colorAttribute && newColorToken) {
+        node.openingElement.attributes?.push(
+          j.jsxAttribute(j.jsxIdentifier('color'), j.literal(newColorToken)),
+        );
+      }
+
+      return node;
+    })
+    .find(j.JSXAttribute) // Find all Heading props
     .filter(
       (path, index, self) =>
-        path.node.name.name === 'type' &&
+        (path.node.name.name === 'type' || path.node.name.name === 'contrast') &&
         index === self.findIndex((obj) => path.node.start === obj.node.start),
     ) // Filter by name `type` and remove any duplicates
     .remove();

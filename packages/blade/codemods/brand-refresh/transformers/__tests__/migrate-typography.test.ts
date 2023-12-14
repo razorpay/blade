@@ -47,7 +47,7 @@ it('should remove the "variant" prop from Heading', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text weight="semibold" marginTop="spacing.2" size="small"> Lorem ipsum </Text>  
+                <Text weight="semibold" marginTop="spacing.2" size="small" color="surface.text.gray.subtle"> Lorem ipsum </Text>  
               </>
             );"
   `);
@@ -74,10 +74,10 @@ it('should remove the "type" prop and change weight="bold" to weight="semibold"'
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
                 <>
-                    <Text weight="semibold"> Lorem ipsum </Text>
-                    <Text weight="semibold" size="large"> Lorem ipsum </Text>
-                    <Heading weight="semibold" size="large"> Lorem ipsum </Heading>
-                    <Display weight="semibold"> Lorem ipsum </Display>
+                    <Text weight="semibold" color="surface.text.gray.subtle"> Lorem ipsum </Text>
+                    <Text weight="semibold" size="large" color="surface.text.gray.subtle"> Lorem ipsum </Text>
+                    <Heading weight="semibold" size="large" color="surface.text.gray.subtle"> Lorem ipsum </Heading>
+                    <Display weight="semibold" color="surface.text.gray.subtle"> Lorem ipsum </Display>
                     // weight="bold" should not be changed
                     <Code weight="bold"> Lorem ipsum </Code>
                 </>
@@ -112,15 +112,15 @@ it('should remove the "type" & "variant" prop with nested components', async () 
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
           <>
-            <Display size="large" marginTop="120px">
+            <Display size="large" marginTop="120px" color="surface.text.gray.normal">
                 Lorem ipsum
-                <Display as="span" size="large" color="brand.secondary.500">
+                <Display as="span" size="large" color="surface.text.onSea.onSubtle">
                     Lorem ipsum
                 </Display>
             </Display>
-            <Heading marginTop="120px" size="medium">
+            <Heading marginTop="120px" size="medium" color="surface.text.gray.normal">
                 Lorem ipsum
-                <Text as="span" color="brand.secondary.500" size="small">
+                <Text as="span" color="surface.text.onSea.onSubtle" size="small">
                     Lorem ipsum
                 </Text>
             </Heading>
@@ -149,11 +149,11 @@ it('should update <Heading size="large|medium"> to <Heading size="medium|small">
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Heading size="medium"> Lorem ipsum </Heading>
-                <Heading size="small"> Lorem ipsum </Heading>
+                <Heading size="medium" color="surface.text.gray.normal"> Lorem ipsum </Heading>
+                <Heading size="small" color="surface.text.gray.normal"> Lorem ipsum </Heading>
 
-                <Heading size="medium"> Lorem ipsum <Heading size="medium"> Lorem ipsum </Heading> </Heading>
-                <Heading size="small"> Lorem ipsum <Heading size="small"> Lorem ipsum </Heading> </Heading>
+                <Heading size="medium" color="surface.text.gray.normal"> Lorem ipsum <Heading size="medium" color="surface.text.gray.normal"> Lorem ipsum </Heading> </Heading>
+                <Heading size="small" color="surface.text.gray.normal"> Lorem ipsum <Heading size="small" color="surface.text.gray.normal"> Lorem ipsum </Heading> </Heading>
               </>
             );"
   `);
@@ -177,9 +177,9 @@ it('should update <Heading size="small"> to <Text size="large">', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text size="large"> Lorem ipsum </Text>
+                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text>
 
-                <Text size="large"> Lorem ipsum <Text size="large"> Lorem ipsum </Text> </Text>
+                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text> </Text>
               </>
             );"
   `);
@@ -203,9 +203,9 @@ it('should update <Heading variant="subheading"> to <Text size="small">', async 
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text size="large"> Lorem ipsum </Text> 
-                <Text size="small"> Lorem ipsum </Text>
-                <Text size="small"> Lorem ipsum <Text size="small"> Lorem ipsum </Text> </Text>
+                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text> 
+                <Text size="small" color="surface.text.gray.normal"> Lorem ipsum </Text>
+                <Text size="small" color="surface.text.gray.normal"> Lorem ipsum <Text size="small" color="surface.text.gray.normal"> Lorem ipsum </Text> </Text>
               </>
             );"
   `);
@@ -229,9 +229,9 @@ it('should update <Heading size="small"> to <Text size="large">', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text size="large"> Lorem ipsum </Text>
+                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text>
 
-                <Text size="large"> Lorem ipsum <Text size="large"> Lorem ipsum </Text> </Text>
+                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text> </Text>
               </>
             );"
   `);
@@ -268,20 +268,20 @@ it('should correctly convert Title to Heading component', async () => {
     "import { Heading } from '@razorpay/blade/components';
         const App = () => (
           <>
-            <Heading size="large"> Lorem ipsum </Heading>  
-            <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading>
-            <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
-            <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
-            <Heading weight="semibold" size="large"> Lorem ipsum </Heading>
+            <Heading size="large" color="surface.text.gray.normal"> Lorem ipsum </Heading>  
+            <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
+            <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
+            <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
+            <Heading weight="semibold" size="large" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
             // Conditional expression props should not be changed
-            <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> Lorem ipsum </Heading>
+            <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > Lorem ipsum </Heading>
 
-            <Heading weight="semibold" size="2xlarge"> Lorem ipsum <Heading weight="semibold" size="2xlarge"> Lorem ipsum  </Heading>  </Heading>
-            <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading> </Heading>
-            <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading> </Heading>
-            <Heading weight="semibold" size="large"> Lorem ipsum <Heading weight="semibold" size="large"> Lorem ipsum </Heading> </Heading>
+            <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum  </Heading>  </Heading>
+            <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
+            <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
+            <Heading weight="semibold" size="large" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="large" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
             // Conditional expression props should not be changed
-            <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> Lorem ipsum </Heading> Lorem ipsum </Heading>
+            <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > Lorem ipsum </Heading> Lorem ipsum </Heading>
           </>
         );"
   `);
