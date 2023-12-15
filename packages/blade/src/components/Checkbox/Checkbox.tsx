@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import isUndefined from 'lodash/isUndefined';
-import isEmpty from 'lodash/isEmpty';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
 import { checkboxHoverTokens } from './checkboxTokens';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';

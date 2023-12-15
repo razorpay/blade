@@ -9,7 +9,8 @@ import styled from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import { BASEINPUT_WRAPPER_MAX_HEIGHT, BASEINPUT_WRAPPER_MIN_HEIGHT } from './baseInputConfig';
-import { castNativeType, useTheme } from '~utils';
+import { castNativeType } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 
 const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((props) => ({
   ...getInputBackgroundAndBorderStyles({

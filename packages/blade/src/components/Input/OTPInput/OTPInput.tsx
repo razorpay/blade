@@ -1,8 +1,8 @@
 import React, { useEffect, useImperativeHandle, useState } from 'react';
-import isEmpty from 'lodash/isEmpty';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getHintType } from '../BaseInput/BaseInput';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { FormInputOnEvent } from '~components/Form';
 import { FormHint, FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';

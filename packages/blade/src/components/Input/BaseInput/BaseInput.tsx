@@ -34,6 +34,7 @@ import type { AriaAttributes } from '~utils/makeAccessible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -676,294 +677,297 @@ const getDescribedByElementId = ({
   return '';
 };
 
-export const BaseInput = React.forwardRef<BladeElementRef, BaseInputProps>(
-  (
-    {
-      as = 'input',
-      label,
-      labelPosition = 'top',
-      placeholder,
-      type = 'text',
-      defaultValue,
-      tags,
-      showAllTags = false,
-      activeTagIndex = -1,
-      setActiveTagIndex,
-      name,
-      value,
-      onFocus,
-      onChange,
-      onInput,
-      onBlur,
-      onSubmit,
-      onClick,
-      onKeyDown,
-      isDisabled,
-      necessityIndicator,
-      validationState,
-      errorText,
-      helpText,
-      successText,
-      isRequired,
-      leadingIcon,
-      prefix,
-      interactionElement,
-      suffix,
-      trailingIcon,
-      maxCharacters,
-      textAlign,
-      autoFocus,
-      keyboardReturnKeyType,
-      keyboardType,
-      autoCompleteSuggestionType,
-      trailingHeaderSlot,
-      trailingFooterSlot,
-      numberOfLines,
-      id,
-      componentName,
-      accessibilityLabel,
-      labelId,
-      activeDescendant,
-      hideLabelText,
-      hideFormHint,
-      hasPopup,
-      popupId,
-      isPopupExpanded,
-      maxTagRows,
-      shouldIgnoreBlurAnimation,
-      setShouldIgnoreBlurAnimation,
-      autoCapitalize,
-      setInputWrapperRef,
-      testID,
-      isDropdownTrigger,
-      isLabelInsideInput,
-      ...styledProps
-    },
-    ref,
-  ) => {
-    const { theme } = useTheme();
-    const inputWrapperRef: InputWrapperRef = React.useRef(null);
-    const { onInputKeydownTagHandler, visibleTagsCountRef } = useTags(
-      tags,
-      activeTagIndex,
-      setActiveTagIndex,
-    );
-    const [showAllTagsWithAnimation, setShowAllTagsWithAnimation] = React.useState(false);
-    const isReactNative = getPlatformType() === 'react-native';
+const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
+  {
+    as = 'input',
+    label,
+    labelPosition = 'top',
+    placeholder,
+    type = 'text',
+    defaultValue,
+    tags,
+    showAllTags = false,
+    activeTagIndex = -1,
+    setActiveTagIndex,
+    name,
+    value,
+    onFocus,
+    onChange,
+    onInput,
+    onBlur,
+    onSubmit,
+    onClick,
+    onKeyDown,
+    isDisabled,
+    necessityIndicator,
+    validationState,
+    errorText,
+    helpText,
+    successText,
+    isRequired,
+    leadingIcon,
+    prefix,
+    interactionElement,
+    suffix,
+    trailingIcon,
+    maxCharacters,
+    textAlign,
+    autoFocus,
+    keyboardReturnKeyType,
+    keyboardType,
+    autoCompleteSuggestionType,
+    trailingHeaderSlot,
+    trailingFooterSlot,
+    numberOfLines,
+    id,
+    componentName,
+    accessibilityLabel,
+    labelId,
+    activeDescendant,
+    hideLabelText,
+    hideFormHint,
+    hasPopup,
+    popupId,
+    isPopupExpanded,
+    maxTagRows,
+    shouldIgnoreBlurAnimation,
+    setShouldIgnoreBlurAnimation,
+    autoCapitalize,
+    setInputWrapperRef,
+    testID,
+    isDropdownTrigger,
+    isLabelInsideInput,
+    ...styledProps
+  },
+  ref,
+) => {
+  const { theme } = useTheme();
+  const inputWrapperRef: InputWrapperRef = React.useRef(null);
+  const { onInputKeydownTagHandler, visibleTagsCountRef } = useTags(
+    tags,
+    activeTagIndex,
+    setActiveTagIndex,
+  );
+  const [showAllTagsWithAnimation, setShowAllTagsWithAnimation] = React.useState(false);
+  const isReactNative = getPlatformType() === 'react-native';
 
-    React.useEffect(() => {
-      if (showAllTags) {
-        setShowAllTagsWithAnimation(true);
-      }
-    }, [showAllTags]);
-
-    const {
-      handleOnFocus,
-      handleOnChange,
-      handleOnClick,
-      handleOnBlur,
-      handleOnSubmit,
-      handleOnInput,
-      handleOnKeyDown,
-      inputValue,
-    } = useInput({
-      defaultValue,
-      value,
-      onFocus,
-      onClick,
-      onChange,
-      onBlur,
-      onSubmit,
-      onInput,
-      onKeyDown,
-      onInputKeydownTagHandler,
-    });
-    const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
-    const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
-    const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
-    const { currentInteraction, setCurrentInteraction } = useInteraction();
-    const _isRequired = isRequired || necessityIndicator === 'required';
-
-    const accessibilityProps = makeAccessible({
-      required: Boolean(_isRequired),
-      disabled: Boolean(isDisabled),
-      invalid: Boolean(validationState === 'error'),
-      describedBy: getDescribedByElementId({
-        validationState,
-        hasErrorText: Boolean(errorText),
-        hasSuccessText: Boolean(successText),
-        hasHelpText: Boolean(helpText),
-        errorTextId,
-        successTextId,
-        helpTextId,
-      }),
-      label: accessibilityLabel,
-      hasPopup,
-      expanded: hasPopup ? isPopupExpanded : undefined,
-      controls: hasPopup ? popupId : undefined,
-      role: hasPopup ? 'combobox' : undefined,
-      activeDescendant,
-    });
-
-    const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);
-
-    if (__DEV__) {
-      if (
-        autoCompleteSuggestionType &&
-        !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
-      ) {
-        throwBladeError({
-          message: `Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
-            ', ',
-          )} but received ${autoCompleteSuggestionType}`,
-          moduleName: 'Input',
-        });
-      }
+  React.useEffect(() => {
+    if (showAllTags) {
+      setShowAllTagsWithAnimation(true);
     }
+  }, [showAllTags]);
 
-    const isTextArea = as === 'textarea';
-    return (
-      <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
-        <BaseBox
-          display="flex"
-          flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
-          justifyContent={isLabelLeftPositioned ? 'center' : undefined}
-          alignItems={isLabelLeftPositioned ? 'center' : undefined}
-          position="relative"
-          width="100%"
-        >
-          {!hideLabelText && !isLabelInsideInput && (
-            <BaseBox
-              display="flex"
-              flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
-              justifyContent="space-between"
-              alignSelf={isTextArea ? 'flex-start' : undefined}
-              marginY={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
+  const {
+    handleOnFocus,
+    handleOnChange,
+    handleOnClick,
+    handleOnBlur,
+    handleOnSubmit,
+    handleOnInput,
+    handleOnKeyDown,
+    inputValue,
+  } = useInput({
+    defaultValue,
+    value,
+    onFocus,
+    onClick,
+    onChange,
+    onBlur,
+    onSubmit,
+    onInput,
+    onKeyDown,
+    onInputKeydownTagHandler,
+  });
+  const { inputId, helpTextId, errorTextId, successTextId } = useFormId(id);
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const isLabelLeftPositioned = labelPosition === 'left' && matchedDeviceType === 'desktop';
+  const { currentInteraction, setCurrentInteraction } = useInteraction();
+  const _isRequired = isRequired || necessityIndicator === 'required';
+
+  const accessibilityProps = makeAccessible({
+    required: Boolean(_isRequired),
+    disabled: Boolean(isDisabled),
+    invalid: Boolean(validationState === 'error'),
+    describedBy: getDescribedByElementId({
+      validationState,
+      hasErrorText: Boolean(errorText),
+      hasSuccessText: Boolean(successText),
+      hasHelpText: Boolean(helpText),
+      errorTextId,
+      successTextId,
+      helpTextId,
+    }),
+    label: accessibilityLabel,
+    hasPopup,
+    expanded: hasPopup ? isPopupExpanded : undefined,
+    controls: hasPopup ? popupId : undefined,
+    role: hasPopup ? 'combobox' : undefined,
+    activeDescendant,
+  });
+
+  const willRenderHintText = Boolean(helpText) || Boolean(successText) || Boolean(errorText);
+
+  if (__DEV__) {
+    if (
+      autoCompleteSuggestionType &&
+      !autoCompleteSuggestionTypeValues.includes(autoCompleteSuggestionType)
+    ) {
+      throwBladeError({
+        message: `Expected autoCompleteSuggestionType to be one of ${autoCompleteSuggestionTypeValues.join(
+          ', ',
+        )} but received ${autoCompleteSuggestionType}`,
+        moduleName: 'Input',
+      });
+    }
+  }
+
+  const isTextArea = as === 'textarea';
+  return (
+    <BaseBox {...metaAttribute({ name: componentName, testID })} {...getStyledProps(styledProps)}>
+      <BaseBox
+        display="flex"
+        flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
+        justifyContent={isLabelLeftPositioned ? 'center' : undefined}
+        alignItems={isLabelLeftPositioned ? 'center' : undefined}
+        position="relative"
+        width="100%"
+      >
+        {!hideLabelText && !isLabelInsideInput && (
+          <BaseBox
+            display="flex"
+            flexDirection={isLabelLeftPositioned ? 'column' : 'row'}
+            justifyContent="space-between"
+            alignSelf={isTextArea ? 'flex-start' : undefined}
+            marginY={isTextArea && isLabelLeftPositioned ? 'spacing.3' : 'spacing.0'}
+          >
+            <FormLabel
+              as="label"
+              necessityIndicator={necessityIndicator}
+              position={labelPosition}
+              id={labelId}
+              htmlFor={inputId}
             >
-              <FormLabel
-                as="label"
-                necessityIndicator={necessityIndicator}
-                position={labelPosition}
-                id={labelId}
-                htmlFor={inputId}
-              >
-                {label}
-              </FormLabel>
-              {trailingHeaderSlot?.(value ?? inputValue)}
-            </BaseBox>
-          )}
-          <BaseInputWrapper
-            isDropdownTrigger={isDropdownTrigger}
-            isTextArea={isTextArea}
+              {label}
+            </FormLabel>
+            {trailingHeaderSlot?.(value ?? inputValue)}
+          </BaseBox>
+        )}
+        <BaseInputWrapper
+          isDropdownTrigger={isDropdownTrigger}
+          isTextArea={isTextArea}
+          isDisabled={isDisabled}
+          validationState={validationState}
+          currentInteraction={currentInteraction}
+          isLabelLeftPositioned={isLabelLeftPositioned}
+          showAllTags={showAllTags}
+          setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
+          ref={(refNode) => {
+            if (refNode) {
+              setInputWrapperRef?.(refNode);
+              inputWrapperRef.current = refNode;
+            }
+          }}
+          maxTagRows={maxTagRows}
+        >
+          <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
+          <BaseInputTagSlot
+            renderAs={as}
+            tags={tags}
             isDisabled={isDisabled}
-            validationState={validationState}
-            currentInteraction={currentInteraction}
-            isLabelLeftPositioned={isLabelLeftPositioned}
-            showAllTags={showAllTags}
-            setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
-            ref={(refNode) => {
-              if (refNode) {
-                setInputWrapperRef?.(refNode);
-                inputWrapperRef.current = refNode;
+            showAllTags={showAllTagsWithAnimation}
+            setFocusOnInput={() => {
+              if (ref && !isReactNative && 'current' in ref) {
+                ref.current?.focus();
               }
             }}
+            labelPrefix={isLabelInsideInput ? label : undefined}
+            isDropdownTrigger={isDropdownTrigger}
+            visibleTagsCountRef={visibleTagsCountRef}
+            handleOnInputClick={(e) => {
+              handleOnClick({ name, value: isReactNative ? value : e });
+            }}
+            setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
             maxTagRows={maxTagRows}
+            inputWrapperRef={inputWrapperRef}
           >
-            <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
-            <BaseInputTagSlot
-              renderAs={as}
-              tags={tags}
+            <StyledBaseInput
+              as={as}
+              id={inputId}
+              ref={ref as any}
+              name={name}
+              type={type}
+              defaultValue={defaultValue}
+              value={value}
+              placeholder={placeholder}
               isDisabled={isDisabled}
-              showAllTags={showAllTagsWithAnimation}
-              setFocusOnInput={() => {
-                if (ref && !isReactNative && 'current' in ref) {
-                  ref.current?.focus();
-                }
-              }}
-              labelPrefix={isLabelInsideInput ? label : undefined}
-              isDropdownTrigger={isDropdownTrigger}
-              visibleTagsCountRef={visibleTagsCountRef}
-              handleOnInputClick={(e) => {
-                handleOnClick({ name, value: isReactNative ? value : e });
-              }}
-              setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
-              maxTagRows={maxTagRows}
-              inputWrapperRef={inputWrapperRef}
-            >
-              <StyledBaseInput
-                as={as}
-                id={inputId}
-                ref={ref as any}
-                name={name}
-                type={type}
-                defaultValue={defaultValue}
-                value={value}
-                placeholder={placeholder}
-                isDisabled={isDisabled}
-                validationState={validationState}
-                isRequired={_isRequired}
-                handleOnFocus={handleOnFocus}
-                handleOnChange={handleOnChange}
-                handleOnBlur={handleOnBlur}
-                handleOnSubmit={handleOnSubmit}
-                handleOnInput={handleOnInput}
-                handleOnKeyDown={handleOnKeyDown}
-                handleOnClick={handleOnClick}
-                leadingIcon={leadingIcon}
-                prefix={prefix}
-                interactionElement={interactionElement}
-                suffix={suffix}
-                trailingIcon={trailingIcon}
-                maxCharacters={maxCharacters}
-                textAlign={textAlign}
-                // eslint-disable-next-line jsx-a11y/no-autofocus
-                autoFocus={autoFocus}
-                keyboardReturnKeyType={keyboardReturnKeyType}
-                keyboardType={keyboardType}
-                autoCompleteSuggestionType={autoCompleteSuggestionType}
-                accessibilityProps={accessibilityProps}
-                currentInteraction={currentInteraction}
-                setCurrentInteraction={setCurrentInteraction}
-                numberOfLines={numberOfLines}
-                isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
-                hasPopup={hasPopup}
-                hasTags={!!(tags && tags.length > 0)}
-                shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
-                autoCapitalize={autoCapitalize}
-                isDropdownTrigger={isDropdownTrigger}
-                {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
-              />
-            </BaseInputTagSlot>
-            <BaseInputVisuals
+              validationState={validationState}
+              isRequired={_isRequired}
+              handleOnFocus={handleOnFocus}
+              handleOnChange={handleOnChange}
+              handleOnBlur={handleOnBlur}
+              handleOnSubmit={handleOnSubmit}
+              handleOnInput={handleOnInput}
+              handleOnKeyDown={handleOnKeyDown}
+              handleOnClick={handleOnClick}
+              leadingIcon={leadingIcon}
+              prefix={prefix}
               interactionElement={interactionElement}
               suffix={suffix}
               trailingIcon={trailingIcon}
-              isDisabled={isDisabled}
+              maxCharacters={maxCharacters}
+              textAlign={textAlign}
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus={autoFocus}
+              keyboardReturnKeyType={keyboardReturnKeyType}
+              keyboardType={keyboardType}
+              autoCompleteSuggestionType={autoCompleteSuggestionType}
+              accessibilityProps={accessibilityProps}
+              currentInteraction={currentInteraction}
+              setCurrentInteraction={setCurrentInteraction}
+              numberOfLines={numberOfLines}
+              isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
+              hasPopup={hasPopup}
+              hasTags={!!(tags && tags.length > 0)}
+              shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+              autoCapitalize={autoCapitalize}
+              isDropdownTrigger={isDropdownTrigger}
+              {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
             />
-          </BaseInputWrapper>
-        </BaseBox>
-        {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
-        {!hideFormHint && (
-          <BaseBox marginLeft={makeSize(isLabelLeftPositioned && !hideLabelText ? 136 : 0)}>
-            <BaseBox
-              display="flex"
-              flexDirection="row"
-              justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
-            >
-              <FormHint
-                type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
-                helpText={helpText}
-                errorText={errorText}
-                successText={successText}
-                helpTextId={helpTextId}
-                errorTextId={errorTextId}
-                successTextId={successTextId}
-              />
-              {trailingFooterSlot?.(value ?? inputValue)}
-            </BaseBox>
-          </BaseBox>
-        )}
+          </BaseInputTagSlot>
+          <BaseInputVisuals
+            interactionElement={interactionElement}
+            suffix={suffix}
+            trailingIcon={trailingIcon}
+            isDisabled={isDisabled}
+          />
+        </BaseInputWrapper>
       </BaseBox>
-    );
-  },
-);
+      {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
+      {!hideFormHint && (
+        <BaseBox marginLeft={makeSize(isLabelLeftPositioned && !hideLabelText ? 136 : 0)}>
+          <BaseBox
+            display="flex"
+            flexDirection="row"
+            justifyContent={willRenderHintText ? 'space-between' : 'flex-end'}
+          >
+            <FormHint
+              type={getHintType({ validationState, hasHelpText: Boolean(helpText) })}
+              helpText={helpText}
+              errorText={errorText}
+              successText={successText}
+              helpTextId={helpTextId}
+              errorTextId={errorTextId}
+              successTextId={successTextId}
+            />
+            {trailingFooterSlot?.(value ?? inputValue)}
+          </BaseBox>
+        </BaseBox>
+      )}
+    </BaseBox>
+  );
+};
+
+const BaseInputWithRef = React.forwardRef(_BaseInput);
+const BaseInput = assignWithoutSideEffects(BaseInputWithRef, { displayName: 'BaseInput' });
+
+export { BaseInput };

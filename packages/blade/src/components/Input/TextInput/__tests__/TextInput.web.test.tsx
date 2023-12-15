@@ -167,6 +167,17 @@ describe('<TextInput />', () => {
     expect(onFocus).toHaveBeenCalledWith({ name, value: userName });
   });
 
+  it('should handle onClick', async () => {
+    const onClick = jest.fn();
+    const label = 'Enter name';
+    const { getByLabelText } = renderWithTheme(<TextInput label={label} onClick={onClick} />);
+
+    const input = getByLabelText(label);
+    await userEvent.click(input);
+    //should be called for onClick
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
   it('should handle onBlur', async () => {
     const user = userEvent.setup();
     const label = 'Enter name';

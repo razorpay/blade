@@ -13,11 +13,11 @@ import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
 import { Text } from '~components/Typography';
+import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
 import type { Platform } from '~utils';
-import { useTheme } from '~utils';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -294,6 +294,8 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       placeholderTextColor={theme.colors.surface.text.placeholder.lowContrast}
       onFocus={(event): void => {
         handleOnFocus?.({ name, value: event?.nativeEvent.text });
+        // React Native does not have native onPress event on Input elements so for consistency of API we call it on onFocus which also gets triggered on clicks
+        handleOnClick?.({ name, value: event?.nativeEvent.text });
         setCurrentInteraction('active');
       }}
       onChangeText={(text): void => {
