@@ -78,8 +78,8 @@ const getColorProps = ({
 }): ColorProps => {
   const counterVariant = variant === 'default' ? 'blue' : variant;
   const props: ColorProps = {
-    textColor: 'feedback.text.neutral.lowContrast',
-    backgroundColor: 'feedback.background.neutral.lowContrast',
+    textColor: 'feedback.text.gray.intense',
+    backgroundColor: 'feedback.background.neutral.subtle',
   };
   if (isFeedbackVariant(counterVariant)) {
     props.textColor = `feedback.text.${counterVariant}.${contrast}Contrast`;

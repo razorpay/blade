@@ -180,7 +180,7 @@ export default {
           note="SelectInput is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
           figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590-171090'"
         >
-          <Title>Usage</Title>
+          <Heading size="medium">Usage</Heading>
           <Sandbox showConsole>
             {`
               import { SelectInput, Dropdown, DropdownOverlay, ActionList, ActionListItem } from '@razorpay/blade/components';

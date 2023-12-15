@@ -75,7 +75,7 @@ const Indicator = ({
   const childrenString = getStringFromReactText(children);
 
   const fillColor = theme.colors.feedback.background[intent].highContrast;
-  const strokeColor = theme.colors.brand.gray.a100.highContrast;
+  const strokeColor = theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'";
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':

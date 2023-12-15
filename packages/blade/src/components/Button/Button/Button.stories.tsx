@@ -22,12 +22,12 @@ import { castWebType } from '~utils';
 
 const Page = (): ReactElement => {
   return (
-    <StoryPageWrapper
-      componentDescription="This is the Button component which can be used for various CTAs. It is available in 3 different variants."
-      componentName="Button"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentDescription="This is the Button component which can be used for various CTAs. It is available in 3 different variants."
+        componentName="Button"
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox showConsole>
         {`
         import { Button } from '@razorpay/blade/components'
@@ -47,12 +47,12 @@ const Page = (): ReactElement => {
         export default App;
       `}
       </Sandbox>
-      <Heading>Usage with Icon</Heading>
+      <Text size="large">Usage with Icon</Text>
       <Description markdown="`icon` prop accepts an `IconComponent` of Blade which should be used as:" />
       <Highlight language="tsx">{`import { Button, CreditCardIcon } from '@razorpay/blade/components'; \n\n &ltButton icon={CreditCardIcon}>Pay Now&lt/Button>`}</Highlight>
       <br />
       <br />
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -156,77 +156,75 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
 }) => {
   const colors: ButtonProps['color'][] = ['default', 'white', 'positive', 'negative'];
 
-  return (
-    <>
-      {colors.map((color) => (
+  return (<>
+    {colors.map((color) => (
+      <BaseBox
+        key={color}
+        display="flex"
+        flexDirection="row"
+        gap="spacing.5"
+        backgroundColor={color === 'white' ? 'interactive.background.neutral.default' : 'transparent'}
+        margin="spacing.4"
+        padding="spacing.5"
+      >
         <BaseBox
-          key={color}
+          width="100px"
+          margin="spacing.2"
           display="flex"
-          flexDirection="row"
-          gap="spacing.5"
-          backgroundColor={color === 'white' ? 'brand.gray.700.lowContrast' : 'transparent'}
-          margin="spacing.4"
-          padding="spacing.5"
+          justifyContent="center"
+          alignItems="center"
         >
-          <BaseBox
-            width="100px"
-            margin="spacing.2"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
+          <HeadingComponent
+            marginBottom="spacing.3"
+            contrast={color == 'white' ? 'high' : 'low'}
+            size="medium"
           >
-            <HeadingComponent
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              size="medium"
-            >
-              {color}
-            </HeadingComponent>
-          </BaseBox>
-          <BaseBox margin="spacing.2">
-            <Text
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              weight="bold"
-            >
-              Primary
-            </Text>
-            <ButtonComponent {...args} color={color} variant="primary">
-              {children}
-            </ButtonComponent>
-          </BaseBox>
-
-          <BaseBox margin="spacing.2">
-            <Text
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              weight="bold"
-            >
-              Secondary
-            </Text>
-            <ButtonComponent {...args} color={color} variant="secondary">
-              {children}
-            </ButtonComponent>
-          </BaseBox>
-
-          {(color == 'default' || color == 'white') && (
-            <BaseBox margin="spacing.2">
-              <Text
-                marginBottom="spacing.3"
-                contrast={color == 'white' ? 'high' : 'low'}
-                weight="bold"
-              >
-                Tertiary
-              </Text>
-              <ButtonComponent {...args} color={color} variant="tertiary">
-                {children}
-              </ButtonComponent>
-            </BaseBox>
-          )}
+            {color}
+          </HeadingComponent>
         </BaseBox>
-      ))}
-    </>
-  );
+        <BaseBox margin="spacing.2">
+          <Text
+            marginBottom="spacing.3"
+            weight="semibold"
+            color="surface.text.gray.normal"
+          >
+            Primary
+          </Text>
+          <ButtonComponent {...args} color={color} variant="primary">
+            {children}
+          </ButtonComponent>
+        </BaseBox>
+
+        <BaseBox margin="spacing.2">
+          <Text
+            marginBottom="spacing.3"
+            weight="semibold"
+            color="surface.text.gray.normal"
+          >
+            Secondary
+          </Text>
+          <ButtonComponent {...args} color={color} variant="secondary">
+            {children}
+          </ButtonComponent>
+        </BaseBox>
+
+        {(color == 'default' || color == 'white') && (
+          <BaseBox margin="spacing.2">
+            <Text
+              marginBottom="spacing.3"
+              weight="semibold"
+              color="surface.text.gray.normal"
+            >
+              Tertiary
+            </Text>
+            <ButtonComponent {...args} color={color} variant="tertiary">
+              {children}
+            </ButtonComponent>
+          </BaseBox>
+        )}
+      </BaseBox>
+    ))}
+  </>);
 };
 
 export const Default = ButtonTemplate.bind({});

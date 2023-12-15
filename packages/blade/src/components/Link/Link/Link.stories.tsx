@@ -17,12 +17,12 @@ import {
 
 const Page = (): ReactElement => {
   return (
-    <StoryPageWrapper
-      componentDescription="This is the Link component which can be used for showing external or internal Links to the user. The Link component can also be used as an inline button in certain cases with the `button` variant"
-      componentName="Link"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12699%3A147155"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentDescription="This is the Link component which can be used for showing external or internal Links to the user. The Link component can also be used as an inline button in certain cases with the `button` variant"
+        componentName="Link"
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12699%3A147155"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
           import { Link } from '@razorpay/blade/components';
@@ -43,7 +43,7 @@ const Page = (): ReactElement => {
         `}
       </Sandbox>
       <Description markdown="> **Note** <br/>While using the `Link` component with React Native, please ensure you have gone through platform-specific prerequisites like adding `LSApplicationQueriesSchemes` in `Info.plist` for iOS and adding `intent` queries in `AndroidManifest.xml` for Android. For a detailed guide, follow React Native's [Linking Documentation](https://reactnative.dev/docs/linking#canopenurl)." />
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -172,7 +172,7 @@ const LinkColorsTemplate: ComponentStory<typeof LinkComponent> = ({
           {children}
         </LinkComponent>
       </BaseBox>
-      <BaseBox padding="spacing.2" backgroundColor="brand.gray.700.lowContrast">
+      <BaseBox padding="spacing.2" backgroundColor="interactive.background.neutral.default">
         <LinkComponent {...args} color="white">
           {children}
         </LinkComponent>
@@ -213,10 +213,10 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
   const onClick = (): void => console.log('Never gonna give you up');
 
   return (
-    <BaseBox display="flex" flexDirection="row">
+    (<BaseBox display="flex" flexDirection="row">
       <BaseBox display="flex" flexDirection="column" marginRight="spacing.5">
         <BaseBox marginBottom="spacing.3">
-          <Heading>Anchor variant</Heading>
+          <Text size="large">Anchor variant</Text>
         </BaseBox>
 
         <LinkComponent
@@ -262,7 +262,7 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
       </BaseBox>
       <BaseBox display="flex" flexDirection="column">
         <BaseBox marginBottom="spacing.3">
-          <Heading>Button variant</Heading>
+          <Text size="large">Button variant</Text>
         </BaseBox>
         <LinkComponent size="xsmall" variant="button" onClick={onClick} icon={DownloadIcon}>
           XSmall link button
@@ -277,7 +277,7 @@ export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
           Large link button
         </LinkComponent>
       </BaseBox>
-    </BaseBox>
+    </BaseBox>)
   );
 };
 LinkSizes.parameters = {

@@ -39,7 +39,7 @@ const _ModalHeader = ({
       width={makeSize(size[28])}
       height={makeSize(size[28])}
       flexShrink={0}
-      backgroundColor={theme.colors.surface.background.level2.lowContrast}
+      backgroundColor={theme.colors.surface.background.gray.intense}
       borderRadius="max"
       zIndex={modalHighestZIndex}
     >

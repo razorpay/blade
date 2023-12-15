@@ -209,15 +209,15 @@ const TestimonialCard = ({
   company,
 }: TestimonialData): React.ReactElement => {
   return (
-    <Card height="100%">
+    (<Card height="100%">
       <CardBody height="100%">
         <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
           <QuoteSvg />
           <Box>
-            <Heading type="subtle" weight="bold" size="large">
+            <Heading weight="semibold" color="surface.text.gray.subtle" size="small">
               {quote}
             </Heading>
-            <Text size="medium" type="subdued" marginTop="spacing.4">
+            <Text size="medium" marginTop="spacing.4" color="surface.text.gray.muted">
               {longQuote}
             </Text>
           </Box>
@@ -229,15 +229,15 @@ const TestimonialCard = ({
           >
             <Avatar name={name} />
             <Box>
-              <Text size="large" weight="bold">
+              <Text size="large" weight="semibold">
                 {name}
               </Text>
               <Text>
-                <Text as="span" weight="bold" type="subdued">
+                <Text as="span" weight="semibold" color="surface.text.gray.muted">
                   {company}
                 </Text>
                 {', '}
-                <Text as="span" type="muted">
+                <Text as="span" color="surface.text.gray.muted">
                   {role}
                 </Text>
               </Text>
@@ -245,7 +245,7 @@ const TestimonialCard = ({
           </Box>
         </Box>
       </CardBody>
-    </Card>
+    </Card>)
   );
 };
 
@@ -336,7 +336,7 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
   }
 
   return (
-    <Box margin="auto" padding="spacing.4" width="100%">
+    (<Box margin="auto" padding="spacing.4" width="100%">
       <Box marginY="spacing.8">
         <Text>
           You can achive bleed by setting <Code size="medium">visibleItems</Code> to autofit &
@@ -348,8 +348,7 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
           give a 10% bleed on mobile screens
         </Text>
       </Box>
-
-      <Text weight="bold">Props:</Text>
+      <Text weight="semibold">Props:</Text>
       <List marginBottom="spacing.3">
         <ListItem>visibleItems: autofit</ListItem>
         <ListItem>
@@ -357,13 +356,11 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
         </ListItem>
       </List>
       <CarouselExample visibleItems="autofit" carouselItemWidth={{ base: '90%', m: '300px' }} />
-
       <Text marginY="spacing.8">
         If you want emphasis on 1 item with bleed you can set{' '}
         <Code size="medium">shouldAddStartEndSpacing</Code> to true
       </Text>
-
-      <Text weight="bold">Props:</Text>
+      <Text weight="semibold">Props:</Text>
       <List marginBottom="spacing.3">
         <ListItem>visibleItems: autofit</ListItem>
         <ListItem>shouldAddStartEndSpacing: true</ListItem>
@@ -376,9 +373,9 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
         shouldAddStartEndSpacing
         visibleItems="autofit"
         carouselItemWidth={{ base: '90%', m: '300px' }}
-        scrollOverlayColor="surface.background.level1.lowContrast"
+        scrollOverlayColor="surface.background.gray.subtle"
       />
-    </Box>
+    </Box>)
   );
 };
 
@@ -445,7 +442,7 @@ const InteractiveTestimonialCard = ({
   company,
 }: TestimonialData): React.ReactElement => {
   return (
-    <Box display="flex" alignItems="center" padding="spacing.5" height="100%">
+    (<Box display="flex" alignItems="center" padding="spacing.5" height="100%">
       <Card
         height="100%"
         margin="auto"
@@ -456,10 +453,10 @@ const InteractiveTestimonialCard = ({
           <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
             <QuoteSvg />
             <Box>
-              <Heading type="subtle" weight="bold" size="large">
+              <Heading weight="semibold" color="surface.text.gray.subtle" size="small">
                 {quote}
               </Heading>
-              <Text size="medium" type="subdued" marginTop="spacing.4">
+              <Text size="medium" marginTop="spacing.4" color="surface.text.gray.muted">
                 {longQuote}
               </Text>
             </Box>
@@ -475,11 +472,11 @@ const InteractiveTestimonialCard = ({
                   {name}
                 </Link>
                 <Text>
-                  <Text as="span" weight="bold" type="subdued">
+                  <Text as="span" weight="semibold" color="surface.text.gray.muted">
                     {company}
                   </Text>
                   {', '}
-                  <Text as="span" type="muted">
+                  <Text as="span" color="surface.text.gray.muted">
                     {role}
                   </Text>
                 </Text>
@@ -488,7 +485,7 @@ const InteractiveTestimonialCard = ({
           </Box>
         </CardBody>
       </Card>
-    </Box>
+    </Box>)
   );
 };
 

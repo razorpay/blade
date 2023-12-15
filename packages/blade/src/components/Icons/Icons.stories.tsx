@@ -11,15 +11,15 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 
 const Page = (): ReactElement => {
   return (
-    <StoryPageWrapper
-      componentDescription="Blade provides a bunch of icons out of the box in 6 different sizes. You can choose the size & color that fits best for your use case using the color & size props."
-      componentName="Icon"
-      apiDecisionLink=""
-      note="Blade consists of a limited set of icons that are commonly used however you can contribute to Blade by adding more icons that are available on the Figma board as and when a use case arises. **See the adding icons section below for reference.**"
-      imports={`// Replace IconName with actual Icon's name that you would like to use \nimport { IconName } from '@razorpay/blade/components' \n// IconProps are generic Icon props for all icons, don't replace it with your IconName \nimport type { IconProps } from '@razorpay/blade/components'`}
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=59%3A177"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentDescription="Blade provides a bunch of icons out of the box in 6 different sizes. You can choose the size & color that fits best for your use case using the color & size props."
+        componentName="Icon"
+        apiDecisionLink=""
+        note="Blade consists of a limited set of icons that are commonly used however you can contribute to Blade by adding more icons that are available on the Figma board as and when a use case arises. **See the adding icons section below for reference.**"
+        imports={`// Replace IconName with actual Icon's name that you would like to use \nimport { IconName } from '@razorpay/blade/components' \n// IconProps are generic Icon props for all icons, don't replace it with your IconName \nimport type { IconProps } from '@razorpay/blade/components'`}
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=59%3A177"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
         import { Button, ArrowRightIcon } from '@razorpay/blade/components';
@@ -40,7 +40,7 @@ const Page = (): ReactElement => {
         export default App;
         `}
       </Sandbox>
-      <Title>Adding icons</Title>
+      <Heading size="medium">Adding icons</Heading>
       <Description>
         1. Please validate in the all icons story below in case the icon you wish to add is already
         present. Steps for adding a new icon from Figma:
@@ -71,7 +71,7 @@ const Page = (): ReactElement => {
       <Description>
         6. See [this reference PR](https://github.com/razorpay/blade/pull/872).
       </Description>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -79,7 +79,7 @@ export default {
   title: 'Components/Icons',
   component: PlusIcon, // need to give it some icon component so that storybook can infer props & arg types
   args: {
-    color: 'surface.text.normal.lowContrast',
+    color: 'surface.text.gray.normal',
     size: 'medium',
   },
   argTypes: {

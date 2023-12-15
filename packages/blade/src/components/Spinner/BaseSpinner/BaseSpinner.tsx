@@ -69,7 +69,7 @@ const getColor = ({
   if (color && color !== 'default') {
     return getIn(theme.colors, `feedback.${color}.action.icon.primary.disabled.lowContrast`);
   }
-  return getIn(theme.colors, 'brand.gray.700.lowContrast');
+  return getIn(theme.colors, 'interactive.background.neutral.default');
 };
 
 const BaseSpinner = ({

@@ -18,7 +18,7 @@ const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtua
     if (props._isVirtuallyFocused && !isReactNative()) {
       return {
         outline: `${makeSize(globalSizeTokens['1'])} solid ${
-          props.theme.colors.surface.background.level1.lowContrast
+          props.theme.colors.surface.background.gray.subtle
         }`,
         boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
       };
@@ -69,8 +69,8 @@ const Tag = ({
   const isMobile = useIsMobile();
 
   const textColor = isDisabled
-    ? 'surface.text.placeholder.lowContrast'
-    : 'surface.text.subtle.lowContrast';
+    ? 'surface.text.gray.disabled'
+    : 'surface.text.gray.subtle';
 
   const mediumPadding: PaddingProps['padding'] = {
     base: ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4'],
@@ -101,7 +101,7 @@ const Tag = ({
         alignSelf={isReactNative() ? 'center' : undefined}
         flexDirection="row"
         flexWrap="nowrap"
-        backgroundColor="brand.gray.a100.lowContrast"
+        backgroundColor="interactive.background.gray.disabled"
         borderRadius="max"
         padding={size === 'medium' ? mediumPadding : largePadding}
         _isVirtuallyFocused={_isVirtuallyFocused}

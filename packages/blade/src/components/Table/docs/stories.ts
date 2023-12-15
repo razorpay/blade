@@ -45,7 +45,7 @@ const data: TableData<Item> = {
 function App(): React.ReactElement {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -142,7 +142,7 @@ const data: TableData<Item> = {
 function App(): React.ReactElement {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -322,7 +322,7 @@ const data: TableData<Item> = {
 function App(): React.ReactElement {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -448,7 +448,7 @@ function App(): React.ReactElement {
   const [selectedItem, setSelectedItem] = useState<Item | undefined>(undefined);
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -582,7 +582,7 @@ function App(): React.ReactElement {
   const selectedItemsLength = selectedItems.length;
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -724,7 +724,7 @@ function App(): React.ReactElement {
   const onMobile = platform === 'onMobile';
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -859,7 +859,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -999,7 +999,7 @@ const data: TableData<Item> = {
 function App(): React.ReactElement {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -1126,7 +1126,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -1278,7 +1278,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -1552,7 +1552,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
     >
       <Heading>Table with initial isLoading state</Heading>
@@ -1720,7 +1720,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"

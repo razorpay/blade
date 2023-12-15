@@ -5,7 +5,7 @@ import themeWrapper from '~utils/testing/themeWrapper';
 describe('useIconProps', () => {
   it('should return a xsmall icon with the correct color', () => {
     const { result } = renderHook(
-      () => useIconProps({ size: 'xsmall', color: 'action.icon.secondary.default' }),
+      () => useIconProps({ size: 'xsmall', color: 'interactive.icon.primary.normal' }),
       { wrapper: themeWrapper },
     );
     expect(result.current.height).toEqual('8px');
@@ -15,7 +15,7 @@ describe('useIconProps', () => {
 
   it('should return a small icon with the correct color', () => {
     const { result } = renderHook(
-      () => useIconProps({ size: 'small', color: 'feedback.icon.negative.lowContrast' }),
+      () => useIconProps({ size: 'small', color: 'feedback.icon.negative.intense' }),
       { wrapper: themeWrapper },
     );
     expect(result.current.height).toEqual('12px');
@@ -25,7 +25,7 @@ describe('useIconProps', () => {
 
   it('should return a medium icon with the correct color', () => {
     const { result } = renderHook(
-      () => useIconProps({ size: 'medium', color: 'action.icon.primary.default' }),
+      () => useIconProps({ size: 'medium', color: 'interactive.icon.staticWhite.normal' }),
       { wrapper: themeWrapper },
     );
     expect(result.current.height).toEqual('16px');
@@ -35,7 +35,7 @@ describe('useIconProps', () => {
 
   it('should return a large icon with the correct color', () => {
     const { result } = renderHook(
-      () => useIconProps({ size: 'large', color: 'feedback.icon.information.lowContrast' }),
+      () => useIconProps({ size: 'large', color: 'feedback.icon.information.intense' }),
       { wrapper: themeWrapper },
     );
     expect(result.current.height).toEqual('20px');
@@ -45,7 +45,7 @@ describe('useIconProps', () => {
 
   it('should return a xlarge icon with the correct color', () => {
     const { result } = renderHook(
-      () => useIconProps({ size: 'xlarge', color: 'feedback.icon.neutral.lowContrast' }),
+      () => useIconProps({ size: 'xlarge', color: 'feedback.icon.gray.intense' }),
       { wrapper: themeWrapper },
     );
     expect(result.current.height).toEqual('24px');
@@ -55,7 +55,7 @@ describe('useIconProps', () => {
 
   it('should return a 2xlarge icon with the correct color', () => {
     const { result } = renderHook(
-      () => useIconProps({ size: '2xlarge', color: 'feedback.icon.neutral.lowContrast' }),
+      () => useIconProps({ size: '2xlarge', color: 'feedback.icon.gray.intense' }),
       { wrapper: themeWrapper },
     );
     expect(result.current.height).toEqual('32px');

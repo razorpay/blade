@@ -32,12 +32,12 @@ import { Checkbox, CheckboxGroup } from '~components/Checkbox';
 
 const Page = (): React.ReactElement => {
   return (
-    <StoryPageWrapper
-      componentName="Interactive Card"
-      componentDescription="Enhancing the Card component to add additional interactions and behaviour. This includes making the card clickable, hoverable, linkable, selectable and more."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=21248%3A400833&t=ZCWT255jVK78xf1J-4"
-    >
-      <Heading size="large">Usage</Heading>
+    (<StoryPageWrapper
+        componentName="Interactive Card"
+        componentDescription="Enhancing the Card component to add additional interactions and behaviour. This includes making the card clickable, hoverable, linkable, selectable and more."
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=21248%3A400833&t=ZCWT255jVK78xf1J-4"
+      >
+      <Heading size="small">Usage</Heading>
       <Box marginY="spacing.6">
         <Sandbox>
           {`
@@ -154,7 +154,7 @@ const Page = (): React.ReactElement => {
         `}
         </Sandbox>
       </Box>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -319,7 +319,7 @@ export const ClickableCard = (): React.ReactElement => {
   const [buttonClickCount, setButtonClickCount] = React.useState(0);
 
   return (
-    <Box>
+    (<Box>
       <Box marginBottom="spacing.6">
         <Text>
           Cards can be made clickable by passing the <Code size="medium">onClick</Code> prop.
@@ -344,13 +344,13 @@ export const ClickableCard = (): React.ReactElement => {
           </Text>
           <Text marginY="spacing.2">
             Card Clicked:{' '}
-            <Text as="span" weight="bold">
+            <Text as="span" weight="semibold">
               {cardClickCount}
             </Text>
           </Text>
           <Text marginY="spacing.2">
             Button Clicked:{' '}
-            <Text as="span" weight="bold">
+            <Text as="span" weight="semibold">
               {buttonClickCount}
             </Text>
           </Text>
@@ -365,7 +365,7 @@ export const ClickableCard = (): React.ReactElement => {
           </Button>
         </CardBody>
       </Card>
-    </Box>
+    </Box>)
   );
 };
 
@@ -493,13 +493,12 @@ const SingleSelectCardWeb = (): React.ReactElement => {
   const [selected, setSelected] = React.useState('free');
 
   return (
-    <Box>
+    (<Box>
       <Text marginBottom="spacing.6">
         To make a group of cards behave like radio buttons, you can put a hidden radio input inside
         the <Code size="medium">CardBody</Code> and pass <Code size="medium">as="label"</Code> prop
         to the <Code size="medium">Card</Code>.
       </Text>
-
       <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
         <Card
           as="label"
@@ -515,7 +514,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
             />
             <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Free
               </Text>
               <Text>
@@ -539,7 +538,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
             />
             <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Standard
               </Text>
               <Text>
@@ -562,7 +561,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
             />
             <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Premium
               </Text>
               <Text>
@@ -572,7 +571,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
           </CardBody>
         </Card>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 
@@ -588,13 +587,12 @@ const MultiSelectCardWeb = (): React.ReactElement => {
   };
 
   return (
-    <Box>
+    (<Box>
       <Text marginBottom="spacing.6">
         To make a group of cards behave like checkboxes, you can put a hidden checkbox input inside
         the <Code size="medium">CardBody</Code> and pass <Code size="medium">as="label"</Code> prop
         to the <Code size="medium">Card</Code>.
       </Text>
-
       <Box display="flex" gap="spacing.5" flexDirection={{ xs: 'column', m: 'row' }}>
         <Card as="label" shouldScaleOnHover isSelected={selected.includes('free')}>
           <CardBody>
@@ -606,7 +604,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
             />
             <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Free
               </Text>
               <Text>
@@ -626,7 +624,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
             />
             <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Standard
               </Text>
               <Text>
@@ -645,7 +643,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
             />
             <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Premium
               </Text>
               <Text>
@@ -655,7 +653,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
           </CardBody>
         </Card>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 
@@ -663,13 +661,12 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
   const [selected, setSelected] = React.useState('free');
 
   return (
-    <Box>
+    (<Box>
       <Text marginBottom="spacing.6">
         On ReactNative, to make a group of cards behave like radio buttons, you can manage your own
         state for selected card and use the <Code size="medium">isSelected</Code> &{' '}
         <Code size="medium">onClick</Code> prop to highlight the selected card.
       </Text>
-
       <Box display="flex" gap="spacing.5">
         <Card
           onClick={() => setSelected('free')}
@@ -680,7 +677,7 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
           <CardBody>
             <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Free
               </Text>
               <Text>
@@ -699,7 +696,7 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
           <CardBody>
             <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Standard
               </Text>
               <Text>
@@ -717,7 +714,7 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
           <CardBody>
             <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Premium
               </Text>
               <Text>
@@ -727,7 +724,7 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
           </CardBody>
         </Card>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 
@@ -743,13 +740,12 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
   };
 
   return (
-    <Box>
+    (<Box>
       <Text marginBottom="spacing.6">
         On ReactNative, to make a group of cards behave like checkboxes, you can manage your own
         state for selected card and use the <Code size="medium">isSelected</Code> &{' '}
         <Code size="medium">onClick</Code> prop to highlight the selected card.
       </Text>
-
       <Box display="flex" gap="spacing.5">
         <Card
           onClick={() => handleChange('free')}
@@ -760,7 +756,7 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           <CardBody>
             <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Free
               </Text>
               <Text>
@@ -779,7 +775,7 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           <CardBody>
             <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Standard
               </Text>
               <Text>
@@ -797,7 +793,7 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           <CardBody>
             <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Premium
               </Text>
               <Text>
@@ -807,7 +803,7 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           </CardBody>
         </Card>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 
@@ -827,11 +823,11 @@ export const MultiSelectCard = (): React.ReactElement => {
 
 const RadioCard = ({ value, label }: { value: string; label: string }) => {
   return (
-    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
+    (<Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
       <Radio value={value} />
       <Box display="flex" flexDirection="column" gap="spacing.3">
         <Box display="flex" flexDirection="row" gap="spacing.4">
-          <Text weight="bold">{label}</Text>
+          <Text weight="semibold">{label}</Text>
           <Badge variant="positive">Issued</Badge>
         </Box>
         <Box display="flex" flexDirection="row" gap="spacing.4">
@@ -840,7 +836,7 @@ const RadioCard = ({ value, label }: { value: string; label: string }) => {
           <Text size="small">Un-billed/₹1,000</Text>
         </Box>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 
@@ -888,11 +884,11 @@ export const SingleSelectWithRadio = (): React.ReactElement => {
 
 const CheckboxCard = ({ value, label }: { value: string; label: string }) => {
   return (
-    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
+    (<Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
       <Checkbox value={value} />
       <Box display="flex" flexDirection="column" gap="spacing.3">
         <Box display="flex" flexDirection="row" gap="spacing.4">
-          <Text weight="bold">{label}</Text>
+          <Text weight="semibold">{label}</Text>
           <Badge variant="positive">Issued</Badge>
         </Box>
         <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.4">
@@ -901,7 +897,7 @@ const CheckboxCard = ({ value, label }: { value: string; label: string }) => {
           <Text size="small">Un-billed/₹1,000</Text>
         </Box>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 

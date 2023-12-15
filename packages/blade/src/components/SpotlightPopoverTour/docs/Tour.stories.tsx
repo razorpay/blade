@@ -25,15 +25,15 @@ import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 
 const Page = (): React.ReactElement => {
   return (
-    <StoryPageWrapper
-      showDefaultExample={false}
-      componentName="SpotlightPopoverTour"
-      componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        showDefaultExample={false}
+        componentName="SpotlightPopoverTour"
+        componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox>{BasicExample}</Sandbox>
-      <Title>iOS Safari Specific Setup</Title>
+      <Heading size="medium">iOS Safari Specific Setup</Heading>
       <Text marginTop="spacing.5">
         When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
         `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS
@@ -47,14 +47,14 @@ const Page = (): React.ReactElement => {
           }
         `}
       </SandboxHighlighter>
-      <Title>Examples</Title>
+      <Heading size="medium">Examples</Heading>
       <Text marginY="spacing.5">
         To see examples properly, switch to the{' '}
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           story view
         </Text>
       </Text>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -288,7 +288,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
   );
 
   return (
-    <Box>
+    (<Box>
       <Button
         marginBottom="spacing.9"
         onClick={() => {
@@ -328,10 +328,10 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
                   <Box display="flex" flexDirection="column" gap="spacing.3">
                     <Box display="flex" alignItems="center" gap="spacing.3">
                       <Text>Refunds</Text>
-                      <InfoIcon color="surface.text.subdued.lowContrast" />
+                      <InfoIcon color="surface.text.gray.muted" />
                     </Box>
                     <Amount value={40000} size="title-small" />
-                    <Text type="subdued">3 Processed</Text>
+                    <Text color="surface.text.gray.muted">3 Processed</Text>
                   </Box>
                 </CardBody>
               </Card>
@@ -344,7 +344,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
                   <Box display="flex" flexDirection="column" gap="spacing.3">
                     <Box display="flex" alignItems="center" gap="spacing.3">
                       <Text>Disputes</Text>
-                      <InfoIcon color="surface.text.subdued.lowContrast" />
+                      <InfoIcon color="surface.text.gray.muted" />
                     </Box>
                     <Amount value={0} size="title-small" />
                     <SpotlightPopoverTourStep name="step-3">
@@ -354,7 +354,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
                         alignItems="center"
                         gap="spacing.3"
                       >
-                        <Text type="subdued">0 Open | 0 Under review</Text>
+                        <Text color="surface.text.gray.muted">0 Open | 0 Under review</Text>
                         <Button size="small" variant="tertiary">
                           Review
                         </Button>
@@ -367,7 +367,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
           </SpotlightPopoverTourStep>
         </Box>
       </SpotlightPopoverTour>
-    </Box>
+    </Box>)
   );
 };
 
@@ -472,22 +472,22 @@ export const CustomPlacement = () => {
         <Center>
           <Box display="flex" gap="spacing.4" alignItems="stretch">
             <SpotlightPopoverTourStep name="top">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 top
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="bottom">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 bottom
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="left">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 left
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="right">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 right
               </Box>
             </SpotlightPopoverTourStep>
@@ -727,8 +727,8 @@ const InterruptibleTourFooter = ({
   const isLast = activeStep === totalSteps - 1;
   const isFirst = activeStep === 0;
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
-      <Text size="small" weight="bold">
+    (<Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
+      <Text size="small" weight="semibold">
         {activeStep + 1} / {totalSteps}
       </Text>
       <Box display="flex" gap="spacing.4">
@@ -774,7 +774,7 @@ const InterruptibleTourFooter = ({
           </Button>
         )}
       </Box>
-    </Box>
+    </Box>)
   );
 };
 
@@ -909,12 +909,12 @@ export const InterruptibleTour = () => {
         <Center>
           <Box display="flex" gap="spacing.4" alignItems="stretch">
             <SpotlightPopoverTourStep name="step-1">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 Step 1
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="step-2">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 Step 2
               </Box>
             </SpotlightPopoverTourStep>

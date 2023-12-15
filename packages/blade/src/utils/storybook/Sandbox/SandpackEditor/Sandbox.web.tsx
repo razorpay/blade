@@ -164,7 +164,7 @@ const VerticalSandbox = ({
         maxHeight={castWebType('100vh')}
       >
         <BaseBox
-          backgroundColor="surface.background.level1.lowContrast"
+          backgroundColor="surface.background.gray.subtle"
           border={castWebType('1px solid #EFEFEF')}
           flex="1"
         >

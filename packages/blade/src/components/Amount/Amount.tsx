@@ -84,8 +84,8 @@ type ColorProps = {
 
 const getTextColorProps = ({ intent }: { intent: AmountProps['intent'] }): ColorProps => {
   const props: ColorProps = {
-    amountValueColor: 'surface.text.normal.lowContrast',
-    affixColor: 'surface.text.muted.lowContrast',
+    amountValueColor: 'surface.text.gray.normal',
+    affixColor: 'surface.text.gray.muted',
   };
   if (!intent) return props;
   props.amountValueColor = `feedback.text.${intent}.lowContrast`;

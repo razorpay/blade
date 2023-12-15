@@ -187,7 +187,7 @@ const BladeArgTable = ({ data }: { data: TableData<Item> }): React.ReactElement 
                     {tableItem.required && (
                       <Text
                         as="span"
-                        color="feedback.negative.action.text.primary.default.lowContrast"
+                        color="interactive.text.negative.subtle"
                       >
                         *
                       </Text>
@@ -225,17 +225,17 @@ const BladeArgTable = ({ data }: { data: TableData<Item> }): React.ReactElement 
 
 const TourDocs = (): React.ReactElement => {
   return (
-    <StoryPageWrapper
-      imports=""
-      showDefaultExample={false}
-      showArgsTable={false}
-      componentName="SpotlightPopoverTour"
-      componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        imports=""
+        showDefaultExample={false}
+        showArgsTable={false}
+        componentName="SpotlightPopoverTour"
+        componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox>{BasicExample}</Sandbox>
-      <Title>iOS Safari Specific Setup</Title>
+      <Heading size="medium">iOS Safari Specific Setup</Heading>
       <Text marginTop="spacing.5">
         When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
         `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS
@@ -249,18 +249,16 @@ const TourDocs = (): React.ReactElement => {
           }
         `}
       </SandboxHighlighter>
-      <Title>Examples</Title>
+      <Heading size="medium">Examples</Heading>
       <Text marginY="spacing.5">
         To see examples properly, switch to the{' '}
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           story view
         </Text>
       </Text>
-
-      <Title>API</Title>
-
+      <Heading size="medium">API</Heading>
       <Box
-        backgroundColor="surface.background.level2.lowContrast"
+        backgroundColor="surface.background.gray.intense"
         overflow="auto"
         minHeight="400px"
         display="flex"
@@ -268,12 +266,12 @@ const TourDocs = (): React.ReactElement => {
         gap="spacing.5"
       >
         <Box paddingBottom="spacing.4">
-          <Heading>SpotlightPopoverTour props</Heading>
+          <Text size="large">SpotlightPopoverTour props</Text>
         </Box>
         <BladeArgTable data={tourProps} />
 
         <Box paddingBottom="spacing.4" id="step-props">
-          <Heading>Step type</Heading>
+          <Text size="large">Step type</Text>
           <Text>
             Step type defines each step of the tour, and passed to the{' '}
             <Code size="medium">steps</Code> prop in the SpotlightPopoverTour component.
@@ -281,7 +279,7 @@ const TourDocs = (): React.ReactElement => {
         </Box>
         <BladeArgTable data={tourStepProps} />
       </Box>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 

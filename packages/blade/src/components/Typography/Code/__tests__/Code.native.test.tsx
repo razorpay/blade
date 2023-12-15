@@ -12,7 +12,7 @@ describe('<Code />', () => {
 
   it('should render Code with color', () => {
     const { toJSON } = renderWithTheme(
-      <Code isHighlighted={false} color="action.text.link.disabled">
+      <Code isHighlighted={false} color="interactive.text.primary.disabled">
         TEST_TOKEN
       </Code>,
     );
@@ -24,7 +24,7 @@ describe('<Code />', () => {
     expect(() =>
       renderWithTheme(
         // @ts-expect-error: expected error for negative test case
-        <Code color="action.text.link.disabled">TEST_TOKEN</Code>,
+        <Code color="interactive.text.primary.disabled">TEST_TOKEN</Code>,
       ),
     ).toThrow(`[Blade: Code]: \`color\` prop cannot be used without \`isHighlighted={false}\``);
     mockConsoleError.mockRestore();

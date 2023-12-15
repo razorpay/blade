@@ -12,8 +12,8 @@ const StyledActionListItem = styled(BaseBox)<StyledActionListItemProps>((props) 
     '&:hover:not([aria-disabled=true])': {
       backgroundColor:
         props.intent === 'negative'
-          ? props.theme.colors.feedback.background.negative.lowContrast
-          : props.theme.colors.brand.gray.a50.lowContrast,
+          ? props.theme.colors.feedback.background.negative.subtle
+          : props.theme.colors.interactive.background.gray.default,
     },
     '&.active-focus': {
       borderColor: props.isKeydownPressed ? props.theme.colors.brand.primary[300] : undefined,

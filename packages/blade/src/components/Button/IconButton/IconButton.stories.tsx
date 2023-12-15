@@ -11,18 +11,18 @@ import { getBladeCommonEventArgTypes } from '~components/Box/BaseBox/storybookAr
 
 const Page = (): ReactElement => {
   return (
-    <StoryPageWrapper
-      componentName="IconButton"
-      componentDescription="Useful for making clickable icons. For example - close button for modals, inputs, etc."
-      apiDecisionLink={null}
-      figmaURL={{
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195699&t=b5e9P6qSqxDsq2rz-4',
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4',
-      }}
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentName="IconButton"
+        componentDescription="Useful for making clickable icons. For example - close button for modals, inputs, etc."
+        apiDecisionLink={null}
+        figmaURL={{
+          bankingTheme:
+            'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195699&t=b5e9P6qSqxDsq2rz-4',
+          paymentTheme:
+            'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4',
+        }}
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox showConsole>
         {`
         import { IconButton, CloseIcon } from '@razorpay/blade/components';
@@ -40,7 +40,7 @@ const Page = (): ReactElement => {
         export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 

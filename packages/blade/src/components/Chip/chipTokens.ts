@@ -88,7 +88,7 @@ type TextColorTokens = BaseTextProps['color'];
 type IconColorTokens = IconProps['color'];
 type ChipColorTokens = {
   text: Record<string, TextColorTokens>;
-  icon: Record<string, IconColorTokens | 'brand.primary.500'>;
+  icon: Record<string, IconColorTokens | 'interactive.background.primary.default'>;
   background: Record<
     string,
     Record<
@@ -96,9 +96,9 @@ type ChipColorTokens = {
       | FeedbackActionBackgroundColors<'positive'>
       | FeedbackActionBackgroundColors<'negative'>
       | 'transparent'
-      | 'brand.gray.a50.lowContrast'
-      | 'brand.primary.300'
-      | 'brand.primary.400'
+      | 'interactive.background.gray.default'
+      | 'interactive.background.primary.disabled'
+      | 'interactive.background.primary.faded'
     >
   >;
   border: Record<
@@ -107,70 +107,70 @@ type ChipColorTokens = {
       string,
       | FeedbackActionBorderColors<'positive'>
       | FeedbackActionBorderColors<'negative'>
-      | 'brand.gray.400.lowContrast'
-      | 'brand.gray.a100.lowContrast'
-      | 'brand.gray.a50.lowContrast'
-      | 'brand.primary.500'
+      | 'interactive.border.gray.faded'
+      | 'interactive.background.gray.disabled'
+      | 'interactive.background.gray.default'
+      | 'interactive.background.primary.default'
     >
   >;
 };
 
 const chipColorTokens: ChipColorTokens = {
   text: {
-    unchecked: 'surface.text.subtle.lowContrast',
-    disabled: 'surface.text.placeholder.lowContrast',
-    default: 'action.text.secondary.default',
-    positive: 'feedback.text.positive.lowContrast',
-    negative: 'feedback.text.negative.lowContrast',
+    unchecked: 'surface.text.gray.subtle',
+    disabled: 'surface.text.gray.disabled',
+    default: 'interactive.text.primary.normal',
+    positive: 'feedback.text.positive.intense',
+    negative: 'feedback.text.negative.intense',
   },
   icon: {
-    unchecked: 'surface.text.subtle.lowContrast',
-    disabled: 'surface.text.placeholder.lowContrast',
-    default: 'action.icon.secondary.default',
-    positive: 'feedback.icon.positive.lowContrast',
-    negative: 'feedback.icon.negative.lowContrast',
+    unchecked: 'surface.text.gray.subtle',
+    disabled: 'surface.text.gray.disabled',
+    default: 'interactive.icon.primary.normal',
+    positive: 'feedback.icon.positive.intense',
+    negative: 'feedback.icon.negative.intense',
   },
   background: {
     unchecked: {
       default: 'transparent',
-      hover: 'brand.gray.a50.lowContrast',
+      hover: 'interactive.background.gray.default',
       disabled: 'transparent',
     },
     default: {
-      default: 'brand.primary.300',
-      hover: 'brand.primary.400',
-      disabled: 'brand.gray.a50.lowContrast',
+      default: 'interactive.background.primary.disabled',
+      hover: 'interactive.background.primary.faded',
+      disabled: 'interactive.background.gray.default',
     },
     positive: {
-      default: 'feedback.positive.action.background.primary.default.lowContrast',
-      hover: 'feedback.positive.action.background.primary.hover.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
+      default: 'interactive.background.positive.faded',
+      hover: 'interactive.background.positive.faded',
+      disabled: 'interactive.background.gray.default',
     },
     negative: {
-      default: 'feedback.negative.action.background.primary.default.lowContrast',
-      hover: 'feedback.negative.action.background.primary.hover.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
+      default: 'interactive.background.negative.faded',
+      hover: 'interactive.background.negative.faded',
+      disabled: 'interactive.background.gray.default',
     },
   },
   border: {
     unchecked: {
-      default: 'brand.gray.400.lowContrast',
-      disabled: 'brand.gray.400.lowContrast',
+      default: 'interactive.border.gray.faded',
+      disabled: 'interactive.border.gray.faded',
     },
     default: {
-      default: 'brand.primary.500',
-      hover: 'brand.primary.500',
-      disabled: 'brand.gray.a100.lowContrast',
+      default: 'interactive.background.primary.default',
+      hover: 'interactive.background.primary.default',
+      disabled: 'interactive.background.gray.disabled',
     },
     positive: {
-      default: 'feedback.positive.action.border.primary.default.lowContrast',
-      hover: 'feedback.positive.action.border.primary.hover.lowContrast',
-      disabled: 'brand.gray.a100.lowContrast',
+      default: 'interactive.border.positive.faded',
+      hover: 'interactive.border.positive.faded',
+      disabled: 'interactive.background.gray.disabled',
     },
     negative: {
-      default: 'feedback.negative.action.border.primary.default.lowContrast',
-      hover: 'feedback.negative.action.border.primary.hover.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
+      default: 'interactive.border.negative.faded',
+      hover: 'interactive.border.negative.faded',
+      disabled: 'interactive.background.gray.default',
     },
   },
 };
@@ -184,7 +184,7 @@ const getChipInputHoverTokens = (color: ChipGroupProps['color']): SelectorInputH
       },
       border: {
         checked: `colors.${chipColorTokens.border[color || 'default'].hover}` as never,
-        unchecked: 'colors.brand.gray.500.lowContrast',
+        unchecked: 'colors.interactive.border.gray.highlighted',
       },
     },
   };

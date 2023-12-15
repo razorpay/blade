@@ -142,8 +142,8 @@ export const BaseInputVisuals = ({
               size="medium"
               color={
                 isDisabled
-                  ? 'surface.text.placeholder.lowContrast'
-                  : 'surface.text.subtle.lowContrast'
+                  ? 'surface.text.gray.disabled'
+                  : 'surface.text.gray.subtle'
               }
             />
           </BaseBox>
@@ -198,8 +198,8 @@ export const BaseInputVisuals = ({
                 size="medium"
                 color={
                   isDisabled
-                    ? 'surface.text.placeholder.lowContrast'
-                    : 'surface.text.subtle.lowContrast'
+                    ? 'surface.text.gray.disabled'
+                    : 'surface.text.gray.subtle'
                 }
               />
             }

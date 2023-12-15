@@ -37,7 +37,7 @@ describe('<BaseBox />', () => {
       <BaseBox
         width="200px"
         height="200px"
-        backgroundColor="surface.background.level1.lowContrast"
+        backgroundColor="surface.background.gray.subtle"
         elevation="highRaised"
       >
         <Text>Should only have 1 View wrapper</Text>

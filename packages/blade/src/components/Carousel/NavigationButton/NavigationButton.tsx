@@ -21,8 +21,8 @@ const NavigationButton = ({ type, variant, onClick }: NavigationButtonProps): Re
 
     // on react native we cannot rely on currentColor thus need to manually pass iconColor
     const iconColor = {
-      filled: 'action.icon.tertiary.default',
-      stroked: 'surface.action.icon.active.highContrast',
+      filled: 'interactive.icon.gray.normal',
+      stroked: '"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"',
     } as const;
 
     return iconColor[variant];

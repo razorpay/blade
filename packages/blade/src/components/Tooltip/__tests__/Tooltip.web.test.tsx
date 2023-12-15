@@ -136,7 +136,7 @@ describe('<Tooltip />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Tooltip content={tooltipContent}>
         <TooltipInteractiveWrapper>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"" size="medium" />
         </TooltipInteractiveWrapper>
       </Tooltip>,
     );
@@ -175,7 +175,7 @@ describe('<Tooltip />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Tooltip content="Hello world">
         <TooltipInteractiveWrapper>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"" size="medium" />
         </TooltipInteractiveWrapper>
       </Tooltip>,
     );
@@ -295,7 +295,7 @@ describe('<Tooltip />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Tooltip content={tooltipContent}>
         <TooltipInteractiveWrapper>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"" size="medium" />
         </TooltipInteractiveWrapper>
       </Tooltip>,
     );

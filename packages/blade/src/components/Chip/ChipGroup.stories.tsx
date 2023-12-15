@@ -24,22 +24,22 @@ import { Link } from '~components/Link';
 
 const Page = (): React.ReactElement => {
   return (
-    <StoryPageWrapper
-      componentDescription="Chips represents a collection of selectable objects which enable users to make selections, filter content, and trigger relevant actions. Chips can have either single selection or multiple (based on context)."
-      componentName="ChipGroup"
-      imports={`import { Chip, ChipGroup } from '@razorpay/blade/components';\nimport type { ChipProps, ChipGroupProps } from '@razorpay/blade/components';`}
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=52377%3A23885&mode=design&t=y7gUIBIzzNMRd3w6-1"
-      note={
-        <Text>
-          Chip is a combination of ChipGroup and Chip components. This story demonstrates only the
-          props of ChipGroup component. For Chips component props refer to the Chip story{' '}
-          <Link target="_blank" href="https://blade.razorpay.com/?path=/docs/components-chip-chip">
-            here
-          </Link>
-        </Text>
-      }
-    >
-      <Heading size="large">Usage</Heading>
+    (<StoryPageWrapper
+        componentDescription="Chips represents a collection of selectable objects which enable users to make selections, filter content, and trigger relevant actions. Chips can have either single selection or multiple (based on context)."
+        componentName="ChipGroup"
+        imports={`import { Chip, ChipGroup } from '@razorpay/blade/components';\nimport type { ChipProps, ChipGroupProps } from '@razorpay/blade/components';`}
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=52377%3A23885&mode=design&t=y7gUIBIzzNMRd3w6-1"
+        note={
+          <Text>
+            Chip is a combination of ChipGroup and Chip components. This story demonstrates only the
+            props of ChipGroup component. For Chips component props refer to the Chip story{' '}
+            <Link target="_blank" href="https://blade.razorpay.com/?path=/docs/components-chip-chip">
+              here
+            </Link>
+          </Text>
+        }
+      >
+      <Heading size="small">Usage</Heading>
       <Sandbox showConsole editorHeight={400}>
         {`
           import { Box, Chip, ChipGroup, Text } from '@razorpay/blade/components';
@@ -64,7 +64,7 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -480,11 +480,10 @@ ChipWithIcon.parameters = {
 
 const ChipColorsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
   return (
-    <Box display="flex" flexDirection="column">
-      <Text size="large" weight="bold" marginBottom="spacing.3">
+    (<Box display="flex" flexDirection="column">
+      <Text size="large" weight="semibold" marginBottom="spacing.3">
         Is the result helpful?
       </Text>
-
       <ChipGroupComponent defaultValue="yes" {...args}>
         <ChipComponent color="positive" value="yes" icon={ThumbsUpIcon}>
           Yes
@@ -493,7 +492,7 @@ const ChipColorsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => 
           No
         </ChipComponent>
       </ChipGroupComponent>
-    </Box>
+    </Box>)
   );
 };
 
@@ -545,12 +544,12 @@ TextTransformationTemplate.args = {
 const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
   const sizes = ['xsmall', 'small', 'medium', 'large'];
   return (
-    <Box>
+    (<Box>
       {sizes.map((size, index) => (
         <Box key={index}>
-          <Heading size="medium" marginBottom="spacing.3">
+          <Text marginBottom="spacing.3" size="large">
             {size}
-          </Heading>
+          </Text>
           <Box marginBottom="spacing.3">
             <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
               What other capabilities are you looking for?
@@ -574,7 +573,7 @@ const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ child
           </Box>
         </Box>
       ))}
-    </Box>
+    </Box>)
   );
 };
 

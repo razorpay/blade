@@ -198,7 +198,7 @@ const _Table = <Item,>({
     Table: `
     height:${isFooterSticky ? `100%` : undefined};
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
-      theme.colors.surface.border.normal.lowContrast
+      theme.colors.surface.border.gray.normal
     };
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns ??

@@ -28,7 +28,7 @@ const BottomSheetFooter = ({ children }: BaseFooterProps): React.ReactElement =>
       width="100%"
       flexShrink={0}
       marginTop="auto"
-      backgroundColor={theme.colors.surface.background.level2.lowContrast}
+      backgroundColor={theme.colors.surface.background.gray.intense}
       touchAction="none"
       zIndex={2}
       {...metaAttribute({ name: MetaConstants.BottomSheetFooter })}

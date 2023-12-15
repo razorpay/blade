@@ -10,13 +10,13 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 
 const Page = (): ReactElement => {
   return (
-    <StoryPageWrapper
-      componentDescription="Code component can be used for displaying token, variable names, or inlined code snippets."
-      componentName="Code"
-      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentDescription="Code component can be used for displaying token, variable names, or inlined code snippets."
+        componentName="Code"
+        apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
           import { Code, Text } from '@razorpay/blade/components';
@@ -31,7 +31,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -54,14 +54,14 @@ const CodeStoryMeta: Meta = {
 
 const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
   // For React Native, use flex to align items correctly
-  <>
+  (<>
     <Text size="medium">
       Lorem ipsum normal text <CodeComponent {...args} size="medium" /> component
     </Text>
     <Text size="small">
       Lorem ipsum normal text <CodeComponent {...args} size="small" /> component
     </Text>
-  </>
+  </>)
 );
 
 export default CodeStoryMeta;
@@ -69,7 +69,7 @@ export const Code = CodeTemplate.bind({});
 
 export const WithBoldColor = CodeTemplate.bind({});
 WithBoldColor.args = {
-  color: 'feedback.positive.action.text.primary.default.lowContrast',
+  color: 'interactive.text.positive.subtle',
   isHighlighted: false,
   weight: 'bold',
 };

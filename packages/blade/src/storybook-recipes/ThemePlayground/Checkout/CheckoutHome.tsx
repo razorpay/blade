@@ -37,7 +37,7 @@ const QRImageWrapper = styled.div`
     top: 1px;
   }
   &:after {
-    background: ${({ theme }) => theme.colors.surface.background.level2.lowContrast};
+    background: ${({ theme }) => theme.colors.surface.background.gray.intense};
     content: '';
     height: 120%;
     left: -10%;
@@ -62,7 +62,7 @@ const ClickableRow = styled.button(({ theme }) => ({
   display: 'flex',
   flex: 1,
   width: '100%',
-  borderBottom: `2px solid ${theme.colors.surface.border.normal.lowContrast}`,
+  borderBottom: `2px solid ${theme.colors.surface.border.gray.normal}`,
   transition: `background-color ${makeMotionTime(theme.motion.duration.gentle)} ${
     theme.motion.easing.standard.revealing
   }}`,
@@ -118,7 +118,7 @@ const CheckoutHome = (): React.ReactElement => {
                 <Text type="subdued" size="small">
                   QR Code is valid for
                   <br />
-                  <Text type="subdued" size="small" color="feedback.text.negative.lowContrast">
+                  <Text type="subdued" size="small" color="feedback.text.negative.intense">
                     12 minutes
                   </Text>
                 </Text>
@@ -140,7 +140,7 @@ const CheckoutHome = (): React.ReactElement => {
               </Box>
               <Text>UPI - Google Pay</Text>
               <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
-                <ChevronRightIcon size="xlarge" color="brand.primary.500" />
+                <ChevronRightIcon size="xlarge" color="interactive.background.primary.default" />
               </Box>
             </ClickableRow>
             <ClickableRow>
@@ -152,7 +152,7 @@ const CheckoutHome = (): React.ReactElement => {
               </Box>
               <Text>UPI - Google Pay</Text>
               <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
-                <ChevronRightIcon size="xlarge" color="brand.primary.500" />
+                <ChevronRightIcon size="xlarge" color="interactive.background.primary.default" />
               </Box>
             </ClickableRow>
           </CardBody>
@@ -182,7 +182,7 @@ const CheckoutHome = (): React.ReactElement => {
               </Box>
               <Text>Card</Text>
               <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
-                <ChevronRightIcon size="xlarge" color="brand.primary.500" />
+                <ChevronRightIcon size="xlarge" color="interactive.background.primary.default" />
               </Box>
             </ClickableRow>
             <ClickableRow>
@@ -205,7 +205,7 @@ const CheckoutHome = (): React.ReactElement => {
               </Box>
               <Text>UPI / QR</Text>
               <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
-                <ChevronRightIcon size="xlarge" color="brand.primary.500" />
+                <ChevronRightIcon size="xlarge" color="interactive.background.primary.default" />
               </Box>
             </ClickableRow>
             <ClickableRow>
@@ -228,7 +228,7 @@ const CheckoutHome = (): React.ReactElement => {
               </Box>
               <Text>Netbanking</Text>
               <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
-                <ChevronRightIcon size="xlarge" color="brand.primary.500" />
+                <ChevronRightIcon size="xlarge" color="interactive.background.primary.default" />
               </Box>
             </ClickableRow>
             <ClickableRow>
@@ -251,7 +251,7 @@ const CheckoutHome = (): React.ReactElement => {
               </Box>
               <Text>Wallet</Text>
               <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
-                <ChevronRightIcon size="xlarge" color="brand.primary.500" />
+                <ChevronRightIcon size="xlarge" color="interactive.background.primary.default" />
               </Box>
             </ClickableRow>
             <ClickableRow>
@@ -291,7 +291,7 @@ const CheckoutHome = (): React.ReactElement => {
               </Box>
               <Text>Internet Bank Transfer</Text>
               <Box display="flex" flex={1} alignItems="center" justifyContent="flex-end">
-                <ChevronRightIcon size="xlarge" color="brand.primary.500" />
+                <ChevronRightIcon size="xlarge" color="interactive.background.primary.default" />
               </Box>
             </ClickableRow>
           </CardBody>

@@ -35,7 +35,7 @@ describe('<Text />', () => {
   it('should render Text with color', () => {
     const displayText = 'Displaying some text';
     const { toJSON, getByText } = renderWithTheme(
-      <Text color="surface.text.muted.lowContrast">{displayText}</Text>,
+      <Text color="surface.text.gray.muted">{displayText}</Text>,
     );
     expect(getByText('Displaying some text')).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();

@@ -257,7 +257,7 @@ describe('<Popover />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Popover content={popoverContent}>
         <PopoverInteractiveWrapper testID={popoverInteractiveWrapperId}>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"" size="medium" />
         </PopoverInteractiveWrapper>
       </Popover>,
     );

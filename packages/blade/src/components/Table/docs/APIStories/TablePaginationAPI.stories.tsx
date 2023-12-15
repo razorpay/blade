@@ -76,7 +76,7 @@ const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"

@@ -12,7 +12,7 @@ const StyledArgsTable = styled(BaseBox)(
   &,
   & th,
   & td {
-    border: 1px solid ${props.theme.colors.surface.border.normal.lowContrast};
+    border: 1px solid ${props.theme.colors.surface.border.gray.normal};
     border-collapse: collapse;
   }
 

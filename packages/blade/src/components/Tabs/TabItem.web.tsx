@@ -73,7 +73,7 @@ const StyledTabButton = styled.button<{
       [`${border}Color`]:
         isVertical && isSelected
           ? theme.colors.brand.primary[500]
-          : theme.colors.surface.border.normal.lowContrast,
+          : theme.colors.surface.border.gray.normal,
       backgroundColor:
         // Don't want to show hover state on filled tabs when vertical because
         // The hover color needs to be on the TabIndicator instead.

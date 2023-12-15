@@ -33,7 +33,7 @@ describe('<Text />', () => {
   it('should render Text with color', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text color="action.text.link.default">{displayText}</Text>,
+      <Text color="interactive.text.primary.subtle">{displayText}</Text>,
     );
     expect(container).toMatchSnapshot();
   });

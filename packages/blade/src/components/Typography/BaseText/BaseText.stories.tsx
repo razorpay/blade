@@ -10,7 +10,7 @@ export default {
   title: 'Components/Typography/BaseText (Internal)',
   component: BaseTextComponent,
   args: {
-    color: 'surface.text.normal.lowContrast',
+    color: 'surface.text.gray.normal',
     fontFamily: 'text',
     fontSize: 200,
     fontWeight: 'regular',
@@ -29,7 +29,7 @@ export default {
           componentDescription="The BaseText component is a wrapper component based on Blade's token system and should be used only in rarest exceptions where your Typography needs are not satisfied by Title, Heading or Text typography components(eg: highlighting a word in the Title with gradients in a landing page)."
           componentName="BaseText"
         >
-          <Title>Usage</Title>
+          <Heading size="medium">Usage</Heading>
           <Highlight language="tsx">{`import { BaseText } from '@razorpay/blade/components' \nimport type { BaseTextProps } from '@razorpay/blade/components'`}</Highlight>
         </StoryPageWrapper>
       ),

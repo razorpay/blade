@@ -11,13 +11,13 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 
 const Page = (): ReactElement => {
   return (
-    <StoryPageWrapper
-      componentDescription="The SkipNav component lets users skip the navigation and jump to the main content of the page. Useful when you have navbars at the top and the user wants to jump directly to the main content."
-      componentName="SkipNav"
-      imports=""
-      apiDecisionLink={null}
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentDescription="The SkipNav component lets users skip the navigation and jump to the main content of the page. Useful when you have navbars at the top and the user wants to jump directly to the main content."
+        componentName="SkipNav"
+        imports=""
+        apiDecisionLink={null}
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox editorHeight={400}>
         {`
           import { 
@@ -52,7 +52,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 

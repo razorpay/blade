@@ -44,8 +44,8 @@ const SortIcon = ({
   isSortReversed: boolean;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const defaultColor = getIn(theme.colors, 'surface.action.icon.default.lowContrast');
-  const activeColor = getIn(theme.colors, 'brand.primary.500');
+  const defaultColor = getIn(theme.colors, 'interactive.icon.gray.default');
+  const activeColor = getIn(theme.colors, 'interactive.background.primary.default');
   const upArrowColor = isSorted && isSortReversed ? activeColor : defaultColor;
   const downArrowColor = isSorted && !isSortReversed ? activeColor : defaultColor;
   return (

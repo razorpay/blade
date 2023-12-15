@@ -91,7 +91,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
     >
       <Icon
         size={size}
-        color={isDisabled ? 'surface.action.icon.disabled.lowContrast' : 'currentColor'}
+        color={isDisabled ? 'interactive.icon.gray.disabled' : 'currentColor'}
       />
     </StyledButton>
   ),

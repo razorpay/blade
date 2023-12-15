@@ -30,7 +30,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
           size="small"
           weight="regular"
           contrast="high"
-          color="feedback.text.neutral.highContrast"
+          color="feedback.text.gray.intense"
         >
           {children}
         </Text>

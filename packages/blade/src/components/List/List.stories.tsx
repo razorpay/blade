@@ -20,12 +20,12 @@ const listSizes: NonNullable<ListProps['size']>[] = ['small', 'medium', 'large']
 
 const Page = (): ReactElement => {
   return (
-    <StoryPageWrapper
-      componentDescription="List displays a set of related items that are composed of text/links."
-      componentName="List"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23205%3A446859&t=itEw2V8u5Q0PPGJq-4"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentDescription="List displays a set of related items that are composed of text/links."
+        componentName="List"
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23205%3A446859&t=itEw2V8u5Q0PPGJq-4"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
           import { List, ListItem } from '@razorpay/blade/components';
@@ -53,7 +53,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -166,10 +166,10 @@ ListMixNested.storyName = 'Unordered & Ordered Mix';
 
 const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
   return (
-    <BaseBox>
+    (<BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
-          <Heading>{capitalize(size)} Size:</Heading>
+          <Text size="large">{capitalize(size)} Size:</Text>
           <List {...args} size={size}>
             <ListItem>
               Level 1
@@ -185,7 +185,7 @@ const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
           </List>
         </BaseBox>
       ))}
-    </BaseBox>
+    </BaseBox>)
   );
 };
 
@@ -213,10 +213,10 @@ OrderedListWithSizes.args = {
 
 const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
   return (
-    <BaseBox>
+    (<BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
-          <Heading>{capitalize(size)} Size:</Heading>
+          <Text size="large">{capitalize(size)} Size:</Text>
           <List variant="ordered-filled" size={size}>
             <ListItem>
               <ListItemLink>Build Integration:</ListItemLink> Use the sample codes to integrate the
@@ -233,7 +233,7 @@ const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
           </List>
         </BaseBox>
       ))}
-    </BaseBox>
+    </BaseBox>)
   );
 };
 
@@ -264,10 +264,10 @@ ListWithLinkAndIcon.storyName = 'Link & Icon';
 
 const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
   return (
-    <BaseBox>
+    (<BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
-          <Heading>{capitalize(size)} Size:</Heading>
+          <Text size="large">{capitalize(size)} Size:</Text>
           <List variant="ordered" size={size}>
             <ListItem>
               Bump blade version to <ListItemCode>v6.0.0</ListItemCode>
@@ -282,7 +282,7 @@ const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
           </List>
         </BaseBox>
       ))}
-    </BaseBox>
+    </BaseBox>)
   );
 };
 export const ListWithCodeAndIcon = ListWithCodeTemplate.bind({});
@@ -290,15 +290,15 @@ ListWithCodeAndIcon.storyName = 'With Inline Code';
 
 const ListWithListItemTextTemplate: ComponentStory<typeof List> = () => {
   return (
-    <BaseBox>
+    (<BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
-          <Heading>{capitalize(size)} Size:</Heading>
+          <Text size="large">{capitalize(size)} Size:</Text>
           <List variant="ordered" size={size}>
             <ListItem>
               <ListItemText>
                 You will receive an invoice after a
-                <ListItemText as="span" weight="bold" color="feedback.text.positive.lowContrast">
+                <ListItemText as="span" weight="bold" color="feedback.text.positive.intense">
                   {' successful '}
                 </ListItemText>
                 payment
@@ -306,7 +306,7 @@ const ListWithListItemTextTemplate: ComponentStory<typeof List> = () => {
             </ListItem>
             <ListItem>
               You will receive a mail with further instruction after a
-              <ListItemText as="span" weight="bold" color="feedback.text.negative.lowContrast">
+              <ListItemText as="span" weight="bold" color="feedback.text.negative.intense">
                 {' failed '}
               </ListItemText>{' '}
               payment
@@ -314,7 +314,7 @@ const ListWithListItemTextTemplate: ComponentStory<typeof List> = () => {
           </List>
         </BaseBox>
       ))}
-    </BaseBox>
+    </BaseBox>)
   );
 };
 export const ListWithListItemText = ListWithListItemTextTemplate.bind({});

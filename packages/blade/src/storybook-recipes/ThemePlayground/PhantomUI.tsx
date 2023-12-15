@@ -85,7 +85,7 @@ const PhantomUI = (): React.ReactElement => {
             </Button>
             <Box display="flex" flexDirection="row" marginTop="spacing.3" alignItems="center">
               <RazorpayIcon
-                color="surface.action.icon.default.lowContrast"
+                color="interactive.icon.gray.default"
                 size="medium"
                 marginRight="spacing.2"
               />

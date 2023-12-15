@@ -21,12 +21,12 @@ import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
 
 const Page = (): React.ReactElement => {
   return (
-    <StoryPageWrapper
-      componentName="Tooltip"
-      componentDescription="The tooltip typically provides additional context about the element or its function. A tooltip is always triggered by a mouse hover on desktop and on tap on mobile."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=40636-559188&t=vaK9ZJskCpoIS07l-0"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentName="Tooltip"
+        componentDescription="The tooltip typically provides additional context about the element or its function. A tooltip is always triggered by a mouse hover on desktop and on tap on mobile."
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=40636-559188&t=vaK9ZJskCpoIS07l-0"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
         import { Tooltip, Button } from '@razorpay/blade/components'
@@ -42,9 +42,9 @@ const Page = (): React.ReactElement => {
         export default App;
       `}
       </Sandbox>
-      <Title>Tooltip Vs Popover Vs Guided Tour</Title>
+      <Heading size="medium">Tooltip Vs Popover Vs Guided Tour</Heading>
       <PopoverVsTooltip />
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -96,7 +96,7 @@ const PlacementBox = React.forwardRef<
   { children: React.ReactNode } & BladeCommonEvents
 >(({ children, ...props }, ref) => {
   return (
-    <Box
+    (<Box
       ref={ref}
       tabIndex={0}
       display="flex"
@@ -106,11 +106,11 @@ const PlacementBox = React.forwardRef<
       width={isReactNative() ? '40%' : '100%'}
       flexShrink={0}
       padding="spacing.5"
-      backgroundColor="surface.background.level3.lowContrast"
+      backgroundColor="surface.background.gray.moderate"
       {...props}
     >
-      <Text contrast="low">{children}</Text>
-    </Box>
+      <Text color="surface.text.gray.normal">{children}</Text>
+    </Box>)
   );
 });
 
@@ -202,7 +202,7 @@ const NonInteractiveTriggerTemplate: ComponentStory<typeof TooltipComponent> = (
         <Text>Refunds</Text>
         <TooltipComponent {...args} placement="bottom-start">
           <TooltipInteractiveWrapper>
-            <InfoIcon marginTop="spacing.2" size="medium" color="surface.text.muted.lowContrast" />
+            <InfoIcon marginTop="spacing.2" size="medium" color="surface.text.gray.muted" />
           </TooltipInteractiveWrapper>
         </TooltipComponent>
       </Box>
@@ -238,7 +238,7 @@ const TooltipTriggersTemplate: ComponentStory<typeof TooltipComponent> = (args) 
         <Box marginTop="spacing.8" />
         <TooltipComponent {...args} content="With non-interactive icon" placement="bottom">
           <TooltipInteractiveWrapper>
-            <InfoIcon size="large" color="surface.text.muted.lowContrast" />
+            <InfoIcon size="large" color="surface.text.gray.muted" />
           </TooltipInteractiveWrapper>
         </TooltipComponent>
       </Box>
@@ -254,7 +254,7 @@ const CustomTrigger = React.forwardRef<
 >(({ children, ...props }, ref) => {
   console.log(props);
   return (
-    <BaseBox
+    (<BaseBox
       ref={ref}
       tabIndex={-1}
       display={isReactNative() ? 'flex' : 'inline-block'}
@@ -263,13 +263,13 @@ const CustomTrigger = React.forwardRef<
       borderRadius="medium"
       backgroundColor={
         isReactNative()
-          ? 'surface.background.level1.lowContrast'
-          : 'surface.background.level2.lowContrast'
+          ? 'surface.background.gray.subtle'
+          : 'surface.background.gray.intense'
       }
       {...props}
     >
-      <Text contrast="low">{children}</Text>
-    </BaseBox>
+      <Text color="surface.text.gray.normal">{children}</Text>
+    </BaseBox>)
   );
 });
 

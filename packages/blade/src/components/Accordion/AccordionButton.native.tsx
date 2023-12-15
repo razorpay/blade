@@ -73,8 +73,8 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
     isPressed.value = pressed;
 
     const iconColor: IconProps['color'] = pressed
-      ? 'surface.action.icon.focus.lowContrast'
-      : 'surface.action.icon.default.lowContrast';
+      ? 'interactive.icon.gray.subtle'
+      : 'interactive.icon.gray.default';
 
     const _icon = Icon && (
       <Icon size="medium" color={iconColor} marginRight="spacing.3" marginY="spacing.2" />

@@ -16,7 +16,7 @@ const HeaderContainer = ({ children }: { children: BoxProps['children'] }): Reac
 export const BaseHeaderKitchenSink = (): React.ReactElement => {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       maxWidth={{ base: '100%', m: '500px' }}
     >
       <HeaderContainer>
@@ -29,7 +29,7 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
       </HeaderContainer>
       <HeaderContainer>
         <BaseHeader
-          leading={<StarIcon color="surface.text.normal.lowContrast" size="large" />}
+          leading={<StarIcon color="surface.text.gray.normal" size="large" />}
           title="When The Title is So Large That It Goes On Next Line"
           subtitle="Header Subtitle"
           titleSuffix={<Badge variant="positive">New</Badge>}
@@ -49,7 +49,7 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
       </HeaderContainer>
       <HeaderContainer>
         <BaseHeader
-          leading={<StarIcon color="surface.text.normal.lowContrast" size="large" />}
+          leading={<StarIcon color="surface.text.gray.normal" size="large" />}
           title="When The Title is So Large That It Goes On Next Line"
           subtitle="When The Subtitle of this BaseHeader is So Largeeeee That It Goes On Next Line"
           titleSuffix={<Badge variant="positive">New</Badge>}
@@ -85,7 +85,7 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
 export const BaseFooterSink = (): React.ReactElement => {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       maxWidth={{ base: '100%', m: '500px' }}
     >
       <BaseFooter>

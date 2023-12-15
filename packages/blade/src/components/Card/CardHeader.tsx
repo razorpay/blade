@@ -27,7 +27,7 @@ import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVer
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
 
-  return <Icon color="surface.text.normal.lowContrast" size="xlarge" />;
+  return <Icon color="surface.text.gray.normal" size="xlarge" />;
 };
 const CardHeaderIcon = assignWithoutSideEffects(_CardHeaderIcon, {
   componentId: ComponentIds.CardHeaderIcon,

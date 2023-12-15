@@ -229,19 +229,19 @@ describe('<BaseLink />', () => {
     // default state
     const linkButtonText = getByText(textContent);
     expect(linkButtonText).toHaveStyle({
-      color: paymentTheme.colors.onLight.action.text.link.default,
+      color: paymentTheme.colors.onLight.interactive.text.primary.subtle,
     });
 
     // click and focus
     fireEvent.focus(linkButtonText);
     expect(linkButtonText).toHaveStyle({
-      color: paymentTheme.colors.onLight.action.text.link.focus,
+      color: paymentTheme.colors.onLight.interactive.text.primary.normal,
     });
 
     // click outside
     fireEvent.focusOut(linkButtonText);
     expect(linkButtonText).toHaveStyle({
-      color: paymentTheme.colors.onLight.action.text.link.default,
+      color: paymentTheme.colors.onLight.interactive.text.primary.subtle,
     });
   });
 });

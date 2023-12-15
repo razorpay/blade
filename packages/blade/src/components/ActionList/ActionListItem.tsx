@@ -152,7 +152,7 @@ const _ActionListSection = ({
       {/* We're announcing title as group label so we can hide this */}
       {isSectionVisible ? (
         <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-          <Text color="surface.text.muted.lowContrast" size="small" weight="semibold">
+          <Text color="surface.text.gray.muted" size="small" weight="semibold">
             {title}
           </Text>
         </StyledActionListSectionTitle>
@@ -184,7 +184,7 @@ const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElem
     <Icon
       color={
         intent === 'negative'
-          ? 'feedback.icon.negative.lowContrast'
+          ? 'feedback.icon.negative.intense'
           : getNormalTextColor(isDisabled, { isMuted: true })
       }
       size="medium"
@@ -313,7 +313,7 @@ const _ActionListItemBody = ({
             truncateAfterLines={1}
             color={
               intent === 'negative'
-                ? 'feedback.text.negative.lowContrast'
+                ? 'feedback.text.negative.intense'
                 : getNormalTextColor(isDisabled)
             }
           >

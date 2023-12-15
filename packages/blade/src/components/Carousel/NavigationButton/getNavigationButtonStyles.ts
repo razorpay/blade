@@ -12,36 +12,36 @@ const getNavigationButtonStyles = (props: {
 
   const iconColor = {
     filled: {
-      default: theme.colors.white.action.icon.primary.default,
-      hover: theme.colors.white.action.icon.primary.hover,
-      focus: theme.colors.white.action.icon.primary.focus,
-      active: theme.colors.white.action.icon.primary.active,
+      default: theme.colors.interactive.icon.gray.normal,
+      hover: theme.colors.interactive.icon.gray.normal,
+      focus: theme.colors.interactive.icon.gray.normal,
+      active: theme.colors.interactive.icon.gray.normal,
     },
     stroked: {
-      default: theme.colors.surface.action.icon.active.highContrast,
-      hover: theme.colors.surface.action.icon.hover.highContrast,
-      focus: theme.colors.surface.action.icon.focus.highContrast,
-      active: theme.colors.surface.action.icon.active.highContrast,
+      default: theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'",
+      hover: theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'",
+      focus: theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'",
+      active: theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'",
     },
   };
 
   const backgroundColor = {
     filled: {
-      default: theme.colors.white.action.background.primary.default,
-      hover: theme.colors.white.action.background.primary.hover,
-      focus: theme.colors.white.action.background.primary.focus,
-      active: theme.colors.white.action.background.primary.active,
+      default: theme.colors.interactive.background.staticWhite.default,
+      hover: theme.colors.interactive.background.staticWhite.default,
+      focus: theme.colors.interactive.background.staticWhite.default,
+      active: theme.colors.interactive.background.staticWhite.default,
     },
     stroked: {
-      default: theme.colors.action.background.tertiary.default,
-      hover: theme.colors.action.background.tertiary.hover,
-      focus: theme.colors.action.background.tertiary.focus,
-      active: theme.colors.action.background.tertiary.active,
+      default: theme.colors.interactive.background.gray.default,
+      hover: theme.colors.interactive.background.gray.default,
+      focus: theme.colors.interactive.background.gray.default,
+      active: theme.colors.interactive.background.gray.default,
     },
   };
 
   const borderColors = {
-    filled: theme.colors.surface.border.normal.lowContrast,
+    filled: theme.colors.surface.border.gray.normal,
     stroked: theme.colors.brand.gray[400].lowContrast,
   } as const;
 

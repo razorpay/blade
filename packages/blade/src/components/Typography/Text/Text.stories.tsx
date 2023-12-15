@@ -9,13 +9,13 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 
 const Page = (): ReactElement => {
   return (
-    <StoryPageWrapper
-      componentDescription="The Text component is used to display main content of the page. It is often clubbed with Title or Heading to display content in a hierarchical structure. It applies responsive styles automatically based on the device it is being rendered on."
-      componentName="Text"
-      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentDescription="The Text component is used to display main content of the page. It is often clubbed with Title or Heading to display content in a hierarchical structure. It applies responsive styles automatically based on the device it is being rendered on."
+        componentName="Text"
+        apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
           import { Text } from '@razorpay/blade/components';
@@ -29,7 +29,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -63,14 +63,14 @@ export default TextStoryMeta;
 export const Text = TextTemplate.bind({});
 export const WithColor = TextTemplate.bind({});
 WithColor.args = {
-  color: 'feedback.positive.action.text.primary.default.lowContrast',
+  color: 'interactive.text.positive.subtle',
 };
 
 const AsPropTemplate: ComponentStory<typeof TextComponent> = (args) => {
   return (
     <TextComponent {...args} as="p">
       Power your{' '}
-      <TextComponent {...args} color="brand.primary.500" as="span" weight="bold">
+      <TextComponent {...args} color="interactive.background.primary.default" as="span" weight="bold">
         finance
       </TextComponent>
       , grow your{' '}

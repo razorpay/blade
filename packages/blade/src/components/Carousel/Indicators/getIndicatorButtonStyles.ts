@@ -11,8 +11,8 @@ const getIndicatorButtonStyles = ({
   theme: DefaultTheme;
 } & Pick<IndicatorButtonProps, 'isActive' | 'variant'>): CSSObject => {
   const backgroundColor = {
-    gray: theme.colors.brand.gray[600].highContrast,
-    white: theme.colors.brand.gray[700].highContrast,
+    gray: theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'",
+    white: theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'",
     blue: theme.colors.brand.primary[500],
   };
 

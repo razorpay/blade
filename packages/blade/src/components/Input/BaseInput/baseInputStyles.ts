@@ -46,12 +46,12 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isDropdownTrigger'
 >): CSSObject => {
   // normal state
-  let backgroundColor = theme.colors.brand.gray.a50.lowContrast;
-  let borderBottomColor = theme.colors.brand.gray.a100.lowContrast;
+  let backgroundColor = theme.colors.interactive.background.gray.default;
+  let borderBottomColor = theme.colors.interactive.background.gray.disabled;
 
   // hoverState
   if (isHovered) {
-    backgroundColor = theme.colors.brand.gray.a100.lowContrast;
+    backgroundColor = theme.colors.interactive.background.gray.disabled;
   }
 
   // focused state
@@ -61,17 +61,17 @@ export const getInputBackgroundAndBorderStyles = ({
 
   // disabled state
   if (isDisabled) {
-    backgroundColor = theme.colors.brand.gray.a50.lowContrast;
+    backgroundColor = theme.colors.interactive.background.gray.default;
     borderBottomColor = theme.colors.brand.gray[300].lowContrast;
   }
 
   // validation state
   if (validationState === 'error') {
-    backgroundColor = theme.colors.feedback.background.negative.lowContrast;
-    borderBottomColor = theme.colors.feedback.border.negative.highContrast;
+    backgroundColor = theme.colors.feedback.background.negative.subtle;
+    borderBottomColor = theme.colors.feedback.border.negative.intense;
   } else if (validationState === 'success') {
-    backgroundColor = theme.colors.feedback.background.positive.lowContrast;
-    borderBottomColor = theme.colors.feedback.border.positive.highContrast;
+    backgroundColor = theme.colors.feedback.background.positive.subtle;
+    borderBottomColor = theme.colors.feedback.border.positive.intense;
   }
 
   return {

@@ -54,14 +54,14 @@ const Section = ({
 
 function LayoutPrimitivesDocs(): React.ReactElement {
   return (
-    <StoryPageWrapper
-      componentName="Layout Primitives"
-      componentDescription="Layout Primitives from Blade. Use this for adding spacings, grids, and any of your layout needs"
-      imports=""
-      showStorybookControls={false}
-    >
+    (<StoryPageWrapper
+        componentName="Layout Primitives"
+        componentDescription="Layout Primitives from Blade. Use this for adding spacings, grids, and any of your layout needs"
+        imports=""
+        showStorybookControls={false}
+      >
       <hr />
-      <Heading size="large">Table of Content</Heading>
+      <Heading size="small">Table of Content</Heading>
       <List marginY="spacing.6" marginBottom="spacing.8">
         <ListItem>
           <ScrollIntoViewLink href="#playground">Playground</ScrollIntoViewLink>
@@ -113,7 +113,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
       </List>
       <hr />
       <Section id="playground">
-        <Heading size="large">Playground</Heading>
+        <Heading size="small">Playground</Heading>
         <Sandbox padding="spacing.0">
           {`
             import { Box, Text } from '@razorpay/blade/components'
@@ -127,13 +127,13 @@ function LayoutPrimitivesDocs(): React.ReactElement {
                   padding={{ base: ['spacing.1', '9px'], m: 'spacing.3' }}
                 >
                   <Box 
-                    backgroundColor="surface.background.level3.highContrast" 
+                    backgroundColor=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"" 
                     flex="1" 
                   >
                     <Text margin="spacing.4" contrast="high">Box1</Text>
                   </Box>
                   <Box 
-                    backgroundColor="surface.background.level2.highContrast" 
+                    backgroundColor=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"" 
                     flex="1" 
                   >
                     <Text margin="spacing.4" contrast="high">Box2</Text>
@@ -154,7 +154,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
         </Text>
       </Section>
       <Section id="box-usage">
-        <Heading size="large" marginBottom="spacing.3">
+        <Heading marginBottom="spacing.3" size="small">
           📦 Box Usage
         </Heading>
         <Text>
@@ -177,7 +177,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
             `}
         </SandboxHighlighter>
         <Section id="adding-margin-and-padding">
-          <Heading size="large" marginBottom="spacing.3">
+          <Heading marginBottom="spacing.3" size="small">
             ↔️ Adding Margin and Padding
           </Heading>
           <Text>Uncomment the commented code below to see things in action ✨</Text>
@@ -192,7 +192,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
                       // Uncomment next lines to see padding and margin in action
                       // padding="spacing.4"
                       // marginTop="32px"
-                      backgroundColor="surface.background.level2.lowContrast"
+                      backgroundColor="surface.background.gray.intense"
                     >
                       <Text>Some Text</Text>
                     </Box>
@@ -201,7 +201,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
                         // Uncomment this block to see padding shorthands in action
                         padding={["spacing.3", "35px"]} // We also support padding and margin shorthands similar to CSS
                         marginX="spacing.5" // adds horizontal margin
-                        backgroundColor='surface.background.level3.lowContrast'
+                        backgroundColor='surface.background.gray.moderate'
                       >
                         <Text>More Text</Text>
                       </Box>
@@ -226,7 +226,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
         </Section>
 
         <Section id="responsive-props">
-          <Heading size="large" marginBottom="spacing.3">
+          <Heading marginBottom="spacing.3" size="small">
             Responsive Props 📱 🖥
           </Heading>
           <Text marginBottom="spacing.4">
@@ -252,14 +252,14 @@ function LayoutPrimitivesDocs(): React.ReactElement {
                   >
                     <Box
                       flex="1"
-                      backgroundColor="surface.background.level2.highContrast"
+                      backgroundColor=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""
                       padding="spacing.4" 
                     >
                       <Text contrast="high">Box1</Text>
                     </Box>
                     <Box 
                       flex="1" 
-                      backgroundColor="surface.background.level3.highContrast" 
+                      backgroundColor=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"" 
                       padding="spacing.4" 
                     >
                       <Text contrast="high">Box2</Text>
@@ -287,9 +287,8 @@ function LayoutPrimitivesDocs(): React.ReactElement {
           </Text>
         </Section>
       </Section>
-
       <Section id="styled-props" paddingBottom="spacing.0">
-        <Heading size="large" marginBottom="spacing.3">
+        <Heading marginBottom="spacing.3" size="small">
           💅🏼 Styled Props for Blade Components
         </Heading>
         <Text>
@@ -355,9 +354,8 @@ function LayoutPrimitivesDocs(): React.ReactElement {
               `}
         </Sandbox>
       </Section>
-
       <Section id="questions-you-might-have" paddingTop="spacing.0">
-        <Heading size="large" marginBottom="spacing.3" marginTop="spacing.6">
+        <Heading marginBottom="spacing.3" marginTop="spacing.6" size="small">
           🧐 Questions you might have
         </Heading>
         <Text>
@@ -368,7 +366,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
           </Link>
         </Text>
         <BaseBox id="why-is-xyz-prop-not-support" paddingY="spacing.4">
-          <Heading marginTop="spacing.4" marginBottom="spacing.2" size="large">
+          <Heading marginTop="spacing.4" marginBottom="spacing.2" size="small">
             Why is `xyz` prop not supported in Box?
           </Heading>
           <Text marginY="spacing.3">
@@ -442,7 +440,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
         </BaseBox>
 
         <BaseBox id="what-to-do-if-prop-is-not-supported" paddingTop="spacing.4">
-          <Heading marginBottom="spacing.2" size="large">
+          <Heading marginBottom="spacing.2" size="small">
             What to do if Box doesn&apos;t support the prop you want to use?
           </Heading>
           <Text marginY="spacing.3">
@@ -458,7 +456,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
         </BaseBox>
 
         <BaseBox id="how-is-it-different-from-card" paddingTop="spacing.4">
-          <Heading marginBottom="spacing.2" size="large">
+          <Heading marginBottom="spacing.2" size="small">
             How is it different from Card Component?
           </Heading>
           <Text marginY="spacing.3">
@@ -473,7 +471,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
         </BaseBox>
       </Section>
       <Section id="references">
-        <Heading size="large">References</Heading>
+        <Heading size="small">References</Heading>
         <List marginTop="spacing.4">
           <ListItem>
             <ListItemLink href="/?path=/docs/components-layout-primitives-box-box--default&globals=measureEnabled:false">
@@ -512,7 +510,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
           </ListItem>
         </List>
       </Section>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 }
 

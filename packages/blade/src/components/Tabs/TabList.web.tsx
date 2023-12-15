@@ -61,7 +61,7 @@ const TabList = ({
                     height="auto"
                     flexGrow={1}
                     flexShrink={0}
-                    backgroundColor="surface.border.normal.lowContrast"
+                    backgroundColor="surface.border.gray.normal"
                     style={{ transform: 'translateX(1.5px)' }}
                   />
                 ) : null}
@@ -80,10 +80,10 @@ const TabList = ({
                     ? {
                         borderRadius: 'small',
                         borderWidth: 'thin',
-                        borderColor: 'surface.border.normal.lowContrast',
+                        borderColor: 'surface.border.gray.normal',
                         padding: 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
-                        backgroundColor: 'surface.background.level2.lowContrast',
+                        backgroundColor: 'surface.background.gray.intense',
                       }
                     : {
                         padding: 'spacing.0',
@@ -121,7 +121,7 @@ const TabList = ({
       {!isVertical && isBordered ? (
         <BaseBox
           style={{ transform: 'translateY(-1px)' }}
-          borderBottomColor="surface.border.normal.lowContrast"
+          borderBottomColor="surface.border.gray.normal"
           borderBottomWidth="thin"
         />
       ) : null}

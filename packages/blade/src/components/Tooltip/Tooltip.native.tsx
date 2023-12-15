@@ -112,8 +112,8 @@ const Tooltip = ({
                 context={context}
                 width={ARROW_WIDTH}
                 height={ARROW_HEIGHT}
-                fillColor={theme.colors.brand.gray[200].highContrast}
-                strokeColor={theme.colors.brand.gray[300].highContrast}
+                fillColor={theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"}
+                strokeColor={theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"}
               />
             }
           >

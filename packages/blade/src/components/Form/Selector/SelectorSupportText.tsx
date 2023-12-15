@@ -14,7 +14,7 @@ const SelectorSupportText = ({
     <BaseText
       id={id}
       as={isReactNative ? undefined : 'span'}
-      color="surface.text.muted.lowContrast"
+      color="surface.text.gray.muted"
       fontSize={50}
       lineHeight={50}
       fontStyle="italic"

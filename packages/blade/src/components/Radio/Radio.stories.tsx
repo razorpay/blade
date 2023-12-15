@@ -14,13 +14,13 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 
 const Page = (): React.ReactElement => {
   return (
-    <StoryPageWrapper
-      componentDescription="Radio & RadioGroup can be used in forms when a user needs to single value from several options."
-      componentName="Radio"
-      imports={`import { Radio, RadioGroup } from '@razorpay/blade/components';\nimport type { RadioProps, RadioGroupProps } from '@razorpay/blade/components';`}
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentDescription="Radio & RadioGroup can be used in forms when a user needs to single value from several options."
+        componentName="Radio"
+        imports={`import { Radio, RadioGroup } from '@razorpay/blade/components';\nimport type { RadioProps, RadioGroupProps } from '@razorpay/blade/components';`}
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox showConsole editorHeight={400}>
         {`
           import { RadioGroup, Radio } from '@razorpay/blade/components';
@@ -51,7 +51,7 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 

@@ -27,11 +27,11 @@ import {
 
 const Page = (): React.ReactElement => {
   return (
-    <StoryPageWrapper
-      componentName="ActionList"
-      componentDescription="ActionList contains list of ActionList Items with or without in sections to perform particular actions."
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentName="ActionList"
+        componentDescription="ActionList contains list of ActionList Items with or without in sections to perform particular actions."
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox editorHeight={500}>
         {`
           import { 
@@ -50,7 +50,7 @@ const Page = (): React.ReactElement => {
 
           function App(): React.ReactElement {
               return (
-                  <Box backgroundColor="surface.background.level2.lowContrast">
+                  <Box backgroundColor="surface.background.gray.intense">
                   <ActionList>
                     <ActionListItem
                       title="Profile"
@@ -89,7 +89,7 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -105,7 +105,7 @@ export default {
 
 const ActionListExample: ComponentStory<typeof ActionListComponent> = () => (
   <BaseBox display="flex" flexDirection="column">
-    <Box backgroundColor="surface.background.level2.lowContrast">
+    <Box backgroundColor="surface.background.gray.intense">
       <ActionListComponent>
         <ActionListItem title="Item 1" value="item1" />
         <ActionListItem title="Item 2" value="item2" />
@@ -126,7 +126,7 @@ ActionList.parameters = {
 const ActionListWithLeadingComponentsExample: ComponentStory<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.level2.lowContrast">
+      <Box backgroundColor="surface.background.gray.intense">
         <ActionListComponent>
           <ActionListItem
             leading={<ActionListItemIcon icon={SettingsIcon} />}
@@ -161,7 +161,7 @@ ActionListWithLeadingComponents.parameters = {
 const ActionListWithTrailingComponentsExample: ComponentStory<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.level2.lowContrast">
+      <Box backgroundColor="surface.background.gray.intense">
         <ActionListComponent>
           <ActionListItem
             title="Bank Settings"
@@ -191,7 +191,7 @@ ActionListWithTrailingComponents.parameters = {
 const ActionListWithSectionsExample: ComponentStory<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.level2.lowContrast">
+      <Box backgroundColor="surface.background.gray.intense">
         <ActionListComponent>
           <ActionListItem
             title="Profile"
@@ -234,7 +234,7 @@ ActionListWithSections.parameters = {
 const ActionListWithCustomItemsExample: ComponentStory<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.level2.lowContrast">
+      <Box backgroundColor="surface.background.gray.intense">
         <ActionListComponent>
           <ActionListSection title="Account">
             <ActionListItem

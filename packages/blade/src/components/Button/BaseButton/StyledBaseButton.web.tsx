@@ -42,7 +42,7 @@ const StyledBaseButton = styled.button
       ...(props.variant !== 'tertiary' && {
         borderColor: props.focusBorderColor,
       }),
-      outline: `1px solid ${props.theme.colors.surface.background.level1.lowContrast}`,
+      outline: `1px solid ${props.theme.colors.surface.background.gray.subtle}`,
       boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
     },
     '*': {

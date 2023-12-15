@@ -17,7 +17,7 @@ describe('<BaseText />', () => {
     const displayText = 'Displaying some text';
     const { toJSON, getByText } = renderWithTheme(
       <BaseText
-        color="surface.text.normal.highContrast"
+        color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""
         fontFamily="text"
         lineHeight={100}
         fontSize={25}
@@ -34,7 +34,7 @@ describe('<BaseText />', () => {
     const displayText = 'Displaying some text';
     const { toJSON, getByText } = renderWithTheme(
       <BaseText
-        color="surface.text.normal.highContrast"
+        color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""
         fontFamily="text"
         lineHeight={100}
         fontSize={25}
@@ -54,7 +54,7 @@ describe('<BaseText />', () => {
       const displayText = 'Displaying some text';
       renderWithTheme(
         <BaseText
-          color="surface.text.normal.highContrast"
+          color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""
           fontFamily="text"
           lineHeight={100}
           fontSize={25}

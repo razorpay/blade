@@ -18,7 +18,7 @@ const ColorSelection = styled.button<{ color: string; isSelected?: boolean }>(
     width: '24px',
     height: '24px',
     borderRadius: makeBorderSize(theme.border.radius.round),
-    outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
+    outline: `1px solid ${theme.colors.surface.background.gray.subtle}`,
     boxShadow: `0px 0px 4px 3px ${isSelected ? theme.colors.brand.primary[500] : 'transparent'}`,
     border: 'none',
     backgroundColor: color,
@@ -40,7 +40,7 @@ const ColorPickerTrigger = styled.label<{ isSelected?: boolean }>(({ isSelected,
   cursor: 'pointer',
   position: 'relative',
   background: 'conic-gradient(red, yellow, lime, aqua, blue, magenta, red)',
-  outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
+  outline: `1px solid ${theme.colors.surface.background.gray.subtle}`,
   boxShadow: `0px 0px 4px 3px ${isSelected ? theme.colors.brand.primary[500] : 'transparent'}`,
 }));
 
@@ -68,7 +68,7 @@ const ColorSelector = ({
 }): React.ReactElement => {
   return (
     <ColorSelection color={color} onClick={onClick} isSelected={isSelected}>
-      {isSelected ? <CheckIcon size="large" color="action.icon.primary.default" /> : null}
+      {isSelected ? <CheckIcon size="large" color="interactive.icon.staticWhite.normal" /> : null}
     </ColorSelection>
   );
 };

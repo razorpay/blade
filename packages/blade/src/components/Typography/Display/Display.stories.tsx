@@ -76,7 +76,7 @@ export default DisplayStoryMeta;
 export const Display = DisplayTemplate.bind({});
 export const WithColor = DisplayTemplate.bind({});
 WithColor.args = {
-  color: 'brand.primary.500',
+  color: 'interactive.background.primary.default',
 };
 
 const Sup = isReactNative() ? DisplayComponent : 'sup';
@@ -85,13 +85,13 @@ const WithMixedColorsTemplate: ComponentStory<typeof DisplayComponent> = (args) 
     <Box>
       <DisplayComponent {...args}>
         Supercharge your business with the all‑powerful{' '}
-        <DisplayComponent {...args} as="span" color="brand.primary.500">
+        <DisplayComponent {...args} as="span" color="interactive.background.primary.default">
           Payment Gateway
         </DisplayComponent>
       </DisplayComponent>
       <DisplayComponent marginTop="spacing.5" {...args}>
         Start accepting{' '}
-        <DisplayComponent {...args} as="span" color="feedback.text.information.lowContrast">
+        <DisplayComponent {...args} as="span" color="feedback.text.information.intense">
           payments
         </DisplayComponent>{' '}
         at just 2% <Sup>*</Sup>
@@ -104,10 +104,10 @@ export const WithMixedColors = WithMixedColorsTemplate.bind({});
 
 const AsPropTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
   return (
-    <Box>
+    (<Box>
       <Text>
         By default{' '}
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Display
         </Text>{' '}
         component automatically renders the <Code size="medium">h1</Code> tag.
@@ -118,7 +118,7 @@ const AsPropTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
       <DisplayComponent {...args}>
         Tweak the storybook controls to see the DOM change
       </DisplayComponent>
-    </Box>
+    </Box>)
   );
 };
 

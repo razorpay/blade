@@ -291,7 +291,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       numberOfLines={numberOfLines}
       editable={!isDisabled}
       maxLength={maxCharacters}
-      placeholderTextColor={theme.colors.surface.text.placeholder.lowContrast}
+      placeholderTextColor={theme.colors.surface.text.gray.disabled}
       onFocus={(event): void => {
         handleOnFocus?.({ name, value: event?.nativeEvent.text });
         // React Native does not have native onPress event on Input elements so for consistency of API we call it on onFocus which also gets triggered on clicks

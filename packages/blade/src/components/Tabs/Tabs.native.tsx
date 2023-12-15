@@ -143,8 +143,8 @@ const Tabs = ({
                 size={iconSizeMap[size]}
                 color={
                   selectedState === 'selected'
-                    ? 'brand.primary.500'
-                    : 'surface.action.icon.default.lowContrast'
+                    ? 'interactive.background.primary.default'
+                    : 'interactive.icon.gray.default'
                 }
               />
             ) : null}
@@ -183,8 +183,8 @@ const Tabs = ({
                 shadowColor: 'transparent',
                 borderRadius: theme.border.radius.small,
                 borderWidth: theme.border.width.thick,
-                borderColor: theme.colors.surface.border.normal.lowContrast,
-                backgroundColor: theme.colors.surface.background.level2.lowContrast,
+                borderColor: theme.colors.surface.border.gray.normal,
+                backgroundColor: theme.colors.surface.background.gray.intense,
                 padding: theme.spacing[2],
               }
             : {
@@ -192,7 +192,7 @@ const Tabs = ({
                 shadowColor: 'transparent',
                 backgroundColor: 'transparent',
                 ...(variant !== 'borderless' && {
-                  borderBottomColor: theme.colors.surface.border.normal.lowContrast,
+                  borderBottomColor: theme.colors.surface.border.gray.normal,
                   borderBottomWidth: theme.border.width.thin,
                 }),
               }),

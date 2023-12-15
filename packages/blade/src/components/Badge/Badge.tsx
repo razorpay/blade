@@ -82,9 +82,9 @@ const getColorProps = ({
 }): ColorProps => {
   const badgeVariant = variant === 'default' ? 'blue' : variant;
   const props: ColorProps = {
-    iconColor: 'feedback.icon.neutral.lowContrast',
-    textColor: 'feedback.text.neutral.lowContrast',
-    backgroundColor: 'feedback.background.neutral.lowContrast',
+    iconColor: 'feedback.icon.gray.intense',
+    textColor: 'feedback.text.gray.intense',
+    backgroundColor: 'feedback.background.neutral.subtle',
   };
   if (isFeedbackVariant(badgeVariant)) {
     props.iconColor = `feedback.icon.${badgeVariant}.${contrast}Contrast`;

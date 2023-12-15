@@ -82,7 +82,7 @@ const FormLabel = ({
         fontStyle="normal"
         fontSize={50}
         fontWeight="bold"
-        color="feedback.text.negative.lowContrast"
+        color="feedback.text.negative.intense"
       >
         *
       </BaseText>

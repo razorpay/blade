@@ -160,7 +160,7 @@ const TourPopover = ({
                     context={context}
                     width={ARROW_WIDTH}
                     height={ARROW_HEIGHT}
-                    fillColor={theme.colors.surface.popup.background}
+                    fillColor={theme.colors.popup.background.subtle}
                     strokeColor={theme.colors.brand.gray[400].lowContrast}
                   />
                 }

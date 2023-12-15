@@ -265,7 +265,7 @@ const StyledRow = styled(Row)<{ $isSelectable: boolean }>(({ theme, $isSelectabl
       }),
       '&:focus': {
         outline: 'none',
-        boxShadow: `0 0 0 2px ${getIn(theme.colors, 'brand.primary.300')}`,
+        boxShadow: `0 0 0 2px ${getIn(theme.colors, 'interactive.background.primary.disabled')}`,
       },
     },
   };

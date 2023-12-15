@@ -30,8 +30,8 @@ describe('overrideTheme', () => {
 
     const overridenTheme: ThemeTokens = cloneDeep(bladeTheme);
     overridenTheme.colors.onLight.brand.primary[300] = overrides.colors.onLight.brand.primary[300];
-    overridenTheme.colors.onLight.feedback.background.positive.highContrast =
-      overrides.colors.onLight.feedback.background.positive.highContrast;
+    overridenTheme.colors.onLight.feedback.background.positive.intense =
+      overrides.colors.onLight.feedback.background.positive.intense;
 
     const overrideThemeResult = overrideTheme({ baseThemeTokens: bladeTheme, overrides });
     expect(overrideThemeResult).toEqual(overridenTheme);
@@ -59,8 +59,8 @@ describe('overrideTheme', () => {
 
     const overridenTheme: ThemeTokens = cloneDeep(bladeTheme);
     overridenTheme.colors.onLight.brand.primary[300] = overrides.colors.onLight.brand.primary[300];
-    overridenTheme.colors.onLight.feedback.background.positive.highContrast =
-      overrides.colors.onLight.feedback.background.positive.highContrast;
+    overridenTheme.colors.onLight.feedback.background.positive.intense =
+      overrides.colors.onLight.feedback.background.positive.intense;
 
     const overrideThemeResult = overrideTheme({ baseThemeTokens: bladeTheme, overrides });
     expect(overrideThemeResult).toEqual(overridenTheme);

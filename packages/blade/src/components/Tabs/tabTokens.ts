@@ -107,18 +107,18 @@ const paddingX: TabItemPadding = {
 
 const textColor = {
   selected: {
-    default: 'brand.primary.500',
-    hover: 'brand.primary.600',
-    focus: 'brand.primary.600',
-    active: 'brand.primary.600',
-    disabled: 'surface.text.placeholder.lowContrast',
+    default: 'interactive.background.primary.default',
+    hover: 'interactive.background.primary.highlighted',
+    focus: 'interactive.background.primary.highlighted',
+    active: 'interactive.background.primary.highlighted',
+    disabled: 'surface.text.gray.disabled',
   },
   unselected: {
-    default: 'surface.text.muted.lowContrast',
-    hover: 'surface.text.subdued.lowContrast',
-    focus: 'surface.text.subdued.lowContrast',
-    active: 'surface.text.subdued.lowContrast',
-    disabled: 'surface.text.placeholder.lowContrast',
+    default: 'surface.text.gray.muted',
+    hover: 'surface.text.gray.muted',
+    focus: 'surface.text.gray.muted',
+    active: 'surface.text.gray.muted',
+    disabled: 'surface.text.gray.disabled',
   },
 } as const;
 
@@ -140,9 +140,9 @@ const backgroundColor = {
     },
     filled: {
       default: 'transparent',
-      hover: 'colors.brand.gray.a50.lowContrast',
-      focus: 'colors.brand.gray.a50.lowContrast',
-      active: 'colors.brand.gray.a50.lowContrast',
+      hover: 'colors.interactive.background.gray.default',
+      focus: 'colors.interactive.background.gray.default',
+      active: 'colors.interactive.background.gray.default',
       disabled: 'transparent',
     },
   },
@@ -162,10 +162,10 @@ const backgroundColor = {
       disabled: 'transparent',
     },
     filled: {
-      default: 'colors.brand.primary.300',
-      hover: 'colors.brand.primary.400',
-      focus: 'colors.brand.primary.400',
-      active: 'colors.brand.primary.400',
+      default: 'colors.interactive.background.primary.disabled',
+      hover: 'colors.interactive.background.primary.faded',
+      focus: 'colors.interactive.background.primary.faded',
+      active: 'colors.interactive.background.primary.faded',
       disabled: 'transparent',
     },
   },

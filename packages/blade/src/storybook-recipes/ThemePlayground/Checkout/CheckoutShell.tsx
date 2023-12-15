@@ -79,9 +79,9 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
     <Box
       maxWidth="375px"
       height="640px"
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       borderWidth="thin"
-      borderColor="surface.border.normal.lowContrast"
+      borderColor="surface.border.gray.normal"
       borderRadius="medium"
       display="flex"
       flexDirection="column"
@@ -102,7 +102,7 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
       <StyledHeader>
         <MerchantAvatar src="https://i.imgur.com/buGhEkT.png" />
         <Box zIndex={1}>
-          <Heading color="action.text.primary.default">Merchant Name</Heading>
+          <Heading color="interactive.text.staticWhite.normal">Merchant Name</Heading>
           <TrustedBusinessWrapper>
             <img
               src="https://checkout-static-next.razorpay.com/build/assets/images/rtb-live.d7eecf4c.svg"
@@ -114,16 +114,16 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
               marginLeft="spacing.2"
               marginRight="spacing.2"
               size="small"
-              color="action.text.primary.default"
+              color="interactive.text.staticWhite.normal"
             >
               Razorpay trusted business
             </Text>
-            <InfoIcon size="xsmall" color="action.icon.primary.default" />
+            <InfoIcon size="xsmall" color="interactive.icon.staticWhite.normal" />
           </TrustedBusinessWrapper>
         </Box>
 
         <Box display="flex" alignItems="flex-end" flexDirection="column" flex={1}>
-          <CloseIcon size="medium" color="action.icon.primary.default" />
+          <CloseIcon size="medium" color="interactive.icon.staticWhite.normal" />
           <LanguageSelector onClick={() => setIsLanguageSheetOpen(true)}>
             <svg
               width="15px"
@@ -172,7 +172,7 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
                 mask="url(#path-5-outside-1_4902_36286)"
               />
             </svg>
-            <ChevronDownIcon size="xsmall" color="action.icon.primary.default" />
+            <ChevronDownIcon size="xsmall" color="interactive.icon.staticWhite.normal" />
           </LanguageSelector>
         </Box>
       </StyledHeader>

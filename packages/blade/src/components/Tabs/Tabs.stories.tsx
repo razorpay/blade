@@ -36,12 +36,12 @@ import { List, ListItem, ListItemText } from '~components/List';
 
 const Page = (): React.ReactElement => {
   return (
-    <StoryPageWrapper
-      componentName="Tabs"
-      componentDescription="A tab is a navigation component used in the interface to switch between different views in the same context. Tabs are contextual to the section or the page and are triggered by user interaction."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=60965%3A367088&mode=dev"
-    >
-      <Heading size="large">Usage</Heading>{' '}
+    (<StoryPageWrapper
+        componentName="Tabs"
+        componentDescription="A tab is a navigation component used in the interface to switch between different views in the same context. Tabs are contextual to the section or the page and are triggered by user interaction."
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=60965%3A367088&mode=dev"
+      >
+      <Heading size="small">Usage</Heading>{' '}
       <Sandbox editorHeight={500}>
         {`
         import {
@@ -84,7 +84,7 @@ const Page = (): React.ReactElement => {
         export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -270,7 +270,7 @@ const SubscriptionPanel = ({ isVertical }: { isVertical: boolean }) => {
 
 const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
   return (
-    <PanelWrapper isVertical={isVertical}>
+    (<PanelWrapper isVertical={isVertical}>
       <Text>
         This is an overview of all your plans. You can click on each plan to view more details.
       </Text>
@@ -287,10 +287,10 @@ const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
           <CardBody>
             <Box display="flex" flexDirection="row" gap="spacing.4">
               <Box display="flex" flexDirection="column" gap="spacing.2">
-                <Text weight="bold">Name</Text>
-                <Text weight="bold">Description</Text>
-                <Text weight="bold">Bill Amount</Text>
-                <Text weight="bold">Bill Frequency</Text>
+                <Text weight="semibold">Name</Text>
+                <Text weight="semibold">Description</Text>
+                <Text weight="semibold">Bill Amount</Text>
+                <Text weight="semibold">Bill Frequency</Text>
               </Box>
               <Box display="flex" flexDirection="column" gap="spacing.2">
                 <Text>Basic Plan</Text>
@@ -308,10 +308,10 @@ const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
           <CardBody>
             <Box display="flex" flexDirection="row" gap="spacing.4">
               <Box display="flex" flexDirection="column" gap="spacing.2">
-                <Text weight="bold">Name</Text>
-                <Text weight="bold">Description</Text>
-                <Text weight="bold">Bill Amount</Text>
-                <Text weight="bold">Bill Frequency</Text>
+                <Text weight="semibold">Name</Text>
+                <Text weight="semibold">Description</Text>
+                <Text weight="semibold">Bill Amount</Text>
+                <Text weight="semibold">Bill Frequency</Text>
               </Box>
               <Box display="flex" flexDirection="column" gap="spacing.2">
                 <Text>Premium Plan</Text>
@@ -323,7 +323,7 @@ const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
           </CardBody>
         </Card>
       </Box>
-    </PanelWrapper>
+    </PanelWrapper>)
   );
 };
 
@@ -337,7 +337,7 @@ const SettingsCard = ({
   children: React.ReactNode;
 }) => {
   return (
-    <Card padding="spacing.5" elevation="none" width="100%">
+    (<Card padding="spacing.5" elevation="none" width="100%">
       <CardBody>
         <Box display="flex" flexDirection="column" gap="spacing.4">
           <Box
@@ -347,15 +347,15 @@ const SettingsCard = ({
             alignItems="center"
           >
             <Box display="flex" flexDirection="row" gap="spacing.4" alignItems="center">
-              <Icon size="large" color="surface.text.subtle.lowContrast" />
-              <Heading>{title}</Heading>
+              <Icon size="large" color="surface.text.gray.subtle" />
+              <Text size="large">{title}</Text>
             </Box>
             <Switch accessibilityLabel="Enable Card" />
           </Box>
           {children}
         </Box>
       </CardBody>
-    </Card>
+    </Card>)
   );
 };
 
@@ -480,10 +480,10 @@ const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React
   const [value, setValue] = React.useState('plans');
 
   return (
-    <Box height={isReactNative() ? '100%' : undefined}>
+    (<Box height={isReactNative() ? '100%' : undefined}>
       <Box padding="spacing.3" marginBottom="spacing.5">
         <Text>Tab's state can be controlled by using the value & onChange prop.</Text>
-        <Text weight="bold" marginBottom="spacing.4">
+        <Text weight="semibold" marginBottom="spacing.4">
           Current Tab: {value}
         </Text>
         <Box display="flex" flexDirection="row" gap="spacing.4">
@@ -498,7 +498,6 @@ const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React
           </Button>
         </Box>
       </Box>
-
       <Card elevation="none" padding="spacing.0">
         <CardBody height="100%">
           <Box height="100%" marginX="spacing.6" marginBottom="spacing.6" marginTop="spacing.2">
@@ -535,7 +534,7 @@ const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React
           </Box>
         </CardBody>
       </Card>
-    </Box>
+    </Box>)
   );
 };
 
@@ -552,13 +551,13 @@ const TabsWithTooltipTemplate: ComponentStory<(props: StoryControlProps) => Reac
   }
 
   return (
-    <Box>
+    (<Box>
       <Text>
         You can compose Tooltip with TabItem to show additional information about the TabItem by
         wrapping the <Code size="medium">TabItem</Code> with{' '}
         <Code size="medium">TooltipInteractiveWrapper</Code>.
       </Text>
-      <Text marginBottom="spacing.5" type="subdued">
+      <Text marginBottom="spacing.5" color="surface.text.gray.muted">
         (Hover over the Settings tab to see it in action)
       </Text>
       <Card elevation="none" padding="spacing.0">
@@ -599,7 +598,7 @@ const TabsWithTooltipTemplate: ComponentStory<(props: StoryControlProps) => Reac
           </Box>
         </CardBody>
       </Card>
-    </Box>
+    </Box>)
   );
 };
 
@@ -737,17 +736,16 @@ const ProductUseCase2Template: ComponentStory<
   }
 
   return (
-    <Box height={isReactNative() ? '100%' : undefined}>
+    (<Box height={isReactNative() ? '100%' : undefined}>
       <Text>
         We can add related actions to the Tab's right side (as found in the{' '}
         <Link href="https://dashboard.razorpay.com/app/subscriptions">dashboard</Link>) by wrapping
         the <Code size="medium">TabList</Code> with a <Code size="medium">Box</Code> and aligning
         buttons or links to the right side of the box with flex.
       </Text>
-      <Text type="subdued">
+      <Text color="surface.text.gray.muted">
         Note: In mobile devices the real estate is limited, thus the UI should be tweaked.
       </Text>
-
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
           <Tabs variant="borderless" value={value} onChange={setValue}>
@@ -788,7 +786,7 @@ const ProductUseCase2Template: ComponentStory<
           </Tabs>
         </CardBody>
       </Card>
-    </Box>
+    </Box>)
   );
 };
 
@@ -804,7 +802,7 @@ const AccountRoute = ({
     };
   };
 }) => (
-  <Text weight="bold" marginY="spacing.4">
+  <Text weight="semibold" marginY="spacing.4">
     Router param: {match.params.id}
   </Text>
 );
@@ -821,7 +819,7 @@ const ReactRouterExample = () => {
   }
 
   return (
-    <Box height={isReactNative() ? '100%' : undefined}>
+    (<Box height={isReactNative() ? '100%' : undefined}>
       <Text>
         You can use <Code size="medium">Tabs</Code> with <Code size="medium">react-router</Code> to
         create a tabbed navigation.
@@ -846,14 +844,12 @@ const ReactRouterExample = () => {
           </ListItemText>
         </ListItem>
       </List>
-
-      <Text type="subdued">
+      <Text color="surface.text.gray.muted">
         Switch to the <Code size="medium">Actions</Code> addon panel in storybook to see how routes
         are changing, and also notice how we can detect which route is active by using the{' '}
         <Code size="medium">Route</Code>
         component.
       </Text>
-
       <Card marginTop="spacing.6" elevation="none" padding="spacing.0">
         <CardBody>
           <Tabs variant="borderless" defaultValue="subscriptions">
@@ -901,7 +897,7 @@ const ReactRouterExample = () => {
           </Tabs>
         </CardBody>
       </Card>
-    </Box>
+    </Box>)
   );
 };
 

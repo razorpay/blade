@@ -58,44 +58,44 @@ const radioIconColors: RadioIconColors = {
   variants: {
     default: {
       dot: {
-        checked: 'colors.brand.gray.200.lowContrast',
-        unchecked: 'colors.brand.gray.200.lowContrast',
+        checked: 'colors.interactive.background.staticWhite.disabled',
+        unchecked: 'colors.interactive.background.staticWhite.disabled',
       },
       border: {
-        checked: 'colors.brand.primary.500',
-        unchecked: 'colors.brand.gray.500.lowContrast',
+        checked: 'colors.interactive.background.primary.default',
+        unchecked: 'colors.interactive.border.gray.highlighted',
       },
       background: {
-        checked: 'colors.brand.primary.500',
+        checked: 'colors.interactive.background.primary.default',
         unchecked: 'transparent',
       },
     },
     disabled: {
       dot: {
-        checked: 'colors.brand.gray.200.lowContrast',
-        unchecked: 'colors.brand.gray.200.lowContrast',
+        checked: 'colors.interactive.background.staticWhite.disabled',
+        unchecked: 'colors.interactive.background.staticWhite.disabled',
       },
       border: {
         checked: 'transparent',
-        unchecked: 'colors.brand.gray.a100.lowContrast',
+        unchecked: 'colors.interactive.background.gray.disabled',
       },
       background: {
-        checked: 'colors.brand.gray.a100.lowContrast',
+        checked: 'colors.interactive.background.gray.disabled',
         unchecked: 'transparent',
       },
     },
     negative: {
       dot: {
-        checked: 'colors.brand.gray.200.lowContrast',
-        unchecked: 'colors.brand.gray.200.lowContrast',
+        checked: 'colors.interactive.background.staticWhite.disabled',
+        unchecked: 'colors.interactive.background.staticWhite.disabled',
       },
       border: {
-        checked: 'colors.feedback.border.negative.highContrast',
-        unchecked: 'colors.feedback.border.negative.highContrast',
+        checked: 'colors.feedback.border.negative.intense',
+        unchecked: 'colors.feedback.border.negative.intense',
       },
       background: {
-        checked: 'colors.feedback.background.negative.highContrast',
-        unchecked: 'colors.feedback.background.negative.lowContrast',
+        checked: 'colors.feedback.background.negative.intense',
+        unchecked: 'colors.feedback.background.negative.subtle',
       },
     },
   },
@@ -104,12 +104,12 @@ const radioIconColors: RadioIconColors = {
 const radioHoverTokens: SelectorInputHoverTokens = {
   default: {
     background: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.a50.lowContrast',
+      checked: 'colors.interactive.background.primary.highlighted',
+      unchecked: 'colors.interactive.background.gray.default',
     },
     border: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.500.lowContrast',
+      checked: 'colors.interactive.background.primary.highlighted',
+      unchecked: 'colors.interactive.border.gray.highlighted',
     },
   },
 };

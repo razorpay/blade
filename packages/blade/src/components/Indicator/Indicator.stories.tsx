@@ -12,13 +12,13 @@ import { getPlatformType } from '~utils';
 
 const Page = (): ReactElement => {
   return (
-    <StoryPageWrapper
-      componentName="Indicator"
-      componentDescription="Indicators describe the condition of an entity. They can be used to convey semantic meaning,
-    such as statuses and semantical-categories."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8224%3A1"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentName="Indicator"
+        componentDescription="Indicators describe the condition of an entity. They can be used to convey semantic meaning,
+      such as statuses and semantical-categories."
+        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8224%3A1"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox editorHeight={500}>
         {`
         import { Indicator, Box } from '@razorpay/blade/components';
@@ -34,7 +34,7 @@ const Page = (): ReactElement => {
         export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 

@@ -76,13 +76,13 @@ export type FormHintProps = {
 const Icons = {
   error: (): ReactElement => (
     <>
-      <InfoIcon color="feedback.icon.negative.lowContrast" size="small" />
+      <InfoIcon color="feedback.icon.negative.intense" size="small" />
       <BaseBox marginRight="spacing.2" />
     </>
   ),
   success: (): ReactElement => (
     <>
-      <CheckIcon color="feedback.icon.positive.lowContrast" size="small" />
+      <CheckIcon color="feedback.icon.positive.intense" size="small" />
       <BaseBox marginRight="spacing.2" />
     </>
   ),
@@ -98,9 +98,9 @@ const FormHint = ({
   successTextId,
 }: FormHintProps): React.ReactElement => {
   const colors = {
-    help: 'surface.text.muted.lowContrast',
-    error: 'feedback.text.negative.lowContrast',
-    success: 'feedback.text.positive.lowContrast',
+    help: 'surface.text.gray.muted',
+    error: 'feedback.text.negative.intense',
+    success: 'feedback.text.positive.intense',
   } as const;
 
   const showError = type === 'error' && errorText;

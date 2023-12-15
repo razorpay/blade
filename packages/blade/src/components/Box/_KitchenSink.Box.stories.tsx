@@ -7,16 +7,14 @@ const allStories = Object.values(composeStories(boxStories));
 
 export const Box = (): JSX.Element => {
   return (
-    <BoxComponent display="flex" flexDirection="column" gap="spacing.4">
+    (<BoxComponent display="flex" flexDirection="column" gap="spacing.4">
       {allStories.map((Story) => {
-        return (
-          <>
-            <Heading>{Story.storyName}</Heading>
-            <Story />
-          </>
-        );
+        return (<>
+          <Text size="large">{Story.storyName}</Text>
+          <Story />
+        </>);
       })}
-    </BoxComponent>
+    </BoxComponent>)
   );
 };
 

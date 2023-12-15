@@ -78,8 +78,8 @@ const CheckboxIcon = ({
   size,
 }: CheckboxIconProps) => {
   const { theme } = useTheme();
-  const defaultIconColor = getIn(theme, 'colors.brand.gray.200.lowContrast');
-  const disabledIconColor = getIn(theme, 'colors.brand.gray.500.lowContrast');
+  const defaultIconColor = getIn(theme, 'colors.interactive.background.staticWhite.disabled');
+  const disabledIconColor = getIn(theme, 'colors.interactive.border.gray.highlighted');
   const iconColor = isDisabled ? disabledIconColor : defaultIconColor;
 
   return (

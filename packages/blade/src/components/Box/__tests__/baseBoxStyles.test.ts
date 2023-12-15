@@ -12,7 +12,7 @@ export const removeUndefinedValues = (props: Record<string, unknown>): Record<st
 describe('getColorValue', () => {
   it('should return correct background color value', () => {
     expect(
-      getColorValue('action.background.primary.active', paymentLightTheme, 'base'),
+      getColorValue('interactive.background.primary.default', paymentLightTheme, 'base'),
     ).toMatchInlineSnapshot(`"hsla(230, 100%, 42%, 1)"`);
     expect(getColorValue('red', paymentLightTheme, 'base')).toBe('red');
     expect(getColorValue('red', paymentLightTheme, 'm')).toBe(undefined);

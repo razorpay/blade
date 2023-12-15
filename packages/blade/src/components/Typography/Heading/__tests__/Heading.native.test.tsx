@@ -16,7 +16,7 @@ describe('<Heading />', () => {
   it('should render Heading with color', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading color="surface.text.placeholder.lowContrast">{displayText}</Heading>,
+      <Heading color="surface.text.gray.disabled">{displayText}</Heading>,
     );
     expect(getByText(displayText)).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
@@ -26,7 +26,7 @@ describe('<Heading />', () => {
     const { toJSON } = renderWithTheme(
       <Heading>
         Supercharge your business with the all‑powerful{' '}
-        <Heading as="span" color="feedback.information.action.text.primary.default.lowContrast">
+        <Heading as="span" color="interactive.text.information.subtle">
           Payment Gateway
         </Heading>
       </Heading>,

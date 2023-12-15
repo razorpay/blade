@@ -66,31 +66,31 @@ const switchColors: SwitchColors = {
   track: {
     default: {
       background: {
-        checked: 'colors.brand.primary.500',
-        unchecked: 'colors.brand.gray.500.lowContrast',
+        checked: 'colors.interactive.background.primary.default',
+        unchecked: 'colors.interactive.border.gray.highlighted',
       },
     },
     disabled: {
       background: {
-        checked: 'colors.brand.primary.400',
-        unchecked: 'colors.brand.gray.a100.lowContrast',
+        checked: 'colors.interactive.background.primary.faded',
+        unchecked: 'colors.interactive.background.gray.disabled',
       },
     },
   },
   thumb: {
     default: {
-      background: 'colors.brand.gray.700.highContrast',
+      background: 'colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"',
     },
     disabled: {
-      background: 'colors.brand.gray.200.lowContrast',
+      background: 'colors.interactive.background.staticWhite.disabled',
     },
   },
   thumbIcon: {
     default: {
-      fill: 'colors.brand.gray.200.highContrast',
+      fill: 'colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"',
     },
     disabled: {
-      fill: 'colors.surface.text.placeholder.lowContrast',
+      fill: 'colors.surface.text.gray.disabled',
     },
   },
 };
@@ -111,8 +111,8 @@ const switchMotion: Record<string, Record<string, `motion.${EasingString | Durat
 const switchHoverTokens: SelectorInputHoverTokens = {
   default: {
     background: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.600.lowContrast',
+      checked: 'colors.interactive.background.primary.highlighted',
+      unchecked: 'colors.interactive.background.gray.highlighted',
     },
   },
 };

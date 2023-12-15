@@ -30,12 +30,12 @@ import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
 
 const Page = (): React.ReactElement => {
   return (
-    <StoryPageWrapper
-      componentName="Popover"
-      componentDescription="The popover typically provides additional context about the element or its function. A popover is always triggered by a mouse hover on desktop and on tap on mobile."
-      figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2875-40870&mode=design&t=UP0cRLPEhmoPYo3b-0"
-    >
-      <Title>Usage</Title>
+    (<StoryPageWrapper
+        componentName="Popover"
+        componentDescription="The popover typically provides additional context about the element or its function. A popover is always triggered by a mouse hover on desktop and on tap on mobile."
+        figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2875-40870&mode=design&t=UP0cRLPEhmoPYo3b-0"
+      >
+      <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
         import { Popover, Button } from '@razorpay/blade/components'
@@ -51,9 +51,9 @@ const Page = (): React.ReactElement => {
         export default App;
       `}
       </Sandbox>
-      <Title>Popover Vs Tooltip Vs Guided Popover</Title>
+      <Heading size="medium">Popover Vs Tooltip Vs Guided Popover</Heading>
       <PopoverVsTooltip />
-    </StoryPageWrapper>
+    </StoryPageWrapper>)
   );
 };
 
@@ -99,16 +99,16 @@ const Center = ({ children }: { children: React.ReactNode }): React.ReactElement
 
 const Content = () => {
   return (
-    <Box>
+    (<Box>
       <Box
         display="flex"
         gap="spacing.3"
         padding="spacing.3"
         flexDirection="column"
         borderRadius="medium"
-        backgroundColor="surface.background.level2.lowContrast"
+        backgroundColor="surface.background.gray.intense"
         borderWidth="thin"
-        borderColor="surface.border.normal.lowContrast"
+        borderColor="surface.border.gray.normal"
       >
         <Box display="flex" justifyContent="space-between" gap="spacing.5">
           <Text size="medium">Gross Settlements</Text>
@@ -120,13 +120,13 @@ const Content = () => {
         </Box>
         <Divider />
         <Box display="flex" justifyContent="space-between" gap="spacing.5">
-          <Text weight="bold" size="medium">
+          <Text weight="semibold" size="medium">
             Net Settlements
           </Text>
           <Amount size="body-medium-bold" value={4750} />
         </Box>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 
@@ -155,7 +155,7 @@ const PopoverTemplate: ComponentStory<typeof Popover> = (args) => {
     <Center>
       <Popover
         {...args}
-        titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+        titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
       >
         <Button>View Settlement</Button>
       </Popover>
@@ -204,7 +204,7 @@ export const Controlled: ComponentStory<typeof Popover> = (args) => {
               setIsOpen(isOpen);
             }}
             footer={<FooterContent onClick={() => setIsOpen(false)} />}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+            titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
           >
             <Button onClick={() => setIsOpen((prev) => !prev)}>View Settlement</Button>
           </Popover>
@@ -277,49 +277,47 @@ Placement.args = {
 
 export const PopoverInteractiveWrapperTemplate: ComponentStory<typeof Popover> = (args) => {
   const LeadingIcon = iconMap[args.titleLeading as string]!;
-  return (
-    <>
-      <Text as="span">
-        With{' '}
-        <Text weight="bold" as="span">
-          PopoverInteractiveWrapper
-        </Text>{' '}
-        you can make Popover open when clicking non-interactive elements like Icons,Badges,Counter
-        etc
-      </Text>
-      <Text type="muted">Note: PopoverInteractiveWrapper is a button by default.</Text>
-      <Center>
-        <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-          <Popover
-            {...args}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
-          >
-            <PopoverInteractiveWrapper display="inline-block">
-              <InfoIcon color="surface.text.normal.lowContrast" size="large" />
-            </PopoverInteractiveWrapper>
-          </Popover>
+  return (<>
+    <Text as="span">
+      With{' '}
+      <Text weight="semibold" as="span">
+        PopoverInteractiveWrapper
+      </Text>{' '}
+      you can make Popover open when clicking non-interactive elements like Icons,Badges,Counter
+      etc
+    </Text>
+    <Text color="surface.text.gray.muted">Note: PopoverInteractiveWrapper is a button by default.</Text>
+    <Center>
+      <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+        <Popover
+          {...args}
+          titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
+        >
+          <PopoverInteractiveWrapper display="inline-block">
+            <InfoIcon color="surface.text.gray.normal" size="large" />
+          </PopoverInteractiveWrapper>
+        </Popover>
 
-          <Popover
-            {...args}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
-          >
-            <PopoverInteractiveWrapper>
-              <Badge variant="information">NEW</Badge>
-            </PopoverInteractiveWrapper>
-          </Popover>
+        <Popover
+          {...args}
+          titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
+        >
+          <PopoverInteractiveWrapper>
+            <Badge variant="information">NEW</Badge>
+          </PopoverInteractiveWrapper>
+        </Popover>
 
-          <Popover
-            {...args}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
-          >
-            <PopoverInteractiveWrapper>
-              <Counter value={20} />
-            </PopoverInteractiveWrapper>
-          </Popover>
-        </Box>
-      </Center>
-    </>
-  );
+        <Popover
+          {...args}
+          titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
+        >
+          <PopoverInteractiveWrapper>
+            <Counter value={20} />
+          </PopoverInteractiveWrapper>
+        </Popover>
+      </Box>
+    </Center>
+  </>);
 };
 PopoverInteractiveWrapperTemplate.storyName = 'PopoverInteractiveWrapper';
 PopoverInteractiveWrapperTemplate.args = {
@@ -336,16 +334,16 @@ const MyCustomTriggerButton = React.forwardRef<
   if (isReactNative()) {
     return (
       // just spread the props
-      <Button ref={ref as never} onClick={props.onClick as never}>
+      (<Button ref={ref as never} onClick={props.onClick as never}>
         {children}
-      </Button>
+      </Button>)
     );
   }
 
   return (
     // just spread the props
-    <BaseBox
-      backgroundColor="surface.background.level2.lowContrast"
+    (<BaseBox
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       borderRadius="medium"
       role="button"
@@ -355,7 +353,7 @@ const MyCustomTriggerButton = React.forwardRef<
       {...props}
     >
       {children}
-    </BaseBox>
+    </BaseBox>)
   );
 });
 
@@ -435,7 +433,7 @@ export const CustomTrigger: ComponentStory<typeof Popover> = (args) => {
       <Center>
         <Popover
           {...args}
-          titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+          titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
         >
           <MyCustomTriggerButton>View Settlements</MyCustomTriggerButton>
         </Popover>
@@ -464,7 +462,7 @@ export const InitialFocus: ComponentStory<typeof Popover> = (args) => {
           {...args}
           initialFocusRef={buttonRef}
           footer={<FooterContent ref={buttonRef} />}
-          titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+          titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
         >
           <Button>View Settlement</Button>
         </Popover>
@@ -502,10 +500,10 @@ export const ProductUseCase1: ComponentStory<typeof Popover> = (args, context) =
   };
 
   return (
-    <Box>
+    (<Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Product Usecase Example:
         </Text>
         <Text>
@@ -558,7 +556,7 @@ export const ProductUseCase1: ComponentStory<typeof Popover> = (args, context) =
           />
         </Popover>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 ProductUseCase1.storyName = 'Product Usecase: Input with action';
@@ -576,10 +574,10 @@ export const ProductUseCase2: ComponentStory<typeof Popover> = (args, context) =
   };
 
   return (
-    <Box>
+    (<Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Product Usecase Example:
         </Text>
         <Text>
@@ -588,7 +586,6 @@ export const ProductUseCase2: ComponentStory<typeof Popover> = (args, context) =
         </Text>
       </Text>
       <Text marginY="spacing.5">isDarkMode On? {isDarkMode ? 'Yes' : 'No'}</Text>
-
       <Box marginTop="spacing.8">
         <Popover
           placement="bottom-end"
@@ -601,11 +598,11 @@ export const ProductUseCase2: ComponentStory<typeof Popover> = (args, context) =
             }
           }}
           title="Dark Mode"
-          titleLeading={<SunIcon color="surface.text.normal.lowContrast" size="small" />}
+          titleLeading={<SunIcon color="surface.text.gray.normal" size="small" />}
           content={
             <Text as="span">
               Want a more comfortable reading experience?{' '}
-              <Text as="span" weight="bold">
+              <Text as="span" weight="semibold">
                 Try dark mode
               </Text>
             </Text>
@@ -630,7 +627,7 @@ export const ProductUseCase2: ComponentStory<typeof Popover> = (args, context) =
           />
         </Popover>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 ProductUseCase2.storyName = 'Product Usecase: Dark Mode';
@@ -640,10 +637,10 @@ export const ProductUseCase3: ComponentStory<typeof Popover> = (args, context) =
   const isInDocsMode = context.viewMode === 'docs';
 
   return (
-    <Box>
+    (<Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Product Usecase Example:
         </Text>
         <Text>
@@ -651,7 +648,6 @@ export const ProductUseCase3: ComponentStory<typeof Popover> = (args, context) =
           opens once and never again.
         </Text>
       </Text>
-
       <Box width="400px" marginTop="spacing.8">
         <Popover
           isOpen={isOpen}
@@ -688,7 +684,7 @@ export const ProductUseCase3: ComponentStory<typeof Popover> = (args, context) =
           />
         </Popover>
       </Box>
-    </Box>
+    </Box>)
   );
 };
 ProductUseCase3.storyName = 'Product Usecase: Introducing Search';

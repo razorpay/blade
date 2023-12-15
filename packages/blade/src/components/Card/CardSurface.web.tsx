@@ -13,7 +13,7 @@ const CardSurface = styled(BaseBox)<{ surfaceLevel: 2 | 3 }>(
       borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
       borderStyle: elevation === 'none' ? 'solid' : undefined,
       borderColor:
-        elevation === 'none' ? `${theme.colors.surface.border.normal.lowContrast}` : undefined,
+        elevation === 'none' ? `${theme.colors.surface.border.gray.normal}` : undefined,
       backgroundColor,
       boxSizing: 'border-box',
     };

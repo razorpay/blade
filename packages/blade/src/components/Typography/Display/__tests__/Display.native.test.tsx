@@ -43,7 +43,7 @@ describe('<Display />', () => {
   it('should render Display with color', () => {
     const displayText = 'Displaying Landing Page Display';
     const { toJSON } = renderWithTheme(
-      <Display color="surface.text.subtle.highContrast">{displayText}</Display>,
+      <Display color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"">{displayText}</Display>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
@@ -52,7 +52,7 @@ describe('<Display />', () => {
     const { toJSON } = renderWithTheme(
       <Display>
         Supercharge your business with the all‑powerful{' '}
-        <Display as="span" color="feedback.information.action.text.primary.default.lowContrast">
+        <Display as="span" color="interactive.text.information.subtle">
           Payment Gateway
         </Display>
       </Display>,

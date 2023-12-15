@@ -264,7 +264,7 @@ const getProps = ({
       theme.colors,
       getColorToken({ property: 'border', variant, color, state: 'focus' }),
     ),
-    focusRingColor: getIn(theme.colors, 'brand.primary.400'),
+    focusRingColor: getIn(theme.colors, 'interactive.background.primary.faded'),
     borderWidth: makeBorderSize(theme.border.width.thin),
     borderRadius: makeBorderSize(theme.border.radius.small),
     motionDuration: 'duration.xquick',

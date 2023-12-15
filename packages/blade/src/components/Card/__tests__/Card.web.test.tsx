@@ -128,7 +128,7 @@ describe('<Card />', () => {
             <CardHeaderLeading
               title={cardTitle}
               subtitle={cardSubtitle}
-              prefix={<InfoIcon color="action.icon.primary.default" size="xsmall" />}
+              prefix={<InfoIcon color="interactive.icon.staticWhite.normal" size="xsmall" />}
             />
           </CardHeader>
         </Card>,

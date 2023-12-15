@@ -158,7 +158,7 @@ const _ListItem = ({
             alignSelf="flex-start"
           >
             {ItemIcon ? (
-              <ItemIcon size={size} color="surface.text.subdued.lowContrast" />
+              <ItemIcon size={size} color="surface.text.gray.muted" />
             ) : (
               <UnorderedItemIcon level={level} />
             )}
@@ -177,7 +177,7 @@ const _ListItem = ({
             borderRadius={variant === 'ordered-filled' ? 'max' : undefined}
             backgroundColor={
               variant === 'ordered-filled'
-                ? getIn(theme, 'colors.brand.gray.a100.lowContrast')
+                ? getIn(theme, 'colors.interactive.background.gray.disabled')
                 : undefined
             }
           >
