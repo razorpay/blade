@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 import outdent from 'outdent';
 import { Highlight, Link } from '@storybook/design-system';
 import overrideTheme from './overrideTheme';
-import paymentTheme from './paymentTheme';
+import bladeTheme from './bladeTheme';
 import { Button } from '~components/Button';
 import { BladeProvider } from '~components/BladeProvider';
 import { Checkbox, CheckboxGroup } from '~components/Checkbox';
@@ -27,7 +27,7 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Highlight language="tsx">{outdent`
         const customTheme = overrideTheme({
-          baseThemeTokens: paymentTheme, // theme to override
+          baseThemeTokens: bladeTheme, // theme to override
           overrides: {
             colors: {
               onLight: {
@@ -99,7 +99,7 @@ const OverrideThemeExample = (props: { hue: number }): React.ReactElement => {
   const tertiaryText = primaryColor;
 
   const customTheme = overrideTheme({
-    baseThemeTokens: paymentTheme,
+    baseThemeTokens: bladeTheme,
     overrides: {
       colors: {
         onLight: {

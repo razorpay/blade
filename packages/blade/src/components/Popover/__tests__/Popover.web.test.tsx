@@ -6,7 +6,7 @@ import { act, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { Popover, PopoverInteractiveWrapper } from '..';
 import { Button } from '~components/Button';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 import { InfoIcon } from '~components/Icons';
 import { MetaConstants } from '~utils/metaAttribute';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -15,7 +15,7 @@ import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 
 const waitForPosition = () => act(async () => {});
-const animationDuration = paymentTheme.motion.duration.quick;
+const animationDuration = bladeTheme.motion.duration.quick;
 const popoverInteractiveWrapperId = 'popover-interactive-wrapper';
 
 describe('<Popover />', () => {

@@ -1,6 +1,6 @@
 import cloneDeep from 'lodash/cloneDeep';
 import merge from 'lodash/merge';
-import paymentTheme from './paymentTheme';
+import bladeTheme from './bladeTheme';
 import type { ThemeTokens } from './theme';
 import { hasSameObjectStructure } from '~utils/hasSameObjectStructure';
 import type { ObjectWithKeys } from '~utils/hasSameObjectStructure';
@@ -30,7 +30,7 @@ type OverrideTheme = {
  * @example
  * ```tsx
  * const customTheme = overrideTheme({
- *   baseThemeTokens: paymentTheme, // theme to override
+ *   baseThemeTokens: bladeTheme, // theme to override
  *   overrides: {
  *     colors: {
  *       onLight: {
@@ -52,7 +52,7 @@ const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeToke
     if (
       !hasSameObjectStructure(
         (baseThemeTokens as unknown) as ObjectWithKeys,
-        (paymentTheme as unknown) as ObjectWithKeys,
+        (bladeTheme as unknown) as ObjectWithKeys,
       )
     ) {
       throwBladeError({
