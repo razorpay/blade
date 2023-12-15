@@ -6,6 +6,11 @@ const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
 };
 
 const transformer: Transform = (file, api, options) => {
+  // Don't transform if the file doesn't import `@razorapy/blade/components` because it's not using Blade components
+  if (!file.source.includes('@razorpay/blade/components')) {
+    return file.source;
+  }
+
   // Maps to transform Title sizes to Heading sizes
   const titleToHeadingMap = {
     xlarge: '2xlarge',
