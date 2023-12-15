@@ -7,7 +7,7 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 type InteractiveText = DotNotationToken<Theme['colors']['interactive']['text']>;
 type SurfaceText = DotNotationToken<Theme['colors']['surface']['text']>;
 type FeedbackText = DotNotationToken<Theme['colors']['feedback']['text']>;
-type TextColors =
+export type TextColors =
   | `interactive.text.${InteractiveText}`
   | `surface.text.${SurfaceText}`
   | `feedback.text.${FeedbackText}`;

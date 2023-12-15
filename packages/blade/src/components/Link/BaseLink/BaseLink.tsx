@@ -8,7 +8,7 @@ import type { GestureResponderEvent } from 'react-native';
 import StyledBaseLink from './StyledBaseLink';
 import getIn from '~utils/lodashButBetter/get';
 import useInteraction from '~utils/useInteraction';
-import type { IconComponent, IconProps } from '~components/Icons';
+import type { IconColors, IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -23,7 +23,11 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
-import type { BaseTextProps, BaseTextSizes } from '~components/Typography/BaseText/types';
+import type {
+  BaseTextProps,
+  BaseTextSizes,
+  TextColors,
+} from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -150,13 +154,14 @@ const getColorToken = ({
   color,
   currentInteraction,
   isDisabled,
+  element,
 }: {
   variant: BaseLinkProps['variant'];
   color: BaseLinkProps['color'];
   element: 'icon' | 'text';
   currentInteraction: LinkActionStates;
   isDisabled: boolean;
-}): IconProps['color'] | BaseTextProps['color'] => {
+}): IconColors | TextColors => {
   let state = currentInteraction;
   const map = {
     default: 'subtle',
@@ -171,11 +176,11 @@ const getColorToken = ({
 
   if (color && color !== 'default') {
     if (color !== 'white') {
-      return `interactive.text.${color}.${map[state]}`;
+      return `interactive.${element}.${color}.${map[state]}`;
     }
-    return `interactive.text.staticWhite.${map[state]}`;
+    return `interactive.${element}.staticWhite.${map[state]}`;
   }
-  return `interactive.text.primary.${map[state]}`;
+  return `interactive.${element}.primary.${map[state]}`;
 };
 
 const getProps = ({
@@ -401,7 +406,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
           fontSize={fontSize}
           lineHeight={lineHeight}
           textAlign="center"
-          fontWeight="semibold"
+          fontWeight={variant === 'button' ? 'semibold' : 'medium'}
         >
           {children}
         </BaseText>
