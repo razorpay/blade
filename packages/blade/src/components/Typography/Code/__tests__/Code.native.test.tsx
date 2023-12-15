@@ -40,7 +40,7 @@ describe('<Code />', () => {
   it('should render medium Code', () => {
     const { getByText, toJSON } = renderWithTheme(<Code size="medium">MEDIUM</Code>);
     const renderedCode = getByText('MEDIUM');
-    expect(renderedCode).toHaveStyle({ fontSize: typography.onMobile.fonts.size[50] });
+    expect(renderedCode).toHaveStyle({ fontSize: typography.onMobile.fonts.size[75] });
     expect(toJSON()).toMatchSnapshot();
   });
 

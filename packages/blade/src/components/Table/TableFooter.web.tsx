@@ -1,6 +1,5 @@
 import React from 'react';
 import { Footer, FooterRow, FooterCell } from '@table-library/react-table-library/table';
-import getIn from 'lodash/get';
 import styled from 'styled-components';
 import { tableFooter } from './tokens';
 import { useTableContext } from './TableContext';
@@ -11,6 +10,7 @@ import { makeSpace } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import getIn from '~utils/lodashButBetter/get';
 
 const StyledFooter = styled(Footer)(({ theme }) => ({
   '&&&': {

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Tabs should render 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -11,7 +11,7 @@ exports[`Tabs should render 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: block;
   overflow: hidden;
   -webkit-flex-shrink: 0;
@@ -19,7 +19,7 @@ exports[`Tabs should render 1`] = `
   flex-shrink: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   overflow: auto hidden;
   white-space: nowrap;
   -webkit-flex: 1 1 auto;
@@ -29,7 +29,7 @@ exports[`Tabs should render 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39,7 +39,7 @@ exports[`Tabs should render 1`] = `
   flex-direction: row;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -60,7 +60,7 @@ exports[`Tabs should render 1`] = `
   gap: 24px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   position: absolute;
   height: 1.5px;
   top: 0px;
@@ -69,60 +69,72 @@ exports[`Tabs should render 1`] = `
   pointer-events: none;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   border-bottom-width: 1px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-bottom-style: solid;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   display: none;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   display: block;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -161,23 +173,23 @@ exports[`Tabs should render 1`] = `
   transition-duration: 400ms;
 }
 
-.c6:hover {
+.c6.c6.c6.c6.c6:hover {
   border-bottom-color: hsla(216,15%,54%,0.18);
   background-color: transparent;
 }
 
-.c6:disabled {
+.c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.c6:focus-visible {
+.c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: transparent;
 }
 
-.c6 * {
+.c6.c6.c6.c6.c6 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -186,86 +198,86 @@ exports[`Tabs should render 1`] = `
   transition-duration: 150ms;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   cursor: pointer;
 }
 
-.c10:hover {
+.c10.c10.c10.c10.c10:hover {
   background-color: hsla(218,89%,51%,0.18);
 }
 
-.c3::-webkit-scrollbar {
+.c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
 }
 
 @media screen and (min-width:768px) {
-  .c5 {
+  .c5.c5.c5.c5.c5 {
     gap: 32px;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:0px) and (max-width:768px) {
-  .c6 {
+  .c6.c6.c6.c6.c6 {
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 0px;
@@ -382,7 +394,7 @@ exports[`Tabs should render 1`] = `
 `;
 
 exports[`Tabs should render with filled variant 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -392,7 +404,7 @@ exports[`Tabs should render with filled variant 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: block;
   overflow: hidden;
   -webkit-flex-shrink: 0;
@@ -400,7 +412,7 @@ exports[`Tabs should render with filled variant 1`] = `
   flex-shrink: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   overflow: auto hidden;
   white-space: nowrap;
   -webkit-flex: 1 1 auto;
@@ -410,7 +422,7 @@ exports[`Tabs should render with filled variant 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -420,7 +432,7 @@ exports[`Tabs should render with filled variant 1`] = `
   flex-direction: row;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -446,7 +458,7 @@ exports[`Tabs should render with filled variant 1`] = `
   border-style: solid;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   margin: auto;
   height: 20px;
   border-width: 0px;
@@ -454,7 +466,7 @@ exports[`Tabs should render with filled variant 1`] = `
   border-style: solid;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -462,54 +474,66 @@ exports[`Tabs should render with filled variant 1`] = `
   border-radius: 2px;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   display: none;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   display: block;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -549,23 +573,23 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-duration: 400ms;
 }
 
-.c6:hover {
+.c6.c6.c6.c6.c6:hover {
   border-bottom-color: hsla(216,15%,54%,0.18);
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c6:disabled {
+.c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.c6:focus-visible {
+.c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c6 * {
+.c6.c6.c6.c6.c6 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -574,7 +598,7 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-duration: 150ms;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -614,23 +638,23 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-duration: 400ms;
 }
 
-.c10:hover {
+.c10.c10.c10.c10.c10:hover {
   border-bottom-color: hsla(216,15%,54%,0.18);
   background-color: transparent;
 }
 
-.c10:disabled {
+.c10.c10.c10.c10.c10:disabled {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.c10:focus-visible {
+.c10.c10.c10.c10.c10:focus-visible {
   border-radius: 4px;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: hsla(218,89%,51%,0.18);
 }
 
-.c10 * {
+.c10.c10.c10.c10.c10 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -639,15 +663,15 @@ exports[`Tabs should render with filled variant 1`] = `
   transition-duration: 150ms;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   cursor: pointer;
 }
 
-.c13:hover {
+.c13.c13.c13.c13.c13:hover {
   background-color: hsla(218,89%,51%,0.18);
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   border-left-style: solid;
   border-left-width: 1px;
   -webkit-align-self: stretch;
@@ -656,72 +680,72 @@ exports[`Tabs should render with filled variant 1`] = `
   height: 20px;
 }
 
-.c3::-webkit-scrollbar {
+.c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
 }
 
 @media screen and (min-width:320px) {
-  .c5 {
+  .c5.c5.c5.c5.c5 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c5 {
+  .c5.c5.c5.c5.c5 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c5 {
+  .c5.c5.c5.c5.c5 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c5 {
+  .c5.c5.c5.c5.c5 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c5 {
+  .c5.c5.c5.c5.c5 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c8 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c8 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c8 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c8 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c8 {
+  .c8.c8.c8.c8.c8 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:0px) and (max-width:768px) {
-  .c6 {
+  .c6.c6.c6.c6.c6 {
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 4px;
@@ -730,7 +754,7 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 @media screen and (min-width:0px) and (max-width:768px) {
-  .c10 {
+  .c10.c10.c10.c10.c10 {
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 4px;
@@ -846,7 +870,7 @@ exports[`Tabs should render with filled variant 1`] = `
 `;
 
 exports[`Tabs should render with isFullWidthTabItem 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -856,7 +880,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: block;
   overflow: hidden;
   -webkit-flex-shrink: 0;
@@ -864,7 +888,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   flex-shrink: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   overflow: auto hidden;
   white-space: nowrap;
   -webkit-flex: 1 1 auto;
@@ -874,7 +898,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -884,7 +908,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   flex-direction: row;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -905,7 +929,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   gap: 24px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   position: absolute;
   height: 1.5px;
   top: 0px;
@@ -914,60 +938,72 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   pointer-events: none;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   border-bottom-width: 1px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-bottom-style: solid;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   display: none;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   display: block;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1007,23 +1043,23 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   transition-duration: 400ms;
 }
 
-.c6:hover {
+.c6.c6.c6.c6.c6:hover {
   border-bottom-color: hsla(216,15%,54%,0.18);
   background-color: transparent;
 }
 
-.c6:disabled {
+.c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.c6:focus-visible {
+.c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: transparent;
 }
 
-.c6 * {
+.c6.c6.c6.c6.c6 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1032,86 +1068,86 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   transition-duration: 150ms;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   cursor: pointer;
 }
 
-.c10:hover {
+.c10.c10.c10.c10.c10:hover {
   background-color: hsla(218,89%,51%,0.18);
 }
 
-.c3::-webkit-scrollbar {
+.c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
 }
 
 @media screen and (min-width:768px) {
-  .c5 {
+  .c5.c5.c5.c5.c5 {
     gap: 32px;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:0px) and (max-width:768px) {
-  .c6 {
+  .c6.c6.c6.c6.c6 {
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 0px;
@@ -1228,7 +1264,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 `;
 
 exports[`Tabs should render with size 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1238,7 +1274,7 @@ exports[`Tabs should render with size 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: block;
   overflow: hidden;
   -webkit-flex-shrink: 0;
@@ -1246,7 +1282,7 @@ exports[`Tabs should render with size 1`] = `
   flex-shrink: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   overflow: auto hidden;
   white-space: nowrap;
   -webkit-flex: 1 1 auto;
@@ -1256,7 +1292,7 @@ exports[`Tabs should render with size 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1266,7 +1302,7 @@ exports[`Tabs should render with size 1`] = `
   flex-direction: row;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1287,7 +1323,7 @@ exports[`Tabs should render with size 1`] = `
   gap: 24px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   position: absolute;
   height: 1.5px;
   top: 0px;
@@ -1296,60 +1332,72 @@ exports[`Tabs should render with size 1`] = `
   pointer-events: none;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   border-bottom-width: 1px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-bottom-style: solid;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   display: none;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   display: block;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1388,23 +1436,23 @@ exports[`Tabs should render with size 1`] = `
   transition-duration: 400ms;
 }
 
-.c6:hover {
+.c6.c6.c6.c6.c6:hover {
   border-bottom-color: hsla(216,15%,54%,0.18);
   background-color: transparent;
 }
 
-.c6:disabled {
+.c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.c6:focus-visible {
+.c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: transparent;
 }
 
-.c6 * {
+.c6.c6.c6.c6.c6 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1413,86 +1461,86 @@ exports[`Tabs should render with size 1`] = `
   transition-duration: 150ms;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   cursor: pointer;
 }
 
-.c10:hover {
+.c10.c10.c10.c10.c10:hover {
   background-color: hsla(218,89%,51%,0.18);
 }
 
-.c3::-webkit-scrollbar {
+.c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
 }
 
 @media screen and (min-width:768px) {
-  .c5 {
+  .c5.c5.c5.c5.c5 {
     gap: 32px;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c9 {
+  .c9.c9.c9.c9.c9 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:0px) and (max-width:768px) {
-  .c6 {
+  .c6.c6.c6.c6.c6 {
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 0px;
@@ -1609,7 +1657,7 @@ exports[`Tabs should render with size 1`] = `
 `;
 
 exports[`Tabs should render with vertical orientation 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1619,7 +1667,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
   flex-direction: row;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1630,7 +1678,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
   flex-shrink: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   overflow: auto hidden;
   white-space: nowrap;
   -webkit-flex: 1 1 auto;
@@ -1640,7 +1688,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
   width: 100%;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -1653,7 +1701,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1675,54 +1723,66 @@ exports[`Tabs should render with vertical orientation 1`] = `
   gap: 0px;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   display: none;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   display: block;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1761,23 +1821,23 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-duration: 400ms;
 }
 
-.c6:hover {
+.c6.c6.c6.c6.c6:hover {
   border-left-color: hsla(216,15%,54%,0.18);
   background-color: transparent;
 }
 
-.c6:disabled {
+.c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.c6:focus-visible {
+.c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: transparent;
 }
 
-.c6 * {
+.c6.c6.c6.c6.c6 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1786,7 +1846,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-duration: 150ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1825,23 +1885,23 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-duration: 400ms;
 }
 
-.c8:hover {
+.c8.c8.c8.c8.c8:hover {
   border-left-color: hsla(218,89%,51%,1);
   background-color: transparent;
 }
 
-.c8:disabled {
+.c8.c8.c8.c8.c8:disabled {
   cursor: not-allowed;
   background-color: transparent;
 }
 
-.c8:focus-visible {
+.c8.c8.c8.c8.c8:focus-visible {
   border-radius: 4px;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   background-color: transparent;
 }
 
-.c8 * {
+.c8.c8.c8.c8.c8 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1850,12 +1910,12 @@ exports[`Tabs should render with vertical orientation 1`] = `
   transition-duration: 150ms;
 }
 
-.c3::-webkit-scrollbar {
+.c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
 }
 
 @media screen and (min-width:0px) and (max-width:768px) {
-  .c6 {
+  .c6.c6.c6.c6.c6 {
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 12px;
@@ -1864,7 +1924,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
 }
 
 @media screen and (min-width:0px) and (max-width:768px) {
-  .c8 {
+  .c8.c8.c8.c8.c8 {
     padding-top: 4px;
     padding-bottom: 4px;
     padding-left: 12px;

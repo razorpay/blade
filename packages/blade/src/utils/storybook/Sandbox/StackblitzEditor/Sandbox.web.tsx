@@ -28,7 +28,6 @@ const useStackblitzSetup = ({
 }): Project => {
   const docsContext = React.useContext(DocsContext);
 
-  const themeTokenName = docsContext?.globals?.themeTokenName ?? 'paymentTheme';
   const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
   const brandColor = docsContext?.globals?.brandColor;
 
@@ -51,7 +50,12 @@ const useStackblitzSetup = ({
           4,
         ),
         'index.html': indexHTML,
-        'index.tsx': getIndexTSX({ themeTokenName, colorScheme, brandColor, showConsole }),
+        'index.tsx': getIndexTSX({
+          themeTokenName: 'bladeTheme',
+          colorScheme,
+          brandColor,
+          showConsole,
+        }),
         'App.tsx': dedent(code),
         'Logger.tsx': logger,
         'vite.config.ts': viteConfigTS,
@@ -61,7 +65,7 @@ const useStackblitzSetup = ({
       },
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [themeTokenName, colorScheme, brandColor]);
+  }, [colorScheme, brandColor]);
 
   React.useEffect(() => {
     void sdk.embedProject('sb-embed', stackblitzProject, {
@@ -75,7 +79,7 @@ const useStackblitzSetup = ({
       showSidebar: false,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [themeTokenName, colorScheme, brandColor]);
+  }, [colorScheme, brandColor]);
 
   return stackblitzProject;
 };

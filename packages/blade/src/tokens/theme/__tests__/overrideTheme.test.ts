@@ -1,14 +1,14 @@
-import cloneDeep from 'lodash/cloneDeep';
 import overrideTheme from '../overrideTheme';
-import { paymentTheme, bankingTheme } from '../';
+import { bladeTheme } from '../';
 import type { ThemeTokens } from '../../theme';
+import cloneDeep from '~utils/lodashButBetter/cloneDeep';
 
 const invalidOverridesObjectError = '[Blade: overrideTheme]: The overrides object is not valid';
 const invalidBaseThemeError =
   '[Blade: overrideTheme]: The base theme provided is not a valid Blade theme';
 
 describe('overrideTheme', () => {
-  it('should return new theme based on overrides for paymentTheme', () => {
+  it('should return new theme based on overrides for bladeTheme', () => {
     const overrides = {
       colors: {
         onLight: {
@@ -28,12 +28,12 @@ describe('overrideTheme', () => {
       },
     };
 
-    const overridenTheme: ThemeTokens = cloneDeep(paymentTheme);
+    const overridenTheme: ThemeTokens = cloneDeep(bladeTheme);
     overridenTheme.colors.onLight.brand.primary[300] = overrides.colors.onLight.brand.primary[300];
     overridenTheme.colors.onLight.feedback.background.positive.highContrast =
       overrides.colors.onLight.feedback.background.positive.highContrast;
 
-    const overrideThemeResult = overrideTheme({ baseThemeTokens: paymentTheme, overrides });
+    const overrideThemeResult = overrideTheme({ baseThemeTokens: bladeTheme, overrides });
     expect(overrideThemeResult).toEqual(overridenTheme);
   });
 
@@ -57,12 +57,12 @@ describe('overrideTheme', () => {
       },
     };
 
-    const overridenTheme: ThemeTokens = cloneDeep(bankingTheme);
+    const overridenTheme: ThemeTokens = cloneDeep(bladeTheme);
     overridenTheme.colors.onLight.brand.primary[300] = overrides.colors.onLight.brand.primary[300];
     overridenTheme.colors.onLight.feedback.background.positive.highContrast =
       overrides.colors.onLight.feedback.background.positive.highContrast;
 
-    const overrideThemeResult = overrideTheme({ baseThemeTokens: bankingTheme, overrides });
+    const overrideThemeResult = overrideTheme({ baseThemeTokens: bladeTheme, overrides });
     expect(overrideThemeResult).toEqual(overridenTheme);
   });
 
@@ -90,7 +90,7 @@ describe('overrideTheme', () => {
 
     expect(() => {
       overrideTheme({
-        baseThemeTokens: paymentTheme,
+        baseThemeTokens: bladeTheme,
         overrides,
       });
     }).toThrowError(invalidOverridesObjectError);

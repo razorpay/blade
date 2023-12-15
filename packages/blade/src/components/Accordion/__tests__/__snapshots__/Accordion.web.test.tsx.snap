@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Accordion /> should render 1`] = `
-.c3 {
+.c3.c3.c3.c3.c3 {
   padding: 16px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -32,27 +32,27 @@ exports[`<Accordion /> should render 1`] = `
   text-align: left;
 }
 
-.c3:hover,
-.c3:focus-visible {
+.c3.c3.c3.c3.c3:hover,
+.c3.c3.c3.c3.c3:focus-visible {
   background-color: hsla(216,15%,54%,0.09);
 }
 
-.c3:hover {
+.c3.c3.c3.c3.c3:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c3:focus-visible {
+.c3.c3.c3.c3.c3:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   border-radius: 2px;
   color: hsla(217,18%,45%,1);
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -68,11 +68,11 @@ exports[`<Accordion /> should render 1`] = `
   max-width: none;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   width: 100%;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -87,12 +87,12 @@ exports[`<Accordion /> should render 1`] = `
   margin-right: 12px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -106,39 +106,47 @@ exports[`<Accordion /> should render 1`] = `
   gap: 16px;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -162,7 +170,7 @@ exports[`<Accordion /> should render 1`] = `
   transition-property: transform;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -171,7 +179,7 @@ exports[`<Accordion /> should render 1`] = `
   flex-grow: 1;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -185,52 +193,52 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 @media screen and (min-width:480px) {
-  .c0 {
+  .c0.c0.c0.c0.c0 {
     min-width: 200px;
     max-width: calc(100vw - 40px);
   }
 }
 
 @media screen and (min-width:768px) {
-  .c0 {
+  .c0.c0.c0.c0.c0 {
     min-width: 360px;
     max-width: 640px;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c0 {
+  .c0.c0.c0.c0.c0 {
     min-width: 360px;
     max-width: 800px;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c11 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
@@ -274,7 +282,7 @@ exports[`<Accordion /> should render 1`] = `
                 >
                   <span
                     class="c5"
-                    data-blade-component="heading"
+                    data-blade-component="text"
                   >
                     How can I setup Route?
                   </span>
@@ -371,7 +379,7 @@ exports[`<Accordion /> should render 1`] = `
                 >
                   <span
                     class="c5"
-                    data-blade-component="heading"
+                    data-blade-component="text"
                   >
                     How can I setup QR Codes?
                   </span>
@@ -468,7 +476,7 @@ exports[`<Accordion /> should render 1`] = `
                 >
                   <span
                     class="c5"
-                    data-blade-component="heading"
+                    data-blade-component="text"
                   >
                     How can I setup Subscriptions?
                   </span>

@@ -2,7 +2,7 @@ import tinycolor from 'tinycolor2';
 import type { WCAG2Options, ColorInput } from 'tinycolor2';
 import type { ThemeTokens } from './theme';
 import overrideTheme from './overrideTheme';
-import paymentTheme from './paymentTheme';
+import bladeTheme from './bladeTheme';
 import { colors as globalColors, opacity } from '~tokens/global';
 import type { ColorChromaticScale } from '~tokens/global/colors';
 import { throwBladeError } from '~utils/logger';
@@ -345,7 +345,7 @@ export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTo
 
   // Override the payment theme with the brand colors
   const brandedThemeTokens = overrideTheme({
-    baseThemeTokens: paymentTheme,
+    baseThemeTokens: bladeTheme,
     overrides: {
       name: `custom-${tinycolor(brandColor).toHex()}`,
       colors: {

@@ -168,23 +168,23 @@ exports[`<Accordion /> should render 1`] = `
                   }
                 >
                   <Text
-                    accessibilityRole="header"
                     accessible={true}
                     color="surface.text.normal.lowContrast"
-                    data-blade-component="heading"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={200}
                     fontStyle="normal"
-                    fontWeight="bold"
-                    lineHeight={300}
+                    fontWeight="semibold"
+                    lineHeight={200}
                     style={
                       [
                         {
                           "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "fontFamily": "Inter",
                           "fontSize": 16,
                           "fontStyle": "normal",
-                          "fontWeight": "700",
+                          "fontWeight": "600",
+                          "letterSpacing": 0,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -354,10 +354,11 @@ exports[`<Accordion /> should render 1`] = `
                           [
                             {
                               "color": "hsla(216, 27%, 36%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -407,10 +408,11 @@ exports[`<Accordion /> should render 1`] = `
                             [
                               {
                                 "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -584,23 +586,23 @@ exports[`<Accordion /> should render 1`] = `
                   }
                 >
                   <Text
-                    accessibilityRole="header"
                     accessible={true}
                     color="surface.text.normal.lowContrast"
-                    data-blade-component="heading"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={200}
                     fontStyle="normal"
-                    fontWeight="bold"
-                    lineHeight={300}
+                    fontWeight="semibold"
+                    lineHeight={200}
                     style={
                       [
                         {
                           "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "fontFamily": "Inter",
                           "fontSize": 16,
                           "fontStyle": "normal",
-                          "fontWeight": "700",
+                          "fontWeight": "600",
+                          "letterSpacing": 0,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -770,10 +772,11 @@ exports[`<Accordion /> should render 1`] = `
                           [
                             {
                               "color": "hsla(216, 27%, 36%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -823,10 +826,11 @@ exports[`<Accordion /> should render 1`] = `
                             [
                               {
                                 "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1000,23 +1004,23 @@ exports[`<Accordion /> should render 1`] = `
                   }
                 >
                   <Text
-                    accessibilityRole="header"
                     accessible={true}
                     color="surface.text.normal.lowContrast"
-                    data-blade-component="heading"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={200}
                     fontStyle="normal"
-                    fontWeight="bold"
-                    lineHeight={300}
+                    fontWeight="semibold"
+                    lineHeight={200}
                     style={
                       [
                         {
                           "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "fontFamily": "Inter",
                           "fontSize": 16,
                           "fontStyle": "normal",
-                          "fontWeight": "700",
+                          "fontWeight": "600",
+                          "letterSpacing": 0,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -1186,10 +1190,11 @@ exports[`<Accordion /> should render 1`] = `
                           [
                             {
                               "color": "hsla(216, 27%, 36%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -1239,10 +1244,11 @@ exports[`<Accordion /> should render 1`] = `
                             [
                               {
                                 "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,

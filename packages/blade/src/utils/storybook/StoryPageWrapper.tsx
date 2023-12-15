@@ -1,14 +1,13 @@
 import React from 'react';
 import { ArgsTable, Primary, PRIMARY_STORY, Stories } from '@storybook/addon-docs';
 import styled from 'styled-components';
-import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
 import { SandboxHighlighter } from './Sandbox/SandpackEditor';
 import { componentData } from './componentStatusData';
 import BaseBox from '~components/Box/BaseBox';
 import { Alert } from '~components/Alert';
 import { BladeProvider } from '~components/BladeProvider';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Link } from '~components/Link';
 import type { HeadingProps } from '~components/Typography';
@@ -21,10 +20,7 @@ const Subtitle = (props: HeadingProps): React.ReactElement => {
 };
 
 type StoryPageWrapperTypes = {
-  figmaURL?: {
-    paymentTheme: string;
-    bankingTheme: string;
-  };
+  figmaURL?: string;
   argTableComponent?: unknown;
   componentDescription: string;
   propsDescription?: string;
@@ -73,19 +69,6 @@ const WithGlobalStyles = styled(BaseBox)`
 `;
 
 const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL: props.figmaURL?.paymentTheme,
-      darkModeURL: props.figmaURL?.paymentTheme,
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL: props.figmaURL?.bankingTheme,
-      darkModeURL: props.figmaURL?.bankingTheme,
-    },
-  ]);
-
   React.useEffect(() => {
     // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
     // So we manually read location.hash of parent window and scroll to that section on load
@@ -101,7 +84,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
   const { showStorybookControls = true, showArgsTable = true, showDefaultExample = true } = props;
 
   return (
-    <BladeProvider themeTokens={paymentTheme}>
+    <BladeProvider themeTokens={bladeTheme}>
       <WithGlobalStyles>
         <Display size="small" marginBottom="spacing.3">
           {props.componentName}
@@ -133,8 +116,8 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             marginBottom="spacing.5"
           />
         ) : null}
-        {figmaURL !== '#' ? (
-          <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
+        {props.figmaURL && props.figmaURL !== '#' ? (
+          <FigmaEmbed src={props.figmaURL} title={`${props.componentName} Figma Designs`} />
         ) : null}
         {props.children}
         {props.imports === '' ? null : (
@@ -180,7 +163,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                   )}
                   {props.propsDescription ? (
                     // adding box with surface background so that when theme of storybook is changed, the alert doesn't become invisible
-                    <Box backgroundColor="surface.background.level3.lowContrast">
+                    <Box backgroundColor="surface.background.gray.subtle">
                       <Alert
                         isFullWidth
                         marginTop="spacing.5"

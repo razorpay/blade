@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Link /> should render button variant of link 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -19,18 +19,18 @@ exports[`<Link /> should render button variant of link 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -39,7 +39,7 @@ exports[`<Link /> should render button variant of link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -53,15 +53,19 @@ exports[`<Link /> should render button variant of link 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -91,7 +95,7 @@ exports[`<Link /> should render button variant of link 1`] = `
 `;
 
 exports[`<Link /> should render default color link 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -109,18 +113,18 @@ exports[`<Link /> should render default color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -129,7 +133,7 @@ exports[`<Link /> should render default color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -143,15 +147,19 @@ exports[`<Link /> should render default color link 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -180,7 +188,7 @@ exports[`<Link /> should render default color link 1`] = `
 `;
 
 exports[`<Link /> should render disabled button variant of link 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -198,18 +206,18 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -218,7 +226,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -232,15 +240,19 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(218,19%,81%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -271,7 +283,7 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
 `;
 
 exports[`<Link /> should render disabled default color link 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -289,18 +301,18 @@ exports[`<Link /> should render disabled default color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -309,7 +321,7 @@ exports[`<Link /> should render disabled default color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -323,15 +335,19 @@ exports[`<Link /> should render disabled default color link 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -360,7 +376,7 @@ exports[`<Link /> should render disabled default color link 1`] = `
 `;
 
 exports[`<Link /> should render disabled neutral color link 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -378,18 +394,18 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -398,7 +414,7 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -412,15 +428,19 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -449,7 +469,7 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
 `;
 
 exports[`<Link /> should render disabled white color link 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -467,18 +487,18 @@ exports[`<Link /> should render disabled white color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -487,7 +507,7 @@ exports[`<Link /> should render disabled white color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -501,15 +521,19 @@ exports[`<Link /> should render disabled white color link 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -538,7 +562,7 @@ exports[`<Link /> should render disabled white color link 1`] = `
 `;
 
 exports[`<Link /> should render link with default properties 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -556,18 +580,18 @@ exports[`<Link /> should render link with default properties 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -576,7 +600,7 @@ exports[`<Link /> should render link with default properties 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -590,15 +614,19 @@ exports[`<Link /> should render link with default properties 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -627,7 +655,7 @@ exports[`<Link /> should render link with default properties 1`] = `
 `;
 
 exports[`<Link /> should render link with icon with default iconPosition 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -645,18 +673,18 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -665,7 +693,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -679,7 +707,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -691,15 +719,19 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
   padding-right: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -760,7 +792,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
 `;
 
 exports[`<Link /> should render link with icon with left iconPosition 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -778,18 +810,18 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -798,7 +830,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -812,7 +844,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -824,15 +856,19 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
   padding-right: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -893,7 +929,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
 `;
 
 exports[`<Link /> should render link with icon with right iconPosition 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -911,18 +947,18 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -931,7 +967,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -945,7 +981,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
   align-items: center;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -957,15 +993,19 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
   padding-left: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1026,7 +1066,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
 `;
 
 exports[`<Link /> should render link with icon without text 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -1044,18 +1084,18 @@ exports[`<Link /> should render link with icon without text 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1064,7 +1104,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1078,7 +1118,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1090,15 +1130,19 @@ exports[`<Link /> should render link with icon without text 1`] = `
   padding-right: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1157,7 +1201,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
 `;
 
 exports[`<Link /> should render neutral color link 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -1175,18 +1219,18 @@ exports[`<Link /> should render neutral color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1195,7 +1239,7 @@ exports[`<Link /> should render neutral color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1209,15 +1253,19 @@ exports[`<Link /> should render neutral color link 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1246,7 +1294,7 @@ exports[`<Link /> should render neutral color link 1`] = `
 `;
 
 exports[`<Link /> should render white color link 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -1264,18 +1312,18 @@ exports[`<Link /> should render white color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1284,7 +1332,7 @@ exports[`<Link /> should render white color link 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1298,15 +1346,19 @@ exports[`<Link /> should render white color link 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -1335,7 +1387,7 @@ exports[`<Link /> should render white color link 1`] = `
 `;
 
 exports[`<Link /> should render with small size 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   padding: 0;
   background-color: transparent;
   outline: none;
@@ -1353,18 +1405,18 @@ exports[`<Link /> should render with small size 1`] = `
   transition-duration: 70ms;
 }
 
-.c0 .content-container {
+.c0.c0.c0.c0.c0 .content-container {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 2px;
 }
 
-.c0:focus-visible .content-container {
+.c0.c0.c0.c0.c0:focus-visible .content-container {
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1373,7 +1425,7 @@ exports[`<Link /> should render with small size 1`] = `
   transition-duration: 70ms;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1387,7 +1439,7 @@ exports[`<Link /> should render with small size 1`] = `
   align-items: center;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1399,15 +1451,19 @@ exports[`<Link /> should render with small size 1`] = `
   padding-right: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;

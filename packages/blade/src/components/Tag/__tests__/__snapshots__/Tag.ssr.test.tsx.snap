@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tag /> should render tag 1`] = `"<div id="root"><div data-blade-component="tag" class="BaseBox-bmPWx bcSLaJ"><div data-blade-component="base-box" class="BaseBox-bmPWx Tag__FocussableTag-jmwb4r-0 iZePvJ"><div data-blade-component="box" class="BaseBox-bmPWx fdWAve"><p class="StyledBaseText-dVBfTO kDKzNc" data-blade-component="text">in:User</p></div><div data-blade-component="box" class="BaseBox-bmPWx fCLMvl"><button type="button" aria-label="Close in:User tag" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 kofyfX"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button></div></div></div></div>"`;
+exports[`<Tag /> should render tag 1`] = `"<div id="root"><div data-blade-component="tag" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx Tag__FocussableTag-jmwb4r-0 kPbJkm"><div data-blade-component="box" class="BaseBox-bmPWx laICQt"><p class="StyledBaseText-dVBfTO tOVPY" data-blade-component="text">in:User</p></div><div data-blade-component="box" class="BaseBox-bmPWx cgXgMK"><button type="button" aria-label="Close in:User tag" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 dOswfI"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button></div></div></div></div>"`;
 
 exports[`<Tag /> should render tag 2`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -26,7 +26,7 @@ exports[`<Tag /> should render tag 2`] = `
   border-radius: 9999px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -41,7 +41,7 @@ exports[`<Tag /> should render tag 2`] = `
   max-width: 100px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -59,7 +59,7 @@ exports[`<Tag /> should render tag 2`] = `
   justify-content: center;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -86,29 +86,33 @@ exports[`<Tag /> should render tag 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c5:hover {
+.c5.c5.c5.c5.c5:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c5:focus-visible {
+.c5.c5.c5.c5.c5:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c5:active {
+.c5.c5.c5.c5.c5:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -120,7 +124,7 @@ exports[`<Tag /> should render tag 2`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     padding: 2px 4px 2px 8px;
   }
 }

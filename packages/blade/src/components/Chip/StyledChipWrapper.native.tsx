@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
-import getIn from 'lodash/get';
 import type { StyledChipWrapperProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 
 const StyledChipWrapper = styled(BaseBox)<StyledChipWrapperProps>(

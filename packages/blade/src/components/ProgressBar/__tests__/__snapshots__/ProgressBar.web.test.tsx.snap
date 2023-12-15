@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -12,7 +12,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -26,11 +26,11 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   justify-content: space-between;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,25 +49,25 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   gap: 0px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -76,32 +76,36 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -111,33 +115,41 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -242,7 +254,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 `;
 
 exports[`<ProgressBar /> should render ProgressBar without label and percentage 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -253,7 +265,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -267,25 +279,25 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -294,19 +306,19 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 50%;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
@@ -355,7 +367,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 `;
 
 exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -366,7 +378,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -380,29 +392,29 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -411,32 +423,36 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -497,7 +513,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should render high contrast information intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -508,7 +524,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -522,29 +538,29 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(193,100%,35%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -553,32 +569,36 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(193,100%,35%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -639,7 +659,7 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
 `;
 
 exports[`<ProgressBar /> should render high contrast negative intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -650,7 +670,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -664,29 +684,29 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(8,73%,47%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -695,32 +715,36 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(8,73%,47%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -781,7 +805,7 @@ exports[`<ProgressBar /> should render high contrast negative intent ProgressBar
 `;
 
 exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -792,7 +816,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -806,29 +830,29 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(216,33%,29%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -837,32 +861,36 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(216,33%,29%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -923,7 +951,7 @@ exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 
 `;
 
 exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -934,7 +962,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -948,29 +976,29 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(38,97%,38%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -979,32 +1007,36 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(38,97%,38%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1065,7 +1097,7 @@ exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1
 `;
 
 exports[`<ProgressBar /> should render high contrast positive intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1076,7 +1108,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1090,29 +1122,29 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(214,21%,94%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(160,100%,26%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1121,32 +1153,36 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(160,100%,26%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,19%,89%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1207,7 +1243,7 @@ exports[`<ProgressBar /> should render high contrast positive intent ProgressBar
 `;
 
 exports[`<ProgressBar /> should render low contrast information intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1218,7 +1254,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1232,29 +1268,29 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(193,100%,35%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1263,32 +1299,36 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(193,100%,35%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1349,7 +1389,7 @@ exports[`<ProgressBar /> should render low contrast information intent ProgressB
 `;
 
 exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1360,7 +1400,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1374,29 +1414,29 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(8,73%,47%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1405,32 +1445,36 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(8,73%,47%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1491,7 +1535,7 @@ exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 
 `;
 
 exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1502,7 +1546,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1516,29 +1560,29 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(216,33%,29%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1547,32 +1591,36 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(216,33%,29%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1633,7 +1681,7 @@ exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1
 `;
 
 exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1644,7 +1692,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1658,29 +1706,29 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(38,97%,38%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1689,32 +1737,36 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(38,97%,38%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1775,7 +1827,7 @@ exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`
 `;
 
 exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1786,7 +1838,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1800,29 +1852,29 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(160,100%,26%,1);
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1831,32 +1883,36 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(160,100%,26%,1);
   height: 100%;
   width: 20%;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1917,7 +1973,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
 `;
 
 exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1928,7 +1984,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1942,11 +1998,11 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   justify-content: space-between;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1965,25 +2021,25 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   gap: 0px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   overflow: hidden;
   position: relative;
   height: 4px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1992,32 +2048,36 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2027,33 +2087,41 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2158,7 +2226,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2169,7 +2237,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2183,25 +2251,25 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   justify-content: flex-end;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2210,7 +2278,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 70%;
@@ -2260,7 +2328,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 `;
 
 exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2271,7 +2339,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   width: 100%;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2285,11 +2353,11 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   justify-content: space-between;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-bottom: 4px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2308,25 +2376,25 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   gap: 0px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2335,32 +2403,36 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 20%;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2370,33 +2442,41 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2501,7 +2581,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2522,7 +2602,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2533,7 +2613,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   width: 100%;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2547,11 +2627,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   justify-content: space-between;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   margin-bottom: 4px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2570,25 +2650,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   gap: 0px;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2597,46 +2677,54 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 0%;
 }
 
-.c17 {
+.c17.c17.c17.c17.c17 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -2646,33 +2734,41 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -2689,7 +2785,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   word-wrap: normal;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -2725,24 +2821,24 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -2751,7 +2847,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
@@ -2861,7 +2957,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2882,7 +2978,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2893,7 +2989,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   width: 100%;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2907,11 +3003,11 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   justify-content: space-between;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   margin-bottom: 4px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2930,25 +3026,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   gap: 0px;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(216,15%,54%,0.18);
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   background-color: hsla(218,89%,51%,1);
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2957,46 +3053,54 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   background-color: hsla(218,89%,51%,1);
   height: 100%;
   width: 0%;
 }
 
-.c17 {
+.c17.c17.c17.c17.c17 {
   height: 100%;
   width: 100%;
   opacity: 0;
   background-color: white;
-  -webkit-animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
-  animation: iUKfkR 900ms cubic-bezier(0.5,0,0,1) infinite;
+  -webkit-animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
+  animation: iUKfkR-450290765 900ms cubic-bezier(0.5,0,0,1) infinite;
   -webkit-animation-delay: 3000ms;
   animation-delay: 3000ms;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 700;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -3006,33 +3110,41 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   -webkit-box-orient: vertical;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -3049,7 +3161,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   word-wrap: normal;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -3085,24 +3197,24 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -3111,7 +3223,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 

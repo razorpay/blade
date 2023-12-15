@@ -1,6 +1,5 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import kebabCase from 'lodash/kebabCase';
 import type { SkeletonProps } from './';
 import { Skeleton, Skeleton as SkeletonComponent } from './';
 import {
@@ -23,16 +22,12 @@ import { announce } from '~components/LiveAnnouncer';
 import { List, ListItem, ListItemCode } from '~components/List';
 import { isReactNative } from '~utils';
 import { motion } from '~tokens/global';
+import { kebabCase } from '~utils/lodashButBetter/kebabCase';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522',
-        bankingTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522"
       componentName="Skeleton"
       componentDescription="Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view."
     >

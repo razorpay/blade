@@ -27,6 +27,7 @@ type TextCommonProps = {
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
+  wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
   StyledPropsBlade;
 
@@ -116,7 +117,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     if (size === 'medium') {
       props.fontSize = 50;
       props.lineHeight = 50;
-      props.fontWeight = 'semibold';
+      props.fontWeight = 'regular';
     } else if (__DEV__) {
       throwBladeError({
         moduleName: 'Text',
@@ -142,11 +143,13 @@ const _Text = <T extends { variant: TextVariant }>({
   testID,
   textAlign,
   textDecorationLine,
+  wordBreak,
   ...styledProps
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> = {
     as,
     truncateAfterLines,
+    wordBreak,
     ...getTextProps({
       variant,
       type,

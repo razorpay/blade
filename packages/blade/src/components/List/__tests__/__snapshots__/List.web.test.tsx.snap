@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<List /> should render List with default properties 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +22,7 @@ exports[`<List /> should render List with default properties 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34,28 +34,32 @@ exports[`<List /> should render List with default properties 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 4px;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   margin-left: 16px;
 }
 
@@ -211,13 +215,13 @@ exports[`<List /> should render List with default properties 1`] = `
 `;
 
 exports[`<List /> should render List with inline ListItemCode 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -232,7 +236,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -244,37 +248,45 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   color: hsla(216,27%,36%,1);
-  font-family: monospace;
+  font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   padding: 0px 4px;
   background-color: hsla(216,15%,54%,0.18);
   border-radius: 4px;
@@ -283,7 +295,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   line-height: 0rem;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 4px;
 }
 
@@ -390,13 +402,13 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 `;
 
 exports[`<List /> should render List with inline ListItemText 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -411,7 +423,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -423,37 +435,45 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 4px;
 }
 
@@ -516,19 +536,19 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
 `;
 
 exports[`<List /> should render large ordered List 1`] = `
-.c7 {
+.c7.c7.c7.c7.c7 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -543,7 +563,7 @@ exports[`<List /> should render large ordered List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -568,7 +588,7 @@ exports[`<List /> should render large ordered List 1`] = `
   width: 24px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -580,41 +600,49 @@ exports[`<List /> should render large ordered List 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   margin-left: 16px;
 }
 
@@ -759,13 +787,13 @@ exports[`<List /> should render large ordered List 1`] = `
 `;
 
 exports[`<List /> should render large ordered-filled List 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -780,7 +808,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -807,37 +835,45 @@ exports[`<List /> should render large ordered-filled List 1`] = `
   border-radius: 9999px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 0;
 }
 
@@ -938,13 +974,13 @@ exports[`<List /> should render large ordered-filled List 1`] = `
 `;
 
 exports[`<List /> should render large unordered List with icon 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -959,7 +995,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -971,7 +1007,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -983,28 +1019,32 @@ exports[`<List /> should render large unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   margin-left: 16px;
 }
 
@@ -1156,19 +1196,19 @@ exports[`<List /> should render large unordered List with icon 1`] = `
 `;
 
 exports[`<List /> should render medium ordered List 1`] = `
-.c7 {
+.c7.c7.c7.c7.c7 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1183,7 +1223,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1208,7 +1248,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   width: 20px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1220,41 +1260,49 @@ exports[`<List /> should render medium ordered List 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   margin-left: 16px;
 }
 
@@ -1399,13 +1447,13 @@ exports[`<List /> should render medium ordered List 1`] = `
 `;
 
 exports[`<List /> should render medium ordered-filled List 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1420,7 +1468,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1447,37 +1495,45 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   border-radius: 9999px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 0;
 }
 
@@ -1578,13 +1634,13 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
 `;
 
 exports[`<List /> should render medium unordered List with icon 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1599,7 +1655,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1611,7 +1667,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1623,28 +1679,32 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   margin-left: 16px;
 }
 
@@ -1796,19 +1856,19 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
 `;
 
 exports[`<List /> should render small ordered List 1`] = `
-.c7 {
+.c7.c7.c7.c7.c7 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1823,7 +1883,7 @@ exports[`<List /> should render small ordered List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1848,7 +1908,7 @@ exports[`<List /> should render small ordered List 1`] = `
   width: 16px;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1860,41 +1920,49 @@ exports[`<List /> should render small ordered List 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 0;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   margin-left: 16px;
 }
 
@@ -2039,13 +2107,13 @@ exports[`<List /> should render small ordered List 1`] = `
 `;
 
 exports[`<List /> should render small ordered-filled List 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2060,7 +2128,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2087,37 +2155,45 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   border-radius: 9999px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 0;
 }
 
@@ -2218,13 +2294,13 @@ exports[`<List /> should render small ordered-filled List 1`] = `
 `;
 
 exports[`<List /> should render small unordered List with icon 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2239,7 +2315,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2251,7 +2327,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2263,28 +2339,32 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 0;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   margin-left: 16px;
 }
 
@@ -2436,13 +2516,13 @@ exports[`<List /> should render small unordered List with icon 1`] = `
 `;
 
 exports[`<List /> should render unordered List of small size 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2457,7 +2537,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2469,28 +2549,32 @@ exports[`<List /> should render unordered List of small size 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-top: 8px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   margin-left: 4px;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   margin-left: 16px;
 }
 

@@ -1,13 +1,11 @@
+import React from 'react';
 import { BladeProvider, Button } from '@razorpay/blade/components';
-import { paymentTheme } from '@razorpay/blade/tokens';
-import '@fontsource/lato/400.css';
-import '@fontsource/lato/400-italic.css';
-import '@fontsource/lato/700.css';
-import '@fontsource/lato/700-italic.css';
+import { bladeTheme } from '@razorpay/blade/tokens';
+import '@razorpay/blade/fonts.css';
 
-function App(): JSX.Element {
+function App(): React.ReactElement {
   return (
-    <BladeProvider themeTokens={paymentTheme} colorScheme="light">
+    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
       <Button onClick={() => console.log('hi')}>Hello</Button>
     </BladeProvider>
   );

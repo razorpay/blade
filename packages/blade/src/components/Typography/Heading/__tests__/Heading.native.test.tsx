@@ -78,53 +78,6 @@ describe('<Heading />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render Heading with variant "subheading" and weight "bold"', () => {
-    const displayText = 'Get Started With Payment Gateway';
-    const { toJSON, getByText } = renderWithTheme(
-      <Heading type="subdued" weight="semibold">
-        {displayText}
-      </Heading>,
-    );
-    expect(getByText('Get Started With Payment Gateway')).toBeTruthy();
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should throw error when variant is "subheading" but weight "regular" is passed', () => {
-    try {
-      const displayText = 'Get Started With Payment Gateway';
-      renderWithTheme(
-        // @ts-expect-error testing failure case when weight='regular' is passed with variant='subheading'
-        <Heading type="normal" variant="subheading" weight="regular">
-          {displayText}
-        </Heading>,
-      );
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        expect(error.message).toEqual(
-          `[Blade: Heading]: weight cannot be 'regular' when variant is 'subheading'`,
-        );
-      }
-    }
-  });
-
-  it('should throw error when variant is "subheading" but weight "regular" is passed', () => {
-    try {
-      const displayText = 'Get Started With Payment Gateway';
-      renderWithTheme(
-        // @ts-expect-error testing failure case when size is passed with variant='subheading'
-        <Heading type="normal" variant="subheading" size="small">
-          {displayText}
-        </Heading>,
-      );
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        expect(error.message).toMatchInlineSnapshot(
-          `"[Blade: Heading]: size prop cannot be added when variant is 'subheading'. Use variant 'regular' or remove size prop"`,
-        );
-      }
-    }
-  });
-
   it('should render with as prop without errors', () => {
     const displayText = 'Displaying Landing Screen Heading';
     const { getByText } = renderWithTheme(

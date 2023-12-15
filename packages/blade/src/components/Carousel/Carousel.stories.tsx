@@ -9,21 +9,17 @@ import { Card, CardBody } from '~components/Card';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Divider } from '~components/Divider';
-import { isReactNative, useTheme } from '~utils';
+import { isReactNative } from '~utils';
 import { List, ListItem } from '~components/List';
 import { Link } from '~components/Link';
+import { useTheme } from '~components/BladeProvider';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Carousel"
       componentDescription="Carousel is a UI component that allows the display and navigation of a set of content items, typically images or cards, within a limited space. It is often used to showcase multiple pieces of content in a visually appealing and interactive way."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2115-975755&mode=design&t=5g2Lqj2ez02pxQfO-0',
-        bankingTheme:
-          'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2115-975755&mode=design&t=5g2Lqj2ez02pxQfO-0',
-      }}
+      figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2115-975755&mode=design&t=5g2Lqj2ez02pxQfO-0"
     >
       <AddonTitle>Usage</AddonTitle>
       <Sandbox editorHeight={500}>

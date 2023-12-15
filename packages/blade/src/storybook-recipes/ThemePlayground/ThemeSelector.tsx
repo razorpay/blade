@@ -1,6 +1,6 @@
-import debounce from 'lodash/debounce';
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import debounce from '~utils/lodashButBetter/debounce';
 import { Box } from '~components/Box';
 import { IconButton } from '~components/Button/IconButton';
 import { Card, CardBody } from '~components/Card';
@@ -9,8 +9,9 @@ import { Radio, RadioGroup } from '~components/Radio';
 import { Tooltip } from '~components/Tooltip';
 import { Heading, Text } from '~components/Typography';
 import type { ColorSchemeNames } from '~tokens/theme';
-import { makeBorderSize, useTheme } from '~utils';
+import { makeBorderSize } from '~utils';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
+import { useTheme } from '~components/BladeProvider';
 
 const ColorSelection = styled.button<{ color: string; isSelected?: boolean }>(
   ({ color, isSelected, theme }) => ({
@@ -153,8 +154,8 @@ const ThemeSelector = ({
                   setSelectedColor(undefined);
                 }}
               >
-                <Radio value="paymentTheme">Payment Theme</Radio>
-                <Radio value="bankingTheme">Banking Theme</Radio>
+                {/* TODO: remove the section that allows you to select theme */}
+                <Radio value="bladeTheme">Blade Theme</Radio>
               </RadioGroup>
             </Box>
             <Box marginTop="spacing.8" />

@@ -7,13 +7,13 @@ import type { ReactElement } from 'react';
 import { renderToString } from 'react-dom/server';
 import jsdom from 'jsdom';
 import { BladeProvider } from '~components/BladeProvider';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 
 const globalNames = new Set(Object.getOwnPropertyNames(global));
 
 const renderWithSSR = (ui: ReactElement): RenderResult => {
   const App = (): ReactElement => (
-    <BladeProvider themeTokens={paymentTheme} colorScheme="light">
+    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
       {ui}
     </BladeProvider>
   );
