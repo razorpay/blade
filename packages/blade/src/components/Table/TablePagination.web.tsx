@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect } from 'react';
 import styled from 'styled-components';
-import isUndefined from 'lodash/isUndefined';
-import getIn from 'lodash/get';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import { tablePagination } from './tokens';
 import type { TablePaginationProps } from './types';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
+import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import {
   ChevronLeftIcon,
@@ -18,10 +18,11 @@ import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Text } from '~components/Typography';
-import { makeSize, useTheme } from '~utils';
+import { makeSize } from '~utils';
 import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useTheme } from '~components/BladeProvider';
 
 const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
 

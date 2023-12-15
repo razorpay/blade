@@ -1,5 +1,4 @@
 import React from 'react';
-import getIn from 'lodash/get';
 import styled from 'styled-components';
 import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-library/table';
 import { tableHeader } from './tokens';
@@ -9,12 +8,14 @@ import type { TableHeaderRowProps, TableHeaderCellProps } from './types';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
-import { castWebType, makeMotionTime, makeSpace, useTheme } from '~utils';
+import { castWebType, makeMotionTime, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { useTheme } from '~components/BladeProvider';
+import getIn from '~utils/lodashButBetter/get';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',

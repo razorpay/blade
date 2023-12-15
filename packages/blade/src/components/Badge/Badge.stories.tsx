@@ -1,5 +1,4 @@
 import type { ComponentStory, Meta } from '@storybook/react';
-import capitalize from 'lodash/capitalize';
 import { Title } from '@storybook/addon-docs';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
@@ -10,6 +9,7 @@ import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { capitalize } from '~utils/lodashButBetter/capitalize';
 
 const Page = (): React.ReactElement => {
   return (

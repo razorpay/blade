@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import getIn from 'lodash/get';
 import Animated, {
   interpolateColor,
   useAnimatedStyle,
@@ -10,6 +9,7 @@ import React from 'react';
 import type { TrackProps } from './types';
 import { getTrackStyles } from './getTrackStyles';
 import { switchColors, switchMotion } from './switchTokens';
+import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 
 const StyledSwitchTrack = styled(Animated.View)<TrackProps>(

@@ -75,7 +75,7 @@ const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeToke
   }
 
   // Need to clone before merging since merge changes/mutates the actual object
-  return merge(cloneDeep(baseThemeTokens), overrides);
+  return merge(cloneDeep(baseThemeTokens), overrides) as ThemeTokens;
 };
 
 export default overrideTheme;

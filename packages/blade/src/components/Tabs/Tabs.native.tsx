@@ -15,7 +15,7 @@ import { SafeSceneMap } from './SafeSceneMap.native';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
-import { useTheme } from '~utils';
+import { useTheme } from '~components/BladeProvider';
 import { useControllableState } from '~utils/useControllable';
 import { Divider } from '~components/Divider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
