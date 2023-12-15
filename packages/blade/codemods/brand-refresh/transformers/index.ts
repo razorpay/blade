@@ -13,11 +13,6 @@ const transformer: Transform = (file, api, options) => {
     small: 'large',
   };
 
-  const newHeadingSizeMap = {
-    large: 'medium',
-    medium: 'small',
-  };
-
   // Maps for fontSize, lineHeight, and token prefixes
   const fontSizeMap = {
     600: 500,
@@ -157,26 +152,39 @@ const transformer: Transform = (file, api, options) => {
       node.openingElement.name.name = 'Heading';
       node.closingElement.name.name = 'Heading';
 
-      return node;
-    })
-    .find(j.JSXAttribute)
-    .filter(
-      (path, index, self) =>
-        path.node.name.name === 'size' &&
-        index === self.findIndex((obj) => path.node.start === obj.node.start),
-    ) // Filter by name `type` and remove any duplicates
-    .replaceWith((path) => {
-      if (isExpression(path.node)) {
+      const sizeAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'size',
+      );
+
+      if (isExpression(sizeAttribute)) {
         console.log(
           'Expression found in size attribute, please update manually:',
-          `${file.path}:${path.node.loc.start.line}`,
+          `${file.path}:${sizeAttribute.loc.start.line}`,
         );
-        return path.node;
+        return node;
       }
 
-      path.node.value.value = titleToHeadingMap[path.node.value.value] || 'large';
+      if (!sizeAttribute) {
+        node.openingElement.attributes.push(
+          j.jsxAttribute(j.jsxIdentifier('size'), j.literal('large')),
+        );
 
-      return path.node;
+        return node;
+      }
+
+      const otherAttributes = node.openingElement.attributes.filter(
+        (attribute) => attribute.name.name !== 'size',
+      );
+      otherAttributes.push(
+        j.jsxAttribute(
+          j.jsxIdentifier('size'),
+          j.literal(titleToHeadingMap[sizeAttribute.value.value] || 'large'),
+        ),
+      );
+
+      node.openingElement.attributes = otherAttributes;
+
+      return node;
     });
 
   // Remove/Update the Title import from "@razorpay/blade/components"
