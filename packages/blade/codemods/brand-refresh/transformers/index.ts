@@ -80,6 +80,18 @@ const transformer: Transform = (file, api, options) => {
   const j = api.jscodeshift;
   const root = j.withParser('tsx')(newSource);
 
+  // Update the themeTokens prop in BladeProvider
+  root
+    .find(j.JSXElement)
+    .filter((path) => path.value.openingElement.name.name === 'BladeProvider')
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name === 'themeTokens')
+    .replaceWith((path) => {
+      path.node.value.expression.name = 'bladeTheme';
+
+      return path.node;
+    });
+
   // Select Typography elements based on their names
   const typographyJSXElements = root
     .find(j.JSXElement)
@@ -202,16 +214,26 @@ const transformer: Transform = (file, api, options) => {
   // Remove/Update the Title import from "@razorpay/blade/components"
   root
     .find(j.ImportDeclaration)
-    .filter((path) => path.value.source.value === '@razorpay/blade/components')
+    .filter(
+      (path) =>
+        path.value.source.value === '@razorpay/blade/components' ||
+        path.value.source.value === '@razorpay/blade/tokens',
+    )
     .find(j.ImportSpecifier)
-    .filter((path) => path.value.imported.name === 'Title')
+    .filter((path) => ['Title', 'paymentTheme', 'bankingTheme'].includes(path.value.imported.name))
     .replaceWith((path) => {
       // Check if Heading import is already present
       const isHeadingImportPresent = path.parent.value.specifiers.some(
         (node) => node.imported.name === 'Heading',
       );
-      // // If Heading import is not present, update the "Title" import to use "Heading"
-      if (!isHeadingImportPresent) {
+      const isThemeImportPresent =
+        path.value.imported.name === 'paymentTheme' || path.value.imported.name === 'bankingTheme';
+
+      if (isThemeImportPresent) {
+        path.value.imported.name = 'bladeTheme';
+      }
+      // If Heading import is not present, update the "Title" import to use "Heading"
+      else if (!isHeadingImportPresent) {
         path.value.imported.name = 'Heading';
       } else {
         // If "Heading" import is present, remove the "Title" import
