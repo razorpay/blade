@@ -149,11 +149,11 @@ it('should update <Heading size="large|medium"> to <Heading size="medium|small">
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Heading size="medium" color="surface.text.gray.normal"> Lorem ipsum </Heading>
-                <Heading size="small" color="surface.text.gray.normal"> Lorem ipsum </Heading>
+                <Heading size="medium"> Lorem ipsum </Heading>
+                <Heading size="small"> Lorem ipsum </Heading>
 
-                <Heading size="medium" color="surface.text.gray.normal"> Lorem ipsum <Heading size="medium" color="surface.text.gray.normal"> Lorem ipsum </Heading> </Heading>
-                <Heading size="small" color="surface.text.gray.normal"> Lorem ipsum <Heading size="small" color="surface.text.gray.normal"> Lorem ipsum </Heading> </Heading>
+                <Heading size="medium"> Lorem ipsum <Heading size="medium"> Lorem ipsum </Heading> </Heading>
+                <Heading size="small"> Lorem ipsum <Heading size="small"> Lorem ipsum </Heading> </Heading>
               </>
             );"
   `);
@@ -177,9 +177,9 @@ it('should update <Heading size="small"> to <Text size="large">', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text>
+                <Text size="large"> Lorem ipsum </Text>
 
-                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text> </Text>
+                <Text size="large"> Lorem ipsum <Text size="large"> Lorem ipsum </Text> </Text>
               </>
             );"
   `);
@@ -203,9 +203,9 @@ it('should update <Heading variant="subheading"> to <Text size="small">', async 
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text> 
-                <Text size="small" color="surface.text.gray.normal"> Lorem ipsum </Text>
-                <Text size="small" color="surface.text.gray.normal"> Lorem ipsum <Text size="small" color="surface.text.gray.normal"> Lorem ipsum </Text> </Text>
+                <Text size="large"> Lorem ipsum </Text> 
+                <Text size="small"> Lorem ipsum </Text>
+                <Text size="small"> Lorem ipsum <Text size="small"> Lorem ipsum </Text> </Text>
               </>
             );"
   `);
@@ -229,9 +229,9 @@ it('should update <Heading size="small"> to <Text size="large">', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text>
+                <Text size="large"> Lorem ipsum </Text>
 
-                <Text size="large" color="surface.text.gray.normal"> Lorem ipsum <Text size="large" color="surface.text.gray.normal"> Lorem ipsum </Text> </Text>
+                <Text size="large"> Lorem ipsum <Text size="large"> Lorem ipsum </Text> </Text>
               </>
             );"
   `);
@@ -268,7 +268,7 @@ it('should correctly convert Title to Heading component', async () => {
     "import { Heading } from '@razorpay/blade/components';
         const App = () => (
           <>
-            <Heading size="large" color="surface.text.gray.normal"> Lorem ipsum </Heading>  
+            <Heading size="large"> Lorem ipsum </Heading>  
             <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
             <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
             <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>

@@ -42,7 +42,6 @@ const transformer: Transform = (file, api, options) => {
   // Replace old color tokens to new color tokens
   const newSource = file.source
     .replace(
-      // gets both .50 and ['50'] or ["50"]
       /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
       (originalString) => {
         const replacement = colorTokensMapping[originalString];
@@ -238,20 +237,20 @@ const transformer: Transform = (file, api, options) => {
         (attribute) => attribute.name.name === 'contrast',
       );
 
-      const colorAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'color',
-      );
-
-      // If type and contrast are not present or color is present, return the node
-      // if (colorAttribute || !(typeAttribute && contrastAttribute)) {
-      //   return node;
-      // }
+      // If type and contrast are not present, return the node
+      if (!(typeAttribute || contrastAttribute)) {
+        return node;
+      }
 
       const typeValue = typeAttribute?.value.value || 'normal';
       const contrastValue = contrastAttribute?.value.value || 'low';
 
       const oldColorToken = `surface.text.${typeValue}.${contrastValue}Contrast`;
       const newColorToken = colorTokensMapping[oldColorToken];
+
+      const colorAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'color',
+      );
 
       if (!colorAttribute && newColorToken) {
         node.openingElement.attributes?.push(
