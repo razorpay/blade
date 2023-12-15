@@ -22,7 +22,7 @@ const Page = (): ReactElement => {
           'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4',
       }}
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox showConsole>
         {`
         import { IconButton, CloseIcon } from '@razorpay/blade/components';

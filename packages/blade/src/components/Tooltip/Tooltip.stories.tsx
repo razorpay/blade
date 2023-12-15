@@ -26,7 +26,7 @@ const Page = (): React.ReactElement => {
       componentDescription="The tooltip typically provides additional context about the element or its function. A tooltip is always triggered by a mouse hover on desktop and on tap on mobile."
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=40636-559188&t=vaK9ZJskCpoIS07l-0"
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>
         {`
         import { Tooltip, Button } from '@razorpay/blade/components'

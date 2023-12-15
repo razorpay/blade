@@ -18,7 +18,7 @@ const Page = (): ReactElement => {
       such as statuses and semantical-categories."
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8224%3A1"
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
         import { Indicator, Box } from '@razorpay/blade/components';

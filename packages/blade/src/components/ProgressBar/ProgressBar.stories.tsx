@@ -16,7 +16,7 @@ const Page = (): ReactElement => {
       componentName="ProgressBar"
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16430%3A256423&t=0raQL8ilgxTx5XYL-4"
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>
         {`
           import { ProgressBar } from '@razorpay/blade/components';

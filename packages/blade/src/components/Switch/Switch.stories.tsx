@@ -25,7 +25,7 @@ const Page = (): React.ReactElement => {
       componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>
         {`
         import { Switch } from '@razorpay/blade/components';

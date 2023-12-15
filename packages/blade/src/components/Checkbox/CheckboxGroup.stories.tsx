@@ -18,7 +18,7 @@ const Page = (): React.ReactElement => {
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Checkbox/_decisions/decisions.md"
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox showConsole editorHeight={400}>
         {`
           import { CheckboxGroup, Checkbox } from '@razorpay/blade/components';

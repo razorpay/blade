@@ -17,7 +17,7 @@ const Page = (): React.ReactElement => {
       componentDescription="Amounts are used to show small amount of color coded metadata, which are ideal for getting user attention."
       note="This component only displays the provided value in the specified currency, it does not perform any currency conversion."
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>
         {`
         import { Amount } from '@razorpay/blade/components';

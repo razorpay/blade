@@ -22,7 +22,7 @@ const Page = (): ReactElement => {
       componentName="Link"
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12699%3A147155"
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>
         {`
           import { Link } from '@razorpay/blade/components';

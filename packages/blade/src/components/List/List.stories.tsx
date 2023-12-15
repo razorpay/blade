@@ -25,7 +25,7 @@ const Page = (): ReactElement => {
       componentName="List"
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23205%3A446859&t=itEw2V8u5Q0PPGJq-4"
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>
         {`
           import { List, ListItem } from '@razorpay/blade/components';

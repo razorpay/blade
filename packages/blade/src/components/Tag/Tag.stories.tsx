@@ -21,7 +21,7 @@ const Page = (): React.ReactElement => {
       componentName="Tag"
       componentDescription="These are set of interactive keywords that help organise & categorise objects. Tags can be added or removed from an object by the users."
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>
         {`
         import React from 'react';

@@ -21,7 +21,7 @@ const Page = (): React.ReactElement => {
       componentDescription="Divider is a visual element that is used to separate or divide content within a layout"
       apiDecisionLink={null}
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>
         {`
           import {

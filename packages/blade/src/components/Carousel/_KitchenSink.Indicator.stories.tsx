@@ -11,7 +11,7 @@ export const Carousel = (): JSX.Element => {
       {allStories.map((Story) => {
         return (
           <>
-            <Text size="large">{Story.storyName}</Text>
+            <Heading>{Story.storyName}</Heading>
             <Story />
           </>
         );

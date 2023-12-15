@@ -31,7 +31,7 @@ const Page = (): React.ReactElement => {
       componentName="ActionList"
       componentDescription="ActionList contains list of ActionList Items with or without in sections to perform particular actions."
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
           import { 

@@ -18,7 +18,7 @@ const Page = (): React.ReactElement => {
       componentName="Badge"
       componentDescription="Badges are used to show small amount of color coded metadata, which are ideal for getting user attention."
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>
         {`
         import { Badge, InfoIcon } from '@razorpay/blade/components';

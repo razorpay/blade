@@ -17,7 +17,7 @@ const Page = (): ReactElement => {
       imports=""
       apiDecisionLink={null}
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox editorHeight={400}>
         {`
           import { 

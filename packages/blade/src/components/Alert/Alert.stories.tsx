@@ -16,7 +16,7 @@ const Page = (): ReactElement => {
       componentDescription="Alerts are messages that communicate information to users about any significant changes or explanations inside the system in a prominent way."
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789"
     >
-      <Heading size="medium">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
         import { Alert } from '@razorpay/blade/components';
