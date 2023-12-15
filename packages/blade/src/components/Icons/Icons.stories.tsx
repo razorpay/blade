@@ -40,7 +40,7 @@ const Page = (): ReactElement => {
         export default App;
         `}
       </Sandbox>
-      <Heading size="medium">Adding icons</Heading>
+      <Title>Adding icons</Title>
       <Description>
         1. Please validate in the all icons story below in case the icon you wish to add is already
         present. Steps for adding a new icon from Figma:
