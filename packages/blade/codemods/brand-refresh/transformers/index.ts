@@ -6,11 +6,6 @@ const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
 };
 
 const transformer: Transform = (file, api, options) => {
-  // Don't transform if the file doesn't import `@razorapy/blade/components` because it's not using Blade components
-  if (!file.source.includes('@razorpay/blade/components')) {
-    return file.source;
-  }
-
   // Maps to transform Title sizes to Heading sizes
   const titleToHeadingMap = {
     xlarge: '2xlarge',
@@ -49,7 +44,10 @@ const transformer: Transform = (file, api, options) => {
     .replace(
       /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
       (originalString) => {
-        const replacement = colorTokensMapping[originalString];
+        let replacement = colorTokensMapping[originalString];
+        if (originalString.includes('highContrast') && !originalString.includes('feedback')) {
+          replacement = `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`;
+        }
         if (!replacement) {
           return originalString;
         }
@@ -81,6 +79,11 @@ const transformer: Transform = (file, api, options) => {
         return `${lineHeightTokenPrefix}[${lineHeightMap[token]}]`;
       },
     );
+
+  // Don't transform if the file doesn't import `@razorapy/blade/components` because it's not using Blade components
+  if (!newSource.includes('@razorpay/blade/components')) {
+    return newSource;
+  }
 
   const j = api.jscodeshift;
   const root = j.withParser('tsx')(newSource);
