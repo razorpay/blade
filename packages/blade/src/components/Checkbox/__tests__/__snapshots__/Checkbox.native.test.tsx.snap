@@ -74,14 +74,12 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
         }
       >
         <View
-          alignItems="center"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
             [
               {
-                "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
               },
@@ -103,6 +101,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
                   "borderStyle": "solid",
                   "borderWidth": 1.5,
                   "display": "flex",
+                  "flexShrink": 0,
                   "height": 16,
                   "justifyContent": "center",
                   "marginBottom": 2,
@@ -158,16 +157,6 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             Remember password
           </Text>
         </View>
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginLeft": 24,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </View>
@@ -248,14 +237,12 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
         }
       >
         <View
-          alignItems="center"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
             [
               {
-                "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
               },
@@ -278,6 +265,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
                   "borderStyle": "solid",
                   "borderWidth": 1.5,
                   "display": "flex",
+                  "flexShrink": 0,
                   "height": 16,
                   "justifyContent": "center",
                   "marginBottom": 2,
@@ -333,16 +321,6 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             Remember password
           </Text>
         </View>
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginLeft": 24,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </View>
@@ -424,14 +402,12 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
         }
       >
         <View
-          alignItems="center"
           data-blade-component="base-box"
           display="flex"
           flexDirection="row"
           style={
             [
               {
-                "alignItems": "center",
                 "display": "flex",
                 "flexDirection": "row",
               },
@@ -453,6 +429,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
                   "borderStyle": "solid",
                   "borderWidth": 1.5,
                   "display": "flex",
+                  "flexShrink": 0,
                   "height": 16,
                   "justifyContent": "center",
                   "marginBottom": 2,
@@ -508,16 +485,6 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             Remember password
           </Text>
         </View>
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginLeft": 24,
-              },
-            ]
-          }
-        />
       </View>
     </View>
     <View

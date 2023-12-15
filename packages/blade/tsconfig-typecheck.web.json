@@ -8,7 +8,8 @@
     "**/**.native.ts",
     "**/**.native.tsx",
     "**/**.native.test.ts",
-    "**/**.native.test.tsx"
+    "**/**.native.test.tsx",
+    "**/ThemePlayground/**.tsx"
   ],
   "compilerOptions": {
     "noEmit": true,

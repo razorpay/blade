@@ -19,7 +19,7 @@ type HeadingCommonProps = {
   /**
    * Overrides the color of the Heading component.
    *
-   * **Note** This takes priority over `type` and `constrast` prop to decide color of heading
+   * **Note** This takes priority over `type` and `contrast` prop to decide color of heading
    */
   color?: BaseTextProps['color'];
   type?: TextTypes;

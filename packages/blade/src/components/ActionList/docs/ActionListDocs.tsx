@@ -2,11 +2,13 @@ import React from 'react';
 import { ActionList, ActionListItem, ActionListSection, Playground } from './stories';
 import { actionListPropsTables } from './propsTable';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Code, Title } from '~components/Typography';
-import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox';
+import { Code, Text, Title } from '~components/Typography';
+import { Sandbox, VerticalSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { ArgsTable } from '~utils/storybook/ArgsTable';
+import { ScrollLink } from '~utils/storybook/ScrollLink';
+import { Link } from '~components/Link';
 
 const ActionListDocs = (): React.ReactElement => {
   return (
@@ -51,6 +53,29 @@ const ActionListDocs = (): React.ReactElement => {
         <BaseBox id="actionlistitemasset">
           <Title size="small">ActionListItemAsset</Title>
           <ArgsTable data={{ href: 'string', alt: 'string' }} />
+        </BaseBox>
+        <BaseBox id="actionlistitembadgegroup">
+          <Title size="small">ActionListItemBadgeGroup</Title>
+          <ArgsTable
+            data={{
+              children: (
+                <ScrollLink href="#actionlistitembadge">&lt;ActionListItemBadge /&gt;[]</ScrollLink>
+              ),
+            }}
+          />
+        </BaseBox>
+        <BaseBox id="actionlistitembadge">
+          <Title size="small">ActionListItemBadge</Title>
+          <Text marginTop="spacing.3">
+            Shares same props as <Link href="/?path=/docs/components-badge--badge">Badge</Link>
+          </Text>
+          <Text marginTop="spacing.3">
+            Checkout{' '}
+            <Link href="/?path=/story/components-dropdown-with-autocomplete--controlled-filtering">
+              Custom Filtering with AutoComplete
+            </Link>{' '}
+            for usage of ActionListItemBadge
+          </Text>
         </BaseBox>
       </BaseBox>
       <BaseBox as="section" id="actionlistsection">

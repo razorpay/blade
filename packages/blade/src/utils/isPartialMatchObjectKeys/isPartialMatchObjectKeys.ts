@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import isObject from 'lodash/isObject';
+import isObject from '~utils/lodashButBetter/isObject';
 import { logger } from '~utils/logger';
 
 export type DeepPartial<T> = {

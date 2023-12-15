@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { BaseHeaderProps } from '../BaseHeaderFooter/BaseHeader';
-import type { BaseFooterProps } from '../BaseHeaderFooter/BaseFooter';
 import type { SnapPoints } from './utils';
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import type { SpacingValueType } from '~components/Box/BaseBox';
 
 type BottomSheetProps = {
@@ -41,7 +41,7 @@ type BottomSheetProps = {
 
 type BottomSheetHeaderProps = Pick<
   BaseHeaderProps,
-  'title' | 'subtitle' | 'leading' | 'showBackButton' | 'onBackButtonClick'
+  'title' | 'subtitle' | 'leading' | 'showBackButton' | 'onBackButtonClick' | 'children'
 > & {
   /**
    * Trailing element to be rendered in the Header
@@ -71,4 +71,9 @@ type BottomSheetBodyProps = {
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.5'>;
 };
 
-export { BottomSheetProps, BottomSheetHeaderProps, BottomSheetFooterProps, BottomSheetBodyProps };
+export type {
+  BottomSheetProps,
+  BottomSheetHeaderProps,
+  BottomSheetFooterProps,
+  BottomSheetBodyProps,
+};

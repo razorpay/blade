@@ -1,7 +1,7 @@
-import getIn from 'lodash/get';
 import styled from 'styled-components';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import { castWebType } from '~utils';
 import { useStyledProps } from '~components/Box/styledProps';
 import { makeBorderSize } from '~utils/makeBorderSize';
@@ -30,7 +30,7 @@ const StyledLink = styled.button
       width: 'max-content',
       borderRadius: makeBorderSize(props.theme.border.radius.small),
     },
-    '&:focus': {
+    '&:focus-visible': {
       '.content-container': {
         boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
       },

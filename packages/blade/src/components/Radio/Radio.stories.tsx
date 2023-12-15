@@ -2,14 +2,13 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
-import { Text } from '../Typography';
 import type { RadioGroupProps } from './RadioGroup/RadioGroup';
 import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
+import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
@@ -27,7 +26,7 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
+      <Sandbox showConsole editorHeight={400}>
         {`
           import { RadioGroup, Radio } from '@razorpay/blade/components';
 
@@ -139,9 +138,9 @@ Optional.args = {
   necessityIndicator: 'optional',
 };
 
-export const Required = RadioTemplate.bind({});
-Required.storyName = 'Required';
-Required.args = {
+export const RequiredRadio = RadioTemplate.bind({});
+RequiredRadio.storyName = 'Required';
+RequiredRadio.args = {
   necessityIndicator: 'required',
 };
 
@@ -264,7 +263,7 @@ export const KitchenSink = (): React.ReactElement => {
 
 export const radioRef: ComponentStory<typeof RadioComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const radioRef = React.useRef<BladeElementRef>(null);
+  const radioRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="center">

@@ -15,6 +15,7 @@ type StyledActionListItemProps = {
   isSelected?: boolean;
   isKeydownPressed: boolean;
   isMobile: boolean;
+  isVisible?: boolean;
 };
 
 const getBaseActionListItemStyles = (
@@ -35,4 +36,5 @@ const getBaseActionListItemStyles = (
   };
 };
 
-export { getBaseActionListItemStyles, StyledActionListItemProps };
+export type { StyledActionListItemProps };
+export { getBaseActionListItemStyles };

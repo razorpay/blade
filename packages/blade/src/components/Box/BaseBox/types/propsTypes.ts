@@ -16,7 +16,9 @@ type LayoutProps = MakeObjectResponsive<
     width: SpacingValueType;
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
-  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign'>
+  } & PickCSSByPlatform<
+    'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign' | 'whiteSpace'
+  >
 >;
 
 type FlexboxProps = MakeObjectResponsive<
@@ -125,15 +127,15 @@ type CommonBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
     borderWidth: keyof Border['width'];
-    borderColor: BorderColorString<'surface'>;
+    borderColor: BorderColorString<'surface'> | BrandColorString;
     borderTopWidth: keyof Border['width'];
-    borderTopColor: BorderColorString<'surface'>;
+    borderTopColor: BorderColorString<'surface'> | BrandColorString;
     borderRightWidth: keyof Border['width'];
-    borderRightColor: BorderColorString<'surface'>;
+    borderRightColor: BorderColorString<'surface'> | BrandColorString;
     borderBottomWidth: keyof Border['width'];
-    borderBottomColor: BorderColorString<'surface'>;
+    borderBottomColor: BorderColorString<'surface'> | BrandColorString;
     borderLeftWidth: keyof Border['width'];
-    borderLeftColor: BorderColorString<'surface'>;
+    borderLeftColor: BorderColorString<'surface'> | BrandColorString;
     borderTopLeftRadius: keyof Border['radius'];
     borderTopRightRadius: keyof Border['radius'];
     borderBottomRightRadius: keyof Border['radius'];
@@ -145,6 +147,11 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'backgroundOrigin'
     | 'backgroundRepeat'
     | 'pointerEvents'
+    | 'opacity'
+    | 'visibility'
+    | 'transform'
+    | 'transformOrigin'
+    | 'clipPath'
   > & {
       /**
        * Sets the elevation for Box
@@ -289,6 +296,7 @@ type BoxProps = Partial<
     BoxVisualProps & {
       children?: React.ReactNode | React.ReactNode[];
       tabIndex?: number;
+      id?: string;
     } & TestID
 >;
 
@@ -311,4 +319,5 @@ type BoxRefType = Platform.Select<{
   native: View;
 }>;
 
-export { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, FlexboxProps, validBoxAsValues };
+export type { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, FlexboxProps };
+export { validBoxAsValues };

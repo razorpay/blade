@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal renders a Modal with Header and Footer 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -25,7 +25,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   border-radius: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   padding-right: 16px;
   padding-left: 16px;
   margin-bottom: 16px;
@@ -33,7 +33,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   touch-action: none;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -47,7 +47,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   user-select: none;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -66,13 +66,13 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   margin-right: auto;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -85,11 +85,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   flex-shrink: 0;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   margin-left: 8px;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -105,18 +105,18 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   height: 28px;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   background-color: hsla(155,100%,31%,0.09);
 }
 
-.c15 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -139,23 +139,23 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding-left: 8px;
 }
 
-.c23 {
+.c23.c23.c23.c23.c23 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c25 {
+.c25.c25.c25.c25.c25 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c27 {
+.c27.c27.c27.c27.c27 {
   padding: 16px;
 }
 
-.c29 {
+.c29.c29.c29.c29.c29 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -176,16 +176,16 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   justify-content: center;
 }
 
-.c18 {
+.c18.c18.c18.c18.c18 {
   margin-right: 16px;
 }
 
-.c19 {
+.c19.c19.c19.c19.c19 {
   text-align: left;
   background-color: hsla(36,100%,44%,0.09);
 }
 
-.c24 {
+.c24.c24.c24.c24.c24 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -194,7 +194,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   flex-grow: 1;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -207,7 +207,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c16 {
+.c16.c16.c16.c16.c16 {
   color: hsla(160,100%,26%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -226,7 +226,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c17 {
+.c17.c17.c17.c17.c17 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -239,7 +239,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c26 {
+.c26.c26.c26.c26.c26 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -252,7 +252,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c31 {
+.c31.c31.c31.c31.c31 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -266,7 +266,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c21 {
+.c21.c21.c21.c21.c21 {
   color: hsla(38,97%,38%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -284,7 +284,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c22 {
+.c22.c22.c22.c22.c22 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -311,21 +311,21 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c22:hover {
+.c22.c22.c22.c22.c22:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c22:focus {
+.c22.c22.c22.c22.c22:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c22:active {
+.c22.c22.c22.c22.c22:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -336,18 +336,18 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   background-color: hsla(214,15%,18%,0.64);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
 }
 
-.c20 {
+.c20.c20.c20.c20.c20 {
   background-color: hsla(36,100%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
@@ -362,7 +362,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-.c14 {
+.c14.c14.c14.c14.c14 {
   background-color: hsla(155,100%,31%,0.09);
   border-radius: 9999px;
   max-width: 120px;
@@ -378,7 +378,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-.c28 {
+.c28.c28.c28.c28.c28 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -414,24 +414,24 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   position: relative;
 }
 
-.c28:hover {
+.c28.c28.c28.c28.c28:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c28:active {
+.c28.c28.c28.c28.c28:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c28:focus {
+.c28.c28.c28.c28.c28:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  outline: none;
 }
 
-.c28 * {
+.c28.c28.c28.c28.c28 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -440,12 +440,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c30 {
+.c30.c30.c30.c30.c30 {
   opacity: 1;
 }
 
 @media screen and (min-width:768px) {
-  .c4 {
+  .c4.c4.c4.c4.c4 {
     padding-right: 20px;
     padding-left: 20px;
     margin-bottom: 20px;
@@ -454,37 +454,37 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c23 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c23 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c23 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c23 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c23 {
+  .c23.c23.c23.c23.c23 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c27 {
+  .c27.c27.c27.c27.c27 {
     padding: 20px;
   }
 }
@@ -497,8 +497,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   <div
     aria-hidden="true"
     class="c1"
-    data-aria-hidden="true"
     data-blade-component="modal-backdrop"
+    data-floating-ui-inert=""
     data-testid="modal-backdrop"
     style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
   />
@@ -643,6 +643,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       <div
         class="c23 c24"
         data-blade-component="divider"
+        role="separator"
       />
     </div>
     <div
@@ -663,6 +664,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       <div
         class="c23 c24"
         data-blade-component="divider"
+        role="separator"
       />
       <div
         class="c27"
@@ -693,12 +695,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 `;
 
 exports[`Modal renders a basic Modal 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -717,13 +719,13 @@ exports[`Modal renders a basic Modal 1`] = `
   border-radius: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -736,7 +738,7 @@ exports[`Modal renders a basic Modal 1`] = `
   padding: 0;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -747,15 +749,15 @@ exports[`Modal renders a basic Modal 1`] = `
   background-color: hsla(214,15%,18%,0.64);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
 }
 
 <div
@@ -766,8 +768,8 @@ exports[`Modal renders a basic Modal 1`] = `
   <div
     aria-hidden="true"
     class="c1"
-    data-aria-hidden="true"
     data-blade-component="modal-backdrop"
+    data-floating-ui-inert=""
     data-testid="modal-backdrop"
     style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
   />
@@ -795,12 +797,12 @@ exports[`Modal renders a basic Modal 1`] = `
 `;
 
 exports[`Modal renders a basic Modal of large size 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -819,13 +821,13 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   border-radius: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -838,7 +840,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   padding: 0;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -849,15 +851,15 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   background-color: hsla(214,15%,18%,0.64);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
 }
 
 <div
@@ -868,8 +870,8 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   <div
     aria-hidden="true"
     class="c1"
-    data-aria-hidden="true"
     data-blade-component="modal-backdrop"
+    data-floating-ui-inert=""
     data-testid="modal-backdrop"
     style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
   />
@@ -897,12 +899,12 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 `;
 
 exports[`Modal renders a basic Modal of medium size 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   position: fixed;
   z-index: 1000;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -921,13 +923,13 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   border-radius: 8px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -940,7 +942,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   padding: 0;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.5,0,1,1);
@@ -951,15 +953,15 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   background-color: hsla(214,15%,18%,0.64);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   opacity: 0;
-  -webkit-animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
-  animation: hWDQRX 300ms cubic-bezier(0.5,0,1,1);
+  -webkit-animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
+  animation: hWDQRX-450290765 300ms cubic-bezier(0.5,0,1,1);
 }
 
 <div
@@ -970,8 +972,8 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   <div
     aria-hidden="true"
     class="c1"
-    data-aria-hidden="true"
     data-blade-component="modal-backdrop"
+    data-floating-ui-inert=""
     data-testid="modal-backdrop"
     style="position: fixed; overflow: auto; top: 0px; right: 0px; bottom: 0px; left: 0px;"
   />

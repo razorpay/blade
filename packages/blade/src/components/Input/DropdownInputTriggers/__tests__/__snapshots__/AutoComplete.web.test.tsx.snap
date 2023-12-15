@@ -1,0 +1,2719 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render BottomSheet and make it visible on click 1`] = `
+.c0.c0.c0.c0.c0 {
+  text-align: left;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 {
+  position: relative;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.c5.c5.c5.c5.c5 {
+  margin-bottom: 4px;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
+.c12.c12.c12.c12.c12 {
+  margin-top: -4px;
+  width: 100%;
+  min-width: 30px;
+}
+
+.c15.c15.c15.c15.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.c16.c16.c16.c16.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  padding-right: 12px;
+}
+
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.c21.c21.c21.c21.c21 {
+  margin-left: 0px;
+}
+
+.c22.c22.c22.c22.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c26.c26.c26.c26.c26 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  height: 100%;
+}
+
+.c28.c28.c28.c28.c28 {
+  overflow: auto;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c29.c29.c29.c29.c29 {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  touch-action: none;
+}
+
+.c30.c30.c30.c30.c30 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c31.c31.c31.c31.c31 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  padding-right: 16px;
+  margin-right: auto;
+}
+
+.c32.c32.c32.c32.c32 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c33.c33.c33.c33.c33 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c34.c34.c34.c34.c34 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 28px;
+}
+
+.c40.c40.c40.c40.c40 {
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
+.c42.c42.c42.c42.c42 {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 1;
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
+}
+
+.c46.c46.c46.c46.c46 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  max-height: 20px;
+}
+
+.c47.c47.c47.c47.c47 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c48.c48.c48.c48.c48 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 8px;
+  padding-left: 0px;
+}
+
+.c50.c50.c50.c50.c50 {
+  margin-left: auto;
+}
+
+.c51.c51.c51.c51.c51 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  z-index: 2;
+  margin-top: auto;
+  width: 100%;
+  background-color: hsla(0,0%,100%,1);
+  touch-action: none;
+}
+
+.c52.c52.c52.c52.c52 {
+  padding: 16px;
+}
+
+.c54.c54.c54.c54.c54 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c43.c43.c43.c43.c43 {
+  overflow: auto;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.c37.c37.c37.c37.c37 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
+.c23.c23.c23.c23.c23 {
+  position: fixed;
+  z-index: 100;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: hsla(214,15%,18%,0.64);
+  opacity: 1;
+}
+
+.c53.c53.c53.c53.c53 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c53.c53.c53.c53.c53:hover {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+}
+
+.c53.c53.c53.c53.c53:active {
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
+}
+
+.c53.c53.c53.c53.c53:focus-visible {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c53.c53.c53.c53.c53 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c7.c7.c7.c7.c7 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14 {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c49.c49.c49.c49.c49 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c56.c56.c56.c56.c56 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c19.c19.c19.c19.c19 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c18.c18.c18.c18.c18 {
+  display: none;
+}
+
+.c55.c55.c55.c55.c55 {
+  opacity: 1;
+}
+
+.c41.c41.c41.c41.c41 {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c35.c35.c35.c35.c35 {
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 2px;
+  background: transparent;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: hsla(214,18%,69%,1);
+  -webkit-transition-property: color,box-shadow;
+  transition-property: color,box-shadow;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c35.c35.c35.c35.c35:hover {
+  color: hsla(217,18%,45%,1);
+}
+
+.c35.c35.c35.c35.c35:focus-visible {
+  outline: none;
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  color: hsla(217,18%,45%,1);
+}
+
+.c35.c35.c35.c35.c35:active {
+  color: hsla(217,18%,45%,1);
+}
+
+.c38.c38.c38.c38.c38 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: transparent;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 12px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c38.c38.c38.c38.c38::-webkit-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c38.c38.c38.c38.c38::-moz-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c38.c38.c38.c38.c38:-ms-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c38.c38.c38.c38.c38::placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c38.c38.c38.c38.c38:focus {
+  outline: none;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: transparent;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 8px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c13.c13.c13.c13.c13::-webkit-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13::-moz-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13:-ms-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13::placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13:focus {
+  outline: none;
+}
+
+.c39.c39.c39.c39.c39 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  background-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  height: 1px;
+  -webkit-animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
+  animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
+}
+
+.c20.c20.c20.c20.c20 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  background-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  height: 1px;
+  -webkit-animation: iXkvNT-450290765 150ms cubic-bezier(0.3,0,0.2,1) forwards;
+  animation: iXkvNT-450290765 150ms cubic-bezier(0.3,0,0.2,1) forwards;
+}
+
+.c9.c9.c9.c9.c9 {
+  background-color: hsla(216,15%,54%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c9.c9.c9.c9.c9:hover {
+  background-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9:focus-within {
+  background-color: hsla(216,15%,54%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c36.c36.c36.c36.c36 {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c36.c36.c36.c36.c36:hover {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c36.c36.c36.c36.c36:focus-within {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c10.c10.c10.c10.c10 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 37px;
+}
+
+.c2.c2.c2.c2.c2 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c44.c44.c44.c44.c44 {
+  overflow-y: auto;
+}
+
+.c44.c44.c44.c44.c44 [role=group]:last-child > [role=separator]:last-child {
+  display: none;
+}
+
+.c45.c45.c45.c45.c45 {
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+  text-align: left;
+  background-color: transparent;
+  padding: 4px;
+  border-radius: 4px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+}
+
+.c45.c45.c45.c45.c45:hover:not([aria-disabled=true]) {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c45.c45.c45.c45.c45[aria-selected=true] {
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+.c24.c24.c24.c24.c24 {
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(0,0,0,1);
+  transition-timing-function: cubic-bezier(0,0,0,1);
+  pointer-events: all;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+}
+
+.c27.c27.c27.c27.c27 {
+  position: relative;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding-top: 12px;
+  margin-bottom: 4px;
+  touch-action: none;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.c27.c27.c27.c27.c27:after {
+  margin: auto;
+  content: '';
+  width: 56px;
+  height: 4px;
+  background-color: hsla(216,15%,54%,0.18);
+  border-radius: 16px;
+}
+
+.c25.c25.c25.c25.c25 {
+  background: hsla(0,0%,100%,1);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  border-color: hsla(216,15%,54%,0.18);
+  box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition-duration: 250ms;
+  transition-duration: 250ms;
+  -webkit-transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  transition-timing-function: cubic-bezier(.15,0,.24,.97);
+  will-change: transform,opacity,height;
+  -webkit-transition-property: -webkit-transform,opacity,height;
+  -webkit-transition-property: transform,opacity,height;
+  transition-property: transform,opacity,height;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 768px;
+  background-color: hsla(0,0%,100%,1);
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  touch-action: none;
+  overflow: hidden;
+}
+
+@media screen and (min-width:768px) {
+  .c29.c29.c29.c29.c29 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c40.c40.c40.c40.c40 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c40.c40.c40.c40.c40 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c40.c40.c40.c40.c40 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c40.c40.c40.c40.c40 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c40.c40.c40.c40.c40 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c52.c52.c52.c52.c52 {
+    padding: 20px;
+  }
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="dropdown"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c2"
+          data-blade-component="visually-hidden"
+        >
+          <input
+            aria-hidden="true"
+            tabindex="-1"
+            value=""
+          />
+        </div>
+        <div
+          class=""
+          data-blade-component="select-input"
+          data-testid="select"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c4"
+              data-blade-component="base-box"
+            >
+              <label
+                data-blade-component="form-label"
+                for="dropdown-123"
+                id="dropdown-123-label"
+                style="width: auto; flex-shrink: 0; margin-right: 16px;"
+              >
+                <div
+                  class="c5"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c6"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c7"
+                      data-blade-component="text"
+                    >
+                      Fruits
+                    </p>
+                    <div
+                      class="c2"
+                      data-blade-component="visually-hidden"
+                    >
+                      <p
+                        class="c8"
+                        data-blade-component="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class=" c9 c10"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c11 tags-slot"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c12"
+                  data-blade-component="base-box"
+                >
+                  <button
+                    aria-activedescendant="dropdown-123-0"
+                    aria-controls="dropdown-123-actionlist"
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-expanded="true"
+                    aria-haspopup="listbox"
+                    aria-invalid="false"
+                    aria-required="false"
+                    autocomplete="off"
+                    class="c13"
+                    data-blade-component="styled-base-input"
+                    id="dropdown-123"
+                    placeholder="Select Option"
+                    role="combobox"
+                    type="button"
+                    value=""
+                  >
+                    <p
+                      class="c14"
+                      data-blade-component="text"
+                    >
+                      Select Option
+                    </p>
+                  </button>
+                </div>
+              </div>
+              <div
+                class="c15"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c16"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c17"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="c18"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(217, 56%, 17%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="c19"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(217, 56%, 17%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=" c20"
+                data-blade-component="base-box"
+              />
+            </div>
+          </div>
+          <div
+            class="c21"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c22"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="c23 c24"
+        data-blade-component="base-box"
+        data-testid="bottomsheet-backdrop"
+        opacity="1"
+      />
+      <div
+        aria-modal="true"
+        class="c25"
+        data-blade-component="bottom-sheet"
+        data-testid="bottomsheet-surface"
+        role="dialog"
+        style="opacity: 1; pointer-events: all; height: 652.8px; bottom: 0px; z-index: 100;"
+      >
+        <div
+          class="c26"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c27"
+            data-blade-component="BottomSheetGrabHandle"
+          />
+          <div
+            class="c28"
+            data-blade-component="bottom-sheet-header"
+          >
+            <div
+              class=""
+              data-blade-component="base-box"
+            >
+              <div
+                class="c29"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c30"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c31"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c32"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c33"
+                        data-blade-component="base-box"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="c34"
+                    data-blade-component="box"
+                  >
+                    <button
+                      aria-label="Close"
+                      class="c35"
+                      data-blade-component="icon-button"
+                      type="button"
+                    >
+                      <svg
+                        aria-hidden="true"
+                        class=""
+                        data-blade-component="icon"
+                        fill="none"
+                        height="20px"
+                        viewBox="0 0 24 24"
+                        width="20px"
+                      >
+                        <path
+                          d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
+                          data-blade-component="svg-path"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="c1"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class=""
+                    data-blade-component="autocomplete"
+                    data-testid="fruits-autocomplete"
+                  >
+                    <div
+                      class="c3"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c4"
+                        data-blade-component="base-box"
+                      >
+                        <label
+                          data-blade-component="form-label"
+                          for="dropdown-123"
+                          id="dropdown-123-label"
+                          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+                        >
+                          <div
+                            class="c5"
+                            data-blade-component="base-box"
+                          >
+                            <div
+                              class="c6"
+                              data-blade-component="base-box"
+                            >
+                              <p
+                                class="c7"
+                                data-blade-component="text"
+                              >
+                                Fruits
+                              </p>
+                              <div
+                                class="c2"
+                                data-blade-component="visually-hidden"
+                              >
+                                <p
+                                  class="c8"
+                                  data-blade-component="text"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </label>
+                      </div>
+                      <div
+                        class=" c36 c10"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class="c37 tags-slot"
+                          data-blade-component="base-box"
+                        >
+                          <div
+                            class="c12"
+                            data-blade-component="base-box"
+                          >
+                            <input
+                              aria-activedescendant="dropdown-123-0"
+                              aria-controls="dropdown-123-actionlist"
+                              aria-describedby=""
+                              aria-disabled="false"
+                              aria-expanded="true"
+                              aria-haspopup="listbox"
+                              aria-invalid="false"
+                              aria-required="false"
+                              autocomplete="off"
+                              autofocus=""
+                              class="c38"
+                              data-blade-component="styled-base-input"
+                              id="dropdown-123"
+                              placeholder="Select Option"
+                              role="combobox"
+                              type="text"
+                              value=""
+                            />
+                          </div>
+                        </div>
+                        <div
+                          class=" c39"
+                          data-blade-component="base-box"
+                        />
+                      </div>
+                    </div>
+                    <div
+                      class="c21"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c22"
+                        data-blade-component="base-box"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="c40 c41"
+                data-blade-component="divider"
+                role="separator"
+              />
+            </div>
+          </div>
+          <div
+            class="c42"
+            data-blade-component="bottom-sheet-body"
+            data-testid="bottomsheet-body"
+            style="user-select: auto; overflow: auto;"
+          >
+            <div
+              class="c43"
+              data-blade-component="base-box"
+            >
+              <div
+                class=" c44"
+                data-blade-component="base-box"
+              >
+                <button
+                  aria-selected="false"
+                  class=" c45 active-focus"
+                  data-blade-component="action-list-item"
+                  data-index="0"
+                  data-value="apple"
+                  id="dropdown-123-0"
+                  role="option"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <div
+                    class="c46"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c47"
+                      data-blade-component="base-box"
+                    />
+                    <div
+                      class="c48"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c49"
+                        data-blade-component="text"
+                      >
+                        Apple
+                      </p>
+                    </div>
+                    <div
+                      class="c50"
+                      data-blade-component="base-box"
+                    />
+                  </div>
+                  <div
+                    class=""
+                    data-blade-component="base-box"
+                  />
+                </button>
+                <button
+                  aria-selected="false"
+                  class=" c45"
+                  data-blade-component="action-list-item"
+                  data-index="1"
+                  data-value="mango"
+                  id="dropdown-123-1"
+                  role="option"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <div
+                    class="c46"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c47"
+                      data-blade-component="base-box"
+                    />
+                    <div
+                      class="c48"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c49"
+                        data-blade-component="text"
+                      >
+                        Mango
+                      </p>
+                    </div>
+                    <div
+                      class="c50"
+                      data-blade-component="base-box"
+                    />
+                  </div>
+                  <div
+                    class=""
+                    data-blade-component="base-box"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div
+            class="c51"
+            data-blade-component="bottom-sheet-footer"
+          >
+            <div
+              class="c40 c41"
+              data-blade-component="divider"
+              role="separator"
+            />
+            <div
+              class="c52"
+              data-blade-component="base-box"
+            >
+              <div
+                class=""
+                data-blade-component="box"
+              >
+                <button
+                  class="c53"
+                  data-blade-component="button"
+                  role="button"
+                  type="button"
+                >
+                  <div
+                    class="c54 c55"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c56"
+                      data-blade-component="base-text"
+                    >
+                      Apply
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it visible on click 1`] = `
+.c0.c0.c0.c0.c0 {
+  text-align: left;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1 {
+  position: relative;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.c4.c4.c4.c4.c4 {
+  margin-bottom: 4px;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  max-height: 36px;
+  gap: 0px;
+}
+
+.c12.c12.c12.c12.c12 {
+  margin-top: -4px;
+  width: 100%;
+  min-width: 30px;
+}
+
+.c14.c14.c14.c14.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.c15.c15.c15.c15.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: stretch;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  padding-right: 12px;
+}
+
+.c16.c16.c16.c16.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.c20.c20.c20.c20.c20 {
+  margin-left: 0px;
+}
+
+.c21.c21.c21.c21.c21 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.c23.c23.c23.c23.c23 {
+  width: 100%;
+  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+}
+
+.c25.c25.c25.c25.c25 {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c26.c26.c26.c26.c26 {
+  padding-right: 16px;
+  padding-left: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  touch-action: none;
+}
+
+.c27.c27.c27.c27.c27 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.c28.c28.c28.c28.c28 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  padding-right: 16px;
+  margin-right: auto;
+}
+
+.c29.c29.c29.c29.c29 {
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c30.c30.c30.c30.c30 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.c32.c32.c32.c32.c32 {
+  border-width: 0px;
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+}
+
+.c41.c41.c41.c41.c41 {
+  padding: 16px;
+}
+
+.c22.c22.c22.c22.c22 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 1002;
+}
+
+.c43.c43.c43.c43.c43 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
+}
+
+.c36.c36.c36.c36.c36 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  max-height: 20px;
+}
+
+.c37.c37.c37.c37.c37 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c38.c38.c38.c38.c38 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 8px;
+  padding-left: 0px;
+}
+
+.c40.c40.c40.c40.c40 {
+  margin-left: auto;
+}
+
+.c24.c24.c24.c24.c24 {
+  background-color: hsla(0,0%,100%,1);
+  border-width: 1px;
+  border-color: hsla(216,15%,54%,0.18);
+  border-style: solid;
+  border-radius: 4px;
+}
+
+.c42.c42.c42.c42.c42 {
+  min-height: 36px;
+  width: 100%;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c42.c42.c42.c42.c42:hover {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+}
+
+.c42.c42.c42.c42.c42:active {
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
+}
+
+.c42.c42.c42.c42.c42:focus-visible {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c42.c42.c42.c42.c42 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(217,18%,45%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.c8.c8.c8.c8.c8 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c31.c31.c31.c31.c31 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.c45.c45.c45.c45.c45 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c39.c39.c39.c39.c39 {
+  color: hsla(217,56%,17%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c18.c18.c18.c18.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c17.c17.c17.c17.c17 {
+  display: none;
+}
+
+.c44.c44.c44.c44.c44 {
+  opacity: 1;
+}
+
+.c33.c33.c33.c33.c33 {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(216,27%,36%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  background-color: transparent;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 0px;
+  padding-right: 8px;
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  resize: none;
+  outline: none;
+  border: none;
+  cursor: auto;
+}
+
+.c13.c13.c13.c13.c13::-webkit-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13::-moz-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13:-ms-input-placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13::placeholder {
+  color: hsla(214,18%,69%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13:focus {
+  outline: none;
+}
+
+.c19.c19.c19.c19.c19 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  background-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  height: 1px;
+  -webkit-animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
+  animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
+}
+
+.c9.c9.c9.c9.c9 {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c9.c9.c9.c9.c9:hover {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+  -webkit-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9:focus-within {
+  background-color: hsla(218,89%,51%,0.09);
+  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  width: 100%;
+  position: relative;
+  height: auto;
+}
+
+.c10.c10.c10.c10.c10 {
+  -webkit-animation: none;
+  animation: none;
+  max-height: 37px;
+}
+
+.c7.c7.c7.c7.c7 {
+  border: 0;
+  -webkit-clip: rect(0 0 0 0);
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  left: -10000px;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.c34.c34.c34.c34.c34 {
+  overflow-y: auto;
+  max-height: 300px;
+  padding: 8px;
+}
+
+.c34.c34.c34.c34.c34 [role=group]:last-child > [role=separator]:last-child {
+  display: none;
+}
+
+.c35.c35.c35.c35.c35 {
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+  text-align: left;
+  background-color: transparent;
+  padding: 4px;
+  border-radius: 4px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+}
+
+.c35.c35.c35.c35.c35:hover:not([aria-disabled=true]) {
+  background-color: hsla(216,15%,54%,0.09);
+}
+
+.c35.c35.c35.c35.c35[aria-selected=true] {
+  background-color: hsla(218,89%,51%,0.09);
+}
+
+@media screen and (min-width:768px) {
+  .c26.c26.c26.c26.c26 {
+    padding-right: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c32.c32.c32.c32.c32 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c32.c32.c32.c32.c32 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c32.c32.c32.c32.c32 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c32.c32.c32.c32.c32 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c32.c32.c32.c32.c32 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c41.c41.c41.c41.c41 {
+    padding: 20px;
+  }
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="dropdown"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c1"
+        data-blade-component="base-box"
+      >
+        <div
+          class=""
+          data-blade-component="autocomplete"
+        >
+          <div
+            class="c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c3"
+              data-blade-component="base-box"
+            >
+              <label
+                data-blade-component="form-label"
+                for="dropdown-123"
+                id="dropdown-123-label"
+                style="width: auto; flex-shrink: 0; margin-right: 16px;"
+              >
+                <div
+                  class="c4"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c5"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c6"
+                      data-blade-component="text"
+                    >
+                      Fruits
+                    </p>
+                    <div
+                      class="c7"
+                      data-blade-component="visually-hidden"
+                    >
+                      <p
+                        class="c8"
+                        data-blade-component="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+            <div
+              class=" c9 c10"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c11 tags-slot"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c12"
+                  data-blade-component="base-box"
+                >
+                  <input
+                    aria-activedescendant="dropdown-123-0"
+                    aria-controls="dropdown-123-actionlist"
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-expanded="true"
+                    aria-haspopup="dialog"
+                    aria-invalid="false"
+                    aria-required="false"
+                    autocomplete="off"
+                    class="c13"
+                    data-blade-component="styled-base-input"
+                    id="dropdown-123"
+                    placeholder="Select Option"
+                    role="combobox"
+                    type="text"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div
+                class="c14"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c15"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c16"
+                    data-blade-component="base-box"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="c17"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(217, 56%, 17%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                    <svg
+                      aria-hidden="true"
+                      class="c18"
+                      data-blade-component="icon"
+                      fill="none"
+                      height="16px"
+                      viewBox="0 0 24 24"
+                      width="16px"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                        data-blade-component="svg-path"
+                        fill="hsla(217, 56%, 17%, 1)"
+                        fill-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=" c19"
+                data-blade-component="base-box"
+              />
+            </div>
+          </div>
+          <div
+            class="c20"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c21"
+              data-blade-component="base-box"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="c22"
+        data-blade-component="base-box"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); width: 0px;"
+      >
+        <div
+          class="c23 c24"
+          data-blade-component="dropdown-overlay"
+          elevation="midRaised"
+          style="transition-property: transform,opacity; transition-duration: 200ms;"
+        >
+          <div
+            class="c25"
+            data-blade-component="base-box"
+          >
+            <div
+              class=""
+              data-blade-component="dropdown-header"
+            >
+              <div
+                class="c26"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c27"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c28"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c29"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c30"
+                        data-blade-component="base-box"
+                      >
+                        <h6
+                          class="c31"
+                          data-blade-component="heading"
+                        >
+                          Recent Searches
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="c32 c33"
+                data-blade-component="divider"
+                role="separator"
+              />
+            </div>
+          </div>
+          <div
+            aria-labelledby="dropdown-123-label"
+            class=""
+            data-blade-component="action-list"
+            id="dropdown-123-actionlist"
+            role="dialog"
+          >
+            <div
+              aria-multiselectable="false"
+              class=" c34"
+              data-blade-component="base-box"
+              role="listbox"
+            >
+              <button
+                aria-selected="false"
+                class=" c35 active-focus"
+                data-blade-component="action-list-item"
+                data-index="0"
+                data-value="apple"
+                id="dropdown-123-0"
+                role="option"
+                tabindex="-1"
+                type="button"
+              >
+                <div
+                  class="c36"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c37"
+                    data-blade-component="base-box"
+                  />
+                  <div
+                    class="c38"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c39"
+                      data-blade-component="text"
+                    >
+                      Apple
+                    </p>
+                  </div>
+                  <div
+                    class="c40"
+                    data-blade-component="base-box"
+                  />
+                </div>
+                <div
+                  class=""
+                  data-blade-component="base-box"
+                />
+              </button>
+              <button
+                aria-selected="false"
+                class=" c35"
+                data-blade-component="action-list-item"
+                data-index="1"
+                data-value="mango"
+                id="dropdown-123-1"
+                role="option"
+                tabindex="-1"
+                type="button"
+              >
+                <div
+                  class="c36"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class="c37"
+                    data-blade-component="base-box"
+                  />
+                  <div
+                    class="c38"
+                    data-blade-component="base-box"
+                  >
+                    <p
+                      class="c39"
+                      data-blade-component="text"
+                    >
+                      Mango
+                    </p>
+                  </div>
+                  <div
+                    class="c40"
+                    data-blade-component="base-box"
+                  />
+                </div>
+                <div
+                  class=""
+                  data-blade-component="base-box"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class=""
+            data-blade-component="base-box"
+            role="group"
+          >
+            <div
+              class="c32 c33"
+              data-blade-component="divider"
+              role="separator"
+            />
+            <div
+              class="c41"
+              data-blade-component="dropdown-footer"
+            >
+              <div
+                class=""
+                data-blade-component="box"
+              >
+                <button
+                  class="c42"
+                  data-blade-component="button"
+                  role="button"
+                  type="button"
+                >
+                  <div
+                    class="c43 c44"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c45"
+                      data-blade-component="base-text"
+                    >
+                      Apply
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

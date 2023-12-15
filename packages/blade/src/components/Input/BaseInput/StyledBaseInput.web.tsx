@@ -25,6 +25,8 @@ const getWebInputStyles = (
       trailingIcon: props.trailingIcon,
       textAlign: props.textAlign,
       isTextArea: props.isTextArea,
+      hasTags: props.hasTags,
+      isDropdownTrigger: props.isDropdownTrigger,
     }),
     outline: 'none',
     border: 'none',
@@ -142,7 +144,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       value={props.value}
     >
       <Text
-        type={props.value ? 'subtle' : 'placeholder'}
+        type={props.value && !isDisabled ? 'subtle' : 'placeholder'}
         truncateAfterLines={1}
         textAlign={props.textAlign}
       >
@@ -164,6 +166,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       }
       onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
         handleOnInput?.({ name, value: event });
+      }}
+      onClick={(event) => {
+        handleOnClick?.({ name, value: event });
       }}
       autoCapitalize={autoCapitalize}
       {...commonProps}

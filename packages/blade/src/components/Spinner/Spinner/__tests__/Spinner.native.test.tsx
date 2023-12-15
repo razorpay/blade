@@ -22,13 +22,13 @@ describe('<Spinner />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render low contrast Spinner', () => {
-    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" contrast="low" />);
+  it('should render default color Spinner', () => {
+    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="default" />);
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render high contrast Spinner', () => {
-    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" contrast="high" />);
+  it('should render white color Spinner', () => {
+    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="white" />);
     expect(toJSON()).toMatchSnapshot();
   });
 

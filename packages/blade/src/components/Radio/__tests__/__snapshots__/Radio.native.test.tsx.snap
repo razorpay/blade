@@ -346,16 +346,6 @@ exports[`<Radio /> should render radio with label 1`] = `
                       Remember password
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>
@@ -384,7 +374,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
     }
   >
     <View
-      accessibilityLabelledBy="radio-group-10-label"
+      accessibilityLabelledBy="radio-group-13-label"
       accessibilityRole="radiogroup"
       accessible={true}
       data-blade-component="radio-group"
@@ -568,7 +558,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
               }
             >
               <View
-                accessibilityDescribedBy="radio-11-helptext-12"
+                accessibilityDescribedBy="radio-14-helptext-15"
                 accessibilityInvalid={false}
                 accessibilityRequired={false}
                 accessibilityRole="radio"
@@ -592,7 +582,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                 accessible={true}
                 collapsable={false}
                 focusable={true}
-                name="radio-group-10"
+                name="radio-group-13"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
@@ -713,16 +703,6 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                       Remember password
                     </Text>
                   </View>
-                  <View
-                    data-blade-component="base-box"
-                    style={
-                      [
-                        {
-                          "marginLeft": 24,
-                        },
-                      ]
-                    }
-                  />
                 </View>
               </View>
             </View>

@@ -77,6 +77,7 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
+          "textDecorationColor": "hsla(0, 0%, 100%, 1)",
           "textDecorationLine": "line-through",
         },
       ]

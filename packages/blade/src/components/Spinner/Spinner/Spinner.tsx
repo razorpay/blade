@@ -1,12 +1,21 @@
 import { BaseSpinner } from '../BaseSpinner';
 import type { BaseSpinnerProps } from '../BaseSpinner';
 
-type SpinnerProps = Omit<BaseSpinnerProps, 'intent'>;
+type SpinnerProps = Omit<BaseSpinnerProps, 'intent'> & {
+  /**
+   * Sets the color of the spinner.
+   *
+   * @default 'default'
+   */
+  color?: 'default' | 'white';
+};
 
 const Spinner = ({
   label,
   labelPosition,
   accessibilityLabel,
+  color = 'default',
+  // TODO: Remove contrast prop in favor of color in the next major release
   contrast = 'low',
   size = 'medium',
   testID,
@@ -18,6 +27,7 @@ const Spinner = ({
       labelPosition={labelPosition}
       accessibilityLabel={accessibilityLabel ?? label ?? 'Loading'}
       contrast={contrast}
+      color={color}
       size={size}
       testID={testID}
       {...styledProps}
@@ -25,4 +35,5 @@ const Spinner = ({
   );
 };
 
-export { Spinner, SpinnerProps };
+export type { SpinnerProps };
+export { Spinner };

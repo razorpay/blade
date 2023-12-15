@@ -110,7 +110,7 @@ const AccordionItem = ({
         </AccordionButton>
         <CollapsibleBody
           // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
-          _width={isReactNative() ? '100%' : undefined}
+          width={isReactNative() ? '100%' : undefined}
         >
           {collapsibleBodyContent}
         </CollapsibleBody>
@@ -120,4 +120,5 @@ const AccordionItem = ({
   );
 };
 
-export { AccordionItemProps, AccordionItem };
+export type { AccordionItemProps };
+export { AccordionItem };

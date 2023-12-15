@@ -5,16 +5,20 @@ import { useGlobals } from '@storybook/api';
 import { Icons, IconButton } from '@storybook/components';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 import { addons, types } from '@storybook/manager-api';
+
+const surafaceTextNormal = 'rgba(19, 38, 68, 1)';
+const bladePrimary = 'rgba(21, 102, 241, 1)';
+
 export const theme = create({
   base: 'light',
 
-  colorPrimary: '#FF4785',
-  colorSecondary: '#1EA7FD',
+  colorPrimary: 'red',
+  colorSecondary: bladePrimary,
 
   // UI
-  appBg: '#F6F9FC',
+  appBg: '#F1F4F8',
   appContentBg: '#FFFFFF',
-  appBorderColor: 'rgba(0,0,0,.1)',
+  appBorderColor: 'rgba(0,0,0,.02)',
   appBorderRadius: 4,
 
   // Typography
@@ -23,24 +27,30 @@ export const theme = create({
   fontCode: 'monospace',
 
   // Text colors
-  textColor: 'rgb(19, 38, 68)',
+  textColor: surafaceTextNormal,
   textInverseColor: '#FFFFFF',
   textMutedColor: '#666666',
 
   // Toolbar default and active colors
-  barTextColor: '#999999',
-  barSelectedColor: '#1EA7FD',
+  barTextColor: surafaceTextNormal,
+  barSelectedColor: bladePrimary,
   barBg: '#FFFFFF',
 
   // Form colors
   inputBg: '#FFFFFF',
   inputBorder: 'rgba(0,0,0,.1)',
-  inputTextColor: '#333333',
-  inputBorderRadius: 4,
+  inputTextColor: surafaceTextNormal,
+  inputBorderRadius: 2,
 
-  brandTitle: 'Blade',
+  // hack for changing height width of brand image
+  brandTitle: `
+    <img
+      width="90px"
+      alt="Blade logo" 
+      src="https://raw.githubusercontent.com/razorpay/blade/348012984e5039265ff8197e73c258ec00c7606e/branding/blade-logo-name.min.svg" 
+    />
+  `,
   brandUrl: 'https://github.com/razorpay/blade',
-  // brandImage: 'https://place-hold.it/350x150',
 });
 
 const ADDON_ID = 'internal-components-addon';

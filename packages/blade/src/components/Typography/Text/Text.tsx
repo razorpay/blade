@@ -23,11 +23,12 @@ type TextCommonProps = {
   /**
    * Overrides the color of the Text component.
    *
-   * **Note** This takes priority over `type` and `constrast` prop to decide color of text
+   * **Note** This takes priority over `type` and `contrast` prop to decide color of text
    */
   color?: BaseTextProps['color'];
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
+  wordBreak?: BaseTextProps['wordBreak'];
 } & TestID &
   StyledPropsBlade;
 
@@ -142,11 +143,13 @@ const _Text = <T extends { variant: TextVariant }>({
   testID,
   textAlign,
   textDecorationLine,
+  wordBreak,
   ...styledProps
 }: TextProps<T>): ReactElement => {
   const props: Omit<BaseTextProps, 'children'> = {
     as,
     truncateAfterLines,
+    wordBreak,
     ...getTextProps({
       variant,
       type,

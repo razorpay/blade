@@ -32,6 +32,23 @@ describe('<Tooltip />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render with title', () => {
+    const tooltipContent = 'Hello world';
+    const buttonText = 'Hover me';
+    const { toJSON, getByRole, getByLabelText } = renderWithTheme(
+      <Tooltip title="Tooltip title" content={tooltipContent}>
+        <Button>{buttonText}</Button>
+      </Tooltip>,
+    );
+
+    expect(getByRole('button')).toBeTruthy();
+    fireEvent(getByRole('button'), 'touchEnd');
+
+    expect(getByLabelText(tooltipContent)).toHaveProp('visible', true);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should open on pressing trigger', () => {
     const triggerText = 'Press me';
     const tooltipContent = 'hello world';

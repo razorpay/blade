@@ -2,6 +2,7 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
 import React from 'react';
 import { Linking } from 'react-native';
+import type { ButtonProps } from '../Button';
 import Button from '../Button';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { CreditCardIcon } from '~components/Icons';
@@ -13,6 +14,9 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
   openURL: jest.fn((href) => Promise.resolve(href)),
   canOpenURL: jest.fn(() => Promise.resolve(true)),
 }));
+
+const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
+const colors: ButtonProps['color'][] = ['default', 'white', 'positive', 'negative'];
 
 describe('<Button />', () => {
   it('should render button with default properties', () => {
@@ -82,36 +86,31 @@ describe('<Button />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render secondary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<Button variant="secondary">{buttonText}</Button>);
-    expect(toJSON()).toMatchSnapshot();
-  });
+  colors.forEach((color) => {
+    variants.forEach((variant) => {
+      // We support only white and default color for tertiary variant
+      if (variant === 'tertiary' && color !== 'white' && color !== 'default') return;
 
-  it('should render disabled secondary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <Button variant="secondary" isDisabled={true}>
-        {buttonText}
-      </Button>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
+      it(`should render ${color} color ${variant} button`, () => {
+        const buttonText = 'Pay Now';
+        const { toJSON } = renderWithTheme(
+          <Button color={color} variant={variant}>
+            {buttonText}
+          </Button>,
+        );
+        expect(toJSON()).toMatchSnapshot();
+      });
 
-  it('should render tertiary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<Button variant="tertiary">{buttonText}</Button>);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled tertiary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <Button variant="tertiary" isDisabled={true}>
-        {buttonText}
-      </Button>,
-    );
-    expect(toJSON()).toMatchSnapshot();
+      it(`should render disabled ${color} color ${variant} button`, () => {
+        const buttonText = 'Pay Now';
+        const { toJSON } = renderWithTheme(
+          <Button color={color} variant={variant} isDisabled={true}>
+            {buttonText}
+          </Button>,
+        );
+        expect(toJSON()).toMatchSnapshot();
+      });
+    });
   });
 
   it('should call function on click', () => {

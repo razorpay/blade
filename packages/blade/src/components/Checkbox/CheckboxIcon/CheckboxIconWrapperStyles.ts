@@ -1,7 +1,7 @@
-import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import { checkboxIconColors, checkboxSizes } from '../checkboxTokens';
 import type { CheckboxIconProps } from './CheckboxIcon';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
@@ -32,6 +32,7 @@ const getCheckboxIconWrapperStyles = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flexShrink: 0,
     width: makeSpace(checkboxSizes.icon[size].width),
     height: makeSpace(checkboxSizes.icon[size].height),
     borderWidth: makeBorderSize(theme.border.width.thick),

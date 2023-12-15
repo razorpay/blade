@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { ReactElement } from 'react';
 import React from 'react';
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button';
-import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import { useVerifyInsideCard } from './CardContext';
 import { ComponentIds } from './Card';
+import type { ButtonProps } from '~components/Button';
+import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
@@ -13,6 +13,7 @@ import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -28,10 +29,11 @@ type CardFooterProps = {
 const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
-  useVerifyAllowedComponents(children, 'CardFooter', [
-    ComponentIds.CardFooterLeading,
-    ComponentIds.CardFooterTrailing,
-  ]);
+  useVerifyAllowedChildren({
+    children,
+    componentName: 'CardFooter',
+    allowedComponents: [ComponentIds.CardFooterLeading, ComponentIds.CardFooterTrailing],
+  });
 
   const footerChildrensArray = React.Children.toArray(children);
   if (__DEV__) {

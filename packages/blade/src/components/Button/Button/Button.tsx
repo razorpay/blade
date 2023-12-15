@@ -6,8 +6,7 @@ import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { BladeCommonEvents } from '~components/types';
 
@@ -29,6 +28,7 @@ type ButtonCommonProps = {
    */
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
+  color?: 'default' | 'white' | 'positive' | 'negative';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
@@ -85,6 +85,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     size = 'medium',
     type = 'button',
     variant = 'primary',
+    color = 'default',
     accessibilityLabel,
     testID,
     onBlur,
@@ -112,6 +113,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
         describedBy: rest['aria-describedby'],
       }}
       iconPosition={iconPosition}
+      color={color}
       isDisabled={isDisabled}
       isFullWidth={isFullWidth}
       onClick={onClick}

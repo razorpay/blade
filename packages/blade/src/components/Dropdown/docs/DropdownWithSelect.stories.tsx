@@ -1,9 +1,9 @@
 import React from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
-import { Dropdown, DropdownOverlay } from '..';
+import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
-  WithBottomAlignedSelectStory,
+  WithAutoPositioningSelectStory,
   WithControlledMultiSelectStory,
   WithControlledSelectStory,
   WithHeaderFooterScroll,
@@ -15,7 +15,7 @@ import {
 } from './stories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { SelectInput } from '~components/Input/SelectInput';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import {
   ActionList,
   ActionListItem,
@@ -44,10 +44,10 @@ const DropdownStoryMeta: Meta = {
   },
 };
 
-const DropdownTemplate: ComponentStory<typeof Dropdown> = (args) => {
+const DropdownTemplate: ComponentStory<typeof Dropdown> = ({ selectionType = 'single' }) => {
   return (
     <Sandbox showConsole padding="spacing.0" editorHeight="100vh">
-      {getSimpleSelectCode(args.selectionType)}
+      {getSimpleSelectCode(selectionType)}
     </Sandbox>
   );
 };
@@ -106,10 +106,10 @@ export const WithRefUsage = (): React.ReactElement => {
   );
 };
 
-export const WithBottomAlignedSelect = (): React.ReactElement => {
+export const WithAutoPositioning = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
-      {WithBottomAlignedSelectStory}
+      {WithAutoPositioningSelectStory}
     </Sandbox>
   );
 };
@@ -185,6 +185,45 @@ InternalControlledSelect.parameters = {
 };
 
 // For chromatic and internal react native testing
+export const InternalMultiSelect = (): React.ReactElement => {
+  return (
+    <Box padding="spacing.5" maxWidth="300px">
+      <Dropdown selectionType="multiple">
+        <SelectInput label="Select City" maxRows="single" />
+        <DropdownOverlay>
+          <DropdownHeader title="Header Title" subtitle="Header subtitle" />
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+            <ActionListItem title="Hyderabad" value="hyderabad" />
+            <ActionListItem title="Varanasi" value="varanasi" />
+            <ActionListItem title="Mysore" value="mysore" />
+            <ActionListItem title="New York" value="new-york" />
+            <ActionListItem title="Indore" value="indore" />
+            <ActionListItem title="Kolhapur" value="kolhapur" />
+            <ActionListItem title="Ooty" value="ooty" />
+          </ActionList>
+          <DropdownFooter>
+            <Button isFullWidth onClick={() => console.log('Footer Clicked')}>
+              Apply
+            </Button>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>
+      <Button marginTop="spacing.4">Outer Button</Button>
+    </Box>
+  );
+};
+
+InternalControlledSelect.parameters = {
+  chromatic: {
+    disableSnapshot: false,
+  },
+};
+
+// For chromatic and internal react native testing
 export const InternalControlledSingleSelect = (): React.ReactElement => {
   const [currentSelection, setCurrentSelection] = React.useState<string>('');
 
@@ -240,11 +279,17 @@ InternalControlledSingleSelect.parameters = {
 
 export const InternalSelect = (): React.ReactElement => {
   return (
-    <Box padding="spacing.5">
+    <Box
+      padding="spacing.5"
+      backgroundColor="surface.background.level3.lowContrast"
+      width="100%"
+      minHeight="100px"
+      overflow="scroll"
+    >
       <Dropdown selectionType="multiple">
         <SelectInput label="Select fruits" labelPosition="left" />
         <DropdownOverlay>
-          <ActionList surfaceLevel={3}>
+          <ActionList>
             <ActionListItem title="Apples" value="Apples" />
             <ActionListItem title="Appricots" value="Appricots" />
           </ActionList>
@@ -254,12 +299,78 @@ export const InternalSelect = (): React.ReactElement => {
   );
 };
 
+export const InternalDisabledSelect = (): React.ReactElement => {
+  const [isDisabled, setIsDisabled] = React.useState(false);
+  return (
+    <Box padding="spacing.5" maxWidth="400px">
+      <Button marginBottom="spacing.4" isFullWidth onClick={() => setIsDisabled(!isDisabled)}>
+        Toggle Disabled State
+      </Button>
+      <Dropdown selectionType="multiple">
+        <SelectInput label="Select fruits" isDisabled={isDisabled} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Apples" value="Apples" />
+            <ActionListItem title="Appricots" value="Appricots" />
+            <ActionListItem title="Cherries" value="Cherries" />
+            <ActionListItem title="Crab apples" value="Crab apples" />
+            <ActionListItem title="Jambolan" value="Jambolan" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+export const InternalAutoPositioning = (): React.ReactElement => {
+  return (
+    <Box>
+      <Box
+        padding="spacing.5"
+        backgroundColor="surface.background.level3.lowContrast"
+        width="100%"
+        minHeight="100px"
+        overflow="scroll"
+      >
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Select fruits" labelPosition="left" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+      <Box
+        padding="spacing.5"
+        backgroundColor="surface.background.level3.lowContrast"
+        width="100%"
+        position="fixed"
+        bottom="spacing.0"
+        minHeight="100px"
+        overflow="scroll"
+      >
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Select fruits" labelPosition="left" />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Apples" value="Apples" />
+              <ActionListItem title="Appricots" value="Appricots" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </Box>
+    </Box>
+  );
+};
+
 export const InternalSectionListPerformance = (): React.ReactElement => {
   return (
     <Dropdown selectionType="multiple">
       <SelectInput label="Select fruits" />
       <DropdownOverlay>
-        <ActionList surfaceLevel={3}>
+        <ActionList>
           <ActionListItem title="Apples" value="Apples" />
           <ActionListItem title="Appricots" value="Appricots" />
           <ActionListItem title="Abc" value="Abc" />

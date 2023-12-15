@@ -17,8 +17,12 @@ type ActionColors = `action.text.${DotNotationColorStringToken<Theme['colors']['
 type BadgeTextColors = `badge.text.${DotNotationColorStringToken<
   Theme['colors']['badge']['text']
 >}`;
+type WhiteTextColors = `white.action.text.${DotNotationColorStringToken<
+  Theme['colors']['white']['action']['text']
+>}`;
 
 type BrandPrimaryColors = `brand.primary.${keyof Theme['colors']['brand']['primary']}`;
+type BrandSecondaryColors = `brand.secondary.${keyof Theme['colors']['brand']['secondary']}`;
 
 type As =
   | 'code'
@@ -39,10 +43,12 @@ export type BaseTextProps = {
   id?: string;
   color?:
     | BrandPrimaryColors
+    | BrandSecondaryColors
     | ActionColors
     | FeedbackColors
     | SurfaceColors
     | FeedbackActionColors
+    | WhiteTextColors
     | BadgeTextColors;
   fontFamily?: keyof Theme['typography']['fonts']['family'];
   fontSize?: keyof Theme['typography']['fonts']['size'];
@@ -50,6 +56,7 @@ export type BaseTextProps = {
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
+  wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
   /**
    * Web only
    */
@@ -64,7 +71,7 @@ export type BaseTextProps = {
    * React Native only
    */
   numberOfLines?: number;
-  componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code';
+  componentName?: 'base-text' | 'text' | 'title' | 'heading' | 'code' | 'display';
 } & TestID &
   StyledPropsBlade;
 
@@ -81,6 +88,7 @@ export type StyledBaseTextProps = Pick<
   | 'textAlign'
   | 'numberOfLines'
   | 'truncateAfterLines'
+  | 'wordBreak'
 > & { theme: Theme };
 
 export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';

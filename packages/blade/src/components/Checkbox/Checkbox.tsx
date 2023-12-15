@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import isUndefined from 'lodash/isUndefined';
-import isEmpty from 'lodash/isEmpty';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
 import { checkboxHoverTokens } from './checkboxTokens';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -15,8 +15,7 @@ import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import type { TestID } from '~utils/types';
+import type { BladeElementRef, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
@@ -51,7 +50,7 @@ type CheckboxProps = {
   /**
    * Sets the label of the checkbox
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * Help text for the checkbox
    */
@@ -224,7 +223,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
         inputProps={state.isReactNative ? inputProps : {}}
       >
         <BaseBox display="flex" flexDirection="column">
-          <BaseBox display="flex" alignItems="center" flexDirection="row">
+          <BaseBox display="flex" flexDirection="row">
             <SelectorInput
               hoverTokens={checkboxHoverTokens}
               isChecked={state.isChecked || Boolean(isIndeterminate)}
@@ -241,15 +240,17 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               isDisabled={_isDisabled}
               isNegative={_hasError}
             />
-            <SelectorTitle size={_size} isDisabled={_isDisabled}>
-              {children}
-            </SelectorTitle>
+            {children ? (
+              <SelectorTitle size={_size} isDisabled={_isDisabled}>
+                {children}
+              </SelectorTitle>
+            ) : null}
           </BaseBox>
-          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-            {showSupportingText && (
+          {showSupportingText ? (
+            <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
               <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-            )}
-          </BaseBox>
+            </BaseBox>
+          ) : null}
         </BaseBox>
       </SelectorLabel>
       <FormHint
@@ -265,4 +266,5 @@ const Checkbox = assignWithoutSideEffects(React.forwardRef(_Checkbox), {
   displayName: 'Checkbox',
 });
 
-export { Checkbox, CheckboxProps };
+export type { CheckboxProps };
+export { Checkbox };

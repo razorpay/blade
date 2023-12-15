@@ -206,7 +206,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade: Card]: Only one of `CardHeader, CardBody, CardFooter` component is accepted as Card children',
+      '[Blade: Card]: Only `CardHeader, CardBody, CardFooter` components are accepted in `Card` children',
     );
     mockConsoleError.mockRestore();
   });
@@ -226,7 +226,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade: Card]: Only one of `CardHeaderLeading, CardHeaderTrailing` component is accepted as CardHeader children',
+      '[Blade: CardHeader]: Only `CardHeaderLeading, CardHeaderTrailing` components are accepted in `CardHeader` children',
     );
     mockConsoleError.mockRestore();
   });
@@ -246,7 +246,7 @@ describe('<Card />', () => {
         </Card>,
       ),
     ).toThrow(
-      '[Blade: Card]: Only one of `CardFooterLeading, CardFooterTrailing` component is accepted as CardFooter children',
+      '[Blade: CardFooter]: Only `CardFooterLeading, CardFooterTrailing` components are accepted in `CardFooter` children',
     );
     mockConsoleError.mockRestore();
   });

@@ -1,5 +1,6 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import React from 'react';
 import type { CardFooterAction } from './';
 import {
   CardBody,

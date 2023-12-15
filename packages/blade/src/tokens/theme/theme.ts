@@ -46,6 +46,14 @@ export type ActionStatesWithContrast = {
   disabled: ColorContrast;
 };
 
+export type ActionStatesWithLowContrast = {
+  default: Pick<ColorContrast, 'lowContrast'>;
+  hover: Pick<ColorContrast, 'lowContrast'>;
+  focus: Pick<ColorContrast, 'lowContrast'>;
+  active: Pick<ColorContrast, 'lowContrast'>;
+  disabled: Pick<ColorContrast, 'lowContrast'>;
+};
+
 export type LinkActionStatesWithContrast = ActionStatesWithContrast & {
   visited: ColorContrast;
 };
@@ -64,6 +72,16 @@ export type ActionVariantsWithContrast = {
   link: ActionStatesWithContrast;
 };
 
+export type SecondaryFeedbackActionStatesWithContrast = {
+  secondary: {
+    default: Pick<ColorContrast, 'lowContrast'>;
+    hover: Pick<ColorContrast, 'lowContrast'>;
+    focus: Pick<ColorContrast, 'lowContrast'>;
+    active: Pick<ColorContrast, 'lowContrast'>;
+    disabled: Pick<ColorContrast, 'lowContrast'>;
+  };
+};
+
 // export type ActionProperties = {
 //   background: ActionVariants;
 //   border: ActionVariants;
@@ -72,10 +90,33 @@ export type ActionVariantsWithContrast = {
 // };
 
 export type FeedbackActions = {
-  background: Pick<ActionVariantsWithContrast, 'primary'>;
-  border: Pick<ActionVariantsWithContrast, 'primary'>;
-  text: Pick<ActionVariantsWithContrast, 'link' | 'primary'>;
-  icon: Pick<ActionVariantsWithContrast, 'link' | 'primary'>;
+  action: {
+    background: {
+      primary: ActionStatesWithContrast;
+      secondary: ActionStatesWithLowContrast;
+    };
+    border: {
+      primary: ActionStatesWithContrast;
+      secondary: ActionStatesWithLowContrast;
+    };
+    text: {
+      link: ActionStatesWithContrast;
+      primary: ActionStatesWithContrast;
+      secondary: ActionStatesWithLowContrast;
+    };
+    icon: {
+      link: ActionStatesWithContrast;
+      primary: ActionStatesWithContrast;
+      secondary: ActionStatesWithLowContrast;
+    };
+  };
+};
+
+export type WhiteColors = {
+  background: Pick<ActionVariants, 'primary' | 'secondary' | 'tertiary'>;
+  border: Pick<ActionVariants, 'primary' | 'secondary' | 'tertiary'>;
+  text: Pick<ActionVariants, 'link' | 'primary' | 'secondary' | 'tertiary'>;
+  icon: Pick<ActionVariants, 'link' | 'primary' | 'secondary' | 'tertiary'>;
 };
 
 export type Colors = {
@@ -89,21 +130,11 @@ export type Colors = {
     border: Record<Feedback, ColorContrast>;
     text: Record<Feedback, ColorContrast>;
     icon: Record<Feedback, ColorContrast>;
-    positive: {
-      action: FeedbackActions;
-    };
-    negative: {
-      action: FeedbackActions;
-    };
-    information: {
-      action: FeedbackActions;
-    };
-    notice: {
-      action: FeedbackActions;
-    };
-    neutral: {
-      action: FeedbackActions;
-    };
+    positive: FeedbackActions;
+    negative: FeedbackActions;
+    information: FeedbackActions;
+    notice: FeedbackActions;
+    neutral: FeedbackActions;
   };
   surface: {
     background: Record<'level1' | 'level2' | 'level3', ColorContrast>;
@@ -112,8 +143,9 @@ export type Colors = {
     action: {
       icon: ActionStatesWithContrast;
     };
+    overlay: Record<'background', Record<400 | 800, string>>;
+    popup: Record<'background', string>;
   };
-  overlay: Record<'background', string>;
   action: {
     background: Omit<ActionVariants, 'link'>;
     border: Omit<ActionVariants, 'link'>;
@@ -133,6 +165,12 @@ export type Colors = {
     icon: {
       blue: ColorContrast;
     };
+  };
+  static: {
+    white: string;
+  };
+  white: {
+    action: WhiteColors;
   };
 };
 

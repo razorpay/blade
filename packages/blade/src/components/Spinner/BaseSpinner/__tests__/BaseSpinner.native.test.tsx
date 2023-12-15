@@ -1,5 +1,16 @@
+import type { BaseSpinnerProps } from '../BaseSpinner';
 import { BaseSpinner } from '../BaseSpinner';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+const colors: BaseSpinnerProps['color'][] = [
+  'default',
+  'white',
+  'positive',
+  'negative',
+  'information',
+  'notice',
+  'neutral',
+];
 
 describe('<BaseSpinner />', () => {
   it('should render BaseSpinner with default props', () => {
@@ -58,72 +69,13 @@ describe('<BaseSpinner />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render low contrast positive intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="positive" contrast="low" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast positive intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="positive" contrast="high" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render low contrast negative intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="negative" contrast="low" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast negative intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="negative" contrast="high" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-  it('should render low contrast information intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="information" contrast="low" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast information intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="information" contrast="high" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-  it('should render low contrast notice intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="notice" contrast="low" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast notice intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="notice" contrast="high" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render low contrast neutral intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="neutral" contrast="low" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast neutral intent BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" intent="neutral" contrast="high" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
+  colors.forEach((color) => {
+    it(`should render ${color} color BaseSpinner`, () => {
+      const { toJSON } = renderWithTheme(
+        <BaseSpinner accessibilityLabel="Loading" color={color} />,
+      );
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should accept testID', () => {

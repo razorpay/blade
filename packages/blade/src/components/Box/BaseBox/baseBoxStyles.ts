@@ -1,6 +1,4 @@
 import type { CSSObject } from 'styled-components';
-import getIn from 'lodash/get';
-import isEmpty from 'lodash/isEmpty';
 import type {
   BaseBoxProps,
   MakeValueResponsive,
@@ -8,6 +6,8 @@ import type {
   ArrayOfMaxLength4,
 } from './types';
 import { getResponsiveValue } from './getResponsiveValue';
+import getIn from '~utils/lodashButBetter/get';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { Breakpoints } from '~tokens/global';
 import { breakpoints } from '~tokens/global';
 import { isReactNative, getMediaQuery } from '~utils';
@@ -99,21 +99,11 @@ const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   breakpoint?: keyof Breakpoints,
 ): CSSObject => {
-  const hasBorder =
-    props.borderBottom ||
-    props.borderTop ||
-    props.borderLeft ||
-    props.borderRight ||
-    props.borderBottomColor ||
-    props.borderTopColor ||
-    props.borderLeftColor ||
-    props.borderRightColor ||
-    props.borderBottomWidth ||
-    props.borderTopWidth ||
-    props.borderLeftWidth ||
-    props.borderRightWidth ||
-    props.borderWidth ||
-    props.borderColor;
+  const hasBorder = props.borderWidth || props.borderColor;
+  const hasBorderRight = props.borderRight || props.borderRightColor || props.borderRightWidth;
+  const hasBorderLeft = props.borderLeft || props.borderLeftColor || props.borderLeftWidth;
+  const hasBorderTop = props.borderTop || props.borderTopColor || props.borderTopWidth;
+  const hasBorderBottom = props.borderBottom || props.borderBottomColor || props.borderBottomWidth;
 
   return {
     display: getResponsiveValue(props.display, breakpoint),
@@ -121,6 +111,7 @@ const getAllProps = (
     overflowX: getResponsiveValue(props.overflowX, breakpoint),
     overflowY: getResponsiveValue(props.overflowY, breakpoint),
     textAlign: getResponsiveValue(props.textAlign, breakpoint),
+    whiteSpace: getResponsiveValue(props.whiteSpace, breakpoint),
 
     // Flex
     flex: getResponsiveValue(props.flex, breakpoint),
@@ -218,13 +209,28 @@ const getAllProps = (
       breakpoint,
     ),
     borderStyle: hasBorder ? 'solid' : undefined,
+    // Since we only allow 'solid', we can use the same value for all borders if hasBorder is true
+    // If hasBorder is false, we need to check each border individually
+    ...(!hasBorder && {
+      borderTopStyle: hasBorderTop ? 'solid' : undefined,
+      borderBottomStyle: hasBorderBottom ? 'solid' : undefined,
+      borderLeftStyle: hasBorderLeft ? 'solid' : undefined,
+      borderRightStyle: hasBorderRight ? 'solid' : undefined,
+    }),
+
     touchAction: getResponsiveValue(props.touchAction, breakpoint),
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
     pointerEvents: getResponsiveValue(props.pointerEvents),
     opacity: getResponsiveValue(props.opacity, breakpoint),
+    visibility: getResponsiveValue(props.visibility, breakpoint),
     ...(!isReactNative() && {
       boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
     }),
+
+    // Polygon support
+    transform: getResponsiveValue(props.transform as string, breakpoint),
+    transformOrigin: getResponsiveValue(props.transformOrigin, breakpoint),
+    clipPath: getResponsiveValue(props.clipPath, breakpoint),
   };
 };
 

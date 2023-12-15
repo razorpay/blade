@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Tag /> should render tag 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -24,7 +24,7 @@ exports[`<Tag /> should render tag 1`] = `
   border-radius: 9999px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39,7 +39,7 @@ exports[`<Tag /> should render tag 1`] = `
   max-width: 100px;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -57,7 +57,7 @@ exports[`<Tag /> should render tag 1`] = `
   justify-content: center;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -84,21 +84,21 @@ exports[`<Tag /> should render tag 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c5:hover {
+.c5.c5.c5.c5.c5:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c5:focus {
+.c5.c5.c5.c5.c5:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c5:active {
+.c5.c5.c5.c5.c5:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -118,7 +118,7 @@ exports[`<Tag /> should render tag 1`] = `
 }
 
 @media screen and (min-width:768px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     padding: 2px 4px 2px 8px;
   }
 }

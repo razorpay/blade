@@ -37,7 +37,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
       color: iconColorToken.hover[contrastToken],
     },
 
-    '&:focus': {
+    '&:focus-visible': {
       outline: 'none',
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
       color: iconColorToken.focus[contrastToken],
@@ -67,12 +67,13 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onPointerEnter,
       onTouchEnd,
       onTouchStart,
+      tabIndex,
     },
     ref,
   ): ReactElement => (
     <StyledButton
       ref={ref}
-      onClick={onClick}
+      onClick={castWebType(onClick)}
       contrast={contrast}
       type="button"
       onBlur={onBlur}
@@ -84,6 +85,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       onTouchEnd={onTouchEnd}
       onTouchStart={onTouchStart}
       disabled={isDisabled}
+      tabIndex={tabIndex}
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
     >

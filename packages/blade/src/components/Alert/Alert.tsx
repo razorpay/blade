@@ -88,11 +88,17 @@ type AlertProps = {
   isFullWidth?: boolean;
 
   /**
-   * Sets the color tone
+   * This prop is deprecated in favor of the `color` prop.
    *
+   * @deprecated Use `color` instead
    * @default neutral
    */
   intent?: Feedback;
+
+  /**
+   * Sets the color tone
+   */
+  color?: Feedback;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -131,7 +137,9 @@ const Alert = ({
   onDismiss,
   contrast = 'low',
   isFullWidth = false,
+  // TODO: Remove intent prop in favor of color in the next major release
   intent = 'neutral',
+  color,
   actions,
   testID,
   ...styledProps
@@ -153,8 +161,9 @@ const Alert = ({
   const contrastType = `${contrast}Contrast` as const;
   const iconSize = isFullWidth ? 'large' : 'medium';
   const textSize = isFullWidth ? 'medium' : 'small';
+  const alertColor = color ?? intent;
 
-  const Icon = intentIconMap[intent];
+  const Icon = intentIconMap[alertColor];
   let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
 
   // certain special cases below needs special care for near perfect alignment
@@ -178,7 +187,7 @@ const Alert = ({
 
   const icon = (
     <BaseBox marginTop={iconOffset} display="flex">
-      <Icon color={`feedback.icon.${intent}.${contrastType}`} size={iconSize} />
+      <Icon color={`feedback.icon.${alertColor}.${contrastType}`} size={iconSize} />
     </BaseBox>
   );
 
@@ -212,8 +221,8 @@ const Alert = ({
       <BaseButton
         size={textSize}
         onClick={actions.primary.onClick}
-        intent={intent}
-        contrast={contrast}
+        color={alertColor}
+        variant={contrast === 'high' ? 'primary' : 'secondary'}
       >
         {actions.primary.text}
       </BaseButton>
@@ -242,7 +251,11 @@ const Alert = ({
       marginRight="spacing.4"
       display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
     >
-      <BaseLink size={textSize} contrast={contrast} intent={intent} {...secondaryActionParams}>
+      <BaseLink
+        size={textSize}
+        color={contrast === 'high' ? 'white' : alertColor}
+        {...secondaryActionParams}
+      >
         {actions.secondary.text}
       </BaseLink>
     </BaseBox>
@@ -287,9 +300,10 @@ const Alert = ({
 
   const a11yProps = makeAccessible({
     // React Native doesn't has status as role
-    role: isReactNative || intent === 'negative' || intent === 'notice' ? 'alert' : 'status',
+    role:
+      isReactNative || alertColor === 'negative' || alertColor === 'notice' ? 'alert' : 'status',
     // override the implicit live region of role `alert`
-    ...(intent === 'notice' && { liveRegion: 'polite' }),
+    ...(alertColor === 'notice' && { liveRegion: 'polite' }),
   });
 
   if (!isVisible) {
@@ -303,7 +317,7 @@ const Alert = ({
       {...getStyledProps(styledProps)}
     >
       <StyledAlert
-        intent={intent}
+        color={alertColor}
         contrastType={contrastType}
         isFullWidth={isFullWidth}
         isDesktop={isDesktop}
@@ -326,4 +340,5 @@ const Alert = ({
   );
 };
 
-export { AlertProps, Alert };
+export type { AlertProps };
+export { Alert };

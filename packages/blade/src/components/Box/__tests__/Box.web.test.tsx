@@ -17,7 +17,7 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         display: -webkit-box;
         display: -webkit-flex;
         display: -ms-flexbox;
@@ -43,7 +43,7 @@ describe('<Box />', () => {
       </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         display: block;
       }
 
@@ -104,7 +104,7 @@ describe('<Box />', () => {
       <Box backgroundColor={{ base: 'brand.primary.300', l: undefined }}>I am Visible</Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         background-color: hsla(218,89%,51%,0.09);
       }
 
@@ -124,12 +124,12 @@ describe('<Box />', () => {
       <Box backgroundColor={{ base: 'brand.primary.300', l: 'transparent' }}>I am Visible</Box>,
     );
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         background-color: hsla(218,89%,51%,0.09);
       }
 
       @media screen and (min-width:1024px) {
-        .c0 {
+        .c0.c0.c0.c0.c0 {
           background-color: transparent;
         }
       }
@@ -193,5 +193,27 @@ describe('<Box />', () => {
     expect(onMouseLeaveCallback).not.toBeCalled();
     await user.unhover(getByText('Hoverable Text'));
     expect(onMouseLeaveCallback).toBeCalled();
+  });
+
+  it('should accept id prop', () => {
+    const text = 'Box id';
+    const id = 'my-id';
+    const { getByText } = renderWithTheme(<Box id={id}>{text}</Box>);
+    expect(getByText(text)).toHaveAttribute('id', id);
+  });
+
+  // https://github.com/razorpay/blade/issues/1624
+  it('should apply borderBottomColor prop to border bottom only', () => {
+    const { container } = renderWithTheme(
+      <Box borderBottomColor="surface.border.normal.lowContrast">I am Visible</Box>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should apply borderColor prop to all borders', () => {
+    const { container } = renderWithTheme(
+      <Box borderColor="surface.border.normal.lowContrast">I am Visible</Box>,
+    );
+    expect(container).toMatchSnapshot();
   });
 });

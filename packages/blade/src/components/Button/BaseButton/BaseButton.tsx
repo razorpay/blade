@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import getIn from 'lodash/get';
 import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
-import type { BaseLinkProps } from '../../Link/BaseLink';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
@@ -13,9 +11,11 @@ import {
   minHeight as buttonMinHeight,
   buttonSizeToIconSizeMap,
   buttonSizeToSpinnerSizeMap,
-  textPadding,
+  buttonIconPadding,
   buttonPadding,
 } from './buttonTokens';
+import getIn from '~utils/lodashButBetter/get';
+import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global';
@@ -30,9 +30,13 @@ import { announce } from '~components/LiveAnnouncer';
 import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type { DotNotationSpacingStringToken, StringChildrenType, TestID } from '~utils/types';
+import type {
+  BladeElementRef,
+  DotNotationSpacingStringToken,
+  StringChildrenType,
+  TestID,
+} from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { usePrevious } from '~utils/usePrevious';
 import { makeSize } from '~utils/makeSize';
@@ -65,8 +69,7 @@ type BaseButtonCommonProps = {
   isLoading?: boolean;
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
-  contrast?: 'low' | 'high';
-  intent?: 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  color?: 'default' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -96,8 +99,7 @@ type BaseButtonColorTokenModifiers = {
   property: 'background' | 'border' | 'text' | 'icon';
   variant: NonNullable<BaseButtonProps['variant']>;
   state: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
-  intent: BaseButtonProps['intent'];
-  contrast: BaseButtonProps['contrast'];
+  color: BaseButtonProps['color'];
 };
 
 /**
@@ -121,20 +123,25 @@ const getColorToken = ({
   property,
   variant,
   state,
-  contrast,
-  intent,
+  color,
 }: BaseButtonColorTokenModifiers):
   | `action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
+  | `white.action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
   | `feedback.${NonNullable<
-      BaseButtonColorTokenModifiers['intent']
-    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${NonNullable<
-      BaseButtonColorTokenModifiers['contrast']
-    >}Contrast` => {
-  if (intent && contrast) {
-    // TODO: Add support for secondary & tertiary variants for feedback buttons here when a use-case is identified
-    return `feedback.${intent}.action.${property}.primary.${state}.${contrast}Contrast`;
+      Exclude<BaseButtonColorTokenModifiers['color'], 'default' | 'white'>
+    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${
+      | 'high'
+      | 'low'}Contrast` => {
+  if (!color || color === 'default') {
+    return `action.${property}.${variant}.${state}`;
   }
-  return `action.${property}.${variant}.${state}`;
+  if (color === 'white') {
+    return `white.action.${property}.${variant}.${state}`;
+  }
+
+  return `feedback.${color}.action.${property}.primary.${state}.${
+    variant === 'primary' ? 'high' : 'low'
+  }Contrast`;
 };
 
 type BaseButtonStyleProps = {
@@ -173,8 +180,7 @@ const getProps = ({
   size,
   theme,
   variant,
-  intent,
-  contrast,
+  color,
   hasIcon,
 }: {
   buttonTypographyTokens: ButtonTypography;
@@ -184,9 +190,15 @@ const getProps = ({
   theme: Theme;
   size: NonNullable<BaseButtonProps['size']>;
   variant: NonNullable<BaseButtonProps['variant']>;
-  intent: BaseButtonProps['intent'];
-  contrast: NonNullable<BaseButtonProps['contrast']>;
+  color: BaseButtonProps['color'];
 }): BaseButtonStyleProps => {
+  if (variant === 'tertiary' && color !== 'default' && color !== 'white') {
+    throwBladeError({
+      moduleName: 'BaseButton',
+      message: `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
+    });
+  }
+
   const isIconOnly = hasIcon && (!children || children?.trim().length === 0);
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
@@ -194,19 +206,17 @@ const getProps = ({
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
-    iconPadding: hasIcon && children?.trim() ? `spacing.${textPadding[size]}` : undefined,
+    iconPadding: hasIcon && children?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
     iconColor: getColorToken({
       property: 'icon',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'default',
     }) as IconColor,
     textColor: getColorToken({
       property: 'text',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'default',
     }) as BaseTextProps['color'],
     buttonPaddingTop: isIconOnly
@@ -224,35 +234,35 @@ const getProps = ({
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'default' }),
+      getColorToken({ property: 'background', variant, color, state: 'default' }),
     ),
     defaultBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'default' }),
+      getColorToken({ property: 'border', variant, color, state: 'default' }),
     ),
     hoverBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'hover' }),
+      getColorToken({ property: 'background', variant, color, state: 'hover' }),
     ),
     hoverBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'hover' }),
+      getColorToken({ property: 'border', variant, color, state: 'hover' }),
     ),
     activeBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'active' }),
+      getColorToken({ property: 'background', variant, color, state: 'active' }),
     ),
     activeBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'active' }),
+      getColorToken({ property: 'border', variant, color, state: 'active' }),
     ),
     focusBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'focus' }),
+      getColorToken({ property: 'background', variant, color, state: 'focus' }),
     ),
     focusBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'focus' }),
+      getColorToken({ property: 'border', variant, color, state: 'focus' }),
     ),
     focusRingColor: getIn(theme.colors, 'brand.primary.400'),
     borderWidth: makeBorderSize(theme.border.width.thin),
@@ -264,24 +274,22 @@ const getProps = ({
   if (isDisabled) {
     const disabledBackgroundColor = getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, contrast, intent, state: 'disabled' }),
+      getColorToken({ property: 'background', variant, color, state: 'disabled' }),
     );
     const disabledBorderColor = getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, contrast, intent, state: 'disabled' }),
+      getColorToken({ property: 'border', variant, color, state: 'disabled' }),
     );
     props.iconColor = getColorToken({
       property: 'icon',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'disabled',
     }) as IconColor;
     props.textColor = getColorToken({
       property: 'text',
       variant,
-      contrast,
-      intent,
+      color,
       state: 'disabled',
     }) as BaseTextProps['color'];
     props.defaultBackgroundColor = disabledBackgroundColor;
@@ -307,8 +315,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     target,
     rel,
     variant = 'primary',
-    intent,
-    contrast = 'low',
+    color = 'default',
     size = 'medium',
     icon: Icon,
     iconPosition = 'left',
@@ -390,8 +397,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     size,
     variant,
     theme,
-    intent,
-    contrast,
+    color,
     hasIcon: Boolean(Icon),
   });
 
@@ -413,6 +419,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           ...accessibilityProps,
         }),
       }}
+      variant={variant}
       isLoading={isLoading}
       disabled={disabled}
       activeBorderColor={activeBorderColor}
@@ -459,12 +466,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           bottom="0px"
           right="0px"
         >
-          <BaseSpinner
-            accessibilityLabel="Loading"
-            size={spinnerSize}
-            intent={intent}
-            contrast={contrast}
-          />
+          <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
         </BaseBox>
       ) : null}
       <ButtonContent

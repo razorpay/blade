@@ -9,7 +9,7 @@ import { Meta } from '@storybook/addon-docs';
 
 ## ✍🏻 Pre-requisite
 
-Before you install the package, make sure that you have performed following steps:
+Before you install the package, make sure that you have performed the following steps:
 
 - You must be running Node version >=14.19.0
 
@@ -20,7 +20,7 @@ Before you install the package, make sure that you have performed following step
 - Run `code ~/.bashrc` or `code ~/.zshrc` in your editor and add this line
 
   ```
-  export GITHUB_ACCESS_TOKEN="<YOUR_TOKEN>"
+  export GITHUB_ACCESS_TOKEN="<YOUR_TO  KEN>"
   ```
 
   > **Note**
@@ -41,33 +41,48 @@ Before you install the package, make sure that you have performed following step
 ## ⬇ Add blade to your application
 
 1. Install blade as a dependency. 
-Blade has a peer dependency on few libraries, you can skip adding it if you already have it installed in your project.
+Blade has a peer dependency on a few libraries, you can skip adding it if you already have it installed in your project.
 
   - `styled-components`
-  - `@floating-ui/react`
+  > **Note**
+  >
+  > Currently, blade only supports styled-components v5 only
 
    ```shell
-   yarn add @razorpay/blade styled-components @floating-ui/react
+   yarn add @razorpay/blade styled-components@5.3.11
    ```
-
 2. Follow [this guide](#-install-fonts) to install the fonts.
 
 3. For **React Native** projects you need to do additional setup for the peer dependencies: 
 
-    - react-native-reanimated
-      - Follow [this guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) to install it on Android & iOS which is required by Blade.
-    - react-native-svg
-      - Follow [this guide](https://github.com/react-native-svg/react-native-svg#with-react-native-cli) to install it on Android & iOS which is required by Blade.
-    - react-native-gesture-handler
-      - Follow [this guide](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) to install it, note that you don't need to add `<GestureHandlerRootView style={{ flex: 1 }}>` again on the root because BladeProvider already adds that out of the box.
-    - @gorhom/bottom-sheet
-      - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
-    - @gorhom/portal
-      - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
-    - @floating-ui/react-native
-      - Add this as peer dependency, no need to do additional setup.
+  ```shell
+  yarn add @floating-ui/react-native@0.10.0 react-native-reanimated@3.4.1 react-native-tab-view@3.5.2 react-native-pager-view@6.2.1 react-native-svg@12.3.0 react-native-gesture-handler@2.9.0 @gorhom/bottom-sheet@4.4.6 @gorhom/portal@1.0.1
+  ```
 
-## 🔜 Add blade libraries to your figma project
+  - `react-native-reanimated`
+    - Follow [this guide](https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation) to install it on Android & iOS which is required by Blade.
+  - `react-native-svg`
+    - Follow [this guide](https://github.com/react-native-svg/react-native-svg#with-react-native-cli) to install it on Android & iOS which is required by Blade.
+  - `react-native-gesture-handler`
+    - Follow [this guide](https://docs.swmansion.com/react-native-gesture-handler/docs/installation) to install it, note that you don't need to add `<GestureHandlerRootView style={{ flex: 1 }}>` again on the root because BladeProvider already adds that out of the box.
+  - `@gorhom/bottom-sheet`
+    - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
+  - `@gorhom/portal`
+    - Add this as peer dependency, no need to do additional setup since BladeProvider already sets everything up.
+  - `@floating-ui/react-native`
+    - Add this as peer dependency, no need to do additional setup.
+  - `react-native-tab-view`
+    - Add this as peer dependency, no need to do additional setup. This is needed for react-native Tabs component as per [this guide](https://reactnavigation.org/docs/tab-view/#installation).
+  - `react-native-pager-view`
+    - Add this as peer dependency, no need to do additional setup. This is needed for react-native Tabs component as per [this guide](https://reactnavigation.org/docs/tab-view/#installation).
+
+  And finally run `pod install` command so that blade's RN dependencies are linked to your project: 
+
+   ```shell
+    cd ios && pod install
+   ```
+
+## 🔜 Add blade libraries to your Figma project
 
 Coming Soon
 
@@ -77,11 +92,11 @@ We are using `Lato` font family which is not a system font so we need to perform
 
 ### Web Projects
 
-For web projects we can either use google fonts or self hosted fonts. Self hosted fonts have certain benefits that you can find [here](https://fontsource.org/docs/introduction)
+For web projects, we can either use Google fonts or self-hosted fonts. Self-hosted fonts have certain benefits that you can find [here](https://fontsource.org/docs/getting-started/introduction)
 
-#### Self Hosted (Recommended)
+#### Self-Hosted (Recommended)
 
-We recommend to use self hosted fonts. We'll use [Fontsource](https://fontsource.org/) which provides fonts as npm packages.
+We recommend using self-hosted fonts. We'll use [Fontsource](https://fontsource.org/) which provides fonts as npm packages.
 
 - Install `Lato` font
 
@@ -99,13 +114,13 @@ We recommend to use self hosted fonts. We'll use [Fontsource](https://fontsource
 
 #### Google Fonts
 
-There are downsides to using google fonts which can be found [here](https://fontsource.org/docs/introduction) but still for some reason if you have some use case where google fonts makes more sense then you can [click this link](https://fonts.google.com/share?selection.family=Lato:ital,wght@0,400;0,700;1,400;1,700) and follow the instructions there to configure `Lato` for your applications.
+There are downsides to using Google fonts which can be found [here](https://fontsource.org/docs/getting-started/introduction) but still for some reason if you have some use case where Google fonts makes more sense then you can [click this link](https://fonts.google.com/share?selection.family=Lato:ital,wght@0,400;0,700;1,400;1,700) and follow the instructions there to configure `Lato` for your applications.
 
 ### React Native Projects
 
 - Download `Lato` font from [here](https://fonts.google.com/share?selection.family=Lato:ital,wght@0,400;0,700;1,400;1,700)
-- Copy the font files and paste it under the directory `<project_root>/public/fonts`(**create the directory if it doesn't exist**)
-- Create React Native config file at the root of your project - `<project_root>/react-native.config.js` and add following content to it
+- Copy the font files and paste them under the directory `<project_root>/public/fonts`(**create the directory if it doesn't exist**)
+- Create a React Native config file at the root of your project - `<project_root>/react-native.config.js` and add the following content to it
 
   ```js
   module.exports = {
@@ -116,7 +131,7 @@ There are downsides to using google fonts which can be found [here](https://font
 
 #### android
 
-Follow the next steps mentioned below for configuring fonts to work on android:
+Follow the next steps mentioned below for configuring fonts to work on Android:
 
 - Create a directory `font` under `/android/app/src/main/res/font`
 - Copy the font files `Lato-Regular` and `Lato-Bold` you had downloaded earlier and paste them under `/android/app/src/main/res/font`
@@ -135,7 +150,7 @@ Follow the next steps mentioned below for configuring fonts to work on android:
     <font app:fontStyle="italic" app:fontWeight="700" app:font="@font/lato_bold_italic" />
   </font-family>
   ```
-- Navigate to `/android/app/src/main/java/com/<your_package_name>/MainApplication.java` and add following contents to it
+- Navigate to `/android/app/src/main/java/com/<your_package_name>/MainApplication.java` and add the following contents to it
 
   ```js
   // add the below import statement after all the import statements
@@ -146,7 +161,7 @@ Follow the next steps mentioned below for configuring fonts to work on android:
 
   ```js
   public void onCreate() {
-    // add below line as the first line
+    // add the below line as the first line
     ReactFontManager.getInstance().addCustomFont(this, "Lato", R.font.lato);
     // rest of the content of the method
   }
@@ -156,7 +171,7 @@ Follow the next steps mentioned below for configuring fonts to work on android:
 
 Follow the next steps mentioned below for configuring fonts to work on iOS:
 
-- Once you've copied the font files under `<project_root>/public/fonts` you need to link it using following command
+- Once you've copied the font files under `<project_root>/public/fonts` you need to link it using the following command
 
   ```shell
   npx react-native link --platforms ios

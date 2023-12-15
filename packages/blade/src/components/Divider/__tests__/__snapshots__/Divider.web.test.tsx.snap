@@ -1,20 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Divider /> should render Divider within flex container 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -24,31 +24,31 @@ exports[`<Divider /> should render Divider within flex container 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
@@ -61,25 +61,26 @@ exports[`<Divider /> should render Divider within flex container 1`] = `
     <div
       class="c1 c2"
       data-blade-component="divider"
+      role="separator"
     />
   </div>
 </div>
 `;
 
 exports[`<Divider /> should render horizontal Divider using width 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   width: 100px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   width: 100%;
   border-width: 0px;
   border-bottom-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -90,31 +91,31 @@ exports[`<Divider /> should render horizontal Divider using width 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
@@ -127,25 +128,26 @@ exports[`<Divider /> should render horizontal Divider using width 1`] = `
     <div
       class="c1 c2"
       data-blade-component="divider"
+      role="separator"
     />
   </div>
 </div>
 `;
 
 exports[`<Divider /> should render vertical Divider using height 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: block;
   height: 100px;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   height: 100%;
   border-width: 0px;
   border-left-color: hsla(216,15%,54%,0.18);
   border-style: solid;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   border-left-style: solid;
   border-left-width: 1px;
   -webkit-align-self: stretch;
@@ -155,31 +157,31 @@ exports[`<Divider /> should render vertical Divider using height 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c1 {
+  .c1.c1.c1.c1.c1 {
     border-style: solid;
   }
 }
@@ -192,6 +194,7 @@ exports[`<Divider /> should render vertical Divider using height 1`] = `
     <div
       class="c1 c2"
       data-blade-component="divider"
+      role="separator"
     />
   </div>
 </div>

@@ -2,9 +2,9 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
-import { Text } from '../Typography';
 import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
 import type { CheckboxGroupProps } from './';
+import { Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
@@ -15,6 +15,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="CheckboxGroup"
       componentDescription="CheckboxGroup can be used to group together multiple checkboxes in a forms which provides out of the box state management for the multi-checkboxes and other features."
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Checkbox/_decisions/decisions.md"
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
@@ -23,7 +24,7 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
+      <Sandbox showConsole editorHeight={400}>
         {`
           import { CheckboxGroup, Checkbox } from '@razorpay/blade/components';
 
@@ -110,9 +111,9 @@ const CheckboxGroupTemplate: ComponentStory<typeof CheckboxGroupComponent> = ({
 export const Default = CheckboxGroupTemplate.bind({});
 Default.storyName = 'Default';
 
-export const HelpText = CheckboxGroupTemplate.bind({});
-HelpText.storyName = 'HelpText';
-HelpText.args = {
+export const HelpTextCheckbox = CheckboxGroupTemplate.bind({});
+HelpTextCheckbox.storyName = 'HelpText';
+HelpTextCheckbox.args = {
   helpText: 'CheckboxGroup help text',
 };
 

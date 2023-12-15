@@ -10,20 +10,15 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type CollapsibleBodyProps = {
   children: ReactNode;
-
-  /**
-   * **Internal**: used for React Native specific workarounds. Collapsible automatically takes care of width, you shouldn't need to configure this
-   */
-  _width?: BaseBoxProps['width'];
+  width?: BaseBoxProps['width'];
 } & TestID;
 
-const _CollapsibleBody = ({ children, testID, _width }: CollapsibleBodyProps): ReactElement => {
+const _CollapsibleBody = ({ children, testID, width }: CollapsibleBodyProps): ReactElement => {
   const { collapsibleBodyId, isExpanded } = useCollapsible();
   return (
     <BaseBox
       id={collapsibleBodyId}
-      // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
-      width={_width}
+      width={width}
       {...makeAccessible({ role: 'region', hidden: !isExpanded })}
       {...metaAttribute({ name: MetaConstants.CollapsibleBody, testID })}
     >
@@ -36,4 +31,5 @@ const CollapsibleBody = assignWithoutSideEffects(_CollapsibleBody, {
   componentId: MetaConstants.CollapsibleBody,
 });
 
-export { CollapsibleBody, CollapsibleBodyProps };
+export type { CollapsibleBodyProps };
+export { CollapsibleBody };

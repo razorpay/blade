@@ -56,7 +56,7 @@ type CheckboxGroupProps = {
   /**
    * Renders the label of the checkbox group
    */
-  label: string;
+  label?: string;
   /**
    * Sets the position of the label
    *
@@ -139,15 +139,17 @@ const CheckboxGroup = ({
           componentName="checkbox-group"
           testID={testID}
         >
-          <FormLabel
-            as="span"
-            necessityIndicator={necessityIndicator}
-            position={labelPosition}
-            id={ids.labelId}
-            accessibilityText={accessibilityText}
-          >
-            {label}
-          </FormLabel>
+          {label ? (
+            <FormLabel
+              as="span"
+              necessityIndicator={necessityIndicator}
+              position={labelPosition}
+              id={ids.labelId}
+              accessibilityText={accessibilityText}
+            >
+              {label}
+            </FormLabel>
+          ) : null}
           <BaseBox>
             <BaseBox display="flex" flexDirection="column">
               {React.Children.map(children, (child, index) => {
@@ -173,4 +175,5 @@ const CheckboxGroup = ({
   );
 };
 
-export { CheckboxGroup, CheckboxGroupProps };
+export type { CheckboxGroupProps };
+export { CheckboxGroup };

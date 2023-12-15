@@ -1,5 +1,4 @@
 import React from 'react';
-import getIn from 'lodash/get';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -7,6 +6,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import { switchMotion } from './switchTokens';
+import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import type { SvgProps } from '~components/Icons/_Svg/Svg/types';
 import Svg from '~components/Icons/_Svg';

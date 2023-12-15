@@ -9,6 +9,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { LinkToStorybook } from '~utils/storybook/LinkToStorybook';
 import { castWebType, isReactNative } from '~utils';
 import { Button } from '~components/Button';
+import { Link } from '~components/Link';
 
 // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
 // So we manually read location.hash of parent window and scroll to that section on load
@@ -25,6 +26,7 @@ const BoxStoryMeta = {
       page: () => (
         <StoryPageWrapper
           componentName="Box"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/rfcs/2023-01-06-layout.md"
           componentDescription="Box Component from Layout Primitives of Blade."
           propsDescription="All Box props support responsive objects. Props marked with 💅🏼 next to their names are the props that can also be used as styled-props on other blade components. Check out styled-props documentation for more details."
         >
@@ -186,5 +188,41 @@ WithDragAndDropEvents.args = {
   overflowY: 'auto',
   height: '300px',
 } as BoxProps;
+
+export const WithId = (): React.ReactElement => {
+  return (
+    <Box>
+      <Link href="#section-1">Scroll to section</Link>
+      <Box height="100vh" />
+      <Box height="100vh" as="section" id="section-1">
+        <Text>
+          Section of the page with id{' '}
+          <Text as="span" weight="bold">
+            section-1
+          </Text>{' '}
+          that we want to scroll to.
+        </Text>
+      </Box>
+    </Box>
+  );
+};
+
+export const Polygon = (): React.ReactElement => {
+  return (
+    <Box
+      backgroundColor="brand.primary.500"
+      padding="spacing.3"
+      margin="spacing.3"
+      height="300px"
+      clipPath="ellipse(130px 140px at 10% 20%)"
+      transformOrigin="top left"
+      transform="rotate(10deg) translate(100px, 20%)"
+    >
+      <Text as="span" weight="bold" contrast="high">
+        Custom Polygon
+      </Text>
+    </Box>
+  );
+};
 
 export default BoxStoryMeta;

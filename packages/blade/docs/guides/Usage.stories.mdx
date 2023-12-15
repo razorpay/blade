@@ -45,6 +45,20 @@ function AppWrapper(): JSX.Element {
 export default AppWrapper;
 ```
 
+## iOS Safari Specific Setup
+
+When using BottomSheet or SpotlightPopoverTour, 
+Make sure to set a width/height to the `body` otherwise when they open, the page will get clipped. 
+
+This happens due to a bug in iOS safari where it won't compute the height of the body correctly.
+
+```css
+body {
+  width: 100%;
+  height: 100%;
+}
+```
+
 ## Mapping Components from Figma to Blade in your code
 
 Blade is built with **"What you see in Figma is what you get on Code" ** philosophy.

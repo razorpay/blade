@@ -13,6 +13,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="Code component can be used for displaying token, variable names, or inlined code snippets."
       componentName="Code"
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140',
@@ -21,7 +22,7 @@ const Page = (): ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox editorWidthPercentage={60}>
+      <Sandbox>
         {`
           import { Code, Text } from '@razorpay/blade/components';
 

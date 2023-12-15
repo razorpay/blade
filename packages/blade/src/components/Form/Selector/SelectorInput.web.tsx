@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
-import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
 import type { HoverProps, SelectorInputProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { makeAccessible } from '~utils/makeAccessible';
+import { useMergeRefs } from '~utils/useMergeRefs';
 
 const getHoverStyles = ({
   theme,
@@ -38,12 +38,12 @@ const getHoverStyles = ({
 const StyledInput = styled.input<HoverProps>(
   ({ theme, isChecked, isDisabled, hasError, hoverTokens }) => ({
     ...screenReaderStyles,
-    '&:focus + div': {
+    '&:focus-visible + div': {
       // TODO: Replace with focus outline token
       outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
       boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
     },
-    '&:hover + div, &:focus + div': {
+    '&:hover + div': {
       ...getHoverStyles({ theme, isChecked, isDisabled, hasError, hoverTokens }),
     },
   }),
@@ -53,7 +53,10 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
   { id, inputProps, isChecked, isDisabled, hasError, hoverTokens, tabIndex, accessibilityLabel },
   ref,
 ) => {
-  const inputRef = useBladeInnerRef(ref);
+  // merging both refs because inputProps.ref needs to have access to indeterminate state
+  // to be able to set the mixed value via setMixed() function
+  // TODO: replace with a generic `mergeRefs()` util if we do this in other places
+  const mergedRef = useMergeRefs(ref, inputProps.ref);
 
   return (
     <StyledInput
@@ -65,13 +68,7 @@ const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorIn
       hoverTokens={hoverTokens}
       {...inputProps}
       {...makeAccessible({ label: accessibilityLabel })}
-      // merging both refs because inputProps.ref needs to have access to indeterminate state
-      // to be able to set the mixed value via setMixed() function
-      // TODO: replace with a generic `mergeRefs()` util if we do this in other places
-      ref={(value) => {
-        inputProps.ref.current = value;
-        (inputRef as React.MutableRefObject<any>).current = value;
-      }}
+      ref={mergedRef}
     />
   );
 };

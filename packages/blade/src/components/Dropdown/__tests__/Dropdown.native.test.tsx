@@ -1,11 +1,10 @@
 import React from 'react';
-// import { Button } from 'react-native';
 import { fireEvent } from '@testing-library/react-native';
 import { DropdownButton } from '../DropdownButton';
 import { Dropdown, DropdownLink, DropdownOverlay } from '../index';
 import { DropdownFooter, DropdownHeader } from '../DropdownHeaderFooter';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
-import { SelectInput } from '~components/Input/SelectInput';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
@@ -49,6 +48,24 @@ describe('<Dropdown />', () => {
     expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
   });
 
+  it('should not open the dropdown when disabled', () => {
+    const { getByRole, getByTestId } = renderWithTheme(
+      <Dropdown>
+        <SelectInput label="Select Fruit" isDisabled />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mango" value="mango" />
+            <ActionListItem title="Apple" value="apple" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+    fireEvent.press(getByRole('combobox'));
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+  });
+
   it('should click and select item', () => {
     const selectOnChange = jest.fn();
 
@@ -83,7 +100,7 @@ describe('<Dropdown />', () => {
     const selectOnChangeHandler = jest.fn();
     const applyClickHandler = jest.fn();
 
-    const { getByRole, getByTestId, getAllByRole, getByText } = renderWithTheme(
+    const { getByRole, getByTestId, getAllByRole, getByLabelText } = renderWithTheme(
       <Dropdown selectionType="multiple">
         <SelectInput name="fruits" label="Select Fruit" onChange={selectOnChangeHandler} />
         <DropdownOverlay>
@@ -110,22 +127,24 @@ describe('<Dropdown />', () => {
     // Click on item
     fireEvent.press(getAllByRole('menuitem')[1]);
     expect(selectOnChangeHandler).toBeCalledWith({ name: 'fruits', values: ['apple'] });
-    expect(getByRole('combobox')).toHaveTextContent('Apple');
+    expect(getByLabelText('Close Apple tag')).toBeOnTheScreen();
 
     // Click another item
     fireEvent.press(getAllByRole('menuitem')[2]);
     expect(selectOnChangeHandler).toBeCalledWith({ name: 'fruits', values: ['apple', 'banana'] });
-    expect(getByRole('combobox')).toHaveTextContent('2 items selected');
+    expect(getByLabelText('Close Apple tag')).toBeOnTheScreen();
+    expect(getByLabelText('Close Banana tag')).toBeOnTheScreen();
 
     // Ensure overlay is still visible
     expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
+
+    // Apply button click
+    fireEvent.press(getByRole('button', { name: 'Apply' }));
+    expect(applyClickHandler).toBeCalled();
+
     // Click outside
     fireEvent.press(getByTestId('closeable-area'));
     expect(getByTestId('dropdown-overlay').props.display).toBe('none');
-
-    // Apply button click
-    fireEvent.press(getByText('Apply'));
-    expect(applyClickHandler).toBeCalled();
   });
 
   it('should accept testID', () => {
@@ -156,12 +175,14 @@ describe('<Dropdown />', () => {
   it('should handle controlled props with single select', () => {
     const ControlledDropdown = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+      const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
       return (
         <>
           <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
           <Button onClick={() => setCurrentSelection('')}>Clear Selection</Button>
-          <Dropdown selectionType="single">
+          <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Toggle Dropdown</Button>
+          <Dropdown selectionType="single" isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
             <SelectInput
               label="Select City"
               value={currentSelection}
@@ -181,7 +202,7 @@ describe('<Dropdown />', () => {
       );
     };
 
-    const { getByRole, getByText } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, getByText, getByTestId } = renderWithTheme(<ControlledDropdown />);
 
     const selectInput = getByRole('combobox');
     expect(selectInput).toHaveTextContent('Select Option');
@@ -194,11 +215,17 @@ describe('<Dropdown />', () => {
 
     fireEvent.press(getByText('Clear Selection'));
     expect(selectInput).toHaveTextContent('Select Option');
+
+    fireEvent.press(getByRole('button', { name: 'Toggle Dropdown' }));
+    expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
+    fireEvent.press(getByRole('button', { name: 'Toggle Dropdown' }));
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
   });
 
   it('should handle controlled props with multi select', () => {
     const ControlledDropdown = (): React.ReactElement => {
       const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+      const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
 
       return (
         <>
@@ -211,7 +238,12 @@ describe('<Dropdown />', () => {
           >
             Select Bangalore
           </Button>
-          <Dropdown selectionType="multiple">
+          <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Toggle Dropdown</Button>
+          <Dropdown
+            isOpen={isDropdownOpen}
+            onOpenChange={setIsDropdownOpen}
+            selectionType="multiple"
+          >
             <SelectInput
               label="Select City"
               value={currentSelection}
@@ -233,19 +265,28 @@ describe('<Dropdown />', () => {
       );
     };
 
-    const { getByRole, getByText } = renderWithTheme(<ControlledDropdown />);
+    const { getByRole, getByText, getByLabelText, getByTestId, queryByLabelText } = renderWithTheme(
+      <ControlledDropdown />,
+    );
 
-    const selectInput = getByRole('combobox');
-    expect(selectInput).toHaveTextContent('Select Option');
-    fireEvent.press(getByText('Select Bangalore'));
-    expect(selectInput).toHaveTextContent('Bangalore');
+    const selectInput = getByRole('combobox', { name: 'Select Option' });
+    expect(queryByLabelText('Close Bangalore tag')).not.toBeOnTheScreen();
+    fireEvent.press(getByRole('button', { name: 'Select Bangalore' }));
+    expect(getByLabelText('Close Bangalore tag')).toBeOnTheScreen();
 
     fireEvent.press(selectInput);
     fireEvent.press(getByText('Pune'));
-    expect(selectInput).toHaveTextContent('2 items selected');
+    expect(getByLabelText('Close Bangalore tag')).toBeOnTheScreen();
+    expect(getByLabelText('Close Pune tag')).toBeOnTheScreen();
 
     fireEvent.press(getByText('Select Bangalore'));
-    expect(selectInput).toHaveTextContent('2 items selected');
+    expect(getByLabelText('Close Bangalore tag')).toBeOnTheScreen();
+    expect(getByLabelText('Close Pune tag')).toBeOnTheScreen();
+
+    fireEvent.press(getByRole('button', { name: 'Toggle Dropdown' }));
+    expect(getByTestId('dropdown-overlay').props.display).toBe('none');
+    fireEvent.press(getByRole('button', { name: 'Toggle Dropdown' }));
+    expect(getByTestId('dropdown-overlay').props.display).toBe('flex');
   });
 });
 

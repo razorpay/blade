@@ -4,7 +4,7 @@ import { Code } from '~components/Typography';
 import { ScrollLink } from '~utils/storybook/ScrollLink';
 
 type PropsTableType<T> = Record<
-  keyof Omit<T, 'testID' | '_hideDivider' | '_index'>,
+  keyof Omit<T, 'testID' | '_hideDivider' | '_sectionChildValues' | '_index'>,
   string | React.ReactElement | { note: string; type: string | React.ReactElement }
 >;
 const actionListPropsTables: {
@@ -25,6 +25,12 @@ const actionListPropsTables: {
     title: 'string',
     description: 'string',
     value: 'string',
+    titleSuffix: (
+      <>
+        <ScrollLink href="#actionlistitembadge">&lt;ActionListItemBadge /&gt;</ScrollLink> |{' '}
+        <ScrollLink href="#actionlistitembadgegroup">&lt;ActionListItemBadgeGroup /&gt;</ScrollLink>
+      </>
+    ),
     leading: (
       <>
         <ScrollLink href="#actionlistitemicon">&lt;ActionListItemIcon /&gt;</ScrollLink> |{' '}

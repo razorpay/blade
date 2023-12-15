@@ -1,23 +1,140 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `"<div id="root"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"><div data-blade-component="base-box" class="BaseBox-bmPWx eqKXGg"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div class="StyledBaseText-dVBfTO brGLEM" data-blade-component="base-text">Pay Now</div></div></button></div>"`;
+exports[`<BaseButton /> should render button with icon with left iconPosition 1`] = `"<div id="root"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 juLFkx"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gTzyYZ esItiH"><div data-blade-component="base-box" class="BaseBox-bmPWx vtnBD"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div class="StyledBaseText-dVBfTO hcXerP" data-blade-component="base-text">Pay Now</div></div></button></div>"`;
 
 exports[`<BaseButton /> should render button with icon with left iconPosition 2`] = `
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(218,89%,51%,1);
+  border-color: hsla(218,89%,51%,1);
+  border-width: 1px;
+  border-radius: 2px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(223,95%,48%,1);
+  border-color: hsla(223,95%,48%,1);
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(230,100%,42%,1);
+  border-color: hsla(230,100%,42%,1);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,100%,45%,1);
+  border-color: hsla(227,100%,45%,1);
+  outline: 1px solid hsla(220,30%,96%,1);
+  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 4px;
+}
+
+.c2.c2.c2.c2.c2 {
+  opacity: 1;
+}
+
 <div
   id="root"
 >
   <button
-    class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 dOlUqh"
+    class="c0"
     data-blade-component="button"
     role="button"
     type="button"
   >
     <div
-      class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 kkGTK NIPoA"
+      class="c1 c2"
       data-blade-component="base-box"
     >
       <div
-        class="BaseBox-bmPWx eqKXGg"
+        class="c3"
         data-blade-component="base-box"
       >
         <svg
@@ -39,7 +156,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 2`
         </svg>
       </div>
       <div
-        class="StyledBaseText-dVBfTO brGLEM"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now

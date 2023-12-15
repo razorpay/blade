@@ -301,8 +301,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                           "alignItems": "baseline",
                           "display": "flex",
                           "flexDirection": "row",
-                          "paddingLeft": 4,
-                          "paddingRight": 4,
                         },
                       ]
                     }
@@ -783,8 +781,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                           "alignItems": "baseline",
                           "display": "flex",
                           "flexDirection": "row",
-                          "paddingLeft": 4,
-                          "paddingRight": 4,
                         },
                       ]
                     }

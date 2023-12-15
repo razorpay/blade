@@ -8,10 +8,12 @@ import type {
   TouchableHighlightProps,
   GestureResponderEvent,
 } from 'react-native';
+import { Platform as RNPlatform } from 'react-native';
 import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
 import { Text } from '~components/Typography';
+import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
@@ -88,6 +90,25 @@ type StyledComponentInputProps = Omit<
   onPress?: (event: GestureResponderEvent) => void;
 };
 
+const getInputHeight = ({
+  isTextArea,
+  hasTags,
+  numberOfLines,
+  lineHeight,
+}: Pick<StyledBaseInputProps, 'hasTags' | 'isTextArea' | 'numberOfLines'> & {
+  lineHeight: number;
+}): string | undefined => {
+  if (isTextArea) {
+    return `${lineHeight * (numberOfLines ?? 0)}px`;
+  }
+
+  if (hasTags) {
+    return undefined; // we don't set height on input. We set it on wrapper to properly include tags in overall height
+  }
+
+  return makeSize(size[36]);
+};
+
 const getRNInputStyles = (
   props: StyledComponentInputProps &
     ThemeProps<DefaultTheme> &
@@ -105,12 +126,20 @@ const getRNInputStyles = (
       suffix: props.suffix,
       trailingIcon: props.trailingIcon,
       isTextArea: props.isTextArea,
+      hasTags: props.hasTags,
+      isDropdownTrigger: props.isDropdownTrigger,
     }),
-    lineHeight: undefined,
+    lineHeight: RNPlatform.select({
+      android: makeSize(props.theme.typography.lineHeights[100]),
+      ios: undefined,
+    }),
     textAlignVertical: 'top',
-    height: props.isTextArea
-      ? `${props.theme.typography.lineHeights[300] * (props.numberOfLines ?? 0)}px`
-      : makeSize(size[36]),
+    height: getInputHeight({
+      isTextArea: props.isTextArea,
+      hasTags: props.hasTags,
+      numberOfLines: props.numberOfLines,
+      lineHeight: props.theme.typography.lineHeights[300],
+    }),
   };
 };
 const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
@@ -127,6 +156,8 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
     trailingIcon,
     isTextArea,
     numberOfLines,
+    isDropdownTrigger,
+    hasTags,
   }) =>
     getRNInputStyles({
       id,
@@ -141,6 +172,8 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       trailingIcon,
       isTextArea,
       numberOfLines,
+      hasTags,
+      isDropdownTrigger,
     }),
 );
 const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
@@ -157,6 +190,8 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     trailingIcon,
     isTextArea,
     numberOfLines,
+    isDropdownTrigger,
+    hasTags,
   }) =>
     getRNInputStyles({
       id,
@@ -171,6 +206,8 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       trailingIcon,
       isTextArea,
       numberOfLines,
+      isDropdownTrigger,
+      hasTags,
     }),
 );
 
@@ -202,12 +239,13 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     hasPopup,
     shouldIgnoreBlurAnimation,
     autoCapitalize,
-    as,
+    as: renderAs,
     ...props
   },
   ref,
 ) => {
   const buttonValue = props.value ? props.value : props.placeholder;
+  const { theme } = useTheme();
   const commonProps = {
     onBlur: (): void => {
       // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
@@ -219,7 +257,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     isFocused: currentInteraction === 'active',
   };
 
-  return hasPopup ? (
+  return renderAs === 'button' ? (
     <StyledNativeBaseButton
       // the types of styled-components for react-native is creating a mess, so there's no other option but to type `ref` as any
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -237,7 +275,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...accessibilityProps}
     >
       <Text
-        type={props.value ? 'subtle' : 'placeholder'}
+        type={props.value && !isDisabled ? 'subtle' : 'placeholder'}
         truncateAfterLines={1}
         textAlign={props.textAlign}
       >
@@ -253,8 +291,11 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       numberOfLines={numberOfLines}
       editable={!isDisabled}
       maxLength={maxCharacters}
+      placeholderTextColor={theme.colors.surface.text.placeholder.lowContrast}
       onFocus={(event): void => {
         handleOnFocus?.({ name, value: event?.nativeEvent.text });
+        // React Native does not have native onPress event on Input elements so for consistency of API we call it on onFocus which also gets triggered on clicks
+        handleOnClick?.({ name, value: event?.nativeEvent.text });
         setCurrentInteraction('active');
       }}
       onChangeText={(text): void => {

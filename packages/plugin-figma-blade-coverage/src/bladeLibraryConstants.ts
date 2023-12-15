@@ -1,133 +1,124 @@
 export const paymentLightThemeData = {
   components: {
-    Tag: {
-      key: '81164abfd2c6ffeae87ae0719cd52a1ce62d6473',
-    },
-    'BottomSheet/Header': {
-      key: '03fa4ffc23c92fdf4b0afa2b3d4977d8e0d01323',
-    },
-    Modal: {
-      key: '042e23e06d6b21818f6ecfa2ef75f8112a5a4d32',
-    },
-    'Dropdown/Footer': {
-      key: '1568049d40a5c7465dbf686d6e9d5892ec4b69d2',
-    },
-    'Bottom Sheet': {
-      key: '18c8adc53a8c9c098e19259036c5ddec47debda4',
+    'ActionListItems Group': {
+      key: '1e18a66e07ce9830b6a4e440a9b7c02ae55d069b',
     },
     'Accordion Group': {
       key: 'a776cbd4cade27a19e056919a098bbe0dc5745f0',
     },
-    'ActionListItems Group': {
-      key: '1e18a66e07ce9830b6a4e440a9b7c02ae55d069b',
+    'Accordion Item': {
+      key: '3902aef3c76b94bf4a7f41c083deb8f6ecbfa052',
     },
-    'TextArea Input': {
-      key: '1fbef7453e9ef0338195174488daf0eb12af547b',
+    'AccordionHeader-Base': {
+      key: '4ab4fdf876a4783349814b2fcfa9fab1b7e2d843',
     },
-    Indicators: {
-      key: '2606f144eec11f07d05262363772e905626132f7',
+    'AccordionBody-Base': {
+      key: '5e7801218a5c222780ae8ae33a2be71bc3d3b58e',
     },
-    'Dropdown Menu': {
-      key: '301e099f941f2b4a4c1475779e72659d7caabd4d',
+    Collapsible: {
+      key: '0b6944a8171a763631f1aa2cca713c77dd701d89',
     },
-    Spacer: {
-      key: '32fe4cbbe78df114379f99b331eb210b8f481a68',
+    'Base - General Header': {
+      key: 'e89509441f6c5b8e0534bf1e564c98da4b06f33b',
     },
-    Alert: {
-      key: '3907e42380851a0648ed6d34aba02f9d540d053d',
+    'Base - General Footer': {
+      key: 'dee5f492eaded2a6ad9f76e7be37283cf7e309af',
     },
-    Divider: {
-      key: '3942574367676524ab7ea045ece704f751984dae',
+    'Bottom Sheet': {
+      key: '18c8adc53a8c9c098e19259036c5ddec47debda4',
     },
-    'Modal/Footer': {
-      key: '3a215359b6cbc947ed0da9d615147e5df1b165d6',
-    },
-    'Skeleton Block': {
-      key: '3e815961f46f78feeff6ae13847a6740028d17f8',
-    },
-    'Modal/Header': {
-      key: '3fecf97b5a2e238c23a4791cc22990f6ffba3416',
-    },
-    List: {
-      key: '49cd227b1c67f7c13d432eadd4adbd59d2c93572',
+    'BottomSheet/Header': {
+      key: '03fa4ffc23c92fdf4b0afa2b3d4977d8e0d01323',
     },
     'BottomSheet/Footer': {
       key: '4e64f322c247894978e7056349d624da9521cf8f',
     },
+    'Bottomsheet Head - Grab handle container': {
+      key: 'e6fac352ee79b6e97e2a15c221ec2ca325e20cb3',
+    },
+    'BottomSheet/homeIndicator': {
+      key: '063524ef7b32522cdc65d22ddf525b6a4ec0640c',
+    },
+    Card: {
+      key: 'dc6406818c4669b367f2c08d23744d75a48cd806',
+    },
+    '_Card-Header': {
+      key: '278896f60273caddd021e079730dc613697e1b4a',
+    },
+    '_Card-Footer': {
+      key: '79d7da3514b2287d7db435f3e77cf2b7e48f4e1c',
+    },
+    Carousel: {
+      key: '7e472b0cdda8f1cc8fad4b06d5f584dcde2ffe1e',
+    },
+    'Carousel/Navigation-Buttons': {
+      key: 'e3f78706bf5400999cbca416cf26248ae7d0f66e',
+    },
+    Divider: {
+      key: '3942574367676524ab7ea045ece704f751984dae',
+    },
+    'Dropdown Menu': {
+      key: '301e099f941f2b4a4c1475779e72659d7caabd4d',
+    },
     'Dropdown/Header': {
       key: '5acfcd1de0ee3569014590cdede3bd11b5f4b143',
     },
-    'ActionListItem/selectionType-Multi Select': {
-      key: '5c9e5713c2fc6f717b11d0d824ec7505c55d5251',
+    'Dropdown/Footer': {
+      key: '1568049d40a5c7465dbf686d6e9d5892ec4b69d2',
     },
-    Text: {
-      key: '61339dd51608d6de7b898abc2aa2ff7bb1b58cf3',
+    'Icon Size': {
+      key: '06edcdaff550d4c96534c6d95f968e0e4b3eb224',
     },
-    Checkbox: {
-      key: '67cb235833f1326ec27c51540ecc24566f986263',
+    // @TODO: remove this once replaced on Theme files on Figma
+    'Icon Size Base': {
+      key: 'f97da62257fb94b1bfcfc3f0fb81ef77ac65276d',
     },
-    'Password Input': {
-      key: '765dfe31bdb5842b83cb32756aa39205a2d85114',
+    List: {
+      key: '49cd227b1c67f7c13d432eadd4adbd59d2c93572',
     },
-    Title: {
-      key: '856b8daacf67b0dda92fca150324a1ceb888cc0f',
+    Link: {
+      key: '5e6f414943e5678d148558d84c86d8b0f855506c',
+    },
+    Modal: {
+      key: '042e23e06d6b21818f6ecfa2ef75f8112a5a4d32',
+    },
+    'Modal/Header': {
+      key: '3fecf97b5a2e238c23a4791cc22990f6ffba3416',
+    },
+    'Modal/Footer': {
+      key: '3a215359b6cbc947ed0da9d615147e5df1b165d6',
+    },
+    Spacer: {
+      key: '32fe4cbbe78df114379f99b331eb210b8f481a68',
+    },
+    'Skeleton Block': {
+      key: '3e815961f46f78feeff6ae13847a6740028d17f8',
     },
     Spinner: {
       key: '8f7acd11dfa05673822adbeb67ab0672e7f7f07f',
     },
-    Switch: {
-      key: '927781eb654ae1e4cdcb0cb79d5840797a7fb8db',
+    Tab: {
+      key: 'db55687e4a62879996753916ca392dc929879280',
     },
-    'OTP Input': {
-      key: 'a49a552a588ecab96554fd77b0c26810e5341cb7',
+    Tag: {
+      key: '81164abfd2c6ffeae87ae0719cd52a1ce62d6473',
     },
-    'Radio-Group': {
-      key: 'a57c8eca46440b6aa34b51d1d177c6921c1bcea8',
+    Tooltip: {
+      key: '98c01f6af44a12914232ce6ce3660665dcc10f5c',
     },
-    'Text Input': {
-      key: 'a8afab83a4a784647d6c7df136e365d7681e712e',
+    Popover: {
+      key: 'b14ad333fa2f8483b4c7ed780738b57a788191b3',
     },
-    'Select Input': {
-      key: 'acf3eb63bacc1f1ed3d20adda0987e5b79e3b39c',
+    'Popover/Header': {
+      key: '57a321084e8ce1899b8233e9493ed949e0a94a4e',
     },
-    Link: {
-      key: 'b1e9234a4e6a6fb424bf6cfa12b78c26b64f8d7a',
+    'Popover/Footer': {
+      key: 'a63e1855eaaae27bf7cd60efe0aa7475dee14158',
     },
-    'Radio-Button': {
-      key: 'b89d299d42a6118a2f6e225ca6b2bc89ee3b7c0a',
-    },
-    'Checkbox-Group': {
-      key: 'bec7d287193c3745a8319e83430ba77807c931fa',
-    },
-    Heading: {
-      key: 'c91a7dfbe196427235d83d1f2d0616cf9d68adb0',
-    },
-    ProgressBar: {
-      key: 'c9610928e78b65bf7eba1ffbdae7949752768d50',
-    },
-    Code: {
-      key: 'caaa65e58c8a824e0f29bf5292fe1cb0538de979',
-    },
-    Amount: {
-      key: 'cf9acdee32e864eb029037c36a8188ca3bef5c99',
-    },
-    'ActionListItem/selectionType-Default Negative': {
-      key: 'd285cf127fe40b524f3906031f42278c9c73253f',
-    },
-    'ActionListItem/selectionType-Default': {
-      key: 'd30fd61864bce5c16aa8c313b583a1c46d8ada73',
-    },
-    'ActionListItem/selectionType-Single Select': {
-      key: 'd7db0adc428e86e680c04e46d2d01d87a082a15c',
-    },
-    IconButton: {
-      key: 'da16ecb1aaad66d8e93a96a8f01ed231f623f1f9',
-    },
-    Card: {
-      key: 'e09ad81797dc0731ea5ac7f3a23fd084a42327a7',
-    },
-    'Bottomsheet Head - Grab handle container': {
-      key: 'e6fac352ee79b6e97e2a15c221ec2ca325e20cb3',
+
+    // Feedback Components
+    Alert: {
+      key: '3907e42380851a0648ed6d34aba02f9d540d053d',
     },
     Badge: {
       key: 'ebcbd4a499165aba97710a7f06e169992411af93',
@@ -135,9 +126,77 @@ export const paymentLightThemeData = {
     Counter: {
       key: 'f3e4922ddea0657c23d62298b9ebff068386688f',
     },
-    Button: {
-      key: 'fadfca88c14a46b3ae08ede9b1ac1dab7199ab36',
+    Indicators: {
+      key: '2606f144eec11f07d05262363772e905626132f7',
     },
+    ProgressBar: {
+      key: 'c9610928e78b65bf7eba1ffbdae7949752768d50',
+    },
+
+    // Typography Components
+    Amount: {
+      key: 'cf9acdee32e864eb029037c36a8188ca3bef5c99',
+    },
+    Code: {
+      key: 'caaa65e58c8a824e0f29bf5292fe1cb0538de979',
+    },
+    Text: {
+      key: '61339dd51608d6de7b898abc2aa2ff7bb1b58cf3',
+    },
+    Title: {
+      key: '856b8daacf67b0dda92fca150324a1ceb888cc0f',
+    },
+    Heading: {
+      key: 'c91a7dfbe196427235d83d1f2d0616cf9d68adb0',
+    },
+    Display: {
+      key: '856b8daacf67b0dda92fca150324a1ceb888cc0f',
+    },
+
+    // Input Elements
+    'Text Input': {
+      key: 'a8afab83a4a784647d6c7df136e365d7681e712e',
+    },
+    'TextArea Input': {
+      key: '1fbef7453e9ef0338195174488daf0eb12af547b',
+    },
+    'Password Input': {
+      key: '765dfe31bdb5842b83cb32756aa39205a2d85114',
+    },
+    'OTP Input': {
+      key: 'a49a552a588ecab96554fd77b0c26810e5341cb7',
+    },
+    'Select Input': {
+      key: 'acf3eb63bacc1f1ed3d20adda0987e5b79e3b39c',
+    },
+    'Radio-Group': {
+      key: 'a57c8eca46440b6aa34b51d1d177c6921c1bcea8',
+    },
+    'Radio-Button': {
+      key: 'b89d299d42a6118a2f6e225ca6b2bc89ee3b7c0a',
+    },
+    'Checkbox-Group': {
+      key: 'bec7d287193c3745a8319e83430ba77807c931fa',
+    },
+    Checkbox: {
+      key: '67cb235833f1326ec27c51540ecc24566f986263',
+    },
+    'Chip-Group': {
+      key: 'eff67f34d291eac58798fb832066fc1aefb2191f',
+    },
+    Switch: {
+      key: '927781eb654ae1e4cdcb0cb79d5840797a7fb8db',
+    },
+
+    // Button
+    Button: {
+      key: '2ecf46cde70a05e5bc54fc63e39e84ff647829ab',
+    },
+    IconButton: {
+      key: 'da16ecb1aaad66d8e93a96a8f01ed231f623f1f9',
+    },
+
+    // icons
     trash: {
       key: 'aba22da852e03403a1d5586807fa696359605547',
     },
@@ -382,7 +441,7 @@ export const paymentLightThemeData = {
       key: '526d28fecc42fb3b615e7e92911795c2e9343096',
     },
     grid: {
-      key: 'd6f06379bc794fc4a8bff1b00f78bf2cec709ff4',
+      key: '4032d9f4ae3638943fca92d0fa7c272cd1e5b963',
     },
     watch: {
       key: '40f459ef3a62f95aa938caa7ae88fab212f7fbf8',
@@ -472,7 +531,7 @@ export const paymentLightThemeData = {
       key: 'de1ac1673d3bb28aea1d984abf8e0cc71cde71ab',
     },
     'file-text': {
-      key: 'c1824d91771423a3f38634e8e962585ce88ed48c',
+      key: '5fe07d7afbb94e7bfbed16ca64ddab04acb56300',
     },
     square: {
       key: '602bcb02bb38d4b1f02c05a18c719914eae393a0',
@@ -668,9 +727,6 @@ export const paymentLightThemeData = {
     },
     zap: {
       key: '98632605d134e9fe10c2d304c360301755807892',
-    },
-    Tooltip: {
-      key: '98c01f6af44a12914232ce6ce3660665dcc10f5c',
     },
     'trending-up': {
       key: 'd5683fd1da720c1dca2bb1fb48c337ba8ad7136b',
@@ -4101,147 +4157,200 @@ export const paymentLightThemeData = {
 
 export const bankingDarkThemeData = {
   components: {
-    Tag: {
-      key: '2dcc0c0d31f0cc40b5b9c1e8a4b7866270511056',
-    },
-    Link: {
-      key: '003d08a00aa841104a655caddf61a1651f85ff04',
+    'ActionListItems Group': {
+      key: '0245d993ec15fcebd8259d8bc13053012301e4d2',
     },
     'Accordion Group': {
       key: 'd9add274971a2f47efaf48045402c6d010dca28c',
     },
-    'ActionListItems Group': {
-      key: '0245d993ec15fcebd8259d8bc13053012301e4d2',
+    'Accordion Item': {
+      key: '83130a88a9280c7f2cddfa902541bbf2553f7a4b',
     },
-    'Radio-Group': {
-      key: '091a3153a351da32ee0ccba9f1a69298f2c3f84a',
+    'AccordionHeader-Base': {
+      key: '4ab4fdf876a4783349814b2fcfa9fab1b7e2d843',
     },
-    'BottomSheet/Header': {
-      key: '0a8ec718d764eec8c683f5773e616f627d5c9691',
+    'AccordionBody-Base': {
+      key: '5e7801218a5c222780ae8ae33a2be71bc3d3b58e',
     },
-    Code: {
-      key: '0b6be36599ba7e55194f6137990da07100de3a62',
-    },
-    'BottomSheet/Footer': {
-      key: '163e89006986f8b9fcb8555f2f31e0e8a4a7e352',
-    },
-    Tooltip: {
-      key: '22024c07a64fde300d410f2614e9eb1ff9e545f0',
-    },
-    IconButton: {
-      key: '2b1782dc5ec49a7574c6898db90d191616ea4ab5',
-    },
-    Spacer: {
-      key: '2f277319949886cb9ea3ac7ce2b7893934bbdf69',
-    },
-    'Modal/Header': {
-      key: '3a89c35dc57cd0cf9c77b9726b9bcc015d9566ba',
-    },
-    Modal: {
-      key: '3aaa96b87822d7f008a52dc59301e400974d4392',
-    },
-    Switch: {
-      key: '432153a6a9db34c806e34b80e43937e43b1e0fef',
-    },
-    Checkbox: {
-      key: '4ca33c2116254bf6b28bdbab25e6a9a304d7c7e1',
-    },
-    Counter: {
-      key: '4d05716b772e0a9d9b5cd4ac71d5b196bedfe29b',
+    Collapsible: {
+      key: '5c79a5ec71d83294243543a7587e9b5e75e7ee56',
     },
     'Bottom Sheet': {
       key: '51c78bdc7498d7c935776b5da0863a4516a48e82',
     },
-    'ActionListItem/selectionType-Multi Select': {
-      key: '51dda34e84d19525269e80ed5b26f700ef8878e9',
+    'Base - General Header': {
+      key: 'e89509441f6c5b8e0534bf1e564c98da4b06f33b',
     },
-    ProgressBar: {
-      key: '6121fa605305d59edcf3d6174e1425131b9888d1',
+    'Base - General Footer': {
+      key: 'dee5f492eaded2a6ad9f76e7be37283cf7e309af',
     },
-    Title: {
-      key: '6e3ddeff38aea7ff19d02655fc274d6a008b8a2b',
+    'BottomSheet/Header': {
+      key: '0a8ec718d764eec8c683f5773e616f627d5c9691',
     },
-    'OTP Input': {
-      key: '729231e49c0d22b1bed122afcda02da287960b7f',
+    'BottomSheet/Footer': {
+      key: '163e89006986f8b9fcb8555f2f31e0e8a4a7e352',
     },
     'Bottomsheet Head - Grab handle container': {
       key: '7aac900e6bbb79c9e87caebe320f55dc08c3bf73',
     },
-    'Select Input': {
-      key: '82e03e173c33e606cb8f9c49c2042bc440cfc15e',
+    'BottomSheet/homeIndicator': {
+      key: 'cd8ef9a01fb50b0964aa28d90d80acd66be0ce9e',
     },
-    Alert: {
-      key: '8bf9441a2382d9692d0be812f276bf3b7cf82304',
+    Card: {
+      key: '53bbd9b6945fed889472f7bf7c319bc3deec19ac',
     },
-    'Skeleton Block': {
-      key: '8ff65df6fd2ece9378f6c973429b9fb0b876bea9',
+    '_Card-Header': {
+      key: '918818912e26c8bc70b4a78181c73014597da892',
     },
-    'Modal-Body (NEW)': {
-      key: '9937aba7bdd77a3c4bbce7775986bb763513142b',
+    '_Card-Footer': {
+      key: '344bd7e9ba8c1e21c358e302f874df8ae7220512',
     },
-    'Dropdown/Footer': {
-      key: '9b9e58ddb16265e0eed88e2288ac7e88fa995648',
+    Carousel: {
+      key: '636db3a8eefa4e0793fbc685bc28d5a1f4a5d2d0',
     },
-    'Password Input': {
-      key: 'a0c9e6efa1c48a6b0b10a3b2ce3d6af3e232979b',
-    },
-    'Radio-Button': {
-      key: 'a8e520b9975367d50d17c60be3a791b8a3cb1bad',
+    'Carousel/Navigation-Buttons': {
+      key: 'b38633e4744ee25807f16a2b49abf1a775e43a49',
     },
     Divider: {
       key: 'b232a943d56cf5e470135ad17d62aab33e804809',
     },
-    'ActionListItem/selectionType-Single Select': {
-      key: 'c003f50f15cf54b457910745c20e0aed80bb63e1',
-    },
-    'ActionListItem/selectionType-Default Negative': {
-      key: 'c2a0451be604aeaecd9bb86ef8403a3400d869a3',
-    },
-    Card: {
-      key: 'c613398047cf600ad9f7c7c8d806e9ea724b06cf',
-    },
-    Badge: {
-      key: 'c9c84b85a176cde512672dba01d72aaa66d21aa8',
-    },
-    Button: {
-      key: 'd8dc4161e536291f8d85e9be5eedd1743ab29360',
-    },
-    'TextArea Input': {
-      key: 'dab51756fc37ec7e090f14becd7e9ac3053295f9',
-    },
-    'Text Input': {
-      key: 'db0dee870ed76e54a34d2665aeb27989b3c00afe',
-    },
-    Amount: {
-      key: 'db4f6572b5e388fea797f046cceb1bd3c6f36f30',
-    },
-    Spinner: {
-      key: 'dd99c560705ce6335217785ce7f8efe5270c2856',
-    },
-    Indicators: {
-      key: 'e1767a7c71c475221cb5f09a7369de3d4f098313',
+    'Dropdown Menu': {
+      key: '88453e64e2815aaff7690e079e666b4591bba2dc',
     },
     'Dropdown/Header': {
       key: 'e3549f7020e86fae5271c09c4f2fd4b20102df38',
     },
-    Text: {
-      key: 'e5fa2264519ffc67e70a22841b8a32e18357a25f',
+    'Dropdown/Footer': {
+      key: '9b9e58ddb16265e0eed88e2288ac7e88fa995648',
     },
-    'Modal/Footer': {
-      key: 'ea6910e15594c9f50c21311c8d93f325a1c30df5',
-    },
-    'Checkbox-Group': {
-      key: 'eeddebec6ce9e44a4e6cb2871333bf1a36ff04de',
-    },
-    'ActionListItem/selectionType-Default': {
-      key: 'efe8a10012ef38454dfb9cf1342c5624737d52bc',
-    },
-    Heading: {
-      key: 'f62d79aec517f0cd7176b7bada076e12d1ab27d7',
+    'Icon Size': {
+      key: '5e2b568a6f6166640f7cad8f5aca2076f00f47ad',
     },
     List: {
       key: 'fee722721f71351976176095b6d4bb0ca2e5373d',
     },
+    Link: {
+      key: '17c3d647a878f611bd90280690ec910668dd03c0',
+    },
+    Modal: {
+      key: '3aaa96b87822d7f008a52dc59301e400974d4392',
+    },
+    'Modal/Header': {
+      key: '3a89c35dc57cd0cf9c77b9726b9bcc015d9566ba',
+    },
+    'Modal/Footer': {
+      key: 'ea6910e15594c9f50c21311c8d93f325a1c30df5',
+    },
+
+    Spacer: {
+      key: '2f277319949886cb9ea3ac7ce2b7893934bbdf69',
+    },
+    'Skeleton Block': {
+      key: '8ff65df6fd2ece9378f6c973429b9fb0b876bea9',
+    },
+    Spinner: {
+      key: 'dd99c560705ce6335217785ce7f8efe5270c2856',
+    },
+    Tab: {
+      key: 'e3cdbde85ff121a7c049e504f695ab33b093e858',
+    },
+    Tag: {
+      key: '2dcc0c0d31f0cc40b5b9c1e8a4b7866270511056',
+    },
+    Tooltip: {
+      key: '22024c07a64fde300d410f2614e9eb1ff9e545f0',
+    },
+    Popover: {
+      key: 'd862fb9823cf3921ca3c85210c3ce4f51ea49e42',
+    },
+    'Popover/Header': {
+      key: 'ffc08b1e38a71ab4b483173321ff1d5ab2ae7cdf',
+    },
+    'Popover/Footer': {
+      key: '0fe1893a0b6ac6e47e803ea13f28f8629490da72',
+    },
+
+    // Feedback Components
+    Alert: {
+      key: '8bf9441a2382d9692d0be812f276bf3b7cf82304',
+    },
+    Badge: {
+      key: 'c9c84b85a176cde512672dba01d72aaa66d21aa8',
+    },
+    Counter: {
+      key: '4d05716b772e0a9d9b5cd4ac71d5b196bedfe29b',
+    },
+    Indicators: {
+      key: 'e1767a7c71c475221cb5f09a7369de3d4f098313',
+    },
+    ProgressBar: {
+      key: '6121fa605305d59edcf3d6174e1425131b9888d1',
+    },
+
+    // Typography Components
+    Amount: {
+      key: 'db4f6572b5e388fea797f046cceb1bd3c6f36f30',
+    },
+    Code: {
+      key: '0b6be36599ba7e55194f6137990da07100de3a62',
+    },
+    Text: {
+      key: 'e5fa2264519ffc67e70a22841b8a32e18357a25f',
+    },
+    Title: {
+      key: '6e3ddeff38aea7ff19d02655fc274d6a008b8a2b',
+    },
+    Heading: {
+      key: 'f62d79aec517f0cd7176b7bada076e12d1ab27d7',
+    },
+    Display: {
+      key: '6e3ddeff38aea7ff19d02655fc274d6a008b8a2b',
+    },
+
+    // Input Elements
+    'Text Input': {
+      key: 'db0dee870ed76e54a34d2665aeb27989b3c00afe',
+    },
+    'TextArea Input': {
+      key: 'dab51756fc37ec7e090f14becd7e9ac3053295f9',
+    },
+    'Password Input': {
+      key: 'a0c9e6efa1c48a6b0b10a3b2ce3d6af3e232979b',
+    },
+    'OTP Input': {
+      key: '729231e49c0d22b1bed122afcda02da287960b7f',
+    },
+    'Select Input': {
+      key: '82e03e173c33e606cb8f9c49c2042bc440cfc15e',
+    },
+    'Radio-Group': {
+      key: '091a3153a351da32ee0ccba9f1a69298f2c3f84a',
+    },
+    'Radio-Button': {
+      key: 'a8e520b9975367d50d17c60be3a791b8a3cb1bad',
+    },
+    'Checkbox-Group': {
+      key: 'eeddebec6ce9e44a4e6cb2871333bf1a36ff04de',
+    },
+    Checkbox: {
+      key: '4ca33c2116254bf6b28bdbab25e6a9a304d7c7e1',
+    },
+    'Chip-Group': {
+      key: 'ab58bef26c67f72e054321a3df753abfd5dac220',
+    },
+    Switch: {
+      key: '432153a6a9db34c806e34b80e43937e43b1e0fef',
+    },
+
+    // Button
+    Button: {
+      key: 'd11d2ba8d66de2a3bc6085de156b269ae3046af8',
+    },
+    IconButton: {
+      key: '2b1782dc5ec49a7574c6898db90d191616ea4ab5',
+    },
+
+    // icons
     radio: {
       key: '70af6dae0ecad767e103a98da57e5eee12b1161e',
     },
@@ -4306,7 +4415,7 @@ export const bankingDarkThemeData = {
       key: '17ee700539026a45a117bab4220bfb87a5340029',
     },
     grid: {
-      key: '7d01a065bf5c7295eb53c4ce68f4c8b749b5d144',
+      key: '183242f6126eb70a2fd8968504ec44744fde0b09',
     },
     'full-screen-enter': {
       key: '4d2036ef75cd7961022e7892b73f94c1513dc7ab',
@@ -4315,7 +4424,7 @@ export const bankingDarkThemeData = {
       key: '1ba7af527d5623a4b8b5f128a0ce890e8edf7839',
     },
     'file-text': {
-      key: 'b304456983e8438f6cdb7b7460c506deb6b6af76',
+      key: '1ca4b02908cdca86542909e186396c3135d4387e',
     },
     power: {
       key: 'eae5bde818bc6e1bebd0501deb37250e29d1b1e7',
@@ -8214,6 +8323,47 @@ export const BLADE_COMPONENT_IDS = [
   ...Object.values(paymentLightThemeData.components).map((component) => component.key),
   ...Object.values(bankingDarkThemeData.components).map((component) => component.key),
 ];
+
+export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
+  // Carousel, Modal, Bottom Sheet, Card, Dropdown Menu
+  ...[
+    paymentLightThemeData.components['Accordion Group'],
+    paymentLightThemeData.components['Accordion Item'],
+    paymentLightThemeData.components['AccordionBody-Base'],
+    paymentLightThemeData.components['Bottom Sheet'],
+    paymentLightThemeData.components['BottomSheet/Footer'],
+    paymentLightThemeData.components['Dropdown/Header'],
+    paymentLightThemeData.components['Base - General Header'],
+    paymentLightThemeData.components['Dropdown Menu'],
+    paymentLightThemeData.components['Dropdown/Footer'],
+    paymentLightThemeData.components.Card,
+    paymentLightThemeData.components.Carousel,
+    paymentLightThemeData.components.Modal,
+    paymentLightThemeData.components['Modal/Footer'],
+    paymentLightThemeData.components.Popover,
+  ]
+    .map((component) => component.key)
+    .flat(),
+  ...[
+    bankingDarkThemeData.components['Accordion Group'],
+    bankingDarkThemeData.components['Accordion Item'],
+    bankingDarkThemeData.components['AccordionBody-Base'],
+    bankingDarkThemeData.components['Bottom Sheet'],
+    bankingDarkThemeData.components['BottomSheet/Footer'],
+    bankingDarkThemeData.components['Dropdown/Header'],
+    bankingDarkThemeData.components['Base - General Header'],
+    bankingDarkThemeData.components['Dropdown Menu'],
+    bankingDarkThemeData.components['Dropdown/Footer'],
+    bankingDarkThemeData.components.Card,
+    bankingDarkThemeData.components.Carousel,
+    bankingDarkThemeData.components.Modal,
+    bankingDarkThemeData.components['Modal/Footer'],
+    bankingDarkThemeData.components.Popover,
+  ]
+    .map((component) => component.key)
+    .flat(),
+];
+
 export const BLADE_TEXT_STYLE_IDS = [
   ...Object.values(paymentLightThemeData.textStyles).map((textStyle) => textStyle.id.split(',')[0]),
   ...Object.values(bankingDarkThemeData.textStyles).map((textStyle) => textStyle.id.split(',')[0]),

@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import type { BadgeProps } from '../Badge';
-import { Badge } from '../Badge';
-import type { LinkProps } from '../Link';
-import { Link } from '../Link';
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button';
-import { Counter } from '../Counter';
-import type { CounterProps } from '../Counter';
-import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import { useVerifyInsideCard } from './CardContext';
 import { ComponentIds } from './Card';
+import type { BadgeProps } from '~components/Badge';
+import { Badge } from '~components/Badge';
+import type { LinkProps } from '~components/Link';
+import { Link } from '~components/Link';
+import type { ButtonProps } from '~components/Button';
+import { Button } from '~components/Button';
+import { Counter } from '~components/Counter';
+import type { CounterProps } from '~components/Counter';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { TextProps, TextVariant } from '~components/Typography';
@@ -22,6 +22,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -94,10 +95,11 @@ type CardHeaderProps = {
 
 const _CardHeader = ({ children, testID }: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');
-  useVerifyAllowedComponents(children, 'CardHeader', [
-    ComponentIds.CardHeaderLeading,
-    ComponentIds.CardHeaderTrailing,
-  ]);
+  useVerifyAllowedChildren({
+    children,
+    componentName: 'CardHeader',
+    allowedComponents: [ComponentIds.CardHeaderLeading, ComponentIds.CardHeaderTrailing],
+  });
 
   return (
     <BaseBox

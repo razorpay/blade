@@ -4,7 +4,6 @@ import {
   FloatingPortal,
   arrow,
   flip,
-  FloatingArrow,
   offset,
   useDelayGroup,
   useDelayGroupContext,
@@ -20,7 +19,6 @@ import React from 'react';
 import type { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
 import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
-import { getPlacementParts, mergeProps } from './utils';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -28,8 +26,12 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { size } from '~tokens/global';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
+import { mergeProps } from '~utils/mergeProps';
+import { PopupArrow } from '~components/PopupArrow';
+import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 const Tooltip = ({
+  title,
   content,
   children,
   placement = 'top',
@@ -42,7 +44,7 @@ const Tooltip = ({
   const arrowRef = React.useRef<SVGSVGElement>(null);
 
   const GAP = theme.spacing[2];
-  const [side] = getPlacementParts(placement);
+  const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const isOppositeAxis = side === 'right' || side === 'bottom';
 
@@ -95,8 +97,8 @@ const Tooltip = ({
       {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
         ref: refs.setReference,
-        ...mergeProps(children.props, getReferenceProps()),
         ...makeAccessible({ label: content }),
+        ...mergeProps(children.props, getReferenceProps()),
       })}
       {isMounted && (
         <FloatingPortal>
@@ -110,16 +112,16 @@ const Tooltip = ({
             {...metaAttribute({ name: MetaConstants.Tooltip })}
           >
             <TooltipContent
+              title={title}
               style={styles}
               arrow={
-                <FloatingArrow
+                <PopupArrow
                   ref={arrowRef}
                   context={context}
                   width={ARROW_WIDTH}
                   height={ARROW_HEIGHT}
-                  fill={theme.colors.brand.gray[200].highContrast}
-                  stroke={theme.colors.brand.gray[300].highContrast}
-                  strokeWidth={theme.border.width.thin}
+                  fillColor={theme.colors.brand.gray[200].highContrast}
+                  strokeColor={theme.colors.brand.gray[300].highContrast}
                 />
               }
             >

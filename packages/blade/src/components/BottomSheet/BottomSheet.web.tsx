@@ -4,10 +4,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react';
 import styled from 'styled-components';
-import { FloatingFocusManager, useFloating } from '@floating-ui/react';
 import { rubberbandIfOutOfBounds, useDrag } from '@use-gesture/react';
 import usePresence from 'use-presence';
-import { clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { clearAllBodyScrollLocks } from 'body-scroll-lock-upgrade';
 import { BottomSheetHeader } from './BottomSheetHeader';
 import { BottomSheetFooter } from './BottomSheetFooter';
 import { BottomSheetBody } from './BottomSheetBody';
@@ -34,6 +33,7 @@ import { size } from '~tokens/global';
 import { makeMotionTime } from '~utils/makeMotionTime';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
+const AUTOCOMPLETE_DEFAULT_SNAPPOINT = 0.85;
 
 const BottomSheetSurface = styled.div<{
   windowHeight: number;
@@ -93,6 +93,7 @@ const _BottomSheet = ({
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const grabHandleRef = React.useRef<HTMLDivElement>(null);
   const defaultInitialFocusRef = React.useRef<any>(null);
+  const originalFocusElement = React.useRef<HTMLElement | null>(null);
   const initialSnapPoint = React.useRef<number>(snapPoints[1]);
   const totalHeight = React.useMemo(() => {
     return grabHandleHeight + headerHeight + footerHeight + contentHeight;
@@ -112,15 +113,25 @@ const _BottomSheet = ({
 
   const setPositionY = React.useCallback(
     (value: number, limit = true) => {
+      // In AutoComplete, we want BottomSheet to be docked to top snappoint so we remove the limits
+      const shouldLimitPositionY =
+        limit && !bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader;
+
       const maxValue = computeMaxContent({
         contentHeight,
         footerHeight,
         headerHeight: headerHeight + grabHandleHeight,
         maxHeight: value,
       });
-      _setPositionY(limit ? maxValue : value);
+      _setPositionY(shouldLimitPositionY ? maxValue : value);
     },
-    [contentHeight, footerHeight, grabHandleHeight, headerHeight],
+    [
+      bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader,
+      contentHeight,
+      footerHeight,
+      grabHandleHeight,
+      headerHeight,
+    ],
   );
 
   // locks the body scroll to prevent accidental scrolling of content when we drag the sheet
@@ -150,17 +161,46 @@ const _BottomSheet = ({
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
   useIsomorphicLayoutEffect(() => {
-    const middleSnapPoint = snapPoints[1] * dimensions.height;
-    const lowerSnapPoint = snapPoints[0] * dimensions.height;
-    if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
-      initialSnapPoint.current = snapPoints[0];
+    if (bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader) {
+      initialSnapPoint.current = AUTOCOMPLETE_DEFAULT_SNAPPOINT;
+    } else {
+      const middleSnapPoint = snapPoints[1] * dimensions.height;
+      const lowerSnapPoint = snapPoints[0] * dimensions.height;
+      if (totalHeight > lowerSnapPoint && totalHeight < middleSnapPoint) {
+        initialSnapPoint.current = snapPoints[0];
+      }
     }
   }, [dimensions.height, snapPoints, totalHeight]);
+
+  const returnFocus = React.useCallback(() => {
+    if (!originalFocusElement.current) return;
+    originalFocusElement.current.focus();
+    // After returning focus we will clear the original focus
+    // Because if sheet can be opened up via multiple triggers
+    // We want to ensure the focus returns back to the most recent triggerer
+    originalFocusElement.current = null;
+  }, [originalFocusElement]);
+
+  const focusOnInitialRef = React.useCallback(() => {
+    if (!initialFocusRef) {
+      // focus on close button
+      defaultInitialFocusRef.current?.focus();
+    } else {
+      // focus on the initialRef passed by the user
+      initialFocusRef.current?.focus();
+    }
+  }, [initialFocusRef]);
 
   const handleOnOpen = React.useCallback(() => {
     setPositionY(dimensions.height * initialSnapPoint.current);
     scrollLockRef.current.activate();
-  }, [dimensions.height, scrollLockRef, setPositionY]);
+    // initialize the original focused element
+    // On first render it will be the activeElement, eg: the button trigger or select input
+    // On Subsequent open operations it won't further update the original focus
+    originalFocusElement.current =
+      originalFocusElement.current ?? (document.activeElement as HTMLElement);
+    focusOnInitialRef();
+  }, [dimensions.height, focusOnInitialRef, scrollLockRef, setPositionY]);
 
   const handleOnClose = React.useCallback(() => {
     setPositionY(0);
@@ -169,7 +209,8 @@ const _BottomSheet = ({
   const close = React.useCallback(() => {
     onDismiss?.();
     bottomSheetAndDropdownGlue?.onBottomSheetDismiss();
-  }, [bottomSheetAndDropdownGlue, onDismiss]);
+    returnFocus();
+  }, [bottomSheetAndDropdownGlue, onDismiss, returnFocus]);
 
   // sync controlled state to our actions
   React.useEffect(() => {
@@ -397,11 +438,6 @@ const _BottomSheet = ({
     }
   }, [isMounted, scrollLockRef]);
 
-  // required by floating ui to handle focus
-  const { refs, context } = useFloating({
-    open: isMounted,
-  });
-
   // We don't want to destroy the react tree when we are rendering inside Dropdown
   // Because if we bail out early then ActionList won't render,
   // and Dropdown manages it's state based on the rendered JSX of ActionList
@@ -413,46 +449,34 @@ const _BottomSheet = ({
 
   return (
     <BottomSheetContext.Provider value={contextValue}>
-      {(isMounted || isInsideDropdown) && (
-        <FloatingFocusManager
-          returnFocus
-          initialFocus={initialFocusRef ?? defaultInitialFocusRef}
-          context={context}
-          modal={true}
-        >
-          <>
-            <BottomSheetBackdrop zIndex={bottomSheetZIndex} />
-            <BottomSheetSurface
-              {...metaAttribute({
-                name: MetaConstants.BottomSheet,
-                testID: 'bottomsheet-surface',
-              })}
-              {...makeAccessible({ modal: true, role: 'dialog' })}
-              windowHeight={dimensions.height}
-              isDragging={isDragging}
-              style={{
-                opacity: isVisible ? 1 : 0,
-                pointerEvents: isVisible ? 'all' : 'none',
-                height: positionY,
-                bottom: 0,
-                top: 'auto',
-                zIndex: bottomSheetZIndex,
-              }}
-              ref={refs.setFloating}
-            >
-              <BaseBox height="100%" display="flex" flexDirection="column">
-                <BottomSheetGrabHandle
-                  ref={grabHandleRef}
-                  isHeaderFloating={isHeaderFloating}
-                  {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
-                  {...bind()}
-                />
-                {children}
-              </BaseBox>
-            </BottomSheetSurface>
-          </>
-        </FloatingFocusManager>
-      )}
+      <BottomSheetBackdrop zIndex={bottomSheetZIndex} />
+      <BottomSheetSurface
+        {...metaAttribute({
+          name: MetaConstants.BottomSheet,
+          testID: 'bottomsheet-surface',
+        })}
+        {...makeAccessible({ modal: true, role: 'dialog' })}
+        windowHeight={dimensions.height}
+        isDragging={isDragging}
+        style={{
+          opacity: isVisible ? 1 : 0,
+          pointerEvents: isVisible ? 'all' : 'none',
+          height: positionY,
+          bottom: 0,
+          top: 'auto',
+          zIndex: bottomSheetZIndex,
+        }}
+      >
+        <BaseBox height="100%" display="flex" flexDirection="column">
+          <BottomSheetGrabHandle
+            ref={grabHandleRef}
+            isHeaderFloating={isHeaderFloating}
+            {...metaAttribute({ name: ComponentIds.BottomSheetGrabHandle })}
+            {...bind()}
+          />
+          {children}
+        </BaseBox>
+      </BottomSheetSurface>
     </BottomSheetContext.Provider>
   );
 };
@@ -461,4 +485,5 @@ const BottomSheet = assignWithoutSideEffects(_BottomSheet, {
   componentId: ComponentIds.BottomSheet,
 });
 
-export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetFooter, BottomSheetProps };
+export { BottomSheet, BottomSheetBody, BottomSheetHeader, BottomSheetFooter };
+export type { BottomSheetProps };

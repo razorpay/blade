@@ -9,12 +9,12 @@ import { size } from '~tokens/global';
 const MAX_WIDTH = size[584];
 
 export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject => {
-  const { theme, contrastType, intent, isFullWidth, isDesktop } = props;
+  const { theme, contrastType, color, isFullWidth, isDesktop } = props;
 
   const feedbackColors = theme.colors.feedback;
 
   return {
-    background: feedbackColors.background[intent][contrastType],
+    background: feedbackColors.background[color][contrastType],
     padding: isFullWidth
       ? `${makeSpace(theme.spacing[4])} ${makeSpace(theme.spacing[5])}`
       : `${makeSpace(theme.spacing[3])} ${makeSpace(theme.spacing[3])} ${makeSpace(
@@ -23,7 +23,7 @@ export const getCommonStyles = (props: StyledProps<StyledAlertProps>): CSSObject
     borderRadius: makeBorderSize(
       isFullWidth ? theme.border.radius.none : theme.border.radius.medium,
     ),
-    borderColor: feedbackColors.border[intent][contrastType],
+    borderColor: feedbackColors.border[color][contrastType],
     borderWidth: makeBorderSize(isFullWidth ? theme.border.width.none : theme.border.width.thin),
     borderStyle: 'solid',
     display: 'flex',

@@ -122,13 +122,16 @@ type PickCSSByPlatform<T extends keyof React.CSSProperties | keyof ViewStyle> = 
 }>;
 
 type BladeElementRef = Platform.Select<{
-  web:
-    | Pick<HTMLElement, 'focus' | 'scrollIntoView' | 'getBoundingClientRect' | 'clientHeight'>
-    | Pick<View, 'focus'>;
-  native: React.MutableRefObject<any>;
+  web: HTMLElement;
+  native: View;
 }>;
 
-export {
+type ContainerElementType = Platform.Select<{
+  web: HTMLDivElement;
+  native: View;
+}>;
+
+export type {
   DotNotationColorStringToken,
   DotNotationMotionStringToken,
   DotNotationSpacingStringToken,
@@ -140,4 +143,5 @@ export {
   PickCSSByPlatform,
   BladeElementRef,
   RemoveUndefinedFromUnion,
+  ContainerElementType,
 };

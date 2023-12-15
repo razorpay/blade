@@ -3,9 +3,9 @@
 import { Title } from '@storybook/addon-docs';
 import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
-import { Text } from '../Typography';
 import type { SwitchProps } from './';
 import { Switch as SwitchComponent } from './';
+import { Text } from '~components/Typography';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
@@ -31,18 +31,21 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox>
         {`
-        import { Switch } from '@razorpay/blade/components'
-        
+        import { Switch } from '@razorpay/blade/components';
+
         function App(): React.ReactElement {
           return (
             // Check console
-            <Switch onChange={(e) => console.log(e.isChecked)} accessibilityLabel="Toggle DarkMode" />
-          )
+            <Switch
+              onChange={(e) => console.log(e.isChecked)}
+              accessibilityLabel="Toggle DarkMode"
+            />
+          );
         }
-
-        export default App;
+        
+        export default App;        
       `}
       </Sandbox>
     </StoryPageWrapper>
@@ -83,9 +86,9 @@ Checked.args = {
   isChecked: true,
 };
 
-export const DefaultChecked = SwitchTemplate.bind({});
-DefaultChecked.storyName = 'DefaultChecked';
-DefaultChecked.args = {
+export const DefaultCheckedSwitch = SwitchTemplate.bind({});
+DefaultCheckedSwitch.storyName = 'DefaultChecked';
+DefaultCheckedSwitch.args = {
   defaultChecked: true,
 };
 

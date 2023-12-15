@@ -5,6 +5,10 @@ import type { BaseBoxProps } from '~components/Box/BaseBox';
 
 type TooltipProps = {
   /**
+   * Tooltip title
+   */
+  title?: string;
+  /**
    * Tooltip content
    */
   content: string;
@@ -27,6 +31,7 @@ type TooltipProps = {
 };
 
 type TooltipContentProps = {
+  title?: string;
   children: string;
   style: CSSProperties;
   arrow: React.ReactNode;
@@ -46,4 +51,4 @@ type TooltipContentWrapperProps = {
   isVisible?: boolean;
 } & BaseBoxProps;
 
-export { TooltipProps, TooltipContentProps, TooltipContentWrapperProps };
+export type { TooltipProps, TooltipContentProps, TooltipContentWrapperProps };

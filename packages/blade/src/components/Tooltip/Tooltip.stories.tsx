@@ -9,14 +9,15 @@ import { Button } from '~components/Button';
 import { BankIcon, InfoIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
-import { Text } from '~components/Typography';
+import { Code, Text } from '~components/Typography';
 import { isReactNative } from '~utils';
-import { List, ListItem } from '~components/List';
+import { List, ListItem, ListItemLink, ListItemText } from '~components/List';
 import { IconButton } from '~components/Button/IconButton';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import BaseBox from '~components/Box/BaseBox';
 import type { BladeCommonEvents } from '~components/types';
+import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
 
 const Page = (): React.ReactElement => {
   return (
@@ -31,7 +32,7 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox>
         {`
         import { Tooltip, Button } from '@razorpay/blade/components'
         
@@ -46,6 +47,8 @@ const Page = (): React.ReactElement => {
         export default App;
       `}
       </Sandbox>
+      <Title>Tooltip Vs Popover Vs Guided Tour</Title>
+      <PopoverVsTooltip />
     </StoryPageWrapper>
   );
 };
@@ -87,6 +90,11 @@ const TooltipTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
 
 export const Default = TooltipTemplate.bind({});
 Default.storyName = 'Default';
+
+export const WithTitle = TooltipTemplate.bind({});
+WithTitle.args = {
+  title: 'Refund successful',
+};
 
 const PlacementBox = React.forwardRef<
   HTMLDivElement,
@@ -249,6 +257,7 @@ const CustomTrigger = React.forwardRef<
   HTMLDivElement,
   { children: React.ReactNode } & BladeCommonEvents
 >(({ children, ...props }, ref) => {
+  console.log(props);
   return (
     <BaseBox
       ref={ref}
@@ -269,19 +278,55 @@ const CustomTrigger = React.forwardRef<
   );
 });
 
+const CustomTriggerDocs = () => {
+  if (isReactNative()) return null;
+  return (
+    <List>
+      <ListItem>
+        Make sure to expose ref from the custom component via{' '}
+        <ListItemLink href="https://react.dev/reference/react/forwardRef">
+          React.forwardRef
+        </ListItemLink>
+      </ListItem>
+      <ListItem>
+        Make sure that your component can receive focus{' '}
+        <ListItemText as="span" type="subdued">
+          (eg: have tabIndex:0)
+        </ListItemText>
+      </ListItem>
+      <ListItem>
+        Forward event handlers to the custom trigger{' '}
+        <ListItemText as="span" type="subdued">
+          (you can import the TooltipTriggerProps type from blade when using TypeScript)
+        </ListItemText>
+        <List>
+          <ListItem>onBlur</ListItem>
+          <ListItem>onFocus</ListItem>
+          <ListItem>onMouseLeave</ListItem>
+          <ListItem>onMouseMove</ListItem>
+          <ListItem>onPointerDown</ListItem>
+          <ListItem>onPointerEnter</ListItem>
+        </List>
+      </ListItem>
+    </List>
+  );
+};
+
 const CustomTriggerTemplate = () => {
   return (
     <Box>
       <Text>
         To create a custom trigger, the tooltip component expects the trigger component to expose:
       </Text>
-      <List>
-        <ListItem>To expose ref</ListItem>
-        <ListItem>To accept BladeCommonEvents (You can import this type from blade)</ListItem>
-        <ListItem>
-          tabIndex={'{'}-1{'}'} to be set on the trigger
-        </ListItem>
-      </List>
+
+      <CustomTriggerDocs />
+      <Text marginBottom="spacing.4">
+        Alternatively you can just spread the props to the trigger, instead of adding them 1 by 1
+      </Text>
+      <Text marginBottom="spacing.4">
+        If you are using TypeScript you can import the types for these events from blade as{' '}
+        <Code size="medium">BladeCommonEvents</Code>
+      </Text>
       <TooltipComponent placement="bottom" content="A custom trigger">
         <CustomTrigger>Hover over me</CustomTrigger>
       </TooltipComponent>

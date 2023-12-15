@@ -1,4 +1,3 @@
-import getIn from 'lodash/get';
 import { Linking, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
@@ -6,6 +5,7 @@ import React from 'react';
 import type { TextInput, GestureResponderEvent } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -49,6 +49,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     onBlur,
     onKeyDown,
     children,
+    variant,
     minHeight,
     buttonPaddingTop,
     buttonPaddingBottom,
@@ -94,9 +95,11 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
           easing,
         },
       ),
-      borderColor: withTiming(isPressed.value ? activeBorderColor : defaultBorderColor, {
-        duration,
-        easing,
+      ...(variant !== 'tertiary' && {
+        borderColor: withTiming(isPressed.value ? activeBorderColor : defaultBorderColor, {
+          duration,
+          easing,
+        }),
       }),
     };
   });

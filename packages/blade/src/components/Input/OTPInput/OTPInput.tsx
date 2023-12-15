@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import isEmpty from 'lodash/isEmpty';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getHintType } from '../BaseInput/BaseInput';
-import type { FormInputOnEvent } from '../../Form';
-import { FormHint, FormLabel } from '../../Form';
-import { useFormId } from '../../Form/useFormId';
-import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
+import type { FormInputOnEvent } from '~components/Form';
+import { FormHint, FormLabel } from '~components/Form';
+import { useFormId } from '~components/Form/useFormId';
+import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -134,36 +134,47 @@ const otpToArray = (code?: string): string[] => code?.split('') ?? Array(6).fill
  *   />
  * ```
  */
-const OTPInput = ({
-  autoFocus,
-  errorText,
-  helpText,
-  isDisabled,
-  keyboardReturnKeyType,
-  keyboardType = 'decimal',
-  label,
-  accessibilityLabel,
-  labelPosition,
-  name,
-  onChange,
-  onFocus,
-  onBlur,
-  onOTPFilled,
-  otpLength = 6,
-  placeholder,
-  successText,
-  validationState,
-  value: inputValue,
-  isMasked,
-  autoCompleteSuggestionType = 'oneTimeCode',
-  testID,
-  ...styledProps
-}: OTPInputProps): React.ReactElement => {
+const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProps> = (
+  {
+    autoFocus,
+    errorText,
+    helpText,
+    isDisabled,
+    keyboardReturnKeyType,
+    keyboardType = 'decimal',
+    label,
+    accessibilityLabel,
+    labelPosition,
+    name,
+    onChange,
+    onFocus,
+    onBlur,
+    onOTPFilled,
+    otpLength = 6,
+    placeholder,
+    successText,
+    validationState,
+    value: inputValue,
+    isMasked,
+    autoCompleteSuggestionType = 'oneTimeCode',
+    testID,
+    ...styledProps
+  },
+  incomingRef,
+) => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
   const [inputType, setInputType] = useState<('password' | undefined)[]>([]);
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
+
+  useImperativeHandle(
+    incomingRef,
+    () => {
+      return inputRefs.map((ref) => ref.current!);
+    },
+    [inputRefs],
+  );
 
   useEffect(() => {
     // Effect for calling `onOTPFilled` callback
@@ -334,7 +345,7 @@ const OTPInput = ({
             hideLabelText={true}
             id={`${inputId}-${index}`}
             textAlign="center"
-            ref={ref}
+            ref={ref as never}
             name={name}
             value={currentValue}
             maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
@@ -402,4 +413,7 @@ const OTPInput = ({
   );
 };
 
+const OTPInput = React.forwardRef<HTMLInputElement[], OTPInputProps>(_OTPInput);
+
+export type { OTPInputProps };
 export { OTPInput };

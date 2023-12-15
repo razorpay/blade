@@ -1,6 +1,6 @@
-import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import type { StyledBaseTextProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import { makeTypographySize } from '~utils/makeTypographySize';
 import { isReactNative } from '~utils';
 
@@ -12,6 +12,7 @@ const getBaseTextStyles = ({
   fontStyle = 'normal',
   textDecorationLine = 'none',
   numberOfLines,
+  wordBreak,
   lineHeight = 100,
   textAlign,
   theme,
@@ -22,6 +23,7 @@ const getBaseTextStyles = ({
   const themeFontWeight = theme.typography.fonts.weight[fontWeight];
   const themeLineHeight = makeTypographySize(theme.typography.lineHeights[lineHeight]);
   let truncateStyles: CSSObject = {};
+  let wordBreakStyles: CSSObject = {};
   if (numberOfLines !== undefined) {
     if (isReactNative()) {
       truncateStyles = {};
@@ -35,6 +37,15 @@ const getBaseTextStyles = ({
       };
     }
   }
+  if (wordBreak !== undefined) {
+    if (isReactNative()) {
+      wordBreakStyles = {};
+    } else {
+      wordBreakStyles = {
+        wordBreak,
+      };
+    }
+  }
 
   return {
     color: textColor,
@@ -43,11 +54,15 @@ const getBaseTextStyles = ({
     fontWeight: themeFontWeight,
     fontStyle,
     textDecorationLine,
+    ...(textDecorationLine !== 'none' && {
+      textDecorationColor: textColor,
+    }),
     lineHeight: themeLineHeight,
     textAlign,
     margin: 0,
     padding: 0,
     ...truncateStyles,
+    ...wordBreakStyles,
   };
 };
 

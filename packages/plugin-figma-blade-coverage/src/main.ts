@@ -10,6 +10,7 @@ import {
   BLADE_BOX_BORDER_COLOR_STYLE_IDS,
   BLADE_COLOR_STYLE_IDS,
   BLADE_COMPONENT_IDS,
+  BLADE_COMPONENT_IDS_HAVING_SLOT,
   BLADE_TEXT_STYLE_IDS,
 } from './bladeLibraryConstants';
 import { sendAnalytics } from './utils/sendAnalytics';
@@ -26,17 +27,17 @@ type CoverageMetrics = {
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
-const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME', 'ELLIPSE'];
+const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME', 'ELLIPSE', 'INSTANCE'];
 const nonBladeHighlighterNodes: BaseNode[] = [];
 const bladeCoverageCards: BaseNode[] = [];
 
-const highlightNonBladeNode = (node: SceneNode): void => {
+const highlightNonBladeNode = (node: SceneNode, desc?: string): void => {
   const highlighterBox = figma.createRectangle();
   const nodeType = `${node.type
     .toUpperCase()
     .charAt(0)
     .toUpperCase()}${node.type.toLowerCase().slice(1)}`;
-  highlighterBox.name = `Type: ${nodeType}, Name: ${node.name}`;
+  highlighterBox.name = `Desc: ${desc}, Type: ${nodeType}, Name: ${node.name}`;
   // selection node just gives the x and y relative to the frame we need WRT canvas hence, we need to use absoluteTransform prop
   highlighterBox.x = node.absoluteTransform[0][2] - 1;
   highlighterBox.y = node.absoluteTransform[1][2] - 1;
@@ -57,7 +58,7 @@ const traverseUpTillMainFrame = (node: BaseNode): BaseNode => {
     }
   } catch (error: unknown) {
     console.error(error);
-    figma.notify('⚠️ Error in traversing main frame node. Please try again', { error: true });
+    figma.notify('⚠️ Error in traversing main frame node. Please try again');
     figma.closePlugin();
   }
 
@@ -98,7 +99,11 @@ const renderCoverageCard = async ({
     );
     const coverageCardInstance = coverageCardComponent.createInstance();
     coverageCardInstance.visible = false;
-    coverageCardInstance.x = mainFrameNode.x + 150; // 150 because we want to prevent conflict with the frame name
+    if (mainFrameNode.width < 500) {
+      coverageCardInstance.x = mainFrameNode.x + 20; // for mobile screens the card shouldn't offset a lot
+    } else {
+      coverageCardInstance.x = mainFrameNode.x + 150; // 150 because we want to prevent conflict with the frame name
+    }
     coverageCardInstance.y = mainFrameNode.y - coverageCardComponent.height;
 
     // import styles for popsitive, negative and notice colors and set their id in BLADE_INTENT_COLOR_KEYS
@@ -149,8 +154,8 @@ const renderCoverageCard = async ({
     detachedCoverageCard.visible = true;
     bladeCoverageCards.push(detachedCoverageCard);
   } catch (error: unknown) {
+    figma.notify('⚠️ Error in rendering coverage card. Please try again');
     console.error(error);
-    figma.notify('⚠️ Error in rendering coverage card. Please try again', { error: true });
     figma.closePlugin();
   }
 };
@@ -176,7 +181,6 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         if (!traversedNode.visible) {
           return;
         }
-
         if (
           traversedNode.type === 'INSTANCE' &&
           (BLADE_COMPONENT_IDS.includes(
@@ -184,11 +188,63 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           ) ||
             BLADE_COMPONENT_IDS.includes(traversedNode.mainComponent?.key ?? ''))
         ) {
-          bladeComponents++;
-        } else if (traversedNode.type === 'INSTANCE') {
-          nonBladeComponents++;
-          highlightNonBladeNode(traversedNode);
-        } else if (traversedNode.type === 'TEXT') {
+          // few components that have slots we need to check if the children are valid Blade instances
+          if (
+            BLADE_COMPONENT_IDS_HAVING_SLOT.includes(
+              (traversedNode.mainComponent?.parent as ComponentSetNode)?.key ?? '',
+            )
+          ) {
+            // this will recursively follow the same process we follow.
+            // check for Blade's instance and if there are certain components that has slot inside it then we recursively check inside them for blade components
+            traversedNode.children.forEach((childNode) => {
+              const slotComponentsCoverage = calculateCoverage(childNode);
+              if (slotComponentsCoverage) {
+                bladeComponents += slotComponentsCoverage?.bladeComponents;
+                bladeTextStyles += slotComponentsCoverage?.bladeTextStyles;
+                bladeColorStyles += slotComponentsCoverage?.bladeColorStyles;
+                nonBladeComponents += slotComponentsCoverage?.nonBladeComponents;
+                nonBladeTextStyles += slotComponentsCoverage?.nonBladeTextStyles;
+                nonBladeColorStyles += slotComponentsCoverage?.nonBladeColorStyles;
+                totalLayers += slotComponentsCoverage?.totalLayers;
+              }
+            });
+          }
+          if (traversedNode.overrides.length) {
+            // flag the instance if its overridden
+            let isOverridden = false;
+            traversedNode.overrides.forEach((node) => {
+              if (
+                // these are properties which tells us if the components' text has been overridden. Fill this with more cases going forward as there are more possible values
+                // https://www.figma.com/plugin-docs/api/NodeChangeProperty/
+                node.overriddenFields.includes('letterSpacing') ||
+                node.overriddenFields.includes('textStyleId') ||
+                node.overriddenFields.includes('fontName') ||
+                node.overriddenFields.includes('fontSize') ||
+                node.overriddenFields.includes('lineHeight') ||
+                node.overriddenFields.includes('textCase')
+              ) {
+                isOverridden = true;
+              }
+            });
+            if (isOverridden) {
+              nonBladeComponents++;
+              highlightNonBladeNode(
+                traversedNode,
+                'Overridden Blade Instance. Please reset changes',
+              );
+            } else {
+              bladeComponents++;
+            }
+          } else {
+            bladeComponents++;
+          }
+          totalLayers++;
+        }
+        // else if (traversedNode.type === 'INSTANCE') {
+        //   nonBladeComponents++;
+        //   highlightNonBladeNode(traversedNode, 'Instance is not a Blade Instance');
+        // }
+        else if (traversedNode.type === 'TEXT') {
           // check if the text is using Blade's text styles
           let isMixedTextStyleOfBlade = false;
           let traversedNodeTextStyleId = '';
@@ -215,7 +271,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               bladeTextStyles++;
             } else {
               nonBladeTextStyles++;
-              highlightNonBladeNode(traversedNode);
+              highlightNonBladeNode(traversedNode, 'Text is not using Blade');
             }
           } else {
             traversedNodeTextStyleId = traversedNode?.textStyleId?.split(',')[0];
@@ -224,7 +280,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               bladeTextStyles++;
             } else {
               nonBladeTextStyles++;
-              highlightNonBladeNode(traversedNode);
+              highlightNonBladeNode(traversedNode, 'Text Style is not from Blade');
             }
           }
 
@@ -232,7 +288,6 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
            * and do getRangeFillStyleId(4,5) instead of fillStyleId
            * */
           if (traversedNode?.fillStyleId === figma.mixed) {
-            // console.log
             isMixedColorStyleOfBlade = traversedNode.characters
               .split('')
               .every((character, index) => {
@@ -248,7 +303,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               bladeColorStyles++;
             } else {
               nonBladeColorStyles++;
-              highlightNonBladeNode(traversedNode);
+              highlightNonBladeNode(traversedNode, 'Color Style is not from Blade Tokens');
             }
           } else {
             traversedNodeColorStyleId = traversedNode?.fillStyleId?.split(',')[0];
@@ -257,7 +312,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               bladeColorStyles++;
             } else {
               nonBladeColorStyles++;
-              highlightNonBladeNode(traversedNode);
+              highlightNonBladeNode(traversedNode, 'Color Style is not from Blade Tokens');
             }
           }
 
@@ -271,13 +326,14 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         } else if (traversedNode.type === 'LINE') {
           // check if the line is using Blade's color styles
           const traversedNodeColorStyleId = traversedNode.strokeStyleId.split(',')[0];
+          const useDividerComponentError = 'Use a Divider Component Instead';
           if (BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
             bladeColorStyles++;
             // even though the color matches blade, we want to encourage people to use Divider component instead
-            highlightNonBladeNode(traversedNode);
+            highlightNonBladeNode(traversedNode, useDividerComponentError);
           } else {
             nonBladeColorStyles++;
-            highlightNonBladeNode(traversedNode);
+            highlightNonBladeNode(traversedNode, useDividerComponentError);
           }
         } else if (traversedNode.type === 'RECTANGLE') {
           let isImage = false;
@@ -299,7 +355,10 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 bladeColorStyles++;
               } else {
                 nonBladeColorStyles++;
-                highlightNonBladeNode(traversedNode);
+                highlightNonBladeNode(
+                  traversedNode,
+                  'Border color style can only have Surface/Border/* colors',
+                );
               }
             }
             // check if rectangle uses blade brand.* or surface.background.* colors for background
@@ -309,19 +368,24 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 bladeColorStyles++;
               } else {
                 nonBladeColorStyles++;
-                highlightNonBladeNode(traversedNode);
+                highlightNonBladeNode(
+                  traversedNode,
+                  'Background color style can only have Surface/Background/* or Brand/* colors',
+                );
               }
             }
+          } else if (!isImage) {
+            highlightNonBladeNode(traversedNode, 'Box not adhering to Blade guidelines');
           }
         }
 
         if (
-          ![...NODES_SKIP_FROM_COVERAGE, 'INSTANCE', 'TEXT', 'LINE', 'RECTANGLE'].includes(
+          ![...NODES_SKIP_FROM_COVERAGE, 'TEXT', 'LINE', 'RECTANGLE'].includes(
             traversedNode.type,
           ) &&
           getParentNode(traversedNode)?.type !== 'PAGE'
         ) {
-          highlightNonBladeNode(traversedNode);
+          highlightNonBladeNode(traversedNode, 'Not created using Blade Components/Tokens');
         }
 
         if (
@@ -365,7 +429,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
     );
   } catch (error: unknown) {
     console.error(error);
-    figma.notify('⚠️ Error in rendering coverage card. Please try again', { error: true });
+    figma.notify('⚠️ Error in rendering coverage card. Please try again');
     figma.closePlugin();
   }
 
@@ -400,7 +464,7 @@ const getPageMainFrameNodes = (nodes: readonly SceneNode[]): SceneNode[] => {
     }
   } catch (error: unknown) {
     console.error(error);
-    figma.notify('⚠️ Error in identifying main frame node. Please try again', { error: true });
+    figma.notify('⚠️ Error in identifying main frame node. Please try again');
     figma.closePlugin();
   }
 
@@ -494,7 +558,7 @@ const main = async (): Promise<void> => {
     }
   } catch (error: unknown) {
     console.error(error);
-    figma.notify('⚠️ Something went wrong. Please try re-running the plugin', { error: true });
+    figma.notify('⚠️ Something went wrong. Please try re-running the plugin');
   } finally {
     figma.closePlugin();
   }

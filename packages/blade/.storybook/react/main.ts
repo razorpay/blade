@@ -74,6 +74,17 @@ const config: StorybookConfig = {
       }),
     ];
 
+    // config.module.rules[0].exclude = new RegExp('/node_modules/(?!(@stackblitz)).*/');
+
+    config.module.rules.push({
+      test: /@stackblitz\/sdk[\\/].*\.m?js$/,
+      loader: 'babel-loader',
+      options: {
+        presets: ['@babel/preset-env'],
+        plugins: ['@babel/plugin-proposal-optional-chaining'],
+      },
+    });
+
     // Return the altered config
     return {
       ...config,

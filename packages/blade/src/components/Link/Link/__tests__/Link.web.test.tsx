@@ -1,4 +1,5 @@
 import { fireEvent } from '@testing-library/react';
+import type { LinkProps } from '../Link';
 import Link from '../Link';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
@@ -6,6 +7,8 @@ import { InfoIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const colors: LinkProps['color'][] = ['default', 'white', 'neutral'];
 
 describe('<Link />', () => {
   it('should render link with default properties', () => {
@@ -90,6 +93,24 @@ describe('<Link />', () => {
       </Link>,
     );
     expect(container).toMatchSnapshot();
+  });
+
+  colors.forEach((color) => {
+    it(`should render ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { container } = renderWithTheme(<Link color={color}>{linkText}</Link>);
+      expect(container).toMatchSnapshot();
+    });
+
+    it(`should render disabled ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { container } = renderWithTheme(
+        <Link color={color} isDisabled={true}>
+          {linkText}
+        </Link>,
+      );
+      expect(container).toMatchSnapshot();
+    });
   });
 
   it('should call function on click of button variant of link', () => {

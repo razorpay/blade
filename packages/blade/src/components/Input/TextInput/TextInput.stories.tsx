@@ -8,7 +8,6 @@ import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
@@ -222,6 +221,7 @@ export default {
         <StoryPageWrapper
           componentDescription="The TextInput component is a component that can be used to input name, email, telephone, url, search or plain text."
           componentName="TextInput"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/TextInput/_decisions/_decisions.md"
           figmaURL={{
             paymentTheme:
               'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A210737',
@@ -230,7 +230,7 @@ export default {
           }}
         >
           <Title>Usage</Title>
-          <Sandbox showConsole>
+          <Sandbox>
             {`
               import { TextInput } from '@razorpay/blade/components';
 
@@ -453,7 +453,7 @@ export const TextInputKitchenSink = TextInputKitchenSinkTemplate.bind({});
 
 export const inputRef: ComponentStory<typeof TextInputComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const inputRef = React.useRef<BladeElementRef>(null);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="end">

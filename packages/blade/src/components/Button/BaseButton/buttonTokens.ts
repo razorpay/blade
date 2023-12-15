@@ -1,6 +1,6 @@
 import type { BaseButtonProps } from './BaseButton';
 import type { Theme } from '~components/BladeProvider';
-import type { IconProps } from '~components/Icons';
+import type { IconSize } from '~components/Icons';
 import type { SpinnerProps } from '~components/Spinner';
 import type { Size } from '~tokens/global';
 import { size } from '~tokens/global';
@@ -96,26 +96,23 @@ const buttonIconOnlyPadding: Record<
   large: {
     top: 0,
     bottom: 0,
-    left: 4,
-    right: 4,
+    left: 2,
+    right: 2,
   },
 };
 
-const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconProps['size']> = {
+const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
   xsmall: 'small',
   small: 'small',
   medium: 'medium',
   large: 'medium',
 };
 
-const buttonIconOnlySizeToIconSizeMap: Record<
-  NonNullable<BaseButtonProps['size']>,
-  IconProps['size']
-> = {
-  xsmall: 'medium',
-  small: 'medium',
-  medium: 'large',
-  large: 'xlarge',
+const buttonIconOnlySizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
+  xsmall: 'small',
+  small: 'small',
+  medium: 'medium',
+  large: 'medium',
 };
 
 const buttonSizeToSpinnerSizeMap: Record<
@@ -128,11 +125,11 @@ const buttonSizeToSpinnerSizeMap: Record<
   large: 'xlarge',
 };
 
-const textPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
-  xsmall: 2,
-  small: 2,
-  medium: 3,
-  large: 3,
+const buttonIconPadding: Record<NonNullable<BaseButtonProps['size']>, keyof Theme['spacing']> = {
+  xsmall: 1,
+  small: 1,
+  medium: 2,
+  large: 2,
 };
 
 export {
@@ -141,7 +138,7 @@ export {
   buttonSizeToIconSizeMap,
   buttonIconOnlySizeToIconSizeMap,
   buttonSizeToSpinnerSizeMap,
-  textPadding,
+  buttonIconPadding,
   buttonPadding,
   buttonIconOnlyPadding,
 };

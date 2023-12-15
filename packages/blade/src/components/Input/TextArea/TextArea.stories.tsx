@@ -7,7 +7,6 @@ import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const propsCategory = {
@@ -169,6 +168,7 @@ export default {
         <StoryPageWrapper
           componentDescription="The TextArea component lets you enter long form text which spans over multiple lines."
           componentName="TextArea"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/TextArea/_decisions/decisions.md"
           figmaURL={{
             paymentTheme:
               'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11115%3A166804',
@@ -385,7 +385,7 @@ export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});
 
 export const inputRef: ComponentStory<typeof TextAreaComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const inputRef = React.useRef<BladeElementRef>(null);
+  const inputRef = React.useRef<HTMLTextAreaElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="end">

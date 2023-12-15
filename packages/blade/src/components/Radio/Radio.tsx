@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
 import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon/RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
 import { radioHoverTokens } from './radioTokens';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
@@ -13,8 +13,7 @@ import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportTe
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import type { StringChildrenType, TestID } from '~utils/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { MetaConstants } from '~utils/metaAttribute';
@@ -24,7 +23,7 @@ type RadioProps = {
   /**
    * Sets the label text of the Radio
    */
-  children: StringChildrenType;
+  children?: StringChildrenType;
   /**
    * Help text for the Radio
    */
@@ -120,15 +119,17 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
               isDisabled={_isDisabled}
               isNegative={hasError}
             />
-            <SelectorTitle size={_size} isDisabled={_isDisabled}>
-              {children}
-            </SelectorTitle>
+            {children ? (
+              <SelectorTitle size={_size} isDisabled={_isDisabled}>
+                {children}
+              </SelectorTitle>
+            ) : null}
           </BaseBox>
-          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-            {showHelpText && (
+          {showHelpText && (
+            <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
               <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-            )}
-          </BaseBox>
+            </BaseBox>
+          )}
         </BaseBox>
       </SelectorLabel>
     </BaseBox>
@@ -137,4 +138,5 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
 
 const Radio = assignWithoutSideEffects(React.forwardRef(_Radio), { displayName: 'Radio' });
 
-export { Radio, RadioProps };
+export type { RadioProps };
+export { Radio };

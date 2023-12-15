@@ -55,9 +55,9 @@ const _BottomSheet = ({
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const defaultInitialFocusRef = React.useRef<any>(null);
   const sheetRef = React.useRef<GorhomBottomSheet>(null);
-  const header = React.useRef<React.ReactNode>();
-  const footer = React.useRef<React.ReactNode>();
-  const body = React.useRef<React.ReactNode>();
+  const [header, setHeader] = React.useState<React.ReactNode>();
+  const [footer, setFooter] = React.useState<React.ReactNode>();
+  const [body, setBody] = React.useState<React.ReactNode>();
   const _isOpen = isOpen ?? bottomSheetAndDropdownGlue?.isOpen;
   const [headerHeight, setHeaderHeight] = React.useState(0);
   const [footerHeight, setFooterHeight] = React.useState(0);
@@ -81,10 +81,15 @@ const _BottomSheet = ({
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
   useIsomorphicLayoutEffect(() => {
-    const height = Dimensions.get('window').height;
-    const middleSnapPoint = snapPoints[1] * height;
-    if (totalHeight > middleSnapPoint) {
-      initialSnapPoint.current = 1;
+    if (bottomSheetAndDropdownGlue?.hasAutoCompleteInBottomSheetHeader) {
+      // In AutoComplete, we want to open BottomSheet with max height so we set this to last index
+      initialSnapPoint.current = 2;
+    } else {
+      const height = Dimensions.get('window').height;
+      const middleSnapPoint = snapPoints[1] * height;
+      if (totalHeight > middleSnapPoint) {
+        initialSnapPoint.current = 1;
+      }
     }
   }, [snapPoints, totalHeight]);
 
@@ -130,35 +135,38 @@ const _BottomSheet = ({
     bottomSheetAndDropdownGlue.setDropdownHasBottomSheet(true);
   }, [bottomSheetAndDropdownGlue]);
 
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     React.Children.forEach(children, (child) => {
       if (getComponentId(child) === ComponentIds.BottomSheetHeader) {
-        header.current = child;
+        setHeader(child);
       }
       if (getComponentId(child) === ComponentIds.BottomSheetFooter) {
-        footer.current = child;
+        setFooter(child);
       }
       if (getComponentId(child) === ComponentIds.BottomSheetBody) {
-        body.current = child;
+        setBody(child);
       }
     });
   }, [children]);
 
-  const renderFooter = React.useCallback((props): React.ReactElement => {
-    return (
-      <GorhomBottomSheetFooter {...props}>
-        <View
-          onLayout={(event) => {
-            // save footer height so that later we can offset the marginBottom from body content
-            // otherwise few elements gets hidden under the footer
-            setFooterHeight(event.nativeEvent.layout.height);
-          }}
-        >
-          {footer.current}
-        </View>
-      </GorhomBottomSheetFooter>
-    );
-  }, []);
+  const renderFooter = React.useCallback(
+    (props): React.ReactElement => {
+      return (
+        <GorhomBottomSheetFooter {...props}>
+          <View
+            onLayout={(event) => {
+              // save footer height so that later we can offset the marginBottom from body content
+              // otherwise few elements gets hidden under the footer
+              setFooterHeight(event.nativeEvent.layout.height);
+            }}
+          >
+            {footer}
+          </View>
+        </GorhomBottomSheetFooter>
+      );
+    },
+    [footer],
+  );
 
   const renderBackdrop = React.useCallback(
     (props): React.ReactElement => {
@@ -181,10 +189,10 @@ const _BottomSheet = ({
         <BaseBox zIndex={zIndex}>
           <BottomSheetGrabHandle />
         </BaseBox>
-        {header.current}
+        {header}
       </BaseBox>
     );
-  }, [isHeaderEmpty, zIndex]);
+  }, [isHeaderEmpty, zIndex, header]);
 
   const isHeaderFloating = !hasBodyPadding && isHeaderEmpty;
   const contextValue = React.useMemo<BottomSheetContextProps>(
@@ -269,9 +277,11 @@ const _BottomSheet = ({
             enableOverDrag
             enableContentPanningGesture
             ref={sheetRef}
-            index={-1}
+            // on initial render if _isOpen is true we want to render the sheet at initialSnapPoint
+            // otherwise we want to render it at -1 so that it is not visible
+            index={_isOpen ? initialSnapPoint.current : -1}
             containerStyle={{ zIndex }}
-            animateOnMount={false}
+            animateOnMount={true}
             handleComponent={renderHandle}
             backgroundComponent={BottomSheetSurface}
             footerComponent={renderFooter}
@@ -279,7 +289,7 @@ const _BottomSheet = ({
             onClose={close}
             snapPoints={_snapPoints}
           >
-            {body.current}
+            {body}
           </GorhomBottomSheet>
         </BottomSheetContext.Provider>
       </DropdownContext.Provider>

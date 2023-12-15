@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import type { SelectorInputProps } from './types';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
+import type { BladeElementRef } from '~utils/types';
 
 // noop in react-native
 const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorInputProps> = (

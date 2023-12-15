@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import isEmpty from 'lodash/isEmpty';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
@@ -12,10 +12,10 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import BaseBox from '~components/Box/BaseBox';
 import { Spinner } from '~components/Spinner';
-import type { BladeElementRef } from '~utils/useBladeInnerRef';
-import { useBladeInnerRef } from '~utils/useBladeInnerRef';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
+import { useMergeRefs } from '~utils/useMergeRefs';
+import type { BladeElementRef } from '~utils/types';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -48,6 +48,7 @@ type TextInputCommonProps = Pick<
   | 'onSubmit'
   | 'autoCapitalize'
   | 'testID'
+  | 'onClick'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -223,6 +224,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     value,
     maxCharacters,
     onChange,
+    onClick,
     onFocus,
     onBlur,
     onSubmit,
@@ -248,7 +250,8 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   },
   ref,
 ): ReactElement => {
-  const textInputRef = useBladeInnerRef(ref);
+  const textInputRef = React.useRef<BladeElementRef>(null);
+  const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
 
   React.useEffect(() => {
@@ -293,7 +296,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     <BaseInput
       id="textinput"
       componentName={MetaConstants.TextInput}
-      ref={textInputRef as React.Ref<HTMLInputElement>}
+      ref={mergedRef}
       label={label as string}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
@@ -316,6 +319,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
         onChange?.({ name, value });
       }}
+      onClick={onClick}
       onFocus={onFocus}
       onBlur={onBlur}
       onSubmit={onSubmit}
@@ -355,4 +359,5 @@ const TextInput = assignWithoutSideEffects(React.forwardRef(_TextInput), {
   displayName: 'TextInput',
 });
 
-export { TextInput, TextInputProps };
+export type { TextInputProps };
+export { TextInput };

@@ -2,8 +2,8 @@ import type { ComponentType, ReactElement } from 'react';
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title, Description } from '@storybook/addon-docs';
 import iconMap from './iconMap';
+import PlusIcon from './PlusIcon';
 import type { IconProps } from '.';
-import { CreditCardIcon } from '.';
 import BaseBox from '~components/Box/BaseBox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -14,6 +14,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="Blade provides a bunch of icons out of the box in 6 different sizes. You can choose the size & color that fits best for your use case using the color & size props."
       componentName="Icon"
+      apiDecisionLink=""
       note="Blade consists of a limited set of icons that are commonly used however you can contribute to Blade by adding more icons that are available on the Figma board as and when a use case arises. **See the adding icons section below for reference.**"
       imports={`// Replace IconName with actual Icon's name that you would like to use \nimport { IconName } from '@razorpay/blade/components' \n// IconProps are generic Icon props for all icons, don't replace it with your IconName \nimport type { IconProps } from '@razorpay/blade/components'`}
       figmaURL={{
@@ -81,9 +82,9 @@ const Page = (): ReactElement => {
 
 export default {
   title: 'Components/Icons',
-  component: CreditCardIcon, // need to give it some icon component so that storybook can infer props & arg types
+  component: PlusIcon, // need to give it some icon component so that storybook can infer props & arg types
   args: {
-    color: 'feedback.icon.neutral.lowContrast',
+    color: 'surface.text.normal.lowContrast',
     size: 'medium',
   },
   argTypes: {
@@ -91,6 +92,10 @@ export default {
       name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
+    },
+    size: {
+      options: ['small', 'medium', 'large', 'xlarge', '2xlarge'],
+      control: { type: 'select' },
     },
     ...getStyledPropsArgTypes(),
   },

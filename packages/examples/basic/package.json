@@ -2,21 +2,22 @@
   "private": "true",
   "scripts": {
     "start": "DISABLE_ESLINT_PLUGIN=true react-scripts start",
-    "build": "yarn build && yarn build:app",
+    "build": "yarn build:blade && yarn build:app",
     "build:blade": "cd ../../blade && yarn build",
     "build:app": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
     "analyze:only": "source-map-explorer 'build/static/js/*.js' --gzip",
-    "analyze": "yarn build && yarn analyze:only"
+    "analyze": "yarn build && yarn analyze:only",
+    "postinstall": "rm -rf node_modules/@razorpay/blade/node_modules"
   },
   "dependencies": {
-    "@razorpay/blade": "../../blade/build/",
+    "@razorpay/blade": "file:../../blade",
     "@fontsource/lato": "^4.5.10",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
-    "styled-components": "^5.3.6"
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "styled-components": "5.3.5",
+    "react-scripts": "^5.0.1"
   },
   "devDependencies": {
     "source-map-explorer": "2.5.3"

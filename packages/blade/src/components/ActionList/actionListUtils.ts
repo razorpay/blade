@@ -140,10 +140,12 @@ const getActionListProperties = (
       if (isValidAllowedChildren(child, componentIds.ActionListSection)) {
         const shouldHideDivider =
           index === lastActionListSectionIndex && !isActionListItemPresentAfterSection;
+        const sectionChildValues: string[] = [];
         return React.cloneElement(child, {
           // @ts-expect-error: TS doesn't understand the child's props
           children: React.Children.map(child.props.children, (childInSection) => {
             currentSection = child.props.title;
+            sectionChildValues.push(childInSection.props.value);
             if (isValidAllowedChildren(childInSection, componentIds.ActionListItem)) {
               return getActionListItemWithId(childInSection, shouldHideDivider);
             }
@@ -152,6 +154,7 @@ const getActionListProperties = (
           }),
           // On web, we handle it with descendant styling in css so no need of JS there
           _hideDivider: isReactNative() ? shouldHideDivider : undefined,
+          _sectionChildValues: sectionChildValues,
         });
       }
 
@@ -179,9 +182,11 @@ const getActionListProperties = (
 const validateActionListItemProps = ({
   leading,
   trailing,
+  titleSuffix,
 }: {
   leading: ActionListItemProps['leading'];
   trailing: ActionListItemProps['trailing'];
+  titleSuffix: ActionListItemProps['titleSuffix'];
 }): void => {
   if (__DEV__) {
     React.Children.map(trailing, (child) => {
@@ -191,6 +196,18 @@ const validateActionListItemProps = ({
       ) {
         throwBladeError({
           message: `Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
+          moduleName: 'ActionListItem',
+        });
+      }
+    });
+
+    React.Children.map(titleSuffix, (child) => {
+      if (
+        !isValidAllowedChildren(child, componentIds.ActionListItemBadge) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemBadgeGroup)
+      ) {
+        throwBladeError({
+          message: `Only ${componentIds.ActionListItemBadge} and ${componentIds.ActionListItemBadgeGroup} are allowed in titleSuffix prop`,
           moduleName: 'ActionListItem',
         });
       }

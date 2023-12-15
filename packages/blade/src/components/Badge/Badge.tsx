@@ -23,11 +23,18 @@ type BadgeProps = {
    */
   children: StringChildrenType;
   /**
-   * Sets the variant of the badge.
+   * This prop is deprecated in favor of `color`.
    *
+   * @deprecated Use the `color` prop instead
    * @default 'neutral'
    */
   variant?: Feedback | 'blue';
+  /**
+   * Sets the color of the badge.
+   *
+   * @default 'neutral'
+   */
+  color?: Feedback | 'default';
   /**
    * Sets the contrast of the badge.
    *
@@ -70,22 +77,23 @@ const getColorProps = ({
   variant,
   contrast,
 }: {
-  variant: NonNullable<BadgeProps['variant']>;
+  variant: NonNullable<BadgeProps['color'] | 'blue'>;
   contrast: NonNullable<BadgeProps['contrast']>;
 }): ColorProps => {
+  const badgeVariant = variant === 'default' ? 'blue' : variant;
   const props: ColorProps = {
     iconColor: 'feedback.icon.neutral.lowContrast',
     textColor: 'feedback.text.neutral.lowContrast',
     backgroundColor: 'feedback.background.neutral.lowContrast',
   };
-  if (isFeedbackVariant(variant)) {
-    props.iconColor = `feedback.icon.${variant}.${contrast}Contrast`;
-    props.textColor = `feedback.text.${variant}.${contrast}Contrast`;
-    props.backgroundColor = `feedback.background.${variant}.${contrast}Contrast`;
+  if (isFeedbackVariant(badgeVariant)) {
+    props.iconColor = `feedback.icon.${badgeVariant}.${contrast}Contrast`;
+    props.textColor = `feedback.text.${badgeVariant}.${contrast}Contrast`;
+    props.backgroundColor = `feedback.background.${badgeVariant}.${contrast}Contrast`;
   } else {
-    props.iconColor = `badge.icon.${variant}.${contrast}Contrast`;
-    props.textColor = `badge.text.${variant}.${contrast}Contrast`;
-    props.backgroundColor = `badge.background.${variant}.${contrast}Contrast`;
+    props.iconColor = `badge.icon.${badgeVariant}.${contrast}Contrast`;
+    props.textColor = `badge.text.${badgeVariant}.${contrast}Contrast`;
+    props.backgroundColor = `badge.background.${badgeVariant}.${contrast}Contrast`;
   }
   return props;
 };
@@ -96,7 +104,9 @@ const _Badge = ({
   fontWeight = 'regular',
   icon: Icon,
   size = 'medium',
+  // TODO: Remove variant prop in next major release in favor of color prop
   variant = 'neutral',
+  color,
   testID,
   ...styledProps
 }: BadgeProps): ReactElement => {
@@ -109,8 +119,10 @@ const _Badge = ({
       });
     }
   }
+
+  const badgeVariant = color ?? variant;
   const { backgroundColor, iconColor, textColor } = getColorProps({
-    variant,
+    variant: badgeVariant,
     contrast,
   });
 
@@ -172,4 +184,5 @@ const Badge = assignWithoutSideEffects(_Badge, {
   componentId: 'Badge',
 });
 
-export { Badge, BadgeProps };
+export type { BadgeProps };
+export { Badge };
