@@ -81,9 +81,8 @@ const transformer: Transform = (file, api, options) => {
     );
 
   // Update <Heading size="large|medium"> to <Heading size="medium|small">,
-  // <Heading size="small"> to <Text size="large">, and
+  // <Heading size="small">, <Heading variant="regular"> to <Text size="large">, and
   // <Heading variant="subheading"> to <Text size="small">
-  // <Heading variant="regular"> to <Heading size="small">
   typographyJSXElements
     .filter((path) => path.value.openingElement.name.name === 'Heading')
     // replace with Heading
@@ -98,6 +97,16 @@ const transformer: Transform = (file, api, options) => {
         (attribute) => attribute.name.name === 'variant',
       );
 
+      const otherAttributes = node.openingElement.attributes.filter(
+        (attribute) => attribute.name.name !== 'variant' && attribute.name.name !== 'size',
+      );
+
+      const headingSizeMap = {
+        large: 'medium',
+        medium: 'small',
+        small: 'large',
+      };
+
       // If size is small or variant is subheading, replace with Text
       if (
         !sizeAttribute ||
@@ -108,46 +117,34 @@ const transformer: Transform = (file, api, options) => {
         node.closingElement.name.name = 'Text';
       }
 
-      if (!sizeAttribute) {
-        node.openingElement.attributes = [
-          ...node.openingElement.attributes,
-          // build and insert our new prop
-          j.jsxAttribute(j.jsxIdentifier('size'), j.literal('large')),
-        ];
+      if (
+        !sizeAttribute &&
+        (!variantAttribute || (variantAttribute && variantAttribute.value.value === 'regular'))
+      ) {
+        otherAttributes.push(j.jsxAttribute(j.jsxIdentifier('size'), j.literal('large')));
+      } else if (sizeAttribute) {
+        otherAttributes.push(
+          j.jsxAttribute(
+            j.jsxIdentifier('size'),
+            j.literal(headingSizeMap[sizeAttribute.value.value]),
+          ),
+        );
+      } else if (variantAttribute && variantAttribute.value.value === 'subheading') {
+        otherAttributes.push(j.jsxAttribute(j.jsxIdentifier('size'), j.literal('small')));
       }
+
+      node.openingElement.attributes = otherAttributes;
 
       return node;
     })
     .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name === 'size' || path.node.name.name === 'variant')
+    .filter((path) => path.node.name.name === 'variant')
     .filter(
       (path, index, self) =>
         (path.node.name.name === 'size' || path.node.name.name === 'variant') &&
         index === self.findIndex((obj) => path.node.start === obj.node.start),
-    ) // Filter by name `size/variant` and remove any duplicates
-    .replaceWith((path) => {
-      if (isExpression(path.node)) {
-        console.log(
-          'Expression found in size attribute, please update manually:',
-          `${file.path}:${path.node.loc.start.line}`,
-        );
-        return path.node;
-      }
-      const isSizeAttribute = path.node.name.name === 'size';
-
-      if (isSizeAttribute) {
-        if (path.node.value.value === 'small') {
-          path.node.value.value = 'large';
-        } else if (path.node.value.value === 'large' || path.node.value.value === 'medium') {
-          path.node.value.value = newHeadingSizeMap[path.node.value.value];
-        }
-      } else if (path.node.value.value === 'subheading') {
-        path.node.value.value = 'small';
-        path.node.name.name = 'size';
-      }
-
-      return path.node;
-    });
+    ) // Filter by name `variant` and remove any duplicates
+    .remove();
 
   // Replace Title with Heading and update the 'size' attribute
   // <Title size="medium"> to <Heading size="xlarge">

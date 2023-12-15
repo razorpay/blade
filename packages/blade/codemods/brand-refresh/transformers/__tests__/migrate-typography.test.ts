@@ -47,7 +47,7 @@ it('should remove the "variant" prop from Heading', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text weight="semibold" size="small" marginTop="spacing.2" size="medium"> Lorem ipsum </Text>  
+                <Text weight="semibold" marginTop="spacing.2" size="small"> Lorem ipsum </Text>  
               </>
             );"
   `);
@@ -75,7 +75,7 @@ it('should remove the "type" prop and change weight="bold" to weight="semibold"'
     "const App = () => (
                 <>
                     <Text weight="semibold"> Lorem ipsum </Text>
-                    <Text weight="semibold" size="medium"> Lorem ipsum </Text>
+                    <Text weight="semibold" size="large"> Lorem ipsum </Text>
                     <Heading weight="semibold"> Lorem ipsum </Heading>
                     <Display weight="semibold"> Lorem ipsum </Display>
                     // weight="bold" should not be changed
@@ -118,9 +118,9 @@ it('should remove the "type" & "variant" prop with nested components', async () 
                     Lorem ipsum
                 </Display>
             </Display>
-            <Heading size="medium" marginTop="120px">
+            <Heading marginTop="120px" size="medium">
                 Lorem ipsum
-                <Text size="small" as="span" color="brand.secondary.500" size="medium">
+                <Text as="span" color="brand.secondary.500" size="small">
                     Lorem ipsum
                 </Text>
             </Heading>
@@ -192,7 +192,6 @@ it('should update <Heading variant="subheading"> to <Text size="small">', async 
         const App = () => (
           <>
             <Heading variant="regular"> Lorem ipsum </Heading> 
-            // TODO: fix me 
             <Heading variant="subheading"> Lorem ipsum </Heading>
             <Heading variant="subheading"> Lorem ipsum <Heading variant="subheading"> Lorem ipsum </Heading> </Heading>
           </>
@@ -204,9 +203,9 @@ it('should update <Heading variant="subheading"> to <Text size="small">', async 
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
               <>
-                <Text variant="regular" size="medium"> Lorem ipsum </Text>  
-                <Text size="small" size="large"> Lorem ipsum </Text>
-                <Text size="small" size="large"> Lorem ipsum <Text size="small" size="large"> Lorem ipsum </Text> </Text>
+                <Text size="large"> Lorem ipsum </Text> 
+                <Text size="small"> Lorem ipsum </Text>
+                <Text size="small"> Lorem ipsum <Text size="small"> Lorem ipsum </Text> </Text>
               </>
             );"
   `);
@@ -246,20 +245,19 @@ it('should correctly convert Title to Heading component', async () => {
     const App = () => (
       <>
         <Title> Lorem ipsum </Title>  
-        <Title type="body" weight="bold" size="xlarge" > Lorem ipsum </Title>
-        <Title type="body" weight="bold" size="large" > Lorem ipsum </Title>
-        <Title type="body" weight="bold" size="medium" > Lorem ipsum </Title>
-        <Title type="body" weight="bold" size="small" > Lorem ipsum </Title>
+        <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum </Title>
+        <Title type="subtle" weight="bold" size="large" > Lorem ipsum </Title>
+        <Title type="subtle" weight="bold" size="medium" > Lorem ipsum </Title>
+        <Title type="subtle" weight="bold" size="small" > Lorem ipsum </Title>
         // Conditional expression props should not be changed
-        <Title type="body" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title>
+        <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title>
 
-        // TODO: fix me when nested
-        <Title type="body" weight="bold" size="xlarge" > Lorem ipsum <Title type="body" weight="bold" size="xlarge" > Lorem ipsum  </Title>  </Title>
-        <Title type="body" weight="bold" size="large" > Lorem ipsum <Title type="body" weight="bold" size="large" > Lorem ipsum </Title> </Title>
-        <Title type="body" weight="bold" size="medium" > Lorem ipsum <Title type="body" weight="bold" size="medium" > Lorem ipsum </Title> </Title>
-        <Title type="body" weight="bold" size="small" > Lorem ipsum <Title type="body" weight="bold" size="small" > Lorem ipsum </Title> </Title>
+        <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum  </Title>  </Title>
+        <Title type="subtle" weight="bold" size="large" > Lorem ipsum <Title type="subtle" weight="bold" size="large" > Lorem ipsum </Title> </Title>
+        <Title type="subtle" weight="bold" size="medium" > Lorem ipsum <Title type="subtle" weight="bold" size="medium" > Lorem ipsum </Title> </Title>
+        <Title type="subtle" weight="bold" size="small" > Lorem ipsum <Title type="subtle" weight="bold" size="small" > Lorem ipsum </Title> </Title>
         // Conditional expression props should not be changed
-        <Title type="body" weight="bold" size={isMobile ? 'medium' : 'large'} > <Title type="body" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title> Lorem ipsum </Title>
+        <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title> Lorem ipsum </Title>
       </>
     );
     `,
@@ -278,7 +276,6 @@ it('should correctly convert Title to Heading component', async () => {
             // Conditional expression props should not be changed
             <Heading weight="semibold" size={isMobile ? 'medium' : 'large'}> Lorem ipsum </Heading>
 
-            // TODO: fix me when nested
             <Heading weight="semibold" size="2xlarge"> Lorem ipsum <Heading weight="semibold" size="2xlarge"> Lorem ipsum  </Heading>  </Heading>
             <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading> </Heading>
             <Heading weight="semibold" size="xlarge"> Lorem ipsum <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading> </Heading>
