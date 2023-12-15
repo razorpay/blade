@@ -213,17 +213,6 @@ const transformer: Transform = (file, api, options) => {
     ) // Filter by name `type` and remove any duplicates
     .remove();
 
-  // Remove `variant` prop from Heading Component
-  typographyJSXElements
-    .filter((path) => path.value.openingElement.name.name === 'Heading')
-    .find(j.JSXAttribute) // Find all Heading props
-    .filter(
-      (path, index, self) =>
-        path.node.name.name === 'variant' &&
-        index === self.findIndex((obj) => path.node.start === obj.node.start),
-    ) // Filter by name `type` and remove any duplicates
-    .remove();
-
   // Change 'weight="bold"' to 'weight="semibold"' in Heading, Text, Display
   // Code still uses 'weight="bold"' and Title has been modified to the Heading Component
   typographyJSXElements
