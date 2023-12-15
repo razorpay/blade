@@ -84,12 +84,13 @@ const rgbaToHsla = ({ r, g, b, a }: RGBA): string => {
   const opacity = {
     '0.00': '${opacity[0]}',
     '0.09': '${opacity[1]}',
-    '0.18': '${opacity[2]}',
-    '0.32': '${opacity[3]}',
-    '0.48': '${opacity[4]}',
-    '0.56': '${opacity[5]}',
-    '0.64': '${opacity[6]}',
-    '0.72': '${opacity[7]}',
+    '0.12': '${opacity[2]}',
+    '0.18': '${opacity[3]}',
+    '0.32': '${opacity[4]}',
+    '0.48': '${opacity[5]}',
+    '0.56': '${opacity[6]}',
+    '0.64': '${opacity[7]}',
+    '0.72': '${opacity[8]}',
     '1.00': '${opacity[9]}',
   };
 
