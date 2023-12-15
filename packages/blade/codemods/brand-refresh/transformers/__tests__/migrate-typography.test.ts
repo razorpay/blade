@@ -252,10 +252,6 @@ it('should correctly convert Title to Heading component', async () => {
         // Conditional expression props should not be changed
         <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title>
 
-<<<<<<< HEAD
-=======
-        // TODO: fix me when nested
->>>>>>> 299aea83 (fix: handle typography color migration)
         <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum  </Title>  </Title>
         <Title type="subtle" weight="bold" size="large" > Lorem ipsum <Title type="subtle" weight="bold" size="large" > Lorem ipsum </Title> </Title>
         <Title type="subtle" weight="bold" size="medium" > Lorem ipsum <Title type="subtle" weight="bold" size="medium" > Lorem ipsum </Title> </Title>
@@ -280,10 +276,6 @@ it('should correctly convert Title to Heading component', async () => {
             // Conditional expression props should not be changed
             <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > Lorem ipsum </Heading>
 
-<<<<<<< HEAD
-=======
-            // TODO: fix me when nested
->>>>>>> 299aea83 (fix: handle typography color migration)
             <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum  </Heading>  </Heading>
             <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
             <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
