@@ -1,7 +1,7 @@
-import cloneDeep from 'lodash/cloneDeep';
-import merge from 'lodash/merge';
 import paymentTheme from './paymentTheme';
 import type { ThemeTokens } from './theme';
+import cloneDeep from '~utils/lodashButBetter/cloneDeep';
+import merge from '~utils/lodashButBetter/merge';
 import { hasSameObjectStructure } from '~utils/hasSameObjectStructure';
 import type { ObjectWithKeys } from '~utils/hasSameObjectStructure';
 import { isPartialMatchObjectKeys } from '~utils/isPartialMatchObjectKeys';
@@ -75,7 +75,7 @@ const overrideTheme = ({ baseThemeTokens, overrides }: OverrideTheme): ThemeToke
   }
 
   // Need to clone before merging since merge changes/mutates the actual object
-  return merge(cloneDeep(baseThemeTokens), overrides);
+  return merge(cloneDeep(baseThemeTokens), overrides) as ThemeTokens;
 };
 
 export default overrideTheme;

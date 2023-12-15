@@ -1,6 +1,4 @@
 import type { CSSObject } from 'styled-components';
-import getIn from 'lodash/get';
-import isEmpty from 'lodash/isEmpty';
 import type {
   BaseBoxProps,
   MakeValueResponsive,
@@ -8,6 +6,8 @@ import type {
   ArrayOfMaxLength4,
 } from './types';
 import { getResponsiveValue } from './getResponsiveValue';
+import getIn from '~utils/lodashButBetter/get';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { Breakpoints } from '~tokens/global';
 import { breakpoints } from '~tokens/global';
 import { isReactNative, getMediaQuery } from '~utils';

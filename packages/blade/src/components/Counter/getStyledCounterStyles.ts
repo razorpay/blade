@@ -1,7 +1,7 @@
-import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import { maxWidth } from './counterTokens';
 import type { StyledCounterProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import { makeSize } from '~utils/makeSize';
 import { makeBorderSize } from '~utils/makeBorderSize';
 

@@ -50,11 +50,10 @@ const TableContext = React.createContext<TableContextType>({
   disabledRows: [],
   setDisabledRows: () => {},
 });
-const TableProvider = TableContext.Provider;
 
 const useTableContext = (): TableContextType => {
   const context = React.useContext(TableContext);
   return context;
 };
 
-export { useTableContext, TableProvider };
+export { useTableContext, TableContext };
