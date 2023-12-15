@@ -76,7 +76,7 @@ it('should remove the "type" prop and change weight="bold" to weight="semibold"'
                 <>
                     <Text weight="semibold"> Lorem ipsum </Text>
                     <Text weight="semibold" size="large"> Lorem ipsum </Text>
-                    <Heading weight="semibold"> Lorem ipsum </Heading>
+                    <Heading weight="semibold" size="large"> Lorem ipsum </Heading>
                     <Display weight="semibold"> Lorem ipsum </Display>
                     // weight="bold" should not be changed
                     <Code weight="bold"> Lorem ipsum </Code>
@@ -268,7 +268,7 @@ it('should correctly convert Title to Heading component', async () => {
     "import { Heading } from '@razorpay/blade/components';
         const App = () => (
           <>
-            <Heading> Lorem ipsum </Heading>  
+            <Heading size="large"> Lorem ipsum </Heading>  
             <Heading weight="semibold" size="2xlarge"> Lorem ipsum </Heading>
             <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
             <Heading weight="semibold" size="xlarge"> Lorem ipsum </Heading>
