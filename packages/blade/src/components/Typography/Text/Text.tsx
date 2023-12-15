@@ -6,7 +6,6 @@ import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
@@ -14,8 +13,8 @@ import { throwBladeError } from '~utils/logger';
 const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q'] as const;
 type TextCommonProps = {
   as?: typeof validAsValues[number];
-  type?: TextTypes;
-  contrast?: ColorContrastTypes;
+  type?: never;
+  contrast?: never;
   truncateAfterLines?: number;
   children: React.ReactNode;
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
@@ -70,20 +69,18 @@ type GetTextProps<T extends { variant: TextVariant }> = Pick<
   | 'textAlign'
   | 'textDecorationLine'
 >;
+
 const getTextProps = <T extends { variant: TextVariant }>({
   variant,
-  type,
   weight,
   size,
   color,
-  contrast,
   testID,
   textAlign,
   textDecorationLine,
 }: GetTextProps<T>): GetTextPropsReturn => {
-  const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: GetTextPropsReturn = {
-    color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
+    color: color ?? 'surface.text.gray.normal',
     fontSize: 100,
     fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
@@ -135,8 +132,6 @@ const _Text = <T extends { variant: TextVariant }>({
   variant = 'body',
   weight = 'regular',
   size = 'medium',
-  type = 'normal',
-  contrast = 'low',
   truncateAfterLines,
   children,
   color,
@@ -152,11 +147,9 @@ const _Text = <T extends { variant: TextVariant }>({
     wordBreak,
     ...getTextProps({
       variant,
-      type,
       weight,
       color,
       size,
-      contrast,
       testID,
       textAlign,
       textDecorationLine,

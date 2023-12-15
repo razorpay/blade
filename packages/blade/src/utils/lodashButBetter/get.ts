@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-constraint */
-import type { EasingFactoryFn } from '~tokens/global';
+import type { EasingType } from '~tokens/global/motion';
 
 /**
  * @template TokenType token type generic
  * @description Tokenises objects to dot notation strings, eg: `surface.text.normal.lowContrast`
  */
-export type DotNotationToken<TokenType> = {
+export type DotNotationToken<_TokenType, TokenType = Omit<_TokenType, 'name'>> = {
   [K in keyof TokenType]: `${Extract<K, number | string>}.${TokenType[K] extends Record<
     string,
-    string | number | boolean | EasingFactoryFn
+    string | number | boolean | EasingType<string>
   >
     ? Extract<keyof TokenType[K], number | string>
     : DotNotationToken<TokenType[K]>}`;

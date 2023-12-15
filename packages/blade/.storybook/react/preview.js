@@ -108,6 +108,7 @@ const StoryCanvas = styled.div(
           ? '0rem'
           : '2rem'
       };
+      background-color: ${theme.colors.surface.background.gray.subtle};
       border-radius: ${
         context.viewMode === 'story'
           ? `${theme.border.radius.none}px`

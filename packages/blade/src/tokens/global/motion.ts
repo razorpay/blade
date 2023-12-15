@@ -35,7 +35,7 @@ type Delay = {
 };
 
 export type EasingFactoryFn = { factory: () => (value: number) => number }; // similar to EasingFactoryFn of `react-native-reanimated`
-type EasingType<Value extends string> = Platform.Select<{
+export type EasingType<Value extends string> = Platform.Select<{
   web: Value;
   native: EasingFactoryFn;
 }>;

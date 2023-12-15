@@ -37,17 +37,18 @@ const UnorderedItemIcon = ({ level }: { level?: number }): React.ReactElement =>
   const { theme, platform } = useTheme();
   const { size } = useListContext();
   const iconDimensions = listItemUnorderedBulletSize[platform][size];
-  const color = theme.colors.surface.text.placeholder.lowContrast;
+  const backgroundToken = theme.colors.feedback.background.neutral.subtle;
+  const borderToken = theme.colors.feedback.border.neutral.subtle;
 
   switch (level) {
     case 1:
-      return <UnorderedLevel1Icon iconDimensions={iconDimensions} color={color} />;
+      return <UnorderedLevel1Icon iconDimensions={iconDimensions} color={backgroundToken} />;
     case 2:
-      return <UnorderedLevel2Icon iconDimensions={iconDimensions} color={color} />;
+      return <UnorderedLevel2Icon iconDimensions={iconDimensions} color={borderToken} />;
     case 3:
-      return <UnorderedLevel3Icon iconDimensions={iconDimensions} color={color} />;
+      return <UnorderedLevel3Icon iconDimensions={iconDimensions} color={backgroundToken} />;
     default:
-      return <UnorderedLevel3Icon iconDimensions={iconDimensions} color={color} />;
+      return <UnorderedLevel3Icon iconDimensions={iconDimensions} color={backgroundToken} />;
   }
 };
 
