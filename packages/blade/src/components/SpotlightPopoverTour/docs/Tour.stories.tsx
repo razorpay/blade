@@ -25,12 +25,12 @@ import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        showDefaultExample={false}
-        componentName="SpotlightPopoverTour"
-        componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
-      >
+    <StoryPageWrapper
+      showDefaultExample={false}
+      componentName="SpotlightPopoverTour"
+      componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>{BasicExample}</Sandbox>
       <Heading size="medium">iOS Safari Specific Setup</Heading>
@@ -54,7 +54,7 @@ const Page = (): React.ReactElement => {
           story view
         </Text>
       </Text>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 
@@ -288,7 +288,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
   );
 
   return (
-    (<Box>
+    <Box>
       <Button
         marginBottom="spacing.9"
         onClick={() => {
@@ -367,7 +367,7 @@ const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
           </SpotlightPopoverTourStep>
         </Box>
       </SpotlightPopoverTour>
-    </Box>)
+    </Box>
   );
 };
 
@@ -727,7 +727,7 @@ const InterruptibleTourFooter = ({
   const isLast = activeStep === totalSteps - 1;
   const isFirst = activeStep === 0;
   return (
-    (<Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
+    <Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
       <Text size="small" weight="semibold">
         {activeStep + 1} / {totalSteps}
       </Text>
@@ -774,7 +774,7 @@ const InterruptibleTourFooter = ({
           </Button>
         )}
       </Box>
-    </Box>)
+    </Box>
   );
 };
 

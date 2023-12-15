@@ -17,8 +17,7 @@ const CardSurfaceStyled = styled(BaseBox)<{
     flexDirection: 'column',
     borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
     borderStyle: elevation === 'none' ? 'solid' : undefined,
-    borderColor:
-      elevation === 'none' ? `${theme.colors.surface.border.gray.normal}` : undefined,
+    borderColor: elevation === 'none' ? `${theme.colors.surface.border.gray.normal}` : undefined,
     backgroundColor,
   };
 });

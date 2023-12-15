@@ -54,12 +54,12 @@ const Section = ({
 
 function LayoutPrimitivesDocs(): React.ReactElement {
   return (
-    (<StoryPageWrapper
-        componentName="Layout Primitives"
-        componentDescription="Layout Primitives from Blade. Use this for adding spacings, grids, and any of your layout needs"
-        imports=""
-        showStorybookControls={false}
-      >
+    <StoryPageWrapper
+      componentName="Layout Primitives"
+      componentDescription="Layout Primitives from Blade. Use this for adding spacings, grids, and any of your layout needs"
+      imports=""
+      showStorybookControls={false}
+    >
       <hr />
       <Heading size="small">Table of Content</Heading>
       <List marginY="spacing.6" marginBottom="spacing.8">
@@ -510,7 +510,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
           </ListItem>
         </List>
       </Section>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 }
 

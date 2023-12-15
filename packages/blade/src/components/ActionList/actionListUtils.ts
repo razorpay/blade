@@ -233,9 +233,7 @@ const getNormalTextColor = (
   { isMuted }: { isMuted?: boolean } = {},
 ): Extract<
   BaseTextProps['color'],
-  | 'surface.text.gray.disabled'
-  | 'surface.text.gray.muted'
-  | 'surface.text.gray.normal'
+  'surface.text.gray.disabled' | 'surface.text.gray.muted' | 'surface.text.gray.normal'
 > => {
   if (isDisabled) {
     return 'surface.text.gray.disabled';

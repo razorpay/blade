@@ -34,19 +34,19 @@ The popover component is used to provide context as well as enable users to take
 
 ## `Popover` API
 
-| Prop            | Type                                                                                                                   | Default     | Description                                                                                                                           | Required |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| title     | `string`                                                                                                               | `undefined` | Title of the header                                                                                                                   |         |
-| titleLeading   | `React.ReactNode`                                                                                                      | `undefined` | Leading element to be placed before header title, recommended components are Icon or Asset. The icon's size will be set to large      |          |
-| footer   | `React.ReactNode`                                                                                                      | `undefined` | Slottable content of the footer                                                                                                       |          |
-| content         | `React.ReactNode`                                                                                                               | `undefined` | Content of the popover (can be any interactive or non-interactive elements)                                                                                                                |  ✅        |
-| children        | `React.ReactNode`                                                                                                      | `undefined` | Trigger component for popover, Accepts any interactive element or icons                                                               | ✅        |
-| placement       | `top, top-start, top-end, left, left-start, left-end, right, right-start, right-end, bottom, bottom-start, bottom-end` | `top`       | Placement of popver, the popver avoid collision with the edge of the screen and flip to the oppisite side even when placement is set. |          |
-| isOpen          | `boolean`                                                                                                              | `undefined` | Controlled state of the popover                                                                                                       |          |
-| defaultIsOpen   | `boolean`                                                                                                              | `undefined` | Uncontrolled state of the popover                                                                                                     |          |
-| onOpenChange    | `({ isOpen }) => void`                                                                                                 | `undefined` | Called when popover isOpen state is changed, this can be used to detect when popover opens or closed                                  |          |
-| onDismissButtonClick    | `() => void`                                                                                                 | `undefined` | Called when dismiss button is clicked, useful for sending analytic events                                  |          |
-| initialFocusRef | `React.RefObject`                                                                                                      | `undefined` | The ref of the element that should receive focus when the popover opens.                                                              |          |  |
+| Prop                 | Type                                                                                                                   | Default     | Description                                                                                                                           | Required |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------- | -------- | --- |
+| title                | `string`                                                                                                               | `undefined` | Title of the header                                                                                                                   |          |
+| titleLeading         | `React.ReactNode`                                                                                                      | `undefined` | Leading element to be placed before header title, recommended components are Icon or Asset. The icon's size will be set to large      |          |
+| footer               | `React.ReactNode`                                                                                                      | `undefined` | Slottable content of the footer                                                                                                       |          |
+| content              | `React.ReactNode`                                                                                                      | `undefined` | Content of the popover (can be any interactive or non-interactive elements)                                                           | ✅       |
+| children             | `React.ReactNode`                                                                                                      | `undefined` | Trigger component for popover, Accepts any interactive element or icons                                                               | ✅       |
+| placement            | `top, top-start, top-end, left, left-start, left-end, right, right-start, right-end, bottom, bottom-start, bottom-end` | `top`       | Placement of popver, the popver avoid collision with the edge of the screen and flip to the oppisite side even when placement is set. |          |
+| isOpen               | `boolean`                                                                                                              | `undefined` | Controlled state of the popover                                                                                                       |          |
+| defaultIsOpen        | `boolean`                                                                                                              | `undefined` | Uncontrolled state of the popover                                                                                                     |          |
+| onOpenChange         | `({ isOpen }) => void`                                                                                                 | `undefined` | Called when popover isOpen state is changed, this can be used to detect when popover opens or closed                                  |          |
+| onDismissButtonClick | `() => void`                                                                                                           | `undefined` | Called when dismiss button is clicked, useful for sending analytic events                                                             |          |
+| initialFocusRef      | `React.RefObject`                                                                                                      | `undefined` | The ref of the element that should receive focus when the popover opens.                                                              |          |     |
 
 ### Examples:
 
@@ -59,7 +59,7 @@ The popover component is used to provide context as well as enable users to take
   title="International Payments"
   content={
     <Text>
-      Your business can go international with support for transactions in 
+      Your business can go international with support for transactions in
       <Link href="#">100 foreign currencies.</Link>
     </Text>
   }
@@ -70,7 +70,7 @@ The popover component is used to provide context as well as enable users to take
 
 <img src="./assets/popover-example-1.png" alt="Example usage of popover" width="70%" />
 
-#### Controlled 
+#### Controlled
 
 ```js
 const ControlledPopover = () => {
@@ -78,49 +78,43 @@ const ControlledPopover = () => {
 
   return (
     <>
-    <Button onClick={()=> setIsOpen(prev => !prev)}>Trigger</Button>
-    <Popover
-      isOpen={isOpen}
-      onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
-      content={<Text>Any content</Text>}
-    >
-      <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
-    </Popover>
-    </> 
-  )
-}
+      <Button onClick={() => setIsOpen((prev) => !prev)}>Trigger</Button>
+      <Popover
+        isOpen={isOpen}
+        onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
+        content={<Text>Any content</Text>}
+      >
+        <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
+      </Popover>
+    </>
+  );
+};
 ```
 
-#### Uncontrolled 
+#### Uncontrolled
 
 ```js
 const UncontrolledPopover = () => {
   return (
-    <Popover
-      defaultIsOpen={true}
-      content={<Text>Any content</Text>}
-    >
+    <Popover defaultIsOpen={true} content={<Text>Any content</Text>}>
       <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
     </Popover>
-  )
-}
+  );
+};
 ```
 
-#### On initial load 
+#### On initial load
 
 To open the popover on initial load, consumers can just pass `defaultIsOpen` prop and whenever the popover mounts it will open.
 
 ```js
 const InitialOpen = () => {
   return (
-    <Popover
-      defaultIsOpen={true}
-      content={<Text>Any content</Text>}
-    >
+    <Popover defaultIsOpen={true} content={<Text>Any content</Text>}>
       <IconButton icon={InfoIcon} accessibilityLabel="Refund" />
     </Popover>
-  )
-}
+  );
+};
 ```
 
 #### Working with non-interactive triggers
@@ -178,10 +172,10 @@ const MyCustomButton = React.forwardRef<
 
 ## Future Scope
 
-Apart from normal Popovers while we audited the components used in Razorpay, we also found instances of Guided Popovers (Tour component), which can be used to guide users through a flow. 
+Apart from normal Popovers while we audited the components used in Razorpay, we also found instances of Guided Popovers (Tour component), which can be used to guide users through a flow.
 We will be adding support for Guided Popovers in future.
 
-Guided Popovers will have additional features like: 
+Guided Popovers will have additional features like:
 
 - Ability to add multiple steps in a flow without juggling with state management
 - Mask & backdrop support
@@ -191,17 +185,16 @@ This will be a separate component and will be released in future, since the scop
 
 ## Tooltips vs Popovers vs Guided Popovers
 
-|                         	| Tooltip                                          	| Popover                                                        	| GuidedPopover                                                  	|
-|-------------------------	|--------------------------------------------------	|----------------------------------------------------------------	|----------------------------------------------------------------	|
-| **Use Case**            	| Set context                                      	| Set context<br>Let user take action                            	| Highlight new feature<br>Let users take action                 	|
-| **Trigger Interaction** 	| Hover                                            	| onClick<br>onLoad                                              	| onClick<br>onLoad                                              	|
-| **Triggered By**        	| Interactive elements<br>Non-interactive elements 	| On page load<br>Interactive elements<br>Non-interactive elements               	| On page load<br>Nav buttons of current popover                 	|
-| **Content**             	| Heading<br>Body Text (Normal + Bold)            	| Heading<br>Rich Body Text<br>Links<br>Buttons<br>Assets/ Media 	| Heading<br>Rich Body Text<br>Links<br>Buttons<br>Assets/ Media 	|
-| **Header**              	| Plain Text                                       	| Plain Text<br>Leading Icon<br>Leading Asset                     	| Plain Text<br>Leading Icon<br>Leading Asset                     	|
-| **Footer**              	| No                                               	| Slot<br>Action Buttons(1 or 2)                                	| Action Buttons(1 or 2)<br>Nav Buttons (2)                     	|
-| **Dismiss Button**      	| No                                               	| Yes                                                            	| Yes                                                            	|
-| **Background Overlay**  	| No                                               	| No                                                             	| Yes                                                            	|
-
+|                         | Tooltip                                          | Popover                                                          | GuidedPopover                                                  |
+| ----------------------- | ------------------------------------------------ | ---------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Use Case**            | Set context                                      | Set context<br>Let user take action                              | Highlight new feature<br>Let users take action                 |
+| **Trigger Interaction** | Hover                                            | onClick<br>onLoad                                                | onClick<br>onLoad                                              |
+| **Triggered By**        | Interactive elements<br>Non-interactive elements | On page load<br>Interactive elements<br>Non-interactive elements | On page load<br>Nav buttons of current popover                 |
+| **Content**             | Heading<br>Body Text (Normal + Bold)             | Heading<br>Rich Body Text<br>Links<br>Buttons<br>Assets/ Media   | Heading<br>Rich Body Text<br>Links<br>Buttons<br>Assets/ Media |
+| **Header**              | Plain Text                                       | Plain Text<br>Leading Icon<br>Leading Asset                      | Plain Text<br>Leading Icon<br>Leading Asset                    |
+| **Footer**              | No                                               | Slot<br>Action Buttons(1 or 2)                                   | Action Buttons(1 or 2)<br>Nav Buttons (2)                      |
+| **Dismiss Button**      | No                                               | Yes                                                              | Yes                                                            |
+| **Background Overlay**  | No                                               | No                                                               | Yes                                                            |
 
 ## Library
 
@@ -211,9 +204,7 @@ We will be using [FloatingUI](https://floating-ui.com/) to position the popover 
 
 You can check the [popover motion here](https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2875-43270&mode=design&t=mTbpUCQOr7kHk6UT-0).
 
-
 https://github.com/razorpay/blade/assets/35374649/f774e28f-bbb7-4f44-a41d-71e9b873ec0c
-
 
 And give relavant feedback for [motion in this thread](https://razorpay.slack.com/archives/C0274H7QRC1/p1691645251106119).
 
@@ -224,10 +215,10 @@ And give relavant feedback for [motion in this thread](https://razorpay.slack.co
 
 ## Open Question
 
-How should the footer API look like? 
+How should the footer API look like?
 
-- Should we keep footer flexible and accept React.ReactNode? 
-- Or should we follow similar API like Alert? 
+- Should we keep footer flexible and accept React.ReactNode?
+- Or should we follow similar API like Alert?
 
 **Flexible API:**
 
@@ -245,7 +236,7 @@ How should the footer API look like?
 </Popover>
 ```
 
-**Contrained API:** 
+**Contrained API:**
 
 ```jsx
 <Popover
@@ -253,11 +244,11 @@ How should the footer API look like?
   footer={<Text>Slotted content of Footer</Text>}
   footerActions={{
     primary: {
-      text: "Primary me",
+      text: 'Primary me',
       onClick: () => {},
     },
     secondary: {
-      text: "Secondary me",
+      text: 'Secondary me',
       onClick: () => {},
     },
   }}

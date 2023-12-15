@@ -11,14 +11,16 @@ const allStories = [
 
 export const Card = (): JSX.Element => {
   return (
-    (<Box display="flex" flexDirection="column" gap="spacing.4">
+    <Box display="flex" flexDirection="column" gap="spacing.4">
       {allStories.map((Story) => {
-        return (<>
-          <Text size="large">{Story.storyName}</Text>
-          <Story />
-        </>);
+        return (
+          <>
+            <Text size="large">{Story.storyName}</Text>
+            <Story />
+          </>
+        );
       })}
-    </Box>)
+    </Box>
   );
 };
 

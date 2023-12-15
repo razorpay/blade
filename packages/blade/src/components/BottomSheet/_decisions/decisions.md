@@ -78,7 +78,6 @@ Rendered output:
 
 <img src="./bottomsheet-usage-example-1.png" alt="BottomSheet Usage example" width="55%" />
 
-
 ### `BottomSheet`
 
 We'll expose a `BottomSheet` component with the following API:
@@ -89,7 +88,7 @@ We'll expose a `BottomSheet` component with the following API:
 | snapPoints      | `[number, number, number]` | `[0.35, 0.5, 0.85]` | Snappoints in which the bottom sheeet will rest on, this accepts a number between 0 & 1 which maps to the total view height of the screen. 0.5 means 50% of screen height. |          |
 | onDismiss       | `Callback`                 | `undefined`         | called when the bottom sheet is closed, either by user state, hitting `esc` or tapping backdrop                                                                            |          |
 | initialFocusRef | `React.Ref`                | `undefined`         | ref element you want to get keyboard focus when opening the sheet                                                                                                          |          |
-| children | `React.ReactNode`                | `undefined`         | Accepts other BottomSheet sub components like BottomSheetHeader,BottomSheetBody,BottomSheetFooter                                                                                                          |          |
+| children        | `React.ReactNode`          | `undefined`         | Accepts other BottomSheet sub components like BottomSheetHeader,BottomSheetBody,BottomSheetFooter                                                                          |          |
 
 ### `BottomSheetBody` API
 
@@ -99,21 +98,20 @@ We'll expose a `BottomSheet` component with the following API:
 
 ### `BottomSheetHeader` API
 
-| Prop      | Type            | Default     | Description                           | Required |
-| --------- | --------------- | ----------- | ------------------------------------- | -------- |
-| `title`   | `string`        | `undefined` | Title of the Header                   |       |
-| `subtitle`   | `string`        | `undefined` | Subtitle of the Header                   |       |
-| `leading` | `React.ReactNode` | `undefined` | leading asset or icon to be placed at the left most side of the BottomSheetHeader |          |
-| `trailing` | `Badge, Link, Text, IconButton`, `undefined` | undefined  |     trailing component to be placed at the right most side of the BottomSheetHeader     |    |
-| `titleSuffix` | `Counter` | `undefined` | A component to be placed adjacent to the title text |          |
-| `showBackButton` | `boolean` | `false` | Show or hide back button |          |
-| `onBackButtonClick` | `boolean` | `false` | Event handler for the back button |          |
+| Prop                | Type                                         | Default     | Description                                                                       | Required |
+| ------------------- | -------------------------------------------- | ----------- | --------------------------------------------------------------------------------- | -------- |
+| `title`             | `string`                                     | `undefined` | Title of the Header                                                               |          |
+| `subtitle`          | `string`                                     | `undefined` | Subtitle of the Header                                                            |          |
+| `leading`           | `React.ReactNode`                            | `undefined` | leading asset or icon to be placed at the left most side of the BottomSheetHeader |          |
+| `trailing`          | `Badge, Link, Text, IconButton`, `undefined` | undefined   | trailing component to be placed at the right most side of the BottomSheetHeader   |          |
+| `titleSuffix`       | `Counter`                                    | `undefined` | A component to be placed adjacent to the title text                               |          |
+| `showBackButton`    | `boolean`                                    | `false`     | Show or hide back button                                                          |          |
+| `onBackButtonClick` | `boolean`                                    | `false`     | Event handler for the back button                                                 |          |
 
 ### `BottomSheetFooter` API
 
-
-| Prop       | Type              | Default     | Description                 | Required |
-| ---------- | ----------------- | ----------- | --------------------------- | -------- |
+| Prop       | Type              | Default     | Description                  | Required |
+| ---------- | ----------------- | ----------- | ---------------------------- | -------- |
 | `children` | `React.ReactNode` | `undefined` | Contents of the BottomFooter | ✅       |
 
 ## Composition with Dropdown
@@ -281,8 +279,8 @@ Behaviours:
 - ~~In BottomSheetHeaderLeaing & BottomSheetFooterLeading will the `prefix` only support Icon component?~~
 
 - Consideration for using custom solution rather than third party libraries like [react-spring-bottomsheet](https://github.com/stipsan/react-spring-bottom-shee) in web.
-   - **ANS**: We did a initial research for various third-party libraries documented in [here](./bottomsheet-library-exploration.md), most of them did not fit out use case, react-spring-bottomsheet had lot of features covered but comes with a bit of bundle size baggage like usegesture/xstate/xstate-react/react-spring libraries which in mobile users will have to carry.
-   - Plus we had few requirements like stacked bottomsheets, special logic for where the bottomsheet will open initially which either way had to be implemented.
+  - **ANS**: We did a initial research for various third-party libraries documented in [here](./bottomsheet-library-exploration.md), most of them did not fit out use case, react-spring-bottomsheet had lot of features covered but comes with a bit of bundle size baggage like usegesture/xstate/xstate-react/react-spring libraries which in mobile users will have to carry.
+  - Plus we had few requirements like stacked bottomsheets, special logic for where the bottomsheet will open initially which either way had to be implemented.
 
 ## Alternative APIs
 

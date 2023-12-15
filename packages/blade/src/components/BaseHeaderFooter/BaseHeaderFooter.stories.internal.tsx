@@ -15,10 +15,7 @@ const HeaderContainer = ({ children }: { children: BoxProps['children'] }): Reac
 
 export const BaseHeaderKitchenSink = (): React.ReactElement => {
   return (
-    <Box
-      backgroundColor="surface.background.gray.intense"
-      maxWidth={{ base: '100%', m: '500px' }}
-    >
+    <Box backgroundColor="surface.background.gray.intense" maxWidth={{ base: '100%', m: '500px' }}>
       <HeaderContainer>
         <BaseHeader
           title="Simple BaseHeader"
@@ -84,10 +81,7 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
 
 export const BaseFooterSink = (): React.ReactElement => {
   return (
-    <Box
-      backgroundColor="surface.background.gray.intense"
-      maxWidth={{ base: '100%', m: '500px' }}
-    >
+    <Box backgroundColor="surface.background.gray.intense" maxWidth={{ base: '100%', m: '500px' }}>
       <BaseFooter>
         <Button isFullWidth>Submit</Button>
       </BaseFooter>

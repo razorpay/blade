@@ -68,9 +68,7 @@ const Tag = ({
 }: TagProps): React.ReactElement | null => {
   const isMobile = useIsMobile();
 
-  const textColor = isDisabled
-    ? 'surface.text.gray.disabled'
-    : 'surface.text.gray.subtle';
+  const textColor = isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle';
 
   const mediumPadding: PaddingProps['padding'] = {
     base: ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4'],

@@ -11,11 +11,11 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 
 const Page = (): ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentDescription="A Progress bar is generally a branded element that indicates progress of process or task"
-        componentName="ProgressBar"
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16430%3A256423&t=0raQL8ilgxTx5XYL-4"
-      >
+    <StoryPageWrapper
+      componentDescription="A Progress bar is generally a branded element that indicates progress of process or task"
+      componentName="ProgressBar"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16430%3A256423&t=0raQL8ilgxTx5XYL-4"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
@@ -35,7 +35,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 

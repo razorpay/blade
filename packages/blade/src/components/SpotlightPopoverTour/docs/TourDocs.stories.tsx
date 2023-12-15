@@ -185,10 +185,7 @@ const BladeArgTable = ({ data }: { data: TableData<Item> }): React.ReactElement 
                   <Text>
                     {tableItem.prop}{' '}
                     {tableItem.required && (
-                      <Text
-                        as="span"
-                        color="interactive.text.negative.subtle"
-                      >
+                      <Text as="span" color="interactive.text.negative.subtle">
                         *
                       </Text>
                     )}
@@ -225,14 +222,14 @@ const BladeArgTable = ({ data }: { data: TableData<Item> }): React.ReactElement 
 
 const TourDocs = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        imports=""
-        showDefaultExample={false}
-        showArgsTable={false}
-        componentName="SpotlightPopoverTour"
-        componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
-      >
+    <StoryPageWrapper
+      imports=""
+      showDefaultExample={false}
+      showArgsTable={false}
+      componentName="SpotlightPopoverTour"
+      componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>{BasicExample}</Sandbox>
       <Heading size="medium">iOS Safari Specific Setup</Heading>
@@ -279,7 +276,7 @@ const TourDocs = (): React.ReactElement => {
         </Box>
         <BladeArgTable data={tourStepProps} />
       </Box>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 

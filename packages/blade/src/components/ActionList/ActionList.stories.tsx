@@ -27,10 +27,10 @@ import {
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentName="ActionList"
-        componentDescription="ActionList contains list of ActionList Items with or without in sections to perform particular actions."
-      >
+    <StoryPageWrapper
+      componentName="ActionList"
+      componentDescription="ActionList contains list of ActionList Items with or without in sections to perform particular actions."
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox editorHeight={500}>
         {`
@@ -89,7 +89,7 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 

@@ -14,12 +14,12 @@ import { isReactNative } from '~utils';
 
 const Page = (): ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentDescription="The Heading Component is usually used for headings of each major section of a page."
-        componentName="Heading"
-        apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140"
-      >
+    <StoryPageWrapper
+      componentDescription="The Heading Component is usually used for headings of each major section of a page."
+      componentName="Heading"
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
@@ -34,7 +34,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 
@@ -102,7 +102,7 @@ export const WithMixedColors = WithMixedColorsTemplate.bind({});
 
 const AsPropTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
   return (
-    (<Box>
+    <Box>
       <Text>
         By default{' '}
         <Text as="span" weight="semibold">
@@ -128,7 +128,7 @@ const AsPropTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
       <HeadingComponent {...args}>
         Tweak the storybook controls to see the dom change
       </HeadingComponent>
-    </Box>)
+    </Box>
   );
 };
 

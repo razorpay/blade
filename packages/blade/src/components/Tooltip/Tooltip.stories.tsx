@@ -21,11 +21,11 @@ import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentName="Tooltip"
-        componentDescription="The tooltip typically provides additional context about the element or its function. A tooltip is always triggered by a mouse hover on desktop and on tap on mobile."
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=40636-559188&t=vaK9ZJskCpoIS07l-0"
-      >
+    <StoryPageWrapper
+      componentName="Tooltip"
+      componentDescription="The tooltip typically provides additional context about the element or its function. A tooltip is always triggered by a mouse hover on desktop and on tap on mobile."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=40636-559188&t=vaK9ZJskCpoIS07l-0"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
@@ -44,7 +44,7 @@ const Page = (): React.ReactElement => {
       </Sandbox>
       <Heading size="medium">Tooltip Vs Popover Vs Guided Tour</Heading>
       <PopoverVsTooltip />
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 
@@ -96,7 +96,7 @@ const PlacementBox = React.forwardRef<
   { children: React.ReactNode } & BladeCommonEvents
 >(({ children, ...props }, ref) => {
   return (
-    (<Box
+    <Box
       ref={ref}
       tabIndex={0}
       display="flex"
@@ -110,7 +110,7 @@ const PlacementBox = React.forwardRef<
       {...props}
     >
       <Text color="surface.text.gray.normal">{children}</Text>
-    </Box>)
+    </Box>
   );
 });
 
@@ -254,7 +254,7 @@ const CustomTrigger = React.forwardRef<
 >(({ children, ...props }, ref) => {
   console.log(props);
   return (
-    (<BaseBox
+    <BaseBox
       ref={ref}
       tabIndex={-1}
       display={isReactNative() ? 'flex' : 'inline-block'}
@@ -262,14 +262,12 @@ const CustomTrigger = React.forwardRef<
       padding="spacing.4"
       borderRadius="medium"
       backgroundColor={
-        isReactNative()
-          ? 'surface.background.gray.subtle'
-          : 'surface.background.gray.intense'
+        isReactNative() ? 'surface.background.gray.subtle' : 'surface.background.gray.intense'
       }
       {...props}
     >
       <Text color="surface.text.gray.normal">{children}</Text>
-    </BaseBox>)
+    </BaseBox>
   );
 });
 

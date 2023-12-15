@@ -20,11 +20,11 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentName="Switch"
-        componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
-      >
+    <StoryPageWrapper
+      componentName="Switch"
+      componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
@@ -43,7 +43,7 @@ const Page = (): React.ReactElement => {
         export default App;        
       `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 
@@ -95,7 +95,7 @@ Small.args = {
 
 const WithLabelTemplate: ComponentStory<typeof SwitchComponent> = () => {
   return (
-    (<Box>
+    <Box>
       <Alert
         marginBottom="spacing.6"
         isFullWidth
@@ -187,7 +187,7 @@ const WithLabelTemplate: ComponentStory<typeof SwitchComponent> = () => {
           </CardBody>
         </Card>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 export const WithLabel = WithLabelTemplate.bind({});

@@ -27,9 +27,7 @@ const SelectorTitle = ({
         fontFamily="text"
         fontWeight="regular"
         fontSize={fontSize[size]}
-        color={
-          isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'
-        }
+        color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
       >
         {children}
       </BaseText>

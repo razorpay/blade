@@ -30,11 +30,11 @@ import { PopoverVsTooltip } from '~utils/storybook/PopoverVsTooltip';
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentName="Popover"
-        componentDescription="The popover typically provides additional context about the element or its function. A popover is always triggered by a mouse hover on desktop and on tap on mobile."
-        figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2875-40870&mode=design&t=UP0cRLPEhmoPYo3b-0"
-      >
+    <StoryPageWrapper
+      componentName="Popover"
+      componentDescription="The popover typically provides additional context about the element or its function. A popover is always triggered by a mouse hover on desktop and on tap on mobile."
+      figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2875-40870&mode=design&t=UP0cRLPEhmoPYo3b-0"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
@@ -53,7 +53,7 @@ const Page = (): React.ReactElement => {
       </Sandbox>
       <Heading size="medium">Popover Vs Tooltip Vs Guided Popover</Heading>
       <PopoverVsTooltip />
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 
@@ -99,7 +99,7 @@ const Center = ({ children }: { children: React.ReactNode }): React.ReactElement
 
 const Content = () => {
   return (
-    (<Box>
+    <Box>
       <Box
         display="flex"
         gap="spacing.3"
@@ -126,7 +126,7 @@ const Content = () => {
           <Amount size="body-medium-bold" value={4750} />
         </Box>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 
@@ -277,47 +277,51 @@ Placement.args = {
 
 export const PopoverInteractiveWrapperTemplate: ComponentStory<typeof Popover> = (args) => {
   const LeadingIcon = iconMap[args.titleLeading as string]!;
-  return (<>
-    <Text as="span">
-      With{' '}
-      <Text weight="semibold" as="span">
-        PopoverInteractiveWrapper
-      </Text>{' '}
-      you can make Popover open when clicking non-interactive elements like Icons,Badges,Counter
-      etc
-    </Text>
-    <Text color="surface.text.gray.muted">Note: PopoverInteractiveWrapper is a button by default.</Text>
-    <Center>
-      <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
-        <Popover
-          {...args}
-          titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
-        >
-          <PopoverInteractiveWrapper display="inline-block">
-            <InfoIcon color="surface.text.gray.normal" size="large" />
-          </PopoverInteractiveWrapper>
-        </Popover>
+  return (
+    <>
+      <Text as="span">
+        With{' '}
+        <Text weight="semibold" as="span">
+          PopoverInteractiveWrapper
+        </Text>{' '}
+        you can make Popover open when clicking non-interactive elements like Icons,Badges,Counter
+        etc
+      </Text>
+      <Text color="surface.text.gray.muted">
+        Note: PopoverInteractiveWrapper is a button by default.
+      </Text>
+      <Center>
+        <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
+          <Popover
+            {...args}
+            titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
+          >
+            <PopoverInteractiveWrapper display="inline-block">
+              <InfoIcon color="surface.text.gray.normal" size="large" />
+            </PopoverInteractiveWrapper>
+          </Popover>
 
-        <Popover
-          {...args}
-          titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
-        >
-          <PopoverInteractiveWrapper>
-            <Badge variant="information">NEW</Badge>
-          </PopoverInteractiveWrapper>
-        </Popover>
+          <Popover
+            {...args}
+            titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
+          >
+            <PopoverInteractiveWrapper>
+              <Badge variant="information">NEW</Badge>
+            </PopoverInteractiveWrapper>
+          </Popover>
 
-        <Popover
-          {...args}
-          titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
-        >
-          <PopoverInteractiveWrapper>
-            <Counter value={20} />
-          </PopoverInteractiveWrapper>
-        </Popover>
-      </Box>
-    </Center>
-  </>);
+          <Popover
+            {...args}
+            titleLeading={<LeadingIcon color="surface.text.gray.normal" size="medium" />}
+          >
+            <PopoverInteractiveWrapper>
+              <Counter value={20} />
+            </PopoverInteractiveWrapper>
+          </Popover>
+        </Box>
+      </Center>
+    </>
+  );
 };
 PopoverInteractiveWrapperTemplate.storyName = 'PopoverInteractiveWrapper';
 PopoverInteractiveWrapperTemplate.args = {
@@ -334,15 +338,15 @@ const MyCustomTriggerButton = React.forwardRef<
   if (isReactNative()) {
     return (
       // just spread the props
-      (<Button ref={ref as never} onClick={props.onClick as never}>
+      <Button ref={ref as never} onClick={props.onClick as never}>
         {children}
-      </Button>)
+      </Button>
     );
   }
 
   return (
     // just spread the props
-    (<BaseBox
+    <BaseBox
       backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       borderRadius="medium"
@@ -353,7 +357,7 @@ const MyCustomTriggerButton = React.forwardRef<
       {...props}
     >
       {children}
-    </BaseBox>)
+    </BaseBox>
   );
 });
 
@@ -500,7 +504,7 @@ export const ProductUseCase1: ComponentStory<typeof Popover> = (args, context) =
   };
 
   return (
-    (<Box>
+    <Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
         <Text as="span" weight="semibold">
@@ -556,7 +560,7 @@ export const ProductUseCase1: ComponentStory<typeof Popover> = (args, context) =
           />
         </Popover>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 ProductUseCase1.storyName = 'Product Usecase: Input with action';
@@ -574,7 +578,7 @@ export const ProductUseCase2: ComponentStory<typeof Popover> = (args, context) =
   };
 
   return (
-    (<Box>
+    <Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
         <Text as="span" weight="semibold">
@@ -627,7 +631,7 @@ export const ProductUseCase2: ComponentStory<typeof Popover> = (args, context) =
           />
         </Popover>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 ProductUseCase2.storyName = 'Product Usecase: Dark Mode';
@@ -637,7 +641,7 @@ export const ProductUseCase3: ComponentStory<typeof Popover> = (args, context) =
   const isInDocsMode = context.viewMode === 'docs';
 
   return (
-    (<Box>
+    <Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
         <Text as="span" weight="semibold">
@@ -684,7 +688,7 @@ export const ProductUseCase3: ComponentStory<typeof Popover> = (args, context) =
           />
         </Popover>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 ProductUseCase3.storyName = 'Product Usecase: Introducing Search';

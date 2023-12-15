@@ -11,11 +11,11 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 
 const Page = (): ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentName="Counter"
-        componentDescription="Counters are visual indicators that contains numerical values, tallies or counts in regards to some context. It can be used to show non-interactive numerical data."
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8222%3A70827"
-      >
+    <StoryPageWrapper
+      componentName="Counter"
+      componentDescription="Counters are visual indicators that contains numerical values, tallies or counts in regards to some context. It can be used to show non-interactive numerical data."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8222%3A70827"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
@@ -31,7 +31,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 

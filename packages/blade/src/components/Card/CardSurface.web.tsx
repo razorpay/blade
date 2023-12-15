@@ -12,8 +12,7 @@ const CardSurface = styled(BaseBox)<{ surfaceLevel: 2 | 3 }>(
       flexDirection: 'column',
       borderWidth: elevation === 'none' ? `${theme.border.width.thin}` : undefined,
       borderStyle: elevation === 'none' ? 'solid' : undefined,
-      borderColor:
-        elevation === 'none' ? `${theme.colors.surface.border.gray.normal}` : undefined,
+      borderColor: elevation === 'none' ? `${theme.colors.surface.border.gray.normal}` : undefined,
       backgroundColor,
       boxSizing: 'border-box',
     };

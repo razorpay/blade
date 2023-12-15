@@ -16,11 +16,11 @@ import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentName="Collapsible"
-        componentDescription="Collapsible is used to allow users to toggle the visibility of hidden content within a container."
-        figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=79-629874&t=sVxH3DOnx3L3F9rO-0"
-      >
+    <StoryPageWrapper
+      componentName="Collapsible"
+      componentDescription="Collapsible is used to allow users to toggle the visibility of hidden content within a container."
+      figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=79-629874&t=sVxH3DOnx3L3F9rO-0"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox editorHeight={500}>
         {`
@@ -68,7 +68,7 @@ const Page = (): ReactElement => {
         export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 

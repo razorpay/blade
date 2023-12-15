@@ -79,8 +79,8 @@ To make custom elements work the components needs to expose:
 ```jsx
 import type { TooltipTriggerProps } from "@razorpay/blade/components";
 
-type MyCustomButtonProps = { 
-  children: React.ReactNode 
+type MyCustomButtonProps = {
+  children: React.ReactNode
 } & TooltipTriggerProps
 
 const MyCustomButton = React.forwardRef<
@@ -219,14 +219,13 @@ We will go ahead with Immediate press, because long pressing to open will have d
 <details>
   <summary>Q3: Why do we need <b>TooltipInteractiveWrapper</b>? Can't we automatically wrap the children internally?</summary>
 
-
-We did a POC on this, it's quite tricky to get right. 
+We did a POC on this, it's quite tricky to get right.
 
 ### Problem 1: Refs
 
-To detect if an element is interactive or not we need to expose refs on all the components, and it includes interactive, non-interactive both elements. 
+To detect if an element is interactive or not we need to expose refs on all the components, and it includes interactive, non-interactive both elements.
 
-Now imagine this: 
+Now imagine this:
 
 ```jsx
 <Tooltip>
@@ -235,40 +234,40 @@ Now imagine this:
 ```
 
 To check if InfoIcon is an interactive element it needs to expose the DOM ref, and that means in all of our 260 icon components we will need to expose the ref.
-And same goes for custom trigger components if users don't expose ref we won't know the DOM element it's using. 
- 
-### Problem 2: Double render 
+And same goes for custom trigger components if users don't expose ref we won't know the DOM element it's using.
 
-Let's say we solve the ref problem, now internally we need to check if the element is an interactive element, then swap the rendered element with the TooltipInteractiveWrapper. This method is quite hacky and fragile could lead to hydration mismatches (tho haven't tests) & flicker. 
+### Problem 2: Double render
+
+Let's say we solve the ref problem, now internally we need to check if the element is an interactive element, then swap the rendered element with the TooltipInteractiveWrapper. This method is quite hacky and fragile could lead to hydration mismatches (tho haven't tests) & flicker.
 
 ```jsx
 const Tooltip = () => {
   const [isTriggerInteractive, setIsTriggerInteractive] = useState(true);
-  
+
   React.useEffect(() => {
     if (!triggerRef.current) return;
-    
+
     // once we have the trigger ref, after the first render, we can detect the DOM element
     // and swap the flag to render the trigger wrapper as needed
     if (triggerRef.current.tagName === 'button | a ... etc') {
-      setIsTriggerInteractive(true)
+      setIsTriggerInteractive(true);
     } else {
-      setIsTriggerInteractive(false)
-      }
-  }, [])
+      setIsTriggerInteractive(false);
+    }
+  }, []);
 
   return (
     <>
-      {isTriggerInteractive 
-       // on first render isTriggerInteractive is true so that we get the children's ref by rendering the element atleast once.
-        ?  React.cloneElement(children, { ref, onClick })
-        : <TooltipInteractiveWrapper>{children}</TooltipInteractiveWrapper>
-       }
+      {isTriggerInteractive ? (
+        // on first render isTriggerInteractive is true so that we get the children's ref by rendering the element atleast once.
+        React.cloneElement(children, { ref, onClick })
+      ) : (
+        <TooltipInteractiveWrapper>{children}</TooltipInteractiveWrapper>
+      )}
     </>
-  )
-}
+  );
+};
 ```
-
 
 ### Problem 3: Trigger wrapper styles
 
@@ -276,11 +275,11 @@ Previously we had an API to just pass a prop to internally wrap the trigger with
 
 ```jsx
 <Tooltip shouldWrapChildren>
-    <InfoIcon size="2xlarge" color="action.icon.link.visited" />
+  <InfoIcon size="2xlarge" color="action.icon.link.visited" />
 </Tooltip>
 ```
 
-But this caused an issue where now there will be an additional `div` wrapper in the rendered HTML which could interfere with layouting the elements since users won't have control over the styles for that internal `div`, thus we switched to TooltipInteractiveWrapper so users can pass Box props and styles as needed. 
+But this caused an issue where now there will be an additional `div` wrapper in the rendered HTML which could interfere with layouting the elements since users won't have control over the styles for that internal `div`, thus we switched to TooltipInteractiveWrapper so users can pass Box props and styles as needed.
 
 ```jsx
 <Tooltip>
@@ -290,19 +289,18 @@ But this caused an issue where now there will be an additional `div` wrapper in 
 </Tooltip>
 ```
 
-This is much more predictable and users will have the control over the internal wrapper. 
-If we go ahead with automatically wrapping the tooltip trigger users won't be able to pass props to it, unless we explicitly have another prop say `triggerProps={{ ... }}`. 
+This is much more predictable and users will have the control over the internal wrapper.
+If we go ahead with automatically wrapping the tooltip trigger users won't be able to pass props to it, unless we explicitly have another prop say `triggerProps={{ ... }}`.
 
-### Conclusion: 
+### Conclusion:
 
-Thats why we decided to go ahead with manual wrapping: 
+Thats why we decided to go ahead with manual wrapping:
 
-- It's much more predictable 
+- It's much more predictable
 - Less hacky
 - And customizable
 
 </details>
-
 
 ## References
 

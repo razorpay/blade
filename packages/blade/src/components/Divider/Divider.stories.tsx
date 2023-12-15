@@ -15,12 +15,12 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=608-883166&mode=design&t=6uRroMDHC66zlvxT-0"
-        componentName="Divider"
-        componentDescription="Divider is a visual element that is used to separate or divide content within a layout"
-        apiDecisionLink={null}
-      >
+    <StoryPageWrapper
+      figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=608-883166&mode=design&t=6uRroMDHC66zlvxT-0"
+      componentName="Divider"
+      componentDescription="Divider is a visual element that is used to separate or divide content within a layout"
+      apiDecisionLink={null}
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
@@ -61,7 +61,7 @@ const Page = (): React.ReactElement => {
           export default App;          
         `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 
@@ -78,10 +78,12 @@ export default {
 
 const DividerDefaultTemplate: ComponentStory<typeof DividerComponent> = (args) => {
   return (
-    (<Card>
+    <Card>
       <CardBody>
         <BaseBox display="flex" flexDirection={args.orientation == 'vertical' ? 'row' : 'column'}>
-          <Text margin="spacing.4" size="large">Payment Links</Text>
+          <Text margin="spacing.4" size="large">
+            Payment Links
+          </Text>
           <DividerComponent {...args} />
           <Box margin="spacing.4">
             <Text>Share payment link via:</Text>
@@ -93,7 +95,7 @@ const DividerDefaultTemplate: ComponentStory<typeof DividerComponent> = (args) =
           </Box>
         </BaseBox>
       </CardBody>
-    </Card>)
+    </Card>
   );
 };
 
@@ -102,16 +104,18 @@ Divider.storyName = 'Default';
 
 const DividerHorizontalTemplate: ComponentStory<typeof DividerComponent> = () => {
   return (
-    (<Card>
+    <Card>
       <CardBody>
-        <Text marginBottom="spacing.2" size="large">Payment Links</Text>
+        <Text marginBottom="spacing.2" size="large">
+          Payment Links
+        </Text>
         <DividerComponent />
         <Text marginTop="spacing.3">
           Share payment link via an email, SMS, messenger, chatbot etc. and get paid immediately.
           Accepting payments from customers is now just a link away.
         </Text>
       </CardBody>
-    </Card>)
+    </Card>
   );
 };
 
@@ -155,10 +159,12 @@ DividerVertical.storyName = 'Vertical';
 
 const DividerWithTextTemplate: ComponentStory<typeof DividerComponent> = () => {
   return (
-    (<Card>
+    <Card>
       <CardBody>
         <BaseBox display="flex" flexDirection="column">
-          <Text marginBottom="spacing.4" size="large">Explore multiple payment options</Text>
+          <Text marginBottom="spacing.4" size="large">
+            Explore multiple payment options
+          </Text>
           <DividerComponent />
           <BaseBox display="flex" gap="spacing.6" flexDirection="row">
             <BaseBox width="30%">
@@ -186,7 +192,7 @@ const DividerWithTextTemplate: ComponentStory<typeof DividerComponent> = () => {
           </BaseBox>
         </BaseBox>
       </CardBody>
-    </Card>)
+    </Card>
   );
 };
 

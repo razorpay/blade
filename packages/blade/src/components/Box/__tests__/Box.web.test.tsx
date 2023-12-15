@@ -101,7 +101,9 @@ describe('<Box />', () => {
   // https://github.com/razorpay/blade/issues/1480
   it('should not throw error and render properly with undefined backgroundColor', () => {
     const { container } = renderWithTheme(
-      <Box backgroundColor={{ base: 'interactive.background.primary.disabled', l: undefined }}>I am Visible</Box>,
+      <Box backgroundColor={{ base: 'interactive.background.primary.disabled', l: undefined }}>
+        I am Visible
+      </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
       .c0.c0.c0.c0.c0 {
@@ -121,7 +123,9 @@ describe('<Box />', () => {
 
   it('should accept "transparent" value for backgroundColor', () => {
     const { container } = renderWithTheme(
-      <Box backgroundColor={{ base: 'interactive.background.primary.disabled', l: 'transparent' }}>I am Visible</Box>,
+      <Box backgroundColor={{ base: 'interactive.background.primary.disabled', l: 'transparent' }}>
+        I am Visible
+      </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
       .c0.c0.c0.c0.c0 {

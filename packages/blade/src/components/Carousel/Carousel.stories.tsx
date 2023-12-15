@@ -209,7 +209,7 @@ const TestimonialCard = ({
   company,
 }: TestimonialData): React.ReactElement => {
   return (
-    (<Card height="100%">
+    <Card height="100%">
       <CardBody height="100%">
         <Box height="100%" display="flex" gap="spacing.4" flexDirection="column">
           <QuoteSvg />
@@ -245,7 +245,7 @@ const TestimonialCard = ({
           </Box>
         </Box>
       </CardBody>
-    </Card>)
+    </Card>
   );
 };
 
@@ -336,7 +336,7 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
   }
 
   return (
-    (<Box margin="auto" padding="spacing.4" width="100%">
+    <Box margin="auto" padding="spacing.4" width="100%">
       <Box marginY="spacing.8">
         <Text>
           You can achive bleed by setting <Code size="medium">visibleItems</Code> to autofit &
@@ -375,7 +375,7 @@ export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
         carouselItemWidth={{ base: '90%', m: '300px' }}
         scrollOverlayColor="surface.background.gray.subtle"
       />
-    </Box>)
+    </Box>
   );
 };
 
@@ -442,7 +442,7 @@ const InteractiveTestimonialCard = ({
   company,
 }: TestimonialData): React.ReactElement => {
   return (
-    (<Box display="flex" alignItems="center" padding="spacing.5" height="100%">
+    <Box display="flex" alignItems="center" padding="spacing.5" height="100%">
       <Card
         height="100%"
         margin="auto"
@@ -485,7 +485,7 @@ const InteractiveTestimonialCard = ({
           </Box>
         </CardBody>
       </Card>
-    </Box>)
+    </Box>
   );
 };
 

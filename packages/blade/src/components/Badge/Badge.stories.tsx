@@ -13,11 +13,11 @@ import { capitalize } from '~utils/lodashButBetter/capitalize';
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8110%3A417"
-        componentName="Badge"
-        componentDescription="Badges are used to show small amount of color coded metadata, which are ideal for getting user attention."
-      >
+    <StoryPageWrapper
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8110%3A417"
+      componentName="Badge"
+      componentDescription="Badges are used to show small amount of color coded metadata, which are ideal for getting user attention."
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
@@ -34,7 +34,7 @@ const Page = (): React.ReactElement => {
         export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 

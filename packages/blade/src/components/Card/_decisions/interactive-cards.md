@@ -96,13 +96,13 @@ In this method we don't provide isScaled prop.
 
 - Users can still know when the `onHover` is triggered but users won't be able to manually set the state of the Card to be `scaled` (eg isScaled={true}), imagine if user wants a card to be `scaled` when user selects it, they won't be able to achive that. (now if we say this is not a valid pattern then fine or else we need further discussion on this)
 
-**Mobile Interaction:** 
+**Mobile Interaction:**
 
-In mobile devices there can't be any hover interaction, thus we will have to change the interaction to be on `tap-and-hold` instead, if consumer taps the card or presses the card it will scale and provide feedback to the user. 
+In mobile devices there can't be any hover interaction, thus we will have to change the interaction to be on `tap-and-hold` instead, if consumer taps the card or presses the card it will scale and provide feedback to the user.
 
 And instead of scaling up, we will scale down the card so that the interaction feels more natural as it's getting `pressed-in`
 
-**Conclusion:** 
+**Conclusion:**
 We will go ahead with Method 2 because of the reason mentioned above and we will also be able to keep the behaviour consistent + control how the behaviour would work in mobile devices (eg we can say instead of hover we can do pressed state changes the scale)
 
 ## Selectable Card
@@ -173,7 +173,6 @@ const RadioExample = () => {
 - Bit of an effort on consumer end
 - While the web implementation works great, for react-native consumers they will have to write a very different state management code, since react-native won't support out of the box native `input=radio` like behaviour. (accessibility they will also have to handle themselves)
 
-
 **Method 2: Predefined CardGroup/CardGroupItem components:**
 
 With this method, we will expose CardGroup & CardGroupItem components, the API will be similar to Chip component.
@@ -217,16 +216,16 @@ const [selected, setSelected] = React.useState('orange');
 - Bit of effort on our end, we will basically have to create subset of Radio/Checkbox components for Card's usecase
 - Introduces new components, CardGroup, CardGroupItem.
 
-**Conclusion:** 
-After discussing with the team, we decided to go with Method 1, because as the Card is a more flexible component in general we want to keep the behaviour generic and let consumers handle the interaction as per their usecase, plus prodiving CardGroup,CardGroupItem could cause flexibility issues and might not work for all the usecases.  
+**Conclusion:**
+After discussing with the team, we decided to go with Method 1, because as the Card is a more flexible component in general we want to keep the behaviour generic and let consumers handle the interaction as per their usecase, plus prodiving CardGroup,CardGroupItem could cause flexibility issues and might not work for all the usecases.
 
 ## Linkable Card
 
-With linkable card, the whole card itself can be clicked or linked to any URL. 
+With linkable card, the whole card itself can be clicked or linked to any URL.
 
 With linkable card the main issue is accessibility & interaction, because simply wrapping the whole card in an `a` tag won't be valid, because inside the card there can also be interactive elements.
 
-Three problems with naive approach of just wrapping the card in a link: 
+Three problems with naive approach of just wrapping the card in a link:
 
 - The wrapped Link component's styling will be leaked into the internal interactive components, see how accordion items and the normal Text component is underlined
 - If we have any interactive component say, Accordion or Button clicking on those will also trigger the Link navigation.
@@ -234,10 +233,10 @@ Three problems with naive approach of just wrapping the card in a link:
 
 > Check this [Codesandbox for reproduction](https://codesandbox.io/s/card-nested-links-issue-j6wtyn?file=/App.tsx)
 
-
 **Solution:**
 
 We need to overlay the Link to cover the card instead of nesting it.
+
 - ChakraUI uses [LinkOverlay](https://chakra-ui.com/docs/components/link-overlay/usage#nested-links) component to solve this
 - MUI uses a `overlay` prop on the [link](https://mui.com/joy-ui/react-card/#multiple-actions) itself
 
@@ -245,13 +244,12 @@ Previously [discussed](https://razorpay.slack.com/archives/G01B3LQ9H0W/p16895803
 
 Can explore a solution where we don't need to expose `overlay` prop or `LinkOverlay` component to consumer by accepting `<Card href="" />` but internally we will anyway have a `LinkOverlay` component for reasons mentioned above.
 
-Example usage: 
+Example usage:
 
 ```jsx
 // we might also need to expose other link props like target=blank etc
 <Card href="/payment-pages" />
 ```
-
 
 ## Open Questions
 

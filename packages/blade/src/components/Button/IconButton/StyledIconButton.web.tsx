@@ -89,10 +89,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
     >
-      <Icon
-        size={size}
-        color={isDisabled ? 'interactive.icon.gray.disabled' : 'currentColor'}
-      />
+      <Icon size={size} color={isDisabled ? 'interactive.icon.gray.disabled' : 'currentColor'} />
     </StyledButton>
   ),
 );

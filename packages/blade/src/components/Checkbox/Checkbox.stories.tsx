@@ -13,11 +13,11 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentName="Checkbox"
-        componentDescription="Checkbox can be used in forms when a user needs to select multiple values from several options."
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
-      >
+    <StoryPageWrapper
+      componentName="Checkbox"
+      componentDescription="Checkbox can be used in forms when a user needs to select multiple values from several options."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox showConsole>
         {`
@@ -35,7 +35,7 @@ const Page = (): React.ReactElement => {
         export default App;
       `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 

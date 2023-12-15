@@ -12,7 +12,7 @@ A tab is a navigation component used in the interface to switch between differen
 - [`TabPanel` API](#tabpanel-api)
   - [Examples:](#examples)
 - [Basic](#basic)
-    - [Controlled, Uncontrolled](#controlled-uncontrolled)
+  - [Controlled, Uncontrolled](#controlled-uncontrolled)
 - [Vertical Orientation](#vertical-orientation)
 - [Filled Variant](#filled-variant)
 - [With Tooltip](#with-tooltip)
@@ -87,9 +87,9 @@ type TabsProps = {
   isFullWidthTabItem?: boolean;
   /**
    * By default the TabPanels will be mounted to the DOM even if they are not selected.
-   * 
+   *
    * If `true`, the TabPanels will only be mounted to the DOM when they are selected.
-   * 
+   *
    * @default false
    */
   isLazy?: boolean;
@@ -300,7 +300,7 @@ const Uncontrolled = () => {
 
 ## Alternative APIs
 
-We [discussed](https://github.com/razorpay/blade/pull/1693#discussion_r1345677600) another potential API: 
+We [discussed](https://github.com/razorpay/blade/pull/1693#discussion_r1345677600) another potential API:
 
 ```jsx
 <Tabs>
@@ -316,11 +316,11 @@ We [discussed](https://github.com/razorpay/blade/pull/1693#discussion_r134567760
 </Tabs>
 ```
 
-We decided not to go with this API because of these downsides: 
+We decided not to go with this API because of these downsides:
 
 #### 1. Quite tricky/hack to implement
 
-With this API it will be quite tricky to map the JSX to the HTML structure that a typical tab requires. 
+With this API it will be quite tricky to map the JSX to the HTML structure that a typical tab requires.
 
 A tab's HTML structure is as follows
 
@@ -331,7 +331,7 @@ A tab's HTML structure is as follows
     <button role="tab">tab item 2</button>
     <button role="tab">tab item 3</button>
   </div>
-  
+
   <div>
     <section role="tabpanel"></section>
     <section role="tabpanel"></section>
@@ -340,35 +340,36 @@ A tab's HTML structure is as follows
 </div>
 ```
 
-We need to achieve the above HTML structure, and to do this with the above API it will get very hacky since now we need to use React.cloneElement and save those JSX nodes in state and render them in appropriate place. 
+We need to achieve the above HTML structure, and to do this with the above API it will get very hacky since now we need to use React.cloneElement and save those JSX nodes in state and render them in appropriate place.
 
 ```html
 <Tabs>
-  // this will be the button with role="tab", need to React.cloneElement and move it to the right place, and while placing also need to make sure it has a parent of role="tablist"
-  <Tab value={} leading={} trailing={} title={}>  
-    // this is role="tabpanel" need to React.cloneElement and move it to the right place
-    {...the jsx content for the content of the tab} 
+  // this will be the button with role="tab", need to React.cloneElement and move it to the right
+  place, and while placing also need to make sure it has a parent of role="tablist"
+  <Tab value="{}" leading="{}" trailing="{}" title="{}">
+    // this is role="tabpanel" need to React.cloneElement and move it to the right place {...the jsx
+    content for the content of the tab}
   </Tab>
 </Tabs>
 ```
 
 #### 2. The JSX doesn't map well with the visual hierarchy / the HTML structure
 
-If you notice the HTML structure pointed out in point #1 you'll see that it's 1:1 with the JSX API that i'm proposing. 
+If you notice the HTML structure pointed out in point #1 you'll see that it's 1:1 with the JSX API that i'm proposing.
 
-The current API that is proposed also maps 1:1 with the visual hierarchy of the component, but the second one doesn't map very well.  
+The current API that is proposed also maps 1:1 with the visual hierarchy of the component, but the second one doesn't map very well.
 
 ![Frame 1 (11)](https://github.com/razorpay/blade/assets/35374649/9058d53f-aa5b-4a45-9111-5bfbdafa8f27)
 
 #### 3. Extensibility
 
-The current API is also much more easier to extend in case any future usecase arises, for example let's say we want to use these tabs like a segmented control (which works like radio buttons but doesn't associate with any "tabpanels" we can simply remove the tabpanels and change the underlying html structure to accommodate for any future usecases. 
+The current API is also much more easier to extend in case any future usecase arises, for example let's say we want to use these tabs like a segmented control (which works like radio buttons but doesn't associate with any "tabpanels" we can simply remove the tabpanels and change the underlying html structure to accommodate for any future usecases.
 
-Check how reshaped is allowing this [extensibility](https://reshaped.so/content/docs/components/tabs#using-in-forms) - if you pass `name` prop it will convert the tabs to work like a Radio. 
+Check how reshaped is allowing this [extensibility](https://reshaped.so/content/docs/components/tabs#using-in-forms) - if you pass `name` prop it will convert the tabs to work like a Radio.
 
-#### 4. API Familiarity 
+#### 4. API Familiarity
 
-The current API that is proposed is also much more familiar and is similar to how many other design systems are approaching compared to the second one: 
+The current API that is proposed is also much more familiar and is similar to how many other design systems are approaching compared to the second one:
 
 - [Reshaped](https://reshaped.so/content/docs/components/tabs)
 - [Chakra](https://chakra-ui.com/docs/components/tabs/usage)
@@ -377,15 +378,11 @@ The current API that is proposed is also much more familiar and is similar to ho
 - [RadixUI](https://www.radix-ui.com/primitives/docs/components/tabs)
 - [HeadlessUI](https://headlessui.com/react/tabs)
 
-
 ## Motion
 
 Check the motion [prototype](https://www.figma.com/proto/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=4005-31894&t=b3OlPHxPuFH1BAIZ-0&scaling=min-zoom&page-id=3698%3A13772) here.
 
-
 https://github.com/razorpay/blade/assets/35374649/8c9d59b1-6f59-42b3-a4c8-a31862479c82
-
-
 
 ## Accessibility
 

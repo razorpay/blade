@@ -73,5 +73,4 @@ Cons:
 
 [https://github.com/jeremybarbet/react-native-modalize](https://github.com/jeremybarbet/react-native-modalize)
 
-
 > This file is cloned from: https://docs.google.com/document/d/1lRIBo5nkp1R9_DC9nRiFFwBEH3oVhMZjLbV7jxFrYBA/edit

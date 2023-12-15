@@ -20,11 +20,11 @@ const listSizes: NonNullable<ListProps['size']>[] = ['small', 'medium', 'large']
 
 const Page = (): ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentDescription="List displays a set of related items that are composed of text/links."
-        componentName="List"
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23205%3A446859&t=itEw2V8u5Q0PPGJq-4"
-      >
+    <StoryPageWrapper
+      componentDescription="List displays a set of related items that are composed of text/links."
+      componentName="List"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=23205%3A446859&t=itEw2V8u5Q0PPGJq-4"
+    >
       <Heading size="medium">Usage</Heading>
       <Sandbox>
         {`
@@ -53,7 +53,7 @@ const Page = (): ReactElement => {
           export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 
@@ -166,7 +166,7 @@ ListMixNested.storyName = 'Unordered & Ordered Mix';
 
 const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
   return (
-    (<BaseBox>
+    <BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
           <Text size="large">{capitalize(size)} Size:</Text>
@@ -185,7 +185,7 @@ const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
           </List>
         </BaseBox>
       ))}
-    </BaseBox>)
+    </BaseBox>
   );
 };
 
@@ -213,7 +213,7 @@ OrderedListWithSizes.args = {
 
 const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
   return (
-    (<BaseBox>
+    <BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
           <Text size="large">{capitalize(size)} Size:</Text>
@@ -233,7 +233,7 @@ const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
           </List>
         </BaseBox>
       ))}
-    </BaseBox>)
+    </BaseBox>
   );
 };
 
@@ -264,7 +264,7 @@ ListWithLinkAndIcon.storyName = 'Link & Icon';
 
 const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
   return (
-    (<BaseBox>
+    <BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
           <Text size="large">{capitalize(size)} Size:</Text>
@@ -282,7 +282,7 @@ const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
           </List>
         </BaseBox>
       ))}
-    </BaseBox>)
+    </BaseBox>
   );
 };
 export const ListWithCodeAndIcon = ListWithCodeTemplate.bind({});
@@ -290,7 +290,7 @@ ListWithCodeAndIcon.storyName = 'With Inline Code';
 
 const ListWithListItemTextTemplate: ComponentStory<typeof List> = () => {
   return (
-    (<BaseBox>
+    <BaseBox>
       {listSizes.map((size) => (
         <BaseBox key={size}>
           <Text size="large">{capitalize(size)} Size:</Text>
@@ -314,7 +314,7 @@ const ListWithListItemTextTemplate: ComponentStory<typeof List> = () => {
           </List>
         </BaseBox>
       ))}
-    </BaseBox>)
+    </BaseBox>
   );
 };
 export const ListWithListItemText = ListWithListItemTextTemplate.bind({});

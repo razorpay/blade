@@ -140,11 +140,7 @@ export const BaseInputVisuals = ({
           <BaseBox paddingLeft="spacing.4" display="flex">
             <LeadingIcon
               size="medium"
-              color={
-                isDisabled
-                  ? 'surface.text.gray.disabled'
-                  : 'surface.text.gray.subtle'
-              }
+              color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
             />
           </BaseBox>
         ) : null}
@@ -196,11 +192,7 @@ export const BaseInputVisuals = ({
             {
               <TrailingIcon
                 size="medium"
-                color={
-                  isDisabled
-                    ? 'surface.text.gray.disabled'
-                    : 'surface.text.gray.subtle'
-                }
+                color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
               />
             }
           </BaseBox>

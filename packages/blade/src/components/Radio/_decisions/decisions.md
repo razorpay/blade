@@ -23,12 +23,12 @@ This document outlines the API of `Radio` & `RadioGroup` component.
 
 > Note: Radio component can't be used outside of RadioGroup.
 
-| Prop                | Type                                    | Default     | Description                                                                                                                                                    | Required |
-| ------------------- | --------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| children            | `string`                                | `undefined` | The text to be rendered as label                                                                                                                          | ✅       |
-| isDisabled          | `boolean`                               | `false`     | Control whether the radio is disabled or not.                                                                                                                  |          |
-| helpText            | `string`                                | `undefined` | The helper text to be rendered                                                                                                                                 |          |
-| value (html native) | `string`                                | `undefined` | The value of the input field in a radio, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#value)             |          |
+| Prop                | Type      | Default     | Description                                                                                                                                        | Required |
+| ------------------- | --------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| children            | `string`  | `undefined` | The text to be rendered as label                                                                                                                   | ✅       |
+| isDisabled          | `boolean` | `false`     | Control whether the radio is disabled or not.                                                                                                      |          |
+| helpText            | `string`  | `undefined` | The helper text to be rendered                                                                                                                     |          |
+| value (html native) | `string`  | `undefined` | The value of the input field in a radio, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#value) |          |
 
 ## `RadioGroup`
 
@@ -88,11 +88,7 @@ const Controlled = () => {
 
 const Uncontrolled = () => {
   return (
-    <RadioGroup 
-      name="developers" 
-      label="Developers (uncontrolled)" 
-      defaultValue="chaitanya"
-    >
+    <RadioGroup name="developers" label="Developers (uncontrolled)" defaultValue="chaitanya">
       <Radio value="anurag">Anurag</Radio>
       <Radio value="chaitanya">Chaitanya</Radio>
       <Radio value="divyanshu">Divyanshu</Radio>

@@ -104,7 +104,7 @@ export const WithMixedColors = WithMixedColorsTemplate.bind({});
 
 const AsPropTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
   return (
-    (<Box>
+    <Box>
       <Text>
         By default{' '}
         <Text as="span" weight="semibold">
@@ -118,7 +118,7 @@ const AsPropTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
       <DisplayComponent {...args}>
         Tweak the storybook controls to see the DOM change
       </DisplayComponent>
-    </Box>)
+    </Box>
   );
 };
 

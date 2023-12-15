@@ -11,16 +11,18 @@ const allStories = [
 
 export const Dropdown = (): JSX.Element => {
   return (
-    (<Box display="flex" flexDirection="column" gap="spacing.4">
+    <Box display="flex" flexDirection="column" gap="spacing.4">
       {allStories
         .filter((Story) => Story.storyName.startsWith('Internal'))
         .map((Story) => {
-          return (<>
-            <Text size="large">{Story.storyName}</Text>
-            <Story />
-          </>);
+          return (
+            <>
+              <Text size="large">{Story.storyName}</Text>
+              <Story />
+            </>
+          );
         })}
-    </Box>)
+    </Box>
   );
 };
 

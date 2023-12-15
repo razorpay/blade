@@ -1,6 +1,6 @@
 # Modal <!-- omit in toc -->
 
-Modal components are often used to present information, notifications, or requests that require immediate attention or confirmation from the user. 
+Modal components are often used to present information, notifications, or requests that require immediate attention or confirmation from the user.
 
 This document outlines the API of `Modal` component.
 
@@ -35,19 +35,23 @@ This document outlines the API of `Modal` component.
 - [Figma - Modal](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=35860-607833&t=hEZsxB4yG6A3Gmib-0)
 
 ## Anatomy
+
 Modal's Anatomy is similar to BottomSheet's Anatomy and we will keep the API decisions consistent to that of BottomSheet. You can find more details on [BottomSheet's API decisions here](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/BottomSheet/_decisions/decisions.md).
+
 ### Modal Anatomy
+
 <img src="./modal-anatomy.png" alt="Modal Anatomy" width="100%" />
 
 ### BottomSheet Anatomy
+
 > Attached here only for reference
 
 <img src="../../BottomSheet/_decisions/bottomsheet-anatomy.png" alt="BottomSheet Anatomy" width="100%" />
 
 ## Animation
+
 **Entry:**
 <img src="./modal-entry.gif" alt="Modal Entry Animation" width="100%" />
-
 
 **Exit:**
 <img src="./modal-exit.gif" alt="Modal Exit Animation" width="100%" />
@@ -57,7 +61,14 @@ Modal's Anatomy is similar to BottomSheet's Anatomy and we will keep the API dec
 Sample usage:
 
 ```jsx
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button, Text } from '@razorpay/blade/components';
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  Text,
+} from '@razorpay/blade/components';
 
 const [isOpen, setIsOpen] = useState(false);
 
@@ -67,35 +78,37 @@ const [isOpen, setIsOpen] = useState(false);
     <Text>This is the Modal Body</Text>
   </ModalBody>
   <ModalFooter>
-    <Button variant='secondary'>Cancel</Button>
-    <Button variant='primary'>Save</Button>
+    <Button variant="secondary">Cancel</Button>
+    <Button variant="primary">Save</Button>
   </ModalFooter>
-</Modal>
+</Modal>;
 ```
 
 ### `Modal` API
 
 | Prop               | Type                       | Default     | Description                                                                                                                                                                                                             | Required |
-| ------------------ | -------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| isOpen             | `boolean`                  | `false`     | Toggles modal state                                                                                                                                                                                                     | ✅        |  |
-| onDismiss          | `Callback`                 | `undefined` | Called when the modal is closed, either by user state, hitting `esc` or tapping backdrop                                                                                                                                | ✅        |
+| ------------------ | -------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | --- |
+| isOpen             | `boolean`                  | `false`     | Toggles modal state                                                                                                                                                                                                     | ✅       |     |
+| onDismiss          | `Callback`                 | `undefined` | Called when the modal is closed, either by user state, hitting `esc` or tapping backdrop                                                                                                                                | ✅       |
 | size               | `small`, `medium`, `large` | `small`     | Size of the modal. Each size corresponds to a max-width for the Modal. Each size will have a fixed min-width of `320px`. See the [Modal Sizes & Responsiveness](#modal-sizes--responsiveness) section for more details. |          |
 | initialFocusRef    | `React.Ref`                | `undefined` | ref element you want to get keyboard focus when opening the modal                                                                                                                                                       |          |
 | children           | `React.ReactNode`          | `undefined` | Accepts only Modal sub components like ModalHeader,ModalBody,ModalFooter                                                                                                                                                |          |
-| accessibilityLabel | `string`                   | `undefined` | The accessibility label (aria-label) for the Modal.                                                                                                                                                                     |          |  |
+| accessibilityLabel | `string`                   | `undefined` | The accessibility label (aria-label) for the Modal.                                                                                                                                                                     |          |     |
 
 #### Controlled State
-- Modal will always be a controlled component which means that the consumer will have to pass the `isOpen` prop and handle the state of the Modal themselves. 
+
+- Modal will always be a controlled component which means that the consumer will have to pass the `isOpen` prop and handle the state of the Modal themselves.
 - Internally we will call `onDismiss` when the user toggles the `isOpen` prop to `false` or hits `esc` or taps on the backdrop or clicks on the close icon on the Modal Header.
 
 ### `ModalBody` API
 
 | Prop       | Type                         | Default       | Description                | Required |
 | ---------- | ---------------------------- | ------------- | -------------------------- | -------- |
-| `children` | `React.ReactNode`            | `undefined`   | Content of the Modal       | ✅        |
+| `children` | `React.ReactNode`            | `undefined`   | Content of the Modal       | ✅       |
 | `padding`  | `'spacing.0'`, `'spacing.6`' | `'spacing.6'` | Padding for the Modal Body |          |
 
 ### `ModalHeader` API
+
 > `ModalHeader` API will be similar to [`BottomSheetHeader` API](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/BottomSheet/_decisions/decisions.md#bottomsheetheader-api) with the exception of `showBackButton` & `onBackButtonClick` props.
 
 | Prop          | Type                                         | Default     | Description                                                                 | Required |
@@ -107,14 +120,17 @@ const [isOpen, setIsOpen] = useState(false);
 | `titleSuffix` | `Counter`                                    | `undefined` | A component to be placed adjacent to the title text                         |          |
 
 ### `ModalFooter` API
+
 > `ModalFooter` API will be similar to [`BottomSheetFooter` API](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/BottomSheet/_decisions/decisions.md#bottomsheetfooter-api).
 
 | Prop       | Type              | Default     | Description                 | Required |
 | ---------- | ----------------- | ----------- | --------------------------- | -------- |
-| `children` | `React.ReactNode` | `undefined` | Contents of the ModalFooter | ✅        |
+| `children` | `React.ReactNode` | `undefined` | Contents of the ModalFooter | ✅       |
 
 ## Behaviors
+
 ### Modal Closing
+
 - Modal can be closed by the user in 3 ways:
   - By clicking on the backdrop
   - By hitting the `esc` key
@@ -122,10 +138,10 @@ const [isOpen, setIsOpen] = useState(false);
 - Each of these actions will call the `onDismiss` callback passed by the consumer.
 
 ### Modal Stacking
+
 - We will be supporting stacking of Modals.
 - As an initial implementation, we will have a basic stacking animation where the new Modal will have its own default entry and exit animation without affecting the existing Modal.
 - As an enhancement post release, we will explore if we can have a more sophisticated stacking animation.
-
 
 ### Modal Sizes & Responsiveness
 
@@ -146,11 +162,12 @@ const [isOpen, setIsOpen] = useState(false);
   - Since both of the approaches seem to work as expected, we will implemented the first approach of having `max-width` control the size and a fixed `width` of `100vw - 32px` for all the sizes.
 
 ### Modal Height
+
 - Each Modal will have a max-height of `80vh` (80% of viewport height) and will be scrollable if the content exceeds this height.
 - If the height of the content is less than `80vh`, the Modal's height will be equal to the height of the content.
 
-
 ### Modal Usage on mWeb & native apps
+
 - We will **not be exposing** the Modal component on **mWeb** or native apps (this is a design guideline) instead we would encourage our teams be use BottomSheet for mWeb and native apps.
 - Even though usage on mWeb is discouraged by our design guideline, our Modal will be responsive and will not visually break till 320px on mWeb.
 - We will throw a warning when a Modal is opened on smaller screens as well as add this to our documentation.
@@ -159,10 +176,10 @@ const [isOpen, setIsOpen] = useState(false);
 - We are **not automatically changing** our **Modal to BottomSheet** on code to avoid bundle size overhead as well as to avoid any flow to break unless mindfully implemented with BottomSheet on code.
 
 #### Using BottomSheet on mWeb
+
 - As per our design guideline, we will be using BottomSheet on mWeb for all the use-cases where we would have used Modal on dWeb.
 - This would require our consumers to add some logic to handle this switch from Modal to BottomSheet on mWeb.
 - This decision also enables our consumers to save on bundle size so that the mWeb's bundle only contains BottomSheet and the dWeb's bundle only contains Modal.
-
 
 **Example usage:**
 
@@ -179,17 +196,13 @@ const App = () => {
       {platform === 'onMobile' ? (
         <BottomSheet>
           <BottomSheetHeader />
-          <BottomSheetBody>
-            /* BottomSheetBody content */
-          </BottomSheetBody>
+          <BottomSheetBody>/* BottomSheetBody content */</BottomSheetBody>
           <BottomSheetFooter />
         </BottomSheet>
       ) : (
         <Modal>
           <ModalHeader />
-          <ModalBody>
-            /* ModalBody content */
-          </ModalBody>
+          <ModalBody>/* ModalBody content */</ModalBody>
           <ModalFooter />
         </Modal>
       )}
@@ -198,13 +211,14 @@ const App = () => {
 };
 ```
 
-
 ### Modal for React Native
+
 - Since we want to restrict the usage of Modals on native apps, we will not be implementing the Modal component for React Native.
 - We will implement a dummy export which will only warn the consumer that this component is not supported on native apps.
 - We will also add this to our documentation.
 
 ## Accessibility
+
 - Ref: https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/
 - We will trap the keyboard focus within the Modal.
 - We will close the modal when the user hits the `esc` key.
@@ -215,6 +229,7 @@ const App = () => {
   - Ref: https://css-tricks.com/prevent-page-scrolling-when-a-modal-is-open/
 
 ## Open questions
+
 - ~Do we need a different animation for Modal stacking?~ We will have a basic animation for Modal stacking.
 - ~Do we need a back button on Modal Header?~ No, we do not.
 

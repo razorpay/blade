@@ -32,11 +32,11 @@ import { Checkbox, CheckboxGroup } from '~components/Checkbox';
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        componentName="Interactive Card"
-        componentDescription="Enhancing the Card component to add additional interactions and behaviour. This includes making the card clickable, hoverable, linkable, selectable and more."
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=21248%3A400833&t=ZCWT255jVK78xf1J-4"
-      >
+    <StoryPageWrapper
+      componentName="Interactive Card"
+      componentDescription="Enhancing the Card component to add additional interactions and behaviour. This includes making the card clickable, hoverable, linkable, selectable and more."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=21248%3A400833&t=ZCWT255jVK78xf1J-4"
+    >
       <Heading size="small">Usage</Heading>
       <Box marginY="spacing.6">
         <Sandbox>
@@ -154,7 +154,7 @@ const Page = (): React.ReactElement => {
         `}
         </Sandbox>
       </Box>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 
@@ -319,7 +319,7 @@ export const ClickableCard = (): React.ReactElement => {
   const [buttonClickCount, setButtonClickCount] = React.useState(0);
 
   return (
-    (<Box>
+    <Box>
       <Box marginBottom="spacing.6">
         <Text>
           Cards can be made clickable by passing the <Code size="medium">onClick</Code> prop.
@@ -365,7 +365,7 @@ export const ClickableCard = (): React.ReactElement => {
           </Button>
         </CardBody>
       </Card>
-    </Box>)
+    </Box>
   );
 };
 
@@ -493,7 +493,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
   const [selected, setSelected] = React.useState('free');
 
   return (
-    (<Box>
+    <Box>
       <Text marginBottom="spacing.6">
         To make a group of cards behave like radio buttons, you can put a hidden radio input inside
         the <Code size="medium">CardBody</Code> and pass <Code size="medium">as="label"</Code> prop
@@ -571,7 +571,7 @@ const SingleSelectCardWeb = (): React.ReactElement => {
           </CardBody>
         </Card>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 
@@ -587,7 +587,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
   };
 
   return (
-    (<Box>
+    <Box>
       <Text marginBottom="spacing.6">
         To make a group of cards behave like checkboxes, you can put a hidden checkbox input inside
         the <Code size="medium">CardBody</Code> and pass <Code size="medium">as="label"</Code> prop
@@ -653,7 +653,7 @@ const MultiSelectCardWeb = (): React.ReactElement => {
           </CardBody>
         </Card>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 
@@ -661,7 +661,7 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
   const [selected, setSelected] = React.useState('free');
 
   return (
-    (<Box>
+    <Box>
       <Text marginBottom="spacing.6">
         On ReactNative, to make a group of cards behave like radio buttons, you can manage your own
         state for selected card and use the <Code size="medium">isSelected</Code> &{' '}
@@ -724,7 +724,7 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
           </CardBody>
         </Card>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 
@@ -740,7 +740,7 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
   };
 
   return (
-    (<Box>
+    <Box>
       <Text marginBottom="spacing.6">
         On ReactNative, to make a group of cards behave like checkboxes, you can manage your own
         state for selected card and use the <Code size="medium">isSelected</Code> &{' '}
@@ -803,7 +803,7 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           </CardBody>
         </Card>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 
@@ -823,7 +823,7 @@ export const MultiSelectCard = (): React.ReactElement => {
 
 const RadioCard = ({ value, label }: { value: string; label: string }) => {
   return (
-    (<Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
+    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
       <Radio value={value} />
       <Box display="flex" flexDirection="column" gap="spacing.3">
         <Box display="flex" flexDirection="row" gap="spacing.4">
@@ -836,7 +836,7 @@ const RadioCard = ({ value, label }: { value: string; label: string }) => {
           <Text size="small">Un-billed/₹1,000</Text>
         </Box>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 
@@ -884,7 +884,7 @@ export const SingleSelectWithRadio = (): React.ReactElement => {
 
 const CheckboxCard = ({ value, label }: { value: string; label: string }) => {
   return (
-    (<Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
+    <Box display="flex" flexDirection="row" gap="spacing.3" alignItems="flex-start">
       <Checkbox value={value} />
       <Box display="flex" flexDirection="column" gap="spacing.3">
         <Box display="flex" flexDirection="row" gap="spacing.4">
@@ -897,7 +897,7 @@ const CheckboxCard = ({ value, label }: { value: string; label: string }) => {
           <Text size="small">Un-billed/₹1,000</Text>
         </Box>
       </Box>
-    </Box>)
+    </Box>
   );
 };
 

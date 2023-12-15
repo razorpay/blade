@@ -63,7 +63,7 @@ const steps = [
     name: 'step-1',
     title: 'Step 1',
     content: () => <Text>Some content for step 1</Text>,
-    footer: (props) => <SpotlightPopoverFooter {...props} actions={{}} />
+    footer: (props) => <SpotlightPopoverFooter {...props} actions={{}} />,
   },
   // ...more steps
 ];
@@ -179,7 +179,7 @@ Note that, in order for SpotlightPopoverStep to work properly it needs access to
 
 ### `SpotlightPopoverFooter` API
 
-SpotlightPopoverFooter is an opt in component which you can use to compose footer which has predefined button placements with consistent spacing as defined in figma. 
+SpotlightPopoverFooter is an opt in component which you can use to compose footer which has predefined button placements with consistent spacing as defined in figma.
 
 You can either use this (recommended) or compose your own footer component as per your product usecase.
 
@@ -187,22 +187,22 @@ It'll have similar API like Alert's `actions`, and will have subset of props fro
 
 ```jsx
 type SpotlightPopoverFooterAction = {
-  text?: string;
-  variant?: 'primary' | 'secondary' | 'tertiary';
-  icon?: IconComponent;
-  iconPosition?: 'left' | 'right';
-  isDisabled?: boolean;
-  isLoading?: boolean;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  text?: string,
+  variant?: 'primary' | 'secondary' | 'tertiary',
+  icon?: IconComponent,
+  iconPosition?: 'left' | 'right',
+  isDisabled?: boolean,
+  isLoading?: boolean,
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void,
 };
 
 type SpotlightPopoverFooterProps = {
-  activeStep: number;
-  totalSteps: number;
+  activeStep: number,
+  totalSteps: number,
   actions: {
-    primary?: SpotlightPopoverFooterAction;
-    secondary?: SpotlightPopoverFooterAction;
-  };
+    primary?: SpotlightPopoverFooterAction,
+    secondary?: SpotlightPopoverFooterAction,
+  },
 };
 ```
 
@@ -220,12 +220,8 @@ const Footer = ({ activeStep, totalSteps, goToNext, goToPrevious, stopTour }) =>
       activeStep={activeStep}
       totalSteps={totalSteps}
       actions={{
-        primary: isLast
-          ? { text: 'Done', onClick: stopTour }
-          : { text: 'Next', onClick: goToNext },
-        secondary: isFirst
-          ? undefined
-          : { text: 'Prev', onClick: goToPrevious },
+        primary: isLast ? { text: 'Done', onClick: stopTour } : { text: 'Next', onClick: goToNext },
+        secondary: isFirst ? undefined : { text: 'Prev', onClick: goToPrevious },
       }}
     />
   );
@@ -235,17 +231,13 @@ const steps: SpotlightPopoverSteps = [
   {
     name: 'step-1',
     title: 'Step 1',
-    content: ({ activeStep }) => (
-      <Text>Some content {activeStep}</Text>
-    ),
+    content: ({ activeStep }) => <Text>Some content {activeStep}</Text>,
     footer: Footer,
   },
   {
     name: 'step-2',
     title: 'Step 2',
-    content: ({ activeStep }) => (
-      <Text>Some content {activeStep}</Text>
-    ),
+    content: ({ activeStep }) => <Text>Some content {activeStep}</Text>,
     footer: Footer,
   },
   {

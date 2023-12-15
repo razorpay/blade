@@ -26,11 +26,11 @@ import { kebabCase } from '~utils/lodashButBetter/kebabCase';
 
 const Page = (): React.ReactElement => {
   return (
-    (<StoryPageWrapper
-        figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522"
-        componentName="Skeleton"
-        componentDescription="Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view."
-      >
+    <StoryPageWrapper
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522"
+      componentName="Skeleton"
+      componentDescription="Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view."
+    >
       <Heading size="small">Usage</Heading>{' '}
       <Sandbox>
         {`
@@ -45,7 +45,7 @@ const Page = (): React.ReactElement => {
         export default App;
         `}
       </Sandbox>
-    </StoryPageWrapper>)
+    </StoryPageWrapper>
   );
 };
 
@@ -196,7 +196,7 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
   // Not using gap="" because RN
   // TODO change to gap since we upgrade RN
   return (
-    (<Card padding="spacing.7">
+    <Card padding="spacing.7">
       <CardBody>
         {isLoading ? (
           <Box
@@ -262,7 +262,7 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
           </Box>
         )}
       </CardBody>
-    </Card>)
+    </Card>
   );
 };
 
@@ -369,88 +369,92 @@ const SkeletonAccessibilityTemplate: ComponentStory<typeof SkeletonComponent> = 
 
   if (isReactNative()) return <Text>Story not available on ReactNative</Text>;
 
-  return (<>
-    <Text marginBottom="spacing.4">
-      To make Skeleton loader accessible and let consumers know that some content on the page is
-      loading there are few options:
-    </Text>
-    <List>
-      <ListItem>
-        If you have a section of the page which is loading you can wrap the whole section in a div
-        and set <ListItemCode>aria-busy</ListItemCode> to indicate the content is loading
-      </ListItem>
-      <ListItem>
-        If you are using a button which triggers a loading state and you've set{' '}
-        <ListItemCode>&lt;Button isLoading /&gt;</ListItemCode>, you do not need to do anything
-        because button already announces the loading state
-      </ListItem>
-      <ListItem>
-        Finally, if you want to announce a page level loading state you can utilize the{' '}
-        <ListItemCode>announce()</ListItemCode> method exposed by blade to convey the loading
-        state to the user.
-      </ListItem>
-    </List>
-    <Text marginY="spacing.5" size="large">
-      Example 1: <Code size="medium">announce()</Code> method
-    </Text>
-    <Button
-      onClick={() => {
-        setIsLoading((prev) => !prev);
-      }}
-    >
-      Toggle Loading
-    </Button>
-    <Box width="400px" marginTop="spacing.4">
-      {isLoading ? (
-        <Box
-          padding="spacing.7"
-          display="flex"
-          gap="spacing.2"
-          flexDirection="column"
-          backgroundColor="surface.background.gray.intense"
-          elevation="lowRaised"
-          borderRadius="medium"
-        >
-          <Box marginBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
-            <Skeleton width="100%" height="24px" borderRadius="medium" />
-            <Skeleton width="50%" height="20px" borderRadius="medium" />
-          </Box>
-          <Divider />
-          <Skeleton marginTop="spacing.5" width="100%" height="100px" borderRadius="medium" />
-        </Box>
-      ) : (
-        <Card>
-          <CardHeader>
-            <CardHeaderLeading title="Payment Pages" subtitle="Automated Receipts Enabled" />
-            <CardHeaderTrailing
-              visual={<CardHeaderBadge variant="neutral">UPI</CardHeaderBadge>}
-            />
-          </CardHeader>
-          <CardBody>
-            <Text>
-              Razorpay Payment Pages is the easiest way to accept payments with a custom-branded
-              online store. Accept international and domestic payments with automated payment
-              receipts. Take your store online instantly with zero coding.
-            </Text>
-          </CardBody>
-        </Card>
-      )}
-    </Box>
-    <Text marginY="spacing.5" size="large">Example 2: aria-busy method</Text>
-    <section aria-busy={isLoading}>
-      <Box width="50%" display="flex" gap="spacing.3" flexWrap="wrap">
+  return (
+    <>
+      <Text marginBottom="spacing.4">
+        To make Skeleton loader accessible and let consumers know that some content on the page is
+        loading there are few options:
+      </Text>
+      <List>
+        <ListItem>
+          If you have a section of the page which is loading you can wrap the whole section in a div
+          and set <ListItemCode>aria-busy</ListItemCode> to indicate the content is loading
+        </ListItem>
+        <ListItem>
+          If you are using a button which triggers a loading state and you've set{' '}
+          <ListItemCode>&lt;Button isLoading /&gt;</ListItemCode>, you do not need to do anything
+          because button already announces the loading state
+        </ListItem>
+        <ListItem>
+          Finally, if you want to announce a page level loading state you can utilize the{' '}
+          <ListItemCode>announce()</ListItemCode> method exposed by blade to convey the loading
+          state to the user.
+        </ListItem>
+      </List>
+      <Text marginY="spacing.5" size="large">
+        Example 1: <Code size="medium">announce()</Code> method
+      </Text>
+      <Button
+        onClick={() => {
+          setIsLoading((prev) => !prev);
+        }}
+      >
+        Toggle Loading
+      </Button>
+      <Box width="400px" marginTop="spacing.4">
         {isLoading ? (
-          <>
-            <BasicSkeleton />
-            <BasicSkeleton />
-            <BasicSkeleton />
-          </>
+          <Box
+            padding="spacing.7"
+            display="flex"
+            gap="spacing.2"
+            flexDirection="column"
+            backgroundColor="surface.background.gray.intense"
+            elevation="lowRaised"
+            borderRadius="medium"
+          >
+            <Box marginBottom="spacing.4" display="flex" flexDirection="column" gap="spacing.2">
+              <Skeleton width="100%" height="24px" borderRadius="medium" />
+              <Skeleton width="50%" height="20px" borderRadius="medium" />
+            </Box>
+            <Divider />
+            <Skeleton marginTop="spacing.5" width="100%" height="100px" borderRadius="medium" />
+          </Box>
         ) : (
-          <Text>Content loaded</Text>
+          <Card>
+            <CardHeader>
+              <CardHeaderLeading title="Payment Pages" subtitle="Automated Receipts Enabled" />
+              <CardHeaderTrailing
+                visual={<CardHeaderBadge variant="neutral">UPI</CardHeaderBadge>}
+              />
+            </CardHeader>
+            <CardBody>
+              <Text>
+                Razorpay Payment Pages is the easiest way to accept payments with a custom-branded
+                online store. Accept international and domestic payments with automated payment
+                receipts. Take your store online instantly with zero coding.
+              </Text>
+            </CardBody>
+          </Card>
         )}
       </Box>
-    </section>
-  </>);
+      <Text marginY="spacing.5" size="large">
+        Example 2: aria-busy method
+      </Text>
+      <section aria-busy={isLoading}>
+        <Box width="50%" display="flex" gap="spacing.3" flexWrap="wrap">
+          {isLoading ? (
+            <>
+              <BasicSkeleton />
+              <BasicSkeleton />
+              <BasicSkeleton />
+            </>
+          ) : (
+            <Text>Content loaded</Text>
+          )}
+        </Box>
+      </section>
+    </>
+  );
 };
 
 export const SkeletonAccessibility = SkeletonAccessibilityTemplate.bind({});
