@@ -16,6 +16,7 @@ module.exports = {
     '../../src/components/Button/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Divider/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/List/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Link/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../docs/**/*.stories.mdx',
     // '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../src/**/*.stories.mdx',

@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { SyntheticEvent } from 'react';
-import React, { useState } from 'react';
+import React from 'react';
 import type { CSSObject } from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseLink from './StyledBaseLink';
@@ -22,7 +22,6 @@ import type {
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
-import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
 import type { BaseTextProps, BaseTextSizes } from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
@@ -145,37 +144,38 @@ type BaseLinkStyleProps = {
   lineHeight: BaseTextProps['lineHeight'];
 };
 
+type LinkActionStates = 'default' | 'hover' | 'focus' | 'disabled';
 const getColorToken = ({
   variant,
   color,
-  element,
   currentInteraction,
   isDisabled,
-  isVisited,
 }: {
   variant: BaseLinkProps['variant'];
   color: BaseLinkProps['color'];
   element: 'icon' | 'text';
-  currentInteraction: keyof LinkActionStates;
+  currentInteraction: LinkActionStates;
   isDisabled: boolean;
-  isVisited: boolean;
 }): IconProps['color'] | BaseTextProps['color'] => {
   let state = currentInteraction;
+  const map = {
+    default: 'subtle',
+    hover: 'normal',
+    focus: 'normal',
+    disabled: 'disabled',
+  } as const;
+
   if (isDisabled && variant == 'button') {
     state = 'disabled';
   }
-  if (isVisited && variant == 'anchor') {
-    // visited state is only valid for anchor variant
-    state = 'visited';
-  }
 
-  if (color && color !== 'default' && state !== 'visited') {
+  if (color && color !== 'default') {
     if (color !== 'white') {
-      return `feedback.${color}.action.${element}.link.${state}.lowContrast`;
+      return `interactive.text.${color}.${map[state]}`;
     }
-    return `white.action.${element}.link.${state}`;
+    return `interactive.text.staticWhite.${map[state]}`;
   }
-  return `action.${element}.link.${state}`;
+  return `interactive.text.primary.${map[state]}`;
 };
 
 const getProps = ({
@@ -185,17 +185,15 @@ const getProps = ({
   children,
   isDisabled,
   color,
-  isVisited,
   target,
   size,
 }: {
   theme: Theme;
   variant: NonNullable<BaseLinkProps['variant']>;
-  currentInteraction: keyof LinkActionStates;
+  currentInteraction: LinkActionStates;
   children?: string;
   isDisabled: boolean;
   color: BaseLinkProps['color'];
-  isVisited: boolean;
   target: BaseLinkProps['target'];
   size: NonNullable<BaseLinkProps['size']>;
 }): BaseLinkStyleProps => {
@@ -227,7 +225,6 @@ const getProps = ({
       element: 'icon',
       currentInteraction,
       isDisabled,
-      isVisited,
     }) as IconProps['color'],
     fontSize: textSizes.fontSize[size],
     lineHeight: textSizes.lineHeight[size],
@@ -239,9 +236,8 @@ const getProps = ({
       element: 'text',
       currentInteraction,
       isDisabled,
-      isVisited,
     }) as BaseTextProps['color'],
-    focusRingColor: getIn(theme.colors, 'brand.primary.400'),
+    focusRingColor: getIn(theme.colors, 'interactive.background.primary.faded'),
     motionDuration: 'duration.2xquick',
     motionEasing: 'easing.standard.effective',
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
@@ -288,7 +284,6 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
   },
   ref,
 ) => {
-  const [isVisited, setIsVisited] = useState(false);
   const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
@@ -324,17 +319,11 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     children: childrenString,
     isDisabled,
     color,
-    isVisited,
     target,
     size,
   });
 
   const handleOnClick = (event: SyntheticEvent): void => {
-    if (!isVisited && variant === 'anchor') {
-      // visited state is only valid for anchor variant
-      setIsVisited(true);
-    }
-
     if (onClick) {
       onClick(event);
     }
@@ -385,7 +374,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       focusRingColor={focusRingColor}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
-      setCurrentInteraction={setCurrentInteraction}
+      // setCurrentInteraction={setCurrentInteraction}
       {...getStyledProps(styledProps)}
       // @ts-ignore Because we avoided exposing className to public
       className={className}
@@ -412,7 +401,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
           fontSize={fontSize}
           lineHeight={lineHeight}
           textAlign="center"
-          fontWeight="bold"
+          fontWeight="semibold"
         >
           {children}
         </BaseText>
