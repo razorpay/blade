@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { getMemoDependency, useMemoizedStyles } from '../BaseBox/useMemoizedStyles';
-import paymentLightTheme from '~components/BladeProvider/__tests__/bladeLightTheme/bladeLightTheme.web';
+import bladeLightTheme from '~components/BladeProvider/__tests__/bladeLightTheme/bladeLightTheme.web';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
 
@@ -36,7 +36,7 @@ describe('useMemoizedStyles', () => {
         useMemoizedStyles({
           padding: 'spacing.10',
           margin: ['spacing.1', 'spacing.2'],
-          theme: paymentLightTheme,
+          theme: bladeLightTheme,
         }),
       {
         wrapper: BladeThemeProvider,
