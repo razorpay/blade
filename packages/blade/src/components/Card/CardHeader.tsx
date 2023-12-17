@@ -13,7 +13,7 @@ import type { CounterProps } from '~components/Counter';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { TextProps, TextVariant } from '~components/Typography';
-import { Heading, Text } from '~components/Typography';
+import { Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -167,9 +167,7 @@ const _CardHeaderLeading = ({
       </BaseBox>
       <BaseBox marginRight="spacing.5">
         <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
-          <Heading size="small" variant="regular" type="normal">
-            {title}
-          </Heading>
+          <Text size="large">{title}</Text>
           <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
         </BaseBox>
         {subtitle && (

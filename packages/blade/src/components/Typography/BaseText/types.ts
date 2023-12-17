@@ -56,6 +56,7 @@ export type BaseTextProps = {
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
+  letterSpacing?: keyof Theme['typography']['letterSpacings'];
   wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
   /**
    * Web only
@@ -84,6 +85,7 @@ export type StyledBaseTextProps = Pick<
   | 'fontStyle'
   | 'textDecorationLine'
   | 'lineHeight'
+  | 'letterSpacing'
   | 'as'
   | 'textAlign'
   | 'numberOfLines'
@@ -91,4 +93,4 @@ export type StyledBaseTextProps = Pick<
   | 'wordBreak'
 > & { theme: Theme };
 
-export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';

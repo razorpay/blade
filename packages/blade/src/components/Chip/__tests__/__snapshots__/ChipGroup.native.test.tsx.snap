@@ -81,10 +81,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -295,10 +296,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -500,10 +502,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -705,10 +708,11 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -821,10 +825,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1036,10 +1041,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1242,10 +1248,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1448,10 +1455,11 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme, toggleHiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components';
-import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
+import { bladeTheme } from '../../src/tokens/theme';
 import { createTheme } from '../../src/tokens/theme/createTheme';
 import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
@@ -68,12 +68,7 @@ export const parameters = {
         if (context.globals.brandColor) {
           return createTheme({ brandColor: context.globals.brandColor });
         }
-        if (context.globals.themeTokenName === 'paymentTheme') {
-          return paymentTheme;
-        }
-        if (context.globals.themeTokenName === 'bankingTheme') {
-          return bankingTheme;
-        }
+        return bladeTheme;
       };
       return (
         <DocsContainer context={context}>
@@ -92,24 +87,8 @@ export const parameters = {
       summary: styled.summary`
         font-family: ${theme.fontBase};
         color: ${theme.textColor};
-        font-weight: normal;
-        cursor: pointer;
-      `,
-      li: styled.li`
-        :not(:first-child) {
-          padding-top: 12px;
-        }
         font-size: 14px;
-
-        & :not(pre) > code {
-          margin: 0 2px;
-          padding: 3px 5px;
-          white-space: nowrap;
-          border-radius: 3px;
-          font-size: 13px;
-          border: 1px solid #eeeeee;
-          background-color: #f8f8f8;
-        }
+        cursor: pointer;
       `,
     },
   },
@@ -146,12 +125,7 @@ export const decorators = [
       if (context.globals.brandColor) {
         return createTheme({ brandColor: context.globals.brandColor });
       }
-      if (context.globals.themeTokenName === 'paymentTheme') {
-        return paymentTheme;
-      }
-      if (context.globals.themeTokenName === 'bankingTheme') {
-        return bankingTheme;
-      }
+      return bladeTheme;
     };
 
     return (
@@ -172,21 +146,6 @@ export const decorators = [
 ];
 
 export const globalTypes = {
-  themeTokenName: {
-    name: 'Theme Tokens',
-    description: 'Theme Tokens for Blade',
-    defaultValue: 'paymentTheme',
-    toolbar: {
-      icon: 'paintbrush',
-      // Array of plain string values or MenuItem shape (see below)
-      items: [
-        { value: 'paymentTheme', title: 'Payment' },
-        { value: 'bankingTheme', title: 'Banking' },
-      ],
-      // Property that specifies if the name of the item will be displayed
-      showName: true,
-    },
-  },
   colorScheme: {
     name: 'Color Scheme',
     description: 'Color Scheme for Blade',

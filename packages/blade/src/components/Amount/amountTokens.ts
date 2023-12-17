@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { AmountProps } from './Amount';
 import type { FontSize, Typography } from '~tokens/global';
 

@@ -29,14 +29,13 @@ const useSandpackSetup = ({
 }): any => {
   const docsContext = React.useContext(DocsContext);
 
-  const themeTokenName = docsContext?.globals?.themeTokenName ?? 'paymentTheme';
   const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
   const brandColor = docsContext?.globals?.brandColor;
 
   return {
     template: 'react-ts',
     files: {
-      '/index.tsx': getIndexTSX({ themeTokenName, brandColor, colorScheme }),
+      '/index.tsx': getIndexTSX({ themeTokenName: 'bladeTheme', brandColor, colorScheme }),
       [`/App.${language}`]: dedent(code),
     },
     customSetup: getReactScriptsJSDependencies(),

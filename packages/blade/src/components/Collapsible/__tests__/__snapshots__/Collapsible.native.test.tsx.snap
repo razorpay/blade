@@ -162,10 +162,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
               [
                 {
                   "color": "hsla(0, 0%, 100%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "700",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -259,10 +260,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                     [
                       {
                         "color": "hsla(217, 56%, 17%, 1)",
-                        "fontFamily": "Lato",
+                        "fontFamily": "Inter",
                         "fontSize": 14,
                         "fontStyle": "normal",
                         "fontWeight": "400",
+                        "letterSpacing": 0,
                         "lineHeight": 20,
                         "marginBottom": 0,
                         "marginLeft": 0,
@@ -316,10 +318,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         [
                           {
                             "color": "hsla(160, 100%, 26%, 1)",
-                            "fontFamily": "Lato",
+                            "fontFamily": "Inter",
                             "fontSize": 12,
                             "fontStyle": "normal",
                             "fontWeight": "700",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -343,10 +346,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         [
                           {
                             "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
+                            "fontFamily": "Inter",
                             "fontSize": 16,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -372,10 +376,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                           [
                             {
                               "color": "hsla(160, 100%, 26%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -404,10 +409,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                           [
                             {
                               "color": "hsla(160, 100%, 26%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 2,
@@ -557,10 +563,11 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
               [
                 {
                   "color": "hsla(218, 89%, 51%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "700",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -739,10 +746,11 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     [
                       {
                         "color": "hsla(217, 56%, 17%, 1)",
-                        "fontFamily": "Lato",
+                        "fontFamily": "Inter",
                         "fontSize": 14,
                         "fontStyle": "normal",
                         "fontWeight": "400",
+                        "letterSpacing": 0,
                         "lineHeight": 20,
                         "marginBottom": 0,
                         "marginLeft": 0,
@@ -796,10 +804,11 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         [
                           {
                             "color": "hsla(160, 100%, 26%, 1)",
-                            "fontFamily": "Lato",
+                            "fontFamily": "Inter",
                             "fontSize": 12,
                             "fontStyle": "normal",
                             "fontWeight": "700",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -823,10 +832,11 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         [
                           {
                             "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
+                            "fontFamily": "Inter",
                             "fontSize": 16,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -852,10 +862,11 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                           [
                             {
                               "color": "hsla(160, 100%, 26%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -884,10 +895,11 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                           [
                             {
                               "color": "hsla(160, 100%, 26%, 1)",
-                              "fontFamily": "Lato",
+                              "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 2,

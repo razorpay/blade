@@ -1,17 +1,17 @@
 import { Easing } from 'react-native-reanimated';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 import type { Theme } from '~components/BladeProvider';
 
-const paymentLightTheme: Theme = {
-  name: 'paymentTheme',
-  colors: paymentTheme.colors.onLight,
-  border: paymentTheme.border,
-  spacing: paymentTheme.spacing,
-  breakpoints: paymentTheme.breakpoints,
-  elevation: paymentTheme.elevation.onLight,
-  typography: paymentTheme.typography.onMobile,
+const bladeLightTheme: Theme = {
+  name: 'bladeTheme',
+  colors: bladeTheme.colors.onLight,
+  border: bladeTheme.border,
+  spacing: bladeTheme.spacing,
+  breakpoints: bladeTheme.breakpoints,
+  elevation: bladeTheme.elevation.onLight,
+  typography: bladeTheme.typography.onMobile,
   motion: {
-    ...paymentTheme.motion,
+    ...bladeTheme.motion,
     easing: {
       standard: {
         attentive: Easing.bezier(0.5, 0, 0.3, 1.5),
@@ -33,4 +33,4 @@ const paymentLightTheme: Theme = {
   },
 };
 
-export default paymentLightTheme;
+export default bladeLightTheme;

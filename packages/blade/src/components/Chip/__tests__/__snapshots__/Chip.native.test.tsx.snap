@@ -82,10 +82,11 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -297,10 +298,11 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             [
                               {
                                 "color": "hsla(214, 18%, 69%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -503,10 +505,11 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -619,10 +622,11 @@ exports[`<Chip /> should render chip 1`] = `
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -834,10 +838,11 @@ exports[`<Chip /> should render chip 1`] = `
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1040,10 +1045,11 @@ exports[`<Chip /> should render chip 1`] = `
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1156,10 +1162,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1457,10 +1464,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1749,10 +1757,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1865,10 +1874,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
               [
                 {
                   "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -2080,10 +2090,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             [
                               {
                                 "color": "hsla(214, 18%, 69%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -2286,10 +2297,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             [
                               {
                                 "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,

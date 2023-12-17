@@ -1,12 +1,12 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { getMemoDependency, useMemoizedStyles } from '../BaseBox/useMemoizedStyles';
-import paymentLightTheme from '~components/BladeProvider/__tests__/paymentLightTheme/paymentLightTheme.web';
+import bladeLightTheme from '~components/BladeProvider/__tests__/bladeLightTheme/bladeLightTheme.web';
 import { BladeProvider } from '~components/BladeProvider';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 
 const BladeThemeProvider = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <BladeProvider themeTokens={paymentTheme} colorScheme="light">
+    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
       {children}
     </BladeProvider>
   );
@@ -22,10 +22,10 @@ describe('getDependencyProp', () => {
         className: 'hi',
         children: 'wuuhuuu',
         // @ts-expect-error: we don't have to care about actual theme object. It is ignored in this function
-        theme: { name: 'paymentTheme', something: 'something' },
+        theme: { name: 'bladeTheme', something: 'something' },
         colorScheme: 'light',
       }),
-    ).toMatchInlineSnapshot(`"{"paddingLeft":"12px","display":"block"}-paymentTheme-light"`);
+    ).toMatchInlineSnapshot(`"{"paddingLeft":"12px","display":"block"}-bladeTheme-light"`);
   });
 });
 
@@ -36,7 +36,7 @@ describe('useMemoizedStyles', () => {
         useMemoizedStyles({
           padding: 'spacing.10',
           margin: ['spacing.1', 'spacing.2'],
-          theme: paymentLightTheme,
+          theme: bladeLightTheme,
         }),
       {
         wrapper: BladeThemeProvider,

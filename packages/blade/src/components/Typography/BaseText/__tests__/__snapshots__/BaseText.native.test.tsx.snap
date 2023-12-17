@@ -20,10 +20,11 @@ exports[`<BaseText /> should render regular text 1`] = `
       [
         {
           "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 10,
           "fontStyle": "normal",
           "fontWeight": "400",
+          "letterSpacing": 0,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -64,10 +65,11 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
       [
         {
           "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 10,
           "fontStyle": "italic",
           "fontWeight": "400",
+          "letterSpacing": 0,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -104,10 +106,11 @@ exports[`<BaseText /> should render text with default properties 1`] = `
       [
         {
           "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
+          "letterSpacing": 0,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,

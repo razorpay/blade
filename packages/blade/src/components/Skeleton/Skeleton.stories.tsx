@@ -11,7 +11,7 @@ import {
   CardHeaderTrailing,
 } from '~components/Card';
 import { Box } from '~components/Box';
-import { Code, Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import { Amount } from '~components/Amount';
 import { Button } from '~components/Button';
 import { Alert } from '~components/Alert';
@@ -27,16 +27,11 @@ import { kebabCase } from '~utils/lodashButBetter/kebabCase';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522',
-        bankingTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522"
       componentName="Skeleton"
       componentDescription="Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view."
     >
-      <Title>Usage</Title>
+      <Heading size="large">Usage</Heading>{' '}
       <Sandbox>
         {`
         import { Skeleton } from '@razorpay/blade/components';

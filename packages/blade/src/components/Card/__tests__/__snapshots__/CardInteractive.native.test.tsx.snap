@@ -83,14 +83,14 @@ exports[`<Card /> should render a clickable Card 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
             [
               {
@@ -204,14 +204,14 @@ exports[`<Card /> should render a interactive Card 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
             [
               {
@@ -326,14 +326,14 @@ exports[`<Card /> should render a linkable Card 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
             [
               {
@@ -448,14 +448,14 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
             [
               {

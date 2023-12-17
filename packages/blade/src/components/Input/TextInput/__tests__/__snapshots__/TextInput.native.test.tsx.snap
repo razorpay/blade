@@ -89,18 +89,19 @@ exports[`<TextInput /> should render 1`] = `
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
+              fontWeight="semibold"
+              lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
                     "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -158,10 +159,11 @@ exports[`<TextInput /> should render 1`] = `
                   [
                     {
                       "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "letterSpacing": 0,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -239,11 +241,12 @@ exports[`<TextInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "height": 36,
+                "letterSpacing": 0,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -401,18 +404,19 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
+              fontWeight="semibold"
+              lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
                     "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -470,10 +474,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                   [
                     {
                       "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "letterSpacing": 0,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -639,10 +644,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 [
                   {
                     "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -703,11 +709,12 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
                 "height": 36,
+                "letterSpacing": 0,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -766,10 +773,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 [
                   {
                     "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,

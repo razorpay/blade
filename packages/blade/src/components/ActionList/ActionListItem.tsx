@@ -152,7 +152,7 @@ const _ActionListSection = ({
       {/* We're announcing title as group label so we can hide this */}
       {isSectionVisible ? (
         <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-          <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
+          <Text color="surface.text.muted.lowContrast" size="small" weight="semibold">
             {title}
           </Text>
         </StyledActionListSectionTitle>

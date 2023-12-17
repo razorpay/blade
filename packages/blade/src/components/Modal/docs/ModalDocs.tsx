@@ -1,7 +1,7 @@
 import React from 'react';
 import { Playground } from './stories';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Code, Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ArgsTable } from '~utils/storybook/ArgsTable';
@@ -16,21 +16,16 @@ const ModalDocs = (): React.ReactElement => {
       componentDescription="Modals are often used to present information, notifications, or requests that require immediate attention or confirmation from the user"
       imports=""
       showStorybookControls={false}
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=39809-559333&t=j3ZK6zZSwP5CJ8Al-0',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=16459-684636&t=7KYEW7ENNS5GmLIO-0',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=39809-559333&t=j3ZK6zZSwP5CJ8Al-0"
     >
       <Box as="section">
-        <Title size="medium">Playground</Title>
+        <Heading size="xlarge">Playground</Heading>
         <Sandbox editorHeight={400}>{Playground}</Sandbox>
       </Box>
 
-      <Title size="medium" marginBottom="spacing.4">
+      <Heading size="xlarge" marginBottom="spacing.4">
         ⚠️ Modal for mWeb and React Native
-      </Title>
+      </Heading>
       <Text>
         Modals should not be used on mWeb & React Native Apps. Instead we should use{' '}
         <Link href="/?path=/story/components-bottomsheet--default">BottomSheet Component</Link> for
@@ -61,9 +56,9 @@ const ModalDocs = (): React.ReactElement => {
       </List>
 
       <BaseBox id="modal" as="section">
-        <Title size="medium" marginBottom="spacing.4">
+        <Heading size="xlarge" marginBottom="spacing.4">
           Modal
-        </Title>
+        </Heading>
         <Text>A Modal in Blade is usually a composite of 4 elements -</Text>
         <List variant="ordered-filled" marginY="spacing.5">
           <ListItem>Modal - Handles opening / closing of Modal</ListItem>
