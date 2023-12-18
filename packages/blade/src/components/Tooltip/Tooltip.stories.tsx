@@ -106,7 +106,7 @@ const PlacementBox = React.forwardRef<
       width={isReactNative() ? '40%' : '100%'}
       flexShrink={0}
       padding="spacing.5"
-      backgroundColor="surface.background.level3.lowContrast"
+      // backgroundColor="surface.background.level3.lowContrast"
       {...props}
     >
       <Text contrast="low">{children}</Text>
@@ -202,7 +202,7 @@ const NonInteractiveTriggerTemplate: ComponentStory<typeof TooltipComponent> = (
         <Text>Refunds</Text>
         <TooltipComponent {...args} placement="bottom-start">
           <TooltipInteractiveWrapper>
-            <InfoIcon marginTop="spacing.2" size="medium" color="surface.text.muted.lowContrast" />
+            <InfoIcon marginTop="spacing.2" size="medium" />
           </TooltipInteractiveWrapper>
         </TooltipComponent>
       </Box>
@@ -238,7 +238,7 @@ const TooltipTriggersTemplate: ComponentStory<typeof TooltipComponent> = (args) 
         <Box marginTop="spacing.8" />
         <TooltipComponent {...args} content="With non-interactive icon" placement="bottom">
           <TooltipInteractiveWrapper>
-            <InfoIcon size="large" color="surface.text.muted.lowContrast" />
+            <InfoIcon size="large" />
           </TooltipInteractiveWrapper>
         </TooltipComponent>
       </Box>
