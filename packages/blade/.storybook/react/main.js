@@ -5,9 +5,9 @@ const path = require('path');
 module.exports = {
   typescript: {
     check: false,
-    checkOptions: {
-      tsconfig: path.resolve('./tsconfig-typecheck.web.json'),
-    },
+    // checkOptions: {
+    //   tsconfig: path.resolve('./tsconfig-typecheck.web.json'),
+    // },
   },
   refs: {
     '@storybook/design-system': { disable: true },
