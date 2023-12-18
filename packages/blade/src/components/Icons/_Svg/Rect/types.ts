@@ -6,4 +6,5 @@ export type RectProps = {
   ry?: string;
   x?: string;
   y?: string;
+  fillOpacity?: number;
 };

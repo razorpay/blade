@@ -7,4 +7,5 @@ export type CircleProps = {
   cy: string;
   x?: string;
   y?: string;
+  fillOpacity?: number;
 };

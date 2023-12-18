@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { ColorContrast } from '~tokens/theme/theme';
 import { isReactNative, makeBorderSize } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import type { TestID } from '~utils/types';
@@ -28,19 +27,13 @@ type DividerProps = {
    *
    * @default 'normal'
    */
-  variant?: 'normal' | 'subtle';
+  variant?: 'normal' | 'subtle' | 'muted';
   /**
    * Sets the thickness of divider
    *
    * @default 'thin'
    */
-  thickness?: 'thinner' | 'thin' | 'thick';
-  /**
-   * Sets the contrast of divider
-   *
-   * @default 'low'
-   */
-  contrast?: 'low' | 'high';
+  thickness?: 'thinner' | 'thin' | 'thick' | 'thicker';
   /**
    * Sets the height of divider. Divider uses Flex by default, use height only when parent is not flex.
    *
@@ -72,7 +65,6 @@ const Divider = ({
   dividerStyle = 'solid',
   variant = 'normal',
   thickness = 'thin',
-  contrast = 'low',
   height,
   width,
   testID,
@@ -80,8 +72,7 @@ const Divider = ({
 }: DividerProps): React.ReactElement => {
   const isDividerHorizontal = orientation === 'horizontal';
   const borderPosition = isDividerHorizontal ? 'borderBottom' : 'borderLeft';
-  const colorContrast: keyof ColorContrast = `${contrast}Contrast`;
-  const borderColor = { [`${borderPosition}Color`]: `surface.border.${variant}.${colorContrast}` };
+  const borderColor = { [`${borderPosition}Color`]: `surface.border.gray.${variant}` };
   const accessibilityProps = isReactNative()
     ? {}
     : makeAccessible({

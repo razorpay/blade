@@ -340,11 +340,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   },
   ref,
 ) => {
+  const { theme } = useTheme();
   const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
   // Button cannot be disabled when its rendered as Link
   const disabled = isLoading || (isDisabled && !isLink);
-  const { theme } = useTheme();
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
