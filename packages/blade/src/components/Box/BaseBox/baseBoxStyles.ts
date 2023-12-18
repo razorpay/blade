@@ -44,6 +44,7 @@ const getSpacingValue = (
   }
 
   if (typeof responsiveSpacingValue === 'string' && responsiveSpacingValue.startsWith('spacing.')) {
+    // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
     const spacingReturnValue = getIn(theme, responsiveSpacingValue);
     return isEmpty(spacingReturnValue) ? makeSpace(spacingReturnValue) : undefined;
   }
@@ -58,6 +59,7 @@ const getColorValue = (
   breakpoint?: keyof Breakpoints,
 ): string => {
   const responsiveBackgroundValue = getResponsiveValue(color, breakpoint);
+  // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
   const tokenValue = getIn(theme, `colors.${responsiveBackgroundValue}`);
   return tokenValue ?? responsiveBackgroundValue;
 };
@@ -70,7 +72,8 @@ const getBorderRadiusValue = (
   const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, breakpoint);
   return isEmpty(responsiveBorderRadiusValue)
     ? undefined
-    : makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
+    : // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
+      makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
 };
 
 const getBorderWidthValue = (
@@ -81,7 +84,8 @@ const getBorderWidthValue = (
   const responsiveBorderWidthValue = getResponsiveValue(borderWidth, breakpoint);
   return isEmpty(responsiveBorderWidthValue)
     ? undefined
-    : makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
+    : // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
+      makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
 };
 
 export const getElevationValue = (
@@ -89,10 +93,11 @@ export const getElevationValue = (
   theme: Theme,
   breakpoint?: keyof Breakpoints,
 ): string | undefined => {
-  const responsiveElevationValue = getResponsiveValue(elevation, breakpoint);
+  const responsiveElevationValue: string = getResponsiveValue(elevation, breakpoint);
   return isEmpty(responsiveElevationValue)
     ? undefined
-    : getIn(theme, `elevation.${responsiveElevationValue}`);
+    : // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
+      getIn(theme, `elevation.${responsiveElevationValue}`);
 };
 
 const getAllProps = (
