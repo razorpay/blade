@@ -49,11 +49,6 @@ type BadgeProps = {
 } & TestID &
   StyledPropsBlade;
 
-const isFeedbackVariant = (variant: string): variant is Feedback => {
-  const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
-  return feedbackVariants.includes(variant);
-};
-
 type ColorProps = {
   iconColor: IconProps['color'];
   textColor: BaseTextProps['color'];
@@ -73,18 +68,20 @@ const getColorProps = ({
     backgroundColor: 'feedback.background.neutral.subtle',
   };
 
-  if (isFeedbackVariant(color)) {
-    props.textColor =
-      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `feedback.text.${color}.intense`;
-    props.iconColor =
-      emphasis === 'intense' ? `surface.icon.staticWhite.normal` : `feedback.icon.${color}.intense`;
-    props.backgroundColor = `feedback.background.${color}.${emphasis}`;
-  } else {
+  if (color === 'primary') {
+    // primary color badge
     props.textColor =
       emphasis === 'intense' ? `surface.text.staticWhite.normal` : `surface.text.primary.normal`;
     props.iconColor =
       emphasis === 'intense' ? `surface.icon.staticWhite.normal` : `surface.icon.primary.normal`;
     props.backgroundColor = `surface.background.primary.${emphasis}`;
+  } else {
+    // feedback colors badge
+    props.textColor =
+      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `feedback.text.${color}.intense`;
+    props.iconColor =
+      emphasis === 'intense' ? `surface.icon.staticWhite.normal` : `feedback.icon.${color}.intense`;
+    props.backgroundColor = `feedback.background.${color}.${emphasis}`;
   }
 
   return props;
