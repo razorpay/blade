@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   typescript: {
-    check: true,
+    check: false,
     checkOptions: {
       tsconfig: path.resolve('./tsconfig-typecheck.web.json'),
     },
