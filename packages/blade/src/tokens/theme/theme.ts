@@ -13,7 +13,7 @@ export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
 type ColorSchemeModes = 'onDark' | 'onLight';
 
-type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
+export type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
 type Emphasis = {
   subtle: string;
@@ -24,7 +24,9 @@ type Emphasis = {
   disabled: string;
 };
 
-type SubtleOrIntense = Pick<Emphasis, 'subtle' | 'intense'>;
+type SubtleOrIntenseEmphasis = Pick<Emphasis, 'subtle' | 'intense'>;
+// Exporting this for usage in other components
+export type SubtleOrIntense = keyof SubtleOrIntenseEmphasis;
 type InteractiveStates = {
   default: string;
   highlighted: string;
@@ -56,17 +58,17 @@ export type Colors = {
     icon: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
   };
   feedback: {
-    background: Record<Feedback, SubtleOrIntense>;
-    border: Record<Feedback, SubtleOrIntense>;
-    text: Record<Feedback, SubtleOrIntense>;
-    icon: Record<Feedback, SubtleOrIntense>;
+    background: Record<Feedback, SubtleOrIntenseEmphasis>;
+    border: Record<Feedback, SubtleOrIntenseEmphasis>;
+    text: Record<Feedback, SubtleOrIntenseEmphasis>;
+    icon: Record<Feedback, SubtleOrIntenseEmphasis>;
   };
   surface: {
     background: {
       gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
-      primary: SubtleOrIntense;
-      sea: SubtleOrIntense;
-      cloud: SubtleOrIntense;
+      primary: SubtleOrIntenseEmphasis;
+      sea: SubtleOrIntenseEmphasis;
+      cloud: SubtleOrIntenseEmphasis;
     };
     border: {
       gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
@@ -79,8 +81,8 @@ export type Colors = {
     background: Pick<Emphasis, 'moderate' | 'subtle'>;
   };
   popup: {
-    background: SubtleOrIntense;
-    border: SubtleOrIntense;
+    background: SubtleOrIntenseEmphasis;
+    border: SubtleOrIntenseEmphasis;
   };
 };
 

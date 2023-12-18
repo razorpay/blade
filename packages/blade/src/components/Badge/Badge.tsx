@@ -4,7 +4,7 @@ import { StyledBadge } from './StyledBadge';
 import { iconPadding, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
-import type { Feedback } from '~tokens/theme/theme';
+import type { Feedback, SubtleOrIntense } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -31,9 +31,9 @@ type BadgeProps = {
   /**
    * Sets the contrast of the badge.
    *
-   * @default 'low'
+   * @default 'subtle'
    */
-  emphasis?: 'low' | 'high';
+  emphasis?: SubtleOrIntense;
   /**
    * Sets the size of the badge.
    *
@@ -67,27 +67,36 @@ const getColorProps = ({
   color: NonNullable<BadgeProps['color']>;
   emphasis: NonNullable<BadgeProps['emphasis']>;
 }): ColorProps => {
-  const badgeVariant = color === 'primary' ? 'blue' : color;
   const props: ColorProps = {
-    iconColor: 'feedback.icon.neutral.lowContrast',
-    textColor: 'feedback.text.neutral.lowContrast',
-    backgroundColor: 'feedback.background.neutral.lowContrast',
+    iconColor: 'feedback.icon.neutral.intense',
+    textColor: 'feedback.text.neutral.intense',
+    backgroundColor: 'feedback.background.neutral.subtle',
   };
-  if (isFeedbackVariant(badgeVariant)) {
-    props.iconColor = `feedback.icon.${badgeVariant}.${emphasis}Contrast`;
-    props.textColor = `feedback.text.${badgeVariant}.${emphasis}Contrast`;
-    props.backgroundColor = `feedback.background.${badgeVariant}.${emphasis}Contrast`;
+
+  if (isFeedbackVariant(color)) {
+    props.textColor =
+      emphasis === 'intense'
+        ? `surface.text.staticWhite.normal`
+        : `feedback.text.${color}.${emphasis}`;
+    props.iconColor =
+      emphasis === 'intense'
+        ? `surface.icon.staticWhite.normal`
+        : `feedback.icon.${color}.${emphasis}`;
+    props.backgroundColor = `feedback.background.${color}.${emphasis}`;
   } else {
-    props.iconColor = `badge.icon.${badgeVariant}.${emphasis}Contrast`;
-    props.textColor = `badge.text.${badgeVariant}.${emphasis}Contrast`;
-    props.backgroundColor = `badge.background.${badgeVariant}.${emphasis}Contrast`;
+    props.textColor =
+      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `surface.text.primary.normal`;
+    props.iconColor =
+      emphasis === 'intense' ? `surface.icon.staticWhite.normal` : `surface.icon.primary.normal`;
+    props.backgroundColor = `surface.background.primary.${emphasis}`;
   }
+
   return props;
 };
 
 const _Badge = ({
   children,
-  emphasis = 'low',
+  emphasis = 'subtle',
   icon: Icon,
   size = 'medium',
   color = 'neutral',
@@ -149,13 +158,7 @@ const _Badge = ({
               <Icon color={iconColor} size={iconSize[size]} />
             </BaseBox>
           ) : null}
-          <Text
-            {...badgeTextSizes[size]}
-            type="normal"
-            weight="medium"
-            truncateAfterLines={1}
-            color={textColor}
-          >
+          <Text {...badgeTextSizes[size]} weight="medium" truncateAfterLines={1} color={textColor}>
             {children}
           </Text>
         </BaseBox>

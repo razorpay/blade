@@ -2,8 +2,8 @@ import type { BadgeProps } from './Badge';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken } from '~utils/types';
 
-type BadgeBackgroundColors = `badge.background.${DotNotationColorStringToken<
-  Theme['colors']['badge']['background']
+type BadgeBackgroundColors = `surface.background.primary.${DotNotationColorStringToken<
+  Theme['colors']['surface']['background']['primary']
 >}`;
 
 type FeedbackBackgroundColors = `feedback.background.${DotNotationColorStringToken<
