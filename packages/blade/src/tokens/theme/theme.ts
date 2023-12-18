@@ -32,14 +32,12 @@ type InteractiveStates = {
   faded: string;
 };
 
-type InteractionKeys = Feedback | Exclude<keyof ColorFamilyType, 'onSea' | 'onCloud'>;
-
 type OnEmphasis = {
   onSubtle: string;
   onIntense: string;
 };
 
-type ColorFamilyType = {
+type ColorCategories = {
   staticBlack: Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>;
   staticWhite: Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>;
   gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>;
@@ -48,12 +46,14 @@ type ColorFamilyType = {
   primary: Pick<Emphasis, 'normal'>;
 };
 
+type InteractiveColorKeys = Feedback | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
+
 export type Colors = {
   interactive: {
-    background: Record<InteractionKeys, InteractiveStates>;
-    border: Record<InteractionKeys, InteractiveStates>;
-    text: Record<InteractionKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
-    icon: Record<InteractionKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
+    background: Record<InteractiveColorKeys, InteractiveStates>;
+    border: Record<InteractiveColorKeys, InteractiveStates>;
+    text: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
+    icon: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
   };
   feedback: {
     background: Record<Feedback, SubtleOrIntense>;
@@ -72,8 +72,8 @@ export type Colors = {
       gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
       primary: Pick<Emphasis, 'normal' | 'muted'>;
     };
-    text: ColorFamilyType;
-    icon: ColorFamilyType;
+    text: ColorCategories;
+    icon: ColorCategories;
   };
   overlay: {
     background: Pick<Emphasis, 'moderate' | 'subtle'>;
@@ -87,7 +87,7 @@ export type Colors = {
 export type ColorsWithModes = Record<ColorSchemeModes, Colors>;
 
 export type ThemeTokens = {
-  name: 'paymentTheme' | 'bankingTheme' | StringWithAutocomplete; // Can be used to watch over state changes between theme without watching over entire theme object
+  name: 'bladeTheme' | StringWithAutocomplete; // Can be used to watch over state changes between theme without watching over entire theme object
   border: Border;
   breakpoints: Breakpoints;
   colors: ColorsWithModes;

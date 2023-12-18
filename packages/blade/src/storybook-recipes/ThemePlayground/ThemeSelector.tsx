@@ -154,6 +154,7 @@ const ThemeSelector = ({
                   setSelectedColor(undefined);
                 }}
               >
+                {/* TODO: remove the section that allows you to select theme */}
                 <Radio value="bladeTheme">Blade Theme</Radio>
               </RadioGroup>
             </Box>

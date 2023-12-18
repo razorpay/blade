@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.22.0",
+  "version": "10.23.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -24,9 +24,10 @@
     "tokens.native.js",
     "utils.d.ts",
     "utils.js",
-    "utils.native.js",
     "fonts",
-    "fonts.css"
+    "fonts.css",
+    "utils.native.js",
+    "coverageUtils.d.ts"
   ],
   "keywords": [
     "design system",
@@ -73,6 +74,12 @@
         "development": "./build/lib/web/development/utils/index.js",
         "production": "./build/lib/web/production/utils/index.js",
         "default": "./build/lib/web/production/utils/index.js"
+      }
+    },
+    "./coverageUtils": {
+      "default": {
+        "types": "./coverageUtils.d.ts",
+        "default": "./build/lib/web/production/utils/bladeCoverage.js"
       }
     }
   },
