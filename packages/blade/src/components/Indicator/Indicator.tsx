@@ -74,8 +74,7 @@ const Indicator = ({
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
 
-  const fillColor = theme.colors.feedback.background[intent].highContrast;
-  const strokeColor = theme.colors.brand.gray.a100.highContrast;
+  const fillColor = theme.colors.feedback.background[intent].intense;
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':
@@ -109,12 +108,11 @@ const Indicator = ({
           fill="none"
         >
           <Circle cx="5" cy="5" r="5" fill={fillColor} />
-          <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
         </Svg>
         <BaseBox marginLeft="spacing.2">
           <Text
             weight="medium"
-            color="surface.text.subtle.lowContrast"
+            color="surface.text.gray.subtle"
             textAlign="left"
             size={dimensions.textSize}
           >
