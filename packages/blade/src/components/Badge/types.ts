@@ -1,10 +1,9 @@
 import type { BadgeProps } from './Badge';
 import type { Theme } from '~components/BladeProvider';
 import type { DotNotationColorStringToken } from '~utils/types';
+import type { SubtleOrIntense } from '~tokens/theme/theme';
 
-type BadgeBackgroundColors = `surface.background.primary.${DotNotationColorStringToken<
-  Theme['colors']['surface']['background']['primary']
->}`;
+type BadgeBackgroundColors = `surface.background.primary.${SubtleOrIntense}`;
 
 type FeedbackBackgroundColors = `feedback.background.${DotNotationColorStringToken<
   Theme['colors']['feedback']['background']

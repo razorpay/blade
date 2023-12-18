@@ -1,7 +1,7 @@
 import { StyledCounter } from './StyledCounter';
 import type { StyledCounterProps } from './types';
 import { counterHeight, horizontalPadding } from './counterTokens';
-import type { Feedback } from '~tokens/theme/theme';
+import type { Feedback, SubtleOrIntense } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -34,7 +34,7 @@ export type CounterProps = {
    *
    * @default 'low'
    */
-  contrast?: 'high' | 'low';
+  emphasis?: SubtleOrIntense;
   /**
    * Sets the size of the counter.
    *
@@ -49,29 +49,28 @@ type ColorProps = {
   backgroundColor: StyledCounterProps['backgroundColor'];
 };
 
-const isFeedbackVariant = (variant: string): variant is Feedback => {
-  const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
-  return feedbackVariants.includes(variant);
-};
-
 const getColorProps = ({
   color = 'neutral',
-  contrast = 'low',
+  emphasis = 'subtle',
 }: {
-  color: NonNullable<CounterProps['color'] | 'blue'>;
-  contrast: NonNullable<CounterProps['contrast']>;
+  color: NonNullable<CounterProps['color']>;
+  emphasis: NonNullable<CounterProps['emphasis']>;
 }): ColorProps => {
-  const counterVariant = color === 'primary' ? 'blue' : color;
   const props: ColorProps = {
-    textColor: 'feedback.text.neutral.lowContrast',
-    backgroundColor: 'feedback.background.neutral.lowContrast',
+    textColor: 'feedback.text.neutral.intense',
+    backgroundColor: 'feedback.background.neutral.subtle',
   };
-  if (isFeedbackVariant(counterVariant)) {
-    props.textColor = `feedback.text.${counterVariant}.${contrast}Contrast`;
-    props.backgroundColor = `feedback.background.${counterVariant}.${contrast}Contrast`;
+
+  if (color === 'primary') {
+    // primary color badge
+    props.textColor =
+      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `surface.text.primary.normal`;
+    props.backgroundColor = `surface.background.primary.${emphasis}`;
   } else {
-    props.textColor = `badge.text.${counterVariant}.${contrast}Contrast`;
-    props.backgroundColor = `badge.background.${counterVariant}.${contrast}Contrast`;
+    // feedback colors badge
+    props.textColor =
+      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `feedback.text.${color}.intense`;
+    props.backgroundColor = `feedback.background.${color}.${emphasis}`;
   }
   return props;
 };
@@ -80,7 +79,7 @@ const _Counter = ({
   value,
   max,
   color = 'neutral',
-  contrast = 'low',
+  emphasis = 'subtle',
   size = 'medium',
   testID,
   ...styledProps
@@ -93,7 +92,7 @@ const _Counter = ({
   const { platform } = useTheme();
   const { backgroundColor, textColor } = getColorProps({
     color,
-    contrast,
+    emphasis,
   });
 
   const counterTextSizes = {
@@ -134,7 +133,6 @@ const _Counter = ({
           <Text
             {...counterTextSizes[size]}
             textAlign="center"
-            type="normal"
             weight="medium"
             truncateAfterLines={1}
             color={textColor}
