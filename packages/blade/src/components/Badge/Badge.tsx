@@ -75,13 +75,9 @@ const getColorProps = ({
 
   if (isFeedbackVariant(color)) {
     props.textColor =
-      emphasis === 'intense'
-        ? `surface.text.staticWhite.normal`
-        : `feedback.text.${color}.${emphasis}`;
+      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `feedback.text.${color}.intense`;
     props.iconColor =
-      emphasis === 'intense'
-        ? `surface.icon.staticWhite.normal`
-        : `feedback.icon.${color}.${emphasis}`;
+      emphasis === 'intense' ? `surface.icon.staticWhite.normal` : `feedback.icon.${color}.intense`;
     props.backgroundColor = `feedback.background.${color}.${emphasis}`;
   } else {
     props.textColor =
