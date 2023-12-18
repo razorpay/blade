@@ -15,7 +15,7 @@ type ColorSchemeModes = 'onDark' | 'onLight';
 
 export type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
-type Emphasis = {
+export type Emphasis = {
   subtle: string;
   moderate: string;
   intense: string;

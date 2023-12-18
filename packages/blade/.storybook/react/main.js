@@ -16,6 +16,7 @@ module.exports = {
     '../../src/components/Box/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Badge/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Counter/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Tag/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Indicator/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Divider/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/List/**/*.stories.@(ts|tsx|js|jsx)',

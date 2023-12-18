@@ -2,8 +2,8 @@ import React from 'react';
 import type { DOMAttributes } from 'react';
 import type { Meta, ComponentStory } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import type { TagProps } from './Tag';
 import { Tag } from './Tag';
+import type { TagProps } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -59,7 +59,7 @@ export default {
     ...getStyledPropsArgTypes(),
     icon: {
       name: 'icon',
-      type: 'select',
+      type: 'select' as 'string',
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
