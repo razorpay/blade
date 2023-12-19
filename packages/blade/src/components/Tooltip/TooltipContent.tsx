@@ -25,12 +25,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
             {title}
           </Text>
         ) : null}
-        <Text
-          variant="body"
-          size="small"
-          weight="regular"
-          color="interactive.text.staticWhite.subtle"
-        >
+        <Text variant="body" size="small" weight="regular" color="surface.text.staticWhite.subtle">
           {children}
         </Text>
         {arrow}
