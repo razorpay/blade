@@ -48,6 +48,7 @@ export type ColorNeutralStaticScale = Readonly<{
   200: string;
   300: string;
   400: string;
+  450: string;
   500: string;
 }>;
 
@@ -300,6 +301,7 @@ export const colors: Color = {
       200: `hsla(0, 0%, 100%, ${opacity[5]})`,
       300: `hsla(0, 0%, 100%, ${opacity[7]})`,
       400: `hsla(0, 0%, 100%, ${opacity[9]})`,
+      450: `hsla(0, 0%, 100%, ${opacity[10]})`,
       500: `hsla(0, 0%, 100%, ${opacity[11]})`,
     },
     black: {
@@ -310,6 +312,7 @@ export const colors: Color = {
       200: `hsla(0, 0%, 0%, ${opacity[6]})`,
       300: `hsla(0, 0%, 0%, ${opacity[8]})`,
       400: `hsla(0, 0%, 0%, ${opacity[9]})`,
+      450: `hsla(0, 0%, 0%, ${opacity[10]})`,
       500: `hsla(0, 0%, 0%, ${opacity[11]})`,
     },
   },
