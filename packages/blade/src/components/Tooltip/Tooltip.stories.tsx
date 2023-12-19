@@ -77,7 +77,7 @@ const TooltipTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
   return (
     <Center>
       <TooltipComponent {...args}>
-        <button>Hover over me</button>
+        <Button>Hover over me</Button>
       </TooltipComponent>
     </Center>
   );
@@ -106,10 +106,10 @@ const PlacementBox = React.forwardRef<
       width={isReactNative() ? '40%' : '100%'}
       flexShrink={0}
       padding="spacing.5"
-      // backgroundColor="surface.background.level3.lowContrast"
+      backgroundColor="surface.background.gray.moderate"
       {...props}
     >
-      <Text contrast="low">{children}</Text>
+      <Text>{children}</Text>
     </Box>
   );
 });
@@ -217,7 +217,7 @@ const TooltipTriggersTemplate: ComponentStory<typeof TooltipComponent> = (args) 
     <Center>
       <Box display="flex" gap="spacing.11" alignItems="center" flexWrap="wrap">
         <TooltipComponent {...args} placement="top">
-          <button>button</button>
+          <Button>button</Button>
         </TooltipComponent>
         <Box marginTop="spacing.8" />
         <TooltipComponent {...args} placement="top">
@@ -262,13 +262,11 @@ const CustomTrigger = React.forwardRef<
       padding="spacing.4"
       borderRadius="medium"
       backgroundColor={
-        isReactNative()
-          ? 'surface.background.level1.lowContrast'
-          : 'surface.background.level2.lowContrast'
+        isReactNative() ? 'surface.background.gray.subtle' : 'surface.background.gray.intense'
       }
       {...props}
     >
-      <Text contrast="low">{children}</Text>
+      <Text>{children}</Text>
     </BaseBox>
   );
 });
