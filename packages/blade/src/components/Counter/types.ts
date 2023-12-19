@@ -8,10 +8,10 @@ type FeedbackBackgroundColors = `feedback.background.${DotNotationColorStringTok
   Theme['colors']['feedback']['background']
 >}`;
 
-type CounterBackgroundColors = `surface.background.primary.${SubtleOrIntense}`;
+type SurfacePrimaryColors = `surface.background.primary.${SubtleOrIntense}`;
 
 export type StyledCounterProps = {
-  backgroundColor: FeedbackBackgroundColors | CounterBackgroundColors;
+  backgroundColor: FeedbackBackgroundColors | SurfacePrimaryColors;
   size: NonNullable<CounterProps['size']>;
   platform: TypographyPlatforms;
   theme: Theme;
