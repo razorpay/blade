@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { CSSObject } from 'styled-components';
 import type {
   BaseBoxProps,
@@ -14,6 +15,11 @@ import { isReactNative, getMediaQuery } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import type { DotNotationSpacingStringToken } from '~utils/types';
+
+const isSpacingToken = (value: string): value is DotNotationSpacingStringToken => {
+  return typeof value === 'string' && value.startsWith('spacing.');
+};
 
 const getSpacingValue = (
   spacingValue:
@@ -26,8 +32,8 @@ const getSpacingValue = (
     return undefined;
   }
 
-  const responsiveSpacingValue: SpacingValueType | SpacingValueType[] = getResponsiveValue(
-    spacingValue as MakeValueResponsive<string | string[]>,
+  const responsiveSpacingValue = getResponsiveValue(
+    spacingValue as MakeValueResponsive<SpacingValueType | SpacingValueType[]>,
     breakpoint,
   );
 
@@ -43,10 +49,9 @@ const getSpacingValue = (
     return responsiveSpacingValue.map((value) => getSpacingValue(value, theme)).join(' ');
   }
 
-  if (typeof responsiveSpacingValue === 'string' && responsiveSpacingValue.startsWith('spacing.')) {
-    // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
+  if (isSpacingToken(responsiveSpacingValue)) {
     const spacingReturnValue = getIn(theme, responsiveSpacingValue);
-    return isEmpty(spacingReturnValue) ? makeSpace(spacingReturnValue) : undefined;
+    return isEmpty(spacingReturnValue) ? makeSpace(spacingReturnValue!) : undefined;
   }
 
   // pixel or with unit values
@@ -72,8 +77,7 @@ const getBorderRadiusValue = (
   const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, breakpoint);
   return isEmpty(responsiveBorderRadiusValue)
     ? undefined
-    : // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
-      makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
+    : makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
 };
 
 const getBorderWidthValue = (
@@ -84,8 +88,7 @@ const getBorderWidthValue = (
   const responsiveBorderWidthValue = getResponsiveValue(borderWidth, breakpoint);
   return isEmpty(responsiveBorderWidthValue)
     ? undefined
-    : // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
-      makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
+    : makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
 };
 
 export const getElevationValue = (
@@ -93,11 +96,11 @@ export const getElevationValue = (
   theme: Theme,
   breakpoint?: keyof Breakpoints,
 ): string | undefined => {
-  const responsiveElevationValue: string = getResponsiveValue(elevation, breakpoint);
+  const responsiveElevationValue = getResponsiveValue(elevation, breakpoint);
   return isEmpty(responsiveElevationValue)
     ? undefined
-    : // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
-      getIn(theme, `elevation.${responsiveElevationValue}`);
+    : // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+      getIn(theme, `elevation.${responsiveElevationValue!}`);
 };
 
 const getAllProps = (
