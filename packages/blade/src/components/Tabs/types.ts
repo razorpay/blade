@@ -56,6 +56,7 @@ type TabsProps = {
    * If set, when the TabList is scrollable, the selected tab will be scrolled into view.
    *
    * @default 'none' - disabled
+   * @platform web only
    */
   scrollIntoViewAlignment?: 'none' | 'start' | 'end' | 'center';
 };

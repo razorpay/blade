@@ -4,6 +4,7 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import React from 'react';
 import StoryRouter from 'storybook-react-router';
 import { Route, useHistory } from 'react-router-dom';
+import { DocsContext } from '@storybook/addon-docs';
 import type { TabItemProps, TabsProps } from './types';
 import { Tabs, TabItem, TabList, TabPanel } from './';
 import { Code, Heading, Text, Title } from '~components/Typography';
@@ -921,6 +922,7 @@ export const ProductUseCase3 = ProductUseCase3Template.bind({});
 ProductUseCase3.storyName = 'Product Usecase: React Router';
 
 const ScrollIntoViewExample = () => {
+  const context = React.useContext(DocsContext);
   const section1Ref = React.useRef<HTMLDivElement>(null);
   const section2Ref = React.useRef<HTMLDivElement>(null);
   const section3Ref = React.useRef<HTMLDivElement>(null);
@@ -944,7 +946,12 @@ const ScrollIntoViewExample = () => {
     return '';
   }, [section1Intersection, section2Intersection, section3Intersection]);
 
-  console.log(selectedValue);
+  const isDocs = Boolean(context?.id);
+  if (isDocs) {
+    return (
+      <Text>Story not supported in Docs page, please switch to story page to view the example</Text>
+    );
+  }
   if (isReactNative()) {
     return <Text>Story not supported in ReactNative</Text>;
   }
