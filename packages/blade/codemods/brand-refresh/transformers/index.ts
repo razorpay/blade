@@ -376,6 +376,38 @@ const transformer: Transform = (file, api, options) => {
       return path.node;
     });
 
+  // Bade/Counter/IconButton
+  root
+    .find(j.JSXElement)
+    .filter((path) =>
+      ['Badge', 'Counter', 'IconButton'].includes(path.value.openingElement.name.name),
+    )
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name === 'contrast')
+    .replaceWith((path) => {
+      path.node.name.name = 'emphesis';
+
+      const contrastToEmphasisMap = {
+        badge: {
+          low: 'subtle',
+          high: 'intense',
+        },
+        counter: {
+          low: 'subtle',
+          high: 'intense',
+        },
+        iconbutton: {
+          low: 'intense',
+          high: 'subtle',
+        },
+      };
+
+      path.node.value.value =
+        contrastToEmphasisMap[path.parent.value.name.name.toLowerCase()][[path.node.value.value]];
+
+      return path.node;
+    });
+
   // Return the updated source code
   return root
     .toSource(options.printOptions)
