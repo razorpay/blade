@@ -32,7 +32,7 @@ export type CounterProps = {
   /**
    * Sets the contrast of the counter.
    *
-   * @default 'low'
+   * @default 'subtle'
    */
   emphasis?: SubtleOrIntense;
   /**

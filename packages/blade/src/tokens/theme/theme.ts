@@ -56,13 +56,13 @@ export type Colors = {
     border: Record<InteractiveColorKeys, InteractiveStates>;
     text: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
     icon: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
-    hover: SubtleOrIntense;
+    hover: SubtleOrIntenseEmphasis;
   };
   feedback: {
-    background: Record<FeedbackColors, SubtleOrIntense>;
-    border: Record<FeedbackColors, SubtleOrIntense>;
-    text: Record<FeedbackColors, SubtleOrIntense>;
-    icon: Record<FeedbackColors, SubtleOrIntense>;
+    background: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
+    border: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
+    text: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
+    icon: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
   };
   surface: {
     background: {
