@@ -240,35 +240,8 @@ const getDeclarationsConfig = ({ exportCategory, isNative }) => {
   };
 };
 
-const getCSSVariablesConfig = ({ exportCategory }) => ({
-  input: `src/${exportCategory}/index.ts`,
-  output: {
-    file: `${outputRootDirectory}/js-bundle-for-css/${exportCategory}Bundle.js`,
-    format: 'cjs',
-  },
-  plugins: [
-    pluginPeerDepsExternal(),
-    pluginResolve({ extensions: webExtensions }),
-    pluginCommonjs(),
-    pluginBabel({
-      exclude: 'node_modules/**',
-      babelHelpers: 'runtime',
-      envName: 'production',
-      extensions: webExtensions,
-    }),
-    aliases,
-  ],
-});
-
 const config = () => {
   const framework = process.env.FRAMEWORK;
-  const generateCSSVariables = process.env.GENERATE_CSS_VARIABLES;
-
-  if (generateCSSVariables == 'true' && framework === 'REACT') {
-    return themeBundleCategories
-      .map((exportCategory) => [getCSSVariablesConfig({ exportCategory })])
-      .flat();
-  }
 
   const components = 'src/components/index.ts';
   const tokens = 'src/tokens/index.ts';
