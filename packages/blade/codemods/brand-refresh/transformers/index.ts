@@ -1,4 +1,5 @@
 import type { Transform, JSXAttribute, JSXExpressionContainer } from 'jscodeshift';
+import colorTokensMapping from './colorTokensMapping';
 
 const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
   return (prop as JSXAttribute)?.value?.type === 'JSXExpressionContainer';
@@ -38,8 +39,24 @@ const transformer: Transform = (file, api, options) => {
   const fontTokenPrefix = 'theme.typography.fonts.size';
   const lineHeightTokenPrefix = 'theme.typography.lineHeights';
 
-  // Replace font sizes & line height in the source code with corresponding token references
+  // Replace old color tokens to new color tokens
   const newSource = file.source
+    .replace(
+      /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
+      (originalString) => {
+        if (originalString.includes('highContrast') && !originalString.includes('feedback')) {
+          return originalString;
+        }
+
+        const replacement = colorTokensMapping[originalString];
+
+        if (!replacement) {
+          return originalString;
+        }
+        return replacement;
+      },
+    )
+    // Replace old font sizes & line height in the source code with new font sizes & line height
     .replace(
       // gets both .50 and ['50'] or ["50"]
       /theme\.typography\.fonts\.size\.?((\w+)|(\W.*\]))/g,
@@ -65,8 +82,66 @@ const transformer: Transform = (file, api, options) => {
       },
     );
 
+  // Don't transform if the file doesn't import `@razorapy/blade/components` because it's not using Blade components
+  // Allow the migration test file to be transformed
+  if (!newSource.includes('@razorpay/blade/components') && file.path !== undefined) {
+    return newSource;
+  }
+
   const j = api.jscodeshift;
   const root = j.withParser('tsx')(newSource);
+
+  // Update the themeTokens prop in BladeProvider
+  root
+    .find(j.JSXElement)
+    .filter((path) => path.value.openingElement.name.name === 'BladeProvider')
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name === 'themeTokens')
+    .replaceWith((path) => {
+      path.node.value.expression.name = 'bladeTheme';
+
+      return path.node;
+    });
+
+  // Update color token value based on the context
+  root
+    .find(j.JSXElement)
+    .filter(
+      (path) =>
+        ['Text', 'Title', 'Code', 'Display', 'Heading', 'Box'].includes(
+          path.value.openingElement.name.name,
+        ) || path.value.openingElement.name.name.includes('Icon'),
+    )
+    // Find all color props
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name.toLowerCase().includes('color'))
+    .replaceWith((path) => {
+      const { node, parent } = path;
+
+      if (isExpression(node)) {
+        console.log(
+          'Expression found in size attribute, please update manually:',
+          `${file.path}:${node.loc.start.line}`,
+        );
+        return node;
+      }
+
+      const isBoxComponent = parent.value.name.name === 'Box';
+      const isIconComponent = parent.value.name.name.includes('Icon');
+      const isBorderColorProp = node.name.name.includes('border');
+      const isColorProp = node.name.name === 'color';
+
+      if (isBoxComponent && isBorderColorProp) {
+        node.value.value = node.value.value.replace('background', 'border');
+      } else if (isIconComponent && isColorProp) {
+        node.value.value = node.value.value.replace('surface.background', 'interactive.icon');
+        // Typography components
+      } else if (!isBoxComponent && !isIconComponent && isColorProp) {
+        node.value.value = node.value.value.replace('background', 'text');
+      }
+
+      return node;
+    });
 
   // Select Typography elements based on their names
   const typographyJSXElements = root
@@ -190,16 +265,26 @@ const transformer: Transform = (file, api, options) => {
   // Remove/Update the Title import from "@razorpay/blade/components"
   root
     .find(j.ImportDeclaration)
-    .filter((path) => path.value.source.value === '@razorpay/blade/components')
+    .filter(
+      (path) =>
+        path.value.source.value === '@razorpay/blade/components' ||
+        path.value.source.value === '@razorpay/blade/tokens',
+    )
     .find(j.ImportSpecifier)
-    .filter((path) => path.value.imported.name === 'Title')
+    .filter((path) => ['Title', 'paymentTheme', 'bankingTheme'].includes(path.value.imported.name))
     .replaceWith((path) => {
       // Check if Heading import is already present
       const isHeadingImportPresent = path.parent.value.specifiers.some(
         (node) => node.imported.name === 'Heading',
       );
-      // // If Heading import is not present, update the "Title" import to use "Heading"
-      if (!isHeadingImportPresent) {
+      const isThemeImportPresent =
+        path.value.imported.name === 'paymentTheme' || path.value.imported.name === 'bankingTheme';
+
+      if (isThemeImportPresent) {
+        path.value.imported.name = 'bladeTheme';
+      }
+      // If Heading import is not present, update the "Title" import to use "Heading"
+      else if (!isHeadingImportPresent) {
         path.value.imported.name = 'Heading';
       } else {
         // If "Heading" import is present, remove the "Title" import
@@ -213,13 +298,72 @@ const transformer: Transform = (file, api, options) => {
 
   // Remove `type` prop from Typography Components
   typographyJSXElements
-    .find(j.JSXAttribute) // Find all JSX props
+    .filter((path) => path.value.openingElement.name.name !== 'Code')
+    .replaceWith((path) => {
+      const { node } = path;
+
+      const colorAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'color',
+      );
+
+      if (colorAttribute) {
+        node.openingElement.attributes = node.openingElement.attributes.filter(
+          (attribute) => attribute.name.name !== 'contrast' && attribute.name.name !== 'type',
+        );
+
+        return node;
+      }
+
+      const typeAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'type',
+      );
+
+      const contrastAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'contrast',
+      );
+
+      // If type and contrast are not present, return the node
+      if (!(typeAttribute || contrastAttribute)) {
+        return node;
+      }
+
+      const typeValue = typeAttribute?.value.value || 'normal';
+      const contrastValue = contrastAttribute?.value.value || 'low';
+
+      const oldColorToken = `surface.text.${typeValue}.${contrastValue}Contrast`;
+      const newColorToken = colorTokensMapping[oldColorToken];
+
+      if (newColorToken) {
+        node.openingElement.attributes?.push(
+          j.jsxAttribute(j.jsxIdentifier('color'), j.literal(newColorToken)),
+        );
+      }
+
+      return node;
+    })
+    .find(j.JSXAttribute) // Find all Heading props
     .filter(
       (path, index, self) =>
-        path.node.name.name === 'type' &&
+        (path.node.name.name === 'type' ||
+          (path.node.name.name === 'contrast' && path.node.value.value === 'low')) &&
         index === self.findIndex((obj) => path.node.start === obj.node.start),
     ) // Filter by name `type` and remove any duplicates
     .remove();
+
+  // Break `contrast="high"` prop from Typography Components
+  typographyJSXElements
+    .filter((path) => path.value.openingElement.name.name !== 'Code')
+    .find(j.JSXAttribute) // Find all Heading props
+    .filter(
+      (path, index, self) =>
+        path.node.name.name === 'contrast' &&
+        path.node.value.value === 'high' &&
+        index === self.findIndex((obj) => path.node.start === obj.node.start),
+    )
+    .replaceWith((path) => {
+      path.node.value.value = 'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN';
+      return path.node;
+    });
 
   // Change 'weight="bold"' to 'weight="semibold"' in Heading, Text, Display
   // Code still uses 'weight="bold"' and Title has been modified to the Heading Component
@@ -232,8 +376,115 @@ const transformer: Transform = (file, api, options) => {
       return path.node;
     });
 
+  // Bade/Counter/IconButton
+  root
+    .find(j.JSXElement)
+    .filter((path) =>
+      ['Badge', 'Counter', 'IconButton'].includes(path.value.openingElement.name.name),
+    )
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name === 'contrast')
+    .replaceWith((path) => {
+      path.node.name.name = 'emphesis';
+
+      const contrastToEmphasisMap = {
+        badge: {
+          low: 'subtle',
+          high: 'intense',
+        },
+        counter: {
+          low: 'subtle',
+          high: 'intense',
+        },
+        iconbutton: {
+          low: 'intense',
+          high: 'subtle',
+        },
+      };
+
+      path.node.value.value =
+        contrastToEmphasisMap[path.parent.value.name.name.toLowerCase()][[path.node.value.value]];
+
+      return path.node;
+    });
+
+  // Remove deprecated 'intent'/'variant' props in favor of color
+  root
+    .find(j.JSXElement)
+    .filter((path) =>
+      ['Alert', 'Badge', 'Counter', 'Chip'].includes(path.value.openingElement.name.name),
+    )
+    .replaceWith((path) => {
+      const { node } = path;
+
+      const colorAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'color',
+      );
+
+      if (colorAttribute) {
+        node.openingElement.attributes = node.openingElement.attributes.filter(
+          (attribute) => attribute.name.name !== 'intent' && attribute.name.name !== 'variant',
+        );
+
+        return node;
+      }
+
+      const variantAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'variant',
+      );
+
+      const intentAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'intent',
+      );
+
+      // If type and contrast are not present, return the node
+      if (!(variantAttribute || intentAttribute)) {
+        return node;
+      }
+
+      const variantValue = variantAttribute?.value.value;
+      const intentValue = intentAttribute?.value.value;
+
+      node.openingElement.attributes?.push(
+        j.jsxAttribute(
+          j.jsxIdentifier('color'),
+          j.literal(
+            (variantValue || intentValue) === 'blue' ? 'primary' : variantValue || intentValue,
+          ),
+        ),
+      );
+
+      return node;
+    })
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name === 'intent' || path.node.name.name === 'variant')
+    .replaceWith((path) => {
+      if (path.node.value.value === 'blue' || path.node.value.value === 'default') {
+        path.node.value.value = 'primary';
+      }
+
+      return path.node;
+    })
+    .filter((path) => path.node.name.name === 'intent' || path.node.name.name === 'variant')
+    .remove();
+
   // Return the updated source code
-  return root.toSource(options.printOptions);
+  return root
+    .toSource(options.printOptions)
+    .replace(
+      'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN',
+      `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`,
+    )
+    .replace(
+      /((brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)|UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN)/g,
+      (originalString) => {
+        if (originalString.includes('highContrast')) {
+          return `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`;
+        }
+
+        return originalString;
+      },
+    );
 };
 
 export default transformer;
