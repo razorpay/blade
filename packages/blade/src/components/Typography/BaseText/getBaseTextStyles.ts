@@ -6,7 +6,7 @@ import { isReactNative } from '~utils';
 import { makeLetterSpacing } from '~utils/makeLetterSpacing';
 
 const getBaseTextStyles = ({
-  color = 'surface.text.normal.lowContrast',
+  color = 'surface.text.gray.normal',
   fontFamily = 'text',
   fontSize = 200,
   fontWeight = 'regular',

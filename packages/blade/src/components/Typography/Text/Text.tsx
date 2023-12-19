@@ -64,13 +64,13 @@ const getTextProps = <T extends { variant: TextVariant }>({
   variant,
   weight,
   size,
-  color,
+  color = 'surface.text.gray.normal',
   testID,
   textAlign,
   textDecorationLine,
 }: GetTextProps<T>): GetTextPropsReturn => {
   const props: GetTextPropsReturn = {
-    color: color ?? 'surface.text.gray.normal',
+    color,
     fontSize: 100,
     fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
