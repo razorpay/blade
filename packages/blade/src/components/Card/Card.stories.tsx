@@ -257,8 +257,8 @@ const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
         <CardHeaderLeading
           title={args.headerTitle}
           subtitle={args.headerSubtitle}
-          prefix={<CardHeaderIcon icon={args.prefix} />}
-          suffix={<CardHeaderCounter value={args.suffix} />}
+          prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
+          suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
         />
         <CardHeaderTrailing visual={args.visual} />
       </CardHeader>
