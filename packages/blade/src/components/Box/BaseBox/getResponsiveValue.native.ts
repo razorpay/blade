@@ -64,7 +64,7 @@ const getResponsiveValue = <T extends string | number | string[] | DimensionValu
      * ```
      */
     if (breakpoint === 'base') {
-      return value as T;
+      return value;
     }
 
     return undefined;
