@@ -13,7 +13,7 @@ export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
 export type ColorSchemeModes = 'onDark' | 'onLight';
 
-type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
+export type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
 type Emphasis = {
   subtle: string;
@@ -46,7 +46,7 @@ type ColorCategories = {
   primary: Pick<Emphasis, 'normal'>;
 };
 
-type InteractiveColorKeys = Feedback | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
+type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
 
 export type Colors = {
   interactive: {
@@ -57,10 +57,10 @@ export type Colors = {
     hover: SubtleOrIntense;
   };
   feedback: {
-    background: Record<Feedback, SubtleOrIntense>;
-    border: Record<Feedback, SubtleOrIntense>;
-    text: Record<Feedback, SubtleOrIntense>;
-    icon: Record<Feedback, SubtleOrIntense>;
+    background: Record<FeedbackColors, SubtleOrIntense>;
+    border: Record<FeedbackColors, SubtleOrIntense>;
+    text: Record<FeedbackColors, SubtleOrIntense>;
+    icon: Record<FeedbackColors, SubtleOrIntense>;
   };
   surface: {
     background: {
