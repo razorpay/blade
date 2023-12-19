@@ -79,13 +79,13 @@ export default {
   title: 'Components/Icons',
   component: PlusIcon, // need to give it some icon component so that storybook can infer props & arg types
   args: {
-    color: 'surface.text.normal.lowContrast',
+    color: 'surface.icon.gray.normal',
     size: 'medium',
   },
   argTypes: {
     icon: {
       name: 'icon',
-      type: 'select',
+      type: 'select' as 'string',
       options: Object.keys(iconMap),
     },
     size: {

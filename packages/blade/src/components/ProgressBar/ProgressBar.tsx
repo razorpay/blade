@@ -9,7 +9,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import type { ColorContrastTypes, FeedbackColors } from '~tokens/theme/theme';
 import { size } from '~tokens/global';
 import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
@@ -30,7 +30,7 @@ type ProgressBarCommonProps = {
   /**
    * Sets the intent of the progress bar which changes the feedback color.
    */
-  intent?: Feedback;
+  intent?: FeedbackColors;
   /**
    * Sets the label to be rendered for the progress bar. This value will also be used as default for `accessibilityLabel`.
    */

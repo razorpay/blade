@@ -3,7 +3,6 @@ import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
-import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { isReactNative } from '~utils';
@@ -18,9 +17,7 @@ export type HeadingProps = {
    * **Note** This takes priority over `type` and `contrast` prop to decide color of heading
    */
   color?: BaseTextProps['color'];
-  type?: TextTypes;
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'semibold'>;
-  contrast?: ColorContrastTypes;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
@@ -31,18 +28,15 @@ export type HeadingProps = {
 const getProps = ({
   as,
   size,
-  type,
   weight,
-  contrast,
   color,
   testID,
-}: Pick<HeadingProps, 'as' | 'size' | 'type' | 'weight' | 'contrast' | 'color' | 'testID'>): Omit<
+}: Pick<HeadingProps, 'as' | 'size' | 'weight' | 'color' | 'testID'>): Omit<
   BaseTextProps,
   'children'
 > => {
-  const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: Omit<BaseTextProps, 'children'> = {
-    color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
+    color,
     fontSize: 300,
     fontWeight: weight ?? 'semibold',
     fontStyle: 'normal',
@@ -83,10 +77,8 @@ const getProps = ({
 export const Heading = ({
   as,
   size = 'small',
-  type = 'normal',
   weight = 'semibold',
-  contrast = 'low',
-  color,
+  color = 'surface.text.gray.normal',
   children,
   testID,
   textAlign,
@@ -95,7 +87,7 @@ export const Heading = ({
 }: HeadingProps): ReactElement => {
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
 
-  const props = getProps({ as, size, type, weight, color, contrast, testID });
+  const props = getProps({ as, size, weight, color, testID });
 
   return (
     <BaseText

@@ -15,7 +15,7 @@ export type ColorSchemeModes = 'onDark' | 'onLight';
 
 export type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
-type Emphasis = {
+export type Emphasis = {
   subtle: string;
   moderate: string;
   intense: string;
@@ -24,7 +24,9 @@ type Emphasis = {
   disabled: string;
 };
 
-type SubtleOrIntense = Pick<Emphasis, 'subtle' | 'intense'>;
+type SubtleOrIntenseEmphasis = Pick<Emphasis, 'subtle' | 'intense'>;
+// Exporting this for usage in other components
+export type SubtleOrIntense = keyof SubtleOrIntenseEmphasis;
 type InteractiveStates = {
   default: string;
   highlighted: string;
@@ -54,20 +56,20 @@ export type Colors = {
     border: Record<InteractiveColorKeys, InteractiveStates>;
     text: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
     icon: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
-    hover: SubtleOrIntense;
+    hover: SubtleOrIntenseEmphasis;
   };
   feedback: {
-    background: Record<FeedbackColors, SubtleOrIntense>;
-    border: Record<FeedbackColors, SubtleOrIntense>;
-    text: Record<FeedbackColors, SubtleOrIntense>;
-    icon: Record<FeedbackColors, SubtleOrIntense>;
+    background: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
+    border: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
+    text: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
+    icon: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
   };
   surface: {
     background: {
       gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
-      primary: SubtleOrIntense;
-      sea: SubtleOrIntense;
-      cloud: SubtleOrIntense;
+      primary: SubtleOrIntenseEmphasis;
+      sea: SubtleOrIntenseEmphasis;
+      cloud: SubtleOrIntenseEmphasis;
     };
     border: {
       gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
@@ -80,8 +82,8 @@ export type Colors = {
     background: Pick<Emphasis, 'moderate' | 'subtle'>;
   };
   popup: {
-    background: SubtleOrIntense;
-    border: SubtleOrIntense;
+    background: SubtleOrIntenseEmphasis;
+    border: SubtleOrIntenseEmphasis;
   };
   transparent: string;
 };

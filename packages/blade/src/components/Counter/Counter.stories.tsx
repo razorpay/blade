@@ -54,7 +54,7 @@ export const Counter = CounterTemplate.bind({});
 Counter.args = {
   value: 20,
   color: 'neutral',
-  contrast: 'low',
+  emphasis: 'subtle',
 };
 Counter.storyName = 'Default';
 
@@ -63,16 +63,16 @@ Max.args = {
   value: 120,
   max: 99,
   color: 'neutral',
-  contrast: 'high',
+  emphasis: 'intense',
 };
 Max.storyName = 'Max';
 
 const CountersWithColorTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) => {
-  const colors = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
+  const colors = ['positive', 'negative', 'notice', 'information', 'neutral', 'primary'] as const;
 
   return (
     <BaseBox display="flex" flexDirection="column">
-      <BladeText>Low Contrast</BladeText>
+      <BladeText>Subtle Emphasis</BladeText>
       <BaseBox
         display="flex"
         flexDirection="row"
@@ -87,11 +87,11 @@ const CountersWithColorTemplate: ComponentStory<typeof CounterComponent> = ({ ..
             marginRight="spacing.3"
             marginTop="spacing.2"
             color={color}
-            contrast="low"
+            emphasis="subtle"
           />
         ))}
       </BaseBox>
-      <BladeText>High Contrast</BladeText>
+      <BladeText>Intense Emphasis</BladeText>
       <BaseBox
         display="flex"
         flexDirection="row"
@@ -106,7 +106,7 @@ const CountersWithColorTemplate: ComponentStory<typeof CounterComponent> = ({ ..
             marginRight="spacing.3"
             marginTop="spacing.2"
             color={color}
-            contrast="high"
+            emphasis="intense"
           />
         ))}
       </BaseBox>

@@ -9,7 +9,6 @@ import { Text as BladeText } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { capitalize } from '~utils/lodashButBetter/capitalize';
 
 const Page = (): React.ReactElement => {
   return (
@@ -45,7 +44,8 @@ export default {
     ...getStyledPropsArgTypes(),
     icon: {
       name: 'icon',
-      type: 'select',
+      // weird TS error
+      type: 'select' as 'string',
       options: Object.keys(iconMap),
       mapping: iconMap,
     },
@@ -64,23 +64,17 @@ const BadgeTemplate: ComponentStory<typeof BadgeComponent> = ({ children, ...arg
 export const Badge = BadgeTemplate.bind({});
 Badge.args = {
   children: 'Label',
-  variant: 'neutral',
-  fontWeight: 'regular',
-  contrast: 'low',
+  color: 'neutral',
   size: 'small',
 };
 Badge.storyName = 'Default';
 
 const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...args }) => {
-  const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
-
-  const getLabel = (label: string): string => {
-    return args.fontWeight === 'bold' ? label.toUpperCase() : capitalize(label);
-  };
+  const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'primary'] as const;
 
   return (
     <BaseBox display="flex" flexDirection="column">
-      <BladeText>Low Contrast</BladeText>
+      <BladeText>Subtle Emphasis</BladeText>
       <BaseBox
         display="flex"
         flexDirection="row"
@@ -91,17 +85,17 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
         {variants.map((variant) => (
           <BadgeComponent
             {...args}
-            variant={variant}
-            contrast="low"
+            color={variant}
             key={variant}
+            emphasis="subtle"
             marginRight="spacing.3"
             marginTop="spacing.2"
           >
-            {getLabel(variant)}
+            {variant}
           </BadgeComponent>
         ))}
       </BaseBox>
-      <BladeText>High Contrast</BladeText>
+      <BladeText>Intense Emphasis</BladeText>
       <BaseBox
         display="flex"
         flexDirection="row"
@@ -112,13 +106,13 @@ const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...a
         {variants.map((variant) => (
           <BadgeComponent
             {...args}
-            variant={variant}
-            contrast="high"
+            color={variant}
             key={variant}
+            emphasis="intense"
             marginRight="spacing.3"
             marginTop="spacing.2"
           >
-            {getLabel(variant)}
+            {variant}
           </BadgeComponent>
         ))}
       </BaseBox>
@@ -162,9 +156,3 @@ BadgeWithIcon.parameters = {
   },
 };
 BadgeWithIcon.storyName = 'With Icon';
-
-export const BadgeBold = BadgesWithVariantTemplate.bind({});
-BadgeBold.args = {
-  fontWeight: 'bold',
-};
-BadgeBold.storyName = 'Bold Font';
