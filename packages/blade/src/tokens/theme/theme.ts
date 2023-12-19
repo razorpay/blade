@@ -11,7 +11,7 @@ import type {
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
-type ColorSchemeModes = 'onDark' | 'onLight';
+export type ColorSchemeModes = 'onDark' | 'onLight';
 
 export type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
@@ -55,6 +55,7 @@ export type Colors = {
     border: Record<InteractiveColorKeys, InteractiveStates>;
     text: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
     icon: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
+    hover: SubtleOrIntense;
   };
   feedback: {
     background: Record<FeedbackColors, SubtleOrIntense>;
@@ -83,6 +84,7 @@ export type Colors = {
     background: SubtleOrIntense;
     border: SubtleOrIntense;
   };
+  transparent: string;
 };
 
 export type ColorsWithModes = Record<ColorSchemeModes, Colors>;
