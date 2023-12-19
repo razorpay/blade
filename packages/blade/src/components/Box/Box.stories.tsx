@@ -4,7 +4,7 @@ import { getBoxArgTypes } from './BaseBox/storybookArgTypes';
 import type { BoxRefType } from './BaseBox/types';
 import type { BoxProps } from '.';
 import { Box } from '.';
-import { Text, Title } from '~components/Typography';
+import { Text, Heading } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { LinkToStorybook } from '~utils/storybook/LinkToStorybook';
 import { castWebType, isReactNative } from '~utils';
@@ -31,7 +31,7 @@ const BoxStoryMeta = {
           propsDescription="All Box props support responsive objects. Props marked with 💅🏼 next to their names are the props that can also be used as styled-props on other blade components. Check out styled-props documentation for more details."
         >
           <Box paddingY="spacing.5" paddingBottom="spacing.8">
-            <Title size="medium">Layout Primitives Documentation</Title>
+            <Heading size="xlarge">Layout Primitives Documentation</Heading>
             <Text marginTop="spacing.3">
               Check Out{' '}
               <LinkToStorybook url="Components/Layout Primitives (Box)/How to Create Layouts?">
@@ -79,6 +79,35 @@ Responsive.args = {
   display: 'flex',
   paddingY: 'spacing.6',
   flexDirection: { base: 'column', m: 'row' },
+} as BoxProps;
+
+export const Elevations = (args: BoxProps): React.ReactElement => {
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      paddingY="spacing.11"
+      paddingX={isReactNative() ? 'spacing.0' : 'spacing.4'}
+      display="flex"
+      flexDirection="row"
+      gap="spacing.8"
+    >
+      <Box {...args} elevation="lowRaised">
+        <Text>Low </Text>
+      </Box>
+      <Box {...args} elevation="midRaised">
+        <Text>Mid</Text>
+      </Box>
+      <Box {...args} elevation="highRaised">
+        <Text>High</Text>
+      </Box>
+    </Box>
+  );
+};
+
+Elevations.args = {
+  padding: 'spacing.8',
+  backgroundColor: 'surface.background.level2.lowContrast',
+  borderRadius: 'large',
 } as BoxProps;
 
 export const AsSection = (args: BoxProps): React.ReactElement => {

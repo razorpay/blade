@@ -58,7 +58,7 @@ type BadgeProps = {
    *
    * @default 'regular'
    */
-  fontWeight?: 'regular' | 'bold';
+  fontWeight?: 'regular' | 'semibold';
 } & TestID &
   StyledPropsBlade;
 

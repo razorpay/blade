@@ -7,7 +7,7 @@ import React from 'react';
 import { Tooltip, TooltipInteractiveWrapper } from '..';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 const triggerId = 'tooltip-interactive-wrapper';
 const modalBackdropId = 'tooltip-modal-backdrop';
@@ -88,7 +88,7 @@ describe('<Tooltip />', () => {
 
     // wait for closing animation to finish
     await act(async () => {
-      jest.advanceTimersByTime(paymentTheme.motion.duration.gentle);
+      jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
     expect(getByLabelText(tooltipContent)).toHaveProp('visible', false);
   });

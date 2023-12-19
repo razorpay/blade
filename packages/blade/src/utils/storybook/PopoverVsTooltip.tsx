@@ -27,7 +27,7 @@ const Table = styled.table`
 `;
 
 const Strong = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  return <Text weight="bold">{children}</Text>;
+  return <Text weight="semibold">{children}</Text>;
 };
 
 const PopoverVsTooltip = (): React.ReactElement => {

@@ -7,6 +7,7 @@ import {
   spacing,
   typography,
   elevation,
+  opacity,
 } from '~tokens/global';
 
 const colors: ColorsWithModes = {
@@ -73,7 +74,7 @@ const colors: ColorsWithModes = {
           default: globalColors.chromatic.emerald[600],
           highlighted: globalColors.chromatic.emerald[700],
           disabled: globalColors.chromatic.emerald.a50,
-          faded: globalColors.chromatic.emerald.a50,
+          faded: globalColors.chromatic.emerald.a100,
         },
         negative: {
           default: globalColors.chromatic.crimson[600],
@@ -430,11 +431,6 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayLight[1100],
         },
       },
-    },
-    elevation: {
-      lowRaised: `hsla(212, 39%, 16%, ${opacity[1]})`,
-      midRaised: `hsla(212, 39%, 16%, ${opacity[2]})`,
-      highRaised: `hsla(212, 39%, 16%, ${opacity[3]})`,
     },
     transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
   },
@@ -858,11 +854,6 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[100],
         },
       },
-    },
-    elevation: {
-      lowRaised: `hsla(211, 53%, 10%, ${opacity[1]})`,
-      midRaised: `hsla(211, 53%, 10%, ${opacity[2]})`,
-      highRaised: `hsla(211, 53%, 10%, ${opacity[3]})`,
     },
     transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
   },

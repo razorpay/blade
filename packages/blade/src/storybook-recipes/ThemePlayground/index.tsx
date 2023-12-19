@@ -9,7 +9,7 @@ import { BladeProvider } from '~components/BladeProvider';
 import { bankingTheme, createTheme, overrideTheme, paymentTheme } from '~tokens/theme';
 import type { ColorSchemeNames, ThemeTokens } from '~tokens/theme';
 import { Box } from '~components/Box';
-import { Title } from '~components/Typography';
+import { Heading } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
 
 const ThemePlayground = (): React.ReactElement => {
@@ -76,27 +76,27 @@ const ThemePlayground = (): React.ReactElement => {
             <CardBody>
               <Box>
                 <Box flex={1}>
-                  <Title size="medium" marginBottom="spacing.4">
+                  <Heading size="xlarge" marginBottom="spacing.4">
                     Checkout Home Page
-                  </Title>
+                  </Heading>
                   <CheckoutHome />
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
-                  <Title size="medium" marginBottom="spacing.4">
+                  <Heading size="xlarge" marginBottom="spacing.4">
                     Checkout Card
-                  </Title>
+                  </Heading>
                   <CheckoutCard />
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
-                  <Title size="medium" marginBottom="spacing.4">
+                  <Heading size="xlarge" marginBottom="spacing.4">
                     Phantom UI
-                  </Title>
+                  </Heading>
                   <PhantomUI />
                 </Box>
                 <Box marginTop="spacing.8">
-                  <Title size="medium" marginBottom="spacing.4">
+                  <Heading size="xlarge" marginBottom="spacing.4">
                     Component Showcase
-                  </Title>
+                  </Heading>
                   <BrandedComponentKitchenSink />
                 </Box>
               </Box>
