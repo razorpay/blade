@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import styled from 'styled-components';
@@ -5,6 +6,8 @@ import type { GestureResponderEvent } from 'react-native';
 import StyledBaseButton from './StyledBaseButton';
 import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
 import {
+  textColor,
+  backgroundColor,
   buttonIconOnlyPadding,
   buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
@@ -14,6 +17,7 @@ import {
   buttonIconPadding,
   buttonPadding,
 } from './buttonTokens';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
@@ -48,6 +52,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
 import { throwBladeError } from '~utils/logger';
+import { Hoverlay } from '~components/Hoverlay';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -96,9 +101,8 @@ type BaseButtonWithIconProps = BaseButtonCommonProps & {
 export type BaseButtonProps = BaseButtonWithIconProps | BaseButtonWithoutIconProps;
 
 type BaseButtonColorTokenModifiers = {
-  property: 'background' | 'border' | 'text' | 'icon';
   variant: NonNullable<BaseButtonProps['variant']>;
-  state: 'default' | 'hover' | 'active' | 'focus' | 'disabled';
+  state: 'default' | 'hover' | 'focus' | 'disabled';
   color: BaseButtonProps['color'];
 };
 
@@ -119,29 +123,58 @@ const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
   return 'button';
 };
 
-const getColorToken = ({
+const getBackgroundColorToken = ({
   property,
   variant,
   state,
   color,
-}: BaseButtonColorTokenModifiers):
-  | `action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
-  | `white.action.${BaseButtonColorTokenModifiers['property']}.${BaseButtonColorTokenModifiers['variant']}.${BaseButtonColorTokenModifiers['state']}`
-  | `feedback.${NonNullable<
-      Exclude<BaseButtonColorTokenModifiers['color'], 'default' | 'white'>
-    >}.action.${BaseButtonColorTokenModifiers['property']}.primary.${BaseButtonColorTokenModifiers['state']}.${
-      | 'high'
-      | 'low'}Contrast` => {
-  if (!color || color === 'default') {
-    return `action.${property}.${variant}.${state}`;
-  }
+}: BaseButtonColorTokenModifiers & {
+  property: 'background' | 'border';
+}): DotNotationToken<Theme['colors']> => {
+  const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
+  const tokens = backgroundColor(property);
+
   if (color === 'white') {
-    return `white.action.${property}.${variant}.${state}`;
+    return tokens.white[variant][_state];
   }
 
-  return `feedback.${color}.action.${property}.primary.${state}.${
-    variant === 'primary' ? 'high' : 'low'
-  }Contrast`;
+  if (color && color !== 'default') {
+    if (variant === 'tertiary') {
+      throw new Error(
+        `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
+      );
+    }
+    return tokens.color(color)[variant][_state];
+  }
+
+  return tokens.base[variant][_state];
+};
+
+const getTextColorToken = ({
+  property,
+  variant,
+  state,
+  color,
+}: BaseButtonColorTokenModifiers & {
+  property: 'icon' | 'text';
+}): DotNotationToken<Theme['colors']> => {
+  const tokens = textColor(property);
+  const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
+
+  if (color === 'white') {
+    return tokens.white[variant][_state];
+  }
+
+  if (color && color !== 'default') {
+    if (variant === 'tertiary') {
+      throw new Error(
+        `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
+      );
+    }
+    return tokens.color(color)[variant][_state];
+  }
+
+  return tokens.base[variant][_state];
 };
 
 type BaseButtonStyleProps = {
@@ -162,8 +195,6 @@ type BaseButtonStyleProps = {
   defaultBorderColor: string;
   hoverBackgroundColor: string;
   hoverBorderColor: string;
-  activeBackgroundColor: string;
-  activeBorderColor: string;
   focusBackgroundColor: string;
   focusBorderColor: string;
   focusRingColor: string;
@@ -207,13 +238,13 @@ const getProps = ({
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
     iconPadding: hasIcon && children?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
-    iconColor: getColorToken({
+    iconColor: getTextColorToken({
       property: 'icon',
       variant,
       color,
       state: 'default',
     }) as IconColor,
-    textColor: getColorToken({
+    textColor: getTextColorToken({
       property: 'text',
       variant,
       color,
@@ -234,39 +265,31 @@ const getProps = ({
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'default' }),
+      getBackgroundColorToken({ property: 'background', variant, color, state: 'default' }),
     ),
     defaultBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'default' }),
+      getBackgroundColorToken({ property: 'border', variant, color, state: 'default' }),
     ),
     hoverBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'hover' }),
+      getBackgroundColorToken({ property: 'background', variant, color, state: 'hover' }),
     ),
     hoverBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'hover' }),
-    ),
-    activeBackgroundColor: getIn(
-      theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'active' }),
-    ),
-    activeBorderColor: getIn(
-      theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'active' }),
+      getBackgroundColorToken({ property: 'border', variant, color, state: 'hover' }),
     ),
     focusBackgroundColor: getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'focus' }),
+      getBackgroundColorToken({ property: 'background', variant, color, state: 'focus' }),
     ),
     focusBorderColor: getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'focus' }),
+      getBackgroundColorToken({ property: 'border', variant, color, state: 'focus' }),
     ),
-    focusRingColor: getIn(theme.colors, 'brand.primary.400'),
-    borderWidth: makeBorderSize(theme.border.width.thin),
-    borderRadius: makeBorderSize(theme.border.radius.small),
+    focusRingColor: getIn(theme.colors, 'interactive.background.primary.faded'),
+    borderWidth: variant == 'secondary' ? makeBorderSize(theme.border.width.thin) : '0px',
+    borderRadius: makeBorderSize(theme.border.radius.medium),
     motionDuration: 'duration.xquick',
     motionEasing: 'easing.standard.effective',
   };
@@ -274,19 +297,19 @@ const getProps = ({
   if (isDisabled) {
     const disabledBackgroundColor = getIn(
       theme.colors,
-      getColorToken({ property: 'background', variant, color, state: 'disabled' }),
+      getBackgroundColorToken({ property: 'background', variant, color, state: 'disabled' }),
     );
     const disabledBorderColor = getIn(
       theme.colors,
-      getColorToken({ property: 'border', variant, color, state: 'disabled' }),
+      getBackgroundColorToken({ property: 'border', variant, color, state: 'disabled' }),
     );
-    props.iconColor = getColorToken({
+    props.iconColor = getTextColorToken({
       property: 'icon',
       variant,
       color,
       state: 'disabled',
     }) as IconColor;
-    props.textColor = getColorToken({
+    props.textColor = getTextColorToken({
       property: 'text',
       variant,
       color,
@@ -296,8 +319,6 @@ const getProps = ({
     props.defaultBorderColor = disabledBorderColor;
     props.hoverBackgroundColor = disabledBackgroundColor;
     props.hoverBorderColor = disabledBorderColor;
-    props.activeBackgroundColor = disabledBackgroundColor;
-    props.activeBorderColor = disabledBorderColor;
     props.focusBackgroundColor = disabledBackgroundColor;
     props.focusBorderColor = disabledBorderColor;
   }
@@ -364,8 +385,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   }, [isLoading, prevLoading]);
 
   const {
-    activeBorderColor,
-    activeBackgroundColor,
     defaultBorderColor,
     defaultBackgroundColor,
     minHeight,
@@ -403,6 +422,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
+  const isWhiteTeritary = variant === 'tertiary' && color === 'white';
+  const shouldShowHoverlay = (variant === 'secondary' && color !== 'default') || isWhiteTeritary;
 
   return (
     <StyledBaseButton
@@ -422,8 +443,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       variant={variant}
       isLoading={isLoading}
       disabled={disabled}
-      activeBorderColor={activeBorderColor}
-      activeBackgroundColor={activeBackgroundColor}
       defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
       buttonPaddingTop={buttonPaddingTop}
@@ -455,6 +474,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
     >
+      {shouldShowHoverlay ? <Hoverlay variant="subtle" className="hoverlay" /> : null}
       {isLoading ? (
         <BaseBox
           display="flex"
@@ -465,6 +485,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           left="0px"
           bottom="0px"
           right="0px"
+          zIndex={1}
         >
           <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
         </BaseBox>
@@ -476,6 +497,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
         justifyContent="center"
         flex={1}
         isHidden={isLoading}
+        zIndex={1}
       >
         {Icon && iconPosition == 'left' ? (
           <BaseBox

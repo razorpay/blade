@@ -31,6 +31,9 @@ const StyledBaseButton = styled.button
         borderColor: props.hoverBorderColor,
       }),
     },
+    '&:hover .hoverlay, &:focus .hoverlay': {
+      opacity: 1,
+    },
     '&:active': {
       backgroundColor: props.activeBackgroundColor,
       ...(props.variant !== 'tertiary' && {
@@ -46,7 +49,7 @@ const StyledBaseButton = styled.button
       boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
     },
     '*': {
-      transitionProperty: 'color, fill',
+      transitionProperty: 'color, fill, opacity',
       transitionDuration: castWebType(
         makeMotionTime(getIn(props.theme.motion, props.motionDuration)),
       ),
