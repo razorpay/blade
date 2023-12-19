@@ -30,6 +30,7 @@ exports[`<Tooltip /> should render 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -47,10 +48,10 @@ exports[`<Tooltip /> should render 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  background-color: hsla(216,33%,29%,1);
+  background-color: hsla(211,29%,26%,1);
   border-width: 1px;
   border-radius: 4px;
-  border-color: hsla(216,27%,36%,1);
+  border-color: hsla(211,26%,34%,1);
   border-style: solid;
   box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
   opacity: 0;
@@ -78,7 +79,7 @@ exports[`<Tooltip /> should render 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(0,0%,100%,1);
+  color: hsla(0,0%,100%,0.88);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -98,10 +99,10 @@ exports[`<Tooltip /> should render 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -117,6 +118,7 @@ exports[`<Tooltip /> should render 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -131,25 +133,25 @@ exports[`<Tooltip /> should render 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -237,7 +239,7 @@ exports[`<Tooltip /> should render 1`] = `
         </p>
         <svg
           aria-hidden="true"
-          fill="hsla(216, 33%, 29%, 1)"
+          fill="hsla(211, 29%, 26%, 1)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%;"
           viewBox="0 0 14 14"
@@ -247,12 +249,12 @@ exports[`<Tooltip /> should render 1`] = `
             clip-path="url(#:r3:)"
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
             fill="none"
-            stroke="hsla(216, 27%, 36%, 1)"
+            stroke="hsla(211, 26%, 34%, 1)"
             stroke-width="3"
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(216, 33%, 29%, 1)"
+            stroke="hsla(211, 29%, 26%, 1)"
           />
           <clippath
             id=":r3:"
@@ -291,6 +293,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -308,10 +311,10 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  background-color: hsla(216,33%,29%,1);
+  background-color: hsla(211,29%,26%,1);
   border-width: 1px;
   border-radius: 4px;
-  border-color: hsla(216,27%,36%,1);
+  border-color: hsla(211,26%,34%,1);
   border-style: solid;
   box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
   opacity: 0;
@@ -339,7 +342,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(0,0%,100%,1);
+  color: hsla(0,0%,100%,0.88);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -359,10 +362,10 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -378,6 +381,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -392,25 +396,25 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -498,7 +502,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
         </p>
         <svg
           aria-hidden="true"
-          fill="hsla(216, 33%, 29%, 1)"
+          fill="hsla(211, 29%, 26%, 1)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%;"
           viewBox="0 0 14 14"
@@ -508,12 +512,12 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             clip-path="url(#:rb:)"
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
             fill="none"
-            stroke="hsla(216, 27%, 36%, 1)"
+            stroke="hsla(211, 26%, 34%, 1)"
             stroke-width="3"
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(216, 33%, 29%, 1)"
+            stroke="hsla(211, 29%, 26%, 1)"
           />
           <clippath
             id=":rb:"
@@ -552,6 +556,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -569,10 +574,10 @@ exports[`<Tooltip /> should render with title 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  background-color: hsla(216,33%,29%,1);
+  background-color: hsla(211,29%,26%,1);
   border-width: 1px;
   border-radius: 4px;
-  border-color: hsla(216,27%,36%,1);
+  border-color: hsla(211,26%,34%,1);
   border-style: solid;
   box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
   opacity: 0;
@@ -617,7 +622,7 @@ exports[`<Tooltip /> should render with title 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(0,0%,100%,1);
+  color: hsla(0,0%,100%,0.88);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -637,10 +642,10 @@ exports[`<Tooltip /> should render with title 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -656,6 +661,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -670,25 +676,25 @@ exports[`<Tooltip /> should render with title 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -782,7 +788,7 @@ exports[`<Tooltip /> should render with title 1`] = `
         </p>
         <svg
           aria-hidden="true"
-          fill="hsla(216, 33%, 29%, 1)"
+          fill="hsla(211, 29%, 26%, 1)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%;"
           viewBox="0 0 14 14"
@@ -792,12 +798,12 @@ exports[`<Tooltip /> should render with title 1`] = `
             clip-path="url(#:r7:)"
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
             fill="none"
-            stroke="hsla(216, 27%, 36%, 1)"
+            stroke="hsla(211, 26%, 34%, 1)"
             stroke-width="3"
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="hsla(216, 33%, 29%, 1)"
+            stroke="hsla(211, 29%, 26%, 1)"
           />
           <clippath
             id=":r7:"
