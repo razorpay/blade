@@ -1,7 +1,7 @@
 import { StyledCounter } from './StyledCounter';
 import type { StyledCounterProps } from './types';
 import { counterHeight, horizontalPadding } from './counterTokens';
-import type { Feedback, SubtleOrIntense } from '~tokens/theme/theme';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -28,7 +28,7 @@ export type CounterProps = {
    *
    * @default 'neutral'
    */
-  color?: Feedback | 'primary';
+  color?: FeedbackColors | 'primary';
   /**
    * Sets the contrast of the counter.
    *

@@ -20,6 +20,7 @@ module.exports = {
     '../../src/components/Counter/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Tag/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Indicator/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Button/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Divider/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/List/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Link/**/*.stories.@(ts|tsx|js|jsx)',

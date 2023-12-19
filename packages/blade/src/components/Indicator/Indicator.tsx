@@ -8,7 +8,7 @@ import { Text } from '~components/Typography';
 import { size as sizeToken } from '~tokens/global';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StringChildrenType, TestID } from '~utils/types';
-import type { Feedback } from '~tokens/theme/theme';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -21,7 +21,7 @@ type IndicatorCommonProps = {
    *
    * @default neutral
    */
-  intent?: Feedback;
+  intent?: FeedbackColors;
 
   /**
    * Size of the indicator

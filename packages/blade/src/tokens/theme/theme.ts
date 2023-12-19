@@ -11,9 +11,9 @@ import type {
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
-type ColorSchemeModes = 'onDark' | 'onLight';
+export type ColorSchemeModes = 'onDark' | 'onLight';
 
-export type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
+export type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
 export type Emphasis = {
   subtle: string;
@@ -48,7 +48,7 @@ type ColorCategories = {
   primary: Pick<Emphasis, 'normal'>;
 };
 
-type InteractiveColorKeys = Feedback | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
+type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
 
 export type Colors = {
   interactive: {
@@ -56,12 +56,13 @@ export type Colors = {
     border: Record<InteractiveColorKeys, InteractiveStates>;
     text: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
     icon: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
+    hover: SubtleOrIntense;
   };
   feedback: {
-    background: Record<Feedback, SubtleOrIntenseEmphasis>;
-    border: Record<Feedback, SubtleOrIntenseEmphasis>;
-    text: Record<Feedback, SubtleOrIntenseEmphasis>;
-    icon: Record<Feedback, SubtleOrIntenseEmphasis>;
+    background: Record<FeedbackColors, SubtleOrIntense>;
+    border: Record<FeedbackColors, SubtleOrIntense>;
+    text: Record<FeedbackColors, SubtleOrIntense>;
+    icon: Record<FeedbackColors, SubtleOrIntense>;
   };
   surface: {
     background: {
@@ -84,6 +85,7 @@ export type Colors = {
     background: SubtleOrIntenseEmphasis;
     border: SubtleOrIntenseEmphasis;
   };
+  transparent: string;
 };
 
 export type ColorsWithModes = Record<ColorSchemeModes, Colors>;

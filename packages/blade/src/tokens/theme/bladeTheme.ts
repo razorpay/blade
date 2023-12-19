@@ -7,6 +7,7 @@ import {
   spacing,
   typography,
   elevation,
+  opacity,
 } from '~tokens/global';
 
 const colors: ColorsWithModes = {
@@ -236,6 +237,7 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.black[100],
         },
       },
+      hover: { subtle: globalColors.neutral.white[100], intense: globalColors.neutral.black[10] },
     },
     surface: {
       background: {
@@ -430,6 +432,7 @@ const colors: ColorsWithModes = {
         },
       },
     },
+    transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
   },
   onDark: {
     interactive: {
@@ -657,6 +660,7 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.black[100],
         },
       },
+      hover: { subtle: globalColors.neutral.black[10], intense: globalColors.neutral.white[100] },
     },
     surface: {
       background: {
@@ -851,6 +855,7 @@ const colors: ColorsWithModes = {
         },
       },
     },
+    transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
   },
 };
 

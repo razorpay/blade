@@ -18,7 +18,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import type { ColorContrastTypes, FeedbackColors } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
 import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -93,12 +93,12 @@ type AlertProps = {
    * @deprecated Use `color` instead
    * @default neutral
    */
-  intent?: Feedback;
+  intent?: FeedbackColors;
 
   /**
    * Sets the color tone
    */
-  color?: Feedback;
+  color?: FeedbackColors;
 
   /**
    * Renders a primary action button and a secondary action link button

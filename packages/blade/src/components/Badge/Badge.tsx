@@ -4,7 +4,7 @@ import { StyledBadge } from './StyledBadge';
 import { iconPadding, iconSize, horizontalPadding, badgeHeight } from './badgeTokens';
 import type { IconComponent, IconProps } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
-import type { Feedback, SubtleOrIntense } from '~tokens/theme/theme';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { Text } from '~components/Typography';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -27,7 +27,7 @@ type BadgeProps = {
    *
    * @default 'neutral'
    */
-  color?: Feedback | 'primary';
+  color?: FeedbackColors | 'primary';
   /**
    * Sets the contrast of the badge.
    *

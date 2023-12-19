@@ -8,7 +8,7 @@ import { useTheme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import type { ColorContrastTypes, FeedbackColors } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { TestID } from '~utils/types';
@@ -21,7 +21,7 @@ type BaseSpinnerProps = {
    *
    * @default 'default'
    */
-  color?: 'default' | 'white' | Feedback;
+  color?: 'default' | 'white' | FeedbackColors;
   /**
    * Sets the label of the spinner.
    *

@@ -13,8 +13,6 @@ import { throwBladeError } from '~utils/logger';
 const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q'] as const;
 type TextCommonProps = {
   as?: typeof validAsValues[number];
-  type?: never;
-  contrast?: never;
   truncateAfterLines?: number;
   children: React.ReactNode;
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
@@ -59,15 +57,7 @@ export type TextProps<T> = T extends {
 type GetTextPropsReturn = Omit<BaseTextProps, 'children'>;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  | 'type'
-  | 'variant'
-  | 'weight'
-  | 'size'
-  | 'contrast'
-  | 'color'
-  | 'testID'
-  | 'textAlign'
-  | 'textDecorationLine'
+  'variant' | 'weight' | 'size' | 'color' | 'testID' | 'textAlign' | 'textDecorationLine'
 >;
 
 const getTextProps = <T extends { variant: TextVariant }>({
