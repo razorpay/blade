@@ -77,7 +77,7 @@ const TooltipTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
   return (
     <Center>
       <TooltipComponent {...args}>
-        <Button>Hover over me</Button>
+        <button>Hover over me</button>
       </TooltipComponent>
     </Center>
   );
@@ -217,7 +217,7 @@ const TooltipTriggersTemplate: ComponentStory<typeof TooltipComponent> = (args) 
     <Center>
       <Box display="flex" gap="spacing.11" alignItems="center" flexWrap="wrap">
         <TooltipComponent {...args} placement="top">
-          <Button>Button</Button>
+          <button>button</button>
         </TooltipComponent>
         <Box marginTop="spacing.8" />
         <TooltipComponent {...args} placement="top">

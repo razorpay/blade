@@ -29,7 +29,6 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
           variant="body"
           size="small"
           weight="regular"
-          contrast="high"
           color="interactive.text.staticWhite.subtle"
         >
           {children}
