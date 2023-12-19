@@ -408,6 +408,66 @@ const transformer: Transform = (file, api, options) => {
       return path.node;
     });
 
+  // Remove deprecated 'intent'/'variant' props in favor of color
+  root
+    .find(j.JSXElement)
+    .filter((path) =>
+      ['Alert', 'Badge', 'Counter', 'Chip'].includes(path.value.openingElement.name.name),
+    )
+    .replaceWith((path) => {
+      const { node } = path;
+
+      const colorAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'color',
+      );
+
+      if (colorAttribute) {
+        node.openingElement.attributes = node.openingElement.attributes.filter(
+          (attribute) => attribute.name.name !== 'intent' && attribute.name.name !== 'variant',
+        );
+
+        return node;
+      }
+
+      const variantAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'variant',
+      );
+
+      const intentAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'intent',
+      );
+
+      // If type and contrast are not present, return the node
+      if (!(variantAttribute || intentAttribute)) {
+        return node;
+      }
+
+      const variantValue = variantAttribute?.value.value;
+      const intentValue = intentAttribute?.value.value;
+
+      node.openingElement.attributes?.push(
+        j.jsxAttribute(
+          j.jsxIdentifier('color'),
+          j.literal(
+            (variantValue || intentValue) === 'blue' ? 'primary' : variantValue || intentValue,
+          ),
+        ),
+      );
+
+      return node;
+    })
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name === 'intent' || path.node.name.name === 'variant')
+    .replaceWith((path) => {
+      if (path.node.value.value === 'blue' || path.node.value.value === 'default') {
+        path.node.value.value = 'primary';
+      }
+
+      return path.node;
+    })
+    .filter((path) => path.node.name.name === 'intent' || path.node.name.name === 'variant')
+    .remove();
+
   // Return the updated source code
   return root
     .toSource(options.printOptions)

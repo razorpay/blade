@@ -7,11 +7,11 @@ it('should migrate contrast prop to emphasis', async () => {
     `
     const App = () => (
         <>
-        <Badge variant="neutral" contrast="low">Hello</Badge> 
-        <Badge variant="neutral" contrast="high">Hello</Badge> 
+        <Badge contrast="low">Hello</Badge> 
+        <Badge contrast="high">Hello</Badge> 
 
-        <Counter variant="neutral" contrast="low">Hello</Counter> 
-        <Counter variant="neutral" contrast="high">Hello</Counter>
+        <Counter contrast="low">Hello</Counter> 
+        <Counter contrast="high">Hello</Counter>
 
         <IconButton icon={CloseIcon} contrast="low" onClick={() => console.log('Clicked')} />
         <IconButton icon={CloseIcon} contrast="high" onClick={() => console.log('Clicked')} />
@@ -25,16 +25,52 @@ it('should migrate contrast prop to emphasis', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
             <>
-            <Badge variant="neutral" emphesis="subtle">Hello</Badge> 
-            <Badge variant="neutral" emphesis="intense">Hello</Badge> 
+            <Badge emphesis="subtle">Hello</Badge> 
+            <Badge emphesis="intense">Hello</Badge> 
 
-            <Counter variant="neutral" emphesis="subtle">Hello</Counter> 
-            <Counter variant="neutral" emphesis="intense">Hello</Counter>
+            <Counter emphesis="subtle">Hello</Counter> 
+            <Counter emphesis="intense">Hello</Counter>
 
             <IconButton icon={CloseIcon} emphesis="intense" onClick={() => console.log('Clicked')} />
             <IconButton icon={CloseIcon} emphesis="subtle" onClick={() => console.log('Clicked')} />
             
             </>
           );"
+  `);
+});
+
+it('should remove variant/intent prop in favor of color prop', async () => {
+  const result = await applyTransform(
+    transformer,
+    `
+    const App = () => (
+      <>
+        <Alert description="Hello World" intent="information" />
+
+        <Badge variant="neutral" intent="positive">Hello</Badge> 
+        <Badge variant="blue" contrast="low">Hello</Badge>
+        <Badge variant="blue" contrast="low">Hello</Badge>
+
+        <Counter variant="neutral" contrast="low">Hello</Counter> 
+        <Counter variant="neutral" contrast="high">Hello</Counter>        
+      </>
+    );
+    `,
+    { parser: 'tsx' },
+  );
+
+  expect(result).toMatchInlineSnapshot(`
+    "const App = () => (
+          <>
+            <Alert description="Hello World" />
+
+            <Badge>Hello</Badge> 
+            <Badge emphesis="subtle">Hello</Badge>
+            <Badge emphesis="subtle">Hello</Badge>
+
+            <Counter emphesis="subtle">Hello</Counter> 
+            <Counter emphesis="intense">Hello</Counter>        
+          </>
+        );"
   `);
 });
