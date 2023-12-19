@@ -1,4 +1,3 @@
-import path from 'path';
 import { applyTransform } from '@hypermod/utils';
 import * as transformer from '..';
 
@@ -14,6 +13,7 @@ it('should update the lineHeight & fontSize tokens', async () => {
             <>
               <CustomBox> Lorem ipsum </CustomBox>  
               <Text color="feedback.text.information.lowContrast"> Lorem ipsum </Text>
+              <Text color="feedback.text.information.highContrast"> Lorem ipsum </Text>
             </>
           );
         `,
@@ -28,6 +28,7 @@ it('should update the lineHeight & fontSize tokens', async () => {
             const App = () => (
                 <>
                   <CustomBox> Lorem ipsum </CustomBox>  
+                  <Text color="feedback.text.information.intense"> Lorem ipsum </Text>
                   <Text color="feedback.text.information.intense"> Lorem ipsum </Text>
                 </>
               );"
@@ -60,36 +61,35 @@ it('should update token values contextually', async () => {
   `);
 });
 
-// It creates syntax error for highContrast tokens, hence the codemod will eventually fail for the file
-it.skip('should create syntax error for highContrast tokens', async () => {
+it('should create syntax error for highContrast tokens', async () => {
   const result = await applyTransform(
     transformer,
     `
-        const CustomBox = styled(Box)\`
-            color: \${theme.colors.surface.text.subdued.highContrast};
-            backgroundColor: \${getIn(theme.colors, 'surface.background.level1.highContrast')};
-        \`
-        const App = () => (
-            <>
-              <CustomBox> Lorem ipsum </CustomBox>
-              <Text color="surface.text.subtle.highContrast"> Lorem ipsum </Text>
-            </>
-          );
-        `,
+    const CustomBox = styled(Box)\`
+        color: \${theme.colors.surface.text.subdued.highContrast};
+        backgroundColor: \${getIn(theme.colors, 'surface.background.level1.highContrast')};
+    \`
+    const App = () => (
+        <>
+          <CustomBox> Lorem ipsum </CustomBox>
+          <Text color="surface.text.subtle.highContrast"> Lorem ipsum </Text>
+        </>
+      );
+    `,
     { parser: 'tsx' },
   );
 
   expect(result).toMatchInlineSnapshot(`
     "const CustomBox = styled(Box)\`
-                color: \${theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"};
-                backgroundColor: \${getIn(theme.colors, '"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"')};
-            \`
-            const App = () => (
-                <>
-                  <CustomBox> Lorem ipsum </CustomBox>
-                  <Text color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""> Lorem ipsum </Text>
-                </>
-              );"
+            color: \${theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"};
+            backgroundColor: \${getIn(theme.colors, '"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"')};
+        \`
+        const App = () => (
+            <>
+              <CustomBox> Lorem ipsum </CustomBox>
+              <Text color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""> Lorem ipsum </Text>
+            </>
+          );"
   `);
 });
 

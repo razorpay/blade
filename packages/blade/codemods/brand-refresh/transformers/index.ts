@@ -45,10 +45,12 @@ const transformer: Transform = (file, api, options) => {
     .replace(
       /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
       (originalString) => {
-        let replacement = colorTokensMapping[originalString];
         if (originalString.includes('highContrast') && !originalString.includes('feedback')) {
-          replacement = `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`;
+          return originalString;
         }
+
+        const replacement = colorTokensMapping[originalString];
+
         if (!replacement) {
           return originalString;
         }
@@ -352,7 +354,18 @@ const transformer: Transform = (file, api, options) => {
     });
 
   // Return the updated source code
-  return root.toSource(options.printOptions);
+  return root
+    .toSource(options.printOptions)
+    .replace(
+      /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
+      (originalString) => {
+        if (originalString.includes('highContrast')) {
+          return `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`;
+        }
+
+        return originalString;
+      },
+    );
 };
 
 export default transformer;
