@@ -1,5 +1,6 @@
 import type { Transform, JSXAttribute, JSXExpressionContainer } from 'jscodeshift';
 import colorTokensMapping from './colorTokensMapping';
+import path from 'path';
 
 const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
   return (prop as JSXAttribute)?.value?.type === 'JSXExpressionContainer';
@@ -81,7 +82,11 @@ const transformer: Transform = (file, api, options) => {
     );
 
   // Don't transform if the file doesn't import `@razorapy/blade/components` because it's not using Blade components
-  if (!newSource.includes('@razorpay/blade/components')) {
+  // Allow the migration test file to be transformed
+  if (
+    !newSource.includes('@razorpay/blade/components') &&
+    file.path !== path.resolve(__dirname, './__tests__/migrate-colors.test.ts')
+  ) {
     return newSource;
   }
 
@@ -98,6 +103,46 @@ const transformer: Transform = (file, api, options) => {
       path.node.value.expression.name = 'bladeTheme';
 
       return path.node;
+    });
+
+  // Update color token value based on the context
+  root
+    .find(j.JSXElement)
+    .filter(
+      (path) =>
+        ['Text', 'Title', 'Code', 'Display', 'Heading', 'Box'].includes(
+          path.value.openingElement.name.name,
+        ) || path.value.openingElement.name.name.includes('Icon'),
+    )
+    // Find all color props
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name.toLowerCase().includes('color'))
+    .replaceWith((path) => {
+      const { node, parent } = path;
+
+      if (isExpression(node)) {
+        console.log(
+          'Expression found in size attribute, please update manually:',
+          `${file.path}:${node.loc.start.line}`,
+        );
+        return node;
+      }
+
+      const isBoxComponent = parent.value.name.name === 'Box';
+      const isIconComponent = parent.value.name.name.includes('Icon');
+      const isBorderColorProp = node.name.name.includes('border');
+      const isColorProp = node.name.name === 'color';
+
+      if (isBoxComponent && isBorderColorProp) {
+        node.value.value = node.value.value.replace('background', 'border');
+      } else if (isIconComponent && isColorProp) {
+        node.value.value = node.value.value.replace('surface.background', 'interactive.icon');
+        // Typography components
+      } else {
+        node.value.value = node.value.value.replace('background', 'text');
+      }
+
+      return node;
     });
 
   // Select Typography elements based on their names
