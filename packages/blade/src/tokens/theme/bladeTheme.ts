@@ -12,7 +12,6 @@ import {
 
 const colors: ColorsWithModes = {
   onLight: {
-    transparent: `hsla(0, 0%, 100%, 0)`,
     interactive: {
       icon: {
         gray: {
@@ -436,7 +435,6 @@ const colors: ColorsWithModes = {
     transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
   },
   onDark: {
-    transparent: `hsla(0, 0%, 100%, 0)`,
     interactive: {
       icon: {
         gray: {

@@ -49,7 +49,6 @@ type ColorCategories = {
 type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
 
 export type Colors = {
-  transparent: string;
   interactive: {
     background: Record<InteractiveColorKeys, InteractiveStates>;
     border: Record<InteractiveColorKeys, InteractiveStates>;
