@@ -89,7 +89,7 @@ const makeThemeColorTokens = (): Record<string, any> => {
 
       // replace the "/" from token name with "." to store in json structure
       const tokenName = makeThemeTokenName(variable.name);
-      if (tokenName.includes('❌') || tokenName.includes('_')) {
+      if (tokenName.includes('❌') || tokenName.includes('_') || tokenName.includes('elevation')) {
         return;
       }
 
