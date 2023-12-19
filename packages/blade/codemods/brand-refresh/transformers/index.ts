@@ -138,7 +138,7 @@ const transformer: Transform = (file, api, options) => {
       } else if (isIconComponent && isColorProp) {
         node.value.value = node.value.value.replace('surface.background', 'interactive.icon');
         // Typography components
-      } else {
+      } else if (!isBoxComponent && !isIconComponent && isColorProp) {
         node.value.value = node.value.value.replace('background', 'text');
       }
 

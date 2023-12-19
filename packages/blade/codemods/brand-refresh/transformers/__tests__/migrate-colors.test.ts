@@ -55,7 +55,7 @@ it('should update token values contextually', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
                 <>
-                  <Box borderRightColor="surface.border.primary.intense" backgroundColor="surface.text.primary.intense"> Lorem ipsum </Box>  
+                  <Box borderRightColor="surface.border.primary.intense" backgroundColor="surface.background.primary.intense"> Lorem ipsum </Box>  
                   <Text color="surface.text.primary.intense"> Lorem ipsum </Text>
                   <MapIcon color="interactive.icon.primary.intense" />
                 </>
