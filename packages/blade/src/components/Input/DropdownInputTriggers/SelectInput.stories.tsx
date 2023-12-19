@@ -50,6 +50,7 @@ export default {
     prefix: '',
     suffix: '',
   },
+  tags: ['autodocs'],
   argTypes: {
     defaultValue: {
       table: {

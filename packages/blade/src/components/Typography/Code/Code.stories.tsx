@@ -54,6 +54,7 @@ const CodeStoryMeta: Meta = {
       page: () => <Page />,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 };
 

@@ -17,6 +17,7 @@ export default {
     selectionType: 'none',
     rowDensity: 'normal',
   },
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     data: {

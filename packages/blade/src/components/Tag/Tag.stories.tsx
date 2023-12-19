@@ -60,6 +60,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Tag',
   component: Tag,
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     icon: {

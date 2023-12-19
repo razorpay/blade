@@ -81,6 +81,7 @@ const meta: Meta<CollapsibleProps> = {
   title: 'Components/Collapsible',
   component: CollapsibleComponent,
   args: {},
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
   },

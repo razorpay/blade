@@ -57,6 +57,7 @@ const TextStoryMeta: Meta<TextProps<{ variant: 'body' | 'caption' }>> = {
       page: () => <Page />,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 };
 

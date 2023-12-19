@@ -52,6 +52,7 @@ const meta: Meta<IndicatorProps> = {
     intent: 'neutral',
     size: 'medium',
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {

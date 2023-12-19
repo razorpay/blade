@@ -65,6 +65,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Popover',
   component: Popover,
+  tags: ['autodocs'],
   argTypes: {
     titleLeading: {
       name: 'titleLeading',

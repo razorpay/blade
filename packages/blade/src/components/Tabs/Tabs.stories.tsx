@@ -112,6 +112,7 @@ const tabItemTrailing = {
 export default {
   title: 'Components/Tabs',
   component: Tabs,
+  tags: ['autodocs'],
   argTypes: {
     onChange: {
       table: {

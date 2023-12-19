@@ -77,6 +77,7 @@ export default {
     isFullWidth: false,
     type: 'button',
   },
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     ...getBladeCommonEventArgTypes(),

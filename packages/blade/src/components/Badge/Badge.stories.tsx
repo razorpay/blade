@@ -46,6 +46,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Badge',
   component: BadgeComponent,
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     icon: {

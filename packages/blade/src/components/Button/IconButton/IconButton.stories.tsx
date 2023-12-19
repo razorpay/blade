@@ -52,6 +52,7 @@ const meta: Meta<IconButtonProps> = {
     contrast: 'low',
     accessibilityLabel: 'Close',
   },
+  tags: ['autodocs'],
   argTypes: {
     ...getBladeCommonEventArgTypes(),
     onClick: { action: 'onClick' },

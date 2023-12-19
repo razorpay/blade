@@ -58,6 +58,7 @@ const TitleStoryMeta: Meta<TitleProps> = {
       page: () => <Page />,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 };
 

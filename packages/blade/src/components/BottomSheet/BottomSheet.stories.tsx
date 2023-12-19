@@ -184,6 +184,7 @@ export default {
     titleSuffix: undefined,
     trailing: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     showBackButton: {
       defaultValue: false,

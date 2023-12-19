@@ -73,6 +73,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Divider',
   component: DividerComponent,
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {

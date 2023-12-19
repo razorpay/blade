@@ -80,6 +80,7 @@ type StoryControlProps = SpotlightPopoverTourProps & {
 export default {
   title: 'Components/SpotlightPopoverTour',
   component: SpotlightPopoverTour,
+  tags: ['autodocs'],
   argTypes: {
     tourStepsTitle: {
       name: 'steps[0].title',

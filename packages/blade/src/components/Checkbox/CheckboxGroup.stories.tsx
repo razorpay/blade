@@ -73,6 +73,7 @@ export default {
     onChange: undefined,
     value: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     value: {
       options: ['apple', 'mango', 'orange'],

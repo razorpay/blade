@@ -44,6 +44,7 @@ export default {
   args: {
     isDisabled: false,
   },
+  tags: ['autodocs'],
   argTypes: {
     // Chip props
     isDisabled: {

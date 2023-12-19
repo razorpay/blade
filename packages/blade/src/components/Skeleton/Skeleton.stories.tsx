@@ -100,6 +100,7 @@ const argTypes = propertiesToOverride.reduce((prev, curr) => {
 export default {
   title: 'Components/Skeleton',
   component: SkeletonComponent,
+  tags: ['autodocs'],
   argTypes: {
     ...argTypes,
     borderRadius: {

@@ -35,6 +35,7 @@ export default {
       ),
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 } as Meta<BaseTextProps>;
 

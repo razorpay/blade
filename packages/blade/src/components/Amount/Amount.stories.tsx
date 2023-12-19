@@ -40,6 +40,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Amount',
   component: AmountComponent,
+  tags: ['autodocs'],
   argTypes: { ...getStyledPropsArgTypes() },
   parameters: {
     docs: {

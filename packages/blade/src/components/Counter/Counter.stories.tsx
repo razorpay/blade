@@ -43,6 +43,7 @@ const Page = (): ReactElement => {
 export default {
   title: 'Components/Counter',
   component: CounterComponent,
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {

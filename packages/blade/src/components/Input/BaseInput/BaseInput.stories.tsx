@@ -62,6 +62,7 @@ export default {
     autoCompleteSuggestionType: undefined,
     autoCapitalize: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     id: {
       table: {

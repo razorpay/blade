@@ -83,6 +83,7 @@ export default {
     accessibilityLabel: 'Choose one business type from the options below',
     icon: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     // ChipGroup props
     accessibilityLabel: {

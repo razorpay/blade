@@ -63,6 +63,7 @@ export default {
     children: 'Toggle checkbox',
     size: 'medium',
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {

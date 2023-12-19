@@ -60,6 +60,7 @@ const meta: Meta<PasswordInputProps> = {
     helpText: 'We recommend having at least 8 characters in your password',
     placeholder: 'Enter a strong password',
   },
+  tags: ['autodocs'],
   argTypes: {
     autoFocus: { table: { category: propsCategory.BASE_PROPS } },
     label: { table: { category: propsCategory.LABEL_PROPS } },

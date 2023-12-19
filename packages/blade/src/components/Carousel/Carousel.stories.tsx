@@ -77,6 +77,7 @@ const meta: Meta<CarouselProps> = {
     showIndicators: true,
     scrollOverlayColor: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     // hide children prop
     children: {

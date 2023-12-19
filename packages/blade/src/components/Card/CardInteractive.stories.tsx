@@ -174,6 +174,7 @@ const propCategory = {
 export default {
   title: 'Components/Card/Interactive',
   component: Card,
+  tags: ['autodocs'],
   argTypes: {
     width: disable,
     height: disable,

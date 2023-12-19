@@ -69,6 +69,7 @@ export default {
     size: 'large',
     variant: 'unordered',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',

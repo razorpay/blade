@@ -58,6 +58,7 @@ export default {
   args: {
     children: 'Learn More',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',

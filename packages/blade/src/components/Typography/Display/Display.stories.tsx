@@ -52,6 +52,7 @@ const DisplayStoryMeta: Meta<DisplayProps> = {
     contrast: 'low',
     as: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     size: {
       options: ['small', 'medium', 'large', 'xlarge'],

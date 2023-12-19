@@ -87,6 +87,7 @@ export default {
     color: 'surface.text.normal.lowContrast',
     size: 'medium',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',

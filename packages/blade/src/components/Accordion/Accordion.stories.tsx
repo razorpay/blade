@@ -62,6 +62,7 @@ const meta: Meta<AccordionProps> = {
   title: 'Components/Accordion',
   component: AccordionComponent,
   args: {},
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
   },

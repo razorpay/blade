@@ -78,6 +78,7 @@ export default {
     value: undefined,
     size: 'medium',
   },
+  tags: ['autodocs'],
   argTypes: {
     value: {
       options: ['apple', 'mango', 'orange'],

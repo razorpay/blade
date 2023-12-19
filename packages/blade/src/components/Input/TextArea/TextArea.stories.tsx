@@ -47,6 +47,7 @@ export default {
     showClearButton: undefined,
     numberOfLines: 2,
   },
+  tags: ['autodocs'],
   argTypes: {
     defaultValue: {
       table: {

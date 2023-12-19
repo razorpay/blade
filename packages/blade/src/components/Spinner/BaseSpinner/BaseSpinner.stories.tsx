@@ -55,6 +55,7 @@ export default {
       page: Page,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 } as Meta<BaseSpinnerProps>;
 

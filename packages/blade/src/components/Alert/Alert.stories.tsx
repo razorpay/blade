@@ -84,6 +84,7 @@ const meta: Meta<AlertProps> = {
       },
     },
   },
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     onDismiss: { action: 'Dismissed' },

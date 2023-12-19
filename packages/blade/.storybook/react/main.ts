@@ -40,7 +40,7 @@ const config: StorybookConfig = {
     GITHUB_REF: process.env.GITHUB_REF || '',
   }),
   docs: {
-    autodocs: true,
+    autodocs: 'tag',
   },
   staticDirs: ['../../public'],
   webpackFinal: async (config, { configType }) => {

@@ -48,6 +48,7 @@ export default {
     errorText: undefined,
     successText: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       table: {

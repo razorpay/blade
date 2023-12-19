@@ -65,6 +65,7 @@ export default {
     size: 'medium',
     accessibilityLabel: 'Toggle DarkMode',
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {

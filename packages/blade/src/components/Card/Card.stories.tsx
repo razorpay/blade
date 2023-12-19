@@ -184,6 +184,7 @@ export default {
       type: undefined,
     },
   },
+  tags: ['autodocs'],
   argTypes: {
     surfaceLevel: {
       table: { category: propsCategory.CARD },

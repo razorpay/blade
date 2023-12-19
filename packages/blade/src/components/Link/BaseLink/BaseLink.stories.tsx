@@ -19,6 +19,7 @@ export default {
     rel: 'noreferrer noopener',
     contrast: 'low',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',
