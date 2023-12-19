@@ -1,6 +1,5 @@
 import type { Transform, JSXAttribute, JSXExpressionContainer } from 'jscodeshift';
 import colorTokensMapping from './colorTokensMapping';
-import path from 'path';
 
 const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
   return (prop as JSXAttribute)?.value?.type === 'JSXExpressionContainer';
@@ -303,6 +302,18 @@ const transformer: Transform = (file, api, options) => {
     .replaceWith((path) => {
       const { node } = path;
 
+      const colorAttribute = node.openingElement.attributes.find(
+        (attribute) => attribute.name.name === 'color',
+      );
+
+      if (colorAttribute) {
+        node.openingElement.attributes = node.openingElement.attributes.filter(
+          (attribute) => attribute.name.name !== 'contrast' && attribute.name.name !== 'type',
+        );
+
+        return node;
+      }
+
       const typeAttribute = node.openingElement.attributes.find(
         (attribute) => attribute.name.name === 'type',
       );
@@ -322,11 +333,7 @@ const transformer: Transform = (file, api, options) => {
       const oldColorToken = `surface.text.${typeValue}.${contrastValue}Contrast`;
       const newColorToken = colorTokensMapping[oldColorToken];
 
-      const colorAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'color',
-      );
-
-      if (!colorAttribute && newColorToken) {
+      if (newColorToken) {
         node.openingElement.attributes?.push(
           j.jsxAttribute(j.jsxIdentifier('color'), j.literal(newColorToken)),
         );
@@ -337,10 +344,26 @@ const transformer: Transform = (file, api, options) => {
     .find(j.JSXAttribute) // Find all Heading props
     .filter(
       (path, index, self) =>
-        (path.node.name.name === 'type' || path.node.name.name === 'contrast') &&
+        (path.node.name.name === 'type' ||
+          (path.node.name.name === 'contrast' && path.node.value.value === 'low')) &&
         index === self.findIndex((obj) => path.node.start === obj.node.start),
     ) // Filter by name `type` and remove any duplicates
     .remove();
+
+  // Break `contrast="high"` prop from Typography Components
+  typographyJSXElements
+    .filter((path) => path.value.openingElement.name.name !== 'Code')
+    .find(j.JSXAttribute) // Find all Heading props
+    .filter(
+      (path, index, self) =>
+        path.node.name.name === 'contrast' &&
+        path.node.value.value === 'high' &&
+        index === self.findIndex((obj) => path.node.start === obj.node.start),
+    )
+    .replaceWith((path) => {
+      path.node.value.value = 'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN';
+      return path.node;
+    });
 
   // Change 'weight="bold"' to 'weight="semibold"' in Heading, Text, Display
   // Code still uses 'weight="bold"' and Title has been modified to the Heading Component
@@ -357,7 +380,11 @@ const transformer: Transform = (file, api, options) => {
   return root
     .toSource(options.printOptions)
     .replace(
-      /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
+      'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN',
+      `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`,
+    )
+    .replace(
+      /((brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)|UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN)/g,
       (originalString) => {
         if (originalString.includes('highContrast')) {
           return `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`;
