@@ -83,10 +83,7 @@ const transformer: Transform = (file, api, options) => {
 
   // Don't transform if the file doesn't import `@razorapy/blade/components` because it's not using Blade components
   // Allow the migration test file to be transformed
-  if (
-    !newSource.includes('@razorpay/blade/components') &&
-    file.path !== path.resolve(__dirname, './__tests__/migrate-colors.test.ts')
-  ) {
+  if (!newSource.includes('@razorpay/blade/components') && file.path !== undefined) {
     return newSource;
   }
 
