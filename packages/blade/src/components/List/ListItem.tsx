@@ -158,7 +158,7 @@ const _ListItem = ({
             alignSelf="flex-start"
           >
             {ItemIcon ? (
-              <ItemIcon size={size} color="surface.text.gray.muted" />
+              <ItemIcon size={size} color="surface.icon.gray.muted" />
             ) : (
               <UnorderedItemIcon level={level} />
             )}

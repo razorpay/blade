@@ -32,7 +32,7 @@ const getResponsiveValue = <T extends string | number | string[] | DimensionValu
   value: MakeValueResponsive<T> | undefined,
   breakpoint: keyof Breakpoints = 'base',
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): any | undefined => {
+): T | undefined => {
   if (value === undefined || value === null) {
     return undefined;
   }

@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src/components/Badge/Badge.tsx"],
+  "include": ["src/components/index.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
