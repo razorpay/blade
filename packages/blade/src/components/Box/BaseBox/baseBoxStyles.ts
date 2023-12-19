@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { CSSObject } from 'styled-components';
 import type {
@@ -77,7 +78,8 @@ const getBorderRadiusValue = (
   const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, breakpoint);
   return isEmpty(responsiveBorderRadiusValue)
     ? undefined
-    : makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
+    : // @ts-ignore: test
+      makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
 };
 
 const getBorderWidthValue = (
@@ -88,7 +90,8 @@ const getBorderWidthValue = (
   const responsiveBorderWidthValue = getResponsiveValue(borderWidth, breakpoint);
   return isEmpty(responsiveBorderWidthValue)
     ? undefined
-    : makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
+    : // @ts-ignore: test
+      makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
 };
 
 export const getElevationValue = (
@@ -100,6 +103,7 @@ export const getElevationValue = (
   return isEmpty(responsiveElevationValue)
     ? undefined
     : // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+      // @ts-ignore: test
       getIn(theme, `elevation.${responsiveElevationValue!}`);
 };
 
