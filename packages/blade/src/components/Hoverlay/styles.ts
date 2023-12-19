@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { CSSObject } from 'styled-components';
 import type { HoverlayProps } from './types';
-import { colors as globalColors } from '~tokens/global';
+import type { Theme } from '~components/BladeProvider';
 
-const getHoverlayStyles = (props: HoverlayProps): CSSObject => {
+const getHoverlayStyles = (
+  props: HoverlayProps & {
+    theme: Theme;
+  },
+): CSSObject => {
   return {
     position: 'absolute',
     top: '0px',
@@ -14,8 +18,8 @@ const getHoverlayStyles = (props: HoverlayProps): CSSObject => {
     zIndex: 0,
     backgroundColor:
       props.variant === 'subtle'
-        ? globalColors.neutral.white[100]
-        : globalColors.neutral.black[100],
+        ? props.theme.colors.interactive.hover.subtle
+        : props.theme.colors.interactive.hover.intense,
   };
 };
 
