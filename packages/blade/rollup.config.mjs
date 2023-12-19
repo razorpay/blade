@@ -214,6 +214,8 @@ const getDeclarationsConfig = ({ exportCategory, isNative }) => {
   ).config.compilerOptions;
   const compilerOptions = {
     ...currentTsConfig,
+    // @TODO: remove this after rebranding when all components pass typecheck
+    include: ['src'],
     moduleSuffixes: [`.${platform}`, ''],
   };
 
