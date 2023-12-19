@@ -78,7 +78,7 @@ const getBorderRadiusValue = (
   const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, breakpoint);
   return isEmpty(responsiveBorderRadiusValue)
     ? undefined
-    : // @ts-ignore: test
+    : // @ts-ignore: intentionally set to any since figuring out types of responsive props is complex
       makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
 };
 
@@ -90,7 +90,7 @@ const getBorderWidthValue = (
   const responsiveBorderWidthValue = getResponsiveValue(borderWidth, breakpoint);
   return isEmpty(responsiveBorderWidthValue)
     ? undefined
-    : // @ts-ignore: test
+    : // @ts-ignore: intentionally set to any since figuring out types of responsive props is complex
       makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
 };
 
@@ -103,7 +103,7 @@ export const getElevationValue = (
   return isEmpty(responsiveElevationValue)
     ? undefined
     : // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-      // @ts-ignore: test
+      // @ts-ignore: intentionally set to any since figuring out types of responsive props is complex
       getIn(theme, `elevation.${responsiveElevationValue!}`);
 };
 
