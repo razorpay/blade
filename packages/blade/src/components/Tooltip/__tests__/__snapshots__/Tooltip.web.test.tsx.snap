@@ -79,7 +79,7 @@ exports[`<Tooltip /> should render 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(0,0%,100%,0.8);
+  color: hsla(0,0%,100%,0.88);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -133,7 +133,7 @@ exports[`<Tooltip /> should render 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,69%,42%,1);
+  background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
@@ -143,9 +143,9 @@ exports[`<Tooltip /> should render 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,69%,42%,1);
+  background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
@@ -342,7 +342,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(0,0%,100%,0.8);
+  color: hsla(0,0%,100%,0.88);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -396,7 +396,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,69%,42%,1);
+  background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
@@ -406,9 +406,9 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,69%,42%,1);
+  background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
@@ -622,7 +622,7 @@ exports[`<Tooltip /> should render with title 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(0,0%,100%,0.8);
+  color: hsla(0,0%,100%,0.88);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
@@ -676,7 +676,7 @@ exports[`<Tooltip /> should render with title 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(227,69%,42%,1);
+  background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
@@ -686,9 +686,9 @@ exports[`<Tooltip /> should render with title 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,69%,42%,1);
+  background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
