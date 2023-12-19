@@ -127,10 +127,11 @@ exports[`<Button /> should render button with default properties 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -281,10 +282,11 @@ exports[`<Button /> should render button with full width 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -507,10 +509,11 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -661,10 +664,11 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -887,10 +891,11 @@ exports[`<Button /> should render default color primary button 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1041,10 +1046,11 @@ exports[`<Button /> should render default color secondary button 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1194,10 +1200,11 @@ exports[`<Button /> should render default color tertiary button 1`] = `
           [
             {
               "color": "hsla(216, 33%, 29%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1348,10 +1355,11 @@ exports[`<Button /> should render disabled button 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1502,10 +1510,11 @@ exports[`<Button /> should render disabled default color primary button 1`] = `
           [
             {
               "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1656,10 +1665,11 @@ exports[`<Button /> should render disabled default color secondary button 1`] = 
           [
             {
               "color": "hsla(218, 19%, 81%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1809,10 +1819,11 @@ exports[`<Button /> should render disabled default color tertiary button 1`] = `
           [
             {
               "color": "hsla(218, 19%, 81%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1963,10 +1974,11 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
           [
             {
               "color": "hsla(8, 99%, 65%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2117,10 +2129,11 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
           [
             {
               "color": "hsla(9, 91%, 56%, 0.32)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2271,10 +2284,11 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
           [
             {
               "color": "hsla(149, 99%, 35%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2425,10 +2439,11 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
           [
             {
               "color": "hsla(155, 100%, 31%, 0.32)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2579,10 +2594,11 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
           [
             {
               "color": "hsla(210, 6%, 94%, 0.32)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2733,10 +2749,11 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
           [
             {
               "color": "hsla(210, 6%, 94%, 0.32)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2886,10 +2903,11 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
           [
             {
               "color": "hsla(210, 6%, 94%, 0.32)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3035,15 +3053,16 @@ exports[`<Button /> should render large size button 1`] = `
         data-blade-component="base-text"
         fontSize={200}
         fontWeight="bold"
-        lineHeight={300}
+        lineHeight={200}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 24,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3194,10 +3213,11 @@ exports[`<Button /> should render medium size button 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3348,10 +3368,11 @@ exports[`<Button /> should render negative color primary button 1`] = `
           [
             {
               "color": "hsla(0, 100%, 97%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3502,10 +3523,11 @@ exports[`<Button /> should render negative color secondary button 1`] = `
           [
             {
               "color": "hsla(8, 73%, 47%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3656,10 +3678,11 @@ exports[`<Button /> should render positive color primary button 1`] = `
           [
             {
               "color": "hsla(107, 100%, 96%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3810,10 +3833,11 @@ exports[`<Button /> should render positive color secondary button 1`] = `
           [
             {
               "color": "hsla(160, 100%, 26%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3957,18 +3981,19 @@ exports[`<Button /> should render small size button 1`] = `
         accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
-        fontSize={75}
+        fontSize={50}
         fontWeight="bold"
-        lineHeight={50}
+        lineHeight={75}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "fontFamily": "Inter",
+              "fontSize": 11,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 16,
+              "letterSpacing": 0,
+              "lineHeight": 18,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -4118,10 +4143,11 @@ exports[`<Button /> should render white color primary button 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -4272,10 +4298,11 @@ exports[`<Button /> should render white color secondary button 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -4425,10 +4452,11 @@ exports[`<Button /> should render white color tertiary button 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -4572,18 +4600,19 @@ exports[`<Button /> should render xsmall size button 1`] = `
         accessible={true}
         color="action.text.primary.default"
         data-blade-component="base-text"
-        fontSize={75}
+        fontSize={50}
         fontWeight="bold"
-        lineHeight={50}
+        lineHeight={75}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "fontFamily": "Inter",
+              "fontSize": 11,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 16,
+              "letterSpacing": 0,
+              "lineHeight": 18,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,

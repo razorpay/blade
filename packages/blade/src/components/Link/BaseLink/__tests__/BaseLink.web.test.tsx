@@ -4,7 +4,7 @@ import BaseLink from '../BaseLink';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -229,19 +229,19 @@ describe('<BaseLink />', () => {
     // default state
     const linkButtonText = getByText(textContent);
     expect(linkButtonText).toHaveStyle({
-      color: paymentTheme.colors.onLight.action.text.link.default,
+      color: bladeTheme.colors.onLight.action.text.link.default,
     });
 
     // click and focus
     fireEvent.focus(linkButtonText);
     expect(linkButtonText).toHaveStyle({
-      color: paymentTheme.colors.onLight.action.text.link.focus,
+      color: bladeTheme.colors.onLight.action.text.link.focus,
     });
 
     // click outside
     fireEvent.focusOut(linkButtonText);
     expect(linkButtonText).toHaveStyle({
-      color: paymentTheme.colors.onLight.action.text.link.default,
+      color: bladeTheme.colors.onLight.action.text.link.default,
     });
   });
 });

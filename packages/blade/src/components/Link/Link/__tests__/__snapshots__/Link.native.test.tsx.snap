@@ -86,10 +86,11 @@ exports[`<Link /> should render button variant of link 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -200,10 +201,11 @@ exports[`<Link /> should render default color link 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -314,10 +316,11 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
           [
             {
               "color": "hsla(218, 19%, 81%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -428,10 +431,11 @@ exports[`<Link /> should render disabled default color link 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -542,10 +546,11 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
           [
             {
               "color": "hsla(216, 27%, 36%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -656,10 +661,11 @@ exports[`<Link /> should render disabled white color link 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -770,10 +776,11 @@ exports[`<Link /> should render link with default properties 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -972,10 +979,11 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1174,10 +1182,11 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1288,10 +1297,11 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1578,10 +1588,11 @@ exports[`<Link /> should render link with icon without text 1`] = `
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1690,10 +1701,11 @@ exports[`<Link /> should render neutral color link 1`] = `
           [
             {
               "color": "hsla(216, 27%, 36%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1804,10 +1816,11 @@ exports[`<Link /> should render white color link 1`] = `
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "700",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2001,16 +2014,17 @@ exports[`<Link /> should render with small size 1`] = `
         data-blade-component="base-text"
         fontSize={75}
         fontWeight="bold"
-        lineHeight={50}
+        lineHeight={75}
         style={
           [
             {
               "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
               "fontWeight": "700",
-              "lineHeight": 16,
+              "letterSpacing": 0,
+              "lineHeight": 18,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,

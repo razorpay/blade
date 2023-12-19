@@ -36,10 +36,10 @@ const ArgsTable = ({
     <StyledArgsTable as="table" marginBottom={marginBottom} marginTop={marginTop}>
       <tr>
         <th>
-          <Text weight="bold">Prop</Text>
+          <Text weight="semibold">Prop</Text>
         </th>
         <th>
-          <Text weight="bold">Type</Text>
+          <Text weight="semibold">Type</Text>
         </th>
       </tr>
       {Object.entries(data).map(([propName, propType]) => {

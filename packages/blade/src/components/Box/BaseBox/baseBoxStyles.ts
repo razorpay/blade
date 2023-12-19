@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { CSSObject } from 'styled-components';
 import type {
   BaseBoxProps,
@@ -14,6 +15,11 @@ import { isReactNative, getMediaQuery } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import type { DotNotationSpacingStringToken } from '~utils/types';
+
+const isSpacingToken = (value: string): value is DotNotationSpacingStringToken => {
+  return typeof value === 'string' && value.startsWith('spacing.');
+};
 
 const getSpacingValue = (
   spacingValue:
@@ -26,8 +32,8 @@ const getSpacingValue = (
     return undefined;
   }
 
-  const responsiveSpacingValue: SpacingValueType | SpacingValueType[] = getResponsiveValue(
-    spacingValue as MakeValueResponsive<string | string[]>,
+  const responsiveSpacingValue = getResponsiveValue(
+    spacingValue as MakeValueResponsive<SpacingValueType | SpacingValueType[]>,
     breakpoint,
   );
 
@@ -43,9 +49,9 @@ const getSpacingValue = (
     return responsiveSpacingValue.map((value) => getSpacingValue(value, theme)).join(' ');
   }
 
-  if (typeof responsiveSpacingValue === 'string' && responsiveSpacingValue.startsWith('spacing.')) {
+  if (isSpacingToken(responsiveSpacingValue)) {
     const spacingReturnValue = getIn(theme, responsiveSpacingValue);
-    return isEmpty(spacingReturnValue) ? makeSpace(spacingReturnValue) : undefined;
+    return isEmpty(spacingReturnValue) ? makeSpace(spacingReturnValue!) : undefined;
   }
 
   // pixel or with unit values
@@ -58,6 +64,7 @@ const getColorValue = (
   breakpoint?: keyof Breakpoints,
 ): string => {
   const responsiveBackgroundValue = getResponsiveValue(color, breakpoint);
+  // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
   const tokenValue = getIn(theme, `colors.${responsiveBackgroundValue}`);
   return tokenValue ?? responsiveBackgroundValue;
 };
@@ -92,7 +99,8 @@ export const getElevationValue = (
   const responsiveElevationValue = getResponsiveValue(elevation, breakpoint);
   return isEmpty(responsiveElevationValue)
     ? undefined
-    : getIn(theme, `elevation.${responsiveElevationValue}`);
+    : // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+      getIn(theme, `elevation.${responsiveElevationValue!}`);
 };
 
 const getAllProps = (

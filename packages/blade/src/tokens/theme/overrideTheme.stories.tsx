@@ -4,12 +4,12 @@ import type { ReactElement } from 'react';
 import outdent from 'outdent';
 import { Highlight, Link } from '@storybook/design-system';
 import overrideTheme from './overrideTheme';
-import paymentTheme from './paymentTheme';
+import bladeTheme from './bladeTheme';
 import { Button } from '~components/Button';
 import { BladeProvider } from '~components/BladeProvider';
 import { Checkbox, CheckboxGroup } from '~components/Checkbox';
 import BaseBox from '~components/Box/BaseBox';
-import { Text, Title as BladeTitle } from '~components/Typography';
+import { Text, Heading } from '~components/Typography';
 
 const Page = (): ReactElement => {
   return (
@@ -27,7 +27,7 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Highlight language="tsx">{outdent`
         const customTheme = overrideTheme({
-          baseThemeTokens: paymentTheme, // theme to override
+          baseThemeTokens: bladeTheme, // theme to override
           overrides: {
             colors: {
               onLight: {
@@ -99,7 +99,7 @@ const OverrideThemeExample = (props: { hue: number }): React.ReactElement => {
   const tertiaryText = primaryColor;
 
   const customTheme = overrideTheme({
-    baseThemeTokens: paymentTheme,
+    baseThemeTokens: bladeTheme,
     overrides: {
       colors: {
         onLight: {
@@ -180,7 +180,7 @@ const OverrideThemeExample = (props: { hue: number }): React.ReactElement => {
 
   return (
     <BladeProvider themeTokens={customTheme}>
-      <BladeTitle>Blade OverrideTheme Example</BladeTitle>
+      <Heading size="large">Blade OverrideTheme Example</Heading>
       <Text>By using overrideTheme() function we can customize blade theme.</Text>
 
       <BaseBox marginBottom="spacing.5" marginTop="spacing.5" display="flex" alignItems="center">

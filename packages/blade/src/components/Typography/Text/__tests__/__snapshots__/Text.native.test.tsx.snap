@@ -21,10 +21,11 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
       [
         {
           "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 14,
           "fontStyle": "normal",
           "fontWeight": "400",
+          "letterSpacing": 0,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -67,10 +68,11 @@ exports[`<Text /> should render Text with color 1`] = `
       [
         {
           "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 14,
           "fontStyle": "normal",
           "fontWeight": "400",
+          "letterSpacing": 0,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -111,10 +113,11 @@ exports[`<Text /> should render Text with default properties 1`] = `
       [
         {
           "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 14,
           "fontStyle": "normal",
           "fontWeight": "400",
+          "letterSpacing": 0,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -149,17 +152,18 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
     fontFamily="text"
     fontSize={100}
     fontStyle="normal"
-    fontWeight="bold"
+    fontWeight="semibold"
     lineHeight={100}
     numberOfLines={3}
     style={
       [
         {
           "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 14,
           "fontStyle": "normal",
-          "fontWeight": "700",
+          "fontWeight": "600",
+          "letterSpacing": 0,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -194,17 +198,18 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
     fontFamily="text"
     fontSize={100}
     fontStyle="normal"
-    fontWeight="bold"
+    fontWeight="semibold"
     lineHeight={100}
     numberOfLines={3}
     style={
       [
         {
           "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 14,
           "fontStyle": "normal",
-          "fontWeight": "700",
+          "fontWeight": "600",
+          "letterSpacing": 0,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,
@@ -239,18 +244,19 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
     fontFamily="text"
     fontSize={75}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={50}
+    fontWeight="semibold"
+    lineHeight={75}
     numberOfLines={3}
     style={
       [
         {
           "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 12,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 18,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -284,16 +290,17 @@ exports[`<Text /> should render Text with variant "caption" 1`] = `
     fontFamily="text"
     fontSize={100}
     fontStyle="normal"
-    fontWeight="bold"
+    fontWeight="semibold"
     lineHeight={100}
     style={
       [
         {
           "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "fontFamily": "Inter",
           "fontSize": 14,
           "fontStyle": "normal",
-          "fontWeight": "700",
+          "fontWeight": "600",
+          "letterSpacing": 0,
           "lineHeight": 20,
           "marginBottom": 0,
           "marginLeft": 0,

@@ -1,11 +1,12 @@
 import type { BadgeProps } from './Badge';
 import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { IconProps } from '~components/Icons';
+import { size } from '~tokens/global/size';
 
-const verticalPadding: Record<NonNullable<BadgeProps['size']>, DotNotationSpacingStringToken> = {
-  small: 'spacing.0',
-  medium: 'spacing.1',
-  large: 'spacing.2',
+const badgeHeight: Record<NonNullable<BadgeProps['size']>, number> = {
+  small: size[16],
+  medium: size[20],
+  large: size[24],
 };
 
 const horizontalPadding: Record<NonNullable<BadgeProps['size']>, DotNotationSpacingStringToken> = {
@@ -26,4 +27,4 @@ const iconSize: Record<NonNullable<BadgeProps['size']>, IconProps['size']> = {
   large: 'small',
 };
 
-export { verticalPadding, horizontalPadding, iconPadding, iconSize };
+export { badgeHeight, horizontalPadding, iconPadding, iconSize };

@@ -24,6 +24,8 @@
     "tokens.native.js",
     "utils.d.ts",
     "utils.js",
+    "fonts",
+    "fonts.css",
     "utils.native.js",
     "coverageUtils.d.ts"
   ],
@@ -35,6 +37,9 @@
     "blade"
   ],
   "exports": {
+    "./fonts.css": {
+      "default": "./fonts.css"
+    },
     "./components": {
       "react-native": {
         "types": "./components.d.ts",
@@ -317,7 +322,7 @@
       "name": "Import Button only",
       "path": "./build/lib/web/production/components/index.js",
       "import": "{ Button }",
-      "limit": "30 kb",
+      "limit": "31 kb",
       "running": false
     },
     {

@@ -151,7 +151,7 @@ const Tabs = ({
             <Text
               color={textColor[selectedState].default}
               size={size === 'medium' ? 'medium' : 'large'}
-              weight="bold"
+              weight="semibold"
             >
               {title}
             </Text>

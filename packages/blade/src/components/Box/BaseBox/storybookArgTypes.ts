@@ -209,6 +209,12 @@ const getBoxArgTypes = (): StorybookArgTypes<BoxProps> => {
         options: validBoxAsValues,
       },
     },
+    elevation: {
+      control: {
+        type: 'radio',
+        options: ['lowRaised', 'midRaised', 'highRaised'],
+      },
+    },
   };
 };
 
