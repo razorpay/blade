@@ -422,8 +422,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
-  const isWhiteTeritary = variant === 'tertiary' && color === 'white';
-  const shouldShowHoverlay = (variant === 'secondary' && color !== 'default') || isWhiteTeritary;
+  const isWhiteTertiary = variant === 'tertiary' && color === 'white';
+  const isSecondaryColor = variant === 'secondary' && color !== 'default';
+  const shouldShowHoverlay = isWhiteTertiary || isSecondaryColor;
 
   return (
     <StyledBaseButton
