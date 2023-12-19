@@ -379,7 +379,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
       focusRingColor={focusRingColor}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
-      // setCurrentInteraction={setCurrentInteraction}
+      setCurrentInteraction={setCurrentInteraction}
       {...getStyledProps(styledProps)}
       // @ts-ignore Because we avoided exposing className to public
       className={className}

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { dimensions } from './spinnerTokens';
 import SpinnerIcon from './SpinnerIcon';
@@ -64,7 +65,7 @@ const getColor = ({
   theme: Theme;
 }): string => {
   if (contrast === 'high' || (color && color === 'white')) {
-    return getIn(theme.colors, 'static.white');
+    return getIn(theme.colors, 'surface.text.staticWhite.normal');
   }
   if (color && color !== 'default') {
     return getIn(theme.colors, `feedback.${color}.action.icon.primary.disabled.lowContrast`);

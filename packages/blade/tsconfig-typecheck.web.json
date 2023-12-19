@@ -3,7 +3,6 @@
   "extends": "./tsconfig-generate-types.web.json",
   // overriding `exclude` and removed `**/**.test.ts` so that in CI test files get typechecked
   "exclude": [
-    "src",
     "**/**.stories.tsx",
     "**/**.stories.internal.tsx",
     "**/**.native.ts",
@@ -13,7 +12,6 @@
     "**/ThemePlayground/**.tsx",
     "**/ThemePlayground/**.ts"
   ],
-  "include": ["coverageUtils.d.ts"],
   "compilerOptions": {
     "noEmit": true,
     "emitDeclarationOnly": false
