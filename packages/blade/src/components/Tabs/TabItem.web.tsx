@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import styled from 'styled-components';
-import get from 'lodash/get';
 import React from 'react';
 import { CompositeItem } from '@floating-ui/react';
 import type { TabItemProps, TabsProps } from './types';
 import { useTabsContext } from './TabsContext';
 import { backgroundColor, paddingY, paddingX, textColor } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
+import get from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import { castWebType, getMediaQuery, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
 import useInteraction from '~utils/useInteraction';

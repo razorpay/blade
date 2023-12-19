@@ -1,8 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import styled from 'styled-components/native';
-import getIn from 'lodash/get';
 import React from 'react';
-import isNumber from 'lodash/isNumber';
 import Animated, {
   interpolate,
   useAnimatedStyle,
@@ -12,6 +10,8 @@ import Animated, {
 
 import { switchColors, switchMotion, switchSizes } from './switchTokens';
 import type { AnimatedThumbProps } from './types';
+import isNumber from '~utils/lodashButBetter/isNumber';
+import getIn from '~utils/lodashButBetter/get';
 import { useBreakpoint } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import { makeBorderSize } from '~utils/makeBorderSize';

@@ -1,16 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import makeGlobalColorTokens from './makeGlobalColorTokens';
-import makeThemeColorTokens from './makeThemeColorTokens';
+import makeColorTokens from './makeColorTokens';
 import makeDevTokenNames from './makeDevTokenNames';
 import showNotification from './showNotification';
 figma.showUI(__html__, { visible: false, width: 350, height: 250 });
 
-console.log(figma.command);
-
-if (figma.command === 'globalColorTokens') {
-  makeGlobalColorTokens();
-} else if (figma.command === 'themeColorTokens') {
-  makeThemeColorTokens();
+if (figma.command === 'colorTokens') {
+  makeColorTokens();
 } else if (figma.command === 'devTokenNames') {
   makeDevTokenNames();
 }

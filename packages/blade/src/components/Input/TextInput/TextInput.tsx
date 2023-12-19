@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import isEmpty from 'lodash/isEmpty';
 import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
@@ -48,6 +48,7 @@ type TextInputCommonProps = Pick<
   | 'onSubmit'
   | 'autoCapitalize'
   | 'testID'
+  | 'onClick'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -223,6 +224,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     value,
     maxCharacters,
     onChange,
+    onClick,
     onFocus,
     onBlur,
     onSubmit,
@@ -317,6 +319,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
         onChange?.({ name, value });
       }}
+      onClick={onClick}
       onFocus={onFocus}
       onBlur={onBlur}
       onSubmit={onSubmit}
