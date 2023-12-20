@@ -47,12 +47,20 @@ it('should remove variant/intent prop in favor of color prop', async () => {
       <>
         <Alert description="Hello World" intent="information" />
 
-        <Badge variant="neutral" intent="positive">Hello</Badge> 
-        <Badge variant="blue" contrast="low">Hello</Badge>
-        <Badge variant="blue" contrast="low">Hello</Badge>
+        <Badge variant="blue"> Hello </Badge>
+        <Badge color="default"> Hello </Badge>
+        <Badge variant="blue" color="default"> Hello </Badge>
+        <Badge variant="negative" color="positive"> Hello </Badge>
 
-        <Counter variant="neutral" contrast="low">Hello</Counter> 
-        <Counter variant="neutral" contrast="high">Hello</Counter>        
+        <Counter variant="blue"> Hello </Counter>
+        <Counter intent="positive"> Hello </Counter>
+        <Counter color="default"> Hello </Counter>
+        <Counter variant="blue" intent="positive" color="default"> Hello </Counter>
+        <Counter variant="negative" intent="notice" color="positive"> Hello </Counter>
+
+        <Indicator intent="positive" />
+
+        <Button variant="secondary" color="default"> Click Me </Button>
       </>
     );
     `,
@@ -62,14 +70,22 @@ it('should remove variant/intent prop in favor of color prop', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
           <>
-            <Alert description="Hello World" />
+            <Alert description="Hello World" color="information" />
 
-            <Badge>Hello</Badge> 
-            <Badge emphesis="subtle">Hello</Badge>
-            <Badge emphesis="subtle">Hello</Badge>
+            <Badge color="primary"> Hello </Badge>
+            <Badge color="default"> Hello </Badge>
+            <Badge color="default"> Hello </Badge>
+            <Badge color="positive"> Hello </Badge>
 
-            <Counter emphesis="subtle">Hello</Counter> 
-            <Counter emphesis="intense">Hello</Counter>        
+            <Counter color="primary"> Hello </Counter>
+            <Counter color="positive"> Hello </Counter>
+            <Counter color="default"> Hello </Counter>
+            <Counter color="default"> Hello </Counter>
+            <Counter color="positive"> Hello </Counter>
+
+            <Indicator intent="positive" />
+
+            <Button variant="secondary" color="default"> Click Me </Button>
           </>
         );"
   `);

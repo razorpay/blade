@@ -412,7 +412,7 @@ const transformer: Transform = (file, api, options) => {
   root
     .find(j.JSXElement)
     .filter((path) =>
-      ['Alert', 'Badge', 'Counter', 'Chip'].includes(path.value.openingElement.name.name),
+      ['Alert', 'Badge', 'Counter', 'Chip', 'Button'].includes(path.value.openingElement.name.name),
     )
     .replaceWith((path) => {
       const { node } = path;
@@ -465,7 +465,11 @@ const transformer: Transform = (file, api, options) => {
 
       return path.node;
     })
-    .filter((path) => path.node.name.name === 'intent' || path.node.name.name === 'variant')
+    .filter(
+      (path) =>
+        (path.node.name.name === 'intent' || path.node.name.name === 'variant') &&
+        path.parent.value.name.name !== 'Button',
+    )
     .remove();
 
   // Return the updated source code
