@@ -18,7 +18,7 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
     transitionDuration: castWebType(getTransitionDuration(theme)),
     transitionTimingFunction: castWebType(getTransitionEasing(theme)),
     cursor: 'pointer',
-    color: theme.colors.surface.action.icon.default.lowContrast,
+    color: theme.colors.surface.text.gray.muted,
     width: '100%',
     border: 'none',
     textAlign: 'left',
@@ -28,15 +28,15 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
     },
 
     '&:hover': {
-      color: theme.colors.surface.action.icon.hover.lowContrast,
+      color: theme.colors.interactive.icon.gray.subtle,
     },
 
     '&:focus-visible': {
       outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+      boxShadow: `0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
       // only need border radius on the focus ring
       borderRadius: theme.border.radius.small,
-      color: theme.colors.surface.action.icon.focus.lowContrast,
+      color: theme.colors.interactive.icon.gray.subtle,
     },
   };
 });

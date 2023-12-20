@@ -90,7 +90,7 @@ const AccordionWithIconsTemplate: ComponentStory<typeof AccordionComponent> = ({
   return (
     <AccordionComponent {...args}>
       <AccordionItem
-        title="How can I setup Route?"
+        title="How can I setup Route? How can I setup Route How can I setup nowowqow kqowkoqkwq wasasa skahs asasas ajshajs jahsjahs jahsjahs jahsjahs hakshjkas kahsjas kajhskas jahskahs jahsahs"
         description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
         icon={RoutesIcon}
       />

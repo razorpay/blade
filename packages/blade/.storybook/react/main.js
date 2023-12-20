@@ -27,6 +27,8 @@ module.exports = {
     '../../src/components/Link/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Tooltip/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Typography/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Collapsible/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Accordion/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../docs/**/*.stories.mdx',
     // '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../src/**/*.stories.mdx',
