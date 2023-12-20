@@ -164,7 +164,7 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
           display="flex"
           flexDirection="row"
           gap="spacing.5"
-          backgroundColor={color === 'white' ? 'brand.gray.700.lowContrast' : 'transparent'}
+          backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : 'transparent'}
           margin="spacing.4"
           padding="spacing.5"
         >
@@ -194,6 +194,16 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
             <ButtonComponent {...args} color={color} variant="primary">
               {children}
             </ButtonComponent>
+
+            <ButtonComponent
+              marginLeft="spacing.4"
+              {...args}
+              color={color}
+              variant="primary"
+              isDisabled
+            >
+              {children}
+            </ButtonComponent>
           </BaseBox>
 
           <BaseBox margin="spacing.2">
@@ -205,6 +215,16 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
               Secondary
             </Text>
             <ButtonComponent {...args} color={color} variant="secondary">
+              {children}
+            </ButtonComponent>
+
+            <ButtonComponent
+              marginLeft="spacing.4"
+              {...args}
+              color={color}
+              variant="secondary"
+              isDisabled
+            >
               {children}
             </ButtonComponent>
           </BaseBox>
@@ -219,6 +239,16 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
                 Tertiary
               </Text>
               <ButtonComponent {...args} color={color} variant="tertiary">
+                {children}
+              </ButtonComponent>
+
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="tertiary"
+                isDisabled
+              >
                 {children}
               </ButtonComponent>
             </BaseBox>
