@@ -26,7 +26,7 @@ const Page = (): ReactElement => {
         function App() {
           return (
             <Box>
-              <Indicator accessibilityLabel="Success" intent="positive" />
+              <Indicator accessibilityLabel="Success" color="positive" />
             </Box>
           )
         }
@@ -98,7 +98,7 @@ export const Composition: ComponentStory<typeof IndicatorComponent> = ({ ...args
 };
 Composition.args = {
   children: undefined,
-  intent: 'notice',
+  color: 'notice',
   accessibilityLabel: 'New offers',
   size: 'large',
 };
