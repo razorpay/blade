@@ -109,8 +109,8 @@ type CardHeaderProps = {
 const _CardHeader = ({
   children,
   testID,
-  marginBottom = 'spacing.7',
-  paddingBottom = 'spacing.7',
+  marginBottom = 'spacing.4',
+  paddingBottom = 'spacing.4',
   showDivider = true,
 }: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');

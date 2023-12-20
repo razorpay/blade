@@ -42,8 +42,8 @@ type CardFooterProps = {
 const _CardFooter = ({
   children,
   testID,
-  marginTop = 'spacing.7',
-  paddingTop = 'spacing.7',
+  marginTop = 'spacing.4',
+  paddingTop = 'spacing.4',
   showDivider = true,
 }: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
