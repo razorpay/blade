@@ -14,6 +14,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import type { BoxProps } from '~components/Box';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -24,9 +25,27 @@ export type CardFooterAction = Pick<
 
 type CardFooterProps = {
   children?: React.ReactNode;
+  /**
+   * For spacing between divider and footer title
+   */
+  paddingTop?: BoxProps['paddingTop'];
+  /**
+   * For spacing between body content and divider
+   */
+  marginTop?: BoxProps['marginTop'];
+  /**
+   * @default true
+   */
+  showDivider?: boolean;
 } & TestID;
 
-const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement => {
+const _CardFooter = ({
+  children,
+  testID,
+  marginTop = 'spacing.7',
+  paddingTop = 'spacing.7',
+  showDivider = true,
+}: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
   useVerifyAllowedChildren({
@@ -55,11 +74,10 @@ const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement 
       : 'flex-end';
 
   return (
-    <BaseBox marginTop="auto" {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
-      <BaseBox marginTop="spacing.7" />
-      <Divider />
+    <BaseBox marginTop={marginTop} {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
+      {showDivider ? <Divider /> : null}
       <BaseBox
-        marginTop="spacing.7"
+        paddingTop={paddingTop}
         display="flex"
         flexDirection={isMobile ? 'column' : 'row'}
         justifyContent={baseBoxJustifyContent}
@@ -82,12 +100,12 @@ const _CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.
   return (
     <BaseBox textAlign={'left' as never}>
       {title && (
-        <Text variant="body" size="medium" weight="semibold">
+        <Text size="medium" weight="semibold">
           {title}
         </Text>
       )}
       {subtitle && (
-        <Text variant="body" size="small" weight="regular">
+        <Text size="small" weight="regular">
           {subtitle}
         </Text>
       )}

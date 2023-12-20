@@ -23,11 +23,12 @@ import { makeSpace } from '~utils/makeSpace';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import type { BoxProps } from '~components/Box';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
 
-  return <Icon color="surface.text.normal.lowContrast" size="xlarge" />;
+  return <Icon color="surface.icon.gray.normal" size="large" />;
 };
 const CardHeaderIcon = assignWithoutSideEffects(_CardHeaderIcon, {
   componentId: ComponentIds.CardHeaderIcon,
@@ -91,9 +92,27 @@ const CardHeaderIconButton = assignWithoutSideEffects(_CardHeaderIconButton, {
 
 type CardHeaderProps = {
   children?: React.ReactNode;
+  /**
+   * For spacing between divider and header title
+   */
+  paddingBottom?: BoxProps['paddingBottom'];
+  /**
+   * For spacing between body content and divider
+   */
+  marginBottom?: BoxProps['marginBottom'];
+  /**
+   * @default true
+   */
+  showDivider?: boolean;
 } & TestID;
 
-const _CardHeader = ({ children, testID }: CardHeaderProps): React.ReactElement => {
+const _CardHeader = ({
+  children,
+  testID,
+  marginBottom = 'spacing.7',
+  paddingBottom = 'spacing.7',
+  showDivider = true,
+}: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');
   useVerifyAllowedChildren({
     children,
@@ -103,18 +122,18 @@ const _CardHeader = ({ children, testID }: CardHeaderProps): React.ReactElement 
 
   return (
     <BaseBox
-      marginBottom="spacing.7"
+      marginBottom={marginBottom}
       {...metaAttribute({ name: MetaConstants.CardHeader, testID })}
     >
       <BaseBox
-        marginBottom="spacing.7"
+        paddingBottom={paddingBottom}
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
       >
         {children}
       </BaseBox>
-      <Divider />
+      {showDivider ? <Divider /> : null}
     </BaseBox>
   );
 };
@@ -167,11 +186,13 @@ const _CardHeaderLeading = ({
       </BaseBox>
       <BaseBox marginRight="spacing.5">
         <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
-          <Text size="large">{title}</Text>
+          <Text size="large" weight="semibold">
+            {title}
+          </Text>
           <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
         </BaseBox>
         {subtitle && (
-          <Text textAlign="left" variant="body" size="small" weight="regular">
+          <Text textAlign="left" size="small">
             {subtitle}
           </Text>
         )}

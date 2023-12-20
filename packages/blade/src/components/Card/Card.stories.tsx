@@ -22,7 +22,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
-import { UsersIcon, TrashIcon } from '~components/Icons';
+import { UsersIcon, TrashIcon, CheckCircleIcon } from '~components/Icons';
 
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
@@ -274,6 +274,14 @@ const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
 };
 
 export const CardExample = CardTemplate.bind({});
+export const FigmaExample = CardTemplate.bind({});
+FigmaExample.args = {
+  headerTitle: 'Header Title',
+  headerSubtitle: 'Header Subtitle',
+  prefix: CheckCircleIcon,
+  footerTitle: 'Footer Title',
+  footerSubtitle: 'Footer Subtitle',
+};
 
 const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (

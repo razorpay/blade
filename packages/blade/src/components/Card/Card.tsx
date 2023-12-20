@@ -18,6 +18,8 @@ import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { isReactNative } from '~utils';
+import type { Theme } from '~components/BladeProvider';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -34,6 +36,10 @@ export const ComponentIds = {
   CardHeaderLink: 'CardHeaderLink',
   CardHeaderIconButton: 'CardHeaderIconButton',
 };
+
+type CardSurfaceBackgroundColors = `surface.background.gray.${DotNotationToken<
+  Theme['colors']['surface']['background']['gray']
+>}`;
 
 export type CardProps = {
   /**
@@ -56,6 +62,13 @@ export type CardProps = {
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-colors--page#-theme-tokens
    */
   surfaceLevel?: Exclude<SurfaceLevels, 1>;
+
+  /**
+   * Sets the background color of the Card
+   *
+   * @default `surface.background.gray.intense`
+   */
+  backgroundColor?: CardSurfaceBackgroundColors;
   /**
    * Sets the elevation for Cards
    *
@@ -74,7 +87,10 @@ export type CardProps = {
    * **Links:**
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
    */
-  padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.3' | 'spacing.5' | 'spacing.7'>;
+  padding?: Extract<
+    SpacingValueType,
+    'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7'
+  >;
   /**
    * Sets the width of the card
    */
@@ -140,7 +156,7 @@ export type CardProps = {
 
 const Card = ({
   children,
-  surfaceLevel = 2,
+  backgroundColor = 'surface.background.gray.intense',
   elevation = 'lowRaised',
   testID,
   padding = 'spacing.7',
@@ -200,9 +216,9 @@ const Card = ({
           height={height}
           padding={padding}
           borderRadius="medium"
-          surfaceLevel={surfaceLevel}
           elevation={elevation}
           textAlign={'left' as never}
+          backgroundColor={backgroundColor}
         >
           {href ? (
             <LinkOverlay
