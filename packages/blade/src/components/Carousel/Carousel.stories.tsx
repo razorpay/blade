@@ -275,7 +275,7 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
   );
 };
 
-const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
+export const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
       <CarouselExample {...props} />

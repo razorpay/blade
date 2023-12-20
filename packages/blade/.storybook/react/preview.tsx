@@ -58,7 +58,7 @@ export const parameters = {
           'useTheme',
         ],
         'Components',
-        ['*', 'KitchenSink'],
+        ['*', 'Interaction Tests', 'KitchenSink'],
         'Recipes',
       ],
     },
