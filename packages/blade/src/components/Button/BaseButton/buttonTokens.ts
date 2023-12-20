@@ -51,7 +51,7 @@ const backgroundColor = (property: 'background' | 'border') => {
         default: isBorder ? 'interactive.border.staticWhite.highlighted' : 'transparent',
         highlighted: isBorder
           ? 'interactive.border.staticWhite.highlighted'
-          : 'interactive.border.staticWhite.faded',
+          : 'interactive.background.staticWhite.faded',
         disabled: isBorder ? `interactive.${property}.staticWhite.disabled` : 'transparent',
       },
       tertiary: {

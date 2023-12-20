@@ -158,87 +158,35 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
 
   return (
     <>
-      {colors.map((color) => (
-        <BaseBox
-          key={color}
-          display="flex"
-          flexDirection="row"
-          gap="spacing.5"
-          backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : 'transparent'}
-          margin="spacing.4"
-          padding="spacing.5"
-        >
+      {colors.map((color) => {
+        const textColor =
+          color === 'white' ? 'surface.text.staticWhite.normal' : 'surface.text.staticBlack.normal';
+        return (
           <BaseBox
-            width="100px"
-            margin="spacing.2"
+            key={color}
             display="flex"
-            justifyContent="center"
-            alignItems="center"
+            flexDirection="row"
+            gap="spacing.5"
+            backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : 'transparent'}
+            margin="spacing.4"
+            padding="spacing.5"
           >
-            <HeadingComponent
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              size="medium"
+            <BaseBox
+              width="100px"
+              margin="spacing.2"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
             >
-              {color}
-            </HeadingComponent>
-          </BaseBox>
-          <BaseBox margin="spacing.2">
-            <Text
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              weight="bold"
-            >
-              Primary
-            </Text>
-            <ButtonComponent {...args} color={color} variant="primary">
-              {children}
-            </ButtonComponent>
-
-            <ButtonComponent
-              marginLeft="spacing.4"
-              {...args}
-              color={color}
-              variant="primary"
-              isDisabled
-            >
-              {children}
-            </ButtonComponent>
-          </BaseBox>
-
-          <BaseBox margin="spacing.2">
-            <Text
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              weight="bold"
-            >
-              Secondary
-            </Text>
-            <ButtonComponent {...args} color={color} variant="secondary">
-              {children}
-            </ButtonComponent>
-
-            <ButtonComponent
-              marginLeft="spacing.4"
-              {...args}
-              color={color}
-              variant="secondary"
-              isDisabled
-            >
-              {children}
-            </ButtonComponent>
-          </BaseBox>
-
-          {(color == 'default' || color == 'white') && (
+              <HeadingComponent marginBottom="spacing.3" color={textColor} size="medium">
+                {color}
+              </HeadingComponent>
+            </BaseBox>
             <BaseBox margin="spacing.2">
-              <Text
-                marginBottom="spacing.3"
-                contrast={color == 'white' ? 'high' : 'low'}
-                weight="bold"
-              >
-                Tertiary
+              <Text marginBottom="spacing.3" color={textColor}>
+                Primary
               </Text>
-              <ButtonComponent {...args} color={color} variant="tertiary">
+              <ButtonComponent {...args} color={color} variant="primary">
                 {children}
               </ButtonComponent>
 
@@ -246,15 +194,55 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
                 marginLeft="spacing.4"
                 {...args}
                 color={color}
-                variant="tertiary"
+                variant="primary"
                 isDisabled
               >
                 {children}
               </ButtonComponent>
             </BaseBox>
-          )}
-        </BaseBox>
-      ))}
+
+            <BaseBox margin="spacing.2">
+              <Text marginBottom="spacing.3" color={textColor}>
+                Secondary
+              </Text>
+              <ButtonComponent {...args} color={color} variant="secondary">
+                {children}
+              </ButtonComponent>
+
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="secondary"
+                isDisabled
+              >
+                {children}
+              </ButtonComponent>
+            </BaseBox>
+
+            {(color == 'default' || color == 'white') && (
+              <BaseBox margin="spacing.2">
+                <Text marginBottom="spacing.3" color={textColor}>
+                  Tertiary
+                </Text>
+                <ButtonComponent {...args} color={color} variant="tertiary">
+                  {children}
+                </ButtonComponent>
+
+                <ButtonComponent
+                  marginLeft="spacing.4"
+                  {...args}
+                  color={color}
+                  variant="tertiary"
+                  isDisabled
+                >
+                  {children}
+                </ButtonComponent>
+              </BaseBox>
+            )}
+          </BaseBox>
+        );
+      })}
     </>
   );
 };
