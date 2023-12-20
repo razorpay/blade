@@ -1,7 +1,7 @@
-import cloneDeep from 'lodash/cloneDeep';
-import merge from 'lodash/merge';
 import bladeTheme from './bladeTheme';
 import type { ThemeTokens } from './theme';
+import merge from '~utils/lodashButBetter/merge';
+import cloneDeep from '~utils/lodashButBetter/cloneDeep';
 import { hasSameObjectStructure } from '~utils/hasSameObjectStructure';
 import type { ObjectWithKeys } from '~utils/hasSameObjectStructure';
 import { isPartialMatchObjectKeys } from '~utils/isPartialMatchObjectKeys';
