@@ -18,6 +18,7 @@ import { InfoIcon } from '~components/Icons';
 import { Popover, PopoverInteractiveWrapper } from '~components/Popover';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 import { Sandbox } from '~utils/storybook/Sandbox/StackblitzEditor/Sandbox';
+import { castWebType } from '~utils';
 
 type Item = {
   id: string;
@@ -266,7 +267,7 @@ const TourDocs = (): React.ReactElement => {
 
       <Box
         backgroundColor="surface.background.level2.lowContrast"
-        overflow="auto"
+        overflow={castWebType('auto')}
         minHeight="400px"
         display="flex"
         flexDirection="column"
