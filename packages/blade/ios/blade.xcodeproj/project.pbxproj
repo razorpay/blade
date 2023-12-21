@@ -12,14 +12,14 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		15C1821D14554C109C0A2C42 /* TASAOrbiter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E4CE3584AE645A18022AC6E /* TASAOrbiter-SemiBold.otf */; };
 		266F8222282194C84355FB43 /* libPods-blade.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A14C4DCE8FBCAD8DAD09818D /* libPods-blade.a */; };
 		3ACA67F067244DEB99783E06 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7902B25200F4FEFA8929693 /* Inter-Regular.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		82C097F197BC4BE0AAF0D391 /* TASAOrbiter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 64A70F2B3BB0413193E2E76D /* TASAOrbiter-Medium.otf */; };
 		B99D16E7788AF691EA9E6E1A /* libPods-blade-bladeTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF7CC2C2C0866401CC832E2 /* libPods-blade-bladeTests.a */; };
 		BB8E5D4B741B4FE6809D0474 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A16BDE98C023436FB6B67991 /* Inter-SemiBold.ttf */; };
-		D8C6246C53D84CCBBA9E1105 /* TASAOrbiter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 92B39F53BD7D4376835C95D9 /* TASAOrbiter-Regular.otf */; };
+		2DDA884D7B694E66B1FA25E8 /* TASAOrbiterDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8E92216E4A7480899561D98 /* TASAOrbiterDisplay-Medium.otf */; };
+		C165FFDEB65E4E1F81E5B86F /* TASAOrbiterDisplay-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B3C7EB8E12344CD381BF5029 /* TASAOrbiterDisplay-Regular.otf */; };
+		3C6D9471A17E415FBA813B6A /* TASAOrbiterDisplay-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C52015C732D640A597B8A769 /* TASAOrbiterDisplay-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,16 +36,13 @@
 		00E356EE1AD99517003FC87E /* bladeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bladeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* bladeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = bladeTests.m; sourceTree = "<group>"; };
-		0E4CE3584AE645A18022AC6E /* TASAOrbiter-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TASAOrbiter-SemiBold.otf"; path = "../public/fonts/TASAOrbiter-SemiBold.otf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* blade.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blade.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = blade/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.mm; path = blade/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = blade/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = blade/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = blade/main.m; sourceTree = "<group>"; };
-		64A70F2B3BB0413193E2E76D /* TASAOrbiter-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TASAOrbiter-Medium.otf"; path = "../public/fonts/TASAOrbiter-Medium.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = blade/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		92B39F53BD7D4376835C95D9 /* TASAOrbiter-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "TASAOrbiter-Regular.otf"; path = "../public/fonts/TASAOrbiter-Regular.otf"; sourceTree = "<group>"; };
 		9B55C243E3A89932C0E9E7DB /* Pods-blade-bladeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade-bladeTests.release.xcconfig"; path = "Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests.release.xcconfig"; sourceTree = "<group>"; };
 		9DFE3CEDD36C82CC4702A8EA /* Pods-blade.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade.debug.xcconfig"; path = "Target Support Files/Pods-blade/Pods-blade.debug.xcconfig"; sourceTree = "<group>"; };
 		A14C4DCE8FBCAD8DAD09818D /* libPods-blade.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-blade.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +53,9 @@
 		C8AEEE4D40BD6854CCC4C971 /* Pods-blade-bladeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-blade-bladeTests.debug.xcconfig"; path = "Target Support Files/Pods-blade-bladeTests/Pods-blade-bladeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F7902B25200F4FEFA8929693 /* Inter-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-Regular.ttf"; path = "../public/fonts/Inter-Regular.ttf"; sourceTree = "<group>"; };
+		E8E92216E4A7480899561D98 /* TASAOrbiterDisplay-Medium.otf */ = {isa = PBXFileReference; name = "TASAOrbiterDisplay-Medium.otf"; path = "../public/fonts/TASAOrbiterDisplay-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B3C7EB8E12344CD381BF5029 /* TASAOrbiterDisplay-Regular.otf */ = {isa = PBXFileReference; name = "TASAOrbiterDisplay-Regular.otf"; path = "../public/fonts/TASAOrbiterDisplay-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C52015C732D640A597B8A769 /* TASAOrbiterDisplay-SemiBold.otf */ = {isa = PBXFileReference; name = "TASAOrbiterDisplay-SemiBold.otf"; path = "../public/fonts/TASAOrbiterDisplay-SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,9 +124,9 @@
 				B567457C213041FE86C04D20 /* Inter-Medium.ttf */,
 				F7902B25200F4FEFA8929693 /* Inter-Regular.ttf */,
 				A16BDE98C023436FB6B67991 /* Inter-SemiBold.ttf */,
-				64A70F2B3BB0413193E2E76D /* TASAOrbiter-Medium.otf */,
-				92B39F53BD7D4376835C95D9 /* TASAOrbiter-Regular.otf */,
-				0E4CE3584AE645A18022AC6E /* TASAOrbiter-SemiBold.otf */,
+				E8E92216E4A7480899561D98 /* TASAOrbiterDisplay-Medium.otf */,
+				B3C7EB8E12344CD381BF5029 /* TASAOrbiterDisplay-Regular.otf */,
+				C52015C732D640A597B8A769 /* TASAOrbiterDisplay-SemiBold.otf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -273,9 +273,9 @@
 				096B3CF46B7A474F807F3A37 /* Inter-Medium.ttf in Resources */,
 				3ACA67F067244DEB99783E06 /* Inter-Regular.ttf in Resources */,
 				BB8E5D4B741B4FE6809D0474 /* Inter-SemiBold.ttf in Resources */,
-				82C097F197BC4BE0AAF0D391 /* TASAOrbiter-Medium.otf in Resources */,
-				D8C6246C53D84CCBBA9E1105 /* TASAOrbiter-Regular.otf in Resources */,
-				15C1821D14554C109C0A2C42 /* TASAOrbiter-SemiBold.otf in Resources */,
+				2DDA884D7B694E66B1FA25E8 /* TASAOrbiterDisplay-Medium.otf in Resources */,
+				C165FFDEB65E4E1F81E5B86F /* TASAOrbiterDisplay-Regular.otf in Resources */,
+				3C6D9471A17E415FBA813B6A /* TASAOrbiterDisplay-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
