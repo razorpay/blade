@@ -255,7 +255,7 @@ const TestimonialCard = ({
   );
 };
 
-const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
+export const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
   const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
     <Box width="100%" height={isReactNative() ? '350px' : 'auto'}>
@@ -275,7 +275,7 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
   );
 };
 
-export const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
+const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
       <CarouselExample {...props} />
