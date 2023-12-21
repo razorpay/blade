@@ -21,7 +21,7 @@ type IndicatorCommonProps = {
    *
    * @default neutral
    */
-  intent?: FeedbackColors;
+  color?: FeedbackColors;
 
   /**
    * Size of the indicator
@@ -67,14 +67,14 @@ const Indicator = ({
   accessibilityLabel,
   children,
   size = 'medium',
-  intent = 'neutral',
+  color = 'neutral',
   testID,
   ...styledProps
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
 
-  const fillColor = theme.colors.feedback.background[intent].intense;
+  const fillColor = theme.colors.feedback.background[color].intense;
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':
