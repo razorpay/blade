@@ -119,7 +119,6 @@ const getStories = () => {
     './src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.stories.tsx': require('../../src/storybook-recipes/AccessibilityInterop/AccessibilityInteropDemo.stories.tsx'),
     './src/storybook-recipes/SimpleDashboard.stories.tsx': require('../../src/storybook-recipes/SimpleDashboard.stories.tsx'),
     './src/storybook-recipes/SimpleForm.stories.tsx': require('../../src/storybook-recipes/SimpleForm.stories.tsx'),
-    './src/tokens/theme/overrideTheme.stories.tsx': require('../../src/tokens/theme/overrideTheme.stories.tsx'),
   };
 };
 
