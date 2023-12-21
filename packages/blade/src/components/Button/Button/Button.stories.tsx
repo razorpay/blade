@@ -61,7 +61,7 @@ export default {
   component: ButtonComponent,
   args: {
     variant: 'primary',
-    color: 'default',
+    color: 'primary',
     children: 'Pay Now',
     onClick: (): void => {
       console.log('clicked');
@@ -154,7 +154,7 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
-  const colors: ButtonProps['color'][] = ['default', 'white', 'positive', 'negative'];
+  const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
 
   return (
     <>
@@ -220,7 +220,7 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
               </ButtonComponent>
             </BaseBox>
 
-            {(color == 'default' || color == 'white') && (
+            {(color == 'primary' || color == 'white') && (
               <BaseBox margin="spacing.2">
                 <Text marginBottom="spacing.3" color={textColor}>
                   Tertiary
