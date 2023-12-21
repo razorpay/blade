@@ -21,7 +21,6 @@ const config = {
     }),
   },
   resolver: {
-    // resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
     resolverMainFields: ['browser', 'main'],
   },
 };

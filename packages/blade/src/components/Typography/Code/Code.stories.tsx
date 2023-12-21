@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
@@ -58,7 +58,7 @@ const CodeStoryMeta: Meta = {
   argTypes: getStyledPropsArgTypes(),
 };
 
-const CodeTemplate: ComponentStory<typeof CodeComponent> = (args) => (
+const CodeTemplate: StoryFn<typeof CodeComponent> = (args) => (
   // For React Native, use flex to align items correctly
   <>
     <Text size="medium">

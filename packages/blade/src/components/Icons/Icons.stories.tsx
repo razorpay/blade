@@ -1,5 +1,5 @@
 import type { ComponentType, ReactElement } from 'react';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title, Description } from '@storybook/addon-docs';
 import iconMap from './iconMap';
 import PlusIcon from './PlusIcon';
@@ -107,10 +107,7 @@ export default {
   },
 } as Meta<IconProps>;
 
-const IconTemplate: ComponentStory<ComponentType<IconProps & { icon: string }>> = ({
-  icon,
-  ...args
-}) => {
+const IconTemplate: StoryFn<ComponentType<IconProps & { icon: string }>> = ({ icon, ...args }) => {
   const IconComponent = iconMap[icon];
   return <IconComponent {...args} />;
 };
@@ -120,7 +117,7 @@ Icon.args = {
   icon: 'CreditCardIcon',
 };
 
-export const AllIcons: ComponentStory<ComponentType<IconProps>> = ({ ...args }) => {
+export const AllIcons: StoryFn<ComponentType<IconProps>> = ({ ...args }) => {
   return (
     <BaseBox>
       {Object.keys(iconMap).map((icon, key) => {

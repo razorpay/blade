@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import React, { useState } from 'react';
@@ -92,7 +92,7 @@ const meta: Meta<PasswordInputProps> = {
   },
 };
 
-const PasswordInputTemplate: ComponentStory<typeof PasswordInput> = ({ ...args }) => {
+const PasswordInputTemplate: StoryFn<typeof PasswordInput> = ({ ...args }) => {
   return <PasswordInput {...args} />;
 };
 
@@ -220,7 +220,7 @@ ControlledInput.parameters = {
   },
 };
 
-export const inputRef: ComponentStory<typeof PasswordInput> = () => {
+export const inputRef: StoryFn<typeof PasswordInput> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const inputRef = React.useRef<HTMLInputElement>(null);
 

@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
@@ -59,7 +59,7 @@ export default {
   argTypes: getStyledPropsArgTypes(),
 } as Meta<BaseSpinnerProps>;
 
-const BaseSpinnerTemplate: ComponentStory<typeof BaseSpinnerComponent> = ({ ...args }) => {
+const BaseSpinnerTemplate: StoryFn<typeof BaseSpinnerComponent> = ({ ...args }) => {
   return <BaseSpinnerComponent {...args} />;
 };
 

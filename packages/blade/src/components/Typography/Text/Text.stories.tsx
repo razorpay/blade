@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { TextProps } from './';
@@ -61,7 +61,7 @@ const TextStoryMeta: Meta<TextProps<{ variant: 'body' | 'caption' }>> = {
   argTypes: getStyledPropsArgTypes(),
 };
 
-const TextTemplate: ComponentStory<typeof TextComponent> = (args) => {
+const TextTemplate: StoryFn<typeof TextComponent> = (args) => {
   return <TextComponent {...args}>{args.children}</TextComponent>;
 };
 
@@ -72,7 +72,7 @@ WithColor.args = {
   color: 'feedback.positive.action.text.primary.default.lowContrast',
 };
 
-const AsPropTemplate: ComponentStory<typeof TextComponent> = (args) => {
+const AsPropTemplate: StoryFn<typeof TextComponent> = (args) => {
   return (
     <TextComponent {...args} as="p">
       Power your{' '}

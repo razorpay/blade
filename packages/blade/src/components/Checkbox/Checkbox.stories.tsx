@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Title } from '@storybook/addon-docs';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';
@@ -72,7 +72,7 @@ export default {
   },
 } as Meta<CheckboxProps>;
 
-const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = ({ children, ...args }) => {
+const CheckboxTemplate: StoryFn<typeof CheckboxComponent> = ({ children, ...args }) => {
   return <CheckboxComponent {...args}>{children}</CheckboxComponent>;
 };
 
@@ -132,12 +132,12 @@ const ControlledAndUncontrolledComp = () => {
     </>
   );
 };
-const _ControlledAndUncontrolled: ComponentStory<typeof CheckboxComponent> = () => {
+const _ControlledAndUncontrolled: StoryFn<typeof CheckboxComponent> = () => {
   return <ControlledAndUncontrolledComp />;
 };
 export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
 
-export const checkboxRef: ComponentStory<typeof CheckboxComponent> = () => {
+export const checkboxRef: StoryFn<typeof CheckboxComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const checkboxRef = React.useRef<HTMLInputElement>(null);
 

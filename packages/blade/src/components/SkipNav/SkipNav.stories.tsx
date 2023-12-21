@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Button } from '~components/Button';
@@ -67,7 +67,7 @@ const SkipNavStoryMeta: Meta = {
   },
 };
 
-const SkipNavTemplate: ComponentStory<typeof SkipNavLink> = () => {
+const SkipNavTemplate: StoryFn<typeof SkipNavLink> = () => {
   return (
     <>
       <SkipNavLink>Skip to content</SkipNavLink>

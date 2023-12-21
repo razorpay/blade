@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title as StorybookTitle } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
@@ -74,7 +74,7 @@ const DisplayStoryMeta: Meta<DisplayProps> = {
   },
 };
 
-const DisplayTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
+const DisplayTemplate: StoryFn<typeof DisplayComponent> = (args) => {
   return <DisplayComponent {...args}>{args.children}</DisplayComponent>;
 };
 
@@ -86,7 +86,7 @@ WithColor.args = {
 };
 
 const Sup = isReactNative() ? DisplayComponent : 'sup';
-const WithMixedColorsTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
+const WithMixedColorsTemplate: StoryFn<typeof DisplayComponent> = (args) => {
   return (
     <Box>
       <DisplayComponent {...args}>
@@ -108,7 +108,7 @@ const WithMixedColorsTemplate: ComponentStory<typeof DisplayComponent> = (args) 
 
 export const WithMixedColors = WithMixedColorsTemplate.bind({});
 
-const AsPropTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
+const AsPropTemplate: StoryFn<typeof DisplayComponent> = (args) => {
   return (
     <Box>
       <Text>

@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import { Text } from '../Typography';
 import type { ChipGroupProps } from './ChipGroup';
@@ -119,7 +119,7 @@ export default {
   },
 } as Meta<ChipGroupProps>;
 
-const ChipTemplate: ComponentStory<typeof ChipComponent> = ({ children, ...args }) => {
+const ChipTemplate: StoryFn<typeof ChipComponent> = ({ children, ...args }) => {
   return (
     <Box>
       <ChipGroupComponent

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Dropdown, DropdownOverlay } from '..';
 import {
   getSimpleAutoComplete,
@@ -40,7 +40,7 @@ const DropdownStoryMeta: Meta = {
   },
 };
 
-const DropdownTemplate: ComponentStory<typeof Dropdown> = (args) => {
+const DropdownTemplate: StoryFn<typeof Dropdown> = (args) => {
   return (
     <Sandbox showConsole padding="spacing.0" editorHeight="100vh">
       {getSimpleAutoComplete(args.selectionType)}
