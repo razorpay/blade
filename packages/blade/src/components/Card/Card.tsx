@@ -30,6 +30,7 @@ export const ComponentIds = {
   CardHeaderIcon: 'CardHeaderIcon',
   CardHeaderCounter: 'CardHeaderCounter',
   CardHeaderBadge: 'CardHeaderBadge',
+  CardHeaderAmount: 'CardHeaderAmount',
   CardHeaderText: 'CardHeaderText',
   CardHeaderLink: 'CardHeaderLink',
   CardHeaderIconButton: 'CardHeaderIconButton',

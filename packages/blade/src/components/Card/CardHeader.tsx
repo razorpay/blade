@@ -52,6 +52,16 @@ const CardHeaderBadge = assignWithoutSideEffects(_CardHeaderBadge, {
   componentId: ComponentIds.CardHeaderBadge,
 });
 
+// @TODO: uncomment and export this when Amount component is migrated
+// const _CardHeaderAmount = (props: AmountProps): React.ReactElement => {
+//   useVerifyInsideCard('CardHeaderAmount');
+
+//   return <Amount {...props} />;
+// };
+// const CardHeaderAmount = assignWithoutSideEffects(_CardHeaderAmount, {
+//   componentId: ComponentIds.CardHeaderAmount,
+// });
+
 const _CardHeaderText = (props: TextProps<{ variant: TextVariant }>): React.ReactElement => {
   useVerifyInsideCard('CardHeaderText');
 
