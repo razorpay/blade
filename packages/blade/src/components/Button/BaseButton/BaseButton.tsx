@@ -425,6 +425,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const isWhiteTertiary = variant === 'tertiary' && color === 'white';
   const isSecondaryColor = variant === 'secondary' && color !== 'default';
   const shouldShowHoverlay = isWhiteTertiary || isSecondaryColor;
+  const isNative = isReactNative();
 
   return (
     <StyledBaseButton
@@ -472,10 +473,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      shouldShowHoverlay={shouldShowHoverlay}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
     >
-      {shouldShowHoverlay ? <Hoverlay variant="subtle" className="hoverlay" /> : null}
+      {!isNative && shouldShowHoverlay ? <Hoverlay variant="subtle" className="hoverlay" /> : null}
       {isLoading ? (
         <BaseBox
           display="flex"

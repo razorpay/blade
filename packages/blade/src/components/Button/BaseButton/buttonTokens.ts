@@ -31,9 +31,9 @@ const backgroundColor = (property: 'background' | 'border') => {
       secondary: {
         default: isBorder ? 'interactive.border.primary.default' : 'transparent',
         highlighted: isBorder
-          ? `interactive.${property}.primary.default`
-          : `interactive.${property}.primary.faded`,
-        disabled: isBorder ? `interactive.${property}.primary.disabled` : `transparent`,
+          ? `interactive.border.primary.default`
+          : `interactive.background.primary.faded`,
+        disabled: isBorder ? `interactive.border.primary.disabled` : `transparent`,
       },
       tertiary: {
         default: `interactive.${property}.gray.default`,
@@ -52,7 +52,7 @@ const backgroundColor = (property: 'background' | 'border') => {
         highlighted: isBorder
           ? 'interactive.border.staticWhite.highlighted'
           : 'interactive.background.staticWhite.faded',
-        disabled: isBorder ? `interactive.${property}.staticWhite.disabled` : 'transparent',
+        disabled: isBorder ? `interactive.border.staticWhite.disabled` : 'transparent',
       },
       tertiary: {
         default: `interactive.background.staticWhite.faded`,
@@ -69,11 +69,11 @@ const backgroundColor = (property: 'background' | 'border') => {
         },
         secondary: {
           default: isBorder
-            ? `interactive.${property}.${color}.default`
-            : `interactive.${property}.${color}.faded`,
+            ? (`interactive.border.${color}.default` as const)
+            : (`interactive.background.${color}.faded` as const),
           highlighted: isBorder
-            ? `interactive.${property}.${color}.default`
-            : `interactive.${property}.${color}.faded`,
+            ? (`interactive.border.${color}.default` as const)
+            : (`interactive.background.${color}.faded` as const),
           disabled: `interactive.${property}.${color}.disabled`,
         },
       } as const;
