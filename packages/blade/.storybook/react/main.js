@@ -13,6 +13,7 @@ module.exports = {
     '@storybook/design-system': { disable: true },
   },
   stories: [
+    '../../docs/guides/*.stories.mdx',
     '../../src/components/Box/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Badge/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Icons/**/*.stories.@(ts|tsx|js|jsx)',
