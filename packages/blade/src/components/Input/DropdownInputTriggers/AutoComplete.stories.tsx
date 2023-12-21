@@ -1,5 +1,5 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { ComponentStory } from '@storybook/react';
+import type { StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import { SelectInput } from './SelectInput';
@@ -244,7 +244,7 @@ export default {
   },
 };
 
-const AutoCompleteTemplate: ComponentStory<typeof AutoComplete> = ({ icon, ...args }) => {
+const AutoCompleteTemplate: StoryFn<typeof AutoComplete> = ({ icon, ...args }) => {
   return (
     <Box minHeight="150px" padding="spacing.5">
       <Dropdown>

@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { CardFooterAction } from './';
@@ -367,7 +367,7 @@ const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement
 
 export const CardBodyContent = CardChildrenExample.bind({});
 
-const CardWithoutPaddingExample: ComponentStory<typeof Card> = (): React.ReactElement => {
+const CardWithoutPaddingExample: StoryFn<typeof Card> = (): React.ReactElement => {
   return (
     <Card elevation="highRaised" padding="spacing.0">
       <CardBody>

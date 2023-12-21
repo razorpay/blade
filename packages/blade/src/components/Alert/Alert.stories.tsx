@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 
@@ -96,7 +96,7 @@ const meta: Meta<AlertProps> = {
   },
 };
 
-const AlertTemplate: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+const AlertTemplate: StoryFn<typeof AlertComponent> = ({ ...args }) => {
   return <AlertComponent {...args} />;
 };
 
@@ -178,7 +178,7 @@ PrimaryActionOnly.parameters = {
   },
 };
 
-export const FullWidth: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+export const FullWidth: StoryFn<typeof AlertComponent> = ({ ...args }) => {
   return (
     <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">
@@ -203,7 +203,7 @@ FullWidth.parameters = {
   },
 };
 
-export const FullWidthWithActions: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+export const FullWidthWithActions: StoryFn<typeof AlertComponent> = ({ ...args }) => {
   return (
     <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">

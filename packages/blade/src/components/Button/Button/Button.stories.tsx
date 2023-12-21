@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title, Description, Heading } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import React, { useState } from 'react';
@@ -95,15 +95,12 @@ export default {
   },
 } as Meta<ButtonProps>;
 
-const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({
-  children = 'Button',
-  ...args
-}) => {
+const ButtonTemplate: StoryFn<typeof ButtonComponent> = ({ children = 'Button', ...args }) => {
   return <ButtonComponent {...args}>{children}</ButtonComponent>;
 };
 
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
-const ButtonWithSizeTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonWithSizeTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
@@ -132,7 +129,7 @@ const ButtonWithSizeTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
-const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonWithVariantTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
@@ -156,7 +153,7 @@ const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
-const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
@@ -384,7 +381,7 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   );
 };
 
-const ButtonLoadingTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonLoadingTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
@@ -413,7 +410,7 @@ FullWidthButton.parameters = {
   },
 };
 
-export const ButtonRef: ComponentStory<typeof ButtonComponent> = () => {
+export const ButtonRef: StoryFn<typeof ButtonComponent> = () => {
   const buttonRef = React.useRef<BladeElementRef>(null);
 
   return (

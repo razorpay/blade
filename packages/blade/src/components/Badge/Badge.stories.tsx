@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
@@ -63,7 +63,7 @@ export default {
   },
 } as Meta<BadgeProps>;
 
-const BadgeTemplate: ComponentStory<typeof BadgeComponent> = ({ children, ...args }) => {
+const BadgeTemplate: StoryFn<typeof BadgeComponent> = ({ children, ...args }) => {
   return <BadgeComponent {...args}>{children}</BadgeComponent>;
 };
 
@@ -77,7 +77,7 @@ Badge.args = {
 };
 Badge.storyName = 'Default';
 
-const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...args }) => {
+const BadgesWithVariantTemplate: StoryFn<typeof BadgeComponent> = ({ ...args }) => {
   const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
 
   const getLabel = (label: string): string => {

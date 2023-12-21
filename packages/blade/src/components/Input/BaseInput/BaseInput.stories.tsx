@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import React from 'react';
@@ -262,7 +262,7 @@ export default {
   },
 } as Meta<BaseInputProps>;
 
-const BaseInputTemplate: ComponentStory<typeof BaseInputComponent> = ({
+const BaseInputTemplate: StoryFn<typeof BaseInputComponent> = ({
   leadingIcon,
   trailingIcon,
   ...args
@@ -301,9 +301,7 @@ BaseInputSuccess.args = {
   successText: 'Name validated',
 };
 
-const BaseInputMaxCharactersTemplate: ComponentStory<typeof BaseInputComponent> = ({
-  maxCharacters,
-}) => {
+const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({ maxCharacters }) => {
   return (
     <BaseInput
       id="base-input"
@@ -322,7 +320,7 @@ const BaseInputMaxCharactersTemplate: ComponentStory<typeof BaseInputComponent> 
 };
 export const BaseInputMaxCharacters = BaseInputMaxCharactersTemplate.bind({});
 
-const BaseInputUncontrolledTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+const BaseInputUncontrolledTemplate: StoryFn<typeof BaseInputComponent> = () => {
   return (
     <BaseInput
       id="base-input"
@@ -335,7 +333,7 @@ const BaseInputUncontrolledTemplate: ComponentStory<typeof BaseInputComponent> =
 };
 export const BaseInputUncontrolled = BaseInputUncontrolledTemplate.bind({});
 
-const BaseInputControlledTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+const BaseInputControlledTemplate: StoryFn<typeof BaseInputComponent> = () => {
   const [inputValue, setInputValue] = React.useState('');
 
   return (
@@ -354,7 +352,7 @@ const BaseInputControlledTemplate: ComponentStory<typeof BaseInputComponent> = (
 
 export const BaseInputControlled = BaseInputControlledTemplate.bind({});
 
-const BaseInputControlledWithTagsTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+const BaseInputControlledWithTagsTemplate: StoryFn<typeof BaseInputComponent> = () => {
   const [inputValue, setInputValue] = React.useState('');
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [currentTags, setCurrentTags] = React.useState<string[]>([]);

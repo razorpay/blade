@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import type { BaseButtonProps } from './BaseButton';
 import BaseButtonComponent from './BaseButton';
 import iconMap from '~components/Icons/iconMap';
@@ -42,11 +42,7 @@ export default {
   },
 } as Meta<BaseButtonProps>;
 
-const BaseButtonTemplate: ComponentStory<typeof BaseButtonComponent> = ({
-  icon,
-  children,
-  ...args
-}) => {
+const BaseButtonTemplate: StoryFn<typeof BaseButtonComponent> = ({ icon, children, ...args }) => {
   const IconComponent = iconMap[(icon as unknown) as string];
   return (
     <BaseButtonComponent icon={IconComponent} {...args}>

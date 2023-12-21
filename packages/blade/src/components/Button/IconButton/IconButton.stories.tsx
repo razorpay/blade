@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 
@@ -69,7 +69,7 @@ const meta: Meta<IconButtonProps> = {
   },
 };
 
-const IconButtonTemplate: ComponentStory<typeof IconButtonComponent> = ({
+const IconButtonTemplate: StoryFn<typeof IconButtonComponent> = ({
   icon = 'CloseIcon',
   ...args
 }) => {

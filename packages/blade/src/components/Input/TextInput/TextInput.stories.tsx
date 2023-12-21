@@ -1,5 +1,5 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { TextInputProps } from './TextInput';
@@ -254,7 +254,7 @@ export default {
   },
 } as Meta<TextInputProps>;
 
-const TextInputTemplate: ComponentStory<typeof TextInputComponent> = ({ icon, ...args }) => {
+const TextInputTemplate: StoryFn<typeof TextInputComponent> = ({ icon, ...args }) => {
   return <TextInputComponent {...args} icon={iconMap[(icon as unknown) as string]} />;
 };
 
@@ -308,7 +308,7 @@ TextInputWithoutLabel.args = {
   accessibilityLabel: 'Enter your name',
 };
 
-const TextInputMaxCharactersTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextInputMaxCharactersTemplate: StoryFn<typeof TextInputComponent> = () => {
   return (
     <TextInput
       label="First Name"
@@ -321,7 +321,7 @@ const TextInputMaxCharactersTemplate: ComponentStory<typeof TextInputComponent> 
 };
 export const TextInputMaxCharacters = TextInputMaxCharactersTemplate.bind({});
 
-const TextInputUncontrolledTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextInputUncontrolledTemplate: StoryFn<typeof TextInputComponent> = () => {
   return (
     <TextInput
       label="First Name"
@@ -334,7 +334,7 @@ const TextInputUncontrolledTemplate: ComponentStory<typeof TextInputComponent> =
 };
 export const TextInputUncontrolled = TextInputUncontrolledTemplate.bind({});
 
-const TextInputControlledTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextInputControlledTemplate: StoryFn<typeof TextInputComponent> = () => {
   const [inputValue, setInputValue] = React.useState('');
 
   return (
@@ -352,7 +352,7 @@ const TextInputControlledTemplate: ComponentStory<typeof TextInputComponent> = (
 };
 export const TextInputControlled = TextInputControlledTemplate.bind({});
 
-const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = () => {
+const TextInputKitchenSinkTemplate: StoryFn<typeof TextInputComponent> = () => {
   return (
     <>
       <BaseBox display="flex" gap="spacing.5">
@@ -452,7 +452,7 @@ const TextInputKitchenSinkTemplate: ComponentStory<typeof TextInputComponent> = 
 };
 export const TextInputKitchenSink = TextInputKitchenSinkTemplate.bind({});
 
-export const inputRef: ComponentStory<typeof TextInputComponent> = () => {
+export const inputRef: StoryFn<typeof TextInputComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const inputRef = React.useRef<HTMLInputElement>(null);
 

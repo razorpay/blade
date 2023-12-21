@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import type { RadioGroupProps } from './RadioGroup/RadioGroup';
@@ -101,7 +101,7 @@ export default {
   },
 } as Meta<RadioGroupProps>;
 
-const RadioTemplate: ComponentStory<typeof RadioGroupComponent> = ({ children, ...args }) => {
+const RadioTemplate: StoryFn<typeof RadioGroupComponent> = ({ children, ...args }) => {
   return (
     <RadioGroupComponent {...args}>
       <RadioComponent value="apple">Apple</RadioComponent>
@@ -262,7 +262,7 @@ export const KitchenSink = (): React.ReactElement => {
   );
 };
 
-export const radioRef: ComponentStory<typeof RadioComponent> = () => {
+export const radioRef: StoryFn<typeof RadioComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const radioRef = React.useRef<HTMLInputElement>(null);
 

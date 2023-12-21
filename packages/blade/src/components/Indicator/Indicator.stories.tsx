@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { IndicatorProps } from './Indicator';
@@ -61,13 +61,13 @@ const meta: Meta<IndicatorProps> = {
   },
 };
 
-const IndicatorTemplate: ComponentStory<typeof IndicatorComponent> = ({ ...args }) => {
+const IndicatorTemplate: StoryFn<typeof IndicatorComponent> = ({ ...args }) => {
   return <IndicatorComponent {...args} />;
 };
 
 export const Default = IndicatorTemplate.bind({});
 
-export const WithoutLabel: ComponentStory<typeof IndicatorComponent> = ({ ...args }) => {
+export const WithoutLabel: StoryFn<typeof IndicatorComponent> = ({ ...args }) => {
   return <IndicatorComponent {...args} />;
 };
 WithoutLabel.args = {
@@ -83,7 +83,7 @@ WithoutLabel.parameters = {
   },
 };
 
-export const Composition: ComponentStory<typeof IndicatorComponent> = ({ ...args }) => {
+export const Composition: StoryFn<typeof IndicatorComponent> = ({ ...args }) => {
   const isReactNative = getPlatformType() === 'react-native';
   return (
     <BaseBox
