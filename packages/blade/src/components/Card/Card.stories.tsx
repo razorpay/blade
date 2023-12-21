@@ -121,6 +121,7 @@ const propsCategory = {
 
 type StoryControlProps = {
   backgroundColor: CardProps['backgroundColor'];
+  borderRadius: CardProps['borderRadius'];
   elevation: keyof Elevation;
   padding: CardSpacingValueType;
   headerTitle: string;
@@ -159,6 +160,7 @@ export default {
   component: Card,
   args: {
     backgroundColor: 'surface.background.gray.intense',
+    borderRadius: 'medium',
     elevation: 'lowRaised',
     padding: 'spacing.7',
     headerTitle: 'Payment Links',
@@ -198,6 +200,9 @@ export default {
   },
   argTypes: {
     backgroundColor: {
+      table: { category: propsCategory.CARD },
+    },
+    borderRadius: {
       table: { category: propsCategory.CARD },
     },
     elevation: {
@@ -292,7 +297,12 @@ export default {
 
 const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
-    <Card backgroundColor={args.backgroundColor} elevation={args.elevation} padding={args.padding}>
+    <Card
+      borderRadius={args.borderRadius}
+      backgroundColor={args.backgroundColor}
+      elevation={args.elevation}
+      padding={args.padding}
+    >
       <CardHeader paddingBottom={args.headerPaddingBottom} marginBottom={args.headerMarginBottom}>
         <CardHeaderLeading
           title={args.headerTitle}

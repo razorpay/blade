@@ -186,13 +186,13 @@ const _CardHeaderLeading = ({
       </BaseBox>
       <BaseBox marginRight="spacing.5">
         <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
-          <Text size="large" weight="semibold">
+          <Text color="surface.text.gray.normal" size="large" weight="semibold">
             {title}
           </Text>
           <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
         </BaseBox>
         {subtitle && (
-          <Text textAlign="left" size="small">
+          <Text color="surface.text.gray.subtle" textAlign="left" size="small">
             {subtitle}
           </Text>
         )}

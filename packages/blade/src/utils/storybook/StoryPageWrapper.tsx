@@ -16,7 +16,9 @@ import { Badge } from '~components/Badge';
 import { AnnouncementIcon } from '~components/Icons';
 
 const Subtitle = (props: HeadingProps): React.ReactElement => {
-  return <Heading type="subtle" size="large" weight="regular" as="span" {...props} />;
+  return (
+    <Heading color="surface.text.gray.subtle" size="large" weight="regular" as="span" {...props} />
+  );
 };
 
 type StoryPageWrapperTypes = {
@@ -90,9 +92,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           {props.componentName}
         </Display>
         <Box marginBottom="spacing.4" paddingLeft="spacing.1">
-          <Heading type="subtle" size="large" weight="regular" as="span">
-            {props.componentDescription}
-          </Heading>
+          <Subtitle>{props.componentDescription}</Subtitle>
         </Box>
         {componentMetaInfo?.releasedIn ? (
           <Box paddingBottom="spacing.6" paddingLeft="spacing.1">

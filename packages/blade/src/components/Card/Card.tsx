@@ -51,6 +51,12 @@ export type CardProps = {
    */
   backgroundColor?: CardSurfaceBackgroundColors;
   /**
+   * Sets the border radius of the Card
+   *
+   * @default `medium`
+   */
+  borderRadius?: Extract<BoxProps['borderRadius'], 'medium' | 'large' | 'xlarge'>;
+  /**
    * Sets the elevation for Cards
    *
    * eg: `theme.elevation.midRaised`
@@ -135,6 +141,7 @@ export type CardProps = {
 const Card = ({
   children,
   backgroundColor = 'surface.background.gray.intense',
+  borderRadius = 'medium',
   elevation = 'lowRaised',
   testID,
   padding = 'spacing.7',
@@ -193,7 +200,7 @@ const Card = ({
         <CardSurface
           height={height}
           padding={padding}
-          borderRadius="medium"
+          borderRadius={borderRadius}
           elevation={elevation}
           textAlign={'left' as never}
           backgroundColor={backgroundColor}
