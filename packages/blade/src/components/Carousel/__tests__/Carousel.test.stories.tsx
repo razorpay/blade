@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import type { ComponentStory } from '@storybook/react';
+import type { StoryFn } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect, jest } from '@storybook/jest';
 import type { Mock } from 'jest-mock';
@@ -19,7 +19,7 @@ const BasicCarousel = (props: CarouselProps): React.ReactElement => (
   </Box>
 );
 
-export const TestCarouselOnChange: ComponentStory<typeof CarouselComponent> = (
+export const TestCarouselOnChange: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {
   onChange = jest.fn();
@@ -41,7 +41,7 @@ TestCarouselOnChange.play = async ({ canvasElement }) => {
   await expect(onChange).toBeCalledWith(3);
 };
 
-export const TestIndicatorButton: ComponentStory<typeof CarouselComponent> = (
+export const TestIndicatorButton: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {
   onChange = jest.fn();
@@ -56,7 +56,7 @@ TestIndicatorButton.play = async ({ canvasElement }) => {
   await expect(onChange).toBeCalledWith(6);
 };
 
-export const TestStartOverAfterStartEnd: ComponentStory<typeof CarouselComponent> = (
+export const TestStartOverAfterStartEnd: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {
   onChange = jest.fn();
@@ -75,9 +75,7 @@ TestStartOverAfterStartEnd.play = async ({ canvasElement }) => {
   await expect(onChange).toBeCalledWith(0);
 };
 
-export const TestAutoPlay: ComponentStory<typeof CarouselComponent> = (
-  props,
-): React.ReactElement => {
+export const TestAutoPlay: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
   onChange = jest.fn();
   return <BasicCarousel {...props} autoPlay visibleItems={2} onChange={onChange} />;
 };
@@ -90,9 +88,7 @@ TestAutoPlay.play = async ({ canvasElement }) => {
   await expect(getByRole('tab', { selected: true })).toHaveAccessibleName('Slide 3');
 };
 
-export const TestAutofit: ComponentStory<typeof CarouselComponent> = (
-  props,
-): React.ReactElement => {
+export const TestAutofit: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
   onChange = jest.fn();
   return (
     <BasicCarousel
@@ -121,9 +117,7 @@ TestAutofit.play = async ({ canvasElement }) => {
   await expect(previousButton).toBeNull();
 };
 
-export const TestAutoPlayPause: ComponentStory<typeof CarouselComponent> = (
-  props,
-): React.ReactElement => {
+export const TestAutoPlayPause: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
   console.log({ INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS });
   onChange = jest.fn();
   return <BasicCarousel {...props} autoPlay visibleItems={2} onChange={onChange} />;
