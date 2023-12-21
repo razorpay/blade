@@ -14,7 +14,7 @@ const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
   return {
     cursor: 'pointer',
     '&:hover': {
-      backgroundColor: theme.colors.brand.primary[400],
+      backgroundColor: theme.colors.interactive.border.primary.highlighted,
     },
   };
 });
@@ -110,7 +110,7 @@ const TabIndicator = ({
         left="0px"
         top="0px"
         borderRadius="small"
-        backgroundColor="brand.primary.300"
+        backgroundColor="interactive.background.primary.faded"
         style={{
           ...transitionProps,
           width: `${activeElementDimensions.width}px`,
@@ -127,9 +127,9 @@ const TabIndicator = ({
       pointerEvents="none"
       position="absolute"
       left="0%"
-      top="0px"
-      height="1.5px"
-      backgroundColor="brand.primary.500"
+      top="-0.5px"
+      height="2px"
+      backgroundColor="interactive.background.primary.default"
       style={{
         ...transitionProps,
         width: `${activeElementDimensions.width}px`,

@@ -173,8 +173,8 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'feedback'>
       | BackgroundColorString<'surface'>
       | BackgroundColorString<'interactive'>
-      | 'transparent'
-      | (string & Record<never, never>);
+      | 'transparent';
+    // | (string & Record<never, never>);
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
     userSelect: CSSObject['userSelect'];
