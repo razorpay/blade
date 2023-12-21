@@ -5,6 +5,8 @@ const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
   return (prop as JSXAttribute)?.value?.type === 'JSXExpressionContainer';
 };
 
+const red = (message: string): string => `\u001b[1m\u001b[31m${message}\u001b[39m\u001b[22m`;
+
 const transformer: Transform = (file, api, options) => {
   // Maps to transform Title sizes to Heading sizes
   const titleToHeadingMap = {
@@ -120,8 +122,8 @@ const transformer: Transform = (file, api, options) => {
 
       if (isExpression(node)) {
         console.log(
-          'Expression found in size attribute, please update manually:',
-          `${file.path}:${node.loc.start.line}`,
+          red('Expression found in size attribute, please update manually:'),
+          red(`${file.path}:${node.loc.start.line}`),
         );
         return node;
       }
@@ -233,8 +235,8 @@ const transformer: Transform = (file, api, options) => {
 
       if (isExpression(sizeAttribute)) {
         console.log(
-          'Expression found in size attribute, please update manually:',
-          `${file.path}:${sizeAttribute.loc.start.line}`,
+          red('Expression found in size attribute, please update manually:'),
+          red(`${file.path}:${sizeAttribute.loc.start.line}`),
         );
         return node;
       }
@@ -473,22 +475,25 @@ const transformer: Transform = (file, api, options) => {
     .remove();
 
   // Return the updated source code
-  return root
-    .toSource(options.printOptions)
-    .replace(
-      'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN',
-      `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`,
-    )
-    .replace(
-      /((brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)|UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN)/g,
-      (originalString) => {
-        if (originalString.includes('highContrast')) {
-          return `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`;
-        }
+  return (
+    root
+      .toSource(options.printOptions)
+      // Create syntax error for developer to manually update the color token
+      .replace(
+        'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN',
+        `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`,
+      )
+      .replace(
+        /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
+        (originalString) => {
+          if (originalString.includes('highContrast')) {
+            return `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`;
+          }
 
-        return originalString;
-      },
-    );
+          return originalString;
+        },
+      )
+  );
 };
 
 export default transformer;
