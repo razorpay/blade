@@ -131,7 +131,7 @@ const backgroundColor = {
       disabled: 'colors.transparent',
     },
     filled: {
-      default: 'colors.surface.border.gray.subtle',
+      default: 'colors.transparent',
       highlighted: 'colors.interactive.background.gray.default',
       disabled: 'colors.surface.border.gray.subtle',
     },
@@ -149,7 +149,7 @@ const backgroundColor = {
     },
     filled: {
       default: 'colors.interactive.background.primary.faded',
-      highlighted: 'colors.interactive.background.primary.faded',
+      highlighted: 'colors.transparent',
       disabled: 'colors.transparent',
     },
   },

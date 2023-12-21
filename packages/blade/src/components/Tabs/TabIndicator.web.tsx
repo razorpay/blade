@@ -9,12 +9,13 @@ import { castWebType, makeMotionTime } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { Hoverlay } from '~components/Hoverlay';
 
-const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
+const StyledTabIndicator = styled(BaseBox)(() => {
   return {
     cursor: 'pointer',
-    '&:hover': {
-      backgroundColor: theme.colors.interactive.border.primary.highlighted,
+    '&:hover .hoverlay': {
+      opacity: 1,
     },
   };
 });
@@ -118,7 +119,9 @@ const TabIndicator = ({
           transform: `translate(${activeElementDimensions.x}px, ${activeElementDimensions.y}px)`,
         }}
         {...metaAttribute({ name: MetaConstants.TabIndicator })}
-      />
+      >
+        <Hoverlay className="hoverlay" variant="subtle" />
+      </StyledTabIndicator>
     );
   }
 

@@ -585,10 +585,10 @@ export const Default = TabsTemplate.bind({});
 //   size: 'large',
 // };
 
-// export const Filled = TabsTemplate.bind({});
-// Filled.args = {
-//   variant: 'filled',
-// };
+export const Filled = TabsTemplate.bind({});
+Filled.args = {
+  variant: 'filled',
+};
 
 // export const FilledVertical = TabsTemplate.bind({});
 // FilledVertical.args = {
