@@ -2,6 +2,7 @@
 import React from 'react';
 import { useVerifyInsideCard } from './CardContext';
 import { ComponentIds } from './Card';
+import type { CardSpacingValueType } from './types';
 import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import type { LinkProps } from '~components/Link';
@@ -23,7 +24,6 @@ import { makeSpace } from '~utils/makeSpace';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
-import type { BoxProps } from '~components/Box';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -95,11 +95,11 @@ type CardHeaderProps = {
   /**
    * For spacing between divider and header title
    */
-  paddingBottom?: BoxProps['paddingBottom'];
+  paddingBottom?: CardSpacingValueType;
   /**
    * For spacing between body content and divider
    */
-  marginBottom?: BoxProps['marginBottom'];
+  marginBottom?: CardSpacingValueType;
   /**
    * @default true
    */

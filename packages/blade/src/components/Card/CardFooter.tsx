@@ -3,6 +3,7 @@ import type { ReactElement } from 'react';
 import React from 'react';
 import { useVerifyInsideCard } from './CardContext';
 import { ComponentIds } from './Card';
+import type { CardSpacingValueType } from './types';
 import type { ButtonProps } from '~components/Button';
 import { Button } from '~components/Button';
 import { Divider } from '~components/Divider';
@@ -14,7 +15,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useIsMobile } from '~utils/useIsMobile';
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
-import type { BoxProps } from '~components/Box';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -28,11 +28,11 @@ type CardFooterProps = {
   /**
    * For spacing between divider and footer title
    */
-  paddingTop?: BoxProps['paddingTop'];
+  paddingTop?: CardSpacingValueType;
   /**
    * For spacing between body content and divider
    */
-  marginTop?: BoxProps['marginTop'];
+  marginTop?: CardSpacingValueType;
   /**
    * @default true
    */
