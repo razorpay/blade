@@ -4,7 +4,7 @@ import React from 'react';
 import { CompositeItem } from '@floating-ui/react';
 import type { TabItemProps, TabsProps } from './types';
 import { useTabsContext } from './TabsContext';
-import { backgroundColor, paddingY, paddingX, textColor } from './tabTokens';
+import { backgroundColor, paddingY, paddingX, textColor, iconColor } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { Text } from '~components/Typography';
 import { castWebType, getMediaQuery, makeBorderSize, makeMotionTime, makeSpace } from '~utils';
@@ -73,7 +73,9 @@ const StyledTabButton = styled.button<{
       backgroundColor:
         // Don't want to show hover state on filled tabs when vertical because
         // The hover color needs to be on the TabIndicator instead.
-        isSelected && isFilled && !isVertical ? 'transparent' : getIn(theme, background.hover),
+        isSelected && isFilled && !isVertical
+          ? 'transparent'
+          : getIn(theme, background.highlighted),
     },
     '&:disabled': {
       cursor: 'not-allowed',
@@ -82,7 +84,7 @@ const StyledTabButton = styled.button<{
     '&:focus-visible': {
       borderRadius: makeSpace(theme.border.radius.medium),
       boxShadow: `0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
-      backgroundColor: getIn(theme, background.focus),
+      backgroundColor: getIn(theme, background.highlighted),
     },
 
     transitionProperty: 'all',
@@ -122,6 +124,13 @@ const TabItem = ({
   const tabItemId = `${baseId}-${value}-tabitem`;
   const isFilled = variant === 'filled';
 
+  const interactionMap = {
+    default: 'default',
+    hover: 'highlighted',
+    focus: 'highlighted',
+  } as const;
+  const interaction = isDisabled ? 'disabled' : interactionMap[currentInteraction];
+
   return (
     <CompositeItem
       render={
@@ -148,13 +157,10 @@ const TabItem = ({
           {...metaAttribute({ name: MetaConstants.TabItem })}
         >
           {Leading ? (
-            <Leading
-              size={iconSizeMap[size!]}
-              color={isSelected ? `interactive.icon.primary.subtle` : `interactive.icon.gray.muted`}
-            />
+            <Leading size={iconSizeMap[size!]} color={iconColor[selectedState][interaction]} />
           ) : null}
           <Text
-            color={textColor[selectedState][isDisabled ? 'disabled' : currentInteraction]}
+            color={textColor[selectedState][interaction]}
             size={size === 'medium' ? 'medium' : 'large'}
             weight="semibold"
           >

@@ -108,16 +108,12 @@ const paddingX: TabItemPadding = {
 const textColor = {
   selected: {
     default: 'interactive.text.primary.subtle',
-    hover: 'interactive.text.primary.normal',
-    focus: 'interactive.text.primary.normal',
-    active: 'interactive.text.primary.normal',
+    highlighted: 'interactive.text.primary.normal',
     disabled: 'interactive.text.primary.normal',
   },
   unselected: {
     default: 'interactive.text.gray.muted',
-    hover: 'interactive.text.gray.subtle',
-    focus: 'interactive.text.gray.subtle',
-    active: 'interactive.text.gray.subtle',
+    highlighted: 'interactive.text.gray.subtle',
     disabled: 'interactive.text.gray.disabled',
   },
 } as const;
@@ -126,49 +122,50 @@ const backgroundColor = {
   unselected: {
     bordered: {
       default: 'colors.transparent',
-      hover: 'colors.transparent',
-      focus: 'colors.transparent',
-      active: 'colors.transparent',
+      highlighted: 'colors.transparent',
       disabled: 'colors.transparent',
     },
     borderless: {
       default: 'colors.transparent',
-      hover: 'colors.transparent',
-      focus: 'colors.transparent',
-      active: 'colors.transparent',
+      highlighted: 'colors.transparent',
       disabled: 'colors.transparent',
     },
     filled: {
       default: 'colors.surface.border.gray.subtle',
-      hover: 'colors.interactive.background.gray.default',
-      focus: 'colors.interactive.background.gray.default',
-      active: 'colors.interactive.background.gray.default',
+      highlighted: 'colors.interactive.background.gray.default',
       disabled: 'colors.surface.border.gray.subtle',
     },
   },
   selected: {
     bordered: {
       default: 'colors.transparent',
-      hover: 'colors.transparent',
-      focus: 'colors.transparent',
-      active: 'colors.transparent',
+      highlighted: 'colors.transparent',
       disabled: 'colors.transparent',
     },
     borderless: {
       default: 'colors.transparent',
-      hover: 'colors.transparent',
-      focus: 'colors.transparent',
-      active: 'colors.transparent',
+      highlighted: 'colors.transparent',
       disabled: 'colors.transparent',
     },
     filled: {
       default: 'colors.interactive.background.primary.faded',
-      hover: 'colors.interactive.background.primary.faded',
-      focus: 'colors.interactive.background.primary.faded',
-      active: 'colors.interactive.background.primary.faded',
+      highlighted: 'colors.interactive.background.primary.faded',
       disabled: 'colors.transparent',
     },
   },
 } as const;
 
-export { backgroundColor, textColor, paddingY, paddingX };
+const iconColor = {
+  unselected: {
+    default: 'interactive.icon.gray.muted',
+    highlighted: 'interactive.icon.gray.subtle',
+    disabled: 'interactive.icon.gray.disabled',
+  },
+  selected: {
+    default: 'interactive.icon.primary.subtle',
+    highlighted: 'interactive.icon.primary.normal',
+    disabled: 'interactive.icon.primary.disabled',
+  },
+} as const;
+
+export { backgroundColor, textColor, iconColor, paddingY, paddingX };
