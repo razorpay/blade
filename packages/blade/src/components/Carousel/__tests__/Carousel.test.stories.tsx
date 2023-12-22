@@ -80,7 +80,6 @@ export const TestAutoPlay: StoryFn<typeof CarouselComponent> = (props): React.Re
   return <BasicCarousel {...props} autoPlay visibleItems={2} onChange={onChange} />;
 };
 
-// this has issues on cli, debug this
 TestAutoPlay.play = async ({ canvasElement }) => {
   const { getByRole } = within(canvasElement);
   await sleep(7000);
