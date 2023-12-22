@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import type { SkeletonProps } from './';
 import { Skeleton, Skeleton as SkeletonComponent } from './';
@@ -100,6 +100,7 @@ const argTypes = propertiesToOverride.reduce((prev, curr) => {
 export default {
   title: 'Components/Skeleton',
   component: SkeletonComponent,
+  tags: ['autodocs'],
   argTypes: {
     ...argTypes,
     borderRadius: {
@@ -126,7 +127,7 @@ export default {
   },
 } as Meta<SkeletonProps>;
 
-const SkeletonTemplate: ComponentStory<typeof SkeletonComponent> = (args) => {
+const SkeletonTemplate: StoryFn<typeof SkeletonComponent> = (args) => {
   return (
     <Box padding="spacing.3" display="flex" gap="spacing.3" flexWrap="wrap">
       <Skeleton width="50%" height="50px" borderRadius="medium" {...args} />
@@ -185,7 +186,7 @@ const BasicSkeleton = (): React.ReactElement => {
   );
 };
 
-const BasicTemplate: ComponentStory<typeof SkeletonComponent> = () => {
+const BasicTemplate: StoryFn<typeof SkeletonComponent> = () => {
   return (
     <Box padding="spacing.3" display="flex" gap="spacing.3" flexWrap="wrap">
       <BasicSkeleton />
@@ -271,7 +272,7 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
   );
 };
 
-const SkeletonComplexTemplate: ComponentStory<typeof SkeletonComponent> = () => {
+const SkeletonComplexTemplate: StoryFn<typeof SkeletonComponent> = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   return (
@@ -307,7 +308,7 @@ const SkeletonComplexTemplate: ComponentStory<typeof SkeletonComponent> = () => 
 
 export const Complex = SkeletonComplexTemplate.bind({});
 
-const SkeletonCardTemplate: ComponentStory<typeof SkeletonComponent> = () => {
+const SkeletonCardTemplate: StoryFn<typeof SkeletonComponent> = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   return (
@@ -365,7 +366,7 @@ const SkeletonCardTemplate: ComponentStory<typeof SkeletonComponent> = () => {
 
 export const CardExample = SkeletonCardTemplate.bind({});
 
-const SkeletonAccessibilityTemplate: ComponentStory<typeof SkeletonComponent> = () => {
+const SkeletonAccessibilityTemplate: StoryFn<typeof SkeletonComponent> = () => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {

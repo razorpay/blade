@@ -7,7 +7,8 @@ import { createTheme } from '../../src/tokens/theme/createTheme';
 import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
-import { DocsContainer } from '@storybook/addon-docs/blocks';
+import { DocsContainer } from '@storybook/addon-docs';
+import React from 'react';
 import './global.css';
 
 export const parameters = {
@@ -64,23 +65,24 @@ export const parameters = {
   },
   docs: {
     container: ({ children, context }) => {
+      console.log('----', context);
       const getThemeTokens = () => {
-        if (context.globals.brandColor) {
-          return createTheme({ brandColor: context.globals.brandColor });
+        if (context.store.globals.globals.brandColor) {
+          return createTheme({ brandColor: context.store.globals.globals.brandColor });
         }
-        if (context.globals.themeTokenName === 'paymentTheme') {
+        if (context.store.globals.globals.themeTokenName === 'paymentTheme') {
           return paymentTheme;
         }
-        if (context.globals.themeTokenName === 'bankingTheme') {
+        if (context.store.globals.globals.themeTokenName === 'bankingTheme') {
           return bankingTheme;
         }
       };
       return (
         <DocsContainer context={context}>
           <BladeProvider
-            key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+            key={`${context.store.globals.globals.themeTokenName}-${context.store.globals.globals.colorScheme}`}
             themeTokens={getThemeTokens()}
-            colorScheme={context.globals.colorScheme}
+            colorScheme={context.store.globals.globals.colorScheme}
           >
             {children}
           </BladeProvider>
@@ -115,7 +117,7 @@ export const parameters = {
   },
 };
 
-const StoryCanvas = styled.div(
+const StoryCanvas = styled.div<{ context }>(
   ({ theme, context }) =>
     `
       border: ${theme.border.width.thin}px solid ${theme.colors.surface.border.subtle.lowContrast};

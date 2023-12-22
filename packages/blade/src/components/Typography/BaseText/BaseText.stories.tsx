@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import { BaseText as BaseTextComponent } from './BaseText';
@@ -35,10 +35,11 @@ export default {
       ),
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 } as Meta<BaseTextProps>;
 
-const BaseTextTemplate: ComponentStory<typeof BaseTextComponent> = (args) => {
+const BaseTextTemplate: StoryFn<typeof BaseTextComponent> = (args) => {
   return <BaseTextComponent {...args}>{args.children}</BaseTextComponent>;
 };
 

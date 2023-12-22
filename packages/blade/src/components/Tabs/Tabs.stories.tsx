@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import StoryRouter from 'storybook-react-router';
 import { Route, useHistory } from 'react-router-dom';
@@ -112,6 +112,7 @@ const tabItemTrailing = {
 export default {
   title: 'Components/Tabs',
   component: Tabs,
+  tags: ['autodocs'],
   argTypes: {
     onChange: {
       table: {
@@ -427,7 +428,7 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
   );
 };
 
-const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (args) => {
+const TabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = (args) => {
   const isMobile = useIsMobile();
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
   const orientation = isMobile ? 'horizontal' : args.orientation;
@@ -477,7 +478,7 @@ const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
 
 export const Default = TabsTemplate.bind({});
 
-const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (
+const ControlledTabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = (
   args,
 ) => {
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
@@ -546,7 +547,7 @@ const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React
 
 export const Controlled = ControlledTabsTemplate.bind({});
 
-const TabsWithTooltipTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (
+const TabsWithTooltipTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = (
   args,
 ) => {
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
@@ -654,9 +655,7 @@ FullWidthTabItem.args = {
   isFullWidthTabItem: true,
 };
 
-const ProductUseCase1Template: ComponentStory<
-  (props: StoryControlProps) => React.ReactElement
-> = () => {
+const ProductUseCase1Template: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   return (
     <Box height={isReactNative() ? '100%' : undefined}>
       <Text>
@@ -702,9 +701,7 @@ const ProductUseCase1Template: ComponentStory<
 export const ProductUseCase1 = ProductUseCase1Template.bind({});
 ProductUseCase1.storyName = 'Product Usecase: End to End Borders';
 
-const ProductUseCase2Template: ComponentStory<
-  (props: StoryControlProps) => React.ReactElement
-> = () => {
+const ProductUseCase2Template: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   const isMobile = useIsMobile();
   const [value, setValue] = React.useState('subscriptions');
 
@@ -910,9 +907,7 @@ const ReactRouterExample = () => {
   );
 };
 
-const ProductUseCase3Template: ComponentStory<
-  (props: StoryControlProps) => React.ReactElement
-> = () => {
+const ProductUseCase3Template: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   return <ReactRouterExample />;
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Dropdown, DropdownFooter, DropdownHeader, DropdownOverlay } from '..';
 import {
   getSimpleSelectCode,
@@ -44,7 +44,7 @@ const DropdownStoryMeta: Meta = {
   },
 };
 
-const DropdownTemplate: ComponentStory<typeof Dropdown> = ({ selectionType = 'single' }) => {
+const DropdownTemplate: StoryFn<typeof Dropdown> = ({ selectionType = 'single' }) => {
   return (
     <Sandbox showConsole padding="spacing.0" editorHeight="100vh">
       {getSimpleSelectCode(selectionType)}

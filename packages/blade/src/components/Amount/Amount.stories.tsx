@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
@@ -40,6 +40,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Amount',
   component: AmountComponent,
+  tags: ['autodocs'],
   argTypes: { ...getStyledPropsArgTypes() },
   parameters: {
     docs: {
@@ -48,7 +49,7 @@ export default {
   },
 } as Meta<AmountProps>;
 
-const AmountDefaultTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+const AmountDefaultTemplate: StoryFn<typeof AmountComponent> = (args) => {
   return <AmountComponent {...args} />;
 };
 
@@ -58,7 +59,7 @@ Amount.args = {
 };
 Amount.storyName = 'Default';
 
-const AmountTemplateWithText: ComponentStory<typeof AmountComponent> = (args) => {
+const AmountTemplateWithText: StoryFn<typeof AmountComponent> = (args) => {
   return (
     <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
       <Text>Total Amount is</Text>
@@ -76,7 +77,7 @@ AmountWithText.args = {
 };
 AmountWithText.storyName = 'With Text';
 
-const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
+const AmountSizesTemplate: StoryFn<typeof AmountComponent> = ({ ...args }) => {
   const sizes: AmountProps['size'][] = [
     'body-small',
     'body-small-bold',
@@ -107,13 +108,13 @@ const defaultArgs: AmountProps = {
   size: 'title-medium',
 };
 
-export const AmountSizes: ComponentStory<typeof AmountComponent> = AmountSizesTemplate.bind({});
+export const AmountSizes: StoryFn<typeof AmountComponent> = AmountSizesTemplate.bind({});
 AmountSizes.args = {
   ...defaultArgs,
 };
 AmountSizes.storyName = 'Sizes';
 
-const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+const AmountTemplate: StoryFn<typeof AmountComponent> = (args) => {
   const intents = ['positive', 'negative', 'notice', 'information'] as const;
 
   return (
@@ -148,7 +149,7 @@ NoSuffix.args = {
 };
 NoSuffix.storyName = 'No Suffix';
 
-const AmountHumanizeSuffixTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+const AmountHumanizeSuffixTemplate: StoryFn<typeof AmountComponent> = (args) => {
   const values = [1234, 12345, 123456, 1234567, 12345678] as const;
 
   return (
@@ -169,7 +170,7 @@ HumanizeSuffix.args = {
 };
 HumanizeSuffix.storyName = 'Humanize Suffix';
 
-const AmountCurrencyTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+const AmountCurrencyTemplate: StoryFn<typeof AmountComponent> = (args) => {
   const values = Object.keys(currencyPrefixMapping);
 
   return (

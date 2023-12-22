@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import type { ChipGroupProps } from './ChipGroup';
 import { ChipGroup as ChipGroupComponent } from './ChipGroup';
@@ -83,6 +83,7 @@ export default {
     accessibilityLabel: 'Choose one business type from the options below',
     icon: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     // ChipGroup props
     accessibilityLabel: {
@@ -223,7 +224,7 @@ export default {
   },
 } as Meta<ChipGroupProps>;
 
-const ChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
+const ChipTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ...args }) => {
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   return (
     <Box>
@@ -262,10 +263,7 @@ SingleSelection.argTypes = {
   },
 };
 
-const MultiSelectChipTemplate: ComponentStory<typeof ChipGroupComponent> = ({
-  children,
-  ...args
-}) => {
+const MultiSelectChipTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ...args }) => {
   const chipValues = [
     'Automated Payment Links',
     'Wallet on My App',
@@ -343,9 +341,7 @@ DefaultMultiSelected.argTypes = {
   },
 };
 
-const ControlledSingleSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = ({
-  ...args
-}) => {
+const ControlledSingleSelectionTemplate: StoryFn<typeof ChipGroupComponent> = ({ ...args }) => {
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   const [value, setValue] = React.useState('Proprietorship');
   return (
@@ -390,7 +386,7 @@ ControlledSingleSelection.args = {
   selectionType: 'single',
 };
 
-const ControlledMultiSelectionTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
+const ControlledMultiSelectionTemplate: StoryFn<typeof ChipGroupComponent> = (args) => {
   const chipValues = [
     'Automated Payment Links',
     'Wallet on My App',
@@ -449,7 +445,7 @@ Disabled.args = {
   selectionType: 'single',
 };
 
-const ChipWithIconTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
+const ChipWithIconTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ...args }) => {
   return (
     <Box>
       <Text marginBottom="spacing.3" marginTop="spacing.3">
@@ -483,7 +479,7 @@ ChipWithIcon.parameters = {
   },
 };
 
-const ChipColorsTemplate: ComponentStory<typeof ChipGroupComponent> = (args) => {
+const ChipColorsTemplate: StoryFn<typeof ChipGroupComponent> = (args) => {
   return (
     <Box display="flex" flexDirection="column">
       <Text size="large" weight="bold" marginBottom="spacing.3">
@@ -514,10 +510,7 @@ ChipWithIntent.parameters = {
   },
 };
 
-const TextTransformationTemplate: ComponentStory<typeof ChipGroupComponent> = ({
-  children,
-  ...args
-}) => {
+const TextTransformationTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ...args }) => {
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   return (
     <Box>
@@ -547,7 +540,7 @@ TextTransformationTemplate.args = {
   accessibilityLabel: 'Choose one business type from the options below',
 };
 
-const AllChipSizesTemplate: ComponentStory<typeof ChipGroupComponent> = ({ children, ...args }) => {
+const AllChipSizesTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ...args }) => {
   const sizes = ['xsmall', 'small', 'medium', 'large'];
   return (
     <Box>
@@ -595,7 +588,7 @@ AllChipSizes.parameters = {
   },
 };
 
-export const chipRef: ComponentStory<typeof ChipGroupComponent> = (args) => {
+export const chipRef: StoryFn<typeof ChipGroupComponent> = (args) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const chipRef = React.useRef<BladeElementRef>(null);
   // eslint-disable-next-line react-hooks/rules-of-hooks

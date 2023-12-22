@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import type { TooltipProps } from './';
@@ -78,7 +78,7 @@ const Center = ({ children }: { children: React.ReactNode }): React.ReactElement
   );
 };
 
-const TooltipTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
+const TooltipTemplate: StoryFn<typeof TooltipComponent> = (args) => {
   return (
     <Center>
       <TooltipComponent {...args}>
@@ -119,7 +119,7 @@ const PlacementBox = React.forwardRef<
   );
 });
 
-const PlacementTemplate: ComponentStory<typeof TooltipComponent> = () => {
+const PlacementTemplate: StoryFn<typeof TooltipComponent> = () => {
   const tooltipContent = 'Hello world';
 
   if (isReactNative()) {
@@ -196,7 +196,7 @@ const PlacementTemplate: ComponentStory<typeof TooltipComponent> = () => {
 export const Placement = PlacementTemplate.bind({});
 Placement.storyName = 'Placement';
 
-const NonInteractiveTriggerTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
+const NonInteractiveTriggerTemplate: StoryFn<typeof TooltipComponent> = (args) => {
   return (
     <Box>
       <Text>
@@ -217,7 +217,7 @@ const NonInteractiveTriggerTemplate: ComponentStory<typeof TooltipComponent> = (
 
 export const NonInteractiveTrigger = NonInteractiveTriggerTemplate.bind({});
 
-const TooltipTriggersTemplate: ComponentStory<typeof TooltipComponent> = (args) => {
+const TooltipTriggersTemplate: StoryFn<typeof TooltipComponent> = (args) => {
   return (
     <Center>
       <Box display="flex" gap="spacing.11" alignItems="center" flexWrap="wrap">

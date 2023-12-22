@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title as StorybookTitle } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
@@ -58,10 +58,11 @@ const TitleStoryMeta: Meta<TitleProps> = {
       page: () => <Page />,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 };
 
-const TitleTemplate: ComponentStory<typeof TitleComponent> = (args) => {
+const TitleTemplate: StoryFn<typeof TitleComponent> = (args) => {
   return <TitleComponent {...args}>{args.children}</TitleComponent>;
 };
 
@@ -73,7 +74,7 @@ WithColor.args = {
 };
 
 const Sup = isReactNative() ? TitleComponent : 'sup';
-const WithMixedColorsTemplate: ComponentStory<typeof TitleComponent> = () => {
+const WithMixedColorsTemplate: StoryFn<typeof TitleComponent> = () => {
   return (
     <Box>
       <TitleComponent>
@@ -95,7 +96,7 @@ const WithMixedColorsTemplate: ComponentStory<typeof TitleComponent> = () => {
 
 export const WithMixedColors = WithMixedColorsTemplate.bind({});
 
-const AsPropTemplate: ComponentStory<typeof TitleComponent> = (args) => {
+const AsPropTemplate: StoryFn<typeof TitleComponent> = (args) => {
   return (
     <Box>
       <Text>

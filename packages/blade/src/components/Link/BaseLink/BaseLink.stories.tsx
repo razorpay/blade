@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import type { BaseLinkProps } from './BaseLink';
 import BaseLinkComponent from './BaseLink';
@@ -19,6 +19,7 @@ export default {
     rel: 'noreferrer noopener',
     contrast: 'low',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',
@@ -44,11 +45,7 @@ export default {
   },
 } as Meta<BaseLinkProps>;
 
-const BaseLinkTemplate: ComponentStory<typeof BaseLinkComponent> = ({
-  icon,
-  children,
-  ...args
-}) => {
+const BaseLinkTemplate: StoryFn<typeof BaseLinkComponent> = ({ icon, children, ...args }) => {
   const IconComponent = iconMap[(icon as unknown) as string];
 
   return (

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { Meta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import isChromatic from 'chromatic';
@@ -80,6 +80,7 @@ type StoryControlProps = SpotlightPopoverTourProps & {
 export default {
   title: 'Components/SpotlightPopoverTour',
   component: SpotlightPopoverTour,
+  tags: ['autodocs'],
   argTypes: {
     tourStepsTitle: {
       name: 'steps[0].title',
@@ -236,7 +237,7 @@ const CustomTourFooter = ({
   );
 };
 
-const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (args) => {
+const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = (args) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isOpen, setIsOpen] = React.useState(!!isChromatic());
 
