@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/require-await */
-import { fireEvent } from '@testing-library/react';
 import { mockViewport } from 'jsdom-testing-mocks';
 import { Carousel } from '../Carousel';
 import { CarouselItem } from '../CarouselItem';
