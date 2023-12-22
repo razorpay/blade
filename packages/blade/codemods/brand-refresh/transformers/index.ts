@@ -5,7 +5,7 @@ const isExpression = (prop: unknown): prop is JSXExpressionContainer => {
   return (prop as JSXAttribute)?.value?.type === 'JSXExpressionContainer';
 };
 
-const red = (message: string): string => `\u001b[1m\u001b[31m${message}\u001b[39m\u001b[22m`;
+export const red = (message: string): string => `\u001b[1m\u001b[31m${message}\u001b[39m\u001b[22m`;
 
 const transformer: Transform = (file, api, options) => {
   // Maps to transform Title sizes to Heading sizes
@@ -121,9 +121,9 @@ const transformer: Transform = (file, api, options) => {
       const { node, parent } = path;
 
       if (isExpression(node)) {
-        console.log(
+        console.warn(
           red('Expression found in size attribute, please update manually:'),
-          red(`${file.path}:${node.loc.start.line}`),
+          red(`${file.path}:${node.loc.start.line}:${node.loc.start.column}`),
         );
         return node;
       }
@@ -234,9 +234,9 @@ const transformer: Transform = (file, api, options) => {
       );
 
       if (isExpression(sizeAttribute)) {
-        console.log(
+        console.warn(
           red('Expression found in size attribute, please update manually:'),
-          red(`${file.path}:${sizeAttribute.loc.start.line}`),
+          red(`${file.path}:${sizeAttribute.loc.start.line}:${node.loc.start.column}`),
         );
         return node;
       }
@@ -414,7 +414,9 @@ const transformer: Transform = (file, api, options) => {
   root
     .find(j.JSXElement)
     .filter((path) =>
-      ['Alert', 'Badge', 'Counter', 'Chip', 'Button'].includes(path.value.openingElement.name.name),
+      ['Alert', 'Badge', 'Counter', 'Chip', 'ChipGroup', 'Indicator'].includes(
+        path.value.openingElement.name.name,
+      ),
     )
     .replaceWith((path) => {
       const { node } = path;
@@ -467,12 +469,21 @@ const transformer: Transform = (file, api, options) => {
 
       return path.node;
     })
-    .filter(
-      (path) =>
-        (path.node.name.name === 'intent' || path.node.name.name === 'variant') &&
-        path.parent.value.name.name !== 'Button',
-    )
     .remove();
+
+  // <Button variant="secondary" color="default"> -> <Button variant="secondary" color="primary">
+  root
+    .find(j.JSXElement)
+    .filter((path) => ['Button'].includes(path.value.openingElement.name.name))
+    .find(j.JSXAttribute)
+    .filter((path) => path.node.name.name === 'color')
+    .replaceWith((path) => {
+      if (path.node.value.value === 'default') {
+        path.node.value.value = 'primary';
+      }
+
+      return path.node;
+    });
 
   // Return the updated source code
   return (

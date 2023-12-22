@@ -1,3 +1,4 @@
+import path from 'path';
 import { applyTransform } from '@hypermod/utils';
 import * as transformer from '..';
 
@@ -238,53 +239,77 @@ it('should update <Heading size="small"> to <Text size="large">', async () => {
 });
 
 it('should correctly convert Title to Heading component', async () => {
+  const consoleSpy = jest.spyOn(console, 'warn').mockImplementation();
   const result = await applyTransform(
     transformer,
-    `
-    import { Title, Heading } from '@razorpay/blade/components';
-    const App = () => (
-      <>
-        <Title> Lorem ipsum </Title>  
-        <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum </Title>
-        <Title type="subtle" weight="bold" size="large" > Lorem ipsum </Title>
-        <Title type="subtle" weight="bold" size="medium" > Lorem ipsum </Title>
-        <Title type="subtle" weight="bold" size="small" > Lorem ipsum </Title>
-        // Conditional expression props should not be changed
-        <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title>
-
-        <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum  </Title>  </Title>
-        <Title type="subtle" weight="bold" size="large" > Lorem ipsum <Title type="subtle" weight="bold" size="large" > Lorem ipsum </Title> </Title>
-        <Title type="subtle" weight="bold" size="medium" > Lorem ipsum <Title type="subtle" weight="bold" size="medium" > Lorem ipsum </Title> </Title>
-        <Title type="subtle" weight="bold" size="small" > Lorem ipsum <Title type="subtle" weight="bold" size="small" > Lorem ipsum </Title> </Title>
-        // Conditional expression props should not be changed
-        <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title> Lorem ipsum </Title>
-      </>
-    );
-    `,
+    {
+      path: path.resolve(__dirname, __filename),
+      source: `
+      import { Title, Heading } from '@razorpay/blade/components';
+      const App = () => (
+        <>
+          <Title> Lorem ipsum </Title>  
+          <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum </Title>
+          <Title type="subtle" weight="bold" size="large" > Lorem ipsum </Title>
+          <Title type="subtle" weight="bold" size="medium" > Lorem ipsum </Title>
+          <Title type="subtle" weight="bold" size="small" > Lorem ipsum </Title>
+          // Conditional expression props should not be changed
+          <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title>
+  
+          <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum <Title type="subtle" weight="bold" size="xlarge" > Lorem ipsum  </Title>  </Title>
+          <Title type="subtle" weight="bold" size="large" > Lorem ipsum <Title type="subtle" weight="bold" size="large" > Lorem ipsum </Title> </Title>
+          <Title type="subtle" weight="bold" size="medium" > Lorem ipsum <Title type="subtle" weight="bold" size="medium" > Lorem ipsum </Title> </Title>
+          <Title type="subtle" weight="bold" size="small" > Lorem ipsum <Title type="subtle" weight="bold" size="small" > Lorem ipsum </Title> </Title>
+          // Conditional expression props should not be changed
+          <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > <Title type="subtle" weight="bold" size={isMobile ? 'medium' : 'large'} > Lorem ipsum </Title> Lorem ipsum </Title>
+        </>
+      );
+      `,
+    },
     { parser: 'tsx' },
+  );
+
+  expect(consoleSpy).toHaveBeenCalledTimes(3);
+
+  expect(consoleSpy).toHaveBeenNthCalledWith(
+    1,
+    transformer.red('Expression found in size attribute, please update manually:'),
+    transformer.red(`${path.resolve(__dirname, __filename)}:11:10`),
+  );
+  expect(consoleSpy).toHaveBeenNthCalledWith(
+    2,
+    transformer.red('Expression found in size attribute, please update manually:'),
+    transformer.red(`${path.resolve(__dirname, __filename)}:18:10`),
+  );
+  expect(consoleSpy).toHaveBeenNthCalledWith(
+    3,
+    transformer.red('Expression found in size attribute, please update manually:'),
+    transformer.red(`${path.resolve(__dirname, __filename)}:18:84`),
   );
 
   expect(result).toMatchInlineSnapshot(`
     "import { Heading } from '@razorpay/blade/components';
-        const App = () => (
-          <>
-            <Heading size="large"> Lorem ipsum </Heading>  
-            <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
-            <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
-            <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
-            <Heading weight="semibold" size="large" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
-            // Conditional expression props should not be changed
-            <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > Lorem ipsum </Heading>
-
-            <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum  </Heading>  </Heading>
-            <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
-            <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
-            <Heading weight="semibold" size="large" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="large" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
-            // Conditional expression props should not be changed
-            <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > Lorem ipsum </Heading> Lorem ipsum </Heading>
-          </>
-        );"
+          const App = () => (
+            <>
+              <Heading size="large"> Lorem ipsum </Heading>  
+              <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
+              <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
+              <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
+              <Heading weight="semibold" size="large" color="surface.text.gray.subtle" > Lorem ipsum </Heading>
+              // Conditional expression props should not be changed
+              <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > Lorem ipsum </Heading>
+      
+              <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="2xlarge" color="surface.text.gray.subtle" > Lorem ipsum  </Heading>  </Heading>
+              <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
+              <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="xlarge" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
+              <Heading weight="semibold" size="large" color="surface.text.gray.subtle" > Lorem ipsum <Heading weight="semibold" size="large" color="surface.text.gray.subtle" > Lorem ipsum </Heading> </Heading>
+              // Conditional expression props should not be changed
+              <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > <Heading weight="semibold" size={isMobile ? 'medium' : 'large'} color="surface.text.gray.subtle" > Lorem ipsum </Heading> Lorem ipsum </Heading>
+            </>
+          );"
   `);
+
+  consoleSpy.mockRestore();
 });
 
 it('should migrate contrast prop', async () => {

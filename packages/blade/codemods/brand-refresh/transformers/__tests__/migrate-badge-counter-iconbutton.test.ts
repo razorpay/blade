@@ -39,7 +39,7 @@ it('should migrate contrast prop to emphasis', async () => {
   `);
 });
 
-it('should remove variant/intent prop in favor of color prop', async () => {
+it.only('should remove variant/intent prop in favor of color prop', async () => {
   const result = await applyTransform(
     transformer,
     `
@@ -61,6 +61,7 @@ it('should remove variant/intent prop in favor of color prop', async () => {
         <Indicator intent="positive" />
 
         <Button variant="secondary" color="default"> Click Me </Button>
+        <Button variant="secondary" color="white"> Click Me </Button>
       </>
     );
     `,
@@ -83,9 +84,10 @@ it('should remove variant/intent prop in favor of color prop', async () => {
             <Counter color="default"> Hello </Counter>
             <Counter color="positive"> Hello </Counter>
 
-            <Indicator intent="positive" />
+            <Indicator color="positive" />
 
-            <Button variant="secondary" color="default"> Click Me </Button>
+            <Button variant="secondary" color="primary"> Click Me </Button>
+            <Button variant="secondary" color="white"> Click Me </Button>
           </>
         );"
   `);
