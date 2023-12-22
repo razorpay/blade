@@ -132,6 +132,7 @@ const Modal = ({
     }
     return null;
   });
+  // return <div>Hello</div>;
 
   return (
     <FloatingPortal>
@@ -159,7 +160,7 @@ const Modal = ({
                 maxHeight={modalMaxHeight}
                 width={`calc(100vw - ${makeSize(modalResponsiveScreenGap)})`}
                 borderRadius={modalBorderRadius}
-                backgroundColor={theme.colors.surface.background.level2.lowContrast}
+                backgroundColor={theme.colors.popup.background.subtle}
                 position="absolute"
                 display="flex"
                 flexDirection="column"
