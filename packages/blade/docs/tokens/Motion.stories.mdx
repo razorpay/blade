@@ -10,11 +10,13 @@ import MovingDiv from '../components/MovingDiv';
   parameters={{
     docs: {
       container: ({ children, context }) => {
+        const themeTokenName = context.store.globals.globals.themeTokenName;
+        const colorScheme = context.store.globals.globals.colorScheme;
         const getThemeTokens = () => {
-          if (context.globals.themeTokenName === 'paymentTheme') {
+          if (themeTokenName === 'paymentTheme') {
             return paymentTheme;
           }
-          if (context.globals.themeTokenName === 'bankingTheme') {
+          if (themeTokenName === 'bankingTheme') {
             return bankingTheme;
           }
           return null;
@@ -22,9 +24,9 @@ import MovingDiv from '../components/MovingDiv';
         return (
           <DocsContainer context={context}>
             <BladeProvider
-              key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+              key={`${themeTokenName}-${colorScheme}`}
               themeTokens={getThemeTokens()}
-              colorScheme={context.globals.colorScheme}
+              colorScheme={colorScheme}
             >
               {children}
             </BladeProvider>

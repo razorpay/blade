@@ -20,6 +20,7 @@ if (window.top) {
 const BoxStoryMeta = {
   title: 'Components/Layout Primitives (Box)/Box',
   component: Box,
+  tags: ['autodocs'],
   argTypes: getBoxArgTypes(),
   parameters: {
     docs: {

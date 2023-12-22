@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Title } from '@storybook/addon-docs';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import type { SwitchProps } from './';
 import { Switch as SwitchComponent } from './';
@@ -65,6 +65,7 @@ export default {
     size: 'medium',
     accessibilityLabel: 'Toggle DarkMode',
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
@@ -73,7 +74,7 @@ export default {
   },
 } as Meta<SwitchProps>;
 
-const SwitchTemplate: ComponentStory<typeof SwitchComponent> = ({ ...args }) => {
+const SwitchTemplate: StoryFn<typeof SwitchComponent> = ({ ...args }) => {
   return <SwitchComponent {...args} />;
 };
 
@@ -98,7 +99,7 @@ Small.args = {
   size: 'small',
 };
 
-const WithLabelTemplate: ComponentStory<typeof SwitchComponent> = () => {
+const WithLabelTemplate: StoryFn<typeof SwitchComponent> = () => {
   return (
     <Box>
       <Alert
@@ -227,12 +228,12 @@ const ControlledAndUncontrolledComp = () => {
     </>
   );
 };
-const _ControlledAndUncontrolled: ComponentStory<typeof SwitchComponent> = () => {
+const _ControlledAndUncontrolled: StoryFn<typeof SwitchComponent> = () => {
   return <ControlledAndUncontrolledComp />;
 };
 export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
 
-export const SwitchRef: ComponentStory<typeof SwitchComponent> = () => {
+export const SwitchRef: StoryFn<typeof SwitchComponent> = () => {
   const switchRef = React.useRef<BladeElementRef>(null);
 
   return (

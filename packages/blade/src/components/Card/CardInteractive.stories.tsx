@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable no-alert */
-import type { Meta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import type { CardProps } from './Card';
 import {
@@ -174,6 +174,7 @@ const propCategory = {
 export default {
   title: 'Components/Card/Interactive',
   component: Card,
+  tags: ['autodocs'],
   argTypes: {
     width: disable,
     height: disable,
@@ -273,7 +274,7 @@ export default {
   },
 } as Meta<CardProps>;
 
-const CardTemplate: ComponentStory<typeof Card> = (args): React.ReactElement => {
+const CardTemplate: StoryFn<typeof Card> = (args): React.ReactElement => {
   return (
     <Card
       onHover={() => {

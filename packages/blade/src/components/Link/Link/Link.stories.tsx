@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title, Description } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { LinkProps } from './Link';
@@ -58,6 +58,7 @@ export default {
   args: {
     children: 'Learn More',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',
@@ -75,10 +76,7 @@ export default {
   },
 } as Meta<LinkProps>;
 
-const LinkTemplate: ComponentStory<typeof LinkComponent> = ({
-  children = 'Learn More',
-  ...args
-}) => {
+const LinkTemplate: StoryFn<typeof LinkComponent> = ({ children = 'Learn More', ...args }) => {
   return <LinkComponent {...args}>{children}</LinkComponent>;
 };
 
@@ -96,11 +94,7 @@ Default.args = {
   rel: 'noreferrer noopener',
 };
 
-const LinkInlineTemplate: ComponentStory<typeof LinkComponent> = ({
-  icon,
-  children = '',
-  ...args
-}) => {
+const LinkInlineTemplate: StoryFn<typeof LinkComponent> = ({ icon, children = '', ...args }) => {
   return (
     <Text>
       Find more details at the <LinkComponent {...args}>{children}</LinkComponent>
@@ -138,7 +132,7 @@ LinkButton.parameters = {
   },
 };
 
-const LinkButtonInlineTemplate: ComponentStory<typeof LinkComponent> = ({
+const LinkButtonInlineTemplate: StoryFn<typeof LinkComponent> = ({
   icon,
   children = '',
   ...args
@@ -165,11 +159,7 @@ LinkButtonInline.parameters = {
   },
 };
 
-const LinkColorsTemplate: ComponentStory<typeof LinkComponent> = ({
-  icon,
-  children = '',
-  ...args
-}) => {
+const LinkColorsTemplate: StoryFn<typeof LinkComponent> = ({ icon, children = '', ...args }) => {
   return (
     <BaseBox display="flex" flexDirection="column" gap="spacing.2">
       <BaseBox padding="spacing.2">
@@ -213,7 +203,7 @@ DisabledLinkButton.parameters = {
   },
 };
 
-export const LinkSizes: ComponentStory<typeof LinkComponent> = () => {
+export const LinkSizes: StoryFn<typeof LinkComponent> = () => {
   const href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
   const onClick = (): void => console.log('Never gonna give you up');
 
@@ -294,7 +284,7 @@ LinkSizes.parameters = {
   },
 };
 
-const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
+const LinkWithVariantTemplate: StoryFn<typeof LinkComponent> = ({
   children = 'Link',
   icon,
   iconPosition,

@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import isChromatic from 'chromatic/isChromatic';
 import type { BottomSheetHeaderProps, BottomSheetProps } from './';
@@ -184,6 +184,7 @@ export default {
     titleSuffix: undefined,
     trailing: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     showBackButton: {
       defaultValue: false,
@@ -234,7 +235,7 @@ export default {
   },
 } as Meta<StoryControlProps>;
 
-const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
+const BottomSheetTemplate: StoryFn<typeof BottomSheetComponent> = ({ ...args }) => {
   const [isOpen, setIsOpen] = React.useState(isReactNative() ? false : isChromatic());
 
   return (
@@ -354,7 +355,7 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
 
 export const Default = BottomSheetTemplate.bind({});
 
-const WithHeaderFooterTemplate: ComponentStory<any> = (args: StoryControlProps) => {
+const WithHeaderFooterTemplate: StoryFn<any> = (args: StoryControlProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -400,7 +401,7 @@ WithHeaderFooter.args = {
   showBackButton: false,
 };
 
-const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithDropdownSingleSelectTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   return (
     <Dropdown selectionType="single">
       <SelectInput label="Sort Dishes" />
@@ -442,7 +443,7 @@ const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetCompone
 
 export const WithDropdownSingleSelect = WithDropdownSingleSelectTemplate.bind({});
 
-const WithDropdownButtonTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithDropdownButtonTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [status, setStatus] = React.useState<string | undefined>('approve');
 
   return (
@@ -495,7 +496,7 @@ const WithDropdownButtonTemplate: ComponentStory<typeof BottomSheetComponent> = 
 
 export const WithDropdownButton = WithDropdownButtonTemplate.bind({});
 
-const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithDropdownMultiSelectTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   return (
     <Dropdown selectionType="multiple">
       <SelectInput label="Cuisines Filter" />
@@ -537,7 +538,7 @@ const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponen
 
 export const WithDropdownMultiSelect = WithDropdownMultiSelectTemplate.bind({});
 
-const WithDropdownSectionsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithDropdownSectionsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   return (
     <Dropdown selectionType="multiple">
       <SelectInput label="Cuisines Filter" />
@@ -589,7 +590,7 @@ const WithDropdownSectionsTemplate: ComponentStory<typeof BottomSheetComponent> 
 
 export const WithDropdownSectionsSelect = WithDropdownSectionsTemplate.bind({});
 
-const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [isFirstOpen, setFirstOpen] = React.useState(false);
   const [isSecondOpen, setSecondOpen] = React.useState(false);
   const [isThirdOpen, setThirdOpen] = React.useState(false);
@@ -752,7 +753,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
 
 export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
 
-const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const InitialFocusTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const initialFocusRef = React.useRef<HTMLButtonElement>(null);
 
@@ -829,7 +830,7 @@ const HeadingBanner = (): React.ReactElement => {
   );
 };
 
-const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const ZeroPaddingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -867,7 +868,7 @@ const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
 
 export const ZeroPadding = ZeroPaddingTemplate.bind({});
 
-const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const fruites = [
     'Apple',
     'Apricot',
@@ -1005,7 +1006,7 @@ const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
 
 export const CustomSnapPoints = SnapPointsTemplate.bind({});
 
-const WithOTPInputTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithOTPInputTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -1157,7 +1158,7 @@ const SimSelectionBottomSheet: React.FC<Props> = ({
   );
 };
 
-const ProductUseCase1Example: ComponentStory<typeof BottomSheetComponent> = () => {
+const ProductUseCase1Example: StoryFn<typeof BottomSheetComponent> = () => {
   // should be initially opened
   const [isOpen, setIsOpen] = React.useState(true);
   return (
