@@ -210,10 +210,9 @@ const transformer: Transform = (file, api, options) => {
       return node;
     })
     .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name === 'variant')
     .filter(
       (path, index, self) =>
-        (path.node.name.name === 'size' || path.node.name.name === 'variant') &&
+        path.node.name.name === 'variant' &&
         index === self.findIndex((obj) => path.node.start === obj.node.start),
     ) // Filter by name `variant` and remove any duplicates
     .remove();
@@ -453,7 +452,9 @@ const transformer: Transform = (file, api, options) => {
         j.jsxAttribute(
           j.jsxIdentifier('color'),
           j.literal(
-            (variantValue || intentValue) === 'blue' ? 'primary' : variantValue || intentValue,
+            ['blue', 'none'].includes(variantValue || intentValue)
+              ? 'primary'
+              : variantValue || intentValue,
           ),
         ),
       );
@@ -462,6 +463,11 @@ const transformer: Transform = (file, api, options) => {
     })
     .find(j.JSXAttribute)
     .filter((path) => path.node.name.name === 'intent' || path.node.name.name === 'variant')
+    .filter(
+      (path, index, self) =>
+        (path.node.name.name === 'intent' || path.node.name.name === 'variant') &&
+        index === self.findIndex((obj) => path.node.start === obj.node.start),
+    )
     .replaceWith((path) => {
       if (path.node.value.value === 'blue' || path.node.value.value === 'default') {
         path.node.value.value = 'primary';

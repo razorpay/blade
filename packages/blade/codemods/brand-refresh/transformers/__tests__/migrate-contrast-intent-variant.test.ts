@@ -39,7 +39,7 @@ it('should migrate contrast prop to emphasis', async () => {
   `);
 });
 
-it.only('should remove variant/intent prop in favor of color prop', async () => {
+it('should remove variant/intent prop in favor of color prop', async () => {
   const result = await applyTransform(
     transformer,
     `
@@ -62,6 +62,16 @@ it.only('should remove variant/intent prop in favor of color prop', async () => 
 
         <Button variant="secondary" color="default"> Click Me </Button>
         <Button variant="secondary" color="white"> Click Me </Button>
+
+        <ChipGroup defaultValue="yes">
+          <Chip intent="positive" value="yes"> Yes </Chip>
+          <Chip intent="negative" value="no"> No </Chip>
+        </ChipGroup>
+
+        <ChipGroup defaultValue="yes" intent="none">
+          <Chip value="yes" intent="none"> Yes </Chip>
+          <Chip value="no" intent="none"> No </Chip>
+        </ChipGroup>
       </>
     );
     `,
@@ -88,6 +98,16 @@ it.only('should remove variant/intent prop in favor of color prop', async () => 
 
             <Button variant="secondary" color="primary"> Click Me </Button>
             <Button variant="secondary" color="white"> Click Me </Button>
+
+            <ChipGroup defaultValue="yes">
+              <Chip value="yes" color="positive"> Yes </Chip>
+              <Chip value="no" color="negative"> No </Chip>
+            </ChipGroup>
+
+            <ChipGroup defaultValue="yes" color="primary">
+              <Chip value="yes" color="primary"> Yes </Chip>
+              <Chip value="no" color="primary"> No </Chip>
+            </ChipGroup>
           </>
         );"
   `);
