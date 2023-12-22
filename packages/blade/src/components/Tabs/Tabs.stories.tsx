@@ -439,6 +439,10 @@ const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
 };
 
 export const Default = TabsTemplate.bind({});
+Default.args = {
+  // orientation: 'vertical',
+  // variant: 'filled',
+};
 
 // const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (
 //   args,

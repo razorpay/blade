@@ -105,6 +105,7 @@ const paddingX: TabItemPadding = {
   },
 };
 
+const trackColor = 'surface.border.gray.muted';
 const textColor = {
   selected: {
     default: 'interactive.text.primary.subtle',
@@ -149,7 +150,7 @@ const backgroundColor = {
     },
     filled: {
       default: 'colors.interactive.background.primary.faded',
-      highlighted: 'colors.transparent',
+      highlighted: 'colors.interactive.background.primary.faded',
       disabled: 'colors.transparent',
     },
   },
@@ -168,4 +169,4 @@ const iconColor = {
   },
 } as const;
 
-export { backgroundColor, textColor, iconColor, paddingY, paddingX };
+export { backgroundColor, textColor, iconColor, trackColor, paddingY, paddingX };

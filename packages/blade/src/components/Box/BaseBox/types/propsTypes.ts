@@ -4,9 +4,10 @@ import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border, Elevation } from '~tokens/global';
-import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~utils/types';
+import type { PickCSSByPlatform, TestID } from '~utils/types';
 import type { Platform } from '~utils';
 import type { BladeCommonEvents } from '~components/types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -98,10 +99,10 @@ type GridProps = MakeObjectResponsive<
 >;
 
 type ColorObjects = 'feedback' | 'surface' | 'interactive';
-type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationColorStringToken<
+type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationToken<
   Theme['colors'][T]['background']
 >}`;
-type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationColorStringToken<
+type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationToken<
   Theme['colors'][T]['border']
 >}`;
 
