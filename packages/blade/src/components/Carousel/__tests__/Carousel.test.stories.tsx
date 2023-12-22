@@ -130,11 +130,28 @@ TestAutoPlayPause.play = async ({ canvasElement }) => {
   await expect(onChange).toBeCalledTimes(0);
 };
 
-// TestOverlayOnMobile.parameters = {
-//   viewport: {
-//     defaultViewport: 'iPhone6',
-//   },
-// };
+export const TestVisibleItemsOnMobile: StoryFn<typeof CarouselComponent> = (
+  props,
+): React.ReactElement => {
+  console.log({ INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS });
+  onChange = jest.fn();
+  return <BasicCarousel {...props} visibleItems={3} onChange={onChange} />;
+};
+
+TestVisibleItemsOnMobile.parameters = {
+  viewport: {
+    defaultViewport: 'iPhone6',
+  },
+};
+
+TestVisibleItemsOnMobile.play = async ({ canvasElement }) => {
+  // on mobile regardless of the visible items prop we always show 1 item
+  const { getByRole } = within(canvasElement);
+  const nextButton = getByRole('button', { name: 'Next Slide' });
+  await userEvent.click(nextButton);
+  await sleep(1000);
+  await expect(onChange).toBeCalledWith(1);
+};
 
 export default {
   title: 'Components/Interaction Tests/Carousel',
