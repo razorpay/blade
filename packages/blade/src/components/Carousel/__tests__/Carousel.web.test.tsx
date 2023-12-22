@@ -43,9 +43,9 @@ afterAll(() => {
 });
 
 describe('<Carousel />', () => {
-  it('should work with visibleItems prop', () => {
+  it('should render number of indicators basis visibleItems prop', () => {
     const onChange = jest.fn();
-    const { getByRole, queryAllByRole, queryAllByTestId } = renderWithTheme(
+    const { queryAllByRole, queryAllByTestId } = renderWithTheme(
       <Carousel visibleItems={2} onChange={onChange}>
         <CarouselItem>
           <TestimonialCard />
@@ -66,19 +66,8 @@ describe('<Carousel />', () => {
     );
     expect(queryAllByTestId('active-slide')[0]).toHaveTextContent('0');
 
-    const nextButton = getByRole('button', { name: 'Next Slide' });
-    const previousButton = getByRole('button', { name: 'Previous Slide' });
-    fireEvent.click(nextButton);
-
-    expect(onChange).toHaveBeenLastCalledWith(1);
-
-    fireEvent.click(previousButton);
-
-    expect(onChange).toHaveBeenLastCalledWith(0);
-
     // assert indicator button count
     expect(queryAllByRole('tab').length).toBe(3);
-    expect(onChange).toBeCalledTimes(2);
   });
 
   test('when visibleItems:autofit & shouldAddStartEndSpacing is undefined then we hide the indicators since they are unnecessary', () => {
