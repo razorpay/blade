@@ -1,13 +1,14 @@
-const { getJestConfig } = require('@storybook/test-runner');
+const { getJestConfig, getTestRunnerConfig } = require('@storybook/test-runner');
 
 // The default Jest configuration comes from @storybook/test-runner
-const testRunnerConfig = getJestConfig();
+const jestConfig = getJestConfig();
+const testRunnerConfig = getTestRunnerConfig();
 
 /**
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  ...testRunnerConfig,
+  ...jestConfig,
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
   testMatch: ['**/*.test.stories.{ts,tsx}'],
   moduleNameMapper: {
@@ -21,8 +22,10 @@ module.exports = {
   globals: {
     __DEV__: true,
   },
-  /** Add your own overrides below, and make sure
-   *  to merge testRunnerConfig properties with your own
-   * @see https://jestjs.io/docs/configuration
-   */
+  testEnvironmentOptions: {
+    ...testRunnerConfig,
+    'jest-playwright': {
+      browsers: ['chromium', 'webkit', 'firefox'],
+    },
+  },
 };

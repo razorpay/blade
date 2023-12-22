@@ -28,7 +28,7 @@ jobs:
         working-directory: packages/blade
       - name: Run Interaction Tests on Storybook
         run: |
-          npx playwright install
+          npx playwright install chromium firefox webkit --with-deps
           yarn test:react:interaction:ci 
         working-directory: packages/blade
       - name: Check Tree Shaking
