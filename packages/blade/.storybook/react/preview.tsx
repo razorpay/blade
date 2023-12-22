@@ -30,7 +30,7 @@ export const parameters = {
   },
   viewport: {
     viewports: {
-      // ...INITIAL_VIEWPORTS,
+      ...MINIMAL_VIEWPORTS,
       iPhone6: {
         name: 'iPhone 6',
         styles: {
@@ -39,7 +39,6 @@ export const parameters = {
         },
         type: 'mobile',
       },
-      ...MINIMAL_VIEWPORTS,
     },
   },
   // on development setting it to undefined so that on 'live reload' it won't switch
