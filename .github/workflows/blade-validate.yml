@@ -29,7 +29,9 @@ jobs:
       # - name: Install Playwright for Interaction Tests
       #   run: npx playwright install --with-deps
       - name: Run Interaction Tests on Storybook
-        run: yarn test:react:interaction:ci 
+        run: |
+          npx playwright install
+          yarn test:react:interaction:ci 
         working-directory: packages/blade
       - name: Check Tree Shaking
         run: yarn size-limit
