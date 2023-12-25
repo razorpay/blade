@@ -107,9 +107,9 @@ const Content = () => {
         padding="spacing.3"
         flexDirection="column"
         borderRadius="medium"
-        backgroundColor="surface.background.level2.lowContrast"
+        backgroundColor="surface.background.gray.intense"
         borderWidth="thin"
-        borderColor="surface.border.normal.lowContrast"
+        borderColor="surface.border.gray.subtle"
       >
         <Box display="flex" justifyContent="space-between" gap="spacing.5">
           <Text size="medium">Gross Settlements</Text>
@@ -117,11 +117,12 @@ const Content = () => {
         </Box>
         <Box display="flex" justifyContent="space-between" gap="spacing.5">
           <Text size="medium">Deductions</Text>
+          {/* TODO(Rebranding): update this after Amount component rebranding */}
           <Amount intent="negative" size="body-medium" value={250} />
         </Box>
-        <Divider />
+        <Divider variant="subtle" />
         <Box display="flex" justifyContent="space-between" gap="spacing.5">
-          <Text weight="bold" size="medium">
+          <Text weight="semibold" size="medium">
             Net Settlements
           </Text>
           <Amount size="body-medium-bold" value={4750} />
@@ -141,7 +142,11 @@ const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void
         alignItems="center"
         justifyContent="space-between"
       >
-        <Checkbox size="medium">Settle with refunds</Checkbox>
+        {/* TODO(Rebranding): enable this after Checkbox component rebranding */}
+        {/* <Checkbox size="medium">Settle with refunds</Checkbox> */}
+        <input type="checkbox" name="refunds" />
+        <label htmlFor="refunds">Settle with refunds</label>
+
         <Button ref={ref} onClick={props.onClick} size="small" variant="tertiary">
           Settle amount
         </Button>
@@ -156,7 +161,7 @@ const PopoverTemplate: StoryFn<typeof Popover> = (args) => {
     <Center>
       <Popover
         {...args}
-        titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+        titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
       >
         <Button>View Settlement</Button>
       </Popover>
@@ -205,7 +210,7 @@ export const Controlled: StoryFn<typeof Popover> = (args) => {
               setIsOpen(isOpen);
             }}
             footer={<FooterContent onClick={() => setIsOpen(false)} />}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+            titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
           >
             <Button onClick={() => setIsOpen((prev) => !prev)}>View Settlement</Button>
           </Popover>
@@ -282,36 +287,38 @@ export const PopoverInteractiveWrapperTemplate: StoryFn<typeof Popover> = (args)
     <>
       <Text as="span">
         With{' '}
-        <Text weight="bold" as="span">
+        <Text weight="semibold" as="span">
           PopoverInteractiveWrapper
         </Text>{' '}
         you can make Popover open when clicking non-interactive elements like Icons,Badges,Counter
         etc
       </Text>
-      <Text type="muted">Note: PopoverInteractiveWrapper is a button by default.</Text>
+      <Text color="surface.text.gray.muted">
+        Note: PopoverInteractiveWrapper is a button by default.
+      </Text>
       <Center>
         <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
           <Popover
             {...args}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+            titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
           >
             <PopoverInteractiveWrapper display="inline-block">
-              <InfoIcon color="surface.text.normal.lowContrast" size="large" />
+              <InfoIcon color="interactive.icon.gray.normal" size="large" />
             </PopoverInteractiveWrapper>
           </Popover>
 
           <Popover
             {...args}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+            titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
           >
             <PopoverInteractiveWrapper>
-              <Badge variant="information">NEW</Badge>
+              <Badge color="information">NEW</Badge>
             </PopoverInteractiveWrapper>
           </Popover>
 
           <Popover
             {...args}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+            titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
           >
             <PopoverInteractiveWrapper>
               <Counter value={20} />
@@ -346,7 +353,7 @@ const MyCustomTriggerButton = React.forwardRef<
   return (
     // just spread the props
     <BaseBox
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       borderRadius="medium"
       role="button"
@@ -436,7 +443,7 @@ export const CustomTrigger: StoryFn<typeof Popover> = (args) => {
       <Center>
         <Popover
           {...args}
-          titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+          titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
         >
           <MyCustomTriggerButton>View Settlements</MyCustomTriggerButton>
         </Popover>
@@ -465,7 +472,7 @@ export const InitialFocus: StoryFn<typeof Popover> = (args) => {
           {...args}
           initialFocusRef={buttonRef}
           footer={<FooterContent ref={buttonRef} />}
-          titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+          titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
         >
           <Button>View Settlement</Button>
         </Popover>
@@ -485,8 +492,8 @@ const StoriesPanelSwitchAlert = ({ shouldShow }: { shouldShow: boolean }) => {
     <Alert
       title="Please switch to stories panel"
       marginBottom="spacing.5"
-      intent="notice"
       description="Open this example in the 'Stories' panel and reload the page for better experince"
+      color="notice"
     />
   ) : null;
 };
@@ -506,7 +513,7 @@ export const ProductUseCase1: StoryFn<typeof Popover> = (args, context) => {
     <Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Product Usecase Example:
         </Text>
         <Text>
@@ -549,13 +556,22 @@ export const ProductUseCase1: StoryFn<typeof Popover> = (args, context) => {
             </Box>
           }
         >
-          <TextInput
+          {/* TODO(Rebranding): enable this after Input component rebranding */}
+          {/* <TextInput
             onFocus={() => {
               if (!actionTaken) {
                 setIsOpen(true);
               }
             }}
             label="Item Name"
+          /> */}
+          <input
+            onFocus={() => {
+              if (!actionTaken) {
+                setIsOpen(true);
+              }
+            }}
+            placeholder="Item Name"
           />
         </Popover>
       </Box>
@@ -580,7 +596,7 @@ export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
     <Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Product Usecase Example:
         </Text>
         <Text>
@@ -589,7 +605,6 @@ export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
         </Text>
       </Text>
       <Text marginY="spacing.5">isDarkMode On? {isDarkMode ? 'Yes' : 'No'}</Text>
-
       <Box marginTop="spacing.8">
         <Popover
           placement="bottom-end"
@@ -602,11 +617,11 @@ export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
             }
           }}
           title="Dark Mode"
-          titleLeading={<SunIcon color="surface.text.normal.lowContrast" size="small" />}
+          titleLeading={<SunIcon color="interactive.icon.gray.normal" size="small" />}
           content={
             <Text as="span">
               Want a more comfortable reading experience?{' '}
-              <Text as="span" weight="bold">
+              <Text as="span" weight="semibold">
                 Try dark mode
               </Text>
             </Text>
@@ -644,7 +659,7 @@ export const ProductUseCase3: StoryFn<typeof Popover> = (args, context) => {
     <Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Product Usecase Example:
         </Text>
         <Text>
@@ -652,7 +667,6 @@ export const ProductUseCase3: StoryFn<typeof Popover> = (args, context) => {
           opens once and never again.
         </Text>
       </Text>
-
       <Box width="400px" marginTop="spacing.8">
         <Popover
           isOpen={isOpen}
@@ -682,11 +696,13 @@ export const ProductUseCase3: StoryFn<typeof Popover> = (args, context) => {
             </Box>
           }
         >
-          <TextInput
+          {/* TODO(Rebranding): enable this after Input component rebranding */}
+          {/* <TextInput
             icon={SearchIcon}
             label="Search"
             placeholder="Search payments prodcts, settings and more"
-          />
+          /> */}
+          <input type="text" placeholder="Search payments prodcts, settings and more" />
         </Popover>
       </Box>
     </Box>
