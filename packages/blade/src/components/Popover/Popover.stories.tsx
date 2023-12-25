@@ -274,12 +274,13 @@ const PlacementTemplate: StoryFn<typeof Popover> = (args, context) => {
   );
 };
 
-export const Placement = PlacementTemplate.bind({});
-Placement.storyName = 'Placement';
-Placement.args = {
-  title: 'Settlement breakup',
-  content: <Content />,
-};
+// TODO(Rebranding): enable this after Radio component rebranding
+// export const Placement = PlacementTemplate.bind({});
+// Placement.storyName = 'Placement';
+// Placement.args = {
+//   title: 'Settlement breakup',
+//   content: <Content />,
+// };
 
 export const PopoverInteractiveWrapperTemplate: StoryFn<typeof Popover> = (args) => {
   const LeadingIcon = iconMap[args.titleLeading as string]!;
