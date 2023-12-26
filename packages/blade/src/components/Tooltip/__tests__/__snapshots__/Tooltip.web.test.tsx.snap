@@ -84,6 +84,7 @@ exports[`<Tooltip /> should render 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -337,6 +338,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -603,6 +605,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   line-height: 1rem;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c0.c0.c0.c0.c0 {
