@@ -78,7 +78,6 @@ const TabList = ({
                   flexDirection={isVertical ? 'column' : 'row'}
                   alignItems={isVertical ? 'start' : 'center'}
                   overflow={isVertical ? 'hidden' : undefined}
-                  zIndex={1}
                   {...(isFilled
                     ? {
                         borderRadius: 'small',
@@ -86,7 +85,7 @@ const TabList = ({
                         borderColor: 'interactive.border.gray.faded',
                         padding: 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
-                        backgroundColor: 'surface.background.level2.lowContrast',
+                        backgroundColor: 'surface.background.gray.intense',
                       }
                     : {
                         padding: 'spacing.0',
