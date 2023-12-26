@@ -24,6 +24,7 @@ module.exports = {
     '../../src/components/Indicator/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Button/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Divider/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Carousel/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/List/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Link/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Tooltip/**/*.stories.@(ts|tsx|js|jsx)',
