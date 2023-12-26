@@ -85,19 +85,15 @@ export default {
     tourStepsTitle: {
       name: 'steps[0].title',
       type: 'string',
-      defaultValue: 'Overview of Refunds',
       table: { category: propsCategory.TOUR_STEPS },
     },
     tourStepsContent: {
       name: 'steps[0].content',
       type: 'string',
-      defaultValue:
-        'You can  issue refunds for various reasons, like when a customer returns a product or cancels a service.',
       table: { category: propsCategory.TOUR_STEPS },
     },
     tourStepsPlacement: {
       name: 'steps[0].placement',
-      defaultValue: 'bottom',
       control: {
         type: 'select',
         options: [
@@ -120,7 +116,6 @@ export default {
     tourStepsName: {
       name: 'steps[0].name',
       type: 'string',
-      defaultValue: 'step-1',
       control: {
         disable: true,
       },
@@ -182,6 +177,12 @@ export default {
       },
       table: { category: propsCategory.TOUR },
     },
+  },
+  args: {
+    tourStepsTitle: 'Overview of Refunds',
+    tourStepsContent: ('You can  issue refunds for various reasons, like when a customer returns a product or cancels a service.' as unknown) as SpotlightPopoverTourSteps[number]['content'],
+    tourStepsPlacement: 'bottom',
+    tourStepsName: 'step-1',
   },
   parameters: {
     options: {
