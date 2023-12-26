@@ -183,6 +183,9 @@ export default {
       isLoading: false,
       type: undefined,
     },
+    prefix: ('LinkIcon' as unknown) as IconComponent,
+    suffix: 12,
+    visual: 'Badge',
   },
   tags: ['autodocs'],
   argTypes: {
@@ -207,7 +210,6 @@ export default {
       },
       mapping: iconMap,
       options: Object.keys(iconMap),
-      defaultValue: 'LinkIcon',
       table: {
         category: propsCategory.CARD_HEADER_LEADING,
       },
@@ -216,7 +218,6 @@ export default {
       control: {
         type: 'number',
       },
-      defaultValue: 12,
       table: { category: propsCategory.CARD_HEADER_LEADING },
     },
     visual: {
@@ -225,7 +226,6 @@ export default {
       },
       mapping: visual,
       options: Object.keys(visual),
-      defaultValue: 'Badge',
       table: {
         category: propsCategory.CARD_HEADER_LEADING,
       },
@@ -244,6 +244,7 @@ export default {
     },
     ...getStyledPropsArgTypes(),
   },
+
   parameters: {
     docs: {
       page: Page,
