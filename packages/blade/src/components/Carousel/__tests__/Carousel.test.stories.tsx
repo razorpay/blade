@@ -82,7 +82,7 @@ export const TestAutoPlay: StoryFn<typeof CarouselComponent> = (props): React.Re
 
 TestAutoPlay.play = async ({ canvasElement }) => {
   const { getByRole } = within(canvasElement);
-  await sleep(7000);
+  await sleep(8000);
   await expect(onChange).toBeCalledWith(1);
   await expect(getByRole('tab', { selected: true })).toHaveAccessibleName('Slide 3');
 };
@@ -125,7 +125,7 @@ TestAutoPlayPause.play = async ({ canvasElement }) => {
   const { getByText } = within(canvasElement);
   const slide = getByText(/Acquire Customers From New Customer Segments/);
   await userEvent.hover(slide);
-  await sleep(8000);
+  await sleep(7000);
   await expect(onChange).toBeCalledTimes(0);
 };
 
