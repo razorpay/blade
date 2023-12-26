@@ -58,7 +58,7 @@ const ModalTemplate: ComponentStory<typeof Modal> = ({ size }) => {
         </ModalBody>
         <ModalFooter>
           <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-            <Button variant="secondary">Remove address</Button>
+            <Button variant="tertiary">Remove address</Button>
             <Button>Add address</Button>
           </Box>
         </ModalFooter>
