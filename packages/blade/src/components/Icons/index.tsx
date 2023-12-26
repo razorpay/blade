@@ -1,53 +1,21 @@
 import type { Theme } from '~components/BladeProvider';
-import type { DotNotationColorStringToken } from '~utils/types';
-import type { Feedback } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
-type FeedbackIconColors = `feedback.icon.${DotNotationColorStringToken<
-  Theme['colors']['feedback']['icon']
->}`;
-
-type FeedbackActionIconColors = `feedback.${Feedback}.action.icon.${DotNotationColorStringToken<
-  Theme['colors']['feedback'][Feedback]['action']['icon']
->}`;
-
-type ActionIconColors = `action.icon.${DotNotationColorStringToken<
-  Theme['colors']['action']['icon']
->}`;
-
-type TextIconColors = `surface.text.${DotNotationColorStringToken<
-  Theme['colors']['surface']['text']
->}`;
-
-type SurfaceActionIconColors = `surface.action.icon.${DotNotationColorStringToken<
-  Theme['colors']['surface']['action']['icon']
->}`;
-
-type BadgeIconColors = `badge.icon.${DotNotationColorStringToken<
-  Theme['colors']['badge']['icon']
->}`;
-
-type WhiteIconColors = `white.action.icon.${DotNotationColorStringToken<
-  Theme['colors']['white']['action']['icon']
->}`;
-
-type BrandColors = `brand.${DotNotationColorStringToken<Theme['colors']['brand']>}`;
+type InteractiveText = DotNotationToken<Theme['colors']['interactive']['icon']>;
+type FeedbackText = DotNotationToken<Theme['colors']['feedback']['icon']>;
+type SurfaceText = DotNotationToken<Theme['colors']['surface']['icon']>;
+export type IconColors =
+  | `interactive.icon.${InteractiveText}`
+  | `surface.icon.${SurfaceText}`
+  | `feedback.icon.${FeedbackText}`;
 
 export type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 export type IconProps = {
   /**
    * Color token (not to be confused with actual hsla value)
    */
-  color?:
-    | ActionIconColors
-    | SurfaceActionIconColors
-    | FeedbackIconColors
-    | FeedbackActionIconColors
-    | TextIconColors
-    | BadgeIconColors
-    | WhiteIconColors
-    | BrandColors
-    | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
+  color?: IconColors | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
   size?: IconSize;
 } & StyledPropsBlade;
 export type IconComponent = React.ComponentType<IconProps>;

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { dimensions } from './spinnerTokens';
 import SpinnerIcon from './SpinnerIcon';
@@ -8,7 +9,7 @@ import { useTheme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import type { ColorContrastTypes, FeedbackColors } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { TestID } from '~utils/types';
@@ -21,7 +22,7 @@ type BaseSpinnerProps = {
    *
    * @default 'default'
    */
-  color?: 'default' | 'white' | Feedback;
+  color?: 'default' | 'white' | FeedbackColors;
   /**
    * Sets the label of the spinner.
    *
@@ -64,7 +65,7 @@ const getColor = ({
   theme: Theme;
 }): string => {
   if (contrast === 'high' || (color && color === 'white')) {
-    return getIn(theme.colors, 'static.white');
+    return getIn(theme.colors, 'surface.text.staticWhite.normal');
   }
   if (color && color !== 'default') {
     return getIn(theme.colors, `feedback.${color}.action.icon.primary.disabled.lowContrast`);

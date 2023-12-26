@@ -44,7 +44,7 @@ const meta: Meta<IconButtonProps> = {
   component: IconButtonComponent,
   args: {
     size: 'medium',
-    contrast: 'low',
+    emphasis: 'intense',
     accessibilityLabel: 'Close',
   },
   argTypes: {
@@ -52,7 +52,7 @@ const meta: Meta<IconButtonProps> = {
     onClick: { action: 'onClick' },
     icon: {
       name: 'icon',
-      type: 'select',
+      type: 'select' as 'string',
       options: Object.keys(iconMap),
     },
   },

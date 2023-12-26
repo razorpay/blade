@@ -2,7 +2,6 @@ import type { ReactElement } from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
-import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
@@ -19,8 +18,6 @@ export type DisplayProps = {
   color?: BaseTextProps['color'];
   size?: Extract<BaseTextSizes, 'small' | 'medium' | 'large' | 'xlarge'>;
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
-  contrast?: ColorContrastTypes;
-  type?: TextTypes;
   children: React.ReactNode;
   textAlign?: BaseTextProps['textAlign'];
   textDecorationLine?: BaseTextProps['textDecorationLine'];
@@ -30,20 +27,17 @@ export type DisplayProps = {
 const getProps = ({
   as,
   size,
-  type,
-  contrast,
   weight,
   color,
   testID,
-}: Pick<DisplayProps, 'as' | 'size' | 'type' | 'color' | 'contrast' | 'weight' | 'testID'>): Omit<
+}: Pick<DisplayProps, 'as' | 'size' | 'color' | 'weight' | 'testID'>): Omit<
   BaseTextProps,
   'children'
 > => {
   const isPlatformWeb = getPlatformType() === 'browser' || getPlatformType() === 'node';
-  const colorContrast: keyof ColorContrast = contrast ? `${contrast}Contrast` : 'lowContrast';
   const letterSpacing = weight === 'medium' || weight === 'regular' ? 50 : 100;
   const props: Omit<BaseTextProps, 'children'> = {
-    color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
+    color,
     fontSize: 800,
     fontWeight: weight,
     fontStyle: 'normal',
@@ -78,10 +72,8 @@ const getProps = ({
 export const Display = ({
   as,
   size = 'small',
-  type = 'normal',
-  contrast = 'low',
   weight = 'semibold',
-  color,
+  color = 'surface.text.gray.normal',
   children,
   testID,
   textAlign,
@@ -90,7 +82,7 @@ export const Display = ({
 }: DisplayProps): ReactElement => {
   useValidateAsProp({ componentName: 'Display', as, validAsValues });
 
-  const props = getProps({ as, size, type, contrast, color, weight, testID });
+  const props = getProps({ as, size, color, weight, testID });
 
   return (
     <BaseText

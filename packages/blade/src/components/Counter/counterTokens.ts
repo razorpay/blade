@@ -6,10 +6,10 @@ import { size } from '~tokens/global';
 
 type CounterMaxWidth = Size[100] | Size[120];
 
-const verticalPadding: Record<NonNullable<CounterProps['size']>, DotNotationSpacingStringToken> = {
-  small: 'spacing.0',
-  medium: 'spacing.1',
-  large: 'spacing.1',
+const counterHeight: Record<NonNullable<CounterProps['size']>, number> = {
+  small: size[16],
+  medium: size[20],
+  large: size[24],
 };
 
 const horizontalPadding: Record<
@@ -26,4 +26,4 @@ const maxWidth: Record<NonNullable<TypographyPlatforms>, CounterMaxWidth> = {
   onDesktop: size[120],
 };
 
-export { maxWidth, verticalPadding, horizontalPadding };
+export { maxWidth, counterHeight, horizontalPadding };

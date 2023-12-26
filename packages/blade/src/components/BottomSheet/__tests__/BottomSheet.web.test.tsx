@@ -71,7 +71,7 @@ describe('<BottomSheet />', () => {
           <BottomSheetHeader
             title="Address Details"
             subtitle="Saving addresses will improve your checkout experience"
-            trailing={<Badge variant="positive">Action Needed</Badge>}
+            trailing={<Badge color="positive">Action Needed</Badge>}
             titleSuffix={<Counter variant="positive" value={2} />}
           />
           <BottomSheetBody>

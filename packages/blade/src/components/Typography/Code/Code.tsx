@@ -90,7 +90,7 @@ const CodeContainer = styled(BaseBox)<CodeContainerProps>((props) => {
   return {
     padding,
     backgroundColor: props.isHighlighted
-      ? props.theme.colors.brand.gray.a100.lowContrast
+      ? props.theme.colors.feedback.background.neutral.subtle
       : undefined,
     borderRadius: props.theme.border.radius.medium,
     display: isPlatformWeb ? 'inline-block' : 'flex',
@@ -114,14 +114,14 @@ const getCodeColor = ({
       }
     }
 
-    return 'surface.text.subtle.lowContrast';
+    return 'surface.text.gray.subtle';
   }
 
   if (color) {
     return color;
   }
 
-  return 'surface.text.normal.lowContrast';
+  return 'surface.text.gray.normal';
 };
 /**
  * Code component can be used for displaying token, variable names, or inlined code snippets.
