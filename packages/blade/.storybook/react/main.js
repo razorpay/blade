@@ -16,6 +16,7 @@ module.exports = {
     '../../docs/guides/*.stories.mdx',
     '../../src/components/Box/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Badge/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Card/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Icons/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Button/IconButton/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Counter/**/*.stories.@(ts|tsx|js|jsx)',
