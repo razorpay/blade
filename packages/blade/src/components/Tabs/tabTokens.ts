@@ -134,7 +134,7 @@ const backgroundColor = {
     filled: {
       default: 'colors.transparent',
       highlighted: 'colors.interactive.background.gray.default',
-      disabled: 'colors.surface.border.gray.subtle',
+      disabled: 'colors.transparent',
     },
   },
   selected: {
