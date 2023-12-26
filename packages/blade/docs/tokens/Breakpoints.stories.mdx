@@ -13,7 +13,7 @@ import { getMediaQuery } from '../../src/utils';
             <BladeProvider
               key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
               themeTokens={bladeTheme}
-              colorScheme="light"
+              colorScheme={context.globals.colorScheme}
             >
               {children}
             </BladeProvider>
@@ -69,12 +69,13 @@ export const Breakpoints = () => {
 
 <Breakpoints />
 
-<Alert
+<!-- TODO(Rebranding): remove after alert is migrated-->
+<!-- <Alert
   description="The corresponding screens mentioned in the table are under assumption that you're using min-width query over token values. Internally in Blade we use min-width queries for responsive props in Box and in useBreakpoint hook. If you're importing breakpoint tokens and using some other media query, the corresponding screen may change"
   isFullWidth
   marginY="spacing.6"
   isDismissible={false}
-/>
+/> -->
 
 ## `useBreakpoint` hook
 
