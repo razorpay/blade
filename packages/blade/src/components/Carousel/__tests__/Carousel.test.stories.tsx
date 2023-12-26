@@ -117,7 +117,6 @@ TestAutofit.play = async ({ canvasElement }) => {
 };
 
 export const TestAutoPlayPause: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
-  console.log({ INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS });
   onChange = jest.fn();
   return <BasicCarousel {...props} autoPlay visibleItems={2} onChange={onChange} />;
 };
@@ -126,14 +125,13 @@ TestAutoPlayPause.play = async ({ canvasElement }) => {
   const { getByText } = within(canvasElement);
   const slide = getByText(/Acquire Customers From New Customer Segments/);
   await userEvent.hover(slide);
-  await sleep(7000);
+  await sleep(8000);
   await expect(onChange).toBeCalledTimes(0);
 };
 
 export const TestVisibleItemsOnMobile: StoryFn<typeof CarouselComponent> = (
   props,
 ): React.ReactElement => {
-  console.log({ INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS });
   onChange = jest.fn();
   return <BasicCarousel {...props} visibleItems={3} onChange={onChange} />;
 };
