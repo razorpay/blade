@@ -46,8 +46,7 @@ const ModalTemplate: ComponentStory<typeof Modal> = ({ size }) => {
           subtitle="This example is created for Modal snapshot testing"
         />
         <ModalBody>
-          {/* 
-           // use this when Radio is fixed
+          {/* TODO: Rebranding - use this when Radio is fixed
           <RadioGroup label="Addresses">
             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
             <Radio value="office-1">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
