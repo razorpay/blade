@@ -105,6 +105,7 @@ type StoryControlProps = TabsProps & {
   tabItemChildren: TabItemProps['children'];
   tabItemHref: TabItemProps['href'];
 };
+
 const tabItemTrailing = {
   Counter: <Counter color="positive" value={2} />,
   Badge: <Badge color="positive">NEW</Badge>,
@@ -140,7 +141,6 @@ export default {
         type: 'boolean',
       },
       table: { category: propsCategory.TABS },
-      defaultValue: false,
     },
     orientation: {
       control: {
@@ -148,22 +148,18 @@ export default {
         options: ['horizontal', 'vertical'],
       },
       table: { category: propsCategory.TABS },
-      defaultValue: 'horizontal',
     },
     size: {
       table: { category: propsCategory.TABS },
-      defaultValue: 'medium',
     },
     variant: {
       table: { category: propsCategory.TABS },
-      defaultValue: 'bordered',
     },
     tabItemChildren: {
       control: {
         type: 'text',
       },
       table: { category: propsCategory.TAB_ITEM },
-      defaultValue: 'Plans',
       description: 'The label of the tab item.',
     },
     tabItemIsDisabled: {
@@ -171,7 +167,6 @@ export default {
         type: 'boolean',
       },
       table: { category: propsCategory.TAB_ITEM },
-      defaultValue: false,
       description: 'If `true`, the tab item will be disabled.',
     },
     tabItemLeading: {
@@ -181,7 +176,6 @@ export default {
       },
       mapping: iconMap,
       options: Object.keys(iconMap),
-      defaultValue: 'ClipboardIcon',
       description: 'Leading element of the tab item. Can be used to render an icon.',
     },
     tabItemTrailing: {
@@ -191,7 +185,6 @@ export default {
       },
       mapping: tabItemTrailing,
       options: Object.keys(tabItemTrailing),
-      defaultValue: 'Badge',
       description: 'Trailing element of the tab item. Can be used to render an badge/counter.',
     },
     tabItemHref: {
@@ -199,15 +192,25 @@ export default {
       control: {
         type: 'text',
       },
-      defaultValue: '',
     },
     isLazy: {
       table: { category: propsCategory.TABS },
-      defaultValue: false,
     },
   },
+  args: {
+    isFullWidthTabItem: false,
+    orientation: 'horizontal',
+    size: 'medium',
+    variant: 'bordered',
+    tabItemChildren: 'Tab Item',
+    tabItemIsDisabled: false,
+    tabItemLeading: ('ClipboardIcon' as unknown) as IconComponent,
+    tabItemTrailing: 'Badge',
+    tabItemHref: '',
+    isLazy: false,
+  },
   // eslint-disable-next-line babel/new-cap
-  decorators: [StoryRouter(undefined, { initialEntries: ['/accounts/subscriptions'] })],
+  decorators: [StoryRouter(undefined, { initialEntries: ['/accounts/subscriptions'] })] as unknown,
   parameters: {
     docs: {
       page: Page,
