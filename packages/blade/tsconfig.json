@@ -1,11 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "src/components/index.ts",
-    "src/tokens/index.ts",
-    "src/utils/index.ts",
-    "src/@types/globals.d.ts"
-  ],
+  "include": ["src"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
