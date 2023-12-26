@@ -3,7 +3,6 @@ import type { StoryFn } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect, jest } from '@storybook/jest';
 import type { Mock } from 'jest-mock';
-import { INITIAL_VIEWPORTS, MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import type { CarouselProps } from '../';
 import { Carousel as CarouselComponent } from '../';
 import { CarouselExample } from '../Carousel.stories';
