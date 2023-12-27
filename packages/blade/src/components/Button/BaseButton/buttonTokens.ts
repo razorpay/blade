@@ -35,40 +35,32 @@ const backgroundColor = (property: 'background' | 'border') => {
           : `interactive.background.primary.faded`,
         disabled: isBorder ? `interactive.border.primary.disabled` : `transparent`,
       },
+      tertiary: {
+        default: `interactive.${property}.gray.default`,
+        highlighted: `interactive.${property}.gray.highlighted`,
+        disabled: `interactive.${property}.gray.disabled`,
+      },
     },
-    color: (color: FeedbackColors | 'white') => {
-      if (color === 'white') {
-        return {
-          primary: {
-            default: `interactive.${property}.staticWhite.default`,
-            highlighted: `interactive.${property}.staticWhite.highlighted`,
-            disabled: `interactive.${property}.staticWhite.disabled`,
-          },
-          secondary: {
-            default: isBorder ? 'interactive.border.staticWhite.highlighted' : 'transparent',
-            highlighted: isBorder
-              ? 'interactive.border.staticWhite.highlighted'
-              : 'interactive.background.staticWhite.faded',
-            disabled: isBorder ? `interactive.border.staticWhite.disabled` : 'transparent',
-          },
-          tertiary: {
-            default: `interactive.background.staticWhite.faded`,
-            highlighted: `interactive.background.staticWhite.faded`,
-            disabled: `interactive.background.staticWhite.disabled`,
-          },
-        } as const;
-      }
-
-      if (color === 'neutral') {
-        return {
-          tertiary: {
-            default: `interactive.${property}.gray.default`,
-            highlighted: `interactive.${property}.gray.highlighted`,
-            disabled: `interactive.${property}.gray.disabled`,
-          },
-        } as const;
-      }
-
+    white: {
+      primary: {
+        default: `interactive.${property}.staticWhite.default`,
+        highlighted: `interactive.${property}.staticWhite.highlighted`,
+        disabled: `interactive.${property}.staticWhite.disabled`,
+      },
+      secondary: {
+        default: isBorder ? 'interactive.border.staticWhite.highlighted' : 'transparent',
+        highlighted: isBorder
+          ? 'interactive.border.staticWhite.highlighted'
+          : 'interactive.background.staticWhite.faded',
+        disabled: isBorder ? `interactive.border.staticWhite.disabled` : 'transparent',
+      },
+      tertiary: {
+        default: `interactive.background.staticWhite.faded`,
+        highlighted: `interactive.background.staticWhite.faded`,
+        disabled: `interactive.background.staticWhite.disabled`,
+      },
+    },
+    color: (color: FeedbackColors) => {
       return {
         primary: {
           default: `interactive.${property}.${color}.default`,
@@ -108,37 +100,24 @@ const textColor = (property: 'icon' | 'text') => {
         disabled: `interactive.${property}.gray.disabled`,
       },
     },
-    color: (color: FeedbackColors | 'white') => {
-      if (color === 'white') {
-        return {
-          primary: {
-            default: `interactive.${property}.staticBlack.muted`,
-            highlighted: `interactive.${property}.staticBlack.muted`,
-            disabled: `interactive.${property}.staticBlack.disabled`,
-          },
-          secondary: {
-            default: `interactive.${property}.staticWhite.normal`,
-            highlighted: `interactive.${property}.staticWhite.normal`,
-            disabled: `interactive.${property}.staticWhite.disabled`,
-          },
-          tertiary: {
-            default: `interactive.${property}.staticWhite.normal`,
-            highlighted: `interactive.${property}.staticWhite.normal`,
-            disabled: `interactive.${property}.staticWhite.disabled`,
-          },
-        } as const;
-      }
-
-      if (color === 'neutral') {
-        return {
-          tertiary: {
-            default: `interactive.${property}.gray.normal`,
-            highlighted: `interactive.${property}.gray.normal`,
-            disabled: `interactive.${property}.gray.disabled`,
-          },
-        } as const;
-      }
-
+    white: {
+      primary: {
+        default: `interactive.${property}.staticBlack.muted`,
+        highlighted: `interactive.${property}.staticBlack.muted`,
+        disabled: `interactive.${property}.staticBlack.disabled`,
+      },
+      secondary: {
+        default: `interactive.${property}.staticWhite.normal`,
+        highlighted: `interactive.${property}.staticWhite.normal`,
+        disabled: `interactive.${property}.staticWhite.disabled`,
+      },
+      tertiary: {
+        default: `interactive.${property}.staticWhite.normal`,
+        highlighted: `interactive.${property}.staticWhite.normal`,
+        disabled: `interactive.${property}.staticWhite.disabled`,
+      },
+    },
+    color: (color: FeedbackColors) => {
       return {
         primary: {
           default: `interactive.${property}.staticWhite.normal`,

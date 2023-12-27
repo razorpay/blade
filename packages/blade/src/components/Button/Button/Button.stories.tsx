@@ -61,7 +61,7 @@ export default {
   component: ButtonComponent,
   args: {
     variant: 'primary',
-    color: undefined,
+    color: 'primary',
     children: 'Pay Now',
     onClick: (): void => {
       console.log('clicked');
@@ -154,173 +154,8 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
-  const colors: ButtonProps['color'][] = ['positive', 'negative'];
+  const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
 
-  const Primary = (
-    <BaseBox
-      display="flex"
-      flexDirection="row"
-      gap="spacing.5"
-      backgroundColor="transparent"
-      margin="spacing.4"
-      padding="spacing.5"
-    >
-      <BaseBox margin="spacing.2">
-        <Text marginBottom="spacing.3">variant: primary</Text>
-        <ButtonComponent {...args} color="primary" variant="primary">
-          {children}
-        </ButtonComponent>
-
-        <ButtonComponent marginLeft="spacing.4" {...args} variant="primary" isDisabled>
-          {children}
-        </ButtonComponent>
-      </BaseBox>
-
-      <BaseBox margin="spacing.2">
-        <Text marginBottom="spacing.3">variant: secondary</Text>
-        <ButtonComponent {...args} color="primary" variant="secondary">
-          {children}
-        </ButtonComponent>
-
-        <ButtonComponent marginLeft="spacing.4" {...args} variant="secondary" isDisabled>
-          {children}
-        </ButtonComponent>
-      </BaseBox>
-
-      <BaseBox margin="spacing.2">
-        <Text marginBottom="spacing.3">variant: tertiary</Text>
-        <ButtonComponent {...args} variant="tertiary">
-          {children}
-        </ButtonComponent>
-
-        <ButtonComponent marginLeft="spacing.4" {...args} variant="tertiary" isDisabled>
-          {children}
-        </ButtonComponent>
-      </BaseBox>
-    </BaseBox>
-  );
-
-  const White = (
-    <BaseBox
-      display="flex"
-      flexDirection="row"
-      gap="spacing.5"
-      backgroundColor="surface.background.cloud.intense"
-      margin="spacing.4"
-      padding="spacing.5"
-    >
-      <BaseBox margin="spacing.2">
-        <Text marginBottom="spacing.3" color="surface.text.staticWhite.normal">
-          variant: primary
-        </Text>
-        <ButtonComponent {...args} color="white" variant="primary">
-          {children}
-        </ButtonComponent>
-
-        <ButtonComponent
-          marginLeft="spacing.4"
-          {...args}
-          color="white"
-          variant="primary"
-          isDisabled
-        >
-          {children}
-        </ButtonComponent>
-      </BaseBox>
-
-      <BaseBox margin="spacing.2">
-        <Text marginBottom="spacing.3" color="surface.text.staticWhite.normal">
-          variant: secondary
-        </Text>
-        <ButtonComponent {...args} color="white" variant="secondary">
-          {children}
-        </ButtonComponent>
-
-        <ButtonComponent
-          marginLeft="spacing.4"
-          {...args}
-          color="white"
-          variant="secondary"
-          isDisabled
-        >
-          {children}
-        </ButtonComponent>
-      </BaseBox>
-
-      <BaseBox margin="spacing.2">
-        <Text marginBottom="spacing.3" color="surface.text.staticWhite.normal">
-          variant: tertiary
-        </Text>
-        <ButtonComponent {...args} color="white" variant="tertiary">
-          {children}
-        </ButtonComponent>
-
-        <ButtonComponent
-          marginLeft="spacing.4"
-          {...args}
-          color="white"
-          variant="tertiary"
-          isDisabled
-        >
-          {children}
-        </ButtonComponent>
-      </BaseBox>
-    </BaseBox>
-  );
-
-  const Color = colors.map((color) => {
-    return (
-      <BaseBox
-        key={color}
-        display="flex"
-        flexDirection="row"
-        gap="spacing.5"
-        backgroundColor="transparent"
-        margin="spacing.4"
-        padding="spacing.5"
-      >
-        <BaseBox margin="spacing.2">
-          <Text marginBottom="spacing.3">variant: primary</Text>
-          <ButtonComponent {...args} color={color} variant="primary">
-            {children}
-          </ButtonComponent>
-
-          <ButtonComponent
-            marginLeft="spacing.4"
-            {...args}
-            color={color}
-            variant="primary"
-            isDisabled
-          >
-            {children}
-          </ButtonComponent>
-        </BaseBox>
-
-        <BaseBox margin="spacing.2">
-          <Text marginBottom="spacing.3">variant: secondary</Text>
-          <ButtonComponent {...args} color={color} variant="secondary">
-            {children}
-          </ButtonComponent>
-
-          <ButtonComponent
-            marginLeft="spacing.4"
-            {...args}
-            color={color}
-            variant="secondary"
-            isDisabled
-          >
-            {children}
-          </ButtonComponent>
-        </BaseBox>
-      </BaseBox>
-    );
-  });
-
-  return (
-    <BaseBox>
-      {Primary} {White} {Color}
-    </BaseBox>
-  );
   return (
     <>
       {colors.map((color) => {
@@ -347,49 +182,45 @@ const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
                 {color}
               </HeadingComponent>
             </BaseBox>
-            {color !== 'neutral' && (
-              <BaseBox margin="spacing.2">
-                <Text marginBottom="spacing.3" color={textColor}>
-                  Primary
-                </Text>
-                <ButtonComponent {...args} color={color} variant="primary">
-                  {children}
-                </ButtonComponent>
+            <BaseBox margin="spacing.2">
+              <Text marginBottom="spacing.3" color={textColor}>
+                Primary
+              </Text>
+              <ButtonComponent {...args} color={color} variant="primary">
+                {children}
+              </ButtonComponent>
 
-                <ButtonComponent
-                  marginLeft="spacing.4"
-                  {...args}
-                  color={color}
-                  variant="primary"
-                  isDisabled
-                >
-                  {children}
-                </ButtonComponent>
-              </BaseBox>
-            )}
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="primary"
+                isDisabled
+              >
+                {children}
+              </ButtonComponent>
+            </BaseBox>
 
-            {color !== 'neutral' && (
-              <BaseBox margin="spacing.2">
-                <Text marginBottom="spacing.3" color={textColor}>
-                  Secondary
-                </Text>
-                <ButtonComponent {...args} color={color} variant="secondary">
-                  {children}
-                </ButtonComponent>
+            <BaseBox margin="spacing.2">
+              <Text marginBottom="spacing.3" color={textColor}>
+                Secondary
+              </Text>
+              <ButtonComponent {...args} color={color} variant="secondary">
+                {children}
+              </ButtonComponent>
 
-                <ButtonComponent
-                  marginLeft="spacing.4"
-                  {...args}
-                  color={color}
-                  variant="secondary"
-                  isDisabled
-                >
-                  {children}
-                </ButtonComponent>
-              </BaseBox>
-            )}
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="secondary"
+                isDisabled
+              >
+                {children}
+              </ButtonComponent>
+            </BaseBox>
 
-            {(color == 'neutral' || color == 'white') && !color && (
+            {(color == 'primary' || color == 'white') && (
               <BaseBox margin="spacing.2">
                 <Text marginBottom="spacing.3" color={textColor}>
                   Tertiary
