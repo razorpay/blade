@@ -11,6 +11,7 @@ import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { logger } from '~utils/logger';
 import { castNativeType } from '~utils';
+import { Hoverlay } from '~components/Hoverlay';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
@@ -60,11 +61,9 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     defaultBackgroundColor,
     defaultBorderColor,
     hoverBackgroundColor,
-    activeBackgroundColor,
     focusBackgroundColor,
     focusRingColor,
     hoverBorderColor,
-    activeBorderColor,
     focusBorderColor,
     borderWidth,
     borderRadius,
@@ -78,6 +77,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     onPointerEnter,
     onPointerDown,
     onFocus,
+    shouldShowHoverlay,
     ...styledProps
   },
   ref,
@@ -86,20 +86,27 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
   const isPressed = useSharedValue(false);
   const duration = getIn(theme.motion, motionDuration);
   const easing = getIn(theme.motion, motionEasing);
+
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      backgroundColor: withTiming(
-        isPressed.value ? activeBackgroundColor : defaultBackgroundColor,
-        {
-          duration,
-          easing,
-        },
-      ),
+      backgroundColor: withTiming(isPressed.value ? focusBackgroundColor : defaultBackgroundColor, {
+        duration,
+        easing,
+      }),
       ...(variant !== 'tertiary' && {
-        borderColor: withTiming(isPressed.value ? activeBorderColor : defaultBorderColor, {
+        borderColor: withTiming(isPressed.value ? focusBorderColor : defaultBorderColor, {
           duration,
           easing,
         }),
+      }),
+    };
+  });
+
+  const overlayStyles = useAnimatedStyle(() => {
+    return {
+      opacity: withTiming(isPressed.value ? 1 : 0, {
+        duration,
+        easing,
       }),
     };
   });
@@ -138,11 +145,9 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       defaultBackgroundColor={defaultBackgroundColor}
       defaultBorderColor={defaultBorderColor}
       hoverBackgroundColor={hoverBackgroundColor}
-      activeBackgroundColor={activeBackgroundColor}
       focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
       hoverBorderColor={hoverBorderColor}
-      activeBorderColor={activeBorderColor}
       focusBorderColor={focusBorderColor}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
@@ -152,7 +157,12 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     >
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;
-        return children;
+        return (
+          <>
+            {shouldShowHoverlay ? <Hoverlay variant="subtle" style={overlayStyles} /> : null}
+            {children}
+          </>
+        );
       }}
     </StyledPressable>
   );
