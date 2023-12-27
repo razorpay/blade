@@ -60,7 +60,6 @@ Default.storyName = 'Default';
 Default.args = {
   label: 'Label',
   value: 20,
-  contrast: 'low',
 };
 
 const ProgressBarWithUpdatingValuesTemplate: ComponentStory<typeof ProgressBarComponent> = ({
@@ -84,7 +83,7 @@ const ProgressBarWithUpdatingValuesTemplate: ComponentStory<typeof ProgressBarCo
   return <ProgressBarComponent {...args} value={value} />;
 };
 
-const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent> = ({
+const ProgressBarWithColorsTemplate: ComponentStory<typeof ProgressBarComponent> = ({
   ...args
 }) => {
   const [value, setValue] = useState(10);
@@ -113,7 +112,7 @@ const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent
     >
       {intents.map((intent) => (
         <BaseBox key={intent} paddingTop="spacing.4">
-          <ProgressBarComponent {...args} intent={intent} value={value} />
+          <ProgressBarComponent {...args} color={intent} value={value} />
         </BaseBox>
       ))}
     </BaseBox>
@@ -140,9 +139,9 @@ ProgressBarMediumSize.args = {
   size: 'medium',
 };
 
-export const ProgressBarWithIntents = ProgressBarWithIntentsTemplate.bind({});
-ProgressBarWithIntents.storyName = 'Intents';
-ProgressBarWithIntents.args = {
+export const ProgressBarWithColor = ProgressBarWithColorsTemplate.bind({});
+ProgressBarWithColor.storyName = 'Intents';
+ProgressBarWithColor.args = {
   size: 'medium',
   label: 'Label',
 };
@@ -154,7 +153,7 @@ ProgressBarMeterVariant.args = {
   size: 'medium',
   value: 10,
   label: 'Balance: ₹10,000',
-  intent: 'notice',
+  color: 'notice',
 };
 
 export const ProgressBarIndeterminate = ProgressBarTemplate.bind({});
