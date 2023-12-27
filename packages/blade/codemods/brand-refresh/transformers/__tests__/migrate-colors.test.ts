@@ -44,6 +44,9 @@ it('should update token values contextually', async () => {
           <Box borderRightColor="brand.primary.500" backgroundColor="brand.primary.500"> Lorem ipsum </Box>  
           <Text color="brand.primary.500"> Lorem ipsum </Text>
           <MapIcon color="brand.primary.500" />
+          <MapIcon color="brand.secondary.500" />
+          <MapIcon color="badge.text.blue.lowContrast" />
+          <MapIcon color="surface.action.icon.default.lowContrast" />
         </>
       );
     `,
@@ -56,6 +59,9 @@ it('should update token values contextually', async () => {
               <Box borderRightColor="surface.border.primary.intense" backgroundColor="surface.background.primary.intense"> Lorem ipsum </Box>  
               <Text color="surface.text.primary.intense"> Lorem ipsum </Text>
               <MapIcon color="interactive.icon.primary.intense" />
+              <MapIcon color="surface.text.onSea.onSubtle" />
+              <MapIcon color="interactive.icon.primary.normal" />
+              <MapIcon color="interactive.icon.gray.default" />
             </>
           );"
   `);

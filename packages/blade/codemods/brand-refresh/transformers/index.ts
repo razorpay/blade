@@ -135,8 +135,18 @@ const transformer: Transform = (file, api, options) => {
 
       if (isBoxComponent && isBorderColorProp) {
         node.value.value = node.value.value.replace('background', 'border');
-      } else if (isIconComponent && isColorProp) {
-        node.value.value = node.value.value.replace('surface.background', 'interactive.icon');
+      } else if (
+        isIconComponent &&
+        isColorProp &&
+        /surface.(background|text).(gray|staticWhite|positive|negative|notice|information|neutral|primary|staticBlack)/i.test(
+          node.value.value,
+        )
+      ) {
+        node.value.value = node.value.value.replace(
+          /surface.(background|text)/i,
+          'interactive.icon',
+        );
+
         // Typography components
       } else if (!isBoxComponent && !isIconComponent && isColorProp) {
         node.value.value = node.value.value.replace('background', 'text');
