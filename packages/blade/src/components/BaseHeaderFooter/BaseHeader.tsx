@@ -229,7 +229,7 @@ const _BaseHeader = ({
                 flexDirection="row"
               >
                 {title ? (
-                  <Text size="large" weight="semibold" type="normal">
+                  <Text size="large" weight="semibold" color="surface.text.gray.normal">
                     {title}
                   </Text>
                 ) : null}
@@ -240,7 +240,7 @@ const _BaseHeader = ({
                 )}
               </BaseBox>
               {subtitle ? (
-                <Text variant="body" size="small" weight="regular" type="muted">
+                <Text variant="body" size="small" weight="regular" color="surface.text.gray.muted">
                   {subtitle}
                 </Text>
               ) : null}
