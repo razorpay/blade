@@ -30,6 +30,8 @@ module.exports = {
     '../../src/components/Tooltip/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Spinner/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Typography/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Collapsible/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Accordion/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/BottomSheet/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Modal/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../docs/**/*.stories.mdx',
