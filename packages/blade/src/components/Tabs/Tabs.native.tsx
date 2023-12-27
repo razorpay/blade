@@ -19,6 +19,7 @@ import { useTheme } from '~components/BladeProvider';
 import { useControllableState } from '~utils/useControllable';
 import { Divider } from '~components/Divider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import getIn from '~utils/lodashButBetter/get';
 
 const initialLayout = {
   height: 0,
@@ -185,7 +186,7 @@ const Tabs = ({
                 shadowColor: 'transparent',
                 backgroundColor: 'transparent',
                 ...(variant !== 'borderless' && {
-                  borderBottomColor: trackColor,
+                  borderBottomColor: getIn(theme.colors, trackColor),
                   borderBottomWidth: theme.border.width.thin,
                 }),
               }),
