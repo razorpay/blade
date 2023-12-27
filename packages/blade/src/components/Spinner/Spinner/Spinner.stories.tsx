@@ -98,11 +98,11 @@ const SpinnerColorTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         paddingLeft="spacing.3"
-        backgroundColor={theme.colors.surface.background.level2.lowContrast}
+        backgroundColor={theme.colors.surface.background.gray.subtle}
       >
-        <Text>Default Color</Text>
+        <Text>Primary Color</Text>
         <BaseBox marginBottom="spacing.2" />
-        <SpinnerComponent {...args} color="default" />
+        <SpinnerComponent {...args} color="primary" />
       </BaseBox>
       <BaseBox
         marginBottom="spacing.3"
@@ -110,7 +110,7 @@ const SpinnerColorTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         paddingLeft="spacing.3"
-        backgroundColor={theme.colors.surface.background.level1.highContrast}
+        backgroundColor={theme.colors.surface.background.gray.subtle}
       >
         <Text contrast="high">White Color</Text>
         <BaseBox marginBottom="spacing.2" />

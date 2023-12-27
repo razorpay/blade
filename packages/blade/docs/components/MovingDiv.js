@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const MovingDiv = styled.div`
   height: 40px;
   width: 40px;
-  background-color: ${(props) => props.theme.colors.brand.primary[500]};
+  background-color: ${(props) => props.theme.colors.surface.background.primary.subtle};
   animation: ${(props) => `move 3s ${props.easing || 'linear'}  infinite`};
   @keyframes move {
     0% {

@@ -37,7 +37,7 @@ const BottomSheetBackdrop = ({ zIndex }: { zIndex: number }): React.ReactElement
       bottom="spacing.0"
       right="spacing.0"
       zIndex={zIndex}
-      backgroundColor={theme.colors.surface.overlay.background[800]}
+      backgroundColor={theme.colors.overlay.background.subtle}
     />
   );
 };
