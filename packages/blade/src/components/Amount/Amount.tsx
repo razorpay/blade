@@ -19,6 +19,8 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { BaseText } from '~components/Typography/BaseText';
+import { Text } from '~components/Typography';
+import type { FontFamily } from '~tokens/global';
 
 type AmountCommonProps = {
   /**
@@ -27,11 +29,11 @@ type AmountCommonProps = {
    */
   value: number;
   /**
-   * Sets the intent of the amount.
+   * Sets the color of the amount.
    *
    * @default undefined
    */
-  intent?: Exclude<FeedbackColors, 'neutral'>;
+  color?: Exclude<FeedbackColors, 'neutral'>;
   /**
    * Indicates what the suffix of amount should be
    *
@@ -62,24 +64,20 @@ type AmountCommonProps = {
 
 type ColorProps = {
   amountValueColor: BaseTextProps['color'];
-  affixColor: BaseTextProps['color'];
 };
 
 type AmountProps = AmountTypeProps & AmountCommonProps;
 
-const getTextColorProps = ({ intent }: { intent: AmountProps['intent'] }): ColorProps => {
+const getTextColorProps = ({ color }: { color: AmountProps['color'] }): ColorProps => {
   const props: ColorProps = {
     amountValueColor: 'surface.text.gray.normal',
-    affixColor: 'surface.text.gray.muted',
   };
-  if (!intent) return props;
-  props.amountValueColor = `feedback.text.${intent}.intense`;
-  props.affixColor = `feedback.text.${intent}.intense`;
+  if (!color) return props;
+  props.amountValueColor = `feedback.text.${color}.intense`;
   return props;
 };
 
 interface AmountValue extends Omit<AmountProps, 'value'> {
-  affixColor: BaseTextProps['color'];
   amountValueColor: BaseTextProps['color'];
   value: string;
   size: Exclude<AmountProps['size'], undefined>;
@@ -89,15 +87,15 @@ const AmountValue = ({
   value,
   size = 'medium',
   type = 'body',
+  weight = 'regular',
   amountValueColor,
   isAffixSubtle,
   suffix,
-  affixColor,
 }: AmountValue): ReactElement => {
   const affixFontWeight = isAffixSubtle ? 'regular' : 'bold';
   const isReactNative = getPlatformType() === 'react-native';
   const affixFontSize = isAffixSubtle ? subtleFontSizes[type][size] : normalAmountSizes[type][size];
-  const valueForWeight = size.includes('bold') || size.startsWith('title') ? 'bold' : 'regular';
+  const numberFontFamily: keyof FontFamily = type === 'body' ? 'text' : 'heading';
   if (suffix === 'decimals' && isAffixSubtle) {
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
@@ -109,9 +107,10 @@ const AmountValue = ({
       <AmountWrapper>
         <BaseText
           fontSize={normalAmountSizes[type][size]}
-          fontWeight={valueForWeight}
+          fontWeight={weight}
           lineHeight={amountLineHeights[type][size]}
           color={amountValueColor}
+          fontFamily={numberFontFamily}
           as={isReactNative ? undefined : 'span'}
         >
           {integer}.
@@ -120,7 +119,8 @@ const AmountValue = ({
           marginLeft="spacing.1"
           fontWeight={affixFontWeight}
           fontSize={affixFontSize}
-          color={affixColor}
+          fontFamily={numberFontFamily}
+          color={amountValueColor}
           as={isReactNative ? undefined : 'span'}
         >
           {decimal || '00'}
@@ -131,7 +131,8 @@ const AmountValue = ({
   return (
     <BaseText
       fontSize={normalAmountSizes[type][size]}
-      fontWeight={valueForWeight}
+      fontWeight={weight}
+      fontFamily={numberFontFamily}
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
     >
@@ -206,7 +207,7 @@ const _Amount = ({
   size = 'medium',
   weight = 'regular',
   isAffixSubtle = true,
-  intent,
+  color,
   prefix = 'currency-symbol',
   testID,
   currency = 'INR',
@@ -219,10 +220,10 @@ const _Amount = ({
         moduleName: 'Amount',
       });
     }
-    // @ts-expect-error neutral intent should throw error
-    if (intent === 'neutral') {
+    // @ts-expect-error neutral color should throw error
+    if (color === 'neutral') {
       throwBladeError({
-        message: '`neutral` intent is not supported.',
+        message: '`neutral` color is not supported.',
         moduleName: 'Amount',
       });
     }
@@ -230,11 +231,10 @@ const _Amount = ({
 
   const currencyPrefix = currencyPrefixMapping[currency][prefix];
   const renderedValue = formatAmountWithSuffix({ suffix, value, currency });
-  const { amountValueColor, affixColor } = getTextColorProps({
-    intent,
+  const { amountValueColor } = getTextColorProps({
+    color,
   });
 
-  const currencyColor = isAffixSubtle ? affixColor : amountValueColor;
   const currencyFontSize = isAffixSubtle
     ? subtleFontSizes[type][size]
     : normalAmountSizes[type][size];
@@ -255,7 +255,7 @@ const _Amount = ({
           marginRight="spacing.1"
           fontWeight={weight}
           fontSize={currencyFontSize}
-          color={currencyColor}
+          color={amountValueColor}
           as={isReactNative ? undefined : 'span'}
         >
           {currencyPrefix}
@@ -263,10 +263,11 @@ const _Amount = ({
         <AmountValue
           value={renderedValue}
           amountValueColor={amountValueColor}
+          type={type}
+          weight={weight}
           size={size}
           isAffixSubtle={isAffixSubtle}
           suffix={suffix}
-          affixColor={affixColor}
         />
       </BaseBox>
     </BaseBox>

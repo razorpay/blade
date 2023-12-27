@@ -2,12 +2,15 @@ import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
+import type { AmountHeadingProps, AmountDisplayProps, AmountBodyProps } from './amountTokens';
 import { currencyPrefixMapping } from './amountTokens';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Box } from '~components/Box';
+import { objectKeysWithType } from '~utils/objectKeysWithType';
 
 const Page = (): React.ReactElement => {
   return (
@@ -66,40 +69,45 @@ const AmountTemplateWithText: ComponentStory<typeof AmountComponent> = (args) =>
 export const AmountWithText = AmountTemplateWithText.bind({});
 
 AmountWithText.args = {
-  value: 12500.45,
-  size: 'body-medium',
+  value: 1000.0,
+  type: 'body',
+  size: 'medium',
 };
 AmountWithText.storyName = 'With Text';
 
-const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = ({ ...args }) => {
-  const sizes: AmountProps['size'][] = [
-    'body-small',
-    'body-small-bold',
-    'body-medium',
-    'body-medium-bold',
-    'heading-small',
-    'heading-small-bold',
-    'heading-large',
-    'heading-large-bold',
-    'title-small',
-    'title-medium',
-  ];
+const AmountSizesTemplate: ComponentStory<typeof AmountComponent> = (args) => {
+  const sizes: {
+    heading: AmountHeadingProps['size'][];
+    body: AmountBodyProps['size'][];
+    display: AmountDisplayProps['size'][];
+  } = {
+    body: ['xsmall', 'small', 'medium', 'large'],
+    heading: ['small', 'medium', 'large', 'xlarge', '2xlarge'],
+    display: ['small', 'medium', 'large', 'xlarge'],
+  };
+
   return (
-    <BaseBox justifyContent="center">
-      {sizes.map((size) => (
-        <BaseBox key={size} marginBottom="spacing.3">
-          <Text>{size}</Text>
-          <BaseBox marginBottom="spacing.1" />
-          <AmountComponent {...args} size={size} />
-        </BaseBox>
+    <Box justifyContent="center">
+      {objectKeysWithType(sizes).map((amountTypeProp) => (
+        <Box key={amountTypeProp}>
+          <Heading>Type {amountTypeProp}</Heading>
+          {sizes[amountTypeProp].map((size) => (
+            <Box key={size} marginBottom="spacing.3">
+              <Text>{size}</Text>
+              <BaseBox marginBottom="spacing.1" />
+              {/* @ts-expect-error */}
+              <AmountComponent {...args} type="heading" size={size} />
+            </Box>
+          ))}
+        </Box>
       ))}
-    </BaseBox>
+    </Box>
   );
 };
 
 const defaultArgs: AmountProps = {
   value: 123456.789,
-  size: 'title-medium',
+  size: 'medium',
 };
 
 export const AmountSizes: ComponentStory<typeof AmountComponent> = AmountSizesTemplate.bind({});
@@ -109,21 +117,21 @@ AmountSizes.args = {
 AmountSizes.storyName = 'Sizes';
 
 const AmountTemplate: ComponentStory<typeof AmountComponent> = (args) => {
-  const intents = ['positive', 'negative', 'notice', 'information'] as const;
+  const colors = ['positive', 'negative', 'notice', 'information'] as const;
 
   return (
     <BaseBox justifyContent="flex-start">
-      {intents.map((intent) => (
+      {colors.map((color) => (
         <BaseBox
           display="flex"
-          key={intent}
+          key={color}
           alignItems="baseline"
           paddingRight="spacing.3"
           paddingTop="spacing.3"
           flexDirection="column"
         >
-          <Text marginBottom="spacing.1">{intent}</Text>
-          <AmountComponent {...args} intent={intent} />
+          <Text marginBottom="spacing.1">{color}</Text>
+          <AmountComponent {...args} color={color} />
         </BaseBox>
       ))}
     </BaseBox>

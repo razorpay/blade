@@ -21,13 +21,12 @@ type AmountBodyProps = {
   weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
 };
 
-export type AmountTypeProps = AmountDisplayProps | AmountHeadingProps | AmountBodyProps;
+type AmountTypeProps = AmountDisplayProps | AmountHeadingProps | AmountBodyProps;
 
-const normalAmountSizes: {
-  body: Record<NonNullable<AmountBodyProps['size']>, keyof FontSize>;
-  heading: Record<NonNullable<AmountHeadingProps['size']>, keyof FontSize>;
-  display: Record<NonNullable<AmountDisplayProps['size']>, keyof FontSize>;
-} = {
+const normalAmountSizes: Record<
+  'body' | 'heading' | 'display',
+  Partial<Record<NonNullable<AmountTypeProps['size']>, keyof FontSize>>
+> = {
   body: {
     xsmall: 25,
     small: 75,
@@ -49,11 +48,10 @@ const normalAmountSizes: {
   },
 };
 
-const subtleFontSizes: {
-  body: Record<NonNullable<AmountBodyProps['size']>, keyof FontSize>;
-  heading: Record<NonNullable<AmountHeadingProps['size']>, keyof FontSize>;
-  display: Record<NonNullable<AmountDisplayProps['size']>, keyof FontSize>;
-} = {
+const subtleFontSizes: Record<
+  'body' | 'heading' | 'display',
+  Partial<Record<NonNullable<AmountTypeProps['size']>, keyof FontSize>>
+> = {
   body: {
     xsmall: normalAmountSizes.body.xsmall,
     small: normalAmountSizes.body.xsmall,
@@ -75,11 +73,10 @@ const subtleFontSizes: {
   },
 };
 
-const amountLineHeights: {
-  body: Record<NonNullable<AmountBodyProps['size']>, keyof Typography['lineHeights']>;
-  heading: Record<NonNullable<AmountHeadingProps['size']>, keyof Typography['lineHeights']>;
-  display: Record<NonNullable<AmountDisplayProps['size']>, keyof Typography['lineHeights']>;
-} = {
+const amountLineHeights: Record<
+  'body' | 'heading' | 'display',
+  Partial<Record<NonNullable<AmountTypeProps['size']>, keyof Typography['lineHeights']>>
+> = {
   body: {
     xsmall: 25,
     small: 75,
@@ -231,4 +228,4 @@ export {
   getCurrencyAbbreviations,
 };
 
-export type { Currency };
+export type { Currency, AmountBodyProps, AmountDisplayProps, AmountHeadingProps, AmountTypeProps };
