@@ -25,9 +25,8 @@ import { bladeTheme } from '../../src/tokens';
 
 # 🪞 Elevation
 
-export const Border = () => {
+export const Elevation = () => {
   const { theme } = useTheme();
-  console.log(theme.colors.surface.text);
   return (
     <table>
       <tbody>
@@ -35,11 +34,11 @@ export const Border = () => {
           <tr
             key={key}
             style={{
-              backgroundColor: theme.colors.surface.background.level1.lowContrast,
+              backgroundColor: theme.colors.surface.background.gray.moderate,
             }}
           >
             <td
-              style={{ color: theme.colors.surface.text.normal.lowContrast }}
+              style={{ color: theme.colors.surface.text.gray.normal }}
             >{`theme.elevation.${key}`}</td>
             <td style={{ padding: '20px' }}>
               <div
@@ -59,4 +58,4 @@ export const Border = () => {
   );
 };
 
-<Border />
+<Elevation />
