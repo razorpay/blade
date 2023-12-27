@@ -134,17 +134,9 @@ const getBackgroundColorToken = ({
   const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
   const tokens = backgroundColor(property);
 
-  if (color === 'white') {
-    return tokens.white[variant][_state];
-  }
-
   if (color && color !== 'primary') {
-    if (variant === 'tertiary') {
-      throw new Error(
-        `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
-      );
-    }
-    return tokens.color(color)[variant][_state];
+    // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
+    return tokens.color(color)[variant]?.[_state]!;
   }
 
   return tokens.base[variant][_state];
@@ -161,17 +153,9 @@ const getTextColorToken = ({
   const tokens = textColor(property);
   const _state = state === 'focus' || state === 'hover' ? 'highlighted' : state;
 
-  if (color === 'white') {
-    return tokens.white[variant][_state];
-  }
-
   if (color && color !== 'primary') {
-    if (variant === 'tertiary') {
-      throw new Error(
-        `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
-      );
-    }
-    return tokens.color(color)[variant][_state];
+    // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
+    return tokens.color(color)[variant]?.[_state]!;
   }
 
   return tokens.base[variant][_state];
@@ -223,10 +207,10 @@ const getProps = ({
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
 }): BaseButtonStyleProps => {
-  if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
+  if (variant === 'tertiary' && color !== 'neutral' && color !== 'white') {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
+      message: `Tertiary variant can only be used with color: "neutral" or "white" but received "${color}"`,
     });
   }
 
@@ -336,7 +320,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     target,
     rel,
     variant = 'primary',
-    color = 'primary',
+    color,
     size = 'medium',
     icon: Icon,
     iconPosition = 'left',
@@ -366,6 +350,25 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const childrenString = getStringFromReactText(children);
   // Button cannot be disabled when its rendered as Link
   const disabled = isLoading || (isDisabled && !isLink);
+
+  if (!color) {
+    if (variant === 'tertiary') {
+      color = 'neutral';
+    } else {
+      color = 'primary';
+    }
+  }
+
+  if (__DEV__) {
+    if (variant === 'tertiary') {
+      if (color !== 'neutral' && color !== 'white') {
+        throwBladeError({
+          moduleName: 'BaseButton',
+          message: `Color "neutral" can only be used with variant "tertiary" or "white" but received "${variant}"`,
+        });
+      }
+    }
+  }
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {

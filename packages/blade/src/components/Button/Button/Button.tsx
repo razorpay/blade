@@ -28,7 +28,7 @@ type ButtonCommonProps = {
    */
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'primary' | 'white' | 'positive' | 'negative';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'neutral';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
@@ -69,6 +69,11 @@ type ButtonWithIconProps = ButtonCommonProps & {
 
 export type ButtonProps = ButtonWithoutIconProps | ButtonWithIconProps;
 
+// variant=primary | color=primary
+// variant=secondary | color=primary
+// variant=tertiary | color=primary|positive|negative -- invalid
+// variant=tertiary | color=neutral|white -- valid
+
 const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
   // While adding any prop here, make sure to handle it in DropdownButton as well
   {
@@ -85,7 +90,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     size = 'medium',
     type = 'button',
     variant = 'primary',
-    color = 'primary',
+    color,
     accessibilityLabel,
     testID,
     onBlur,
