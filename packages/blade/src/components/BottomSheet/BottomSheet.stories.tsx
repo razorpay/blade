@@ -379,6 +379,8 @@ WithHeaderFooter.args = {
   showBackButton: false,
 };
 
+// TODO: Rebranding - Uncomment when ActionList is fixed
+
 // const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
 //   return (
 //     <Dropdown selectionType="single">
