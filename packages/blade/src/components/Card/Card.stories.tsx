@@ -1,7 +1,8 @@
 import type { ComponentStory, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
-import type { CardFooterAction } from './';
+import type { CardSpacingValueType } from './types';
+import type { CardFooterAction, CardProps } from './';
 import {
   CardBody,
   Card,
@@ -22,16 +23,14 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
-import { UsersIcon, TrashIcon } from '~components/Icons';
+import { UsersIcon, TrashIcon, CheckCircleIcon } from '~components/Icons';
 
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { TextInput } from '~components/Input/TextInput';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import type { Elevation } from '~tokens/global';
-import type { SurfaceLevels } from '~tokens/theme/theme';
 import { Box } from '~components/Box';
 
 const Page = (): React.ReactElement => {
@@ -112,46 +111,66 @@ const Page = (): React.ReactElement => {
 
 const propsCategory = {
   CARD: 'Card Props',
+  CARD_HEADER: 'Header Props',
   CARD_HEADER_LEADING: 'Header Leading Props',
   CARD_HEADER_TRAILING: 'Header Trailing Props',
+  CARD_FOOTER: 'Footer Props',
   CARD_FOOTER_LEADING: 'Footer Leading Props',
   CARD_FOOTER_TRAILING: 'Footer Trailing Props',
 };
 
 type StoryControlProps = {
-  surfaceLevel: Exclude<SurfaceLevels, 1>;
+  backgroundColor: CardProps['backgroundColor'];
+  borderRadius: CardProps['borderRadius'];
   elevation: keyof Elevation;
-  padding: Extract<SpacingValueType, 'spacing.0' | 'spacing.3' | 'spacing.5' | 'spacing.7'>;
+  padding: CardSpacingValueType;
   headerTitle: string;
   headerSubtitle: string;
+  headerMarginBottom: CardSpacingValueType;
+  headerPaddingBottom: CardSpacingValueType;
   prefix: IconComponent;
   suffix: number;
   visual: React.ReactNode;
   body: React.ReactNode;
   footerTitle: string;
   footerSubtitle: string;
+  footerMarginTop: CardSpacingValueType;
+  footerPaddingTop: CardSpacingValueType;
   footerPrimaryAction: CardFooterAction;
   footerSecondaryAction: CardFooterAction;
 };
+
+const spacingValueOptions: CardSpacingValueType[] = [
+  'spacing.0',
+  'spacing.3',
+  'spacing.4',
+  'spacing.5',
+  'spacing.7',
+];
 
 const visual = {
   Link: <CardHeaderLink href="/">Learn more</CardHeaderLink>,
   Text: <CardHeaderText>$100</CardHeaderText>,
   IconButton: <CardHeaderIconButton icon={TrashIcon} />,
-  Badge: <CardHeaderBadge variant="positive">NEW</CardHeaderBadge>,
+  Badge: <CardHeaderBadge color="positive">NEW</CardHeaderBadge>,
 };
 
 export default {
   title: 'Components/Card',
   component: Card,
   args: {
-    surfaceLevel: 2,
+    backgroundColor: 'surface.background.gray.intense',
+    borderRadius: 'medium',
     elevation: 'lowRaised',
     padding: 'spacing.7',
     headerTitle: 'Payment Links',
     headerSubtitle: 'Share payment link via an email, SMS, messenger, chatbot etc.',
+    headerPaddingBottom: 'spacing.4',
+    headerMarginBottom: 'spacing.4',
     footerTitle: 'Built for Developers',
     footerSubtitle: 'By Developers.',
+    footerMarginTop: 'spacing.4',
+    footerPaddingTop: 'spacing.4',
     body:
       'Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.',
     footerPrimaryAction: {
@@ -180,7 +199,10 @@ export default {
     },
   },
   argTypes: {
-    surfaceLevel: {
+    backgroundColor: {
+      table: { category: propsCategory.CARD },
+    },
+    borderRadius: {
       table: { category: propsCategory.CARD },
     },
     elevation: {
@@ -194,6 +216,20 @@ export default {
     },
     headerSubtitle: {
       table: { category: propsCategory.CARD_HEADER_LEADING },
+    },
+    headerMarginBottom: {
+      table: { category: propsCategory.CARD_HEADER },
+      control: {
+        type: 'radio',
+        options: spacingValueOptions,
+      },
+    },
+    headerPaddingBottom: {
+      table: { category: propsCategory.CARD_HEADER },
+      control: {
+        type: 'radio',
+        options: spacingValueOptions,
+      },
     },
     prefix: {
       control: {
@@ -230,6 +266,20 @@ export default {
     footerSubtitle: {
       table: { category: propsCategory.CARD_FOOTER_LEADING },
     },
+    footerMarginTop: {
+      table: { category: propsCategory.CARD_FOOTER },
+      control: {
+        type: 'radio',
+        options: spacingValueOptions,
+      },
+    },
+    footerPaddingTop: {
+      table: { category: propsCategory.CARD_FOOTER },
+      control: {
+        type: 'radio',
+        options: spacingValueOptions,
+      },
+    },
     footerPrimaryAction: {
       table: { category: propsCategory.CARD_FOOTER_TRAILING },
     },
@@ -247,8 +297,13 @@ export default {
 
 const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
-    <Card surfaceLevel={args.surfaceLevel} elevation={args.elevation} padding={args.padding}>
-      <CardHeader>
+    <Card
+      borderRadius={args.borderRadius}
+      backgroundColor={args.backgroundColor}
+      elevation={args.elevation}
+      padding={args.padding}
+    >
+      <CardHeader paddingBottom={args.headerPaddingBottom} marginBottom={args.headerMarginBottom}>
         <CardHeaderLeading
           title={args.headerTitle}
           subtitle={args.headerSubtitle}
@@ -260,7 +315,7 @@ const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
       <CardBody>
         <Text>{args.body}</Text>
       </CardBody>
-      <CardFooter>
+      <CardFooter paddingTop={args.footerPaddingTop} marginTop={args.footerMarginTop}>
         <CardFooterLeading title={args.footerTitle} subtitle={args.footerSubtitle} />
         <CardFooterTrailing
           actions={{
@@ -274,10 +329,19 @@ const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
 };
 
 export const CardExample = CardTemplate.bind({});
+export const FigmaExample = CardTemplate.bind({});
+// @ts-expect-error: storybook thinks it does exist but it does
+FigmaExample.args = {
+  headerTitle: 'Header Title',
+  headerSubtitle: 'Header Subtitle',
+  prefix: CheckCircleIcon,
+  footerTitle: 'Footer Title',
+  footerSubtitle: 'Footer Subtitle',
+};
 
 const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement => {
   return (
-    <Card surfaceLevel={args.surfaceLevel}>
+    <Card backgroundColor={args.backgroundColor}>
       <CardHeader>
         <CardHeaderLeading
           title="Profile Information"

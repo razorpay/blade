@@ -3,6 +3,7 @@ export * from './BladeProvider';
 export * from './Box';
 export * from './Button';
 export * from './Button/IconButton';
+export * from './Card';
 export * from './Counter';
 export * from './Divider';
 export * from './Icons';
