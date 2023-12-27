@@ -129,7 +129,7 @@ const Page = (): React.ReactElement => {
 
 const propsCategory = { HEADER: 'Header Props' };
 const headerTrailingMap = {
-  Badge: <Badge variant="positive">Action Needed</Badge>,
+  Badge: <Badge color="positive">Action Needed</Badge>,
   Text: <Text>$12,000</Text>,
   Link: <Link href="#">Link</Link>,
   IconButton: <Button icon={InfoIcon} accessibilityLabel="Trailing icon" />,
@@ -137,7 +137,7 @@ const headerTrailingMap = {
 
 const headerTitleSuffixMap = {
   None: undefined,
-  Counter: <Counter value={12} intent="positive" />,
+  Counter: <Counter value={12} color="positive" />,
 };
 
 type StoryControlProps = BottomSheetProps & BottomSheetHeaderProps;
@@ -785,12 +785,10 @@ const HeadingBanner = (): React.ReactElement => {
           left="spacing.0"
           width="100%"
           height="100%"
-          backgroundColor="surface.background.level1.highContrast"
+          backgroundColor="surface.background.cloud.subtle"
         />
         <Box position="absolute" bottom="spacing.4" left="spacing.5">
-          <Heading color="surface.text.normal.highContrast">
-            All-in-one Escrow management platform
-          </Heading>
+          <Heading color="surface.text.gray.normal">All-in-one Escrow management platform</Heading>
         </Box>
       </Box>
     );
