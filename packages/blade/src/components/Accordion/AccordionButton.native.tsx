@@ -78,7 +78,7 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
     const _icon = Icon && (
       <Icon
         size="medium"
-        color="surface.icon.gray.subtle"
+        color="surface.icon.gray.muted"
         marginRight="spacing.3"
         marginY="spacing.2"
       />

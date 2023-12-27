@@ -115,7 +115,7 @@ const AccordionItem = ({
           {collapsibleBodyContent}
         </CollapsibleBody>
       </Collapsible>
-      <Divider variant="muted" />
+      <Divider />
     </BaseBox>
   );
 };
