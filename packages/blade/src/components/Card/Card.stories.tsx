@@ -33,7 +33,6 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import type { Elevation } from '~tokens/global';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 import { Box } from '~components/Box';
-import { Divider } from '~components/Divider';
 
 const Page = (): React.ReactElement => {
   return (

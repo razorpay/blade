@@ -45,7 +45,7 @@ const TabIndicator = ({
         variant === 'filled'
           ? // on filled variant the indicator is positioned on top of the tab item
             // so no need to add offsetHeight
-            activeTabItem.offsetTop - 1
+            activeTabItem.offsetTop
           : activeTabItem.offsetTop + activeTabItem.offsetHeight - 1.5,
     });
   }, [baseId, selectedValue, tabListContainerRef, variant]);
