@@ -265,7 +265,7 @@ const _BaseHeader = ({
         </BaseBox>
         {children}
       </BaseBox>
-      {showDivider ? <Divider variant="muted" /> : null}
+      {showDivider ? <Divider /> : null}
     </BaseBox>
   );
 };

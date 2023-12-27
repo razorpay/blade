@@ -19,7 +19,7 @@ const _BaseFooter = ({
 }: BaseFooterProps): React.ReactElement => {
   return (
     <>
-      {showDivider && <Divider variant="muted" />}
+      {showDivider && <Divider />}
       <BaseBox
         {...metaAttribute({ name: metaComponentName, testID })}
         padding={{ base: 'spacing.5', m: 'spacing.6' }}

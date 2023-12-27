@@ -132,7 +132,6 @@ const Modal = ({
     }
     return null;
   });
-  // return <div>Hello</div>;
 
   return (
     <FloatingPortal>
