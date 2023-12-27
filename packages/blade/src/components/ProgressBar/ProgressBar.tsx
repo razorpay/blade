@@ -23,9 +23,9 @@ type ProgressBarCommonProps = {
    */
   accessibilityLabel?: string;
   /**
-   * Sets the intent of the progress bar which changes the feedback color.
+   * Sets the color of the progress bar which changes the feedback color.
    */
-  intent?: FeedbackColors;
+  color?: FeedbackColors;
   /**
    * Sets the label to be rendered for the progress bar. This value will also be used as default for `accessibilityLabel`.
    */
@@ -100,7 +100,7 @@ const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 |
 
 const ProgressBar = ({
   accessibilityLabel,
-  intent,
+  color,
   isIndeterminate = false,
   label,
   showPercentage = true,
@@ -125,8 +125,8 @@ const ProgressBar = ({
   }
 
   const unfilledBackgroundColor = theme.colors.feedback.background.neutral.subtle;
-  const filledBackgroundColor = intent
-    ? theme.colors.feedback.background[intent].intense
+  const filledBackgroundColor = color
+    ? theme.colors.feedback.background[color].intense
     : theme.colors.surface.background.primary.intense;
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
