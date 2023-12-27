@@ -28,6 +28,7 @@ module.exports = {
     '../../src/components/List/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Link/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Tooltip/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Tabs/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/ProgressBar/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Spinner/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Typography/**/**/*.stories.@(ts|tsx|js|jsx)',
