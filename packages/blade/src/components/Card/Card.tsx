@@ -3,9 +3,8 @@ import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
 import { CardRoot } from './CardRoot';
-import type { LinkOverlayProps } from './types';
+import type { CardSpacingValueType, LinkOverlayProps } from './types';
 import { CARD_LINK_OVERLAY_ID } from './constants';
-import type { SpacingValueType } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -13,11 +12,12 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { Elevation } from '~tokens/global';
-import type { SurfaceLevels } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { isReactNative } from '~utils';
+import type { Theme } from '~components/BladeProvider';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 export const ComponentIds = {
   CardHeader: 'CardHeader',
@@ -30,10 +30,15 @@ export const ComponentIds = {
   CardHeaderIcon: 'CardHeaderIcon',
   CardHeaderCounter: 'CardHeaderCounter',
   CardHeaderBadge: 'CardHeaderBadge',
+  CardHeaderAmount: 'CardHeaderAmount',
   CardHeaderText: 'CardHeaderText',
   CardHeaderLink: 'CardHeaderLink',
   CardHeaderIconButton: 'CardHeaderIconButton',
 };
+
+type CardSurfaceBackgroundColors = `surface.background.gray.${DotNotationToken<
+  Theme['colors']['surface']['background']['gray']
+>}`;
 
 export type CardProps = {
   /**
@@ -41,21 +46,17 @@ export type CardProps = {
    */
   children: React.ReactNode;
   /**
-   * Sets the background color of the Card according to the surface level tokens
+   * Sets the background color of the Card
    *
-   * eg: `theme.colors.surface.background.level1`
-   *
-   * @default `2`
-   *
-   * **Description:**
-   *
-   * - 2: Used in layouts which are on top of the main background
-   * - 3: Used over the cards template or as a text input backgrounds.
-   *
-   * **Links:**
-   * - Docs: https://blade.razorpay.com/?path=/docs/tokens-colors--page#-theme-tokens
+   * @default `surface.background.gray.intense`
    */
-  surfaceLevel?: Exclude<SurfaceLevels, 1>;
+  backgroundColor?: CardSurfaceBackgroundColors;
+  /**
+   * Sets the border radius of the Card
+   *
+   * @default `medium`
+   */
+  borderRadius?: Extract<BoxProps['borderRadius'], 'medium' | 'large' | 'xlarge'>;
   /**
    * Sets the elevation for Cards
    *
@@ -74,7 +75,7 @@ export type CardProps = {
    * **Links:**
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
    */
-  padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.3' | 'spacing.5' | 'spacing.7'>;
+  padding?: CardSpacingValueType;
   /**
    * Sets the width of the card
    */
@@ -140,7 +141,8 @@ export type CardProps = {
 
 const Card = ({
   children,
-  surfaceLevel = 2,
+  backgroundColor = 'surface.background.gray.intense',
+  borderRadius = 'medium',
   elevation = 'lowRaised',
   testID,
   padding = 'spacing.7',
@@ -199,10 +201,10 @@ const Card = ({
         <CardSurface
           height={height}
           padding={padding}
-          borderRadius="medium"
-          surfaceLevel={surfaceLevel}
+          borderRadius={borderRadius}
           elevation={elevation}
           textAlign={'left' as never}
+          backgroundColor={backgroundColor}
         >
           {href ? (
             <LinkOverlay

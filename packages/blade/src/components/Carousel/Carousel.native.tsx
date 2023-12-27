@@ -15,6 +15,7 @@ import { useId } from '~utils/useId';
 import { logger } from '~utils/logger';
 import { size } from '~tokens/global';
 import { useDidUpdate } from '~utils/useDidUpdate';
+import { getResponsiveValue } from '~components/Box/BaseBox/getResponsiveValue';
 
 const percentageStringToNumber = (percentage: string): number => {
   if (!percentage.endsWith('%')) {
@@ -99,7 +100,9 @@ const Carousel = ({
   const id = useId();
 
   const _visibleItems = 1;
-  const slideWidth = scrollViewWidth * percentageStringToNumber(castNativeType(carouselItemWidth));
+  const slideWidth =
+    scrollViewWidth *
+    percentageStringToNumber(castNativeType(getResponsiveValue(carouselItemWidth)));
   const totalNumberOfSlides = React.Children.count(children);
 
   const goToSlideIndex = (slideIndex: number): void => {

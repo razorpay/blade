@@ -13,7 +13,7 @@ const _BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactEl
       width="100%"
       flexShrink={0}
       marginTop="auto"
-      backgroundColor={theme.colors.surface.background.level2.lowContrast}
+      backgroundColor={theme.colors.popup.background.subtle}
       touchAction="none"
       zIndex={2}
     >
