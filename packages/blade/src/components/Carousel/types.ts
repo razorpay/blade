@@ -1,14 +1,17 @@
 import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { Platform } from '~utils';
-import type { DotNotationColorStringToken } from '~utils/types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
-type ColorObjects = 'feedback' | 'surface' | 'action';
-type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationColorStringToken<
-  Theme['colors'][T]['background']
->}`;
-type BrandColorString = `brand.${DotNotationColorStringToken<Theme['colors']['brand']>}`;
-type OverlayColor = BackgroundColorString<'surface'> | BrandColorString;
+type InteractiveTokens = DotNotationToken<Theme['colors']['interactive']['background']>;
+type FeedbackTokens = DotNotationToken<Theme['colors']['feedback']['background']>;
+type SurfaceTokens = DotNotationToken<Theme['colors']['surface']['background']>;
+type OverlayTokens = DotNotationToken<Theme['colors']['overlay']>;
+type OverlayColor =
+  | `interactive.background.${InteractiveTokens}`
+  | `feedback.background.${FeedbackTokens}`
+  | `surface.background.${SurfaceTokens}`
+  | `overlay.${OverlayTokens}`;
 
 type CarouselProps = {
   /**
