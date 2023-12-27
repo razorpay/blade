@@ -35,9 +35,6 @@ exports[`<Accordion /> should render 1`] = `
 .c3.c3.c3.c3.c3:hover,
 .c3.c3.c3.c3.c3:focus-visible {
   background-color: hsla(211,20%,52%,0.12);
-}
-
-.c3.c3.c3.c3.c3:hover {
   color: hsla(211,26%,34%,1);
 }
 
@@ -45,7 +42,6 @@ exports[`<Accordion /> should render 1`] = `
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
   border-radius: 2px;
-  color: hsla(211,26%,34%,1);
 }
 
 .c0.c0.c0.c0.c0 {

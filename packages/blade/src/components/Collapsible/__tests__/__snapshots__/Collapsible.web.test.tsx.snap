@@ -135,6 +135,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   opacity: 1;
 }
 
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
 .c1.c1.c1.c1.c1:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
