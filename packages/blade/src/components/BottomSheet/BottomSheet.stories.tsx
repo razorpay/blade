@@ -13,36 +13,15 @@ import {
   BottomSheetHeader,
 } from './';
 
-import {
-  ArrowRightIcon,
-  CheckIcon,
-  ClockIcon,
-  CloseIcon,
-  CustomersIcon,
-  InfoIcon,
-  ThumbsUpIcon,
-  TrendingDownIcon,
-  TrendingUpIcon,
-} from '~components/Icons';
-import {
-  ActionList,
-  ActionListItem,
-  ActionListItemIcon,
-  ActionListSection,
-} from '~components/ActionList';
+import { InfoIcon } from '~components/Icons';
+
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
-import { Dropdown, DropdownButton } from '~components/Dropdown';
-import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
-import { TextInput } from '~components/Input/TextInput';
-import { Radio, RadioGroup } from '~components/Radio';
 import { List, ListItem } from '~components/List';
 import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
-import { Checkbox } from '~components/Checkbox';
-import { OTPInput } from '~components/Input/OTPInput';
 import { Link } from '~components/Link';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -589,283 +568,291 @@ WithHeaderFooter.args = {
 
 // export const WithDropdownSectionsSelect = WithDropdownSectionsTemplate.bind({});
 
-// const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-//   const [isFirstOpen, setFirstOpen] = React.useState(false);
-//   const [isSecondOpen, setSecondOpen] = React.useState(false);
-//   const [isThirdOpen, setThirdOpen] = React.useState(false);
+const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isFirstOpen, setFirstOpen] = React.useState(false);
+  const [isSecondOpen, setSecondOpen] = React.useState(false);
+  const [isThirdOpen, setThirdOpen] = React.useState(false);
 
-//   return (
-//     <BaseBox>
-//       <Box display="flex" gap="spacing.2" flexWrap="wrap">
-//         <Button onClick={() => setFirstOpen(true)}>Open 1st BottomSheet</Button>
-//         <Button onClick={() => setSecondOpen(true)}>Open 2nd BottomSheet</Button>
-//         <Button onClick={() => setThirdOpen(true)}>Open 3rd BottomSheet</Button>
-//       </Box>
+  return (
+    <BaseBox>
+      <Box display="flex" gap="spacing.2" flexWrap="wrap">
+        <Button onClick={() => setFirstOpen(true)}>Open 1st BottomSheet</Button>
+        <Button onClick={() => setSecondOpen(true)}>Open 2nd BottomSheet</Button>
+        <Button onClick={() => setThirdOpen(true)}>Open 3rd BottomSheet</Button>
+      </Box>
 
-//       <BottomSheetComponent
-//         isOpen={isFirstOpen}
-//         onDismiss={() => {
-//           setFirstOpen(false);
-//         }}
-//       >
-//         <BottomSheetHeader title="1. Saved Address" />
-//         <BottomSheetBody>
-//           <RadioGroup label="Addresses" marginBottom="spacing.4">
-//             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-//             <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-//           </RadioGroup>
-//         </BottomSheetBody>
-//         <BottomSheetFooter>
-//           <Button
-//             isFullWidth
-//             variant="secondary"
-//             onClick={() => setSecondOpen(true)}
-//             isDisabled={isSecondOpen}
-//           >
-//             Open 2nd BottomSheet
-//           </Button>
-//           <Button
-//             isFullWidth
-//             marginTop="spacing.5"
-//             onClick={() => setThirdOpen(true)}
-//             isDisabled={isThirdOpen}
-//           >
-//             Open third BottomSheet
-//           </Button>
-//         </BottomSheetFooter>
-//       </BottomSheetComponent>
+      <BottomSheetComponent
+        isOpen={isFirstOpen}
+        onDismiss={() => {
+          setFirstOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="1. Saved Address" />
+        <BottomSheetBody>
+          {/* <RadioGroup label="Addresses" marginBottom="spacing.4">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup> */}
+          <Text>Home - 11850 Florida 24, Cedar Key, Florida</Text>
+          <Text>Office - 2033 Florida 21, Cedar Key, Florida</Text>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="secondary"
+            onClick={() => setSecondOpen(true)}
+            isDisabled={isSecondOpen}
+          >
+            Open 2nd BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setThirdOpen(true)}
+            isDisabled={isThirdOpen}
+          >
+            Open third BottomSheet
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
 
-//       <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
-//         <BottomSheetHeader title="2. Sort By" />
-//         <BottomSheetBody>
-//           <ActionList>
-//             <ActionListItem title="Chinese" value="Chinese" />
-//             <ActionListItem title="Italian" value="Italian" />
-//             <ActionListItem title="Mexican" value="Mexican" />
-//             <ActionListItem title="Indian" value="Indian" />
-//             <ActionListItem title="Thai" value="Thai" />
-//             <ActionListItem title="French" value="French" />
-//             <ActionListItem title="Japanese" value="Japanese" />
-//             <ActionListItem title="Spanish" value="Spanish" />
-//             <ActionListItem title="Middle Eastern" value="Middle Eastern" />
-//             <ActionListItem title="Korean" value="Korean" />
-//             <ActionListItem title="Greek" value="Greek" />
-//             <ActionListItem title="Vietnamese" value="Vietnamese" />
-//             <ActionListItem title="Brazilian" value="Brazilian" />
-//             <ActionListItem title="Moroccan" value="Moroccan" />
-//             <ActionListItem title="Caribbean" value="Caribbean" />
-//             <ActionListItem title="Turkish" value="Turkish" />
-//             <ActionListItem title="Lebanese" value="Lebanese" />
-//             <ActionListItem title="Malaysian" value="Malaysian" />
-//             <ActionListItem title="Indonesian" value="Indonesian" />
-//             <ActionListItem title="Peruvian" value="Peruvian" />
-//             <ActionListItem title="Ethiopian" value="Ethiopian" />
-//             <ActionListItem title="Filipino" value="Filipino" />
-//             <ActionListItem title="Cuban" value="Cuban" />
-//             <ActionListItem title="German" value="German" />
-//             <ActionListItem title="Nigerian" value="Nigerian" />
-//           </ActionList>
-//         </BottomSheetBody>
-//         <BottomSheetFooter>
-//           <Button
-//             isFullWidth
-//             variant="secondary"
-//             onClick={() => setFirstOpen(true)}
-//             isDisabled={isFirstOpen}
-//           >
-//             Open 1st BottomSheet
-//           </Button>
-//           <Button
-//             isFullWidth
-//             marginTop="spacing.5"
-//             onClick={() => setThirdOpen(true)}
-//             isDisabled={isThirdOpen}
-//           >
-//             Open 3rd BottomSheet
-//           </Button>
-//         </BottomSheetFooter>
-//       </BottomSheetComponent>
+      <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
+        <BottomSheetHeader title="2. Sort By" />
+        <BottomSheetBody>
+          {/* <ActionList>
+            <ActionListItem title="Chinese" value="Chinese" />
+            <ActionListItem title="Italian" value="Italian" />
+            <ActionListItem title="Mexican" value="Mexican" />
+            <ActionListItem title="Indian" value="Indian" />
+            <ActionListItem title="Thai" value="Thai" />
+            <ActionListItem title="French" value="French" />
+            <ActionListItem title="Japanese" value="Japanese" />
+            <ActionListItem title="Spanish" value="Spanish" />
+            <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+            <ActionListItem title="Korean" value="Korean" />
+            <ActionListItem title="Greek" value="Greek" />
+            <ActionListItem title="Vietnamese" value="Vietnamese" />
+            <ActionListItem title="Brazilian" value="Brazilian" />
+            <ActionListItem title="Moroccan" value="Moroccan" />
+            <ActionListItem title="Caribbean" value="Caribbean" />
+            <ActionListItem title="Turkish" value="Turkish" />
+            <ActionListItem title="Lebanese" value="Lebanese" />
+            <ActionListItem title="Malaysian" value="Malaysian" />
+            <ActionListItem title="Indonesian" value="Indonesian" />
+            <ActionListItem title="Peruvian" value="Peruvian" />
+            <ActionListItem title="Ethiopian" value="Ethiopian" />
+            <ActionListItem title="Filipino" value="Filipino" />
+            <ActionListItem title="Cuban" value="Cuban" />
+            <ActionListItem title="German" value="German" />
+            <ActionListItem title="Nigerian" value="Nigerian" />
+          </ActionList> */}
+          <Text>Home - 11850 Florida 24, Cedar Key, Florida</Text>
+          <Text>Office - 2033 Florida 21, Cedar Key, Florida</Text>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="secondary"
+            onClick={() => setFirstOpen(true)}
+            isDisabled={isFirstOpen}
+          >
+            Open 1st BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setThirdOpen(true)}
+            isDisabled={isThirdOpen}
+          >
+            Open 3rd BottomSheet
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
 
-//       <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
-//         <BottomSheetHeader title="3. Sort By" />
-//         <BottomSheetBody>
-//           <ActionList>
-//             <ActionListSection title="Asia">
-//               <ActionListItem title="Chinese" value="Chinese" />
-//               <ActionListItem title="Indian" value="Indian" />
-//               <ActionListItem title="Thai" value="Thai" />
-//               <ActionListItem title="Japanese" value="Japanese" />
-//               <ActionListItem title="Korean" value="Korean" />
-//               <ActionListItem title="Vietnamese" value="Vietnamese" />
-//               <ActionListItem title="Malaysian" value="Malaysian" />
-//               <ActionListItem title="Indonesian" value="Indonesian" />
-//             </ActionListSection>
+      <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
+        <BottomSheetHeader title="3. Sort By" />
+        <BottomSheetBody>
+          {/* <ActionList>
+            <ActionListSection title="Asia">
+              <ActionListItem title="Chinese" value="Chinese" />
+              <ActionListItem title="Indian" value="Indian" />
+              <ActionListItem title="Thai" value="Thai" />
+              <ActionListItem title="Japanese" value="Japanese" />
+              <ActionListItem title="Korean" value="Korean" />
+              <ActionListItem title="Vietnamese" value="Vietnamese" />
+              <ActionListItem title="Malaysian" value="Malaysian" />
+              <ActionListItem title="Indonesian" value="Indonesian" />
+            </ActionListSection>
 
-//             <ActionListSection title="Europe">
-//               <ActionListItem title="Italian" value="Italian" />
-//               <ActionListItem title="French" value="French" />
-//               <ActionListItem title="Spanish" value="Spanish" />
-//               <ActionListItem title="Greek" value="Greek" />
-//               <ActionListItem title="German" value="German" />
-//             </ActionListSection>
+            <ActionListSection title="Europe">
+              <ActionListItem title="Italian" value="Italian" />
+              <ActionListItem title="French" value="French" />
+              <ActionListItem title="Spanish" value="Spanish" />
+              <ActionListItem title="Greek" value="Greek" />
+              <ActionListItem title="German" value="German" />
+            </ActionListSection>
 
-//             <ActionListSection title="North America">
-//               <ActionListItem title="Mexican" value="Mexican" />
-//               <ActionListItem title="Caribbean" value="Caribbean" />
-//             </ActionListSection>
+            <ActionListSection title="North America">
+              <ActionListItem title="Mexican" value="Mexican" />
+              <ActionListItem title="Caribbean" value="Caribbean" />
+            </ActionListSection>
 
-//             <ActionListSection title="South America">
-//               <ActionListItem title="Brazilian" value="Brazilian" />
-//               <ActionListItem title="Peruvian" value="Peruvian" />
-//             </ActionListSection>
+            <ActionListSection title="South America">
+              <ActionListItem title="Brazilian" value="Brazilian" />
+              <ActionListItem title="Peruvian" value="Peruvian" />
+            </ActionListSection>
 
-//             <ActionListSection title="Africa">
-//               <ActionListItem title="Middle Eastern" value="Middle Eastern" />
-//               <ActionListItem title="Moroccan" value="Moroccan" />
-//               <ActionListItem title="Ethiopian" value="Ethiopian" />
-//               <ActionListItem title="Nigerian" value="Nigerian" />
-//             </ActionListSection>
-//           </ActionList>
-//         </BottomSheetBody>
-//         <BottomSheetFooter>
-//           <Button
-//             isFullWidth
-//             variant="secondary"
-//             onClick={() => setFirstOpen(true)}
-//             isDisabled={isFirstOpen}
-//           >
-//             Open 1st BottomSheet
-//           </Button>
-//           <Button
-//             isFullWidth
-//             marginTop="spacing.5"
-//             onClick={() => setSecondOpen(true)}
-//             isDisabled={isSecondOpen}
-//           >
-//             Open 2nd BottomSheet
-//           </Button>
-//         </BottomSheetFooter>
-//       </BottomSheetComponent>
-//     </BaseBox>
-//   );
-// };
+            <ActionListSection title="Africa">
+              <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+              <ActionListItem title="Moroccan" value="Moroccan" />
+              <ActionListItem title="Ethiopian" value="Ethiopian" />
+              <ActionListItem title="Nigerian" value="Nigerian" />
+            </ActionListSection>
+          </ActionList> */}
+          <Text>Home - 11850 Florida 24, Cedar Key, Florida</Text>
+          <Text>Office - 2033 Florida 21, Cedar Key, Florida</Text>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="secondary"
+            onClick={() => setFirstOpen(true)}
+            isDisabled={isFirstOpen}
+          >
+            Open 1st BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setSecondOpen(true)}
+            isDisabled={isSecondOpen}
+          >
+            Open 2nd BottomSheet
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
 
-// export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
+export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
 
-// const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-//   const [isOpen, setIsOpen] = React.useState(false);
-//   const initialFocusRef = React.useRef<HTMLButtonElement>(null);
+const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const initialFocusRef = React.useRef<HTMLButtonElement>(null);
 
-//   return (
-//     <BaseBox>
-//       <Button onClick={() => setIsOpen(true)}>Add address</Button>
-//       <BottomSheetComponent
-//         isOpen={isOpen}
-//         onDismiss={() => {
-//           setIsOpen(false);
-//         }}
-//         initialFocusRef={initialFocusRef}
-//       >
-//         <BottomSheetHeader title="Users" />
-//         <BottomSheetBody>
-//           <TextInput label="Search Users" ref={initialFocusRef} />
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Add address</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        initialFocusRef={initialFocusRef}
+      >
+        <BottomSheetHeader title="Users" />
+        <BottomSheetBody>
+          {/* TODO: Rebranding - Uncomment when TextInput is fixed
+          <TextInput label="Search Users" ref={initialFocusRef} /> */}
+          <Button ref={initialFocusRef}>Search Users</Button>
 
-//           <Text marginTop="spacing.5">
-//             By default the initial focus is set to the close button, but you can modify it by
-//             passing the `initialFocusRef` prop
-//           </Text>
+          <Text marginTop="spacing.5">
+            By default the initial focus is set to the close button, but you can modify it by
+            passing the `initialFocusRef` prop
+          </Text>
 
-//           <List marginTop="spacing.5">
-//             <ListItem>Anurag Hazra</ListItem>
-//             <ListItem>Kamlesh Chandnani</ListItem>
-//             <ListItem>Divyanshu Maithani</ListItem>
-//           </List>
-//         </BottomSheetBody>
-//       </BottomSheetComponent>
-//     </BaseBox>
-//   );
-// };
+          <List marginTop="spacing.5">
+            <ListItem>Anurag Hazra</ListItem>
+            <ListItem>Kamlesh Chandnani</ListItem>
+            <ListItem>Divyanshu Maithani</ListItem>
+          </List>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
 
-// export const InitialFocus = InitialFocusTemplate.bind({});
+export const InitialFocus = InitialFocusTemplate.bind({});
 
-// const HeadingBanner = (): React.ReactElement => {
-//   if (isReactNative()) {
-//     return (
-//       <Box position="relative" height="250px" overflow="hidden">
-//         <Box
-//           position="absolute"
-//           top="spacing.0"
-//           left="spacing.0"
-//           width="100%"
-//           height="100%"
-//           backgroundColor="surface.background.level1.highContrast"
-//         />
-//         <Box position="absolute" bottom="spacing.4" left="spacing.5">
-//           <Heading color="surface.text.normal.highContrast">
-//             All-in-one Escrow management platform
-//           </Heading>
-//         </Box>
-//       </Box>
-//     );
-//   }
+const HeadingBanner = (): React.ReactElement => {
+  if (isReactNative()) {
+    return (
+      <Box position="relative" height="250px" overflow="hidden">
+        <Box
+          position="absolute"
+          top="spacing.0"
+          left="spacing.0"
+          width="100%"
+          height="100%"
+          backgroundColor="surface.background.level1.highContrast"
+        />
+        <Box position="absolute" bottom="spacing.4" left="spacing.5">
+          <Heading color="surface.text.normal.highContrast">
+            All-in-one Escrow management platform
+          </Heading>
+        </Box>
+      </Box>
+    );
+  }
 
-//   return (
-//     <Box position="relative" height="250px" overflow="hidden">
-//       <Box position="absolute" top="-150px" left="spacing.0">
-//         <video
-//           autoPlay
-//           style={{ objectFit: 'cover' }}
-//           width="100%"
-//           height="100%"
-//           src="https://cdn.razorpay.com/static/assets/razorpay.com/x/escrow-accounts/hero-illustration.mp4"
-//         />
-//       </Box>
-//       <Box position="absolute" bottom="spacing.4" left="spacing.5">
-//         <Heading color="surface.text.normal.highContrast">
-//           All-in-one Escrow management platform
-//         </Heading>
-//       </Box>
-//     </Box>
-//   );
-// };
+  return (
+    <Box position="relative" height="250px" overflow="hidden">
+      <Box position="absolute" top="-150px" left="spacing.0">
+        <video
+          autoPlay
+          style={{ objectFit: 'cover' }}
+          width="100%"
+          height="100%"
+          src="https://cdn.razorpay.com/static/assets/razorpay.com/x/escrow-accounts/hero-illustration.mp4"
+        />
+      </Box>
+      <Box position="absolute" bottom="spacing.4" left="spacing.5">
+        <Heading color="surface.text.staticWhite.normal">
+          All-in-one Escrow management platform
+        </Heading>
+      </Box>
+    </Box>
+  );
+};
 
-// const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
-//   const [isOpen, setIsOpen] = React.useState(false);
+const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
 
-//   return (
-//     <BaseBox>
-//       <Button onClick={() => setIsOpen(true)}>Open</Button>
-//       <BottomSheetComponent
-//         isOpen={isOpen}
-//         onDismiss={() => {
-//           setIsOpen(false);
-//         }}
-//       >
-//         <BottomSheetHeader />
-//         <BottomSheetBody padding="spacing.0">
-//           <Box display="flex" flexDirection="column">
-//             <HeadingBanner />
-//             <Box padding="spacing.5" display="flex" flexDirection="column">
-//               <Text>
-//                 We bring together Escrow account, Banks, Trusteeship services & Automation - all in
-//                 ONE place to deliver a seamless user experience for you. Work with our experts to
-//                 ensure your escrow money transfers are always compliant, safe & effortless.
-//               </Text>
-//               <Text marginTop="spacing.3" type="muted">
-//                 100% secure | Instant payouts | Unbeatable pricing
-//               </Text>
-//             </Box>
-//           </Box>
-//         </BottomSheetBody>
-//         <BottomSheetFooter>
-//           <Button isFullWidth>Talk To Our Escrow Experts</Button>
-//         </BottomSheetFooter>
-//       </BottomSheetComponent>
-//     </BaseBox>
-//   );
-// };
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+      >
+        <BottomSheetHeader />
+        <BottomSheetBody padding="spacing.0">
+          <Box display="flex" flexDirection="column">
+            <HeadingBanner />
+            <Box padding="spacing.5" display="flex" flexDirection="column">
+              <Text>
+                We bring together Escrow account, Banks, Trusteeship services & Automation - all in
+                ONE place to deliver a seamless user experience for you. Work with our experts to
+                ensure your escrow money transfers are always compliant, safe & effortless.
+              </Text>
+              <Text marginTop="spacing.3" color="surface.text.gray.muted">
+                100% secure | Instant payouts | Unbeatable pricing
+              </Text>
+            </Box>
+          </Box>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button isFullWidth>Talk To Our Escrow Experts</Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
 
-// export const ZeroPadding = ZeroPaddingTemplate.bind({});
+export const ZeroPadding = ZeroPaddingTemplate.bind({});
 
 // const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
 //   const fruites = [
