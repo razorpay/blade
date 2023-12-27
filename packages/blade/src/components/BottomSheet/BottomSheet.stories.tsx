@@ -358,7 +358,7 @@ const WithHeaderFooterTemplate: ComponentStory<any> = (args: StoryControlProps) 
           <Text>Work - 5938 New York, Main Street</Text>
         </BottomSheetBody>
         <BottomSheetFooter>
-          <Button isFullWidth variant="secondary">
+          <Button isFullWidth variant="tertiary">
             Remove address
           </Button>
           <Button isFullWidth marginTop="spacing.5">
@@ -599,7 +599,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
         <BottomSheetFooter>
           <Button
             isFullWidth
-            variant="secondary"
+            variant="tertiary"
             onClick={() => setSecondOpen(true)}
             isDisabled={isSecondOpen}
           >
@@ -652,7 +652,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
         <BottomSheetFooter>
           <Button
             isFullWidth
-            variant="secondary"
+            variant="tertiary"
             onClick={() => setFirstOpen(true)}
             isDisabled={isFirstOpen}
           >
@@ -715,7 +715,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
         <BottomSheetFooter>
           <Button
             isFullWidth
-            variant="secondary"
+            variant="tertiary"
             onClick={() => setFirstOpen(true)}
             isDisabled={isFirstOpen}
           >
@@ -1027,7 +1027,7 @@ export const ZeroPadding = ZeroPaddingTemplate.bind({});
 //         </BottomSheetBody>
 
 //         <BottomSheetFooter>
-//           <Button isFullWidth variant="secondary">
+//           <Button isFullWidth variant="tertiary">
 //             Cancel
 //           </Button>
 //           <Button isLoading={isLoading} onClick={submitOTP} isFullWidth marginTop="spacing.5">
@@ -1130,7 +1130,7 @@ export const ZeroPadding = ZeroPaddingTemplate.bind({});
 //                 // should be able to close the bottom sheet
 //                 onDismiss();
 //               }}
-//               variant="secondary"
+//               variant="tertiary"
 //               isFullWidth
 //             >
 //               Close
