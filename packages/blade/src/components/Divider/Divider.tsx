@@ -63,7 +63,7 @@ const StyledDivider = styled(BaseBox)<{
 const Divider = ({
   orientation = 'horizontal',
   dividerStyle = 'solid',
-  variant = 'normal',
+  variant = 'muted',
   thickness = 'thin',
   height,
   width,

@@ -20,6 +20,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
+// @TODO: Add CardHeaderAmount component to Card once this is migrated
 type AmountProps = {
   /**
    * The value to be rendered within the component.
