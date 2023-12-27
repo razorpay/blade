@@ -277,17 +277,17 @@ it('should correctly convert Title to Heading component', async () => {
 
   expect(consoleSpy).toHaveBeenNthCalledWith(
     1,
-    transformer.red('\nExpression found in the "size" attribute, please update manually:'),
+    transformer.red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
     transformer.red(`${path.resolve(__dirname, __filename)}:11:10\n`),
   );
   expect(consoleSpy).toHaveBeenNthCalledWith(
     2,
-    transformer.red('\nExpression found in the "size" attribute, please update manually:'),
+    transformer.red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
     transformer.red(`${path.resolve(__dirname, __filename)}:18:10\n`),
   );
   expect(consoleSpy).toHaveBeenNthCalledWith(
     3,
-    transformer.red('\nExpression found in the "size" attribute, please update manually:'),
+    transformer.red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
     transformer.red(`${path.resolve(__dirname, __filename)}:18:84\n`),
   );
 

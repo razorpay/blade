@@ -194,7 +194,9 @@ const transformer: Transform = (file, api, options) => {
 
         if (isExpression(sizeAttribute) || isExpression(variantAttribute)) {
           console.warn(
-            red('\nExpression found in the "size"/"variant" attribute, please update manually:'),
+            red(
+              '\n⛔️ Expression found in the "size"/"variant" attribute, please update manually:',
+            ),
             red(`${file.path}:${sizeAttribute.loc.start.line}:${node.loc.start.column}\n`),
           );
           return node;
@@ -274,7 +276,7 @@ const transformer: Transform = (file, api, options) => {
 
         if (isExpression(sizeAttribute)) {
           console.warn(
-            red('\nExpression found in the "size" attribute, please update manually:'),
+            red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
             red(`${file.path}:${sizeAttribute.loc.start.line}:${node.loc.start.column}\n`),
           );
           return node;
@@ -423,6 +425,8 @@ const transformer: Transform = (file, api, options) => {
       .find(j.JSXAttribute) // Find all Heading props
       .filter(
         (path, index, self) =>
+          // Only Typography components
+          ['Text', 'Title', 'Display', 'Heading'].includes(path.parent.value.name.name) &&
           path.node.name.name === 'contrast' &&
           path.node.value.value === 'high' &&
           index === self.findIndex((obj) => path.node.start === obj.node.start),
@@ -488,7 +492,10 @@ const transformer: Transform = (file, api, options) => {
             high: 'subtle',
           },
         };
-
+        // console.log(
+        //   '🚀 ~ file: index.ts:493 ~ .replaceWith ~ path.node.value.value:',
+        //   path.node.value.value,
+        // );
         path.node.value.value =
           contrastToEmphasisMap[path.parent.value.name.name.toLowerCase()][[path.node.value.value]];
 

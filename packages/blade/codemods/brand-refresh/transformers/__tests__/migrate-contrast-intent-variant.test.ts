@@ -10,6 +10,8 @@ it('should migrate contrast prop to emphasis', async () => {
         <Badge contrast="low">Hello</Badge> 
         <Badge contrast="high">Hello</Badge> 
 
+        <Text> Lorem Ipsum <Badge contrast="high">Hello</Badge> </Text>
+
         <Counter contrast="low">Hello</Counter> 
         <Counter contrast="high">Hello</Counter>
 
@@ -27,6 +29,8 @@ it('should migrate contrast prop to emphasis', async () => {
             <>
             <Badge emphesis="subtle">Hello</Badge> 
             <Badge emphesis="intense">Hello</Badge> 
+
+            <Text> Lorem Ipsum <Badge emphesis="intense">Hello</Badge> </Text>
 
             <Counter emphesis="subtle">Hello</Counter> 
             <Counter emphesis="intense">Hello</Counter>
