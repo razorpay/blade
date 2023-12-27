@@ -66,6 +66,8 @@ it('should remove the "type" prop and change weight="bold" to weight="semibold"'
                 <Display type="subtle" weight="bold"> Lorem ipsum </Display>
                 // weight="bold" should not be changed
                 <Code weight="bold"> Lorem ipsum </Code>
+
+                <Text type="subtle" weight="bold" color="brand.primary.500"> Lorem ipsum </Text>
             </>
           );
         `,
@@ -81,6 +83,8 @@ it('should remove the "type" prop and change weight="bold" to weight="semibold"'
                     <Display weight="semibold" color="surface.text.gray.subtle"> Lorem ipsum </Display>
                     // weight="bold" should not be changed
                     <Code weight="bold"> Lorem ipsum </Code>
+
+                    <Text weight="semibold" color="surface.text.primary.intense"> Lorem ipsum </Text>
                 </>
               );"
   `);
@@ -273,18 +277,18 @@ it('should correctly convert Title to Heading component', async () => {
 
   expect(consoleSpy).toHaveBeenNthCalledWith(
     1,
-    transformer.red('Expression found in size attribute, please update manually:'),
-    transformer.red(`${path.resolve(__dirname, __filename)}:11:10`),
+    transformer.red('\nExpression found in the "size" attribute, please update manually:'),
+    transformer.red(`${path.resolve(__dirname, __filename)}:11:10\n`),
   );
   expect(consoleSpy).toHaveBeenNthCalledWith(
     2,
-    transformer.red('Expression found in size attribute, please update manually:'),
-    transformer.red(`${path.resolve(__dirname, __filename)}:18:10`),
+    transformer.red('\nExpression found in the "size" attribute, please update manually:'),
+    transformer.red(`${path.resolve(__dirname, __filename)}:18:10\n`),
   );
   expect(consoleSpy).toHaveBeenNthCalledWith(
     3,
-    transformer.red('Expression found in size attribute, please update manually:'),
-    transformer.red(`${path.resolve(__dirname, __filename)}:18:84`),
+    transformer.red('\nExpression found in the "size" attribute, please update manually:'),
+    transformer.red(`${path.resolve(__dirname, __filename)}:18:84\n`),
   );
 
   expect(result).toMatchInlineSnapshot(`

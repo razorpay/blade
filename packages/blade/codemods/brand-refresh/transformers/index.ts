@@ -94,66 +94,78 @@ const transformer: Transform = (file, api, options) => {
   const root = j.withParser('tsx')(newSource);
 
   // Update the themeTokens prop in BladeProvider
-  root
-    .find(j.JSXElement)
-    .filter((path) => path.value.openingElement.name.name === 'BladeProvider')
-    .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name === 'themeTokens')
-    .replaceWith((path) => {
-      path.node.value.expression.name = 'bladeTheme';
+  try {
+    root
+      .find(j.JSXElement)
+      .filter((path) => path.value.openingElement.name.name === 'BladeProvider')
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name === 'themeTokens')
+      .replaceWith((path) => {
+        path.node.value.expression.name = 'bladeTheme';
 
-      return path.node;
-    });
+        return path.node;
+      });
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the themeTokens prop in BladeProvider.`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Update color token value based on the context
-  root
-    .find(j.JSXElement)
-    .filter(
-      (path) =>
-        ['Text', 'Title', 'Code', 'Display', 'Heading', 'Box'].includes(
-          path.value.openingElement.name.name,
-        ) || path.value.openingElement.name.name.includes('Icon'),
-    )
-    // Find all color props
-    .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name.toLowerCase().includes('color'))
-    .replaceWith((path) => {
-      const { node, parent } = path;
+  try {
+    root
+      .find(j.JSXElement)
+      .filter((path) =>
+        /(Text|Title|Code|Display|Heading|Box|Icon)/i.test(path.value.openingElement.name.name),
+      )
+      // Find all color props
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name.toLowerCase().includes('color'))
+      .replaceWith((path) => {
+        const { node, parent } = path;
 
-      if (isExpression(node)) {
-        console.warn(
-          red('Expression found in size attribute, please update manually:'),
-          red(`${file.path}:${node.loc.start.line}:${node.loc.start.column}`),
-        );
+        // If the color prop is an expression, don't bother updating it contextually
+        if (isExpression(node)) {
+          return node;
+        }
+
+        const isBoxComponent = parent.value.name.name === 'Box';
+        const isIconComponent = parent.value.name.name?.includes('Icon');
+        const isBorderColorProp = node.name.name.includes('border');
+        const isColorProp = node.name.name === 'color';
+
+        if (isBoxComponent && isBorderColorProp) {
+          node.value.value = node.value.value.replace('background', 'border');
+        } else if (
+          isIconComponent &&
+          isColorProp &&
+          /surface.(background|text).(gray|staticWhite|positive|negative|notice|information|neutral|primary|staticBlack)/i.test(
+            node.value.value,
+          )
+        ) {
+          node.value.value = node.value.value.replace(
+            /surface.(background|text)/i,
+            'interactive.icon',
+          );
+
+          // Typography components
+        } else if (!isBoxComponent && !isIconComponent && isColorProp) {
+          node.value.value = node.value.value.replace('background', 'text');
+        }
+
         return node;
-      }
-
-      const isBoxComponent = parent.value.name.name === 'Box';
-      const isIconComponent = parent.value.name.name.includes('Icon');
-      const isBorderColorProp = node.name.name.includes('border');
-      const isColorProp = node.name.name === 'color';
-
-      if (isBoxComponent && isBorderColorProp) {
-        node.value.value = node.value.value.replace('background', 'border');
-      } else if (
-        isIconComponent &&
-        isColorProp &&
-        /surface.(background|text).(gray|staticWhite|positive|negative|notice|information|neutral|primary|staticBlack)/i.test(
-          node.value.value,
-        )
-      ) {
-        node.value.value = node.value.value.replace(
-          /surface.(background|text)/i,
-          'interactive.icon',
-        );
-
-        // Typography components
-      } else if (!isBoxComponent && !isIconComponent && isColorProp) {
-        node.value.value = node.value.value.replace('background', 'text');
-      }
-
-      return node;
-    });
+      });
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the color token value based on the context.`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Select Typography elements based on their names
   const typographyJSXElements = root
@@ -165,341 +177,429 @@ const transformer: Transform = (file, api, options) => {
   // Update <Heading size="large|medium"> to <Heading size="medium|small">,
   // <Heading size="small">, <Heading variant="regular"> to <Text size="large">, and
   // <Heading variant="subheading"> to <Text size="small">
-  typographyJSXElements
-    .filter((path) => path.value.openingElement.name.name === 'Heading')
-    // replace with Heading
-    .replaceWith((path) => {
-      const { node } = path;
+  try {
+    typographyJSXElements
+      .filter((path) => path.value.openingElement.name.name === 'Heading')
+      // replace with Heading
+      .replaceWith((path) => {
+        const { node } = path;
 
-      const sizeAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'size',
-      );
-
-      const variantAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'variant',
-      );
-
-      const otherAttributes = node.openingElement.attributes.filter(
-        (attribute) => attribute.name.name !== 'variant' && attribute.name.name !== 'size',
-      );
-
-      const headingSizeMap = {
-        large: 'medium',
-        medium: 'small',
-        small: 'large',
-      };
-
-      // If size is small or variant is subheading, replace with Text
-      if (
-        !sizeAttribute ||
-        (sizeAttribute && sizeAttribute.value.value === 'small') ||
-        (variantAttribute && variantAttribute.value.value === 'subheading')
-      ) {
-        node.openingElement.name.name = 'Text';
-        node.closingElement.name.name = 'Text';
-      }
-
-      if (
-        !sizeAttribute &&
-        (!variantAttribute || (variantAttribute && variantAttribute.value.value === 'regular'))
-      ) {
-        otherAttributes.push(j.jsxAttribute(j.jsxIdentifier('size'), j.literal('large')));
-      } else if (sizeAttribute) {
-        otherAttributes.push(
-          j.jsxAttribute(
-            j.jsxIdentifier('size'),
-            j.literal(headingSizeMap[sizeAttribute.value.value]),
-          ),
+        const sizeAttribute = node.openingElement.attributes.find(
+          (attribute) => attribute.name?.name === 'size',
         );
-      } else if (variantAttribute && variantAttribute.value.value === 'subheading') {
-        otherAttributes.push(j.jsxAttribute(j.jsxIdentifier('size'), j.literal('small')));
-      }
 
-      node.openingElement.attributes = otherAttributes;
+        const variantAttribute = node.openingElement.attributes.find(
+          (attribute) => attribute.name?.name === 'variant',
+        );
 
-      return node;
-    })
-    .find(j.JSXAttribute)
-    .filter(
-      (path, index, self) =>
-        path.node.name.name === 'variant' &&
-        index === self.findIndex((obj) => path.node.start === obj.node.start),
-    ) // Filter by name `variant` and remove any duplicates
-    .remove();
+        if (isExpression(sizeAttribute) || isExpression(variantAttribute)) {
+          console.warn(
+            red('\nExpression found in the "size"/"variant" attribute, please update manually:'),
+            red(`${file.path}:${sizeAttribute.loc.start.line}:${node.loc.start.column}\n`),
+          );
+          return node;
+        }
+
+        const otherAttributes = node.openingElement.attributes.filter(
+          (attribute) => attribute.name?.name !== 'variant' && attribute.name?.name !== 'size',
+        );
+
+        const headingSizeMap = {
+          large: 'medium',
+          medium: 'small',
+          small: 'large',
+        };
+
+        // If size is small or variant is subheading, replace with Text
+        if (
+          !sizeAttribute ||
+          (sizeAttribute && sizeAttribute.value.value === 'small') ||
+          (variantAttribute && variantAttribute.value.value === 'subheading')
+        ) {
+          node.openingElement.name.name = 'Text';
+          node.closingElement.name.name = 'Text';
+        }
+
+        if (
+          !sizeAttribute &&
+          (!variantAttribute || (variantAttribute && variantAttribute.value.value === 'regular'))
+        ) {
+          otherAttributes.push(j.jsxAttribute(j.jsxIdentifier('size'), j.literal('large')));
+        } else if (sizeAttribute) {
+          otherAttributes.push(
+            j.jsxAttribute(
+              j.jsxIdentifier('size'),
+              j.literal(headingSizeMap[sizeAttribute.value.value]),
+            ),
+          );
+        } else if (variantAttribute && variantAttribute.value.value === 'subheading') {
+          otherAttributes.push(j.jsxAttribute(j.jsxIdentifier('size'), j.literal('small')));
+        }
+
+        node.openingElement.attributes = otherAttributes;
+
+        return node;
+      })
+      .find(j.JSXAttribute)
+      .filter(
+        (path, index, self) =>
+          path.node.name.name === 'variant' &&
+          index === self.findIndex((obj) => path.node.start === obj.node.start),
+      ) // Filter by name `variant` and remove any duplicates
+      .remove();
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the Heading size and variant props.`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Replace Title with Heading and update the 'size' attribute
   // <Title size="medium"> to <Heading size="xlarge">
-  typographyJSXElements
-    .filter((path) => path.value.openingElement.name.name === 'Title')
-    // replace with Heading
-    .replaceWith((path) => {
-      const { node } = path;
+  try {
+    typographyJSXElements
+      .filter((path) => path.value.openingElement.name.name === 'Title')
+      // replace with Heading
+      .replaceWith((path) => {
+        const { node } = path;
 
-      node.openingElement.name.name = 'Heading';
-      node.closingElement.name.name = 'Heading';
+        node.openingElement.name.name = 'Heading';
+        node.closingElement.name.name = 'Heading';
 
-      const sizeAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'size',
-      );
-
-      if (isExpression(sizeAttribute)) {
-        console.warn(
-          red('Expression found in size attribute, please update manually:'),
-          red(`${file.path}:${sizeAttribute.loc.start.line}:${node.loc.start.column}`),
-        );
-        return node;
-      }
-
-      if (!sizeAttribute) {
-        node.openingElement.attributes.push(
-          j.jsxAttribute(j.jsxIdentifier('size'), j.literal('large')),
+        const sizeAttribute = node.openingElement.attributes.find(
+          (attribute) => attribute.name?.name === 'size',
         );
 
+        if (isExpression(sizeAttribute)) {
+          console.warn(
+            red('\nExpression found in the "size" attribute, please update manually:'),
+            red(`${file.path}:${sizeAttribute.loc.start.line}:${node.loc.start.column}\n`),
+          );
+          return node;
+        }
+
+        if (!sizeAttribute) {
+          node.openingElement.attributes.push(
+            j.jsxAttribute(j.jsxIdentifier('size'), j.literal('large')),
+          );
+
+          return node;
+        }
+
+        const otherAttributes = node.openingElement.attributes.filter(
+          (attribute) => attribute.name?.name !== 'size',
+        );
+        otherAttributes.push(
+          j.jsxAttribute(
+            j.jsxIdentifier('size'),
+            j.literal(titleToHeadingMap[sizeAttribute.value.value] || 'large'),
+          ),
+        );
+
+        node.openingElement.attributes = otherAttributes;
+
         return node;
-      }
-
-      const otherAttributes = node.openingElement.attributes.filter(
-        (attribute) => attribute.name.name !== 'size',
-      );
-      otherAttributes.push(
-        j.jsxAttribute(
-          j.jsxIdentifier('size'),
-          j.literal(titleToHeadingMap[sizeAttribute.value.value] || 'large'),
-        ),
-      );
-
-      node.openingElement.attributes = otherAttributes;
-
-      return node;
-    });
+      });
+  } catch (error) {
+    console.error(
+      red(`⛔️ ${file.path}: Oops! Ran into an issue while migrating the Title component`),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Remove/Update the Title import from "@razorpay/blade/components"
-  root
-    .find(j.ImportDeclaration)
-    .filter(
-      (path) =>
-        path.value.source.value === '@razorpay/blade/components' ||
-        path.value.source.value === '@razorpay/blade/tokens',
-    )
-    .find(j.ImportSpecifier)
-    .filter((path) => ['Title', 'paymentTheme', 'bankingTheme'].includes(path.value.imported.name))
-    .replaceWith((path) => {
-      // Check if Heading import is already present
-      const isHeadingImportPresent = path.parent.value.specifiers.some(
-        (node) => node.imported.name === 'Heading',
-      );
-      const isThemeImportPresent =
-        path.value.imported.name === 'paymentTheme' || path.value.imported.name === 'bankingTheme';
-
-      if (isThemeImportPresent) {
-        path.value.imported.name = 'bladeTheme';
-      }
-      // If Heading import is not present, update the "Title" import to use "Heading"
-      else if (!isHeadingImportPresent) {
-        path.value.imported.name = 'Heading';
-      } else {
-        // If "Heading" import is present, remove the "Title" import
-        path.parent.value.specifiers = path.parent.value.specifiers.filter(
-          (node) => node.imported.name !== 'Title',
+  try {
+    root
+      .find(j.ImportDeclaration)
+      .filter(
+        (path) =>
+          path.value.source.value === '@razorpay/blade/components' ||
+          path.value.source.value === '@razorpay/blade/tokens',
+      )
+      .find(j.ImportSpecifier)
+      .filter((path) =>
+        ['Title', 'paymentTheme', 'bankingTheme'].includes(path.value.imported.name),
+      )
+      .replaceWith((path) => {
+        // Check if Heading import is already present
+        const isHeadingImportPresent = path.parent.value.specifiers.some(
+          (node) => node.imported.name === 'Heading',
         );
-      }
+        const isThemeImportPresent =
+          path.value.imported.name === 'paymentTheme' ||
+          path.value.imported.name === 'bankingTheme';
 
-      return path.node;
-    });
+        if (isThemeImportPresent) {
+          path.value.imported.name = 'bladeTheme';
+        }
+        // If Heading import is not present, update the "Title" import to use "Heading"
+        else if (!isHeadingImportPresent) {
+          path.value.imported.name = 'Heading';
+        } else {
+          // If "Heading" import is present, remove the "Title" import
+          path.parent.value.specifiers = path.parent.value.specifiers.filter(
+            (node) => node.imported.name !== 'Title',
+          );
+        }
+
+        return path.node;
+      });
+  } catch (error) {
+    console.error(
+      red(`⛔️ ${file.path}: Oops! Ran into an issue while updating the Title import.`),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Remove `type` prop from Typography Components
-  typographyJSXElements
-    .filter((path) => path.value.openingElement.name.name !== 'Code')
-    .replaceWith((path) => {
-      const { node } = path;
+  try {
+    typographyJSXElements
+      .filter((path) => path.value.openingElement.name.name !== 'Code')
+      .replaceWith((path) => {
+        const { node } = path;
 
-      const colorAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'color',
-      );
-
-      if (colorAttribute) {
-        node.openingElement.attributes = node.openingElement.attributes.filter(
-          (attribute) => attribute.name.name !== 'contrast' && attribute.name.name !== 'type',
+        const colorAttribute = node.openingElement.attributes.find(
+          (attribute) => attribute.name?.name === 'color',
         );
 
-        return node;
-      }
+        if (colorAttribute) {
+          node.openingElement.attributes = node.openingElement.attributes.filter(
+            (attribute) => attribute.name?.name !== 'contrast' && attribute.name?.name !== 'type',
+          );
 
-      const typeAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'type',
-      );
+          return node;
+        }
 
-      const contrastAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'contrast',
-      );
-
-      // If type and contrast are not present, return the node
-      if (!(typeAttribute || contrastAttribute)) {
-        return node;
-      }
-
-      const typeValue = typeAttribute?.value.value || 'normal';
-      const contrastValue = contrastAttribute?.value.value || 'low';
-
-      const oldColorToken = `surface.text.${typeValue}.${contrastValue}Contrast`;
-      const newColorToken = colorTokensMapping[oldColorToken];
-
-      if (newColorToken) {
-        node.openingElement.attributes?.push(
-          j.jsxAttribute(j.jsxIdentifier('color'), j.literal(newColorToken)),
+        const typeAttribute = node.openingElement.attributes.find(
+          (attribute) => attribute.name?.name === 'type',
         );
-      }
 
-      return node;
-    })
-    .find(j.JSXAttribute) // Find all Heading props
-    .filter(
-      (path, index, self) =>
-        (path.node.name.name === 'type' ||
-          (path.node.name.name === 'contrast' && path.node.value.value === 'low')) &&
-        index === self.findIndex((obj) => path.node.start === obj.node.start),
-    ) // Filter by name `type` and remove any duplicates
-    .remove();
+        const contrastAttribute = node.openingElement.attributes.find(
+          (attribute) => attribute.name?.name === 'contrast',
+        );
+
+        // If type and contrast are not present, return the node
+        if (!(typeAttribute || contrastAttribute)) {
+          return node;
+        }
+
+        const typeValue = typeAttribute?.value.value || 'normal';
+        const contrastValue = contrastAttribute?.value.value || 'low';
+
+        const oldColorToken = `surface.text.${typeValue}.${contrastValue}Contrast`;
+        const newColorToken = colorTokensMapping[oldColorToken];
+
+        if (newColorToken) {
+          node.openingElement.attributes?.push(
+            j.jsxAttribute(j.jsxIdentifier('color'), j.literal(newColorToken)),
+          );
+        }
+
+        return node;
+      })
+      .find(j.JSXAttribute) // Find all Heading props
+      .filter(
+        (path, index, self) =>
+          (path.node.name.name === 'type' ||
+            (path.node.name.name === 'contrast' && path.node.value.value === 'low')) &&
+          index === self.findIndex((obj) => path.node.start === obj.node.start),
+      ) // Filter by name `type` and remove any duplicates
+      .remove();
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while removing the "type" prop from Typography Components:`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Break `contrast="high"` prop from Typography Components
-  typographyJSXElements
-    .filter((path) => path.value.openingElement.name.name !== 'Code')
-    .find(j.JSXAttribute) // Find all Heading props
-    .filter(
-      (path, index, self) =>
-        path.node.name.name === 'contrast' &&
-        path.node.value.value === 'high' &&
-        index === self.findIndex((obj) => path.node.start === obj.node.start),
-    )
-    .replaceWith((path) => {
-      path.node.value.value = 'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN';
-      return path.node;
-    });
+  try {
+    typographyJSXElements
+      .filter((path) => path.value.openingElement.name.name !== 'Code')
+      .find(j.JSXAttribute) // Find all Heading props
+      .filter(
+        (path, index, self) =>
+          path.node.name.name === 'contrast' &&
+          path.node.value.value === 'high' &&
+          index === self.findIndex((obj) => path.node.start === obj.node.start),
+      )
+      .replaceWith((path) => {
+        path.node.value.value = 'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN';
+        return path.node;
+      });
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while breaking the "contrast" prop from Typography Components:`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Change 'weight="bold"' to 'weight="semibold"' in Heading, Text, Display
   // Code still uses 'weight="bold"' and Title has been modified to the Heading Component
-  typographyJSXElements
-    .filter((path) => ['Heading', 'Text', 'Display'].includes(path.value.openingElement.name.name))
-    .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name === 'weight' && path.node.value.value === 'bold')
-    .replaceWith((path) => {
-      path.node.value.value = 'semibold';
-      return path.node;
-    });
+  try {
+    typographyJSXElements
+      .filter((path) =>
+        ['Heading', 'Text', 'Display'].includes(path.value.openingElement.name.name),
+      )
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name === 'weight' && path.node.value.value === 'bold')
+      .replaceWith((path) => {
+        path.node.value.value = 'semibold';
+        return path.node;
+      });
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the "weight" prop in Typography Components:`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Bade/Counter/IconButton
-  root
-    .find(j.JSXElement)
-    .filter((path) =>
-      ['Badge', 'Counter', 'IconButton'].includes(path.value.openingElement.name.name),
-    )
-    .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name === 'contrast')
-    .replaceWith((path) => {
-      path.node.name.name = 'emphesis';
+  try {
+    root
+      .find(j.JSXElement)
+      .filter((path) =>
+        ['Badge', 'Counter', 'IconButton'].includes(path.value.openingElement.name.name),
+      )
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name === 'contrast')
+      .replaceWith((path) => {
+        path.node.name.name = 'emphesis';
 
-      const contrastToEmphasisMap = {
-        badge: {
-          low: 'subtle',
-          high: 'intense',
-        },
-        counter: {
-          low: 'subtle',
-          high: 'intense',
-        },
-        iconbutton: {
-          low: 'intense',
-          high: 'subtle',
-        },
-      };
+        const contrastToEmphasisMap = {
+          badge: {
+            low: 'subtle',
+            high: 'intense',
+          },
+          counter: {
+            low: 'subtle',
+            high: 'intense',
+          },
+          iconbutton: {
+            low: 'intense',
+            high: 'subtle',
+          },
+        };
 
-      path.node.value.value =
-        contrastToEmphasisMap[path.parent.value.name.name.toLowerCase()][[path.node.value.value]];
+        path.node.value.value =
+          contrastToEmphasisMap[path.parent.value.name.name.toLowerCase()][[path.node.value.value]];
 
-      return path.node;
-    });
+        return path.node;
+      });
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the "contrast" prop in Bade/Counter/IconButton Components:`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Remove deprecated 'intent'/'variant' props in favor of color
-  root
-    .find(j.JSXElement)
-    .filter((path) =>
-      ['Alert', 'Badge', 'Counter', 'Chip', 'ChipGroup', 'Indicator'].includes(
-        path.value.openingElement.name.name,
-      ),
-    )
-    .replaceWith((path) => {
-      const { node } = path;
+  try {
+    root
+      .find(j.JSXElement)
+      .filter((path) =>
+        ['Alert', 'Badge', 'Counter', 'Chip', 'ChipGroup', 'Indicator'].includes(
+          path.value.openingElement.name.name,
+        ),
+      )
+      .replaceWith((path) => {
+        const { node } = path;
 
-      const colorAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'color',
-      );
+        const colorAttribute = node.openingElement.attributes.find(
+          (attribute) => attribute.name?.name === 'color',
+        );
 
-      if (colorAttribute) {
-        node.openingElement.attributes = node.openingElement.attributes.filter(
-          (attribute) => attribute.name.name !== 'intent' && attribute.name.name !== 'variant',
+        if (colorAttribute) {
+          node.openingElement.attributes = node.openingElement.attributes.filter(
+            (attribute) => attribute.name?.name !== 'intent' && attribute.name?.name !== 'variant',
+          );
+
+          return node;
+        }
+
+        const variantAttribute = node.openingElement.attributes.find(
+          (attribute) => attribute.name?.name === 'variant',
+        );
+
+        const intentAttribute = node.openingElement.attributes.find(
+          (attribute) => attribute.name?.name === 'intent',
+        );
+
+        // If type and contrast are not present, return the node
+        if (!(variantAttribute || intentAttribute)) {
+          return node;
+        }
+
+        const variantValue = variantAttribute?.value.value;
+        const intentValue = intentAttribute?.value.value;
+
+        node.openingElement.attributes?.push(
+          j.jsxAttribute(
+            j.jsxIdentifier('color'),
+            j.literal(
+              ['blue', 'none'].includes(variantValue || intentValue)
+                ? 'primary'
+                : variantValue || intentValue,
+            ),
+          ),
         );
 
         return node;
-      }
+      })
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name === 'intent' || path.node.name.name === 'variant')
+      .filter(
+        (path, index, self) =>
+          (path.node.name.name === 'intent' || path.node.name.name === 'variant') &&
+          index === self.findIndex((obj) => path.node.start === obj.node.start),
+      )
+      .replaceWith((path) => {
+        if (path.node.value.value === 'blue' || path.node.value.value === 'default') {
+          path.node.value.value = 'primary';
+        }
 
-      const variantAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'variant',
-      );
-
-      const intentAttribute = node.openingElement.attributes.find(
-        (attribute) => attribute.name.name === 'intent',
-      );
-
-      // If type and contrast are not present, return the node
-      if (!(variantAttribute || intentAttribute)) {
-        return node;
-      }
-
-      const variantValue = variantAttribute?.value.value;
-      const intentValue = intentAttribute?.value.value;
-
-      node.openingElement.attributes?.push(
-        j.jsxAttribute(
-          j.jsxIdentifier('color'),
-          j.literal(
-            ['blue', 'none'].includes(variantValue || intentValue)
-              ? 'primary'
-              : variantValue || intentValue,
-          ),
-        ),
-      );
-
-      return node;
-    })
-    .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name === 'intent' || path.node.name.name === 'variant')
-    .filter(
-      (path, index, self) =>
-        (path.node.name.name === 'intent' || path.node.name.name === 'variant') &&
-        index === self.findIndex((obj) => path.node.start === obj.node.start),
-    )
-    .replaceWith((path) => {
-      if (path.node.value.value === 'blue' || path.node.value.value === 'default') {
-        path.node.value.value = 'primary';
-      }
-
-      return path.node;
-    })
-    .remove();
+        return path.node;
+      })
+      .remove();
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while removing the deprecated "intent" and "variant" props.`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // <Button variant="secondary" color="default"> -> <Button variant="secondary" color="primary">
-  root
-    .find(j.JSXElement)
-    .filter((path) => ['Button'].includes(path.value.openingElement.name.name))
-    .find(j.JSXAttribute)
-    .filter((path) => path.node.name.name === 'color')
-    .replaceWith((path) => {
-      if (path.node.value.value === 'default') {
-        path.node.value.value = 'primary';
-      }
+  try {
+    root
+      .find(j.JSXElement)
+      .filter((path) => ['Button'].includes(path.value.openingElement.name.name))
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name === 'color')
+      .replaceWith((path) => {
+        if (path.node.value.value === 'default') {
+          path.node.value.value = 'primary';
+        }
 
-      return path.node;
-    });
+        return path.node;
+      });
+  } catch (error) {
+    console.error(
+      red(`⛔️ ${file.path}: Oops! Ran into an issue while updating the Button color prop.`),
+      `\n${red(error.stack)}\n`,
+    );
+  }
 
   // Return the updated source code
   return (
