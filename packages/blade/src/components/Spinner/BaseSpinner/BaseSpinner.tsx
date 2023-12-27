@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react';
 import { dimensions } from './spinnerTokens';
 import SpinnerIcon from './SpinnerIcon';
@@ -9,7 +8,7 @@ import { useTheme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { ColorContrastTypes, FeedbackColors } from '~tokens/theme/theme';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { TestID } from '~utils/types';
@@ -22,7 +21,7 @@ type BaseSpinnerProps = {
    *
    * @default 'default'
    */
-  color?: 'default' | 'white' | FeedbackColors;
+  color?: 'primary' | 'white' | FeedbackColors;
   /**
    * Sets the label of the spinner.
    *
@@ -34,13 +33,6 @@ type BaseSpinnerProps = {
    *
    */
   labelPosition?: 'right' | 'bottom';
-  /**
-   * This is deprecated in favor of the `color` prop.
-   *
-   * @deprecated Use `color="white"` for high contrast and `color="default"` for low contrast
-   * @default 'low'
-   */
-  contrast?: ColorContrastTypes;
   /**
    * Sets the size of the spinner.
    *
@@ -55,30 +47,21 @@ type BaseSpinnerProps = {
 } & TestID &
   StyledPropsBlade;
 
-const getColor = ({
-  contrast,
-  color,
-  theme,
-}: {
-  contrast: NonNullable<BaseSpinnerProps['contrast']>;
-  color: BaseSpinnerProps['color'];
-  theme: Theme;
-}): string => {
-  if (contrast === 'high' || (color && color === 'white')) {
-    return getIn(theme.colors, 'surface.text.staticWhite.normal');
+const getColor = ({ color, theme }: { color: BaseSpinnerProps['color']; theme: Theme }): string => {
+  if (color && color === 'white') {
+    return getIn(theme.colors, 'surface.background.gray.intense');
   }
-  if (color && color !== 'default') {
-    return getIn(theme.colors, `feedback.${color}.action.icon.primary.disabled.lowContrast`);
+  if (color && color !== 'primary') {
+    return getIn(theme.colors, `feedback.background.${color}.intense`);
   }
-  return getIn(theme.colors, 'brand.gray.700.lowContrast');
+  return getIn(theme.colors, 'surface.background.primary.intense');
 };
 
 const BaseSpinner = ({
   label,
   labelPosition = 'right',
   accessibilityLabel,
-  contrast = 'low',
-  color = 'default',
+  color = 'neutral',
   size = 'medium',
   testID,
   ...styledProps
@@ -99,17 +82,14 @@ const BaseSpinner = ({
         })}
       >
         <SpinningBox>
-          <SpinnerIcon
-            dimensions={makeSize(dimensions[size])}
-            color={getColor({ contrast, color, theme })}
-          />
+          <SpinnerIcon dimensions={makeSize(dimensions[size])} color={getColor({ color, theme })} />
         </SpinningBox>
         {label && label.trim().length > 0 ? (
           <BaseBox
             marginLeft={labelPosition === 'right' ? 'spacing.3' : 'spacing.0'}
             marginTop={labelPosition === 'bottom' ? 'spacing.3' : 'spacing.0'}
           >
-            <Text variant="body" weight="regular" type="subdued" size="small" contrast={contrast}>
+            <Text variant="body" weight="regular" size="small" color="surface.text.gray.muted">
               {label}
             </Text>
           </BaseBox>
