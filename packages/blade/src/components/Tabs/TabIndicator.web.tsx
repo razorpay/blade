@@ -103,6 +103,7 @@ const TabIndicator = ({
   if (variant === 'filled') {
     return (
       <StyledTabIndicator
+        pointerEvents="none"
         position="absolute"
         left="0px"
         top="0px"
