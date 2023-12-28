@@ -1,5 +1,10 @@
 # Migration Guide for v11 (Brand Refresh)
 
+## Upgrade Workflow Overview
+All the rebranding upgrade activity starts at the design end and is then followed by engineering
+
+<img alt="Upgrade Workflow Overview" src="./migration-v11-workflow.png" width="300px">
+
 ## Migration with Codemod
 
 **Step 1:** Install this version of Blade as `yarn add @razorpay/blade-rebranded@npm:@razorpay/blade@v11.0.0`.
