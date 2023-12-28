@@ -144,8 +144,7 @@ const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void
       >
         {/* TODO(Rebranding): enable this after Checkbox component rebranding */}
         {/* <Checkbox size="medium">Settle with refunds</Checkbox> */}
-        <input type="checkbox" name="refunds" />
-        <label htmlFor="refunds">Settle with refunds</label>
+        <Text>Settle with refunds</Text>
 
         <Button ref={ref} onClick={props.onClick} size="small" variant="tertiary">
           Settle amount
@@ -499,87 +498,87 @@ const StoriesPanelSwitchAlert = ({ shouldShow }: { shouldShow: boolean }) => {
   ) : null;
 };
 
-export const ProductUseCase1: StoryFn<typeof Popover> = (args, context) => {
-  const isInDocsMode = context.viewMode === 'docs';
-  const integrateButtonRef = React.useRef<HTMLInputElement>(null);
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [actionTaken, setActionTaken] = React.useState(false);
+// TODO(Rebranding): enable this after Input component rebranding
+// export const ProductUseCase1: StoryFn<typeof Popover> = (args, context) => {
+//   const isInDocsMode = context.viewMode === 'docs';
+//   const integrateButtonRef = React.useRef<HTMLInputElement>(null);
+//   const [isOpen, setIsOpen] = React.useState(false);
+//   const [actionTaken, setActionTaken] = React.useState(false);
 
-  const close = () => {
-    setIsOpen(false);
-    setActionTaken(true);
-  };
+//   const close = () => {
+//     setIsOpen(false);
+//     setActionTaken(true);
+//   };
 
-  return (
-    <Box>
-      <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
-      <Text as="span">
-        <Text as="span" weight="semibold">
-          Product Usecase Example:
-        </Text>
-        <Text>
-          A popover that opens when the user focuses on the input field and asks the user to do an
-          action. It only opens once and never again.
-        </Text>
-      </Text>
-      <Box width="fit-content" marginTop="spacing.8">
-        <Popover
-          placement="left"
-          isOpen={isOpen}
-          initialFocusRef={integrateButtonRef}
-          title="Use items from ZohoBooks"
-          onOpenChange={({ isOpen }) => {
-            setIsOpen(isOpen);
-            if (!isOpen) {
-              close();
-            }
-          }}
-          content={
-            <Text>
-              Integrate with your accounting tool ZohoBooks to use items directly from it.
-            </Text>
-          }
-          footer={
-            <Box display="flex" flexDirection="row">
-              <Box marginLeft="auto" display="flex" flexDirection="row" gap="spacing.3">
-                <Button onClick={() => close()} size="small" variant="secondary">
-                  I'll do it later
-                </Button>
-                <Button
-                  ref={integrateButtonRef}
-                  onClick={() => close()}
-                  size="small"
-                  variant="primary"
-                >
-                  Integrate now
-                </Button>
-              </Box>
-            </Box>
-          }
-        >
-          {/* TODO(Rebranding): enable this after Input component rebranding */}
-          {/* <TextInput
-            onFocus={() => {
-              if (!actionTaken) {
-                setIsOpen(true);
-              }
-            }}
-            label="Item Name"
-          /> */}
-          <input
-            onFocus={() => {
-              if (!actionTaken) {
-                setIsOpen(true);
-              }
-            }}
-            placeholder="Item Name"
-          />
-        </Popover>
-      </Box>
-    </Box>
-  );
-};
-ProductUseCase1.storyName = 'Product Usecase: Input with action';
+//   return (
+//     <Box>
+//       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
+//       <Text as="span">
+//         <Text as="span" weight="semibold">
+//           Product Usecase Example:
+//         </Text>
+//         <Text>
+//           A popover that opens when the user focuses on the input field and asks the user to do an
+//           action. It only opens once and never again.
+//         </Text>
+//       </Text>
+//       <Box width="fit-content" marginTop="spacing.8">
+//         <Popover
+//           placement="left"
+//           isOpen={isOpen}
+//           initialFocusRef={integrateButtonRef}
+//           title="Use items from ZohoBooks"
+//           onOpenChange={({ isOpen }) => {
+//             setIsOpen(isOpen);
+//             if (!isOpen) {
+//               close();
+//             }
+//           }}
+//           content={
+//             <Text>
+//               Integrate with your accounting tool ZohoBooks to use items directly from it.
+//             </Text>
+//           }
+//           footer={
+//             <Box display="flex" flexDirection="row">
+//               <Box marginLeft="auto" display="flex" flexDirection="row" gap="spacing.3">
+//                 <Button onClick={() => close()} size="small" variant="secondary">
+//                   I'll do it later
+//                 </Button>
+//                 <Button
+//                   ref={integrateButtonRef}
+//                   onClick={() => close()}
+//                   size="small"
+//                   variant="primary"
+//                 >
+//                   Integrate now
+//                 </Button>
+//               </Box>
+//             </Box>
+//           }
+//         >
+//           {/* <TextInput
+//             onFocus={() => {
+//               if (!actionTaken) {
+//                 setIsOpen(true);
+//               }
+//             }}
+//             label="Item Name"
+//           /> */}
+//           <input
+//             onFocus={() => {
+//               if (!actionTaken) {
+//                 setIsOpen(true);
+//               }
+//             }}
+//             placeholder="Item Name"
+//           />
+//         </Popover>
+//       </Box>
+//     </Box>
+//   );
+// };
+// ProductUseCase1.storyName = 'Product Usecase: Input with action';
 
 export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
   const isInDocsMode = context.viewMode === 'docs';
@@ -652,61 +651,60 @@ export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
 };
 ProductUseCase2.storyName = 'Product Usecase: Dark Mode';
 
-export const ProductUseCase3: StoryFn<typeof Popover> = (args, context) => {
-  const [isOpen, setIsOpen] = React.useState(true);
-  const isInDocsMode = context.viewMode === 'docs';
+//  TODO(Rebranding): enable this after Input component rebranding
+// export const ProductUseCase3: StoryFn<typeof Popover> = (args, context) => {
+//   const [isOpen, setIsOpen] = React.useState(true);
+//   const isInDocsMode = context.viewMode === 'docs';
 
-  return (
-    <Box>
-      <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
-      <Text as="span">
-        <Text as="span" weight="semibold">
-          Product Usecase Example:
-        </Text>
-        <Text>
-          A popover that opens on page load and lets user know about the new search feature. It only
-          opens once and never again.
-        </Text>
-      </Text>
-      <Box width="400px" marginTop="spacing.8">
-        <Popover
-          isOpen={isOpen}
-          onOpenChange={({ isOpen }) => {
-            setIsOpen(isOpen);
-          }}
-          placement="bottom"
-          title="Introducing Search"
-          content={
-            <Text as="span">
-              Your can search for Payments products, Account & Settings, and more.
-            </Text>
-          }
-          footer={
-            <Box display="flex" flexDirection="row">
-              <Box marginLeft="auto">
-                <Button
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  size="small"
-                  variant="tertiary"
-                >
-                  Got it
-                </Button>
-              </Box>
-            </Box>
-          }
-        >
-          {/* TODO(Rebranding): enable this after Input component rebranding */}
-          {/* <TextInput
-            icon={SearchIcon}
-            label="Search"
-            placeholder="Search payments prodcts, settings and more"
-          /> */}
-          <input type="text" placeholder="Search payments prodcts, settings and more" />
-        </Popover>
-      </Box>
-    </Box>
-  );
-};
-ProductUseCase3.storyName = 'Product Usecase: Introducing Search';
+//   return (
+//     <Box>
+//       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
+//       <Text as="span">
+//         <Text as="span" weight="semibold">
+//           Product Usecase Example:
+//         </Text>
+//         <Text>
+//           A popover that opens on page load and lets user know about the new search feature. It only
+//           opens once and never again.
+//         </Text>
+//       </Text>
+//       <Box width="400px" marginTop="spacing.8">
+//         <Popover
+//           isOpen={isOpen}
+//           onOpenChange={({ isOpen }) => {
+//             setIsOpen(isOpen);
+//           }}
+//           placement="bottom"
+//           title="Introducing Search"
+//           content={
+//             <Text as="span">
+//               Your can search for Payments products, Account & Settings, and more.
+//             </Text>
+//           }
+//           footer={
+//             <Box display="flex" flexDirection="row">
+//               <Box marginLeft="auto">
+//                 <Button
+//                   onClick={() => {
+//                     setIsOpen(false);
+//                   }}
+//                   size="small"
+//                   variant="tertiary"
+//                 >
+//                   Got it
+//                 </Button>
+//               </Box>
+//             </Box>
+//           }
+//         >
+//           {/* <TextInput
+//             icon={SearchIcon}
+//             label="Search"
+//             placeholder="Search payments prodcts, settings and more"
+//           /> */}
+//         </Popover>
+//       </Box>
+//     </Box>
+//   );
+// };
+// ProductUseCase3.storyName = 'Product Usecase: Introducing Search';
