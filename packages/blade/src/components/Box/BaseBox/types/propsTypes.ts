@@ -99,9 +99,10 @@ type GridProps = MakeObjectResponsive<
 >;
 
 type ColorObjects = 'feedback' | 'surface' | 'interactive';
-type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationToken<
-  Theme['colors'][T]['background']
->}`;
+type BackgroundOnlyColorObjects = 'popup' | 'overlay';
+type BackgroundColorString<
+  T extends ColorObjects | BackgroundOnlyColorObjects
+> = `${T}.background.${DotNotationToken<Theme['colors'][T]['background']>}`;
 type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationToken<
   Theme['colors'][T]['border']
 >}`;
@@ -174,6 +175,8 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'feedback'>
       | BackgroundColorString<'surface'>
       | BackgroundColorString<'interactive'>
+      | BackgroundColorString<'overlay'>
+      | BackgroundColorString<'popup'>
       | 'transparent';
     // | (string & Record<never, never>);
     lineHeight: SpacingValueType;
