@@ -2,7 +2,7 @@
 
 exports[`<Heading /> should render Heading with color 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
@@ -30,7 +30,7 @@ exports[`<Heading /> should render Heading with color 1`] = `
 
 exports[`<Heading /> should render Heading with default properties 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
@@ -58,7 +58,7 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
 
 exports[`<Heading /> should render Heading with mixed color 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
@@ -75,7 +75,7 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  color: hsla(195,100%,31%,1);
+  color: hsla(200,84%,44%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1.125rem;
   font-weight: 600;
@@ -110,7 +110,7 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
 
 exports[`<Heading /> should render Heading with size "large" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(217,18%,45%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
@@ -138,7 +138,7 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
 
 exports[`<Heading /> should render Heading with size "medium" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(216,16%,60%,1);
+  color: hsla(211,22%,56%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
@@ -166,7 +166,7 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
 
 exports[`<Heading /> should render Heading with size "small" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
@@ -194,7 +194,7 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
 
 exports[`<Heading /> should render Heading with size "small" and contrast "high" 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(0,0%,100%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1.125rem;
   font-weight: 400;

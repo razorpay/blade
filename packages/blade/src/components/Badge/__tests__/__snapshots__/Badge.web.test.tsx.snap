@@ -10,7 +10,8 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(216,15%,54%,0.09);
+  height: 20px;
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -30,8 +31,6 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
@@ -45,7 +44,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -60,10 +59,10 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,33%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -110,18 +109,18 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
             <path
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
               data-blade-component="svg-path"
-              fill="hsla(216, 27%, 36%, 1)"
+              fill="hsla(211, 33%, 21%, 1)"
             />
             <path
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
               data-blade-component="svg-path"
-              fill="hsla(216, 27%, 36%, 1)"
+              fill="hsla(211, 33%, 21%, 1)"
             />
             <path
               clip-rule="evenodd"
               d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
               data-blade-component="svg-path"
-              fill="hsla(216, 27%, 36%, 1)"
+              fill="hsla(211, 33%, 21%, 1)"
               fill-rule="evenodd"
             />
           </svg>
@@ -138,7 +137,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render Badge with bold font 1`] = `
+exports[`<Badge /> should render Badge with primary props 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -148,7 +147,8 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(216,15%,54%,0.09);
+  height: 20px;
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -168,14 +168,12 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -190,108 +188,10 @@ exports[`<Badge /> should render Badge with bold font 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,33%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-}
-
-<div>
-  <div
-    class="c0"
-    data-blade-component="badge"
-  >
-    <div
-      class="c1 c2"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c3"
-        data-blade-component="base-box"
-      >
-        <p
-          class="c4"
-          data-blade-component="text"
-        >
-          LABEL
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`<Badge /> should render Badge with default props 1`] = `
-.c0.c0.c0.c0.c0 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-}
-
-.c1.c1.c1.c1.c1 {
-  text-align: left;
-  background-color: hsla(216,15%,54%,0.09);
-}
-
-.c3.c3.c3.c3.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-right: 8px;
-  padding-left: 8px;
-}
-
-.c2.c2.c2.c2.c2 {
-  background-color: hsla(216,15%,54%,0.09);
-  border-radius: 9999px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-.c4.c4.c4.c4.c4 {
-  color: hsla(216,27%,36%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -334,7 +234,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
+exports[`<Badge /> should render high emphasis information color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -344,7 +244,8 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(218,89%,51%,1);
+  height: 20px;
+  background-color: hsla(200,84%,44%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -364,14 +265,12 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(200,84%,44%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -389,7 +288,7 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -432,7 +331,7 @@ exports[`<Badge /> should render high contrast blue variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast default color Badge 1`] = `
+exports[`<Badge /> should render high emphasis information color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -442,7 +341,8 @@ exports[`<Badge /> should render high contrast default color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(218,89%,51%,1);
+  height: 20px;
+  background-color: hsla(200,84%,44%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -462,14 +362,12 @@ exports[`<Badge /> should render high contrast default color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(200,84%,44%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -487,7 +385,7 @@ exports[`<Badge /> should render high contrast default color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -530,7 +428,7 @@ exports[`<Badge /> should render high contrast default color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast information color Badge 1`] = `
+exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -540,7 +438,8 @@ exports[`<Badge /> should render high contrast information color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(193,100%,35%,1);
+  height: 20px;
+  background-color: hsla(4,74%,49%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -560,14 +459,12 @@ exports[`<Badge /> should render high contrast information color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(193,100%,35%,1);
+  background-color: hsla(4,74%,49%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -585,7 +482,7 @@ exports[`<Badge /> should render high contrast information color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -628,7 +525,7 @@ exports[`<Badge /> should render high contrast information color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast information variant Badge 1`] = `
+exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -638,7 +535,8 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(193,100%,35%,1);
+  height: 20px;
+  background-color: hsla(4,74%,49%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -658,14 +556,12 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(193,100%,35%,1);
+  background-color: hsla(4,74%,49%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -683,7 +579,7 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -726,7 +622,7 @@ exports[`<Badge /> should render high contrast information variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast negative color Badge 1`] = `
+exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -736,7 +632,8 @@ exports[`<Badge /> should render high contrast negative color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(8,73%,47%,1);
+  height: 20px;
+  background-color: hsla(211,29%,26%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -756,14 +653,12 @@ exports[`<Badge /> should render high contrast negative color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(8,73%,47%,1);
+  background-color: hsla(211,29%,26%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -781,7 +676,7 @@ exports[`<Badge /> should render high contrast negative color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -824,7 +719,7 @@ exports[`<Badge /> should render high contrast negative color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
+exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -834,7 +729,8 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(8,73%,47%,1);
+  height: 20px;
+  background-color: hsla(211,29%,26%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -854,14 +750,12 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(8,73%,47%,1);
+  background-color: hsla(211,29%,26%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -879,7 +773,7 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -922,7 +816,7 @@ exports[`<Badge /> should render high contrast negative variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast neutral color Badge 1`] = `
+exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -932,7 +826,8 @@ exports[`<Badge /> should render high contrast neutral color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(216,33%,29%,1);
+  height: 20px;
+  background-color: hsla(25,90%,48%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -952,14 +847,12 @@ exports[`<Badge /> should render high contrast neutral color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(216,33%,29%,1);
+  background-color: hsla(25,90%,48%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -977,7 +870,7 @@ exports[`<Badge /> should render high contrast neutral color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1020,7 +913,7 @@ exports[`<Badge /> should render high contrast neutral color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
+exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1030,7 +923,8 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(216,33%,29%,1);
+  height: 20px;
+  background-color: hsla(25,90%,48%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1050,14 +944,12 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(216,33%,29%,1);
+  background-color: hsla(25,90%,48%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1075,7 +967,7 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1118,7 +1010,7 @@ exports[`<Badge /> should render high contrast neutral variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast notice color Badge 1`] = `
+exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1128,7 +1020,8 @@ exports[`<Badge /> should render high contrast notice color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(38,97%,38%,1);
+  height: 20px;
+  background-color: hsla(150,100%,32%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1148,14 +1041,12 @@ exports[`<Badge /> should render high contrast notice color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(38,97%,38%,1);
+  background-color: hsla(150,100%,32%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1173,7 +1064,7 @@ exports[`<Badge /> should render high contrast notice color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1216,7 +1107,7 @@ exports[`<Badge /> should render high contrast notice color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
+exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1226,7 +1117,8 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(38,97%,38%,1);
+  height: 20px;
+  background-color: hsla(150,100%,32%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1246,14 +1138,12 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(38,97%,38%,1);
+  background-color: hsla(150,100%,32%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1271,7 +1161,7 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1314,7 +1204,7 @@ exports[`<Badge /> should render high contrast notice variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast positive color Badge 1`] = `
+exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1324,7 +1214,8 @@ exports[`<Badge /> should render high contrast positive color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(160,100%,26%,1);
+  height: 20px;
+  background-color: hsla(227,100%,59%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1344,14 +1235,12 @@ exports[`<Badge /> should render high contrast positive color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(160,100%,26%,1);
+  background-color: hsla(227,100%,59%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1369,7 +1258,7 @@ exports[`<Badge /> should render high contrast positive color Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1412,7 +1301,7 @@ exports[`<Badge /> should render high contrast positive color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
+exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1422,7 +1311,8 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(160,100%,26%,1);
+  height: 20px;
+  background-color: hsla(227,100%,59%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1442,14 +1332,12 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(160,100%,26%,1);
+  background-color: hsla(227,100%,59%,1);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1467,7 +1355,7 @@ exports[`<Badge /> should render high contrast positive variant Badge 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1520,7 +1408,8 @@ exports[`<Badge /> should render large size Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(216,15%,54%,0.09);
+  height: 24px;
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1540,14 +1429,12 @@ exports[`<Badge /> should render large size Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 4px;
-  padding-bottom: 4px;
   padding-right: 12px;
   padding-left: 12px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1562,10 +1449,10 @@ exports[`<Badge /> should render large size Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,33%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1608,7 +1495,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
+exports[`<Badge /> should render low emphasis information color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1618,7 +1505,8 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(218,89%,51%,0.09);
+  height: 20px;
+  background-color: hsla(200,84%,44%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1638,14 +1526,12 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(200,84%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1660,10 +1546,10 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(200,84%,29%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1706,7 +1592,7 @@ exports[`<Badge /> should render low contrast blue variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast default color Badge 1`] = `
+exports[`<Badge /> should render low emphasis information color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1716,7 +1602,8 @@ exports[`<Badge /> should render low contrast default color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(218,89%,51%,0.09);
+  height: 20px;
+  background-color: hsla(200,84%,44%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1736,14 +1623,12 @@ exports[`<Badge /> should render low contrast default color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(200,84%,44%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1758,10 +1643,10 @@ exports[`<Badge /> should render low contrast default color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(200,84%,29%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1804,7 +1689,7 @@ exports[`<Badge /> should render low contrast default color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast information color Badge 1`] = `
+exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1814,7 +1699,8 @@ exports[`<Badge /> should render low contrast information color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(193,100%,35%,0.09);
+  height: 20px;
+  background-color: hsla(4,74%,49%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1834,14 +1720,12 @@ exports[`<Badge /> should render low contrast information color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(193,100%,35%,0.09);
+  background-color: hsla(4,74%,49%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1856,10 +1740,10 @@ exports[`<Badge /> should render low contrast information color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(193,100%,35%,1);
+  color: hsla(0,83%,33%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1902,7 +1786,7 @@ exports[`<Badge /> should render low contrast information color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast information variant Badge 1`] = `
+exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -1912,7 +1796,8 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(193,100%,35%,0.09);
+  height: 20px;
+  background-color: hsla(4,74%,49%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1932,14 +1817,12 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(193,100%,35%,0.09);
+  background-color: hsla(4,74%,49%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1954,10 +1837,10 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(193,100%,35%,1);
+  color: hsla(0,83%,33%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2000,7 +1883,7 @@ exports[`<Badge /> should render low contrast information variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast negative color Badge 1`] = `
+exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -2010,7 +1893,8 @@ exports[`<Badge /> should render low contrast negative color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(9,91%,56%,0.09);
+  height: 20px;
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2030,14 +1914,12 @@ exports[`<Badge /> should render low contrast negative color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(9,91%,56%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2052,10 +1934,10 @@ exports[`<Badge /> should render low contrast negative color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(8,73%,47%,1);
+  color: hsla(211,33%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2098,7 +1980,7 @@ exports[`<Badge /> should render low contrast negative color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
+exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -2108,7 +1990,8 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(9,91%,56%,0.09);
+  height: 20px;
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2128,14 +2011,12 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(9,91%,56%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2150,10 +2031,10 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(8,73%,47%,1);
+  color: hsla(211,33%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2196,7 +2077,7 @@ exports[`<Badge /> should render low contrast negative variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast neutral color Badge 1`] = `
+exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -2206,7 +2087,8 @@ exports[`<Badge /> should render low contrast neutral color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(216,15%,54%,0.09);
+  height: 20px;
+  background-color: hsla(25,90%,48%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2226,14 +2108,12 @@ exports[`<Badge /> should render low contrast neutral color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(25,90%,48%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2248,10 +2128,10 @@ exports[`<Badge /> should render low contrast neutral color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(25,85%,42%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2294,7 +2174,7 @@ exports[`<Badge /> should render low contrast neutral color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
+exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -2304,7 +2184,8 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(216,15%,54%,0.09);
+  height: 20px;
+  background-color: hsla(25,90%,48%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2324,14 +2205,12 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(25,90%,48%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2346,10 +2225,10 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(25,85%,42%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2392,7 +2271,7 @@ exports[`<Badge /> should render low contrast neutral variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast notice color Badge 1`] = `
+exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -2402,7 +2281,8 @@ exports[`<Badge /> should render low contrast notice color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(36,100%,44%,0.09);
+  height: 20px;
+  background-color: hsla(150,100%,32%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2422,14 +2302,12 @@ exports[`<Badge /> should render low contrast notice color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(36,100%,44%,0.09);
+  background-color: hsla(150,100%,32%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2444,10 +2322,10 @@ exports[`<Badge /> should render low contrast notice color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(38,97%,38%,1);
+  color: hsla(150,100%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2490,7 +2368,7 @@ exports[`<Badge /> should render low contrast notice color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
+exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -2500,7 +2378,8 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(36,100%,44%,0.09);
+  height: 20px;
+  background-color: hsla(150,100%,32%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2520,14 +2399,12 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(36,100%,44%,0.09);
+  background-color: hsla(150,100%,32%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2542,10 +2419,10 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(38,97%,38%,1);
+  color: hsla(150,100%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2588,7 +2465,7 @@ exports[`<Badge /> should render low contrast notice variant Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast positive color Badge 1`] = `
+exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -2598,7 +2475,8 @@ exports[`<Badge /> should render low contrast positive color Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(155,100%,31%,0.09);
+  height: 20px;
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2618,14 +2496,12 @@ exports[`<Badge /> should render low contrast positive color Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(155,100%,31%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2640,10 +2516,10 @@ exports[`<Badge /> should render low contrast positive color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(160,100%,26%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2686,7 +2562,7 @@ exports[`<Badge /> should render low contrast positive color Badge 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
+exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -2696,7 +2572,8 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(155,100%,31%,0.09);
+  height: 20px;
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2716,14 +2593,12 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(155,100%,31%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2738,10 +2613,10 @@ exports[`<Badge /> should render low contrast positive variant Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(160,100%,26%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2794,7 +2669,8 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(216,15%,54%,0.09);
+  height: 20px;
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2814,14 +2690,12 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2836,10 +2710,10 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,33%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2892,7 +2766,8 @@ exports[`<Badge /> should render small size Badge 1`] = `
 
 .c1.c1.c1.c1.c1 {
   text-align: left;
-  background-color: hsla(216,15%,54%,0.09);
+  height: 16px;
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2912,14 +2787,12 @@ exports[`<Badge /> should render small size Badge 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 0px;
-  padding-bottom: 0px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2934,10 +2807,10 @@ exports[`<Badge /> should render small size Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,33%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
