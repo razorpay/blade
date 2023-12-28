@@ -53,7 +53,7 @@ type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onS
 
 export type Colors = {
   interactive: {
-    background: Record<InteractiveColorKeys, InteractiveStates>;
+    background: Record<InteractiveColorKeys, InteractiveStates & { fadedHighlighted: string }>;
     border: Record<InteractiveColorKeys, InteractiveStates>;
     text: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
     icon: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;

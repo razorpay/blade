@@ -15,6 +15,7 @@ export * from './Indicator';
 export * from './Link';
 export * from './List';
 export * from './Modal';
+export * from './Tabs';
 export * from './Tag';
 export * from './Tooltip';
 export * from './Spinner';
