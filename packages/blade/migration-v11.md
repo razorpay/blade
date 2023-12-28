@@ -9,7 +9,7 @@ All the rebranding upgrade activity starts at the design end and is then followe
 
 **Step 1:** Install this version of Blade as `yarn add @razorpay/blade-rebranded@npm:@razorpay/blade@v11.0.0`.
 
-**Step 2:** Install fonts by following [this file](https://blade.razorpay.com/?path=/docs/guides-installation--docs#-installing-fonts).
+**Step 2:** Install new fonts (Inter & Tasa) by following [this file](https://blade.razorpay.com/?path=/docs/guides-installation--docs#-installing-fonts).
 
 **Step 3:** The migration should be done page by page. Wrap your page that needs to be migrated under `BladeProvider` imported from `@razorpay/blade-rebranded`. Till the time the migration is not complete, you will have to maintain two versions of Blade in your project. To do that, you can use the `BladeProvider` component from different versions of Blade in different parts of your app.
 
