@@ -232,7 +232,7 @@ npx jscodeshift ./YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpa
 
 ### Card
 
-- The `surfaceLevel` prop has been removed in favor of the new `backgroundColor` prop.
+- **The `surfaceLevel` prop has been removed in favor of the new `backgroundColor` prop.**
 
   ```diff
   - <Card surfaceLevel={2}> Hello </Card>
