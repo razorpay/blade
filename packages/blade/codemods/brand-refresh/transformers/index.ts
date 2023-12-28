@@ -355,12 +355,20 @@ const transformer: Transform = (file, api, options) => {
     );
   }
 
-  // Remove `type` prop from Typography Components
+  // Remove `type` and contrast="low" prop from Typography & ProgressBar Components
   try {
-    typographyJSXElements
-      .filter((path) => path.value.openingElement.name.name !== 'Code')
+    root
+      .find(j.JSXElement)
+      .filter((path) =>
+        /(Text|Title|Display|Heading|ProgressBar)/i.test(path.value.openingElement.name.name),
+      )
       .replaceWith((path) => {
         const { node } = path;
+
+        // If the node is a ProgressBar, return the node
+        if (node.openingElement.name.name === 'ProgressBar') {
+          return node;
+        }
 
         const colorAttribute = node.openingElement.attributes.find(
           (attribute) => attribute.name?.name === 'color',
@@ -418,15 +426,18 @@ const transformer: Transform = (file, api, options) => {
     );
   }
 
-  // Break `contrast="high"` prop from Typography Components
+  // Break `contrast="high"` prop from Typography & ProgressBar Components
   try {
-    typographyJSXElements
-      .filter((path) => path.value.openingElement.name.name !== 'Code')
+    root
+      .find(j.JSXElement)
+      .filter((path) =>
+        /(Text|Title|Display|Heading|ProgressBar)/i.test(path.value.openingElement.name.name),
+      )
       .find(j.JSXAttribute) // Find all Heading props
       .filter(
         (path, index, self) =>
           // Only Typography components
-          ['Text', 'Title', 'Display', 'Heading'].includes(path.parent.value.name.name) &&
+          /(Text|Title|Display|Heading|ProgressBar)/i.test(path.parent.value.name.name) &&
           path.node.name.name === 'contrast' &&
           path.node.value.value === 'high' &&
           index === self.findIndex((obj) => path.node.start === obj.node.start),
@@ -512,7 +523,7 @@ const transformer: Transform = (file, api, options) => {
     root
       .find(j.JSXElement)
       .filter((path) =>
-        ['Alert', 'Badge', 'Counter', 'Chip', 'ChipGroup', 'Indicator'].includes(
+        ['Alert', 'Badge', 'Counter', 'Chip', 'ChipGroup', 'Indicator', 'ProgressBar'].includes(
           path.value.openingElement.name.name,
         ),
       )

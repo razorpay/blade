@@ -76,6 +76,10 @@ it('should remove variant/intent prop in favor of color prop', async () => {
           <Chip value="yes" intent="none"> Yes </Chip>
           <Chip value="no" intent="none"> No </Chip>
         </ChipGroup>
+
+        <ProgressBar intent="positive" label="Label" size="medium" value={10} />
+        <ProgressBar intent="positive" label="Label" size="medium" value={10}  contrast="low"  />
+        <ProgressBar intent="positive" label="Label" size="medium" value={10}  contrast="high"  />
       </>
     );
     `,
@@ -112,6 +116,10 @@ it('should remove variant/intent prop in favor of color prop', async () => {
               <Chip value="yes" color="primary"> Yes </Chip>
               <Chip value="no" color="primary"> No </Chip>
             </ChipGroup>
+
+            <ProgressBar label="Label" size="medium" value={10} color="positive" />
+            <ProgressBar label="Label" size="medium" value={10} color="positive" />
+            <ProgressBar label="Label" size="medium" value={10} contrast=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""  color="positive"  />
           </>
         );"
   `);
