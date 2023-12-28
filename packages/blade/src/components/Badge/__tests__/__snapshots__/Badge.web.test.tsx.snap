@@ -137,7 +137,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 </div>
 `;
 
-exports[`<Badge /> should render Badge with primary props 1`] = `
+exports[`<Badge /> should render Badge with default props 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
