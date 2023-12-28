@@ -47,7 +47,7 @@ const transformer: Transform = (file, api, options) => {
       /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
       (originalString) => {
         if (originalString.includes('highContrast') && !originalString.includes('feedback')) {
-          return originalString;
+          return 'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN';
         }
 
         const replacement = colorTokensMapping[originalString];
@@ -769,6 +769,11 @@ const transformer: Transform = (file, api, options) => {
     );
   }
 
+  // If file path includes .ts or .tsx extension, return the updated source code
+  if (file.path.includes('.ts') || file.path.includes('.tsx')) {
+    return root.toSource(options.printOptions);
+  }
+
   // Return the updated source code
   return (
     root
@@ -777,16 +782,6 @@ const transformer: Transform = (file, api, options) => {
       .replace(
         'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN',
         `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`,
-      )
-      .replace(
-        /(brand|feedback|action|static|white|badge|surface)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([a-z0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)\.?([aA-zZ0-9]+)/g,
-        (originalString) => {
-          if (originalString.includes('highContrast')) {
-            return `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`;
-          }
-
-          return originalString;
-        },
       )
   );
 };
