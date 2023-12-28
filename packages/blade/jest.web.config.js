@@ -1,5 +1,35 @@
 const ignores = ['/node_modules/'];
 
+const rebrandedComponents = [
+  'BaseBox',
+  'BaseText',
+  'BaseLink',
+  'BaseButton',
+  'Text',
+  'Heading',
+  'Display',
+  'Code',
+  'Button',
+  'Link',
+  'Counter',
+  'Badge',
+  'Indicator',
+  'IconButton',
+  'Divider',
+  'ProgressBar',
+  'Card',
+  'List',
+  'Tabs',
+  'Box',
+  'Accordion',
+  'Collapsible',
+  'Carousel',
+  'BottomSheet',
+  'Modal',
+  'SkipNav',
+  'VisuallyHidden',
+];
+
 const baseConfig = {
   testPathIgnorePatterns: [...ignores, 'native.test'],
   coverageThreshold: {
@@ -12,7 +42,7 @@ const baseConfig = {
   },
   snapshotSerializers: ['<rootDir>/jestStyledComponentsSerializer.js'],
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
-  testMatch: ['**/*.test.{ts,tsx}'],
+  testMatch: rebrandedComponents.map((c) => `**/${c}.web.test.{ts,tsx}`),
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },
@@ -38,15 +68,15 @@ module.exports = {
       ...baseConfig,
       testEnvironment: 'node',
       testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'web.test'],
-      collectCoverageFrom: ['./src/**/*.ssr.{ts,tsx}'],
-      testMatch: ['**/*.ssr.test.{ts,tsx}'],
+      collectCoverageFrom: rebrandedComponents.map((c) => `./src/**/${c}.ssr.{ts,tsx}`),
+      testMatch: rebrandedComponents.map((c) => `**/${c}.ssr.test.{ts,tsx}`),
     },
     {
       displayName: 'CSR Test',
       ...baseConfig,
       testEnvironment: 'jsdom',
       testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'ssr.test'],
-      collectCoverageFrom: ['./src/**/*.web.{ts,tsx}'],
+      collectCoverageFrom: rebrandedComponents.map((c) => `./src/**/${c}.web.{ts,tsx}`),
     },
   ],
 };

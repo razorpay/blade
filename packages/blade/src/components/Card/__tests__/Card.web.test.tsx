@@ -24,7 +24,7 @@ import { Badge } from '~components/Badge';
 describe('<Card />', () => {
   it('should render a plain Card', () => {
     const { container } = renderWithTheme(
-      <Card surfaceLevel={3} elevation="highRaised">
+      <Card backgroundColor="surface.background.gray.moderate" elevation="highRaised">
         <CardBody>Plain Card</CardBody>
       </Card>,
     );
@@ -128,7 +128,7 @@ describe('<Card />', () => {
             <CardHeaderLeading
               title={cardTitle}
               subtitle={cardSubtitle}
-              prefix={<InfoIcon color="action.icon.primary.default" size="xsmall" />}
+              prefix={<InfoIcon color="interactive.icon.staticWhite.normal" size="xsmall" />}
             />
           </CardHeader>
         </Card>,
