@@ -188,7 +188,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               onLayout={[Function]}
             >
               <View
-                backgroundColor="hsla(0, 0%, 100%, 1)"
+                backgroundColor="popup.background.subtle"
                 data-blade-component="base-box"
                 flexShrink={0}
                 style={
@@ -1226,7 +1226,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
               onLayout={[Function]}
             >
               <View
-                backgroundColor="hsla(0, 0%, 100%, 1)"
+                backgroundColor="popup.background.subtle"
                 data-blade-component="base-box"
                 flexShrink={0}
                 style={
@@ -1549,7 +1549,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             >
               <View
                 alignItems="center"
-                backgroundColor="hsla(0, 0%, 100%, 1)"
+                backgroundColor="popup.background.subtle"
                 borderRadius="max"
                 data-blade-component="base-box"
                 display="flex"
