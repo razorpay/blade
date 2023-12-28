@@ -52,7 +52,6 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { BladeCommonEvents } from '~components/types';
 import { throwBladeError } from '~utils/logger';
-import { Hoverlay } from '~components/Hoverlay';
 
 type BaseButtonCommonProps = {
   href?: BaseLinkProps['href'];
@@ -422,10 +421,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
-  const isWhiteTertiary = variant === 'tertiary' && color === 'white';
-  const isSecondaryColor = variant === 'secondary' && color !== 'primary';
-  const shouldShowHoverlay = isWhiteTertiary || isSecondaryColor;
-  const isNative = isReactNative();
 
   return (
     <StyledBaseButton
@@ -473,11 +468,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
-      shouldShowHoverlay={shouldShowHoverlay}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
     >
-      {!isNative && shouldShowHoverlay ? <Hoverlay variant="subtle" className="hoverlay" /> : null}
       {isLoading ? (
         <BaseBox
           display="flex"

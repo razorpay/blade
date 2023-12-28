@@ -11,7 +11,6 @@ import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { logger } from '~utils/logger';
 import { castNativeType } from '~utils';
-import { Hoverlay } from '~components/Hoverlay';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
@@ -102,15 +101,6 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     };
   });
 
-  const overlayStyles = useAnimatedStyle(() => {
-    return {
-      opacity: withTiming(isPressed.value ? 1 : 0, {
-        duration,
-        easing,
-      }),
-    };
-  });
-
   const handleOnPress = (event: GestureResponderEvent): void => {
     if (href) {
       void openURL(href);
@@ -157,12 +147,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     >
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;
-        return (
-          <>
-            {shouldShowHoverlay ? <Hoverlay variant="subtle" style={overlayStyles} /> : null}
-            {children}
-          </>
-        );
+        return children;
       }}
     </StyledPressable>
   );
