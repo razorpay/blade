@@ -60,6 +60,7 @@ const SkipNavStoryMeta: Meta = {
   title: 'Components/Accessibility/SkipNav',
   component: SkipNavLink,
   args: {},
+  tags: ['autodocs'],
   parameters: {
     docs: {
       page: () => <Page />,

@@ -63,6 +63,7 @@ const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>
     contrast: 'low',
     as: undefined,
   },
+  tags: ['autodocs'],
   argTypes: getHeadingArgTypes(),
   parameters: {
     docs: {

@@ -56,6 +56,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Tooltip',
   component: TooltipComponent,
+  tags: ['autodocs'],
   args: {
     placement: 'bottom',
     content: 'Amount reversed to customer bank account',
