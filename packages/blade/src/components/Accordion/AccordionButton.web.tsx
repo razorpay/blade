@@ -26,7 +26,12 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
     ) : null;
 
   const _icon = Icon && (
-    <Icon size="medium" color="currentColor" marginRight="spacing.3" marginY="spacing.2" />
+    <Icon
+      size="medium"
+      color="surface.icon.gray.muted"
+      marginRight="spacing.3"
+      marginY="spacing.2"
+    />
   );
 
   if (__DEV__) {
