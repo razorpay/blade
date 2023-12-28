@@ -1,34 +1,6 @@
-const ignores = ['/node_modules/'];
+const rebrandedComponents = require('./rebranded-components');
 
-const rebrandedComponents = [
-  'BaseBox',
-  'BaseText',
-  'BaseLink',
-  'BaseButton',
-  'Text',
-  'Heading',
-  'Display',
-  'Code',
-  'Button',
-  'Link',
-  'Counter',
-  'Badge',
-  'Indicator',
-  'IconButton',
-  'Divider',
-  'ProgressBar',
-  'Card',
-  'List',
-  'Tabs',
-  'Box',
-  'Accordion',
-  'Collapsible',
-  'Carousel',
-  'BottomSheet',
-  'Modal',
-  'SkipNav',
-  'VisuallyHidden',
-];
+const ignores = ['/node_modules/'];
 
 const baseConfig = {
   testPathIgnorePatterns: [...ignores, 'native.test'],

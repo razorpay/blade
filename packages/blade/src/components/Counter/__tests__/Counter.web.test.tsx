@@ -38,12 +38,12 @@ describe('<Counter />', () => {
   });
 
   colors.forEach((color) => {
-    it(`should render low emphasis ${color} color Counter`, () => {
+    it(`should render subtle emphasis ${color} color Counter`, () => {
       const { container } = renderWithTheme(<Counter color={color} emphasis="subtle" value={20} />);
       expect(container).toMatchSnapshot();
     });
 
-    it(`should render high emphasis ${color} color Counter`, () => {
+    it(`should render intense emphasis ${color} color Counter`, () => {
       const { container } = renderWithTheme(
         <Counter color={color} emphasis="intense" value={20} />,
       );
@@ -65,62 +65,62 @@ describe('<Counter />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low emphasis negative color Counter', () => {
+  it('should render subtle emphasis negative color Counter', () => {
     const { container } = renderWithTheme(
       <Counter color="negative" emphasis="subtle" value={20} />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high emphasis negative color Counter', () => {
+  it('should render intense emphasis negative color Counter', () => {
     const { container } = renderWithTheme(
       <Counter color="negative" emphasis="intense" value={20} />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low emphasis notice color Counter', () => {
+  it('should render subtle emphasis notice color Counter', () => {
     const { container } = renderWithTheme(<Counter color="notice" emphasis="subtle" value={20} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high emphasis notice color Counter', () => {
+  it('should render intense emphasis notice color Counter', () => {
     const { container } = renderWithTheme(<Counter color="notice" emphasis="intense" value={20} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low emphasis information color Counter', () => {
+  it('should render subtle emphasis information color Counter', () => {
     const { container } = renderWithTheme(
       <Counter color="information" emphasis="subtle" value={20} />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high emphasis information color Counter', () => {
+  it('should render intense emphasis information color Counter', () => {
     const { container } = renderWithTheme(
       <Counter color="information" emphasis="intense" value={20} />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low emphasis neutral color Counter', () => {
+  it('should render subtle emphasis neutral color Counter', () => {
     const { container } = renderWithTheme(<Counter color="neutral" emphasis="subtle" value={20} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high emphasis neutral color Counter', () => {
+  it('should render intense emphasis neutral color Counter', () => {
     const { container } = renderWithTheme(
       <Counter color="neutral" emphasis="intense" value={20} />,
     );
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low emphasis blue color Counter', () => {
+  it('should render subtle emphasis blue color Counter', () => {
     const { container } = renderWithTheme(<Counter color="primary" emphasis="subtle" value={20} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render high emphasis blue color Counter', () => {
+  it('should render intense emphasis blue color Counter', () => {
     const { container } = renderWithTheme(
       <Counter color="primary" emphasis="intense" value={20} />,
     );
