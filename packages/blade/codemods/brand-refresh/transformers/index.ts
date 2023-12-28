@@ -774,16 +774,13 @@ const transformer: Transform = (file, api, options) => {
     return root.toSource(options.printOptions);
   }
 
-  // Return the updated source code
-  return (
-    root
-      .toSource(options.printOptions)
-      // Create syntax error for developer to manually update the color token
-      .replace(
-        'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN',
-        `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`,
-      )
-  );
+  // Return the updated source code with syntax error for developer to manually update the color token
+  return root
+    .toSource(options.printOptions)
+    .replace(
+      'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN',
+      `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`,
+    );
 };
 
 export default transformer;
