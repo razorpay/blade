@@ -86,7 +86,12 @@ describe('<Text />', () => {
     expect(() =>
       renderWithTheme(
         // @ts-expect-error testing failure case when size='small' is passed with variant='caption'
-        <Text color="normal" variant="caption" truncateAfterLines={3} size="small">
+        <Text
+          color="surface.text.gray.normal"
+          variant="caption"
+          truncateAfterLines={3}
+          size="small"
+        >
           {displayText}
         </Text>,
       ),
