@@ -21,7 +21,7 @@ export const Title = (): JSX.Element => {
 };
 
 export default {
-  title: 'Components/KitchenSink/Title',
+  title: 'Components/KitchenSink/Display',
   component: Title,
   parameters: {
     // enable Chromatic snapshots only for kitchen sink

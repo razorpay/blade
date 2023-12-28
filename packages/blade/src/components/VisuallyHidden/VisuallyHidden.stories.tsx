@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title as StorybookTitle } from '@storybook/addon-docs';
 import { Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
@@ -59,7 +59,7 @@ const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
   },
 };
 
-const VisuallyHiddenTemplate: ComponentStory<typeof VisuallyHiddenComponent> = (args) => {
+const VisuallyHiddenTemplate: StoryFn<typeof VisuallyHiddenComponent> = (args) => {
   return (
     <>
       <Text>

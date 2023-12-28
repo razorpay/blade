@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { SpinnerProps } from './Spinner';
@@ -52,17 +52,18 @@ export default {
       page: Page,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 } as Meta<SpinnerProps>;
 
-const SpinnerTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   return <SpinnerComponent {...args} />;
 };
 
 export const Spinner = SpinnerTemplate.bind({});
 Spinner.storyName = 'Default';
 
-const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerSizesTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   return (
     <BaseBox>
       <BaseBox marginBottom="spacing.3">
@@ -87,7 +88,7 @@ const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
 export const SpinnerSizes = SpinnerSizesTemplate.bind({});
 SpinnerSizes.storyName = 'Sizes';
 
-const SpinnerColorTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerColorTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   const { theme } = useTheme();
 
   return (

@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import type { TableData, TableProps } from '../types';
 import { Table as TableComponent } from '../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../TableHeader';
@@ -17,6 +17,7 @@ export default {
     selectionType: 'none',
     rowDensity: 'normal',
   },
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     data: {
@@ -92,7 +93,7 @@ const data: TableData<Item> = {
   nodes,
 };
 
-const TableTemplate: ComponentStory<typeof TableComponent> = ({ ...args }) => {
+const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"

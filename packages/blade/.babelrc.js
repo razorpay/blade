@@ -15,6 +15,7 @@ const configs = {
     test: {
       presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
       plugins: [
+        '@babel/plugin-proposal-class-static-block',
         [
           'module-resolver',
           {
@@ -36,6 +37,7 @@ const configs = {
     development: {
       presets: ['@babel/preset-typescript', 'module:metro-react-native-babel-preset'],
       plugins: [
+        '@babel/plugin-proposal-class-static-block',
         [
           'module-resolver',
           {
@@ -57,6 +59,7 @@ const configs = {
         ['module:metro-react-native-babel-preset', { disableImportExportTransform: true }],
       ],
       plugins: [
+        '@babel/plugin-proposal-class-static-block',
         [
           'module-resolver',
           {

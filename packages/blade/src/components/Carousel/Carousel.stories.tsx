@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title as AddonTitle } from '@storybook/addon-docs';
 import type { CarouselProps } from './';
 import { Carousel as CarouselComponent, CarouselItem } from './';
@@ -72,6 +72,7 @@ const meta: Meta<CarouselProps> = {
     showIndicators: true,
     scrollOverlayColor: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     // hide children prop
     children: {
@@ -267,7 +268,7 @@ const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactEle
   );
 };
 
-const CarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = (props) => {
+const CarouselTestimonialTemplate: StoryFn<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
       <CarouselExample {...props} />
@@ -280,7 +281,7 @@ DefaultCarousel.args = {
   carouselItemWidth: { base: '100%', m: '100%' },
 };
 
-export const VisibleItems: ComponentStory<typeof CarouselComponent> = (props) => {
+export const VisibleItems: StoryFn<typeof CarouselComponent> = (props) => {
   if (isReactNative()) {
     return (
       <Box margin="auto" width="100%" padding="spacing.4">
@@ -323,7 +324,7 @@ VisibleItems.argTypes = {
   },
 };
 
-export const AutoBleed: ComponentStory<typeof CarouselComponent> = () => {
+export const AutoBleed: StoryFn<typeof CarouselComponent> = () => {
   if (isReactNative()) {
     return (
       <Box>
@@ -385,7 +386,7 @@ AutoBleed.args = {
   carouselItemWidth: { base: '90%', m: '300px' },
 };
 
-export const ButtonPositions: ComponentStory<typeof CarouselComponent> = (props) => {
+export const ButtonPositions: StoryFn<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" padding="spacing.4" width="100%">
       <Code size="medium" marginY="spacing.8">
@@ -411,7 +412,7 @@ ButtonPositions.argTypes = {
   },
 };
 
-export const AutoPlay: ComponentStory<typeof CarouselComponent> = (props) => {
+export const AutoPlay: StoryFn<typeof CarouselComponent> = (props) => {
   return (
     <Box margin="auto" padding="spacing.4" width="100%">
       <Text marginY="spacing.5">
@@ -488,7 +489,7 @@ const InteractiveTestimonialCard = ({
   );
 };
 
-const InteractiveCarouselTestimonialTemplate: ComponentStory<typeof CarouselComponent> = () => {
+const InteractiveCarouselTestimonialTemplate: StoryFn<typeof CarouselComponent> = () => {
   return (
     <Box margin="auto" width={{ base: '100%', m: '100%' }} padding="spacing.4">
       <Box width="100%" height={isReactNative() ? '350px' : 'auto'}>
