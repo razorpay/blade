@@ -72,12 +72,16 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
   const renderChildren: PressableProps['children'] = ({ pressed }) => {
     isPressed.value = pressed;
 
-    const iconColor: IconProps['color'] = pressed
-      ? 'surface.action.icon.focus.lowContrast'
-      : 'surface.action.icon.default.lowContrast';
+    const iconColor: IconProps['color'] =
+      pressed || isExpanded ? 'interactive.icon.gray.subtle' : 'interactive.icon.gray.muted';
 
     const _icon = Icon && (
-      <Icon size="medium" color={iconColor} marginRight="spacing.3" marginY="spacing.2" />
+      <Icon
+        size="medium"
+        color="surface.icon.gray.muted"
+        marginRight="spacing.3"
+        marginY="spacing.2"
+      />
     );
 
     if (__DEV__) {

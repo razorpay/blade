@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import StoryRouter from 'storybook-react-router';
 import { Route, useHistory } from 'react-router-dom';
@@ -41,7 +41,7 @@ const Page = (): React.ReactElement => {
       componentDescription="A tab is a navigation component used in the interface to switch between different views in the same context. Tabs are contextual to the section or the page and are triggered by user interaction."
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=60965%3A367088&mode=dev"
     >
-      <Heading size="large">Usage</Heading>{' '}
+      <Heading size="large">Usage</Heading>
       <Sandbox editorHeight={500}>
         {`
         import {
@@ -100,6 +100,7 @@ type StoryControlProps = TabsProps & {
   tabItemChildren: TabItemProps['children'];
   tabItemHref: TabItemProps['href'];
 };
+
 const tabItemTrailing = {
   Counter: <Counter color="positive" value={2} />,
   Badge: <Badge color="positive">NEW</Badge>,
@@ -107,6 +108,7 @@ const tabItemTrailing = {
 export default {
   title: 'Components/Tabs',
   component: Tabs,
+  tags: ['autodocs'],
   argTypes: {
     onChange: {
       table: {
@@ -134,7 +136,6 @@ export default {
         type: 'boolean',
       },
       table: { category: propsCategory.TABS },
-      defaultValue: false,
     },
     orientation: {
       control: {
@@ -142,22 +143,18 @@ export default {
         options: ['horizontal', 'vertical'],
       },
       table: { category: propsCategory.TABS },
-      defaultValue: 'horizontal',
     },
     size: {
       table: { category: propsCategory.TABS },
-      defaultValue: 'medium',
     },
     variant: {
       table: { category: propsCategory.TABS },
-      defaultValue: 'bordered',
     },
     tabItemChildren: {
       control: {
         type: 'text',
       },
       table: { category: propsCategory.TAB_ITEM },
-      defaultValue: 'Plans',
       description: 'The label of the tab item.',
     },
     tabItemIsDisabled: {
@@ -165,7 +162,6 @@ export default {
         type: 'boolean',
       },
       table: { category: propsCategory.TAB_ITEM },
-      defaultValue: false,
       description: 'If `true`, the tab item will be disabled.',
     },
     tabItemLeading: {
@@ -175,7 +171,6 @@ export default {
       },
       mapping: iconMap,
       options: Object.keys(iconMap),
-      defaultValue: 'ClipboardIcon',
       description: 'Leading element of the tab item. Can be used to render an icon.',
     },
     tabItemTrailing: {
@@ -185,7 +180,6 @@ export default {
       },
       mapping: tabItemTrailing,
       options: Object.keys(tabItemTrailing),
-      defaultValue: 'Badge',
       description: 'Trailing element of the tab item. Can be used to render an badge/counter.',
     },
     tabItemHref: {
@@ -193,15 +187,25 @@ export default {
       control: {
         type: 'text',
       },
-      defaultValue: '',
     },
     isLazy: {
       table: { category: propsCategory.TABS },
-      defaultValue: false,
     },
   },
+  args: {
+    isFullWidthTabItem: false,
+    orientation: 'horizontal',
+    size: 'medium',
+    variant: 'bordered',
+    tabItemChildren: 'Tab Item',
+    tabItemIsDisabled: false,
+    tabItemLeading: ('ClipboardIcon' as unknown) as IconComponent,
+    tabItemTrailing: 'Badge',
+    tabItemHref: '',
+    isLazy: false,
+  },
   // eslint-disable-next-line babel/new-cap
-  decorators: [StoryRouter(undefined, { initialEntries: ['/accounts/subscriptions'] })],
+  decorators: [StoryRouter(undefined, { initialEntries: ['/accounts/subscriptions'] })] as unknown,
   parameters: {
     docs: {
       page: Page,
@@ -422,7 +426,7 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
   );
 };
 
-const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (args) => {
+const TabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = (args) => {
   const isMobile = useIsMobile();
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
   const orientation = isMobile ? 'horizontal' : args.orientation;
@@ -472,7 +476,7 @@ const TabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElem
 
 export const Default = TabsTemplate.bind({});
 
-const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (
+const ControlledTabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = (
   args,
 ) => {
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
@@ -541,7 +545,7 @@ const ControlledTabsTemplate: ComponentStory<(props: StoryControlProps) => React
 
 export const Controlled = ControlledTabsTemplate.bind({});
 
-const TabsWithTooltipTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (
+const TabsWithTooltipTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = (
   args,
 ) => {
   const invalidationKey = `${args.isFullWidthTabItem}-${args.orientation}-${args.size}-${args.tabItemIsDisabled}`;
@@ -649,9 +653,7 @@ FullWidthTabItem.args = {
   isFullWidthTabItem: true,
 };
 
-const ProductUseCase1Template: ComponentStory<
-  (props: StoryControlProps) => React.ReactElement
-> = () => {
+const ProductUseCase1Template: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   return (
     <Box height={isReactNative() ? '100%' : undefined}>
       <Text>
@@ -697,9 +699,7 @@ const ProductUseCase1Template: ComponentStory<
 export const ProductUseCase1 = ProductUseCase1Template.bind({});
 ProductUseCase1.storyName = 'Product Usecase: End to End Borders';
 
-const ProductUseCase2Template: ComponentStory<
-  (props: StoryControlProps) => React.ReactElement
-> = () => {
+const ProductUseCase2Template: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   const isMobile = useIsMobile();
   const [value, setValue] = React.useState('subscriptions');
 
@@ -905,9 +905,7 @@ const ReactRouterExample = () => {
   );
 };
 
-const ProductUseCase3Template: ComponentStory<
-  (props: StoryControlProps) => React.ReactElement
-> = () => {
+const ProductUseCase3Template: StoryFn<(props: StoryControlProps) => React.ReactElement> = () => {
   return <ReactRouterExample />;
 };
 

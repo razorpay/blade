@@ -9,7 +9,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
-import type { ColorContrastTypes, FeedbackColors } from '~tokens/theme/theme';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import { size } from '~tokens/global';
 import type { TestID } from '~utils/types';
 import { makeSize } from '~utils/makeSize';
@@ -23,14 +23,9 @@ type ProgressBarCommonProps = {
    */
   accessibilityLabel?: string;
   /**
-   * Sets the contrast for the progress bar
-   * @default 'low'
+   * Sets the color of the progress bar which changes the feedback color.
    */
-  contrast?: ColorContrastTypes;
-  /**
-   * Sets the intent of the progress bar which changes the feedback color.
-   */
-  intent?: FeedbackColors;
+  color?: FeedbackColors;
   /**
    * Sets the label to be rendered for the progress bar. This value will also be used as default for `accessibilityLabel`.
    */
@@ -105,8 +100,7 @@ const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 |
 
 const ProgressBar = ({
   accessibilityLabel,
-  contrast = 'low',
-  intent,
+  color,
   isIndeterminate = false,
   label,
   showPercentage = true,
@@ -130,10 +124,10 @@ const ProgressBar = ({
     }
   }
 
-  const unfilledBackgroundColor = theme.colors.brand.gray.a100[`${contrast}Contrast`];
-  const filledBackgroundColor = intent
-    ? theme.colors.feedback.background[intent].highContrast
-    : theme.colors.brand.primary[500];
+  const unfilledBackgroundColor = theme.colors.feedback.background.neutral.subtle;
+  const filledBackgroundColor = color
+    ? theme.colors.feedback.background[color].intense
+    : theme.colors.surface.background.primary.intense;
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
   const progressValue = clamp(value, min, max);
@@ -176,17 +170,16 @@ const ProgressBar = ({
           justifyContent={hasLabel ? 'space-between' : 'flex-end'}
         >
           {hasLabel ? (
-            <FormLabel as="label" htmlFor={id} contrast={contrast}>
+            <FormLabel as="label" htmlFor={id}>
               {label}
             </FormLabel>
           ) : null}
           {shouldShowPercentage ? (
             <BaseBox marginBottom="spacing.2">
               <Text
-                type="subdued"
                 variant="body"
-                contrast={contrast}
                 size="small"
+                color="surface.text.gray.subtle"
               >{`${percentageProgressValue}%`}</Text>
             </BaseBox>
           ) : null}

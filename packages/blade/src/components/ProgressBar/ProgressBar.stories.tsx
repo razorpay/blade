@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useEffect, useState } from 'react';
@@ -47,10 +47,11 @@ export default {
       page: Page,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 } as Meta<ProgressBarProps>;
 
-const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...args }) => {
+const ProgressBarTemplate: StoryFn<typeof ProgressBarComponent> = ({ ...args }) => {
   return <ProgressBarComponent {...args} />;
 };
 
@@ -60,10 +61,9 @@ Default.storyName = 'Default';
 Default.args = {
   label: 'Label',
   value: 20,
-  contrast: 'low',
 };
 
-const ProgressBarWithUpdatingValuesTemplate: ComponentStory<typeof ProgressBarComponent> = ({
+const ProgressBarWithUpdatingValuesTemplate: StoryFn<typeof ProgressBarComponent> = ({
   ...args
 }) => {
   const [value, setValue] = useState(10);
@@ -84,9 +84,7 @@ const ProgressBarWithUpdatingValuesTemplate: ComponentStory<typeof ProgressBarCo
   return <ProgressBarComponent {...args} value={value} />;
 };
 
-const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent> = ({
-  ...args
-}) => {
+const ProgressBarWithColorsTemplate: StoryFn<typeof ProgressBarComponent> = ({ ...args }) => {
   const [value, setValue] = useState(10);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -113,7 +111,7 @@ const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent
     >
       {intents.map((intent) => (
         <BaseBox key={intent} paddingTop="spacing.4">
-          <ProgressBarComponent {...args} intent={intent} value={value} />
+          <ProgressBarComponent {...args} color={intent} value={value} />
         </BaseBox>
       ))}
     </BaseBox>
@@ -140,9 +138,9 @@ ProgressBarMediumSize.args = {
   size: 'medium',
 };
 
-export const ProgressBarWithIntents = ProgressBarWithIntentsTemplate.bind({});
-ProgressBarWithIntents.storyName = 'Intents';
-ProgressBarWithIntents.args = {
+export const ProgressBarWithColor = ProgressBarWithColorsTemplate.bind({});
+ProgressBarWithColor.storyName = 'Intents';
+ProgressBarWithColor.args = {
   size: 'medium',
   label: 'Label',
 };
@@ -154,7 +152,7 @@ ProgressBarMeterVariant.args = {
   size: 'medium',
   value: 10,
   label: 'Balance: ₹10,000',
-  intent: 'notice',
+  color: 'notice',
 };
 
 export const ProgressBarIndeterminate = ProgressBarTemplate.bind({});

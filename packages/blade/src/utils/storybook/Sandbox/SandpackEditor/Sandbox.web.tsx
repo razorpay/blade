@@ -29,8 +29,10 @@ const useSandpackSetup = ({
 }): any => {
   const docsContext = React.useContext(DocsContext);
 
-  const colorScheme = docsContext?.globals?.colorScheme ?? 'light';
-  const brandColor = docsContext?.globals?.brandColor;
+  // @ts-expect-error docsContext.store exists
+  const colorScheme = docsContext?.store?.globals?.globals?.colorScheme ?? 'light';
+  // @ts-expect-error docsContext.store exists
+  const brandColor = docsContext?.store?.globals?.globals?.brandColor;
 
   return {
     template: 'react-ts',

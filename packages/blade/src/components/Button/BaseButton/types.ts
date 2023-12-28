@@ -10,8 +10,6 @@ export type StyledBaseButtonProps = Omit<
   BaseButtonProps,
   'icon' | 'children' | 'accessibilityLabel'
 > & {
-  activeBorderColor: string;
-  activeBackgroundColor: string;
   defaultBorderColor: string;
   minHeight: `${ButtonMinHeight}px`;
   buttonPaddingTop: SpacingValues;
@@ -32,5 +30,6 @@ export type StyledBaseButtonProps = Omit<
   borderWidth: BorderWidthValues;
   borderRadius: BorderRadiusValues;
   accessibilityProps: Record<string, unknown>;
+  shouldShowHoverlay?: boolean;
 } & StyledPropsBlade &
   BladeCommonEvents;

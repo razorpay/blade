@@ -6,7 +6,6 @@ import { makeSize } from '~utils';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseBox } from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
-import { useTheme } from '~components/BladeProvider';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import { MetaConstants } from '~utils/metaAttribute';
@@ -25,7 +24,6 @@ const _ModalHeader = ({
   trailing,
 }: ModalHeaderProps): React.ReactElement => {
   const { close, defaultInitialFocusRef } = useModalContext();
-  const { theme } = useTheme();
 
   const isHeaderEmpty = !(title || subtitle || leading || trailing);
   return isHeaderEmpty ? (
@@ -39,7 +37,7 @@ const _ModalHeader = ({
       width={makeSize(size[28])}
       height={makeSize(size[28])}
       flexShrink={0}
-      backgroundColor={theme.colors.surface.background.level2.lowContrast}
+      backgroundColor="popup.background.subtle"
       borderRadius="max"
       zIndex={modalHighestZIndex}
     >

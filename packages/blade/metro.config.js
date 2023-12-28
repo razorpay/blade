@@ -12,6 +12,7 @@ const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 const config = {
   resetCache: true,
   transformer: {
+    unstable_allowRequireContext: true,
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
@@ -20,9 +21,7 @@ const config = {
     }),
   },
   resolver: {
-    resolverMainFields: ['sbmodern', 'browser', 'module', 'main'],
-    // TODO: Remove sourceExts array after upgrading to RN 0.72.3
-    sourceExts: ['js', 'jsx', 'json', 'ts', 'tsx', 'mjs', 'cjs'],
+    resolverMainFields: ['browser', 'main'],
   },
 };
 

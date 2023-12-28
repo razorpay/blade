@@ -9,6 +9,7 @@ const getHoverlayStyles = (
   },
 ): CSSObject => {
   return {
+    pointerEvents: 'none',
     position: 'absolute',
     top: '0px',
     left: '0px',

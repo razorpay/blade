@@ -1,12 +1,15 @@
+import { StorybookConfig } from '@storybook/react-webpack5';
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const { DefinePlugin } = require('webpack');
 const path = require('path');
 
-module.exports = {
+const config: StorybookConfig = {
   typescript: {
     check: true,
     checkOptions: {
-      tsconfig: path.resolve('./tsconfig-typecheck.web.json'),
+      typescript: {
+        configFile: path.resolve('./tsconfig-typecheck.web.json'),
+      },
     },
   },
   refs: {
@@ -16,6 +19,7 @@ module.exports = {
     '../../docs/guides/*.stories.mdx',
     '../../src/components/Box/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Badge/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Card/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Icons/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Button/IconButton/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Counter/**/*.stories.@(ts|tsx|js|jsx)',
@@ -23,29 +27,44 @@ module.exports = {
     '../../src/components/Indicator/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Button/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Divider/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Carousel/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/List/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Link/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Tooltip/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Tabs/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/ProgressBar/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Spinner/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Typography/**/**/*.stories.@(ts|tsx|js|jsx)',
-    // '../../docs/**/*.stories.mdx',
-    // '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Collapsible/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Accordion/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/BottomSheet/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Modal/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../docs/**/*.stories.mdx',
+    '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../src/**/*.stories.mdx',
     // '../../src/**/*.stories.@(ts|tsx|js|jsx)',
-    // '../../src/**/*.stories.internal.mdx',
-    // '../../src/**/*.stories.internal.@(ts|tsx|js|jsx)',
+    // '../../src/**/*.internal.stories.mdx',
+    // '../../src/**/*.internal.stories.@(ts|tsx|js|jsx)',
   ],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/preset-create-react-app',
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
+    '@storybook/preset-create-react-app',
   ],
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {},
+  },
   env: (config) => ({
     ...config,
-    GITHUB_SHA: process.env.GITHUB_SHA,
-    GITHUB_REF: process.env.GITHUB_REF,
+    GITHUB_SHA: process.env.GITHUB_SHA || '',
+    GITHUB_REF: process.env.GITHUB_REF || '',
   }),
+  docs: {
+    autodocs: 'tag',
+  },
   staticDirs: ['../../public'],
   webpackFinal: async (config, { configType }) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
@@ -104,3 +123,4 @@ module.exports = {
     };
   },
 };
+export default config;

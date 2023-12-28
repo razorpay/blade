@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
@@ -76,6 +76,7 @@ const meta: Meta<CollapsibleProps> = {
   title: 'Components/Collapsible',
   component: CollapsibleComponent,
   args: {},
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
   },
@@ -86,7 +87,7 @@ const meta: Meta<CollapsibleProps> = {
   },
 };
 
-const CollapsibleButtonTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
+const CollapsibleButtonTemplate: StoryFn<typeof CollapsibleComponent> = ({ ...args }) => {
   return (
     <CollapsibleComponent {...args}>
       <CollapsibleButton>View Price Breakdown</CollapsibleButton>
@@ -127,7 +128,7 @@ const CollapsibleButtonTemplate: ComponentStory<typeof CollapsibleComponent> = (
 
 export const WithCollapsibleButton = CollapsibleButtonTemplate.bind({});
 
-const CollapsibleLinkTemplate: ComponentStory<typeof CollapsibleComponent> = ({ ...args }) => {
+const CollapsibleLinkTemplate: StoryFn<typeof CollapsibleComponent> = ({ ...args }) => {
   return (
     <CollapsibleComponent {...args}>
       <CollapsibleLink>View Price Breakdown</CollapsibleLink>
@@ -189,7 +190,7 @@ WithDirection.parameters = {
   },
 };
 
-const CollapsibleControlledTemplate: ComponentStory<typeof CollapsibleComponent> = ({
+const CollapsibleControlledTemplate: StoryFn<typeof CollapsibleComponent> = ({
   isExpanded: _isExpanded,
   onExpandChange,
   defaultIsExpanded,

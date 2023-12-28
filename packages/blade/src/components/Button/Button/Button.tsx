@@ -28,7 +28,7 @@ type ButtonCommonProps = {
    */
   rel?: BaseButtonProps['rel'];
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'default' | 'white' | 'positive' | 'negative';
+  color?: 'primary' | 'white' | 'positive' | 'negative';
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
@@ -85,7 +85,7 @@ const _Button: React.ForwardRefRenderFunction<BladeElementRef, ButtonProps> = (
     size = 'medium',
     type = 'button',
     variant = 'primary',
-    color = 'default',
+    color = 'primary',
     accessibilityLabel,
     testID,
     onBlur,

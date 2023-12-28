@@ -18,17 +18,14 @@ const getBackgroundColor = ({
   isExpanded: boolean;
   isActive: boolean;
 }): string => {
-  const { gray } = theme.colors.brand;
+  const { gray } = theme.colors.interactive.background;
 
   if (isActive) {
-    if (isExpanded) {
-      return gray.a100.lowContrast;
-    }
-    return gray.a50.lowContrast;
+    return gray.faded;
   }
 
   if (isExpanded) {
-    return gray.a50.lowContrast;
+    return gray.default;
   }
 
   const TRANSPARENT = 'hsla(0, 0%, 100%, 0)';

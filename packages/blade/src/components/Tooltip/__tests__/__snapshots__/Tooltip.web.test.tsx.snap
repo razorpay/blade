@@ -93,6 +93,7 @@ exports[`<Tooltip /> should render 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -140,6 +141,11 @@ exports[`<Tooltip /> should render 1`] = `
 .c0.c0.c0.c0.c0:hover .hoverlay,
 .c0.c0.c0.c0.c0:focus .hoverlay {
   opacity: 1;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
@@ -356,6 +362,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -403,6 +410,11 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 .c0.c0.c0.c0.c0:hover .hoverlay,
 .c0.c0.c0.c0.c0:focus .hoverlay {
   opacity: 1;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
@@ -636,6 +648,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  word-break: break-word;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -683,6 +696,11 @@ exports[`<Tooltip /> should render with title 1`] = `
 .c0.c0.c0.c0.c0:hover .hoverlay,
 .c0.c0.c0.c0.c0:focus .hoverlay {
   opacity: 1;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {

@@ -11,9 +11,9 @@ const getIndicatorButtonStyles = ({
   theme: DefaultTheme;
 } & Pick<IndicatorButtonProps, 'isActive' | 'variant'>): CSSObject => {
   const backgroundColor = {
-    gray: theme.colors.brand.gray[600].highContrast,
-    white: theme.colors.brand.gray[700].highContrast,
-    blue: theme.colors.brand.primary[500],
+    gray: theme.colors.interactive.icon.gray.muted,
+    white: theme.colors.interactive.icon.staticWhite.normal,
+    blue: theme.colors.interactive.icon.primary.subtle,
   };
 
   const easing = castWebType(theme.motion.easing.standard.effective);
@@ -24,9 +24,7 @@ const getIndicatorButtonStyles = ({
     cursor: 'pointer',
     padding: makeSpace(theme.spacing[0]),
     borderRadius: theme.border.radius.max,
-    backgroundColor: isActive
-      ? backgroundColor[variant]
-      : theme.colors.surface.overlay.background[400],
+    backgroundColor: isActive ? backgroundColor[variant] : theme.colors.overlay.background.moderate,
     width: isActive ? makeSize(size[18]) : makeSize(size[6]),
     height: makeSize(size[6]),
 
@@ -47,7 +45,7 @@ const getIndicatorButtonStyles = ({
       '&:focus-visible': {
         // TODO: refactor to use focus ring token
         outline: 'none',
-        boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+        boxShadow: `0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
       },
     }),
   };

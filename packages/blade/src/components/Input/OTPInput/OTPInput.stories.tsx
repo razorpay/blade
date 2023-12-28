@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import { SelectInput } from '../DropdownInputTriggers';
@@ -48,6 +48,7 @@ export default {
     errorText: undefined,
     successText: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       table: {
@@ -179,7 +180,7 @@ export default {
   },
 } as Meta<OTPInputProps>;
 
-const OTPInputTemplate: ComponentStory<typeof OTPInputComponent> = ({ ...args }) => {
+const OTPInputTemplate: StoryFn<typeof OTPInputComponent> = ({ ...args }) => {
   return <OTPInputComponent {...args} />;
 };
 
@@ -229,7 +230,7 @@ OTPInputSuccess.args = {
   successText: 'Validated',
 };
 
-const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = () => {
+const OTPInputUncontrolledTemplate: StoryFn<typeof OTPInputComponent> = () => {
   return (
     <OTPInput
       label="Enter OTP"
@@ -240,12 +241,12 @@ const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = (
 };
 export const OTPInputUncontrolled = OTPInputUncontrolledTemplate.bind({});
 
-const OTPInputControlledTemplate: ComponentStory<typeof OTPInputComponent> = () => {
+const OTPInputControlledTemplate: StoryFn<typeof OTPInputComponent> = () => {
   return <OTPInput label="Enter OTP" value="123456" name="otp" />;
 };
 export const OTPInputControlled = OTPInputControlledTemplate.bind({});
 
-export const OTPInputRef: ComponentStory<typeof OTPInputComponent> = () => {
+export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [focusOn, setFocusOn] = React.useState(0);
   const inputRef = React.useRef<HTMLInputElement[]>([]);

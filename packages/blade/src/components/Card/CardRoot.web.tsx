@@ -9,10 +9,12 @@ import { useIsMobile } from '~utils/useIsMobile';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps & { isPressed: boolean; isMobile: boolean }>(
   ({ theme, isSelected, isFocused, shouldScaleOnHover, isPressed, isMobile }) => {
-    const selectedColor = isSelected ? theme.colors.brand.primary[500] : 'transparent';
+    const selectedColor = isSelected ? theme.colors.surface.border.primary.normal : 'transparent';
     const selectedBorder = `0px 0px 0px ${theme.border.width.thicker}px ${selectedColor}`;
     //  focused state
-    const focusRing = isFocused ? `, 0px 0px 0px 4px ${theme.colors.brand.primary[400]}` : '';
+    const focusRing = isFocused
+      ? `, 0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`
+      : '';
 
     return {
       // Selected state
