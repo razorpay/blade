@@ -39,6 +39,7 @@ const config: StorybookConfig = {
     '../../src/components/Accordion/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/BottomSheet/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Modal/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Radio/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../docs/**/*.stories.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../src/**/*.stories.mdx',
