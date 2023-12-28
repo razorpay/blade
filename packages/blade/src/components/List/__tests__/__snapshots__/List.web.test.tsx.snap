@@ -95,7 +95,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 cy="3px"
                 data-blade-component="svg-circle"
                 fill="hsla(211, 22%, 56%, 1)"
-                fill-opacity="0.56"
+                fill-opacity="0.48"
                 r="3px"
               />
             </svg>
@@ -186,7 +186,7 @@ exports[`<List /> should render List with default properties 1`] = `
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(211, 22%, 56%, 1)"
-                            fill-opacity="0.56"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -329,7 +329,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 cy="3px"
                 data-blade-component="svg-circle"
                 fill="hsla(211, 22%, 56%, 1)"
-                fill-opacity="0.56"
+                fill-opacity="0.48"
                 r="3px"
               />
             </svg>
@@ -379,7 +379,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 cy="3px"
                 data-blade-component="svg-circle"
                 fill="hsla(211, 22%, 56%, 1)"
-                fill-opacity="0.56"
+                fill-opacity="0.48"
                 r="3px"
               />
             </svg>
@@ -505,7 +505,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
                 cy="3px"
                 data-blade-component="svg-circle"
                 fill="hsla(211, 22%, 56%, 1)"
-                fill-opacity="0.56"
+                fill-opacity="0.48"
                 r="3px"
               />
             </svg>
@@ -750,7 +750,7 @@ exports[`<List /> should render large ordered List 1`] = `
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(211, 22%, 56%, 1)"
-                            fill-opacity="0.56"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -1152,7 +1152,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(211, 22%, 56%, 1)"
-                            fill-opacity="0.56"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -1400,7 +1400,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(211, 22%, 56%, 1)"
-                            fill-opacity="0.56"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -1802,7 +1802,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(211, 22%, 56%, 1)"
-                            fill-opacity="0.56"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -2050,7 +2050,7 @@ exports[`<List /> should render small ordered List 1`] = `
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(211, 22%, 56%, 1)"
-                            fill-opacity="0.56"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -2452,7 +2452,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(211, 22%, 56%, 1)"
-                            fill-opacity="0.56"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -2573,7 +2573,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 cy="3px"
                 data-blade-component="svg-circle"
                 fill="hsla(211, 22%, 56%, 1)"
-                fill-opacity="0.56"
+                fill-opacity="0.48"
                 r="3px"
               />
             </svg>
@@ -2664,7 +2664,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           <rect
                             data-blade-component="svg-rect"
                             fill="hsla(211, 22%, 56%, 1)"
-                            fill-opacity="0.56"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"

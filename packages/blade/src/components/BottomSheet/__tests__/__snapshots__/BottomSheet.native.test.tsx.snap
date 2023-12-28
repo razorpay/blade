@@ -357,7 +357,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         color="interactive.text.primary.subtle"
                         data-blade-component="base-text"
                         fontSize={100}
-                        fontWeight="bold"
+                        fontWeight="semibold"
                         lineHeight={100}
                         style={
                           [
@@ -366,7 +366,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
-                              "fontWeight": "700",
+                              "fontWeight": "600",
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
@@ -1395,7 +1395,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         color="interactive.text.primary.subtle"
                         data-blade-component="base-text"
                         fontSize={100}
-                        fontWeight="bold"
+                        fontWeight="semibold"
                         lineHeight={100}
                         style={
                           [
@@ -1404,7 +1404,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
-                              "fontWeight": "700",
+                              "fontWeight": "600",
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,

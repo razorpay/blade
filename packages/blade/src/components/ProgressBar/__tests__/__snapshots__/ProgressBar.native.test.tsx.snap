@@ -2096,7 +2096,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -2105,7 +2105,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2540,7 +2540,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -2549,7 +2549,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
