@@ -116,6 +116,7 @@ const componentData: ComponentStatusDataType = [
     name: 'List',
     status: 'released',
     releasedIn: '6.1.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/List',
     description:
       'Lists display a set of related items that are composed of text/links. Each list item begins with a bullet or a number.',
@@ -303,6 +304,7 @@ const componentData: ComponentStatusDataType = [
     description:
       'Tooltip is a brief, informative message that appears when a user interacts with an element.',
     releasedIn: '8.9.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Tooltip',
   },
   {
