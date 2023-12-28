@@ -38,6 +38,7 @@ TestCarouselOnChange.play = async ({ canvasElement }) => {
   getByText(/Single Flow To Collect And Disburse Payments/)?.scrollIntoView({ behavior: 'smooth' });
   await sleep(1000);
   await expect(onChange).toBeCalledWith(3);
+  await expect(onChange).toBeCalledTimes(3);
 };
 
 export const TestIndicatorButton: StoryFn<typeof CarouselComponent> = (
@@ -53,6 +54,7 @@ TestIndicatorButton.play = async ({ canvasElement }) => {
   await userEvent.click(indicatorButton);
   await sleep(1000);
   await expect(onChange).toBeCalledWith(6);
+  await expect(onChange).toBeCalledTimes(1);
 };
 
 export const TestStartOverAfterStartEnd: StoryFn<typeof CarouselComponent> = (
@@ -72,6 +74,7 @@ TestStartOverAfterStartEnd.play = async ({ canvasElement }) => {
   await userEvent.click(nextButton);
   await sleep(1000);
   await expect(onChange).toBeCalledWith(0);
+  await expect(onChange).toBeCalledTimes(2);
 };
 
 export const TestAutoPlay: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
@@ -84,6 +87,7 @@ TestAutoPlay.play = async ({ canvasElement }) => {
   await sleep(8000);
   await expect(onChange).toBeCalledWith(1);
   await expect(getByRole('tab', { selected: true })).toHaveAccessibleName('Slide 3');
+  await expect(onChange).toBeCalledTimes(1);
 };
 
 export const TestAutofit: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
@@ -113,6 +117,7 @@ TestAutofit.play = async ({ canvasElement }) => {
   await sleep(1000);
   const previousButton = queryByRole('button', { name: 'Previous Slide' });
   await expect(previousButton).toBeNull();
+  await expect(onChange).toBeCalledTimes(2);
 };
 
 export const TestAutoPlayPause: StoryFn<typeof CarouselComponent> = (props): React.ReactElement => {
@@ -125,7 +130,7 @@ TestAutoPlayPause.play = async ({ canvasElement }) => {
   const slide = getByText(/Acquire Customers From New Customer Segments/);
   await userEvent.hover(slide);
   await sleep(7000);
-  await expect(onChange).toBeCalledTimes(0);
+  await expect(onChange).not.toHaveBeenCalled();
 };
 
 export const TestVisibleItemsOnMobile: StoryFn<typeof CarouselComponent> = (
