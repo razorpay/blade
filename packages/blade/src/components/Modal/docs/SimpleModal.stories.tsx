@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import isChromatic from 'chromatic/isChromatic';
 import type { ModalProps } from '../Modal';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
@@ -26,7 +26,7 @@ export default {
   },
 } as Meta<ModalProps>;
 
-const ModalTemplate: ComponentStory<typeof Modal> = ({ size }) => {
+const ModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
   // `!!isChramatic` is not readable hence disabling the eslint rule
   // eslint-disable-next-line no-unneeded-ternary
   const [isOpen, setIsOpen] = React.useState(isChromatic() ? true : false);

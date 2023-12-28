@@ -1,5 +1,5 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { ComponentStory } from '@storybook/react';
+import type { StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import { SelectInput } from './SelectInput';
@@ -50,6 +50,7 @@ export default {
     prefix: '',
     suffix: '',
   },
+  tags: ['autodocs'],
   argTypes: {
     defaultValue: {
       table: {
@@ -214,7 +215,7 @@ export default {
   },
 };
 
-const SelectInputTemplate: ComponentStory<typeof SelectInput> = ({ icon, ...args }) => {
+const SelectInputTemplate: StoryFn<typeof SelectInput> = ({ icon, ...args }) => {
   return (
     <Box minHeight="150px" padding="spacing.5">
       <Dropdown>

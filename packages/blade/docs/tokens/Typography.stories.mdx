@@ -9,12 +9,13 @@ import FigmaEmbed from '../../src/utils/storybook/FigmaEmbed';
   parameters={{
     docs: {
       container: ({ children, context }) => {
+        const colorScheme = context.store.globals.globals.colorScheme;
         return (
           <DocsContainer context={context}>
             <BladeProvider
-              key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
+              key={colorScheme}
               themeTokens={bladeTheme}
-              colorScheme={context.globals.colorScheme}
+              colorScheme={colorScheme}
             >
               {children}
             </BladeProvider>

@@ -1,5 +1,15 @@
 import { Meta } from '@storybook/addon-docs';
-import { Accordion, AccordionItem, Text, Code, Link } from '../../src/components';
+import { Unstyled } from '@storybook/blocks';
+import {
+  Collapsible,
+  CollapsibleLink,
+  CollapsibleBody,
+  Accordion,
+  AccordionItem,
+  Text,
+  Code,
+  Link,
+} from '../../src/components';
 
 <Meta title="Guides/FAQs" />
 
@@ -33,4 +43,6 @@ export const FAQComponent = () => {
   );
 };
 
-<FAQComponent />
+<Unstyled>
+  <FAQComponent />
+</Unstyled>

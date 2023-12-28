@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Modal } from '../Modal';
 import {
   BasicModalStory,
@@ -28,7 +28,7 @@ const ModalMeta: Meta = {
   },
 };
 
-const ModalTemplate: ComponentStory<typeof Modal> = () => {
+const ModalTemplate: StoryFn<typeof Modal> = () => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {BasicModalStory}
@@ -38,13 +38,13 @@ const ModalTemplate: ComponentStory<typeof Modal> = () => {
 
 export const BasicModal = ModalTemplate.bind({});
 
-export const ModalWithHeaderFooter = (): React.ReactElement => {
-  return (
-    <Sandbox padding="spacing.0" editorHeight="90vh">
-      {ModalWithHeaderFooterStory}
-    </Sandbox>
-  );
-};
+// export const ModalWithHeaderFooter = (): React.ReactElement => {
+//   return (
+//     <Sandbox padding="spacing.0" editorHeight="90vh">
+//       {ModalWithHeaderFooterStory}
+//     </Sandbox>
+//   );
+// };
 
 export const ModalWithScrollableBackground = (): React.ReactElement => {
   return (
@@ -62,13 +62,13 @@ export const ModalWithScrollableContent = (): React.ReactElement => {
   );
 };
 
-export const ModalStacking = (): React.ReactElement => {
-  return (
-    <Sandbox padding="spacing.0" editorHeight="90vh">
-      {ModalStackingStory}
-    </Sandbox>
-  );
-};
+// export const ModalStacking = (): React.ReactElement => {
+//   return (
+//     <Sandbox padding="spacing.0" editorHeight="90vh">
+//       {ModalStackingStory}
+//     </Sandbox>
+//   );
+// };
 
 export const ModalWithNoBodyPadding = (): React.ReactElement => {
   return (
