@@ -7,6 +7,7 @@ import {
   spacing,
   typography,
   elevation,
+  opacity,
 } from '~tokens/global';
 
 const colors: ColorsWithModes = {
@@ -102,7 +103,7 @@ const colors: ColorsWithModes = {
           highlighted: globalColors.neutral.blueGrayLight[1100],
           disabled: globalColors.neutral.blueGrayLight.a100,
           faded: globalColors.neutral.blueGrayLight.a100,
-          fadeHighlighted: globalColors.neutral.blueGrayLight.a200,
+          fadedHighlighted: globalColors.neutral.blueGrayLight.a200,
         },
         primary: {
           default: globalColors.chromatic.azure[500],
@@ -534,7 +535,7 @@ const colors: ColorsWithModes = {
           highlighted: globalColors.neutral.blueGrayDark[1000],
           disabled: globalColors.neutral.blueGrayDark.a100,
           faded: globalColors.neutral.blueGrayDark.a75,
-          fadeHighlighted: globalColors.neutral.blueGrayDark.a100,
+          fadedHighlighted: globalColors.neutral.blueGrayDark.a100,
         },
         primary: {
           default: globalColors.chromatic.azure[600],

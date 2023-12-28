@@ -25,12 +25,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="This is the Button component which can be used for various CTAs. It is available in 3 different variants."
       componentName="Button"
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9611%3A78487',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0"
     >
       <Title>Usage</Title>
       <Sandbox showConsole>
@@ -66,7 +61,7 @@ export default {
   component: ButtonComponent,
   args: {
     variant: 'primary',
-    color: 'default',
+    color: 'primary',
     children: 'Pay Now',
     onClick: (): void => {
       console.log('clicked');
@@ -157,77 +152,95 @@ const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
-  const colors: ButtonProps['color'][] = ['default', 'white', 'positive', 'negative'];
+  const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
 
   return (
     <>
-      {colors.map((color) => (
-        <BaseBox
-          key={color}
-          display="flex"
-          flexDirection="row"
-          gap="spacing.5"
-          backgroundColor={color === 'white' ? 'brand.gray.700.lowContrast' : 'transparent'}
-          margin="spacing.4"
-          padding="spacing.5"
-        >
+      {colors.map((color) => {
+        const textColor =
+          color === 'white' ? 'surface.text.staticWhite.normal' : 'surface.text.staticBlack.normal';
+        return (
           <BaseBox
-            width="100px"
-            margin="spacing.2"
+            key={color}
             display="flex"
-            justifyContent="center"
-            alignItems="center"
+            flexDirection="row"
+            gap="spacing.5"
+            backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : 'transparent'}
+            margin="spacing.4"
+            padding="spacing.5"
           >
-            <HeadingComponent
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              size="medium"
+            <BaseBox
+              width="100px"
+              margin="spacing.2"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
             >
-              {color}
-            </HeadingComponent>
-          </BaseBox>
-          <BaseBox margin="spacing.2">
-            <Text
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              weight="bold"
-            >
-              Primary
-            </Text>
-            <ButtonComponent {...args} color={color} variant="primary">
-              {children}
-            </ButtonComponent>
-          </BaseBox>
-
-          <BaseBox margin="spacing.2">
-            <Text
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              weight="bold"
-            >
-              Secondary
-            </Text>
-            <ButtonComponent {...args} color={color} variant="secondary">
-              {children}
-            </ButtonComponent>
-          </BaseBox>
-
-          {(color == 'default' || color == 'white') && (
+              <HeadingComponent marginBottom="spacing.3" color={textColor} size="medium">
+                {color}
+              </HeadingComponent>
+            </BaseBox>
             <BaseBox margin="spacing.2">
-              <Text
-                marginBottom="spacing.3"
-                contrast={color == 'white' ? 'high' : 'low'}
-                weight="bold"
-              >
-                Tertiary
+              <Text marginBottom="spacing.3" color={textColor}>
+                Primary
               </Text>
-              <ButtonComponent {...args} color={color} variant="tertiary">
+              <ButtonComponent {...args} color={color} variant="primary">
+                {children}
+              </ButtonComponent>
+
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="primary"
+                isDisabled
+              >
                 {children}
               </ButtonComponent>
             </BaseBox>
-          )}
-        </BaseBox>
-      ))}
+
+            <BaseBox margin="spacing.2">
+              <Text marginBottom="spacing.3" color={textColor}>
+                Secondary
+              </Text>
+              <ButtonComponent {...args} color={color} variant="secondary">
+                {children}
+              </ButtonComponent>
+
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="secondary"
+                isDisabled
+              >
+                {children}
+              </ButtonComponent>
+            </BaseBox>
+
+            {(color == 'primary' || color == 'white') && (
+              <BaseBox margin="spacing.2">
+                <Text marginBottom="spacing.3" color={textColor}>
+                  Tertiary
+                </Text>
+                <ButtonComponent {...args} color={color} variant="tertiary">
+                  {children}
+                </ButtonComponent>
+
+                <ButtonComponent
+                  marginLeft="spacing.4"
+                  {...args}
+                  color={color}
+                  variant="tertiary"
+                  isDisabled
+                >
+                  {children}
+                </ButtonComponent>
+              </BaseBox>
+            )}
+          </BaseBox>
+        );
+      })}
     </>
   );
 };

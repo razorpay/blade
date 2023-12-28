@@ -12,12 +12,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=28012%3A580578&t=WfWp7qiwZ3lvvbdw-0',
-        bankingTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=28012%3A580578&t=WfWp7qiwZ3lvvbdw-0',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=28012%3A580578&t=WfWp7qiwZ3lvvbdw-0"
       componentName="Amount"
       componentDescription="Amounts are used to show small amount of color coded metadata, which are ideal for getting user attention."
       note="This component only displays the provided value in the specified currency, it does not perform any currency conversion."

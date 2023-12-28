@@ -1,28 +1,16 @@
 import type { Theme } from '~components/BladeProvider';
 import type { AccessibilityProps } from '~utils/makeAccessible/types';
-import type { DotNotationColorStringToken, TestID } from '~utils/types';
-import type { Feedback } from '~tokens/theme/theme';
+import type { TestID } from '~utils/types';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
-type FeedbackColors = `feedback.text.${DotNotationColorStringToken<
-  Theme['colors']['feedback']['text']
->}`;
-type FeedbackActionColors = `feedback.${Feedback}.action.text.${DotNotationColorStringToken<
-  Theme['colors']['feedback'][Feedback]['action']['text']
->}`;
-type SurfaceColors = `surface.text.${DotNotationColorStringToken<
-  Theme['colors']['surface']['text']
->}`;
-type ActionColors = `action.text.${DotNotationColorStringToken<Theme['colors']['action']['text']>}`;
-type BadgeTextColors = `badge.text.${DotNotationColorStringToken<
-  Theme['colors']['badge']['text']
->}`;
-type WhiteTextColors = `white.action.text.${DotNotationColorStringToken<
-  Theme['colors']['white']['action']['text']
->}`;
-
-type BrandPrimaryColors = `brand.primary.${keyof Theme['colors']['brand']['primary']}`;
-type BrandSecondaryColors = `brand.secondary.${keyof Theme['colors']['brand']['secondary']}`;
+type InteractiveText = DotNotationToken<Theme['colors']['interactive']['text']>;
+type SurfaceText = DotNotationToken<Theme['colors']['surface']['text']>;
+type FeedbackText = DotNotationToken<Theme['colors']['feedback']['text']>;
+export type TextColors =
+  | `interactive.text.${InteractiveText}`
+  | `surface.text.${SurfaceText}`
+  | `feedback.text.${FeedbackText}`;
 
 type As =
   | 'code'
@@ -39,23 +27,17 @@ type As =
   | 'cite'
   | 'figcaption'
   | 'div';
+
 export type BaseTextProps = {
   id?: string;
-  color?:
-    | BrandPrimaryColors
-    | BrandSecondaryColors
-    | ActionColors
-    | FeedbackColors
-    | SurfaceColors
-    | FeedbackActionColors
-    | WhiteTextColors
-    | BadgeTextColors;
+  color?: TextColors;
   fontFamily?: keyof Theme['typography']['fonts']['family'];
   fontSize?: keyof Theme['typography']['fonts']['size'];
   fontWeight?: keyof Theme['typography']['fonts']['weight'];
   fontStyle?: 'italic' | 'normal';
   textDecorationLine?: 'line-through' | 'none' | 'underline';
   lineHeight?: keyof Theme['typography']['lineHeights'];
+  letterSpacing?: keyof Theme['typography']['letterSpacings'];
   wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
   /**
    * Web only
@@ -84,6 +66,7 @@ export type StyledBaseTextProps = Pick<
   | 'fontStyle'
   | 'textDecorationLine'
   | 'lineHeight'
+  | 'letterSpacing'
   | 'as'
   | 'textAlign'
   | 'numberOfLines'
@@ -91,4 +74,4 @@ export type StyledBaseTextProps = Pick<
   | 'wordBreak'
 > & { theme: Theme };
 
-export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';

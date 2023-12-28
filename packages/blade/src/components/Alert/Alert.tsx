@@ -15,10 +15,10 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading, Text } from '~components/Typography';
+import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import type { ColorContrastTypes, FeedbackColors } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
 import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -93,12 +93,12 @@ type AlertProps = {
    * @deprecated Use `color` instead
    * @default neutral
    */
-  intent?: Feedback;
+  intent?: FeedbackColors;
 
   /**
    * Sets the color tone
    */
-  color?: Feedback;
+  color?: FeedbackColors;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -194,11 +194,11 @@ const Alert = ({
   const _title = title ? (
     <BaseBox marginBottom="spacing.2">
       {isFullWidth ? (
-        <Heading type="subtle" size="small" contrast={contrast}>
+        <Text type="subtle" size="large" weight="semibold" contrast={contrast}>
           {title}
-        </Heading>
+        </Text>
       ) : (
-        <Text type="subtle" weight="bold" contrast={contrast}>
+        <Text type="subtle" weight="semibold" contrast={contrast}>
           {title}
         </Text>
       )}

@@ -9,7 +9,7 @@ import {
   amountLineHeights,
 } from './amountTokens';
 import { BaseText } from '~components/Typography/BaseText';
-import type { Feedback } from '~tokens/theme/theme';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
@@ -20,6 +20,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
+// @TODO: Add CardHeaderAmount component to Card once this is migrated
 type AmountProps = {
   /**
    * The value to be rendered within the component.
@@ -31,7 +32,7 @@ type AmountProps = {
    *
    * @default undefined
    */
-  intent?: Exclude<Feedback, 'neutral'>;
+  intent?: Exclude<FeedbackColors, 'neutral'>;
   /**
    * Sets the size of the amount.
    *

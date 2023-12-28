@@ -2,6 +2,7 @@
 import React from 'react';
 import { useVerifyInsideCard } from './CardContext';
 import { ComponentIds } from './Card';
+import type { CardSpacingValueType } from './types';
 import type { BadgeProps } from '~components/Badge';
 import { Badge } from '~components/Badge';
 import type { LinkProps } from '~components/Link';
@@ -13,7 +14,7 @@ import type { CounterProps } from '~components/Counter';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { TextProps, TextVariant } from '~components/Typography';
-import { Heading, Text } from '~components/Typography';
+import { Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -27,7 +28,7 @@ import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVer
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
 
-  return <Icon color="surface.text.normal.lowContrast" size="xlarge" />;
+  return <Icon color="surface.icon.gray.normal" size="large" />;
 };
 const CardHeaderIcon = assignWithoutSideEffects(_CardHeaderIcon, {
   componentId: ComponentIds.CardHeaderIcon,
@@ -50,6 +51,16 @@ const _CardHeaderBadge = (props: BadgeProps): React.ReactElement => {
 const CardHeaderBadge = assignWithoutSideEffects(_CardHeaderBadge, {
   componentId: ComponentIds.CardHeaderBadge,
 });
+
+// @TODO: uncomment and export this when Amount component is migrated
+// const _CardHeaderAmount = (props: AmountProps): React.ReactElement => {
+//   useVerifyInsideCard('CardHeaderAmount');
+
+//   return <Amount {...props} />;
+// };
+// const CardHeaderAmount = assignWithoutSideEffects(_CardHeaderAmount, {
+//   componentId: ComponentIds.CardHeaderAmount,
+// });
 
 const _CardHeaderText = (props: TextProps<{ variant: TextVariant }>): React.ReactElement => {
   useVerifyInsideCard('CardHeaderText');
@@ -91,9 +102,27 @@ const CardHeaderIconButton = assignWithoutSideEffects(_CardHeaderIconButton, {
 
 type CardHeaderProps = {
   children?: React.ReactNode;
+  /**
+   * For spacing between divider and header title
+   */
+  paddingBottom?: CardSpacingValueType;
+  /**
+   * For spacing between body content and divider
+   */
+  marginBottom?: CardSpacingValueType;
+  /**
+   * @default true
+   */
+  showDivider?: boolean;
 } & TestID;
 
-const _CardHeader = ({ children, testID }: CardHeaderProps): React.ReactElement => {
+const _CardHeader = ({
+  children,
+  testID,
+  marginBottom = 'spacing.4',
+  paddingBottom = 'spacing.4',
+  showDivider = true,
+}: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');
   useVerifyAllowedChildren({
     children,
@@ -103,18 +132,18 @@ const _CardHeader = ({ children, testID }: CardHeaderProps): React.ReactElement 
 
   return (
     <BaseBox
-      marginBottom="spacing.7"
+      marginBottom={marginBottom}
       {...metaAttribute({ name: MetaConstants.CardHeader, testID })}
     >
       <BaseBox
-        marginBottom="spacing.7"
+        paddingBottom={paddingBottom}
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
       >
         {children}
       </BaseBox>
-      <Divider />
+      {showDivider ? <Divider /> : null}
     </BaseBox>
   );
 };
@@ -167,13 +196,13 @@ const _CardHeaderLeading = ({
       </BaseBox>
       <BaseBox marginRight="spacing.5">
         <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
-          <Heading size="small" variant="regular" type="normal">
+          <Text color="surface.text.gray.normal" size="large" weight="semibold">
             {title}
-          </Heading>
+          </Text>
           <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
         </BaseBox>
         {subtitle && (
-          <Text textAlign="left" variant="body" size="small" weight="regular">
+          <Text color="surface.text.gray.subtle" textAlign="left" size="small">
             {subtitle}
           </Text>
         )}

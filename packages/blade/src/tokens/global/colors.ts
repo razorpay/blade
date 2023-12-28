@@ -11,14 +11,14 @@ export type ColorChromaticScale = Readonly<{
   700: string;
   800: string;
   900: string;
-  950: string;
-  a00: string;
+  1000: string;
   a50: string;
   a100: string;
+  a150: string;
   a200: string;
 }>;
 
-export type ColorNeutralScale = Readonly<{
+export type ColorNeutralGrayScale = Readonly<{
   0: string;
   50: string;
   100: string;
@@ -34,14 +34,23 @@ export type ColorNeutralScale = Readonly<{
   1100: string;
   1200: string;
   1300: string;
-  a00: string;
   a50: string;
+  a75: string;
   a100: string;
   a200: string;
-  a300: string;
   a400: string;
-  a500: string;
-  a1100: string;
+}>;
+
+export type ColorNeutralStaticScale = Readonly<{
+  10: string;
+  25: string;
+  50: string;
+  100: string;
+  200: string;
+  300: string;
+  400: string;
+  450: string;
+  500: string;
 }>;
 
 export type Color = Readonly<{
@@ -50,17 +59,18 @@ export type Color = Readonly<{
     emerald: ColorChromaticScale;
     crimson: ColorChromaticScale;
     cider: ColorChromaticScale;
-    orchid: ColorChromaticScale;
-    magenta: ColorChromaticScale;
     sapphire: ColorChromaticScale;
+    sea: ColorChromaticScale;
+    cloud: ColorChromaticScale;
+    forest: ColorChromaticScale;
   };
   neutral: {
-    blueGrayLight: ColorNeutralScale;
-    blueGrayDark: ColorNeutralScale;
-    navyGrayLight: ColorNeutralScale;
-    navyGrayDark: ColorNeutralScale;
-    ashGrayLight: ColorNeutralScale;
-    ashGrayDark: ColorNeutralScale;
+    blueGrayLight: ColorNeutralGrayScale;
+    blueGrayDark: ColorNeutralGrayScale;
+    ashGrayLight: ColorNeutralGrayScale;
+    ashGrayDark: ColorNeutralGrayScale;
+    white: ColorNeutralStaticScale;
+    black: ColorNeutralStaticScale;
   };
 }>;
 

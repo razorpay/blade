@@ -8,7 +8,7 @@ import { Dimensions } from 'react-native';
 import type { TabsProps } from './types';
 import { TabsContext } from './TabsContext';
 import { StyledTabButton } from './TabItem.native';
-import { textColor } from './tabTokens';
+import { iconColor, textColor, trackColor } from './tabTokens';
 import { iconSizeMap, useTabsItemPropRestriction } from './utils';
 import { TabIndicator } from './TabIndicator';
 import { SafeSceneMap } from './SafeSceneMap.native';
@@ -19,6 +19,7 @@ import { useTheme } from '~components/BladeProvider';
 import { useControllableState } from '~utils/useControllable';
 import { Divider } from '~components/Divider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import getIn from '~utils/lodashButBetter/get';
 
 const initialLayout = {
   height: 0,
@@ -139,19 +140,12 @@ const Tabs = ({
         >
           <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
             {Leading ? (
-              <Leading
-                size={iconSizeMap[size]}
-                color={
-                  selectedState === 'selected'
-                    ? 'brand.primary.500'
-                    : 'surface.action.icon.default.lowContrast'
-                }
-              />
+              <Leading size={iconSizeMap[size]} color={iconColor[selectedState].default} />
             ) : null}
             <Text
               color={textColor[selectedState].default}
               size={size === 'medium' ? 'medium' : 'large'}
-              weight="bold"
+              weight="semibold"
             >
               {title}
             </Text>
@@ -183,8 +177,8 @@ const Tabs = ({
                 shadowColor: 'transparent',
                 borderRadius: theme.border.radius.small,
                 borderWidth: theme.border.width.thick,
-                borderColor: theme.colors.surface.border.normal.lowContrast,
-                backgroundColor: theme.colors.surface.background.level2.lowContrast,
+                borderColor: theme.colors.interactive.border.gray.faded,
+                backgroundColor: theme.colors.surface.background.gray.intense,
                 padding: theme.spacing[2],
               }
             : {
@@ -192,7 +186,7 @@ const Tabs = ({
                 shadowColor: 'transparent',
                 backgroundColor: 'transparent',
                 ...(variant !== 'borderless' && {
-                  borderBottomColor: theme.colors.surface.border.normal.lowContrast,
+                  borderBottomColor: getIn(theme.colors, trackColor),
                   borderBottomWidth: theme.border.width.thin,
                 }),
               }),

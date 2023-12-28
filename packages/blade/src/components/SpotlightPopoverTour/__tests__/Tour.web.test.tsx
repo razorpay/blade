@@ -7,13 +7,13 @@ import { SpotlightPopoverTourStep } from '../TourStep.web';
 import type { SpotlightPopoverStepRenderProps, SpotlightPopoverTourSteps } from '../types';
 import { SpotlightPopoverTourFooter } from '../TourFooter.web';
 import { Button } from '~components/Button';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
-const animationDuration = paymentTheme.motion.duration.gentle;
+const animationDuration = bladeTheme.motion.duration.gentle;
 const nextButtonText = 'Next';
 const prevButtonText = 'Prev';
 const doneButtonText = 'Done';
