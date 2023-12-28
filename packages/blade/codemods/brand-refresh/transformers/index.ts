@@ -606,13 +606,11 @@ const transformer: Transform = (file, api, options) => {
   try {
     root
       .find(j.JSXElement)
-      .filter((path) => ['Button'].includes(path.value.openingElement.name.name))
+      .filter((path) => ['Button', 'Link'].includes(path.value.openingElement.name.name))
       .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'color')
+      .filter((path) => path.node.name.name === 'color' && path.node.value.value === 'default')
       .replaceWith((path) => {
-        if (path.node.value.value === 'default') {
-          path.node.value.value = 'primary';
-        }
+        path.node.value.value = 'primary';
 
         return path.node;
       });

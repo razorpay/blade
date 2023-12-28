@@ -67,6 +67,10 @@ it('should remove variant/intent prop in favor of color prop', async () => {
         <Button variant="secondary" color="default"> Click Me </Button>
         <Button variant="secondary" color="white"> Click Me </Button>
 
+        <Link color="default" href="https://github.com/razorpay/blade" variant="anchor">
+          Learn More
+        </Link>
+
         <ChipGroup defaultValue="yes">
           <Chip intent="positive" value="yes"> Yes </Chip>
           <Chip intent="negative" value="no"> No </Chip>
@@ -108,6 +112,10 @@ it('should remove variant/intent prop in favor of color prop', async () => {
 
             <Button variant="secondary" color="primary"> Click Me </Button>
             <Button variant="secondary" color="white"> Click Me </Button>
+
+            <Link color="primary" href="https://github.com/razorpay/blade" variant="anchor">
+              Learn More
+            </Link>
 
             <ChipGroup defaultValue="yes">
               <Chip value="yes" color="positive"> Yes </Chip>
