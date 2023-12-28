@@ -1,4 +1,4 @@
-# U Guide for v11 (Brand Refresh)
+# Upgrade Guide for v11 (Brand Refresh)
 
 ## Upgrade Workflow Overview
 All the rebranding upgrade activity starts at the design end and is then followed by engineering
