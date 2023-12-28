@@ -8,10 +8,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
-import { Button } from '~components/Button';
-import { TextInput } from '~components/Input/TextInput';
 import { isReactNative } from '~utils';
-import { PlusIcon } from '~components/Icons';
 import iconMap from '~components/Icons/iconMap';
 
 const Page = (): React.ReactElement => {
@@ -117,61 +114,62 @@ const CrossPlatformForm = ({
   return <form onSubmit={onSubmit}>{children}</form>;
 };
 
-export const ControlledTags = (props: TagProps): React.ReactElement => {
-  const [inputValue, setInputValue] = React.useState('');
-  const [tags, setTags] = React.useState<string[]>([]);
+// TODO: Rebranding - Uncomment this when TextInput is ready
+// export const ControlledTags = (props: TagProps): React.ReactElement => {
+//   const [inputValue, setInputValue] = React.useState('');
+//   const [tags, setTags] = React.useState<string[]>([]);
 
-  const addTag = (): void => {
-    // Add input value to tags and clear the input value
-    if (inputValue) {
-      setTags([...tags, inputValue]);
-      setInputValue('');
-    }
-  };
+//   const addTag = (): void => {
+//     // Add input value to tags and clear the input value
+//     if (inputValue) {
+//       setTags([...tags, inputValue]);
+//       setInputValue('');
+//     }
+//   };
 
-  const removeTag = (tagName: TagProps['children']): void => {
-    setTags(tags.filter((tagNameValue) => tagNameValue !== tagName));
-  };
+//   const removeTag = (tagName: TagProps['children']): void => {
+//     setTags(tags.filter((tagNameValue) => tagNameValue !== tagName));
+//   };
 
-  return (
-    <Box>
-      <Box paddingY="spacing.4">
-        {tags.map((tagName) => (
-          <Tag
-            key={tagName}
-            {...props}
-            marginRight="spacing.2"
-            onDismiss={() => removeTag(tagName)}
-          >
-            {tagName}
-          </Tag>
-        ))}
-      </Box>
-      <Box>
-        <CrossPlatformForm
-          onSubmit={(e) => {
-            e.preventDefault();
-            addTag();
-          }}
-        >
-          <TextInput
-            label="Tag Label"
-            value={inputValue}
-            onChange={({ value }) => setInputValue(value ?? '')}
-            {...{ onSubmit: isReactNative() ? () => addTag() : undefined }}
-          />
-          <Button
-            icon={PlusIcon}
-            iconPosition="right"
-            variant="secondary"
-            marginTop="spacing.2"
-            type="submit"
-            {...{ onClick: isReactNative() ? () => addTag() : undefined }}
-          >
-            Create Tag
-          </Button>
-        </CrossPlatformForm>
-      </Box>
-    </Box>
-  );
-};
+//   return (
+//     <Box>
+//       <Box paddingY="spacing.4">
+//         {tags.map((tagName) => (
+//           <Tag
+//             key={tagName}
+//             {...props}
+//             marginRight="spacing.2"
+//             onDismiss={() => removeTag(tagName)}
+//           >
+//             {tagName}
+//           </Tag>
+//         ))}
+//       </Box>
+//       <Box>
+//         <CrossPlatformForm
+//           onSubmit={(e) => {
+//             e.preventDefault();
+//             addTag();
+//           }}
+//         >
+//           <TextInput
+//             label="Tag Label"
+//             value={inputValue}
+//             onChange={({ value }) => setInputValue(value ?? '')}
+//             {...{ onSubmit: isReactNative() ? () => addTag() : undefined }}
+//           />
+//           <Button
+//             icon={PlusIcon}
+//             iconPosition="right"
+//             variant="secondary"
+//             marginTop="spacing.2"
+//             type="submit"
+//             {...{ onClick: isReactNative() ? () => addTag() : undefined }}
+//           >
+//             Create Tag
+//           </Button>
+//         </CrossPlatformForm>
+//       </Box>
+//     </Box>
+//   );
+// };
