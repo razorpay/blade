@@ -179,7 +179,7 @@ const ComponentStatusTable = (): React.ReactElement => {
                 <Text weight="semibold">Released In</Text>
               </th>
               <th align="right">
-                <Text weight="semibold">Rebranded</Text>
+                <Text weight="semibold">Rebranded In</Text>
               </th>
             </tr>
           </thead>
