@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
@@ -66,7 +66,7 @@ const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>
   },
 };
 
-const HeadingTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
+const HeadingTemplate: StoryFn<typeof HeadingComponent> = (args) => {
   return <HeadingComponent {...args}>{args.children}</HeadingComponent>;
 };
 
@@ -78,7 +78,7 @@ WithColor.args = {
 };
 
 const Sup = isReactNative() ? HeadingComponent : 'sup';
-const WithMixedColorsTemplate: ComponentStory<typeof HeadingComponent> = () => {
+const WithMixedColorsTemplate: StoryFn<typeof HeadingComponent> = () => {
   return (
     <Box>
       <HeadingComponent>
@@ -100,7 +100,7 @@ const WithMixedColorsTemplate: ComponentStory<typeof HeadingComponent> = () => {
 
 export const WithMixedColors = WithMixedColorsTemplate.bind({});
 
-const AsPropTemplate: ComponentStory<typeof HeadingComponent> = (args) => {
+const AsPropTemplate: StoryFn<typeof HeadingComponent> = (args) => {
   return (
     <Box>
       <Text>

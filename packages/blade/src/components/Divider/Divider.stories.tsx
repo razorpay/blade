@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { DividerProps } from './Divider';
 import { Divider as DividerComponent } from './Divider';
@@ -66,6 +66,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Divider',
   component: DividerComponent,
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
@@ -74,7 +75,7 @@ export default {
   },
 } as Meta<DividerProps>;
 
-const DividerDefaultTemplate: ComponentStory<typeof DividerComponent> = (args) => {
+const DividerDefaultTemplate: StoryFn<typeof DividerComponent> = (args) => {
   return (
     <BaseBox display="flex" flexDirection={args.orientation == 'vertical' ? 'row' : 'column'}>
       <Heading margin="spacing.4">Payment Links</Heading>
@@ -89,7 +90,7 @@ const DividerDefaultTemplate: ComponentStory<typeof DividerComponent> = (args) =
 export const Divider = DividerDefaultTemplate.bind({});
 Divider.storyName = 'Default';
 
-const DividerHorizontalTemplate: ComponentStory<typeof DividerComponent> = () => {
+const DividerHorizontalTemplate: StoryFn<typeof DividerComponent> = () => {
   return (
     <>
       <Heading marginBottom="spacing.2">Payment Links</Heading>
@@ -102,12 +103,12 @@ const DividerHorizontalTemplate: ComponentStory<typeof DividerComponent> = () =>
   );
 };
 
-export const DividerHorizontal: ComponentStory<
-  typeof DividerComponent
-> = DividerHorizontalTemplate.bind({});
+export const DividerHorizontal: StoryFn<typeof DividerComponent> = DividerHorizontalTemplate.bind(
+  {},
+);
 DividerHorizontal.storyName = 'Horizontal';
 
-const DividerVerticalTemplate: ComponentStory<typeof DividerComponent> = () => {
+const DividerVerticalTemplate: StoryFn<typeof DividerComponent> = () => {
   return (
     <BaseBox
       display="flex"
@@ -131,12 +132,10 @@ const DividerVerticalTemplate: ComponentStory<typeof DividerComponent> = () => {
   );
 };
 
-export const DividerVertical: ComponentStory<
-  typeof DividerComponent
-> = DividerVerticalTemplate.bind({});
+export const DividerVertical: StoryFn<typeof DividerComponent> = DividerVerticalTemplate.bind({});
 DividerVertical.storyName = 'Vertical';
 
-const DividerWithTextTemplate: ComponentStory<typeof DividerComponent> = () => {
+const DividerWithTextTemplate: StoryFn<typeof DividerComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
       <Heading marginBottom="spacing.4">Explore multiple payment options</Heading>
@@ -169,7 +168,5 @@ const DividerWithTextTemplate: ComponentStory<typeof DividerComponent> = () => {
   );
 };
 
-export const DividerWithText: ComponentStory<
-  typeof DividerComponent
-> = DividerWithTextTemplate.bind({});
+export const DividerWithText: StoryFn<typeof DividerComponent> = DividerWithTextTemplate.bind({});
 DividerWithText.storyName = 'Divider with Text columns';

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { DOMAttributes } from 'react';
-import type { Meta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Tag } from './Tag';
 import type { TagProps } from './';
@@ -55,6 +55,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Tag',
   component: Tag,
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     icon: {
@@ -76,7 +77,7 @@ export default {
   },
 } as Meta<TagProps>;
 
-const TagTemplate: ComponentStory<typeof Tag> = ({ children, ...args }) => {
+const TagTemplate: StoryFn<typeof Tag> = ({ children, ...args }) => {
   const [isTagVisible, setIsTagVisible] = React.useState(true);
   return (
     <Box>

@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
@@ -57,6 +57,7 @@ const meta: Meta<AccordionProps> = {
   title: 'Components/Accordion',
   component: AccordionComponent,
   args: {},
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
   },
@@ -67,7 +68,7 @@ const meta: Meta<AccordionProps> = {
   },
 };
 
-const AccordionTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args }) => {
+const AccordionTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
   return (
     <AccordionComponent {...args}>
       <AccordionItem
@@ -86,7 +87,7 @@ const AccordionTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args 
   );
 };
 
-const AccordionWithIconsTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args }) => {
+const AccordionWithIconsTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
   return (
     <AccordionComponent {...args}>
       <AccordionItem
@@ -136,7 +137,7 @@ WithIcons.parameters = {
   },
 };
 
-const AccordionControlledTemplate: ComponentStory<typeof AccordionComponent> = ({
+const AccordionControlledTemplate: StoryFn<typeof AccordionComponent> = ({
   expandedIndex: _expandedIndex,
   onExpandChange,
   defaultExpandedIndex,
@@ -203,7 +204,7 @@ ControlledExample.args = {
   showNumberPrefix: true,
 };
 
-const AccordionWithSlotTemplate: ComponentStory<typeof AccordionComponent> = ({ ...args }) => {
+const AccordionWithSlotTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
   const [isVisible, setIsVisible] = useState(true);
   return (
     <AccordionComponent {...args}>

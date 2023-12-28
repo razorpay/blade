@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { Meta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import isChromatic from 'chromatic';
@@ -75,23 +75,20 @@ type StoryControlProps = SpotlightPopoverTourProps & {
 export default {
   title: 'Components/SpotlightPopoverTour',
   component: SpotlightPopoverTour,
+  tags: ['autodocs'],
   argTypes: {
     tourStepsTitle: {
       name: 'steps[0].title',
       type: 'string',
-      defaultValue: 'Overview of Refunds',
       table: { category: propsCategory.TOUR_STEPS },
     },
     tourStepsContent: {
       name: 'steps[0].content',
       type: 'string',
-      defaultValue:
-        'You can  issue refunds for various reasons, like when a customer returns a product or cancels a service.',
       table: { category: propsCategory.TOUR_STEPS },
     },
     tourStepsPlacement: {
       name: 'steps[0].placement',
-      defaultValue: 'bottom',
       control: {
         type: 'select',
         options: [
@@ -114,7 +111,6 @@ export default {
     tourStepsName: {
       name: 'steps[0].name',
       type: 'string',
-      defaultValue: 'step-1',
       control: {
         disable: true,
       },
@@ -177,6 +173,12 @@ export default {
       table: { category: propsCategory.TOUR },
     },
   },
+  args: {
+    tourStepsTitle: 'Overview of Refunds',
+    tourStepsContent: ('You can  issue refunds for various reasons, like when a customer returns a product or cancels a service.' as unknown) as SpotlightPopoverTourSteps[number]['content'],
+    tourStepsPlacement: 'bottom',
+    tourStepsName: 'step-1',
+  },
   parameters: {
     options: {
       storySort: {
@@ -231,7 +233,7 @@ const CustomTourFooter = ({
   );
 };
 
-const TourTemplate: ComponentStory<(props: StoryControlProps) => React.ReactElement> = (args) => {
+const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = (args) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [isOpen, setIsOpen] = React.useState(!!isChromatic());
 

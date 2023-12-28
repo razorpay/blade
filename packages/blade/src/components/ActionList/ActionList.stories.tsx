@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ActionListProps } from './ActionList';
 import { ActionList as ActionListComponent } from './ActionList';
@@ -103,7 +103,7 @@ export default {
   },
 } as Meta<ActionListProps>;
 
-const ActionListExample: ComponentStory<typeof ActionListComponent> = () => (
+const ActionListExample: StoryFn<typeof ActionListComponent> = () => (
   <BaseBox display="flex" flexDirection="column">
     <Box backgroundColor="surface.background.level2.lowContrast">
       <ActionListComponent>
@@ -123,7 +123,7 @@ ActionList.parameters = {
   },
 };
 
-const ActionListWithLeadingComponentsExample: ComponentStory<typeof ActionListComponent> = () => {
+const ActionListWithLeadingComponentsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
       <Box backgroundColor="surface.background.level2.lowContrast">
@@ -158,7 +158,7 @@ ActionListWithLeadingComponents.parameters = {
   },
 };
 
-const ActionListWithTrailingComponentsExample: ComponentStory<typeof ActionListComponent> = () => {
+const ActionListWithTrailingComponentsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
       <Box backgroundColor="surface.background.level2.lowContrast">
@@ -188,7 +188,7 @@ ActionListWithTrailingComponents.parameters = {
   },
 };
 
-const ActionListWithSectionsExample: ComponentStory<typeof ActionListComponent> = () => {
+const ActionListWithSectionsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
       <Box backgroundColor="surface.background.level2.lowContrast">
@@ -231,7 +231,7 @@ ActionListWithSections.parameters = {
   },
 };
 
-const ActionListWithCustomItemsExample: ComponentStory<typeof ActionListComponent> = () => {
+const ActionListWithCustomItemsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
       <Box backgroundColor="surface.background.level2.lowContrast">

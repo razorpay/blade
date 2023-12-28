@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { CardSpacingValueType } from './types';
@@ -197,7 +197,11 @@ export default {
       isLoading: false,
       type: undefined,
     },
+    prefix: ('LinkIcon' as unknown) as IconComponent,
+    suffix: 12,
+    visual: 'Badge',
   },
+  tags: ['autodocs'],
   argTypes: {
     backgroundColor: {
       table: { category: propsCategory.CARD },
@@ -237,7 +241,6 @@ export default {
       },
       mapping: iconMap,
       options: Object.keys(iconMap),
-      defaultValue: 'LinkIcon',
       table: {
         category: propsCategory.CARD_HEADER_LEADING,
       },
@@ -246,7 +249,6 @@ export default {
       control: {
         type: 'number',
       },
-      defaultValue: 12,
       table: { category: propsCategory.CARD_HEADER_LEADING },
     },
     visual: {
@@ -255,7 +257,6 @@ export default {
       },
       mapping: visual,
       options: Object.keys(visual),
-      defaultValue: 'Badge',
       table: {
         category: propsCategory.CARD_HEADER_LEADING,
       },
@@ -288,6 +289,7 @@ export default {
     },
     ...getStyledPropsArgTypes(),
   },
+
   parameters: {
     docs: {
       page: Page,
@@ -307,8 +309,8 @@ const CardTemplate = ({ ...args }: StoryControlProps): React.ReactElement => {
         <CardHeaderLeading
           title={args.headerTitle}
           subtitle={args.headerSubtitle}
-          prefix={<CardHeaderIcon icon={args.prefix} />}
-          suffix={<CardHeaderCounter value={args.suffix} />}
+          prefix={args.prefix && <CardHeaderIcon icon={args.prefix} />}
+          suffix={args.suffix && <CardHeaderCounter value={args.suffix} />}
         />
         <CardHeaderTrailing visual={args.visual} />
       </CardHeader>
@@ -425,7 +427,7 @@ const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement
 
 export const CardBodyContent = CardChildrenExample.bind({});
 
-const CardWithoutPaddingExample: ComponentStory<typeof Card> = (): React.ReactElement => {
+const CardWithoutPaddingExample: StoryFn<typeof Card> = (): React.ReactElement => {
   return (
     <Card elevation="highRaised" padding="spacing.0">
       <CardBody>

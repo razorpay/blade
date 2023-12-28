@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useEffect, useState } from 'react';
@@ -47,10 +47,11 @@ export default {
       page: Page,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 } as Meta<ProgressBarProps>;
 
-const ProgressBarTemplate: ComponentStory<typeof ProgressBarComponent> = ({ ...args }) => {
+const ProgressBarTemplate: StoryFn<typeof ProgressBarComponent> = ({ ...args }) => {
   return <ProgressBarComponent {...args} />;
 };
 
@@ -63,7 +64,7 @@ Default.args = {
   contrast: 'low',
 };
 
-const ProgressBarWithUpdatingValuesTemplate: ComponentStory<typeof ProgressBarComponent> = ({
+const ProgressBarWithUpdatingValuesTemplate: StoryFn<typeof ProgressBarComponent> = ({
   ...args
 }) => {
   const [value, setValue] = useState(10);
@@ -84,9 +85,7 @@ const ProgressBarWithUpdatingValuesTemplate: ComponentStory<typeof ProgressBarCo
   return <ProgressBarComponent {...args} value={value} />;
 };
 
-const ProgressBarWithIntentsTemplate: ComponentStory<typeof ProgressBarComponent> = ({
-  ...args
-}) => {
+const ProgressBarWithIntentsTemplate: StoryFn<typeof ProgressBarComponent> = ({ ...args }) => {
   const [value, setValue] = useState(10);
   useEffect(() => {
     const interval = setInterval(() => {
