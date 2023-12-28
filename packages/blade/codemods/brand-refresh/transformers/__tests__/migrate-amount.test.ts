@@ -7,6 +7,8 @@ it('should update token values contextually', async () => {
     `
     const App = () => (
         <>
+          <Amount value={1234} color="positive" />
+
           <Amount size="body-small" value={123456.789} />
 
           <Amount size="body-small-bold" value={123456.789} />
@@ -35,6 +37,8 @@ it('should update token values contextually', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
             <>
+              <Amount value={1234} color="positive" />
+
               <Amount value={123456.789} type="body" size="small" />
 
               <Amount value={123456.789} type="body" size="small" weight="semibold" />
