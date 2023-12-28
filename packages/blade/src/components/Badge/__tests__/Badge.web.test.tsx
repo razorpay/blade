@@ -16,7 +16,7 @@ const colors: BadgeProps['color'][] = [
 ];
 
 describe('<Badge />', () => {
-  it('should render Badge with primary props', () => {
+  it('should render Badge with default props', () => {
     const label = 'Label';
     const { container } = renderWithTheme(<Badge>{label}</Badge>);
     expect(container).toMatchSnapshot();

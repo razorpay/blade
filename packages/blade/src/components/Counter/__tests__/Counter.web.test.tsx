@@ -12,7 +12,7 @@ const colors: CounterProps['color'][] = [
 ];
 
 describe('<Counter />', () => {
-  it('should render Counter with primary props', () => {
+  it('should render Counter with default props', () => {
     const { container } = renderWithTheme(<Counter value={20} />);
     expect(container).toMatchSnapshot();
   });
@@ -115,12 +115,12 @@ describe('<Counter />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render subtle emphasis blue color Counter', () => {
+  it('should render subtle emphasis primary color Counter', () => {
     const { container } = renderWithTheme(<Counter color="primary" emphasis="subtle" value={20} />);
     expect(container).toMatchSnapshot();
   });
 
-  it('should render intense emphasis blue color Counter', () => {
+  it('should render intense emphasis primary color Counter', () => {
     const { container } = renderWithTheme(
       <Counter color="primary" emphasis="intense" value={20} />,
     );

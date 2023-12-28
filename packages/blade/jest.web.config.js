@@ -14,7 +14,7 @@ const baseConfig = {
   },
   snapshotSerializers: ['<rootDir>/jestStyledComponentsSerializer.js'],
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
-  testMatch: rebrandedComponents.map((c) => `**/${c}.web.test.{ts,tsx}`),
+  testMatch: rebrandedComponents.map((component) => `**/${component}.web.test.{ts,tsx}`),
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },
@@ -40,15 +40,19 @@ module.exports = {
       ...baseConfig,
       testEnvironment: 'node',
       testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'web.test'],
-      collectCoverageFrom: rebrandedComponents.map((c) => `./src/**/${c}.ssr.{ts,tsx}`),
-      testMatch: rebrandedComponents.map((c) => `**/${c}.ssr.test.{ts,tsx}`),
+      collectCoverageFrom: rebrandedComponents.map(
+        (component) => `./src/**/${component}.ssr.{ts,tsx}`,
+      ),
+      testMatch: rebrandedComponents.map((component) => `**/${component}.ssr.test.{ts,tsx}`),
     },
     {
       displayName: 'CSR Test',
       ...baseConfig,
       testEnvironment: 'jsdom',
       testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'ssr.test'],
-      collectCoverageFrom: rebrandedComponents.map((c) => `./src/**/${c}.web.{ts,tsx}`),
+      collectCoverageFrom: rebrandedComponents.map(
+        (component) => `./src/**/${component}.web.{ts,tsx}`,
+      ),
     },
   ],
 };

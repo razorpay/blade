@@ -234,7 +234,7 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
-  // TODO: Dropdown hasn't been rebranded yet thus skipping this test until then
+  // TODO: Rebranding - Dropdown hasn't been rebranded yet thus skipping this test until then
   it.skip('should compose with Dropdown single select', async () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 
@@ -284,7 +284,7 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   });
 
-  // TODO: Dropdown hasn't been rebranded yet thus skipping this test until then
+  // TODO: Rebranding - Dropdown hasn't been rebranded yet thus skipping this test until then
   it.skip('should compose with Dropdown multi select', async () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     mockConsoleError.mockRestore();
@@ -353,7 +353,7 @@ describe('<BottomSheet />', () => {
     mockConsoleError.mockRestore();
   }, 10000);
 
-  // TODO: Dropdown hasn't been rebranded yet thus skipping this test until then
+  // TODO: Rebranding - Dropdown hasn't been rebranded yet thus skipping this test until then
   it.skip('should compose with DropdownButton', async () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
 

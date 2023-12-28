@@ -5,7 +5,9 @@ const ignores = ['/node_modules/'];
 module.exports = {
   preset: 'react-native',
   testPathIgnorePatterns: [...ignores, 'web.test', 'ssr.test'],
-  collectCoverageFrom: rebrandedComponents.map((c) => `./src/**/${c}.native.{ts,tsx}`),
+  collectCoverageFrom: rebrandedComponents.map(
+    (component) => `./src/**/${component}.native.{ts,tsx}`,
+  ),
   coverageThreshold: {
     global: {
       branches: 75,
@@ -15,7 +17,7 @@ module.exports = {
     },
   },
   moduleFileExtensions: ['native.ts', 'native.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
-  testMatch: rebrandedComponents.map((c) => `**/${c}.native.test.{ts,tsx}`),
+  testMatch: rebrandedComponents.map((component) => `**/${component}.native.test.{ts,tsx}`),
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },
