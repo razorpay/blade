@@ -10,7 +10,7 @@ exports[`<Divider /> should render Divider within flex container 1`] = `
 
 .c1.c1.c1.c1.c1 {
   border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
@@ -76,7 +76,7 @@ exports[`<Divider /> should render horizontal Divider using width 1`] = `
 .c1.c1.c1.c1.c1 {
   width: 100%;
   border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
@@ -143,7 +143,7 @@ exports[`<Divider /> should render vertical Divider using height 1`] = `
 .c1.c1.c1.c1.c1 {
   height: 100%;
   border-width: 0px;
-  border-left-color: hsla(216,15%,54%,0.18);
+  border-left-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 

@@ -1,5 +1,4 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
 import type { DividerProps } from './Divider';
 import { Divider as DividerComponent } from './Divider';
 import { Heading } from '~components/Typography/Heading';

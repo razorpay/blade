@@ -27,7 +27,7 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -54,10 +54,10 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(268,100%,79%,1);
+  color: hsla(227,71%,51%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -123,7 +123,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -150,10 +150,10 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(227,71%,51%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -217,7 +217,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -244,10 +244,10 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(227,71%,51%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -284,99 +284,6 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
 </div>
 `;
 
-exports[`<BaseLink /> should render default color link 1`] = `
-.c0.c0.c0.c0.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0.c0.c0.c0.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2.c2.c2.c2.c2 {
-  color: hsla(218,89%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
 exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 .c0.c0.c0.c0.c0 {
   padding: 0;
@@ -404,7 +311,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -431,10 +338,10 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(218,19%,81%,1);
+  color: hsla(227,100%,59%,0.18);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -472,99 +379,6 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 </div>
 `;
 
-exports[`<BaseLink /> should render disabled default color link 1`] = `
-.c0.c0.c0.c0.c0 {
-  padding: 0;
-  background-color: transparent;
-  outline: none;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  border-radius: 2px;
-  -webkit-transition-property: box-shadow;
-  transition-property: box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c0.c0.c0.c0.c0 .content-container {
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  border-radius: 2px;
-}
-
-.c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.c2.c2.c2.c2.c2 {
-  color: hsla(218,89%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-<div>
-  <a
-    aria-disabled="false"
-    class="c0"
-    data-blade-component="link"
-    role="link"
-  >
-    <span
-      class="c1 content-container"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-text"
-      >
-        Learn More
-      </span>
-    </span>
-  </a>
-</div>
-`;
-
 exports[`<BaseLink /> should render disabled information color link 1`] = `
 .c0.c0.c0.c0.c0 {
   padding: 0;
@@ -592,7 +406,7 @@ exports[`<BaseLink /> should render disabled information color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -619,10 +433,10 @@ exports[`<BaseLink /> should render disabled information color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(195,100%,31%,1);
+  color: hsla(200,84%,44%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -685,7 +499,7 @@ exports[`<BaseLink /> should render disabled negative color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -712,10 +526,10 @@ exports[`<BaseLink /> should render disabled negative color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(8,73%,47%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -778,7 +592,7 @@ exports[`<BaseLink /> should render disabled neutral color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -805,10 +619,10 @@ exports[`<BaseLink /> should render disabled neutral color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -871,7 +685,7 @@ exports[`<BaseLink /> should render disabled notice color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -898,10 +712,10 @@ exports[`<BaseLink /> should render disabled notice color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(38,97%,38%,1);
+  color: hsla(25,90%,48%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -964,7 +778,7 @@ exports[`<BaseLink /> should render disabled positive color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -991,10 +805,103 @@ exports[`<BaseLink /> should render disabled positive color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(160,100%,26%,1);
+  color: hsla(150,100%,32%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <a
+    aria-disabled="false"
+    class="c0"
+    data-blade-component="link"
+    role="link"
+  >
+    <span
+      class="c1 content-container"
+      data-blade-component="base-box"
+    >
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        Learn More
+      </span>
+    </span>
+  </a>
+</div>
+`;
+
+exports[`<BaseLink /> should render disabled primary color link 1`] = `
+.c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c0.c0.c0.c0.c0 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c0.c0.c0.c0.c0:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1057,7 +964,7 @@ exports[`<BaseLink /> should render disabled white color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1084,10 +991,10 @@ exports[`<BaseLink /> should render disabled white color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(0,0%,100%,1);
+  color: hsla(0,0%,100%,0.8);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1150,7 +1057,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1189,10 +1096,10 @@ exports[`<BaseLink /> should render icon only link 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(227,71%,51%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1233,18 +1140,18 @@ exports[`<BaseLink /> should render icon only link 1`] = `
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
           />
           <path
             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
           />
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
             fill-rule="evenodd"
           />
         </svg>
@@ -1285,7 +1192,7 @@ exports[`<BaseLink /> should render information color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1312,10 +1219,10 @@ exports[`<BaseLink /> should render information color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(195,100%,31%,1);
+  color: hsla(200,84%,44%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1378,7 +1285,7 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1405,10 +1312,10 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(227,71%,51%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1471,7 +1378,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1510,10 +1417,10 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(227,71%,51%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1554,18 +1461,18 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
           />
           <path
             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
           />
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
             fill-rule="evenodd"
           />
         </svg>
@@ -1608,7 +1515,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1647,10 +1554,10 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(227,71%,51%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1691,18 +1598,18 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
           />
           <path
             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
           />
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
             fill-rule="evenodd"
           />
         </svg>
@@ -1745,7 +1652,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1784,10 +1691,10 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(227,71%,51%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1834,18 +1741,18 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
           <path
             d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
           />
           <path
             d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
           />
           <path
             clip-rule="evenodd"
             d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
             data-blade-component="svg-path"
-            fill="hsla(218, 89%, 51%, 1)"
+            fill="hsla(227, 71%, 51%, 1)"
             fill-rule="evenodd"
           />
         </svg>
@@ -1882,7 +1789,7 @@ exports[`<BaseLink /> should render negative color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -1909,10 +1816,10 @@ exports[`<BaseLink /> should render negative color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(8,73%,47%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1975,7 +1882,7 @@ exports[`<BaseLink /> should render neutral color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2002,10 +1909,10 @@ exports[`<BaseLink /> should render neutral color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2068,7 +1975,7 @@ exports[`<BaseLink /> should render notice color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2095,10 +2002,10 @@ exports[`<BaseLink /> should render notice color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(38,97%,38%,1);
+  color: hsla(25,90%,48%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2161,7 +2068,7 @@ exports[`<BaseLink /> should render positive color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2188,10 +2095,103 @@ exports[`<BaseLink /> should render positive color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(160,100%,26%,1);
+  color: hsla(150,100%,32%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <a
+    aria-disabled="false"
+    class="c0"
+    data-blade-component="link"
+    role="link"
+  >
+    <span
+      class="c1 content-container"
+      data-blade-component="base-box"
+    >
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        Learn More
+      </span>
+    </span>
+  </a>
+</div>
+`;
+
+exports[`<BaseLink /> should render primary color link 1`] = `
+.c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c0.c0.c0.c0.c0 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c0.c0.c0.c0.c0:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2254,7 +2254,7 @@ exports[`<BaseLink /> should render white color link 1`] = `
 }
 
 .c0.c0.c0.c0.c0:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -2281,10 +2281,10 @@ exports[`<BaseLink /> should render white color link 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(0,0%,100%,1);
+  color: hsla(0,0%,100%,0.8);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
