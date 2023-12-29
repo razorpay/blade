@@ -310,18 +310,19 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                   >
                     <Text
                       accessible={true}
-                      color="feedback.text.positive.lowContrast"
+                      color="surface.text.gray.normal"
                       data-blade-component="base-text"
-                      fontSize={75}
-                      fontWeight="bold"
+                      fontSize={25}
+                      fontWeight="regular"
                       marginRight="spacing.1"
                       style={
                         [
                           {
+                            "color": "hsla(212, 39%, 16%, 1)",
                             "fontFamily": "Inter",
-                            "fontSize": 12,
+                            "fontSize": 10,
                             "fontStyle": "normal",
-                            "fontWeight": "700",
+                            "fontWeight": "400",
                             "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
@@ -341,13 +342,19 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                     </Text>
                     <Text
                       accessible={true}
-                      data-blade-component="base-text"
+                      color="surface.text.gray.normal"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      lineHeight={100}
                       style={
                         [
                           {
                             "color": "hsla(212, 39%, 16%, 1)",
                             "fontFamily": "Inter",
-                            "fontSize": 16,
+                            "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
                             "letterSpacing": 0,
@@ -367,14 +374,16 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                     >
                       <Text
                         accessible={true}
-                        color="feedback.text.positive.lowContrast"
+                        color="surface.text.gray.normal"
                         data-blade-component="base-text"
+                        fontFamily="text"
                         fontSize={100}
                         fontWeight="regular"
                         lineHeight={100}
                         style={
                           [
                             {
+                              "color": "hsla(212, 39%, 16%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -399,16 +408,18 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       </Text>
                       <Text
                         accessible={true}
-                        color="feedback.text.positive.lowContrast"
+                        color="surface.text.gray.normal"
                         data-blade-component="base-text"
-                        fontSize={75}
+                        fontFamily="text"
+                        fontSize={25}
                         fontWeight="regular"
                         marginLeft="spacing.1"
                         style={
                           [
                             {
+                              "color": "hsla(212, 39%, 16%, 1)",
                               "fontFamily": "Inter",
-                              "fontSize": 12,
+                              "fontSize": 10,
                               "fontStyle": "normal",
                               "fontWeight": "400",
                               "letterSpacing": 0,
@@ -793,18 +804,19 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                   >
                     <Text
                       accessible={true}
-                      color="feedback.text.positive.lowContrast"
+                      color="surface.text.gray.normal"
                       data-blade-component="base-text"
-                      fontSize={75}
-                      fontWeight="bold"
+                      fontSize={25}
+                      fontWeight="regular"
                       marginRight="spacing.1"
                       style={
                         [
                           {
+                            "color": "hsla(212, 39%, 16%, 1)",
                             "fontFamily": "Inter",
-                            "fontSize": 12,
+                            "fontSize": 10,
                             "fontStyle": "normal",
-                            "fontWeight": "700",
+                            "fontWeight": "400",
                             "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
@@ -824,13 +836,19 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     </Text>
                     <Text
                       accessible={true}
-                      data-blade-component="base-text"
+                      color="surface.text.gray.normal"
+                      data-blade-component="text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontStyle="normal"
+                      fontWeight="regular"
+                      lineHeight={100}
                       style={
                         [
                           {
                             "color": "hsla(212, 39%, 16%, 1)",
                             "fontFamily": "Inter",
-                            "fontSize": 16,
+                            "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
                             "letterSpacing": 0,
@@ -850,14 +868,16 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     >
                       <Text
                         accessible={true}
-                        color="feedback.text.positive.lowContrast"
+                        color="surface.text.gray.normal"
                         data-blade-component="base-text"
+                        fontFamily="text"
                         fontSize={100}
                         fontWeight="regular"
                         lineHeight={100}
                         style={
                           [
                             {
+                              "color": "hsla(212, 39%, 16%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -882,16 +902,18 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       </Text>
                       <Text
                         accessible={true}
-                        color="feedback.text.positive.lowContrast"
+                        color="surface.text.gray.normal"
                         data-blade-component="base-text"
-                        fontSize={75}
+                        fontFamily="text"
+                        fontSize={25}
                         fontWeight="regular"
                         marginLeft="spacing.1"
                         style={
                           [
                             {
+                              "color": "hsla(212, 39%, 16%, 1)",
                               "fontFamily": "Inter",
-                              "fontSize": 12,
+                              "fontSize": 10,
                               "fontStyle": "normal",
                               "fontWeight": "400",
                               "letterSpacing": 0,

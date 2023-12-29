@@ -250,7 +250,7 @@
     "postinstall-postinstall": "2.1.0",
     "react-refresh": "0.11.0",
     "react-docgen-typescript-plugin": "1.0.5",
-    "react-json-tree":"0.18.0",
+    "react-json-tree": "0.18.0",
     "metro-config": "0.66.2",
     "@babel/plugin-proposal-class-static-block": "7.21.0",
     "react-native-safe-area-context": "3.4.1",
