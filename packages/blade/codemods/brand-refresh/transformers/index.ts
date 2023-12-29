@@ -138,7 +138,9 @@ const transformer: Transform = (file, api, options) => {
         const isColorProp = node.name.name === 'color';
 
         if (isBoxComponent && isBorderColorProp) {
-          node.value.value = node.value.value.replace('background', 'border');
+          node.value.value = node.value.value
+            .replace('background', 'border')
+            .replace('intense', 'normal');
         } else if (
           isIconComponent &&
           isColorProp &&
@@ -146,14 +148,17 @@ const transformer: Transform = (file, api, options) => {
             node.value.value,
           )
         ) {
-          node.value.value = node.value.value.replace(
-            /surface.(background|text)/i,
-            'interactive.icon',
-          );
+          node.value.value = node.value.value
+            .replace(/surface.(background|text)/i, 'interactive.icon')
+            .replace('intense', 'normal');
 
           // Typography components
         } else if (!isBoxComponent && !isIconComponent && isColorProp) {
           node.value.value = node.value.value.replace('background', 'text');
+
+          if (!node.value.value.includes('feedback')) {
+            node.value.value = node.value.value.replace('intense', 'normal');
+          }
         }
 
         return node;
