@@ -76,7 +76,6 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
     onPointerEnter,
     onPointerDown,
     onFocus,
-    shouldShowHoverlay,
     ...styledProps
   },
   ref,
