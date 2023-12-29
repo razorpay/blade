@@ -78,7 +78,7 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
 
 ### Theme Tokens
 
-- `paymentTheme` & `bankingTheme` have been removed. Use `bladeTheme` instead.
+- **`paymentTheme` & `bankingTheme` have been removed. Use `bladeTheme` instead.**
 
   ```diff
     import { BladeProvider } from '@razorpay/blade/components';
