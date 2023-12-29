@@ -487,7 +487,7 @@ const transformer: Transform = (file, api, options) => {
       .find(j.JSXAttribute)
       .filter((path) => path.node.name.name === 'contrast')
       .replaceWith((path) => {
-        path.node.name.name = 'emphesis';
+        path.node.name.name = 'emphasis';
 
         const contrastToEmphasisMap = {
           badge: {
@@ -769,18 +769,7 @@ const transformer: Transform = (file, api, options) => {
     );
   }
 
-  // If file path includes .ts or .tsx extension, return the updated source code
-  if (file.path.includes('.ts') || file.path.includes('.tsx')) {
-    return root.toSource(options.printOptions);
-  }
-
-  // Return the updated source code with syntax error for developer to manually update the color token
-  return root
-    .toSource(options.printOptions)
-    .replace(
-      'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN',
-      `"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"`,
-    );
+  return root.toSource(options.printOptions);
 };
 
 export default transformer;

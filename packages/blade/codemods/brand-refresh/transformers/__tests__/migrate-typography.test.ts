@@ -344,18 +344,18 @@ it('should migrate contrast prop', async () => {
     "const App = () => (
               <>
                 <Text
-                  contrast=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""
+                  contrast="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"
                   color="surface.text.gray.normal"> Lorem ipsum </Text>
                 <Text color="surface.text.gray.normal"> Lorem ipsum </Text>
 
                 <Text color="feedback.text.information.intense"> Lorem ipsum </Text>
                 <Text color="surface.text.gray.moderate"> Lorem ipsum </Text>
-                <Text color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""> Lorem ipsum </Text>
+                <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
 
                 <Text color="surface.text.gray.moderate"> Lorem ipsum </Text>
-                <Text color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""> Lorem ipsum </Text>
+                <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
 
-                <Text color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""> Lorem ipsum </Text>
+                <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
                 <Text color="surface.text.gray.moderate"> Lorem ipsum </Text>
               </>
             );"

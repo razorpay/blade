@@ -87,13 +87,13 @@ it('should create syntax error for highContrast tokens', async () => {
 
   expect(result).toMatchInlineSnapshot(`
     "const CustomBox = styled(Box)\`
-            color: \${theme.colors."'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"};
-            backgroundColor: \${getIn(theme.colors, '"'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'"')};
+            color: \${theme.colors.UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN};
+            backgroundColor: \${getIn(theme.colors, 'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN')};
         \`
         const App = () => (
             <>
               <CustomBox> Lorem ipsum </CustomBox>
-              <Text color=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""> Lorem ipsum </Text>
+              <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
             </>
           );"
   `);

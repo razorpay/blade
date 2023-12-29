@@ -27,16 +27,16 @@ it('should migrate contrast prop to emphasis', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
             <>
-            <Badge emphesis="subtle">Hello</Badge> 
-            <Badge emphesis="intense">Hello</Badge> 
+            <Badge emphasis="subtle">Hello</Badge> 
+            <Badge emphasis="intense">Hello</Badge> 
 
-            <Text> Lorem Ipsum <Badge emphesis="intense">Hello</Badge> </Text>
+            <Text> Lorem Ipsum <Badge emphasis="intense">Hello</Badge> </Text>
 
-            <Counter emphesis="subtle">Hello</Counter> 
-            <Counter emphesis="intense">Hello</Counter>
+            <Counter emphasis="subtle">Hello</Counter> 
+            <Counter emphasis="intense">Hello</Counter>
 
-            <IconButton icon={CloseIcon} emphesis="intense" onClick={() => console.log('Clicked')} />
-            <IconButton icon={CloseIcon} emphesis="subtle" onClick={() => console.log('Clicked')} />
+            <IconButton icon={CloseIcon} emphasis="intense" onClick={() => console.log('Clicked')} />
+            <IconButton icon={CloseIcon} emphasis="subtle" onClick={() => console.log('Clicked')} />
             
             </>
           );"
@@ -131,7 +131,7 @@ it('should remove variant/intent prop in favor of color prop', async () => {
 
             <ProgressBar label="Label" size="medium" value={10} color="positive" />
             <ProgressBar label="Label" size="medium" value={10} color="positive" />
-            <ProgressBar label="Label" size="medium" value={10} contrast=""'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN'""  color="positive"  />
+            <ProgressBar label="Label" size="medium" value={10} contrast="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"  color="positive"  />
           </>
         );"
   `);
