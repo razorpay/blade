@@ -3,7 +3,7 @@
 ## Upgrade Workflow Overview
 All the rebranding upgrade activity starts at the design end and is then followed by engineering
 
-<img alt="Upgrade Workflow Overview" src="./migration-v11-workflow.png" width="300px">
+<img alt="Upgrade Workflow Overview" src="./migration-v11-workflow.png" width="800px">
 
 ## Migration with Codemod
 
