@@ -204,8 +204,6 @@ Currency.args = {
 };
 Currency.storyName = 'Currency';
 
-export const TEST = (): React.ReactElement => <Amount value={1000} testID="hi" />;
-
 export const AffixSubtleOff = AmountDefaultTemplate.bind({});
 AffixSubtleOff.args = {
   ...defaultArgs,
