@@ -427,6 +427,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Popover',
     status: 'released',
     releasedIn: '10.10.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Popover',
     description: 'Used for cases like guided tours',
   },
