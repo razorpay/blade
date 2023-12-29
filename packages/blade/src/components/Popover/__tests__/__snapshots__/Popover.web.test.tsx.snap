@@ -110,7 +110,7 @@ exports[`<Popover /> should render 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -183,9 +183,9 @@ exports[`<Popover /> should render 1`] = `
   border-color: hsla(227,100%,59%,1);
 }
 
-.c0.c0.c0.c0.c0:hover .hoverlay,
-.c0.c0.c0.c0.c0:focus .hoverlay {
-  opacity: 1;
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
@@ -458,7 +458,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -531,9 +531,9 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   border-color: hsla(227,100%,59%,1);
 }
 
-.c0.c0.c0.c0.c0:hover .hoverlay,
-.c0.c0.c0.c0.c0:focus .hoverlay {
-  opacity: 1;
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
@@ -823,7 +823,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -913,9 +913,9 @@ exports[`<Popover /> should render with title,footer 1`] = `
   border-color: hsla(227,100%,59%,1);
 }
 
-.c0.c0.c0.c0.c0:hover .hoverlay,
-.c0.c0.c0.c0.c0:focus .hoverlay {
-  opacity: 1;
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
