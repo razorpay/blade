@@ -1,4 +1,3 @@
-// baseBoxStyles
 const rebrandedComponents = [
   'BaseBox',
   'BaseText',
@@ -32,4 +31,4 @@ const rebrandedComponents = [
   'Tooltip',
 ];
 
-module.exports = rebrandedComponents;
+module.exports = { rebrandedComponents };
