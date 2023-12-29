@@ -4,7 +4,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.native';
 describe('<PercentIcon />', () => {
   it('should render PercentIcon', () => {
     const renderTree = renderWithTheme(
-      <PercentIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <PercentIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

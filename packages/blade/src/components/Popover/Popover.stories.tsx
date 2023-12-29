@@ -17,7 +17,7 @@ import { Divider } from '~components/Divider';
 // import { Checkbox } from '~components/Checkbox';
 import iconMap from '~components/Icons/iconMap';
 import { InfoIcon, MoonIcon, SunIcon } from '~components/Icons';
-import { Radio, RadioGroup } from '~components/Radio';
+// import { Radio, RadioGroup } from '~components/Radio';
 import { Badge } from '~components/Badge';
 import { Counter } from '~components/Counter';
 import { List, ListItem, ListItemLink, ListItemText } from '~components/List';

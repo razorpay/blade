@@ -1,4 +1,4 @@
-const rebrandedComponents = require('./rebranded-components');
+const { rebrandedComponents } = require('./rebranded-components');
 
 const ignores = ['/node_modules/'];
 
@@ -14,7 +14,10 @@ const baseConfig = {
   },
   snapshotSerializers: ['<rootDir>/jestStyledComponentsSerializer.js'],
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
-  testMatch: rebrandedComponents.map((component) => `**/${component}.web.test.{ts,tsx}`),
+  testMatch: [
+    ...rebrandedComponents.map((component) => `**/${component}.web.test.{ts,tsx}`),
+    '**/Icons/*Icon/*.web.test.{ts,tsx}',
+  ],
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },

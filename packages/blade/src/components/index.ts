@@ -21,4 +21,5 @@ export * from './Tooltip';
 export * from './Spinner';
 export * from './Typography';
 export * from './SkipNav';
+export * from './VisuallyHidden';
 export * from './types';

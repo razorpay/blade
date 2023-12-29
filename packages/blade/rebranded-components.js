@@ -1,4 +1,3 @@
-// baseBoxStyles
 const rebrandedComponents = [
   'BaseBox',
   'BaseText',
@@ -20,6 +19,7 @@ const rebrandedComponents = [
   'Card',
   'List',
   'Tabs',
+  'Tag',
   'Box',
   'Accordion',
   'Collapsible',
@@ -28,6 +28,7 @@ const rebrandedComponents = [
   'Modal',
   'SkipNav',
   'VisuallyHidden',
+  'Tooltip',
 ];
 
-module.exports = rebrandedComponents;
+module.exports = { rebrandedComponents };
