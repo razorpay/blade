@@ -202,6 +202,10 @@ exports[`Tabs should render 1`] = `
   cursor: pointer;
 }
 
+.c10.c10.c10.c10.c10:hover {
+  background-color: hsla(227,100%,59%,0.24);
+}
+
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
 }
@@ -663,6 +667,10 @@ exports[`Tabs should render with filled variant 1`] = `
   cursor: pointer;
 }
 
+.c13.c13.c13.c13.c13:hover {
+  background-color: hsla(227,100%,59%,0.24);
+}
+
 .c9.c9.c9.c9.c9 {
   border-width: 0;
   border-left-style: solid;
@@ -1096,6 +1104,10 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   cursor: pointer;
 }
 
+.c10.c10.c10.c10.c10:hover {
+  background-color: hsla(227,100%,59%,0.24);
+}
+
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
 }
@@ -1483,6 +1495,10 @@ exports[`Tabs should render with size 1`] = `
 
 .c10.c10.c10.c10.c10 {
   cursor: pointer;
+}
+
+.c10.c10.c10.c10.c10:hover {
+  background-color: hsla(227,100%,59%,0.24);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {

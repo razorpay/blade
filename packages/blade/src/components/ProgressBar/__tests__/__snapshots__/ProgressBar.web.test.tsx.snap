@@ -1577,11 +1577,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   border-color: hsla(227,100%,59%,1);
 }
 
-.c0.c0.c0.c0.c0:hover .hoverlay,
-.c0.c0.c0.c0.c0:focus .hoverlay {
-  opacity: 1;
-}
-
 .c0.c0.c0.c0.c0:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
@@ -1858,11 +1853,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 .c0.c0.c0.c0.c0:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
-}
-
-.c0.c0.c0.c0.c0:hover .hoverlay,
-.c0.c0.c0.c0.c0:focus .hoverlay {
-  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {

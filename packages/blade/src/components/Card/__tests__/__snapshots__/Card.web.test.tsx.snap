@@ -257,11 +257,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   border-color: hsla(227,100%,59%,1);
 }
 
-.c14.c14.c14.c14.c14:hover .hoverlay,
-.c14.c14.c14.c14.c14:focus .hoverlay {
-  opacity: 1;
-}
-
 .c14.c14.c14.c14.c14:active {
   background-color: hsla(227,100%,59%,0.18);
   border-color: hsla(227,100%,59%,1);
@@ -323,11 +318,6 @@ exports[`<Card /> should render a Card with Footer 1`] = `
 .c19.c19.c19.c19.c19:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
-}
-
-.c19.c19.c19.c19.c19:hover .hoverlay,
-.c19.c19.c19.c19.c19:focus .hoverlay {
-  opacity: 1;
 }
 
 .c19.c19.c19.c19.c19:active {

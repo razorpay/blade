@@ -10,9 +10,12 @@ import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
-const StyledTabIndicator = styled(BaseBox)(() => {
+const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
   return {
     cursor: 'pointer',
+    '&:hover': {
+      backgroundColor: theme.colors.interactive.background.primary.fadedHighlighted,
+    },
   };
 });
 

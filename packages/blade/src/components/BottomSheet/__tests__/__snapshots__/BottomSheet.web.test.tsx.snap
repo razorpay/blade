@@ -1221,11 +1221,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   border-color: hsla(227,100%,59%,1);
 }
 
-.c32.c32.c32.c32.c32:hover .hoverlay,
-.c32.c32.c32.c32.c32:focus .hoverlay {
-  opacity: 1;
-}
-
 .c32.c32.c32.c32.c32:active {
   background-color: hsla(227,100%,59%,0.18);
   border-color: hsla(227,100%,59%,1);
