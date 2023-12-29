@@ -13,7 +13,12 @@ describe('<Text />', () => {
   it('should render Text with variant "body" and contrast "high"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text type="normal" variant="body" weight="semibold" truncateAfterLines={3} contrast="high">
+      <Text
+        color="surface.text.gray.normal"
+        variant="body"
+        weight="semibold"
+        truncateAfterLines={3}
+      >
         {displayText}
       </Text>,
     );
@@ -23,7 +28,12 @@ describe('<Text />', () => {
   it('should render Text with variant "body"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text type="normal" variant="body" weight="semibold" truncateAfterLines={3}>
+      <Text
+        color="surface.text.gray.normal"
+        variant="body"
+        weight="semibold"
+        truncateAfterLines={3}
+      >
         {displayText}
       </Text>,
     );
@@ -33,7 +43,7 @@ describe('<Text />', () => {
   it('should render Text with color', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text color="action.text.link.default">{displayText}</Text>,
+      <Text color="interactive.text.primary.subtle">{displayText}</Text>,
     );
     expect(container).toMatchSnapshot();
   });
@@ -41,7 +51,7 @@ describe('<Text />', () => {
   it('should render Text with variant "caption"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text type="normal" variant="body" weight="semibold">
+      <Text color="surface.text.gray.normal" variant="body" weight="semibold">
         {displayText}
       </Text>,
     );
@@ -51,7 +61,13 @@ describe('<Text />', () => {
   it('should render Text with variant "body" and size "small"', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
-      <Text type="normal" variant="body" weight="semibold" truncateAfterLines={3} size="small">
+      <Text
+        color="surface.text.gray.normal"
+        variant="body"
+        weight="semibold"
+        truncateAfterLines={3}
+        size="small"
+      >
         {displayText}
       </Text>,
     );
@@ -70,7 +86,12 @@ describe('<Text />', () => {
     expect(() =>
       renderWithTheme(
         // @ts-expect-error testing failure case when size='small' is passed with variant='caption'
-        <Text type="normal" variant="caption" truncateAfterLines={3} size="small">
+        <Text
+          color="surface.text.gray.normal"
+          variant="caption"
+          truncateAfterLines={3}
+          size="small"
+        >
           {displayText}
         </Text>,
       ),

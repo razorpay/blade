@@ -2,7 +2,6 @@
 
 exports[`<Code /> should render Code with color 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(218,19%,81%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
@@ -43,7 +42,7 @@ exports[`<Code /> should render Code with color 1`] = `
 
 exports[`<Code /> should render Code with default properties 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
@@ -61,7 +60,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 .c0.c0.c0.c0.c0 {
   padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -85,7 +84,7 @@ exports[`<Code /> should render Code with default properties 1`] = `
 
 exports[`<Code /> should render isHighlighted false Code 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
@@ -126,7 +125,7 @@ exports[`<Code /> should render isHighlighted false Code 1`] = `
 
 exports[`<Code /> should render medium Code 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.75rem;
   font-weight: 400;
@@ -144,7 +143,7 @@ exports[`<Code /> should render medium Code 1`] = `
 
 .c0.c0.c0.c0.c0 {
   padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -168,7 +167,7 @@ exports[`<Code /> should render medium Code 1`] = `
 
 exports[`<Code /> should render small Code 1`] = `
 .c1.c1.c1.c1.c1 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
@@ -186,7 +185,7 @@ exports[`<Code /> should render small Code 1`] = `
 
 .c0.c0.c0.c0.c0 {
   padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
