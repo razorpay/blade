@@ -602,11 +602,14 @@ const transformer: Transform = (file, api, options) => {
     );
   }
 
+  // Change color="default" to color="primary" in Button/Link/Badge/Counter
   // <Button variant="secondary" color="default"> -> <Button variant="secondary" color="primary">
   try {
     root
       .find(j.JSXElement)
-      .filter((path) => ['Button', 'Link'].includes(path.value.openingElement.name.name))
+      .filter((path) =>
+        ['Button', 'Link', 'Badge', 'Counter'].includes(path.value.openingElement.name.name),
+      )
       .find(j.JSXAttribute)
       .filter((path) => path.node.name.name === 'color' && path.node.value.value === 'default')
       .replaceWith((path) => {
@@ -617,6 +620,21 @@ const transformer: Transform = (file, api, options) => {
   } catch (error) {
     console.error(
       red(`⛔️ ${file.path}: Oops! Ran into an issue while updating the Button color prop.`),
+      `\n${red(error.stack)}\n`,
+    );
+  }
+
+  // Remove forntWeight prop from Badge
+  try {
+    root
+      .find(j.JSXElement)
+      .filter((path) => path.value.openingElement.name.name === 'Badge')
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name === 'fontWeight')
+      .remove();
+  } catch (error) {
+    console.error(
+      red(`⛔️ ${file.path}: Oops! Ran into an issue while removing the fontWeight prop.`),
       `\n${red(error.stack)}\n`,
     );
   }

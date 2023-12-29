@@ -98,14 +98,14 @@ it('should remove variant/intent prop in favor of color prop', async () => {
             <Alert description="Hello World" color="information" />
 
             <Badge color="primary"> Hello </Badge>
-            <Badge color="default"> Hello </Badge>
-            <Badge color="default"> Hello </Badge>
+            <Badge color="primary"> Hello </Badge>
+            <Badge color="primary"> Hello </Badge>
             <Badge color="positive"> Hello </Badge>
 
             <Counter color="primary"> Hello </Counter>
             <Counter color="positive"> Hello </Counter>
-            <Counter color="default"> Hello </Counter>
-            <Counter color="default"> Hello </Counter>
+            <Counter color="primary"> Hello </Counter>
+            <Counter color="primary"> Hello </Counter>
             <Counter color="positive"> Hello </Counter>
 
             <Indicator color="positive" />
