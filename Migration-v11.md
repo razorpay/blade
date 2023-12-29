@@ -65,7 +65,7 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
   + <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
   ```
 
-- The codemod doesn't handle the migration of conditionally rendered props. Take a moment to manually inspect and update such cases.
+- The codemod doesn't handle the migration of conditionally rendered props. Take a moment to manually inspect and update such cases. The codemod will also log a warning for such cases with the line number & path to the file. For example: `Expression found in the "size" attribute, please update manually: src/pages/ResumeWithRazorpay/sections/WhyResumeSection.tsx:20`
 
   ```diff
   - <Title size={isMobile ? "small" : "medium"}> Hello </Title>
