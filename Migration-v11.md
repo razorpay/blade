@@ -2,19 +2,55 @@
 
 ## Migration with Codemod
 
-**Step1:** Install this version of `@razorpay/blade`.
+**Step 1:** Install this version of Blade as `yarn add @razorpay/blade-rebranded@npm:@razorpay/blade@v11.0.0`.
 
-**Step2:** Execute the codemod using the following command:
+**Step 2:** Install fonts by following [this file](https://blade.razorpay.com/?path=/docs/guides-installation--docs#-installing-fonts).
+
+**Step 3:** The migration should be done page by page. Wrap your page that needs to be migrated under `BladeProvider` imported from `@razorpay/blade-rebranded`. Till the time the migration is not complete, you will have to maintain two versions of Blade in your project. To do that, you can use the `BladeProvider` component from different versions of Blade in different parts of your app.
+
+```jsx
+// HomePage.tsx
+import { BladeProvider } from '@razorpay/blade-rebranded'; // <-- v11
+import { bladeTheme } from '@razorpay/blade-rebranded/tokens';
+
+const HomePage = () => {
+  return (
+    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
+      <div>
+        <Text>Hello World</Text>
+      </div>
+    </BladeProvider>
+  );
+};
+```
+
+```jsx
+// OldPage.tsx (v10)
+import { BladeProvider } from '@razorpay/blade'; // <-- v10
+import { payment } from '@razorpay/blade/tokens';
+
+const OldPage = () => {
+  return (
+    <BladeProvider themeTokens={payment} colorScheme="light">
+      <div>
+        <Text>Hello World</Text>
+      </div>
+    </BladeProvider>
+  );
+};
+```
+
+**Step 4:** The codemod will update the components to the new version of Blade. Execute the codemod on the file/directory that needs to be migrated for the page via the following command:
 
 > Need help? Check out [jscodeshift docs](https://github.com/facebook/jscodeshift) for CLI usage tips.
 
 ```sh
-npx jscodeshift ./YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/brand-refresh/transformers/index.ts --ignore-pattern="**/node_modules/**"
+npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/brand-refresh/transformers/index.ts --ignore-pattern="**/node_modules/**"
 ```
 
 > [!WARNING]
 >
-> While this codemod covers most cases, it's always good to double-check and test your code to catch any missed nuances.
+> While this codemod covers most of the cases, it's always good to double-check and test your code to catch any missed nuances.
 
 ### 🚧 Watch Out for Limitations & Edge Cases
 
@@ -22,14 +58,21 @@ npx jscodeshift ./YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpa
 >
 > There might be some situations where the codemod falls short. If you encounter errors, handle those cases manually for a seamless transition. Happy coding!
 
-#### Typography
+- With Blade v11, we have removed `highContrast` & `lowContrast` terminology from color tokens. If you have used any color token which has `highContrast` in its name or `contrast="high"` prop in typography components, the codemod will replace it with `"UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"` string. You will have to discuss these instances with designers & manually update this value with a new color token that matches the contrast you need.
 
-1. The codemod doesn't handle the migration of conditionally rendered props. Take a moment to manually inspect and update such cases.
+  ```diff
+  - <Text color="surface.text.subtle.highContrast"> Lorem ipsum </Text>
+  + <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
+  ```
 
-   ```diff
-   - <Title size={isMobile ? "small" : "medium"}> Hello </Title>
-   + <Heading size={isMobile ? "large" : "xlarge"}> Hello </Heading>
-   ```
+- The codemod doesn't handle the migration of conditionally rendered props. Take a moment to manually inspect and update such cases.
+
+  ```diff
+  - <Title size={isMobile ? "small" : "medium"}> Hello </Title>
+  + <Heading size={isMobile ? "large" : "xlarge"}> Hello </Heading>
+  ```
+
+**Step 5**: Test your page and make sure everything works as expected. Once the migration is complete for all pages, you can remove the old version of Blade from your project.
 
 ## Manual Migration Guide
 
@@ -54,9 +97,9 @@ npx jscodeshift ./YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpa
     export default AppWrapper;
   ```
 
-- **The `color` tokens have been updated to a new scale. You may need to update your custom component styles to match the new scale:**
+- **The `color` tokens have been updated. You may need to update your custom component styles to map with new tokens:**
 
-  - [color scale](https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=244%3A188858&mode=design&t=vpFlyrSzO1jdpAPu-1)
+  - [color tokens mapping](https://docs.google.com/spreadsheets/d/14p3QqubqkTe2K0701EYY_Ehia4fzFMOIzOo8exCguUA/edit#gid=877366376)
 
 - **The `font-size` and `line-height` tokens have been updated to a new scale. You may need to update your custom component styles to match the new scale:**
   - [font-size scale](https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=244%3A188858&mode=design&t=vpFlyrSzO1jdpAPu-1)
