@@ -1,7 +1,6 @@
 import type { ReactElement } from 'react';
 import { ProgressBarFilled } from './ProgressBarFilled';
 import clamp from '~utils/lodashButBetter/clamp';
-import { FormLabel } from '~components/Form';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Text } from '~components/Typography/Text';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -170,9 +169,9 @@ const ProgressBar = ({
           justifyContent={hasLabel ? 'space-between' : 'flex-end'}
         >
           {hasLabel ? (
-            <FormLabel as="label" htmlFor={id}>
+            <Text as="label" variant="body" size="small" color="surface.text.gray.subtle">
               {label}
-            </FormLabel>
+            </Text>
           ) : null}
           {shouldShowPercentage ? (
             <BaseBox marginBottom="spacing.2">
