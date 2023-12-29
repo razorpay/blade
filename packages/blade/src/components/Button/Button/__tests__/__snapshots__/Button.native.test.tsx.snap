@@ -1172,29 +1172,6 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -1506,29 +1483,6 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
     }
     type="button"
   >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
     <View
       alignItems="center"
       data-blade-component="base-box"
@@ -2309,29 +2263,6 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -2486,29 +2417,6 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
     }
     type="button"
   >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
     <View
       alignItems="center"
       data-blade-component="base-box"
@@ -3080,11 +2988,11 @@ exports[`<Button /> should render negative color secondary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(4, 74%, 49%, 0.09)"
     defaultBorderColor="hsla(4, 74%, 49%, 1)"
-    focusBackgroundColor="hsla(4, 74%, 49%, 0.09)"
+    focusBackgroundColor="hsla(4, 74%, 49%, 0.18)"
     focusBorderColor="hsla(4, 74%, 49%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(4, 74%, 49%, 0.09)"
+    hoverBackgroundColor="hsla(4, 74%, 49%, 0.18)"
     hoverBorderColor="hsla(4, 74%, 49%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -3133,29 +3041,6 @@ exports[`<Button /> should render negative color secondary button 1`] = `
     }
     type="button"
   >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
     <View
       alignItems="center"
       data-blade-component="base-box"
@@ -3415,11 +3300,11 @@ exports[`<Button /> should render positive color secondary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(150, 100%, 32%, 0.09)"
     defaultBorderColor="hsla(150, 100%, 32%, 1)"
-    focusBackgroundColor="hsla(150, 100%, 32%, 0.09)"
+    focusBackgroundColor="hsla(150, 100%, 32%, 0.18)"
     focusBorderColor="hsla(150, 100%, 32%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(150, 100%, 32%, 0.09)"
+    hoverBackgroundColor="hsla(150, 100%, 32%, 0.18)"
     hoverBorderColor="hsla(150, 100%, 32%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -3468,29 +3353,6 @@ exports[`<Button /> should render positive color secondary button 1`] = `
     }
     type="button"
   >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
     <View
       alignItems="center"
       data-blade-component="base-box"
@@ -4427,29 +4289,6 @@ exports[`<Button /> should render white color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -4552,12 +4391,12 @@ exports[`<Button /> should render white color tertiary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     defaultBorderColor="hsla(0, 0%, 100%, 0.18)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    focusBorderColor="hsla(0, 0%, 100%, 0.18)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.32)"
+    focusBorderColor="hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    hoverBorderColor="hsla(0, 0%, 100%, 0.18)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.32)"
+    hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -4604,29 +4443,6 @@ exports[`<Button /> should render white color tertiary button 1`] = `
     }
     type="button"
   >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
     <View
       alignItems="center"
       data-blade-component="base-box"
