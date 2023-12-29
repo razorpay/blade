@@ -27,6 +27,7 @@ const rebrandedComponents = [
   'Modal',
   'SkipNav',
   'VisuallyHidden',
+  'Tooltip',
 ];
 
 module.exports = rebrandedComponents;

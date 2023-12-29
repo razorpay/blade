@@ -136,7 +136,7 @@ describe('<Tooltip />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Tooltip content={tooltipContent}>
         <TooltipInteractiveWrapper>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color="interactive.icon.gray.normal" size="medium" />
         </TooltipInteractiveWrapper>
       </Tooltip>,
     );
@@ -175,7 +175,7 @@ describe('<Tooltip />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Tooltip content="Hello world">
         <TooltipInteractiveWrapper>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color="interactive.icon.gray.normal" size="medium" />
         </TooltipInteractiveWrapper>
       </Tooltip>,
     );
@@ -235,7 +235,7 @@ describe('<Tooltip />', () => {
             onTouchStart={onTouchStart}
             data-testid={testId}
           >
-            <Text contrast="low">{children}</Text>
+            <Text>{children}</Text>
           </BaseBox>
         );
       },
@@ -295,7 +295,7 @@ describe('<Tooltip />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Tooltip content={tooltipContent}>
         <TooltipInteractiveWrapper>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color="interactive.icon.gray.normal" size="medium" />
         </TooltipInteractiveWrapper>
       </Tooltip>,
     );
