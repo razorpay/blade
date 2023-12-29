@@ -1252,7 +1252,6 @@ exports[`Tabs should render with filled variant 1`] = `
                     <View
                       borderLeftColor="surface.border.gray.normal"
                       borderPosition="borderLeft"
-                      borderWidth="none"
                       data-blade-component="divider"
                       dividerStyle="solid"
                       height="20px"
@@ -1262,8 +1261,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         [
                           {
                             "borderLeftColor": "hsla(211, 24%, 65%, 1)",
-                            "borderStyle": "solid",
-                            "borderWidth": 0,
+                            "borderLeftStyle": "solid",
                             "height": 20,
                             "left": 1,
                             "top": 4,
@@ -1272,6 +1270,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             "alignSelf": "stretch",
                             "borderLeftStyle": "solid",
                             "borderLeftWidth": 1,
+                            "borderWidth": 0,
                             "height": 20,
                           },
                         ]
@@ -1548,7 +1547,6 @@ exports[`Tabs should render with filled variant 1`] = `
                     <View
                       borderLeftColor="surface.border.gray.normal"
                       borderPosition="borderLeft"
-                      borderWidth="none"
                       data-blade-component="divider"
                       dividerStyle="solid"
                       height="20px"
@@ -1558,8 +1556,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         [
                           {
                             "borderLeftColor": "hsla(211, 24%, 65%, 1)",
-                            "borderStyle": "solid",
-                            "borderWidth": 0,
+                            "borderLeftStyle": "solid",
                             "height": 20,
                             "left": 1,
                             "top": 4,
@@ -1568,6 +1565,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             "alignSelf": "stretch",
                             "borderLeftStyle": "solid",
                             "borderLeftWidth": 1,
+                            "borderWidth": 0,
                             "height": 20,
                           },
                         ]
