@@ -19,6 +19,7 @@ const rebrandedComponents = [
   'Card',
   'List',
   'Tabs',
+  'Tag',
   'Box',
   'Accordion',
   'Collapsible',
