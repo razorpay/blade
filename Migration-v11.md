@@ -27,7 +27,7 @@ const HomePage = () => {
 ```jsx
 // OldPage.tsx (v10)
 import { BladeProvider } from '@razorpay/blade'; // <-- v10
-import { payment } from '@razorpay/blade/tokens';
+import { paymentTheme } from '@razorpay/blade/tokens';
 
 const OldPage = () => {
   return (
