@@ -15,8 +15,7 @@ describe('<Amount />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  // console logs are failing on tests which makes toThrow fail as well
-  it.skip('should throw an error when a string is passed', () => {
+  it('should throw an error when a string is passed', () => {
     // @ts-expect-error testing failure case when value is passed as a string
     expect(() => renderWithTheme(<Amount value="10000" />)).toThrow(
       '[Blade: Amount]: `value` prop must be of type `number` for Amount.',
