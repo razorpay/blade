@@ -7,7 +7,7 @@ import { currencyPrefixMapping } from './amountTokens';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
-import { Heading, Text } from '~components/Typography';
+import { Display, Text } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { objectKeysWithType } from '~utils/objectKeysWithType';
@@ -91,13 +91,15 @@ const AmountSizesTemplate: StoryFn<typeof AmountComponent> = (args) => {
     <Box justifyContent="center">
       {objectKeysWithType(sizes).map((amountTypeProp) => (
         <Box key={amountTypeProp}>
-          <Heading>Type {amountTypeProp}</Heading>
+          <Display size="small" marginTop="spacing.8" marginBottom="spacing.4">
+            Type {amountTypeProp}
+          </Display>
           {sizes[amountTypeProp].map((size) => (
-            <Box key={size} marginBottom="spacing.3">
+            <Box key={size} marginBottom="spacing.4">
               <Text>{size}</Text>
               <BaseBox marginBottom="spacing.1" />
               {/* @ts-expect-error */}
-              <AmountComponent {...args} type="heading" size={size} />
+              <AmountComponent {...args} type={amountTypeProp} size={size} />
             </Box>
           ))}
         </Box>
@@ -201,6 +203,8 @@ Currency.args = {
   suffix: 'humanize',
 };
 Currency.storyName = 'Currency';
+
+export const TEST = (): React.ReactElement => <Amount value={1000} testID="hi" />;
 
 export const AffixSubtleOff = AmountDefaultTemplate.bind({});
 AffixSubtleOff.args = {

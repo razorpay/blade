@@ -93,7 +93,6 @@ const AmountValue = ({
   isAffixSubtle,
   suffix,
 }: AmountValue): ReactElement => {
-  const affixFontWeight = isAffixSubtle ? 'regular' : 'bold';
   const isReactNative = getPlatformType() === 'react-native';
   const affixFontSize = isAffixSubtle ? subtleFontSizes[type][size] : normalAmountSizes[type][size];
   const numberFontFamily: keyof FontFamily = type === 'body' ? 'text' : 'heading';
@@ -118,7 +117,7 @@ const AmountValue = ({
         </BaseText>
         <BaseText
           marginLeft="spacing.1"
-          fontWeight={affixFontWeight}
+          fontWeight={weight}
           fontSize={affixFontSize}
           fontFamily={numberFontFamily}
           color={amountValueColor}

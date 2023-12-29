@@ -1,5 +1,6 @@
 // baseBoxStyles
 const rebrandedComponents = [
+  'Amount',
   'BaseBox',
   'BaseText',
   'BaseLink',

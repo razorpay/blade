@@ -31,32 +31,34 @@ describe('<Amount />', () => {
   });
 
   it('should render body-small size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-small" value={1000} />);
+    const { container } = renderWithTheme(<Amount type="body" size="small" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-small-bold size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-small-bold" value={1000} />);
+    const { container } = renderWithTheme(
+      <Amount type="body" size="small" weight="semibold" value={1000} />,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-medium size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-medium" value={1000} />);
+    const { container } = renderWithTheme(<Amount type="body" size="medium" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-medium-bold size Amount', () => {
     const { container } = renderWithTheme(
       <>
-        <Amount size="body-medium" value={1000} />
-        <Amount size="body-medium-bold" value={1000} />
-        <Amount size="body-small" value={1000} />
-        <Amount size="body-small-bold" value={1000} />
-        <Amount size="heading-large" value={1000} />
-        <Amount size="heading-large-bold" value={1000} />
-        <Amount size="heading-small" value={1000} />
-        <Amount size="heading-small-bold" value={1000} />
-        <Amount size="title-medium" value={1000} />
+        <Amount type="body" size="medium" value={1000} />
+        <Amount type="body" size="medium" weight="semibold" value={1000} />
+        <Amount type="body" size="small" value={1000} />
+        <Amount type="body" size="small" weight="semibold" value={1000} />
+        <Amount type="heading" size="large" value={1000} />
+        <Amount type="heading" size="large" weight="semibold" value={1000} />
+        <Amount type="heading" size="small" value={1000} />
+        <Amount type="heading" size="small" weight="semibold" value={1000} />
+        <Amount type="display" size="medium" value={1000} />
       </>,
     );
     expect(container).toMatchSnapshot();
@@ -64,19 +66,19 @@ describe('<Amount />', () => {
 
   it('should render amount with Humanize value', () => {
     const { container } = renderWithTheme(
-      <Amount size="title-medium" suffix="humanize" value={1000.22} />,
+      <Amount type="display" size="medium" suffix="humanize" value={1000.22} />,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should render positive intent Amount ', () => {
-    const { container } = renderWithTheme(<Amount intent="positive" value={1000} />);
+    const { container } = renderWithTheme(<Amount color="positive" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render negative intent Amount ', () => {
     const { container } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="negative" value={1000} />,
+      <Amount isAffixSubtle={false} color="negative" value={1000} />,
     );
     expect(container).toMatchSnapshot();
   });
