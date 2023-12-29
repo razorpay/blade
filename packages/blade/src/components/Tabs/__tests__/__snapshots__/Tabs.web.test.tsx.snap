@@ -202,6 +202,10 @@ exports[`Tabs should render 1`] = `
   cursor: pointer;
 }
 
+.c10.c10.c10.c10.c10:hover {
+  background-color: hsla(227,100%,59%,0.24);
+}
+
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
 }
@@ -457,9 +461,8 @@ exports[`Tabs should render with filled variant 1`] = `
 .c8.c8.c8.c8.c8 {
   margin: auto;
   height: 20px;
-  border-width: 0px;
   border-left-color: hsla(214,28%,84%,1);
-  border-style: solid;
+  border-left-style: solid;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -664,7 +667,12 @@ exports[`Tabs should render with filled variant 1`] = `
   cursor: pointer;
 }
 
+.c13.c13.c13.c13.c13:hover {
+  background-color: hsla(227,100%,59%,0.24);
+}
+
 .c9.c9.c9.c9.c9 {
+  border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
   -webkit-align-self: stretch;
@@ -709,31 +717,31 @@ exports[`Tabs should render with filled variant 1`] = `
 
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
   }
 }
 
@@ -1094,6 +1102,10 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 
 .c10.c10.c10.c10.c10 {
   cursor: pointer;
+}
+
+.c10.c10.c10.c10.c10:hover {
+  background-color: hsla(227,100%,59%,0.24);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
@@ -1483,6 +1495,10 @@ exports[`Tabs should render with size 1`] = `
 
 .c10.c10.c10.c10.c10 {
   cursor: pointer;
+}
+
+.c10.c10.c10.c10.c10:hover {
+  background-color: hsla(227,100%,59%,0.24);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
