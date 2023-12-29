@@ -225,53 +225,53 @@ Controlled.args = {
   titleLeading: 'SettlementsIcon',
 };
 
-const PlacementTemplate: StoryFn<typeof Popover> = (args, context) => {
-  const allPlacements = [
-    'top',
-    'top-start',
-    'top-end',
-    'left',
-    'left-start',
-    'left-end',
-    'bottom',
-    'bottom-start',
-    'bottom-end',
-    'right',
-    'right-start',
-    'right-end',
-  ];
-  const [placement, setPlacement] = React.useState<PopoverProps['placement']>('bottom');
-  const isInDocsMode = context.viewMode === 'docs';
+// const PlacementTemplate: StoryFn<typeof Popover> = (args, context) => {
+//   const allPlacements = [
+//     'top',
+//     'top-start',
+//     'top-end',
+//     'left',
+//     'left-start',
+//     'left-end',
+//     'bottom',
+//     'bottom-start',
+//     'bottom-end',
+//     'right',
+//     'right-start',
+//     'right-end',
+//   ];
+//   const [placement, setPlacement] = React.useState<PopoverProps['placement']>('bottom');
+//   const isInDocsMode = context.viewMode === 'docs';
 
-  return (
-    <Box display="flex" flexDirection="row" flexWrap="nowrap">
-      <Box flex={1}>
-        <RadioGroup
-          label="Select Placement"
-          onChange={({ value }) => setPlacement(value as PopoverProps['placement'])}
-        >
-          {allPlacements.map((placement) => {
-            return (
-              <Radio key={placement} value={placement}>
-                {placement}
-              </Radio>
-            );
-          })}
-        </RadioGroup>
-      </Box>
+//   return (
+//     <Box display="flex" flexDirection="row" flexWrap="nowrap">
+//       <Box flex={1}>
+//         <RadioGroup
+//           label="Select Placement"
+//           onChange={({ value }) => setPlacement(value as PopoverProps['placement'])}
+//         >
+//           {allPlacements.map((placement) => {
+//             return (
+//               <Radio key={placement} value={placement}>
+//                 {placement}
+//               </Radio>
+//             );
+//           })}
+//         </RadioGroup>
+//       </Box>
 
-      <Box flex={1} margin="auto" marginTop="20%">
-        <Popover
-          {...args}
-          isOpen={isInDocsMode || isReactNative() ? undefined : true}
-          placement={placement}
-        >
-          <Button>View Settlement</Button>
-        </Popover>
-      </Box>
-    </Box>
-  );
-};
+//       <Box flex={1} margin="auto" marginTop="20%">
+//         <Popover
+//           {...args}
+//           isOpen={isInDocsMode || isReactNative() ? undefined : true}
+//           placement={placement}
+//         >
+//           <Button>View Settlement</Button>
+//         </Popover>
+//       </Box>
+//     </Box>
+//   );
+// };
 
 // TODO(Rebranding): enable this after Radio component rebranding
 // export const Placement = PlacementTemplate.bind({});

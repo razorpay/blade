@@ -1,9 +1,9 @@
-# U Guide for v11 (Brand Refresh)
+# Upgrade Guide for v11 (Brand Refresh)
 
 ## Upgrade Workflow Overview
 All the rebranding upgrade activity starts at the design end and is then followed by engineering
 
-<img alt="Upgrade Workflow Overview" src="./migration-v11-workflow.png" width="800px">
+<img alt="Upgrade Workflow Overview" src="./upgrade-v11-workflow.png" width="800px">
 
 ## Migration with Codemod
 
@@ -75,6 +75,9 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
   ```
 
 **Step 5**: Test your page and make sure everything works as expected. Once the migration is complete for all pages, you can remove the old version of Blade from your project.
+
+## Available Rebranded Components
+To check out the list of available components, visit [Blade Component Status](https://blade.razorpay.com/?path=/docs/guides-component-status--docs).
 
 ## Manual Migration Guide
 Only use this if you're unable to run the codemod described above.
