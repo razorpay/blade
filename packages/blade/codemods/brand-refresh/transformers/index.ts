@@ -787,6 +787,27 @@ const transformer: Transform = (file, api, options) => {
     );
   }
 
+  // Update ImportDeclaration from "@razorpay/blade/components" to "@razorpay/blade-rebranded/components"
+  try {
+    root
+      .find(j.ImportDeclaration)
+      .filter((path) =>
+        /@razorpay\/blade\/(components|utils|tokens)/i.test(path.value.source.value),
+      )
+      .replaceWith((path) => {
+        path.value.source.value = path.value.source.value.replace('blade', 'blade-rebranded');
+
+        return path.node;
+      });
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the ImportDeclaration from "@razorpay/blade" to "@razorpay/blade-rebranded".`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
+
   return root.toSource(options.printOptions);
 };
 
