@@ -18,6 +18,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
+import { objectKeysWithType } from '~utils/objectKeysWithType';
 import { BaseText } from '~components/Typography/BaseText';
 import { Text } from '~components/Typography';
 import type { FontFamily } from '~tokens/global';
@@ -224,6 +225,30 @@ const _Amount = ({
     if (color === 'neutral') {
       throwBladeError({
         message: '`neutral` color is not supported.',
+        moduleName: 'Amount',
+      });
+    }
+
+    const bodySizes = objectKeysWithType(normalAmountSizes.body);
+    if ((type === 'body' || !type) && !bodySizes.includes(size)) {
+      throwBladeError({
+        message: `size="${size}" is not allowed with type="body"`,
+        moduleName: 'Amount',
+      });
+    }
+
+    const displaySizes = objectKeysWithType(normalAmountSizes.display);
+    if (type === 'display' && !displaySizes.includes(size)) {
+      throwBladeError({
+        message: `size="${size}" is not allowed with type="display"`,
+        moduleName: 'Amount',
+      });
+    }
+
+    const headingSizes = objectKeysWithType(normalAmountSizes.heading);
+    if (type === 'heading' && !headingSizes.includes(size)) {
+      throwBladeError({
+        message: `size="${size}" is not allowed with type="heading"`,
         moduleName: 'Amount',
       });
     }
