@@ -4,7 +4,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 describe('<SaveIcon />', () => {
   it('should render SaveIcon', () => {
     const { container } = renderWithTheme(
-      <SaveIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <SaveIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });
