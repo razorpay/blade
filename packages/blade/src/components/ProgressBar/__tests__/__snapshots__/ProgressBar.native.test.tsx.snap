@@ -46,137 +46,40 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.gray.normal"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="semibold"
-              lineHeight={75}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(212, 39%, 16%, 1)",
-                    "fontFamily": "Inter",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "600",
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.gray.normal"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(212, 39%, 16%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={
@@ -1301,137 +1204,40 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.gray.normal"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="semibold"
-              lineHeight={75}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(212, 39%, 16%, 1)",
-                    "fontFamily": "Inter",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "600",
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.gray.normal"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(212, 39%, 16%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={
@@ -1721,137 +1527,40 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.gray.normal"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="semibold"
-              lineHeight={75}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(212, 39%, 16%, 1)",
-                    "fontFamily": "Inter",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "600",
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.gray.normal"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(212, 39%, 16%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={
@@ -2165,137 +1874,40 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.gray.normal"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="semibold"
-              lineHeight={75}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(212, 39%, 16%, 1)",
-                    "fontFamily": "Inter",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "600",
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.gray.normal"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(212, 39%, 16%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={
@@ -2609,137 +2221,40 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.gray.normal"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="semibold"
-              lineHeight={75}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(212, 39%, 16%, 1)",
-                    "fontFamily": "Inter",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "600",
-                    "letterSpacing": 0,
-                    "lineHeight": 18,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.gray.normal"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(212, 39%, 16%, 1)",
-                      "fontFamily": "Inter",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "letterSpacing": 0,
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={

@@ -103,9 +103,8 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  border-width: 0px;
   border-bottom-color: hsla(211,20%,52%,0.18);
-  border-style: solid;
+  border-bottom-style: solid;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -167,6 +166,7 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
+  border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -211,31 +211,31 @@ exports[`<Accordion /> should render 1`] = `
 
 @media screen and (min-width:320px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
