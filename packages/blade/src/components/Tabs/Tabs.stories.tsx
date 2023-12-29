@@ -21,7 +21,7 @@ import { Counter } from '~components/Counter';
 import { Box } from '~components/Box';
 import { Card, CardBody, CardHeader, CardHeaderLeading } from '~components/Card';
 import { Alert } from '~components/Alert';
-import { Switch } from '~components/Switch';
+// import { Switch } from '~components/Switch';
 import iconMap from '~components/Icons/iconMap';
 import { Badge } from '~components/Badge';
 import { Button } from '~components/Button';
@@ -354,7 +354,7 @@ const SettingsCard = ({
               <Icon size="large" color="surface.text.subtle.lowContrast" />
               <Heading>{title}</Heading>
             </Box>
-            <Switch accessibilityLabel="Enable Card" />
+            {/* <Switch accessibilityLabel="Enable Card" /> */}
           </Box>
           {children}
         </Box>

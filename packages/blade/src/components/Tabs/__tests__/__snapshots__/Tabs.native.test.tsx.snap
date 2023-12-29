@@ -26,7 +26,7 @@ exports[`Tabs should render 1`] = `
       style={
         {
           "backgroundColor": "transparent",
-          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
           "borderBottomWidth": 1,
           "elevation": 4,
           "shadowColor": "transparent",
@@ -63,9 +63,9 @@ exports[`Tabs should render 1`] = `
           collapsable={false}
           style={
             {
-              "backgroundColor": "hsla(218, 89%, 51%, 1)",
+              "backgroundColor": "hsla(227, 100%, 59%, 1)",
               "bottom": 0,
-              "height": 1.5,
+              "height": 2,
               "left": "0%",
               "opacity": 0,
               "pointerEvents": "none",
@@ -297,7 +297,7 @@ exports[`Tabs should render 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.muted.lowContrast"
+                            color="interactive.text.gray.muted"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -307,7 +307,7 @@ exports[`Tabs should render 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "color": "hsla(211, 22%, 56%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -385,7 +385,7 @@ exports[`Tabs should render 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="brand.primary.500"
+                            color="interactive.text.primary.subtle"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -395,7 +395,7 @@ exports[`Tabs should render 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(227, 71%, 51%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -555,7 +555,7 @@ exports[`Tabs should render 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.muted.lowContrast"
+                            color="interactive.text.gray.muted"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -565,7 +565,7 @@ exports[`Tabs should render 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "color": "hsla(211, 22%, 56%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -643,7 +643,7 @@ exports[`Tabs should render 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="brand.primary.500"
+                            color="interactive.text.primary.subtle"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -653,7 +653,7 @@ exports[`Tabs should render 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(227, 71%, 51%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -747,7 +747,7 @@ exports[`Tabs should render 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.normal.lowContrast"
+            color="surface.text.gray.normal"
             data-blade-component="text"
             fontFamily="text"
             fontSize={100}
@@ -757,7 +757,7 @@ exports[`Tabs should render 1`] = `
             style={
               [
                 {
-                  "color": "hsla(217, 56%, 17%, 1)",
+                  "color": "hsla(212, 39%, 16%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
@@ -850,7 +850,7 @@ exports[`Tabs should render with filled variant 1`] = `
       style={
         {
           "backgroundColor": "hsla(0, 0%, 100%, 1)",
-          "borderColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderColor": "hsla(211, 20%, 52%, 0.18)",
           "borderRadius": 2,
           "borderWidth": 1.5,
           "elevation": 4,
@@ -883,10 +883,10 @@ exports[`Tabs should render with filled variant 1`] = `
           collapsable={false}
           style={
             {
-              "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
+              "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
               "borderRadius": 2,
               "bottom": 4,
-              "height": -9.5,
+              "height": -10,
               "left": 4,
               "opacity": 0,
               "pointerEvents": "none",
@@ -1117,7 +1117,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.muted.lowContrast"
+                            color="interactive.text.gray.muted"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1127,7 +1127,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "color": "hsla(211, 22%, 56%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1204,7 +1204,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="brand.primary.500"
+                            color="interactive.text.primary.subtle"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1214,7 +1214,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(227, 71%, 51%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1250,9 +1250,8 @@ exports[`Tabs should render with filled variant 1`] = `
                     }
                   >
                     <View
-                      borderLeftColor="surface.border.normal.lowContrast"
+                      borderLeftColor="surface.border.gray.normal"
                       borderPosition="borderLeft"
-                      borderWidth="none"
                       data-blade-component="divider"
                       dividerStyle="solid"
                       height="20px"
@@ -1261,9 +1260,8 @@ exports[`Tabs should render with filled variant 1`] = `
                       style={
                         [
                           {
-                            "borderLeftColor": "hsla(216, 15%, 54%, 0.18)",
-                            "borderStyle": "solid",
-                            "borderWidth": 0,
+                            "borderLeftColor": "hsla(211, 24%, 65%, 1)",
+                            "borderLeftStyle": "solid",
                             "height": 20,
                             "left": 1,
                             "top": 4,
@@ -1272,6 +1270,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             "alignSelf": "stretch",
                             "borderLeftStyle": "solid",
                             "borderLeftWidth": 1,
+                            "borderWidth": 0,
                             "height": 20,
                           },
                         ]
@@ -1413,7 +1412,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.muted.lowContrast"
+                            color="interactive.text.gray.muted"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1423,7 +1422,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "color": "hsla(211, 22%, 56%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1500,7 +1499,7 @@ exports[`Tabs should render with filled variant 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="brand.primary.500"
+                            color="interactive.text.primary.subtle"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1510,7 +1509,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(227, 71%, 51%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1546,9 +1545,8 @@ exports[`Tabs should render with filled variant 1`] = `
                     }
                   >
                     <View
-                      borderLeftColor="surface.border.normal.lowContrast"
+                      borderLeftColor="surface.border.gray.normal"
                       borderPosition="borderLeft"
-                      borderWidth="none"
                       data-blade-component="divider"
                       dividerStyle="solid"
                       height="20px"
@@ -1557,9 +1555,8 @@ exports[`Tabs should render with filled variant 1`] = `
                       style={
                         [
                           {
-                            "borderLeftColor": "hsla(216, 15%, 54%, 0.18)",
-                            "borderStyle": "solid",
-                            "borderWidth": 0,
+                            "borderLeftColor": "hsla(211, 24%, 65%, 1)",
+                            "borderLeftStyle": "solid",
                             "height": 20,
                             "left": 1,
                             "top": 4,
@@ -1568,6 +1565,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             "alignSelf": "stretch",
                             "borderLeftStyle": "solid",
                             "borderLeftWidth": 1,
+                            "borderWidth": 0,
                             "height": 20,
                           },
                         ]
@@ -1644,7 +1642,7 @@ exports[`Tabs should render with filled variant 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.normal.lowContrast"
+            color="surface.text.gray.normal"
             data-blade-component="text"
             fontFamily="text"
             fontSize={100}
@@ -1654,7 +1652,7 @@ exports[`Tabs should render with filled variant 1`] = `
             style={
               [
                 {
-                  "color": "hsla(217, 56%, 17%, 1)",
+                  "color": "hsla(212, 39%, 16%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
@@ -1747,7 +1745,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
       style={
         {
           "backgroundColor": "transparent",
-          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
           "borderBottomWidth": 1,
           "elevation": 4,
           "shadowColor": "transparent",
@@ -1778,9 +1776,9 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
           collapsable={false}
           style={
             {
-              "backgroundColor": "hsla(218, 89%, 51%, 1)",
+              "backgroundColor": "hsla(227, 100%, 59%, 1)",
               "bottom": 0,
-              "height": 1.5,
+              "height": 2,
               "left": "0%",
               "opacity": 0,
               "pointerEvents": "none",
@@ -2011,7 +2009,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.muted.lowContrast"
+                            color="interactive.text.gray.muted"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -2021,7 +2019,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "color": "hsla(211, 22%, 56%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2098,7 +2096,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="brand.primary.500"
+                            color="interactive.text.primary.subtle"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -2108,7 +2106,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(227, 71%, 51%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2267,7 +2265,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.muted.lowContrast"
+                            color="interactive.text.gray.muted"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -2277,7 +2275,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "color": "hsla(211, 22%, 56%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2354,7 +2352,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="brand.primary.500"
+                            color="interactive.text.primary.subtle"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -2364,7 +2362,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(227, 71%, 51%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2458,7 +2456,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.normal.lowContrast"
+            color="surface.text.gray.normal"
             data-blade-component="text"
             fontFamily="text"
             fontSize={100}
@@ -2468,7 +2466,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
             style={
               [
                 {
-                  "color": "hsla(217, 56%, 17%, 1)",
+                  "color": "hsla(212, 39%, 16%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
@@ -2561,7 +2559,7 @@ exports[`Tabs should render with large size 1`] = `
       style={
         {
           "backgroundColor": "transparent",
-          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
           "borderBottomWidth": 1,
           "elevation": 4,
           "shadowColor": "transparent",
@@ -2598,9 +2596,9 @@ exports[`Tabs should render with large size 1`] = `
           collapsable={false}
           style={
             {
-              "backgroundColor": "hsla(218, 89%, 51%, 1)",
+              "backgroundColor": "hsla(227, 100%, 59%, 1)",
               "bottom": 0,
-              "height": 1.5,
+              "height": 2,
               "left": "0%",
               "opacity": 0,
               "pointerEvents": "none",
@@ -2832,7 +2830,7 @@ exports[`Tabs should render with large size 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.muted.lowContrast"
+                            color="interactive.text.gray.muted"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={200}
@@ -2842,7 +2840,7 @@ exports[`Tabs should render with large size 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "color": "hsla(211, 22%, 56%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
@@ -2920,7 +2918,7 @@ exports[`Tabs should render with large size 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="brand.primary.500"
+                            color="interactive.text.primary.subtle"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={200}
@@ -2930,7 +2928,7 @@ exports[`Tabs should render with large size 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(227, 71%, 51%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
@@ -3090,7 +3088,7 @@ exports[`Tabs should render with large size 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.muted.lowContrast"
+                            color="interactive.text.gray.muted"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={200}
@@ -3100,7 +3098,7 @@ exports[`Tabs should render with large size 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(216, 16%, 60%, 1)",
+                                  "color": "hsla(211, 22%, 56%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
@@ -3178,7 +3176,7 @@ exports[`Tabs should render with large size 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="brand.primary.500"
+                            color="interactive.text.primary.subtle"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={200}
@@ -3188,7 +3186,7 @@ exports[`Tabs should render with large size 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(218, 89%, 51%, 1)",
+                                  "color": "hsla(227, 71%, 51%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
@@ -3282,7 +3280,7 @@ exports[`Tabs should render with large size 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.normal.lowContrast"
+            color="surface.text.gray.normal"
             data-blade-component="text"
             fontFamily="text"
             fontSize={100}
@@ -3292,7 +3290,7 @@ exports[`Tabs should render with large size 1`] = `
             style={
               [
                 {
-                  "color": "hsla(217, 56%, 17%, 1)",
+                  "color": "hsla(212, 39%, 16%, 1)",
                   "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",

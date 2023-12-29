@@ -1,5 +1,4 @@
 import React from 'react';
-import type { DOMAttributes } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Tag } from './Tag';
@@ -8,7 +7,6 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
-import { isReactNative } from '~utils';
 import iconMap from '~components/Icons/iconMap';
 
 const Page = (): React.ReactElement => {
@@ -100,19 +98,19 @@ Disabled.args = {
   isDisabled: true,
 } as TagProps & { icon: string };
 
-const CrossPlatformForm = ({
-  children,
-  onSubmit,
-}: {
-  children: React.ReactElement[];
-  onSubmit: DOMAttributes<HTMLFormElement>['onSubmit'];
-}): React.ReactElement => {
-  if (isReactNative()) {
-    return <Box>{children}</Box>;
-  }
+// const CrossPlatformForm = ({
+//   children,
+//   onSubmit,
+// }: {
+//   children: React.ReactElement[];
+//   onSubmit: DOMAttributes<HTMLFormElement>['onSubmit'];
+// }): React.ReactElement => {
+//   if (isReactNative()) {
+//     return <Box>{children}</Box>;
+//   }
 
-  return <form onSubmit={onSubmit}>{children}</form>;
-};
+//   return <form onSubmit={onSubmit}>{children}</form>;
+// };
 
 // TODO: Rebranding - Uncomment this when TextInput is ready
 // export const ControlledTags = (props: TagProps): React.ReactElement => {

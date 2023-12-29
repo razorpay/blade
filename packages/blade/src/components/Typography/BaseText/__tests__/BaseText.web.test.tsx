@@ -16,7 +16,7 @@ describe('<BaseText />', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
       <BaseText
-        color="surface.text.normal.highContrast"
+        color="surface.text.gray.normal"
         fontFamily="text"
         lineHeight={100}
         fontSize={25}
@@ -32,7 +32,7 @@ describe('<BaseText />', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
       <BaseText
-        color="surface.text.normal.highContrast"
+        color="surface.text.gray.normal"
         fontFamily="text"
         lineHeight={100}
         fontSize={25}
@@ -50,7 +50,7 @@ describe('<BaseText />', () => {
     const displayText = 'Displaying some text';
     const { container } = renderWithTheme(
       <BaseText
-        color="surface.text.normal.highContrast"
+        color="surface.text.gray.normal"
         fontFamily="text"
         lineHeight={100}
         fontSize={25}
