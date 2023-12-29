@@ -50,25 +50,14 @@ const OldPage = () => {
 > Need help? Check out [jscodeshift docs](https://github.com/facebook/jscodeshift) for CLI usage tips.
 
 ```sh
-npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/brand-refresh/transformers/index.ts --ignore-pattern="**/node_modules/**"
+npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade-rebranded/codemods/brand-refresh/transformers/index.ts --ignore-pattern="**/node_modules/**"
 ```
-
-> [!WARNING]
->
-> While this codemod covers most of the cases, it's always good to double-check and test your code to catch any missed nuances.
 
 ### 🚧 Watch Out for Limitations & Edge Cases
 
 > [!IMPORTANT]
 >
-> There might be some situations where the codemod falls short. If you encounter errors, handle those cases manually for a seamless transition. Happy coding!
-
-- With Blade v11, we have removed `highContrast` & `lowContrast` terminology from color tokens. If you have used any color token which has `highContrast` in its name or `contrast="high"` prop in typography components, the codemod will replace it with `"UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"` string. You will have to discuss these instances with designers & manually update this value with a new color token that matches the contrast you need.
-
-  ```diff
-  - <Text color="surface.text.subtle.highContrast"> Lorem ipsum </Text>
-  + <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
-  ```
+> There might be some situations where the codemod falls short. If you encounter errors, handle those cases manually by following up with your designer.
 
 - The codemod doesn't handle the migration of conditionally rendered props. Take a moment to manually inspect and update such cases. The codemod will also log a warning for such cases with the line number & path to the file. For example: `Expression found in the "size" attribute, please update manually: src/pages/ResumeWithRazorpay/sections/WhyResumeSection.tsx:20`
 
@@ -77,9 +66,18 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
   + <Heading size={isMobile ? "large" : "xlarge"}> Hello </Heading>
   ```
 
+
+- With Blade v11, we have removed `highContrast` & `lowContrast` terminology from color tokens. If you have used any color token which has `highContrast` in its name or `contrast="high"` prop in typography components, the codemod will replace it with `"UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"` string. You will have to discuss these instances with designers & manually update this value with a new color token that matches the contrast you need.
+
+  ```diff
+  - <Text color="surface.text.subtle.highContrast"> Lorem ipsum </Text>
+  + <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
+  ```
+
 **Step 5**: Test your page and make sure everything works as expected. Once the migration is complete for all pages, you can remove the old version of Blade from your project.
 
 ## Manual Migration Guide
+Only use this if you're unable to run the codemod described above.
 
 ### Theme Tokens
 
