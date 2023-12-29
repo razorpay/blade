@@ -14,14 +14,14 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Amount } from '~components/Amount';
 import { Divider } from '~components/Divider';
-import { Checkbox } from '~components/Checkbox';
+// import { Checkbox } from '~components/Checkbox';
 import iconMap from '~components/Icons/iconMap';
-import { InfoIcon, MoonIcon, SearchIcon, SunIcon } from '~components/Icons';
+import { InfoIcon, MoonIcon, SunIcon } from '~components/Icons';
 import { Radio, RadioGroup } from '~components/Radio';
 import { Badge } from '~components/Badge';
 import { Counter } from '~components/Counter';
 import { List, ListItem, ListItemLink, ListItemText } from '~components/List';
-import { TextInput } from '~components/Input/TextInput';
+// import { TextInput } from '~components/Input/TextInput';
 import { IconButton } from '~components/Button/IconButton';
 import { isReactNative } from '~utils';
 import { Alert } from '~components/Alert';
@@ -107,9 +107,9 @@ const Content = () => {
         padding="spacing.3"
         flexDirection="column"
         borderRadius="medium"
-        backgroundColor="surface.background.level2.lowContrast"
+        backgroundColor="surface.background.gray.intense"
         borderWidth="thin"
-        borderColor="surface.border.normal.lowContrast"
+        borderColor="surface.border.gray.subtle"
       >
         <Box display="flex" justifyContent="space-between" gap="spacing.5">
           <Text size="medium">Gross Settlements</Text>
@@ -117,11 +117,12 @@ const Content = () => {
         </Box>
         <Box display="flex" justifyContent="space-between" gap="spacing.5">
           <Text size="medium">Deductions</Text>
+          {/* TODO(Rebranding): update this after Amount component rebranding */}
           <Amount intent="negative" size="body-medium" value={250} />
         </Box>
-        <Divider />
+        <Divider variant="subtle" />
         <Box display="flex" justifyContent="space-between" gap="spacing.5">
-          <Text weight="bold" size="medium">
+          <Text weight="semibold" size="medium">
             Net Settlements
           </Text>
           <Amount size="body-medium-bold" value={4750} />
@@ -141,7 +142,10 @@ const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void
         alignItems="center"
         justifyContent="space-between"
       >
-        <Checkbox size="medium">Settle with refunds</Checkbox>
+        {/* TODO(Rebranding): enable this after Checkbox component rebranding */}
+        {/* <Checkbox size="medium">Settle with refunds</Checkbox> */}
+        <Text>Settle with refunds</Text>
+
         <Button ref={ref} onClick={props.onClick} size="small" variant="tertiary">
           Settle amount
         </Button>
@@ -156,7 +160,7 @@ const PopoverTemplate: StoryFn<typeof Popover> = (args) => {
     <Center>
       <Popover
         {...args}
-        titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+        titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
       >
         <Button>View Settlement</Button>
       </Popover>
@@ -205,7 +209,7 @@ export const Controlled: StoryFn<typeof Popover> = (args) => {
               setIsOpen(isOpen);
             }}
             footer={<FooterContent onClick={() => setIsOpen(false)} />}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+            titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
           >
             <Button onClick={() => setIsOpen((prev) => !prev)}>View Settlement</Button>
           </Popover>
@@ -269,12 +273,13 @@ const PlacementTemplate: StoryFn<typeof Popover> = (args, context) => {
   );
 };
 
-export const Placement = PlacementTemplate.bind({});
-Placement.storyName = 'Placement';
-Placement.args = {
-  title: 'Settlement breakup',
-  content: <Content />,
-};
+// TODO(Rebranding): enable this after Radio component rebranding
+// export const Placement = PlacementTemplate.bind({});
+// Placement.storyName = 'Placement';
+// Placement.args = {
+//   title: 'Settlement breakup',
+//   content: <Content />,
+// };
 
 export const PopoverInteractiveWrapperTemplate: StoryFn<typeof Popover> = (args) => {
   const LeadingIcon = iconMap[args.titleLeading as string]!;
@@ -282,36 +287,38 @@ export const PopoverInteractiveWrapperTemplate: StoryFn<typeof Popover> = (args)
     <>
       <Text as="span">
         With{' '}
-        <Text weight="bold" as="span">
+        <Text weight="semibold" as="span">
           PopoverInteractiveWrapper
         </Text>{' '}
         you can make Popover open when clicking non-interactive elements like Icons,Badges,Counter
         etc
       </Text>
-      <Text type="muted">Note: PopoverInteractiveWrapper is a button by default.</Text>
+      <Text color="surface.text.gray.muted">
+        Note: PopoverInteractiveWrapper is a button by default.
+      </Text>
       <Center>
         <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.3">
           <Popover
             {...args}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+            titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
           >
             <PopoverInteractiveWrapper display="inline-block">
-              <InfoIcon color="surface.text.normal.lowContrast" size="large" />
+              <InfoIcon color="interactive.icon.gray.normal" size="large" />
             </PopoverInteractiveWrapper>
           </Popover>
 
           <Popover
             {...args}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+            titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
           >
             <PopoverInteractiveWrapper>
-              <Badge variant="information">NEW</Badge>
+              <Badge color="information">NEW</Badge>
             </PopoverInteractiveWrapper>
           </Popover>
 
           <Popover
             {...args}
-            titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+            titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
           >
             <PopoverInteractiveWrapper>
               <Counter value={20} />
@@ -346,7 +353,7 @@ const MyCustomTriggerButton = React.forwardRef<
   return (
     // just spread the props
     <BaseBox
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       borderRadius="medium"
       role="button"
@@ -436,7 +443,7 @@ export const CustomTrigger: StoryFn<typeof Popover> = (args) => {
       <Center>
         <Popover
           {...args}
-          titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+          titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
         >
           <MyCustomTriggerButton>View Settlements</MyCustomTriggerButton>
         </Popover>
@@ -465,7 +472,7 @@ export const InitialFocus: StoryFn<typeof Popover> = (args) => {
           {...args}
           initialFocusRef={buttonRef}
           footer={<FooterContent ref={buttonRef} />}
-          titleLeading={<LeadingIcon color="surface.text.normal.lowContrast" size="medium" />}
+          titleLeading={<LeadingIcon color="interactive.icon.gray.normal" size="medium" />}
         >
           <Button>View Settlement</Button>
         </Popover>
@@ -485,84 +492,93 @@ const StoriesPanelSwitchAlert = ({ shouldShow }: { shouldShow: boolean }) => {
     <Alert
       title="Please switch to stories panel"
       marginBottom="spacing.5"
-      intent="notice"
       description="Open this example in the 'Stories' panel and reload the page for better experince"
+      color="notice"
     />
   ) : null;
 };
 
-export const ProductUseCase1: StoryFn<typeof Popover> = (args, context) => {
-  const isInDocsMode = context.viewMode === 'docs';
-  const integrateButtonRef = React.useRef<HTMLInputElement>(null);
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [actionTaken, setActionTaken] = React.useState(false);
+// TODO(Rebranding): enable this after Input component rebranding
+// export const ProductUseCase1: StoryFn<typeof Popover> = (args, context) => {
+//   const isInDocsMode = context.viewMode === 'docs';
+//   const integrateButtonRef = React.useRef<HTMLInputElement>(null);
+//   const [isOpen, setIsOpen] = React.useState(false);
+//   const [actionTaken, setActionTaken] = React.useState(false);
 
-  const close = () => {
-    setIsOpen(false);
-    setActionTaken(true);
-  };
+//   const close = () => {
+//     setIsOpen(false);
+//     setActionTaken(true);
+//   };
 
-  return (
-    <Box>
-      <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
-      <Text as="span">
-        <Text as="span" weight="bold">
-          Product Usecase Example:
-        </Text>
-        <Text>
-          A popover that opens when the user focuses on the input field and asks the user to do an
-          action. It only opens once and never again.
-        </Text>
-      </Text>
-      <Box width="fit-content" marginTop="spacing.8">
-        <Popover
-          placement="left"
-          isOpen={isOpen}
-          initialFocusRef={integrateButtonRef}
-          title="Use items from ZohoBooks"
-          onOpenChange={({ isOpen }) => {
-            setIsOpen(isOpen);
-            if (!isOpen) {
-              close();
-            }
-          }}
-          content={
-            <Text>
-              Integrate with your accounting tool ZohoBooks to use items directly from it.
-            </Text>
-          }
-          footer={
-            <Box display="flex" flexDirection="row">
-              <Box marginLeft="auto" display="flex" flexDirection="row" gap="spacing.3">
-                <Button onClick={() => close()} size="small" variant="secondary">
-                  I'll do it later
-                </Button>
-                <Button
-                  ref={integrateButtonRef}
-                  onClick={() => close()}
-                  size="small"
-                  variant="primary"
-                >
-                  Integrate now
-                </Button>
-              </Box>
-            </Box>
-          }
-        >
-          <TextInput
-            onFocus={() => {
-              if (!actionTaken) {
-                setIsOpen(true);
-              }
-            }}
-            label="Item Name"
-          />
-        </Popover>
-      </Box>
-    </Box>
-  );
-};
-ProductUseCase1.storyName = 'Product Usecase: Input with action';
+//   return (
+//     <Box>
+//       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
+//       <Text as="span">
+//         <Text as="span" weight="semibold">
+//           Product Usecase Example:
+//         </Text>
+//         <Text>
+//           A popover that opens when the user focuses on the input field and asks the user to do an
+//           action. It only opens once and never again.
+//         </Text>
+//       </Text>
+//       <Box width="fit-content" marginTop="spacing.8">
+//         <Popover
+//           placement="left"
+//           isOpen={isOpen}
+//           initialFocusRef={integrateButtonRef}
+//           title="Use items from ZohoBooks"
+//           onOpenChange={({ isOpen }) => {
+//             setIsOpen(isOpen);
+//             if (!isOpen) {
+//               close();
+//             }
+//           }}
+//           content={
+//             <Text>
+//               Integrate with your accounting tool ZohoBooks to use items directly from it.
+//             </Text>
+//           }
+//           footer={
+//             <Box display="flex" flexDirection="row">
+//               <Box marginLeft="auto" display="flex" flexDirection="row" gap="spacing.3">
+//                 <Button onClick={() => close()} size="small" variant="secondary">
+//                   I'll do it later
+//                 </Button>
+//                 <Button
+//                   ref={integrateButtonRef}
+//                   onClick={() => close()}
+//                   size="small"
+//                   variant="primary"
+//                 >
+//                   Integrate now
+//                 </Button>
+//               </Box>
+//             </Box>
+//           }
+//         >
+//           {/* <TextInput
+//             onFocus={() => {
+//               if (!actionTaken) {
+//                 setIsOpen(true);
+//               }
+//             }}
+//             label="Item Name"
+//           /> */}
+//           <input
+//             onFocus={() => {
+//               if (!actionTaken) {
+//                 setIsOpen(true);
+//               }
+//             }}
+//             placeholder="Item Name"
+//           />
+//         </Popover>
+//       </Box>
+//     </Box>
+//   );
+// };
+// ProductUseCase1.storyName = 'Product Usecase: Input with action';
 
 export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
   const isInDocsMode = context.viewMode === 'docs';
@@ -580,7 +596,7 @@ export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
     <Box>
       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
       <Text as="span">
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Product Usecase Example:
         </Text>
         <Text>
@@ -589,7 +605,6 @@ export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
         </Text>
       </Text>
       <Text marginY="spacing.5">isDarkMode On? {isDarkMode ? 'Yes' : 'No'}</Text>
-
       <Box marginTop="spacing.8">
         <Popover
           placement="bottom-end"
@@ -602,11 +617,11 @@ export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
             }
           }}
           title="Dark Mode"
-          titleLeading={<SunIcon color="surface.text.normal.lowContrast" size="small" />}
+          titleLeading={<SunIcon color="interactive.icon.gray.normal" size="small" />}
           content={
             <Text as="span">
               Want a more comfortable reading experience?{' '}
-              <Text as="span" weight="bold">
+              <Text as="span" weight="semibold">
                 Try dark mode
               </Text>
             </Text>
@@ -636,60 +651,60 @@ export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
 };
 ProductUseCase2.storyName = 'Product Usecase: Dark Mode';
 
-export const ProductUseCase3: StoryFn<typeof Popover> = (args, context) => {
-  const [isOpen, setIsOpen] = React.useState(true);
-  const isInDocsMode = context.viewMode === 'docs';
+//  TODO(Rebranding): enable this after Input component rebranding
+// export const ProductUseCase3: StoryFn<typeof Popover> = (args, context) => {
+//   const [isOpen, setIsOpen] = React.useState(true);
+//   const isInDocsMode = context.viewMode === 'docs';
 
-  return (
-    <Box>
-      <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
-      <Text as="span">
-        <Text as="span" weight="bold">
-          Product Usecase Example:
-        </Text>
-        <Text>
-          A popover that opens on page load and lets user know about the new search feature. It only
-          opens once and never again.
-        </Text>
-      </Text>
-
-      <Box width="400px" marginTop="spacing.8">
-        <Popover
-          isOpen={isOpen}
-          onOpenChange={({ isOpen }) => {
-            setIsOpen(isOpen);
-          }}
-          placement="bottom"
-          title="Introducing Search"
-          content={
-            <Text as="span">
-              Your can search for Payments products, Account & Settings, and more.
-            </Text>
-          }
-          footer={
-            <Box display="flex" flexDirection="row">
-              <Box marginLeft="auto">
-                <Button
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  size="small"
-                  variant="tertiary"
-                >
-                  Got it
-                </Button>
-              </Box>
-            </Box>
-          }
-        >
-          <TextInput
-            icon={SearchIcon}
-            label="Search"
-            placeholder="Search payments prodcts, settings and more"
-          />
-        </Popover>
-      </Box>
-    </Box>
-  );
-};
-ProductUseCase3.storyName = 'Product Usecase: Introducing Search';
+//   return (
+//     <Box>
+//       <StoriesPanelSwitchAlert shouldShow={isInDocsMode} />
+//       <Text as="span">
+//         <Text as="span" weight="semibold">
+//           Product Usecase Example:
+//         </Text>
+//         <Text>
+//           A popover that opens on page load and lets user know about the new search feature. It only
+//           opens once and never again.
+//         </Text>
+//       </Text>
+//       <Box width="400px" marginTop="spacing.8">
+//         <Popover
+//           isOpen={isOpen}
+//           onOpenChange={({ isOpen }) => {
+//             setIsOpen(isOpen);
+//           }}
+//           placement="bottom"
+//           title="Introducing Search"
+//           content={
+//             <Text as="span">
+//               Your can search for Payments products, Account & Settings, and more.
+//             </Text>
+//           }
+//           footer={
+//             <Box display="flex" flexDirection="row">
+//               <Box marginLeft="auto">
+//                 <Button
+//                   onClick={() => {
+//                     setIsOpen(false);
+//                   }}
+//                   size="small"
+//                   variant="tertiary"
+//                 >
+//                   Got it
+//                 </Button>
+//               </Box>
+//             </Box>
+//           }
+//         >
+//           {/* <TextInput
+//             icon={SearchIcon}
+//             label="Search"
+//             placeholder="Search payments prodcts, settings and more"
+//           /> */}
+//         </Popover>
+//       </Box>
+//     </Box>
+//   );
+// };
+// ProductUseCase3.storyName = 'Product Usecase: Introducing Search';

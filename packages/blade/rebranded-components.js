@@ -11,6 +11,7 @@ const rebrandedComponents = [
   'Code',
   'Button',
   'Link',
+  'Popover',
   'Counter',
   'Badge',
   'Indicator',
