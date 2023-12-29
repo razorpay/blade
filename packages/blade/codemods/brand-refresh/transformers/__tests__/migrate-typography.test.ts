@@ -84,7 +84,7 @@ it('should remove the "type" prop and change weight="bold" to weight="semibold"'
                     // weight="bold" should not be changed
                     <Code weight="bold"> Lorem ipsum </Code>
 
-                    <Text weight="semibold" color="surface.text.primary.intense"> Lorem ipsum </Text>
+                    <Text weight="semibold" color="surface.text.primary.normal"> Lorem ipsum </Text>
                 </>
               );"
   `);
