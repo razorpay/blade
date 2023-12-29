@@ -22,6 +22,17 @@ describe('<Amount />', () => {
     );
   });
 
+  it('should throw an error when invalid type and size is passed', () => {
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="display" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="display"',
+    );
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="heading" size="xsmall" />)).toThrow(
+      '[Blade: Amount]: size="xsmall" is not allowed with type="heading"',
+    );
+  });
+
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(<Amount value={10000} testID="amount-test" />);
     expect(getByTestId('amount-test')).toBeTruthy();

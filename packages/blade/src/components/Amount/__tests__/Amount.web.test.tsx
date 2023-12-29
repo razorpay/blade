@@ -30,6 +30,19 @@ describe('<Amount />', () => {
     mockConsoleError.mockRestore();
   });
 
+  it('should throw an error when invalid type and size is passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="display" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="display"',
+    );
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="heading" size="xsmall" />)).toThrow(
+      '[Blade: Amount]: size="xsmall" is not allowed with type="heading"',
+    );
+    mockConsoleError.mockRestore();
+  });
+
   it('should render body-small size Amount', () => {
     const { container } = renderWithTheme(<Amount type="body" size="small" value={1000} />);
     expect(container).toMatchSnapshot();
