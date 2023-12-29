@@ -31,6 +31,11 @@ describe('<Amount />', () => {
     expect(() => renderWithTheme(<Amount value={1000} type="heading" size="xsmall" />)).toThrow(
       '[Blade: Amount]: size="xsmall" is not allowed with type="heading"',
     );
+
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="body" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="body"',
+    );
   });
 
   it('should accept testID', () => {

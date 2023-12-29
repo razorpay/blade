@@ -41,6 +41,12 @@ describe('<Amount />', () => {
       '[Blade: Amount]: size="xsmall" is not allowed with type="heading"',
     );
     mockConsoleError.mockRestore();
+
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="body" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="body"',
+    );
+    mockConsoleError.mockRestore();
   });
 
   it('should render body-small size Amount', () => {
