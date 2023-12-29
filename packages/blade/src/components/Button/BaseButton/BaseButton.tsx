@@ -509,7 +509,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           <BaseText
             lineHeight={lineHeight}
             fontSize={fontSize}
-            fontWeight="bold"
+            fontWeight="semibold"
             textAlign="center"
             color={textColor}
           >

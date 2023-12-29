@@ -70,7 +70,7 @@ export const Code = CodeTemplate.bind({});
 
 export const WithBoldColor = CodeTemplate.bind({});
 WithBoldColor.args = {
-  color: 'feedback.positive.action.text.primary.default.lowContrast',
+  color: 'interactive.text.positive.subtle',
   isHighlighted: false,
   weight: 'bold',
 };

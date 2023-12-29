@@ -38,7 +38,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
 type BaseLinkCommonProps = {
-  color?: 'default' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
   onClick?: (event: SyntheticEvent) => void;
@@ -174,7 +174,7 @@ const getColorToken = ({
     state = 'disabled';
   }
 
-  if (color && color !== 'default') {
+  if (color && color !== 'primary') {
     if (color !== 'white') {
       return `interactive.${element}.${color}.${map[state]}`;
     }
@@ -267,7 +267,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     href,
     target,
     rel,
-    color = 'default',
+    color = 'primary',
     accessibilityProps,
     // @ts-expect-error avoiding exposing to public
     className,
