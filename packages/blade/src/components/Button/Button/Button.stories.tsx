@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title, Description, Heading } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import React, { useState } from 'react';
@@ -61,7 +61,7 @@ export default {
   component: ButtonComponent,
   args: {
     variant: 'primary',
-    color: 'default',
+    color: 'primary',
     children: 'Pay Now',
     onClick: (): void => {
       console.log('clicked');
@@ -72,6 +72,7 @@ export default {
     isFullWidth: false,
     type: 'button',
   },
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     ...getBladeCommonEventArgTypes(),
@@ -89,15 +90,12 @@ export default {
   },
 } as Meta<ButtonProps>;
 
-const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({
-  children = 'Button',
-  ...args
-}) => {
+const ButtonTemplate: StoryFn<typeof ButtonComponent> = ({ children = 'Button', ...args }) => {
   return <ButtonComponent {...args}>{children}</ButtonComponent>;
 };
 
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
-const ButtonWithSizeTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonWithSizeTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
@@ -126,7 +124,7 @@ const ButtonWithSizeTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
-const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonWithVariantTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
@@ -150,81 +148,99 @@ const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
-const ButtonWithColorTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
-  const colors: ButtonProps['color'][] = ['default', 'white', 'positive', 'negative'];
+  const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
 
   return (
     <>
-      {colors.map((color) => (
-        <BaseBox
-          key={color}
-          display="flex"
-          flexDirection="row"
-          gap="spacing.5"
-          backgroundColor={color === 'white' ? 'brand.gray.700.lowContrast' : 'transparent'}
-          margin="spacing.4"
-          padding="spacing.5"
-        >
+      {colors.map((color) => {
+        const textColor =
+          color === 'white' ? 'surface.text.staticWhite.normal' : 'surface.text.staticBlack.normal';
+        return (
           <BaseBox
-            width="100px"
-            margin="spacing.2"
+            key={color}
             display="flex"
-            justifyContent="center"
-            alignItems="center"
+            flexDirection="row"
+            gap="spacing.5"
+            backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : 'transparent'}
+            margin="spacing.4"
+            padding="spacing.5"
           >
-            <HeadingComponent
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              size="medium"
+            <BaseBox
+              width="100px"
+              margin="spacing.2"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
             >
-              {color}
-            </HeadingComponent>
-          </BaseBox>
-          <BaseBox margin="spacing.2">
-            <Text
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              weight="bold"
-            >
-              Primary
-            </Text>
-            <ButtonComponent {...args} color={color} variant="primary">
-              {children}
-            </ButtonComponent>
-          </BaseBox>
-
-          <BaseBox margin="spacing.2">
-            <Text
-              marginBottom="spacing.3"
-              contrast={color == 'white' ? 'high' : 'low'}
-              weight="bold"
-            >
-              Secondary
-            </Text>
-            <ButtonComponent {...args} color={color} variant="secondary">
-              {children}
-            </ButtonComponent>
-          </BaseBox>
-
-          {(color == 'default' || color == 'white') && (
+              <HeadingComponent marginBottom="spacing.3" color={textColor} size="medium">
+                {color}
+              </HeadingComponent>
+            </BaseBox>
             <BaseBox margin="spacing.2">
-              <Text
-                marginBottom="spacing.3"
-                contrast={color == 'white' ? 'high' : 'low'}
-                weight="bold"
-              >
-                Tertiary
+              <Text marginBottom="spacing.3" color={textColor}>
+                Primary
               </Text>
-              <ButtonComponent {...args} color={color} variant="tertiary">
+              <ButtonComponent {...args} color={color} variant="primary">
+                {children}
+              </ButtonComponent>
+
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="primary"
+                isDisabled
+              >
                 {children}
               </ButtonComponent>
             </BaseBox>
-          )}
-        </BaseBox>
-      ))}
+
+            <BaseBox margin="spacing.2">
+              <Text marginBottom="spacing.3" color={textColor}>
+                Secondary
+              </Text>
+              <ButtonComponent {...args} color={color} variant="secondary">
+                {children}
+              </ButtonComponent>
+
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="secondary"
+                isDisabled
+              >
+                {children}
+              </ButtonComponent>
+            </BaseBox>
+
+            {(color == 'primary' || color == 'white') && (
+              <BaseBox margin="spacing.2">
+                <Text marginBottom="spacing.3" color={textColor}>
+                  Tertiary
+                </Text>
+                <ButtonComponent {...args} color={color} variant="tertiary">
+                  {children}
+                </ButtonComponent>
+
+                <ButtonComponent
+                  marginLeft="spacing.4"
+                  {...args}
+                  color={color}
+                  variant="tertiary"
+                  isDisabled
+                >
+                  {children}
+                </ButtonComponent>
+              </BaseBox>
+            )}
+          </BaseBox>
+        );
+      })}
     </>
   );
 };
@@ -378,7 +394,7 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   );
 };
 
-const ButtonLoadingTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonLoadingTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
@@ -407,7 +423,7 @@ FullWidthButton.parameters = {
   },
 };
 
-export const ButtonRef: ComponentStory<typeof ButtonComponent> = () => {
+export const ButtonRef: StoryFn<typeof ButtonComponent> = () => {
   const buttonRef = React.useRef<BladeElementRef>(null);
 
   return (

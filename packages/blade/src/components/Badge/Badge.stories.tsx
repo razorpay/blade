@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { BadgeProps } from './Badge';
 import { Badge as BadgeComponent } from './Badge';
@@ -40,6 +40,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Badge',
   component: BadgeComponent,
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     icon: {
@@ -57,7 +58,7 @@ export default {
   },
 } as Meta<BadgeProps>;
 
-const BadgeTemplate: ComponentStory<typeof BadgeComponent> = ({ children, ...args }) => {
+const BadgeTemplate: StoryFn<typeof BadgeComponent> = ({ children, ...args }) => {
   return <BadgeComponent {...args}>{children}</BadgeComponent>;
 };
 
@@ -69,7 +70,7 @@ Badge.args = {
 };
 Badge.storyName = 'Default';
 
-const BadgesWithVariantTemplate: ComponentStory<typeof BadgeComponent> = ({ ...args }) => {
+const BadgesWithVariantTemplate: StoryFn<typeof BadgeComponent> = ({ ...args }) => {
   const variants = ['positive', 'negative', 'notice', 'information', 'neutral', 'primary'] as const;
 
   return (

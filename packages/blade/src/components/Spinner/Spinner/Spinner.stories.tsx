@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { SpinnerProps } from './Spinner';
@@ -52,17 +52,18 @@ export default {
       page: Page,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 } as Meta<SpinnerProps>;
 
-const SpinnerTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   return <SpinnerComponent {...args} />;
 };
 
 export const Spinner = SpinnerTemplate.bind({});
 Spinner.storyName = 'Default';
 
-const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerSizesTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   return (
     <BaseBox>
       <BaseBox marginBottom="spacing.3">
@@ -87,7 +88,7 @@ const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
 export const SpinnerSizes = SpinnerSizesTemplate.bind({});
 SpinnerSizes.storyName = 'Sizes';
 
-const SpinnerColorTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerColorTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   const { theme } = useTheme();
 
   return (
@@ -98,11 +99,11 @@ const SpinnerColorTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         paddingLeft="spacing.3"
-        backgroundColor={theme.colors.surface.background.level2.lowContrast}
+        backgroundColor={theme.colors.surface.background.gray.subtle}
       >
-        <Text>Default Color</Text>
+        <Text>Primary Color</Text>
         <BaseBox marginBottom="spacing.2" />
-        <SpinnerComponent {...args} color="default" />
+        <SpinnerComponent {...args} color="primary" />
       </BaseBox>
       <BaseBox
         marginBottom="spacing.3"
@@ -110,7 +111,7 @@ const SpinnerColorTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         paddingLeft="spacing.3"
-        backgroundColor={theme.colors.surface.background.level1.highContrast}
+        backgroundColor={theme.colors.surface.background.gray.subtle}
       >
         <Text contrast="high">White Color</Text>
         <BaseBox marginBottom="spacing.2" />

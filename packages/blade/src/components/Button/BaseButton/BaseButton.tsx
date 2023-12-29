@@ -74,7 +74,7 @@ type BaseButtonCommonProps = {
   isLoading?: boolean;
   accessibilityProps?: Partial<AccessibilityProps>;
   variant?: 'primary' | 'secondary' | 'tertiary';
-  color?: 'default' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
 } & TestID &
   StyledPropsBlade &
   BladeCommonEvents;
@@ -138,10 +138,10 @@ const getBackgroundColorToken = ({
     return tokens.white[variant][_state];
   }
 
-  if (color && color !== 'default') {
+  if (color && color !== 'primary') {
     if (variant === 'tertiary') {
       throw new Error(
-        `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
+        `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
       );
     }
     return tokens.color(color)[variant][_state];
@@ -165,10 +165,10 @@ const getTextColorToken = ({
     return tokens.white[variant][_state];
   }
 
-  if (color && color !== 'default') {
+  if (color && color !== 'primary') {
     if (variant === 'tertiary') {
       throw new Error(
-        `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
+        `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
       );
     }
     return tokens.color(color)[variant][_state];
@@ -223,7 +223,7 @@ const getProps = ({
   variant: NonNullable<BaseButtonProps['variant']>;
   color: BaseButtonProps['color'];
 }): BaseButtonStyleProps => {
-  if (variant === 'tertiary' && color !== 'default' && color !== 'white') {
+  if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
       moduleName: 'BaseButton',
       message: `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
@@ -336,7 +336,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     target,
     rel,
     variant = 'primary',
-    color = 'default',
+    color = 'primary',
     size = 'medium',
     icon: Icon,
     iconPosition = 'left',
@@ -423,8 +423,9 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
   const isWhiteTertiary = variant === 'tertiary' && color === 'white';
-  const isSecondaryColor = variant === 'secondary' && color !== 'default';
+  const isSecondaryColor = variant === 'secondary' && color !== 'primary';
   const shouldShowHoverlay = isWhiteTertiary || isSecondaryColor;
+  const isNative = isReactNative();
 
   return (
     <StyledBaseButton
@@ -472,10 +473,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      shouldShowHoverlay={shouldShowHoverlay}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
     >
-      {shouldShowHoverlay ? <Hoverlay variant="subtle" className="hoverlay" /> : null}
+      {!isNative && shouldShowHoverlay ? <Hoverlay variant="subtle" className="hoverlay" /> : null}
       {isLoading ? (
         <BaseBox
           display="flex"
@@ -514,7 +516,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           <BaseText
             lineHeight={lineHeight}
             fontSize={fontSize}
-            fontWeight="bold"
+            fontWeight="semibold"
             textAlign="center"
             color={textColor}
           >

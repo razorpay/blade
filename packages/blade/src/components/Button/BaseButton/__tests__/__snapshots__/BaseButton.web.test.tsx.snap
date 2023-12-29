@@ -5,10 +5,10 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -24,6 +24,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -38,25 +39,30 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -67,10 +73,10 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -86,6 +92,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -100,25 +107,30 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 }
 
 .c4.c4.c4.c4.c4:hover {
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c4.c4.c4.c4.c4:hover .hoverlay,
+.c4.c4.c4.c4.c4:focus .hoverlay {
+  opacity: 1;
 }
 
 .c4.c4.c4.c4.c4:active {
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
 }
 
 .c4.c4.c4.c4.c4:focus-visible {
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c4.c4.c4.c4.c4 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -129,7 +141,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -144,10 +156,10 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(216,16%,60%,1);
+  color: hsla(227,100%,59%,0.18);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -180,6 +192,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -196,6 +209,7 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
   -ms-flex-pack: center;
   justify-content: center;
   position: absolute;
+  z-index: 1;
   top: 0px;
   right: 0px;
   bottom: 0px;
@@ -293,18 +307,18 @@ exports[`<BaseButton /> should announce button loading accessibilityLabel 1`] = 
               <path
                 d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
                 data-blade-component="svg-path"
-                fill="hsla(217, 18%, 45%, 1)"
+                fill="hsla(227, 100%, 59%, 1)"
                 fill-opacity="0.2"
               />
               <path
                 d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
                 data-blade-component="svg-path"
-                fill="hsla(217, 18%, 45%, 1)"
+                fill="hsla(227, 100%, 59%, 1)"
               />
               <path
                 d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
                 data-blade-component="svg-path"
-                fill="hsla(217, 18%, 45%, 1)"
+                fill="hsla(227, 100%, 59%, 1)"
               />
             </svg>
           </div>
@@ -331,10 +345,10 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -350,6 +364,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -364,25 +379,30 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -393,7 +413,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -426,6 +446,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -459,10 +480,10 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -478,6 +499,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -492,25 +514,30 @@ exports[`<BaseButton /> should render button with full width 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -521,7 +548,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -554,6 +581,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -587,10 +615,10 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -606,6 +634,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -620,25 +649,30 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -649,7 +683,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -682,6 +716,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -753,10 +788,10 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -772,6 +807,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -786,25 +822,30 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -815,7 +856,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -848,6 +889,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -919,10 +961,10 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -938,6 +980,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -952,25 +995,30 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -981,7 +1029,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1014,6 +1062,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1085,10 +1134,10 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1104,6 +1153,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1118,25 +1168,30 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1162,6 +1217,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1221,396 +1277,15 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 </div>
 `;
 
-exports[`<BaseButton /> should render default color primary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
-}
-
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c2.c2.c2.c2.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c3"
-        data-blade-component="base-text"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render default color secondary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(218,89%,51%,0);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-color: hsla(218,89%,51%,1);
-}
-
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(218,89%,51%,0.32);
-  border-color: hsla(218,89%,51%,1);
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(218,89%,51%,0.18);
-  border-color: hsla(218,89%,51%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  color: hsla(218,89%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c2.c2.c2.c2.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c3"
-        data-blade-component="base-text"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render default color tertiary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: pointer;
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,44%,23%,0);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,15%,54%,0.18);
-}
-
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(216,15%,54%,0.32);
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(216,15%,54%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  color: hsla(216,33%,29%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c2.c2.c2.c2.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c3"
-        data-blade-component="base-text"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
 exports[`<BaseButton /> should render disabled button 1`] = `
 .c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -1626,6 +1301,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -1640,154 +1316,30 @@ exports[`<BaseButton /> should render disabled button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
 }
 
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  color: hsla(216,16%,60%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c2.c2.c2.c2.c2 {
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
   opacity: 1;
 }
 
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c3"
-        data-blade-component="base-text"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render disabled default color primary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: not-allowed;
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
-}
-
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(216,19%,89%,1);
-  border-color: hsla(216,19%,89%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1795,10 +1347,10 @@ exports[`<BaseButton /> should render disabled default color primary button 1`] 
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(216,16%,60%,1);
+  color: hsla(227,100%,59%,0.18);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1831,261 +1383,7 @@ exports[`<BaseButton /> should render disabled default color primary button 1`] 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-}
-
-.c2.c2.c2.c2.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c3"
-        data-blade-component="base-text"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render disabled default color secondary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: not-allowed;
-  background-color: hsla(216,44%,23%,0);
-  border-color: hsla(218,19%,81%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,44%,23%,0);
-  border-color: hsla(218,19%,81%,1);
-}
-
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(216,44%,23%,0);
-  border-color: hsla(218,19%,81%,1);
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(216,44%,23%,0);
-  border-color: hsla(218,19%,81%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  color: hsla(218,19%,81%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c2.c2.c2.c2.c2 {
-  opacity: 1;
-}
-
-<div>
-  <button
-    class="c0"
-    data-blade-component="button"
-    disabled=""
-    role="button"
-    type="button"
-  >
-    <div
-      class="c1 c2"
-      data-blade-component="base-box"
-    >
-      <div
-        class="c3"
-        data-blade-component="base-text"
-      >
-        Pay Now
-      </div>
-    </div>
-  </button>
-</div>
-`;
-
-exports[`<BaseButton /> should render disabled default color tertiary button 1`] = `
-.c0.c0.c0.c0.c0 {
-  min-height: 36px;
-  width: auto;
-  cursor: not-allowed;
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,19%,89%,1);
-  border-width: 1px;
-  border-radius: 2px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,15%,54%,0.09);
-}
-
-.c0.c0.c0.c0.c0:active {
-  background-color: hsla(216,15%,54%,0.09);
-}
-
-.c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(216,15%,54%,0.09);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-}
-
-.c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c3.c3.c3.c3.c3 {
-  color: hsla(218,19%,81%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c1.c1.c1.c1.c1 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2120,10 +1418,10 @@ exports[`<BaseButton /> should render disabled information color primary button 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(187,68%,52%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2139,6 +1437,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2153,25 +1452,30 @@ exports[`<BaseButton /> should render disabled information color primary button 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(187,68%,52%,1);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(187,68%,52%,1);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(187,68%,52%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2179,10 +1483,10 @@ exports[`<BaseButton /> should render disabled information color primary button 
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(187,68%,52%,1);
+  color: hsla(200,84%,44%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2215,6 +1519,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2249,10 +1554,10 @@ exports[`<BaseButton /> should render disabled information color secondary butto
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,0.18);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2268,6 +1573,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2282,36 +1588,41 @@ exports[`<BaseButton /> should render disabled information color secondary butto
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(193,100%,35%,0.32);
+.c4.c4.c4.c4.c4 {
+  color: hsla(200,84%,44%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2325,7 +1636,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2344,9 +1655,22 @@ exports[`<BaseButton /> should render disabled information color secondary butto
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2359,11 +1683,15 @@ exports[`<BaseButton /> should render disabled information color secondary butto
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -2378,10 +1706,10 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2397,6 +1725,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2411,25 +1740,30 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(8,99%,65%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2437,10 +1771,10 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(8,99%,65%,1);
+  color: hsla(4,74%,49%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2473,6 +1807,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2507,10 +1842,10 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2526,6 +1861,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2540,36 +1876,41 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(9,91%,56%,0.32);
+.c4.c4.c4.c4.c4 {
+  color: hsla(4,74%,49%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2583,7 +1924,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2602,9 +1943,22 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2617,11 +1971,15 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -2636,10 +1994,10 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(216,15%,54%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2655,6 +2013,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2669,25 +2028,30 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(216,15%,54%,1);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(216,15%,54%,1);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(216,15%,54%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2695,10 +2059,10 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(216,15%,54%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2731,6 +2095,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -2765,10 +2130,10 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2784,6 +2149,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2798,36 +2164,41 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(214,28%,84%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(216,15%,54%,0.32);
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2841,7 +2212,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2860,9 +2231,22 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2875,11 +2259,15 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -2894,10 +2282,10 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(35,84%,54%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2913,6 +2301,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2927,25 +2316,30 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(35,84%,54%,1);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(35,84%,54%,1);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(35,84%,54%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2953,10 +2347,10 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(35,84%,54%,1);
+  color: hsla(25,90%,48%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2989,6 +2383,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -3023,10 +2418,10 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,0.18);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3042,6 +2437,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3056,36 +2452,41 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(36,100%,44%,0.32);
+.c4.c4.c4.c4.c4 {
+  color: hsla(25,90%,48%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -3099,7 +2500,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3118,9 +2519,22 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -3133,11 +2547,15 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -3152,10 +2570,10 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3171,6 +2589,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3185,25 +2604,30 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(149,99%,35%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3211,10 +2635,10 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(149,99%,35%,1);
+  color: hsla(150,100%,32%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -3247,6 +2671,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -3281,10 +2706,10 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3300,6 +2725,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3314,25 +2740,182 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(150,100%,32%,0.32);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c4"
+        data-blade-component="base-text"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled primary color primary button 1`] = `
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3340,10 +2923,10 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(155,100%,31%,0.32);
+  color: hsla(227,100%,59%,0.18);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -3376,6 +2959,276 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
+}
+
+.c2.c2.c2.c2.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c3"
+        data-blade-component="base-text"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled primary color secondary button 1`] = `
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,0.18);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(227,100%,59%,0.18);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c2.c2.c2.c2.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    disabled=""
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c3"
+        data-blade-component="base-text"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render disabled primary color tertiary button 1`] = `
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: not-allowed;
+  background-color: hsla(211,20%,52%,0.09);
+  border-color: hsla(214,40%,92%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(211,20%,52%,0.09);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -3410,10 +3263,10 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(210,6%,94%,0.18);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(0,0%,100%,0.48);
+  border-color: hsla(0,0%,100%,0.32);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3429,6 +3282,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3443,25 +3297,30 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(210,6%,94%,0.18);
+  background-color: hsla(0,0%,100%,0.48);
+  border-color: hsla(0,0%,100%,0.32);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(210,6%,94%,0.18);
+  background-color: hsla(0,0%,100%,0.48);
+  border-color: hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(210,6%,94%,0.18);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0.48);
+  border-color: hsla(0,0%,100%,0.32);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3469,10 +3328,10 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(210,6%,94%,0.32);
+  color: hsla(0,0%,0%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -3505,6 +3364,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -3539,10 +3399,10 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(210,6%,94%,0.32);
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.32);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3558,6 +3418,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3572,36 +3433,41 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(210,6%,94%,0.32);
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.32);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(210,6%,94%,0.32);
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.32);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(210,6%,94%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.32);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(210,6%,94%,0.32);
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,100%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -3615,7 +3481,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3634,9 +3500,22 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -3649,11 +3528,15 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -3668,10 +3551,10 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
   min-height: 36px;
   width: auto;
   cursor: not-allowed;
-  background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(0,0%,100%,0.48);
+  border-color: hsla(0,0%,100%,0.48);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3687,6 +3570,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3701,33 +3585,38 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(210,6%,94%,0.09);
+  background-color: hsla(0,0%,100%,0.48);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(210,6%,94%,0.09);
+  background-color: hsla(0,0%,100%,0.48);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(210,6%,94%,0.09);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0.48);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(210,6%,94%,0.32);
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,100%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -3741,7 +3630,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3760,9 +3649,22 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -3775,11 +3677,15 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -3794,10 +3700,10 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(193,100%,35%,1);
-  border-color: hsla(180,100%,97%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(200,84%,44%,1);
+  border-color: hsla(200,84%,44%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3813,6 +3719,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3827,25 +3734,30 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(195,100%,31%,1);
-  border-color: hsla(180,100%,97%,1);
+  background-color: hsla(200,84%,37%,1);
+  border-color: hsla(200,84%,37%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(196,100%,27%,1);
-  border-color: hsla(180,100%,97%,1);
+  background-color: hsla(200,84%,37%,1);
+  border-color: hsla(200,84%,37%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(196,100%,27%,1);
-  border-color: hsla(180,100%,97%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(200,84%,37%,1);
+  border-color: hsla(200,84%,37%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -3853,10 +3765,10 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(180,100%,97%,1);
+  color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -3889,6 +3801,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -3922,10 +3835,10 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(193,100%,35%,0.09);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,1);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -3941,6 +3854,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -3955,36 +3869,41 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(193,100%,35%,0.18);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(193,100%,35%,0.32);
-  border-color: hsla(193,100%,35%,0.32);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(193,100%,35%,0.32);
-  border-color: hsla(193,100%,35%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(200,84%,44%,0.09);
+  border-color: hsla(200,84%,44%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(195,100%,31%,1);
+.c4.c4.c4.c4.c4 {
+  color: hsla(200,84%,44%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -3998,7 +3917,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4017,9 +3936,22 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -4031,11 +3963,15 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -4050,10 +3986,10 @@ exports[`<BaseButton /> should render large size button 1`] = `
   min-height: 48px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4069,6 +4005,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4083,25 +4020,30 @@ exports[`<BaseButton /> should render large size button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -4112,7 +4054,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -4145,6 +4087,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -4178,10 +4121,10 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4197,6 +4140,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4211,25 +4155,30 @@ exports[`<BaseButton /> should render medium size button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -4240,7 +4189,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -4273,6 +4222,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -4306,10 +4256,10 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(8,73%,47%,1);
-  border-color: hsla(0,100%,97%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(4,74%,49%,1);
+  border-color: hsla(4,74%,49%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4325,6 +4275,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4339,25 +4290,30 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(7,72%,40%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(4,77%,40%,1);
+  border-color: hsla(4,77%,40%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(5,69%,32%,1);
-  border-color: hsla(0,100%,97%,1);
+  background-color: hsla(4,77%,40%,1);
+  border-color: hsla(4,77%,40%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(5,69%,32%,1);
-  border-color: hsla(0,100%,97%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(4,77%,40%,1);
+  border-color: hsla(4,77%,40%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -4365,10 +4321,10 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(0,100%,97%,1);
+  color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -4401,6 +4357,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -4434,10 +4391,10 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,1);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4453,6 +4410,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4467,36 +4425,41 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(9,91%,56%,0.18);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(9,91%,56%,0.32);
-  border-color: hsla(9,91%,56%,0.32);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(9,91%,56%,0.32);
-  border-color: hsla(9,91%,56%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(4,74%,49%,0.09);
+  border-color: hsla(4,74%,49%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(8,73%,47%,1);
+.c4.c4.c4.c4.c4 {
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -4510,7 +4473,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4529,9 +4492,22 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -4543,11 +4519,15 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -4562,10 +4542,10 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(216,33%,29%,1);
-  border-color: hsla(214,18%,69%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(211,29%,26%,1);
+  border-color: hsla(211,20%,52%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4581,6 +4561,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4595,25 +4576,30 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,44%,23%,1);
-  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,33%,21%,1);
+  border-color: hsla(211,20%,52%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(217,56%,17%,1);
-  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,33%,21%,1);
+  border-color: hsla(211,20%,52%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(217,56%,17%,1);
-  border-color: hsla(214,18%,69%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(211,33%,21%,1);
+  border-color: hsla(211,20%,52%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -4621,10 +4607,10 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(220,27%,98%,1);
+  color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -4657,6 +4643,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -4690,10 +4677,10 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(216,15%,54%,0.09);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,1);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4709,6 +4696,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4723,36 +4711,41 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,15%,54%,0.18);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(216,15%,54%,0.32);
-  border-color: hsla(216,15%,54%,0.32);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(216,15%,54%,0.32);
-  border-color: hsla(216,15%,54%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(211,20%,52%,0.18);
+  border-color: hsla(211,20%,52%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(216,27%,36%,1);
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -4766,7 +4759,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4785,9 +4778,22 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -4799,11 +4805,15 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -4818,10 +4828,10 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(38,97%,38%,1);
-  border-color: hsla(32,100%,94%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(25,90%,48%,1);
+  border-color: hsla(25,90%,48%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4837,6 +4847,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4851,25 +4862,30 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(40,90%,32%,1);
-  border-color: hsla(32,100%,94%,1);
+  background-color: hsla(25,85%,42%,1);
+  border-color: hsla(25,85%,42%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(41,82%,26%,1);
-  border-color: hsla(32,100%,94%,1);
+  background-color: hsla(25,85%,42%,1);
+  border-color: hsla(25,85%,42%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(41,82%,26%,1);
-  border-color: hsla(32,100%,94%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(25,85%,42%,1);
+  border-color: hsla(25,85%,42%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -4877,10 +4893,10 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(32,100%,94%,1);
+  color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -4913,6 +4929,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -4946,10 +4963,10 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(36,100%,44%,0.09);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,1);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -4965,6 +4982,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -4979,36 +4997,41 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(36,100%,44%,0.18);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(36,100%,44%,0.32);
-  border-color: hsla(36,100%,44%,0.32);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(36,100%,44%,0.32);
-  border-color: hsla(36,100%,44%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(25,90%,48%,0.09);
+  border-color: hsla(25,90%,48%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
-  color: hsla(38,97%,38%,1);
+.c4.c4.c4.c4.c4 {
+  color: hsla(25,90%,48%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -5022,7 +5045,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5041,9 +5064,22 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -5055,11 +5091,15 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -5074,10 +5114,10 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(160,100%,26%,1);
-  border-color: hsla(107,100%,96%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(150,100%,32%,1);
+  border-color: hsla(150,100%,32%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5093,6 +5133,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5107,25 +5148,30 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(163,100%,22%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(150,100%,27%,1);
+  border-color: hsla(150,100%,27%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(164,100%,17%,1);
-  border-color: hsla(107,100%,96%,1);
+  background-color: hsla(150,100%,27%,1);
+  border-color: hsla(150,100%,27%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(164,100%,17%,1);
-  border-color: hsla(107,100%,96%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(150,100%,27%,1);
+  border-color: hsla(150,100%,27%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -5133,10 +5179,10 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(107,100%,96%,1);
+  color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -5169,6 +5215,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -5202,10 +5249,10 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,1);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5221,6 +5268,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5235,25 +5283,181 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(155,100%,31%,0.18);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(155,100%,31%,0.32);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(155,100%,31%,0.32);
-  border-color: hsla(155,100%,31%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(150,100%,32%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
+    <div
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c4"
+        data-blade-component="base-text"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render primary color primary button 1`] = `
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -5261,10 +5465,10 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(160,100%,26%,1);
+  color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -5297,6 +5501,274 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
+}
+
+.c2.c2.c2.c2.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c3"
+        data-blade-component="base-text"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render primary color secondary button 1`] = `
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(227,100%,59%,0.18);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c2.c2.c2.c2.c2 {
+  opacity: 1;
+}
+
+<div>
+  <button
+    class="c0"
+    data-blade-component="button"
+    role="button"
+    type="button"
+  >
+    <div
+      class="c1 c2"
+      data-blade-component="base-box"
+    >
+      <div
+        class="c3"
+        data-blade-component="base-text"
+      >
+        Pay Now
+      </div>
+    </div>
+  </button>
+</div>
+`;
+
+exports[`<BaseButton /> should render primary color tertiary button 1`] = `
+.c0.c0.c0.c0.c0 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(211,20%,52%,0.09);
+  border-color: hsla(211,27%,76%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c0.c0.c0.c0.c0:hover {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0:active {
+  background-color: hsla(211,20%,52%,0.18);
+}
+
+.c0.c0.c0.c0.c0:focus-visible {
+  background-color: hsla(211,20%,52%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -5330,10 +5802,10 @@ exports[`<BaseButton /> should render small size button 1`] = `
   min-height: 32px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5349,6 +5821,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5363,25 +5836,30 @@ exports[`<BaseButton /> should render small size button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -5392,7 +5870,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.6875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -5425,6 +5903,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -5460,8 +5939,8 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
   cursor: pointer;
   background-color: hsla(0,0%,100%,1);
   border-color: hsla(0,0%,100%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5477,6 +5956,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5491,25 +5971,30 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(216,6%,94%,1);
-  border-color: hsla(216,6%,94%,1);
+  background-color: hsla(0,0%,100%,0.8);
+  border-color: hsla(0,0%,100%,0.8);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(216,4%,89%,1);
-  border-color: hsla(216,4%,89%,1);
+  background-color: hsla(0,0%,100%,0.8);
+  border-color: hsla(0,0%,100%,0.8);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(216,4%,89%,1);
-  border-color: hsla(216,4%,89%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0.8);
+  border-color: hsla(0,0%,100%,0.8);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -5517,10 +6002,10 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,0%,0.72);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -5553,6 +6038,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -5586,10 +6072,10 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(214,15%,18%,0);
-  border-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(0,0%,100%,0.8);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5605,6 +6091,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5619,36 +6106,41 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(210,6%,94%,0.18);
-  border-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.8);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(210,6%,94%,0.32);
-  border-color: hsla(0,0%,100%,1);
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.8);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(210,6%,94%,0.32);
-  border-color: hsla(0,0%,100%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.8);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -5662,7 +6154,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5681,9 +6173,22 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -5695,11 +6200,15 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -5714,10 +6223,10 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(210,6%,94%,0.09);
-  border-color: hsla(214,15%,18%,0);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(0,0%,100%,0.18);
+  border-color: hsla(0,0%,100%,0.18);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5733,6 +6242,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5747,33 +6257,38 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(210,6%,94%,0.18);
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(210,6%,94%,0.32);
+  background-color: hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(210,6%,94%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(0,0%,100%,0.18);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -5787,7 +6302,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
   padding: 0;
 }
 
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -5806,9 +6321,22 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  opacity: 0;
+  z-index: 0;
+  background-color: hsla(0,0%,100%,0.18);
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -5820,11 +6348,15 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1 hoverlay"
+      data-blade-component="base-box"
+    />
+    <div
+      class="c2 c3"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
+        class="c4"
         data-blade-component="base-text"
       >
         Pay Now
@@ -5839,10 +6371,10 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   min-height: 28px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5858,6 +6390,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -5872,25 +6405,30 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
 }
 
 .c0.c0.c0.c0.c0:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c0.c0.c0.c0.c0:hover .hoverlay,
+.c0.c0.c0.c0.c0:focus .hoverlay {
+  opacity: 1;
 }
 
 .c0.c0.c0.c0.c0:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -5901,7 +6439,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.6875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -5934,6 +6472,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c2.c2.c2.c2.c2 {

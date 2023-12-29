@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
@@ -68,6 +68,7 @@ export default {
     onChange: undefined,
     value: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     value: {
       options: ['apple', 'mango', 'orange'],
@@ -90,10 +91,7 @@ export default {
   },
 } as Meta<CheckboxGroupProps>;
 
-const CheckboxGroupTemplate: ComponentStory<typeof CheckboxGroupComponent> = ({
-  children,
-  ...args
-}) => {
+const CheckboxGroupTemplate: StoryFn<typeof CheckboxGroupComponent> = ({ children, ...args }) => {
   return (
     <CheckboxGroupComponent {...args}>
       <CheckboxComponent value="apple">Apple</CheckboxComponent>
@@ -192,7 +190,7 @@ const IndeterminateExample = () => {
   );
 };
 
-const IndeterminateTemplate: ComponentStory<typeof CheckboxComponent> = () => {
+const IndeterminateTemplate: StoryFn<typeof CheckboxComponent> = () => {
   return <IndeterminateExample />;
 };
 export const Indeterminate = IndeterminateTemplate.bind({});

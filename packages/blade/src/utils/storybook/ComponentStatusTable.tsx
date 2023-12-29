@@ -34,11 +34,11 @@ const Table = styled.table`
   }
 
   tr:nth-child(odd) {
-    background-color: ${({ theme }) => theme.colors.brand.gray[200].lowContrast};
+    background-color: ${({ theme }) => theme.colors.surface.background.gray.subtle};
   }
 
   tr:nth-child(even) {
-    background-color: ${({ theme }) => theme.colors.brand.gray[300].lowContrast};
+    background-color: ${({ theme }) => theme.colors.surface.background.gray.moderate};
   }
 `;
 
@@ -178,6 +178,9 @@ const ComponentStatusTable = (): React.ReactElement => {
               <th align="right">
                 <Text weight="semibold">Released In</Text>
               </th>
+              <th align="right">
+                <Text weight="semibold">Rebranded In</Text>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -201,6 +204,9 @@ const ComponentStatusTable = (): React.ReactElement => {
                   </td>
                   <td align="right">
                     <ReleasedInLink version={data.releasedIn} />
+                  </td>
+                  <td align="right">
+                    <ReleasedInLink version={data.rebrandedIn} />
                   </td>
                 </tr>
               );

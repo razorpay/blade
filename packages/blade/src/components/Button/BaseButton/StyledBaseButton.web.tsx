@@ -35,9 +35,9 @@ const StyledBaseButton = styled.button
       opacity: 1,
     },
     '&:active': {
-      backgroundColor: props.activeBackgroundColor,
+      backgroundColor: props.focusBackgroundColor,
       ...(props.variant !== 'tertiary' && {
-        borderColor: props.activeBorderColor,
+        borderColor: props.focusBorderColor,
       }),
     },
     '&:focus-visible': {

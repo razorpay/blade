@@ -10,7 +10,7 @@ exports[`<BaseText /> should render regular text 1`] = `
 >
   <Text
     accessible={true}
-    color="surface.text.normal.highContrast"
+    color="surface.text.gray.normal"
     data-blade-component="base-text"
     fontFamily="text"
     fontSize={25}
@@ -19,7 +19,7 @@ exports[`<BaseText /> should render regular text 1`] = `
     style={
       [
         {
-          "color": "hsla(0, 0%, 100%, 1)",
+          "color": "hsla(212, 39%, 16%, 1)",
           "fontFamily": "Inter",
           "fontSize": 10,
           "fontStyle": "normal",
@@ -54,7 +54,7 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
 >
   <Text
     accessible={true}
-    color="surface.text.normal.highContrast"
+    color="surface.text.gray.normal"
     data-blade-component="base-text"
     fontFamily="text"
     fontSize={25}
@@ -64,7 +64,7 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
     style={
       [
         {
-          "color": "hsla(0, 0%, 100%, 1)",
+          "color": "hsla(212, 39%, 16%, 1)",
           "fontFamily": "Inter",
           "fontSize": 10,
           "fontStyle": "italic",
@@ -79,7 +79,7 @@ exports[`<BaseText /> should render text in italics style with line-through 1`] 
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 0,
-          "textDecorationColor": "hsla(0, 0%, 100%, 1)",
+          "textDecorationColor": "hsla(212, 39%, 16%, 1)",
           "textDecorationLine": "line-through",
         },
       ]
@@ -105,7 +105,7 @@ exports[`<BaseText /> should render text with default properties 1`] = `
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
+          "color": "hsla(212, 39%, 16%, 1)",
           "fontFamily": "Inter",
           "fontSize": 16,
           "fontStyle": "normal",

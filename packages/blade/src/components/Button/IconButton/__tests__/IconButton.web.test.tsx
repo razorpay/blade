@@ -18,6 +18,15 @@ describe('<IconButton />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render with emphasis', () => {
+    const noop = () => {};
+    const { container } = renderWithTheme(
+      <IconButton accessibilityLabel="Close" emphasis="intense" icon={CloseIcon} onClick={noop} />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should handle onClick', async () => {
     const user = userEvent.setup();
     const onClick = jest.fn();

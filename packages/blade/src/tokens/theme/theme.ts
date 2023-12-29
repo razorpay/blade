@@ -10,6 +10,7 @@ import type {
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
+export type SurfaceLevels = 1 | 2 | 3;
 
 export type ColorSchemeModes = 'onDark' | 'onLight';
 
@@ -52,7 +53,7 @@ type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onS
 
 export type Colors = {
   interactive: {
-    background: Record<InteractiveColorKeys, InteractiveStates>;
+    background: Record<InteractiveColorKeys, InteractiveStates & { fadedHighlighted: string }>;
     border: Record<InteractiveColorKeys, InteractiveStates>;
     text: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
     icon: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;

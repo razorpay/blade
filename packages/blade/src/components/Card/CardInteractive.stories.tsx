@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable no-alert */
-import type { Meta, ComponentStory } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import React from 'react';
 import type { CardProps } from './Card';
 import {
@@ -169,6 +169,7 @@ const propCategory = {
 export default {
   title: 'Components/Card/Interactive',
   component: Card,
+  tags: ['autodocs'],
   argTypes: {
     width: disable,
     height: disable,
@@ -193,73 +194,70 @@ export default {
       control: {
         type: 'text',
       },
-      defaultValue: undefined,
       table: propCategory,
     },
     onClick: {
       control: {
         type: 'function',
       },
-      defaultValue: undefined,
       table: propCategory,
     },
     onHover: {
       control: {
         type: 'function',
       },
-      defaultValue: undefined,
       table: propCategory,
     },
     accessibilityLabel: {
       control: {
         type: 'text',
       },
-      defaultValue: 'Payment Pages Card',
       table: propCategory,
     },
     isSelected: {
       control: {
         type: 'boolean',
       },
-      defaultValue: false,
       table: propCategory,
     },
     shouldScaleOnHover: {
       control: {
         type: 'boolean',
       },
-      defaultValue: true,
       table: propCategory,
     },
     href: {
       control: {
         type: 'text',
       },
-      defaultValue: undefined,
       table: propCategory,
     },
     rel: {
       control: {
         type: 'text',
       },
-      defaultValue: undefined,
       table: propCategory,
     },
     surfaceLevel: {
       control: {
         type: 'number',
       },
-      defaultValue: 2,
       table: propCategory,
     },
     elevation: {
-      defaultValue: 'midRaised',
       table: propCategory,
     },
     padding: {
-      defaultValue: 'spacing.7',
       table: propCategory,
     },
+  },
+  args: {
+    accessibilityLabel: 'Payment Pages Card',
+    isSelected: false,
+    shouldScaleOnHover: true,
+    surfaceLevel: 2,
+    elevation: 'midRaised',
+    padding: 'spacing.7',
   },
   parameters: {
     docs: {
@@ -268,7 +266,7 @@ export default {
   },
 } as Meta<CardProps>;
 
-const CardTemplate: ComponentStory<typeof Card> = (args): React.ReactElement => {
+const CardTemplate: StoryFn<typeof Card> = (args): React.ReactElement => {
   return (
     <Card
       onHover={() => {

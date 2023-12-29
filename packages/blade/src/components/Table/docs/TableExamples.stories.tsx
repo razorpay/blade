@@ -1,5 +1,5 @@
 import React from 'react';
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Table } from '../Table';
 import {
   BasicTableStory,
@@ -35,7 +35,7 @@ const TableMeta: Meta = {
   },
 };
 
-const TableTemplate: ComponentStory<typeof Table> = () => {
+const TableTemplate: StoryFn<typeof Table> = () => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {BasicTableStory}
