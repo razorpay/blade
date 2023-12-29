@@ -9,4 +9,4 @@ feat: brand refresh changes
 > Breaking Change!
 > This is a breaking change for all components in the library.
 >
-> We have written codemod to ease this process so please follow the [migration guide thoroughly](https://github.com/razorpay/blade/blob/master/Migration-v11.md)
+> We have prepared a handbook for easier upgrade so please follow the [Blade Rebranding Upgrade Handbook](https://docs.google.com/document/d/1PLwUqx8LyfMeDW4u9CjwKHtSCpT1_sYUYtW_jwpLyDA/edit?usp=sharing)
