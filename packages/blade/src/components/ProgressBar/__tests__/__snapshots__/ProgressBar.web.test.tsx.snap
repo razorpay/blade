@@ -26,48 +26,29 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   justify-content: space-between;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   margin-bottom: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  max-height: 36px;
-  gap: 0px;
-}
-
-.c8.c8.c8.c8.c8 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c9.c9.c9.c9.c9 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(227,100%,59%,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c12.c12.c12.c12.c12 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -76,13 +57,13 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11.c11.c11.c11.c11 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 20%;
 }
 
-.c13.c13.c13.c13.c13 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -93,46 +74,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   animation-delay: 3000ms;
 }
 
-.c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c7.c7.c7.c7.c7 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -149,23 +91,6 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
 <div>
   <div
     class=""
@@ -180,42 +105,17 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         data-blade-component="base-box"
       >
         <label
-          data-blade-component="form-label"
-          for="progress-1"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          class="c2"
+          data-blade-component="text"
         >
-          <div
-            class="c2"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c3"
-              data-blade-component="base-box"
-            >
-              <p
-                class="c4"
-                data-blade-component="text"
-              >
-                Label
-              </p>
-              <div
-                class="c5"
-                data-blade-component="visually-hidden"
-              >
-                <p
-                  class="c6"
-                  data-blade-component="text"
-                />
-              </div>
-            </div>
-          </div>
+          Label
         </label>
         <div
-          class="c2"
+          class="c3"
           data-blade-component="base-box"
         >
           <p
-            class="c7"
+            class="c2"
             data-blade-component="text"
           >
             20%
@@ -234,15 +134,15 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         role="progressbar"
       >
         <div
-          class="c8"
+          class="c4"
           data-blade-component="base-box"
         >
           <div
-            class="c9 c10 c11"
+            class="c5 c6 c7"
             data-blade-component="base-box"
           >
             <div
-              class=" c12 c13"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1122,48 +1022,29 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   justify-content: space-between;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   margin-bottom: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  max-height: 36px;
-  gap: 0px;
-}
-
-.c8.c8.c8.c8.c8 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 4px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c9.c9.c9.c9.c9 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(227,100%,59%,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c12.c12.c12.c12.c12 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1172,13 +1053,13 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11.c11.c11.c11.c11 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 20%;
 }
 
-.c13.c13.c13.c13.c13 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1189,46 +1070,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   animation-delay: 3000ms;
 }
 
-.c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c7.c7.c7.c7.c7 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -1245,23 +1087,6 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
 <div>
   <div
     class=""
@@ -1276,42 +1101,17 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         data-blade-component="base-box"
       >
         <label
-          data-blade-component="form-label"
-          for="progress-8"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          class="c2"
+          data-blade-component="text"
         >
-          <div
-            class="c2"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c3"
-              data-blade-component="base-box"
-            >
-              <p
-                class="c4"
-                data-blade-component="text"
-              >
-                Label
-              </p>
-              <div
-                class="c5"
-                data-blade-component="visually-hidden"
-              >
-                <p
-                  class="c6"
-                  data-blade-component="text"
-                />
-              </div>
-            </div>
-          </div>
+          Label
         </label>
         <div
-          class="c2"
+          class="c3"
           data-blade-component="base-box"
         >
           <p
-            class="c7"
+            class="c2"
             data-blade-component="text"
           >
             20%
@@ -1330,15 +1130,15 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         role="progressbar"
       >
         <div
-          class="c8"
+          class="c4"
           data-blade-component="base-box"
         >
           <div
-            class="c9 c10 c11"
+            class="c5 c6 c7"
             data-blade-component="base-box"
           >
             <div
-              class=" c12 c13"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1477,48 +1277,29 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   justify-content: space-between;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   margin-bottom: 4px;
 }
 
-.c3.c3.c3.c3.c3 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  max-height: 36px;
-  gap: 0px;
-}
-
-.c8.c8.c8.c8.c8 {
+.c4.c4.c4.c4.c4 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c9.c9.c9.c9.c9 {
+.c5.c5.c5.c5.c5 {
   background-color: hsla(227,100%,59%,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c12.c12.c12.c12.c12 {
+.c8.c8.c8.c8.c8 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1527,13 +1308,13 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11.c11.c11.c11.c11 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 20%;
 }
 
-.c13.c13.c13.c13.c13 {
+.c9.c9.c9.c9.c9 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1544,46 +1325,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   animation-delay: 3000ms;
 }
 
-.c4.c4.c4.c4.c4 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c7.c7.c7.c7.c7 {
+.c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -1600,23 +1342,6 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
-}
-
 <div>
   <div
     class=""
@@ -1631,42 +1356,17 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         data-blade-component="base-box"
       >
         <label
-          data-blade-component="form-label"
-          for="progress-6"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          class="c2"
+          data-blade-component="text"
         >
-          <div
-            class="c2"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c3"
-              data-blade-component="base-box"
-            >
-              <p
-                class="c4"
-                data-blade-component="text"
-              >
-                Label
-              </p>
-              <div
-                class="c5"
-                data-blade-component="visually-hidden"
-              >
-                <p
-                  class="c6"
-                  data-blade-component="text"
-                />
-              </div>
-            </div>
-          </div>
+          Label
         </label>
         <div
-          class="c2"
+          class="c3"
           data-blade-component="base-box"
         >
           <p
-            class="c7"
+            class="c2"
             data-blade-component="text"
           >
             20%
@@ -1685,15 +1385,15 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         role="progressbar"
       >
         <div
-          class="c8"
+          class="c4"
           data-blade-component="base-box"
         >
           <div
-            class="c9 c10 c11"
+            class="c5 c6 c7"
             data-blade-component="base-box"
           >
             <div
-              class=" c12 c13"
+              class=" c8 c9"
               data-blade-component="base-box"
             />
           </div>
@@ -1752,48 +1452,29 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   justify-content: space-between;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   margin-bottom: 4px;
 }
 
-.c7.c7.c7.c7.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  max-height: 36px;
-  gap: 0px;
-}
-
-.c12.c12.c12.c12.c12 {
+.c8.c8.c8.c8.c8 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c13.c13.c13.c13.c13 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(227,100%,59%,1);
 }
 
-.c14.c14.c14.c14.c14 {
+.c10.c10.c10.c10.c10 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c16.c16.c16.c16.c16 {
+.c12.c12.c12.c12.c12 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1802,13 +1483,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 0%;
 }
 
-.c17.c17.c17.c17.c17 {
+.c13.c13.c13.c13.c13 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1837,46 +1518,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.c10.c10.c10.c10.c10 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c11.c11.c11.c11.c11 {
+.c6.c6.c6.c6.c6 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -1891,23 +1533,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c9.c9.c9.c9.c9 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -2014,42 +1639,17 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         data-blade-component="base-box"
       >
         <label
-          data-blade-component="form-label"
-          for="progress-3"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          class="c6"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c7"
-              data-blade-component="base-box"
-            >
-              <p
-                class="c8"
-                data-blade-component="text"
-              >
-                Label
-              </p>
-              <div
-                class="c9"
-                data-blade-component="visually-hidden"
-              >
-                <p
-                  class="c10"
-                  data-blade-component="text"
-                />
-              </div>
-            </div>
-          </div>
+          Label
         </label>
         <div
-          class="c6"
+          class="c7"
           data-blade-component="base-box"
         >
           <p
-            class="c11"
+            class="c6"
             data-blade-component="text"
           >
             0%
@@ -2068,15 +1668,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         role="progressbar"
       >
         <div
-          class="c12"
+          class="c8"
           data-blade-component="base-box"
         >
           <div
-            class="c13 c14 c15"
+            class="c9 c10 c11"
             data-blade-component="base-box"
           >
             <div
-              class=" c16 c17"
+              class=" c12 c13"
               data-blade-component="base-box"
             />
           </div>
@@ -2135,48 +1735,29 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   justify-content: space-between;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   margin-bottom: 4px;
 }
 
-.c7.c7.c7.c7.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  max-height: 36px;
-  gap: 0px;
-}
-
-.c12.c12.c12.c12.c12 {
+.c8.c8.c8.c8.c8 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c13.c13.c13.c13.c13 {
+.c9.c9.c9.c9.c9 {
   background-color: hsla(227,100%,59%,1);
 }
 
-.c14.c14.c14.c14.c14 {
+.c10.c10.c10.c10.c10 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c16.c16.c16.c16.c16 {
+.c12.c12.c12.c12.c12 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -2185,13 +1766,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c11.c11.c11.c11.c11 {
   background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 0%;
 }
 
-.c17.c17.c17.c17.c17 {
+.c13.c13.c13.c13.c13 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -2220,46 +1801,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 2;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-.c10.c10.c10.c10.c10 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c11.c11.c11.c11.c11 {
+.c6.c6.c6.c6.c6 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -2274,23 +1816,6 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c9.c9.c9.c9.c9 {
-  border: 0;
-  -webkit-clip: rect(0 0 0 0);
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: 0 -1px -1px 0;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  left: -10000px;
-  white-space: nowrap;
-  word-wrap: normal;
 }
 
 .c0.c0.c0.c0.c0 {
@@ -2397,42 +1922,17 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         data-blade-component="base-box"
       >
         <label
-          data-blade-component="form-label"
-          for="progress-3"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          class="c6"
+          data-blade-component="text"
         >
-          <div
-            class="c6"
-            data-blade-component="base-box"
-          >
-            <div
-              class="c7"
-              data-blade-component="base-box"
-            >
-              <p
-                class="c8"
-                data-blade-component="text"
-              >
-                Label
-              </p>
-              <div
-                class="c9"
-                data-blade-component="visually-hidden"
-              >
-                <p
-                  class="c10"
-                  data-blade-component="text"
-                />
-              </div>
-            </div>
-          </div>
+          Label
         </label>
         <div
-          class="c6"
+          class="c7"
           data-blade-component="base-box"
         >
           <p
-            class="c11"
+            class="c6"
             data-blade-component="text"
           >
             0%
@@ -2451,15 +1951,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         role="progressbar"
       >
         <div
-          class="c12"
+          class="c8"
           data-blade-component="base-box"
         >
           <div
-            class="c13 c14 c15"
+            class="c9 c10 c11"
             data-blade-component="base-box"
           >
             <div
-              class=" c16 c17"
+              class=" c12 c13"
               data-blade-component="base-box"
             />
           </div>

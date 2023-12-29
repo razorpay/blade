@@ -139,9 +139,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c23.c23.c23.c23.c23 {
-  border-width: 0px;
   border-bottom-color: hsla(211,20%,52%,0.18);
-  border-style: solid;
+  border-bottom-style: solid;
 }
 
 .c25.c25.c25.c25.c25 {
@@ -187,6 +186,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c24.c24.c24.c24.c24 {
+  border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -486,31 +486,31 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 @media screen and (min-width:320px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
