@@ -381,7 +381,7 @@ const Carousel = ({
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 
-    const handleScroll = debounce(() => {
+    const handleScroll = () => {
       // carousel bounding box
       const carouselBB = carouselContainer.getBoundingClientRect();
       // By default we check the far left side of the screen
@@ -408,12 +408,29 @@ const Carousel = ({
       if (!isTouchDown) {
         onChange?.(goTo);
       }
-    }, 50);
+    };
+    const handleDebouncedScroll = debounce(handleScroll, 50);
 
-    carouselContainer.addEventListener('scroll', handleScroll);
+    // In firefox the scroll event is getting fired twice even with debounce
+    // And it is inconsistent between different devices, we tried Anurag's & Kamlesh's macbook
+    // In Anurag's macbook 100ms of debounce works fine but in Kamlesh's macbook it needs 500ms
+    // We suspect it could be an issue with how firefox is calling the scroll event.
+    // Fix:
+    // To fix this we are using the new scrollend event which is supported latest firefox & chrome
+    // and for older browsers falling back to the debounce method
+    const hasScrollEndSupport = 'onscrollend' in window;
+    if (hasScrollEndSupport) {
+      carouselContainer.addEventListener('scrollend', handleScroll);
+    } else {
+      carouselContainer.addEventListener('scroll', handleDebouncedScroll);
+    }
 
     return () => {
-      carouselContainer?.removeEventListener('scroll', handleScroll);
+      if (hasScrollEndSupport) {
+        carouselContainer.removeEventListener('scrollend', handleScroll);
+      } else {
+        carouselContainer.removeEventListener('scroll', handleDebouncedScroll);
+      }
     };
   }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing, onChange, isTouchDown]);
 
