@@ -37,7 +37,7 @@ type TextBodyVariant = TextCommonProps & {
 
 type TextCaptionVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'caption'>;
-  size?: Extract<BaseTextSizes, 'medium'>;
+  size?: Extract<BaseTextSizes, 'small'>;
 };
 
 /**
@@ -101,7 +101,7 @@ const getTextProps = <T extends { variant: TextVariant }>({
     }
   }
   if (variant === 'caption') {
-    if (size === 'medium') {
+    if (size === 'small') {
       props.fontSize = 50;
       props.lineHeight = 50;
       props.fontWeight = 'regular';
