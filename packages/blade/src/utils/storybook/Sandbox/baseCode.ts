@@ -12,7 +12,7 @@ const getBladeVersion = (): string => {
     return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
   }
 
-  return '*';
+  return '^10';
 };
 
 export const tsConfigJSON = JSON.stringify(
