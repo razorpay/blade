@@ -509,6 +509,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
           <BaseText
             lineHeight={lineHeight}
             fontSize={fontSize}
+            // figma and web have different font-smoothing properties
+            // which causes web version of button text to look much bolder
+            // than figma version. To fix this we are changing font-weight from 600 to 500
+            // https://forum.figma.com/t/why-does-a-font-weight-in-figma-seem-lighter-than-the-same-weight-in-the-browser/2207
             fontWeight="medium"
             textAlign="center"
             color={textColor}
