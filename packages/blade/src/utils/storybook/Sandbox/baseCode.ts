@@ -5,7 +5,7 @@ import packageJson from '../../../../package.json'; // eslint-disable-line
 
 const getBladeVersion = (): string => {
   // We don't publish codesandbox ci on master so version is not present
-  const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
+  const isMaster = process.env.GITHUB_REF === 'refs/heads/v10';
   const sha = process.env.GITHUB_SHA;
   if (sha && !isMaster) {
     const shortSha = sha.slice(0, 8);
