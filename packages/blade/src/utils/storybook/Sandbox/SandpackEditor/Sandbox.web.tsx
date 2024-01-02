@@ -51,9 +51,7 @@ const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
     padding: '2px',
   },
   '& pre': {
-    fontFamily: 'Menlo, monospace',
     padding: '0px',
-    lineHeight: '1000 !important',
   },
   borderRadius: '4px',
   overflow: 'auto',
@@ -71,9 +69,6 @@ const SandboxHighlighter = ({
         theme={theme}
         files={{
           '/src/index.ts': dedent(children),
-        }}
-        style={{
-          fontFamily: 'Arial',
         }}
       >
         <SandpackCodeViewer showLineNumbers {...sandpackCodeViewerProps} />
