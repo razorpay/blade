@@ -77,6 +77,12 @@ export const parameters = {
           return bankingTheme;
         }
       };
+
+      if (context.store.globals.globals.version === '11' && window.top) {
+        window.top.location.href =
+          'https://blade.razorpay.com' + window.top.location.pathname + window.top.location.search;
+      }
+
       return (
         <DocsContainer context={context}>
           <BladeProvider
@@ -174,6 +180,23 @@ export const decorators = [
 ];
 
 export const globalTypes = {
+  version: {
+    name: 'Blade Documentation Version',
+    description: 'Version of the Blade',
+    defaultValue: '10',
+    toolbar: {
+      icon: 'time',
+      title: ' v10 - Old',
+      // Array of plain string values or MenuItem shape (see below)
+      items: [
+        { value: '10', title: ' v10 - Old' },
+        { value: '11', title: ' v11 - Rebranded', default: true },
+      ],
+      dynamicTitle: true,
+      // Property that specifies if the name of the item will be displayed
+      showName: false,
+    },
+  },
   themeTokenName: {
     name: 'Theme Tokens',
     description: 'Theme Tokens for Blade',
