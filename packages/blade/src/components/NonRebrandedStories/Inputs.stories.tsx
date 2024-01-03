@@ -6,8 +6,8 @@ export const PasswordInput = (): React.ReactElement => <Message storyLink="Input
 PasswordInput.storyName = 'PasswordInput';
 export const OTPInput = (): React.ReactElement => <Message storyLink="Input/OTPInput" />;
 OTPInput.storyName = 'OTPInput';
-export const SelectInput = (): React.ReactElement => <Message storyLink="Input/SelectInput" />;
-SelectInput.storyName = 'SelectInput';
+export const TextArea = (): React.ReactElement => <Message storyLink="Input/TextArea" />;
+TextArea.storyName = 'TextArea';
 
 export default {
   title: 'Components/Inputs',
