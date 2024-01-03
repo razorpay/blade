@@ -162,6 +162,11 @@ export const decorators = [
       }
     };
 
+    if (context.globals.version === '11' && window.top) {
+      window.top.location.href =
+        'https://blade.razorpay.com' + window.top.location.pathname + window.top.location.search;
+    }
+
     return (
       <ErrorBoundary>
         <GlobalStyle />
