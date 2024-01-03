@@ -136,6 +136,13 @@ export const decorators = [
       return bladeTheme;
     };
 
+    if (context.globals.version === '10' && window.top) {
+      window.top.location.href =
+        'https://v10--61c19ee8d3d282003ac1d81c.chromatic.com' +
+        window.top.location.pathname +
+        window.top.location.search;
+    }
+
     return (
       <ErrorBoundary>
         <GlobalStyle />
