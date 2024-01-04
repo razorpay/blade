@@ -220,7 +220,9 @@ const _TablePagination = ({
           message: `Value of 'currentPage' prop cannot be greater than the total pages`,
         });
       }
-    } else handlePageChange(totalPages - 1);
+    } else {
+      handlePageChange(totalPages - 1);
+    }
   }
 
   const handlePageSizeChange = (pageSize: number): void => {
