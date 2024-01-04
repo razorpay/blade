@@ -10,7 +10,7 @@ import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
-const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q'] as const;
+const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q', 'label'] as const;
 type TextCommonProps = {
   as?: typeof validAsValues[number];
   truncateAfterLines?: number;

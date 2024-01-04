@@ -28,7 +28,7 @@ const getNavigationButtonStyles = (props: {
     },
     stroked: {
       default: theme.colors.interactive.background.staticWhite.faded,
-      highlighted: theme.colors.interactive.background.staticWhite.faded,
+      highlighted: theme.colors.interactive.background.staticWhite.fadedHighlighted,
     },
   };
 

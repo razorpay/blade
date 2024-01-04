@@ -22,9 +22,8 @@ exports[`<Divider /> should render Divider using height 1`] = `
     }
   >
     <View
-      borderLeftColor="surface.border.normal.lowContrast"
+      borderLeftColor="surface.border.gray.muted"
       borderPosition="borderLeft"
-      borderWidth="none"
       data-blade-component="divider"
       dividerStyle="solid"
       height="100%"
@@ -32,15 +31,15 @@ exports[`<Divider /> should render Divider using height 1`] = `
       style={
         [
           {
-            "borderLeftColor": "hsla(216, 15%, 54%, 0.18)",
-            "borderStyle": "solid",
-            "borderWidth": 0,
+            "borderLeftColor": "hsla(211, 20%, 52%, 0.18)",
+            "borderLeftStyle": "solid",
             "height": "100%",
           },
           {
             "alignSelf": "stretch",
             "borderLeftStyle": "solid",
             "borderLeftWidth": 1,
+            "borderWidth": 0,
             "height": "100%",
           },
         ]
@@ -71,22 +70,21 @@ exports[`<Divider /> should render Divider within flex container 1`] = `
     }
   >
     <View
-      borderBottomColor="surface.border.normal.lowContrast"
+      borderBottomColor="surface.border.gray.muted"
       borderPosition="borderBottom"
-      borderWidth="none"
       data-blade-component="divider"
       dividerStyle="solid"
       isDividerHorizontal={true}
       style={
         [
           {
-            "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-            "borderStyle": "solid",
-            "borderWidth": 0,
+            "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+            "borderBottomStyle": "solid",
           },
           {
             "borderBottomStyle": "solid",
             "borderBottomWidth": 1,
+            "borderWidth": 0,
             "flexGrow": 1,
           },
         ]

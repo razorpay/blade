@@ -9,12 +9,12 @@ exports[`<Box /> should apply borderBottomColor prop to border bottom only 1`] =
   }
 >
   <View
-    borderBottomColor="surface.border.normal.lowContrast"
+    borderBottomColor="surface.border.gray.normal"
     data-blade-component="box"
     style={
       [
         {
-          "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderBottomColor": "hsla(211, 24%, 65%, 1)",
           "borderBottomStyle": "solid",
         },
       ]
@@ -34,12 +34,12 @@ exports[`<Box /> should apply borderColor prop to all borders 1`] = `
   }
 >
   <View
-    borderColor="surface.border.normal.lowContrast"
+    borderColor="surface.border.gray.normal"
     data-blade-component="box"
     style={
       [
         {
-          "borderColor": "hsla(216, 15%, 54%, 0.18)",
+          "borderColor": "hsla(211, 24%, 65%, 1)",
           "borderStyle": "solid",
         },
       ]

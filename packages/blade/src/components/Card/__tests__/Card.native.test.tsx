@@ -23,7 +23,7 @@ import BaseBox from '~components/Box/BaseBox';
 describe('<Card />', () => {
   it('should render a plain Card', () => {
     const { toJSON } = renderWithTheme(
-      <Card surfaceLevel={3} elevation="highRaised">
+      <Card backgroundColor="surface.background.gray.moderate" elevation="highRaised">
         <CardBody>
           <Text>Plain Card</Text>
         </CardBody>
@@ -131,7 +131,7 @@ describe('<Card />', () => {
             <CardHeaderLeading
               title={cardTitle}
               subtitle={cardSubtitle}
-              prefix={<InfoIcon color="action.icon.primary.default" size="xsmall" />}
+              prefix={<InfoIcon color="interactive.icon.staticWhite.normal" size="xsmall" />}
             />
           </CardHeader>
         </Card>,

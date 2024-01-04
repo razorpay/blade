@@ -30,6 +30,5 @@ export type StyledBaseButtonProps = Omit<
   borderWidth: BorderWidthValues;
   borderRadius: BorderRadiusValues;
   accessibilityProps: Record<string, unknown>;
-  shouldShowHoverlay?: boolean;
 } & StyledPropsBlade &
   BladeCommonEvents;

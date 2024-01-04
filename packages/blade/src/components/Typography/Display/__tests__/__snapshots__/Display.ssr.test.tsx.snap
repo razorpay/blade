@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Display /> should render 1`] = `"<div id="root"><h1 letter-spacing="100" class="StyledBaseText-dVBfTO iaKEgH" data-blade-component="display">Displaying Landing Page Display</h1></div>"`;
+exports[`<Display /> should render 1`] = `"<div id="root"><h1 letter-spacing="100" class="StyledBaseText-dVBfTO eYAGVi" data-blade-component="display">Displaying Landing Page Display</h1></div>"`;
 
 exports[`<Display /> should render 2`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 3rem;
   font-weight: 600;

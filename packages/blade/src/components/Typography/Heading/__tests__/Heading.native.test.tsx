@@ -16,7 +16,7 @@ describe('<Heading />', () => {
   it('should render Heading with color', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading color="surface.text.placeholder.lowContrast">{displayText}</Heading>,
+      <Heading color="surface.text.gray.disabled">{displayText}</Heading>,
     );
     expect(getByText(displayText)).toBeTruthy();
     expect(toJSON()).toMatchSnapshot();
@@ -26,7 +26,7 @@ describe('<Heading />', () => {
     const { toJSON } = renderWithTheme(
       <Heading>
         Supercharge your business with the all‑powerful{' '}
-        <Heading as="span" color="feedback.information.action.text.primary.default.lowContrast">
+        <Heading as="span" color="interactive.text.information.subtle">
           Payment Gateway
         </Heading>
       </Heading>,
@@ -37,7 +37,7 @@ describe('<Heading />', () => {
   it('should render Heading with size "small" and contrast "high"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="normal" size="small" weight="regular" contrast="high">
+      <Heading color="surface.text.gray.normal" size="small" weight="regular">
         {displayText}
       </Heading>,
     );
@@ -48,7 +48,7 @@ describe('<Heading />', () => {
   it('should render Heading with size "small"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="normal" size="small" weight="regular">
+      <Heading color="surface.text.gray.normal" size="small" weight="regular">
         {displayText}
       </Heading>,
     );
@@ -59,7 +59,7 @@ describe('<Heading />', () => {
   it('should render Heading with size "medium"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="muted" size="medium" weight="regular">
+      <Heading color="surface.text.gray.muted" size="medium" weight="regular">
         {displayText}
       </Heading>,
     );
@@ -70,7 +70,7 @@ describe('<Heading />', () => {
   it('should render Heading with size "large"', () => {
     const displayText = 'Get Started With Payment Gateway';
     const { toJSON, getByText } = renderWithTheme(
-      <Heading type="subdued" size="large" weight="regular">
+      <Heading color="surface.text.gray.muted" size="large" weight="regular">
         {displayText}
       </Heading>,
     );
@@ -81,7 +81,7 @@ describe('<Heading />', () => {
   it('should render with as prop without errors', () => {
     const displayText = 'Displaying Landing Screen Heading';
     const { getByText } = renderWithTheme(
-      <Heading as="span" type="subdued" size="large">
+      <Heading as="span" color="surface.text.gray.muted" size="large">
         {displayText}
       </Heading>,
     );

@@ -51,6 +51,7 @@ const Page = (): ReactElement => {
 const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
   title: 'Components/Accessibility/VisuallyHidden',
   component: VisuallyHiddenComponent,
+  tags: ['autodocs'],
   args: { children: 'Toggle dark mode' },
   parameters: {
     docs: {

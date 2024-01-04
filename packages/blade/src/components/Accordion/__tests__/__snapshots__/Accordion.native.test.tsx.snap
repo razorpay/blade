@@ -343,7 +343,7 @@ exports[`<Accordion /> should render 1`] = `
                     >
                       <Text
                         accessible={true}
-                        color="surface.text.gray.normal"
+                        color="interactive.text.gray.subtle"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={100}
@@ -353,7 +353,7 @@ exports[`<Accordion /> should render 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(212, 39%, 16%, 1)",
+                              "color": "hsla(211, 26%, 34%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -440,7 +440,6 @@ exports[`<Accordion /> should render 1`] = `
         <View
           borderBottomColor="surface.border.gray.muted"
           borderPosition="borderBottom"
-          borderWidth="none"
           data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
@@ -448,12 +447,12 @@ exports[`<Accordion /> should render 1`] = `
             [
               {
                 "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
+                "borderBottomStyle": "solid",
               },
               {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
+                "borderWidth": 0,
                 "flexGrow": 1,
               },
             ]
@@ -761,7 +760,7 @@ exports[`<Accordion /> should render 1`] = `
                     >
                       <Text
                         accessible={true}
-                        color="surface.text.gray.normal"
+                        color="interactive.text.gray.subtle"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={100}
@@ -771,7 +770,7 @@ exports[`<Accordion /> should render 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(212, 39%, 16%, 1)",
+                              "color": "hsla(211, 26%, 34%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -858,7 +857,6 @@ exports[`<Accordion /> should render 1`] = `
         <View
           borderBottomColor="surface.border.gray.muted"
           borderPosition="borderBottom"
-          borderWidth="none"
           data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
@@ -866,12 +864,12 @@ exports[`<Accordion /> should render 1`] = `
             [
               {
                 "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
+                "borderBottomStyle": "solid",
               },
               {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
+                "borderWidth": 0,
                 "flexGrow": 1,
               },
             ]
@@ -1179,7 +1177,7 @@ exports[`<Accordion /> should render 1`] = `
                     >
                       <Text
                         accessible={true}
-                        color="surface.text.gray.normal"
+                        color="interactive.text.gray.subtle"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={100}
@@ -1189,7 +1187,7 @@ exports[`<Accordion /> should render 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(212, 39%, 16%, 1)",
+                              "color": "hsla(211, 26%, 34%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
@@ -1276,7 +1274,6 @@ exports[`<Accordion /> should render 1`] = `
         <View
           borderBottomColor="surface.border.gray.muted"
           borderPosition="borderBottom"
-          borderWidth="none"
           data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
@@ -1284,12 +1281,12 @@ exports[`<Accordion /> should render 1`] = `
             [
               {
                 "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
+                "borderBottomStyle": "solid",
               },
               {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
+                "borderWidth": 0,
                 "flexGrow": 1,
               },
             ]

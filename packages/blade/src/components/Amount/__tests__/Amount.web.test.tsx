@@ -30,33 +30,54 @@ describe('<Amount />', () => {
     mockConsoleError.mockRestore();
   });
 
+  it('should throw an error when invalid type and size is passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="display" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="display"',
+    );
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="heading" size="xsmall" />)).toThrow(
+      '[Blade: Amount]: size="xsmall" is not allowed with type="heading"',
+    );
+    mockConsoleError.mockRestore();
+
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="body" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="body"',
+    );
+    mockConsoleError.mockRestore();
+  });
+
   it('should render body-small size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-small" value={1000} />);
+    const { container } = renderWithTheme(<Amount type="body" size="small" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-small-bold size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-small-bold" value={1000} />);
+    const { container } = renderWithTheme(
+      <Amount type="body" size="small" weight="semibold" value={1000} />,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-medium size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-medium" value={1000} />);
+    const { container } = renderWithTheme(<Amount type="body" size="medium" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-medium-bold size Amount', () => {
     const { container } = renderWithTheme(
       <>
-        <Amount size="body-medium" value={1000} />
-        <Amount size="body-medium-bold" value={1000} />
-        <Amount size="body-small" value={1000} />
-        <Amount size="body-small-bold" value={1000} />
-        <Amount size="heading-large" value={1000} />
-        <Amount size="heading-large-bold" value={1000} />
-        <Amount size="heading-small" value={1000} />
-        <Amount size="heading-small-bold" value={1000} />
-        <Amount size="title-medium" value={1000} />
+        <Amount type="body" size="medium" value={1000} />
+        <Amount type="body" size="medium" weight="semibold" value={1000} />
+        <Amount type="body" size="small" value={1000} />
+        <Amount type="body" size="small" weight="semibold" value={1000} />
+        <Amount type="heading" size="large" value={1000} />
+        <Amount type="heading" size="large" weight="semibold" value={1000} />
+        <Amount type="heading" size="small" value={1000} />
+        <Amount type="heading" size="small" weight="semibold" value={1000} />
+        <Amount type="display" size="medium" value={1000} />
       </>,
     );
     expect(container).toMatchSnapshot();
@@ -64,19 +85,19 @@ describe('<Amount />', () => {
 
   it('should render amount with Humanize value', () => {
     const { container } = renderWithTheme(
-      <Amount size="title-medium" suffix="humanize" value={1000.22} />,
+      <Amount type="display" size="medium" suffix="humanize" value={1000.22} />,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should render positive intent Amount ', () => {
-    const { container } = renderWithTheme(<Amount intent="positive" value={1000} />);
+    const { container } = renderWithTheme(<Amount color="positive" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render negative intent Amount ', () => {
     const { container } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="negative" value={1000} />,
+      <Amount isAffixSubtle={false} color="negative" value={1000} />,
     );
     expect(container).toMatchSnapshot();
   });

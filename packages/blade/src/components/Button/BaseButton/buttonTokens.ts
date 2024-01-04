@@ -56,7 +56,7 @@ const backgroundColor = (property: 'background' | 'border') => {
       },
       tertiary: {
         default: `interactive.background.staticWhite.faded`,
-        highlighted: `interactive.background.staticWhite.faded`,
+        highlighted: `interactive.background.staticWhite.fadedHighlighted`,
         disabled: `interactive.background.staticWhite.disabled`,
       },
     },
@@ -73,7 +73,7 @@ const backgroundColor = (property: 'background' | 'border') => {
             : (`interactive.background.${color}.faded` as const),
           highlighted: isBorder
             ? (`interactive.border.${color}.default` as const)
-            : (`interactive.background.${color}.faded` as const),
+            : (`interactive.background.${color}.fadedHighlighted` as const),
           disabled: `interactive.${property}.${color}.disabled`,
         },
       } as const;

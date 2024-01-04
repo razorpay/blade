@@ -122,7 +122,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -131,7 +131,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -278,7 +278,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -287,7 +287,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -506,7 +506,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -515,7 +515,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -734,7 +734,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -743,7 +743,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -890,7 +890,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -899,7 +899,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1189,477 +1189,6 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
 </View>
 `;
 
-exports[`<BaseButton /> should render default color primary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": false,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    borderRadius="4px"
-    borderWidth="0px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
-    focusable={true}
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "borderRadius": 4,
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "cursor": "pointer",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      zIndex={1}
-    >
-      <Text
-        accessible={true}
-        color="interactive.text.staticWhite.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render default color secondary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": false,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    borderRadius="4px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
-    focusable={true}
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "borderRadius": 4,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "pointer",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      zIndex={1}
-    >
-      <Text
-        accessible={true}
-        color="interactive.text.default.subtle"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render default color tertiary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": false,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(216, 15%, 54%, 0.32)"
-    activeBorderColor="hsla(216, 19%, 89%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    defaultBorderColor="hsla(216, 44%, 23%, 0)"
-    focusBackgroundColor="hsla(216, 15%, 54%, 0.32)"
-    focusBorderColor="hsla(216, 19%, 89%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(216, 15%, 54%, 0.18)"
-    hoverBorderColor="hsla(216, 19%, 89%, 1)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 44%, 23%, 0)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "pointer",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="action.text.tertiary.default"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(216, 33%, 29%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
 exports[`<BaseButton /> should render disabled button 1`] = `
 <View
   style={
@@ -1782,7 +1311,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -1791,477 +1320,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled default color primary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    borderRadius="4px"
-    borderWidth="0px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
-    focusable={true}
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "borderRadius": 4,
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      zIndex={1}
-    >
-      <Text
-        accessible={true}
-        color="interactive.text.default.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled default color secondary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    borderRadius="4px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
-    focusable={true}
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "borderRadius": 4,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "overflow": "hidden",
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": undefined,
-          "borderColor": undefined,
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      zIndex={1}
-    >
-      <Text
-        accessible={true}
-        color="interactive.text.default.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<BaseButton /> should render disabled default color tertiary button 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": true,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    activeBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    activeBorderColor="hsla(216, 19%, 89%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
-    buttonPaddingBottom="0px"
-    buttonPaddingLeft="20px"
-    buttonPaddingRight="20px"
-    buttonPaddingTop="0px"
-    collapsable={false}
-    data-blade-component="button"
-    defaultBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    defaultBorderColor="hsla(216, 19%, 89%, 1)"
-    focusBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    focusBorderColor="hsla(216, 19%, 89%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
-    focusable={true}
-    hoverBackgroundColor="hsla(216, 15%, 54%, 0.09)"
-    hoverBorderColor="hsla(216, 19%, 89%, 1)"
-    isFullWidth={false}
-    isLoading={false}
-    minHeight="36px"
-    motionDuration="duration.xquick"
-    motionEasing="easing.standard.effective"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    role="button"
-    style={
-      [
-        {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          "borderColor": "hsla(216, 19%, 89%, 1)",
-          "borderRadius": 2,
-          "borderStyle": "solid",
-          "borderWidth": 1,
-          "cursor": "not-allowed",
-          "display": "flex",
-          "justifyContent": "center",
-          "minHeight": 36,
-          "paddingBottom": 0,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-          "width": "auto",
-        },
-        {
-          "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-        },
-      ]
-    }
-    type="button"
-  >
-    <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="action.text.tertiary.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(218, 19%, 81%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2408,7 +1467,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
         color="interactive.text.information.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -2417,7 +1476,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2534,28 +1593,6 @@ exports[`<BaseButton /> should render disabled information color secondary butto
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -2586,7 +1623,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
         color="interactive.text.information.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -2595,7 +1632,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2742,7 +1779,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
         color="interactive.text.negative.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -2751,7 +1788,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2868,28 +1905,6 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -2920,7 +1935,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
         color="interactive.text.negative.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -2929,7 +1944,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3076,7 +2091,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
         color="interactive.text.neutral.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -3085,7 +2100,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3202,28 +2217,6 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -3254,7 +2247,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
         color="interactive.text.neutral.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -3263,7 +2256,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3410,7 +2403,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
         color="interactive.text.notice.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -3419,7 +2412,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3536,28 +2529,6 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -3588,7 +2559,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
         color="interactive.text.notice.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -3597,7 +2568,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3744,7 +2715,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
         color="interactive.text.positive.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -3753,7 +2724,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3870,28 +2841,6 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -3922,7 +2871,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
         color="interactive.text.positive.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -3931,7 +2880,474 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled primary color primary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="4px"
+    borderWidth="0px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
+    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    focusBorderColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
+          "borderColor": "hsla(227, 100%, 59%, 0.18)",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
+          "borderColor": "hsla(227, 100%, 59%, 0.18)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "zIndex": 1,
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+      zIndex={1}
+    >
+      <Text
+        accessible={true}
+        color="interactive.text.primary.disabled"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="semibold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(227, 100%, 59%, 0.18)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled primary color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="4px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
+    defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0)"
+    focusBorderColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0)"
+    hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(0, 0%, 100%, 0)",
+          "borderColor": "hsla(227, 100%, 59%, 0.18)",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(0, 0%, 100%, 0)",
+          "borderColor": "hsla(227, 100%, 59%, 0.18)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "zIndex": 1,
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+      zIndex={1}
+    >
+      <Text
+        accessible={true}
+        color="interactive.text.primary.disabled"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="semibold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(227, 100%, 59%, 0.18)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render disabled primary color tertiary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": true,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="4px"
+    borderWidth="0px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(211, 20%, 52%, 0.09)"
+    defaultBorderColor="hsla(214, 40%, 92%, 1)"
+    focusBackgroundColor="hsla(211, 20%, 52%, 0.09)"
+    focusBorderColor="hsla(214, 40%, 92%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(211, 20%, 52%, 0.09)"
+    hoverBorderColor="hsla(214, 40%, 92%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+          "borderColor": "hsla(214, 40%, 92%, 1)",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "cursor": "not-allowed",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "zIndex": 1,
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+      zIndex={1}
+    >
+      <Text
+        accessible={true}
+        color="interactive.text.gray.disabled"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="semibold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(211, 20%, 52%, 0.32)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4078,7 +3494,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
         color="interactive.text.staticBlack.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -4087,7 +3503,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4204,28 +3620,6 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -4256,7 +3650,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
         color="interactive.text.staticWhite.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -4265,7 +3659,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4381,28 +3775,6 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -4433,7 +3805,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
         color="interactive.text.staticWhite.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -4442,7 +3814,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4589,7 +3961,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -4598,7 +3970,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4659,7 +4031,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(200, 84%, 44%, 0.18)"
+    defaultBackgroundColor="hsla(200, 84%, 44%, 0.09)"
     defaultBorderColor="hsla(200, 84%, 44%, 1)"
     focusBackgroundColor="hsla(200, 84%, 44%, 0.18)"
     focusBorderColor="hsla(200, 84%, 44%, 1)"
@@ -4687,7 +4059,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(200, 84%, 44%, 0.18)",
+          "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
           "borderColor": "hsla(200, 84%, 44%, 1)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -4707,35 +4079,13 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(200, 84%, 44%, 0.18)",
+          "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
           "borderColor": "hsla(200, 84%, 44%, 1)",
         },
       ]
     }
     type="button"
   >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
     <View
       alignItems="center"
       data-blade-component="base-box"
@@ -4767,7 +4117,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
         color="interactive.text.information.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -4776,7 +4126,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4923,7 +4273,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={200}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={200}
         style={
           [
@@ -4932,7 +4282,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 24,
               "marginBottom": 0,
@@ -5231,7 +4581,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -5240,7 +4590,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5387,7 +4737,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -5396,7 +4746,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5543,7 +4893,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -5552,7 +4902,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5613,7 +4963,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(4, 74%, 49%, 0.18)"
+    defaultBackgroundColor="hsla(4, 74%, 49%, 0.09)"
     defaultBorderColor="hsla(4, 74%, 49%, 1)"
     focusBackgroundColor="hsla(4, 74%, 49%, 0.18)"
     focusBorderColor="hsla(4, 74%, 49%, 1)"
@@ -5641,7 +4991,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(4, 74%, 49%, 0.18)",
+          "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
           "borderColor": "hsla(4, 74%, 49%, 1)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -5661,35 +5011,13 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(4, 74%, 49%, 0.18)",
+          "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
           "borderColor": "hsla(4, 74%, 49%, 1)",
         },
       ]
     }
     type="button"
   >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
     <View
       alignItems="center"
       data-blade-component="base-box"
@@ -5721,7 +5049,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
         color="interactive.text.negative.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -5730,7 +5058,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5792,13 +5120,13 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
     collapsable={false}
     data-blade-component="button"
     defaultBackgroundColor="hsla(211, 29%, 26%, 1)"
-    defaultBorderColor="hsla(211, 27%, 76%, 1)"
+    defaultBorderColor="hsla(211, 20%, 52%, 1)"
     focusBackgroundColor="hsla(211, 33%, 21%, 1)"
-    focusBorderColor="hsla(211, 27%, 76%, 1)"
+    focusBorderColor="hsla(211, 20%, 52%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(211, 33%, 21%, 1)"
-    hoverBorderColor="hsla(211, 27%, 76%, 1)"
+    hoverBorderColor="hsla(211, 20%, 52%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -5820,7 +5148,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(211, 29%, 26%, 1)",
-          "borderColor": "hsla(211, 27%, 76%, 1)",
+          "borderColor": "hsla(211, 20%, 52%, 1)",
           "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 0,
@@ -5840,7 +5168,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
         },
         {
           "backgroundColor": "hsla(211, 29%, 26%, 1)",
-          "borderColor": "hsla(211, 27%, 76%, 1)",
+          "borderColor": "hsla(211, 20%, 52%, 1)",
         },
       ]
     }
@@ -5877,7 +5205,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -5886,7 +5214,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5948,13 +5276,13 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     collapsable={false}
     data-blade-component="button"
     defaultBackgroundColor="hsla(211, 20%, 52%, 0.18)"
-    defaultBorderColor="hsla(211, 27%, 76%, 1)"
-    focusBackgroundColor="hsla(211, 20%, 52%, 0.18)"
-    focusBorderColor="hsla(211, 27%, 76%, 1)"
+    defaultBorderColor="hsla(211, 20%, 52%, 1)"
+    focusBackgroundColor="hsla(211, 20%, 52%, 0.32)"
+    focusBorderColor="hsla(211, 20%, 52%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(211, 20%, 52%, 0.18)"
-    hoverBorderColor="hsla(211, 27%, 76%, 1)"
+    hoverBackgroundColor="hsla(211, 20%, 52%, 0.32)"
+    hoverBorderColor="hsla(211, 20%, 52%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -5976,7 +5304,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
           "alignItems": "center",
           "alignSelf": "center",
           "backgroundColor": "hsla(211, 20%, 52%, 0.18)",
-          "borderColor": "hsla(211, 27%, 76%, 1)",
+          "borderColor": "hsla(211, 20%, 52%, 1)",
           "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -5996,34 +5324,12 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
         },
         {
           "backgroundColor": "hsla(211, 20%, 52%, 0.18)",
-          "borderColor": "hsla(211, 27%, 76%, 1)",
+          "borderColor": "hsla(211, 20%, 52%, 1)",
         },
       ]
     }
     type="button"
   >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
     <View
       alignItems="center"
       data-blade-component="base-box"
@@ -6055,7 +5361,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
         color="interactive.text.neutral.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -6064,7 +5370,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6211,7 +5517,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -6220,7 +5526,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6281,7 +5587,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(25, 90%, 48%, 0.18)"
+    defaultBackgroundColor="hsla(25, 90%, 48%, 0.09)"
     defaultBorderColor="hsla(25, 90%, 48%, 1)"
     focusBackgroundColor="hsla(25, 90%, 48%, 0.18)"
     focusBorderColor="hsla(25, 90%, 48%, 1)"
@@ -6309,7 +5615,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(25, 90%, 48%, 0.18)",
+          "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
           "borderColor": "hsla(25, 90%, 48%, 1)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -6329,35 +5635,13 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(25, 90%, 48%, 0.18)",
+          "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
           "borderColor": "hsla(25, 90%, 48%, 1)",
         },
       ]
     }
     type="button"
   >
-    <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
     <View
       alignItems="center"
       data-blade-component="base-box"
@@ -6389,7 +5673,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
         color="interactive.text.notice.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -6398,7 +5682,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6545,7 +5829,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -6554,7 +5838,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6617,11 +5901,11 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(150, 100%, 32%, 0.09)"
     defaultBorderColor="hsla(150, 100%, 32%, 1)"
-    focusBackgroundColor="hsla(150, 100%, 32%, 0.09)"
+    focusBackgroundColor="hsla(150, 100%, 32%, 0.18)"
     focusBorderColor="hsla(150, 100%, 32%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(150, 100%, 32%, 0.09)"
+    hoverBackgroundColor="hsla(150, 100%, 32%, 0.18)"
     hoverBorderColor="hsla(150, 100%, 32%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6671,28 +5955,6 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -6723,7 +5985,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
         color="interactive.text.positive.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -6732,7 +5994,474 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render primary color primary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="4px"
+    borderWidth="0px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
+    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
+    focusBorderColor="hsla(227, 100%, 59%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
+    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "zIndex": 1,
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+      zIndex={1}
+    >
+      <Text
+        accessible={true}
+        color="interactive.text.staticWhite.normal"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="semibold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(0, 0%, 100%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render primary color secondary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="4px"
+    borderWidth="1px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
+    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    focusBorderColor="hsla(227, 100%, 59%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(0, 0%, 100%, 0)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 1,
+          "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(0, 0%, 100%, 0)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "zIndex": 1,
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+      zIndex={1}
+    >
+      <Text
+        accessible={true}
+        color="interactive.text.primary.subtle"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="semibold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+      >
+        Pay Now
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<BaseButton /> should render primary color tertiary button 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="4px"
+    borderWidth="0px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(211, 20%, 52%, 0.09)"
+    defaultBorderColor="hsla(211, 27%, 76%, 1)"
+    focusBackgroundColor="hsla(211, 20%, 52%, 0.18)"
+    focusBorderColor="hsla(211, 27%, 76%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(211, 20%, 52%, 0.18)"
+    hoverBorderColor="hsla(211, 27%, 76%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+          "borderColor": "hsla(211, 27%, 76%, 1)",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "cursor": "pointer",
+          "display": "flex",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      alignItems="center"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      isHidden={false}
+      justifyContent="center"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": 0,
+            "flexDirection": "row",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "zIndex": 1,
+          },
+          {
+            "opacity": 1,
+          },
+        ]
+      }
+      zIndex={1}
+    >
+      <Text
+        accessible={true}
+        color="interactive.text.gray.normal"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="semibold"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6879,7 +6608,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={50}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={75}
         style={
           [
@@ -6888,7 +6617,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 18,
               "marginBottom": 0,
@@ -7035,7 +6764,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
         color="interactive.text.staticBlack.muted"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -7044,7 +6773,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -7161,28 +6890,6 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -7213,7 +6920,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -7222,7 +6929,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -7285,12 +6992,12 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     defaultBorderColor="hsla(0, 0%, 100%, 0.18)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    focusBorderColor="hsla(0, 0%, 100%, 0.18)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.32)"
+    focusBorderColor="hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    hoverBorderColor="hsla(0, 0%, 100%, 0.18)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.32)"
+    hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -7338,28 +7045,6 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -7390,7 +7075,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={100}
         style={
           [
@@ -7399,7 +7084,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -7546,7 +7231,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={50}
-        fontWeight="bold"
+        fontWeight="semibold"
         lineHeight={75}
         style={
           [
@@ -7555,7 +7240,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
               "letterSpacing": 0,
               "lineHeight": 18,
               "marginBottom": 0,

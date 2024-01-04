@@ -12,7 +12,7 @@ describe('<Code />', () => {
 
   it('should render Code with color', () => {
     const { toJSON } = renderWithTheme(
-      <Code isHighlighted={false} color="action.text.link.disabled">
+      <Code isHighlighted={false} color="interactive.text.primary.disabled">
         TEST_TOKEN
       </Code>,
     );

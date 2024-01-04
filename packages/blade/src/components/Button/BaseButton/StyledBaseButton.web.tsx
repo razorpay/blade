@@ -31,9 +31,6 @@ const StyledBaseButton = styled.button
         borderColor: props.hoverBorderColor,
       }),
     },
-    '&:hover .hoverlay, &:focus .hoverlay': {
-      opacity: 1,
-    },
     '&:active': {
       backgroundColor: props.focusBackgroundColor,
       ...(props.variant !== 'tertiary' && {

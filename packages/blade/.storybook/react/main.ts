@@ -18,6 +18,7 @@ const config: StorybookConfig = {
   stories: [
     '../../docs/guides/*.stories.mdx',
     '../../src/components/Box/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Amount/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Badge/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Card/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Icons/**/*.stories.@(ts|tsx|js|jsx)',
@@ -40,6 +41,7 @@ const config: StorybookConfig = {
     '../../src/components/BottomSheet/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Modal/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Radio/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Popover/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../docs/**/*.stories.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../src/**/*.stories.mdx',
