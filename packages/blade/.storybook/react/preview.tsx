@@ -92,6 +92,23 @@ export const parameters = {
         font-size: 14px;
         cursor: pointer;
       `,
+      a: styled.a`
+        color: ${theme.colorPrimary};
+        font-weight: 500;
+      `,
+      // Setting font-weight back to 600 in headings since storybook tries to override it
+      ...(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const).reduce<Record<`h${number}`, string>>(
+        (headingOverride, headingLevel) => {
+          headingOverride[headingLevel] = styled[headingLevel]`
+            & a {
+              font-weight: 600;
+            }
+          `;
+
+          return headingOverride;
+        },
+        {},
+      ),
     },
   },
 };
