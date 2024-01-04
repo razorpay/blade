@@ -61,7 +61,7 @@ it('should update token values contextually', async () => {
               <MapIcon color="interactive.icon.primary.normal" />
               <MapIcon color="surface.text.onSea.onSubtle" />
               <MapIcon color="interactive.icon.primary.normal" />
-              <MapIcon color="interactive.icon.gray.default" />
+              <MapIcon color="interactive.icon.gray.normal" />
             </>
           );"
   `);
