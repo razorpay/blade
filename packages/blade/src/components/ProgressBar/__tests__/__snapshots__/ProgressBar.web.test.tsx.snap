@@ -1504,7 +1504,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -1782,7 +1782,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
