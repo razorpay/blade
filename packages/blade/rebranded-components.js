@@ -1,4 +1,5 @@
 const rebrandedComponents = [
+  'Alert',
   'Amount',
   'BaseBox',
   'BaseText',

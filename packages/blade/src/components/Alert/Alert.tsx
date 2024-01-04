@@ -85,14 +85,6 @@ type AlertProps = {
   isFullWidth?: boolean;
 
   /**
-   * This prop is deprecated in favor of the `color` prop.
-   *
-   * @deprecated Use `color` instead
-   * @default neutral
-   */
-  intent?: FeedbackColors;
-
-  /**
    * Sets the color tone
    */
   color?: FeedbackColors;
