@@ -3,11 +3,11 @@ import type { StoryFn } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect, jest } from '@storybook/jest';
 import type { Mock } from 'jest-mock';
+import React from 'react';
 import type { CarouselProps } from '../';
 import { Carousel as CarouselComponent } from '../';
 import { CarouselExample } from '../Carousel.stories';
 import { Box } from '~components/Box';
-import React from 'react';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
