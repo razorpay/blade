@@ -17,7 +17,7 @@ const SelectorSupportText = ({
     <Box id={id} display="contents">
       <Text
         variant="caption"
-        size="medium"
+        size="small"
         as={isReactNative ? undefined : 'span'}
         color={isNegative ? 'feedback.text.negative.intense' : 'surface.text.gray.muted'}
       >

@@ -22,7 +22,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElem
     <BaseBox marginTop="spacing.2" id={id}>
       <FormHintWrapper>
         {Icon ? <Icon /> : null}
-        <Text as={isReactNative ? undefined : 'span'} color={color} size="medium" variant="caption">
+        <Text as={isReactNative ? undefined : 'span'} color={color} size="small" variant="caption">
           {children}
         </Text>
       </FormHintWrapper>
