@@ -216,6 +216,36 @@ it('should update <Heading variant="subheading"> to <Text size="small">', async 
   `);
 });
 
+it('should update <Text variant="caption" size="medium"> to <Text variant="caption" size="small">', async () => {
+  const result = await applyTransform(
+    transformer,
+    `
+        const App = () => (
+          <>
+            // size="medium" should not be changed if variant is not "caption"
+            <Text size="medium">  Lorem ipsum </Text>
+            <Text variant="caption">  Lorem ipsum </Text>
+            <Text variant="caption" size="medium"> Lorem ipsum </Text>
+            <Text variant="caption" size="medium"> Lorem ipsum <Text variant="caption" size="medium" color="brand.primary.500"> Lorem ipsum </Text> </Text>
+          </>
+        );
+      `,
+    { parser: 'tsx' },
+  );
+
+  expect(result).toMatchInlineSnapshot(`
+    "const App = () => (
+              <>
+                // size="medium" should not be changed if variant is not "caption"
+                <Text size="medium">  Lorem ipsum </Text>
+                <Text variant="caption">  Lorem ipsum </Text>
+                <Text variant="caption" size="small"> Lorem ipsum </Text>
+                <Text variant="caption" size="small"> Lorem ipsum <Text variant="caption" size="small" color="surface.text.primary.normal"> Lorem ipsum </Text> </Text>
+              </>
+            );"
+  `);
+});
+
 it('should update <Heading size="small"> to <Text size="large">', async () => {
   const result = await applyTransform(
     transformer,

@@ -218,6 +218,13 @@ Only use this if you're unable to run the codemod described above.
   + <Text size="large"> Hello </Text>
   ```
 
+- **The `caption` variant of the `Text` component now accepts only `size="small"`.**
+
+  ```diff
+  - <Text variant="caption" size="medium"> Hello </Text>
+  + <Text variant="caption" size="small"> Hello </Text>
+  ```
+
 - **The `weight` prop now accepts `"semibold"` instead of `"bold"` in the ` Text`, `Heading` , & `Display` components. The `Code` component continues to accept `"bold"`.**
 
   ```diff
