@@ -241,6 +241,7 @@ const Carousel = ({
   const [activeIndicator, setActiveIndicator] = React.useState(0);
   const [shouldPauseAutoplay, setShouldPauseAutoplay] = React.useState(false);
   const [startEndMargin, setStartEndMargin] = React.useState(0);
+  const [carouselContainerWidth, setCarouselContainerWidth] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isMobile = platform === 'onMobile';
   const [isTouchDown, setIsTouchDown] = React.useState(false);
@@ -301,6 +302,12 @@ const Carousel = ({
 
     setStartEndMargin(carouselItemLeft - carouselContainerLeft);
   }, [id, isResponsive, shouldAddStartEndSpacing]);
+
+  React.useLayoutEffect(() => {
+    if (!containerRef.current) return;
+    const carouselContainerWidth = containerRef.current.getBoundingClientRect().width;
+    setCarouselContainerWidth(carouselContainerWidth);
+  }, []);
 
   const goToSlideIndex = (slideIndex: number) => {
     if (!containerRef.current) return;
@@ -482,6 +489,7 @@ const Carousel = ({
       activeSlide,
       startEndMargin,
       shouldAddStartEndSpacing,
+      carouselContainerWidth,
     };
   }, [
     id,
@@ -492,6 +500,7 @@ const Carousel = ({
     totalNumberOfSlides,
     activeSlide,
     shouldAddStartEndSpacing,
+    carouselContainerWidth,
   ]);
 
   return (

@@ -18,6 +18,7 @@ type CarouselContextProps =
        */
       slideWidth?: number;
       activeSlide?: number;
+      carouselContainerWidth: number;
     })
   | null;
 const CarouselContext = React.createContext<CarouselContextProps>(null);
