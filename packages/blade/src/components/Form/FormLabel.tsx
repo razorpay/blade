@@ -101,6 +101,7 @@ const FormLabel = ({
       <Text
         variant="body"
         size={isLabelLeftPositioned ? 'medium' : 'small'}
+        color="surface.text.gray.subtle"
         truncateAfterLines={2}
         weight="semibold"
         wordBreak={isLabelLeftPositioned ? 'break-word' : undefined}
