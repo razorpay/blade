@@ -65,7 +65,7 @@ const FormLabel = ({
 
   if (necessityIndicator === 'optional') {
     necessityLabel = (
-      <Text variant="caption" size="small">
+      <Text variant="caption" size="small" color="surface.text.gray.muted">
         (optional)
       </Text>
     );
