@@ -18,11 +18,13 @@ import throttle from '~utils/lodashButBetter/throttle';
 import debounce from '~utils/lodashButBetter/debounce';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
+import { castWebType, makeMotionTime, useInterval, usePrevious } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import { useTheme } from '~components/BladeProvider';
+import { useFirstRender } from '~utils/useFirstRender';
 
 type ControlsProp = Required<
   Pick<
@@ -221,6 +223,29 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
   },
 );
 
+/**
+ * A custom hook which syncs an effect with a state
+ * While ignoring the first render & only running the effect when the state changes
+ */
+function useSyncUpdateEffect<T>(
+  effect: React.EffectCallback,
+  stateToSyncWith: T,
+  deps: React.DependencyList,
+) {
+  const isFirst = useFirstRender();
+  const prevState = usePrevious<T>(stateToSyncWith);
+
+  React.useEffect(() => {
+    if (!isFirst) {
+      // if the state is the same as the previous state
+      // we don't want to run the effect
+      if (prevState === stateToSyncWith) return;
+      return effect();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stateToSyncWith, ...deps]);
+}
+
 const Carousel = ({
   autoPlay,
   visibleItems = 1,
@@ -243,7 +268,6 @@ const Carousel = ({
   const [startEndMargin, setStartEndMargin] = React.useState(0);
   const containerRef = React.useRef<HTMLDivElement>(null);
   const isMobile = platform === 'onMobile';
-  const [isTouchDown, setIsTouchDown] = React.useState(false);
   const id = useId('carousel');
 
   useVerifyAllowedChildren({
@@ -381,7 +405,7 @@ const Carousel = ({
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 
-    const handleScroll = () => {
+    const handleScroll = debounce(() => {
       // carousel bounding box
       const carouselBB = carouselContainer.getBoundingClientRect();
       // By default we check the far left side of the screen
@@ -404,59 +428,14 @@ const Carousel = ({
       const goTo = Math.ceil(slideIndex / _visibleItems);
       setActiveIndicator(goTo);
       setActiveSlide(goTo);
-      // We don't want to trigger onChange when the user is actively dragging on the carousel
-      if (!isTouchDown) {
-        onChange?.(goTo);
-      }
-    };
-    const handleDebouncedScroll = debounce(handleScroll, 50);
+    }, 50);
 
-    // In firefox the scroll event is getting fired twice even with debounce
-    // And it is inconsistent between different devices, we tried Anurag's & Kamlesh's macbook
-    // In Anurag's macbook 100ms of debounce works fine but in Kamlesh's macbook it needs 500ms
-    // We suspect it could be an issue with how firefox is calling the scroll event.
-    // Fix:
-    // To fix this we are using the new scrollend event which is supported latest firefox & chrome
-    // and for older browsers falling back to the debounce method
-    const hasScrollEndSupport = 'onscrollend' in window;
-    if (hasScrollEndSupport) {
-      carouselContainer.addEventListener('scrollend', handleScroll);
-    } else {
-      carouselContainer.addEventListener('scroll', handleDebouncedScroll);
-    }
+    carouselContainer.addEventListener('scroll', handleScroll);
 
     return () => {
-      if (hasScrollEndSupport) {
-        carouselContainer.removeEventListener('scrollend', handleScroll);
-      } else {
-        carouselContainer.removeEventListener('scroll', handleDebouncedScroll);
-      }
+      carouselContainer?.removeEventListener('scroll', handleScroll);
     };
-  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing, onChange, isTouchDown]);
-
-  // Keep track of touch events
-  React.useEffect(() => {
-    const onTouchStart = () => {
-      setIsTouchDown(true);
-    };
-
-    const onTouchEnd = () => {
-      setIsTouchDown(false);
-    };
-
-    const carouselContainer = containerRef.current;
-    if (!carouselContainer) return;
-
-    carouselContainer.addEventListener('touchstart', onTouchStart);
-    carouselContainer.addEventListener('touchend', onTouchEnd);
-    carouselContainer.addEventListener('touchcancel', onTouchEnd);
-
-    return () => {
-      carouselContainer?.removeEventListener('touchstart', onTouchStart);
-      carouselContainer?.removeEventListener('touchend', onTouchEnd);
-      carouselContainer?.removeEventListener('touchcancel', onTouchEnd);
-    };
-  }, []);
+  }, [_visibleItems, isMobile, isResponsive, shouldAddStartEndSpacing]);
 
   // auto play
   useInterval(
@@ -493,6 +472,14 @@ const Carousel = ({
     activeSlide,
     shouldAddStartEndSpacing,
   ]);
+
+  useSyncUpdateEffect(
+    () => {
+      onChange?.(activeSlide);
+    },
+    activeSlide,
+    [onChange],
+  );
 
   return (
     <CarouselContext.Provider value={carouselContext}>

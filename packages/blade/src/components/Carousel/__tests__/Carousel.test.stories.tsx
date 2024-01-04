@@ -7,6 +7,7 @@ import type { CarouselProps } from '../';
 import { Carousel as CarouselComponent } from '../';
 import { CarouselExample } from '../Carousel.stories';
 import { Box } from '~components/Box';
+import React from 'react';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -106,8 +107,10 @@ export const TestAutofit: StoryFn<typeof CarouselComponent> = (props): React.Rea
 };
 
 TestAutofit.play = async ({ canvasElement }) => {
+  await sleep(1000);
   const { getByLabelText, queryByRole } = within(canvasElement);
   const lastIndicatorButton = getByLabelText('Slide 7');
+  await expect(onChange).not.toBeCalled();
   await userEvent.click(lastIndicatorButton);
   await sleep(1000);
   const nextButton = queryByRole('button', { name: 'Next Slide' });
@@ -153,6 +156,39 @@ TestVisibleItemsOnMobile.play = async ({ canvasElement }) => {
   await userEvent.click(nextButton);
   await sleep(1000);
   await expect(onChange).toBeCalledWith(1);
+};
+
+// Test for onChange fires multiple times on parent component update
+// https://github.com/razorpay/blade/issues/1863
+const multipleOnChange = jest.fn();
+export const TestOnChangeParentUpdate: StoryFn<typeof CarouselComponent> = (
+  props,
+): React.ReactElement => {
+  const [, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCount((prev) => prev++);
+    }, 100);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return <BasicCarousel {...props} onChange={multipleOnChange} />;
+};
+
+TestOnChangeParentUpdate.play = async ({ canvasElement }) => {
+  const { getByRole } = within(canvasElement);
+  await expect(multipleOnChange).not.toBeCalled();
+  const nextButton = getByRole('button', { name: 'Next Slide' });
+  const previousButton = getByRole('button', { name: 'Previous Slide' });
+  await userEvent.click(nextButton);
+  await sleep(1000);
+  await expect(multipleOnChange).toBeCalledWith(1);
+  await userEvent.click(previousButton);
+  await sleep(1000);
+  await expect(multipleOnChange).toBeCalledWith(0);
+  await expect(multipleOnChange).toBeCalledTimes(2);
 };
 
 export default {
