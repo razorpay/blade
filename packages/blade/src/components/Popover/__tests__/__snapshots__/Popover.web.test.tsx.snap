@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Popover /> should render 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,11 +22,11 @@ exports[`<Popover /> should render 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   z-index: 1100;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,7 +38,7 @@ exports[`<Popover /> should render 1`] = `
   gap: 12px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -47,125 +47,11 @@ exports[`<Popover /> should render 1`] = `
   border-radius: 9999px;
 }
 
-.c7 backgroundColor action background primary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,6%,94%,1);
-  focus: hsla(216,4%,89%,1);
-  active: hsla(216,4%,89%,1);
-  disabled: hsla(210,6%,94%,0.18);
-}
-
-.c7 backgroundColor action background secondary {
-  default: hsla(214,15%,18%,0);
-  hover: hsla(210,6%,94%,0.18);
-  focus: hsla(210,6%,94%,0.32);
-  active: hsla(210,6%,94%,0.32);
-  disabled: hsla(214,15%,18%,0);
-}
-
-.c7 backgroundColor action background tertiary {
-  default: hsla(210,6%,94%,0.09);
-  hover: hsla(210,6%,94%,0.18);
-  focus: hsla(210,6%,94%,0.32);
-  active: hsla(210,6%,94%,0.32);
-  disabled: hsla(210,6%,94%,0.09);
-}
-
-.c7 backgroundColor action border primary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,6%,94%,1);
-  focus: hsla(216,4%,89%,1);
-  active: hsla(216,4%,89%,1);
-  disabled: hsla(210,6%,94%,0.18);
-}
-
-.c7 backgroundColor action border secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action border tertiary {
-  default: hsla(214,15%,18%,0);
-  hover: hsla(214,15%,18%,0);
-  focus: hsla(214,15%,18%,0);
-  active: hsla(214,15%,18%,0);
-  disabled: hsla(214,15%,18%,0);
-}
-
-.c7 backgroundColor action text primary {
-  default: hsla(218,89%,51%,1);
-  hover: hsla(218,89%,51%,1);
-  focus: hsla(218,89%,51%,1);
-  active: hsla(218,89%,51%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text tertiary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text link {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,4%,89%,1);
-  focus: hsla(214,7%,81%,1);
-  active: hsla(214,7%,81%,1);
-  disabled: hsla(210,6%,94%,0.32);
-  visited: hsla(268,100%,79%,1);
-}
-
-.c7 backgroundColor action icon primary {
-  default: hsla(218,89%,51%,1);
-  hover: hsla(218,89%,51%,1);
-  focus: hsla(218,89%,51%,1);
-  active: hsla(218,89%,51%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon tertiary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon link {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,4%,89%,1);
-  focus: hsla(214,7%,81%,1);
-  active: hsla(214,7%,81%,1);
-  disabled: hsla(210,6%,94%,0.32);
-  visited: hsla(268,100%,79%,1);
-}
-
-.c5 {
+.c5.c5.c5.c5.c5 {
   width: 100%;
   max-width: 328px;
   position: relative;
-  background-color: #FFFFFF;
+  background-color: hsla(0,0%,100%,1);
   border-width: 1px;
   border-radius: 8px;
   border-color: hsla(216,19%,89%,1);
@@ -178,7 +64,7 @@ exports[`<Popover /> should render 1`] = `
   transition-duration: 200ms;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -205,21 +91,21 @@ exports[`<Popover /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:hover {
+.c8.c8.c8.c8.c8:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c8:focus-visible {
+.c8.c8.c8.c8.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c8:active {
+.c8.c8.c8.c8.c8:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -233,7 +119,7 @@ exports[`<Popover /> should render 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -246,7 +132,7 @@ exports[`<Popover /> should render 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -282,24 +168,24 @@ exports[`<Popover /> should render 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -308,14 +194,14 @@ exports[`<Popover /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
 <body>
   <div
     aria-hidden="true"
-    data-aria-hidden="true"
+    data-floating-ui-inert=""
   >
     <button
       aria-controls=":r0:"
@@ -345,8 +231,8 @@ exports[`<Popover /> should render 1`] = `
   >
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -410,9 +296,9 @@ exports[`<Popover /> should render 1`] = `
         </div>
         <svg
           aria-hidden="true"
-          fill="#FFFFFF"
+          fill="hsla(0, 0%, 100%, 1)"
           height="14"
-          style="position: absolute; pointer-events: none; top: 100%; left: 14px;"
+          style="position: absolute; pointer-events: none; top: 100%; left: -1px;"
           viewBox="0 0 14 14"
           width="16"
         >
@@ -425,7 +311,7 @@ exports[`<Popover /> should render 1`] = `
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="#FFFFFF"
+            stroke="hsla(0, 0%, 100%, 1)"
           />
           <clippath
             id=":r3:"
@@ -442,8 +328,8 @@ exports[`<Popover /> should render 1`] = `
     </div>
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -454,7 +340,7 @@ exports[`<Popover /> should render 1`] = `
 `;
 
 exports[`<Popover /> should render popover with custom zIndex 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -475,11 +361,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   z-index: 9999;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -491,7 +377,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   gap: 12px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -500,125 +386,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   border-radius: 9999px;
 }
 
-.c7 backgroundColor action background primary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,6%,94%,1);
-  focus: hsla(216,4%,89%,1);
-  active: hsla(216,4%,89%,1);
-  disabled: hsla(210,6%,94%,0.18);
-}
-
-.c7 backgroundColor action background secondary {
-  default: hsla(214,15%,18%,0);
-  hover: hsla(210,6%,94%,0.18);
-  focus: hsla(210,6%,94%,0.32);
-  active: hsla(210,6%,94%,0.32);
-  disabled: hsla(214,15%,18%,0);
-}
-
-.c7 backgroundColor action background tertiary {
-  default: hsla(210,6%,94%,0.09);
-  hover: hsla(210,6%,94%,0.18);
-  focus: hsla(210,6%,94%,0.32);
-  active: hsla(210,6%,94%,0.32);
-  disabled: hsla(210,6%,94%,0.09);
-}
-
-.c7 backgroundColor action border primary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,6%,94%,1);
-  focus: hsla(216,4%,89%,1);
-  active: hsla(216,4%,89%,1);
-  disabled: hsla(210,6%,94%,0.18);
-}
-
-.c7 backgroundColor action border secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action border tertiary {
-  default: hsla(214,15%,18%,0);
-  hover: hsla(214,15%,18%,0);
-  focus: hsla(214,15%,18%,0);
-  active: hsla(214,15%,18%,0);
-  disabled: hsla(214,15%,18%,0);
-}
-
-.c7 backgroundColor action text primary {
-  default: hsla(218,89%,51%,1);
-  hover: hsla(218,89%,51%,1);
-  focus: hsla(218,89%,51%,1);
-  active: hsla(218,89%,51%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text tertiary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action text link {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,4%,89%,1);
-  focus: hsla(214,7%,81%,1);
-  active: hsla(214,7%,81%,1);
-  disabled: hsla(210,6%,94%,0.32);
-  visited: hsla(268,100%,79%,1);
-}
-
-.c7 backgroundColor action icon primary {
-  default: hsla(218,89%,51%,1);
-  hover: hsla(218,89%,51%,1);
-  focus: hsla(218,89%,51%,1);
-  active: hsla(218,89%,51%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon secondary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon tertiary {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(0,0%,100%,1);
-  focus: hsla(0,0%,100%,1);
-  active: hsla(0,0%,100%,1);
-  disabled: hsla(210,6%,94%,0.32);
-}
-
-.c7 backgroundColor action icon link {
-  default: hsla(0,0%,100%,1);
-  hover: hsla(216,4%,89%,1);
-  focus: hsla(214,7%,81%,1);
-  active: hsla(214,7%,81%,1);
-  disabled: hsla(210,6%,94%,0.32);
-  visited: hsla(268,100%,79%,1);
-}
-
-.c5 {
+.c5.c5.c5.c5.c5 {
   width: 100%;
   max-width: 328px;
   position: relative;
-  background-color: #FFFFFF;
+  background-color: hsla(0,0%,100%,1);
   border-width: 1px;
   border-radius: 8px;
   border-color: hsla(216,19%,89%,1);
@@ -630,7 +402,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transform: translateY(4px);
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -657,21 +429,21 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8:hover {
+.c8.c8.c8.c8.c8:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c8:focus-visible {
+.c8.c8.c8.c8.c8:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c8:active {
+.c8.c8.c8.c8.c8:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -685,7 +457,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -698,7 +470,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -734,24 +506,24 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -760,14 +532,14 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
 <body>
   <div
     aria-hidden="true"
-    data-aria-hidden="true"
+    data-floating-ui-inert=""
   >
     <button
       aria-controls=":r8:"
@@ -797,8 +569,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   >
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -862,7 +634,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
         </div>
         <svg
           aria-hidden="true"
-          fill="#FFFFFF"
+          fill="hsla(0, 0%, 100%, 1)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%;"
           viewBox="0 0 14 14"
@@ -877,7 +649,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="#FFFFFF"
+            stroke="hsla(0, 0%, 100%, 1)"
           />
           <clippath
             id=":rb:"
@@ -894,8 +666,8 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
     </div>
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -906,7 +678,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
 `;
 
 exports[`<Popover /> should render with title,footer 1`] = `
-.c1 {
+.c1.c1.c1.c1.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -927,11 +699,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
   justify-content: center;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   z-index: 1100;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -943,7 +715,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   gap: 12px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -961,19 +733,19 @@ exports[`<Popover /> should render with title,footer 1`] = `
   gap: 8px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   padding-right: 12px;
 }
 
-.c10 {
+.c10.c10.c10.c10.c10 {
   margin-left: auto;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   width: 100%;
   max-width: 328px;
   position: relative;
-  background-color: #FFFFFF;
+  background-color: hsla(0,0%,100%,1);
   border-width: 1px;
   border-radius: 8px;
   border-color: hsla(216,19%,89%,1);
@@ -985,7 +757,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transform: translateY(4px);
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -1012,21 +784,21 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11:hover {
+.c11.c11.c11.c11.c11:hover {
   color: hsla(217,18%,45%,1);
 }
 
-.c11:focus-visible {
+.c11.c11.c11.c11.c11:focus-visible {
   outline: none;
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
   color: hsla(217,18%,45%,1);
 }
 
-.c11:active {
+.c11.c11.c11.c11.c11:active {
   color: hsla(217,18%,45%,1);
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1040,7 +812,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-.c9 {
+.c9.c9.c9.c9.c9 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 1rem;
@@ -1053,7 +825,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -1066,7 +838,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -1102,24 +874,24 @@ exports[`<Popover /> should render with title,footer 1`] = `
   position: relative;
 }
 
-.c0:hover {
+.c0.c0.c0.c0.c0:hover {
   background-color: hsla(223,95%,48%,1);
   border-color: hsla(223,95%,48%,1);
 }
 
-.c0:active {
+.c0.c0.c0.c0.c0:active {
   background-color: hsla(230,100%,42%,1);
   border-color: hsla(230,100%,42%,1);
 }
 
-.c0:focus-visible {
+.c0.c0.c0.c0.c0:focus-visible {
   background-color: hsla(227,100%,45%,1);
   border-color: hsla(227,100%,45%,1);
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c0 * {
+.c0.c0.c0.c0.c0 * {
   -webkit-transition-property: color,fill;
   transition-property: color,fill;
   -webkit-transition-duration: 150ms;
@@ -1128,14 +900,14 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   opacity: 1;
 }
 
 <body>
   <div
     aria-hidden="true"
-    data-aria-hidden="true"
+    data-floating-ui-inert=""
   >
     <button
       aria-controls=":r4:"
@@ -1165,8 +937,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
   >
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"
@@ -1258,7 +1030,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
         </div>
         <svg
           aria-hidden="true"
-          fill="#FFFFFF"
+          fill="hsla(0, 0%, 100%, 1)"
           height="14"
           style="position: absolute; pointer-events: none; top: 100%;"
           viewBox="0 0 14 14"
@@ -1273,7 +1045,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
           />
           <path
             d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-            stroke="#FFFFFF"
+            stroke="hsla(0, 0%, 100%, 1)"
           />
           <clippath
             id=":r7:"
@@ -1290,8 +1062,8 @@ exports[`<Popover /> should render with title,footer 1`] = `
     </div>
     <span
       aria-hidden="true"
-      data-aria-hidden="true"
       data-floating-ui-focus-guard=""
+      data-floating-ui-inert=""
       data-type="inside"
       role="button"
       style="border: 0px; height: 1px; margin: -1px; overflow: hidden; padding: 0px; position: fixed; white-space: nowrap; width: 1px; top: 0px; left: 0px;"

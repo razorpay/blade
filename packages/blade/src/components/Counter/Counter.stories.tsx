@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { CounterProps } from './Counter';
@@ -43,6 +43,7 @@ const Page = (): ReactElement => {
 export default {
   title: 'Components/Counter',
   component: CounterComponent,
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
@@ -51,7 +52,7 @@ export default {
   },
 } as Meta<CounterProps>;
 
-const CounterTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) => {
+const CounterTemplate: StoryFn<typeof CounterComponent> = ({ ...args }) => {
   return <CounterComponent {...args} />;
 };
 
@@ -72,7 +73,7 @@ Max.args = {
 };
 Max.storyName = 'Max';
 
-const CountersWithColorTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) => {
+const CountersWithColorTemplate: StoryFn<typeof CounterComponent> = ({ ...args }) => {
   const colors = ['positive', 'negative', 'notice', 'information', 'neutral', 'blue'] as const;
 
   return (

@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 
@@ -24,43 +24,32 @@ const Page = (): ReactElement => {
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { useState } from 'react';
-        import { Alert, Button, Box } from '@razorpay/blade/components';
+        import { Alert } from '@razorpay/blade/components';
 
         function App() {
-          const [showAlert, setShowAlert] = useState(false);
           return (
-            <Box>
-              <Button onClick={() => setShowAlert(!showAlert)}>
-                Click to be alerted!
-              </Button>
-              { 
-                showAlert 
-                ? <Alert 
-                    title="The Button is Clicked 👀" 
-                    description="Click the Button again to hide alert"
-                    marginTop="spacing.4"
-                    actions={{
-                      primary: {
-                        onClick: () => {
-                          alert('Alert from the alert hehe')
-                        },
-                        text: 'Primary Action'
-                      },
-                      secondary: {
-                        href: 'https://razorpay.com',
-                        target: '_blank',
-                        text: 'Go to Razorpay.com'
-                      }
-                    }}
-                  /> 
-                : null 
-              }
-            </Box>
-          )
+            <Alert
+              title="Alert Title"
+              description="Add your description message here"
+              marginTop="spacing.4"
+              actions={{
+                primary: {
+                  onClick: () => {
+                    alert('Alert from the alert hehe');
+                  },
+                  text: 'Primary Action',
+                },
+                secondary: {
+                  href: 'https://razorpay.com',
+                  target: '_blank',
+                  text: 'Go to Razorpay.com',
+                },
+              }}
+            />
+          );
         }
-
-        export default App;
+        
+        export default App;        
         `}
       </Sandbox>
     </StoryPageWrapper>
@@ -95,6 +84,7 @@ const meta: Meta<AlertProps> = {
       },
     },
   },
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     onDismiss: { action: 'Dismissed' },
@@ -106,7 +96,7 @@ const meta: Meta<AlertProps> = {
   },
 };
 
-const AlertTemplate: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+const AlertTemplate: StoryFn<typeof AlertComponent> = ({ ...args }) => {
   return <AlertComponent {...args} />;
 };
 
@@ -188,7 +178,7 @@ PrimaryActionOnly.parameters = {
   },
 };
 
-export const FullWidth: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+export const FullWidth: StoryFn<typeof AlertComponent> = ({ ...args }) => {
   return (
     <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">
@@ -213,7 +203,7 @@ FullWidth.parameters = {
   },
 };
 
-export const FullWidthWithActions: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+export const FullWidthWithActions: StoryFn<typeof AlertComponent> = ({ ...args }) => {
   return (
     <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">

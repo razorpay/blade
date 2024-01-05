@@ -10,7 +10,7 @@ type ListItemTextProps = Omit<TextProps<{ variant: TextVariant }>, 'variant' | '
 const _ListItemText = ({ children, testID, ...props }: ListItemTextProps): ReactElement => {
   const { size } = useListContext();
 
-  return <Text {...props} size={size} children={children} testID={testID} />;
+  return <Text as="span" {...props} size={size} children={children} testID={testID} />;
 };
 
 const ListItemText = assignWithoutSideEffects(_ListItemText, {

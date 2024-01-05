@@ -1,8 +1,8 @@
-import isNumber from 'lodash/isNumber';
-import getIn from 'lodash/get';
 import type { CSSObject } from 'styled-components';
 import type { TrackProps } from './types';
 import { switchColors, switchSizes } from './switchTokens';
+import getIn from '~utils/lodashButBetter/get';
+import isNumber from '~utils/lodashButBetter/isNumber';
 import { isReactNative } from '~utils';
 import type { Theme } from '~components/BladeProvider';
 import { makeSize } from '~utils/makeSize';

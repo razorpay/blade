@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title as StorybookTitle } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
@@ -17,6 +17,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="The Title Component makes a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use Title as marketing content on landing pages or to capture attention during onboarding."
       componentName="Title"
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147139',
@@ -57,10 +58,11 @@ const TitleStoryMeta: Meta<TitleProps> = {
       page: () => <Page />,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 };
 
-const TitleTemplate: ComponentStory<typeof TitleComponent> = (args) => {
+const TitleTemplate: StoryFn<typeof TitleComponent> = (args) => {
   return <TitleComponent {...args}>{args.children}</TitleComponent>;
 };
 
@@ -72,7 +74,7 @@ WithColor.args = {
 };
 
 const Sup = isReactNative() ? TitleComponent : 'sup';
-const WithMixedColorsTemplate: ComponentStory<typeof TitleComponent> = () => {
+const WithMixedColorsTemplate: StoryFn<typeof TitleComponent> = () => {
   return (
     <Box>
       <TitleComponent>
@@ -94,7 +96,7 @@ const WithMixedColorsTemplate: ComponentStory<typeof TitleComponent> = () => {
 
 export const WithMixedColors = WithMixedColorsTemplate.bind({});
 
-const AsPropTemplate: ComponentStory<typeof TitleComponent> = (args) => {
+const AsPropTemplate: StoryFn<typeof TitleComponent> = (args) => {
   return (
     <Box>
       <Text>

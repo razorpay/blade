@@ -8,10 +8,12 @@ import type {
   TouchableHighlightProps,
   GestureResponderEvent,
 } from 'react-native';
+import { Platform as RNPlatform } from 'react-native';
 import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
 import { Text } from '~components/Typography';
+import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
@@ -127,7 +129,10 @@ const getRNInputStyles = (
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
     }),
-    lineHeight: undefined,
+    lineHeight: RNPlatform.select({
+      android: makeSize(props.theme.typography.lineHeights[100]),
+      ios: undefined,
+    }),
     textAlignVertical: 'top',
     height: getInputHeight({
       isTextArea: props.isTextArea,
@@ -240,6 +245,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
   ref,
 ) => {
   const buttonValue = props.value ? props.value : props.placeholder;
+  const { theme } = useTheme();
   const commonProps = {
     onBlur: (): void => {
       // In certain cases like SelectInput, we want to ignore the blur animation when option item is clicked.
@@ -269,7 +275,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...accessibilityProps}
     >
       <Text
-        type={props.value ? 'subtle' : 'placeholder'}
+        type={props.value && !isDisabled ? 'subtle' : 'placeholder'}
         truncateAfterLines={1}
         textAlign={props.textAlign}
       >
@@ -285,8 +291,11 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       numberOfLines={numberOfLines}
       editable={!isDisabled}
       maxLength={maxCharacters}
+      placeholderTextColor={theme.colors.surface.text.placeholder.lowContrast}
       onFocus={(event): void => {
         handleOnFocus?.({ name, value: event?.nativeEvent.text });
+        // React Native does not have native onPress event on Input elements so for consistency of API we call it on onFocus which also gets triggered on clicks
+        handleOnClick?.({ name, value: event?.nativeEvent.text });
         setCurrentInteraction('active');
       }}
       onChangeText={(text): void => {

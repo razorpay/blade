@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<CheckboxGroup /> should render with help text 1`] = `
-.c9 {
+.c9.c9.c9.c9.c9 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -15,6 +15,9 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   border-width: 1.5px;
@@ -25,12 +28,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   border-color: hsla(214,18%,69%,1);
 }
 
-.c10 {
-  -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
-  animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+.c10.c10.c10.c10.c10 {
+  -webkit-animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -40,11 +43,11 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-bottom: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -63,7 +66,29 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   gap: 0px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c11.c11.c11.c11.c11 {
+  margin-left: 4px;
+}
+
+.c13.c13.c13.c13.c13 {
+  margin-bottom: 0px;
+}
+
+.c14.c14.c14.c14.c14 {
+  margin-top: 4px;
+}
+
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -77,19 +102,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   align-items: center;
 }
 
-.c11 {
-  margin-left: 4px;
-}
-
-.c13 {
-  margin-bottom: 0px;
-}
-
-.c14 {
-  margin-top: 4px;
-}
-
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -107,7 +120,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -120,7 +133,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -133,7 +146,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(216,16%,60%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.6875rem;
@@ -146,7 +159,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -163,7 +176,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -172,7 +185,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   margin-bottom: 2px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -189,12 +202,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
   word-wrap: normal;
 }
 
-.c8:focus-visible + div {
+.c8.c8.c8.c8.c8:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c8:hover + div {
+.c8.c8.c8.c8.c8:hover + div {
   border-color: hsla(214,18%,69%,1);
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -501,12 +514,12 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
           data-blade-component="base-box"
         >
           <span
-            class="c7"
+            class="c15"
             data-blade-component="base-box"
             style="word-break: break-all;"
           >
             <span
-              class="c15"
+              class="c16"
               data-blade-component="base-text"
             >
               Select one
@@ -520,7 +533,7 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
 `;
 
 exports[`<CheckboxGroup /> should render with label 1`] = `
-.c9 {
+.c9.c9.c9.c9.c9 {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -534,6 +547,9 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   width: 16px;
   height: 16px;
   border-width: 1.5px;
@@ -544,12 +560,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   border-color: hsla(214,18%,69%,1);
 }
 
-.c10 {
-  -webkit-animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
-  animation: gYwSSW 150ms cubic-bezier(0.17,0,1,1);
+.c10.c10.c10.c10.c10 {
+  -webkit-animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
+  animation: gYwSSW-450290765 150ms cubic-bezier(0.17,0,1,1);
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -559,11 +575,11 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   flex-direction: column;
 }
 
-.c1 {
+.c1.c1.c1.c1.c1 {
   margin-bottom: 4px;
 }
 
-.c2 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -582,7 +598,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   gap: 0px;
 }
 
-.c7 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -590,21 +606,17 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
-.c11 {
+.c11.c11.c11.c11.c11 {
   margin-left: 4px;
 }
 
-.c13 {
+.c13.c13.c13.c13.c13 {
   margin-bottom: 0px;
 }
 
-.c3 {
+.c3.c3.c3.c3.c3 {
   color: hsla(217,18%,45%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.75rem;
@@ -622,7 +634,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   -webkit-box-orient: vertical;
 }
 
-.c5 {
+.c5.c5.c5.c5.c5 {
   color: hsla(217,56%,17%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -635,7 +647,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   padding: 0;
 }
 
-.c12 {
+.c12.c12.c12.c12.c12 {
   color: hsla(216,27%,36%,1);
   font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   font-size: 0.875rem;
@@ -648,7 +660,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   padding: 0;
 }
 
-.c4 {
+.c4.c4.c4.c4.c4 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -665,7 +677,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c6 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -674,7 +686,7 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   margin-bottom: 2px;
 }
 
-.c8 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -691,12 +703,12 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
   word-wrap: normal;
 }
 
-.c8:focus-visible + div {
+.c8.c8.c8.c8.c8:focus-visible + div {
   outline: 1px solid hsla(220,30%,96%,1);
   box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
 }
 
-.c8:hover + div {
+.c8.c8.c8.c8.c8:hover + div {
   border-color: hsla(214,18%,69%,1);
   background-color: hsla(216,15%,54%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);

@@ -362,6 +362,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         onKeyPress={[Function]}
                         onSubmitEditing={[Function]}
                         placeholder="Select Option"
+                        placeholderTextColor="hsla(214, 18%, 69%, 1)"
                         secureTextEntry={false}
                         style={
                           [
@@ -931,12 +932,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           <View
                             accessibilityElementsHidden={true}
                             data-blade-component="base-box"
-                            hasDescription={false}
                             importantForAccessibility="no-hide-descendants"
+                            pointerEvents="none"
                             style={
                               [
-                                {},
                                 {
+                                  "paddingRight": 4,
                                   "pointerEvents": "none",
                                 },
                               ]
@@ -1008,14 +1009,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                   }
                                 >
                                   <View
-                                    alignItems="center"
                                     data-blade-component="base-box"
                                     display="flex"
                                     flexDirection="row"
                                     style={
                                       [
                                         {
-                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexDirection": "row",
                                         },
@@ -1037,6 +1036,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                             "borderStyle": "solid",
                                             "borderWidth": 1.5,
                                             "display": "flex",
+                                            "flexShrink": 0,
                                             "height": 16,
                                             "justifyContent": "center",
                                             "marginBottom": 2,
@@ -1219,12 +1219,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           <View
                             accessibilityElementsHidden={true}
                             data-blade-component="base-box"
-                            hasDescription={false}
                             importantForAccessibility="no-hide-descendants"
+                            pointerEvents="none"
                             style={
                               [
-                                {},
                                 {
+                                  "paddingRight": 4,
                                   "pointerEvents": "none",
                                 },
                               ]
@@ -1296,14 +1296,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                   }
                                 >
                                   <View
-                                    alignItems="center"
                                     data-blade-component="base-box"
                                     display="flex"
                                     flexDirection="row"
                                     style={
                                       [
                                         {
-                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexDirection": "row",
                                         },
@@ -1325,6 +1323,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                             "borderStyle": "solid",
                                             "borderWidth": 1.5,
                                             "display": "flex",
+                                            "flexShrink": 0,
                                             "height": 16,
                                             "justifyContent": "center",
                                             "marginBottom": 2,
@@ -1507,12 +1506,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           <View
                             accessibilityElementsHidden={true}
                             data-blade-component="base-box"
-                            hasDescription={false}
                             importantForAccessibility="no-hide-descendants"
+                            pointerEvents="none"
                             style={
                               [
-                                {},
                                 {
+                                  "paddingRight": 4,
                                   "pointerEvents": "none",
                                 },
                               ]
@@ -1584,14 +1583,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                   }
                                 >
                                   <View
-                                    alignItems="center"
                                     data-blade-component="base-box"
                                     display="flex"
                                     flexDirection="row"
                                     style={
                                       [
                                         {
-                                          "alignItems": "center",
                                           "display": "flex",
                                           "flexDirection": "row",
                                         },
@@ -1613,6 +1610,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                             "borderStyle": "solid",
                                             "borderWidth": 1.5,
                                             "display": "flex",
+                                            "flexShrink": 0,
                                             "height": 16,
                                             "justifyContent": "center",
                                             "marginBottom": 2,

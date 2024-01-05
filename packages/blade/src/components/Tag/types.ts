@@ -57,11 +57,13 @@ type TagProps = {
 type TagsGroupProps = {
   tags: string[];
   activeTagIndex: number;
+  isDisabled: TagProps['isDisabled'];
   onDismiss: ({ tagIndex, tagName }: { tagIndex: number; tagName: TagProps['children'] }) => void;
 };
 
 type AnimatedTagProps = {
   children: TagProps['children'];
+  isDisabled: TagProps['isDisabled'];
   currentTagIndex: number;
   activeTagIndex: number;
   onDismiss: TagsGroupProps['onDismiss'];

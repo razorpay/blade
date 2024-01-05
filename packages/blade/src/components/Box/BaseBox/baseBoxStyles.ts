@@ -1,6 +1,4 @@
 import type { CSSObject } from 'styled-components';
-import getIn from 'lodash/get';
-import isEmpty from 'lodash/isEmpty';
 import type {
   BaseBoxProps,
   MakeValueResponsive,
@@ -8,6 +6,8 @@ import type {
   ArrayOfMaxLength4,
 } from './types';
 import { getResponsiveValue } from './getResponsiveValue';
+import getIn from '~utils/lodashButBetter/get';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { Breakpoints } from '~tokens/global';
 import { breakpoints } from '~tokens/global';
 import { isReactNative, getMediaQuery } from '~utils';
@@ -222,9 +222,15 @@ const getAllProps = (
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
     pointerEvents: getResponsiveValue(props.pointerEvents),
     opacity: getResponsiveValue(props.opacity, breakpoint),
+    visibility: getResponsiveValue(props.visibility, breakpoint),
     ...(!isReactNative() && {
       boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
     }),
+
+    // Polygon support
+    transform: getResponsiveValue(props.transform as string, breakpoint),
+    transformOrigin: getResponsiveValue(props.transformOrigin, breakpoint),
+    clipPath: getResponsiveValue(props.clipPath, breakpoint),
   };
 };
 

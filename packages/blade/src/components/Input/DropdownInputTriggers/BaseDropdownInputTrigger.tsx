@@ -1,8 +1,8 @@
 import React from 'react';
-import isEmpty from 'lodash/isEmpty';
 import { BaseInput } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
 import type { BaseDropdownInputTriggerProps } from './types';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import { isReactNative } from '~utils';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
@@ -194,8 +194,9 @@ const _BaseDropdownInputTrigger = (
       }
 
       return getTagsGroup({
-        tags: selectedIndices.map((selectedIndex) => options[selectedIndex].title),
+        tags: selectedIndices.map((selectedIndex) => options[selectedIndex]?.title),
         activeTagIndex,
+        isDisabled: props.isDisabled,
         onDismiss: ({ tagIndex }) => {
           if (isTagDismissedRef.current) {
             isTagDismissedRef.current.value = true;
@@ -268,7 +269,12 @@ const _BaseDropdownInputTrigger = (
       suffix={props.suffix}
       autoFocus={props.autoFocus} // eslint-disable-line jsx-a11y/no-autofocus
       value={getValue()}
-      onClick={props.onTriggerClick}
+      onClick={(e) => {
+        if (props.isDisabled) {
+          return;
+        }
+        props.onTriggerClick?.(e);
+      }}
       onFocus={props.onFocus}
       onBlur={({ name }) => {
         props.onBlur?.({ name, value });
@@ -299,6 +305,7 @@ const _BaseDropdownInputTrigger = (
                 onTriggerClick();
               }
             }}
+            isDisabled={props.isDisabled}
             isOpen={isOpen}
           />
         )

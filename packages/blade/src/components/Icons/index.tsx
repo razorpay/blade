@@ -31,6 +31,8 @@ type WhiteIconColors = `white.action.icon.${DotNotationColorStringToken<
   Theme['colors']['white']['action']['icon']
 >}`;
 
+type BrandColors = `brand.${DotNotationColorStringToken<Theme['colors']['brand']>}`;
+
 export type IconSize = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 export type IconProps = {
   /**
@@ -44,6 +46,7 @@ export type IconProps = {
     | TextIconColors
     | BadgeIconColors
     | WhiteIconColors
+    | BrandColors
     | 'currentColor'; // currentColor is useful for letting the SVG inherit color property from its container
   size?: IconSize;
 } & StyledPropsBlade;
@@ -68,6 +71,7 @@ export { default as EditIcon } from './EditIcon';
 export { default as EyeIcon } from './EyeIcon';
 export { default as EyeOffIcon } from './EyeOffIcon';
 export { default as FileTextIcon } from './FileTextIcon';
+export { default as FileZipIcon } from './FileZipIcon';
 export { default as HistoryIcon } from './HistoryIcon';
 export { default as HomeIcon } from './HomeIcon';
 export { default as InfoIcon } from './InfoIcon';

@@ -3,18 +3,6 @@ export const paymentLightThemeData = {
     'ActionListItems Group': {
       key: '1e18a66e07ce9830b6a4e440a9b7c02ae55d069b',
     },
-    'ActionListItem/selectionType-Multi Select': {
-      key: '5c9e5713c2fc6f717b11d0d824ec7505c55d5251',
-    },
-    'ActionListItem/selectionType-Default Negative': {
-      key: 'd285cf127fe40b524f3906031f42278c9c73253f',
-    },
-    'ActionListItem/selectionType-Default': {
-      key: 'd30fd61864bce5c16aa8c313b583a1c46d8ada73',
-    },
-    'ActionListItem/selectionType-Single Select': {
-      key: 'd7db0adc428e86e680c04e46d2d01d87a082a15c',
-    },
     'Accordion Group': {
       key: 'a776cbd4cade27a19e056919a098bbe0dc5745f0',
     },
@@ -89,7 +77,7 @@ export const paymentLightThemeData = {
       key: '49cd227b1c67f7c13d432eadd4adbd59d2c93572',
     },
     Link: {
-      key: 'b1e9234a4e6a6fb424bf6cfa12b78c26b64f8d7a',
+      key: '5e6f414943e5678d148558d84c86d8b0f855506c',
     },
     Modal: {
       key: '042e23e06d6b21818f6ecfa2ef75f8112a5a4d32',
@@ -108,6 +96,9 @@ export const paymentLightThemeData = {
     },
     Spinner: {
       key: '8f7acd11dfa05673822adbeb67ab0672e7f7f07f',
+    },
+    Tab: {
+      key: 'db55687e4a62879996753916ca392dc929879280',
     },
     Tag: {
       key: '81164abfd2c6ffeae87ae0719cd52a1ce62d6473',
@@ -199,7 +190,7 @@ export const paymentLightThemeData = {
 
     // Button
     Button: {
-      key: 'fadfca88c14a46b3ae08ede9b1ac1dab7199ab36',
+      key: '2ecf46cde70a05e5bc54fc63e39e84ff647829ab',
     },
     IconButton: {
       key: 'da16ecb1aaad66d8e93a96a8f01ed231f623f1f9',
@@ -4169,18 +4160,6 @@ export const bankingDarkThemeData = {
     'ActionListItems Group': {
       key: '0245d993ec15fcebd8259d8bc13053012301e4d2',
     },
-    'ActionListItem/selectionType-Multi Select': {
-      key: '51dda34e84d19525269e80ed5b26f700ef8878e9',
-    },
-    'ActionListItem/selectionType-Default Negative': {
-      key: 'c2a0451be604aeaecd9bb86ef8403a3400d869a3',
-    },
-    'ActionListItem/selectionType-Default': {
-      key: 'efe8a10012ef38454dfb9cf1342c5624737d52bc',
-    },
-    'ActionListItem/selectionType-Single Select': {
-      key: 'c003f50f15cf54b457910745c20e0aed80bb63e1',
-    },
     'Accordion Group': {
       key: 'd9add274971a2f47efaf48045402c6d010dca28c',
     },
@@ -4251,7 +4230,7 @@ export const bankingDarkThemeData = {
       key: 'fee722721f71351976176095b6d4bb0ca2e5373d',
     },
     Link: {
-      key: '003d08a00aa841104a655caddf61a1651f85ff04',
+      key: '17c3d647a878f611bd90280690ec910668dd03c0',
     },
     Modal: {
       key: '3aaa96b87822d7f008a52dc59301e400974d4392',
@@ -4271,6 +4250,9 @@ export const bankingDarkThemeData = {
     },
     Spinner: {
       key: 'dd99c560705ce6335217785ce7f8efe5270c2856',
+    },
+    Tab: {
+      key: 'e3cdbde85ff121a7c049e504f695ab33b093e858',
     },
     Tag: {
       key: '2dcc0c0d31f0cc40b5b9c1e8a4b7866270511056',
@@ -4362,7 +4344,7 @@ export const bankingDarkThemeData = {
 
     // Button
     Button: {
-      key: 'd8dc4161e536291f8d85e9be5eedd1743ab29360',
+      key: 'd11d2ba8d66de2a3bc6085de156b269ae3046af8',
     },
     IconButton: {
       key: '2b1782dc5ec49a7574c6898db90d191616ea4ab5',

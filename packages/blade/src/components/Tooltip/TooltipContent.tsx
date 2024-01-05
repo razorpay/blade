@@ -31,6 +31,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
           weight="regular"
           contrast="high"
           color="feedback.text.neutral.highContrast"
+          wordBreak="break-word"
         >
           {children}
         </Text>

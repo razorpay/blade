@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Button } from '~components/Button';
@@ -15,6 +15,7 @@ const Page = (): ReactElement => {
       componentDescription="The SkipNav component lets users skip the navigation and jump to the main content of the page. Useful when you have navbars at the top and the user wants to jump directly to the main content."
       componentName="SkipNav"
       imports=""
+      apiDecisionLink={null}
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={400}>
@@ -59,6 +60,7 @@ const SkipNavStoryMeta: Meta = {
   title: 'Components/Accessibility/SkipNav',
   component: SkipNavLink,
   args: {},
+  tags: ['autodocs'],
   parameters: {
     docs: {
       page: () => <Page />,
@@ -66,7 +68,7 @@ const SkipNavStoryMeta: Meta = {
   },
 };
 
-const SkipNavTemplate: ComponentStory<typeof SkipNavLink> = () => {
+const SkipNavTemplate: StoryFn<typeof SkipNavLink> = () => {
   return (
     <>
       <SkipNavLink>Skip to content</SkipNavLink>

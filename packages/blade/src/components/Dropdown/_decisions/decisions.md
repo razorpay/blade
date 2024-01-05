@@ -24,6 +24,7 @@ Dropdown Menu displays a list of choices on temporary surfaces. They allow users
 
 - [Dropdown](#dropdown)
   - [SelectInput](#selectinput)
+  - [DropdownButton & DropdownLink](#dropdownbutton--dropdownlink)
   - [DropdownOverlay](#dropdownoverlay)
 - [ActionList](#actionlist)
   - [ActionList Parent Component](#actionlist-parent-component)
@@ -92,6 +93,69 @@ type SelectInputProps = {
 Would be ideal if we can render it as `button` with `aria-expanded` prop to handle state of dropdown open and close.
 
 Reference: https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-expanded#buttons
+
+### `DropdownButton` & `DropdownLink`
+
+```diff
+<Dropdown>
++ <DropdownButton /> // or <DropdownLink />
+  <DropdownOverlay>
+    <ActionList />
+  </DropdownOverlay>
+</Dropdown>
+```
+
+#### Pros
+
+- Encourages consumers to use Blade component for trigger
+- Easy to add common triggers like Button and Link for consumer without creating extra wrappers
+
+#### Cons
+
+- Requires new components to be created for different triggers on our end
+- Open / Close states are handled internally and consumer doesn’t have a control there
+
+#### Alternate API
+
+<details>
+<summary>Alternative API is to expose useDropdown hook and allow consumers to create triggers on their end</summary>
+
+##### `useDropdownTrigger` hook
+
+As suggested by Anurag Hazra, `useDropdownTrigger` hook
+
+```jsx
+// MyCustomTrigger.ts
+const MyCustomTrigger = (props) => {
+  const triggerProps = useDropdownTrigger();
+  return <MyCustomStyledComponent {...triggerProps} {...props} />;
+};
+
+// Usage
+<Dropdown>
+  <MyCustomTrigger />
+  <DropdownOverlay>
+    <ActionList />
+  </DropdownOverlay>
+</Dropdown>;
+```
+
+##### Pros
+
+- Can support all custom triggers on the user's end (E.g. if they want to trigger dropdown with button that is not from blade or link that is not from blade)
+
+##### Cons
+
+- The props that we spread on Trigger are accessible inside Dropdown context so consumers will have to create a separate trigger component in their repo to use the hook and then add it inside Dropdown. Check the example above.
+- Still won’t support some components from blade that do not expose all trigger-required props like `onKeyDown`, `onBlur`, forward refs with focus exposed, etc. So if the consumer is expecting to turn the `Box` component into a trigger, it won’t work.
+
+</details>
+
+#### Conclusion on DropdownButton and DropdownLink
+
+We decided to go with DropdownButton and DropdownLink due to mentioned pros above.
+
+Exposing hook like `useDropdownTrigger` can be explored in future if more custom trigger usecases show up.
 
 ### `DropdownOverlay`
 

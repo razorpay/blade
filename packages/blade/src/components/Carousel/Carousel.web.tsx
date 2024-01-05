@@ -6,23 +6,25 @@
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components';
 import React from 'react';
-import getIn from 'lodash/get';
-import throttle from 'lodash/throttle';
-import debounce from 'lodash/debounce';
 import { Indicators } from './Indicators/Indicators';
 import { NavigationButton } from './NavigationButton';
 import type { CarouselProps } from './types';
 import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
 import { getCarouselItemId } from './utils';
-import { CAROUSEL_AUTOPLAY_INTERVAL } from './constants';
+import { CAROUSEL_AUTOPLAY_INTERVAL, componentIds } from './constants';
+import debounce from '~utils/lodashButBetter/debounce';
+import throttle from '~utils/lodashButBetter/throttle';
+import getIn from '~utils/lodashButBetter/get';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, useInterval, useTheme } from '~utils';
+import { castWebType, makeMotionTime, useInterval } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useDidUpdate } from '~utils/useDidUpdate';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import { useTheme } from '~components/BladeProvider';
 
 type ControlsProp = Required<
   Pick<
@@ -245,6 +247,12 @@ const Carousel = ({
   const isMobile = platform === 'onMobile';
   const id = useId('carousel');
 
+  useVerifyAllowedChildren({
+    componentName: 'Carousel',
+    allowedComponents: [componentIds.CarouselItem],
+    children,
+  });
+
   const [isScrollAtStart, setScrollStart] = React.useState(
     // on mobile we do not want to render the overlay
     isMobile ? true : !shouldAddStartEndSpacing,
@@ -371,8 +379,6 @@ const Carousel = ({
 
   // Sync the indicators with scroll
   React.useEffect(() => {
-    // do not sync indicators on desktop, we are already in sync because we can only use the next/prev buttons
-    if (!isMobile) return;
     const carouselContainer = containerRef.current;
     if (!carouselContainer) return;
 

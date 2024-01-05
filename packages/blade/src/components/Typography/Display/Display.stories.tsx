@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title as StorybookTitle } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { Text } from '../Text';
@@ -16,6 +16,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="The Display component adds a strong visual touch. Utilize it to create eye-catching sections on your landing pages."
       componentName="Display"
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
       figmaURL={{
         paymentTheme:
           'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=13708%3A180902&mode=design&t=1sYKFDyXDXlugu2m-1',
@@ -51,6 +52,7 @@ const DisplayStoryMeta: Meta<DisplayProps> = {
     contrast: 'low',
     as: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     size: {
       options: ['small', 'medium', 'large', 'xlarge'],
@@ -72,7 +74,7 @@ const DisplayStoryMeta: Meta<DisplayProps> = {
   },
 };
 
-const DisplayTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
+const DisplayTemplate: StoryFn<typeof DisplayComponent> = (args) => {
   return <DisplayComponent {...args}>{args.children}</DisplayComponent>;
 };
 
@@ -84,7 +86,7 @@ WithColor.args = {
 };
 
 const Sup = isReactNative() ? DisplayComponent : 'sup';
-const WithMixedColorsTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
+const WithMixedColorsTemplate: StoryFn<typeof DisplayComponent> = (args) => {
   return (
     <Box>
       <DisplayComponent {...args}>
@@ -106,7 +108,7 @@ const WithMixedColorsTemplate: ComponentStory<typeof DisplayComponent> = (args) 
 
 export const WithMixedColors = WithMixedColorsTemplate.bind({});
 
-const AsPropTemplate: ComponentStory<typeof DisplayComponent> = (args) => {
+const AsPropTemplate: StoryFn<typeof DisplayComponent> = (args) => {
   return (
     <Box>
       <Text>

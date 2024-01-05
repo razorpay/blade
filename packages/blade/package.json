@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.14.2",
+  "version": "10.23.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -18,10 +18,14 @@
     "codemods",
     "components.d.ts",
     "components.js",
+    "components.native.js",
     "tokens.d.ts",
     "tokens.js",
+    "tokens.native.js",
     "utils.d.ts",
-    "utils.js"
+    "utils.js",
+    "utils.native.js",
+    "coverageUtils.d.ts"
   ],
   "keywords": [
     "design system",
@@ -30,42 +34,47 @@
     "razorpay",
     "blade"
   ],
-  "main": "./build/components/index.web.js",
   "exports": {
     "./components": {
       "react-native": {
-        "types": "./build/components/index.native.d.ts",
-        "default": "./build/components/index.native.js"
+        "types": "./components.d.ts",
+        "default": "./build/lib/native/components/index.js"
       },
       "default": {
-        "types": "./build/components/index.d.ts",
-        "development": "./build/components/index.development.web.js",
-        "production": "./build/components/index.production.web.js",
-        "default": "./build/components/index.development.web.js"
+        "types": "./components.d.ts",
+        "development": "./build/lib/web/development/components/index.js",
+        "production": "./build/lib/web/production/components/index.js",
+        "default": "./build/lib/web/production/components/index.js"
       }
     },
     "./tokens": {
       "react-native": {
-        "types": "./build/tokens/index.native.d.ts",
-        "default": "./build/tokens/index.native.js"
+        "types": "./tokens.d.ts",
+        "default": "./build/lib/native/tokens/index.js"
       },
       "default": {
-        "types": "./build/tokens/index.d.ts",
-        "development": "./build/tokens/index.development.web.js",
-        "production": "./build/tokens/index.production.web.js",
-        "default": "./build/tokens/index.development.web.js"
+        "types": "./tokens.d.ts",
+        "development": "./build/lib/web/development/tokens/index.js",
+        "production": "./build/lib/web/production/tokens/index.js",
+        "default": "./build/lib/web/production/tokens/index.js"
       }
     },
     "./utils": {
       "react-native": {
-        "types": "./build/utils/index.native.d.ts",
-        "default": "./build/utils/index.native.js"
+        "types": "./utils.d.ts",
+        "default": "./build/lib/native/utils/index.js"
       },
       "default": {
-        "types": "./build/utils/index.d.ts",
-        "development": "./build/utils/index.development.web.js",
-        "production": "./build/utils/index.production.web.js",
-        "default": "./build/utils/index.development.web.js"
+        "types": "./utils.d.ts",
+        "development": "./build/lib/web/development/utils/index.js",
+        "production": "./build/lib/web/production/utils/index.js",
+        "default": "./build/lib/web/production/utils/index.js"
+      }
+    },
+    "./coverageUtils": {
+      "default": {
+        "types": "./coverageUtils.d.ts",
+        "default": "./build/lib/web/production/utils/bladeCoverage.js"
       }
     }
   },
@@ -73,7 +82,7 @@
     "typecheck": "run-p types:typecheck:*",
     "test": "run-p test:*",
     "prepare": "yarn build",
-    "build": "run-s build:*",
+    "build": "run-s build:clean build:generate-types build:react-prod build:react-dev build:react-native build:clean-declarations build:generate-root-imports build:generate-css-variables build:clean-theme-bundle",
     "clearCache": "jest --clearCache",
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
@@ -82,28 +91,28 @@
     "types:generate-types:native": "ttsc -p ./tsconfig-generate-types.native.json",
     "types:typecheck:web": "tsc -p ./tsconfig-typecheck.web.json",
     "types:typecheck:native": "tsc -p ./tsconfig-typecheck.native.json",
-    "types:copy-declarations:web": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/web",
-    "types:copy-declarations:native": "copyfiles -u 1 \"src/**/*.d.ts\" build/types/native",
-    "build:generate-root-imports": "rollup -c && node ./scripts/generateRootImports.js",
-    "build:clean-declarations": "rm -rf build/types",
-    "build:react-dev": "FRAMEWORK=REACT NODE_ENV=development rollup -c",
-    "build:react-prod": "FRAMEWORK=REACT NODE_ENV=production rollup -c",
-    "build:react-native": "FRAMEWORK=REACT_NATIVE rollup -c",
-    "build:generate-css-variables": "GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
+    "types:copy-declarations:web": "copyfiles -u 1 build/types/web/components/**/*.d.ts build/components/**/*",
+    "types:copy-declarations:native": "copyfiles -u 1 build/types/native/components/**/*.d.ts build/components/**/*",
+    "build:generate-root-imports": "node ./scripts/generateRootImports.js",
+    "build:clean-declarations": "rm -rf build/generated-types",
+    "build:react-dev": "cross-env FRAMEWORK=REACT NODE_ENV=development rollup -c",
+    "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
+    "build:react-native": "cross-env FRAMEWORK=REACT_NATIVE rollup -c",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
+    "build:generate-css-variables": "cross-env GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
-    "react-native:storybook:android": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-android",
-    "react-native:storybook:ios": "yarn react-native:get-stories && FRAMEWORK=REACT_NATIVE react-native run-ios",
-    "react-native:storybook:start": "yarn react-native:get-stories && NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
+    "react-native:storybook:android": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-android",
+    "react-native:storybook:ios": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-ios",
+    "react-native:storybook:start": "yarn react-native:get-stories && cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
     "react": "yarn run react:storybook",
-    "react:storybook": "NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT start-storybook -c ./.storybook/react -p 9009",
-    "react:storybook:build": "NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT build-storybook -c ./.storybook/react -o storybook-site",
-    "test:react": "FRAMEWORK=REACT jest -c ./jest.web.config.js --shard=$SHARD --forceExit",
-    "test:react-native": "FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js --shard=$SHARD --forceExit",
-    "start:ios": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:ios",
-    "start:android": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android",
-    "start:native": "NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
-    "start:web": "NODE_OPTIONS=--openssl-legacy-provider yarn react",
+    "react:storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT storybook dev -c ./.storybook/react -p 9009",
+    "react:storybook:build": "cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT storybook build -c ./.storybook/react -o storybook-site",
+    "test:react": "cross-env FRAMEWORK=REACT jest -c ./jest.web.config.js --shard=$SHARD --forceExit",
+    "test:react-native": "cross-env FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js --shard=$SHARD --forceExit",
+    "start:ios": "cross-env NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:ios",
+    "start:android": "cross-env NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android",
+    "start:native": "cross-env NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:android react-native:storybook:ios",
+    "start:web": "cross-env NODE_OPTIONS=--openssl-legacy-provider yarn react",
     "start:all": "run-p start:native start:web",
     "watch:test": "run-p watch:test:*",
     "watch:test:react": "yarn test:react --watch --onlyChanged",
@@ -114,18 +123,20 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@babel/runtime": "7.20.0",
-    "@types/body-scroll-lock": "3.1.0",
-    "@use-gesture/react": "10.2.24",
-    "body-scroll-lock": "4.0.0-beta.0",
-    "use-presence": "1.1.0",
-    "@floating-ui/react": "0.24.2",
-    "@floating-ui/react-native": "0.10.0",
     "patch-package": "7.0.0",
+    "@babel/runtime": "7.20.0",
+    "body-scroll-lock-upgrade": "1.1.0",
+    "ts-deepmerge": "6.2.0",
+    "use-presence": "1.1.0",
+    "@use-gesture/react": "10.2.24",
+    "@floating-ui/react": "0.25.4",
+    "@emotion/react": "11.11.1",
+    "@table-library/react-table-library": "4.1.7",
     "tinycolor2": "1.6.0"
   },
   "devDependencies": {
     "chromatic": "6.22.0",
+    "@babel/cli": "7.23.0",
     "@babel/core": "7.20.2",
     "@babel/plugin-transform-react-jsx": "7.16.5",
     "@babel/plugin-transform-runtime": "7.16.5",
@@ -135,6 +146,9 @@
     "@codesandbox/sandpack-react": "1.16.0",
     "@gorhom/bottom-sheet": "4.4.6",
     "@gorhom/portal": "1.0.14",
+    "@floating-ui/react-native": "0.10.0",
+    "react-native-tab-view": "3.5.2",
+    "react-native-pager-view": "6.2.1",
     "@react-native/metro-config": "0.72.9",
     "@react-native-async-storage/async-storage": "1.19.1",
     "@react-native-community/datetimepicker": "5.0.1",
@@ -145,40 +159,44 @@
     "@rollup/plugin-node-resolve": "15.2.1",
     "@rollup/plugin-replace": "5.0.2",
     "@size-limit/preset-big-lib": "8.2.4",
-    "@storybook/addon-a11y": "6.5.16",
-    "@storybook/addon-actions": "6.5.16",
-    "@storybook/addon-controls": "6.5.16",
-    "@storybook/addon-docs": "6.5.16",
-    "@storybook/addon-essentials": "6.5.16",
-    "@storybook/addon-links": "6.5.16",
-    "@storybook/addon-ondevice-actions": "6.5.5",
-    "@storybook/addon-ondevice-backgrounds": "6.5.5",
-    "@storybook/addon-ondevice-controls": "6.5.5",
-    "@storybook/addon-ondevice-notes": "6.5.5",
-    "@storybook/design-system": "7.3.4",
-    "@storybook/node-logger": "6.5.16",
-    "@storybook/preset-create-react-app": "3.2.0",
-    "@storybook/react": "6.5.16",
-    "@storybook/react-native": "6.5.5",
+    "@storybook/addon-a11y": "7.1.0",
+    "@storybook/addon-actions": "7.1.0",
+    "@storybook/addon-controls": "7.1.0",
+    "@storybook/addon-docs": "7.1.0",
+    "@storybook/addon-essentials": "7.1.0",
+    "@storybook/addon-links": "7.1.0",
+    "@storybook/addon-ondevice-actions": "7.0.0-alpha.5",
+    "@storybook/addon-ondevice-backgrounds": "7.0.0-alpha.5",
+    "@storybook/addon-ondevice-controls": "7.0.0-alpha.5",
+    "@storybook/addon-ondevice-notes": "7.0.0-alpha.5",
+    "@storybook/design-system": "7.15.13",
+    "@storybook/node-logger": "7.1.0",
+    "@storybook/preset-create-react-app": "7.1.0",
+    "@storybook/react": "7.1.0",
+    "@storybook/react-native": "7.0.0-alpha.5",
+    "@storybook/react-webpack5": "7.1.0",
+    "@stackblitz/sdk": "1.9.0",
+    "storybook-react-router": "1.0.8",
+    "react-router-dom": "5.3.4",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/jest-native": "5.4.2",
     "@testing-library/react": "13.4.0",
     "@testing-library/react-hooks": "8.0.1",
     "@testing-library/react-native": "12.2.0",
     "@testing-library/user-event": "14.4.3",
-    "@types/body-scroll-lock": "3.1.0",
     "@types/dedent": "0.7.0",
     "@types/jest": "29.5.3",
     "@types/jest-axe": "3.5.5",
     "@types/jscodeshift": "0.11.6",
     "@types/jsdom": "20.0.1",
-    "@types/lodash": "4.14.168",
     "@types/react": "17.0.38",
     "@types/react-native": "0.72.2",
     "@types/react-test-renderer": "17.0.1",
     "@types/styled-components": "5.1.25",
     "@types/styled-components-react-native": "5.1.3",
     "@types/tinycolor2": "1.4.3",
+    "@types/react-router-dom": "5.3.3",
+    "@types/storybook-react-router": "1.0.5",
     "any-leaf": "1.2.2",
     "args-parser": "1.3.0",
     "babel-jest": "29.6.1",
@@ -188,6 +206,7 @@
     "bundlemon": "2.0.1",
     "chalk": "4.1.1",
     "copyfiles": "2.4.1",
+    "cross-env": "7.0.3",
     "dedent": "0.7.0",
     "eslint-plugin-mdx": "1.16.0",
     "execa": "5.0.0",
@@ -202,7 +221,6 @@
     "jest-useragent-mock": "0.1.1",
     "jscodeshift": "0.13.1",
     "jsdom": "20.0.2",
-    "lodash": "4.17.21",
     "metro-react-native-babel-preset": "0.76.7",
     "moniker": "0.1.2",
     "npm-run-all": "4.1.5",
@@ -213,42 +231,48 @@
     "react-native-gesture-handler": "2.9.0",
     "react-native-reanimated": "3.4.1",
     "react-native-svg": "12.3.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "5.0.1",
     "react-test-renderer": "18.2.0",
     "rollup": "3.28.1",
     "rollup-plugin-dts": "5.3.1",
     "rollup-plugin-peer-deps-external": "2.2.4",
     "size-limit": "8.2.4",
+    "storybook": "7.1.0",
     "style-dictionary": "3.7.1",
     "styled-components": "5.3.5",
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "jsdom-testing-mocks": "1.9.0",
     "postinstall-postinstall": "2.1.0",
+    "react-refresh": "0.11.0",
+    "react-docgen-typescript-plugin": "1.0.5",
+    "metro-config": "0.66.2",
+    "@babel/plugin-proposal-class-static-block": "7.21.0",
     "react-native-safe-area-context": "3.4.1",
     "ttypescript": "1.5.15",
-    "typescript-transform-paths": "3.4.6"
+    "typescript": "4.9",
+    "typescript-transform-paths": "3.4.6",
+    "@types/body-scroll-lock": "3.1.0",
+    "ramda": "0.29.1"
   },
   "peerDependencies": {
-    "@gorhom/bottom-sheet": "^4",
-    "@gorhom/portal": "1.0.14",
-    "@floating-ui/react": "0.24.2",
-    "@floating-ui/react-native": "0.10.0",
     "react": ">=18",
     "react-dom": ">=18",
-    "react-native": "^0.72",
-    "react-native-reanimated": "^3.4.1",
-    "react-native-svg": "^12.3.0",
     "styled-components": "^5",
-    "react-native-gesture-handler": "^2.9.0"
+    "react-native": "^0.72",
+    "@floating-ui/react-native": "^0.10.0",
+    "react-native-reanimated": "^3.4.1",
+    "react-native-tab-view": "^3.5.2",
+    "react-native-pager-view": "^6.2.1",
+    "react-native-svg": "^12.3.0",
+    "react-native-gesture-handler": "^2.9.0",
+    "@gorhom/bottom-sheet": "^4.4.6",
+    "@gorhom/portal": "^1.0.14"
   },
   "peerDependenciesMeta": {
     "react-native": {
       "optional": true
     },
     "react-native-reanimated": {
-      "optional": true
-    },
-    "@gorhom/bottom-sheet": {
       "optional": true
     }
   },
@@ -297,16 +321,16 @@
   "size-limit": [
     {
       "name": "Import Button only",
-      "path": "./build/components/index.production.web.js",
+      "path": "./build/lib/web/production/components/index.js",
       "import": "{ Button }",
-      "limit": "20 kb",
+      "limit": "30 kb",
       "running": false
     },
     {
       "name": "Import Text only",
-      "path": "./build/components/index.production.web.js",
+      "path": "./build/lib/web/production/components/index.js",
       "import": "{ Text }",
-      "limit": "15 kb",
+      "limit": "25 kb",
       "running": false
     }
   ]

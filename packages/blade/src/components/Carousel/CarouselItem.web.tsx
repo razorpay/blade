@@ -5,9 +5,12 @@ import styled from 'styled-components';
 import React from 'react';
 import type { CarouselProps } from './types';
 import { useCarouselContext } from './CarouselContext';
+import { componentIds } from './constants';
 import BaseBox from '~components/Box/BaseBox';
-import { useBreakpoint, useTheme } from '~utils';
+import { useTheme } from '~components/BladeProvider';
+import { useBreakpoint } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type StyledCarouselItemProps = Pick<CarouselProps, 'visibleItems' | 'shouldAddStartEndSpacing'> &
   Pick<CarouselItemProps, 'shouldHaveEndSpacing' | 'shouldHaveStartSpacing'> & {
@@ -34,7 +37,7 @@ const StyledCarouselItem = styled(BaseBox)<StyledCarouselItemProps>(
       ...(isResponsive && {
         width: '100%',
         scrollSnapAlign: isMobile || !shouldAddStartEndSpacing ? 'start' : 'center',
-        marginLeft: shouldHaveStartSpacing ? '100%' : 0,
+        marginLeft: shouldHaveStartSpacing ? '40%' : 0,
       }),
     };
   },
@@ -48,7 +51,7 @@ type CarouselItemProps = {
   shouldHaveEndSpacing?: boolean;
 };
 
-const CarouselItem = ({
+const _CarouselItem = ({
   children,
   shouldHaveStartSpacing,
   shouldHaveEndSpacing,
@@ -88,5 +91,9 @@ const CarouselItem = ({
     </StyledCarouselItem>
   );
 };
+
+const CarouselItem = assignWithoutSideEffects(_CarouselItem, {
+  componentId: componentIds.CarouselItem,
+});
 
 export { CarouselItem };

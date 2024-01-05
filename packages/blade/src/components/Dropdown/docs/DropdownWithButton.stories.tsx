@@ -167,7 +167,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
       <Box display="inline-flex" position="fixed" left="spacing.5" top="spacing.5">
         <Dropdown>
           <DropdownButton>Top Left Menu</DropdownButton>
-          <DropdownOverlay>
+          <DropdownOverlay width="70%">
             <ActionList surfaceLevel={3}>
               <ActionListItem title="Apples" value="Apples" />
               <ActionListItem title="Appricots" value="Appricots" />

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import { action } from '@storybook/addon-actions';
@@ -41,7 +41,7 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole>
+      <Sandbox>
         {`
         import { Popover, Button } from '@razorpay/blade/components'
         
@@ -65,6 +65,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Popover',
   component: Popover,
+  tags: ['autodocs'],
   argTypes: {
     titleLeading: {
       name: 'titleLeading',
@@ -154,7 +155,7 @@ const FooterContent = React.forwardRef<HTMLButtonElement, { onClick?: () => void
   },
 );
 
-const PopoverTemplate: ComponentStory<typeof Popover> = (args) => {
+const PopoverTemplate: StoryFn<typeof Popover> = (args) => {
   const LeadingIcon = iconMap[args.titleLeading as string]!;
   return (
     <Center>
@@ -190,7 +191,7 @@ Uncontrolled.args = {
   },
 };
 
-export const Controlled: ComponentStory<typeof Popover> = (args) => {
+export const Controlled: StoryFn<typeof Popover> = (args) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const LeadingIcon = iconMap[args.titleLeading as string]!;
   return (
@@ -225,7 +226,7 @@ Controlled.args = {
   titleLeading: 'SettlementsIcon',
 };
 
-const PlacementTemplate: ComponentStory<typeof Popover> = (args, context) => {
+const PlacementTemplate: StoryFn<typeof Popover> = (args, context) => {
   const allPlacements = [
     'top',
     'top-start',
@@ -280,7 +281,7 @@ Placement.args = {
   content: <Content />,
 };
 
-export const PopoverInteractiveWrapperTemplate: ComponentStory<typeof Popover> = (args) => {
+export const PopoverInteractiveWrapperTemplate: StoryFn<typeof Popover> = (args) => {
   const LeadingIcon = iconMap[args.titleLeading as string]!;
   return (
     <>
@@ -423,7 +424,7 @@ const CustomTriggerDocs = () => {
   );
 };
 
-export const CustomTrigger: ComponentStory<typeof Popover> = (args) => {
+export const CustomTrigger: StoryFn<typeof Popover> = (args) => {
   const LeadingIcon = iconMap[args.titleLeading as string]!;
 
   return (
@@ -455,7 +456,7 @@ CustomTrigger.args = {
   titleLeading: 'SettlementsIcon',
 };
 
-export const InitialFocus: ComponentStory<typeof Popover> = (args) => {
+export const InitialFocus: StoryFn<typeof Popover> = (args) => {
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const LeadingIcon = iconMap[args.titleLeading as string]!;
   return (
@@ -495,7 +496,7 @@ const StoriesPanelSwitchAlert = ({ shouldShow }: { shouldShow: boolean }) => {
   ) : null;
 };
 
-export const ProductUseCase1: ComponentStory<typeof Popover> = (args, context) => {
+export const ProductUseCase1: StoryFn<typeof Popover> = (args, context) => {
   const isInDocsMode = context.viewMode === 'docs';
   const integrateButtonRef = React.useRef<HTMLInputElement>(null);
   const [isOpen, setIsOpen] = React.useState(false);
@@ -568,7 +569,7 @@ export const ProductUseCase1: ComponentStory<typeof Popover> = (args, context) =
 };
 ProductUseCase1.storyName = 'Product Usecase: Input with action';
 
-export const ProductUseCase2: ComponentStory<typeof Popover> = (args, context) => {
+export const ProductUseCase2: StoryFn<typeof Popover> = (args, context) => {
   const isInDocsMode = context.viewMode === 'docs';
   const [isOpen, setIsOpen] = React.useState(true);
   const [isDarkMode, setIsDarkMode] = React.useState(false);
@@ -640,7 +641,7 @@ export const ProductUseCase2: ComponentStory<typeof Popover> = (args, context) =
 };
 ProductUseCase2.storyName = 'Product Usecase: Dark Mode';
 
-export const ProductUseCase3: ComponentStory<typeof Popover> = (args, context) => {
+export const ProductUseCase3: StoryFn<typeof Popover> = (args, context) => {
   const [isOpen, setIsOpen] = React.useState(true);
   const isInDocsMode = context.viewMode === 'docs';
 

@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 
@@ -14,6 +14,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentName="IconButton"
       componentDescription="Useful for making clickable icons. For example - close button for modals, inputs, etc."
+      apiDecisionLink={null}
       figmaURL={{
         bankingTheme:
           'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195699&t=b5e9P6qSqxDsq2rz-4',
@@ -51,6 +52,7 @@ const meta: Meta<IconButtonProps> = {
     contrast: 'low',
     accessibilityLabel: 'Close',
   },
+  tags: ['autodocs'],
   argTypes: {
     ...getBladeCommonEventArgTypes(),
     onClick: { action: 'onClick' },
@@ -67,7 +69,7 @@ const meta: Meta<IconButtonProps> = {
   },
 };
 
-const IconButtonTemplate: ComponentStory<typeof IconButtonComponent> = ({
+const IconButtonTemplate: StoryFn<typeof IconButtonComponent> = ({
   icon = 'CloseIcon',
   ...args
 }) => {

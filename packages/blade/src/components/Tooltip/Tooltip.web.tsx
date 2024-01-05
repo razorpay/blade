@@ -97,8 +97,8 @@ const Tooltip = ({
       {/* Cloning the trigger children to enhance it with ref and event handler */}
       {React.cloneElement(children, {
         ref: refs.setReference,
-        ...mergeProps(children.props, getReferenceProps()),
         ...makeAccessible({ label: content }),
+        ...mergeProps(children.props, getReferenceProps()),
       })}
       {isMounted && (
         <FloatingPortal>

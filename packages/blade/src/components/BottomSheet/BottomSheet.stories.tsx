@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import isChromatic from 'chromatic/isChromatic';
 import type { BottomSheetHeaderProps, BottomSheetProps } from './';
@@ -14,6 +14,7 @@ import {
 } from './';
 
 import {
+  ArrowRightIcon,
   CheckIcon,
   ClockIcon,
   CloseIcon,
@@ -46,6 +47,7 @@ import { Link } from '~components/Link';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { isReactNative } from '~utils';
+import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 
 const Page = (): React.ReactElement => {
   return (
@@ -74,7 +76,7 @@ const Page = (): React.ReactElement => {
       }}
     >
       <Title>Usage</Title>
-      <Sandbox showConsole editorHeight={600}>
+      <Sandbox editorHeight={600}>
         {`
           import React from 'react';
           import { 
@@ -133,6 +135,20 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
+      <Title>iOS Safari Specific Setup</Title>
+      <Text marginTop="spacing.4">
+        When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
+        `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS
+        safari where it won't compute the height of the body correctly.
+      </Text>
+      <SandboxHighlighter showLineNumbers={false} theme="light">
+        {`
+          body {
+            width: 100%;
+            height: 100%;
+          }
+        `}
+      </SandboxHighlighter>
     </StoryPageWrapper>
   );
 };
@@ -168,6 +184,7 @@ export default {
     titleSuffix: undefined,
     trailing: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     showBackButton: {
       defaultValue: false,
@@ -218,14 +235,57 @@ export default {
   },
 } as Meta<StoryControlProps>;
 
-const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...args }) => {
-  // `!!isChramatic` is not readable hence disabling the eslint rule
-  // eslint-disable-next-line no-unneeded-ternary
-  const [isOpen, setIsOpen] = React.useState(isChromatic() ? true : false);
+const BottomSheetTemplate: StoryFn<typeof BottomSheetComponent> = ({ ...args }) => {
+  const [isOpen, setIsOpen] = React.useState(isReactNative() ? false : isChromatic());
 
   return (
     <BaseBox>
       <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
+      <Text marginY="spacing.11">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+        galley of type and scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+        It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+        passages, and more recently with desktop publishing software like Aldus PageMaker including
+        versions of Lorem Ipsum.
+      </Text>
       <BottomSheetComponent
         {...args}
         isOpen={isOpen}
@@ -295,7 +355,7 @@ const BottomSheetTemplate: ComponentStory<typeof BottomSheetComponent> = ({ ...a
 
 export const Default = BottomSheetTemplate.bind({});
 
-const WithHeaderFooterTemplate: ComponentStory<any> = (args: StoryControlProps) => {
+const WithHeaderFooterTemplate: StoryFn<any> = (args: StoryControlProps) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -341,7 +401,7 @@ WithHeaderFooter.args = {
   showBackButton: false,
 };
 
-const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithDropdownSingleSelectTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   return (
     <Dropdown selectionType="single">
       <SelectInput label="Sort Dishes" />
@@ -383,7 +443,7 @@ const WithDropdownSingleSelectTemplate: ComponentStory<typeof BottomSheetCompone
 
 export const WithDropdownSingleSelect = WithDropdownSingleSelectTemplate.bind({});
 
-const WithDropdownButtonTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithDropdownButtonTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [status, setStatus] = React.useState<string | undefined>('approve');
 
   return (
@@ -436,7 +496,7 @@ const WithDropdownButtonTemplate: ComponentStory<typeof BottomSheetComponent> = 
 
 export const WithDropdownButton = WithDropdownButtonTemplate.bind({});
 
-const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithDropdownMultiSelectTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   return (
     <Dropdown selectionType="multiple">
       <SelectInput label="Cuisines Filter" />
@@ -478,7 +538,7 @@ const WithDropdownMultiSelectTemplate: ComponentStory<typeof BottomSheetComponen
 
 export const WithDropdownMultiSelect = WithDropdownMultiSelectTemplate.bind({});
 
-const WithDropdownSectionsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithDropdownSectionsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   return (
     <Dropdown selectionType="multiple">
       <SelectInput label="Cuisines Filter" />
@@ -530,7 +590,7 @@ const WithDropdownSectionsTemplate: ComponentStory<typeof BottomSheetComponent> 
 
 export const WithDropdownSectionsSelect = WithDropdownSectionsTemplate.bind({});
 
-const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [isFirstOpen, setFirstOpen] = React.useState(false);
   const [isSecondOpen, setSecondOpen] = React.useState(false);
   const [isThirdOpen, setThirdOpen] = React.useState(false);
@@ -693,7 +753,7 @@ const BottomSheetStackingTemplate: ComponentStory<typeof BottomSheetComponent> =
 
 export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
 
-const InitialFocusTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const InitialFocusTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const initialFocusRef = React.useRef<HTMLButtonElement>(null);
 
@@ -770,7 +830,7 @@ const HeadingBanner = (): React.ReactElement => {
   );
 };
 
-const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const ZeroPaddingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -808,7 +868,7 @@ const ZeroPaddingTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
 
 export const ZeroPadding = ZeroPaddingTemplate.bind({});
 
-const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const fruites = [
     'Apple',
     'Apricot',
@@ -946,7 +1006,7 @@ const SnapPointsTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
 
 export const CustomSnapPoints = SnapPointsTemplate.bind({});
 
-const WithOTPInputTemplate: ComponentStory<typeof BottomSheetComponent> = () => {
+const WithOTPInputTemplate: StoryFn<typeof BottomSheetComponent> = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
 
@@ -996,3 +1056,126 @@ const WithOTPInputTemplate: ComponentStory<typeof BottomSheetComponent> = () => 
 };
 
 export const WithOTPInput = WithOTPInputTemplate.bind({});
+
+type ValidationState = 'none' | 'success' | 'error';
+
+interface Props {
+  isOpen?: boolean;
+  onDismiss: () => void;
+  onCtaClick: (selectedPhoneNumber: string) => void;
+  isCtaLoading?: boolean;
+  phoneNumbers: Array<string>;
+}
+
+// Example by: https://github.com/razorpay/blade/issues/1777
+const SimSelectionBottomSheet: React.FC<Props> = ({
+  isOpen = false,
+  onCtaClick,
+  isCtaLoading = false,
+  phoneNumbers = [],
+  onDismiss,
+}) => {
+  const [isCtaDisabled, setIsCtaDisabled] = React.useState(true);
+  const [selectedPhoneNumber, setSelectedPhoneNumber] = React.useState<string | undefined>(
+    undefined,
+  );
+  const [simSelectionError, setSimSelectionError] = React.useState<string | undefined>(undefined);
+
+  // should be able to handle content changes inside bottomsheet
+  const handleSimChange = ({ value }: { value: string }): void => {
+    setSimSelectionError(undefined);
+    setSelectedPhoneNumber(value);
+    setIsCtaDisabled(false);
+  };
+
+  const handleCtaClick = (): void => {
+    if (selectedPhoneNumber !== undefined && selectedPhoneNumber.length > 0) {
+      setSimSelectionError(undefined);
+      setIsCtaDisabled(false);
+      onCtaClick(selectedPhoneNumber);
+    } else {
+      setSimSelectionError('Please select a SIM to verify mobile number');
+      setIsCtaDisabled(true);
+    }
+  };
+
+  const radioGroupValidationState: ValidationState = simSelectionError ? 'error' : 'none';
+  return (
+    <Box>
+      <BottomSheetComponent isOpen={isOpen} onDismiss={onDismiss}>
+        <BottomSheetHeader title="Select SIM" showBackButton onBackButtonClick={onDismiss} />
+        <BottomSheetBody>
+          <RadioGroup
+            name="select-sim"
+            label="Please select a SIM to verify your mobile number"
+            value={selectedPhoneNumber}
+            onChange={handleSimChange}
+            size="medium"
+            errorText={simSelectionError}
+            validationState={radioGroupValidationState}
+          >
+            {phoneNumbers.map((number, index) => {
+              return (
+                <Radio value={number} key={`sim-${index}`}>
+                  {number}
+                </Radio>
+              );
+            })}
+          </RadioGroup>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="space-between"
+            gap="spacing.4"
+          >
+            <Button
+              icon={ArrowRightIcon}
+              iconPosition="right"
+              isLoading={isCtaLoading}
+              isDisabled={isCtaDisabled}
+              isFullWidth
+              onClick={handleCtaClick}
+            >
+              Verify
+            </Button>
+            <Button
+              onClick={() => {
+                // should be able to close the bottom sheet
+                onDismiss();
+              }}
+              variant="secondary"
+              isFullWidth
+            >
+              Close
+            </Button>
+          </Box>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </Box>
+  );
+};
+
+const ProductUseCase1Example: StoryFn<typeof BottomSheetComponent> = () => {
+  // should be initially opened
+  const [isOpen, setIsOpen] = React.useState(true);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <SimSelectionBottomSheet
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        phoneNumbers={['1234567890', '0987654321']}
+        onCtaClick={(selectedPhoneNumber) => {
+          console.log('selectedPhoneNumber', selectedPhoneNumber);
+        }}
+      />
+    </>
+  );
+};
+
+export const ProductUseCase1 = ProductUseCase1Example.bind({});

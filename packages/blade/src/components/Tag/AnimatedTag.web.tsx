@@ -10,7 +10,8 @@ import {
   TAG_OPACITY_START,
 } from './tagAnimationConfig';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime, makeSize, useTheme } from '~utils';
+import { useTheme } from '~components/BladeProvider';
+import { makeMotionTime, makeSize } from '~utils';
 
 const tagDissappearKeyframe = keyframes`
   0% {
@@ -49,6 +50,7 @@ const AnimatedTagContainer = styled(BaseBox)<{
 const AnimatedTag = ({
   children,
   currentTagIndex,
+  isDisabled,
   activeTagIndex,
   onDismiss,
 }: AnimatedTagProps): React.ReactElement => {
@@ -83,6 +85,7 @@ const AnimatedTag = ({
         }}
         marginRight="spacing.3"
         marginY="spacing.2"
+        isDisabled={isDisabled}
       >
         {children}
       </Tag>

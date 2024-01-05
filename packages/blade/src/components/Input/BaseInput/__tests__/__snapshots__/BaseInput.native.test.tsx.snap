@@ -226,6 +226,7 @@ exports[`<BaseInput /> should render 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           onSubmitEditing={[Function]}
+          placeholderTextColor="hsla(214, 18%, 69%, 1)"
           secureTextEntry={false}
           style={
             [
@@ -620,7 +621,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           data-blade-component="styled-base-input"
           editable={true}
           hasTags={false}
-          id="name-31-input-32"
+          id="name-49-input-50"
           isFocused={false}
           isTextArea={false}
           keyboardType="default"
@@ -633,6 +634,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
           onKeyPress={[Function]}
           onSubmitEditing={[Function]}
           placeholder="First Last"
+          placeholderTextColor="hsla(214, 18%, 69%, 1)"
           secureTextEntry={false}
           style={
             [

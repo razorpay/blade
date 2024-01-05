@@ -1,5 +1,5 @@
 /* eslint-disable react-native-a11y/has-valid-accessibility-descriptors */
-import type { ComponentStory } from '@storybook/react';
+import type { StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import { SelectInput } from './SelectInput';
@@ -8,7 +8,7 @@ import iconMap from '~components/Icons/iconMap';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Dropdown, DropdownFooter, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem } from '~components/ActionList';
+import { ActionList, ActionListItem, ActionListSection } from '~components/ActionList';
 import { Box } from '~components/Box';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
 import { Button } from '~components/Button';
@@ -52,6 +52,7 @@ export default {
     prefix: '',
     suffix: '',
   },
+  tags: ['autodocs'],
   argTypes: {
     defaultValue: {
       table: {
@@ -243,7 +244,7 @@ export default {
   },
 };
 
-const AutoCompleteTemplate: ComponentStory<typeof AutoComplete> = ({ icon, ...args }) => {
+const AutoCompleteTemplate: StoryFn<typeof AutoComplete> = ({ icon, ...args }) => {
   return (
     <Box minHeight="150px" padding="spacing.5">
       <Dropdown>
@@ -262,10 +263,16 @@ const AutoCompleteTemplate: ComponentStory<typeof AutoComplete> = ({ icon, ...ar
 };
 
 export const Default = AutoCompleteTemplate.bind({});
-// Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.args = {
   label: 'City',
   placeholder: 'Select City',
+};
+
+export const Disabled = AutoCompleteTemplate.bind({});
+Disabled.args = {
+  label: 'City',
+  placeholder: 'Select City',
+  isDisabled: true,
 };
 
 export const InternalAutoCompleteUncontrolled = (): React.ReactElement => {
@@ -489,6 +496,27 @@ export const InternalControlledInputValue = (): React.ReactElement => {
             <ActionListItem title="Mumbai" value="mumbai" />
             <ActionListItem title="Pune" value="pune" />
             <ActionListItem title="Bangalore" value="bangalore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+};
+
+export const InternalWithSectionFiltering = (): React.ReactElement => {
+  return (
+    <Box>
+      <Dropdown>
+        <AutoComplete label="Select City" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListSection title="Maharashtra">
+              <ActionListItem title="Mumbai" value="mumbai" />
+              <ActionListItem title="Pune" value="pune" />
+            </ActionListSection>
+            <ActionListSection title="Karnataka">
+              <ActionListItem title="Bangalore" value="bangalore" />
+            </ActionListSection>
           </ActionList>
         </DropdownOverlay>
       </Dropdown>

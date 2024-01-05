@@ -1,6 +1,5 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import capitalize from 'lodash/capitalize';
 import type { ReactElement } from 'react';
 import type { ListProps } from './List';
 import { List } from './List';
@@ -15,6 +14,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { capitalize } from '~utils/lodashButBetter/capitalize';
 
 const listSizes: NonNullable<ListProps['size']>[] = ['small', 'medium', 'large'];
 
@@ -69,6 +69,7 @@ export default {
     size: 'large',
     variant: 'unordered',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',
@@ -84,7 +85,7 @@ export default {
   },
 } as Meta<ListProps>;
 
-const ListTemplate: ComponentStory<typeof List> = ({ ...args }) => {
+const ListTemplate: StoryFn<typeof List> = ({ ...args }) => {
   return (
     <List variant="unordered" {...args}>
       <ListItem>
@@ -127,7 +128,7 @@ export const Default = ListTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {};
 
-const ListMixNestedTemplate: ComponentStory<typeof List> = () => {
+const ListMixNestedTemplate: StoryFn<typeof List> = () => {
   return (
     <List variant="ordered">
       <ListItem>
@@ -169,7 +170,7 @@ export const ListMixNested = ListMixNestedTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 ListMixNested.storyName = 'Unordered & Ordered Mix';
 
-const ListWithSizesTemplate: ComponentStory<typeof List> = ({ ...args }) => {
+const ListWithSizesTemplate: StoryFn<typeof List> = ({ ...args }) => {
   return (
     <BaseBox>
       {listSizes.map((size) => (
@@ -216,7 +217,7 @@ OrderedListWithSizes.args = {
   variant: 'ordered',
 };
 
-const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
+const OrderedFilledListWithSizesTemplate: StoryFn<typeof List> = () => {
   return (
     <BaseBox>
       {listSizes.map((size) => (
@@ -245,7 +246,7 @@ const OrderedFilledListWithSizesTemplate: ComponentStory<typeof List> = () => {
 export const OrderedFilledListWithSizes = OrderedFilledListWithSizesTemplate.bind({});
 OrderedFilledListWithSizes.storyName = 'OrderedFilled - Sizes';
 
-const ListWithLinkAndIconTemplate: ComponentStory<typeof List> = () => {
+const ListWithLinkAndIconTemplate: StoryFn<typeof List> = () => {
   return (
     <List variant="unordered" icon={BookmarkIcon}>
       <ListItem>
@@ -267,7 +268,7 @@ const ListWithLinkAndIconTemplate: ComponentStory<typeof List> = () => {
 export const ListWithLinkAndIcon = ListWithLinkAndIconTemplate.bind({});
 ListWithLinkAndIcon.storyName = 'Link & Icon';
 
-const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
+const ListWithCodeTemplate: StoryFn<typeof List> = () => {
   return (
     <BaseBox>
       {listSizes.map((size) => (
@@ -293,7 +294,7 @@ const ListWithCodeTemplate: ComponentStory<typeof List> = () => {
 export const ListWithCodeAndIcon = ListWithCodeTemplate.bind({});
 ListWithCodeAndIcon.storyName = 'With Inline Code';
 
-const ListWithListItemTextTemplate: ComponentStory<typeof List> = () => {
+const ListWithListItemTextTemplate: StoryFn<typeof List> = () => {
   return (
     <BaseBox>
       {listSizes.map((size) => (

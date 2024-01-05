@@ -10,10 +10,10 @@
     "**/**.stories.internal.tsx",
     "**/**.web.ts",
     "**/**.web.tsx",
-    "**/ThemePlayground/**.tsx"
+    "**/ThemePlayground/**/**.tsx"
   ],
   "compilerOptions": {
-    "declarationDir": "build/types/native",
+    "declarationDir": "build/generated-types/native",
     "moduleSuffixes": [".native", ""]
   }
 }

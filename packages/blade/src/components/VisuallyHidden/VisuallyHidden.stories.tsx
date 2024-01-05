@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title as StorybookTitle } from '@storybook/addon-docs';
 import { Link } from '@storybook/design-system';
 import type { ReactElement } from 'react';
@@ -15,6 +15,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="The VisuallyHidden component makes content hidden from sighted users but available for screen reader users."
       componentName="VisuallyHidden"
+      apiDecisionLink={null}
     >
       <Link
         withArrow={true}
@@ -50,6 +51,7 @@ const Page = (): ReactElement => {
 const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
   title: 'Components/Accessibility/VisuallyHidden',
   component: VisuallyHiddenComponent,
+  tags: ['autodocs'],
   args: { children: 'Toggle dark mode' },
   parameters: {
     docs: {
@@ -58,7 +60,7 @@ const VisuallyHiddenStoryMeta: Meta<VisuallyHiddenProps> = {
   },
 };
 
-const VisuallyHiddenTemplate: ComponentStory<typeof VisuallyHiddenComponent> = (args) => {
+const VisuallyHiddenTemplate: StoryFn<typeof VisuallyHiddenComponent> = (args) => {
   return (
     <>
       <Text>
