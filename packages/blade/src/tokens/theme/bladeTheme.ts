@@ -246,7 +246,6 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.black[100],
         },
       },
-      hover: { subtle: globalColors.neutral.white[50], intense: globalColors.neutral.black[10] },
     },
     surface: {
       background: {
@@ -678,7 +677,6 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.black[100],
         },
       },
-      hover: { subtle: globalColors.neutral.black[25], intense: globalColors.neutral.white[100] },
     },
     surface: {
       background: {

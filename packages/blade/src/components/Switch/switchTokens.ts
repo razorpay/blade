@@ -97,7 +97,7 @@ const switchHoverTokens = {
   default: {
     background: {
       checked: 'colors.interactive.background.primary.highlighted',
-      unchecked: 'colors.interactive.hover.intense',
+      unchecked: 'colors.interactive.background.gray.highlighted',
     },
   },
 } as const;
