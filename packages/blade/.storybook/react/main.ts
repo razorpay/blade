@@ -42,6 +42,7 @@ const config: StorybookConfig = {
     '../../src/components/Modal/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Radio/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Popover/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Checkbox/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../docs/**/*.stories.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../src/**/*.stories.mdx',
