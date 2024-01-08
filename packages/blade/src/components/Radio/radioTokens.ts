@@ -108,7 +108,7 @@ const radioHoverTokens: SelectorInputHoverTokens = {
       unchecked: 'colors.interactive.background.gray.faded',
     },
     border: {
-      checked: 'colors.interactive.border.background.highlighted', // Intentionally not using border tokens here since we want to match the background color
+      checked: 'colors.interactive.background.primary.highlighted', // Intentionally not using border tokens here since we want to match the background color
       unchecked: 'colors.interactive.border.gray.default',
     },
   },

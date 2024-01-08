@@ -1,8 +1,8 @@
 /* eslint-disable react/display-name */
 import type { ReactElement } from 'react';
 import React from 'react';
-import type { TextProps } from '../../../components';
 import { FormHintWrapper } from './FormHintWrapper';
+import type { TextProps } from '~components/Typography/Text';
 import { Text } from '~components/Typography/Text';
 import BaseBox from '~components/Box/BaseBox';
 import { CheckIcon, InfoIcon } from '~components/Icons';
