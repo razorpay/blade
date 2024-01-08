@@ -5,7 +5,7 @@ const path = require('path');
 
 const config: StorybookConfig = {
   typescript: {
-    check: false,
+    check: true,
     checkOptions: {
       typescript: {
         configFile: path.resolve('./tsconfig-typecheck.web.json'),
