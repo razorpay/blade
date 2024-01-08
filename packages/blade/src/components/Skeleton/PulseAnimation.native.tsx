@@ -68,8 +68,8 @@ const PulseAnimation = ({
         progress.value,
         [1, 0],
         [
-          theme.colors.brand.gray.a50[`${contrast}Contrast`],
-          theme.colors.brand.gray.a100[`${contrast}Contrast`],
+          theme.colors.interactive.background.gray.highlighted,
+          theme.colors.interactive.background.gray.default,
         ],
       ),
     };

@@ -41,6 +41,7 @@ const config: StorybookConfig = {
     '../../src/components/BottomSheet/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Modal/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Popover/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Skeleton/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../docs/**/*.stories.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../src/**/*.stories.mdx',
