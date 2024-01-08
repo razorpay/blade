@@ -6,7 +6,6 @@ import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
 import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
 import { getActionListItemRole, getActionListSectionRole, isRoleMenu } from './getA11yRoles';
-import { useActionListContext } from './ActionList';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
@@ -117,7 +116,6 @@ const _ActionListSection = ({
   _hideDivider,
   _sectionChildValues,
 }: ActionListSectionProps): React.ReactElement => {
-  const { surfaceLevel } = useActionListContext();
   const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
   const hasAutoComplete =
     hasAutoCompleteInBottomSheetHeader ||
@@ -146,13 +144,12 @@ const _ActionListSection = ({
         role: getActionListSectionRole(),
         label: title,
       })}
-      backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`}
       {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
     >
       {/* We're announcing title as group label so we can hide this */}
       {isSectionVisible ? (
         <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-          <Text color="surface.text.muted.lowContrast" size="small" weight="semibold">
+          <Text color="surface.text.gray.muted" size="small" weight="semibold">
             {title}
           </Text>
         </StyledActionListSectionTitle>
@@ -184,7 +181,7 @@ const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElem
     <Icon
       color={
         intent === 'negative'
-          ? 'feedback.icon.negative.lowContrast'
+          ? 'feedback.icon.negative.intense'
           : getNormalTextColor(isDisabled, { isMuted: true })
       }
       size="medium"
@@ -313,7 +310,7 @@ const _ActionListItemBody = ({
             truncateAfterLines={1}
             color={
               intent === 'negative'
-                ? 'feedback.text.negative.lowContrast'
+                ? 'feedback.text.negative.intense'
                 : getNormalTextColor(isDisabled)
             }
           >
