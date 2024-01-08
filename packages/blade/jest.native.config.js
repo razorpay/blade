@@ -21,6 +21,7 @@ module.exports = {
   testMatch: [
     ...rebrandedComponents.map((component) => `**/${component}.native.test.{ts,tsx}`),
     '**/Icons/*Icon/*.native.test.{ts,tsx}',
+    '**/utils/**/*.test.{ts,tsx}',
   ],
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
