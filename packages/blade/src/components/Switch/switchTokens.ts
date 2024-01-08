@@ -96,8 +96,8 @@ const switchMotion = {
 const switchHoverTokens = {
   default: {
     background: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.600.lowContrast',
+      checked: 'colors.interactive.background.primary.highlighted',
+      unchecked: 'colors.interactive.hover.intense',
     },
   },
 } as const;
