@@ -20,6 +20,7 @@ export * from './Tabs';
 export * from './Tag';
 export * from './Tooltip';
 export * from './Spinner';
+export * from './Skeleton';
 export * from './Typography';
 export * from './SkipNav';
 export * from './VisuallyHidden';
