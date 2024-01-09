@@ -1,4 +1,5 @@
 export * from './Amount';
+export * from './Alert';
 export * from './Accordion';
 export * from './Badge';
 export * from './BladeProvider';
