@@ -10,6 +10,7 @@ export * from './Card';
 export * from './Counter';
 export * from './Collapsible';
 export * from './Carousel';
+export * from './Checkbox';
 export * from './Divider';
 export * from './Icons';
 export * from './Indicator';
