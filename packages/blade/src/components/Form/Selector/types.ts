@@ -30,7 +30,7 @@ type SelectorInputProps = HoverProps & {
   accessibilityLabel?: string;
 };
 
-type ColorTokens = `colors.${DotNotationToken<Theme['colors']>}` | 'transparent';
+type ColorTokens = `colors.${DotNotationToken<Theme['colors']>}`;
 type SelectorInputHoverTokens = {
   default: {
     background: {

@@ -21,7 +21,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   border-style: solid;
   margin: 2px;
   border-radius: 9999px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-color: hsla(211,27%,76%,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
@@ -332,7 +332,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   border-style: solid;
   margin: 2px;
   border-radius: 9999px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-color: hsla(214,40%,92%,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
