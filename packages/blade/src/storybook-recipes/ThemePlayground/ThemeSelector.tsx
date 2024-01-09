@@ -18,8 +18,10 @@ const ColorSelection = styled.button<{ color: string; isSelected?: boolean }>(
     width: '24px',
     height: '24px',
     borderRadius: makeBorderSize(theme.border.radius.round),
-    outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
-    boxShadow: `0px 0px 4px 3px ${isSelected ? theme.colors.brand.primary[500] : 'transparent'}`,
+    outline: `1px solid ${theme.colors.surface.background.gray.subtle}`,
+    boxShadow: `0px 0px 4px 3px ${
+      isSelected ? theme.colors.feedback.background.information : 'transparent'
+    }`,
     border: 'none',
     backgroundColor: color,
     display: 'flex',
@@ -40,8 +42,10 @@ const ColorPickerTrigger = styled.label<{ isSelected?: boolean }>(({ isSelected,
   cursor: 'pointer',
   position: 'relative',
   background: 'conic-gradient(red, yellow, lime, aqua, blue, magenta, red)',
-  outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
-  boxShadow: `0px 0px 4px 3px ${isSelected ? theme.colors.brand.primary[500] : 'transparent'}`,
+  outline: `1px solid ${theme.colors.surface.background.gray.subtle}`,
+  boxShadow: `0px 0px 4px 3px ${
+    isSelected ? theme.colors.feedback.background.information : 'transparent'
+  }`,
 }));
 
 const ColorPickerInput = styled.input({
@@ -68,7 +72,7 @@ const ColorSelector = ({
 }): React.ReactElement => {
   return (
     <ColorSelection color={color} onClick={onClick} isSelected={isSelected}>
-      {isSelected ? <CheckIcon size="large" color="action.icon.primary.default" /> : null}
+      {isSelected ? <CheckIcon size="large" color="interactive.icon.staticWhite.normal" /> : null}
     </ColorSelection>
   );
 };
@@ -130,7 +134,7 @@ const ThemeSelector = ({
       zIndex={50}
       height="100%"
     >
-      <Card surfaceLevel={3} elevation="highRaised" height="100%">
+      <Card elevation="highRaised" height="100%">
         <CardBody>
           <Box width={isDesktop ? '400px' : '100%'} marginTop="spacing.6">
             <Box display="flex" flexDirection="row" gap="spacing.4">
@@ -160,13 +164,7 @@ const ThemeSelector = ({
             </Box>
             <Box marginTop="spacing.8" />
             <Box display="flex" flexDirection="column" gap="spacing.2" flexWrap="wrap">
-              <Text
-                size="small"
-                type="subdued"
-                weight="semibold"
-                marginRight="spacing.8"
-                marginBottom="spacing.2"
-              >
+              <Text size="small" weight="semibold" marginRight="spacing.8" marginBottom="spacing.2">
                 {'Theme with custom brand color:'}
               </Text>
               <Box display="flex" flexDirection="row" gap="spacing.3">
@@ -239,7 +237,7 @@ const ThemeSelector = ({
             ) : null}
 
             <Box marginTop="spacing.8" />
-            <Text type="subdued" weight="semibold" marginRight="spacing.8" marginBottom="spacing.3">
+            <Text weight="semibold" marginRight="spacing.8" marginBottom="spacing.3">
               Code:
             </Text>
             <Box>

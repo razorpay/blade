@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 import React, { useState } from 'react';
-import { CheckoutHome } from './Checkout/CheckoutHome';
-import { CheckoutCard } from './Checkout/CheckoutCard';
+// import { CheckoutHome } from './Checkout/CheckoutHome';
+// import { CheckoutCard } from './Checkout/CheckoutCard';
 import { PhantomUI } from './PhantomUI';
 import { ThemeSelector } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
 import { BladeProvider } from '~components/BladeProvider';
-import { bankingTheme, createTheme, overrideTheme, paymentTheme } from '~tokens/theme';
+import { bladeTheme, createTheme, overrideTheme } from '~tokens/theme';
 import type { ColorSchemeNames, ThemeTokens } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
 
 const ThemePlayground = (): React.ReactElement => {
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
+  const [selectedColor, setSelectedColor] = useState<string | undefined>('#f44000');
   const [borderBase, setBorderBase] = useState<string>('2');
   const [colorScheme, setColorScheme] = useState<ColorSchemeNames>('light');
   const [selectedPreBuiltTheme, setSelectedPreBuiltTheme] = useState<string | undefined>(
@@ -24,37 +24,30 @@ const ThemePlayground = (): React.ReactElement => {
     if (selectedColor) {
       return createTheme({ brandColor: selectedColor });
     }
-    if (selectedPreBuiltTheme === 'paymentTheme') {
-      return paymentTheme;
-    }
-
-    return bankingTheme;
+    return bladeTheme;
   };
 
-  const getOverriddenTheme = (): ThemeTokens => {
-    return overrideTheme({
-      baseThemeTokens: getTheme(),
-      overrides: {
-        border: {
-          radius: {
-            none: 0,
-            // @ts-ignore
-            small: Number(borderBase) * 1,
-            // @ts-ignore
-            medium: Number(borderBase) * 2,
-            // @ts-ignore
-            large: Number(borderBase) * 3,
-            max: 9999,
-            round: '50%',
-          },
-        },
-      },
-    });
-  };
+  // const getOverriddenTheme = (): ThemeTokens => {
+  //   return overrideTheme({
+  //     baseThemeTokens: getTheme(),
+  //     overrides: {
+  //       border: {
+  //         radius: {
+  //           none: 0,
+  //           small: Number(borderBase) * 1,
+  //           medium: Number(borderBase) * 2,
+  //           large: Number(borderBase) * 3,
+  //           max: 9999,
+  //           round: '50%',
+  //         },
+  //       },
+  //     },
+  //   });
+  // };
 
   return (
     <BladeProvider
-      themeTokens={getOverriddenTheme()}
+      themeTokens={getTheme()}
       colorScheme={colorScheme}
       key={`${colorScheme}-${borderBase}-${selectedColor}-${selectedPreBuiltTheme}`}
     >
@@ -72,20 +65,20 @@ const ThemePlayground = (): React.ReactElement => {
             showInternalDemoConfig={showInternalDemoConfig}
             setShowInternalDemoConfig={setShowInternalDemoConfig}
           />
-          <Card surfaceLevel={3}>
+          <Card>
             <CardBody>
               <Box>
                 <Box flex={1}>
                   <Heading size="xlarge" marginBottom="spacing.4">
                     Checkout Home Page
                   </Heading>
-                  <CheckoutHome />
+                  {/* <CheckoutHome /> */}
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
                   <Heading size="xlarge" marginBottom="spacing.4">
                     Checkout Card
                   </Heading>
-                  <CheckoutCard />
+                  {/* <CheckoutCard /> */}
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
                   <Heading size="xlarge" marginBottom="spacing.4">

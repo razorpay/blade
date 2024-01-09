@@ -1,4 +1,3 @@
-// @ts-nocheck
 import tinycolor from 'tinycolor2';
 import type { WCAG2Options, ColorInput } from 'tinycolor2';
 import type { ThemeTokens } from './theme';
@@ -72,8 +71,9 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromati
 
   const colorPalette = palette.reverse();
   const brandPrimaryColor = colorPalette[6];
+  console.log(colorPalette);
 
-  const brandColors = {
+  const brandColors: ColorChromaticScale = {
     '50': colorPalette[0],
     '100': colorPalette[1],
     '200': colorPalette[2],
@@ -84,9 +84,9 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromati
     '700': colorPalette[7],
     '800': colorPalette[8],
     '900': colorPalette[9],
-    '950': colorPalette[10],
-    a00: getColorWithOpacity(brandPrimaryColor, opacity[0]),
+    '1000': colorPalette[10],
     a50: getColorWithOpacity(brandPrimaryColor, opacity[1]),
+    a150: getColorWithOpacity(brandPrimaryColor, opacity[1]),
     a100: getColorWithOpacity(brandPrimaryColor, opacity[2]),
     a200: getColorWithOpacity(brandPrimaryColor, opacity[3]),
   };
@@ -100,7 +100,9 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromati
  * @description Returns overrides for the light theme with the brand colors passed in
  * @returns Overrides for the light theme with the custom brand colors
  */
-const getOnLightOverrides = (brandColors: ColorChromaticScale): DeepPartial<ThemeTokens> => {
+const getOnLightOverrides = (
+  brandColors: ColorChromaticScale,
+): DeepPartial<ThemeTokens['colors']['onLight']> => {
   // Select the most readable color to use as the foreground color on top of brand color
   // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
   const foregroundOnBrandColorLight = tinycolor
@@ -121,94 +123,60 @@ const getOnLightOverrides = (brandColors: ColorChromaticScale): DeepPartial<Them
     ? brandColors[600]
     : globalColors.neutral.blueGrayLight[1100];
 
+  const staticWhiteDefault = tinycolor
+    .mostReadable(
+      brandColors[900],
+      [globalColors.neutral.white[500], globalColors.neutral.black[500]],
+      WCAG2ContrastOptions,
+    )
+    .toHslString();
+
   // Overrides for the light theme with the brand colors passed in
-  const lightThemeOverrides = {
-    colors: {
-      onLight: {
-        brand: {
-          primary: {
-            300: brandColors.a50,
-            400: brandColors.a100,
-            500: brandColors[600],
-            600: brandColors[700],
-            700: brandColors[800],
-            800: brandColors[950],
-          },
-          gray: {
-            200: {
-              lowContrast: foregroundOnBrandColorLight,
-            },
-          },
+  const lightThemeOverrides: DeepPartial<ThemeTokens['colors']['onLight']> = {
+    interactive: {
+      background: {
+        primary: {
+          default: brandColors[500],
+          highlighted: brandColors[600],
+          disabled: brandColors.a100,
+          faded: brandColors.a100,
+          fadedHighlighted: brandColors.a150,
         },
-        action: {
-          background: {
-            primary: {
-              default: brandColors[600],
-              hover: brandColors[700],
-              focus: brandColors[800],
-              active: brandColors[900],
-            },
-            secondary: {
-              default: brandColors.a00,
-              hover: brandColors.a50,
-              focus: brandColors.a100,
-              active: brandColors.a200,
-            },
-            tertiary: {
-              default: globalColors.neutral.blueGrayLight[0],
-              hover: globalColors.neutral.blueGrayLight[50],
-              focus: globalColors.neutral.blueGrayLight[100],
-              active: globalColors.neutral.blueGrayLight[200],
-            },
-          },
-          border: {
-            primary: {
-              default: brandColors[600],
-              hover: brandColors[700],
-              focus: brandColors[800],
-              active: brandColors[900],
-            },
-            secondary: {
-              default: brandColors[600],
-              hover: brandColors[600],
-              focus: brandColors[600],
-              active: brandColors[600],
-            },
-            tertiary: {
-              default: globalColors.neutral.blueGrayLight[300],
-              hover: globalColors.neutral.blueGrayLight[300],
-              focus: globalColors.neutral.blueGrayLight[300],
-              active: globalColors.neutral.blueGrayLight[300],
-            },
-          },
-          text: {
-            primary: {
-              default: foregroundOnBrandColorLight,
-              hover: foregroundOnBrandColorLight,
-              focus: foregroundOnBrandColorLight,
-              active: foregroundOnBrandColorLight,
-            },
-            secondary: {
-              default: foregroundOnSurfaceLight,
-              hover: foregroundOnSurfaceLight,
-              focus: foregroundOnSurfaceLight,
-              active: foregroundOnSurfaceLight,
-            },
-          },
-          icon: {
-            primary: {
-              default: foregroundOnBrandColorLight,
-              hover: foregroundOnBrandColorLight,
-              focus: foregroundOnBrandColorLight,
-              active: foregroundOnBrandColorLight,
-            },
-            secondary: {
-              default: foregroundOnSurfaceLight,
-              hover: foregroundOnSurfaceLight,
-              focus: foregroundOnSurfaceLight,
-              active: foregroundOnSurfaceLight,
-            },
-          },
+      },
+      border: {
+        primary: {
+          default: brandColors[500],
+          highlighted: brandColors[600],
+          disabled: brandColors.a100,
+          faded: brandColors.a100,
+        },
+      },
+      text: {
+        primary: {
+          normal: foregroundOnSurfaceLight,
+          disabled: foregroundOnSurfaceLight,
+          muted: foregroundOnSurfaceLight,
+          subtle: foregroundOnSurfaceLight,
+        },
+        staticWhite: {
+          normal: staticWhiteDefault,
+          disabled: staticWhiteDefault,
+          muted: staticWhiteDefault,
+          subtle: staticWhiteDefault,
+        },
+      },
+      icon: {
+        primary: {
+          normal: foregroundOnSurfaceLight,
+          disabled: foregroundOnSurfaceLight,
+          muted: foregroundOnSurfaceLight,
+          subtle: foregroundOnSurfaceLight,
+        },
+        staticWhite: {
+          normal: staticWhiteDefault,
+          disabled: staticWhiteDefault,
+          muted: staticWhiteDefault,
+          subtle: staticWhiteDefault,
         },
       },
     },
@@ -245,85 +213,7 @@ const getOnDarkOverrides = (brandColors: ColorChromaticScale): DeepPartial<Theme
     : globalColors.neutral.blueGrayDark[0];
 
   // Overrides for the dark theme with the brand colors passed in
-  const darkThemeOverrides = {
-    colors: {
-      onDark: {
-        brand: {
-          primary: {
-            300: brandColors.a100,
-            400: brandColors.a200,
-            500: brandColors[400],
-            600: brandColors[500],
-            700: brandColors[600],
-            800: brandColors[900],
-          },
-          gray: {
-            200: {
-              lowContrast: foregroundOnBrandColorDark,
-            },
-          },
-        },
-        action: {
-          background: {
-            primary: {
-              default: brandColors[500],
-              hover: brandColors[600],
-              focus: brandColors[700],
-              active: brandColors[800],
-            },
-            secondary: {
-              default: brandColors.a00,
-              hover: brandColors.a50,
-              focus: brandColors.a100,
-              active: brandColors.a200,
-            },
-          },
-          border: {
-            primary: {
-              default: brandColors[500],
-              hover: brandColors[600],
-              focus: brandColors[700],
-              active: brandColors[800],
-            },
-            secondary: {
-              default: brandColors[400],
-              hover: brandColors[400],
-              focus: brandColors[400],
-              active: brandColors[400],
-            },
-          },
-          text: {
-            primary: {
-              default: foregroundOnBrandColorDark,
-              hover: foregroundOnBrandColorDark,
-              focus: foregroundOnBrandColorDark,
-              active: foregroundOnBrandColorDark,
-            },
-            secondary: {
-              default: foregroundOnSurfaceDark,
-              hover: foregroundOnSurfaceDark,
-              focus: foregroundOnSurfaceDark,
-              active: foregroundOnSurfaceDark,
-            },
-          },
-          icon: {
-            primary: {
-              default: foregroundOnBrandColorDark,
-              hover: foregroundOnBrandColorDark,
-              focus: foregroundOnBrandColorDark,
-              active: foregroundOnBrandColorDark,
-            },
-            secondary: {
-              default: foregroundOnSurfaceDark,
-              hover: foregroundOnSurfaceDark,
-              focus: foregroundOnSurfaceDark,
-              active: foregroundOnSurfaceDark,
-            },
-          },
-        },
-      },
-    },
-  };
+  const darkThemeOverrides = {};
 
   return darkThemeOverrides;
 };
@@ -337,13 +227,12 @@ const getOnDarkOverrides = (brandColors: ColorChromaticScale): DeepPartial<Theme
  * @example
  * const theme = createTheme({ brandColor: '#19BEA2'})
  **/
-export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTokens => {
+export const createTheme = ({ brandColor }: { brandColor: ColorInput }) => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
   // Get onLight overrides
   const brandedLightTheme = getOnLightOverrides(chromaticBrandColors);
   // Get onDark overrides
-  const brandedDarkTheme = getOnDarkOverrides(chromaticBrandColors);
-
+  // const brandedDarkTheme = getOnDarkOverrides(chromaticBrandColors);
   // Override the payment theme with the brand colors
   const brandedThemeTokens = overrideTheme({
     baseThemeTokens: bladeTheme,
@@ -351,11 +240,11 @@ export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTo
       name: `custom-${tinycolor(brandColor).toHex()}`,
       colors: {
         onLight: {
-          ...brandedLightTheme?.colors?.onLight,
+          ...brandedLightTheme,
         },
-        onDark: {
-          ...brandedDarkTheme?.colors?.onDark,
-        },
+        // onDark: {
+        //   ...brandedDarkTheme?.colors?.onDark,
+        // },
       },
     },
   });
