@@ -93,7 +93,8 @@ const propRestrictionMap = {
     variant: 'body',
   },
   Amount: {
-    size: 'body-medium',
+    type: 'body',
+    size: 'medium',
   },
 } as const;
 
