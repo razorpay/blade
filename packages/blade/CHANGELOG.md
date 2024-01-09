@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.23.1
+
+### Patch Changes
+
+- 6f89de9f: fix(Table): handle case where currentPage is greater than total pages
+
 ## 10.23.0
 
 ### Minor Changes
