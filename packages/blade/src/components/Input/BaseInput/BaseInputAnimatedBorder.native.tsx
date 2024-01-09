@@ -19,7 +19,7 @@ const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
   left: 0,
   right: 0,
   opacity: 1,
-  backgroundColor: theme.colors.brand.primary[500],
+  backgroundColor: theme.colors.interactive.background.primary.default,
   height: makeBorderSize(theme.border.width.thin),
 }));
 

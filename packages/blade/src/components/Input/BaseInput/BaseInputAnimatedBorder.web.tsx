@@ -39,7 +39,7 @@ const BaseInputStyledAnimatedBorder = styled(BaseBox)(
     left: 0;
     right: 0;
     opacity: 0;
-    background-color: ${theme.colors.brand.primary[500]};
+    background-color: ${theme.colors.interactive.background.primary.default};
     border-width: ${makeBorderSize(theme.border.width.thin)};
     height: ${makeBorderSize(theme.border.width.thin)};
     ${animation}

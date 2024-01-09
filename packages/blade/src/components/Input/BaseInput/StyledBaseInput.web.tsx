@@ -34,9 +34,8 @@ const getWebInputStyles = (
       ...getTextStyles({
         size: 'medium',
         variant: 'body',
-        type: 'placeholder',
         weight: 'regular',
-        contrast: 'low',
+        color: 'surface.text.gray.disabled',
         theme: props.theme,
       }),
       textAlign: props.textAlign,
