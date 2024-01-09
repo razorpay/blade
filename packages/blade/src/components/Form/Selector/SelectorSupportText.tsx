@@ -1,6 +1,6 @@
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography/Text';
-import { getPlatformType } from '~utils';
+import { castWebType, getPlatformType } from '~utils';
 
 const SelectorSupportText = ({
   children,
@@ -14,7 +14,7 @@ const SelectorSupportText = ({
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <Box id={id} display="contents">
+    <Box id={id} display={isReactNative ? undefined : castWebType('contents')}>
       <Text
         variant="caption"
         size="small"
