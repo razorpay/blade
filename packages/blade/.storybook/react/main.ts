@@ -17,6 +17,7 @@ const config: StorybookConfig = {
   },
   stories: [
     '../../docs/guides/*.stories.mdx',
+    '../../src/components/ActionList/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Box/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Amount/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Badge/**/*.stories.@(ts|tsx|js|jsx)',

@@ -177,12 +177,13 @@ const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
 const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   const { intent, isDisabled } = React.useContext(ActionListItemContext);
+  const iconState = isDisabled ? 'disabled' : 'muted';
   return (
     <Icon
       color={
         intent === 'negative'
           ? 'feedback.icon.negative.intense'
-          : getNormalTextColor(isDisabled, { isMuted: true })
+          : `interactive.icon.gray.${iconState}`
       }
       size="medium"
     />
