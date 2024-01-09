@@ -1,9 +1,11 @@
 const rebrandedComponents = [
+  'ActionList',
   'Amount',
   'BaseBox',
   'BaseText',
   'BaseLink',
   'BaseButton',
+  'Dropdown',
   'Text',
   'Heading',
   'Display',
