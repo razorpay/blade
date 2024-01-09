@@ -26,6 +26,9 @@ const StyledActionListItem = styled(BaseBox)<StyledActionListItemProps>((props) 
           ? props.theme.colors.interactive.background.primary.faded
           : undefined,
     },
+    '&[aria-selected=true]:hover': {
+      backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
+    },
   };
 });
 
