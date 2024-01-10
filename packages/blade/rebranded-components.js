@@ -30,6 +30,7 @@ const rebrandedComponents = [
   'SkipNav',
   'VisuallyHidden',
   'Tooltip',
+  'Switch',
   'Radio',
   'Checkbox',
 ];
