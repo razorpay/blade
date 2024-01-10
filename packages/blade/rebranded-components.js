@@ -31,6 +31,8 @@ const rebrandedComponents = [
   'VisuallyHidden',
   'Tooltip',
   'Skeleton',
+  'Radio',
+  'Checkbox',
 ];
 
 module.exports = { rebrandedComponents };
