@@ -34,8 +34,10 @@ const Skeleton = ({
   return (
     <PulseAnimation
       width={width}
+      minWidth={minWidth}
       maxWidth={maxWidth}
       height={height}
+      minHeight={minHeight}
       maxHeight={maxHeight}
       borderRadius={borderRadius}
       flexWrap={flexWrap}
