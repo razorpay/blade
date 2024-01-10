@@ -248,7 +248,7 @@ export const OTPInputControlled = OTPInputControlledTemplate.bind({});
 
 export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [focusOn, setFocusOn] = React.useState(0);
+  const [focusOn] = React.useState(0);
   const inputRef = React.useRef<HTMLInputElement[]>([]);
 
   return (
@@ -260,7 +260,8 @@ export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
         otpLength={4}
         onChange={({ name, value }): void => console.log({ name, value })}
       />
-      <Dropdown selectionType="single">
+      {/* TODO: Rebranding - uncomment when Dropdown is ready */}
+      {/* <Dropdown selectionType="single">
         <SelectInput
           label="Item to focus"
           placeholder="Select Item To Focus"
@@ -278,7 +279,7 @@ export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
             <ActionListItem title="3" value="3" />
           </ActionList>
         </DropdownOverlay>
-      </Dropdown>
+      </Dropdown> */}
       <Button
         onClick={() => {
           console.log(inputRef);
