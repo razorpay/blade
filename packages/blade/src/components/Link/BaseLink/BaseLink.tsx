@@ -164,8 +164,8 @@ const getColorToken = ({
 }): IconColors | TextColors => {
   let state = currentInteraction;
   const map = {
-    default: 'subtle',
-    hover: 'normal',
+    default: 'normal',
+    hover: 'subtle',
     focus: 'normal',
     disabled: 'disabled',
   } as const;
