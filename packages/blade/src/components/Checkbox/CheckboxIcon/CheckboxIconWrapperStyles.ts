@@ -24,8 +24,8 @@ const getCheckboxIconWrapperStyles = ({
   const checked = isChecked ? 'checked' : 'unchecked';
   const background = checkboxIconColors.variants[variant].background[checked];
   const border = checkboxIconColors.variants[variant].border[checked];
-  const backgroundColor = background === 'transparent' ? background : getIn(theme, background);
-  const borderColor = border === 'transparent' ? border : getIn(theme, border);
+  const backgroundColor = getIn(theme, background);
+  const borderColor = getIn(theme, border);
 
   return {
     position: 'relative',

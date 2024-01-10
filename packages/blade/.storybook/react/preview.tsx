@@ -72,6 +72,13 @@ export const parameters = {
         }
         return bladeTheme;
       };
+
+      if (context.store.globals.globals.version === '10' && window.top) {
+        window.top.location.href =
+          'https://v10--61c19ee8d3d282003ac1d81c.chromatic.com' +
+          window.top.location.pathname +
+          window.top.location.search;
+      }
       return (
         <DocsContainer context={context}>
           <BladeProvider
@@ -146,6 +153,13 @@ export const decorators = [
       return bladeTheme;
     };
 
+    if (context.globals.version === '10' && window.top) {
+      window.top.location.href =
+        'https://v10--61c19ee8d3d282003ac1d81c.chromatic.com' +
+        window.top.location.pathname +
+        window.top.location.search;
+    }
+
     return (
       <ErrorBoundary>
         <GlobalStyle />
@@ -164,6 +178,23 @@ export const decorators = [
 ];
 
 export const globalTypes = {
+  version: {
+    name: 'Blade Documentation Version',
+    description: 'Version of the Blade',
+    defaultValue: '11',
+    toolbar: {
+      icon: 'time',
+      title: ' v11 - Rebranded',
+      // Array of plain string values or MenuItem shape (see below)
+      items: [
+        { value: '10', title: ' v10 - Old' },
+        { value: '11', title: ' v11 - Rebranded', default: true },
+      ],
+      dynamicTitle: true,
+      // Property that specifies if the name of the item will be displayed
+      showName: false,
+    },
+  },
   colorScheme: {
     name: 'Color Scheme',
     description: 'Color Scheme for Blade',
