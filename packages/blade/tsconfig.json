@@ -1,13 +1,28 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src"],
+  // "include": ["src"],
+  "include": [
+    "src/components/index.ts",
+    "src/tokens/index.ts",
+    "src/utils/index.ts",
+    "src/@types/globals.d.ts"
+  ],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
       "~utils": ["src/utils"],
+      "~utils/*": ["src/utils/*"],
       "~components/*": ["src/components/*"],
       "~tokens/*": ["src/tokens/*"],
-      "~src/*": ["src/*"],
-    }
+      "~src/*": ["src/*"]
+    },
+    // In Blade side we are targeting `.web` types
+    // We can't add both `.native` & `.web` at once.
+    "moduleSuffixes": [".all", ".web", ""],
+    "plugins": [
+      // TODO: Replace ttypescript when official compiler transforms are supported https://github.com/microsoft/TypeScript/issues/54276
+      // Transform paths in output .d.ts files
+      { "transform": "typescript-transform-paths", "afterDeclarations": true }
+    ]
   }
 }

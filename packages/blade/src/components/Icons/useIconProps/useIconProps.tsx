@@ -1,39 +1,30 @@
-import get from 'lodash/get';
-import type { IconProps, IconSize } from '..';
+import type { IconProps } from '..';
+import get from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
 
-type Dimension = '10px' | '12px' | '16px' | '20px' | '24px' | '32px';
-
-const getIconDimensions = ({
-  size,
-}: {
-  size: IconSize;
-}): { width: Dimension; height: Dimension } => {
-  switch (size) {
-    case 'xlarge':
-      return { width: '32px', height: '32px' };
-    case 'large':
-      return { width: '24px', height: '24px' };
-    case 'medium':
-      return { width: '20px', height: '20px' };
-    case 'small':
-      return { width: '16px', height: '16px' };
-    case 'xsmall':
-      return { width: '12px', height: '12px' };
-    case 'xxsmall':
-      return { width: '10px', height: '10px' };
-    default:
-      return { width: '20px', height: '20px' };
-  }
-};
+const iconSize = {
+  xsmall: size[8],
+  small: size[12],
+  medium: size[16],
+  large: size[20],
+  xlarge: size[24],
+  '2xlarge': size[32],
+} as const;
 
 function useIconProps({
-  size,
-  color,
-}: IconProps): { height: string; width: string; iconColor: string } {
+  size = 'medium',
+  color = 'surface.icon.gray.normal',
+}: IconProps): {
+  height: `${typeof iconSize[keyof typeof iconSize]}px`;
+  width: `${typeof iconSize[keyof typeof iconSize]}px`;
+  iconColor: string;
+} {
   const { theme } = useTheme();
-  const { height, width } = getIconDimensions({ size });
-  const iconColor = get(theme.colors, color, '');
+  const height = makeSize(iconSize[size]);
+  const width = makeSize(iconSize[size]);
+  const iconColor = color === 'currentColor' ? 'currentColor' : get(theme.colors, color, '');
 
   return { height, width, iconColor };
 }

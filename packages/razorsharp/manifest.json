@@ -1,0 +1,21 @@
+{
+  "name": "Razorsharp",
+  "id": "1200806396995792369",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "editorType": ["dev"],
+  "capabilities": ["codegen"],
+  "codegenLanguages": [{ "label": "React", "value": "react" }],
+  "codegenPreferences": [
+    {
+      "itemType": "select",
+      "propertyName": "helperCodeEnabled",
+      "label": "Generate Helper Code (Incomplete)",
+      "options": [
+        { "label": "No", "value": "no", "isDefault": true },
+        { "label": "Yes", "value": "yes" }
+      ],
+      "includedLanguages": ["react"]
+    }
+  ]
+}

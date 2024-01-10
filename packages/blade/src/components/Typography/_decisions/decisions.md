@@ -87,7 +87,7 @@ Type of `children: string`
 Type of `children: string`
 
 - Children are mandatory
-- We would accept only String for Heading components since there's no use case where people would want to have special formating in Heading.
+- We would accept only String for Heading components since there's no use case where people would want to have special formatting in Heading.
 - There are use cases on our landing pages where we highlight or animate certain parts of the word or even add a logo inside the title. For those use cases, I guess consumers have to use two components and place them side by side regardless of using some layout utilities(of course since heading and title are block elements).
 
 Why prop name `variant`?
@@ -106,7 +106,7 @@ Another option would be having a `size` prop that would lead us to have a "large
 
   ```jsx
   <Text
-    variant=" medium | large | caption"
+    variant="body | caption"
     weight="regular | bold"
     size="small | medium"
     type="normal | subtle | subdued | muted | placeholder"
@@ -130,7 +130,11 @@ Type of `children: React.ReactNode`
   Text will internally use `BaseText` to render. Natively we'll use html `<code></code>` tag for web and native `<Text></Text>` react-native to render the code text.
 
   ```jsx
-  <Code variant="large | caption" type="normal | subtle | subdued | muted | placeholder">
+  <Code size="large | medium" type="normal | subtle | subdued | muted | placeholder">
     SENTRY_AUTH_TOKEN:xyz
   </Code>
   ```
+
+  Using `size` here because that is what we use in `Text` as well and semantically `size="large"` makes a lot more sense.
+
+  In future, we want to make `size` as a consistent prop for sizing all components and use `variant` for values that can't be added to size.

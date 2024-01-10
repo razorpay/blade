@@ -1,68 +1,49 @@
-import type { ComponentStory, Meta } from '@storybook/react';
-import {
-  Title,
-  Subtitle,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-  Description,
-} from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react';
+import { Title, Description } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { Highlight, Link as StorybookLink } from '@storybook/design-system';
 import type { LinkProps } from './Link';
 import LinkComponent from './Link';
 import iconMap from '~components/Icons/iconMap';
-import { InfoIcon } from '~components/Icons';
+import { DownloadIcon, InfoIcon } from '~components/Icons';
 import { BaseText } from '~components/Typography/BaseText';
-import Box from '~components/Box';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
-import { Text } from '~components/Typography';
+import BaseBox from '~components/Box/BaseBox';
+import { Heading, Text } from '~components/Typography';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import {
+  getBladeCommonEventArgTypes,
+  getStyledPropsArgTypes,
+} from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12699%3A147155',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12699%3A147155',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195587',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195587',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        This is the Link component which can be used for showing external or internal Links to the
-        user. The Link component can also be used as an inline button in certain cases with the
-        `button` variant
-      </Subtitle>
-      <StorybookLink withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </StorybookLink>
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentDescription="This is the Link component which can be used for showing external or internal Links to the user. The Link component can also be used as an inline button in certain cases with the `button` variant"
+      componentName="Link"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12699%3A147155"
+    >
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Link } from '@razorpay/blade/components' \nimport type { LinkProps } from '@razorpay/blade/components'`}</Highlight>
-      <Description markdown="> **Note:** While using the `Link` component with React Native, please ensure you have gone through platform-specific prerequisites like adding `LSApplicationQueriesSchemes` in `Info.plist` for iOS and adding `intent` queries in `AndroidManifest.xml` for Android. For a detailed guide, follow React Native's [Linking Documentation](https://reactnative.dev/docs/linking#canopenurl)." />
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default Link. You can change the properties of this Link using the controls in
-        the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+      <Sandbox>
+        {`
+          import { Link } from '@razorpay/blade/components';
+
+          function App(): React.ReactElement {
+            return (
+              <Link 
+                href="https://razorpay.com" 
+                target="_blank" 
+                rel="noopener noreferer"
+              >
+                Go to Razorpay.com
+              </Link>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
+      <Description markdown="> **Note** <br/>While using the `Link` component with React Native, please ensure you have gone through platform-specific prerequisites like adding `LSApplicationQueriesSchemes` in `Info.plist` for iOS and adding `intent` queries in `AndroidManifest.xml` for Android. For a detailed guide, follow React Native's [Linking Documentation](https://reactnative.dev/docs/linking#canopenurl)." />
+    </StoryPageWrapper>
   );
 };
 
@@ -72,12 +53,16 @@ export default {
   args: {
     children: 'Learn More',
   },
+  tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
+      mapping: iconMap,
     },
+    ...getStyledPropsArgTypes(),
+    ...getBladeCommonEventArgTypes(),
   },
   parameters: {
     docs: {
@@ -86,14 +71,8 @@ export default {
   },
 } as Meta<LinkProps>;
 
-const LinkTemplate: ComponentStory<typeof LinkComponent> = ({ icon, children, ...args }) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-
-  return (
-    <LinkComponent icon={IconComponent} {...args}>
-      {children}
-    </LinkComponent>
-  );
+const LinkTemplate: StoryFn<typeof LinkComponent> = ({ children = 'Learn More', ...args }) => {
+  return <LinkComponent {...args}>{children}</LinkComponent>;
 };
 
 export const Default = LinkTemplate.bind({});
@@ -110,14 +89,10 @@ Default.args = {
   rel: 'noreferrer noopener',
 };
 
-const LinkInlineTemplate: ComponentStory<typeof LinkComponent> = ({
-  icon,
-  children = '',
-  ...args
-}) => {
+const LinkInlineTemplate: StoryFn<typeof LinkComponent> = ({ icon, children = '', ...args }) => {
   return (
     <Text>
-      Find more details at the <LinkComponent {...args}>{children}</LinkComponent>.
+      Find more details at the <LinkComponent {...args}>{children}</LinkComponent>
     </Text>
   );
 };
@@ -152,7 +127,7 @@ LinkButton.parameters = {
   },
 };
 
-const LinkButtonInlineTemplate: ComponentStory<typeof LinkComponent> = ({
+const LinkButtonInlineTemplate: StoryFn<typeof LinkComponent> = ({
   icon,
   children = '',
   ...args
@@ -170,12 +145,43 @@ LinkButtonInline.args = {
   variant: 'button',
   children: 'Reset Password',
 };
+
 LinkButtonInline.parameters = {
   docs: {
     description: {
       story: 'Inline Link Button within a Text component',
     },
   },
+};
+
+const LinkColorsTemplate: StoryFn<typeof LinkComponent> = ({ icon, children = '', ...args }) => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.2">
+      <BaseBox padding="spacing.2">
+        <LinkComponent {...args} color="default">
+          {children}
+        </LinkComponent>
+      </BaseBox>
+      <BaseBox padding="spacing.2" backgroundColor="brand.gray.700.lowContrast">
+        <LinkComponent {...args} color="white">
+          {children}
+        </LinkComponent>
+      </BaseBox>
+      <BaseBox padding="spacing.2">
+        <LinkComponent {...args} color="neutral">
+          {children}
+        </LinkComponent>
+      </BaseBox>
+    </BaseBox>
+  );
+};
+
+export const LinkWithColor = LinkColorsTemplate.bind({});
+LinkWithColor.storyName = 'Link - With Color';
+LinkWithColor.args = {
+  variant: 'anchor',
+  children: 'Learn More',
+  href: 'https://github.com/razorpay/blade',
 };
 
 export const DisabledLinkButton = LinkTemplate.bind({});
@@ -192,16 +198,97 @@ DisabledLinkButton.parameters = {
   },
 };
 
-const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
+export const LinkSizes: StoryFn<typeof LinkComponent> = () => {
+  const href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  const onClick = (): void => console.log('Never gonna give you up');
+
+  return (
+    <BaseBox display="flex" flexDirection="row">
+      <BaseBox display="flex" flexDirection="column" marginRight="spacing.5">
+        <BaseBox marginBottom="spacing.3">
+          <Heading>Anchor variant</Heading>
+        </BaseBox>
+
+        <LinkComponent
+          variant="anchor"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="xsmall"
+          icon={DownloadIcon}
+        >
+          XSmall anchor link
+        </LinkComponent>
+        <LinkComponent
+          variant="anchor"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="small"
+          icon={DownloadIcon}
+        >
+          Small anchor link
+        </LinkComponent>
+        <LinkComponent
+          variant="anchor"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="medium"
+          icon={DownloadIcon}
+        >
+          Medium anchor link
+        </LinkComponent>
+        <LinkComponent
+          variant="anchor"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          size="large"
+          icon={DownloadIcon}
+        >
+          Large anchor link
+        </LinkComponent>
+      </BaseBox>
+      <BaseBox display="flex" flexDirection="column">
+        <BaseBox marginBottom="spacing.3">
+          <Heading>Button variant</Heading>
+        </BaseBox>
+        <LinkComponent size="xsmall" variant="button" onClick={onClick} icon={DownloadIcon}>
+          XSmall link button
+        </LinkComponent>
+        <LinkComponent size="small" variant="button" onClick={onClick} icon={DownloadIcon}>
+          Small link button
+        </LinkComponent>
+        <LinkComponent size="medium" variant="button" onClick={onClick} icon={DownloadIcon}>
+          Medium link button
+        </LinkComponent>
+        <LinkComponent size="large" variant="button" onClick={onClick} icon={DownloadIcon}>
+          Large link button
+        </LinkComponent>
+      </BaseBox>
+    </BaseBox>
+  );
+};
+LinkSizes.parameters = {
+  docs: {
+    description: {
+      story:
+        '`size` prop can be used to render a `small` or `medium` (default) sized Link component',
+    },
+  },
+};
+
+const LinkWithVariantTemplate: StoryFn<typeof LinkComponent> = ({
   children = 'Link',
   icon,
   iconPosition,
 }) => {
   return (
     <>
-      <Box paddingBottom="spacing.2">
+      <BaseBox paddingBottom="spacing.3">
         <BaseText fontWeight="bold">Anchor</BaseText>
-      </Box>
+      </BaseBox>
       <LinkComponent
         icon={icon}
         iconPosition={iconPosition}
@@ -212,9 +299,9 @@ const LinkWithVariantTemplate: ComponentStory<typeof LinkComponent> = ({
       >
         {children}
       </LinkComponent>
-      <Box paddingTop="spacing.3" paddingBottom="spacing.2">
+      <BaseBox paddingTop="spacing.4" paddingBottom="spacing.3">
         <BaseText fontWeight="bold">Button</BaseText>
-      </Box>
+      </BaseBox>
       <LinkComponent icon={icon} iconPosition={iconPosition} variant="button">
         {children}
       </LinkComponent>

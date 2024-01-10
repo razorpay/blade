@@ -1,0 +1,1 @@
+export { CharacterCounter } from './CharacterCounter';

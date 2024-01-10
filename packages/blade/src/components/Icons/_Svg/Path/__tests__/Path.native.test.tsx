@@ -1,6 +1,6 @@
 import Path from '..';
 import Svg from '../../Svg';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Path />', () => {
   it('should render react-native-svg Path component', () => {
@@ -20,6 +20,12 @@ describe('<Path />', () => {
         />
       </Svg>,
     ).toJSON();
+    expect(renderTree).toMatchSnapshot();
+  });
+
+  it('should not accept dashed props', () => {
+    // @ts-expect-error no dashed props are accepted
+    const renderTree = renderWithTheme(<Path fill-opacity={0} d="" />).toJSON();
     expect(renderTree).toMatchSnapshot();
   });
 });

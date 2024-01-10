@@ -1,11 +1,22 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { fireEvent } from '@testing-library/react-native';
+import { fireEvent, waitFor } from '@testing-library/react-native';
+import React from 'react';
+import { Linking } from 'react-native';
+import type { ButtonProps } from '../Button';
 import Button from '../Button';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { CreditCardIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+jest.mock('react-native/Libraries/Linking/Linking', () => ({
+  openURL: jest.fn((href) => Promise.resolve(href)),
+  canOpenURL: jest.fn(() => Promise.resolve(true)),
+}));
+
+const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
+const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
 
 describe('<Button />', () => {
   it('should render button with default properties', () => {
@@ -75,36 +86,31 @@ describe('<Button />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render secondary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<Button variant="secondary">{buttonText}</Button>);
-    expect(toJSON()).toMatchSnapshot();
-  });
+  colors.forEach((color) => {
+    variants.forEach((variant) => {
+      // We support only white and default color for tertiary variant
+      if (variant === 'tertiary' && color !== 'white' && color !== 'primary') return;
 
-  it('should render disabled secondary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <Button variant="secondary" isDisabled={true}>
-        {buttonText}
-      </Button>,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
+      it(`should render ${color} color ${variant} button`, () => {
+        const buttonText = 'Pay Now';
+        const { toJSON } = renderWithTheme(
+          <Button color={color} variant={variant}>
+            {buttonText}
+          </Button>,
+        );
+        expect(toJSON()).toMatchSnapshot();
+      });
 
-  it('should render tertiary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(<Button variant="tertiary">{buttonText}</Button>);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render disabled tertiary variant button', () => {
-    const buttonText = 'Pay Now';
-    const { toJSON } = renderWithTheme(
-      <Button variant="tertiary" isDisabled={true}>
-        {buttonText}
-      </Button>,
-    );
-    expect(toJSON()).toMatchSnapshot();
+      it(`should render disabled ${color} color ${variant} button`, () => {
+        const buttonText = 'Pay Now';
+        const { toJSON } = renderWithTheme(
+          <Button color={color} variant={variant} isDisabled={true}>
+            {buttonText}
+          </Button>,
+        );
+        expect(toJSON()).toMatchSnapshot();
+      });
+    });
   });
 
   it('should call function on click', () => {
@@ -114,5 +120,43 @@ describe('<Button />', () => {
     const button = getByText(buttonText);
     fireEvent.press(button);
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('should expose native element methods via ref', () => {
+    let refValue = null;
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+      return (
+        <Button
+          ref={(value) => {
+            // @ts-expect-error
+            ref.current = value;
+            refValue = value;
+          }}
+        >
+          Pay now
+        </Button>
+      );
+    };
+
+    renderWithTheme(<Example />);
+    expect(refValue).toHaveProperty('focus');
+  });
+
+  it('should open URL when Button is pressed with href', async () => {
+    const { getByRole } = renderWithTheme(
+      <Button href="https://youtu.be/iPaBUhIsslA">Learn More</Button>,
+    );
+    const button = getByRole('link');
+    fireEvent.press(button);
+    await waitFor(() =>
+      expect(Linking.openURL).toHaveBeenCalledWith('https://youtu.be/iPaBUhIsslA'),
+    );
+  });
+
+  it('should accept testID', () => {
+    const buttonText = 'Pay Now';
+    const { getByTestId } = renderWithTheme(<Button testID="button-test">{buttonText}</Button>);
+    expect(getByTestId('button-test')).toBeTruthy();
   });
 });

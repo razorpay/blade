@@ -1,0 +1,12 @@
+{
+  "name": "Token Publisher",
+  "id": "1316333516996895237",
+  "api": "1.0.0",
+  "main": "dist/plugin.js",
+  "ui": "dist/ui.html",
+  "editorType": ["figma"],
+  "menu": [
+    { "name": "Publish Color Tokens", "command": "colorTokens" },
+    { "name": "Generate Token's Dev Names", "command": "devTokenNames" }
+  ]
+}

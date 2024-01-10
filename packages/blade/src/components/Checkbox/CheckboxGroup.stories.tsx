@@ -1,48 +1,53 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { Title, Subtitle, Primary, ArgsTable, PRIMARY_STORY, Stories } from '@storybook/addon-docs';
-import { Link, Highlight } from '@storybook/design-system';
-import { Text } from '../Typography';
+import { Title } from '@storybook/addon-docs';
 import { Checkbox as CheckboxComponent, CheckboxGroup as CheckboxGroupComponent } from './';
 import type { CheckboxGroupProps } from './';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import { Text } from '~components/Typography';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import BaseBox from '~components/Box/BaseBox';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        CheckboxGroup can be used to group together multiple checkboxes in a forms which provides
-        out of the box state management for the multi-checkboxes and other features.
-      </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentName="CheckboxGroup"
+      componentDescription="CheckboxGroup can be used to group together multiple checkboxes in a forms which provides out of the box state management for the multi-checkboxes and other features."
+      apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Checkbox/_decisions/decisions.md"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
+    >
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { CheckboxGroup } from '@razorpay/blade/components' \nimport type { CheckboxGroupProps } from '@razorpay/blade/components'`}</Highlight>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default CheckboxGroup. You can change the properties of this button using the
-        controls in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+      <Sandbox showConsole editorHeight={400}>
+        {`
+          import { CheckboxGroup, Checkbox } from '@razorpay/blade/components';
+
+          function App(): React.ReactElement {
+            return (
+              <CheckboxGroup 
+                label="Where do you want to collect payments?"
+                name="payment-collection" 
+                onChange={({name, values}) => console.log({name, values})}
+              >
+                <Checkbox value="website">Website</Checkbox>
+                <Checkbox value="android">Android App</Checkbox>
+                <Checkbox value="ios">iOS App</Checkbox>
+                <Checkbox 
+                  value="social-media" 
+                  helpText="Like WhatsApp, Facebook, Instagram"
+                >
+                  Social Media
+                </Checkbox>
+                <Checkbox value="offline-store">Offline Store</Checkbox>
+              </CheckboxGroup>
+            )
+          }
+
+          export default App;
+        `}
+      </Sandbox>
+    </StoryPageWrapper>
   );
 };
 
@@ -53,7 +58,8 @@ export default {
     label: 'Checkbox Group',
     helpText: undefined,
     isDisabled: false,
-    neccessityIndicator: 'none',
+    isRequired: false,
+    necessityIndicator: 'none',
     labelPosition: undefined,
     validationState: undefined,
     errorText: undefined,
@@ -62,6 +68,7 @@ export default {
     onChange: undefined,
     value: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     value: {
       options: ['apple', 'mango', 'orange'],
@@ -75,6 +82,7 @@ export default {
         type: 'multi-select',
       },
     },
+    ...getStyledPropsArgTypes(),
   },
   parameters: {
     docs: {
@@ -83,10 +91,7 @@ export default {
   },
 } as Meta<CheckboxGroupProps>;
 
-const CheckboxGroupTemplate: ComponentStory<typeof CheckboxGroupComponent> = ({
-  children,
-  ...args
-}) => {
+const CheckboxGroupTemplate: StoryFn<typeof CheckboxGroupComponent> = ({ children, ...args }) => {
   return (
     <CheckboxGroupComponent {...args}>
       <CheckboxComponent value="apple">Apple</CheckboxComponent>
@@ -99,9 +104,9 @@ const CheckboxGroupTemplate: ComponentStory<typeof CheckboxGroupComponent> = ({
 export const Default = CheckboxGroupTemplate.bind({});
 Default.storyName = 'Default';
 
-export const HelpText = CheckboxGroupTemplate.bind({});
-HelpText.storyName = 'HelpText';
-HelpText.args = {
+export const HelpTextCheckbox = CheckboxGroupTemplate.bind({});
+HelpTextCheckbox.storyName = 'HelpText';
+HelpTextCheckbox.args = {
   helpText: 'CheckboxGroup help text',
 };
 
@@ -121,13 +126,19 @@ Disabled.args = {
 export const Optional = CheckboxGroupTemplate.bind({});
 Optional.storyName = 'Optional';
 Optional.args = {
-  neccessityIndicator: 'optional',
+  necessityIndicator: 'optional',
 };
 
 export const Required = CheckboxGroupTemplate.bind({});
 Required.storyName = 'Required';
 Required.args = {
-  neccessityIndicator: 'required',
+  necessityIndicator: 'required',
+};
+
+export const Small = CheckboxGroupTemplate.bind({});
+Small.storyName = 'Small';
+Small.args = {
+  size: 'small',
 };
 
 export const LabelPositionLeft = CheckboxGroupTemplate.bind({});
@@ -179,7 +190,7 @@ const IndeterminateExample = () => {
   );
 };
 
-const IndeterminateTemplate: ComponentStory<typeof CheckboxComponent> = () => {
+const IndeterminateTemplate: StoryFn<typeof CheckboxComponent> = () => {
   return <IndeterminateExample />;
 };
 export const Indeterminate = IndeterminateTemplate.bind({});
@@ -201,11 +212,11 @@ export const KitchenSink = (): React.ReactElement => {
       </CheckboxGroupComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
-        errorText="Selected atleast one item"
-        helpText={`You selected ${selected.join(', ')}`}
-        label="Controlled"
-        value={selected}
-        onChange={({ values }) => setSelected(values)}
+        helpText="Small sized checkboxes"
+        label="Small checkboxes"
+        size="small"
+        defaultValue={['orange']}
+        onChange={(e) => console.log(e)}
       >
         <CheckboxComponent value="apple">Apple</CheckboxComponent>
         <CheckboxComponent value="mango">Mango</CheckboxComponent>
@@ -213,7 +224,25 @@ export const KitchenSink = (): React.ReactElement => {
       </CheckboxGroupComponent>
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
-        neccessityIndicator="required"
+        errorText="Selected atleast one item"
+        helpText={`You selected ${selected.join(', ')}`}
+        label="Controlled"
+        value={selected}
+        onChange={({ values }) => setSelected(values)}
+      >
+        <CheckboxComponent helpText="Apples Are 25% Air" value="apple">
+          Apple
+        </CheckboxComponent>
+        <CheckboxComponent helpText="The name “mango” originated in India" value="mango">
+          Mango
+        </CheckboxComponent>
+        <CheckboxComponent helpText="There are over 600 varieties of oranges." value="orange">
+          Orange
+        </CheckboxComponent>
+      </CheckboxGroupComponent>
+      <Text>&nbsp;</Text>
+      <CheckboxGroupComponent
+        necessityIndicator="required"
         errorText="Atleast one has to be selected"
         helpText="Select atleast one"
         label="Select your fruit"
@@ -225,7 +254,7 @@ export const KitchenSink = (): React.ReactElement => {
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
         validationState="error"
-        neccessityIndicator="optional"
+        necessityIndicator="optional"
         errorText="Atleast one has to be selected"
         helpText="Select atleast one"
         label="Select your fruit"
@@ -237,7 +266,7 @@ export const KitchenSink = (): React.ReactElement => {
       <Text>&nbsp;</Text>
       <CheckboxGroupComponent
         labelPosition="left"
-        neccessityIndicator="optional"
+        necessityIndicator="optional"
         validationState="error"
         errorText="This is invalid"
         helpText="Select atleast one"
@@ -247,6 +276,20 @@ export const KitchenSink = (): React.ReactElement => {
         <CheckboxComponent value="mango">Mango</CheckboxComponent>
         <CheckboxComponent value="orange">Orange</CheckboxComponent>
       </CheckboxGroupComponent>
+      <BaseBox height="50px" overflow="scroll" marginTop="spacing.4">
+        <CheckboxGroupComponent
+          labelPosition="left"
+          necessityIndicator="optional"
+          validationState="error"
+          errorText="This is invalid"
+          helpText="Select atleast one"
+          label="Overflow Scroll"
+        >
+          <CheckboxComponent value="apple">Apple</CheckboxComponent>
+          <CheckboxComponent value="mango">Mango</CheckboxComponent>
+          <CheckboxComponent value="orange">Orange</CheckboxComponent>
+        </CheckboxGroupComponent>
+      </BaseBox>
     </>
   );
 };

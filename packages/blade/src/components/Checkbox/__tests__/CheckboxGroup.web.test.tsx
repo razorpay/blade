@@ -4,9 +4,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import userEvents from '@testing-library/user-event';
 import React from 'react';
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.web';
 import { Checkbox } from '../Checkbox';
 import { CheckboxGroup } from '../CheckboxGroup';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -50,7 +50,7 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
+    getAllByRole('checkbox').forEach((checkbox) => {
       expect(checkbox).toBeDisabled();
     });
   });
@@ -65,7 +65,7 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
+    getAllByRole('checkbox').forEach((checkbox) => {
       expect(checkbox).toHaveAttribute('name', 'fruits');
     });
   });
@@ -110,7 +110,7 @@ describe('<CheckboxGroup />', () => {
 
     expect(queryByText(helpText)).not.toBeInTheDocument();
     expect(queryByText(errorText)).toBeInTheDocument();
-    getAllByRole('checkbox', { hidden: true }).forEach((checkbox) => {
+    getAllByRole('checkbox').forEach((checkbox) => {
       expect(checkbox).toBeInvalid();
     });
   });
@@ -151,10 +151,7 @@ describe('<CheckboxGroup />', () => {
       </CheckboxGroup>,
     );
 
-    expect(getByRole('checkbox', { hidden: true, checked: true })).toHaveAttribute(
-      'value',
-      'apple',
-    );
+    expect(getByRole('checkbox', { checked: true })).toHaveAttribute('value', 'apple');
 
     await user.tab();
     expect(getByLabelText('Apple')).toHaveFocus();
@@ -196,10 +193,7 @@ describe('<CheckboxGroup />', () => {
     };
     const { getByLabelText, getByRole, getByTestId } = renderWithTheme(<Example />);
 
-    expect(getByRole('checkbox', { hidden: true, checked: true })).toHaveAttribute(
-      'value',
-      'apple',
-    );
+    expect(getByRole('checkbox', { checked: true })).toHaveAttribute('value', 'apple');
 
     await user.tab();
     expect(getByLabelText('Apple')).toHaveFocus();
@@ -232,7 +226,7 @@ describe('<CheckboxGroup /> runtime errors', () => {
       );
     } catch (err: any) {
       expect(err.message).toBe(
-        "[Blade Checkbox]: Cannot set `defaultChecked,isChecked,onChange` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself",
+        "[Blade: Checkbox]: Cannot set `defaultChecked,isChecked,onChange` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself",
       );
     }
   });
@@ -257,7 +251,7 @@ describe('<CheckboxGroup /> runtime errors', () => {
   it('should throw error if validationState is used in Checkboxes', () => {
     const labelText = 'Select fruit';
     const errorMsg =
-      "[Blade Checkbox]: Cannot set `validationState` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself";
+      "[Blade: Checkbox]: Cannot set `validationState` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself";
 
     try {
       renderWithTheme(
@@ -351,5 +345,15 @@ describe('<CheckboxGroup /> integration tests', () => {
     await user.tab();
     expect(getByLabelText('orange')).toHaveFocus();
     expect(getByLabelText('orange')).toBeChecked();
+  });
+
+  it('should accept testID', () => {
+    const labelText = 'Select fruits';
+    const { getByTestId } = renderWithTheme(
+      <CheckboxGroup label={labelText} testID="checkbox-group-test">
+        <Checkbox value="apple">Apple</Checkbox>
+      </CheckboxGroup>,
+    );
+    expect(getByTestId('checkbox-group-test')).toBeTruthy();
   });
 });

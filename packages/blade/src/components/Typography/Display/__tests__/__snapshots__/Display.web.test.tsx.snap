@@ -1,0 +1,258 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Display /> should render Display with color 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(211,26%,34%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 3.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h1
+    class="c0"
+    data-blade-component="display"
+    letter-spacing="100"
+  >
+    Displaying Landing Page Display
+  </h1>
+</div>
+`;
+
+exports[`<Display /> should render Display with default properties 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(212,39%,16%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 3.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h1
+    class="c0"
+    data-blade-component="display"
+    letter-spacing="100"
+  >
+    Displaying Landing Page Display
+  </h1>
+</div>
+`;
+
+exports[`<Display /> should render Display with mixed color 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(212,39%,16%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 3.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  color: hsla(200,84%,44%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 3.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h1
+    class="c0"
+    data-blade-component="display"
+    letter-spacing="100"
+  >
+    Supercharge your business with the all‑powerful
+     
+    <span
+      class="c1"
+      data-blade-component="display"
+      letter-spacing="100"
+    >
+      Payment Gateway
+    </span>
+  </h1>
+</div>
+`;
+
+exports[`<Display /> should render Display with size "large" 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(211,22%,56%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 4rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 4.375rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h1
+    class="c0"
+    data-blade-component="display"
+    letter-spacing="100"
+  >
+    Displaying Landing Page Display
+  </h1>
+</div>
+`;
+
+exports[`<Display /> should render Display with size "medium" 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(211,22%,56%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 3.5rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 4rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h1
+    class="c0"
+    data-blade-component="display"
+    letter-spacing="100"
+  >
+    Displaying Landing Page Display
+  </h1>
+</div>
+`;
+
+exports[`<Display /> should render Display with size "small" 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(211,22%,56%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 3.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h1
+    class="c0"
+    data-blade-component="display"
+    letter-spacing="100"
+  >
+    Displaying Landing Page Display
+  </h1>
+</div>
+`;
+
+exports[`<Display /> should render Display with size "xlarge" 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(211,22%,56%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 4.5rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 4.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h1
+    class="c0"
+    data-blade-component="display"
+    letter-spacing="100"
+  >
+    Displaying Landing Page Display
+  </h1>
+</div>
+`;
+
+exports[`<Display /> should render Display with variant "small" and contrast "high" 1`] = `
+.c0.c0.c0.c0.c0 {
+  color: hsla(212,39%,16%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 3.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+<div>
+  <h1
+    class="c0"
+    data-blade-component="display"
+    letter-spacing="100"
+  >
+    Displaying Landing Page Display
+  </h1>
+</div>
+`;

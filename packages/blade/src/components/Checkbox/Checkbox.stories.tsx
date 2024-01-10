@@ -1,48 +1,41 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { ArgsTable, Primary, PRIMARY_STORY, Stories, Subtitle, Title } from '@storybook/addon-docs';
-import { Highlight, Link } from '@storybook/design-system';
-import type { ComponentStory, Meta } from '@storybook/react';
+import { Title } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { Text } from '../Typography';
 import type { CheckboxProps } from './';
 import { Checkbox as CheckboxComponent } from './';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
+import { Text } from '~components/Typography';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import BaseBox from '~components/Box/BaseBox';
+import { Button } from '~components/Button';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): React.ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        Checkbox can be used in forms when a user needs to select multiple values from several
-        options.
-      </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentName="Checkbox"
+      componentDescription="Checkbox can be used in forms when a user needs to select multiple values from several options."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
+    >
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Checkbox } from '@razorpay/blade/components' \nimport type { CheckboxProps } from '@razorpay/blade/components'`}</Highlight>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default checkbox. You can change the properties of this button using the
-        controls in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+      <Sandbox showConsole>
+        {`
+        import { Checkbox } from '@razorpay/blade/components'
+        
+        function App(): React.ReactElement {
+          return (
+            // Check console
+            <Checkbox onChange={(e) => console.log(e.isChecked)}>
+              Toggle Checkbox
+            </Checkbox>
+          )
+        }
+
+        export default App;
+      `}
+      </Sandbox>
+    </StoryPageWrapper>
   );
 };
 
@@ -63,8 +56,10 @@ export default {
     errorText: undefined,
     labelPosition: 'top',
     children: 'Toggle checkbox',
+    size: 'medium',
   },
-  argTypes: {},
+  tags: ['autodocs'],
+  argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
       page: Page,
@@ -72,7 +67,7 @@ export default {
   },
 } as Meta<CheckboxProps>;
 
-const CheckboxTemplate: ComponentStory<typeof CheckboxComponent> = ({ children, ...args }) => {
+const CheckboxTemplate: StoryFn<typeof CheckboxComponent> = ({ children, ...args }) => {
   return <CheckboxComponent {...args}>{children}</CheckboxComponent>;
 };
 
@@ -104,6 +99,12 @@ ErrorText.args = {
   errorText: 'Checkbox error text',
 };
 
+export const Small = CheckboxTemplate.bind({});
+Small.storyName = 'Small';
+Small.args = {
+  size: 'small',
+};
+
 export const Indeterminate = CheckboxTemplate.bind({});
 Indeterminate.storyName = 'Indeterminate';
 Indeterminate.args = {
@@ -126,7 +127,29 @@ const ControlledAndUncontrolledComp = () => {
     </>
   );
 };
-const _ControlledAndUncontrolled: ComponentStory<typeof CheckboxComponent> = () => {
+const _ControlledAndUncontrolled: StoryFn<typeof CheckboxComponent> = () => {
   return <ControlledAndUncontrolledComp />;
 };
 export const ControlledAndUncontrolled = _ControlledAndUncontrolled.bind({});
+
+export const checkboxRef: StoryFn<typeof CheckboxComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const checkboxRef = React.useRef<HTMLInputElement>(null);
+
+  return (
+    <BaseBox gap="spacing.3" display="flex" alignItems="center">
+      <CheckboxComponent ref={checkboxRef}>Checkbox</CheckboxComponent>
+      <Button onClick={() => checkboxRef?.current?.focus()}>Click to focus the checkbox</Button>
+    </BaseBox>
+  );
+};
+
+checkboxRef.storyName = 'Checkbox Ref';
+checkboxRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'Checkbox component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
+    },
+  },
+};

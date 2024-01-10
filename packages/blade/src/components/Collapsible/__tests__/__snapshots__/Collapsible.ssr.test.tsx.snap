@@ -1,0 +1,416 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id="root"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx RvefM"><button type="button" data-blade-component="button" role="button" aria-controls="collapsible-body-undefined" aria-expanded="true" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 ctKBsz"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO bewYNq" data-blade-component="base-text">View Price Breakdown</div></div></button><div id="collapsible-body-undefined" role="region" aria-hidden="false" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 rdBDV"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="box" class="BaseBox-bmPWx RDiNQ"><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Actual amount</p><div data-blade-component="amount" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx caXXVm"><span class="StyledBaseText-dVBfTO kkBehy" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="base-text">1,000<!-- -->.</span><span class="StyledBaseText-dVBfTO kGBFNJ" data-blade-component="base-text">00</span></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO ekqPVM" data-blade-component="text">Razorpay Platform Fees</p><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">2%</p></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO ekqPVM" data-blade-component="text">GST</p><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">18%</p></div></div></div></div></div></div></div></div>"`;
+
+exports[`<Collapsible /> should render Collapsible on server 2`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
+  min-width: 200px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c6.c6.c6.c6.c6 {
+  margin-bottom: 0px;
+  margin-top: 16px;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.c10.c10.c10.c10.c10 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.c11.c11.c11.c11.c11 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c12.c12.c12.c12.c12 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-right: 2px;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-left: 2px;
+}
+
+.c14.c14.c14.c14.c14 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  margin-top: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  opacity: 1;
+}
+
+.c5.c5.c5.c5.c5 {
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-property: height,opacity;
+  transition-property: height,opacity;
+  opacity: 1;
+  height: auto;
+  display: block;
+  overflow-y: hidden;
+}
+
+@media screen and (min-width:480px) {
+  .c0.c0.c0.c0.c0 {
+    max-width: calc(100vw - 40px);
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c0.c0.c0.c0.c0 {
+    max-width: 640px;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c0.c0.c0.c0.c0 {
+    max-width: 1136px;
+  }
+}
+
+<div
+  id="root"
+>
+  <div
+    class=""
+    data-blade-component="collapsible"
+  >
+    <div
+      class="c0"
+      data-blade-component="base-box"
+    >
+      <button
+        aria-controls="collapsible-body-1"
+        aria-expanded="true"
+        class="c1"
+        data-blade-component="button"
+        role="button"
+        type="button"
+      >
+        <div
+          class="c2 c3"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            View Price Breakdown
+          </div>
+        </div>
+      </button>
+      <div
+        aria-hidden="false"
+        class=""
+        data-blade-component="collapsible-body"
+        id="collapsible-body-1"
+        role="region"
+      >
+        <div
+          class="c5"
+        >
+          <div
+            class="c6"
+            data-blade-component="box"
+          >
+            <div
+              class="c7"
+              data-blade-component="box"
+            >
+              <div
+                class="c8"
+                data-blade-component="box"
+              >
+                <p
+                  class="c9"
+                  data-blade-component="text"
+                >
+                  Actual amount
+                </p>
+                <div
+                  class="c10"
+                  data-blade-component="amount"
+                >
+                  <div
+                    class="c11"
+                    data-blade-component="base-box"
+                  >
+                    <span
+                      class="c12"
+                      data-blade-component="base-text"
+                    >
+                      ₹
+                    </span>
+                    <span
+                      class="c9"
+                      data-blade-component="base-text"
+                    >
+                      1,000
+                      <!-- -->
+                      .
+                    </span>
+                    <span
+                      class="c13"
+                      data-blade-component="base-text"
+                    >
+                      00
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="c8"
+                data-blade-component="box"
+              >
+                <p
+                  class="c14"
+                  data-blade-component="text"
+                >
+                  Razorpay Platform Fees
+                </p>
+                <p
+                  class="c9"
+                  data-blade-component="text"
+                >
+                  2%
+                </p>
+              </div>
+              <div
+                class="c8"
+                data-blade-component="box"
+              >
+                <p
+                  class="c14"
+                  data-blade-component="text"
+                >
+                  GST
+                </p>
+                <p
+                  class="c9"
+                  data-blade-component="text"
+                >
+                  18%
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

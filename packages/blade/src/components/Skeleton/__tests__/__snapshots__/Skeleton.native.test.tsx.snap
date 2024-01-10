@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Skeleton /> should render skeleton 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityElementsHidden={true}
+    data-blade-component="skeleton"
+    entering={[Function]}
+    height="50px"
+    importantForAccessibility="no-hide-descendants"
+    style={
+      [
+        {
+          "height": 50,
+          "width": "100%",
+        },
+        {
+          "backgroundColor": undefined,
+        },
+      ]
+    }
+    width="100%"
+  />
+</View>
+`;
+
+exports[`<Skeleton /> should support margin and other layout props 1`] = `[Function]`;

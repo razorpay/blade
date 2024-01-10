@@ -1,0 +1,1459 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RadioGroup /> should render with help text 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityLabelledBy="radio-group-15-label"
+      accessibilityRole="radiogroup"
+      accessible={true}
+      data-blade-component="radio-group"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          gap="spacing.0"
+          maxHeight="36px"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="semibold"
+            lineHeight={75}
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "hsla(217, 18%, 45%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Select fruits
+          </Text>
+          <View
+            data-blade-component="visually-hidden"
+            style={
+              [
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              ,Select one
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              style={
+                [
+                  {},
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-16-helptext-17"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                name="radio-group-15"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="apple"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="radio-icon-wrapper"
+                      isChecked={false}
+                      isDisabled={false}
+                      isNegative={false}
+                      size="medium"
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 9999,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginLeft": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      accessible={true}
+                      color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontWeight="regular"
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(216, 27%, 36%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Apple
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              style={
+                [
+                  {},
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-18-helptext-19"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                name="radio-group-15"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="mango"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="radio-icon-wrapper"
+                      isChecked={false}
+                      isDisabled={false}
+                      isNegative={false}
+                      size="medium"
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 9999,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginLeft": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      accessible={true}
+                      color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontWeight="regular"
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(216, 27%, 36%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Mango
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 0,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              style={
+                [
+                  {},
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-20-helptext-21"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                name="radio-group-15"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="orange"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="radio-icon-wrapper"
+                      isChecked={false}
+                      isDisabled={false}
+                      isNegative={false}
+                      size="medium"
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 9999,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginLeft": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      accessible={true}
+                      color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontWeight="regular"
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(216, 27%, 36%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Orange
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginTop": 4,
+              },
+            ]
+          }
+        >
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="row"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "row",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.muted.lowContrast"
+              data-blade-component="base-text"
+              fontFamily="text"
+              fontSize={50}
+              fontStyle="italic"
+              lineHeight={50}
+              style={
+                [
+                  {
+                    "color": "hsla(216, 16%, 60%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 11,
+                    "fontStyle": "italic",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 16,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Select one
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<RadioGroup /> should render with label 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="base-box"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      accessibilityLabelledBy="radio-group-7-label"
+      accessibilityRole="radiogroup"
+      accessible={true}
+      data-blade-component="radio-group"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          gap="spacing.0"
+          maxHeight="36px"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.subdued.lowContrast"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="semibold"
+            lineHeight={75}
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "hsla(217, 18%, 45%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Select fav fruit
+          </Text>
+          <View
+            data-blade-component="visually-hidden"
+            style={
+              [
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.normal.lowContrast"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(217, 56%, 17%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="column"
+          style={
+            [
+              {
+                "display": "flex",
+                "flexDirection": "column",
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              style={
+                [
+                  {},
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-1-helptext-2"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                name="radio-group-7"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="apple"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="radio-icon-wrapper"
+                      isChecked={false}
+                      isDisabled={false}
+                      isNegative={false}
+                      size="medium"
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 9999,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginLeft": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      accessible={true}
+                      color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontWeight="regular"
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(216, 27%, 36%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Apple
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 8,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              style={
+                [
+                  {},
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-3-helptext-4"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                name="radio-group-7"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="mango"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="radio-icon-wrapper"
+                      isChecked={false}
+                      isDisabled={false}
+                      isNegative={false}
+                      size="medium"
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 9999,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginLeft": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      accessible={true}
+                      color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontWeight="regular"
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(216, 27%, 36%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Mango
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {
+                  "marginBottom": 0,
+                },
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              style={
+                [
+                  {},
+                ]
+              }
+            >
+              <View
+                accessibilityDescribedBy="radio-5-helptext-6"
+                accessibilityInvalid={false}
+                accessibilityRequired={false}
+                accessibilityRole="radio"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": false,
+                    "disabled": false,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                collapsable={false}
+                focusable={true}
+                name="radio-group-7"
+                onBlur={[Function]}
+                onClick={[Function]}
+                onFocus={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    {
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "marginBottom": 2,
+                      "marginTop": 2,
+                    },
+                  ]
+                }
+                value="orange"
+              >
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="column"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexDirection": "column",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      data-blade-component="radio-icon-wrapper"
+                      isChecked={false}
+                      isDisabled={false}
+                      isNegative={false}
+                      size="medium"
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "backgroundColor": "transparent",
+                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "borderRadius": 9999,
+                            "borderStyle": "solid",
+                            "borderWidth": 1.5,
+                            "display": "flex",
+                            "height": 16,
+                            "justifyContent": "center",
+                            "marginBottom": 2,
+                            "marginLeft": 2,
+                            "marginRight": 2,
+                            "marginTop": 2,
+                            "position": "relative",
+                            "width": 16,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      data-blade-component="base-box"
+                      style={
+                        [
+                          {
+                            "marginLeft": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      accessible={true}
+                      color="surface.text.subtle.lowContrast"
+                      data-blade-component="base-text"
+                      fontFamily="text"
+                      fontSize={100}
+                      fontWeight="regular"
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(216, 27%, 36%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Orange
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

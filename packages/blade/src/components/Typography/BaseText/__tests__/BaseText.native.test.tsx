@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseText } from '../';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -17,9 +17,9 @@ describe('<BaseText />', () => {
     const displayText = 'Displaying some text';
     const { toJSON, getByText } = renderWithTheme(
       <BaseText
-        color="surface.text.normal.highContrast"
+        color="surface.text.gray.normal"
         fontFamily="text"
-        lineHeight="m"
+        lineHeight={100}
         fontSize={25}
         fontWeight="regular"
       >
@@ -34,9 +34,9 @@ describe('<BaseText />', () => {
     const displayText = 'Displaying some text';
     const { toJSON, getByText } = renderWithTheme(
       <BaseText
-        color="surface.text.normal.highContrast"
+        color="surface.text.gray.normal"
         fontFamily="text"
-        lineHeight="m"
+        lineHeight={100}
         fontSize={25}
         fontWeight="regular"
         fontStyle="italic"
@@ -54,9 +54,9 @@ describe('<BaseText />', () => {
       const displayText = 'Displaying some text';
       renderWithTheme(
         <BaseText
-          color="surface.text.normal.highContrast"
+          color="surface.text.gray.normal"
           fontFamily="text"
-          lineHeight="m"
+          lineHeight={100}
           fontSize={25}
           fontWeight="regular"
           fontStyle="italic"
@@ -73,5 +73,13 @@ describe('<BaseText />', () => {
         );
       }
     }
+  });
+
+  it('should accept testID', () => {
+    const displayText = 'Displaying some text';
+    const { getByTestId } = renderWithTheme(
+      <BaseText testID="base-text-test">{displayText}</BaseText>,
+    );
+    expect(getByTestId('base-text-test')).toBeTruthy();
   });
 });

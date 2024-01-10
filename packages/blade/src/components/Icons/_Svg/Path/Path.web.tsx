@@ -1,7 +1,8 @@
 import type { ReactElement } from 'react';
-import type { PathProps } from './Path.d';
+import type { Exact, PathProps } from './types';
+import { metaAttribute } from '~utils/metaAttribute';
 
-const Path = ({
+const Path = <Props extends Exact<PathProps, Props>>({
   d,
   clipPath,
   clipRule,
@@ -12,7 +13,7 @@ const Path = ({
   strokeLinecap,
   strokeLinejoin,
   strokeWidth,
-}: PathProps): ReactElement => {
+}: Props): ReactElement => {
   return (
     <path
       d={d}
@@ -25,6 +26,7 @@ const Path = ({
       strokeLinecap={strokeLinecap}
       strokeLinejoin={strokeLinejoin}
       strokeWidth={strokeWidth}
+      {...metaAttribute({ name: 'svg-path' })}
     />
   );
 };

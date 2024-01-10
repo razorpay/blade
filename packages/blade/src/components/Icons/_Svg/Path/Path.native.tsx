@@ -1,8 +1,9 @@
 import type { ReactElement } from 'react';
 import { Path as PathNative } from 'react-native-svg';
-import type { PathProps } from './Path.d';
+import type { Exact, PathProps } from './types';
+import { metaAttribute } from '~utils/metaAttribute';
 
-const Path = ({
+const Path = <Props extends Exact<PathProps, Props>>({
   d,
   clipPath,
   clipRule,
@@ -13,7 +14,7 @@ const Path = ({
   strokeLinecap,
   strokeLinejoin,
   strokeWidth,
-}: PathProps): ReactElement => {
+}: Props): ReactElement => {
   return (
     <PathNative
       d={d}
@@ -26,6 +27,7 @@ const Path = ({
       strokeLinecap={strokeLinecap}
       strokeLinejoin={strokeLinejoin}
       strokeWidth={strokeWidth}
+      {...metaAttribute({ name: 'svg-path' })}
     />
   );
 };

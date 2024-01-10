@@ -1,11 +1,14 @@
 import { fireEvent } from '@testing-library/react';
+import type { LinkProps } from '../Link';
 import Link from '../Link';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const colors: LinkProps['color'][] = ['primary', 'white', 'neutral'];
 
 describe('<Link />', () => {
   it('should render link with default properties', () => {
@@ -16,16 +19,32 @@ describe('<Link />', () => {
     expect(getByText('Learn More')).toBeInTheDocument();
   });
 
-  it('should render link with an href, target and rel', () => {
+  it('should render with small size', () => {
+    const linkText = 'Learn More';
+    const { container } = renderWithTheme(
+      <Link icon={InfoIcon} size="small">
+        {linkText}
+      </Link>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render link with an href, target, rel and title', () => {
     const linkText = 'Learn More';
     const { getByRole } = renderWithTheme(
-      <Link href="https://www.google.com/" target="_blank" rel="noreferrer noopener">
+      <Link
+        href="https://www.google.com/"
+        target="_blank"
+        rel="noreferrer noopener"
+        htmlTitle="Google"
+      >
         {linkText}
       </Link>,
     );
     expect(getByRole('link')).toHaveAttribute('href', 'https://www.google.com/');
     expect(getByRole('link')).toHaveAttribute('target', '_blank');
     expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer noopener');
+    expect(getByRole('link')).toHaveAttribute('title', 'Google');
   });
 
   it('should render link with icon without text', () => {
@@ -76,6 +95,24 @@ describe('<Link />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  colors.forEach((color) => {
+    it(`should render ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { container } = renderWithTheme(<Link color={color}>{linkText}</Link>);
+      expect(container).toMatchSnapshot();
+    });
+
+    it(`should render disabled ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { container } = renderWithTheme(
+        <Link color={color} isDisabled={true}>
+          {linkText}
+        </Link>,
+      );
+      expect(container).toMatchSnapshot();
+    });
+  });
+
   it('should call function on click of button variant of link', () => {
     const linkText = 'Learn More';
     const onClick = jest.fn();
@@ -109,5 +146,11 @@ describe('<Link />', () => {
     const linkText = 'Learn more';
     const { container } = renderWithTheme(<Link variant="button">{linkText}</Link>);
     await assertAccessible(container);
+  });
+
+  it('should accept testID', () => {
+    const linkText = 'Learn More';
+    const { getByTestId } = renderWithTheme(<Link testID="link-test">{linkText}</Link>);
+    expect(getByTestId('link-test')).toBeTruthy();
   });
 });

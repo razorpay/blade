@@ -8,13 +8,18 @@ const buildDirectory = 'build';
 
 try {
   exportCategories.forEach((exportCategory) => {
-    // generate root export for js
-    const exportCategoryContent = `export * from './${buildDirectory}/${exportCategory}';\n`;
-    const exportCategoryFile = path.resolve(__dirname, `../${exportCategory}.js`);
-    fs.writeFileSync(exportCategoryFile, exportCategoryContent);
+    // generate root export for web
+    const exportCategoryContentWeb = `export * from './${buildDirectory}/lib/web/production/${exportCategory}';\n`;
+    const exportCategoryFileWeb = path.resolve(__dirname, `../${exportCategory}.js`);
+    fs.writeFileSync(exportCategoryFileWeb, exportCategoryContentWeb);
+
+    // generate root export for native
+    const exportCategoryContentNative = `export * from './${buildDirectory}/lib/native/${exportCategory}';\n`;
+    const exportCategoryFileNative = path.resolve(__dirname, `../${exportCategory}.native.js`);
+    fs.writeFileSync(exportCategoryFileNative, exportCategoryContentNative);
 
     // generate root export for typings
-    const typingsContent = `export * from './${buildDirectory}/${exportCategory}';\n`;
+    const typingsContent = `export * from './${buildDirectory}/types/${exportCategory}';\n`;
     const typingsFile = path.resolve(__dirname, `../${exportCategory}.d.ts`);
     fs.writeFileSync(typingsFile, typingsContent);
   });

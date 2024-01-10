@@ -1,9 +1,17 @@
 import React from 'react';
-import { CheckboxGroupField } from './CheckboxGroupField';
+import { checkboxSizes } from '../checkboxTokens';
 import { CheckboxGroupProvider } from './CheckboxGroupContext';
 import { useCheckboxGroup } from './useCheckboxGroup';
 import { FormLabel, FormHint } from '~components/Form';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
+import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { useBreakpoint } from '~utils';
+
+import { useTheme } from '~components/BladeProvider';
+import type { TestID } from '~utils/types';
+import { makeSize } from '~utils/makeSize';
 
 type CheckboxGroupProps = {
   /**
@@ -28,11 +36,11 @@ type CheckboxGroupProps = {
    */
   validationState?: 'error' | 'none';
   /**
-   * Renders a neccessity indicator after CheckboxGroup label
+   * Renders a necessity indicator after CheckboxGroup label
    *
    * If set to `undefined` it renders nothing.
    */
-  neccessityIndicator?: 'required' | 'optional' | 'none';
+  necessityIndicator?: 'required' | 'optional' | 'none';
   /**
    * Sets the disabled state of the CheckboxGroup
    * If set to `true` it propagate down to all the checkboxes
@@ -41,9 +49,14 @@ type CheckboxGroupProps = {
    */
   isDisabled?: boolean;
   /**
+   * Sets the required state of the CheckboxGroup
+   * @default false
+   */
+  isRequired?: boolean;
+  /**
    * Renders the label of the checkbox group
    */
-  label: string;
+  label?: string;
   /**
    * Sets the position of the label
    *
@@ -69,14 +82,22 @@ type CheckboxGroupProps = {
    * (Useful for form submission).
    */
   name?: string;
-};
+  /**
+   * Size of the checkbox
+   *
+   * @default "medium"
+   */
+  size?: 'small' | 'medium';
+} & TestID &
+  StyledPropsBlade;
 
 const CheckboxGroup = ({
   children,
   label,
   helpText,
-  isDisabled,
-  neccessityIndicator = 'none',
+  isDisabled = false,
+  isRequired = false,
+  necessityIndicator = 'none',
   labelPosition = 'top',
   validationState,
   errorText,
@@ -84,46 +105,75 @@ const CheckboxGroup = ({
   defaultValue,
   onChange,
   value,
+  size = 'medium',
+  testID,
+  ...styledProps
 }: CheckboxGroupProps): React.ReactElement => {
   const { contextValue, ids } = useCheckboxGroup({
     defaultValue,
     onChange,
     value,
     isDisabled,
+    necessityIndicator,
+    isRequired,
     name,
     labelPosition,
     validationState,
+    size,
   });
 
+  const { theme } = useTheme();
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;
-  const accessibillityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
+  const accessibilityText = `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
+  const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const gap = checkboxSizes.group.gap[size][matchedDeviceType];
+  const childCount = React.Children.count(children);
 
   return (
     <CheckboxGroupProvider value={contextValue}>
-      <CheckboxGroupField labelledBy={ids.labelId}>
-        <FormLabel
-          as="span"
-          neccessityIndicator={neccessityIndicator}
+      <BaseBox {...getStyledProps(styledProps)}>
+        <SelectorGroupField
           position={labelPosition}
-          id={ids.labelId}
-          accessibillityText={accessibillityText}
+          labelledBy={ids.labelId}
+          componentName="checkbox-group"
+          testID={testID}
         >
-          {label}
-        </FormLabel>
-        <Box>
-          <Box display="flex" flexDirection="column" gap={2}>
-            {children}
-          </Box>
-          <FormHint
-            errorText={errorText}
-            helpText={helpText}
-            type={validationState === 'error' ? 'error' : 'help'}
-          />
-        </Box>
-      </CheckboxGroupField>
+          {label ? (
+            <FormLabel
+              as="span"
+              necessityIndicator={necessityIndicator}
+              position={labelPosition}
+              id={ids.labelId}
+              accessibilityText={accessibilityText}
+            >
+              {label}
+            </FormLabel>
+          ) : null}
+          <BaseBox>
+            <BaseBox display="flex" flexDirection="column">
+              {React.Children.map(children, (child, index) => {
+                return (
+                  <BaseBox
+                    key={index}
+                    {...{ marginBottom: index === childCount - 1 ? makeSize(0) : gap }}
+                  >
+                    {child}
+                  </BaseBox>
+                );
+              })}
+            </BaseBox>
+            <FormHint
+              errorText={errorText}
+              helpText={helpText}
+              type={validationState === 'error' ? 'error' : 'help'}
+            />
+          </BaseBox>
+        </SelectorGroupField>
+      </BaseBox>
     </CheckboxGroupProvider>
   );
 };
 
-export { CheckboxGroup, CheckboxGroupProps };
+export type { CheckboxGroupProps };
+export { CheckboxGroup };

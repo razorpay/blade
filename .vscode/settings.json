@@ -1,0 +1,11 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "**/**/*.stories.tsx",
+    "**/**/*.stories.internal.tsx",
+    "**/storybook-recipes",
+    "packages/blade/src/components/index.ts",
+    "@testing-library/user-event/dist/types/**",
+    "@storybook/*"
+  ]
+}

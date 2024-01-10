@@ -1,24 +1,25 @@
-import { BaseText } from '~components/Typography/BaseText';
+import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography/Text';
 
 const SelectorTitle = ({
   children,
   isDisabled,
+  size = 'medium',
 }: {
   children: React.ReactNode;
   isDisabled?: boolean;
+  size: 'small' | 'medium';
 }): React.ReactElement => {
   return (
-    <BaseText
-      lineHeight="l"
-      fontFamily="text"
-      fontWeight="regular"
-      color={
-        isDisabled ? 'surface.text.placeholder.lowContrast' : 'surface.text.subtle.lowContrast'
-      }
-      fontSize={100}
-    >
-      {children}
-    </BaseText>
+    <>
+      <BaseBox marginLeft="spacing.2" />
+      <Text
+        size={size}
+        color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
+      >
+        {children}
+      </Text>
+    </>
   );
 };
 

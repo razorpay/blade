@@ -1,8 +1,9 @@
+const { rebrandedComponents } = require('./rebranded-components');
+
 const ignores = ['/node_modules/'];
 
-module.exports = {
+const baseConfig = {
   testPathIgnorePatterns: [...ignores, 'native.test'],
-  collectCoverageFrom: ['./src/**/*.web.{ts,tsx}'],
   coverageThreshold: {
     global: {
       branches: 75,
@@ -11,21 +12,52 @@ module.exports = {
       statements: 75,
     },
   },
+  snapshotSerializers: ['<rootDir>/jestStyledComponentsSerializer.js'],
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
-  testMatch: ['**/*.test.{ts,tsx}'],
-  transform: {
-    '\\.(js|ts|tsx)?$': 'babel-jest',
-  },
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: [
-    '@testing-library/jest-dom/extend-expect',
-    'jest-useragent-mock',
-    './jest-setup.web.js',
+  testMatch: [
+    ...rebrandedComponents.map((component) => `**/${component}.web.test.{ts,tsx}`),
+    '**/Icons/*Icon/*.web.test.{ts,tsx}',
+    '**/codemods/**/*.test.{ts,tsx}',
+    '**/utils/**/*.test.{ts,tsx}',
   ],
+  transform: {
+    '\\.(js|ts|tsx)?$': './jest-preprocess.js',
+  },
+  transformIgnorePatterns: ['/node_modules/(?!(@table-library)/)'],
+  testEnvironment: 'jsdom',
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect', './jest-setup.web.js'],
   moduleNameMapper: {
     '^\\~src/(.*)': '<rootDir>/src/$1',
     '^\\~components/(.*)': '<rootDir>/src/components/$1',
-    '^\\~utils': '<rootDir>/src/utils',
+    '^\\~utils$': '<rootDir>/src/utils',
+    '^\\~utils/(.*)': '<rootDir>/src/utils/$1',
     '^\\~tokens/(.*)': '<rootDir>/src/tokens/$1',
   },
+  globals: {
+    __DEV__: true,
+  },
+};
+
+module.exports = {
+  projects: [
+    {
+      displayName: 'SSR Test',
+      ...baseConfig,
+      testEnvironment: 'node',
+      testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'web.test'],
+      collectCoverageFrom: rebrandedComponents.map(
+        (component) => `./src/**/${component}.ssr.{ts,tsx}`,
+      ),
+      testMatch: rebrandedComponents.map((component) => `**/${component}.ssr.test.{ts,tsx}`),
+    },
+    {
+      displayName: 'CSR Test',
+      ...baseConfig,
+      testEnvironment: 'jsdom',
+      testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'ssr.test'],
+      collectCoverageFrom: rebrandedComponents.map(
+        (component) => `./src/**/${component}.web.{ts,tsx}`,
+      ),
+    },
+  ],
 };

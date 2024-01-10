@@ -1,8 +1,10 @@
 import type { ReactElement } from 'react';
 import styled from 'styled-components/native';
 import getBaseTextStyles from './getBaseTextStyles';
-import type { BaseTextProps, StyledBaseTextProps } from './BaseTextTypes';
-import { makeAccessible } from '~utils';
+import type { BaseTextProps, StyledBaseTextProps } from './types';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { getStyledProps, useStyledProps } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const StyledBaseText = styled.Text<StyledBaseTextProps>(
   ({
@@ -12,26 +14,31 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
     fontWeight,
     fontStyle,
     textDecorationLine,
+    numberOfLines,
     lineHeight,
+    letterSpacing,
     textAlign,
     as,
     ...props
   }) => {
-    if (as) {
-      throw new Error(`[Blade: BaseText]: "as" prop is not supported for BaseText on React Native`);
-    } else {
-      return getBaseTextStyles({
+    const styledPropsCSSObject = useStyledProps(props);
+
+    return {
+      ...getBaseTextStyles({
         color,
         fontFamily,
         fontSize,
         fontWeight,
         fontStyle,
         textDecorationLine,
+        numberOfLines,
         lineHeight,
+        letterSpacing,
         textAlign,
         theme: props.theme,
-      });
-    }
+      }),
+      ...styledPropsCSSObject,
+    };
   },
 );
 
@@ -44,16 +51,19 @@ export const BaseText = ({
   fontStyle,
   textDecorationLine,
   lineHeight,
-  as,
   textAlign,
   children,
   truncateAfterLines,
   className,
   style,
   accessibilityProps = {},
+  componentName = MetaConstants.BaseText,
+  testID,
+  ...styledProps
 }: BaseTextProps): ReactElement => {
   return (
     <StyledBaseText
+      {...getStyledProps(styledProps)}
       color={color}
       fontFamily={fontFamily}
       fontSize={fontSize}
@@ -61,13 +71,14 @@ export const BaseText = ({
       fontStyle={fontStyle}
       textDecorationLine={textDecorationLine}
       lineHeight={lineHeight}
-      as={as}
+      as={undefined}
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
       className={className}
       style={style}
       id={id}
       {...makeAccessible(accessibilityProps)}
+      {...metaAttribute({ name: componentName, testID })}
     >
       {children}
     </StyledBaseText>

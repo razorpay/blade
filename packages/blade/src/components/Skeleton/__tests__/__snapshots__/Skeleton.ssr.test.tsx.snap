@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Skeleton /> should render 1`] = `"<div id="root"><div aria-hidden="true" data-blade-component="skeleton" class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 kTtuUt fBLkgZ"></div></div>"`;
+
+exports[`<Skeleton /> should render 2`] = `
+.c0.c0.c0.c0.c0 {
+  margin: 4px;
+  height: 50px;
+  width: 100%;
+}
+
+.c1.c1.c1.c1.c1 {
+  opacity: 0;
+  background-color: hsla(216,15%,54%,0.18);
+  -webkit-animation-name: lbWRkT-450290765,fZZrNN-450290765;
+  animation-name: lbWRkT-450290765,fZZrNN-450290765;
+  -webkit-animation-duration: 900ms,1200ms;
+  animation-duration: 900ms,1200ms;
+  -webkit-animation-delay: 0ms,900ms;
+  animation-delay: 0ms,900ms;
+  -webkit-animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
+  animation-timing-function: cubic-bezier(0.3,0,0.2,1),cubic-bezier(0.3,0,0.2,1);
+  -webkit-animation-iteration-count: 1,infinite;
+  animation-iteration-count: 1,infinite;
+  -webkit-animation-direction: normal,alternate;
+  animation-direction: normal,alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+<div
+  id="root"
+>
+  <div
+    aria-hidden="true"
+    class="c0 c1"
+    data-blade-component="skeleton"
+  />
+</div>
+`;

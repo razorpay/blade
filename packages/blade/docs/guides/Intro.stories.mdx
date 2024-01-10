@@ -2,48 +2,68 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Guides/Intro" />
 
-<div style={{ margin: '0 auto', maxWidth: '600px', textAlign: 'center' }}>
-
-<h1 align="center">Blade</h1>
-<p align="center">
-  <a href="https://github.com/styled-components/styled-components">
-    <img
-      src="https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e"
-      alt="Blade is styled with styled-components"
-    />
-  </a>
-  &nbsp;&nbsp;
-  <a href="https://github.com/facebook/jest">
-    <img src="https://jestjs.io/img/jest-badge.svg" alt="Blade is tested with jest" />
-  </a>
-  &nbsp;&nbsp;
-  <a href="https://github.com/razorpay/blade/blob/master/LICENSE.md">
-    <img
-      src="https://img.shields.io/badge/license-MIT-blue.svg"
-      alt="Blade is released under the MIT license."
-    />
-  </a>
+<p style={{ textAlign: 'center' }}>
+  <img
+    height="80px"
+    width="300px"
+    alt="Blade Design System Logo"
+    src="https://raw.githubusercontent.com/razorpay/blade/00a200a8f53c1abff99d81a73fbdcbd12a6d0dca/branding/blade-original.min.svg"
+  />
 </p>
-
-<h4>
-  <b>The Design System that powers Razorpay</b>
-</h4>
-
+<br />
+<div style={{ display: 'flex', alignContent: 'center', justifyContent: 'center', gap: '12px' }}>
+  <a href="https://npmjs.org/package/@razorpay/blade">
+    <img
+      alt="Blade Latest Version"
+      src="https://img.shields.io/github/package-json/v/razorpay/blade?style=for-the-badge&labelColor=322&logo=npm&label=@razorpay/Blade&color=darkred&filename=packages%2Fblade%2Fpackage.json"
+    />
+  </a>
+  <a href="https://github.com/razorpay/blade/tree/master/CONTRIBUTING.md">
+    <img
+      alt="Open for Contributions"
+      src="https://img.shields.io/badge/Contributions-Open-333333?style=for-the-badge&logo=github&logoColor=ffffff&labelColor=111111"
+    />
+  </a>
 </div>
+<br />
 
-# 📦 Packages
+Blade is the Design System that powers [Razorpay](https://razorpay.com/)
+
+## 💫 Blade Rebranded
+
+- This is the new rebranded version of Blade which is under active development
+- We are currently working on migrating all the components from the old version of Blade to this new rebranded version.
+- Read more about the [rebranding & migration steps here](https://docs.google.com/document/d/1PLwUqx8LyfMeDW4u9CjwKHtSCpT1_sYUYtW_jwpLyDA/edit)
+- Check the current [availability status of rebranded components here](http://localhost:9009/?path=/docs/guides-component-status--docs)
+- Refer the older [documentation of Blade (before v11.0.0) here](https://v10--61c19ee8d3d282003ac1d81c.chromatic.com/)
+
+## 🔗 Links
+
+- [Docs](https://blade.razorpay.com)
+- [Installation](https://blade.razorpay.com/?path=/docs/guides-installation--page)
+- [@razorpay/blade-old](https://github.com/razorpay/blade-old) (Deprecated, Private)
+
+## ✨ Features
+
+- Cross-Platform (Works Natively on [React Web](https://blade.razorpay.com/?path=/docs/guides-installation--page#%EF%B8%8F-installation) and [React Native](https://blade.razorpay.com/?path=/docs/guides-installation--page#react-native-projects))
+- [White Labelling](https://blade.razorpay.com/?path=/docs/guides-theming-theme-playground--page)
+- [CSS Variables for non-React Projects](https://blade.razorpay.com/?path=/docs/tokens-css-variables--page)
+- [Accessible](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#manual-testing)
+- Documented [RFCs](https://github.com/razorpay/blade/tree/docs/make-docs-pretty/rfcs) and [API Decisions](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Alert/_decisions/decisions.md)
+
+## 📦 Packages
 
 Blade has 2 packages
 
-## [`@razorpay/blade`](https://github.com/razorpay/blade/tree/master/packages/blade)
+### [@razorpay/blade](https://github.com/razorpay/blade/tree/master/packages/blade)
 
 This package is under **active development**. We'll only refer to this version of blade throughout this documentation.
 
-## [`@razorpay/blade-old`](https://github.com/razorpay/blade/tree/master/packages/blade-old)
+### [@razorpay/blade-old](https://github.com/razorpay/blade-old#--blade-old)
 
-This package is under **maintenance** and it won't have any major releases. It will be **deprecated** once the newer version (`@razorpay/blade`) is ready for a stable release. Documentation for this package can be found [here](https://github.com/razorpay/blade/blob/master/packages/blade-old/README.md)
+This package is under **maintenance** and it won't have any major releases. It will be **deprecated** once the newer version (`@razorpay/blade`) is ready for a stable release. The repository is private and only accessible to Razorpay Employees. Documentation for this package can be found [here](https://github.com/razorpay/blade-old#--blade-old)
 
-# 📝 Versioning & Publishing
+## 📝 Versioning & Publishing
 
 - The first step in publishing a new version of blade is to first the mention the type of change and bump the version. We are using [`changesets`](https://github.com/atlassian/changesets) to handle automated versioning for us based on the intent of the change we mention in the PR.
 - Once a PR is approved by the authors of blade, based on if the PR needs a new version to be published the author will add a changeset to the PR.
@@ -59,7 +79,8 @@ This package is under **maintenance** and it won't have any major releases. It w
 
 > 🗒 You can read in depth about our shipping strategy [here](https://github.com/razorpay/blade/blob/master/rfcs/2021-06-15-shipping-blade.md)
 
-# ⌛️ Current State
+## ⌛️ Current State
 
-Here's a glimpse of where we are currently in our journey of building the design system.
-![phases-of-ds](https://user-images.githubusercontent.com/11384858/179764705-f02df436-b363-40b4-b6a5-bb7a7d5fbb33.png)
+For the current state of things please refer to the left hand sidebar. If you have any improvements to suggest feel free to open an [issue on GitHub](https://github.com/razorpay/blade/issues/new).
+
+> **For Razorpay Internal**: We're actively working on adding more components, utilities and docs. For any queries please reach us on Slack at `#design-system`.

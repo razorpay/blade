@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -13,6 +13,7 @@ exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
   padding: 0;
   position: absolute;
   width: 1px;
+  left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
 }
@@ -20,6 +21,7 @@ exports[`<VisuallyHidden /> should render VisuallyHidden content 1`] = `
 <div>
   <div
     class="c0"
+    data-blade-component="visually-hidden"
   >
     Text only visible to screen readers
   </div>

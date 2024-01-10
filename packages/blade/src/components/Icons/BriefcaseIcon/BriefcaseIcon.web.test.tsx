@@ -1,0 +1,11 @@
+import BriefcaseIcon from './';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+
+describe('<BriefcaseIcon />', () => {
+  it('should render BriefcaseIcon', () => {
+    const { container } = renderWithTheme(
+      <BriefcaseIcon color="feedback.icon.neutral.intense" size="large" />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+});

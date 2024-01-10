@@ -1,0 +1,151 @@
+import type { ReactElement } from 'react';
+import { useEffect } from 'react';
+import type { PressableProps } from 'react-native';
+import { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { StyledAccordionButton } from './StyledAccordionButton.native';
+import type { AccordionButtonProps } from './types';
+import { useAccordion } from './AccordionContext';
+import { getBackgroundColor, getTransitionDuration, getTransitionEasing } from './commonStyles';
+import { Text } from '~components/Typography';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
+import { castNativeType } from '~utils';
+import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
+import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
+import BaseBox from '~components/Box/BaseBox';
+import { useTheme } from '~components/BladeProvider';
+import type { IconProps } from '~components/Icons';
+import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
+
+const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
+  const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
+  const { showNumberPrefix, expandedIndex } = useAccordion();
+  const { theme } = useTheme();
+
+  const toggleCollapse = (): void => onExpandChange(!isExpanded);
+  const isItemExpanded = expandedIndex === index;
+
+  const isPressed = useSharedValue(false);
+
+  const duration = castNativeType(getTransitionDuration(theme));
+  const easing = castNativeType(getTransitionEasing(theme));
+
+  const activeBackgroundColor = useSharedValue(
+    getBackgroundColor({ theme, isExpanded, isActive: true }),
+  );
+  const inActiveBackgroundColor = useSharedValue(
+    getBackgroundColor({ theme, isExpanded, isActive: false }),
+  );
+
+  /**
+   * `backgroundColor` is derived from `isExpanded` and pressed state.
+   *
+   * Since we can't directly access return values from JS functions (`getBackgroundColor`) on UI thread,
+   * this effect updates the shared values for active / inactive states which are used by `animatedStyles`.
+   */
+  useEffect(() => {
+    activeBackgroundColor.value = getBackgroundColor({ theme, isExpanded, isActive: true });
+    inActiveBackgroundColor.value = getBackgroundColor({ theme, isExpanded, isActive: false });
+  }, [isExpanded, activeBackgroundColor, inActiveBackgroundColor, theme]);
+
+  const animatedStyles = useAnimatedStyle(() => ({
+    backgroundColor: withTiming(
+      isPressed.value ? activeBackgroundColor.value : inActiveBackgroundColor.value,
+      {
+        duration,
+        easing,
+      },
+    ),
+  }));
+
+  const _showNumberPrefix = typeof index === 'number' && showNumberPrefix;
+
+  const _index = _showNumberPrefix ? (
+    <Text size="large" weight="semibold" marginRight="spacing.2">
+      {index + 1}.
+    </Text>
+  ) : null;
+
+  const a11yLabel = _showNumberPrefix ? `${index + 1}. ${children}` : children;
+
+  const renderChildren: PressableProps['children'] = ({ pressed }) => {
+    isPressed.value = pressed;
+
+    const iconColor: IconProps['color'] =
+      pressed || isExpanded ? 'interactive.icon.gray.subtle' : 'interactive.icon.gray.muted';
+
+    const _icon = Icon && (
+      <Icon
+        size="medium"
+        color="surface.icon.gray.muted"
+        marginRight="spacing.3"
+        marginY="spacing.2"
+      />
+    );
+
+    if (__DEV__) {
+      if (_index && _icon) {
+        throwBladeError({
+          message: "showNumberPrefix and icon shouldn't be used together",
+          moduleName: 'Accordion',
+        });
+      }
+    }
+
+    return (
+      <BaseBox
+        display="flex"
+        flexDirection="row"
+        flex={1}
+        justifyContent="space-between"
+        alignItems="center"
+      >
+        <BaseBox
+          display="flex"
+          flexDirection="row"
+          alignItems="flex-start"
+          /**
+           * The `marginRight` is slightly larger here than web and the design spec (`spacing.4`),
+           * because otherwise lengthy text sometimes comes too close to the rotating chevron icon
+           * which doesn't look perfect
+           */
+          marginRight="spacing.5"
+          flexShrink={1}
+        >
+          {_index}
+          {_icon}
+          <Text size="large" weight="semibold">
+            {children}
+          </Text>
+        </BaseBox>
+        <BaseBox>
+          <CollapsibleChevronIcon color={iconColor} size="large" />
+        </BaseBox>
+      </BaseBox>
+    );
+  };
+
+  return (
+    <StyledAccordionButton
+      isExpanded={isExpanded}
+      onPress={toggleCollapse}
+      style={animatedStyles}
+      {...makeAccessible({
+        role: 'button',
+        expanded: isItemExpanded,
+        controls: collapsibleBodyId,
+        label: a11yLabel,
+      })}
+      {...metaAttribute({ name: MetaConstants.AccordionButton })}
+    >
+      {renderChildren}
+    </StyledAccordionButton>
+  );
+};
+
+const AccordionButton = assignWithoutSideEffects(_AccordionButton, {
+  componentId: MetaConstants.AccordionButton,
+});
+
+export { AccordionButton };

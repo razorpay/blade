@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
 import { Checkbox } from '../Checkbox';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Checkbox />', () => {
   it('should render checkbox with label', () => {
@@ -43,7 +44,10 @@ describe('<Checkbox />', () => {
     expect(toJSON()).toMatchSnapshot();
     const checkbox = queryByA11yState({ disabled: true });
     expect(checkbox).toBeTruthy();
-    expect(checkbox?.props?.accessibilityState).toStrictEqual({ checked: false, disabled: true });
+    expect(checkbox).toHaveAccessibilityState({
+      checked: false,
+      disabled: true,
+    });
   });
 
   it('should set defaultChecked', () => {
@@ -123,17 +127,47 @@ describe('<Checkbox />', () => {
           <Checkbox isChecked={checked} onChange={({ isChecked }) => setChecked(isChecked)}>
             {labelText}
           </Checkbox>
-          <Text testID="state">{checked ? 'checked' : 'unchecked'}</Text>
+          <Text>{checked ? 'checked' : 'unchecked'}</Text>
         </>
       );
     };
-    const { getByTestId, getByRole } = renderWithTheme(<Example />);
+    const { getByText, getByRole } = renderWithTheme(<Example />);
     const checkbox = getByRole('checkbox');
 
-    expect(getByTestId('state').children[0]).toBe('unchecked');
+    expect(getByText('unchecked')).toBeTruthy();
     fireEvent.press(checkbox);
-    expect(getByTestId('state').children[0]).toBe('checked');
+    expect(getByText('checked')).toBeTruthy();
     fireEvent.press(checkbox);
-    expect(getByTestId('state').children[0]).toBe('unchecked');
+    expect(getByText('unchecked')).toBeTruthy();
+  });
+
+  it('should expose native element methods via ref', () => {
+    let refValue = null;
+    const Example = (): React.ReactElement => {
+      const ref = React.useRef<HTMLInputElement>(null);
+      return (
+        <Checkbox
+          ref={(value) => {
+            console.log(value);
+            // @ts-expect-error
+            ref.current = value;
+            refValue = value;
+          }}
+        >
+          Agree
+        </Checkbox>
+      );
+    };
+
+    renderWithTheme(<Example />);
+    expect(refValue).toBeNull();
+  });
+
+  it('should accept testID', () => {
+    const labelText = 'Remember password';
+    const { getByTestId } = renderWithTheme(
+      <Checkbox testID="checkbox-test">{labelText}</Checkbox>,
+    );
+    expect(getByTestId('checkbox-test')).toBeTruthy();
   });
 });

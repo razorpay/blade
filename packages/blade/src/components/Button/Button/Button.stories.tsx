@@ -1,60 +1,58 @@
-import type { ComponentStory, Meta } from '@storybook/react';
-import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
+import type { StoryFn, Meta } from '@storybook/react';
+import { Title, Description, Heading } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-import { useState } from 'react';
-import { Highlight, Link } from '@storybook/design-system';
+import React, { useState } from 'react';
+import { Highlight } from '@storybook/design-system';
 import styled from 'styled-components';
 import type { ButtonProps } from './Button';
 import ButtonComponent from './Button';
 import { BaseText } from '~components/Typography/BaseText';
 import { CreditCardIcon } from '~components/Icons';
-import { Text } from '~components/Typography';
+import { Text, Heading as HeadingComponent } from '~components/Typography';
 import iconMap from '~components/Icons/iconMap';
-import useMakeFigmaURL from '~src/_helpers/storybook/useMakeFigmaURL';
-import Box from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import type { BladeElementRef } from '~utils/types';
+import {
+  getBladeCommonEventArgTypes,
+  getStyledPropsArgTypes,
+} from '~components/Box/BaseBox/storybookArgTypes';
+import { castWebType } from '~utils';
 
 const Page = (): ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0',
-      darkModeURL:
-        'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0',
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9611%3A78487',
-      darkModeURL:
-        'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9611%3A78487',
-    },
-  ]);
-
   return (
-    <>
-      <Title />
-      <Subtitle>
-        This is the Button component which can be used for various CTAs. It is available in 3
-        different variants.
-      </Subtitle>
-      <Link withArrow={true} href={figmaURL} target="_blank" rel="noreferrer noopener">
-        View in Figma
-      </Link>
-      <br />
-      <br />
+    <StoryPageWrapper
+      componentDescription="This is the Button component which can be used for various CTAs. It is available in 3 different variants."
+      componentName="Button"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=5200%3A0"
+    >
       <Title>Usage</Title>
-      <Highlight language="tsx">{`import { Button } from '@razorpay/blade/components' \nimport type { ButtonProps } from '@razorpay/blade/components'`}</Highlight>
-      <Title>Example</Title>
-      <Subtitle>
-        This is the default button. You can change the properties of this button using the controls
-        in the table below.
-      </Subtitle>
-      <Primary />
-      <Title>Properties</Title>
-      <ArgsTable story={PRIMARY_STORY} />
-      <Stories />
-    </>
+      <Sandbox showConsole>
+        {`
+        import { Button } from '@razorpay/blade/components'
+        
+        function App(): React.ReactElement {
+          return (
+            // Try changing variant here to secondary
+            <Button 
+              variant="primary" 
+              onClick={() => console.log('Tadaaaa')}
+            >
+              Click Me!
+            </Button>
+          )
+        }
+
+        export default App;
+      `}
+      </Sandbox>
+      <Heading>Usage with Icon</Heading>
+      <Description markdown="`icon` prop accepts an `IconComponent` of Blade which should be used as:" />
+      <Highlight language="tsx">{`import { Button, CreditCardIcon } from '@razorpay/blade/components'; \n\n &ltButton icon={CreditCardIcon}>Pay Now&lt/Button>`}</Highlight>
+      <br />
+      <br />
+    </StoryPageWrapper>
   );
 };
 
@@ -63,6 +61,7 @@ export default {
   component: ButtonComponent,
   args: {
     variant: 'primary',
+    color: 'primary',
     children: 'Pay Now',
     onClick: (): void => {
       console.log('clicked');
@@ -73,11 +72,15 @@ export default {
     isFullWidth: false,
     type: 'button',
   },
+  tags: ['autodocs'],
   argTypes: {
+    ...getStyledPropsArgTypes(),
+    ...getBladeCommonEventArgTypes(),
     icon: {
       name: 'icon',
       type: 'select',
       options: Object.keys(iconMap),
+      mapping: iconMap,
     },
   },
   parameters: {
@@ -87,18 +90,12 @@ export default {
   },
 } as Meta<ButtonProps>;
 
-const ButtonTemplate: ComponentStory<typeof ButtonComponent> = ({ icon, children, ...args }) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-
-  return (
-    <ButtonComponent icon={IconComponent} {...args}>
-      {children}
-    </ButtonComponent>
-  );
+const ButtonTemplate: StoryFn<typeof ButtonComponent> = ({ children = 'Button', ...args }) => {
+  return <ButtonComponent {...args}>{children}</ButtonComponent>;
 };
 
 const StyledBaseText = styled(BaseText)({ padding: '8px 0px' });
-const ButtonWithSizeTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonWithSizeTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
@@ -127,7 +124,7 @@ const ButtonWithSizeTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
-const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
+const ButtonWithVariantTemplate: StoryFn<typeof ButtonComponent> = ({
   children = 'Button',
   ...args
 }) => {
@@ -151,9 +148,109 @@ const ButtonWithVariantTemplate: ComponentStory<typeof ButtonComponent> = ({
   );
 };
 
+const ButtonWithColorTemplate: StoryFn<typeof ButtonComponent> = ({
+  children = 'Button',
+  ...args
+}) => {
+  const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
+
+  return (
+    <>
+      {colors.map((color) => {
+        const textColor =
+          color === 'white' ? 'surface.text.staticWhite.normal' : 'surface.text.staticBlack.normal';
+        return (
+          <BaseBox
+            key={color}
+            display="flex"
+            flexDirection="row"
+            gap="spacing.5"
+            backgroundColor={color === 'white' ? 'surface.background.cloud.intense' : 'transparent'}
+            margin="spacing.4"
+            padding="spacing.5"
+          >
+            <BaseBox
+              width="100px"
+              margin="spacing.2"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <HeadingComponent marginBottom="spacing.3" color={textColor} size="medium">
+                {color}
+              </HeadingComponent>
+            </BaseBox>
+            <BaseBox margin="spacing.2">
+              <Text marginBottom="spacing.3" color={textColor}>
+                Primary
+              </Text>
+              <ButtonComponent {...args} color={color} variant="primary">
+                {children}
+              </ButtonComponent>
+
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="primary"
+                isDisabled
+              >
+                {children}
+              </ButtonComponent>
+            </BaseBox>
+
+            <BaseBox margin="spacing.2">
+              <Text marginBottom="spacing.3" color={textColor}>
+                Secondary
+              </Text>
+              <ButtonComponent {...args} color={color} variant="secondary">
+                {children}
+              </ButtonComponent>
+
+              <ButtonComponent
+                marginLeft="spacing.4"
+                {...args}
+                color={color}
+                variant="secondary"
+                isDisabled
+              >
+                {children}
+              </ButtonComponent>
+            </BaseBox>
+
+            {(color == 'primary' || color == 'white') && (
+              <BaseBox margin="spacing.2">
+                <Text marginBottom="spacing.3" color={textColor}>
+                  Tertiary
+                </Text>
+                <ButtonComponent {...args} color={color} variant="tertiary">
+                  {children}
+                </ButtonComponent>
+
+                <ButtonComponent
+                  marginLeft="spacing.4"
+                  {...args}
+                  color={color}
+                  variant="tertiary"
+                  isDisabled
+                >
+                  {children}
+                </ButtonComponent>
+              </BaseBox>
+            )}
+          </BaseBox>
+        );
+      })}
+    </>
+  );
+};
+
 export const Default = ButtonTemplate.bind({});
 // Need to do this because of storybook's weird naming convention, More details here: https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#single-story-hoisting
 Default.storyName = 'Default';
+
+export const ButtonWithColors = ButtonWithColorTemplate.bind({});
+ButtonWithColors.storyName = 'Button with colors';
 
 export const PrimaryButton = ButtonWithSizeTemplate.bind({});
 PrimaryButton.storyName = 'Primary';
@@ -192,6 +289,15 @@ TertiaryButton.parameters = {
       story: 'Tertiary Button in different sizes',
     },
   },
+};
+
+export const ButtonAsLink = ButtonTemplate.bind({});
+ButtonAsLink.args = {
+  variant: 'primary',
+  children: 'I am Link!',
+  href: 'https://razorpay.com/',
+  target: '_blank',
+  rel: 'noopener noreferrer',
 };
 
 export const DisabledButton = ButtonWithVariantTemplate.bind({});
@@ -278,9 +384,9 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   return (
     <>
       <ButtonComponent {...args} isLoading={loading} />
-      <Box marginTop="spacing.2" />
+      <BaseBox marginTop="spacing.3" />
       <Text>Open voice over (fn+⌘+F5) to hear loading state being announced</Text>
-      <Box marginTop="spacing.2" />
+      <BaseBox marginTop="spacing.3" />
       <ButtonComponent size="small" variant="secondary" onClick={toggle}>
         Toggle loading
       </ButtonComponent>
@@ -288,17 +394,11 @@ const ButtonLoadingExample = (args: ButtonProps): React.ReactElement => {
   );
 };
 
-const ButtonLoadingTemplate: ComponentStory<typeof ButtonComponent> = ({
-  icon,
-  children,
+const ButtonLoadingTemplate: StoryFn<typeof ButtonComponent> = ({
+  children = 'Button',
   ...args
 }) => {
-  const IconComponent = iconMap[(icon as unknown) as string];
-  return (
-    <ButtonLoadingExample icon={IconComponent} {...args}>
-      {children}
-    </ButtonLoadingExample>
-  );
+  return <ButtonLoadingExample {...args}>{children}</ButtonLoadingExample>;
 };
 
 export const ButtonLoading = ButtonLoadingTemplate.bind({});
@@ -319,6 +419,29 @@ FullWidthButton.parameters = {
   docs: {
     description: {
       story: 'Primary, Secondary & Tertiary buttons with full width',
+    },
+  },
+};
+
+export const ButtonRef: StoryFn<typeof ButtonComponent> = () => {
+  const buttonRef = React.useRef<BladeElementRef>(null);
+
+  return (
+    <BaseBox gap="spacing.3" display="flex">
+      <ButtonComponent ref={buttonRef}>Button</ButtonComponent>
+      <ButtonComponent onClick={() => castWebType(buttonRef?.current)?.focus()}>
+        Click to focus other button
+      </ButtonComponent>
+    </BaseBox>
+  );
+};
+
+ButtonRef.storyName = 'Button Ref';
+ButtonRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'Button component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
 };

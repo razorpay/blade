@@ -1,8 +1,19 @@
 import React from 'react';
+import BaseBox from '~components/Box/BaseBox';
 
 const FormHintWrapper = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <span style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>{children}</span>
+    <BaseBox
+      as="span"
+      display="flex"
+      flexDirection="row"
+      alignItems="center"
+      style={{
+        wordBreak: 'break-all',
+      }}
+    >
+      {children}
+    </BaseBox>
   );
 };
 

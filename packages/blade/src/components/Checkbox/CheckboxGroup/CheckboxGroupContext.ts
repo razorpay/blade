@@ -8,11 +8,14 @@ export type CheckboxGroupContextType = Pick<
   CheckboxGroupProps,
   | 'validationState'
   | 'isDisabled'
+  | 'isRequired'
   | 'labelPosition'
   | 'name'
+  | 'necessityIndicator'
   | 'defaultValue'
   | 'value'
   | 'onChange'
+  | 'size'
 > & { state?: State };
 
 const CheckboxGroupContext = React.createContext<CheckboxGroupContextType>({});

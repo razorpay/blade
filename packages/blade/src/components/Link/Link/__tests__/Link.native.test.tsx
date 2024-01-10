@@ -1,8 +1,9 @@
 import { fireEvent, waitFor } from '@testing-library/react-native';
 import { Linking } from 'react-native';
+import type { LinkProps } from '../Link';
 import Link from '../Link';
 import { InfoIcon } from '~components/Icons';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 jest.mock('react-native/Libraries/Linking/Linking', () => ({
   openURL: jest.fn(() => Promise.resolve()),
@@ -12,12 +13,24 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
+const colors: LinkProps['color'][] = ['primary', 'white', 'neutral'];
+
 describe('<Link />', () => {
   it('should render link with default properties', () => {
     const linkText = 'Learn More';
     const { toJSON, getByText } = renderWithTheme(<Link>{linkText}</Link>);
     expect(toJSON()).toMatchSnapshot();
     expect(getByText('Learn More')).toBeTruthy();
+  });
+
+  it('should render with small size', () => {
+    const linkText = 'Learn More';
+    const { toJSON } = renderWithTheme(
+      <Link icon={InfoIcon} size="small">
+        {linkText}
+      </Link>,
+    );
+    expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render open href URL on press', async () => {
@@ -77,6 +90,28 @@ describe('<Link />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  colors.forEach((color) => {
+    it(`should render ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { toJSON } = renderWithTheme(
+        <Link color={color} isDisabled={true}>
+          {linkText}
+        </Link>,
+      );
+      expect(toJSON()).toMatchSnapshot();
+    });
+
+    it(`should render disabled ${color} color link`, () => {
+      const linkText = 'Learn More';
+      const { toJSON } = renderWithTheme(
+        <Link color={color} isDisabled={true}>
+          {linkText}
+        </Link>,
+      );
+      expect(toJSON()).toMatchSnapshot();
+    });
+  });
+
   it('should call function on click of button variant of link', () => {
     const linkText = 'Learn More';
     const onClick = jest.fn();
@@ -99,5 +134,11 @@ describe('<Link />', () => {
     );
     const link = getByRole('link');
     expect(link.findByProps({ accessibilityLabel: 'Info' })).toBeTruthy();
+  });
+
+  it('should accept testID', () => {
+    const linkText = 'Learn More';
+    const { getByTestId } = renderWithTheme(<Link testID="link-test">{linkText}</Link>);
+    expect(getByTestId('link-test')).toBeTruthy();
   });
 });

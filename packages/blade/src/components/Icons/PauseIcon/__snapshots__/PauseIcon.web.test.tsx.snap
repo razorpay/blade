@@ -4,15 +4,18 @@ exports[`<PauseIcon /> should render PauseIcon 1`] = `
 <div>
   <svg
     aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
     fill="none"
-    height="24px"
+    height="20px"
     viewBox="0 0 24 24"
-    width="24px"
+    width="20px"
   >
     <path
       clip-rule="evenodd"
       d="M6 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H6Zm1 16V5h2v14H7ZM14 3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-4Zm1 16V5h2v14h-2Z"
-      fill="hsla(216, 27%, 36%, 1)"
+      data-blade-component="svg-path"
+      fill="hsla(211, 33%, 21%, 1)"
       fill-rule="evenodd"
     />
   </svg>

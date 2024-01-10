@@ -2,10 +2,12 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
-import { useControllableState } from '../../hooks/useControllable';
-import { getPlatformType, makeAccessible } from '../../utils';
 import type { CheckboxProps } from './Checkbox';
-import { useFormId } from '~src/hooks/useFormId';
+import { useFormId } from '~components/Form/useFormId';
+import { makeAccessible } from '~utils/makeAccessible';
+import { getPlatformType } from '~utils';
+import { useControllableState } from '~utils/useControllable';
+import { throwBladeError } from '~utils/logger';
 
 type UseCheckboxProps = Pick<
   CheckboxProps,
@@ -18,6 +20,7 @@ type UseCheckboxProps = Pick<
   | 'name'
   | 'value'
 > & {
+  role?: 'checkbox' | 'switch';
   hasError?: boolean;
   hasHelperText?: boolean;
 };
@@ -35,6 +38,7 @@ function setMixed(element: HTMLInputElement, mixed?: boolean) {
 }
 
 const useCheckbox = ({
+  role = 'checkbox',
   isChecked,
   defaultChecked,
   isIndeterminate,
@@ -49,10 +53,13 @@ const useCheckbox = ({
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const isReactNative = getPlatformType() === 'react-native';
-  if (isChecked && defaultChecked) {
-    throw new Error(
-      `[Blade useCheckbox] Do not provide both 'isChecked' and 'defaultChecked' to useCheckbox. Consider if you want this component to be controlled or uncontrolled.`,
-    );
+  if (__DEV__) {
+    if (isChecked && defaultChecked) {
+      throwBladeError({
+        message: `Do not provide both 'isChecked' and 'defaultChecked' to useCheckbox. Consider if you want this component to be controlled or uncontrolled.`,
+        moduleName: 'useCheckbox',
+      });
+    }
   }
 
   const [checkboxState, setCheckboxStateChange] = useControllableState({
@@ -92,9 +99,8 @@ const useCheckbox = ({
   const { inputId, errorTextId, helpTextId } = useFormId('checkbox');
 
   const accessibilityProps = makeAccessible({
-    role: 'checkbox',
+    role,
     required: Boolean(isRequired),
-    hidden: !isReactNative,
     invalid: Boolean(hasError),
     disabled: Boolean(isDisabled),
     checked: checkboxState,

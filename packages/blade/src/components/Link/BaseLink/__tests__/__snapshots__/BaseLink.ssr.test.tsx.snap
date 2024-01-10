@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BaseLink /> should render link with a default rel set when target is _blank 1`] = `"<div id="root"><a data-blade-component="link" href="https://www.google.com/" target="_blank" rel="noreferrer noopener" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 doAyIv" role="link" aria-disabled="false"><span class="BaseBox-bmPWx fAEwZa content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO jSJOXK" data-blade-component="base-text">Learn More</span></span></a></div>"`;
+
+exports[`<BaseLink /> should render link with a default rel set when target is _blank 2`] = `
+.c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c0.c0.c0.c0.c0 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c0.c0.c0.c0.c0:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+<div
+  id="root"
+>
+  <a
+    aria-disabled="false"
+    class="c0"
+    data-blade-component="link"
+    href="https://www.google.com/"
+    rel="noreferrer noopener"
+    role="link"
+    target="_blank"
+  >
+    <span
+      class="c1 content-container"
+      data-blade-component="base-box"
+    >
+      <span
+        class="c2"
+        data-blade-component="base-text"
+      >
+        Learn More
+      </span>
+    </span>
+  </a>
+</div>
+`;

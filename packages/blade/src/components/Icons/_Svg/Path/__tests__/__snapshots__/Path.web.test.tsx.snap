@@ -1,9 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Path /> should not accept dashed props 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="40px"
+    viewBox="0 0 6 6"
+    width="40px"
+  >
+    <path
+      d=""
+      data-blade-component="svg-path"
+    />
+  </svg>
+</div>
+`;
+
 exports[`<Path /> should render html path component 1`] = `
 <div>
   <svg
     aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
     fill="none"
     height="40px"
     viewBox="0 0 6 6"
@@ -13,6 +34,7 @@ exports[`<Path /> should render html path component 1`] = `
       clip-path="#id1"
       clip-rule="evenodd"
       d="M2 2h2v2H2V2"
+      data-blade-component="svg-path"
       fill="#000"
       fill-opacity="0.5"
       fill-rule="nonzero"

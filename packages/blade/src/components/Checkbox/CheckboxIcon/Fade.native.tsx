@@ -5,8 +5,8 @@ import type { EasingFn } from 'react-native-reanimated';
 import Animated, { Keyframe } from 'react-native-reanimated';
 import type { CSSObject } from 'styled-components';
 import styled from 'styled-components/native';
-import { useTheme } from '../../BladeProvider';
-import type { FadeProps } from './Fade';
+import type { FadeProps } from './types';
+import { useTheme } from '~components/BladeProvider';
 
 const StyledFade = styled(Animated.View)<{ styles: CSSObject }>(({ styles }) => {
   return {

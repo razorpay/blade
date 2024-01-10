@@ -1,4 +1,4 @@
-import type { AccessibilityMap } from './makeAccessible.d';
+import type { AccessibilityMap } from './types';
 
 export const accessibilityValue = {
   valueMax: 'max',
@@ -72,6 +72,7 @@ export const accessibilityRoleMap = {
   combobox: 'combobox',
   image: 'image',
   link: 'link',
+  list: 'list',
   menu: 'menu',
   menubar: 'menubar',
   menuitem: 'menuitem',
@@ -97,4 +98,5 @@ export const accessibilityRoleMap = {
   keyboardkey: 'keyboardkey',
   label: 'label',
   text: 'text',
+  meter: 'progressbar',
 };

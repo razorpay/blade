@@ -4,42 +4,70 @@
 import React from 'react';
 import { CheckboxIconWrapper } from './CheckboxIconWrapper';
 import { Fade } from './Fade';
+import getIn from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
 import Svg, { Path } from '~components/Icons/_Svg';
-import { getIn } from '~utils';
+import { makeSpace } from '~utils/makeSpace';
+import { metaAttribute } from '~utils/metaAttribute';
+import { size } from '~tokens/global';
 
-const CheckedIcon = ({ color }: { color: string }) => {
+const svgSize = {
+  small: {
+    width: size[8],
+    height: size[8],
+  },
+  medium: {
+    width: size[12],
+    height: size[12],
+  },
+};
+
+const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' }) => {
+  const width = makeSpace(svgSize[size].width);
+  const height = makeSpace(svgSize[size].height);
+
   return (
-    <Svg width="16px" height="16px" viewBox="0 0 16 16" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 8 8" fill="none">
       <Path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M12.3536 4.64645C12.5488 4.84171 12.5488 5.15829 12.3536 5.35355L6.85355 10.8536C6.65829 11.0488 6.34171 11.0488 6.14645 10.8536L3.64645 8.35355C3.45118 8.15829 3.45118 7.84171 3.64645 7.64645C3.84171 7.45118 4.15829 7.45118 4.35355 7.64645L6.5 9.79289L11.6464 4.64645C11.8417 4.45118 12.1583 4.45118 12.3536 4.64645Z"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6.90237 1.76413C7.03254 1.89431 7.03254 2.10536 6.90237 2.23554L3.2357 5.90221C3.10553 6.03238 2.89447 6.03238 2.7643 5.90221L1.09763 4.23554C0.967456 4.10536 0.967456 3.89431 1.09763 3.76414C1.22781 3.63396 1.43886 3.63396 1.56904 3.76414L3 5.1951L6.43096 1.76413C6.56114 1.63396 6.77219 1.63396 6.90237 1.76413Z"
         fill={color}
+        stroke={color}
+        strokeWidth="0.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </Svg>
   );
 };
 
-const IndeterminateIcon = ({ color }: { color: string }) => {
+const IndeterminateIcon = ({ color, size }: { color: string; size: 'small' | 'medium' }) => {
+  const width = makeSpace(svgSize[size].width);
+  const height = makeSpace(svgSize[size].height);
+
   return (
-    <Svg width="16px" height="16px" viewBox="0 0 16 16" fill="none">
+    <Svg width={width} height={height} viewBox="0 0 8 8" fill="none">
       <Path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M4 8C4 7.72386 4.22386 7.5 4.5 7.5H11.5C11.7761 7.5 12 7.72386 12 8C12 8.27614 11.7761 8.5 11.5 8.5H4.5C4.22386 8.5 4 8.27614 4 8Z"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
         fill={color}
+        stroke={color}
+        strokeWidth="0.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </Svg>
   );
 };
 
 export type CheckboxIconProps = {
-  isFocused?: boolean;
   isDisabled?: boolean;
   isNegative?: boolean;
   isChecked?: boolean;
   isIndeterminate?: boolean;
+  size: 'small' | 'medium';
 };
 
 const CheckboxIcon = ({
@@ -47,29 +75,27 @@ const CheckboxIcon = ({
   isIndeterminate,
   isDisabled,
   isNegative,
-  isFocused,
+  size,
 }: CheckboxIconProps) => {
   const { theme } = useTheme();
-  const defaultIconColor = getIn(theme, 'colors.brand.gray.200');
-  const disabledIconColor = getIn(theme, 'colors.brand.gray.500');
-  const iconColor = isDisabled ? disabledIconColor : defaultIconColor;
-
+  const iconColor = getIn(theme, 'colors.interactive.icon.staticWhite.normal');
   return (
     <CheckboxIconWrapper
+      size={size}
       isIndeterminate={isIndeterminate}
-      isFocused={isFocused}
       isDisabled={isDisabled}
       isNegative={isNegative}
       isChecked={!!(isChecked || isIndeterminate)}
+      {...metaAttribute({ name: 'checkbox-icon-wrapper' })}
     >
       <Fade show={isIndeterminate} styles={{ position: 'absolute', display: 'flex' }}>
-        <IndeterminateIcon color={iconColor} />
+        <IndeterminateIcon size={size} color={iconColor} />
       </Fade>
       <Fade
         show={Boolean(isChecked) && !isIndeterminate}
         styles={{ position: 'absolute', display: 'flex' }}
       >
-        {isChecked ? <CheckedIcon color={iconColor} /> : null}
+        {isChecked ? <CheckedIcon size={size} color={iconColor} /> : null}
       </Fade>
     </CheckboxIconWrapper>
   );

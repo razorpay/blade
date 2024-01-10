@@ -1,23 +1,16 @@
-import type { Colors, Shadows, ShadowLevels } from '~tokens/theme/theme';
-import type { Border } from '~tokens/global/border';
-import type { Breakpoints } from '~tokens/global/breakpoints';
-import type { Motion } from '~tokens/global/motion';
-import type { Spacing } from '~tokens/global/spacing';
-import type { Typography } from '~tokens/global/typography';
-export { default as BladeProvider } from './BladeProvider';
-export * from './BladeProvider';
+import type { Colors, ThemeTokens } from '~tokens/theme/theme';
+import type { Border, Breakpoints, Motion, Spacing, Typography, Elevation } from '~tokens/global';
+export { BladeProvider } from './BladeProvider';
+export * from './types';
 export { default as useTheme } from './useTheme';
 
 export type Theme = {
+  name: ThemeTokens['name'];
   border: Border;
   breakpoints: Breakpoints;
   colors: Colors;
   spacing: Spacing;
   motion: Motion;
-  shadows: Omit<Shadows, 'color'> & {
-    color: {
-      level: Record<ShadowLevels, string>;
-    };
-  };
+  elevation: Elevation;
   typography: Typography;
 };

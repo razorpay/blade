@@ -30,6 +30,7 @@ Internal component that exposes certain extra props to enable creation of Compon
 | target | `string` | No | undefined | The target for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
 | rel | `string` | No | undefined | The rel for the link component.<br><br>Note: <br>- This prop is only valid for `anchor` variant.<br>-When `target` prop is set to `_blank`, `rel` will be automatically set to `noopener noreferrer` which can be overridden by passing the `rel` prop. |
 | accessibilityLabel | `string` | No | undefined | The `aria-label` (web) & `accessibilityLabel` (native) of the link component. |
+| size | `small` | `medium` | No | `medium` | Font size |
 
 
 ## Link Component
@@ -49,6 +50,7 @@ A Link component that can act as a `<button>` as well as an `<anchor>` element. 
 | target | `string` | No | undefined | The target for the link component.<br><br>Note: This prop is only valid for `anchor` variant. |
 | rel | `string` | No | undefined | The rel for the link component.<br><br>Note: <br>- This prop is only valid for `anchor` variant.<br>-When `target` prop is set to `_blank`, `rel` will be automatically set to `noopener noreferrer` which can be overridden by passing the `rel` prop. |
 | accessibilityLabel | `string` | No | undefined | The `aria-label` (web) & `accessibilityLabel` (native) of the link component. |
+| size | `small` | `medium` | No | `medium` | Font size |
 
      
 ## Component Breakdown

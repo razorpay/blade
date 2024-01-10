@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Utils/makeMotionTime" />
+
+## `makeMotionTime`
+
+Motion duration & delay tokens in our theme are stored as plain numbers but they need to be converted into platform specific units before we can use them.
+`makeMotionTime` converts duration & delay tokens into `ms` units for web and keeps them as numerical units for react native.
+
+For example, `makeMotionTime(1000)` returns `'1000ms'` for web and `1000` for react native.
+
+> Should be used only with Blade's [Motion duration & delay tokens](?path=/story/tokens-motion--page)
+
+> Motion's easing tokens do not require any convertion to platform specific units. They can be used as is.
+
+> You can read more about Blade's these tokens at [Blade's Motion RFC](https://github.com/razorpay/blade/blob/master/rfcs/2022-03-22-motion-rfc.md)
+
+**Web:**
+
+```tsx
+const makeMotionTime = (size: number) => string;
+```
+
+**React Native:**
+
+```tsx
+const makeMotionTime = (size: number) => number;
+```
+
+### Example
+
+**Web:**
+
+```tsx
+import { makeMotionTime } from '@razorpay/blade/utils';
+import styled from 'styled-components';
+
+const CustomComponent = styled.div`
+  transition-duration: ${({ theme }) =>
+    makeMotionTime(theme.motion.duration.gentle)}; // '400ms' for web
+`;
+```
+
+**React Native:**
+
+Usage with [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/)
+
+```tsx
+import { Button } from '@razorpay/blade/components';
+import { makeMotionTime } from '@razorpay/blade/utils';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+
+function App() {
+  const { theme } = useTheme();
+  const width = useSharedValue(50);
+
+  const style = useAnimatedStyle(() => {
+    return {
+      width: withTiming(width.value, {
+        duration: makeMotionTime(theme.motion.duration.gentle), // 400 for native
+        easing: theme.motion.easing.standard.attentive,
+      }),
+    };
+  });
+
+  return (
+    <View>
+      <Animated.View style={[styles.box, style]} />
+      <Button onPress={() => (width.value = Math.random() * 300)}>Animate</Button>
+    </View>
+  );
+}
+```

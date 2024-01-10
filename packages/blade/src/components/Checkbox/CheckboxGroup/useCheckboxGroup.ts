@@ -6,19 +6,22 @@
 import React from 'react';
 import type { CheckboxGroupProps } from './CheckboxGroup';
 import type { CheckboxGroupContextType } from './CheckboxGroupContext';
-import { useControllableState } from '~src/hooks/useControllable';
+import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~components/BladeProvider';
-import { useFormId } from '~src/hooks/useFormId';
+import { useFormId } from '~components/Form/useFormId';
 
 type UseCheckboxGroupProps = Pick<
   CheckboxGroupProps,
   | 'isDisabled'
+  | 'isRequired'
   | 'labelPosition'
   | 'validationState'
   | 'name'
+  | 'necessityIndicator'
   | 'value'
   | 'defaultValue'
   | 'onChange'
+  | 'size'
 >;
 
 export type State = {
@@ -33,16 +36,20 @@ const useCheckboxGroup = ({
   value,
   defaultValue,
   isDisabled,
+  isRequired,
   labelPosition,
   onChange,
   validationState,
   name,
+  necessityIndicator,
+  size,
 }: UseCheckboxGroupProps) => {
   const { platform } = useTheme();
   const { labelId } = useFormId('checkbox-group');
   const [checkedValues, setValue] = useControllableState({
     value,
     defaultValue: defaultValue || [],
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
     onChange: (values: string[]) => onChange?.({ values, name: name! }),
   });
 
@@ -82,11 +89,24 @@ const useCheckboxGroup = ({
     return {
       validationState,
       isDisabled,
+      isRequired,
       labelPosition: platform === 'onMobile' ? 'top' : labelPosition,
       name,
+      necessityIndicator,
       state,
+      size,
     };
-  }, [validationState, isDisabled, platform, labelPosition, name, state]);
+  }, [
+    validationState,
+    isDisabled,
+    isRequired,
+    platform,
+    labelPosition,
+    name,
+    necessityIndicator,
+    state,
+    size,
+  ]);
 
   return { state, contextValue, ids: { labelId } };
 };

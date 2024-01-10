@@ -8,10 +8,13 @@ coverage
 **/storybook-site
 **/build
 packages/blade/components.js
+packages/blade/components.native.js
 packages/blade/components.d.ts
 packages/blade/tokens.js
+packages/blade/tokens.native.js
 packages/blade/tokens.d.ts
 packages/blade/utils.js
+packages/blade/utils.native.js
 packages/blade/utils.d.ts
 
 # misc
@@ -88,5 +91,3 @@ buck-out/
 
 # CocoaPods
 **/ios/Pods/
-
-.vscode

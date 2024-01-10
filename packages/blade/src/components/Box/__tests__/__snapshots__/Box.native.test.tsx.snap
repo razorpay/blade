@@ -1,36 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Box /> should render Box component with the correct styles 1`] = `
+exports[`<Box /> should apply borderBottomColor prop to border bottom only 1`] = `
 <View
-  alignItems="center"
-  alignSelf="center"
-  display="flex"
-  justifyContent="center"
-  maxHeight={56}
-  maxWidth={56}
-  minHeight={48}
-  minWidth={48}
-  paddingBottom="spacing.3"
-  paddingLeft="spacing.4"
-  paddingRight="spacing.5"
-  paddingTop="spacing.2"
   style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "display": "flex",
-        "justifyContent": "center",
-        "maxHeight": 56,
-        "maxWidth": 56,
-        "minHeight": 48,
-        "minWidth": 48,
-        "paddingBottom": 12,
-        "paddingLeft": 16,
-        "paddingRight": 20,
-        "paddingTop": 8,
-      },
-    ]
+    {
+      "flex": 1,
+    }
   }
-/>
+>
+  <View
+    borderBottomColor="surface.border.gray.normal"
+    data-blade-component="box"
+    style={
+      [
+        {
+          "borderBottomColor": "hsla(211, 24%, 65%, 1)",
+          "borderBottomStyle": "solid",
+        },
+      ]
+    }
+  >
+    I am Visible
+  </View>
+</View>
+`;
+
+exports[`<Box /> should apply borderColor prop to all borders 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    borderColor="surface.border.gray.normal"
+    data-blade-component="box"
+    style={
+      [
+        {
+          "borderColor": "hsla(211, 24%, 65%, 1)",
+          "borderStyle": "solid",
+        },
+      ]
+    }
+  >
+    I am Visible
+  </View>
+</View>
 `;

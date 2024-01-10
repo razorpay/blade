@@ -1,18 +1,21 @@
 import React from 'react';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
-import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType, makeSpace, useBreakpoint } from '~utils';
-import Box from '~components/Box';
+import { getPlatformType, useBreakpoint } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
+import { makeSpace } from '~utils/makeSpace';
+import { makeSize } from '~utils/makeSize';
+import { size } from '~tokens/global';
 
 type CommonProps = {
   as: 'span' | 'label';
   position?: 'top' | 'left';
-  neccessityIndicator?: 'required' | 'optional' | 'none';
-  accessibillityText?: string;
-  children: React.ReactNode;
-  id: string;
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  accessibilityText?: string;
+  children: string | undefined;
+  id?: string;
 };
 
 type LabelProps = CommonProps & {
@@ -27,11 +30,26 @@ type SpanProps = CommonProps & {
 
 type FormLabelProps = LabelProps | SpanProps;
 
+export type FormInputLabelProps = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: string;
+  /**
+   * Desktop only prop. Default value on mobile will be `top`
+   */
+  labelPosition?: 'left' | 'top';
+  /**
+   * Displays `(optional)` when `optional` is passed or `*` when `required` is passed
+   */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+};
+
 const FormLabel = ({
   as = 'span',
   position = 'top',
-  neccessityIndicator = 'none',
-  accessibillityText,
+  necessityIndicator = 'none',
+  accessibilityText,
   children,
   id,
   htmlFor,
@@ -41,87 +59,86 @@ const FormLabel = ({
   const isDesktop = matchedDeviceType === 'desktop';
   const isReactNative = getPlatformType() === 'react-native';
 
-  // TODO: replace with <Text /> when #548 merges
-  let neccessityLabel: React.ReactNode = null;
+  let necessityLabel: React.ReactNode = null;
 
-  if (neccessityIndicator === 'optional') {
-    neccessityLabel = (
-      <BaseText
-        lineHeight="s"
-        fontFamily="text"
-        fontStyle="italic"
-        fontSize={50}
-        color="surface.text.placeholder.lowContrast"
-      >
+  const isLabelLeftPositioned = position === 'left' && isDesktop;
+
+  if (necessityIndicator === 'optional') {
+    necessityLabel = (
+      <Text variant="caption" size="small" color="surface.text.gray.muted">
         (optional)
-      </BaseText>
+      </Text>
     );
   }
-  if (neccessityIndicator === 'required') {
-    neccessityLabel = (
-      <BaseText
-        lineHeight="s"
-        fontFamily="text"
-        fontStyle="normal"
-        fontSize={75}
-        fontWeight="bold"
-        color="surface.text.placeholder.lowContrast"
+  if (necessityIndicator === 'required') {
+    necessityLabel = (
+      <Text
+        variant="body"
+        size={isLabelLeftPositioned ? 'medium' : 'small'}
+        color="feedback.text.negative.intense"
       >
         *
-      </BaseText>
+      </Text>
     );
   }
 
   const computedAccessibilityNode = (
     <VisuallyHidden>
-      {neccessityIndicator !== 'none' && <Text>{neccessityIndicator}</Text>}
-      <Text>{accessibillityText}</Text>
+      {necessityIndicator !== 'none' && <Text>{necessityIndicator}</Text>}
+      <Text>{accessibilityText}</Text>
     </VisuallyHidden>
   );
 
   const textNode = (
-    <Box
-      gap={neccessityIndicator === 'optional' ? 'spacing.1' : 'spacing.0'}
+    <BaseBox
+      gap={necessityIndicator === 'optional' ? 'spacing.2' : 'spacing.0'}
       display="flex"
       flexDirection="row"
       alignItems="center"
       flexWrap="wrap"
+      maxHeight={makeSpace(size[36])}
     >
-      <BaseText
-        lineHeight={position === 'left' ? 'l' : 's'}
-        fontFamily="text"
-        fontWeight="bold"
-        color="surface.text.subtle.lowContrast"
-        fontSize={position === 'left' ? 100 : 75}
+      <Text
+        variant="body"
+        size={isLabelLeftPositioned ? 'medium' : 'small'}
+        color="surface.text.gray.subtle"
+        truncateAfterLines={2}
+        weight="semibold"
+        wordBreak={isLabelLeftPositioned ? 'break-word' : undefined}
       >
         {children}
-        {computedAccessibilityNode}
-      </BaseText>
+      </Text>
+      {computedAccessibilityNode}
       {/* TODO: Hide from screen readers to prevent double announcement */}
-      {neccessityLabel}
-    </Box>
+      {necessityLabel}
+    </BaseBox>
   );
 
   // What harm can it do?
   if (isReactNative) {
     return (
-      <Box marginRight="spacing.4" marginBottom="spacing.1">
+      <BaseBox marginRight="spacing.5" marginBottom="spacing.2">
         {textNode}
-      </Box>
+      </BaseBox>
     );
   }
 
   const Component = as;
   // only set 120px label when device is desktop
-  const width = position === 'left' && isDesktop ? '120px' : 'auto';
+  const width = isLabelLeftPositioned && isDesktop ? makeSize(size[120]) : 'auto';
 
   return (
     <Component
       htmlFor={htmlFor}
-      style={{ width, marginRight: makeSpace(theme.spacing[4]) }}
+      style={{
+        width,
+        flexShrink: 0,
+        marginRight: makeSpace(theme.spacing[5]),
+      }}
       id={id}
+      {...metaAttribute({ name: MetaConstants.FormLabel })}
     >
-      <Box marginBottom="spacing.1">{textNode}</Box>
+      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.2'}>{textNode}</BaseBox>
     </Component>
   );
 };

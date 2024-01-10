@@ -1,7 +1,7 @@
 import Defs from '..';
 import Path from '../../Path';
 import Svg from '../../Svg';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Defs />', () => {
   it('should render html defs component', () => {

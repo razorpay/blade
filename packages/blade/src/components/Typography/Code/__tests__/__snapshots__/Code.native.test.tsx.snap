@@ -1,0 +1,334 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Code /> should render Code with color 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="code"
+    isHighlighted={false}
+    size="small"
+    style={
+      [
+        {},
+        {
+          "alignSelf": "center",
+          "borderRadius": 4,
+          "display": "flex",
+          "lineHeight": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 0,
+          "verticalAlign": "middle",
+        },
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      color="interactive.text.primary.disabled"
+      data-blade-component="base-text"
+      fontFamily="code"
+      fontSize={25}
+      fontWeight="regular"
+      lineHeight={25}
+      style={
+        [
+          {
+            "color": "hsla(227, 100%, 59%, 0.18)",
+            "fontFamily": "Menlo",
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      TEST_TOKEN
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<Code /> should render Code with default properties 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="code"
+    isHighlighted={true}
+    size="small"
+    style={
+      [
+        {},
+        {
+          "alignSelf": "center",
+          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+          "borderRadius": 4,
+          "display": "flex",
+          "lineHeight": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 0,
+          "verticalAlign": "middle",
+        },
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      color="surface.text.gray.subtle"
+      data-blade-component="base-text"
+      fontFamily="code"
+      fontSize={25}
+      fontWeight="regular"
+      lineHeight={25}
+      style={
+        [
+          {
+            "color": "hsla(211, 26%, 34%, 1)",
+            "fontFamily": "Menlo",
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      TEST_TOKEN
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<Code /> should render isHighlighted false Code 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="code"
+    isHighlighted={false}
+    size="small"
+    style={
+      [
+        {},
+        {
+          "alignSelf": "center",
+          "borderRadius": 4,
+          "display": "flex",
+          "lineHeight": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 0,
+          "verticalAlign": "middle",
+        },
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      color="surface.text.gray.normal"
+      data-blade-component="base-text"
+      fontFamily="code"
+      fontSize={25}
+      fontWeight="regular"
+      lineHeight={25}
+      style={
+        [
+          {
+            "color": "hsla(212, 39%, 16%, 1)",
+            "fontFamily": "Menlo",
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      NON-HIGHLIGHTED
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<Code /> should render medium Code 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="code"
+    isHighlighted={true}
+    size="medium"
+    style={
+      [
+        {},
+        {
+          "alignSelf": "center",
+          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+          "borderRadius": 4,
+          "display": "flex",
+          "lineHeight": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 0,
+          "verticalAlign": "middle",
+        },
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      color="surface.text.gray.subtle"
+      data-blade-component="base-text"
+      fontFamily="code"
+      fontSize={75}
+      fontWeight="regular"
+      lineHeight={75}
+      style={
+        [
+          {
+            "color": "hsla(211, 26%, 34%, 1)",
+            "fontFamily": "Menlo",
+            "fontSize": 12,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 18,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      MEDIUM
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`<Code /> should render small Code 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="code"
+    isHighlighted={true}
+    size="small"
+    style={
+      [
+        {},
+        {
+          "alignSelf": "center",
+          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+          "borderRadius": 4,
+          "display": "flex",
+          "lineHeight": 0,
+          "paddingBottom": 0,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 0,
+          "verticalAlign": "middle",
+        },
+      ]
+    }
+  >
+    <Text
+      accessible={true}
+      color="surface.text.gray.subtle"
+      data-blade-component="base-text"
+      fontFamily="code"
+      fontSize={25}
+      fontWeight="regular"
+      lineHeight={25}
+      style={
+        [
+          {
+            "color": "hsla(211, 26%, 34%, 1)",
+            "fontFamily": "Menlo",
+            "fontSize": 10,
+            "fontStyle": "normal",
+            "fontWeight": "400",
+            "letterSpacing": 0,
+            "lineHeight": 14,
+            "marginBottom": 0,
+            "marginLeft": 0,
+            "marginRight": 0,
+            "marginTop": 0,
+            "paddingBottom": 0,
+            "paddingLeft": 0,
+            "paddingRight": 0,
+            "paddingTop": 0,
+            "textDecorationLine": "none",
+          },
+        ]
+      }
+    >
+      SMALL
+    </Text>
+  </View>
+</View>
+`;
