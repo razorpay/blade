@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.23.2
+
+### Patch Changes
+
+- bd7d8dc5: feat(Skeleton): add minHeight and minWidth prop
+
 ## 10.23.1
 
 ### Patch Changes
