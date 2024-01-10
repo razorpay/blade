@@ -298,6 +298,24 @@ Only use this if you're unable to run the codemod described above.
   + <Card backgroundColor="surface.background.gray.moderate"> Hello </Card>
   ```
 
+### Chip & ChipGroup
+
+- **The `intent` prop has been removed in favor of the `color` prop.**
+
+  ```diff
+  - <Chip intent="none"> Hello </Chip>
+  + <Chip color="primary"> Hello </Chip>
+
+  - <Chip intent="positive|negative"> Hello </Chip>
+  + <Chip color="positive|negative"> Hello </Chip>
+
+  - <ChipGroup intent="none">
+  + <ChipGroup color="primary">
+
+  - <ChipGroup intent="positive|negative">
+  + <ChipGroup color="positive|negative">
+  ```
+
 ### Counter
 
 - **The `contrast` prop has been removed in favor of the new `emphasis` prop.**
