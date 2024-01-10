@@ -17,6 +17,7 @@ import {
   CardHeaderBadge,
   CardHeaderIconButton,
   CardHeaderLink,
+  CardHeaderAmount,
   CardHeaderText,
 } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -151,6 +152,7 @@ const visual = {
   Text: <CardHeaderText>$100</CardHeaderText>,
   IconButton: <CardHeaderIconButton icon={TrashIcon} />,
   Badge: <CardHeaderBadge color="positive">NEW</CardHeaderBadge>,
+  Amount: <CardHeaderAmount value={1000} />,
 };
 
 export default {

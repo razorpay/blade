@@ -18,6 +18,7 @@ const baseConfig = {
     ...rebrandedComponents.map((component) => `**/${component}.web.test.{ts,tsx}`),
     '**/Icons/*Icon/*.web.test.{ts,tsx}',
     '**/codemods/**/*.test.{ts,tsx}',
+    '**/utils/**/*.test.{ts,tsx}',
   ],
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',

@@ -1,5 +1,5 @@
+import type { DotNotationToken } from '../../utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
-import type { DotNotationColorStringToken } from '~utils/types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import { size } from '~tokens/global';
 
@@ -28,7 +28,7 @@ const checkboxSizes = {
   },
 } as const;
 
-type ColorTokens = `colors.${DotNotationColorStringToken<Theme['colors']>}` | 'transparent';
+type ColorTokens = `colors.${DotNotationToken<Theme['colors']>}`;
 type Variant = {
   border: {
     checked: ColorTokens;
@@ -52,32 +52,32 @@ const checkboxIconColors: CheckboxIconColors = {
   variants: {
     default: {
       border: {
-        checked: 'colors.brand.primary.500',
-        unchecked: 'colors.brand.gray.500.lowContrast',
+        checked: 'colors.interactive.border.primary.default',
+        unchecked: 'colors.interactive.border.gray.default',
       },
       background: {
-        checked: 'colors.brand.primary.500',
-        unchecked: 'transparent',
+        checked: 'colors.interactive.background.primary.default',
+        unchecked: 'colors.transparent',
       },
     },
     disabled: {
       border: {
-        checked: 'transparent',
-        unchecked: 'colors.brand.gray.a100.lowContrast',
+        checked: 'colors.interactive.border.primary.disabled',
+        unchecked: 'colors.interactive.border.gray.disabled',
       },
       background: {
-        checked: 'colors.brand.gray.a100.lowContrast',
-        unchecked: 'transparent',
+        checked: 'colors.interactive.background.primary.disabled',
+        unchecked: 'colors.transparent',
       },
     },
     negative: {
       border: {
-        checked: 'colors.feedback.border.negative.highContrast',
-        unchecked: 'colors.feedback.border.negative.highContrast',
+        checked: 'colors.interactive.border.negative.default',
+        unchecked: 'colors.interactive.border.negative.default',
       },
       background: {
-        checked: 'colors.feedback.background.negative.highContrast',
-        unchecked: 'colors.feedback.background.negative.lowContrast',
+        checked: 'colors.interactive.background.negative.default',
+        unchecked: 'colors.transparent',
       },
     },
   },
@@ -86,12 +86,12 @@ const checkboxIconColors: CheckboxIconColors = {
 const checkboxHoverTokens: SelectorInputHoverTokens = {
   default: {
     background: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.a50.lowContrast',
+      checked: 'colors.interactive.background.primary.highlighted',
+      unchecked: 'colors.interactive.background.gray.faded',
     },
     border: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.500.lowContrast',
+      checked: 'colors.interactive.background.primary.highlighted', // Intentionally not using border tokens here since we want to match the background color
+      unchecked: 'colors.interactive.border.gray.default',
     },
   },
 };
