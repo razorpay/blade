@@ -30,6 +30,8 @@ const rebrandedComponents = [
   'SkipNav',
   'VisuallyHidden',
   'Tooltip',
+  'Radio',
+  'Checkbox',
 ];
 
 module.exports = { rebrandedComponents };

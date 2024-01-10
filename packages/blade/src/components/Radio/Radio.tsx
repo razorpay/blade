@@ -127,7 +127,9 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
           </BaseBox>
           {showHelpText && (
             <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-              <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
+              <SelectorSupportText isNegative={true} id={ids?.helpTextId}>
+                {helpText}
+              </SelectorSupportText>
             </BaseBox>
           )}
         </BaseBox>
