@@ -202,6 +202,7 @@ exports[`<Chip /> should render chip 1`] = `
 
 .c9.c9.c9.c9.c9:hover + div {
   border-color: hsla(211,27%,76%,1);
+  background-color: hsla(0,0%,100%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -660,6 +661,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 
 .c9.c9.c9.c9.c9:hover + div {
   border-color: hsla(211,27%,76%,1);
+  background-color: hsla(0,0%,100%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -1280,6 +1282,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 
 .c15.c15.c15.c15.c15:hover + div {
   border-color: hsla(211,27%,76%,1);
+  background-color: hsla(0,0%,100%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
