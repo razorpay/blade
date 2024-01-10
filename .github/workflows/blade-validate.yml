@@ -46,7 +46,7 @@ jobs:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
-      - name: Run React & React Native Tests
+      - name: Run Unit Tests
         run: yarn test
         working-directory: packages/blade
         env:

@@ -9,6 +9,7 @@ import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
 import { DocsContainer } from '@storybook/addon-docs';
 import React from 'react';
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import './global.css';
 
 export const parameters = {
@@ -25,6 +26,19 @@ export const parameters = {
     disable: true,
     grid: {
       disable: true,
+    },
+  },
+  viewport: {
+    viewports: {
+      ...MINIMAL_VIEWPORTS,
+      iPhone6: {
+        name: 'iPhone 6',
+        styles: {
+          height: '667px',
+          width: '375px',
+        },
+        type: 'mobile',
+      },
     },
   },
   // on development setting it to undefined so that on 'live reload' it won't switch
@@ -58,7 +72,7 @@ export const parameters = {
           'useTheme',
         ],
         'Components',
-        ['*', 'KitchenSink'],
+        ['*', 'Interaction Tests', 'KitchenSink'],
         'Recipes',
       ],
     },

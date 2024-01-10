@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import AccessibilityInteropDemo from './AccessibilityInteropDemo';
 
 export default {
@@ -6,8 +6,6 @@ export default {
   component: AccessibilityInteropDemo,
 } as Meta;
 
-export const AccessibilityInteropDemoTemplate: ComponentStory<
-  typeof AccessibilityInteropDemo
-> = () => {
+export const AccessibilityInteropDemoTemplate: StoryFn<typeof AccessibilityInteropDemo> = () => {
   return <AccessibilityInteropDemo />;
 };
