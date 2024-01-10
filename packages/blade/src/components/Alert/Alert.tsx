@@ -160,7 +160,11 @@ const Alert = ({
   }
 
   const icon = (
-    <BaseBox marginTop={iconOffset} display="flex" alignSelf="flex-start">
+    <BaseBox
+      display="flex"
+      alignSelf={isFullWidth ? 'center' : 'flex-start'}
+      marginTop={iconOffset}
+    >
       <Icon
         color={
           emphasis === 'intense'
