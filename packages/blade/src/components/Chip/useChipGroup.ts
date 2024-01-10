@@ -6,15 +6,7 @@ import { useId } from '~utils/useId';
 
 type UseChipGroupProps = Pick<
   ChipGroupProps,
-  | 'isDisabled'
-  | 'name'
-  | 'value'
-  | 'defaultValue'
-  | 'onChange'
-  | 'size'
-  | 'intent'
-  | 'color'
-  | 'selectionType'
+  'isDisabled' | 'name' | 'value' | 'defaultValue' | 'onChange' | 'size' | 'color' | 'selectionType'
 >;
 type UseChipGroupReturn = {
   state: State;
@@ -29,7 +21,6 @@ const useChipGroup = ({
   onChange,
   name,
   size,
-  intent,
   color,
   selectionType,
 }: UseChipGroupProps): UseChipGroupReturn => {
@@ -91,11 +82,10 @@ const useChipGroup = ({
       name,
       state,
       size,
-      intent,
       color,
       selectionType,
     };
-  }, [isDisabled, name, state, size, intent, color, selectionType]);
+  }, [isDisabled, name, state, size, color, selectionType]);
 
   return { state, contextValue, ids: { labelId } };
 };

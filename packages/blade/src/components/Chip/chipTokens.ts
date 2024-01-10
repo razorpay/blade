@@ -74,103 +74,103 @@ const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
   },
 };
 
-type FeedbackActionBackgroundColors<
-  T extends 'positive' | 'negative'
-> = `feedback.${T}.action.background.primary.${DotNotationColorStringToken<
-  Theme['colors']['feedback'][T]['action']['background']['primary']
+type InteractiveBackgroundColors<
+  T extends 'positive' | 'negative' | 'primary'
+> = `interactive.background.${T}.${DotNotationColorStringToken<
+  Theme['colors']['interactive']['background'][T]
 >}`;
-type FeedbackActionBorderColors<
-  T extends 'positive' | 'negative'
-> = `feedback.${T}.action.border.${DotNotationColorStringToken<
-  Theme['colors']['feedback'][T]['action']['border']
+
+type InteractiveBorderColors<
+  T extends 'positive' | 'negative' | 'primary'
+> = `interactive.border.${T}.${DotNotationColorStringToken<
+  Theme['colors']['interactive']['background'][T]
 >}`;
+
 type TextColorTokens = BaseTextProps['color'];
 type IconColorTokens = IconProps['color'];
 type ChipColorTokens = {
   text: Record<string, TextColorTokens>;
-  icon: Record<string, IconColorTokens | 'brand.primary.500'>;
+  icon: Record<string, IconColorTokens | 'surface.background.primary.intense'>;
   background: Record<
     string,
     Record<
       string,
-      | FeedbackActionBackgroundColors<'positive'>
-      | FeedbackActionBackgroundColors<'negative'>
+      | InteractiveBackgroundColors<'positive'>
+      | InteractiveBackgroundColors<'negative'>
+      | InteractiveBackgroundColors<'primary'>
       | 'transparent'
-      | 'brand.gray.a50.lowContrast'
-      | 'brand.primary.300'
-      | 'brand.primary.400'
+      | 'interactive.background.gray.faded'
     >
   >;
   border: Record<
     string,
     Record<
       string,
-      | FeedbackActionBorderColors<'positive'>
-      | FeedbackActionBorderColors<'negative'>
-      | 'brand.gray.400.lowContrast'
-      | 'brand.gray.a100.lowContrast'
-      | 'brand.gray.a50.lowContrast'
-      | 'brand.primary.500'
+      | InteractiveBorderColors<'positive'>
+      | InteractiveBorderColors<'negative'>
+      | InteractiveBorderColors<'primary'>
+      | 'interactive.border.gray.default'
+      | 'interactive.border.gray.disabled'
     >
   >;
 };
 
 const chipColorTokens: ChipColorTokens = {
   text: {
-    unchecked: 'surface.text.subtle.lowContrast',
-    disabled: 'surface.text.placeholder.lowContrast',
-    default: 'action.text.secondary.default',
-    positive: 'feedback.text.positive.lowContrast',
-    negative: 'feedback.text.negative.lowContrast',
+    unchecked: 'interactive.text.gray.subtle',
+    disabled: 'interactive.text.gray.disabled',
+    primary: 'interactive.text.primary.subtle',
+    positive: 'interactive.text.positive.subtle',
+    negative: 'interactive.text.negative.subtle',
   },
   icon: {
-    unchecked: 'surface.text.subtle.lowContrast',
-    disabled: 'surface.text.placeholder.lowContrast',
-    default: 'action.icon.secondary.default',
-    positive: 'feedback.icon.positive.lowContrast',
-    negative: 'feedback.icon.negative.lowContrast',
+    unchecked: 'interactive.text.gray.subtle',
+    disabled: 'interactive.text.gray.disabled',
+    primary: 'interactive.icon.primary.normal',
+    positive: 'feedback.icon.positive.intense',
+    negative: 'feedback.icon.negative.intense',
   },
   background: {
     unchecked: {
       default: 'transparent',
-      hover: 'brand.gray.a50.lowContrast',
+      hover: 'interactive.background.gray.faded',
       disabled: 'transparent',
     },
-    default: {
-      default: 'brand.primary.300',
-      hover: 'brand.primary.400',
-      disabled: 'brand.gray.a50.lowContrast',
+    primary: {
+      default: 'interactive.background.primary.faded',
+      hover: 'interactive.background.primary.fadedHighlighted',
+      disabled: 'interactive.background.primary.disabled',
     },
     positive: {
-      default: 'feedback.positive.action.background.primary.default.lowContrast',
-      hover: 'feedback.positive.action.background.primary.hover.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
+      default: 'interactive.background.positive.faded',
+      hover: 'interactive.background.positive.fadedHighlighted',
+      disabled: 'interactive.background.positive.disabled',
     },
     negative: {
-      default: 'feedback.negative.action.background.primary.default.lowContrast',
-      hover: 'feedback.negative.action.background.primary.hover.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
+      default: 'interactive.background.negative.faded',
+      hover: 'interactive.background.negative.fadedHighlighted',
+      disabled: 'interactive.background.negative.disabled',
     },
   },
   border: {
     unchecked: {
-      default: 'brand.gray.400.lowContrast',
-      disabled: 'brand.gray.400.lowContrast',
+      default: 'interactive.border.gray.default',
+      disabled: 'interactive.border.gray.disabled',
     },
-    default: {
-      default: 'brand.primary.500',
-      hover: 'brand.primary.500',
-      disabled: 'brand.gray.a100.lowContrast',
+    primary: {
+      default: 'interactive.border.primary.default',
+      hover: 'interactive.border.primary.default',
+      disabled: 'interactive.border.primary.disabled',
     },
     positive: {
-      default: 'feedback.positive.action.border.primary.default.lowContrast',
-      hover: 'feedback.positive.action.border.primary.hover.lowContrast',
-      disabled: 'brand.gray.a100.lowContrast',
+      default: 'interactive.border.positive.default',
+      hover: 'interactive.border.positive.default',
+      disabled: 'interactive.border.positive.disabled',
     },
     negative: {
-      default: 'feedback.negative.action.border.primary.default.lowContrast',
-      hover: 'feedback.negative.action.border.primary.hover.lowContrast',
-      disabled: 'brand.gray.a50.lowContrast',
+      default: 'interactive.border.negative.default',
+      hover: 'interactive.border.negative.default',
+      disabled: 'interactive.border.negative.disabled',
     },
   },
 };
@@ -184,7 +184,7 @@ const getChipInputHoverTokens = (color: ChipGroupProps['color']): SelectorInputH
       },
       border: {
         checked: `colors.${chipColorTokens.border[color || 'default'].hover}` as never,
-        unchecked: 'colors.brand.gray.500.lowContrast',
+        unchecked: 'colors.interactive.border.gray.default',
       },
     },
   };

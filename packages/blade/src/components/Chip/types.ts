@@ -15,16 +15,10 @@ type ChipProps = {
    */
   icon?: IconComponent;
   /**
-   * This is deprecated in favor of the `color` prop.
-   *
-   *  @deprecated Use the `color` prop instead.
-   */
-  intent?: 'positive' | 'negative' | 'none';
-  /**
    * Sets the Chip's visual color.
    *
    */
-  color?: 'positive' | 'negative' | 'default';
+  color?: 'primary' | 'positive' | 'negative';
   /**
    * If `true`, the Chip will be disabled
    *
@@ -92,17 +86,11 @@ type ChipGroupProps = {
    */
   value?: string | string[];
   /**
-   * This is deprecated in favor of the `color` prop.
-   *
-   * @default "none"
-   * @deprecated Use the `color` prop instead.
-   */
-  intent?: 'positive' | 'negative' | 'none';
-  /**
    * Sets the ChipGroups's visual color, it will propagate down to all the Chips
    *
+   * @default "primary"
    */
-  color?: 'positive' | 'negative' | 'default';
+  color?: 'primary' | 'positive' | 'negative';
 } & TestID &
   StyledPropsBlade;
 
@@ -115,15 +103,7 @@ type State = {
 
 type ChipGroupContextType = Pick<
   ChipGroupProps,
-  | 'isDisabled'
-  | 'name'
-  | 'defaultValue'
-  | 'value'
-  | 'onChange'
-  | 'size'
-  | 'intent'
-  | 'color'
-  | 'selectionType'
+  'isDisabled' | 'name' | 'defaultValue' | 'value' | 'onChange' | 'size' | 'color' | 'selectionType'
 > & { state?: State };
 
 type AnimatedChipProps = {
