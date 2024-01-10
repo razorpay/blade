@@ -76,19 +76,6 @@ export default {
         },
       },
     },
-    intent: {
-      description: 'This is deprecated in favor of the `color` prop.',
-      table: {
-        category: propsCategory.CHIP,
-        type: {
-          summary: '"none" | "positive" | "negative"',
-        },
-      },
-      options: ['none', 'positive', 'negative'],
-      control: {
-        type: 'radio',
-      },
-    },
     color: {
       description:
         'Sets the color of the Chip. This overwrites the color set by the parent `ChipGroup` component',
@@ -98,7 +85,7 @@ export default {
           summary: '"default" | "positive" | "negative"',
         },
       },
-      options: ['default', 'positive', 'negative'],
+      options: ['primary', 'positive', 'negative'],
       control: {
         type: 'radio',
       },
