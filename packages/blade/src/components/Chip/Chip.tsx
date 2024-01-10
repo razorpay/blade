@@ -197,12 +197,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                     <Icon color={chipIconColor} size={chipIconSizes[_size]} />
                   </BaseBox>
                 ) : null}
-                <Text
-                  {...chipTextSizes[_size]}
-                  type="normal"
-                  truncateAfterLines={1}
-                  color={chipTextColor}
-                >
+                <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
                   {children}
                 </Text>
               </StyledChipWrapper>

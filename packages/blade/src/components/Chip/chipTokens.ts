@@ -1,6 +1,6 @@
 import type { ChipGroupProps } from './ChipGroup';
-import type { Theme } from '~components/BladeProvider';
-import type { DotNotationColorStringToken, DotNotationSpacingStringToken } from '~utils/types';
+import type { ChipBorderColors, ChipBackgroundColors } from './types';
+import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import { size } from '~tokens/global';
 import type { IconProps } from '~components/Icons';
@@ -74,45 +74,13 @@ const chipHorizontalPaddingTokens: ChipHorizontalPaddingTokens = {
   },
 };
 
-type InteractiveBackgroundColors<
-  T extends 'positive' | 'negative' | 'primary'
-> = `interactive.background.${T}.${DotNotationColorStringToken<
-  Theme['colors']['interactive']['background'][T]
->}`;
-
-type InteractiveBorderColors<
-  T extends 'positive' | 'negative' | 'primary'
-> = `interactive.border.${T}.${DotNotationColorStringToken<
-  Theme['colors']['interactive']['background'][T]
->}`;
-
 type TextColorTokens = BaseTextProps['color'];
 type IconColorTokens = IconProps['color'];
 type ChipColorTokens = {
   text: Record<string, TextColorTokens>;
-  icon: Record<string, IconColorTokens | 'surface.background.primary.intense'>;
-  background: Record<
-    string,
-    Record<
-      string,
-      | InteractiveBackgroundColors<'positive'>
-      | InteractiveBackgroundColors<'negative'>
-      | InteractiveBackgroundColors<'primary'>
-      | 'transparent'
-      | 'interactive.background.gray.faded'
-    >
-  >;
-  border: Record<
-    string,
-    Record<
-      string,
-      | InteractiveBorderColors<'positive'>
-      | InteractiveBorderColors<'negative'>
-      | InteractiveBorderColors<'primary'>
-      | 'interactive.border.gray.default'
-      | 'interactive.border.gray.disabled'
-    >
-  >;
+  icon: Record<string, IconColorTokens>;
+  background: Record<string, Record<string, ChipBackgroundColors>>;
+  border: Record<string, Record<string, ChipBorderColors>>;
 };
 
 const chipColorTokens: ChipColorTokens = {
@@ -124,8 +92,8 @@ const chipColorTokens: ChipColorTokens = {
     negative: 'interactive.text.negative.subtle',
   },
   icon: {
-    unchecked: 'interactive.text.gray.subtle',
-    disabled: 'interactive.text.gray.disabled',
+    unchecked: 'interactive.icon.gray.subtle',
+    disabled: 'interactive.icon.gray.disabled',
     primary: 'interactive.icon.primary.normal',
     positive: 'feedback.icon.positive.intense',
     negative: 'feedback.icon.negative.intense',
@@ -179,8 +147,8 @@ const getChipInputHoverTokens = (color: ChipGroupProps['color']): SelectorInputH
   return {
     default: {
       background: {
-        checked: 'transparent',
-        unchecked: 'transparent',
+        checked: 'colors.surface.background.gray.intense',
+        unchecked: 'colors.surface.background.gray.intense',
       },
       border: {
         checked: `colors.${chipColorTokens.border[color || 'default'].hover}` as never,
@@ -216,7 +184,10 @@ const chipTextSizes = {
   },
 } as const;
 
-const chipMotionTokens = {
+const chipMotionTokens: Record<
+  'duration' | 'easing',
+  'motion.duration.xquick' | 'motion.easing.standard.effective'
+> = {
   duration: 'motion.duration.xquick',
   easing: 'motion.easing.standard.effective',
 };

@@ -1,7 +1,8 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
-import type { DotNotationColorStringToken, StringChildrenType, TestID } from '~utils/types';
+import type { StringChildrenType, TestID } from '~utils/types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 type ChipProps = {
   /**
@@ -106,8 +107,32 @@ type ChipGroupContextType = Pick<
   'isDisabled' | 'name' | 'defaultValue' | 'value' | 'onChange' | 'size' | 'color' | 'selectionType'
 > & { state?: State };
 
+type InteractiveBackgroundColors<
+  T extends 'positive' | 'negative' | 'primary'
+> = `interactive.background.${T}.${DotNotationToken<
+  Theme['colors']['interactive']['background'][T]
+>}`;
+
+type InteractiveBorderColors<
+  T extends 'positive' | 'negative' | 'primary'
+> = `interactive.border.${T}.${DotNotationToken<Theme['colors']['interactive']['border'][T]>}`;
+
+type ChipBackgroundColors =
+  | InteractiveBackgroundColors<'positive'>
+  | InteractiveBackgroundColors<'negative'>
+  | InteractiveBackgroundColors<'primary'>
+  | 'transparent'
+  | 'interactive.background.gray.faded';
+
+type ChipBorderColors =
+  | InteractiveBorderColors<'positive'>
+  | InteractiveBorderColors<'negative'>
+  | InteractiveBorderColors<'primary'>
+  | 'interactive.border.gray.default'
+  | 'interactive.border.gray.disabled';
+
 type AnimatedChipProps = {
-  borderColor: DotNotationColorStringToken<Theme['colors']>;
+  borderColor: ChipBorderColors;
   isPressed?: boolean;
   isDisabled?: boolean;
   isDesktop?: boolean;
@@ -117,7 +142,7 @@ type AnimatedChipProps = {
 
 type StyledChipWrapperProps = {
   color: ChipGroupProps['color'];
-  borderColor: DotNotationColorStringToken<Theme['colors']>;
+  borderColor: ChipBorderColors;
   isChecked?: boolean;
   isDisabled?: boolean;
   theme: Theme;
@@ -131,4 +156,6 @@ export type {
   ChipProps,
   State,
   StyledChipWrapperProps,
+  ChipBorderColors,
+  ChipBackgroundColors,
 };
