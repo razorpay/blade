@@ -61,7 +61,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c10.c10.c10.c10.c10 {
-  border-color: hsla(216,19%,89%,1);
+  border-color: hsla(211,27%,76%,1);
   border-style: solid;
 }
 
@@ -85,17 +85,17 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(216,19%,89%,1);
+  border-color: hsla(211,27%,76%,1);
   border-style: solid;
 }
 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
-  border-color: hsla(216,19%,89%,1);
+  border-color: hsla(211,27%,76%,1);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -139,7 +139,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
@@ -190,12 +190,18 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c9.c9.c9.c9.c9:focus-visible + div {
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9:hover + div {
-  border-color: hsla(214,18%,69%,1);
+  border-color: hsla(211,27%,76%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -203,7 +209,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -220,7 +226,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -307,7 +313,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
     data-blade-component="base-box"
   >
     <div
-      aria-labelledby="chip-group-180-label"
+      aria-labelledby="chip-group-141-label"
       class="c0"
       data-blade-component="chip-group"
       role="group"
@@ -555,7 +561,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c10.c10.c10.c10.c10 {
-  border-color: hsla(216,19%,89%,1);
+  border-color: hsla(211,27%,76%,1);
   border-style: solid;
 }
 
@@ -579,17 +585,17 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(216,19%,89%,1);
+  border-color: hsla(211,27%,76%,1);
   border-style: solid;
 }
 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
-  border-color: hsla(216,19%,89%,1);
+  border-color: hsla(211,27%,76%,1);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -633,7 +639,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
@@ -684,12 +690,18 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c9.c9.c9.c9.c9:focus-visible + div {
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9:hover + div {
-  border-color: hsla(214,18%,69%,1);
+  border-color: hsla(211,27%,76%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -697,7 +709,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -714,7 +726,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
