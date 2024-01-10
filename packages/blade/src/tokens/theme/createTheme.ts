@@ -71,7 +71,6 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromati
 
   const colorPalette = palette.reverse();
   const brandPrimaryColor = colorPalette[6];
-  console.log(colorPalette);
 
   const brandColors: ColorChromaticScale = {
     '50': colorPalette[0],
@@ -103,16 +102,6 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromati
 const getOnLightOverrides = (
   brandColors: ColorChromaticScale,
 ): DeepPartial<ThemeTokens['colors']['onLight']> => {
-  // Select the most readable color to use as the foreground color on top of brand color
-  // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
-  const foregroundOnBrandColorLight = tinycolor
-    .mostReadable(
-      brandColors[800],
-      [globalColors.neutral.blueGrayLight[1300], globalColors.neutral.blueGrayLight[0]],
-      WCAG2ContrastOptions,
-    )
-    .toHslString();
-
   // Select the most readable color to use as the foreground color on top of surface color
   // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or dark color depending on which is more readable on top of that surface color
   const foregroundOnSurfaceLight = tinycolor.isReadable(
@@ -191,19 +180,11 @@ const getOnLightOverrides = (
  * @description Returns overrides for the dark theme with the brand colors passed in
  * @returns Overrides for the dark theme with the custom brand colors
  */
-const getOnDarkOverrides = (brandColors: ColorChromaticScale): DeepPartial<ThemeTokens> => {
-  // Select the most readable color to use as the foreground color on top of brand color
-  // For example: On Primary Button where the background color is brand color, the text color should be either dark or light depending on which is more readable on top of that brand color
-  const foregroundOnBrandColorDark = tinycolor
-    .mostReadable(
-      brandColors[800],
-      [globalColors.neutral.blueGrayDark[800], globalColors.neutral.blueGrayDark[0]],
-      WCAG2ContrastOptions,
-    )
-    .toHslString();
-
+const getOnDarkOverrides = (
+  brandColors: ColorChromaticScale,
+): DeepPartial<ThemeTokens['colors']['onDark']> => {
   // Select the most readable color to use as the foreground color on top of surface color
-  // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or light color depending on which is more readable on top of that surface color
+  // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or dark color depending on which is more readable on top of that surface color
   const foregroundOnSurfaceDark = tinycolor.isReadable(
     globalColors.neutral.blueGrayDark[1100],
     brandColors[400],
@@ -212,8 +193,64 @@ const getOnDarkOverrides = (brandColors: ColorChromaticScale): DeepPartial<Theme
     ? brandColors[400]
     : globalColors.neutral.blueGrayDark[0];
 
+  const staticWhiteDefault = tinycolor
+    .mostReadable(
+      brandColors[900],
+      [globalColors.neutral.white[500], globalColors.neutral.black[500]],
+      WCAG2ContrastOptions,
+    )
+    .toHslString();
+
   // Overrides for the dark theme with the brand colors passed in
-  const darkThemeOverrides = {};
+  const darkThemeOverrides: DeepPartial<ThemeTokens['colors']['onDark']> = {
+    interactive: {
+      background: {
+        primary: {
+          default: brandColors[500],
+          highlighted: brandColors[600],
+          disabled: brandColors.a100,
+          faded: brandColors.a100,
+          fadedHighlighted: brandColors.a150,
+        },
+      },
+      border: {
+        primary: {
+          default: brandColors[500],
+          highlighted: brandColors[600],
+          disabled: brandColors.a100,
+          faded: brandColors.a100,
+        },
+      },
+      text: {
+        primary: {
+          normal: foregroundOnSurfaceDark,
+          disabled: foregroundOnSurfaceDark,
+          muted: foregroundOnSurfaceDark,
+          subtle: foregroundOnSurfaceDark,
+        },
+        staticWhite: {
+          normal: staticWhiteDefault,
+          disabled: staticWhiteDefault,
+          muted: staticWhiteDefault,
+          subtle: staticWhiteDefault,
+        },
+      },
+      icon: {
+        primary: {
+          normal: foregroundOnSurfaceDark,
+          disabled: foregroundOnSurfaceDark,
+          muted: foregroundOnSurfaceDark,
+          subtle: foregroundOnSurfaceDark,
+        },
+        staticWhite: {
+          normal: staticWhiteDefault,
+          disabled: staticWhiteDefault,
+          muted: staticWhiteDefault,
+          subtle: staticWhiteDefault,
+        },
+      },
+    },
+  };
 
   return darkThemeOverrides;
 };
@@ -227,12 +264,12 @@ const getOnDarkOverrides = (brandColors: ColorChromaticScale): DeepPartial<Theme
  * @example
  * const theme = createTheme({ brandColor: '#19BEA2'})
  **/
-export const createTheme = ({ brandColor }: { brandColor: ColorInput }) => {
+export const createTheme = ({ brandColor }: { brandColor: ColorInput }): ThemeTokens => {
   const chromaticBrandColors = generateChromaticBrandColors(brandColor);
   // Get onLight overrides
   const brandedLightTheme = getOnLightOverrides(chromaticBrandColors);
   // Get onDark overrides
-  // const brandedDarkTheme = getOnDarkOverrides(chromaticBrandColors);
+  const brandedDarkTheme = getOnDarkOverrides(chromaticBrandColors);
   // Override the payment theme with the brand colors
   const brandedThemeTokens = overrideTheme({
     baseThemeTokens: bladeTheme,
@@ -242,9 +279,9 @@ export const createTheme = ({ brandColor }: { brandColor: ColorInput }) => {
         onLight: {
           ...brandedLightTheme,
         },
-        // onDark: {
-        //   ...brandedDarkTheme?.colors?.onDark,
-        // },
+        onDark: {
+          ...brandedDarkTheme,
+        },
       },
     },
   });
