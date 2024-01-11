@@ -117,7 +117,6 @@ const getTextProps = <T extends { variant: TextVariant }>({
     }
   }
   if (variant === 'caption') {
-    console.log('---', size);
     if (size === 'small') {
       props.fontSize = 50;
       props.lineHeight = 50;
