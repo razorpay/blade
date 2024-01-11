@@ -9,9 +9,9 @@ import Animated, {
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';
 import type { BaseInputProps } from './BaseInput';
+import type { ActionStates } from '../../../utils/useInteraction';
 import { useTheme } from '~components/BladeProvider';
 import { makeBorderSize } from '~utils/makeBorderSize';
-import { ActionStates } from '../../../utils/useInteraction';
 
 const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
   position: 'absolute',
