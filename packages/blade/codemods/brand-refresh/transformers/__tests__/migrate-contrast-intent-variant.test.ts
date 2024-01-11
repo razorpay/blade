@@ -66,20 +66,38 @@ it('should remove variant/intent prop in favor of color prop', async () => {
         <Badge variant="blue" color="default"> Hello </Badge>
         <Badge variant="negative" color="positive"> Hello </Badge>
 
+        <CardHeaderBadge variant="blue"> Hello </CardHeaderBadge>
+        <CardHeaderBadge color="default"> Hello </CardHeaderBadge>
+        <CardHeaderBadge variant="blue" color="default"> Hello </CardHeaderBadge>
+        <CardHeaderBadge variant="negative" color="positive"> Hello </CardHeaderBadge>
+
         <Counter variant="blue"> Hello </Counter>
         <Counter intent="positive"> Hello </Counter>
         <Counter color="default"> Hello </Counter>
         <Counter variant="blue" intent="positive" color="default"> Hello </Counter>
         <Counter variant="negative" intent="notice" color="positive"> Hello </Counter>
 
+        <CardHeaderCounter variant="blue"> Hello </CardHeaderCounter>
+        <CardHeaderCounter intent="positive"> Hello </CardHeaderCounter>
+        <CardHeaderCounter color="default"> Hello </CardHeaderCounter>
+        <CardHeaderCounter variant="blue" intent="positive" color="default"> Hello </CardHeaderCounter>
+        <CardHeaderCounter variant="negative" intent="notice" color="positive"> Hello </CardHeaderCounter>
+
         <Indicator intent="positive" />
 
         <Button variant="secondary" color="default"> Click Me </Button>
         <Button variant="secondary" color="white"> Click Me </Button>
 
+        <CardHeaderIconButton variant="secondary" color="default"> Click Me </CardHeaderIconButton>
+        <CardHeaderIconButton variant="secondary" color="white"> Click Me </CardHeaderIconButton>
+
         <Link color="default" href="https://github.com/razorpay/blade" variant="anchor">
           Learn More
         </Link>
+
+        <CardHeaderLink color="default" href="https://github.com/razorpay/blade" variant="anchor">
+          Learn More
+        </CardHeaderLink>
 
         <ChipGroup defaultValue="yes">
           <Chip intent="positive" value="yes"> Yes </Chip>
@@ -92,6 +110,8 @@ it('should remove variant/intent prop in favor of color prop', async () => {
         </ChipGroup>
 
         <Amount intent="positive" value={1234} />
+
+        <CardHeaderAmount intent="positive" value={1234} />
 
         <ProgressBar intent="positive" label="Label" size="medium" value={10} />
         <ProgressBar intent="positive" label="Label" size="medium" value={10}  contrast="low"  />
@@ -112,20 +132,38 @@ it('should remove variant/intent prop in favor of color prop', async () => {
             <Badge color="primary"> Hello </Badge>
             <Badge color="positive"> Hello </Badge>
 
+            <CardHeaderBadge color="primary"> Hello </CardHeaderBadge>
+            <CardHeaderBadge color="primary"> Hello </CardHeaderBadge>
+            <CardHeaderBadge color="primary"> Hello </CardHeaderBadge>
+            <CardHeaderBadge color="positive"> Hello </CardHeaderBadge>
+
             <Counter color="primary"> Hello </Counter>
             <Counter color="positive"> Hello </Counter>
             <Counter color="primary"> Hello </Counter>
             <Counter color="primary"> Hello </Counter>
             <Counter color="positive"> Hello </Counter>
+
+            <CardHeaderCounter color="primary"> Hello </CardHeaderCounter>
+            <CardHeaderCounter color="positive"> Hello </CardHeaderCounter>
+            <CardHeaderCounter color="primary"> Hello </CardHeaderCounter>
+            <CardHeaderCounter color="primary"> Hello </CardHeaderCounter>
+            <CardHeaderCounter color="positive"> Hello </CardHeaderCounter>
 
             <Indicator color="positive" />
 
             <Button variant="secondary" color="primary"> Click Me </Button>
             <Button variant="secondary" color="white"> Click Me </Button>
 
+            <CardHeaderIconButton variant="secondary" color="primary"> Click Me </CardHeaderIconButton>
+            <CardHeaderIconButton variant="secondary" color="white"> Click Me </CardHeaderIconButton>
+
             <Link color="primary" href="https://github.com/razorpay/blade" variant="anchor">
               Learn More
             </Link>
+
+            <CardHeaderLink color="primary" href="https://github.com/razorpay/blade" variant="anchor">
+              Learn More
+            </CardHeaderLink>
 
             <ChipGroup defaultValue="yes">
               <Chip value="yes" color="positive"> Yes </Chip>
@@ -138,6 +176,8 @@ it('should remove variant/intent prop in favor of color prop', async () => {
             </ChipGroup>
 
             <Amount value={1234} color="positive" />
+
+            <CardHeaderAmount value={1234} color="positive" />
 
             <ProgressBar label="Label" size="medium" value={10} color="positive" />
             <ProgressBar label="Label" size="medium" value={10} color="positive" />

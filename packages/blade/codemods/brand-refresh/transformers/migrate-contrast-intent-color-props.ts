@@ -6,14 +6,14 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
     root
       .find(j.JSXElement)
       .filter((path) =>
-        ['Text', 'Title', 'Display', 'Heading', 'ProgressBar'].includes(
+        ['Text', 'Title', 'Display', 'Heading', 'ProgressBar', 'CardHeaderText'].includes(
           path.value.openingElement.name.name,
         ),
       )
       .find(j.JSXAttribute) // Find all props
       .filter(
         (path, index, self) =>
-          ['Text', 'Title', 'Display', 'Heading', 'ProgressBar'].includes(
+          ['Text', 'Title', 'Display', 'Heading', 'ProgressBar', 'CardHeaderText'].includes(
             path.parent.value.name.name,
           ) &&
           path.node.name.name === 'contrast' &&
@@ -38,7 +38,14 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
     root
       .find(j.JSXElement)
       .filter((path) =>
-        ['Badge', 'Counter', 'IconButton', 'Alert'].includes(path.value.openingElement.name.name),
+        [
+          'Badge',
+          'Counter',
+          'IconButton',
+          'Alert',
+          'CardHeaderBadge',
+          'CardHeaderCounter',
+        ].includes(path.value.openingElement.name.name),
       )
       .find(j.JSXAttribute)
       .filter((path) => path.node.name.name === 'contrast')
@@ -109,6 +116,9 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
           'Indicator',
           'ProgressBar',
           'Amount',
+          'CardHeaderBadge',
+          'CardHeaderCounter',
+          'CardHeaderAmount',
         ].includes(path.value.openingElement.name.name),
       )
       .replaceWith((path) => {
@@ -185,7 +195,16 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
     root
       .find(j.JSXElement)
       .filter((path) =>
-        ['Button', 'Link', 'Badge', 'Counter'].includes(path.value.openingElement.name.name),
+        [
+          'Button',
+          'Link',
+          'Badge',
+          'Counter',
+          'CardHeaderBadge',
+          'CardHeaderCounter',
+          'CardHeaderIconButton',
+          'CardHeaderLink',
+        ].includes(path.value.openingElement.name.name),
       )
       .find(j.JSXAttribute)
       .filter((path) => path.node.name.name === 'color' && path.node.value.value === 'default')
