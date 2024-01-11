@@ -156,15 +156,16 @@ const Alert = ({
       iconOffset = 'spacing.2';
     }
   } else if (isFullWidth) {
-    iconOffset = 'spacing.0';
+    iconOffset = 'spacing.1';
   }
 
+  const shouldCenterAlign = isFullWidth && !title;
+  let alignment = 'flex-start';
+  if (!isFullWidth) alignment = 'flex-start';
+  if (shouldCenterAlign) alignment = 'center';
+
   const icon = (
-    <BaseBox
-      display="flex"
-      alignSelf={isFullWidth ? 'center' : 'flex-start'}
-      marginTop={iconOffset}
-    >
+    <BaseBox display="flex" alignSelf={alignment} marginTop={iconOffset}>
       <Icon
         color={
           emphasis === 'intense'
@@ -229,10 +230,7 @@ const Alert = ({
   }
 
   const secondaryAction = actions?.secondary ? (
-    <BaseBox
-      marginRight="spacing.4"
-      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
-    >
+    <BaseBox marginRight="spacing.4" display={(isReactNative ? 'flex' : 'inline-flex') as never}>
       <BaseLink
         size="small"
         color={emphasis === 'intense' ? 'white' : color}

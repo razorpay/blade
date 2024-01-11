@@ -203,7 +203,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  margin-top: 0px;
+  margin-top: 2px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -407,7 +407,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  margin-top: 0px;
+  margin-top: 2px;
 }
 
 .c3.c3.c3.c3.c3 {
