@@ -56,11 +56,11 @@ export type Colors = {
     background: Record<InteractiveColorKeys, InteractiveStates & { fadedHighlighted: string }>;
     border: Record<InteractiveColorKeys, InteractiveStates>;
     text: Record<
-      InteractiveColorKeys & { onPrimary: string },
+      InteractiveColorKeys | 'onPrimary',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
     >;
     icon: Record<
-      InteractiveColorKeys & { onPrimary: string },
+      InteractiveColorKeys | 'onPrimary',
       Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
     >;
   };
