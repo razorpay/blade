@@ -31,6 +31,7 @@ const rebrandedComponents = [
   'VisuallyHidden',
   'Tooltip',
   'Skeleton',
+  'Switch',
   'Radio',
   'Checkbox',
 ];

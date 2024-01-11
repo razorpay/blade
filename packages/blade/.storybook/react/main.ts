@@ -43,6 +43,7 @@ const config: StorybookConfig = {
     '../../src/components/Radio/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Popover/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Skeleton/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Switch/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Checkbox/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../docs/**/*.stories.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
@@ -57,6 +58,7 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@storybook/addon-a11y',
     '@storybook/preset-create-react-app',
+    '@storybook/addon-interactions',
   ],
   framework: {
     name: '@storybook/react-webpack5',
