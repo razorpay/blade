@@ -22,6 +22,7 @@ export * from './Spinner';
 export * from './Tabs';
 export * from './Tag';
 export * from './Tooltip';
+export * from './Skeleton';
 export * from './Switch';
 export * from './Typography';
 export * from './SkipNav';
