@@ -55,8 +55,14 @@ export type Colors = {
   interactive: {
     background: Record<InteractiveColorKeys, InteractiveStates & { fadedHighlighted: string }>;
     border: Record<InteractiveColorKeys, InteractiveStates>;
-    text: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
-    icon: Record<InteractiveColorKeys, Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>>;
+    text: Record<
+      InteractiveColorKeys | 'onPrimary',
+      Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
+    >;
+    icon: Record<
+      InteractiveColorKeys | 'onPrimary',
+      Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
+    >;
   };
   feedback: {
     background: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
