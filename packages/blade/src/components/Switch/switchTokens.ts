@@ -1,19 +1,4 @@
-import type { Theme } from '~components/BladeProvider';
-import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
-import type { DurationString, EasingString } from '~tokens/global/motion';
 import { size } from '~tokens/global';
-import type { DotNotationColorStringToken } from '~utils/types';
-
-type ColorTokens = `colors.${DotNotationColorStringToken<Theme['colors']>}` | 'transparent';
-type State = {
-  checked: ColorTokens;
-  unchecked: ColorTokens;
-};
-type SwitchColors = {
-  track: Record<'default' | 'disabled', Record<string, State>>;
-  thumb: Record<'default' | 'disabled', Record<string, ColorTokens>>;
-  thumbIcon: Record<'default' | 'disabled', Record<string, ColorTokens>>;
-};
 
 const switchSizes = {
   track: {
@@ -62,40 +47,40 @@ const switchSizes = {
   },
 } as const;
 
-const switchColors: SwitchColors = {
+const switchColors = {
   track: {
     default: {
       background: {
-        checked: 'colors.brand.primary.500',
-        unchecked: 'colors.brand.gray.500.lowContrast',
+        checked: 'colors.interactive.background.primary.default',
+        unchecked: 'colors.interactive.background.gray.faded',
       },
     },
     disabled: {
       background: {
-        checked: 'colors.brand.primary.400',
-        unchecked: 'colors.brand.gray.a100.lowContrast',
+        checked: 'colors.interactive.background.primary.faded',
+        unchecked: 'colors.interactive.background.gray.disabled',
       },
     },
   },
   thumb: {
     default: {
-      background: 'colors.brand.gray.700.highContrast',
+      background: 'colors.interactive.background.staticWhite.default',
     },
     disabled: {
-      background: 'colors.brand.gray.200.lowContrast',
+      background: 'colors.interactive.background.staticWhite.disabled',
     },
   },
   thumbIcon: {
     default: {
-      fill: 'colors.brand.gray.200.highContrast',
+      fill: 'colors.interactive.icon.staticBlack.normal',
     },
     disabled: {
-      fill: 'colors.surface.text.placeholder.lowContrast',
+      fill: 'colors.interactive.icon.staticBlack.disabled',
     },
   },
-};
+} as const;
 
-const switchMotion: Record<string, Record<string, `motion.${EasingString | DurationString}`>> = {
+const switchMotion = {
   easing: {
     thumb: 'motion.easing.standard.effective',
     thumbIcon: 'motion.easing.standard.effective',
@@ -106,15 +91,15 @@ const switchMotion: Record<string, Record<string, `motion.${EasingString | Durat
     thumbIcon: 'motion.duration.xquick',
     track: 'motion.duration.xquick',
   },
-};
+} as const;
 
-const switchHoverTokens: SelectorInputHoverTokens = {
+const switchHoverTokens = {
   default: {
     background: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.600.lowContrast',
+      checked: 'colors.interactive.background.primary.highlighted',
+      unchecked: 'colors.interactive.background.gray.fadedHighlighted',
     },
   },
-};
+} as const;
 
 export { switchColors, switchSizes, switchHoverTokens, switchMotion };
