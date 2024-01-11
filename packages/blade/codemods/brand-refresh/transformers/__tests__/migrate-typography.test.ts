@@ -1,6 +1,7 @@
 import path from 'path';
 import { applyTransform } from '@hypermod/utils';
 import * as transformer from '..';
+import { red } from '../utils';
 
 it('should update the lineHeight & fontSize tokens', async () => {
   const result = await applyTransform(
@@ -307,18 +308,18 @@ it('should correctly convert Title to Heading component', async () => {
 
   expect(consoleSpy).toHaveBeenNthCalledWith(
     1,
-    transformer.red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
-    transformer.red(`${path.resolve(__dirname, __filename)}:11:10\n`),
+    red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
+    red(`${path.resolve(__dirname, __filename)}:11:10\n`),
   );
   expect(consoleSpy).toHaveBeenNthCalledWith(
     2,
-    transformer.red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
-    transformer.red(`${path.resolve(__dirname, __filename)}:18:10\n`),
+    red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
+    red(`${path.resolve(__dirname, __filename)}:18:10\n`),
   );
   expect(consoleSpy).toHaveBeenNthCalledWith(
     3,
-    transformer.red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
-    transformer.red(`${path.resolve(__dirname, __filename)}:18:84\n`),
+    red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
+    red(`${path.resolve(__dirname, __filename)}:18:84\n`),
   );
 
   expect(result).toMatchInlineSnapshot(`
