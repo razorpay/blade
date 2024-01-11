@@ -5,6 +5,7 @@ import migrateCardComponent from './migrate-card';
 import migrateBadgeComponent from './migrate-badge';
 import migrateContrastIntentAndColorProps from './migrate-contrast-intent-color-props';
 import migrateTypographyComponents from './migrate-typography';
+import migrateActionListComponent from './migrate-actionlist';
 import { red, isExpression } from './utils';
 // eslint-disable-next-line import/extensions
 import colorTokensMapping from './colorTokensMapping.json';
@@ -172,6 +173,7 @@ const transformer: Transform = (file, api, options) => {
   migrateCardComponent({ root, j, file });
   migrateAmountComponent({ root, j, file });
   migrateDividerComponent({ root, j, file });
+  migrateActionListComponent({ root, j, file });
 
   // Update ImportDeclaration from "@razorpay/blade/components" to "@razorpay/blade-rebranded/components"
   // Update ImportSpecifier from "paymentTheme"/"bankingTheme" to "bladeTheme"
