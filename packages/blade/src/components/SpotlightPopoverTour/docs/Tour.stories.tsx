@@ -31,9 +31,9 @@ const Page = (): React.ReactElement => {
       componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
     >
-      <Heading size="large">Usage</Heading>
+      <Title>Usage</Title>
       <Sandbox>{BasicExample}</Sandbox>
-      <Heading size="large">iOS Safari Specific Setup</Heading>
+      <Title>iOS Safari Specific Setup</Title>
       <Text marginTop="spacing.5">
         When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
         `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS
@@ -47,7 +47,7 @@ const Page = (): React.ReactElement => {
           }
         `}
       </SandboxHighlighter>
-      <Heading size="large">Examples</Heading>
+      <Title>Examples</Title>
       <Text marginY="spacing.5">
         To see examples properly, switch to the{' '}
         <Text as="span" weight="semibold">
