@@ -254,7 +254,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   border-radius: 9999px;
   -webkit-animation-duration: 150ms;
   animation-duration: 150ms;
-  background-color: hsla(0,0%,100%,0.48);
+  background-color: hsla(0,0%,100%,0.18);
 }
 
 .c3.c3.c3.c3.c3 {

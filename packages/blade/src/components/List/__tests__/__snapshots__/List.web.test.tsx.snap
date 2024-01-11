@@ -449,7 +449,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(227,69%,42%,1);
+  color: hsla(227,71%,51%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 600;

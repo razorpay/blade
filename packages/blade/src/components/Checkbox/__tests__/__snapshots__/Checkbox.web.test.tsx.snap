@@ -89,7 +89,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
@@ -178,7 +178,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 }
 
 .c8.c8.c8.c8.c8:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
 .c8.c8.c8.c8.c8 * {
