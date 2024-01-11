@@ -28,7 +28,7 @@ const checkboxSizes = {
   },
 } as const;
 
-type ColorTokens = `colors.${DotNotationToken<Theme['colors']>}` | 'transparent';
+type ColorTokens = `colors.${DotNotationToken<Theme['colors']>}`;
 type Variant = {
   border: {
     checked: ColorTokens;
@@ -57,7 +57,7 @@ const checkboxIconColors: CheckboxIconColors = {
       },
       background: {
         checked: 'colors.interactive.background.primary.default',
-        unchecked: 'transparent',
+        unchecked: 'colors.transparent',
       },
     },
     disabled: {
@@ -67,7 +67,7 @@ const checkboxIconColors: CheckboxIconColors = {
       },
       background: {
         checked: 'colors.interactive.background.primary.disabled',
-        unchecked: 'transparent',
+        unchecked: 'colors.transparent',
       },
     },
     negative: {
@@ -77,7 +77,7 @@ const checkboxIconColors: CheckboxIconColors = {
       },
       background: {
         checked: 'colors.interactive.background.negative.default',
-        unchecked: 'transparent',
+        unchecked: 'colors.transparent',
       },
     },
   },
@@ -90,7 +90,7 @@ const checkboxHoverTokens: SelectorInputHoverTokens = {
       unchecked: 'colors.interactive.background.gray.faded',
     },
     border: {
-      checked: 'colors.interactive.border.background.highlighted', // Intentionally not using border tokens here since we want to match the background color
+      checked: 'colors.interactive.background.primary.highlighted', // Intentionally not using border tokens here since we want to match the background color
       unchecked: 'colors.interactive.border.gray.default',
     },
   },

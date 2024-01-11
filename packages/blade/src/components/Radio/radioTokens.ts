@@ -30,7 +30,7 @@ const radioSizes = {
   },
 } as const;
 
-type ColorTokens = `colors.${DotNotationToken<Theme['colors']>}` | 'transparent';
+type ColorTokens = `colors.${DotNotationToken<Theme['colors']>}`;
 type Variant = {
   dot: {
     checked: ColorTokens;
@@ -59,7 +59,7 @@ const radioIconColors: RadioIconColors = {
     default: {
       dot: {
         checked: 'colors.interactive.icon.staticWhite.normal',
-        unchecked: 'transparent',
+        unchecked: 'colors.transparent',
       },
       border: {
         checked: 'colors.interactive.border.primary.default',
@@ -67,7 +67,7 @@ const radioIconColors: RadioIconColors = {
       },
       background: {
         checked: 'colors.interactive.background.primary.default',
-        unchecked: 'transparent',
+        unchecked: 'colors.transparent',
       },
     },
     disabled: {
@@ -76,18 +76,18 @@ const radioIconColors: RadioIconColors = {
         unchecked: 'colors.interactive.icon.staticWhite.normal',
       },
       border: {
-        checked: 'transparent',
+        checked: 'colors.transparent',
         unchecked: 'colors.interactive.border.gray.disabled',
       },
       background: {
         checked: 'colors.interactive.background.primary.disabled',
-        unchecked: 'transparent',
+        unchecked: 'colors.transparent',
       },
     },
     negative: {
       dot: {
         checked: 'colors.interactive.icon.staticWhite.normal',
-        unchecked: 'transparent',
+        unchecked: 'colors.transparent',
       },
       border: {
         checked: 'colors.interactive.border.negative.default',
@@ -95,7 +95,7 @@ const radioIconColors: RadioIconColors = {
       },
       background: {
         checked: 'colors.interactive.background.negative.default',
-        unchecked: 'transparent',
+        unchecked: 'colors.transparent',
       },
     },
   },

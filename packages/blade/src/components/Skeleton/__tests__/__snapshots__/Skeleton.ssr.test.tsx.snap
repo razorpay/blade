@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Skeleton /> should render 1`] = `"<div id="root"><div aria-hidden="true" data-blade-component="skeleton" class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 kTtuUt fBLkgZ"></div></div>"`;
+exports[`<Skeleton /> should render 1`] = `"<div id="root"><div aria-hidden="true" data-blade-component="skeleton" class="BaseBox-bmPWx PulseAnimationweb__PulseAnimation-sc-184soy3-0 kTtuUt dpEKoA"></div></div>"`;
 
 exports[`<Skeleton /> should render 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -11,9 +11,9 @@ exports[`<Skeleton /> should render 2`] = `
 
 .c1.c1.c1.c1.c1 {
   opacity: 0;
-  background-color: hsla(216,15%,54%,0.18);
-  -webkit-animation-name: lbWRkT-450290765,fZZrNN-450290765;
-  animation-name: lbWRkT-450290765,fZZrNN-450290765;
+  background-color: hsla(211,20%,52%,0.09);
+  -webkit-animation-name: lbWRkT-450290765,iRXnvq-450290765;
+  animation-name: lbWRkT-450290765,iRXnvq-450290765;
   -webkit-animation-duration: 900ms,1200ms;
   animation-duration: 900ms,1200ms;
   -webkit-animation-delay: 0ms,900ms;

@@ -42,7 +42,7 @@ const RadioIcon = ({ isChecked, isDisabled, isNegative, size }: RadioIconProps) 
   if (isDisabled) variant = 'disabled';
   if (isNegative) variant = 'negative';
   const dotColorToken = radioIconColors.variants[variant].dot[state];
-  const dotColor = dotColorToken === 'transparent' ? dotColorToken : getIn(theme, dotColorToken);
+  const dotColor = getIn(theme, dotColorToken);
 
   return (
     <RadioIconWrapper
