@@ -139,7 +139,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -428,7 +428,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
@@ -548,7 +548,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 }
 
 .c1.c1.c1.c1.c1:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
 .c1.c1.c1.c1.c1 * {
@@ -629,7 +629,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                   clip-rule="evenodd"
                   d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                   data-blade-component="svg-path"
-                  fill="hsla(227, 71%, 51%, 1)"
+                  fill="hsla(227, 100%, 59%, 1)"
                   fill-rule="evenodd"
                 />
               </svg>

@@ -1166,7 +1166,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                   style={
                     [
                       {
-                        "color": "hsla(227, 71%, 51%, 1)",
+                        "color": "hsla(227, 100%, 59%, 1)",
                         "fontFamily": "Inter",
                         "fontSize": 14,
                         "fontStyle": "normal",
@@ -1504,7 +1504,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(227, 69%, 42%, 1)",
+                    "color": "hsla(227, 71%, 51%, 1)",
                     "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
