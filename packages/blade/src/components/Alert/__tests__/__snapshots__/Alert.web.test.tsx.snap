@@ -80,7 +80,7 @@ exports[`<Alert /> should render 1`] = `
 
 .c6.c6.c6.c6.c6:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
   color: hsla(211,26%,34%,1);
 }
 
@@ -271,7 +271,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
 
 .c6.c6.c6.c6.c6:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
   color: hsla(211,26%,34%,1);
 }
 
@@ -475,7 +475,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
 
 .c6.c6.c6.c6.c6:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
   color: hsla(211,26%,34%,1);
 }
 
