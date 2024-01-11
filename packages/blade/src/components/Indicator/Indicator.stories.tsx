@@ -16,12 +16,7 @@ const Page = (): ReactElement => {
       componentName="Indicator"
       componentDescription="Indicators describe the condition of an entity. They can be used to convey semantic meaning,
     such as statuses and semantical-categories."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8224%3A1',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=8224%3A0',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8224%3A1"
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
@@ -31,7 +26,7 @@ const Page = (): ReactElement => {
         function App() {
           return (
             <Box>
-              <Indicator accessibilityLabel="Success" intent="positive" />
+              <Indicator accessibilityLabel="Success" color="positive" />
             </Box>
           )
         }
@@ -104,7 +99,7 @@ export const Composition: StoryFn<typeof IndicatorComponent> = ({ ...args }) => 
 };
 Composition.args = {
   children: undefined,
-  intent: 'notice',
+  color: 'notice',
   accessibilityLabel: 'New offers',
   size: 'large',
 };

@@ -1,10 +1,7 @@
 import styled, { ThemeProvider } from 'styled-components';
 import { BladeProvider, Button } from '@razorpay/blade/components';
-import { paymentTheme } from '@razorpay/blade/tokens';
-import '@fontsource/lato/400.css';
-import '@fontsource/lato/400-italic.css';
-import '@fontsource/lato/700.css';
-import '@fontsource/lato/700-italic.css';
+import { bladeTheme } from '@razorpay/blade/tokens';
+import '@razorpay/blade/fonts.css';
 
 import './app.css';
 
@@ -29,7 +26,7 @@ const MyButton = styled.button(({ theme }) => ({
 
 function App(): React.ReactElement {
   return (
-    <BladeProvider themeTokens={paymentTheme} colorScheme="light">
+    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
       <ThemeProvider theme={customTheme}>
         <Button onClick={() => console.log('hi')}>Hello</Button>
         <MyButton onClick={() => console.log('hi')}>World</MyButton>

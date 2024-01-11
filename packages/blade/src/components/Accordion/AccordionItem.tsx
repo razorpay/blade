@@ -68,7 +68,9 @@ const AccordionItem = ({
   const isExpanded = expandedIndex === _index;
   const isDefaultExpanded = defaultExpandedIndex === _index;
 
-  const _description = description && <Text type="subtle">{description}</Text>;
+  const _description = description && (
+    <Text color="interactive.text.gray.subtle">{description}</Text>
+  );
   const handleExpandChange = ({ isExpanded }: { isExpanded: boolean }): void => {
     if (isExpanded && typeof _index !== 'undefined') {
       onExpandChange(_index);

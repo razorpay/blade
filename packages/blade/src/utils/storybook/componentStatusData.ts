@@ -12,6 +12,7 @@ type ComponentStatusDataType = {
   status: ComponentStatuses;
   description: string;
   releasedIn?: string;
+  rebrandedIn?: string;
   storybookLink?: string;
 }[];
 
@@ -36,6 +37,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Badge',
     status: 'released',
     releasedIn: '1.0.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Badge',
     description:
       'Badges are used to show small amount of color coded metadata, which are ideal for getting user attention.',
@@ -44,6 +46,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Button',
     status: 'released',
     releasedIn: '0.11.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Button',
     description:
       'Button component which can be used for various CTAs. It is available in 3 different variants.',
@@ -52,6 +55,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Card',
     status: 'released',
     releasedIn: '5.3.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Card',
     description:
       'Cards are used to group similar concepts and tasks together to make easier for merchants to scan, read, and get things done.',
@@ -76,6 +80,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Counter',
     status: 'released',
     releasedIn: '3.6.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Counter',
     description:
       'Counters are visual indicators that contains numerical values, tallies or counts in regards to some context. It can be used to show non-interactive numerical data.',
@@ -84,6 +89,7 @@ const componentData: ComponentStatusDataType = [
     name: 'IconButton',
     status: 'released',
     releasedIn: '3.6.2',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/IconButton',
     description:
       'Useful for making clickable icons. For example - close button for modals, inputs, etc.',
@@ -92,6 +98,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Indicator',
     status: 'released',
     releasedIn: '3.7.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Indicator',
     description:
       'Indicators describe the condition of an entity. They can be used to convey semantic meaning, such as statuses and semantical-categories.',
@@ -100,6 +107,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Link',
     status: 'released',
     releasedIn: '0.13.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Link',
     description:
       'Link component can be used for showing external or internal Links to the user. The Link component can also be used as an inline button in certain cases with the `button` variant.',
@@ -108,6 +116,7 @@ const componentData: ComponentStatusDataType = [
     name: 'List',
     status: 'released',
     releasedIn: '6.1.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/List',
     description:
       'Lists display a set of related items that are composed of text/links. Each list item begins with a bullet or a number.',
@@ -116,6 +125,7 @@ const componentData: ComponentStatusDataType = [
     name: 'ProgressBar',
     status: 'released',
     releasedIn: '5.4.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/ProgressBar',
     description:
       'Progress bar is generally a branded element that indicates progress of process or task',
@@ -124,6 +134,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Spinner',
     status: 'released',
     releasedIn: '2.2.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Spinner',
     description:
       'Spinner component is an element with a looping animation that indicates loading is in process.',
@@ -180,6 +191,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Text',
     status: 'released',
     releasedIn: '0.4.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Typography/Text',
     description:
       'Text component is used to display main content of the page. It is often clubbed with Title or Heading to display content in a hierarchical structure. It applies responsive styles automatically based on the device it is being rendered on.',
@@ -187,6 +199,7 @@ const componentData: ComponentStatusDataType = [
   {
     name: 'Heading',
     status: 'released',
+    rebrandedIn: '11.0.0',
     releasedIn: '0.6.0',
     storybookLink: 'Components/Typography/Heading',
     description: 'Heading Component is usually used for headings of each major section of a page.',
@@ -195,6 +208,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Title',
     status: 'released',
     releasedIn: '0.5.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Typography/Title',
     description:
       'Title Component makes a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use Title as marketing content on landing pages or to capture attention during onboarding.',
@@ -203,6 +217,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Code',
     status: 'released',
     releasedIn: '3.0.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Typography/Code',
     description:
       'Code component can be used for displaying token, variable names, or inlined code snippets.',
@@ -211,6 +226,7 @@ const componentData: ComponentStatusDataType = [
     name: 'SkipNav',
     status: 'released',
     releasedIn: '0.9.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Accessibility/SkipNav',
     description:
       'SkipNav component lets users skip the navigation and jump to the main content of the page. Useful when you have navbars at the top and the user wants to jump directly to the main content.',
@@ -219,6 +235,7 @@ const componentData: ComponentStatusDataType = [
     name: 'VisuallyHidden',
     status: 'released',
     releasedIn: '0.9.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Accessibility/VisuallyHidden',
     description:
       'VisuallyHidden component makes content hidden from sighted users but available for screen reader users.',
@@ -243,6 +260,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Layout Primitives',
     status: 'released',
     releasedIn: '6.5.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Layout Primitives (Box)/Layout Primitives Tutorial',
     description:
       'Layout Primitives are used to build complex responsive layouts. Includes Box component and Styled Props on existing blade components',
@@ -251,6 +269,7 @@ const componentData: ComponentStatusDataType = [
     name: 'BottomSheet',
     status: 'released',
     releasedIn: '7.2.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/BottomSheet',
     description:
       'Bottom sheets are surfaces containing supplementary content that are anchored to the bottom of the screen.',
@@ -259,6 +278,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Tags',
     status: 'released',
     releasedIn: '9.3.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Tag',
     description: 'A tag labels UI objects for quick recognition and navigation.',
   },
@@ -266,6 +286,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Amount',
     status: 'released',
     releasedIn: '6.7.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Amount',
     description: 'Amount component is used to display & format various currencies',
   },
@@ -283,12 +304,14 @@ const componentData: ComponentStatusDataType = [
     description:
       'Tooltip is a brief, informative message that appears when a user interacts with an element.',
     releasedIn: '8.9.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Tooltip',
   },
   {
     name: 'Accordion',
     status: 'released',
     releasedIn: '8.12.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Accordion',
     description:
       'Accordion component allows the user to show and hide sections of related content on a page',
@@ -297,6 +320,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Collapsible',
     status: 'released',
     releasedIn: '8.12.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Collapsible',
     description:
       'Collapsibles are used to allow users to toggle the visibility of hidden content within a container.',
@@ -307,6 +331,7 @@ const componentData: ComponentStatusDataType = [
     description:
       "Modal is a dialog that focuses the user's attention exclusively on an information via a window that is overlaid on primary content.",
     releasedIn: '8.8.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Modal/SimpleModal',
   },
   {
@@ -314,6 +339,7 @@ const componentData: ComponentStatusDataType = [
     status: 'released',
     description: 'Dividers are used to visually separate content in a list or group.',
     releasedIn: '8.14.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Divider',
   },
   {
@@ -353,6 +379,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Carousel',
     status: 'released',
     releasedIn: '10.2.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Carousel',
     description:
       'Carousel is a component to one-by-one display multiple blocks of information in circular manner',
@@ -361,6 +388,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Tabs',
     status: 'released',
     releasedIn: '10.16.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Tabs',
     description:
       'Tabs is a component which will allow you to show multiple clickable tabs in your UI',
@@ -399,6 +427,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Popover',
     status: 'released',
     releasedIn: '10.10.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Popover',
     description: 'Used for cases like guided tours',
   },

@@ -9,26 +9,26 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
   }
 >
   <View
-    backgroundColor="surface.background.level1.lowContrast"
+    backgroundColor="surface.background.cloud.intense"
     data-blade-component="base-box"
     elevation="highRaised"
     height="200px"
     style={
       [
         {
-          "backgroundColor": "hsla(220, 30%, 96%, 1)",
+          "backgroundColor": "hsla(200, 61%, 20%, 1)",
           "height": 200,
           "width": 200,
         },
         {
-          "elevation": 26,
-          "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+          "elevation": 24,
+          "shadowColor": "hsla(217, 56%, 17%, 0.8)",
           "shadowOffset": {
-            "height": 18,
+            "height": 6,
             "width": 0,
           },
-          "shadowOpacity": 0.2,
-          "shadowRadius": 12,
+          "shadowOpacity": 0.16,
+          "shadowRadius": 14,
         },
         undefined,
       ]
@@ -37,7 +37,7 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
   >
     <Text
       accessible={true}
-      color="surface.text.normal.lowContrast"
+      color="surface.text.gray.normal"
       data-blade-component="text"
       fontFamily="text"
       fontSize={100}
@@ -47,11 +47,12 @@ exports[`<BaseBox /> should render BaseBox component with elevation 1`] = `
       style={
         [
           {
-            "color": "hsla(217, 56%, 17%, 1)",
-            "fontFamily": "Lato",
+            "color": "hsla(212, 39%, 16%, 1)",
+            "fontFamily": "Inter",
             "fontSize": 14,
             "fontStyle": "normal",
             "fontWeight": "400",
+            "letterSpacing": 0,
             "lineHeight": 20,
             "marginBottom": 0,
             "marginLeft": 0,

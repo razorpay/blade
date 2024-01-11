@@ -56,7 +56,7 @@ describe('<List />', () => {
     const { container } = renderWithTheme(
       <List>
         <ListItem>
-          <ListItemText weight="bold" color="action.text.secondary.default">
+          <ListItemText weight="semibold" color="interactive.text.primary.normal">
             Level 1
           </ListItemText>
         </ListItem>

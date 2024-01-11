@@ -248,7 +248,7 @@ const _TablePagination = ({
     >
       {showLabel && !onMobile && (
         <BaseBox display="flex" justifyContent="center" alignItems="center">
-          <Text size="medium" weight="bold">
+          <Text size="medium" weight="semibold">
             {label ?? defaultLabel}
           </Text>
         </BaseBox>

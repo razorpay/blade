@@ -4,22 +4,18 @@ import React from 'react';
 import { BaseText } from '../BaseText';
 import type { BaseTextProps, BaseTextSizes } from '../BaseText/types';
 import { useValidateAsProp } from '../utils';
-import type { Theme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { ColorContrast, ColorContrastTypes, TextTypes } from '~tokens/theme/theme';
 import type { TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 
-const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q'] as const;
+const validAsValues = ['p', 'span', 'div', 'abbr', 'figcaption', 'cite', 'q', 'label'] as const;
 type TextCommonProps = {
   as?: typeof validAsValues[number];
-  type?: TextTypes;
-  contrast?: ColorContrastTypes;
   truncateAfterLines?: number;
   children: React.ReactNode;
-  weight?: keyof Theme['typography']['fonts']['weight'];
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
   /**
    * Overrides the color of the Text component.
    *
@@ -41,7 +37,7 @@ type TextBodyVariant = TextCommonProps & {
 
 type TextCaptionVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'caption'>;
-  size?: Extract<BaseTextSizes, 'medium'>;
+  size?: Extract<BaseTextSizes, 'small'>;
 };
 
 /**
@@ -61,30 +57,20 @@ export type TextProps<T> = T extends {
 type GetTextPropsReturn = Omit<BaseTextProps, 'children'>;
 type GetTextProps<T extends { variant: TextVariant }> = Pick<
   TextProps<T>,
-  | 'type'
-  | 'variant'
-  | 'weight'
-  | 'size'
-  | 'contrast'
-  | 'color'
-  | 'testID'
-  | 'textAlign'
-  | 'textDecorationLine'
+  'variant' | 'weight' | 'size' | 'color' | 'testID' | 'textAlign' | 'textDecorationLine'
 >;
+
 const getTextProps = <T extends { variant: TextVariant }>({
   variant,
-  type,
   weight,
   size,
-  color,
-  contrast,
+  color = 'surface.text.gray.normal',
   testID,
   textAlign,
   textDecorationLine,
 }: GetTextProps<T>): GetTextPropsReturn => {
-  const colorContrast: keyof ColorContrast = contrast ? `${contrast!}Contrast` : 'lowContrast';
   const props: GetTextPropsReturn = {
-    color: color ?? `surface.text.${type ?? 'normal'}.${colorContrast}`,
+    color,
     fontSize: 100,
     fontWeight: weight ?? 'regular',
     fontStyle: 'normal',
@@ -99,11 +85,11 @@ const getTextProps = <T extends { variant: TextVariant }>({
   if (variant === 'body') {
     if (size === 'xsmall') {
       props.fontSize = 25;
-      props.lineHeight = 50;
+      props.lineHeight = 25;
     }
     if (size === 'small') {
       props.fontSize = 75;
-      props.lineHeight = 50;
+      props.lineHeight = 75;
     }
     if (size === 'medium') {
       props.fontSize = 100;
@@ -111,13 +97,14 @@ const getTextProps = <T extends { variant: TextVariant }>({
     }
     if (size === 'large') {
       props.fontSize = 200;
-      props.lineHeight = 300;
+      props.lineHeight = 200;
     }
   }
   if (variant === 'caption') {
-    if (size === 'medium') {
+    if (size === 'small') {
       props.fontSize = 50;
       props.lineHeight = 50;
+      props.fontWeight = 'regular';
     } else if (__DEV__) {
       throwBladeError({
         moduleName: 'Text',
@@ -135,8 +122,6 @@ const _Text = <T extends { variant: TextVariant }>({
   variant = 'body',
   weight = 'regular',
   size = 'medium',
-  type = 'normal',
-  contrast = 'low',
   truncateAfterLines,
   children,
   color,
@@ -152,11 +137,9 @@ const _Text = <T extends { variant: TextVariant }>({
     wordBreak,
     ...getTextProps({
       variant,
-      type,
       weight,
       color,
       size,
-      contrast,
       testID,
       textAlign,
       textDecorationLine,

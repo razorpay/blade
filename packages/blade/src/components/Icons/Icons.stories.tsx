@@ -17,12 +17,7 @@ const Page = (): ReactElement => {
       apiDecisionLink=""
       note="Blade consists of a limited set of icons that are commonly used however you can contribute to Blade by adding more icons that are available on the Figma board as and when a use case arises. **See the adding icons section below for reference.**"
       imports={`// Replace IconName with actual Icon's name that you would like to use \nimport { IconName } from '@razorpay/blade/components' \n// IconProps are generic Icon props for all icons, don't replace it with your IconName \nimport type { IconProps } from '@razorpay/blade/components'`}
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=59%3A177',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9308%3A64839',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=59%3A177"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -84,14 +79,14 @@ export default {
   title: 'Components/Icons',
   component: PlusIcon, // need to give it some icon component so that storybook can infer props & arg types
   args: {
-    color: 'surface.text.normal.lowContrast',
+    color: 'surface.icon.gray.normal',
     size: 'medium',
   },
   tags: ['autodocs'],
   argTypes: {
     icon: {
       name: 'icon',
-      type: 'select',
+      type: 'select' as 'string',
       options: Object.keys(iconMap),
     },
     size: {

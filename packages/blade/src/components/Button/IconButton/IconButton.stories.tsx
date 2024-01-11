@@ -15,12 +15,7 @@ const Page = (): ReactElement => {
       componentName="IconButton"
       componentDescription="Useful for making clickable icons. For example - close button for modals, inputs, etc."
       apiDecisionLink={null}
-      figmaURL={{
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195699&t=b5e9P6qSqxDsq2rz-4',
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4"
     >
       <Title>Usage</Title>
       <Sandbox showConsole>
@@ -49,7 +44,7 @@ const meta: Meta<IconButtonProps> = {
   component: IconButtonComponent,
   args: {
     size: 'medium',
-    contrast: 'low',
+    emphasis: 'intense',
     accessibilityLabel: 'Close',
   },
   tags: ['autodocs'],
@@ -58,7 +53,7 @@ const meta: Meta<IconButtonProps> = {
     onClick: { action: 'onClick' },
     icon: {
       name: 'icon',
-      type: 'select',
+      type: 'select' as 'string',
       options: Object.keys(iconMap),
     },
   },

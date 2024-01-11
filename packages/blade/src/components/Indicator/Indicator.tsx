@@ -8,7 +8,7 @@ import { Text } from '~components/Typography';
 import { size as sizeToken } from '~tokens/global';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StringChildrenType, TestID } from '~utils/types';
-import type { Feedback } from '~tokens/theme/theme';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -21,7 +21,7 @@ type IndicatorCommonProps = {
    *
    * @default neutral
    */
-  intent?: Feedback;
+  color?: FeedbackColors;
 
   /**
    * Size of the indicator
@@ -67,15 +67,14 @@ const Indicator = ({
   accessibilityLabel,
   children,
   size = 'medium',
-  intent = 'neutral',
+  color = 'neutral',
   testID,
   ...styledProps
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
 
-  const fillColor = theme.colors.feedback.background[intent].highContrast;
-  const strokeColor = theme.colors.brand.gray.a100.highContrast;
+  const fillColor = theme.colors.feedback.background[color].intense;
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':
@@ -109,10 +108,14 @@ const Indicator = ({
           fill="none"
         >
           <Circle cx="5" cy="5" r="5" fill={fillColor} />
-          <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
         </Svg>
         <BaseBox marginLeft="spacing.2">
-          <Text textAlign="left" contrast="low" type="subtle" size={dimensions.textSize}>
+          <Text
+            weight="medium"
+            color="surface.text.gray.subtle"
+            textAlign="left"
+            size={dimensions.textSize}
+          >
             {children}
           </Text>
         </BaseBox>

@@ -11,22 +11,23 @@ exports[`<Heading /> should render Heading with color 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.placeholder.lowContrast"
+    color="surface.text.gray.disabled"
     data-blade-component="heading"
-    fontFamily="text"
-    fontSize={200}
+    fontFamily="heading"
+    fontSize={300}
     fontStyle="normal"
-    fontWeight="bold"
+    fontWeight="semibold"
     lineHeight={300}
     style={
       [
         {
-          "color": "hsla(214, 18%, 69%, 1)",
-          "fontFamily": "Lato",
+          "color": "hsla(211, 20%, 52%, 0.32)",
+          "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 24,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -56,22 +57,23 @@ exports[`<Heading /> should render Heading with default properties 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.lowContrast"
+    color="surface.text.gray.normal"
     data-blade-component="heading"
-    fontFamily="text"
-    fontSize={200}
+    fontFamily="heading"
+    fontSize={300}
     fontStyle="normal"
-    fontWeight="bold"
+    fontWeight="semibold"
     lineHeight={300}
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 24,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -101,22 +103,23 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.lowContrast"
+    color="surface.text.gray.normal"
     data-blade-component="heading"
-    fontFamily="text"
-    fontSize={200}
+    fontFamily="heading"
+    fontSize={300}
     fontStyle="normal"
-    fontWeight="bold"
+    fontWeight="semibold"
     lineHeight={300}
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 24,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -135,22 +138,23 @@ exports[`<Heading /> should render Heading with mixed color 1`] = `
     <Text
       accessibilityRole="header"
       accessible={true}
-      color="feedback.information.action.text.primary.default.lowContrast"
+      color="interactive.text.information.subtle"
       data-blade-component="heading"
-      fontFamily="text"
-      fontSize={200}
+      fontFamily="heading"
+      fontSize={300}
       fontStyle="normal"
-      fontWeight="bold"
+      fontWeight="semibold"
       lineHeight={300}
       style={
         [
           {
-            "color": "hsla(195, 100%, 31%, 1)",
-            "fontFamily": "Lato",
+            "color": "hsla(200, 84%, 44%, 1)",
+            "fontFamily": "TASA Orbiter Display",
             "fontSize": 16,
             "fontStyle": "normal",
-            "fontWeight": "700",
-            "lineHeight": 24,
+            "fontWeight": "600",
+            "letterSpacing": 0,
+            "lineHeight": 22,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -181,22 +185,23 @@ exports[`<Heading /> should render Heading with size "large" 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.subdued.lowContrast"
+    color="surface.text.gray.muted"
     data-blade-component="heading"
-    fontFamily="text"
-    fontSize={400}
+    fontFamily="heading"
+    fontSize={500}
     fontStyle="normal"
     fontWeight="regular"
-    lineHeight={400}
+    lineHeight={500}
     style={
       [
         {
-          "color": "hsla(217, 18%, 45%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 18,
+          "color": "hsla(211, 22%, 56%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 20,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "letterSpacing": 0,
+          "lineHeight": 26,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -226,22 +231,23 @@ exports[`<Heading /> should render Heading with size "medium" 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.muted.lowContrast"
+    color="surface.text.gray.muted"
     data-blade-component="heading"
-    fontFamily="text"
-    fontSize={300}
+    fontFamily="heading"
+    fontSize={400}
     fontStyle="normal"
     fontWeight="regular"
-    lineHeight={200}
+    lineHeight={400}
     style={
       [
         {
-          "color": "hsla(216, 16%, 60%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 16,
+          "color": "hsla(211, 22%, 56%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 18,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 20,
+          "letterSpacing": 0,
+          "lineHeight": 24,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -271,22 +277,23 @@ exports[`<Heading /> should render Heading with size "small" 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.lowContrast"
+    color="surface.text.gray.normal"
     data-blade-component="heading"
-    fontFamily="text"
-    fontSize={200}
+    fontFamily="heading"
+    fontSize={300}
     fontStyle="normal"
     fontWeight="regular"
     lineHeight={300}
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -316,67 +323,23 @@ exports[`<Heading /> should render Heading with size "small" and contrast "high"
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.highContrast"
+    color="surface.text.gray.normal"
     data-blade-component="heading"
-    fontFamily="text"
-    fontSize={200}
+    fontFamily="heading"
+    fontSize={300}
     fontStyle="normal"
     fontWeight="regular"
     lineHeight={300}
     style={
       [
         {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
           "fontSize": 16,
           "fontStyle": "normal",
           "fontWeight": "400",
-          "lineHeight": 24,
-          "marginBottom": 0,
-          "marginLeft": 0,
-          "marginRight": 0,
-          "marginTop": 0,
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationLine": "none",
-        },
-      ]
-    }
-  >
-    Get Started With Payment Gateway
-  </Text>
-</View>
-`;
-
-exports[`<Heading /> should render Heading with variant "subheading" and weight "bold" 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <Text
-    accessibilityRole="header"
-    accessible={true}
-    color="surface.text.subdued.lowContrast"
-    data-blade-component="heading"
-    fontFamily="text"
-    fontSize={75}
-    fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={50}
-    style={
-      [
-        {
-          "color": "hsla(217, 18%, 45%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 12,
-          "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 16,
+          "letterSpacing": 0,
+          "lineHeight": 22,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,

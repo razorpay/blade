@@ -20,12 +20,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="This is the Link component which can be used for showing external or internal Links to the user. The Link component can also be used as an inline button in certain cases with the `button` variant"
       componentName="Link"
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12699%3A147155',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195587',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12699%3A147155"
     >
       <Title>Usage</Title>
       <Sandbox>

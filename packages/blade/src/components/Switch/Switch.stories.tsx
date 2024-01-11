@@ -23,12 +23,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Switch"
       componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11169%3A230354',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -141,7 +136,7 @@ const WithLabelTemplate: StoryFn<typeof SwitchComponent> = () => {
       <Box width="350px">
         <Card>
           <CardBody>
-            <Text size="small" weight="bold" marginBottom="spacing.4">
+            <Text size="small" weight="semibold" marginBottom="spacing.4">
               Activate/lock the below methods for card transactions
             </Text>
             <Box display="flex" flexDirection="column" gap="spacing.3">
@@ -153,7 +148,7 @@ const WithLabelTemplate: StoryFn<typeof SwitchComponent> = () => {
                 gap="spacing.2"
               >
                 <Box display="flex" alignItems="center" gap="spacing.2">
-                  <MapPinIcon color="surface.text.subdued.lowContrast" size="small" />
+                  <MapPinIcon color="surface.icon.gray.subtle" size="small" />
                   <Text weight="regular" variant="body" size="medium">
                     International transaction
                   </Text>
@@ -168,7 +163,7 @@ const WithLabelTemplate: StoryFn<typeof SwitchComponent> = () => {
                 gap="spacing.2"
               >
                 <Box display="flex" alignItems="center" gap="spacing.2">
-                  <GlobeIcon color="surface.text.subdued.lowContrast" size="small" />
+                  <GlobeIcon color="surface.icon.gray.muted" size="small" />
                   <Text weight="regular" variant="body" size="medium">
                     Online transaction
                   </Text>
@@ -183,7 +178,7 @@ const WithLabelTemplate: StoryFn<typeof SwitchComponent> = () => {
                 gap="spacing.2"
               >
                 <Box display="flex" alignItems="center" gap="spacing.2">
-                  <WifiIcon color="surface.text.subdued.lowContrast" size="small" />
+                  <WifiIcon color="surface.icon.gray.muted" size="small" />
                   <Text weight="regular" variant="body" size="medium">
                     Contactless Transaction
                   </Text>

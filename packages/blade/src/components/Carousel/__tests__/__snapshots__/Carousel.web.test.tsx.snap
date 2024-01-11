@@ -6,7 +6,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,22%,56%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -25,7 +25,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 
 .c9.c9.c9.c9.c9:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c10.c10.c10.c10.c10 {
@@ -33,7 +33,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
+  background-color: hsla(211,20%,52%,0.32);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -52,7 +52,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
 
 .c10.c10.c10.c10.c10:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -129,9 +129,9 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(0,0%,100%,0);
   background-color: hsla(0,0%,100%,1);
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,0%,0.72);
   padding: 8px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -154,24 +154,24 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c7.c7.c7.c7.c7:hover {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,6%,94%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c7.c7.c7.c7.c7:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c7.c7.c7.c7.c7:active {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -222,7 +222,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to right,hsla(220,30%,96%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to right,hsla(213,47%,96%,1),hsla(0,0%,100%,0));
   left: -1px;
   opacity: 1;
   pointer-events: none;
@@ -240,7 +240,7 @@ exports[`Carousel Snapshots should not render overlay on mobile devices 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to left,hsla(220,30%,96%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to left,hsla(213,47%,96%,1),hsla(0,0%,100%,0));
   right: -1px;
   opacity: 1;
   pointer-events: none;
@@ -408,7 +408,7 @@ exports[`Carousel Snapshots should render 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,22%,56%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -427,7 +427,7 @@ exports[`Carousel Snapshots should render 1`] = `
 
 .c8.c8.c8.c8.c8:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c9.c9.c9.c9.c9 {
@@ -435,7 +435,7 @@ exports[`Carousel Snapshots should render 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
+  background-color: hsla(211,20%,52%,0.32);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -454,7 +454,7 @@ exports[`Carousel Snapshots should render 1`] = `
 
 .c9.c9.c9.c9.c9:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -527,9 +527,9 @@ exports[`Carousel Snapshots should render 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(0,0%,100%,0);
   background-color: hsla(0,0%,100%,1);
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,0%,0.72);
   padding: 8px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -552,24 +552,24 @@ exports[`Carousel Snapshots should render 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c6.c6.c6.c6.c6:hover {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,6%,94%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c6.c6.c6.c6.c6:active {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -766,7 +766,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,22%,56%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -785,7 +785,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 
 .c8.c8.c8.c8.c8:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c9.c9.c9.c9.c9 {
@@ -793,7 +793,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
+  background-color: hsla(211,20%,52%,0.32);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -812,7 +812,7 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
 
 .c9.c9.c9.c9.c9:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -876,9 +876,9 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(0,0%,100%,0);
   background-color: hsla(0,0%,100%,1);
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,0%,0.72);
   padding: 8px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -901,24 +901,24 @@ exports[`Carousel Snapshots should render with navigationButtonPosition=side 1`]
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c2.c2.c2.c2.c2:hover {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,6%,94%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c2.c2.c2.c2.c2:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c2.c2.c2.c2.c2:active {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -1115,7 +1115,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,22%,56%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1134,7 +1134,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 
 .c10.c10.c10.c10.c10:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -1142,7 +1142,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
+  background-color: hsla(211,20%,52%,0.32);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1161,7 +1161,7 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
 
 .c11.c11.c11.c11.c11:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -1242,9 +1242,9 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(0,0%,100%,0);
   background-color: hsla(0,0%,100%,1);
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,0%,0.72);
   padding: 8px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1267,24 +1267,24 @@ exports[`Carousel Snapshots should render with shouldAddStartEndSpacing 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c8.c8.c8.c8.c8:hover {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,6%,94%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c8.c8.c8.c8.c8:active {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1516,7 +1516,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,22%,56%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1535,7 +1535,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 
 .c9.c9.c9.c9.c9:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1543,7 +1543,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
+  background-color: hsla(211,20%,52%,0.32);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1562,7 +1562,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
 
 .c10.c10.c10.c10.c10:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -1639,9 +1639,9 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(0,0%,100%,0);
   background-color: hsla(0,0%,100%,1);
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,0%,0.72);
   padding: 8px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1664,24 +1664,24 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c7.c7.c7.c7.c7:hover {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,6%,94%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c7.c7.c7.c7.c7:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c7.c7.c7.c7.c7:active {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1732,7 +1732,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to right,hsla(220,30%,96%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to right,hsla(213,47%,96%,1),hsla(0,0%,100%,0));
   left: -1px;
   opacity: 1;
   pointer-events: none;
@@ -1750,7 +1750,7 @@ exports[`Carousel Snapshots should render with showOverlay 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-property: opacity;
   transition-property: opacity;
-  background: linear-gradient(to left,hsla(220,30%,96%,1),hsla(0,0%,100%,0));
+  background: linear-gradient(to left,hsla(213,47%,96%,1),hsla(0,0%,100%,0));
   right: -1px;
   opacity: 1;
   pointer-events: none;
@@ -1943,7 +1943,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,22%,56%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1962,7 +1962,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
 
 .c8.c8.c8.c8.c8:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1970,7 +1970,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
+  background-color: hsla(211,20%,52%,0.32);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -1989,7 +1989,7 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
 
 .c9.c9.c9.c9.c9:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -2062,9 +2062,9 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(0,0%,100%,0);
   background-color: hsla(0,0%,100%,1);
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,0%,0.72);
   padding: 8px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -2087,24 +2087,24 @@ exports[`Carousel Snapshots should render with visibleItems 1`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c6.c6.c6.c6.c6:hover {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,6%,94%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c6.c6.c6.c6.c6:active {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c3.c3.c3.c3.c3 {

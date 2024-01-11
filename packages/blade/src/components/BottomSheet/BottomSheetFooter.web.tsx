@@ -4,11 +4,9 @@ import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
-import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const BottomSheetFooter = ({ children }: BaseFooterProps): React.ReactElement => {
-  const { theme } = useTheme();
   const { setFooterHeight, isOpen, bind } = useBottomSheetContext();
   const ref = React.useRef<HTMLDivElement>(null);
 
@@ -28,7 +26,7 @@ const BottomSheetFooter = ({ children }: BaseFooterProps): React.ReactElement =>
       width="100%"
       flexShrink={0}
       marginTop="auto"
-      backgroundColor={theme.colors.surface.background.level2.lowContrast}
+      backgroundColor="popup.background.subtle"
       touchAction="none"
       zIndex={2}
       {...metaAttribute({ name: MetaConstants.BottomSheetFooter })}

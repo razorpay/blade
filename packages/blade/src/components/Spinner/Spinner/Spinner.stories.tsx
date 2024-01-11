@@ -15,12 +15,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="A spinner is an element with a looping animation that indicates loading is in process."
       componentName="Spinner"
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=14825%3A203592',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11506%3A284715',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=14825%3A203592"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -104,11 +99,11 @@ const SpinnerColorTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => 
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         paddingLeft="spacing.3"
-        backgroundColor={theme.colors.surface.background.level2.lowContrast}
+        backgroundColor={theme.colors.surface.background.gray.subtle}
       >
-        <Text>Default Color</Text>
+        <Text>Primary Color</Text>
         <BaseBox marginBottom="spacing.2" />
-        <SpinnerComponent {...args} color="default" />
+        <SpinnerComponent {...args} color="primary" />
       </BaseBox>
       <BaseBox
         marginBottom="spacing.3"
@@ -116,7 +111,7 @@ const SpinnerColorTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => 
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         paddingLeft="spacing.3"
-        backgroundColor={theme.colors.surface.background.level1.highContrast}
+        backgroundColor={theme.colors.surface.background.gray.subtle}
       >
         <Text contrast="high">White Color</Text>
         <BaseBox marginBottom="spacing.2" />

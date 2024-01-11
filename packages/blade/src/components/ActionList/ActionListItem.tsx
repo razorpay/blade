@@ -11,7 +11,7 @@ import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import type { Feedback } from '~tokens/theme/theme';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -67,7 +67,7 @@ type ActionListItemProps = {
    */
   titleSuffix?: React.ReactElement;
   isDisabled?: boolean;
-  intent?: Extract<Feedback, 'negative'>;
+  intent?: Extract<FeedbackColors, 'negative'>;
   /**
    * Can be used in combination of `onClick` to highlight item as selected in Button Triggers.
    *
@@ -152,7 +152,7 @@ const _ActionListSection = ({
       {/* We're announcing title as group label so we can hide this */}
       {isSectionVisible ? (
         <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-          <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
+          <Text color="surface.text.muted.lowContrast" size="small" weight="semibold">
             {title}
           </Text>
         </StyledActionListSectionTitle>

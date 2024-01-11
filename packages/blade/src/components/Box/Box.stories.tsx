@@ -4,7 +4,7 @@ import { getBoxArgTypes } from './BaseBox/storybookArgTypes';
 import type { BoxRefType } from './BaseBox/types';
 import type { BoxProps } from '.';
 import { Box } from '.';
-import { Text, Title } from '~components/Typography';
+import { Text, Heading } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { LinkToStorybook } from '~utils/storybook/LinkToStorybook';
 import { castWebType, isReactNative } from '~utils';
@@ -32,7 +32,7 @@ const BoxStoryMeta = {
           propsDescription="All Box props support responsive objects. Props marked with 💅🏼 next to their names are the props that can also be used as styled-props on other blade components. Check out styled-props documentation for more details."
         >
           <Box paddingY="spacing.5" paddingBottom="spacing.8">
-            <Title size="medium">Layout Primitives Documentation</Title>
+            <Heading size="xlarge">Layout Primitives Documentation</Heading>
             <Text marginTop="spacing.3">
               Check Out{' '}
               <LinkToStorybook url="Components/Layout Primitives (Box)/How to Create Layouts?">
@@ -65,11 +65,11 @@ export const Responsive = (args: BoxProps): React.ReactElement => {
     <>
       <Text>Change screen size to see flexDirection switch between row and column</Text>
       <Box {...args}>
-        <Box flex="1" backgroundColor="brand.primary.500" padding="spacing.5">
-          <Text contrast="high">Box1</Text>
+        <Box flex="1" backgroundColor="surface.background.primary.intense" padding="spacing.5">
+          <Text color="surface.text.staticWhite.normal">Box1</Text>
         </Box>
-        <Box flex="1" backgroundColor="surface.background.level2.highContrast" padding="spacing.5">
-          <Text contrast="high">Box2</Text>
+        <Box flex="1" backgroundColor="surface.background.cloud.intense" padding="spacing.5">
+          <Text color="surface.text.onCloud.onIntense">Box2</Text>
         </Box>
       </Box>
     </>
@@ -80,6 +80,35 @@ Responsive.args = {
   display: 'flex',
   paddingY: 'spacing.6',
   flexDirection: { base: 'column', m: 'row' },
+} as BoxProps;
+
+export const Elevations = (args: BoxProps): React.ReactElement => {
+  return (
+    <Box
+      backgroundColor="surface.background.gray.moderate"
+      paddingY="spacing.11"
+      paddingX={isReactNative() ? 'spacing.0' : 'spacing.4'}
+      display="flex"
+      flexDirection="row"
+      gap="spacing.8"
+    >
+      <Box {...args} elevation="lowRaised">
+        <Text>Low </Text>
+      </Box>
+      <Box {...args} elevation="midRaised">
+        <Text>Mid</Text>
+      </Box>
+      <Box {...args} elevation="highRaised">
+        <Text>High</Text>
+      </Box>
+    </Box>
+  );
+};
+
+Elevations.args = {
+  padding: 'spacing.8',
+  backgroundColor: 'surface.background.level2.lowContrast',
+  borderRadius: 'large',
 } as BoxProps;
 
 export const AsSection = (args: BoxProps): React.ReactElement => {
@@ -106,7 +135,7 @@ export const WithRef = (args: BoxProps): React.ReactElement => {
   const ref = React.useRef<BoxRefType>(null);
 
   return (
-    <Box height="300px" overflow="auto" backgroundColor="surface.background.level2.lowContrast">
+    <Box height="300px" overflow="auto" backgroundColor="surface.background.gray.moderate">
       <Button
         onClick={() => {
           if (!isReactNative()) {
@@ -164,7 +193,7 @@ export const WithDragAndDropEvents = (args: BoxProps): React.ReactElement => {
       <Box
         {...args}
         margin="spacing.5"
-        backgroundColor="surface.background.level2.lowContrast"
+        backgroundColor="surface.background.gray.moderate"
         onDragEnter={(e) => {
           e.preventDefault();
           console.log('onDragEnter', e);
@@ -198,7 +227,7 @@ export const WithId = (): React.ReactElement => {
       <Box height="100vh" as="section" id="section-1">
         <Text>
           Section of the page with id{' '}
-          <Text as="span" weight="bold">
+          <Text as="span" weight="semibold">
             section-1
           </Text>{' '}
           that we want to scroll to.
@@ -211,7 +240,7 @@ export const WithId = (): React.ReactElement => {
 export const Polygon = (): React.ReactElement => {
   return (
     <Box
-      backgroundColor="brand.primary.500"
+      backgroundColor="surface.background.primary.intense"
       padding="spacing.3"
       margin="spacing.3"
       height="300px"
@@ -219,7 +248,7 @@ export const Polygon = (): React.ReactElement => {
       transformOrigin="top left"
       transform="rotate(10deg) translate(100px, 20%)"
     >
-      <Text as="span" weight="bold" contrast="high">
+      <Text as="span" weight="semibold" color="surface.text.staticWhite.normal">
         Custom Polygon
       </Text>
     </Box>

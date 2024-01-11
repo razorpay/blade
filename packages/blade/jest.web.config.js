@@ -1,3 +1,5 @@
+const { rebrandedComponents } = require('./rebranded-components');
+
 const ignores = ['/node_modules/'];
 
 const baseConfig = {
@@ -12,7 +14,12 @@ const baseConfig = {
   },
   snapshotSerializers: ['<rootDir>/jestStyledComponentsSerializer.js'],
   moduleFileExtensions: ['web.ts', 'web.tsx', 'ts', 'tsx', 'js', 'json', 'node'],
-  testMatch: ['**/*.test.{ts,tsx}'],
+  testMatch: [
+    ...rebrandedComponents.map((component) => `**/${component}.web.test.{ts,tsx}`),
+    '**/Icons/*Icon/*.web.test.{ts,tsx}',
+    '**/codemods/**/*.test.{ts,tsx}',
+    '**/utils/**/*.test.{ts,tsx}',
+  ],
   transform: {
     '\\.(js|ts|tsx)?$': './jest-preprocess.js',
   },
@@ -38,15 +45,19 @@ module.exports = {
       ...baseConfig,
       testEnvironment: 'node',
       testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'web.test'],
-      collectCoverageFrom: ['./src/**/*.ssr.{ts,tsx}'],
-      testMatch: ['**/*.ssr.test.{ts,tsx}'],
+      collectCoverageFrom: rebrandedComponents.map(
+        (component) => `./src/**/${component}.ssr.{ts,tsx}`,
+      ),
+      testMatch: rebrandedComponents.map((component) => `**/${component}.ssr.test.{ts,tsx}`),
     },
     {
       displayName: 'CSR Test',
       ...baseConfig,
       testEnvironment: 'jsdom',
       testPathIgnorePatterns: [...baseConfig.testPathIgnorePatterns, 'ssr.test'],
-      collectCoverageFrom: ['./src/**/*.web.{ts,tsx}'],
+      collectCoverageFrom: rebrandedComponents.map(
+        (component) => `./src/**/${component}.web.{ts,tsx}`,
+      ),
     },
   ],
 };

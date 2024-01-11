@@ -11,22 +11,23 @@ exports[`<Display /> should render Display with color 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.subtle.highContrast"
+    color="surface.text.gray.subtle"
     data-blade-component="display"
-    fontFamily="text"
-    fontSize={1100}
+    fontFamily="heading"
+    fontSize={800}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={900}
+    fontWeight="semibold"
+    lineHeight={800}
     style={
       [
         {
-          "color": "hsla(220, 30%, 96%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 40,
+          "color": "hsla(211, 26%, 34%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 48,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -56,22 +57,23 @@ exports[`<Display /> should render Display with default properties 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.lowContrast"
+    color="surface.text.gray.normal"
     data-blade-component="display"
-    fontFamily="text"
-    fontSize={1100}
+    fontFamily="heading"
+    fontSize={800}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={900}
+    fontWeight="semibold"
+    lineHeight={800}
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 40,
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 48,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -101,22 +103,23 @@ exports[`<Display /> should render Display with mixed color 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.lowContrast"
+    color="surface.text.gray.normal"
     data-blade-component="display"
-    fontFamily="text"
-    fontSize={1100}
+    fontFamily="heading"
+    fontSize={800}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={900}
+    fontWeight="semibold"
+    lineHeight={800}
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 40,
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 48,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -135,22 +138,23 @@ exports[`<Display /> should render Display with mixed color 1`] = `
     <Text
       accessibilityRole="header"
       accessible={true}
-      color="feedback.information.action.text.primary.default.lowContrast"
+      color="interactive.text.information.subtle"
       data-blade-component="display"
-      fontFamily="text"
-      fontSize={1100}
+      fontFamily="heading"
+      fontSize={800}
       fontStyle="normal"
-      fontWeight="bold"
-      lineHeight={900}
+      fontWeight="semibold"
+      lineHeight={800}
       style={
         [
           {
-            "color": "hsla(195, 100%, 31%, 1)",
-            "fontFamily": "Lato",
-            "fontSize": 40,
+            "color": "hsla(200, 84%, 44%, 1)",
+            "fontFamily": "TASA Orbiter Display",
+            "fontSize": 34,
             "fontStyle": "normal",
-            "fontWeight": "700",
-            "lineHeight": 48,
+            "fontWeight": "600",
+            "letterSpacing": 0,
+            "lineHeight": 40,
             "marginBottom": 0,
             "marginLeft": 0,
             "marginRight": 0,
@@ -181,22 +185,23 @@ exports[`<Display /> should render Display with variant "large" 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.lowContrast"
+    color="surface.text.gray.normal"
     data-blade-component="display"
-    fontFamily="text"
-    fontSize={1300}
+    fontFamily="heading"
+    fontSize={1000}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={1100}
+    fontWeight="semibold"
+    lineHeight={1000}
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 56,
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 38,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 64,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 46,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -226,22 +231,23 @@ exports[`<Display /> should render Display with variant "medium" 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.lowContrast"
+    color="surface.text.gray.normal"
     data-blade-component="display"
-    fontFamily="text"
-    fontSize={1200}
+    fontFamily="heading"
+    fontSize={900}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={1000}
+    fontWeight="semibold"
+    lineHeight={900}
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 48,
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 36,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 56,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 42,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -271,22 +277,23 @@ exports[`<Display /> should render Display with variant "small" 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.lowContrast"
+    color="surface.text.gray.normal"
     data-blade-component="display"
-    fontFamily="text"
-    fontSize={1100}
+    fontFamily="heading"
+    fontSize={800}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={900}
+    fontWeight="semibold"
+    lineHeight={800}
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 40,
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 48,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -316,22 +323,23 @@ exports[`<Display /> should render Display with variant "small" and contrast "hi
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.highContrast"
+    color="surface.text.gray.normal"
     data-blade-component="display"
-    fontFamily="text"
-    fontSize={1100}
+    fontFamily="heading"
+    fontSize={800}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={900}
+    fontWeight="semibold"
+    lineHeight={800}
     style={
       [
         {
-          "color": "hsla(0, 0%, 100%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 40,
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 34,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 48,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 40,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,
@@ -361,22 +369,23 @@ exports[`<Display /> should render Display with variant "xlarge" 1`] = `
   <Text
     accessibilityRole="header"
     accessible={true}
-    color="surface.text.normal.lowContrast"
+    color="surface.text.gray.normal"
     data-blade-component="display"
-    fontFamily="text"
-    fontSize={1600}
+    fontFamily="heading"
+    fontSize={1100}
     fontStyle="normal"
-    fontWeight="bold"
-    lineHeight={1500}
+    fontWeight="semibold"
+    lineHeight={1100}
     style={
       [
         {
-          "color": "hsla(217, 56%, 17%, 1)",
-          "fontFamily": "Lato",
-          "fontSize": 64,
+          "color": "hsla(212, 39%, 16%, 1)",
+          "fontFamily": "TASA Orbiter Display",
+          "fontSize": 40,
           "fontStyle": "normal",
-          "fontWeight": "700",
-          "lineHeight": 72,
+          "fontWeight": "600",
+          "letterSpacing": 0,
+          "lineHeight": 48,
           "marginBottom": 0,
           "marginLeft": 0,
           "marginRight": 0,

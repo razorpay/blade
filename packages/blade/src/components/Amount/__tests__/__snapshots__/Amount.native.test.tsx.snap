@@ -36,19 +36,20 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
+        fontSize={25}
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -67,15 +68,22 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -92,19 +100,21 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="text"
           fontSize={100}
           fontWeight="regular"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -124,19 +134,21 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={75}
+          fontFamily="text"
+          fontSize={25}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -195,19 +207,20 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
+        fontSize={25}
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -226,15 +239,22 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -251,19 +271,21 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="text"
           fontSize={100}
           fontWeight="regular"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -283,19 +305,21 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={75}
+          fontFamily="text"
+          fontSize={25}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -354,19 +378,20 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
+        fontSize={25}
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -385,15 +410,22 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -410,19 +442,21 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="text"
           fontSize={100}
           fontWeight="regular"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -442,19 +476,21 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={75}
+          fontFamily="text"
+          fontSize={25}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -513,19 +549,20 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
+        fontSize={25}
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -544,15 +581,22 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -569,19 +613,21 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="text"
           fontSize={100}
           fontWeight="regular"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -601,19 +647,21 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={75}
+          fontFamily="text"
+          fontSize={25}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -672,19 +720,20 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
+        fontSize={25}
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -703,15 +752,22 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -728,19 +784,21 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="text"
           fontSize={100}
           fontWeight="regular"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -760,19 +818,21 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={75}
+          fontFamily="text"
+          fontSize={25}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -820,19 +880,20 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
+        fontSize={25}
+        fontWeight="semibold"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -851,15 +912,22 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -876,19 +944,21 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="text"
           fontSize={100}
-          fontWeight="bold"
+          fontWeight="semibold"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "700",
+                "fontWeight": "600",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -908,19 +978,21 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={75}
-          fontWeight="regular"
+          fontFamily="text"
+          fontSize={25}
+          fontWeight="semibold"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -968,19 +1040,20 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
+        fontSize={25}
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -999,311 +1072,22 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        style={
-          [
-            {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="surface.text.normal.lowContrast"
-          data-blade-component="base-text"
-          fontSize={75}
-          fontWeight="regular"
-          lineHeight={50}
-          style={
-            [
-              {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-        >
-          1,000
-          .
-        </Text>
-        <Text
-          accessible={true}
-          color="surface.text.muted.lowContrast"
-          data-blade-component="base-text"
-          fontSize={75}
-          fontWeight="regular"
-          marginLeft="spacing.1"
-          style={
-            [
-              {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 20,
-                "marginBottom": 0,
-                "marginLeft": 2,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-        >
-          00
-        </Text>
-      </Text>
-    </View>
-  </View>
-  <View
-    data-blade-component="amount"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      alignItems="baseline"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      style={
-        [
-          {
-            "alignItems": "baseline",
-            "display": "flex",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="surface.text.muted.lowContrast"
-        data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
-        marginRight="spacing.1"
-        style={
-          [
-            {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-      >
-        ₹
-      </Text>
-      <Text
-        accessible={true}
-        data-blade-component="base-text"
-        style={
-          [
-            {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="surface.text.normal.lowContrast"
-          data-blade-component="base-text"
-          fontSize={75}
-          fontWeight="bold"
-          lineHeight={50}
-          style={
-            [
-              {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-        >
-          1,000
-          .
-        </Text>
-        <Text
-          accessible={true}
-          color="surface.text.muted.lowContrast"
-          data-blade-component="base-text"
-          fontSize={75}
-          fontWeight="regular"
-          marginLeft="spacing.1"
-          style={
-            [
-              {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 20,
-                "marginBottom": 0,
-                "marginLeft": 2,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-        >
-          00
-        </Text>
-      </Text>
-    </View>
-  </View>
-  <View
-    data-blade-component="amount"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      alignItems="baseline"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      style={
-        [
-          {
-            "alignItems": "baseline",
-            "display": "flex",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="surface.text.muted.lowContrast"
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
         fontSize={100}
-        fontWeight="bold"
-        marginRight="spacing.1"
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-      >
-        ₹
-      </Text>
-      <Text
-        accessible={true}
-        data-blade-component="base-text"
-        style={
-          [
-            {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
-              "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1320,20 +1104,22 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={400}
+          fontFamily="text"
+          fontSize={75}
           fontWeight="regular"
-          lineHeight={400}
+          lineHeight={75}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 18,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 24,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1352,19 +1138,21 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={100}
+          fontFamily="text"
+          fontSize={25}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 14,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1412,46 +1200,54 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
+        fontSize={25}
+        fontWeight="semibold"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 2,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        ₹
+      </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-      >
-        ₹
-      </Text>
-      <Text
-        accessible={true}
-        data-blade-component="base-text"
-        style={
-          [
-            {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
-              "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1468,20 +1264,22 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={400}
-          fontWeight="bold"
-          lineHeight={400}
+          fontFamily="text"
+          fontSize={75}
+          fontWeight="semibold"
+          lineHeight={75}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 18,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 24,
+                "fontWeight": "600",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1500,19 +1298,21 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={100}
-          fontWeight="regular"
+          fontFamily="text"
+          fontSize={25}
+          fontWeight="semibold"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 14,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1560,19 +1360,20 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
+        fontSize={200}
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 16,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1591,15 +1392,22 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1616,20 +1424,342 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="heading"
+          fontSize={500}
+          fontWeight="regular"
+          lineHeight={500}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
+                "fontSize": 20,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 26,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          1,000
+          .
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="heading"
           fontSize={200}
+          fontWeight="regular"
+          marginLeft="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 2,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          00
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    data-blade-component="amount"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="baseline"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        fontSize={200}
+        fontWeight="semibold"
+        marginRight="spacing.1"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontStyle": "normal",
+              "fontWeight": "600",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 2,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        ₹
+      </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="heading"
+          fontSize={500}
+          fontWeight="semibold"
+          lineHeight={500}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
+                "fontSize": 20,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "letterSpacing": 0,
+                "lineHeight": 26,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          1,000
+          .
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="heading"
+          fontSize={200}
+          fontWeight="semibold"
+          marginLeft="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 2,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          00
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    data-blade-component="amount"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="baseline"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        fontSize={75}
+        fontWeight="regular"
+        marginRight="spacing.1"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 2,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        ₹
+      </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="heading"
+          fontSize={300}
           fontWeight="regular"
           lineHeight={300}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 24,
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1648,19 +1778,21 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1708,19 +1840,20 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
         fontSize={75}
-        fontWeight="bold"
+        fontWeight="semibold"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "600",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1739,15 +1872,22 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1764,20 +1904,22 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={200}
-          fontWeight="bold"
+          fontFamily="heading"
+          fontSize={300}
+          fontWeight="semibold"
           lineHeight={300}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
                 "fontSize": 16,
                 "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 24,
+                "fontWeight": "600",
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1796,19 +1938,21 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="heading"
           fontSize={75}
-          fontWeight="regular"
+          fontWeight="semibold"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "600",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -1856,19 +2000,20 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={400}
-        fontWeight="bold"
+        fontSize={700}
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 18,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 32,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1887,15 +2032,22 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1912,51 +2064,55 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="heading"
+          fontSize={900}
+          fontWeight="regular"
+          lineHeight={900}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
+                "fontSize": 36,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 42,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          1,000
+          .
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="heading"
           fontSize={700}
-          fontWeight="bold"
-          lineHeight={600}
-          style={
-            [
-              {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 24,
-                "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 32,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-        >
-          1,000
-          .
-        </Text>
-        <Text
-          accessible={true}
-          color="surface.text.muted.lowContrast"
-          data-blade-component="base-text"
-          fontSize={400}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 18,
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
+                "fontSize": 32,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -2015,19 +2171,20 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
         fontSize={75}
-        fontWeight="bold"
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2046,15 +2203,22 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2071,20 +2235,22 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.normal.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
-          fontSize={200}
+          fontFamily="heading"
+          fontSize={300}
           fontWeight="regular"
           lineHeight={300}
           style={
             [
               {
-                "color": "hsla(217, 56%, 17%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
                 "fontSize": 16,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 24,
+                "letterSpacing": 0,
+                "lineHeight": 22,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2103,19 +2269,21 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         </Text>
         <Text
           accessible={true}
-          color="surface.text.muted.lowContrast"
+          color="surface.text.gray.normal"
           data-blade-component="base-text"
+          fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(216, 16%, 60%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "TASA Orbiter Display",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,
@@ -2174,19 +2342,20 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
     >
       <Text
         accessible={true}
-        color="surface.text.muted.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
         fontSize={75}
-        fontWeight="bold"
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(216, 16%, 60%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2205,20 +2374,22 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
       </Text>
       <Text
         accessible={true}
-        color="surface.text.normal.lowContrast"
+        color="surface.text.gray.normal"
         data-blade-component="base-text"
-        fontSize={200}
+        fontFamily="heading"
+        fontSize={300}
         fontWeight="regular"
         lineHeight={300}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "TASA Orbiter Display",
               "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
-              "lineHeight": 24,
+              "letterSpacing": 0,
+              "lineHeight": 22,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,
@@ -2275,7 +2446,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
     >
       <Text
         accessible={true}
-        color="feedback.text.information.lowContrast"
+        color="feedback.text.information.intense"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="regular"
@@ -2283,11 +2454,12 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         style={
           [
             {
-              "color": "hsla(193, 100%, 35%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(200, 84%, 29%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2306,19 +2478,21 @@ exports[`<Amount /> should render information intent Amount  1`] = `
       </Text>
       <Text
         accessible={true}
-        color="feedback.text.information.lowContrast"
+        color="feedback.text.information.intense"
         data-blade-component="base-text"
+        fontFamily="text"
         fontSize={100}
         fontWeight="regular"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(193, 100%, 35%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(200, 84%, 29%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2376,19 +2550,20 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
     >
       <Text
         accessible={true}
-        color="feedback.text.positive.lowContrast"
+        color="feedback.text.positive.intense"
         data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="bold"
+        fontSize={25}
+        fontWeight="regular"
         marginRight="spacing.1"
         style={
           [
             {
-              "color": "hsla(160, 100%, 26%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 12,
+              "color": "hsla(150, 100%, 21%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2407,15 +2582,22 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
-              "color": "hsla(217, 56%, 17%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 16,
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -2432,19 +2614,21 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       >
         <Text
           accessible={true}
-          color="feedback.text.positive.lowContrast"
+          color="feedback.text.positive.intense"
           data-blade-component="base-text"
+          fontFamily="text"
           fontSize={100}
           fontWeight="regular"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(160, 100%, 26%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(150, 100%, 21%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -2464,19 +2648,21 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
         </Text>
         <Text
           accessible={true}
-          color="feedback.text.positive.lowContrast"
+          color="feedback.text.positive.intense"
           data-blade-component="base-text"
-          fontSize={75}
+          fontFamily="text"
+          fontSize={25}
           fontWeight="regular"
           marginLeft="spacing.1"
           style={
             [
               {
-                "color": "hsla(160, 100%, 26%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
+                "color": "hsla(150, 100%, 21%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
                 "fontStyle": "normal",
                 "fontWeight": "400",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 2,

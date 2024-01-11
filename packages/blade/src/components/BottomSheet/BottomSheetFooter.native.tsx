@@ -3,17 +3,15 @@ import type { BottomSheetFooterProps } from './types';
 import { ComponentIds } from './componentIds';
 import { BaseFooter } from '~components/BaseHeaderFooter/BaseFooter';
 import BaseBox from '~components/Box/BaseBox';
-import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const _BottomSheetFooter = ({ children }: BottomSheetFooterProps): React.ReactElement => {
-  const { theme } = useTheme();
   return (
     <BaseBox
       width="100%"
       flexShrink={0}
       marginTop="auto"
-      backgroundColor={theme.colors.surface.background.level2.lowContrast}
+      backgroundColor="popup.background.subtle"
       touchAction="none"
       zIndex={2}
     >

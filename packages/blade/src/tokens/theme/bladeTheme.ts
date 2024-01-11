@@ -7,39 +7,13 @@ import {
   spacing,
   typography,
   elevation,
+  opacity,
 } from '~tokens/global';
 
 const colors: ColorsWithModes = {
   onLight: {
-    surface: {
-      background: {
-        gray: {
-          subtle: globalColors.neutral.blueGrayLight[100],
-          moderate: globalColors.neutral.blueGrayLight[50],
-          intense: globalColors.neutral.blueGrayLight[0],
-        },
-        primary: {
-          subtle: globalColors.chromatic.azure.a50,
-          intense: globalColors.chromatic.azure[500],
-        },
-        sea: { subtle: globalColors.chromatic.sea[50], intense: globalColors.chromatic.sea[800] },
-        cloud: {
-          subtle: globalColors.chromatic.cloud[50],
-          intense: globalColors.chromatic.cloud[800],
-        },
-      },
-      border: {
-        gray: {
-          normal: globalColors.neutral.blueGrayLight[500],
-          subtle: globalColors.neutral.blueGrayLight[300],
-          muted: globalColors.neutral.blueGrayLight.a100,
-        },
-        primary: {
-          normal: globalColors.chromatic.azure[500],
-          muted: globalColors.chromatic.azure.a100,
-        },
-      },
-      text: {
+    interactive: {
+      icon: {
         gray: {
           normal: globalColors.neutral.blueGrayLight[1200],
           subtle: globalColors.neutral.blueGrayLight[900],
@@ -165,7 +139,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayLight[1100],
         },
       },
-      icon: {
+      text: {
         positive: {
           subtle: globalColors.chromatic.emerald[100],
           intense: globalColors.chromatic.emerald[800],
@@ -547,8 +521,23 @@ const colors: ColorsWithModes = {
         },
       },
     },
-    feedback: {
-      background: {
+    transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
+  },
+  onDark: {
+    interactive: {
+      icon: {
+        gray: {
+          normal: globalColors.neutral.blueGrayDark[50],
+          subtle: globalColors.neutral.blueGrayDark[300],
+          muted: globalColors.neutral.blueGrayDark[600],
+          disabled: globalColors.neutral.blueGrayDark.a200,
+        },
+        staticWhite: {
+          normal: globalColors.neutral.white[500],
+          subtle: globalColors.neutral.white[400],
+          muted: globalColors.neutral.white[300],
+          disabled: globalColors.neutral.white[100],
+        },
         positive: {
           subtle: globalColors.chromatic.emerald.a100,
           intense: globalColors.chromatic.emerald[700],
@@ -570,7 +559,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[1000],
         },
       },
-      border: {
+      background: {
         positive: {
           subtle: globalColors.chromatic.emerald.a200,
           intense: globalColors.chromatic.emerald[800],
@@ -592,7 +581,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayLight[1100],
         },
       },
-      text: {
+      border: {
         positive: {
           subtle: globalColors.chromatic.emerald[50],
           intense: globalColors.chromatic.emerald[500],
@@ -614,7 +603,7 @@ const colors: ColorsWithModes = {
           intense: globalColors.neutral.blueGrayDark[100],
         },
       },
-      icon: {
+      text: {
         positive: {
           subtle: globalColors.chromatic.emerald[50],
           intense: globalColors.chromatic.emerald[500],
@@ -900,11 +889,6 @@ const colors: ColorsWithModes = {
         subtle: globalColors.neutral.blueGrayDark.a100,
         intense: globalColors.neutral.blueGrayDark.a100,
       },
-    },
-    elevation: {
-      lowRaised: `hsla(211, 53%, 10%, ${opacity[1]})`,
-      midRaised: `hsla(211, 53%, 10%, ${opacity[2]})`,
-      highRaised: `hsla(211, 53%, 10%, ${opacity[3]})`,
     },
     transparent: `hsla(0, 0%, 100%, ${opacity[0]})`,
   },
