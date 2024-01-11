@@ -10,8 +10,8 @@ import type { ReactElement } from 'react';
 import { useEffect } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { useTheme } from '~components/BladeProvider';
-import type { ActionStates } from '~tokens/theme/theme';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import { ActionStates } from '../../../utils/useInteraction';
 
 const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
   position: 'absolute',
@@ -27,7 +27,7 @@ export const BaseInputAnimatedBorder = ({
   currentInteraction,
   validationState,
 }: {
-  currentInteraction: keyof ActionStates;
+  currentInteraction: ActionStates;
   validationState: BaseInputProps['validationState'];
 }): ReactElement => {
   const { theme } = useTheme();

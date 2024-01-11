@@ -7,8 +7,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import type { ActionStates } from '~tokens/theme/theme';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import type { ActionStates } from '~utils/useInteraction';
 
 const scaleBorder = keyframes`
 from {
@@ -50,7 +50,7 @@ export const BaseInputAnimatedBorder = ({
   currentInteraction,
   validationState,
 }: {
-  currentInteraction: keyof ActionStates;
+  currentInteraction: ActionStates;
   validationState: BaseInputProps['validationState'];
 }): ReactElement => {
   const { theme } = useTheme();

@@ -36,6 +36,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
+import type { ActionStates } from '~utils/useInteraction';
 
 type BaseLinkCommonProps = {
   color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
@@ -148,7 +149,7 @@ type BaseLinkStyleProps = {
   lineHeight: BaseTextProps['lineHeight'];
 };
 
-type LinkActionStates = 'default' | 'hover' | 'focus' | 'disabled';
+type LinkActionStates = ActionStates;
 const getColorToken = ({
   variant,
   color,
@@ -167,6 +168,7 @@ const getColorToken = ({
     default: 'subtle',
     hover: 'normal',
     focus: 'normal',
+    active: 'normal',
     disabled: 'disabled',
   } as const;
 

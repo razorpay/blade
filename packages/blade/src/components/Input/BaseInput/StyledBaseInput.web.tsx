@@ -143,7 +143,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       value={props.value}
     >
       <Text
-        type={props.value && !isDisabled ? 'subtle' : 'placeholder'}
+        color={
+          props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+        }
         truncateAfterLines={1}
         textAlign={props.textAlign}
       >

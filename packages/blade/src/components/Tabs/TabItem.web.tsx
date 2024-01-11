@@ -128,6 +128,8 @@ const TabItem = ({
     default: 'default',
     hover: 'highlighted',
     focus: 'highlighted',
+    active: 'highlighted',
+    disabled: 'disabled',
   } as const;
   const interaction = isDisabled ? 'disabled' : interactionMap[currentInteraction];
 

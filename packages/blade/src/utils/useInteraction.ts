@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
 
-export type ActionStates = 'default' | 'hover' | 'focus';
+export type ActionStates = 'default' | 'hover' | 'focus' | 'active' | 'disabled';
 const useInteraction = (): {
   onMouseEnter: () => void;
   onMouseLeave: () => void;
