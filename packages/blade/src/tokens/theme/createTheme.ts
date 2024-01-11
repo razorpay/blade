@@ -104,7 +104,7 @@ const getOnLightOverrides = (
 ): DeepPartial<ThemeTokens['colors']['onLight']> => {
   // Select the most readable color to use as the foreground color on top of surface color
   // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or dark color depending on which is more readable on top of that surface color
-  const foregroundOnSurfaceLight = tinycolor.isReadable(
+  const foregroundOnSurface = tinycolor.isReadable(
     globalColors.neutral.blueGrayLight[50],
     brandColors[600],
     WCAG2ContrastOptions,
@@ -112,7 +112,7 @@ const getOnLightOverrides = (
     ? brandColors[600]
     : globalColors.neutral.blueGrayLight[1100];
 
-  const staticWhiteDefault = tinycolor
+  const foregroundOnBrand = tinycolor
     .mostReadable(
       brandColors[900],
       [globalColors.neutral.white[500], globalColors.neutral.black[500]],
@@ -142,30 +142,30 @@ const getOnLightOverrides = (
       },
       text: {
         primary: {
-          normal: foregroundOnSurfaceLight,
-          disabled: foregroundOnSurfaceLight,
-          muted: foregroundOnSurfaceLight,
-          subtle: foregroundOnSurfaceLight,
+          normal: foregroundOnSurface,
+          disabled: foregroundOnSurface,
+          muted: foregroundOnSurface,
+          subtle: foregroundOnSurface,
         },
-        staticWhite: {
-          normal: staticWhiteDefault,
-          disabled: staticWhiteDefault,
-          muted: staticWhiteDefault,
-          subtle: staticWhiteDefault,
+        onPrimary: {
+          normal: foregroundOnBrand,
+          disabled: foregroundOnBrand,
+          muted: foregroundOnBrand,
+          subtle: foregroundOnBrand,
         },
       },
       icon: {
         primary: {
-          normal: foregroundOnSurfaceLight,
-          disabled: foregroundOnSurfaceLight,
-          muted: foregroundOnSurfaceLight,
-          subtle: foregroundOnSurfaceLight,
+          normal: foregroundOnSurface,
+          disabled: foregroundOnSurface,
+          muted: foregroundOnSurface,
+          subtle: foregroundOnSurface,
         },
-        staticWhite: {
-          normal: staticWhiteDefault,
-          disabled: staticWhiteDefault,
-          muted: staticWhiteDefault,
-          subtle: staticWhiteDefault,
+        onPrimary: {
+          normal: foregroundOnBrand,
+          disabled: foregroundOnBrand,
+          muted: foregroundOnBrand,
+          subtle: foregroundOnBrand,
         },
       },
     },
@@ -185,7 +185,7 @@ const getOnDarkOverrides = (
 ): DeepPartial<ThemeTokens['colors']['onDark']> => {
   // Select the most readable color to use as the foreground color on top of surface color
   // For example: On Secondary Button where the background color is surface color, the text color should be either the brand color or dark color depending on which is more readable on top of that surface color
-  const foregroundOnSurfaceDark = tinycolor.isReadable(
+  const foregroundOnSurface = tinycolor.isReadable(
     globalColors.neutral.blueGrayDark[1100],
     brandColors[400],
     WCAG2ContrastOptions,
@@ -193,7 +193,7 @@ const getOnDarkOverrides = (
     ? brandColors[400]
     : globalColors.neutral.blueGrayDark[0];
 
-  const staticWhiteDefault = tinycolor
+  const foregroundOnBrand = tinycolor
     .mostReadable(
       brandColors[900],
       [globalColors.neutral.white[500], globalColors.neutral.black[500]],
@@ -223,30 +223,30 @@ const getOnDarkOverrides = (
       },
       text: {
         primary: {
-          normal: foregroundOnSurfaceDark,
-          disabled: foregroundOnSurfaceDark,
-          muted: foregroundOnSurfaceDark,
-          subtle: foregroundOnSurfaceDark,
+          normal: foregroundOnSurface,
+          disabled: foregroundOnSurface,
+          muted: foregroundOnSurface,
+          subtle: foregroundOnSurface,
         },
-        staticWhite: {
-          normal: staticWhiteDefault,
-          disabled: staticWhiteDefault,
-          muted: staticWhiteDefault,
-          subtle: staticWhiteDefault,
+        onPrimary: {
+          normal: foregroundOnBrand,
+          disabled: foregroundOnBrand,
+          muted: foregroundOnBrand,
+          subtle: foregroundOnBrand,
         },
       },
       icon: {
         primary: {
-          normal: foregroundOnSurfaceDark,
-          disabled: foregroundOnSurfaceDark,
-          muted: foregroundOnSurfaceDark,
-          subtle: foregroundOnSurfaceDark,
+          normal: foregroundOnSurface,
+          disabled: foregroundOnSurface,
+          muted: foregroundOnSurface,
+          subtle: foregroundOnSurface,
         },
-        staticWhite: {
-          normal: staticWhiteDefault,
-          disabled: staticWhiteDefault,
-          muted: staticWhiteDefault,
-          subtle: staticWhiteDefault,
+        onPrimary: {
+          normal: foregroundOnBrand,
+          disabled: foregroundOnBrand,
+          muted: foregroundOnBrand,
+          subtle: foregroundOnBrand,
         },
       },
     },

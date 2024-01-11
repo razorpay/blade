@@ -85,8 +85,8 @@ const textColor = (property: 'icon' | 'text') => {
   return {
     base: {
       primary: {
-        default: `interactive.${property}.staticWhite.normal`,
-        highlighted: `interactive.${property}.staticWhite.normal`,
+        default: `interactive.${property}.onPrimary.normal`,
+        highlighted: `interactive.${property}.onPrimary.normal`,
         disabled: `interactive.${property}.primary.disabled`,
       },
       secondary: {
