@@ -6,6 +6,7 @@
     "src/utils/index.ts",
     "src/@types/globals.d.ts"
   ],
+  // "include": ["src"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

@@ -210,7 +210,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 <View
                   borderBottomColor="surface.border.gray.muted"
                   borderPosition="borderBottom"
-                  borderWidth="none"
                   data-blade-component="divider"
                   dividerStyle="solid"
                   isDividerHorizontal={true}
@@ -218,12 +217,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     [
                       {
                         "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                        "borderStyle": "solid",
-                        "borderWidth": 0,
+                        "borderBottomStyle": "solid",
                       },
                       {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
+                        "borderWidth": 0,
                         "flexGrow": 1,
                       },
                     ]
@@ -357,7 +356,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         color="interactive.text.primary.subtle"
                         data-blade-component="base-text"
                         fontSize={100}
-                        fontWeight="semibold"
+                        fontWeight="medium"
                         lineHeight={100}
                         style={
                           [
@@ -366,7 +365,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
-                              "fontWeight": "600",
+                              "fontWeight": "500",
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
@@ -1009,7 +1008,6 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               <View
                 borderBottomColor="surface.border.gray.muted"
                 borderPosition="borderBottom"
-                borderWidth="none"
                 data-blade-component="divider"
                 dividerStyle="solid"
                 isDividerHorizontal={true}
@@ -1017,12 +1015,12 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   [
                     {
                       "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
+                      "borderBottomStyle": "solid",
                     },
                     {
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
+                      "borderWidth": 0,
                       "flexGrow": 1,
                     },
                   ]
@@ -1248,7 +1246,6 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 <View
                   borderBottomColor="surface.border.gray.muted"
                   borderPosition="borderBottom"
-                  borderWidth="none"
                   data-blade-component="divider"
                   dividerStyle="solid"
                   isDividerHorizontal={true}
@@ -1256,12 +1253,12 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     [
                       {
                         "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                        "borderStyle": "solid",
-                        "borderWidth": 0,
+                        "borderBottomStyle": "solid",
                       },
                       {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
+                        "borderWidth": 0,
                         "flexGrow": 1,
                       },
                     ]
@@ -1395,7 +1392,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         color="interactive.text.primary.subtle"
                         data-blade-component="base-text"
                         fontSize={100}
-                        fontWeight="semibold"
+                        fontWeight="medium"
                         lineHeight={100}
                         style={
                           [
@@ -1404,7 +1401,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
-                              "fontWeight": "600",
+                              "fontWeight": "500",
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,

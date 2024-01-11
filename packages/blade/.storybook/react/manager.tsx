@@ -16,7 +16,7 @@ const bladeCodeFont = '"Menlo", San Francisco Mono, Courier New, Roboto Mono, mo
 export const theme = create({
   base: 'light',
 
-  colorPrimary: 'red',
+  colorPrimary: bladePrimary,
   colorSecondary: bladePrimary,
 
   // UI

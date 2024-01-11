@@ -4,7 +4,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.native';
 describe('<TransactionsIcon />', () => {
   it('should render TransactionsIcon', () => {
     const renderTree = renderWithTheme(
-      <TransactionsIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <TransactionsIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

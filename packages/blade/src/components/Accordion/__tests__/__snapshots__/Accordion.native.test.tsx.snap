@@ -440,7 +440,6 @@ exports[`<Accordion /> should render 1`] = `
         <View
           borderBottomColor="surface.border.gray.muted"
           borderPosition="borderBottom"
-          borderWidth="none"
           data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
@@ -448,12 +447,12 @@ exports[`<Accordion /> should render 1`] = `
             [
               {
                 "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
+                "borderBottomStyle": "solid",
               },
               {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
+                "borderWidth": 0,
                 "flexGrow": 1,
               },
             ]
@@ -858,7 +857,6 @@ exports[`<Accordion /> should render 1`] = `
         <View
           borderBottomColor="surface.border.gray.muted"
           borderPosition="borderBottom"
-          borderWidth="none"
           data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
@@ -866,12 +864,12 @@ exports[`<Accordion /> should render 1`] = `
             [
               {
                 "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
+                "borderBottomStyle": "solid",
               },
               {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
+                "borderWidth": 0,
                 "flexGrow": 1,
               },
             ]
@@ -1276,7 +1274,6 @@ exports[`<Accordion /> should render 1`] = `
         <View
           borderBottomColor="surface.border.gray.muted"
           borderPosition="borderBottom"
-          borderWidth="none"
           data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
@@ -1284,12 +1281,12 @@ exports[`<Accordion /> should render 1`] = `
             [
               {
                 "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
+                "borderBottomStyle": "solid",
               },
               {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
+                "borderWidth": 0,
                 "flexGrow": 1,
               },
             ]

@@ -122,7 +122,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -131,7 +131,7 @@ exports[`<BaseButton /> should render button with default properties 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -278,7 +278,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -287,7 +287,7 @@ exports[`<BaseButton /> should render button with full width 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -506,7 +506,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -515,7 +515,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -734,7 +734,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -743,7 +743,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -890,7 +890,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -899,7 +899,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1311,7 +1311,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1320,7 +1320,7 @@ exports[`<BaseButton /> should render disabled button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1467,7 +1467,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
         color="interactive.text.information.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1476,7 +1476,7 @@ exports[`<BaseButton /> should render disabled information color primary button 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1593,29 +1593,6 @@ exports[`<BaseButton /> should render disabled information color secondary butto
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -1646,7 +1623,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
         color="interactive.text.information.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1655,7 +1632,7 @@ exports[`<BaseButton /> should render disabled information color secondary butto
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1802,7 +1779,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
         color="interactive.text.negative.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1811,7 +1788,7 @@ exports[`<BaseButton /> should render disabled negative color primary button 1`]
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1928,29 +1905,6 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -1981,7 +1935,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
         color="interactive.text.negative.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1990,7 +1944,7 @@ exports[`<BaseButton /> should render disabled negative color secondary button 1
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2137,7 +2091,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
         color="interactive.text.neutral.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2146,7 +2100,7 @@ exports[`<BaseButton /> should render disabled neutral color primary button 1`] 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2263,29 +2217,6 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -2316,7 +2247,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
         color="interactive.text.neutral.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2325,7 +2256,7 @@ exports[`<BaseButton /> should render disabled neutral color secondary button 1`
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2472,7 +2403,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
         color="interactive.text.notice.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2481,7 +2412,7 @@ exports[`<BaseButton /> should render disabled notice color primary button 1`] =
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2598,29 +2529,6 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -2651,7 +2559,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
         color="interactive.text.notice.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2660,7 +2568,7 @@ exports[`<BaseButton /> should render disabled notice color secondary button 1`]
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2807,7 +2715,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
         color="interactive.text.positive.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2816,7 +2724,7 @@ exports[`<BaseButton /> should render disabled positive color primary button 1`]
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2933,29 +2841,6 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -2986,7 +2871,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
         color="interactive.text.positive.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2995,7 +2880,7 @@ exports[`<BaseButton /> should render disabled positive color secondary button 1
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3142,7 +3027,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3151,7 +3036,7 @@ exports[`<BaseButton /> should render disabled primary color primary button 1`] 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3298,7 +3183,7 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3307,7 +3192,7 @@ exports[`<BaseButton /> should render disabled primary color secondary button 1`
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3453,7 +3338,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
         color="interactive.text.gray.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3462,7 +3347,7 @@ exports[`<BaseButton /> should render disabled primary color tertiary button 1`]
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3609,7 +3494,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
         color="interactive.text.staticBlack.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3618,7 +3503,7 @@ exports[`<BaseButton /> should render disabled white color primary button 1`] = 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3735,29 +3620,6 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -3788,7 +3650,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
         color="interactive.text.staticWhite.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3797,7 +3659,7 @@ exports[`<BaseButton /> should render disabled white color secondary button 1`] 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3913,29 +3775,6 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -3966,7 +3805,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
         color="interactive.text.staticWhite.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3975,7 +3814,7 @@ exports[`<BaseButton /> should render disabled white color tertiary button 1`] =
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4122,7 +3961,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -4131,7 +3970,7 @@ exports[`<BaseButton /> should render information color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4194,11 +4033,11 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(200, 84%, 44%, 0.09)"
     defaultBorderColor="hsla(200, 84%, 44%, 1)"
-    focusBackgroundColor="hsla(200, 84%, 44%, 0.09)"
+    focusBackgroundColor="hsla(200, 84%, 44%, 0.18)"
     focusBorderColor="hsla(200, 84%, 44%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(200, 84%, 44%, 0.09)"
+    hoverBackgroundColor="hsla(200, 84%, 44%, 0.18)"
     hoverBorderColor="hsla(200, 84%, 44%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -4248,29 +4087,6 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -4301,7 +4117,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
         color="interactive.text.information.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -4310,7 +4126,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4457,7 +4273,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={200}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={200}
         style={
           [
@@ -4466,7 +4282,7 @@ exports[`<BaseButton /> should render large size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 24,
               "marginBottom": 0,
@@ -4765,7 +4581,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -4774,7 +4590,7 @@ exports[`<BaseButton /> should render loading button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4921,7 +4737,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -4930,7 +4746,7 @@ exports[`<BaseButton /> should render medium size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5077,7 +4893,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -5086,7 +4902,7 @@ exports[`<BaseButton /> should render negative color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5149,11 +4965,11 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(4, 74%, 49%, 0.09)"
     defaultBorderColor="hsla(4, 74%, 49%, 1)"
-    focusBackgroundColor="hsla(4, 74%, 49%, 0.09)"
+    focusBackgroundColor="hsla(4, 74%, 49%, 0.18)"
     focusBorderColor="hsla(4, 74%, 49%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(4, 74%, 49%, 0.09)"
+    hoverBackgroundColor="hsla(4, 74%, 49%, 0.18)"
     hoverBorderColor="hsla(4, 74%, 49%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5203,29 +5019,6 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -5256,7 +5049,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
         color="interactive.text.negative.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -5265,7 +5058,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5412,7 +5205,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -5421,7 +5214,7 @@ exports[`<BaseButton /> should render neutral color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5484,11 +5277,11 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(211, 20%, 52%, 0.18)"
     defaultBorderColor="hsla(211, 20%, 52%, 1)"
-    focusBackgroundColor="hsla(211, 20%, 52%, 0.18)"
+    focusBackgroundColor="hsla(211, 20%, 52%, 0.32)"
     focusBorderColor="hsla(211, 20%, 52%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(211, 20%, 52%, 0.18)"
+    hoverBackgroundColor="hsla(211, 20%, 52%, 0.32)"
     hoverBorderColor="hsla(211, 20%, 52%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5538,29 +5331,6 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -5591,7 +5361,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
         color="interactive.text.neutral.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -5600,7 +5370,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5747,7 +5517,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -5756,7 +5526,7 @@ exports[`<BaseButton /> should render notice color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -5819,11 +5589,11 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(25, 90%, 48%, 0.09)"
     defaultBorderColor="hsla(25, 90%, 48%, 1)"
-    focusBackgroundColor="hsla(25, 90%, 48%, 0.09)"
+    focusBackgroundColor="hsla(25, 90%, 48%, 0.18)"
     focusBorderColor="hsla(25, 90%, 48%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(25, 90%, 48%, 0.09)"
+    hoverBackgroundColor="hsla(25, 90%, 48%, 0.18)"
     hoverBorderColor="hsla(25, 90%, 48%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -5873,29 +5643,6 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -5926,7 +5673,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
         color="interactive.text.notice.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -5935,7 +5682,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6082,7 +5829,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -6091,7 +5838,7 @@ exports[`<BaseButton /> should render positive color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6154,11 +5901,11 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(150, 100%, 32%, 0.09)"
     defaultBorderColor="hsla(150, 100%, 32%, 1)"
-    focusBackgroundColor="hsla(150, 100%, 32%, 0.09)"
+    focusBackgroundColor="hsla(150, 100%, 32%, 0.18)"
     focusBorderColor="hsla(150, 100%, 32%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(150, 100%, 32%, 0.09)"
+    hoverBackgroundColor="hsla(150, 100%, 32%, 0.18)"
     hoverBorderColor="hsla(150, 100%, 32%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -6208,29 +5955,6 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -6261,7 +5985,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
         color="interactive.text.positive.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -6270,7 +5994,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6417,7 +6141,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -6426,7 +6150,7 @@ exports[`<BaseButton /> should render primary color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6573,7 +6297,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
         color="interactive.text.primary.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -6582,7 +6306,7 @@ exports[`<BaseButton /> should render primary color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6728,7 +6452,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
         color="interactive.text.gray.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -6737,7 +6461,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -6884,7 +6608,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={50}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={75}
         style={
           [
@@ -6893,7 +6617,7 @@ exports[`<BaseButton /> should render small size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 18,
               "marginBottom": 0,
@@ -7040,7 +6764,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
         color="interactive.text.staticBlack.muted"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -7049,7 +6773,7 @@ exports[`<BaseButton /> should render white color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -7166,29 +6890,6 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -7219,7 +6920,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -7228,7 +6929,7 @@ exports[`<BaseButton /> should render white color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -7291,12 +6992,12 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     defaultBorderColor="hsla(0, 0%, 100%, 0.18)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    focusBorderColor="hsla(0, 0%, 100%, 0.18)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.32)"
+    focusBorderColor="hsla(0, 0%, 100%, 0.32)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
-    hoverBorderColor="hsla(0, 0%, 100%, 0.18)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.32)"
+    hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -7344,29 +7045,6 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
     type="button"
   >
     <View
-      data-blade-component="base-box"
-      style={
-        [
-          {},
-          {
-            "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
-            "bottom": 0,
-            "left": 0,
-            "opacity": 0,
-            "pointerEvents": "none",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 0,
-          },
-          {
-            "opacity": 0,
-          },
-        ]
-      }
-      variant="subtle"
-    />
-    <View
       alignItems="center"
       data-blade-component="base-box"
       display="flex"
@@ -7397,7 +7075,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -7406,7 +7084,7 @@ exports[`<BaseButton /> should render white color tertiary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -7553,7 +7231,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={50}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={75}
         style={
           [
@@ -7562,7 +7240,7 @@ exports[`<BaseButton /> should render xsmall size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 18,
               "marginBottom": 0,

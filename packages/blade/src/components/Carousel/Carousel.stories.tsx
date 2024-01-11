@@ -248,7 +248,7 @@ const TestimonialCard = ({
   );
 };
 
-const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
+export const CarouselExample = (props: Omit<CarouselProps, 'children'>): React.ReactElement => {
   const key = `${props.visibleItems}-${props.shouldAddStartEndSpacing}`;
   return (
     <Box width="100%" height={isReactNative() ? '350px' : 'auto'}>

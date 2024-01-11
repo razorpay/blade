@@ -1,5 +1,5 @@
-// baseBoxStyles
 const rebrandedComponents = [
+  'Amount',
   'BaseBox',
   'BaseText',
   'BaseLink',
@@ -10,6 +10,7 @@ const rebrandedComponents = [
   'Code',
   'Button',
   'Link',
+  'Popover',
   'Counter',
   'Badge',
   'Indicator',
@@ -19,6 +20,7 @@ const rebrandedComponents = [
   'Card',
   'List',
   'Tabs',
+  'Tag',
   'Box',
   'Accordion',
   'Collapsible',
@@ -27,6 +29,10 @@ const rebrandedComponents = [
   'Modal',
   'SkipNav',
   'VisuallyHidden',
+  'Tooltip',
+  'Switch',
+  'Radio',
+  'Checkbox',
 ];
 
-module.exports = rebrandedComponents;
+module.exports = { rebrandedComponents };

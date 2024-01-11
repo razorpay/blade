@@ -123,7 +123,7 @@ exports[`<Tooltip /> should render 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -132,7 +132,7 @@ exports[`<Tooltip /> should render 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -497,7 +497,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -506,7 +506,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -871,7 +871,7 @@ exports[`<Tooltip /> should render with title 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -880,7 +880,7 @@ exports[`<Tooltip /> should render with title 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,

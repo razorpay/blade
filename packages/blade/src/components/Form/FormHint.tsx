@@ -2,37 +2,29 @@
 import type { ReactElement } from 'react';
 import React from 'react';
 import { FormHintWrapper } from './FormHintWrapper';
-import { BaseText } from '~components/Typography/BaseText';
+import type { TextProps } from '~components/Typography/Text';
+import { Text } from '~components/Typography/Text';
 import BaseBox from '~components/Box/BaseBox';
 import { CheckIcon, InfoIcon } from '~components/Icons';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { getPlatformType } from '~utils/getPlatformType';
 
 type HintTextProps = {
   icon?: React.ElementType;
   children: string;
   id?: string;
-  color: BaseTextProps['color'];
+  color: TextProps<{ variant: 'caption' }>['color'];
 };
 
 const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <BaseBox marginTop="spacing.2">
+    <BaseBox marginTop="spacing.2" id={id}>
       <FormHintWrapper>
         {Icon ? <Icon /> : null}
-        <BaseText
-          id={id}
-          as={isReactNative ? undefined : 'span'}
-          color={color}
-          fontSize={50}
-          lineHeight={50}
-          fontStyle="italic"
-          fontFamily="text"
-        >
+        <Text as={isReactNative ? undefined : 'span'} color={color} size="small" variant="caption">
           {children}
-        </BaseText>
+        </Text>
       </FormHintWrapper>
     </BaseBox>
   );
@@ -76,13 +68,13 @@ export type FormHintProps = {
 const Icons = {
   error: (): ReactElement => (
     <>
-      <InfoIcon color="feedback.icon.negative.lowContrast" size="small" />
+      <InfoIcon color="feedback.icon.negative.intense" size="small" />
       <BaseBox marginRight="spacing.2" />
     </>
   ),
   success: (): ReactElement => (
     <>
-      <CheckIcon color="feedback.icon.positive.lowContrast" size="small" />
+      <CheckIcon color="feedback.icon.positive.intense" size="small" />
       <BaseBox marginRight="spacing.2" />
     </>
   ),
@@ -97,11 +89,11 @@ const FormHint = ({
   errorTextId,
   successTextId,
 }: FormHintProps): React.ReactElement => {
-  const colors = {
-    help: 'surface.text.muted.lowContrast',
-    error: 'feedback.text.negative.lowContrast',
-    success: 'feedback.text.positive.lowContrast',
-  } as const;
+  const colors: Record<string, TextProps<{ variant: 'caption' }>['color']> = {
+    help: 'surface.text.gray.muted',
+    error: 'feedback.text.negative.intense',
+    success: 'feedback.text.positive.intense',
+  };
 
   const showError = type === 'error' && errorText;
   const showSuccess = type === 'success' && successText;

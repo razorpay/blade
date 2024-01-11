@@ -9,6 +9,7 @@ import { INTERNAL_STORY_ADDON_PARAM } from './constants';
 const { GlobalStyle } = global;
 import { DocsContainer } from '@storybook/addon-docs';
 import React from 'react';
+import { MINIMAL_VIEWPORTS } from '@storybook/addon-viewport';
 import './global.css';
 
 export const parameters = {
@@ -25,6 +26,19 @@ export const parameters = {
     disable: true,
     grid: {
       disable: true,
+    },
+  },
+  viewport: {
+    viewports: {
+      ...MINIMAL_VIEWPORTS,
+      iPhone6: {
+        name: 'iPhone 6',
+        styles: {
+          height: '667px',
+          width: '375px',
+        },
+        type: 'mobile',
+      },
     },
   },
   // on development setting it to undefined so that on 'live reload' it won't switch
@@ -58,7 +72,7 @@ export const parameters = {
           'useTheme',
         ],
         'Components',
-        ['*', 'KitchenSink'],
+        ['*', 'Interaction Tests', 'KitchenSink'],
         'Recipes',
       ],
     },
@@ -72,6 +86,13 @@ export const parameters = {
         }
         return bladeTheme;
       };
+
+      if (context.store.globals.globals.version === '10' && window.top) {
+        window.top.location.href =
+          'https://v10--61c19ee8d3d282003ac1d81c.chromatic.com' +
+          window.top.location.pathname +
+          window.top.location.search;
+      }
       return (
         <DocsContainer context={context}>
           <BladeProvider
@@ -92,6 +113,23 @@ export const parameters = {
         font-size: 14px;
         cursor: pointer;
       `,
+      a: styled.a`
+        color: ${theme.colorPrimary};
+        font-weight: 500;
+      `,
+      // Setting font-weight back to 600 in headings since storybook tries to override it
+      ...(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const).reduce<Record<`h${number}`, string>>(
+        (headingOverride, headingLevel) => {
+          headingOverride[headingLevel] = styled[headingLevel]`
+            & a {
+              font-weight: 600;
+            }
+          `;
+
+          return headingOverride;
+        },
+        {},
+      ),
     },
   },
 };
@@ -129,6 +167,13 @@ export const decorators = [
       return bladeTheme;
     };
 
+    if (context.globals.version === '10' && window.top) {
+      window.top.location.href =
+        'https://v10--61c19ee8d3d282003ac1d81c.chromatic.com' +
+        window.top.location.pathname +
+        window.top.location.search;
+    }
+
     return (
       <ErrorBoundary>
         <GlobalStyle />
@@ -147,6 +192,23 @@ export const decorators = [
 ];
 
 export const globalTypes = {
+  version: {
+    name: 'Blade Documentation Version',
+    description: 'Version of the Blade',
+    defaultValue: '11',
+    toolbar: {
+      icon: 'time',
+      title: ' v11 - Rebranded',
+      // Array of plain string values or MenuItem shape (see below)
+      items: [
+        { value: '10', title: ' v10 - Old' },
+        { value: '11', title: ' v11 - Rebranded', default: true },
+      ],
+      dynamicTitle: true,
+      // Property that specifies if the name of the item will be displayed
+      showName: false,
+    },
+  },
   colorScheme: {
     name: 'Color Scheme',
     description: 'Color Scheme for Blade',
