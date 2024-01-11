@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 import React, { useState } from 'react';
-// import { CheckoutHome } from './Checkout/CheckoutHome';
-// import { CheckoutCard } from './Checkout/CheckoutCard';
+import { CheckoutHome } from './Checkout/CheckoutHome';
+import { CheckoutCard } from './Checkout/CheckoutCard';
 import { PhantomUI } from './PhantomUI';
 import { ThemeSelector } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
@@ -13,41 +13,48 @@ import { Heading } from '~components/Typography';
 import { Card, CardBody } from '~components/Card';
 
 const ThemePlayground = (): React.ReactElement => {
-  const [selectedColor, setSelectedColor] = useState<string | undefined>('#f44000');
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(undefined);
   const [borderBase, setBorderBase] = useState<string>('2');
   const [colorScheme, setColorScheme] = useState<ColorSchemeNames>('light');
   const [selectedPreBuiltTheme, setSelectedPreBuiltTheme] = useState<string | undefined>(
-    'paymentTheme',
+    'bladeTheme',
   );
   const [showInternalDemoConfig, setShowInternalDemoConfig] = useState(false);
   const getTheme = (): ThemeTokens => {
     if (selectedColor) {
       return createTheme({ brandColor: selectedColor });
     }
+    if (selectedPreBuiltTheme === 'paymentTheme') {
+      return bladeTheme;
+    }
+
     return bladeTheme;
   };
 
-  // const getOverriddenTheme = (): ThemeTokens => {
-  //   return overrideTheme({
-  //     baseThemeTokens: getTheme(),
-  //     overrides: {
-  //       border: {
-  //         radius: {
-  //           none: 0,
-  //           small: Number(borderBase) * 1,
-  //           medium: Number(borderBase) * 2,
-  //           large: Number(borderBase) * 3,
-  //           max: 9999,
-  //           round: '50%',
-  //         },
-  //       },
-  //     },
-  //   });
-  // };
+  const getOverriddenTheme = (): ThemeTokens => {
+    return overrideTheme({
+      baseThemeTokens: getTheme(),
+      overrides: {
+        border: {
+          radius: {
+            none: 0,
+            // @ts-ignore
+            small: Number(borderBase) * 1,
+            // @ts-ignore
+            medium: Number(borderBase) * 2,
+            // @ts-ignore
+            large: Number(borderBase) * 3,
+            max: 9999,
+            round: '50%',
+          },
+        },
+      },
+    });
+  };
 
   return (
     <BladeProvider
-      themeTokens={getTheme()}
+      themeTokens={getOverriddenTheme()}
       colorScheme={colorScheme}
       key={`${colorScheme}-${borderBase}-${selectedColor}-${selectedPreBuiltTheme}`}
     >
@@ -69,25 +76,25 @@ const ThemePlayground = (): React.ReactElement => {
             <CardBody>
               <Box>
                 <Box flex={1}>
-                  <Heading size="xlarge" marginBottom="spacing.4">
+                  <Heading size="medium" marginBottom="spacing.4">
                     Checkout Home Page
                   </Heading>
-                  {/* <CheckoutHome /> */}
+                  <CheckoutHome />
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
-                  <Heading size="xlarge" marginBottom="spacing.4">
+                  <Heading size="medium" marginBottom="spacing.4">
                     Checkout Card
                   </Heading>
-                  {/* <CheckoutCard /> */}
+                  <CheckoutCard />
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
-                  <Heading size="xlarge" marginBottom="spacing.4">
+                  <Heading size="medium" marginBottom="spacing.4">
                     Phantom UI
                   </Heading>
                   <PhantomUI />
                 </Box>
                 <Box marginTop="spacing.8">
-                  <Heading size="xlarge" marginBottom="spacing.4">
+                  <Heading size="medium" marginBottom="spacing.4">
                     Component Showcase
                   </Heading>
                   <BrandedComponentKitchenSink />

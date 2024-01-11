@@ -1,15 +1,16 @@
+// @ts-nocheck
 import { composeStories } from '@storybook/react';
 import * as accordionStories from '../../components/Accordion/Accordion.stories';
 import * as buttonStories from '../../components/Button/Button/Button.stories';
-// import * as bottomSheetStories from '../../components/BottomSheet/BottomSheet.stories';
+import * as bottomSheetStories from '../../components/BottomSheet/BottomSheet.stories';
 import * as carouselStories from '../../components/Carousel/Carousel.stories';
 import * as checkboxGroupStories from '../../components/Checkbox/CheckboxGroup.stories';
-// import * as chipGroupStories from '../../components/Chip/ChipGroup.stories';
-// import * as collapsibleStories from '../../components/Collapsible/Collapsible.stories';
-// import * as modalStories from '../../components/Modal/docs/SimpleModal.stories';
+import * as chipGroupStories from '../../components/Chip/ChipGroup.stories';
+import * as collapsibleStories from '../../components/Collapsible/Collapsible.stories';
+import * as modalStories from '../../components/Modal/docs/SimpleModal.stories';
 import * as progressBarStories from '../../components/ProgressBar/ProgressBar.stories';
 import * as radioStories from '../../components/Radio/Radio.stories';
-// import * as switchStories from '../../components/Switch/Switch.stories';
+import * as switchStories from '../../components/Switch/Switch.stories';
 // import * as textInputStories from '../../components/Input/TextInput/TextInput.stories';
 // import * as otpInputStories from '../../components/Input/OTPInput/OTPInput.stories';
 // import * as autoCompleteStories from '../../components/Input/DropdownInputTriggers/AutoComplete.stories';
@@ -54,17 +55,18 @@ const StoryNameToHeadingMap = {
 
 const allStories = [
   ...Object.values(composeStories(buttonStories)),
+  // Uncomment once TextInput & other components are done
   // ...Object.values(composeStories(textInputStories)),
   // ...Object.values(composeStories(otpInputStories)),
   ...Object.values(composeStories(checkboxGroupStories)),
   ...Object.values(composeStories(radioStories)),
-  // ...Object.values(composeStories(switchStories)),
-  // ...Object.values(composeStories(chipGroupStories)),
+  ...Object.values(composeStories(switchStories)),
+  ...Object.values(composeStories(chipGroupStories)),
   // ...Object.values(composeStories(autoCompleteStories)),
   ...Object.values(composeStories(accordionStories)),
-  // ...Object.values(composeStories(collapsibleStories)),
-  // ...Object.values(composeStories(modalStories)),
-  // ...Object.values(composeStories(bottomSheetStories)),
+  ...Object.values(composeStories(collapsibleStories)),
+  ...Object.values(composeStories(modalStories)),
+  ...Object.values(composeStories(bottomSheetStories)),
   ...Object.values(composeStories(carouselStories)),
   ...Object.values(composeStories(progressBarStories)),
 ];

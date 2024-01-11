@@ -125,8 +125,8 @@ const getOnLightOverrides = (
     interactive: {
       background: {
         primary: {
-          default: brandColors[500],
-          highlighted: brandColors[600],
+          default: brandColors[600],
+          highlighted: brandColors[700],
           disabled: brandColors.a100,
           faded: brandColors.a100,
           fadedHighlighted: brandColors.a150,
@@ -134,8 +134,8 @@ const getOnLightOverrides = (
       },
       border: {
         primary: {
-          default: brandColors[500],
-          highlighted: brandColors[600],
+          default: brandColors[600],
+          highlighted: brandColors[700],
           disabled: brandColors.a100,
           faded: brandColors.a100,
         },
@@ -166,6 +166,19 @@ const getOnLightOverrides = (
           disabled: foregroundOnBrand,
           muted: foregroundOnBrand,
           subtle: foregroundOnBrand,
+        },
+      },
+    },
+    surface: {
+      background: {
+        primary: {
+          intense: brandColors[600],
+          subtle: brandColors[200],
+        },
+      },
+      icon: {
+        primary: {
+          normal: brandColors[600],
         },
       },
     },
@@ -206,8 +219,8 @@ const getOnDarkOverrides = (
     interactive: {
       background: {
         primary: {
-          default: brandColors[500],
-          highlighted: brandColors[600],
+          default: brandColors[600],
+          highlighted: brandColors[700],
           disabled: brandColors.a100,
           faded: brandColors.a100,
           fadedHighlighted: brandColors.a150,
@@ -215,8 +228,8 @@ const getOnDarkOverrides = (
       },
       border: {
         primary: {
-          default: brandColors[500],
-          highlighted: brandColors[600],
+          default: brandColors[600],
+          highlighted: brandColors[700],
           disabled: brandColors.a100,
           faded: brandColors.a100,
         },
@@ -247,6 +260,19 @@ const getOnDarkOverrides = (
           disabled: foregroundOnBrand,
           muted: foregroundOnBrand,
           subtle: foregroundOnBrand,
+        },
+      },
+    },
+    surface: {
+      background: {
+        primary: {
+          intense: brandColors[600],
+          subtle: brandColors[200],
+        },
+      },
+      icon: {
+        primary: {
+          normal: brandColors[600],
         },
       },
     },
