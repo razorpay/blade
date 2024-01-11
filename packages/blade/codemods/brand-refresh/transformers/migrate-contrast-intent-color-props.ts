@@ -33,12 +33,12 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
     );
   }
 
-  // Bade/Counter/IconButton Components: Change `contrast` prop to `emphasis`
+  // Bade/Counter/IconButton/Alert Components: Change `contrast` prop to `emphasis`
   try {
     root
       .find(j.JSXElement)
       .filter((path) =>
-        ['Badge', 'Counter', 'IconButton'].includes(path.value.openingElement.name.name),
+        ['Badge', 'Counter', 'IconButton', 'Alert'].includes(path.value.openingElement.name.name),
       )
       .find(j.JSXAttribute)
       .filter((path) => path.node.name.name === 'contrast')
@@ -46,6 +46,10 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
         path.node.name.name = 'emphasis';
 
         const contrastToEmphasisMap = {
+          alert: {
+            low: 'subtle',
+            high: 'intense',
+          },
           badge: {
             low: 'subtle',
             high: 'intense',
@@ -69,6 +73,23 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
     console.error(
       red(
         `⛔️ ${file.path}: Oops! Ran into an issue while updating the "contrast" prop in Bade/Counter/IconButton Components:`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
+
+  // Remove 'contrast' prop from the Skeleton Component
+  try {
+    root
+      .find(j.JSXElement)
+      .filter((path) => path.value.openingElement.name.name === 'Skeleton')
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name === 'contrast')
+      .remove();
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while removing the "contrast" prop from Skeleton.`,
       ),
       `\n${red(error.stack)}\n`,
     );

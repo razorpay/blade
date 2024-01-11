@@ -7,17 +7,22 @@ it('should migrate contrast prop to emphasis', async () => {
     `
     const App = () => (
         <>
-        <Badge contrast="low">Hello</Badge> 
-        <Badge contrast="high">Hello</Badge> 
+          <Badge contrast="low">Hello</Badge> 
+          <Badge contrast="high">Hello</Badge> 
 
-        <Text> Lorem Ipsum <Badge contrast="high">Hello</Badge> </Text>
+          <Text> Lorem Ipsum <Badge contrast="high">Hello</Badge> </Text>
 
-        <Counter contrast="low">Hello</Counter> 
-        <Counter contrast="high">Hello</Counter>
+          <Counter contrast="low">Hello</Counter> 
+          <Counter contrast="high">Hello</Counter>
 
-        <IconButton icon={CloseIcon} contrast="low" onClick={() => console.log('Clicked')} />
-        <IconButton icon={CloseIcon} contrast="high" onClick={() => console.log('Clicked')} />
-        
+          <IconButton icon={CloseIcon} contrast="low" onClick={() => console.log('Clicked')} />
+          <IconButton icon={CloseIcon} contrast="high" onClick={() => console.log('Clicked')} />
+          
+          <Alert description="Hello World" contrast="low" />
+          <Alert description="Hello World" contrast="high" />
+
+          <Skeleton height="50px" width="100%" contrast="low" />
+          <Skeleton height="50px" width="100%" contrast="high" />
         </>
       );
     `,
@@ -27,17 +32,22 @@ it('should migrate contrast prop to emphasis', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
             <>
-            <Badge emphasis="subtle">Hello</Badge> 
-            <Badge emphasis="intense">Hello</Badge> 
+              <Badge emphasis="subtle">Hello</Badge> 
+              <Badge emphasis="intense">Hello</Badge> 
 
-            <Text> Lorem Ipsum <Badge emphasis="intense">Hello</Badge> </Text>
+              <Text> Lorem Ipsum <Badge emphasis="intense">Hello</Badge> </Text>
 
-            <Counter emphasis="subtle">Hello</Counter> 
-            <Counter emphasis="intense">Hello</Counter>
+              <Counter emphasis="subtle">Hello</Counter> 
+              <Counter emphasis="intense">Hello</Counter>
 
-            <IconButton icon={CloseIcon} emphasis="intense" onClick={() => console.log('Clicked')} />
-            <IconButton icon={CloseIcon} emphasis="subtle" onClick={() => console.log('Clicked')} />
-            
+              <IconButton icon={CloseIcon} emphasis="intense" onClick={() => console.log('Clicked')} />
+              <IconButton icon={CloseIcon} emphasis="subtle" onClick={() => console.log('Clicked')} />
+              
+              <Alert description="Hello World" emphasis="subtle" />
+              <Alert description="Hello World" emphasis="intense" />
+
+              <Skeleton height="50px" width="100%" />
+              <Skeleton height="50px" width="100%" />
             </>
           );"
   `);

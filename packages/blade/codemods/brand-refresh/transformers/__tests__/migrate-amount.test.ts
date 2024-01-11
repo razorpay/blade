@@ -7,7 +7,7 @@ it('should update token values contextually', async () => {
     `
     const App = () => (
         <>
-          <Amount value={1234} color="positive" />
+          <Amount value={1234} intent="positive" />
 
           <Amount size="body-small" value={123456.789} />
 
