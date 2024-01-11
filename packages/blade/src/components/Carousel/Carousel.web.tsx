@@ -14,18 +14,18 @@ import type { CarouselContextProps } from './CarouselContext';
 import { CarouselContext } from './CarouselContext';
 import { getCarouselItemId } from './utils';
 import { CAROUSEL_AUTOPLAY_INTERVAL, componentIds } from './constants';
-import debounce from '~utils/lodashButBetter/debounce';
-import throttle from '~utils/lodashButBetter/throttle';
 import getIn from '~utils/lodashButBetter/get';
+import throttle from '~utils/lodashButBetter/throttle';
+import debounce from '~utils/lodashButBetter/debounce';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
-import { castWebType, makeMotionTime, useInterval } from '~utils';
+import { castWebType, makeMotionTime, useInterval, usePrevious } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { useDidUpdate } from '~utils/useDidUpdate';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 import { useTheme } from '~components/BladeProvider';
+import { useFirstRender } from '~utils/useFirstRender';
 
 type ControlsProp = Required<
   Pick<
@@ -223,6 +223,29 @@ const CarouselBody = React.forwardRef<HTMLDivElement, CarouselBodyProps>(
     );
   },
 );
+
+/**
+ * A custom hook which syncs an effect with a state
+ * While ignoring the first render & only running the effect when the state changes
+ */
+function useSyncUpdateEffect<T>(
+  effect: React.EffectCallback,
+  stateToSyncWith: T,
+  deps: React.DependencyList,
+) {
+  const isFirst = useFirstRender();
+  const prevState = usePrevious<T>(stateToSyncWith);
+
+  React.useEffect(() => {
+    if (!isFirst) {
+      // if the state is the same as the previous state
+      // we don't want to run the effect
+      if (prevState === stateToSyncWith) return;
+      return effect();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stateToSyncWith, ...deps]);
+}
 
 const Carousel = ({
   autoPlay,
@@ -451,9 +474,13 @@ const Carousel = ({
     shouldAddStartEndSpacing,
   ]);
 
-  useDidUpdate(() => {
-    onChange?.(activeSlide);
-  }, [activeSlide, onChange]);
+  useSyncUpdateEffect(
+    () => {
+      onChange?.(activeSlide);
+    },
+    activeSlide,
+    [onChange],
+  );
 
   return (
     <CarouselContext.Provider value={carouselContext}>

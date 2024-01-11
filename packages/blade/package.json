@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.23.0",
+  "version": "10.23.2",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -109,8 +109,12 @@
     "react-native:storybook:ios": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-ios",
     "react-native:storybook:start": "yarn react-native:get-stories && cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT_NATIVE react-native start --reset-cache",
     "react": "yarn run react:storybook",
-    "react:storybook": "cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT storybook dev -c ./.storybook/react -p 9009",
-    "react:storybook:build": "cross-env NODE_OPTIONS=--openssl-legacy-provider FRAMEWORK=REACT storybook build -c ./.storybook/react -o storybook-site",
+    "react:storybook": "cross-env FRAMEWORK=REACT storybook dev -c ./.storybook/react -p 9009",
+    "react:storybook:build": "cross-env FRAMEWORK=REACT storybook build -c ./.storybook/react -o storybook-site --quiet",
+    "react:storybook:serve": "http-server storybook-site --port 9009 --silent",
+    "react:storybook:serve:test": "wait-on http://127.0.0.1:9009/ && yarn test:react:interaction",
+    "test:react:interaction": "cross-env FRAMEWORK=REACT test-storybook -c ./.storybook/react --url http://127.0.0.1:9009/",
+    "test:react:interaction:ci": "yarn react:storybook:build && run-p react:storybook:serve react:storybook:serve:test --race",
     "test:react": "cross-env FRAMEWORK=REACT jest -c ./jest.web.config.js --shard=$SHARD --forceExit",
     "test:react-native": "cross-env FRAMEWORK=REACT_NATIVE jest -c ./jest.native.config.js --shard=$SHARD --forceExit",
     "start:ios": "cross-env NODE_OPTIONS=--openssl-legacy-provider run-p react-native:storybook:start react-native:storybook:ios",
@@ -139,6 +143,13 @@
     "tinycolor2": "1.6.0"
   },
   "devDependencies": {
+    "http-server": "14.1.1",
+    "wait-on": "7.2.0",
+    "@storybook/addon-interactions": "7.6.6",
+    "@storybook/testing-library": "0.2.2",
+    "@storybook/test-runner": "0.16.0",
+    "@storybook/jest": "0.2.3",
+    "playwright": "1.40.1",
     "chromatic": "6.22.0",
     "@babel/cli": "7.23.0",
     "@babel/core": "7.20.2",
