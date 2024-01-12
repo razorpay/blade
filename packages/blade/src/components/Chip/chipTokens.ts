@@ -2,9 +2,10 @@ import type { ChipGroupProps } from './ChipGroup';
 import type { ChipBorderColors, ChipBackgroundColors } from './types';
 import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
-import { size } from '~tokens/global';
 import type { IconProps } from '~components/Icons';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import type { DurationString, EasingString } from '~tokens/global';
+import { size } from '~tokens/global';
 
 const chipGroupGapTokens = {
   xsmall: {
@@ -184,12 +185,9 @@ const chipTextSizes = {
   },
 } as const;
 
-const chipMotionTokens: Record<
-  'duration' | 'easing',
-  'motion.duration.xquick' | 'motion.easing.standard.effective'
-> = {
-  duration: 'motion.duration.xquick',
-  easing: 'motion.easing.standard.effective',
+const chipMotionTokens: Record<'duration' | 'easing', DurationString | EasingString> = {
+  duration: 'duration.xquick',
+  easing: 'easing.standard.effective',
 };
 
 export {
