@@ -160,7 +160,7 @@ const Alert = ({
   }
 
   const shouldCenterAlign = isFullWidth && !title;
-  let alignment = 'flex-start';
+  let alignment: 'center' | 'flex-start' = 'flex-start';
   if (!isFullWidth) alignment = 'flex-start';
   if (shouldCenterAlign) alignment = 'center';
 
