@@ -179,6 +179,30 @@ const transformer: Transform = (file, api, options) => {
       ['Text', 'Title', 'Code', 'Display', 'Heading'].includes(path.value.openingElement.name.name),
     );
 
+  // Update <Text variant="caption" size="medium" > to <Text variant="caption" size="small" >
+  try {
+    typographyJSXElements
+      .filter(
+        (path) =>
+          path.value.openingElement.name.name === 'Text' &&
+          path.value.openingElement.attributes.some(
+            (attribute) =>
+              attribute.name?.name === 'variant' && attribute.value?.value === 'caption',
+          ),
+      )
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name === 'size' && path.node.value.value === 'medium')
+      .replaceWith((path) => {
+        path.node.value.value = 'small';
+        return path.node;
+      });
+  } catch (error) {
+    console.error(
+      red(`⛔️ ${file.path}: Oops! Ran into an issue while updating the Text size prop.`),
+      `\n${red(error.stack)}\n`,
+    );
+  }
+
   // Update <Heading size="large|medium"> to <Heading size="medium|small">,
   // <Heading size="small">, <Heading variant="regular"> to <Text size="large">, and
   // <Heading variant="subheading"> to <Text size="small">

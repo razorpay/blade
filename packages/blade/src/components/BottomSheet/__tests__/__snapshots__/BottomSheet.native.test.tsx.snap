@@ -272,11 +272,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     data-blade-component="button"
                     defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
                     defaultBorderColor="hsla(227, 100%, 59%, 1)"
-                    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+                    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
                     focusBorderColor="hsla(227, 100%, 59%, 1)"
-                    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+                    focusRingColor="hsla(227, 100%, 59%, 0.09)"
                     focusable={true}
-                    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+                    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
                     hoverBorderColor="hsla(227, 100%, 59%, 1)"
                     isFullWidth={true}
                     isLoading={false}
@@ -356,16 +356,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         color="interactive.text.primary.subtle"
                         data-blade-component="base-text"
                         fontSize={100}
-                        fontWeight="semibold"
+                        fontWeight="medium"
                         lineHeight={100}
                         style={
                           [
                             {
-                              "color": "hsla(227, 71%, 51%, 1)",
+                              "color": "hsla(227, 100%, 59%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
-                              "fontWeight": "600",
+                              "fontWeight": "500",
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
@@ -1308,11 +1308,11 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     data-blade-component="button"
                     defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
                     defaultBorderColor="hsla(227, 100%, 59%, 1)"
-                    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+                    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
                     focusBorderColor="hsla(227, 100%, 59%, 1)"
-                    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+                    focusRingColor="hsla(227, 100%, 59%, 0.09)"
                     focusable={true}
-                    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+                    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
                     hoverBorderColor="hsla(227, 100%, 59%, 1)"
                     isFullWidth={true}
                     isLoading={false}
@@ -1392,16 +1392,16 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         color="interactive.text.primary.subtle"
                         data-blade-component="base-text"
                         fontSize={100}
-                        fontWeight="semibold"
+                        fontWeight="medium"
                         lineHeight={100}
                         style={
                           [
                             {
-                              "color": "hsla(227, 71%, 51%, 1)",
+                              "color": "hsla(227, 100%, 59%, 1)",
                               "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
-                              "fontWeight": "600",
+                              "fontWeight": "500",
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,

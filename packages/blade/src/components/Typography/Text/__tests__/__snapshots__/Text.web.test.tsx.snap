@@ -31,7 +31,7 @@ exports[`<Text /> should render Text with center textAlign 1`] = `
 
 exports[`<Text /> should render Text with color 1`] = `
 .c0.c0.c0.c0.c0 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;

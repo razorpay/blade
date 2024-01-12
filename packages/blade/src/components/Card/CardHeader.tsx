@@ -24,6 +24,8 @@ import { makeSpace } from '~utils/makeSpace';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import type { AmountProps } from '~components/Amount';
+import { Amount } from '~components/Amount';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
@@ -52,15 +54,15 @@ const CardHeaderBadge = assignWithoutSideEffects(_CardHeaderBadge, {
   componentId: ComponentIds.CardHeaderBadge,
 });
 
-// @TODO: uncomment and export this when Amount component is migrated
-// const _CardHeaderAmount = (props: AmountProps): React.ReactElement => {
-//   useVerifyInsideCard('CardHeaderAmount');
+const _CardHeaderAmount = (props: AmountProps): React.ReactElement => {
+  useVerifyInsideCard('CardHeaderAmount');
 
-//   return <Amount {...props} />;
-// };
-// const CardHeaderAmount = assignWithoutSideEffects(_CardHeaderAmount, {
-//   componentId: ComponentIds.CardHeaderAmount,
-// });
+  return <Amount {...props} />;
+};
+
+const CardHeaderAmount = assignWithoutSideEffects(_CardHeaderAmount, {
+  componentId: ComponentIds.CardHeaderAmount,
+});
 
 const _CardHeaderText = (props: TextProps<{ variant: TextVariant }>): React.ReactElement => {
   useVerifyInsideCard('CardHeaderText');
@@ -228,6 +230,7 @@ const headerTrailingAllowedComponents = [
   ComponentIds.CardHeaderText,
   ComponentIds.CardHeaderIconButton,
   ComponentIds.CardHeaderBadge,
+  ComponentIds.CardHeaderAmount,
 ];
 
 const _CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
@@ -259,5 +262,6 @@ export {
   CardHeaderCounter,
   CardHeaderText,
   CardHeaderLink,
+  CardHeaderAmount,
   CardHeaderIconButton,
 };

@@ -62,7 +62,7 @@ exports[`<Switch /> should render switch 1`] = `
   border-radius: 9999px;
   -webkit-animation-duration: 150ms;
   animation-duration: 150ms;
-  background-color: hsla(220,30%,96%,1);
+  background-color: hsla(0,0%,100%,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -81,7 +81,7 @@ exports[`<Switch /> should render switch 1`] = `
   width: 36px;
   height: 20px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -106,12 +106,18 @@ exports[`<Switch /> should render switch 1`] = `
 }
 
 .c2.c2.c2.c2.c2:focus-visible + div {
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c2.c2.c2.c2.c2:hover + div {
-  background-color: hsla(216,16%,60%,1);
+  background-color: hsla(211,20%,52%,0.18);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -174,7 +180,7 @@ exports[`<Switch /> should render switch 1`] = `
                 clip-rule="evenodd"
                 d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
                 data-blade-component="svg-path"
-                fill="hsla(216, 33%, 29%, 1)"
+                fill="hsla(0, 0%, 0%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
@@ -248,7 +254,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   border-radius: 9999px;
   -webkit-animation-duration: 150ms;
   animation-duration: 150ms;
-  background-color: hsla(220,27%,98%,1);
+  background-color: hsla(0,0%,100%,0.18);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -267,7 +273,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
   width: 36px;
   height: 20px;
   border-radius: 9999px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -292,8 +298,14 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
 }
 
 .c2.c2.c2.c2.c2:focus-visible + div {
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -353,7 +365,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                 clip-rule="evenodd"
                 d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
                 data-blade-component="svg-path"
-                fill="hsla(214, 18%, 69%, 1)"
+                fill="hsla(0, 0%, 0%, 0.32)"
                 fill-rule="evenodd"
               />
             </svg>

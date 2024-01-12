@@ -101,7 +101,7 @@ exports[`Tabs should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
@@ -203,7 +203,7 @@ exports[`Tabs should render 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(227,100%,59%,0.24);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
@@ -469,7 +469,7 @@ exports[`Tabs should render with filled variant 1`] = `
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
   border-radius: 2px;
   pointer-events: none;
 }
@@ -500,7 +500,7 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
@@ -651,7 +651,7 @@ exports[`Tabs should render with filled variant 1`] = `
 .c10.c10.c10.c10.c10:focus-visible {
   border-radius: 4px;
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-  background-color: hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c10.c10.c10.c10.c10 * {
@@ -668,7 +668,7 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(227,100%,59%,0.24);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c9.c9.c9.c9.c9 {
@@ -1002,7 +1002,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
@@ -1105,7 +1105,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(227,100%,59%,0.24);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
@@ -1396,7 +1396,7 @@ exports[`Tabs should render with size 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -1498,7 +1498,7 @@ exports[`Tabs should render with size 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(227,100%,59%,0.24);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
@@ -1783,7 +1783,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(227,71%,51%,1);
+  color: hsla(227,100%,59%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 600;

@@ -40,7 +40,7 @@ exports[`<Button /> should render button with default properties 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -122,7 +122,7 @@ exports[`<Button /> should render button with default properties 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -131,7 +131,7 @@ exports[`<Button /> should render button with default properties 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -196,7 +196,7 @@ exports[`<Button /> should render button with full width 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -278,7 +278,7 @@ exports[`<Button /> should render button with full width 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -287,7 +287,7 @@ exports[`<Button /> should render button with full width 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -352,7 +352,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -506,7 +506,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -515,7 +515,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -580,7 +580,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -662,7 +662,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -671,7 +671,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -804,13 +804,13 @@ exports[`<Button /> should render disabled button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 0.09)"
     defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
     focusBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
     hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
     isFullWidth={false}
     isLoading={false}
@@ -832,7 +832,7 @@ exports[`<Button /> should render disabled button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -852,7 +852,7 @@ exports[`<Button /> should render disabled button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
         },
       ]
@@ -890,7 +890,7 @@ exports[`<Button /> should render disabled button 1`] = `
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -899,7 +899,7 @@ exports[`<Button /> should render disabled button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -964,7 +964,7 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
     defaultBorderColor="hsla(4, 74%, 49%, 0.18)"
     focusBackgroundColor="hsla(4, 74%, 49%, 0.09)"
     focusBorderColor="hsla(4, 74%, 49%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(4, 74%, 49%, 0.09)"
     hoverBorderColor="hsla(4, 74%, 49%, 0.18)"
@@ -1046,7 +1046,7 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
         color="interactive.text.negative.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1055,7 +1055,7 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1120,7 +1120,7 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
     defaultBorderColor="hsla(4, 74%, 49%, 0.18)"
     focusBackgroundColor="hsla(4, 74%, 49%, 0.09)"
     focusBorderColor="hsla(4, 74%, 49%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(4, 74%, 49%, 0.09)"
     hoverBorderColor="hsla(4, 74%, 49%, 0.18)"
@@ -1202,7 +1202,7 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
         color="interactive.text.negative.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1211,7 +1211,7 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1276,7 +1276,7 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
     defaultBorderColor="hsla(150, 100%, 32%, 0.18)"
     focusBackgroundColor="hsla(150, 100%, 32%, 0.09)"
     focusBorderColor="hsla(150, 100%, 32%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(150, 100%, 32%, 0.09)"
     hoverBorderColor="hsla(150, 100%, 32%, 0.18)"
@@ -1358,7 +1358,7 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
         color="interactive.text.positive.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1367,7 +1367,7 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1432,7 +1432,7 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
     defaultBorderColor="hsla(150, 100%, 32%, 0.18)"
     focusBackgroundColor="hsla(150, 100%, 32%, 0.09)"
     focusBorderColor="hsla(150, 100%, 32%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(150, 100%, 32%, 0.09)"
     hoverBorderColor="hsla(150, 100%, 32%, 0.18)"
@@ -1514,7 +1514,7 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
         color="interactive.text.positive.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1523,7 +1523,7 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1584,13 +1584,13 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 0.09)"
     defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
     focusBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
     hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
     isFullWidth={false}
     isLoading={false}
@@ -1612,7 +1612,7 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -1632,7 +1632,7 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
+          "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
           "borderColor": "hsla(227, 100%, 59%, 0.18)",
         },
       ]
@@ -1670,7 +1670,7 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1679,7 +1679,7 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1744,7 +1744,7 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
     defaultBorderColor="hsla(227, 100%, 59%, 0.18)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0)"
     focusBorderColor="hsla(227, 100%, 59%, 0.18)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0)"
     hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
@@ -1826,7 +1826,7 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1835,7 +1835,7 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -1900,7 +1900,7 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
     defaultBorderColor="hsla(214, 40%, 92%, 1)"
     focusBackgroundColor="hsla(211, 20%, 52%, 0.09)"
     focusBorderColor="hsla(214, 40%, 92%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(211, 20%, 52%, 0.09)"
     hoverBorderColor="hsla(214, 40%, 92%, 1)"
@@ -1981,7 +1981,7 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
         color="interactive.text.gray.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -1990,7 +1990,7 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2051,13 +2051,13 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 0.48)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     defaultBorderColor="hsla(0, 0%, 100%, 0.32)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0.48)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     focusBorderColor="hsla(0, 0%, 100%, 0.32)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0.48)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
     isLoading={false}
@@ -2079,7 +2079,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 0.48)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
           "borderColor": "hsla(0, 0%, 100%, 0.32)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -2099,7 +2099,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 0.48)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
           "borderColor": "hsla(0, 0%, 100%, 0.32)",
         },
       ]
@@ -2137,7 +2137,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
         color="interactive.text.staticBlack.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2146,7 +2146,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2211,7 +2211,7 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 0.32)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0)"
     focusBorderColor="hsla(0, 0%, 100%, 0.32)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
@@ -2293,7 +2293,7 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
         color="interactive.text.staticWhite.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2302,7 +2302,7 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2363,14 +2363,14 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(0, 0%, 100%, 0.48)"
-    defaultBorderColor="hsla(0, 0%, 100%, 0.48)"
-    focusBackgroundColor="hsla(0, 0%, 100%, 0.48)"
-    focusBorderColor="hsla(0, 0%, 100%, 0.48)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    defaultBackgroundColor="hsla(0, 0%, 100%, 0.18)"
+    defaultBorderColor="hsla(0, 0%, 100%, 0.18)"
+    focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
+    focusBorderColor="hsla(0, 0%, 100%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
-    hoverBackgroundColor="hsla(0, 0%, 100%, 0.48)"
-    hoverBorderColor="hsla(0, 0%, 100%, 0.48)"
+    hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
+    hoverBorderColor="hsla(0, 0%, 100%, 0.18)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -2391,8 +2391,8 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(0, 0%, 100%, 0.48)",
-          "borderColor": "hsla(0, 0%, 100%, 0.48)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
+          "borderColor": "hsla(0, 0%, 100%, 0.18)",
           "borderRadius": 4,
           "borderStyle": "solid",
           "borderWidth": 0,
@@ -2411,7 +2411,7 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(0, 0%, 100%, 0.48)",
+          "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
         },
       ]
     }
@@ -2448,7 +2448,7 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
         color="interactive.text.staticWhite.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2457,7 +2457,7 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2522,7 +2522,7 @@ exports[`<Button /> should render large size button 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -2604,7 +2604,7 @@ exports[`<Button /> should render large size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={200}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={200}
         style={
           [
@@ -2613,7 +2613,7 @@ exports[`<Button /> should render large size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 16,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 24,
               "marginBottom": 0,
@@ -2678,7 +2678,7 @@ exports[`<Button /> should render medium size button 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -2760,7 +2760,7 @@ exports[`<Button /> should render medium size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2769,7 +2769,7 @@ exports[`<Button /> should render medium size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2834,7 +2834,7 @@ exports[`<Button /> should render negative color primary button 1`] = `
     defaultBorderColor="hsla(4, 74%, 49%, 1)"
     focusBackgroundColor="hsla(4, 77%, 40%, 1)"
     focusBorderColor="hsla(4, 77%, 40%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(4, 77%, 40%, 1)"
     hoverBorderColor="hsla(4, 77%, 40%, 1)"
@@ -2916,7 +2916,7 @@ exports[`<Button /> should render negative color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -2925,7 +2925,7 @@ exports[`<Button /> should render negative color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -2990,7 +2990,7 @@ exports[`<Button /> should render negative color secondary button 1`] = `
     defaultBorderColor="hsla(4, 74%, 49%, 1)"
     focusBackgroundColor="hsla(4, 74%, 49%, 0.18)"
     focusBorderColor="hsla(4, 74%, 49%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(4, 74%, 49%, 0.18)"
     hoverBorderColor="hsla(4, 74%, 49%, 1)"
@@ -3072,16 +3072,16 @@ exports[`<Button /> should render negative color secondary button 1`] = `
         color="interactive.text.negative.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(4, 74%, 49%, 1)",
+              "color": "hsla(4, 86%, 58%, 1)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3146,7 +3146,7 @@ exports[`<Button /> should render positive color primary button 1`] = `
     defaultBorderColor="hsla(150, 100%, 32%, 1)"
     focusBackgroundColor="hsla(150, 100%, 27%, 1)"
     focusBorderColor="hsla(150, 100%, 27%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(150, 100%, 27%, 1)"
     hoverBorderColor="hsla(150, 100%, 27%, 1)"
@@ -3228,7 +3228,7 @@ exports[`<Button /> should render positive color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3237,7 +3237,7 @@ exports[`<Button /> should render positive color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3302,7 +3302,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
     defaultBorderColor="hsla(150, 100%, 32%, 1)"
     focusBackgroundColor="hsla(150, 100%, 32%, 0.18)"
     focusBorderColor="hsla(150, 100%, 32%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(150, 100%, 32%, 0.18)"
     hoverBorderColor="hsla(150, 100%, 32%, 1)"
@@ -3384,7 +3384,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
         color="interactive.text.positive.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3393,7 +3393,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3458,7 +3458,7 @@ exports[`<Button /> should render primary color primary button 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -3540,7 +3540,7 @@ exports[`<Button /> should render primary color primary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3549,7 +3549,7 @@ exports[`<Button /> should render primary color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3612,11 +3612,11 @@ exports[`<Button /> should render primary color secondary button 1`] = `
     data-blade-component="button"
     defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
-    focusBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
-    hoverBackgroundColor="hsla(227, 100%, 59%, 0.18)"
+    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
@@ -3696,16 +3696,16 @@ exports[`<Button /> should render primary color secondary button 1`] = `
         color="interactive.text.primary.subtle"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(227, 71%, 51%, 1)",
+              "color": "hsla(227, 100%, 59%, 1)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3770,7 +3770,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
     defaultBorderColor="hsla(211, 27%, 76%, 1)"
     focusBackgroundColor="hsla(211, 20%, 52%, 0.18)"
     focusBorderColor="hsla(211, 27%, 76%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(211, 20%, 52%, 0.18)"
     hoverBorderColor="hsla(211, 27%, 76%, 1)"
@@ -3851,7 +3851,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
         color="interactive.text.gray.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -3860,7 +3860,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -3925,7 +3925,7 @@ exports[`<Button /> should render small size button 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -4007,7 +4007,7 @@ exports[`<Button /> should render small size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={50}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={75}
         style={
           [
@@ -4016,7 +4016,7 @@ exports[`<Button /> should render small size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 18,
               "marginBottom": 0,
@@ -4081,7 +4081,7 @@ exports[`<Button /> should render white color primary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 1)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.8)"
     focusBorderColor="hsla(0, 0%, 100%, 0.8)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.8)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.8)"
@@ -4163,7 +4163,7 @@ exports[`<Button /> should render white color primary button 1`] = `
         color="interactive.text.staticBlack.muted"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -4172,7 +4172,7 @@ exports[`<Button /> should render white color primary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4237,7 +4237,7 @@ exports[`<Button /> should render white color secondary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 0.8)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     focusBorderColor="hsla(0, 0%, 100%, 0.8)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.18)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.8)"
@@ -4319,7 +4319,7 @@ exports[`<Button /> should render white color secondary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -4328,7 +4328,7 @@ exports[`<Button /> should render white color secondary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4393,7 +4393,7 @@ exports[`<Button /> should render white color tertiary button 1`] = `
     defaultBorderColor="hsla(0, 0%, 100%, 0.18)"
     focusBackgroundColor="hsla(0, 0%, 100%, 0.32)"
     focusBorderColor="hsla(0, 0%, 100%, 0.32)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(0, 0%, 100%, 0.32)"
     hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
@@ -4474,7 +4474,7 @@ exports[`<Button /> should render white color tertiary button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -4483,7 +4483,7 @@ exports[`<Button /> should render white color tertiary button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -4548,7 +4548,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusRingColor="hsla(227, 100%, 59%, 0.09)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -4630,7 +4630,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
         color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={50}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={75}
         style={
           [
@@ -4639,7 +4639,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
               "fontFamily": "Inter",
               "fontSize": 11,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 18,
               "marginBottom": 0,

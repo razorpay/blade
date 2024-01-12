@@ -4,21 +4,15 @@ import styled, { css, keyframes } from 'styled-components';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime } from '~utils';
 
-const pulseKeyframes = ({
-  theme,
-  contrast,
-}: {
-  theme: DefaultTheme;
-  contrast: 'low' | 'high';
-}): Keyframes => keyframes`
+const pulseKeyframes = ({ theme }: { theme: DefaultTheme }): Keyframes => keyframes`
   0% {
-    background-color: ${theme.colors.brand.gray.a100[`${contrast}Contrast`]};
+    background-color: ${theme.colors.interactive.background.gray.default};
   }
   25% {
-    background-color: ${theme.colors.brand.gray.a100[`${contrast}Contrast`]};
+    background-color: ${theme.colors.interactive.background.gray.default};
   }
   100% {
-    background-color: ${theme.colors.brand.gray.a50[`${contrast}Contrast`]};
+    background-color: ${theme.colors.interactive.background.gray.highlighted};
   }
 `;
 
@@ -31,7 +25,7 @@ const fadeInKeyframes = (): Keyframes => keyframes`
   }
 `;
 
-const PulseAnimation = styled(BaseBox)<{ contrast: 'low' | 'high' }>(({ theme, contrast }) => {
+const PulseAnimation = styled(BaseBox)(({ theme }) => {
   // We need to delay the animation in between keyframes
   // Since we also offset the animation to have 300ms delay in 25% keyframe
   // https://css-tricks.com/css-keyframe-animation-delay-iterations/
@@ -43,8 +37,8 @@ const PulseAnimation = styled(BaseBox)<{ contrast: 'low' | 'high' }>(({ theme, c
 
   return css`
     opacity: 0;
-    background-color: ${theme.colors.brand.gray.a100[`${contrast}Contrast`]};
-    animation-name: ${fadeInKeyframes()}, ${pulseKeyframes({ contrast, theme })};
+    background-color: ${theme.colors.interactive.background.gray.default};
+    animation-name: ${fadeInKeyframes()}, ${pulseKeyframes({ theme })};
     animation-duration: ${duration}, ${totalDuration};
     animation-delay: 0ms, ${duration};
     animation-timing-function: ${easing}, ${easing};

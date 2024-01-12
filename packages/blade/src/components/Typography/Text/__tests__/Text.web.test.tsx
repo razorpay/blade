@@ -80,22 +80,22 @@ describe('<Text />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should throw error when variant is "caption" and size "small" is passed', () => {
+  it('should throw error when variant is "caption" and size "medium" is passed', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const displayText = 'Displaying some text';
     expect(() =>
       renderWithTheme(
-        // @ts-expect-error testing failure case when size='small' is passed with variant='caption'
+        // @ts-expect-error testing failure case when size='medium' is passed with variant='caption'
         <Text
           color="surface.text.gray.normal"
           variant="caption"
           truncateAfterLines={3}
-          size="small"
+          size="medium"
         >
           {displayText}
         </Text>,
       ),
-    ).toThrow(`[Blade: Text]: size cannot be 'small' when variant is 'caption'`);
+    ).toThrow(`[Blade: Text]: size cannot be 'medium' when variant is 'caption'`);
     mockConsoleError.mockRestore();
   });
 

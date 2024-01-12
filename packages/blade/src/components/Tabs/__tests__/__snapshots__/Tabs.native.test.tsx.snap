@@ -395,7 +395,7 @@ exports[`Tabs should render 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(227, 71%, 51%, 1)",
+                                  "color": "hsla(227, 100%, 59%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -653,7 +653,7 @@ exports[`Tabs should render 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(227, 71%, 51%, 1)",
+                                  "color": "hsla(227, 100%, 59%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -883,7 +883,7 @@ exports[`Tabs should render with filled variant 1`] = `
           collapsable={false}
           style={
             {
-              "backgroundColor": "hsla(227, 100%, 59%, 0.18)",
+              "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
               "borderRadius": 2,
               "bottom": 4,
               "height": -10,
@@ -1214,7 +1214,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(227, 71%, 51%, 1)",
+                                  "color": "hsla(227, 100%, 59%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1509,7 +1509,7 @@ exports[`Tabs should render with filled variant 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(227, 71%, 51%, 1)",
+                                  "color": "hsla(227, 100%, 59%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2106,7 +2106,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(227, 71%, 51%, 1)",
+                                  "color": "hsla(227, 100%, 59%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2362,7 +2362,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(227, 71%, 51%, 1)",
+                                  "color": "hsla(227, 100%, 59%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -2928,7 +2928,7 @@ exports[`Tabs should render with large size 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(227, 71%, 51%, 1)",
+                                  "color": "hsla(227, 100%, 59%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
@@ -3186,7 +3186,7 @@ exports[`Tabs should render with large size 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(227, 71%, 51%, 1)",
+                                  "color": "hsla(227, 100%, 59%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
