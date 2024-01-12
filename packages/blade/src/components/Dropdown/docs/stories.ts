@@ -395,7 +395,7 @@ const WithValidationStateStory = `
             }}
           />
           <DropdownOverlay>
-            <ActionList surfaceLevel={2}>
+            <ActionList>
               <ActionListItem title="Blade" value="blade" />
               <ActionListItem title="Primer" value="primer" />
               <ActionListItem title="Geist" description="by Vercel" value="geist" />
