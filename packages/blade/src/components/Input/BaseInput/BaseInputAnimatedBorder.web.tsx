@@ -67,7 +67,7 @@ export const BaseInputAnimatedBorder = ({
   // need ref because we don't have `blur` as an interaction which means the exit animation would run on default as well as blur event
   const borderAnimation = React.useRef<FlattenSimpleInterpolation>();
   if (
-    currentInteraction === 'active' &&
+    currentInteraction === 'focus' &&
     validationState !== 'error' &&
     validationState !== 'success'
   ) {

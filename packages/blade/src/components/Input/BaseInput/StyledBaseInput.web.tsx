@@ -115,7 +115,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       handleOnBlur?.({ name, value: event });
     },
     onFocus: (event: React.ChangeEvent<HTMLInputElement>): void => {
-      setCurrentInteraction('active');
+      setCurrentInteraction('focus');
       handleOnFocus?.({ name, value: event });
     },
     onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {

@@ -168,7 +168,6 @@ const getColorToken = ({
     default: 'subtle',
     hover: 'normal',
     focus: 'normal',
-    active: 'normal',
     disabled: 'disabled',
   } as const;
 

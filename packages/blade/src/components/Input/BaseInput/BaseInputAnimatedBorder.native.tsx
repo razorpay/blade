@@ -45,7 +45,7 @@ export const BaseInputAnimatedBorder = ({
 
   useEffect(() => {
     if (
-      currentInteraction == 'active' &&
+      currentInteraction == 'focus' &&
       validationState !== 'error' &&
       validationState !== 'success'
     ) {
