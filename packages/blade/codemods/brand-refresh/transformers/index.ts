@@ -653,7 +653,7 @@ const transformer: Transform = (file, api, options) => {
     );
   }
 
-  // Remove fontWeight prop from Badge
+  // Remove forntWeight prop from Badge
   try {
     root
       .find(j.JSXElement)
