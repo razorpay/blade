@@ -245,8 +245,8 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
         content: () => {
           return (
             <Box>
-              <Text>{args.tourStepsContent}</Text>
-              <Text marginTop="spacing.2">
+              <Text color="surface.text.gray.subtle">{args.tourStepsContent}</Text>
+              <Text color="surface.text.gray.subtle" marginTop="spacing.2">
                 You can also issue partial refunds - for example, if a customer purchased multiple
                 items.
               </Text>
@@ -262,7 +262,7 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
         content: () => {
           return (
             <Box>
-              <Text>
+              <Text color="surface.text.gray.subtle">
                 Disputes are raised by customers when they have a problem with a transaction.
               </Text>
             </Box>
@@ -276,7 +276,7 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
         title: 'Dispute Statuses',
         content: () => {
           return (
-            <Text>
+            <Text color="surface.text.gray.subtle">
               Disputes which are open or under review will be shown here. You can also review them
               by clicking on the button.
             </Text>
@@ -391,7 +391,7 @@ export const CustomPlacement = () => {
         content: () => {
           return (
             <Box>
-              <Text>Top</Text>
+              <Text color="surface.text.gray.subtle">Top</Text>
             </Box>
           );
         },
@@ -403,7 +403,7 @@ export const CustomPlacement = () => {
         content: () => {
           return (
             <Box>
-              <Text>Bottom</Text>
+              <Text color="surface.text.gray.subtle">Bottom</Text>
             </Box>
           );
         },
@@ -415,7 +415,7 @@ export const CustomPlacement = () => {
         content: () => {
           return (
             <Box>
-              <Text>Left</Text>
+              <Text color="surface.text.gray.subtle">Left</Text>
             </Box>
           );
         },
@@ -427,7 +427,7 @@ export const CustomPlacement = () => {
         content: () => {
           return (
             <Box>
-              <Text>Right</Text>
+              <Text color="surface.text.gray.subtle">Right</Text>
             </Box>
           );
         },
@@ -516,7 +516,7 @@ export const WithScrollablePage = () => {
         content: () => {
           return (
             <Box>
-              <Text>
+              <Text color="surface.text.gray.subtle">
                 Razorpay provides a Powerful Dashboard for you to get reports and detailed
                 statistics on payments, settlements, refunds and much more for you to take better
                 business decisions.
@@ -533,7 +533,7 @@ export const WithScrollablePage = () => {
         content: () => {
           return (
             <Box>
-              <Text>
+              <Text color="surface.text.gray.subtle">
                 With Amazon AWS, we are built for scale. To ensure that products built with Razorpay
                 are always available, we have a highly scalable and reliable infrastructure.
               </Text>
@@ -549,7 +549,7 @@ export const WithScrollablePage = () => {
         content: () => {
           return (
             <Box>
-              <Text>
+              <Text color="surface.text.gray.subtle">
                 With SDKs and documentation for all major languages and platforms, Razorpay is built
                 for developers.
               </Text>
@@ -792,7 +792,7 @@ export const InterruptibleTour = () => {
         content: () => {
           return (
             <Box>
-              <Text>This is step 1, press skip</Text>
+              <Text color="surface.text.gray.subtle">This is step 1, press skip</Text>
             </Box>
           );
         },
@@ -807,7 +807,7 @@ export const InterruptibleTour = () => {
         content: () => {
           return (
             <Box>
-              <Text>This is step 2</Text>
+              <Text color="surface.text.gray.subtle">This is step 2</Text>
             </Box>
           );
         },
@@ -822,7 +822,7 @@ export const InterruptibleTour = () => {
             title: 'Tour Incomplete!',
             content: () => {
               return (
-                <Text>
+                <Text color="surface.text.gray.subtle">
                   We reccommend that you complete the tour to make the most of the new features. You
                   can find it here when you want to take it.
                 </Text>
@@ -846,7 +846,7 @@ export const InterruptibleTour = () => {
             title: 'Tour Complete!',
             content: () => {
               return (
-                <Text>
+                <Text color="surface.text.gray.subtle">
                   You have completed the tour. You can find it here when you want to take it.
                 </Text>
               );
