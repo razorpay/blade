@@ -151,6 +151,7 @@ const _TablePagination = ({
   showPageNumberSelector = false,
   showLabel,
   label,
+  totalItemCount,
 }: TablePaginationProps): React.ReactElement => {
   const {
     setPaginationPage,
@@ -184,7 +185,9 @@ const _TablePagination = ({
     }
   }, [currentPage, currentPaginationState?.page, setPaginationPage]);
 
-  const totalPages = Math.ceil(totalItems / currentPageSize);
+  const totalPages = !isUndefined(totalItemCount)
+    ? Math.ceil(totalItemCount / currentPageSize)
+    : Math.ceil(totalItems / currentPageSize);
 
   const handlePageChange = useCallback(
     (page: number): void => {
@@ -212,18 +215,18 @@ const _TablePagination = ({
     }
   }, [controlledCurrentPage, currentPage, handlePageChange, onPageChange]);
 
-  if (currentPage > totalPages - 1) {
-    if (!isUndefined(controlledCurrentPage)) {
-      if (__DEV__) {
-        throwBladeError({
-          moduleName: 'TablePagination',
-          message: `Value of 'currentPage' prop cannot be greater than the total pages`,
-        });
-      }
-    } else {
-      handlePageChange(totalPages - 1);
-    }
-  }
+  // if (currentPage > totalPages - 1) {
+  //   if (!isUndefined(controlledCurrentPage)) {
+  //     if (__DEV__) {
+  //       throwBladeError({
+  //         moduleName: 'TablePagination',
+  //         message: `Value of 'currentPage' prop cannot be greater than the total pages`,
+  //       });
+  //     }
+  //   } else {
+  //     handlePageChange(totalPages - 1);
+  //   }
+  // }
 
   const handlePageSizeChange = (pageSize: number): void => {
     onPageSizeChange?.({ pageSize });
