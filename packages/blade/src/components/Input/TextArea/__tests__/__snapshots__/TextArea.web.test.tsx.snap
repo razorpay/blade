@@ -74,7 +74,7 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(217,18%,45%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -96,7 +96,7 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -113,7 +113,7 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -144,7 +144,7 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8::-webkit-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -161,7 +161,7 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8::-moz-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -178,7 +178,7 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8:-ms-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -195,7 +195,7 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8::placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -221,14 +221,14 @@ exports[`<TextArea /> should render 1`] = `
   left: 0;
   right: 0;
   opacity: 0;
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(227,100%,59%,1);
   border-width: 1px;
   height: 1px;
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -249,8 +249,8 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c7.c7.c7.c7.c7:hover {
-  background-color: hsla(216,15%,54%,0.18);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -273,8 +273,8 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c7.c7.c7.c7.c7:focus-within {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -460,7 +460,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(217,18%,45%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -482,7 +482,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -499,7 +499,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -530,7 +530,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8.c8.c8.c8.c8::-webkit-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -547,7 +547,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8.c8.c8.c8.c8::-moz-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -564,7 +564,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8.c8.c8.c8.c8:-ms-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -581,7 +581,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8.c8.c8.c8.c8::placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -607,14 +607,14 @@ exports[`<TextArea /> should set number of lines 1`] = `
   left: 0;
   right: 0;
   opacity: 0;
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(227,100%,59%,1);
   border-width: 1px;
   height: 1px;
 }
 
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -635,8 +635,8 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c7.c7.c7.c7.c7:hover {
-  background-color: hsla(216,15%,54%,0.18);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -659,8 +659,8 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c7.c7.c7.c7.c7:focus-within {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;

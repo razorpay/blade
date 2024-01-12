@@ -34,9 +34,8 @@ const getWebInputStyles = (
       ...getTextStyles({
         size: 'medium',
         variant: 'body',
-        type: 'placeholder',
         weight: 'regular',
-        contrast: 'low',
+        color: 'surface.text.gray.disabled',
         theme: props.theme,
       }),
       textAlign: props.textAlign,
@@ -116,7 +115,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       handleOnBlur?.({ name, value: event });
     },
     onFocus: (event: React.ChangeEvent<HTMLInputElement>): void => {
-      setCurrentInteraction('active');
+      setCurrentInteraction('focus');
       handleOnFocus?.({ name, value: event });
     },
     onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -144,7 +143,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       value={props.value}
     >
       <Text
-        type={props.value && !isDisabled ? 'subtle' : 'placeholder'}
+        color={
+          props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+        }
         truncateAfterLines={1}
         textAlign={props.textAlign}
       >
