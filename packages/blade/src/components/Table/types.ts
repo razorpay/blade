@@ -286,6 +286,10 @@ type TablePaginationProps = {
    * @default false
    */
   showLabel?: boolean;
+  /**
+   * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server. This information must be provided by your server.
+   */
+  totalItemCount?: number;
 };
 
 type TableToolbarProps = {
