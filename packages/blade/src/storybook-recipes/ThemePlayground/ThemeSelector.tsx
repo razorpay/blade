@@ -72,9 +72,22 @@ const ColorSelector = ({
 }): React.ReactElement => {
   return (
     <ColorSelection color={color} onClick={onClick} isSelected={isSelected}>
-      {isSelected ? <CheckIcon size="large" color="interactive.icon.staticWhite.normal" /> : null}
+      {isSelected ? <CheckIcon size="large" color="interactive.icon.onPrimary.normal" /> : null}
     </ColorSelection>
   );
+};
+
+type ThemeSelectorProps = {
+  selectedColor?: string;
+  setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>;
+  colorScheme: ColorSchemeNames;
+  setColorScheme: React.Dispatch<React.SetStateAction<ColorSchemeNames>>;
+  selectedPreBuiltTheme?: string;
+  setSelectedPreBuiltTheme: React.Dispatch<React.SetStateAction<string | undefined>>;
+  setBorderBase: React.Dispatch<React.SetStateAction<string>>;
+  borderBase: string;
+  setShowInternalDemoConfig: React.Dispatch<React.SetStateAction<boolean>>;
+  showInternalDemoConfig: boolean;
 };
 
 const ThemeSelector = ({
@@ -88,18 +101,7 @@ const ThemeSelector = ({
   setBorderBase,
   setShowInternalDemoConfig,
   showInternalDemoConfig,
-}: {
-  selectedColor?: string;
-  setSelectedColor: React.Dispatch<React.SetStateAction<string | undefined>>;
-  colorScheme: ColorSchemeNames;
-  setColorScheme: React.Dispatch<React.SetStateAction<ColorSchemeNames>>;
-  selectedPreBuiltTheme?: string;
-  setSelectedPreBuiltTheme: React.Dispatch<React.SetStateAction<string | undefined>>;
-  setBorderBase: React.Dispatch<React.SetStateAction<string>>;
-  borderBase: string;
-  setShowInternalDemoConfig: React.Dispatch<React.SetStateAction<boolean>>;
-  showInternalDemoConfig: boolean;
-}): React.ReactElement => {
+}: ThemeSelectorProps): React.ReactElement => {
   const colorOptions = [
     '#EE681A',
     '#83003D',

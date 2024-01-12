@@ -74,7 +74,7 @@ const LanguageSelector = styled.div(({ theme }) => ({
 
 const CheckoutShell = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const [isLanguageSheetOpen, setIsLanguageSheetOpen] = useState(false);
-  const hideLanguageSheet = (): void => setIsLanguageSheetOpen(false);
+  // const hideLanguageSheet = (): void => setIsLanguageSheetOpen(false);
   return (
     <Box
       maxWidth="375px"
