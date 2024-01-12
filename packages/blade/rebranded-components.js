@@ -36,6 +36,11 @@ const rebrandedComponents = [
   'Switch',
   'Radio',
   'Checkbox',
+  'BaseInput',
+  'TextInput',
+  'PasswordInput',
+  'OTPInput',
+  'TextArea',
 ];
 
 module.exports = { rebrandedComponents };

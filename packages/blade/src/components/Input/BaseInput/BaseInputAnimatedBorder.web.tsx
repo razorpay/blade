@@ -7,8 +7,8 @@ import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
-import type { ActionStates } from '~tokens/theme/theme';
 import { makeBorderSize } from '~utils/makeBorderSize';
+import type { ActionStates } from '~utils/useInteraction';
 
 const scaleBorder = keyframes`
 from {
@@ -39,7 +39,7 @@ const BaseInputStyledAnimatedBorder = styled(BaseBox)(
     left: 0;
     right: 0;
     opacity: 0;
-    background-color: ${theme.colors.brand.primary[500]};
+    background-color: ${theme.colors.interactive.background.primary.default};
     border-width: ${makeBorderSize(theme.border.width.thin)};
     height: ${makeBorderSize(theme.border.width.thin)};
     ${animation}
@@ -50,7 +50,7 @@ export const BaseInputAnimatedBorder = ({
   currentInteraction,
   validationState,
 }: {
-  currentInteraction: keyof ActionStates;
+  currentInteraction: ActionStates;
   validationState: BaseInputProps['validationState'];
 }): ReactElement => {
   const { theme } = useTheme();
@@ -67,7 +67,7 @@ export const BaseInputAnimatedBorder = ({
   // need ref because we don't have `blur` as an interaction which means the exit animation would run on default as well as blur event
   const borderAnimation = React.useRef<FlattenSimpleInterpolation>();
   if (
-    currentInteraction === 'active' &&
+    currentInteraction === 'focus' &&
     validationState !== 'error' &&
     validationState !== 'success'
   ) {
