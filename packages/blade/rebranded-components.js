@@ -1,6 +1,8 @@
 const rebrandedComponents = [
   'ActionList',
   'Amount',
+  'AutoComplete',
+  'SelectInput',
   'BaseBox',
   'BaseText',
   'BaseLink',
