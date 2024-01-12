@@ -98,10 +98,9 @@ const _Dropdown = ({
 
   const dropdownBaseId = useId('dropdown');
 
-  const setIsOpenControlled = (isOpenTwo: boolean): void => {
-    console.log({ isOpenTwo });
-    onOpenChange?.(isOpenTwo);
-    if (!isOpenTwo) {
+  const setIsOpenControlled = (isControlledStateOpen: boolean): void => {
+    onOpenChange?.(isControlledStateOpen);
+    if (!isControlledStateOpen) {
       onDismiss?.();
     }
   };
