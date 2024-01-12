@@ -195,6 +195,10 @@ type TableRowProps<Item> = {
    * </TableRow>
    **/
   isDisabled?: boolean;
+  /**
+   * Callback triggered when the row is hovered. It is called with the current row item prop.
+   */
+  onHover?: ({ item }: { item: TableNode<Item> }) => void;
 };
 
 type TableCellProps = {
