@@ -83,12 +83,17 @@ export type CardProps = {
    * Sets the height of the card
    */
   height?: BoxProps['height'];
+    /**
+    Stops UI breakage when height is 100% 
+   */
+  minHeight?: BoxProps['minHeight'];
   /**
    * If `true`, the card will be in selected state
    * Card will have a primary color border around it.
    *
    * @default false
    */
+
   isSelected?: boolean;
   /**
    * Makes the Card linkable by setting the `href` prop
@@ -146,6 +151,7 @@ const Card = ({
   padding = 'spacing.7',
   width,
   height,
+  minHeight,
   onClick,
   isSelected = false,
   accessibilityLabel,
