@@ -57,7 +57,6 @@ export const getInputBackgroundAndBorderStyles = ({
   // focused state
   if (isFocused) {
     backgroundColor = theme.colors.interactive.background.primary.faded;
-    borderBottomColor = theme.colors.interactive.background.primary.default;
   }
 
   // disabled state
