@@ -50,7 +50,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({
     theme: props.theme,
-    isFocused: props.currentInteraction === 'active',
+    isFocused: props.currentInteraction === 'focus',
     isDisabled: props.isDisabled,
     validationState: props.validationState,
     isTextArea: props.isTextArea,
@@ -60,7 +60,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     ...getInputBackgroundAndBorderStyles({
       theme: props.theme,
       isHovered: true,
-      isFocused: props.currentInteraction === 'active',
+      isFocused: props.currentInteraction === 'focus',
       isDisabled: props.isDisabled,
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
@@ -72,7 +72,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
   ':focus-within': {
     ...getInputBackgroundAndBorderStyles({
       theme: props.theme,
-      isFocused: props.currentInteraction === 'active',
+      isFocused: props.currentInteraction === 'focus',
       isDisabled: props.isDisabled,
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,

@@ -140,11 +140,7 @@ export const BaseInputVisuals = ({
           <BaseBox paddingLeft="spacing.4" display="flex">
             <LeadingIcon
               size="medium"
-              color={
-                isDisabled
-                  ? 'surface.text.placeholder.lowContrast'
-                  : 'surface.text.subtle.lowContrast'
-              }
+              color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.subtle'}
             />
           </BaseBox>
         ) : null}
@@ -154,8 +150,7 @@ export const BaseInputVisuals = ({
               size="medium"
               variant="body"
               weight="regular"
-              contrast="low"
-              type={isDisabled ? 'placeholder' : 'subtle'}
+              color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
             >
               {prefix}
             </Text>
@@ -184,8 +179,7 @@ export const BaseInputVisuals = ({
               size="medium"
               variant="body"
               weight="regular"
-              contrast="low"
-              type={isDisabled ? 'placeholder' : 'subtle'}
+              color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
             >
               {suffix}
             </Text>
@@ -197,9 +191,7 @@ export const BaseInputVisuals = ({
               <TrailingIcon
                 size="medium"
                 color={
-                  isDisabled
-                    ? 'surface.text.placeholder.lowContrast'
-                    : 'surface.text.subtle.lowContrast'
+                  isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'
                 }
               />
             }
