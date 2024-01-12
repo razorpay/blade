@@ -214,7 +214,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -222,7 +222,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -246,7 +246,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -263,7 +263,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -420,7 +420,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -428,7 +428,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -452,7 +452,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -469,7 +469,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -626,7 +626,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -634,7 +634,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -658,7 +658,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -675,7 +675,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -959,7 +959,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -967,7 +967,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -991,7 +991,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -1008,7 +1008,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -1166,7 +1166,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -1174,7 +1174,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -1198,7 +1198,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -1215,7 +1215,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -1373,7 +1373,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -1381,7 +1381,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -1405,7 +1405,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -1422,7 +1422,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,

@@ -87,16 +87,16 @@ const chipColorTokens: ChipColorTokens = {
   text: {
     unchecked: 'interactive.text.gray.subtle',
     disabled: 'interactive.text.gray.disabled',
-    primary: 'interactive.text.primary.subtle',
-    positive: 'interactive.text.positive.subtle',
-    negative: 'interactive.text.negative.subtle',
+    primary: 'interactive.text.primary.normal',
+    positive: 'interactive.text.positive.normal',
+    negative: 'interactive.text.negative.normal',
   },
   icon: {
     unchecked: 'interactive.icon.gray.subtle',
     disabled: 'interactive.icon.gray.disabled',
     primary: 'interactive.icon.primary.normal',
-    positive: 'feedback.icon.positive.intense',
-    negative: 'feedback.icon.negative.intense',
+    positive: 'interactive.icon.positive.normal',
+    negative: 'interactive.icon.negative.normal',
   },
   background: {
     unchecked: {
@@ -122,7 +122,7 @@ const chipColorTokens: ChipColorTokens = {
   },
   border: {
     unchecked: {
-      default: 'interactive.border.gray.default',
+      default: 'interactive.border.gray.faded',
       disabled: 'interactive.border.gray.disabled',
     },
     primary: {

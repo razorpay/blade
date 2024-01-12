@@ -82,7 +82,7 @@ export default {
       table: {
         category: propsCategory.CHIP,
         type: {
-          summary: '"default" | "positive" | "negative"',
+          summary: '"primary" | "positive" | "negative"',
         },
       },
       options: ['primary', 'positive', 'negative'],
@@ -120,5 +120,5 @@ const ChipTemplate: StoryFn<typeof ChipComponent> = ({ children, ...args }) => {
 export const Default = ChipTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {
-  color: 'default',
+  color: 'primary',
 };

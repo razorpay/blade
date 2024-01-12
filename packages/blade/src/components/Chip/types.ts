@@ -128,7 +128,7 @@ type ChipBorderColors =
   | InteractiveBorderColors<'positive'>
   | InteractiveBorderColors<'negative'>
   | InteractiveBorderColors<'primary'>
-  | 'interactive.border.gray.default'
+  | 'interactive.border.gray.faded'
   | 'interactive.border.gray.disabled';
 
 type AnimatedChipProps = {

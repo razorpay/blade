@@ -61,7 +61,7 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
@@ -88,14 +88,14 @@ exports[`<Chip /> should render chip 1`] = `
   background-color: hsla(0,0%,100%,0);
   border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(211,20%,52%,0.18);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -512,7 +512,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
@@ -539,7 +539,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   background-color: hsla(0,0%,100%,0);
   border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
@@ -554,7 +554,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 .c11.c11.c11.c11.c11 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(211,20%,52%,0.18);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1067,7 +1067,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
@@ -1094,7 +1094,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   background-color: hsla(0,0%,100%,0);
   border-radius: 9999px;
   border-width: 0.5px;
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
@@ -1139,7 +1139,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 .c17.c17.c17.c17.c17 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
-  border-color: hsla(211,27%,76%,1);
+  border-color: hsla(211,20%,52%,0.18);
   border-width: 1px;
   display: -webkit-box;
   display: -webkit-flex;

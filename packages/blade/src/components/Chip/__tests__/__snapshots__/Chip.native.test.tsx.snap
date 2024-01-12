@@ -423,7 +423,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -431,7 +431,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -455,7 +455,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -472,7 +472,7 @@ exports[`<Chip /> should prioritize Chip's isDisabled prop instead of ChipGroup 
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -756,7 +756,7 @@ exports[`<Chip /> should render chip 1`] = `
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -764,7 +764,7 @@ exports[`<Chip /> should render chip 1`] = `
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -788,7 +788,7 @@ exports[`<Chip /> should render chip 1`] = `
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -805,7 +805,7 @@ exports[`<Chip /> should render chip 1`] = `
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -963,7 +963,7 @@ exports[`<Chip /> should render chip 1`] = `
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -971,7 +971,7 @@ exports[`<Chip /> should render chip 1`] = `
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -995,7 +995,7 @@ exports[`<Chip /> should render chip 1`] = `
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -1012,7 +1012,7 @@ exports[`<Chip /> should render chip 1`] = `
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -1296,7 +1296,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -1304,7 +1304,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -1328,7 +1328,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -1345,7 +1345,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -1589,7 +1589,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -1597,7 +1597,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -1621,7 +1621,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -1638,7 +1638,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -2215,7 +2215,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                     }
                   >
                     <View
-                      borderColor="interactive.border.gray.default"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -2223,7 +2223,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(211, 27%, 76%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -2247,7 +2247,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="interactive.border.gray.default"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
                         color="primary"
@@ -2264,7 +2264,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                             {
                               "alignItems": "center",
                               "backgroundColor": "hsla(0, 0%, 100%, 0)",
-                              "borderColor": "hsla(211, 27%, 76%, 1)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
