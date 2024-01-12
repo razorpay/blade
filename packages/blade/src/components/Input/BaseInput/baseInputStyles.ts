@@ -47,7 +47,7 @@ export const getInputBackgroundAndBorderStyles = ({
 >): CSSObject => {
   // normal state
   let backgroundColor = theme.colors.interactive.background.gray.default;
-  let borderBottomColor = theme.colors.interactive.background.gray.highlighted; // TODO: Check why this is not a border color
+  let borderBottomColor = theme.colors.interactive.background.gray.highlighted;
 
   // hoverState
   if (isHovered) {
@@ -57,7 +57,7 @@ export const getInputBackgroundAndBorderStyles = ({
   // focused state
   if (isFocused) {
     backgroundColor = theme.colors.interactive.background.primary.faded;
-    borderBottomColor = theme.colors.interactive.background.primary.default; // TODO: Check why this is not a border color
+    borderBottomColor = theme.colors.interactive.background.primary.default;
   }
 
   // disabled state
@@ -69,7 +69,7 @@ export const getInputBackgroundAndBorderStyles = ({
   // validation state
   if (validationState === 'error') {
     backgroundColor = theme.colors.interactive.background.negative.faded;
-    borderBottomColor = theme.colors.interactive.background.negative.default; // TODO: Check why this is not a border color
+    borderBottomColor = theme.colors.interactive.background.negative.default;
   } else if (validationState === 'success') {
     backgroundColor = theme.colors.interactive.background.positive.faded;
     borderBottomColor = theme.colors.interactive.background.positive.default;
