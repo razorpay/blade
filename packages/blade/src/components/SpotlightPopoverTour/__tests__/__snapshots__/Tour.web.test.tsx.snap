@@ -121,7 +121,7 @@ exports[`<Tour /> should render 1`] = `
 
 .c10.c10.c10.c10.c10:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
   color: hsla(211,26%,34%,1);
 }
 
@@ -260,7 +260,7 @@ exports[`<Tour /> should render 1`] = `
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
 .c0.c0.c0.c0.c0 * {
@@ -323,7 +323,7 @@ exports[`<Tour /> should render 1`] = `
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
 .c14.c14.c14.c14.c14 * {

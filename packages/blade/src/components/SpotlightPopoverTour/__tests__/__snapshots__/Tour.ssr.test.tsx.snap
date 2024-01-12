@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gWxRWW"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO bewYNq" data-blade-component="base-text">Open Tour</div></div></button><div data-blade-component="box" class="BaseBox-bmPWx">Some other content inside</div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Trigger 2</p></div></div></div>"`;
+exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iswbvS"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO bewYNq" data-blade-component="base-text">Open Tour</div></div></button><div data-blade-component="box" class="BaseBox-bmPWx">Some other content inside</div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Trigger 2</p></div></div></div>"`;
 
 exports[`<Tour /> should render Tour ssr 2`] = `
 .c1.c1.c1.c1.c1 {
@@ -112,7 +112,7 @@ exports[`<Tour /> should render Tour ssr 2`] = `
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
 .c0.c0.c0.c0.c0 * {
