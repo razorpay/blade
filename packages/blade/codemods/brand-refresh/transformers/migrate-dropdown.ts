@@ -22,10 +22,15 @@ function migrateDropdownComponent({ root, j, file }): void {
 
         // If the onDismiss prop is a function, we need to wrap the function body in an if statement that checks if the dropdown is open or not
         // If the onDismiss prop is not a function, but a variable reference, we need to call the variable reference without arguments
-        // onDismiss={handleDismiss} -> onOpenChange={(isOpen) => { if (!isOpen) { handleDismiss() } }}
-        // onDismiss={() => console.log("Dismissed!!!")} -> onOpenChange={(isOpen) => { if (!isOpen) { console.log("Dismissed!!!") } }}
-        // onDismiss={function () { console.log("Dismissed!!!") }} -> onOpenChange={(isOpen) => { if (!isOpen) { console.log("Dismissed!!!") } }}
-        // onDismiss={() => { console.log("Dismissed!!!") }} -> onOpenChange={(isOpen) => { if (!isOpen) { console.log("Dismissed!!!") } }}
+        // Following are the different ways the onDismiss prop can be defined:
+        // onDismiss={handleDismiss}
+        //      -> onOpenChange={(isOpen) => { if (!isOpen) { handleDismiss() } }}
+        // onDismiss={() => console.log("Dismissed!!!")}
+        //      -> onOpenChange={(isOpen) => { if (!isOpen) { console.log("Dismissed!!!") } }}
+        // onDismiss={function () { console.log("Dismissed!!!") }}
+        //      -> onOpenChange={(isOpen) => { if (!isOpen) { console.log("Dismissed!!!") } }}
+        // onDismiss={() => { console.log("Dismissed!!!") }}
+        //      -> onOpenChange={(isOpen) => { if (!isOpen) { console.log("Dismissed!!!") } }}
         let isOpenIfBlockStatement = j.blockStatement([
           j.expressionStatement(j.callExpression(node.value.expression, [])),
         ]);
@@ -38,7 +43,6 @@ function migrateDropdownComponent({ root, j, file }): void {
           // If the function body is a block statement, we can just use that
           if (node.value.expression.body.type === 'BlockStatement') {
             isOpenIfBlockStatement = node.value.expression.body;
-            //isOpenIfBlockStatement = j.blockStatement([node.value.expression.body.body]);
           } else {
             // If the function body is not a block statement, we need to wrap it in one
             isOpenIfBlockStatement = j.blockStatement([
