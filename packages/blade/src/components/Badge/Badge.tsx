@@ -13,7 +13,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { StringChildrenType, TestID } from '~utils/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { isReactNative, makeSize, useTheme } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import { throwBladeError } from '~utils/logger';
 
 type BadgeProps = {
