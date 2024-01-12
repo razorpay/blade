@@ -1,6 +1,6 @@
 import { red } from './utils';
 
-// Badge component Migration, remove the `fortWeight` prop
+// Badge component Migration, remove the `fontWeight` prop
 function migrateBadgeComponent({ root, j, file }): void {
   try {
     root

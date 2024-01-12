@@ -77,7 +77,27 @@ it('should migrate the Amount component', async () => {
      
               <Amount value={123456.789} type="heading" size="large" />
 
-              <Amount value={123456.789} type="heading" size="xlarge" />
+              <CardHeaderAmount value={123456.789} type="heading" size="xlarge" />
+
+              <CardHeaderAmount value={123456.789} type="body" size="small" />
+
+              <CardHeaderAmount value={123456.789} type="body" size="small" weight="semibold" />
+              
+              <CardHeaderAmount value={123456.789} type="body" size="medium" />
+        
+              <CardHeaderAmount value={123456.789} type="body" size="medium" weight="semibold" />
+               
+              <CardHeaderAmount value={123456.789} type="body" size="large" />
+        
+              <CardHeaderAmount value={123456.789} type="body" size="large" weight="semibold" />
+              
+              <CardHeaderAmount value={123456.789} type="heading" size="medium" />
+
+              <CardHeaderAmount value={123456.789} type="heading" size="medium" weight="semibold" />  
+     
+              <CardHeaderAmount value={123456.789} type="heading" size="large" />
+
+              <CardHeaderAmount value={123456.789} type="heading" size="xlarge" />
             </>
           );"
   `);

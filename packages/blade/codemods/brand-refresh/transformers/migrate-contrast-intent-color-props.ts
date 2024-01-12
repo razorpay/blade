@@ -189,7 +189,7 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
     );
   }
 
-  // Change color="default" to color="primary" in Button/Link/Badge/Counter
+  // Change color="default" to color="primary" in Button/Link/Badge/Counter/Chip/ChipGroup
   // <Button variant="secondary" color="default"> -> <Button variant="secondary" color="primary">
   try {
     root
@@ -200,6 +200,8 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
           'Link',
           'Badge',
           'Counter',
+          'Chip',
+          'ChipGroup',
           'CardHeaderBadge',
           'CardHeaderCounter',
           'CardHeaderIconButton',
