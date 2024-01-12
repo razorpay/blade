@@ -81,11 +81,6 @@ it('should remove variant/intent prop in favor of color prop', async () => {
           <Chip value="no" intent="none"> No </Chip>
         </ChipGroup>
 
-        <ChipGroup defaultValue="yes" color="default">
-          <Chip value="yes" color="default"> Yes </Chip>
-          <Chip value="no" color="default"> No </Chip>
-        </ChipGroup>
-
         <Amount intent="positive" value={1234} />
 
         <ProgressBar intent="positive" label="Label" size="medium" value={10} />
@@ -125,11 +120,6 @@ it('should remove variant/intent prop in favor of color prop', async () => {
             <ChipGroup defaultValue="yes">
               <Chip value="yes" color="positive"> Yes </Chip>
               <Chip value="no" color="negative"> No </Chip>
-            </ChipGroup>
-
-            <ChipGroup defaultValue="yes" color="primary">
-              <Chip value="yes" color="primary"> Yes </Chip>
-              <Chip value="no" color="primary"> No </Chip>
             </ChipGroup>
 
             <ChipGroup defaultValue="yes" color="primary">

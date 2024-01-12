@@ -631,15 +631,13 @@ const transformer: Transform = (file, api, options) => {
     );
   }
 
-  // Change color="default" to color="primary" in Button/Link/Badge/Counter/Chip/ChipGroup
+  // Change color="default" to color="primary" in Button/Link/Badge/Counter
   // <Button variant="secondary" color="default"> -> <Button variant="secondary" color="primary">
   try {
     root
       .find(j.JSXElement)
       .filter((path) =>
-        ['Button', 'Link', 'Badge', 'Counter', 'Chip', 'ChipGroup'].includes(
-          path.value.openingElement.name.name,
-        ),
+        ['Button', 'Link', 'Badge', 'Counter'].includes(path.value.openingElement.name.name),
       )
       .find(j.JSXAttribute)
       .filter((path) => path.node.name.name === 'color' && path.node.value.value === 'default')
