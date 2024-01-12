@@ -13,7 +13,6 @@ import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChi
 import { isReactNative } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
-import { useDidUpdate } from '~utils/useDidUpdate';
 import type { ContainerElementType } from '~utils/types';
 
 const validDropdownChildren = [
@@ -99,24 +98,23 @@ const _Dropdown = ({
 
   const dropdownBaseId = useId('dropdown');
 
-  useDidUpdate(() => {
-    onOpenChange?.(isOpen);
-    if (!isOpen) {
+  const setIsOpenControlled = (isOpenTwo: boolean): void => {
+    console.log({ isOpenTwo });
+    onOpenChange?.(isOpenTwo);
+    if (!isOpenTwo) {
       onDismiss?.();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
-
-  React.useEffect(() => {
-    if (isOpenControlled !== undefined) {
-      setIsOpen(isOpenControlled);
-    }
-  }, [isOpenControlled]);
+  };
 
   const close = React.useCallback(() => {
     setActiveTagIndex(-1);
-    setIsOpen(false);
-  }, []);
+    if (isOpenControlled === undefined) {
+      setIsOpen(false);
+    } else {
+      setIsOpenControlled(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpenControlled]);
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -147,8 +145,8 @@ const _Dropdown = ({
 
   const contextValue = React.useMemo<DropdownContextType>(
     () => ({
-      isOpen,
-      setIsOpen,
+      isOpen: isOpenControlled === undefined ? isOpen : isOpenControlled,
+      setIsOpen: isOpenControlled === undefined ? setIsOpen : setIsOpenControlled,
       close,
       selectedIndices,
       setSelectedIndices,
@@ -186,6 +184,7 @@ const _Dropdown = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       isOpen,
+      isOpenControlled,
       selectedIndices,
       controlledValueIndices,
       options,
@@ -224,7 +223,10 @@ const _Dropdown = ({
           return;
         }
 
-        if (!dropdown.contains(target) && !isTagDismissedRef.current?.value) {
+        const isOutsideClick = !dropdown.contains(target) && !isTagDismissedRef.current?.value;
+        const dropdownIsOpen = typeof isOpenControlled === 'undefined' ? isOpen : isOpenControlled;
+
+        if (isOutsideClick && dropdownIsOpen) {
           close();
         }
 

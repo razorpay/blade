@@ -185,6 +185,132 @@ FooterActions.play = async ({ canvasElement }) => {
   await waitFor(() => expect(getByTestId('dropdown-overlay')).not.toBeVisible());
 };
 
+export const ControlledDropdownSingleSelect: StoryFn<typeof Dropdown> = (): React.ReactElement => {
+  const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
+      <Button marginX="spacing.4" variant="secondary" onClick={() => setCurrentSelection('')}>
+        Clear Selection
+      </Button>
+      <Button
+        variant="tertiary"
+        onClick={() => {
+          setIsDropdownOpen(true);
+        }}
+      >
+        Open Dropdown
+      </Button>
+      <Dropdown
+        isOpen={isDropdownOpen}
+        onOpenChange={(isOpen) => {
+          setIsDropdownOpen(isOpen);
+        }}
+        selectionType="single"
+      >
+        <SelectInput
+          label="Select City"
+          value={currentSelection}
+          onChange={(args) => {
+            setCurrentSelection(args.values[0]);
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </>
+  );
+};
+
+ControlledDropdownSingleSelect.play = async ({ canvasElement }) => {
+  const { getByRole } = within(canvasElement);
+  const selectInput = getByRole('combobox', { name: 'Select City' });
+
+  // external button control selection test
+  await expect(selectInput).toHaveTextContent('Select Option');
+  await userEvent.click(getByRole('button', { name: 'Select Bangalore' }));
+  await expect(selectInput).toHaveTextContent('Bangalore');
+
+  // select input's control test
+  await userEvent.click(selectInput);
+  await userEvent.click(getByRole('option', { name: 'Pune' }));
+  await expect(selectInput).toHaveTextContent('Pune');
+
+  // Clear button test
+  await userEvent.click(getByRole('button', { name: 'Clear Selection' }));
+  await expect(selectInput).toHaveTextContent('Select Option');
+
+  // toggle dropdown test
+  await userEvent.click(getByRole('button', { name: 'Open Dropdown' }));
+  await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
+};
+
+export const ControlledDropdownMultiSelect: StoryFn<typeof Dropdown> = (): React.ReactElement => {
+  const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
+  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  return (
+    <>
+      <Button
+        onClick={() => {
+          if (!currentSelection.includes('bangalore')) {
+            setCurrentSelection([...currentSelection, 'bangalore']);
+          }
+        }}
+      >
+        Select Bangalore
+      </Button>
+      <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Open Dropdown</Button>
+
+      <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen} selectionType="multiple">
+        <SelectInput
+          label="Select City"
+          value={currentSelection}
+          onChange={(args) => {
+            if (args) {
+              setCurrentSelection(args.values);
+            }
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Chennai" value="chennai" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </>
+  );
+};
+
+ControlledDropdownMultiSelect.play = async ({ canvasElement }) => {
+  const { getByRole, queryAllByLabelText } = within(canvasElement);
+  const selectInput = getByRole('combobox', { name: 'Select City' });
+
+  // Select 1 item programatically
+  await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeFalsy();
+  await userEvent.click(getByRole('button', { name: 'Select Bangalore' }));
+  await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
+
+  // select 2nd item from actionlist
+  await userEvent.click(selectInput);
+  await userEvent.click(getByRole('option', { name: 'Pune' }));
+  await expect(queryAllByLabelText('Close Pune tag')?.[0]).toBeInTheDocument();
+  await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
+
+  // dropdown open test
+  await userEvent.click(getByRole('button', { name: 'Open Dropdown' }));
+  await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
+};
+
 export default {
   title: 'Components/Interaction Tests/Dropdown',
   component: Dropdown,
