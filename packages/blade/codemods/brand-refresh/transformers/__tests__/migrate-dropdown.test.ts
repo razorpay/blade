@@ -111,10 +111,7 @@ it('should migrate various scenarios for the onDismiss prop', async () => {
           return (
             <Box padding="spacing.10" display="flex" alignItems="center" gap="spacing.2">
                 <Dropdown
-                    onDismiss={function () {
-                        console.log("Dismissed!!!")
-                        setIsDropdownOpen(false);
-                    }}
+                    onDismiss={() => console.log("Dismissed!!!")}
                 >
                     <DropdownButton icon={MyAccountIcon} variant="secondary">
                         My Account
@@ -195,7 +192,27 @@ it('should migrate various scenarios for the onDismiss prop', async () => {
     "const App = () => {
               return (
                   <Box padding="spacing.10" display="flex" alignItems="center" gap="spacing.2">
-                      
+                      <Dropdown
+                          onOpenChange={isOpen => {
+                              if (!isOpen) {
+                                  console.log("Dismissed!!!");
+                              }
+                          }}
+                      >
+                          <DropdownButton icon={MyAccountIcon} variant="secondary">
+                              My Account
+                          </DropdownButton>
+                          <DropdownOverlay>
+                              <ActionList>
+                                  <ActionListItem
+                                      intent="negative"
+                                      title="Log Out"
+                                      value="logout"
+                                  />
+                              </ActionList>
+                          </DropdownOverlay>
+                      </Dropdown>
+
                       <Dropdown
                           onOpenChange={isOpen => {
                               if (!isOpen) {
