@@ -8,8 +8,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';
-import type { BaseInputProps } from './BaseInput';
 import type { ActionStates } from '../../../utils/useInteraction';
+import type { BaseInputProps } from './BaseInput';
 import { useTheme } from '~components/BladeProvider';
 import { makeBorderSize } from '~utils/makeBorderSize';
 
