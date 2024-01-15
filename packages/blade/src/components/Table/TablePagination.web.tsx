@@ -23,7 +23,6 @@ import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
-import { throwBladeError } from '~utils/logger';
 
 const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
 
