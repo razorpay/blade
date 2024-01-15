@@ -1,0 +1,53 @@
+
+import { Meta } from '@storybook/addon-docs';
+import { Text } from '~components/Typography';
+import {
+Table,
+TableHeader,
+TableHeaderRow,
+TableHeaderCell,
+TableBody,
+TableRow,
+TableCell,
+} from '~components/Table';
+//import { Table } from '~utils/storybook/PopoverVsTooltip';
+
+<Meta title="Utils/Bundle Size" />
+
+# Size Limit Report
+
+| Component | Size | Limit |
+| --- | --- | --- |
+| Import all components | 11.344 kB | 100000 |
+| Import all components | 14.672 kB | 100000 |
+
+<Table data={{"nodes":[{"id":"1","paymentId":"rzp243034","amount":6409.92,"date":"2021-08-13T18:30:00.000Z","status":"Completed","account":"302319103"},{"id":"2","paymentId":"rzp435954","amount":4449.37,"date":"2021-10-24T18:30:00.000Z","status":"Failed","account":"805397622"},{"id":"3","paymentId":"rzp861243","amount":5670.76,"date":"2021-10-05T18:30:00.000Z","status":"Completed","account":"29330071"},{"id":"4","paymentId":"rzp878704","amount":4264.14,"date":"2021-04-09T18:30:00.000Z","status":"Pending","account":"964466675"},{"id":"5","paymentId":"rzp349466","amount":281.76,"date":"2021-08-06T18:30:00.000Z","status":"Completed","account":"3243856"}]}}>
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>ID</TableHeaderCell>
+              <TableHeaderCell>Amount</TableHeaderCell>
+              <TableHeaderCell>Date</TableHeaderCell>
+              <TableHeaderCell>Method</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+          <TableBody>
+            {tableData.map((tableItem, index) => (
+              <TableRow key={index} item={tableItem}>
+                <TableCell>{tableItem.paymentId}</TableCell>
+                <TableCell>{`₹${tableItem.amount.toString()}`}</TableCell>
+                <TableCell>
+                  {tableItem.date?.toLocaleDateString('en-IN', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  })}
+                </TableCell>
+                <TableCell>{tableItem.method}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </>
+      )}
+</Table>

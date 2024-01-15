@@ -26,8 +26,13 @@ jobs:
       - name: Run TypeScript Checks
         run: yarn typecheck
         working-directory: packages/blade
+      - name: Check Bundle Size
+        run: yarn bundlemon
+        working-directory: packages/blade
+        env:
+          CI_COMMIT_SHA: ${{github.event.pull_request.head.sha || github.sha}}
       - name: Check Tree Shaking
-        run: yarn size-limit
+        run: node ./scripts/addSizeLimitConfig.js && yarn size-limit
         working-directory: packages/blade
 
   test:

@@ -153,6 +153,8 @@
     "chromatic": "6.22.0",
     "@babel/cli": "7.23.0",
     "@babel/core": "7.20.2",
+    "@babel/parser": "7.23.6",
+    "@babel/traverse": "7.23.7",
     "@babel/plugin-transform-react-jsx": "7.16.5",
     "@babel/plugin-transform-runtime": "7.16.5",
     "@babel/preset-env": "7.20.2",
@@ -304,19 +306,19 @@
     "files": [
       {
         "friendlyName": "Web Components",
-        "path": "./build/components/index.production.web.js"
+        "path": "./build/lib/web/production/components/**/**/*.js"
       },
       {
         "friendlyName": "React Native Components",
-        "path": "./build/components/index.native.js"
+        "path": "./build/lib/native/production/components/**/**/*.js"
       },
       {
         "friendlyName": "Web Tokens",
-        "path": "./build/tokens/index.production.web.js"
+        "path": "./build/lib/web/production/tokens/**/**/*.js"
       },
       {
         "friendlyName": "React Native Tokens",
-        "path": "./build/tokens/index.native.js"
+        "path": "./build/lib/native/production/tokens/**/**/*.js"
       },
       {
         "friendlyName": "CSS Theme Tokens",
@@ -324,31 +326,15 @@
       },
       {
         "friendlyName": "Web Utils",
-        "path": "./build/utils/index.production.web.js"
+        "path": "./build/lib/web/production/utils/**/**/*.js"
       },
       {
         "friendlyName": "React Native Utils",
-        "path": "./build/utils/index.native.js"
+        "path": "./build/lib/native/production/utils/**/**/*.js"
       }
     ],
     "reportOutput": [
       "github"
     ]
-  },
-  "size-limit": [
-    {
-      "name": "Import Button only",
-      "path": "./build/lib/web/production/components/index.js",
-      "import": "{ Button }",
-      "limit": "31 kb",
-      "running": false
-    },
-    {
-      "name": "Import Text only",
-      "path": "./build/lib/web/production/components/index.js",
-      "import": "{ Text }",
-      "limit": "25 kb",
-      "running": false
-    }
-  ]
+  }
 }
