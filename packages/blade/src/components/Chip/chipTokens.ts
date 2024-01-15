@@ -148,8 +148,8 @@ const getChipInputHoverTokens = (color: ChipGroupProps['color']): SelectorInputH
   return {
     default: {
       background: {
-        checked: 'colors.surface.background.gray.intense',
-        unchecked: 'colors.surface.background.gray.intense',
+        checked: 'colors.interactive.background.staticWhite.default',
+        unchecked: 'colors.interactive.background.staticWhite.default',
       },
       border: {
         checked: `colors.${chipColorTokens.border[color || 'default'].hover}` as never,
