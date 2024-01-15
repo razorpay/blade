@@ -656,6 +656,45 @@ describe('<Table />', () => {
     expect(onMouseEnter).toHaveBeenCalledWith({ item: nodes[0] });
   });
 
+  it('should call onClick when the row is clicked', async () => {
+    const onClick = jest.fn();
+    const user = userEvent.setup();
+    const { getByText } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 5) }} selectionType="single">
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index} onClick={onClick}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const firstSelectableRow = getByText('rzp01').closest('td');
+    if (firstSelectableRow) await user.click(firstSelectableRow);
+    expect(onClick).toHaveBeenCalledWith({ item: nodes[0] });
+  });
+
   it('should render table with single select', async () => {
     const onSelectionChange = jest.fn();
     const user = userEvent.setup();
