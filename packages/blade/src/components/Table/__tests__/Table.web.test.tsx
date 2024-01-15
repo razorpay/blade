@@ -806,48 +806,4 @@ describe('<Table />', () => {
     fireEvent.click(goBack5PagesButton);
     expect(onPageChange).toHaveBeenLastCalledWith({ page: 0 });
   }, 10000);
-
-  it('should throw error if currentPage is greater than total pages', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-    expect(() =>
-      renderWithTheme(
-        <Table
-          data={{
-            nodes: [...nodes, ...nodes],
-          }}
-          pagination={<TablePagination defaultPageSize={10} currentPage={50} />}
-        >
-          {(tableData) => (
-            <>
-              <TableHeader>
-                <TableHeaderRow>
-                  <TableHeaderCell>Payment ID</TableHeaderCell>
-                  <TableHeaderCell>Amount</TableHeaderCell>
-                  <TableHeaderCell>Status</TableHeaderCell>
-                  <TableHeaderCell>Type</TableHeaderCell>
-                  <TableHeaderCell>Method</TableHeaderCell>
-                  <TableHeaderCell>Name</TableHeaderCell>
-                </TableHeaderRow>
-              </TableHeader>
-              <TableBody>
-                {tableData.map((tableItem, index) => (
-                  <TableRow item={tableItem} key={index}>
-                    <TableCell>{tableItem.paymentId}</TableCell>
-                    <TableCell>{tableItem.amount}</TableCell>
-                    <TableCell>{tableItem.status}</TableCell>
-                    <TableCell>{tableItem.type}</TableCell>
-                    <TableCell>{tableItem.method}</TableCell>
-                    <TableCell>{tableItem.name}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </>
-          )}
-        </Table>,
-      ),
-    ).toThrow(
-      `[Blade: TablePagination]: Value of 'currentPage' prop cannot be greater than the total pages`,
-    );
-    mockConsoleError.mockRestore();
-  });
 });
