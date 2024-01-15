@@ -279,7 +279,7 @@ const _TableRow = <Item,>({
   children,
   item,
   isDisabled,
-  onMouseEnter,
+  onHover,
   onClick,
 }: TableRowProps<Item>): React.ReactElement => {
   const {
@@ -301,10 +301,10 @@ const _TableRow = <Item,>({
     <StyledRow
       disabled={isDisabled}
       $isSelectable={isDisabled ? false : isSelectable}
-      $isHoverable={isDisabled ? false : Boolean(onMouseEnter || onClick)}
+      $isHoverable={isDisabled ? false : Boolean(onHover || onClick)}
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
-      onMouseEnter={() => onMouseEnter?.({ item })}
+      onMouseEnter={() => onHover?.({ item })}
       onClick={() => onClick?.({ item })}
       {...metaAttribute({ name: MetaConstants.TableRow })}
     >
