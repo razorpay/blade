@@ -301,7 +301,7 @@ const _TableRow = <Item,>({
     <StyledRow
       disabled={isDisabled}
       $isSelectable={isDisabled ? false : isSelectable}
-      $isHoverable={isDisabled ? false : Boolean(onHover || onClick)}
+      $isHoverable={isDisabled ? false : Boolean(onHover) || Boolean(onClick)}
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
       onMouseEnter={() => onHover?.({ item })}
