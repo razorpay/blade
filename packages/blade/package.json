@@ -127,6 +127,7 @@
     "watch:test:react-native": "yarn test:react-native --watch --onlyChanged",
     "chromatic": "npx chromatic",
     "publish-npm": "node ./scripts/publishToNpm.js",
+    "bundle-size": "node ./scripts/generateBundleSizeInfo.js",
     "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
     "postinstall": "patch-package"
   },
@@ -154,6 +155,8 @@
     "chromatic": "6.22.0",
     "@babel/cli": "7.23.0",
     "@babel/core": "7.20.2",
+    "@babel/parser": "7.23.6",
+    "@babel/traverse": "7.23.7",
     "@babel/plugin-transform-react-jsx": "7.16.5",
     "@babel/plugin-transform-runtime": "7.16.5",
     "@babel/preset-env": "7.20.2",
@@ -224,6 +227,7 @@
     "chalk": "4.1.1",
     "copyfiles": "2.4.1",
     "cross-env": "7.0.3",
+    "danger": "^11.3.1",
     "dedent": "0.7.0",
     "eslint-plugin-mdx": "1.16.0",
     "execa": "5.0.0",
@@ -304,56 +308,5 @@
     "react-dom": "18.2.0",
     "react": "18.2.0",
     "styled-components": "^5"
-  },
-  "bundlemon": {
-    "files": [
-      {
-        "friendlyName": "Web Components",
-        "path": "./build/components/index.production.web.js"
-      },
-      {
-        "friendlyName": "React Native Components",
-        "path": "./build/components/index.native.js"
-      },
-      {
-        "friendlyName": "Web Tokens",
-        "path": "./build/tokens/index.production.web.js"
-      },
-      {
-        "friendlyName": "React Native Tokens",
-        "path": "./build/tokens/index.native.js"
-      },
-      {
-        "friendlyName": "CSS Theme Tokens",
-        "path": "./build/css/*.css"
-      },
-      {
-        "friendlyName": "Web Utils",
-        "path": "./build/utils/index.production.web.js"
-      },
-      {
-        "friendlyName": "React Native Utils",
-        "path": "./build/utils/index.native.js"
-      }
-    ],
-    "reportOutput": [
-      "github"
-    ]
-  },
-  "size-limit": [
-    {
-      "name": "Import Button only",
-      "path": "./build/lib/web/production/components/index.js",
-      "import": "{ Button }",
-      "limit": "31 kb",
-      "running": false
-    },
-    {
-      "name": "Import Text only",
-      "path": "./build/lib/web/production/components/index.js",
-      "import": "{ Text }",
-      "limit": "25 kb",
-      "running": false
-    }
-  ]
+  }
 }

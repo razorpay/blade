@@ -1,0 +1,69 @@
+name: Blade Bundle Size
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
+
+env:
+  GITHUB_ACCESS_TOKEN: ${{ secrets.CI_BOT_TOKEN }}
+
+jobs:
+  pr-bundle-size:
+    name: Generate PR Report
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+      - name: Use Node v18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.12.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Build Blade React Production
+        run: yarn run-s build:clean build:generate-types build:react-prod
+        working-directory: packages/blade
+      - name: Update Bundle Size Data
+        run: yarn bundle-size
+        working-directory: packages/blade
+      - name: Danger
+        run: yarn danger ci
+        working-directory: packages/blade
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ env.GITHUB_ACCESS_TOKEN }}
+          DANGER_DISABLE_TRANSPILATION: 'true'
+
+  master-bundle-size:
+    name: Update Base Stats
+    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+      - name: Use Node v18
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.12.1
+      - name: Setup Cache & Install Dependencies
+        uses: ./.github/actions/install-dependencies
+      - name: Build Blade React Production
+        run: yarn run-s build:clean build:generate-types build:react-prod
+        working-directory: packages/blade
+      - name: Update Bundle Size Data
+        run: yarn bundle-size
+        working-directory: packages/blade
+        env:
+          BUNDLE_SIZE_STATS_FILENAME: 'baseBundleSizeStats.json'
+      - name: Commit Updated Bundle Size Data
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          git config user.email "tools+cibot@razorpay.com"
+          git config user.name "rzpcibot"
+          git add baseBundleSizeStats.json
+          git commit -m "chore: update bundle size data [skip ci]"
+          git push
+        working-directory: packages/blade
