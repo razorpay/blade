@@ -212,19 +212,6 @@ const _TablePagination = ({
     }
   }, [controlledCurrentPage, currentPage, handlePageChange, onPageChange]);
 
-  if (currentPage > totalPages - 1) {
-    if (!isUndefined(controlledCurrentPage)) {
-      if (__DEV__) {
-        throwBladeError({
-          moduleName: 'TablePagination',
-          message: `Value of 'currentPage' prop cannot be greater than the total pages`,
-        });
-      }
-    } else {
-      handlePageChange(totalPages - 1);
-    }
-  }
-
   const handlePageSizeChange = (pageSize: number): void => {
     onPageSizeChange?.({ pageSize });
     setPaginationRowSize(pageSize);
