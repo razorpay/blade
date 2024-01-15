@@ -617,8 +617,8 @@ describe('<Table />', () => {
     expect(getAllByRole('row')[0]).toHaveTextContent('completed');
   });
 
-  it('should call onHover when row is hovered', async () => {
-    const onHover = jest.fn();
+  it('should call onMouseEnter when mouse enters the row', async () => {
+    const onMouseEnter = jest.fn();
     const user = userEvent.setup();
     const { getByText } = renderWithTheme(
       <Table data={{ nodes: nodes.slice(0, 5) }} selectionType="single">
@@ -636,7 +636,7 @@ describe('<Table />', () => {
             </TableHeader>
             <TableBody>
               {tableData.map((tableItem, index) => (
-                <TableRow item={tableItem} key={index} onHover={onHover}>
+                <TableRow item={tableItem} key={index} onMouseEnter={onMouseEnter}>
                   <TableCell>{tableItem.paymentId}</TableCell>
                   <TableCell>{tableItem.amount}</TableCell>
                   <TableCell>{tableItem.status}</TableCell>
@@ -653,7 +653,7 @@ describe('<Table />', () => {
 
     const firstSelectableRow = getByText('rzp01').closest('td');
     if (firstSelectableRow) await user.hover(firstSelectableRow);
-    expect(onHover).toHaveBeenCalledWith({ item: nodes[0] });
+    expect(onMouseEnter).toHaveBeenCalledWith({ item: nodes[0] });
   });
 
   it('should render table with single select', async () => {
