@@ -199,6 +199,10 @@ type TableRowProps<Item> = {
    * Callback triggered when the mouse pointer enters the row. It is called with the current row item prop.
    */
   onMouseEnter?: ({ item }: { item: TableNode<Item> }) => void;
+  /**
+   * Callback triggered when the row is clicked. It is called with the current row item prop.
+   */
+  onClick?: ({ item }: { item: TableNode<Item> }) => void;
 };
 
 type TableCellProps = {
