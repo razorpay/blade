@@ -2,4 +2,4 @@
 "@razorpay/blade": patch
 ---
 
-chore: add `onHover` & `onClick` callback to `TableRow`
+feat: add `onHover` & `onClick` callback to `TableRow`
