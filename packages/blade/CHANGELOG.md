@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 10.23.3
+
+### Patch Changes
+
+- eebe574b: fix: remove page change check that would cause infinite renders
+- 3ab8c0ef: feat: add `onHover` & `onClick` callback to `TableRow`
+
 ## 10.23.2
 
 ### Patch Changes
