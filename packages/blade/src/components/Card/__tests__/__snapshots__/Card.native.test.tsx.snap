@@ -544,7 +544,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="interactive.text.staticWhite.normal"
+                    color="interactive.text.onPrimary.normal"
                     data-blade-component="base-text"
                     fontSize={100}
                     fontWeight="medium"

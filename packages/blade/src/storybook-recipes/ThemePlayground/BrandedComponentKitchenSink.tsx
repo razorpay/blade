@@ -11,8 +11,8 @@ import * as modalStories from '../../components/Modal/docs/SimpleModal.stories';
 import * as progressBarStories from '../../components/ProgressBar/ProgressBar.stories';
 import * as radioStories from '../../components/Radio/Radio.stories';
 import * as switchStories from '../../components/Switch/Switch.stories';
-// import * as textInputStories from '../../components/Input/TextInput/TextInput.stories';
-// import * as otpInputStories from '../../components/Input/OTPInput/OTPInput.stories';
+import * as textInputStories from '../../components/Input/TextInput/TextInput.stories';
+import * as otpInputStories from '../../components/Input/OTPInput/OTPInput.stories';
 // import * as autoCompleteStories from '../../components/Input/DropdownInputTriggers/AutoComplete.stories';
 import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
@@ -55,9 +55,8 @@ const StoryNameToHeadingMap = {
 
 const allStories = [
   ...Object.values(composeStories(buttonStories)),
-  // Uncomment once TextInput & other components are done
-  // ...Object.values(composeStories(textInputStories)),
-  // ...Object.values(composeStories(otpInputStories)),
+  ...Object.values(composeStories(textInputStories)),
+  ...Object.values(composeStories(otpInputStories)),
   ...Object.values(composeStories(checkboxGroupStories)),
   ...Object.values(composeStories(radioStories)),
   ...Object.values(composeStories(switchStories)),

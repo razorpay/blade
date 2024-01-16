@@ -119,7 +119,7 @@ exports[`<Button /> should render button with default properties 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -275,7 +275,7 @@ exports[`<Button /> should render button with full width 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -503,7 +503,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
       </View>
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -659,7 +659,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -2601,7 +2601,7 @@ exports[`<Button /> should render large size button 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={200}
         fontWeight="medium"
@@ -2757,7 +2757,7 @@ exports[`<Button /> should render medium size button 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -3537,7 +3537,7 @@ exports[`<Button /> should render primary color primary button 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -4004,7 +4004,7 @@ exports[`<Button /> should render small size button 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={50}
         fontWeight="medium"
@@ -4627,7 +4627,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={50}
         fontWeight="medium"

@@ -1802,7 +1802,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -2149,7 +2149,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
