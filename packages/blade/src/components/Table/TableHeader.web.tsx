@@ -108,14 +108,13 @@ const StyledHeaderCell = styled(HeaderCell)<{
 }));
 
 const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
-  const { toggleSort, currentSortedState, surfaceLevel } = useTableContext();
+  const { toggleSort, currentSortedState } = useTableContext();
   const isChildrenString = typeof children === 'string';
   const isSortable =
     headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
   return (
     <StyledHeaderCell
       tabIndex={0}
-      $surfaceLevel={surfaceLevel}
       $isSortable={isSortable}
       onClick={() => {
         if (isSortable) {

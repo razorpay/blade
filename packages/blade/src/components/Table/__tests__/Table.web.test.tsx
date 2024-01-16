@@ -387,50 +387,6 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render table with surfaceLevel', () => {
-    const { container } = renderWithTheme(
-      <Table data={{ nodes: nodes.slice(0, 2) }} surfaceLevel={3}>
-        {(tableData) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                <TableHeaderCell>Payment ID</TableHeaderCell>
-                <TableHeaderCell>Amount</TableHeaderCell>
-                <TableHeaderCell>Status</TableHeaderCell>
-                <TableHeaderCell>Type</TableHeaderCell>
-                <TableHeaderCell>Method</TableHeaderCell>
-                <TableHeaderCell>Name</TableHeaderCell>
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {tableData.map((tableItem, index) => (
-                <TableRow item={tableItem} key={index}>
-                  <TableCell>{tableItem.paymentId}</TableCell>
-                  <TableCell>{tableItem.amount}</TableCell>
-                  <TableCell>{tableItem.status}</TableCell>
-                  <TableCell>{tableItem.type}</TableCell>
-                  <TableCell>{tableItem.method}</TableCell>
-                  <TableCell>{tableItem.name}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            <TableFooter>
-              <TableFooterRow>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-              </TableFooterRow>
-            </TableFooter>
-          </>
-        )}
-      </Table>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
   it('should render table with isLoading', () => {
     const { container } = renderWithTheme(
       <Table data={{ nodes: nodes.slice(0, 2) }} isLoading={true}>

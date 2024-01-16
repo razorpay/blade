@@ -176,16 +176,11 @@ const CellWrapper = styled(BaseBox)<{
 
 const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripedRows, surfaceLevel } = useTableContext();
+  const { selectionType, rowDensity, showStripedRows } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
   return (
-    <StyledCell
-      tabIndex={0}
-      role="cell"
-      $surfaceLevel={surfaceLevel}
-      {...metaAttribute({ name: MetaConstants.TableCell })}
-    >
+    <StyledCell tabIndex={0} role="cell" {...metaAttribute({ name: MetaConstants.TableCell })}>
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
         <CellWrapper
           className="cell-wrapper"

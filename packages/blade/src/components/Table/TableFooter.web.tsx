@@ -2,7 +2,6 @@ import React from 'react';
 import { Footer, FooterRow, FooterCell } from '@table-library/react-table-library/table';
 import styled from 'styled-components';
 import { tableFooter } from './tokens';
-import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import type { TableFooterProps, TableFooterRowProps, TableFooterCellProps } from './types';
 import { Text } from '~components/Typography';
@@ -65,13 +64,9 @@ const StyledFooterCell = styled(FooterCell)(({ theme }) => ({
 }));
 
 const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElement => {
-  const { surfaceLevel } = useTableContext();
   const isChildrenString = typeof children === 'string';
   return (
-    <StyledFooterCell
-      $surfaceLevel={surfaceLevel}
-      {...metaAttribute({ name: MetaConstants.TableFooterCell })}
-    >
+    <StyledFooterCell {...metaAttribute({ name: MetaConstants.TableFooterCell })}>
       {isChildrenString ? (
         <Text size="medium" weight="medium">
           {children}

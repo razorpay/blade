@@ -121,7 +121,6 @@ const _Table = <Item,>({
   height,
   showStripedRows,
   gridTemplateColumns,
-  surfaceLevel = 2,
   isLoading = false,
   isRefreshing = false,
   ...styledProps
@@ -372,7 +371,6 @@ const _Table = <Item,>({
       setPaginationRowSize,
       currentPaginationState,
       showStripedRows,
-      surfaceLevel,
       disabledRows,
       setDisabledRows,
     }),
@@ -390,7 +388,6 @@ const _Table = <Item,>({
       setPaginationRowSize,
       currentPaginationState,
       showStripedRows,
-      surfaceLevel,
       disabledRows,
       setDisabledRows,
     ],
@@ -423,7 +420,7 @@ const _Table = <Item,>({
               width="100%"
               height="100%"
               zIndex={refreshWrapperZIndex}
-              backgroundColor="overlay.background.moderate"
+              backgroundColor="overlay.background.subtle"
               justifyContent="center"
               alignItems="center"
               display="flex"
