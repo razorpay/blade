@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unnecessary-type-constraint */
-import type { Theme } from '~components/BladeProvider';
 import type { ElevationStyles } from '~tokens/global/elevation';
 import type { EasingType } from '~tokens/global/motion';
 
