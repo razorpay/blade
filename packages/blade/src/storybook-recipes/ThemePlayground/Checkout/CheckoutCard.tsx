@@ -1,7 +1,7 @@
-import { PasswordInput } from '~components/Input/PasswordInput';
-import { TextInput } from '~components/Input/TextInput';
 import { Box, Checkbox, Heading } from '../../../components';
 import { CheckoutShell } from './CheckoutShell';
+import { PasswordInput } from '~components/Input/PasswordInput';
+import { TextInput } from '~components/Input/TextInput';
 
 const CheckoutCard = (): React.ReactElement => {
   return (
