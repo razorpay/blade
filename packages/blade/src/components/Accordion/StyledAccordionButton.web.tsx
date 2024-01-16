@@ -7,6 +7,7 @@ import {
   getTransitionEasing,
 } from './commonStyles';
 import { castWebType } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) => {
   const { theme, isExpanded } = props;
@@ -28,8 +29,7 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
       color: theme.colors.interactive.icon.gray.subtle,
     },
     '&:focus-visible': {
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
+      ...getFocusRingStyles(theme),
       // only need border radius on the focus ring
       borderRadius: theme.border.radius.small,
     },

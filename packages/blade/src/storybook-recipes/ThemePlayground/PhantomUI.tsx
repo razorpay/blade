@@ -10,19 +10,15 @@ const PhantomUI = (): React.ReactElement => {
   const [selectedBusinessType, setSelectedBusinessType] = useState('Individual');
   return (
     <Box maxWidth="375px">
-      <Card surfaceLevel={2} elevation="lowRaised">
+      <Card elevation="lowRaised">
         <CardBody>
           <Box>
             <Heading size="large">What's your business type?</Heading>
-            <Text size="medium" type="subdued">
-              Pick only one that applies to your business
-            </Text>
+            <Text size="medium">Pick only one that applies to your business</Text>
           </Box>
           <Box marginTop="spacing.10">
             <Box display="flex" flexDirection="row" gap="spacing.2">
-              <Text size="medium" type="subdued">
-                NOT REGISTERED
-              </Text>
+              <Text size="medium">NOT REGISTERED</Text>
               <IconButton
                 icon={InfoIcon}
                 onClick={() => {
@@ -44,9 +40,7 @@ const PhantomUI = (): React.ReactElement => {
           </Box>
           <Box marginTop="spacing.8">
             <Box display="flex" flexDirection="row" gap="spacing.2">
-              <Text size="medium" type="subdued">
-                REGISTERED
-              </Text>
+              <Text size="medium">REGISTERED</Text>
               <IconButton
                 icon={InfoIcon}
                 onClick={() => {
@@ -85,11 +79,11 @@ const PhantomUI = (): React.ReactElement => {
             </Button>
             <Box display="flex" flexDirection="row" marginTop="spacing.3" alignItems="center">
               <RazorpayIcon
-                color="surface.action.icon.default.lowContrast"
+                color="interactive.icon.gray.normal"
                 size="medium"
                 marginRight="spacing.2"
               />
-              <Text type="subtle">Powered by Razorpay</Text>
+              <Text>Powered by Razorpay</Text>
             </Box>
           </Box>
         </CardBody>

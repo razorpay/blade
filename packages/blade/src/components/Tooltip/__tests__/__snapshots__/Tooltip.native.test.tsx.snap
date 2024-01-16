@@ -40,7 +40,7 @@ exports[`<Tooltip /> should render 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.09)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -120,7 +120,7 @@ exports[`<Tooltip /> should render 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -414,7 +414,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.09)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -494,7 +494,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -788,7 +788,7 @@ exports[`<Tooltip /> should render with title 1`] = `
     defaultBorderColor="hsla(227, 100%, 59%, 1)"
     focusBackgroundColor="hsla(227, 71%, 51%, 1)"
     focusBorderColor="hsla(227, 100%, 59%, 1)"
-    focusRingColor="hsla(227, 100%, 59%, 0.09)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
@@ -868,7 +868,7 @@ exports[`<Tooltip /> should render with title 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.staticWhite.normal"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
