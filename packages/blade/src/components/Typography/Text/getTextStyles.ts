@@ -6,15 +6,14 @@ import type { Theme } from '~components/BladeProvider';
 
 const getTextStyles = <T extends { variant: TextVariant }>({
   variant,
-  type,
   weight,
   size,
-  contrast,
   theme,
-}: Pick<TextProps<T>, 'type' | 'variant' | 'weight' | 'size' | 'contrast'> & {
+  color,
+}: Pick<TextProps<T>, 'variant' | 'weight' | 'size' | 'color'> & {
   theme: Theme;
 }): CSSObject => {
-  return getBaseTextStyles({ ...getTextProps({ variant, type, weight, size, contrast }), theme });
+  return getBaseTextStyles({ ...getTextProps({ variant, weight, size, color }), theme });
 };
 
 export default getTextStyles;

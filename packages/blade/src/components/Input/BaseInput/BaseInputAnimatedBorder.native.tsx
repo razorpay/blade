@@ -8,9 +8,9 @@ import Animated, {
 } from 'react-native-reanimated';
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';
+import type { ActionStates } from '../../../utils/useInteraction';
 import type { BaseInputProps } from './BaseInput';
 import { useTheme } from '~components/BladeProvider';
-import type { ActionStates } from '~tokens/theme/theme';
 import { makeBorderSize } from '~utils/makeBorderSize';
 
 const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
@@ -19,7 +19,7 @@ const BaseInputStyledAnimatedBorder = styled(Animated.View)(({ theme }) => ({
   left: 0,
   right: 0,
   opacity: 1,
-  backgroundColor: theme.colors.brand.primary[500],
+  backgroundColor: theme.colors.interactive.background.primary.default,
   height: makeBorderSize(theme.border.width.thin),
 }));
 
@@ -27,7 +27,7 @@ export const BaseInputAnimatedBorder = ({
   currentInteraction,
   validationState,
 }: {
-  currentInteraction: keyof ActionStates;
+  currentInteraction: ActionStates;
   validationState: BaseInputProps['validationState'];
 }): ReactElement => {
   const { theme } = useTheme();
@@ -45,7 +45,7 @@ export const BaseInputAnimatedBorder = ({
 
   useEffect(() => {
     if (
-      currentInteraction == 'active' &&
+      currentInteraction == 'focus' &&
       validationState !== 'error' &&
       validationState !== 'success'
     ) {

@@ -1,4 +1,5 @@
 const rebrandedComponents = [
+  'Alert',
   'Amount',
   'BaseBox',
   'BaseText',
@@ -12,6 +13,8 @@ const rebrandedComponents = [
   'Link',
   'Popover',
   'Counter',
+  'Chip',
+  'ChipGroup',
   'Badge',
   'Indicator',
   'IconButton',
@@ -34,6 +37,11 @@ const rebrandedComponents = [
   'Switch',
   'Radio',
   'Checkbox',
+  'BaseInput',
+  'TextInput',
+  'PasswordInput',
+  'OTPInput',
+  'TextArea',
 ];
 
 module.exports = { rebrandedComponents };

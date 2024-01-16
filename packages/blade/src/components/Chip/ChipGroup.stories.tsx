@@ -16,8 +16,8 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import iconMap from '~components/Icons/iconMap';
-import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem } from '~components/ActionList';
+// import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
+// import { ActionList, ActionListItem } from '~components/ActionList';
 import type { BladeElementRef } from '~utils/types';
 import { Button } from '~components/Button';
 import { Link } from '~components/Link';
@@ -167,28 +167,15 @@ export default {
         },
       },
     },
-    intent: {
-      description: `This prop is deprecated, use 'color' instead.`,
-      table: {
-        category: propsCategory.CHIP_GROUP,
-        type: {
-          summary: '"none" | "positive" | "negative"',
-        },
-      },
-      options: ['none', 'positive', 'negative'],
-      control: {
-        type: 'select',
-      },
-    },
     color: {
       description: `Sets the ChipGroups's visual color, it will propagate down to all the Chips`,
       table: {
         category: propsCategory.CHIP_GROUP,
         type: {
-          summary: '"default" | "positive" | "negative"',
+          summary: '"primary" | "positive" | "negative"',
         },
       },
-      options: ['default', 'positive', 'negative'],
+      options: ['primary', 'positive', 'negative'],
       control: {
         type: 'select',
       },
@@ -336,102 +323,104 @@ DefaultMultiSelected.argTypes = {
   },
 };
 
-const ControlledSingleSelectionTemplate: StoryFn<typeof ChipGroupComponent> = ({ ...args }) => {
-  const chipValues = ['Proprietorship', 'Public', 'Small Business'];
-  const [value, setValue] = React.useState('Proprietorship');
-  return (
-    <Box display="flex" gap="spacing.5" flexDirection="column" minHeight="200px">
-      <Dropdown marginRight="spacing.4">
-        <DropdownButton size="small">Business Type</DropdownButton>
-        <DropdownOverlay>
-          <ActionList>
-            {chipValues.map((chipValue: string) => (
-              <ActionListItem
-                key={chipValue}
-                title={chipValue}
-                value={chipValue}
-                onClick={({ name }) => setValue(name)}
-                isSelected={value === chipValue}
-              />
-            ))}
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
+// TODO(Rebranding): Uncomment this story after Dropdown rebranding
+// const ControlledSingleSelectionTemplate: StoryFn<typeof ChipGroupComponent> = ({ ...args }) => {
+//   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
+//   const [value, setValue] = React.useState('Proprietorship');
+//   return (
+//     <Box display="flex" gap="spacing.5" flexDirection="column" minHeight="200px">
+//       <Dropdown marginRight="spacing.4">
+//         <DropdownButton size="small">Business Type</DropdownButton>
+//         <DropdownOverlay>
+//           <ActionList>
+//             {chipValues.map((chipValue: string) => (
+//               <ActionListItem
+//                 key={chipValue}
+//                 title={chipValue}
+//                 value={chipValue}
+//                 onClick={({ name }) => setValue(name)}
+//                 isSelected={value === chipValue}
+//               />
+//             ))}
+//           </ActionList>
+//         </DropdownOverlay>
+//       </Dropdown>
 
-      <ChipGroupComponent
-        {...args}
-        selectionType="single"
-        value={value}
-        onChange={({ values }) => setValue(values[0])}
-      >
-        {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue}>
-            {chipValue}
-          </ChipComponent>
-        ))}
-      </ChipGroupComponent>
-    </Box>
-  );
-};
+//       <ChipGroupComponent
+//         {...args}
+//         selectionType="single"
+//         value={value}
+//         onChange={({ values }) => setValue(values[0])}
+//       >
+//         {chipValues.map((chipValue: string) => (
+//           <ChipComponent key={chipValue} value={chipValue}>
+//             {chipValue}
+//           </ChipComponent>
+//         ))}
+//       </ChipGroupComponent>
+//     </Box>
+//   );
+// };
 
-export const ControlledSingleSelection = ControlledSingleSelectionTemplate.bind({});
-ControlledSingleSelection.storyName = 'Controlled Single Selection';
-ControlledSingleSelection.args = {
-  accessibilityLabel: 'Choose one business type from the options below',
-  selectionType: 'single',
-};
+// export const ControlledSingleSelection = ControlledSingleSelectionTemplate.bind({});
+// ControlledSingleSelection.storyName = 'Controlled Single Selection';
+// ControlledSingleSelection.args = {
+//   accessibilityLabel: 'Choose one business type from the options below',
+//   selectionType: 'single',
+// };
 
-const ControlledMultiSelectionTemplate: StoryFn<typeof ChipGroupComponent> = (args) => {
-  const chipValues = [
-    'Automated Payment Links',
-    'Wallet on My App',
-    'Offer discounts, Pay Later & EMI options',
-  ];
-  const [values, setValues] = React.useState(['Automated Payment Links']);
-  return (
-    <Box display="flex" gap="spacing.5" flexDirection="column" minHeight="200px">
-      <Dropdown marginRight="spacing.4" selectionType="multiple">
-        <DropdownButton size="small">What other capabilities are you looking for?</DropdownButton>
-        <DropdownOverlay>
-          <ActionList>
-            {chipValues.map((chipValue: string) => (
-              <ActionListItem
-                key={chipValue}
-                title={chipValue}
-                value={chipValue}
-                onClick={({ name, value }) =>
-                  value
-                    ? setValues(values.filter((v) => v !== name))
-                    : setValues(values.concat([name]))
-                }
-                isSelected={values.includes(chipValue)}
-              />
-            ))}
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-      <ChipGroupComponent
-        {...args}
-        selectionType="multiple"
-        onChange={({ values }) => setValues(values)}
-        value={values}
-      >
-        {chipValues.map((chipValue: string) => (
-          <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
-            {chipValue}
-          </ChipComponent>
-        ))}
-      </ChipGroupComponent>
-    </Box>
-  );
-};
+// TODO(Rebranding): Uncomment this story after Dropdown rebranding
+// const ControlledMultiSelectionTemplate: StoryFn<typeof ChipGroupComponent> = (args) => {
+//   const chipValues = [
+//     'Automated Payment Links',
+//     'Wallet on My App',
+//     'Offer discounts, Pay Later & EMI options',
+//   ];
+//   const [values, setValues] = React.useState(['Automated Payment Links']);
+//   return (
+//     <Box display="flex" gap="spacing.5" flexDirection="column" minHeight="200px">
+//       <Dropdown marginRight="spacing.4" selectionType="multiple">
+//         <DropdownButton size="small">What other capabilities are you looking for?</DropdownButton>
+//         <DropdownOverlay>
+//           <ActionList>
+//             {chipValues.map((chipValue: string) => (
+//               <ActionListItem
+//                 key={chipValue}
+//                 title={chipValue}
+//                 value={chipValue}
+//                 onClick={({ name, value }) =>
+//                   value
+//                     ? setValues(values.filter((v) => v !== name))
+//                     : setValues(values.concat([name]))
+//                 }
+//                 isSelected={values.includes(chipValue)}
+//               />
+//             ))}
+//           </ActionList>
+//         </DropdownOverlay>
+//       </Dropdown>
+//       <ChipGroupComponent
+//         {...args}
+//         selectionType="multiple"
+//         onChange={({ values }) => setValues(values)}
+//         value={values}
+//       >
+//         {chipValues.map((chipValue: string) => (
+//           <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
+//             {chipValue}
+//           </ChipComponent>
+//         ))}
+//       </ChipGroupComponent>
+//     </Box>
+//   );
+// };
 
-export const ControlledMultiSelection = ControlledMultiSelectionTemplate.bind({});
-ControlledMultiSelection.storyName = 'Controlled Multiple Selection';
-ControlledMultiSelection.args = {
-  accessibilityLabel: 'Select other capabilities you are looking for from the options below',
-  selectionType: 'multiple',
-};
+// export const ControlledMultiSelection = ControlledMultiSelectionTemplate.bind({});
+// ControlledMultiSelection.storyName = 'Controlled Multiple Selection';
+// ControlledMultiSelection.args = {
+//   accessibilityLabel: 'Select other capabilities you are looking for from the options below',
+//   selectionType: 'multiple',
+// };
 
 export const Disabled = ChipTemplate.bind({});
 Disabled.storyName = 'Disabled';
@@ -477,7 +466,7 @@ ChipWithIcon.parameters = {
 const ChipColorsTemplate: StoryFn<typeof ChipGroupComponent> = (args) => {
   return (
     <Box display="flex" flexDirection="column">
-      <Text size="large" weight="bold" marginBottom="spacing.3">
+      <Text size="large" weight="semibold" marginBottom="spacing.3">
         Is the result helpful?
       </Text>
 
@@ -493,13 +482,13 @@ const ChipColorsTemplate: StoryFn<typeof ChipGroupComponent> = (args) => {
   );
 };
 
-export const ChipWithIntent = ChipColorsTemplate.bind({});
-ChipWithIntent.storyName = 'With Color';
-ChipWithIntent.args = {
+export const ChipWithColor = ChipColorsTemplate.bind({});
+ChipWithColor.storyName = 'With Color';
+ChipWithColor.args = {
   selectionType: 'single',
   accessibilityLabel: 'Is the result helpful? Please select either yer or no',
 };
-ChipWithIntent.parameters = {
+ChipWithColor.parameters = {
   controls: {
     exclude: ['icon'],
   },
@@ -541,7 +530,7 @@ const AllChipSizesTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ..
     <Box>
       {sizes.map((size, index) => (
         <Box key={index}>
-          <Heading size="medium" marginBottom="spacing.3">
+          <Heading marginBottom="spacing.3" size="small">
             {size}
           </Heading>
           <Box marginBottom="spacing.3">

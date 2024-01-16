@@ -46,32 +46,32 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isDropdownTrigger'
 >): CSSObject => {
   // normal state
-  let backgroundColor = theme.colors.brand.gray.a50.lowContrast;
-  let borderBottomColor = theme.colors.brand.gray.a100.lowContrast;
+  let backgroundColor = theme.colors.interactive.background.gray.default;
+  let borderBottomColor = theme.colors.interactive.background.gray.highlighted;
 
   // hoverState
   if (isHovered) {
-    backgroundColor = theme.colors.brand.gray.a100.lowContrast;
+    backgroundColor = theme.colors.interactive.background.gray.highlighted;
   }
 
   // focused state
   if (isFocused) {
-    backgroundColor = theme.colors.brand.primary[300];
+    backgroundColor = theme.colors.interactive.background.primary.faded;
   }
 
   // disabled state
   if (isDisabled) {
-    backgroundColor = theme.colors.brand.gray.a50.lowContrast;
-    borderBottomColor = theme.colors.brand.gray[300].lowContrast;
+    backgroundColor = theme.colors.interactive.background.gray.disabled;
+    borderBottomColor = 'transparent';
   }
 
   // validation state
   if (validationState === 'error') {
-    backgroundColor = theme.colors.feedback.background.negative.lowContrast;
-    borderBottomColor = theme.colors.feedback.border.negative.highContrast;
+    backgroundColor = theme.colors.interactive.background.negative.faded;
+    borderBottomColor = theme.colors.interactive.background.negative.default;
   } else if (validationState === 'success') {
-    backgroundColor = theme.colors.feedback.background.positive.lowContrast;
-    borderBottomColor = theme.colors.feedback.border.positive.highContrast;
+    backgroundColor = theme.colors.interactive.background.positive.faded;
+    borderBottomColor = theme.colors.interactive.background.positive.default;
   }
 
   return {
@@ -146,9 +146,8 @@ export const getBaseInputStyles = ({
     ...getTextStyles({
       size: 'medium',
       variant: 'body',
-      type: isDisabled ? 'placeholder' : 'subtle',
       weight: 'regular',
-      contrast: 'low',
+      color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
       theme,
     }),
     // take the full available width of parent container for input field

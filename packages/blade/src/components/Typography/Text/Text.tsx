@@ -82,6 +82,22 @@ const getTextProps = <T extends { variant: TextVariant }>({
     textDecorationLine,
   };
 
+  if (variant === 'caption') {
+    // variant of caption can only have size of small
+    if (size && size !== 'small') {
+      if (__DEV__) {
+        throwBladeError({
+          moduleName: 'Text',
+          message: `size cannot be '${size}' when variant is 'caption'`,
+        });
+      }
+    }
+    // Force size to be small if variant is caption
+    size = 'small';
+  } else if (variant !== 'caption' && !size) {
+    size = 'medium';
+  }
+
   if (variant === 'body') {
     if (size === 'xsmall') {
       props.fontSize = 25;
@@ -105,11 +121,6 @@ const getTextProps = <T extends { variant: TextVariant }>({
       props.fontSize = 50;
       props.lineHeight = 50;
       props.fontWeight = 'regular';
-    } else if (__DEV__) {
-      throwBladeError({
-        moduleName: 'Text',
-        message: `size cannot be '${size}' when variant is 'caption'`,
-      });
     }
     props.fontStyle = 'italic';
   }
@@ -121,7 +132,7 @@ const _Text = <T extends { variant: TextVariant }>({
   as = 'p',
   variant = 'body',
   weight = 'regular',
-  size = 'medium',
+  size,
   truncateAfterLines,
   children,
   color,
