@@ -233,19 +233,17 @@ const getNormalTextColor = (
   { isMuted }: { isMuted?: boolean } = {},
 ): Extract<
   BaseTextProps['color'],
-  | 'surface.text.placeholder.lowContrast'
-  | 'surface.text.muted.lowContrast'
-  | 'surface.text.normal.lowContrast'
+  'interactive.text.gray.disabled' | 'interactive.text.gray.muted' | 'interactive.text.gray.normal'
 > => {
   if (isDisabled) {
-    return 'surface.text.placeholder.lowContrast';
+    return 'interactive.text.gray.disabled';
   }
 
   if (isMuted) {
-    return 'surface.text.muted.lowContrast';
+    return 'interactive.text.gray.muted';
   }
 
-  return 'surface.text.normal.lowContrast';
+  return 'interactive.text.gray.normal';
 };
 
 export { getActionListProperties, validateActionListItemProps, getNormalTextColor };

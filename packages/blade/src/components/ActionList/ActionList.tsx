@@ -10,41 +10,15 @@ import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContex
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { TestID } from '~utils/types';
-import type { SurfaceLevels } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import { throwBladeError } from '~utils/logger';
 import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds';
-
-type ActionListContextProp = Pick<ActionListProps, 'surfaceLevel'>;
-const ActionListContext = React.createContext<ActionListContextProp>({ surfaceLevel: 2 });
-const useActionListContext = (): ActionListContextProp => {
-  const context = React.useContext(ActionListContext);
-
-  if (__DEV__) {
-    if (!context) {
-      throwBladeError({
-        message: 'useActionListContext has to be called inside ActionListContext.Provider',
-        moduleName: 'ActionList',
-      });
-    }
-  }
-  return context;
-};
 
 type ActionListProps = {
   children: React.ReactNode[];
-  /**
-   * Decides the backgroundColor of ActionList
-   */
-  surfaceLevel?: Exclude<SurfaceLevels, 1>;
 } & TestID;
 
-const _ActionList = ({
-  children,
-  surfaceLevel = 2,
-  testID,
-}: ActionListProps): React.ReactElement => {
+const _ActionList = ({ children, testID }: ActionListProps): React.ReactElement => {
   const {
     setOptions,
     actionListItemRef,
@@ -66,7 +40,6 @@ const _ActionList = ({
     setOptions(actionListOptions);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionListOptions]);
-  const actionListContextValue = React.useMemo(() => ({ surfaceLevel }), [surfaceLevel]);
 
   if (
     filteredValues.length <= 0 &&
@@ -87,38 +60,34 @@ const _ActionList = ({
   // 1. We don't render the box wrapper styles which includes shadows, padding, border etc
   // 2. to ensure GorhomBottomSheetSectionList works as expected, if we add extra wrappers GorhomBottomSheet won't render the content inside
   // NOTE: That this also means inside BottomSheet, ActionList won't render any ActionListHeader or Footer.
-  return (
-    <ActionListContext.Provider value={actionListContextValue}>
-      {isInBottomSheet ? (
-        <ActionListBox
-          isInBottomSheet={isInBottomSheet}
-          actionListItemWrapperRole={actionListItemWrapperRole}
-          childrenWithId={childrenWithId}
-          sectionData={sectionData}
-          isMultiSelectable={isMultiSelectable}
-          ref={actionListItemRef as any}
-        />
-      ) : (
-        <BaseBox
-          id={`${dropdownBaseId}-actionlist`}
-          {...makeAccessible({
-            role: actionListContainerRole,
-            multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
-            labelledBy: `${dropdownBaseId}-label`,
-          })}
-          {...metaAttribute({ name: MetaConstants.ActionList, testID })}
-        >
-          <ActionListBox
-            isInBottomSheet={isInBottomSheet}
-            actionListItemWrapperRole={actionListItemWrapperRole}
-            childrenWithId={childrenWithId}
-            sectionData={sectionData}
-            isMultiSelectable={isMultiSelectable}
-            ref={actionListItemRef as any}
-          />
-        </BaseBox>
-      )}
-    </ActionListContext.Provider>
+  return isInBottomSheet ? (
+    <ActionListBox
+      isInBottomSheet={isInBottomSheet}
+      actionListItemWrapperRole={actionListItemWrapperRole}
+      childrenWithId={childrenWithId}
+      sectionData={sectionData}
+      isMultiSelectable={isMultiSelectable}
+      ref={actionListItemRef as any}
+    />
+  ) : (
+    <BaseBox
+      id={`${dropdownBaseId}-actionlist`}
+      {...makeAccessible({
+        role: actionListContainerRole,
+        multiSelectable: actionListContainerRole === 'listbox' ? isMultiSelectable : undefined,
+        labelledBy: `${dropdownBaseId}-label`,
+      })}
+      {...metaAttribute({ name: MetaConstants.ActionList, testID })}
+    >
+      <ActionListBox
+        isInBottomSheet={isInBottomSheet}
+        actionListItemWrapperRole={actionListItemWrapperRole}
+        childrenWithId={childrenWithId}
+        sectionData={sectionData}
+        isMultiSelectable={isMultiSelectable}
+        ref={actionListItemRef as any}
+      />
+    </BaseBox>
   );
 };
 
@@ -159,4 +128,4 @@ const ActionList = assignWithoutSideEffects(React.memo(_ActionList), {
 });
 
 export type { ActionListProps };
-export { ActionList, useActionListContext };
+export { ActionList };

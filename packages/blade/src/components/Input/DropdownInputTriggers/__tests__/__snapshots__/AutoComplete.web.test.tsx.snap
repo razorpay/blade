@@ -247,9 +247,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c40.c40.c40.c40.c40 {
-  border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-style: solid;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
 }
 
 .c42.c42.c42.c42.c42 {
@@ -350,6 +349,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c43.c43.c43.c43.c43 {
@@ -386,7 +386,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   right: 0px;
   bottom: 0px;
   left: 0px;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(0,0%,0%,0.56);
   opacity: 1;
 }
 
@@ -394,10 +394,10 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -413,6 +413,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -427,25 +428,25 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c53.c53.c53.c53.c53:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c53.c53.c53.c53.c53:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c53.c53.c53.c53.c53:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
 .c53.c53.c53.c53.c53 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -453,7 +454,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(217,18%,45%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -475,7 +476,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -492,7 +493,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -515,7 +516,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c49.c49.c49.c49.c49 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -540,7 +541,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -570,6 +571,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c41.c41.c41.c41.c41 {
+  border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -596,7 +598,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,22%,56%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 150ms;
@@ -606,21 +608,21 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c35.c35.c35.c35.c35:hover {
-  color: hsla(217,18%,45%,1);
+  color: hsla(211,26%,34%,1);
 }
 
 .c35.c35.c35.c35.c35:focus-visible {
   outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(217,18%,45%,1);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  color: hsla(211,26%,34%,1);
 }
 
 .c35.c35.c35.c35.c35:active {
-  color: hsla(217,18%,45%,1);
+  color: hsla(211,26%,34%,1);
 }
 
 .c38.c38.c38.c38.c38 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -653,7 +655,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c38.c38.c38.c38.c38::-webkit-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -671,7 +673,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c38.c38.c38.c38.c38::-moz-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -689,7 +691,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c38.c38.c38.c38.c38:-ms-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -707,7 +709,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c38.c38.c38.c38.c38::placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -729,7 +731,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -762,7 +764,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c13.c13.c13.c13.c13::-webkit-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -780,7 +782,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c13.c13.c13.c13.c13::-moz-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -798,7 +800,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c13.c13.c13.c13.c13:-ms-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -816,7 +818,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c13.c13.c13.c13.c13::placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -843,7 +845,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   left: 0;
   right: 0;
   opacity: 0;
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(227,100%,59%,1);
   border-width: 1px;
   height: 1px;
   -webkit-animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
@@ -856,7 +858,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   left: 0;
   right: 0;
   opacity: 0;
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(227,100%,59%,1);
   border-width: 1px;
   height: 1px;
   -webkit-animation: iXkvNT-450290765 150ms cubic-bezier(0.3,0,0.2,1) forwards;
@@ -864,8 +866,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c9.c9.c9.c9.c9 {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -883,8 +885,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(216,15%,54%,0.18);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -908,8 +910,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c9.c9.c9.c9.c9:focus-within {
-  background-color: hsla(216,15%,54%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -927,8 +929,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c36.c36.c36.c36.c36 {
-  background-color: hsla(218,89%,51%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -946,8 +948,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c36.c36.c36.c36.c36:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -971,8 +973,8 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c36.c36.c36.c36.c36:focus-within {
-  background-color: hsla(218,89%,51%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -1036,11 +1038,15 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c45.c45.c45.c45.c45:hover:not([aria-disabled=true]) {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c45.c45.c45.c45.c45[aria-selected=true] {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c45.c45.c45.c45.c45[aria-selected=true]:hover {
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c24.c24.c24.c24.c24 {
@@ -1085,7 +1091,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.12);
   border-radius: 16px;
 }
 
@@ -1093,7 +1099,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   background: hsla(0,0%,100%,1);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
   box-shadow: 0px -24px 48px -12px hsla(217,56%,17%,0.18);
   opacity: 0;
   pointer-events: none;
@@ -1134,31 +1140,31 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 
 @media screen and (min-width:320px) {
   .c40.c40.c40.c40.c40 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
   .c40.c40.c40.c40.c40 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
   .c40.c40.c40.c40.c40 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
   .c40.c40.c40.c40.c40 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
   .c40.c40.c40.c40.c40 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
@@ -1301,7 +1307,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                         clip-rule="evenodd"
                         d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                         data-blade-component="svg-path"
-                        fill="hsla(217, 56%, 17%, 1)"
+                        fill="hsla(211, 22%, 56%, 1)"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -1318,7 +1324,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                         clip-rule="evenodd"
                         d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
                         data-blade-component="svg-path"
-                        fill="hsla(217, 56%, 17%, 1)"
+                        fill="hsla(211, 22%, 56%, 1)"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -1807,7 +1813,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 
 .c23.c23.c23.c23.c23 {
   width: 100%;
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c25.c25.c25.c25.c25 {
@@ -1877,9 +1883,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c32.c32.c32.c32.c32 {
-  border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-style: solid;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
 }
 
 .c41.c41.c41.c41.c41 {
@@ -1913,6 +1918,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c11.c11.c11.c11.c11 {
@@ -1991,7 +1997,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 .c24.c24.c24.c24.c24 {
   background-color: hsla(0,0%,100%,1);
   border-width: 1px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
   border-radius: 4px;
 }
@@ -2000,10 +2006,10 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   min-height: 36px;
   width: 100%;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -2019,6 +2025,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -2033,25 +2040,25 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c42.c42.c42.c42.c42:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c42.c42.c42.c42.c42:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c42.c42.c42.c42.c42:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
 .c42.c42.c42.c42.c42 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -2059,7 +2066,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c6.c6.c6.c6.c6 {
-  color: hsla(217,18%,45%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -2081,7 +2088,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2098,7 +2105,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c31.c31.c31.c31.c31 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
   font-weight: 600;
@@ -2118,7 +2125,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   color: hsla(0,0%,100%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -2133,7 +2140,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c39.c39.c39.c39.c39 {
-  color: hsla(217,56%,17%,1);
+  color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2170,6 +2177,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c33.c33.c33.c33.c33 {
+  border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -2179,7 +2187,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(216,27%,36%,1);
+  color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2212,7 +2220,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c13.c13.c13.c13.c13::-webkit-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2230,7 +2238,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c13.c13.c13.c13.c13::-moz-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2248,7 +2256,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c13.c13.c13.c13.c13:-ms-input-placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2266,7 +2274,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c13.c13.c13.c13.c13::placeholder {
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -2293,7 +2301,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   left: 0;
   right: 0;
   opacity: 0;
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(227,100%,59%,1);
   border-width: 1px;
   height: 1px;
   -webkit-animation: cAlpMa-450290765 250ms cubic-bezier(0.3,0,0.2,1) forwards;
@@ -2301,8 +2309,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c9.c9.c9.c9.c9 {
-  background-color: hsla(218,89%,51%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -2320,8 +2328,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(218,89%,51%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -2345,8 +2353,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c9.c9.c9.c9.c9:focus-within {
-  background-color: hsla(218,89%,51%,0.09);
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border-bottom-width: 1px;
@@ -2412,11 +2420,15 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c35.c35.c35.c35.c35:hover:not([aria-disabled=true]) {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c35.c35.c35.c35.c35[aria-selected=true] {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c35.c35.c35.c35.c35[aria-selected=true]:hover {
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 @media screen and (min-width:768px) {
@@ -2430,31 +2442,31 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 
 @media screen and (min-width:320px) {
   .c32.c32.c32.c32.c32 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
   .c32.c32.c32.c32.c32 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
   .c32.c32.c32.c32.c32 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
   .c32.c32.c32.c32.c32 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
   .c32.c32.c32.c32.c32 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
@@ -2579,7 +2591,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                         clip-rule="evenodd"
                         d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
                         data-blade-component="svg-path"
-                        fill="hsla(217, 56%, 17%, 1)"
+                        fill="hsla(211, 22%, 56%, 1)"
                         fill-rule="evenodd"
                       />
                     </svg>
@@ -2596,7 +2608,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                         clip-rule="evenodd"
                         d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
                         data-blade-component="svg-path"
-                        fill="hsla(217, 56%, 17%, 1)"
+                        fill="hsla(211, 22%, 56%, 1)"
                         fill-rule="evenodd"
                       />
                     </svg>
