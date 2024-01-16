@@ -1,7 +1,8 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { Theme } from '~components/BladeProvider';
 import type { IconComponent } from '~components/Icons';
-import type { DotNotationColorStringToken, StringChildrenType, TestID } from '~utils/types';
+import type { StringChildrenType, TestID } from '~utils/types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 type ChipProps = {
   /**
@@ -15,16 +16,10 @@ type ChipProps = {
    */
   icon?: IconComponent;
   /**
-   * This is deprecated in favor of the `color` prop.
-   *
-   *  @deprecated Use the `color` prop instead.
-   */
-  intent?: 'positive' | 'negative' | 'none';
-  /**
    * Sets the Chip's visual color.
    *
    */
-  color?: 'positive' | 'negative' | 'default';
+  color?: 'primary' | 'positive' | 'negative';
   /**
    * If `true`, the Chip will be disabled
    *
@@ -92,17 +87,11 @@ type ChipGroupProps = {
    */
   value?: string | string[];
   /**
-   * This is deprecated in favor of the `color` prop.
-   *
-   * @default "none"
-   * @deprecated Use the `color` prop instead.
-   */
-  intent?: 'positive' | 'negative' | 'none';
-  /**
    * Sets the ChipGroups's visual color, it will propagate down to all the Chips
    *
+   * @default "primary"
    */
-  color?: 'positive' | 'negative' | 'default';
+  color?: 'primary' | 'positive' | 'negative';
 } & TestID &
   StyledPropsBlade;
 
@@ -115,19 +104,35 @@ type State = {
 
 type ChipGroupContextType = Pick<
   ChipGroupProps,
-  | 'isDisabled'
-  | 'name'
-  | 'defaultValue'
-  | 'value'
-  | 'onChange'
-  | 'size'
-  | 'intent'
-  | 'color'
-  | 'selectionType'
+  'isDisabled' | 'name' | 'defaultValue' | 'value' | 'onChange' | 'size' | 'color' | 'selectionType'
 > & { state?: State };
 
+type InteractiveBackgroundColors<
+  T extends 'positive' | 'negative' | 'primary'
+> = `interactive.background.${T}.${DotNotationToken<
+  Theme['colors']['interactive']['background'][T]
+>}`;
+
+type InteractiveBorderColors<
+  T extends 'positive' | 'negative' | 'primary'
+> = `interactive.border.${T}.${DotNotationToken<Theme['colors']['interactive']['border'][T]>}`;
+
+type ChipBackgroundColors =
+  | InteractiveBackgroundColors<'positive'>
+  | InteractiveBackgroundColors<'negative'>
+  | InteractiveBackgroundColors<'primary'>
+  | 'transparent'
+  | 'interactive.background.gray.faded';
+
+type ChipBorderColors =
+  | InteractiveBorderColors<'positive'>
+  | InteractiveBorderColors<'negative'>
+  | InteractiveBorderColors<'primary'>
+  | 'interactive.border.gray.faded'
+  | 'interactive.border.gray.disabled';
+
 type AnimatedChipProps = {
-  borderColor: DotNotationColorStringToken<Theme['colors']>;
+  borderColor: ChipBorderColors;
   isPressed?: boolean;
   isDisabled?: boolean;
   isDesktop?: boolean;
@@ -137,7 +142,7 @@ type AnimatedChipProps = {
 
 type StyledChipWrapperProps = {
   color: ChipGroupProps['color'];
-  borderColor: DotNotationColorStringToken<Theme['colors']>;
+  borderColor: ChipBorderColors;
   isChecked?: boolean;
   isDisabled?: boolean;
   theme: Theme;
@@ -151,4 +156,6 @@ export type {
   ChipProps,
   State,
   StyledChipWrapperProps,
+  ChipBorderColors,
+  ChipBackgroundColors,
 };

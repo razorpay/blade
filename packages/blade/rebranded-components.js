@@ -13,6 +13,8 @@ const rebrandedComponents = [
   'Link',
   'Popover',
   'Counter',
+  'Chip',
+  'ChipGroup',
   'Badge',
   'Indicator',
   'IconButton',

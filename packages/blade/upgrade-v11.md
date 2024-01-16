@@ -1,6 +1,7 @@
 # Upgrade Guide for v11 (Brand Refresh)
 
 ## Upgrade Workflow Overview
+
 All the rebranding upgrade activity starts at the design end and is then followed by engineering
 
 <img alt="Upgrade Workflow Overview" src="./upgrade-v11-workflow.png" width="800px">
@@ -66,7 +67,6 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
   + <Heading size={isMobile ? "large" : "xlarge"}> Hello </Heading>
   ```
 
-
 - With Blade v11, we have removed `highContrast` & `lowContrast` terminology from color tokens. If you have used any color token which has `highContrast` in its name or `contrast="high"` prop in typography components, the codemod will replace it with `"UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"` string. You will have to discuss these instances with designers & manually update this value with a new color token that matches the contrast you need.
 
   ```diff
@@ -77,9 +77,11 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
 **Step 5**: Test your page and make sure everything works as expected. Once the migration is complete for all pages, you can remove the old version of Blade from your project.
 
 ## Available Rebranded Components
+
 To check out the list of available components, visit [Blade Component Status](https://blade.razorpay.com/?path=/docs/guides-component-status--docs).
 
 ## Manual Migration Guide
+
 Only use this if you're unable to run the codemod described above.
 
 ### Theme Tokens
