@@ -1,6 +1,7 @@
 import path from 'path';
 import { applyTransform } from '@hypermod/utils';
 import * as transformer from '..';
+import { red } from '../utils';
 
 it('should update the lineHeight & fontSize tokens', async () => {
   const result = await applyTransform(
@@ -61,6 +62,7 @@ it('should remove the "type" prop and change weight="bold" to weight="semibold"'
           const App = () => (
             <>
                 <Text type="subtle" weight="bold"> Lorem ipsum </Text>
+                <CardHeaderText type="subtle" weight="bold"> Lorem ipsum </CardHeaderText>
                 <Heading type="subtle" weight="bold"> Lorem ipsum </Heading>
                 <Title type="subtle" weight="bold"> Lorem ipsum </Title>
                 <Display type="subtle" weight="bold"> Lorem ipsum </Display>
@@ -78,6 +80,7 @@ it('should remove the "type" prop and change weight="bold" to weight="semibold"'
     "const App = () => (
                 <>
                     <Text weight="semibold" color="surface.text.gray.subtle"> Lorem ipsum </Text>
+                    <CardHeaderText weight="semibold" color="surface.text.gray.subtle"> Lorem ipsum </CardHeaderText>
                     <Text weight="semibold" size="large" color="surface.text.gray.subtle"> Lorem ipsum </Text>
                     <Heading weight="semibold" size="large" color="surface.text.gray.subtle"> Lorem ipsum </Heading>
                     <Display weight="semibold" color="surface.text.gray.subtle"> Lorem ipsum </Display>
@@ -227,6 +230,10 @@ it('should update <Text variant="caption" size="medium"> to <Text variant="capti
             <Text variant="caption">  Lorem ipsum </Text>
             <Text variant="caption" size="medium"> Lorem ipsum </Text>
             <Text variant="caption" size="medium"> Lorem ipsum <Text variant="caption" size="medium" color="brand.primary.500"> Lorem ipsum </Text> </Text>
+
+            <CardHeaderText size="medium">  Lorem ipsum </CardHeaderText>
+            <CardHeaderText variant="caption">  Lorem ipsum </CardHeaderText>
+            <CardHeaderText variant="caption" size="medium"> Lorem ipsum </CardHeaderText>
           </>
         );
       `,
@@ -241,6 +248,10 @@ it('should update <Text variant="caption" size="medium"> to <Text variant="capti
                 <Text variant="caption">  Lorem ipsum </Text>
                 <Text variant="caption" size="small"> Lorem ipsum </Text>
                 <Text variant="caption" size="small"> Lorem ipsum <Text variant="caption" size="small" color="surface.text.primary.normal"> Lorem ipsum </Text> </Text>
+
+                <CardHeaderText size="medium">  Lorem ipsum </CardHeaderText>
+                <CardHeaderText variant="caption">  Lorem ipsum </CardHeaderText>
+                <CardHeaderText variant="caption" size="small"> Lorem ipsum </CardHeaderText>
               </>
             );"
   `);
@@ -307,18 +318,18 @@ it('should correctly convert Title to Heading component', async () => {
 
   expect(consoleSpy).toHaveBeenNthCalledWith(
     1,
-    transformer.red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
-    transformer.red(`${path.resolve(__dirname, __filename)}:11:10\n`),
+    red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
+    red(`${path.resolve(__dirname, __filename)}:11:10\n`),
   );
   expect(consoleSpy).toHaveBeenNthCalledWith(
     2,
-    transformer.red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
-    transformer.red(`${path.resolve(__dirname, __filename)}:18:10\n`),
+    red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
+    red(`${path.resolve(__dirname, __filename)}:18:10\n`),
   );
   expect(consoleSpy).toHaveBeenNthCalledWith(
     3,
-    transformer.red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
-    transformer.red(`${path.resolve(__dirname, __filename)}:18:84\n`),
+    red('\n⛔️ Expression found in the "size" attribute, please update manually:'),
+    red(`${path.resolve(__dirname, __filename)}:18:84\n`),
   );
 
   expect(result).toMatchInlineSnapshot(`
@@ -362,8 +373,21 @@ it('should migrate contrast prop', async () => {
             <Text color="brand.gray.200.lowContrast" contrast="high"> Lorem ipsum </Text>
             <Text color="brand.gray.200.highContrast" contrast="low"> Lorem ipsum </Text>
 
-            <Text color="brand.gray.200.highContrast" contrast="low"> Lorem ipsum </Text>
-            <Text color="brand.gray.200.lowContrast" contrast="high"> Lorem ipsum </Text>
+            <CardHeaderText color="brand.gray.200.highContrast" contrast="low"> Lorem ipsum </CardHeaderText>
+            <CardHeaderText color="brand.gray.200.lowContrast" contrast="high"> Lorem ipsum </CardHeaderText>
+
+            <CardHeaderText contrast="high"> Lorem ipsum </CardHeaderText>
+            <CardHeaderText contrast="low"> Lorem ipsum </CardHeaderText>
+
+            <CardHeaderText color="feedback.text.information.lowContrast"> Lorem ipsum </CardHeaderText>
+            <CardHeaderText color="brand.gray.200.lowContrast"> Lorem ipsum </CardHeaderText>
+            <CardHeaderText color="brand.gray.200.highContrast"> Lorem ipsum </CardHeaderText>
+
+            <CardHeaderText color="brand.gray.200.lowContrast" contrast="high"> Lorem ipsum </CardHeaderText>
+            <CardHeaderText color="brand.gray.200.highContrast" contrast="low"> Lorem ipsum </CardHeaderText>
+
+            <CardHeaderText color="brand.gray.200.highContrast" contrast="low"> Lorem ipsum </CardHeaderText>
+            <CardHeaderText color="brand.gray.200.lowContrast" contrast="high"> Lorem ipsum </CardHeaderText>
           </>
         );
       `,
@@ -385,8 +409,23 @@ it('should migrate contrast prop', async () => {
                 <Text color="surface.text.gray.moderate"> Lorem ipsum </Text>
                 <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
 
-                <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
-                <Text color="surface.text.gray.moderate"> Lorem ipsum </Text>
+                <CardHeaderText color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </CardHeaderText>
+                <CardHeaderText color="surface.text.gray.moderate"> Lorem ipsum </CardHeaderText>
+
+                <CardHeaderText
+                  contrast="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"
+                  color="surface.text.gray.normal"> Lorem ipsum </CardHeaderText>
+                <CardHeaderText color="surface.text.gray.normal"> Lorem ipsum </CardHeaderText>
+
+                <CardHeaderText color="feedback.text.information.intense"> Lorem ipsum </CardHeaderText>
+                <CardHeaderText color="surface.text.gray.moderate"> Lorem ipsum </CardHeaderText>
+                <CardHeaderText color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </CardHeaderText>
+
+                <CardHeaderText color="surface.text.gray.moderate"> Lorem ipsum </CardHeaderText>
+                <CardHeaderText color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </CardHeaderText>
+
+                <CardHeaderText color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </CardHeaderText>
+                <CardHeaderText color="surface.text.gray.moderate"> Lorem ipsum </CardHeaderText>
               </>
             );"
   `);

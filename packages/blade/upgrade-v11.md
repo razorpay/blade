@@ -113,6 +113,15 @@ Only use this if you're unable to run the codemod described above.
   - [font-size scale](https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=244%3A188858&mode=design&t=vpFlyrSzO1jdpAPu-1)
   - [line-height scale](https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=244%3A188858&mode=design&t=vpFlyrSzO1jdpAPu-1)
 
+### ActionList
+
+- **The `surfaceLevel` prop has been removed without replacement.**
+
+  ```diff
+  - <ActionList surfaceLevel={2/3} >
+  + <ActionList >
+  ```
+
 ### Amount
 
 - **The accepted values for the `size` prop has been updated.**
@@ -147,6 +156,25 @@ Only use this if you're unable to run the codemod described above.
 
   - <Amount size="title-medium" value={123456.789} />
   + <Amount value={123456.789} type="heading" size="xlarge" />
+  ```
+
+### Alert
+
+- **The `contrast` prop has been removed in favor of the new `emphasis` prop.**
+
+  ```diff
+  - <Alert description="Hello World" contrast="low" />
+  + <Alert description="Hello World" emphasis="subtle" />
+
+  - <Alert description="Hello World" contrast="high" />
+  + <Alert description="Hello World" emphasis="intense" />
+  ```
+
+- **The `intent` prop has been removed in favor of the `color` prop.**
+
+  ```diff
+  - <Alert description="Hello World" intent="positive|negative|information|notice|neutral" />
+  + <Alert description="Hello World" color="positive|negative|information|notice|neutral" />
   ```
 
 ### Typography Components
@@ -300,6 +328,26 @@ Only use this if you're unable to run the codemod described above.
   + <Card backgroundColor="surface.background.gray.moderate"> Hello </Card>
   ```
 
+- The `CardHeaderBadge`, `CardHeaderCounter`, `CardHeaderAmount`, `CardHeaderText`, `CardHeaderLink`, and `CardHeaderIconButton` components have the same changes as `Badge`, `Counter`, `Amount`, `Text`, `Link`, and `Button` components respectively.
+
+### Chip & ChipGroup
+
+- **The `intent` prop has been removed in favor of the `color` prop.**
+
+  ```diff
+  - <Chip intent="none"> Hello </Chip>
+  + <Chip color="primary"> Hello </Chip>
+
+  - <Chip intent="positive|negative"> Hello </Chip>
+  + <Chip color="positive|negative"> Hello </Chip>
+
+  - <ChipGroup intent="none">
+  + <ChipGroup color="primary">
+
+  - <ChipGroup intent="positive|negative">
+  + <ChipGroup color="positive|negative">
+  ```
+
 ### Counter
 
 - **The `contrast` prop has been removed in favor of the new `emphasis` prop.**
@@ -345,6 +393,30 @@ Only use this if you're unable to run the codemod described above.
   + <Divider variant="muted"> Hello </Divider>
   ```
 
+### Dropdown
+
+- **The `onDismiss` prop has been removed in favor of the `onOpenChange` prop.**
+
+  ```diff
+  - <Dropdown onDismiss={() => console.log("Dismissed!!!)}> Hello </Dropdown>
+  + <Dropdown
+  +   onOpenChange={(isOpen) => {
+  +     if (!isOpen) {
+  +       console.log("Dismissed!!!");
+  +     }
+  +   }}
+  + >
+
+  - <Dropdown onDismiss={handleDropdownDismiss}> Hello </Dropdown>
+  + <Dropdown
+  +   onOpenChange={(isOpen) => {
+  +     if (!isOpen) {
+  +       handleDropdownDismiss();
+  +     }
+  +   }}
+  + >
+  ```
+
 ### Indicator
 
 - **The `intent` prop has been removed in favor of the `color` prop.**
@@ -374,7 +446,7 @@ Only use this if you're unable to run the codemod described above.
 - **The `contrast` prop has been removed without replacement.**
 
   ```diff
-  - <ProgressBar contrast="low" value={20} />
+  - <ProgressBar contrast="low|high" value={20} />
   + <ProgressBar value={20} />
   ```
 
@@ -383,4 +455,13 @@ Only use this if you're unable to run the codemod described above.
   ```diff
   - <ProgressBar intent="positive|negative|information|notice|neutral" value={20} />
   + <ProgressBar color="positive|negative|information|notice|neutral" value={20} />
+  ```
+
+### Skeleton
+
+- **The `contrast` prop has been removed without replacement.**
+
+  ```diff
+  - <Skeleton contrast="low|high" />
+  + <Skeleton />
   ```

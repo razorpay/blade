@@ -67,7 +67,7 @@ it('should update token values contextually', async () => {
   `);
 });
 
-it('should create syntax error for highContrast tokens', async () => {
+it('should create TS error for highContrast tokens', async () => {
   const result = await applyTransform(
     transformer,
     `
