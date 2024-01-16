@@ -110,12 +110,12 @@ export const BasicExample = `
         >
           <Box width="100%" display="flex" gap="spacing.4">
             <SpotlightPopoverTourStep name="step-1">
-              <Box padding="spacing.4" backgroundColor="brand.gray.400.lowContrast">
+              <Box padding="spacing.4" backgroundColor="interactive.border.gray.faded">
                 <Text>Step 1 </Text>
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="step-2">
-              <Box padding="spacing.4" backgroundColor="brand.gray.400.lowContrast">
+              <Box padding="spacing.4" backgroundColor="interactive.border.gray.faded">
                 <Text>Step 2 </Text>
               </Box>
             </SpotlightPopoverTourStep>
