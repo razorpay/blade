@@ -42,7 +42,7 @@ const SortIcon = ({
 }): React.ReactElement => {
   const { theme } = useTheme();
   const defaultColor = getIn(theme.colors, 'interactive.icon.gray.muted');
-  const activeColor = getIn(theme.colors, 'interactive.icon.primary.normal');
+  const activeColor = getIn(theme.colors, 'interactive.icon.primary.subtle');
   const upArrowColor = isSorted && isSortReversed ? activeColor : defaultColor;
   const downArrowColor = isSorted && !isSortReversed ? activeColor : defaultColor;
   return (
