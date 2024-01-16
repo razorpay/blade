@@ -395,7 +395,7 @@ const WithValidationStateStory = `
             }}
           />
           <DropdownOverlay>
-            <ActionList surfaceLevel={2}>
+            <ActionList>
               <ActionListItem title="Blade" value="blade" />
               <ActionListItem title="Primer" value="primer" />
               <ActionListItem title="Geist" description="by Vercel" value="geist" />
@@ -746,7 +746,12 @@ const WithLinkStory = `
       <Box padding="spacing.10" display="flex" alignItems="center" gap="spacing.2">
         <Text>Sort By</Text>
         <Box flex="1">
-          <Dropdown onDismiss={() => setIsDropdownOpen(false)}>
+          <Dropdown 
+            onOpenChange={(isOpen) => {
+              if (!isOpen) {
+                setIsDropdownOpen(false)
+              }
+            }>
             <DropdownLink
               icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
               iconPosition="right"

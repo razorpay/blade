@@ -116,7 +116,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.subdued.lowContrast"
+                    color="surface.text.gray.subtle"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={75}
@@ -127,7 +127,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     style={
                       [
                         {
-                          "color": "hsla(217, 18%, 45%, 1)",
+                          "color": "hsla(211, 26%, 34%, 1)",
                           "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
@@ -180,7 +180,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   >
                     <Text
                       accessible={true}
-                      color="surface.text.normal.lowContrast"
+                      color="surface.text.gray.normal"
                       data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
@@ -190,7 +190,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(217, 56%, 17%, 1)",
+                            "color": "hsla(212, 39%, 16%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
@@ -221,8 +221,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+                    "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                    "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -364,13 +364,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         onKeyPress={[Function]}
                         onSubmitEditing={[Function]}
                         placeholder="Select Option"
-                        placeholderTextColor="hsla(214, 18%, 69%, 1)"
+                        placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
                         secureTextEntry={false}
                         style={
                           [
                             {
                               "backgroundColor": "transparent",
-                              "color": "hsla(216, 27%, 36%, 1)",
+                              "color": "hsla(211, 26%, 34%, 1)",
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
@@ -555,7 +555,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         <RNSVGPath
                           clipRule={0}
                           d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4279445060}
+                          fill={4285959847}
                           fillRule={0}
                           propList={
                             [
@@ -613,7 +613,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         <RNSVGPath
                           clipRule={0}
                           d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          fill={4279445060}
+                          fill={4285959847}
                           fillRule={0}
                           propList={
                             [
@@ -631,7 +631,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                      "backgroundColor": "hsla(227, 100%, 59%, 1)",
                       "bottom": 0,
                       "height": 1,
                       "left": 0,
@@ -756,7 +756,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 [
                   {
                     "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                    "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                    "borderColor": "hsla(211, 20%, 52%, 0.18)",
                     "borderRadius": 4,
                     "borderStyle": "solid",
                     "borderWidth": 1,
@@ -815,7 +815,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 getItemCount={[Function]}
                 isInBottomSheet={false}
                 keyExtractor={[Function]}
-                marginBottom={0}
+                marginBottom="0px"
                 onContentSizeChange={[Function]}
                 onLayout={[Function]}
                 onMomentumScrollBegin={[Function]}
@@ -829,7 +829,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 style={
                   [
                     {
-                      "marginBottom": 0,
+                      "marginBottom": "0pxpx",
                       "maxHeight": 300,
                       "paddingBottom": 8,
                       "paddingLeft": 8,
@@ -1033,8 +1033,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                         [
                                           {
                                             "alignItems": "center",
-                                            "backgroundColor": "transparent",
-                                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                                            "borderColor": "hsla(211, 27%, 76%, 1)",
                                             "borderRadius": 2,
                                             "borderStyle": "solid",
                                             "borderWidth": 1.5,
@@ -1077,7 +1077,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.normal.lowContrast"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1088,7 +1088,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(217, 56%, 17%, 1)",
+                                  "color": "hsla(212, 39%, 16%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1321,8 +1321,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                         [
                                           {
                                             "alignItems": "center",
-                                            "backgroundColor": "transparent",
-                                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                                            "borderColor": "hsla(211, 27%, 76%, 1)",
                                             "borderRadius": 2,
                                             "borderStyle": "solid",
                                             "borderWidth": 1.5,
@@ -1365,7 +1365,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.normal.lowContrast"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1376,7 +1376,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(217, 56%, 17%, 1)",
+                                  "color": "hsla(212, 39%, 16%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1609,8 +1609,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                                         [
                                           {
                                             "alignItems": "center",
-                                            "backgroundColor": "transparent",
-                                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                                            "borderColor": "hsla(211, 27%, 76%, 1)",
                                             "borderRadius": 2,
                                             "borderStyle": "solid",
                                             "borderWidth": 1.5,
@@ -1653,7 +1653,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.normal.lowContrast"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1664,7 +1664,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(217, 56%, 17%, 1)",
+                                  "color": "hsla(212, 39%, 16%, 1)",
                                   "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
@@ -1728,22 +1728,21 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               }
             >
               <View
-                borderBottomColor="surface.border.normal.lowContrast"
+                borderBottomColor="surface.border.gray.muted"
                 borderPosition="borderBottom"
-                borderWidth="none"
                 data-blade-component="divider"
                 dividerStyle="solid"
                 isDividerHorizontal={true}
                 style={
                   [
                     {
-                      "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
+                      "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                      "borderBottomStyle": "solid",
                     },
                     {
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
+                      "borderWidth": 0,
                       "flexGrow": 1,
                     },
                   ]
@@ -1783,24 +1782,22 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     }
                   }
                   accessible={true}
-                  activeBackgroundColor="hsla(230, 100%, 42%, 1)"
-                  activeBorderColor="hsla(230, 100%, 42%, 1)"
-                  borderRadius="2px"
-                  borderWidth="1px"
+                  borderRadius="4px"
+                  borderWidth="0px"
                   buttonPaddingBottom="0px"
                   buttonPaddingLeft="20px"
                   buttonPaddingRight="20px"
                   buttonPaddingTop="0px"
                   collapsable={false}
                   data-blade-component="button"
-                  defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-                  defaultBorderColor="hsla(218, 89%, 51%, 1)"
-                  focusBackgroundColor="hsla(227, 100%, 45%, 1)"
-                  focusBorderColor="hsla(227, 100%, 45%, 1)"
-                  focusRingColor="hsla(218, 89%, 51%, 0.18)"
+                  defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
+                  defaultBorderColor="hsla(227, 100%, 59%, 1)"
+                  focusBackgroundColor="hsla(227, 71%, 51%, 1)"
+                  focusBorderColor="hsla(227, 100%, 59%, 1)"
+                  focusRingColor="hsla(227, 100%, 59%, 0.09)"
                   focusable={true}
-                  hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
-                  hoverBorderColor="hsla(223, 95%, 48%, 1)"
+                  hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
+                  hoverBorderColor="hsla(227, 100%, 59%, 1)"
                   isFullWidth={false}
                   isLoading={false}
                   minHeight="36px"
@@ -1821,15 +1818,16 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       {
                         "alignItems": "center",
                         "alignSelf": "center",
-                        "backgroundColor": "hsla(218, 89%, 51%, 1)",
-                        "borderColor": "hsla(218, 89%, 51%, 1)",
-                        "borderRadius": 2,
+                        "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                        "borderColor": "hsla(227, 100%, 59%, 1)",
+                        "borderRadius": 4,
                         "borderStyle": "solid",
-                        "borderWidth": 1,
+                        "borderWidth": 0,
                         "cursor": "pointer",
                         "display": "flex",
                         "justifyContent": "center",
                         "minHeight": 36,
+                        "overflow": "hidden",
                         "paddingBottom": 0,
                         "paddingLeft": 20,
                         "paddingRight": 20,
@@ -1840,8 +1838,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         "width": "auto",
                       },
                       {
-                        "backgroundColor": "hsla(218, 89%, 51%, 1)",
-                        "borderColor": "hsla(218, 89%, 51%, 1)",
+                        "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                        "borderColor": "hsla(227, 100%, 59%, 1)",
                       },
                     ]
                   }
@@ -1864,19 +1862,21 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           "flexGrow": 1,
                           "flexShrink": 1,
                           "justifyContent": "center",
+                          "zIndex": 1,
                         },
                         {
                           "opacity": 1,
                         },
                       ]
                     }
+                    zIndex={1}
                   >
                     <Text
                       accessible={true}
-                      color="action.text.primary.default"
+                      color="interactive.text.staticWhite.normal"
                       data-blade-component="base-text"
                       fontSize={100}
-                      fontWeight="bold"
+                      fontWeight="medium"
                       lineHeight={100}
                       style={
                         [
@@ -1885,7 +1885,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                             "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
-                            "fontWeight": "700",
+                            "fontWeight": "500",
                             "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,

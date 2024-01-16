@@ -2,9 +2,7 @@ import React from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 
 const Chevron = (props: { isOpen?: boolean; isDisabled?: boolean }): React.ReactElement => {
-  const iconColor = `surface.text.${
-    props.isDisabled ? 'placeholder' : 'normal'
-  }.lowContrast` as const;
+  const iconColor = `surface.icon.gray.${props.isDisabled ? 'disabled' : 'muted'}` as const;
 
   return (
     <>
