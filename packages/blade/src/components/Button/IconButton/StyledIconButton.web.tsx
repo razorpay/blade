@@ -41,7 +41,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
     },
 
     '&:focus-visible': {
-      ...getFocusRingStyles(theme),
+      ...getFocusRingStyles({ theme }),
       color: theme.colors.interactive.icon[emphasisColor].subtle,
     },
 

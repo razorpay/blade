@@ -50,14 +50,7 @@ const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, is
       ? getIn(theme.colors, tablePagination.pageSelectionButton.backgroundColorSelectedActive)
       : getIn(theme.colors, tablePagination.pageSelectionButton.backgroundColorActive),
     outline: 'none',
-    '&:focus-visible': {
-      ...getFocusRingStyles(theme),
-      // outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
-      // boxShadow: `0px 0px 0px 4px ${getIn(
-      //   theme.colors,
-      //   tablePagination.pageSelectionButton.focusRingColor,
-      // )}`,
-    },
+    '&:focus-visible': getFocusRingStyles({ theme }),
   },
   '&:active': {
     backgroundColor: isSelected

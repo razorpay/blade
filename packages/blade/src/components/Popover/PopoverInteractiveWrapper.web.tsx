@@ -17,7 +17,7 @@ const StyledPopoverInteractiveWrapper = styled.button((props) => {
     cursor: 'pointer',
     lineHeight: 0,
     '&:focus-visible': {
-      ...getFocusRingStyles(props.theme),
+      ...getFocusRingStyles({ theme: props.theme }),
     },
   };
 });

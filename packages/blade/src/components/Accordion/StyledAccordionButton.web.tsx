@@ -29,7 +29,7 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
       color: theme.colors.interactive.icon.gray.subtle,
     },
     '&:focus-visible': {
-      ...getFocusRingStyles(theme),
+      ...getFocusRingStyles({ theme }),
       // only need border radius on the focus ring
       borderRadius: theme.border.radius.small,
     },

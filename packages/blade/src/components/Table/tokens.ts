@@ -14,7 +14,6 @@ const tableHeader = {
   backgroundColor: 'interactive.background.gray.default',
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.gray.muted',
-  focusRingColor: 'brand.primary.400',
 } as const;
 
 const tableFooter = {
@@ -25,7 +24,6 @@ const tableFooter = {
   borderBottomAndTopWidth: 'thin',
   borderBottomAndTopColor: 'surface.border.gray.muted',
   backgroundColor: 'interactive.background.gray.default',
-  focusRingColor: 'brand.primary.400',
 } as const;
 
 const tableRow = {
@@ -91,7 +89,6 @@ const tableRow = {
   borderBottomColor: 'surface.border.gray.muted',
   backgroundColorMotionEasing: 'easing.standard.effective',
   backgroundColorMotionDuration: 'duration.xquick',
-  focusRingColor: 'brand.primary.400',
 } as const;
 
 const tableToolbar = {
@@ -106,17 +103,16 @@ const tablePagination = {
   padding: 'spacing.4',
   pageSelectionButton: {
     backgroundColor: 'transparent',
-    backgroundColorHover: 'brand.gray.a50.lowContrast',
-    backgroundColorActive: 'brand.gray.a100.lowContrast',
-    backgroundColorSelected: 'brand.primary.300',
-    backgroundColorSelectedHover: 'brand.primary.400',
-    backgroundColorSelectedActive: 'brand.primary.400',
-    backgroundColorDisabled: 'surface.background.level2.lowContrast',
+    backgroundColorHover: 'interactive.background.gray.default',
+    backgroundColorActive: 'interactive.background.gray.highlighted',
+    backgroundColorSelected: 'interactive.background.primary.faded',
+    backgroundColorSelectedHover: 'interactive.background.primary.fadedHighlighted',
+    backgroundColorSelectedActive: 'interactive.background.primary.fadedHighlighted',
     padding: 'spacing.2',
     borderRadius: 'small',
-    focusRingColor: 'brand.primary.400',
-    textColor: 'surface.text.subtle.lowContrast',
-    textColorSelected: 'brand.primary.500',
+    focusRingColor: 'surface.border.primary.muted',
+    textColor: 'surface.text.gray.subtle',
+    textColorSelected: 'surface.text.primary.normal',
     height: size['32'],
     width: size['32'],
   },

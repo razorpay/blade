@@ -30,7 +30,7 @@ const SortButton = styled.button(({ theme }) => ({
   transitionProperty: 'color, box-shadow',
   transitionDuration: castWebType(makeMotionTime(getIn(theme.motion, 'duration.quick'))),
   transitionTimingFunction: (theme.motion.easing.standard as unknown) as string,
-  '&:focus-visible': getFocusRingStyles(theme),
+  '&:focus-visible': getFocusRingStyles({ theme }),
 }));
 
 const SortIcon = ({
@@ -103,7 +103,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
       paddingLeft: makeSpace(getIn(theme, tableHeader.paddingLeft)),
       paddingRight: makeSpace(getIn(theme, tableHeader.paddingRight)),
     },
-    '&:focus-visible': getFocusRingStyles(theme),
+    '&:focus-visible': getFocusRingStyles({ theme, negativeOffset: true }),
   },
 }));
 

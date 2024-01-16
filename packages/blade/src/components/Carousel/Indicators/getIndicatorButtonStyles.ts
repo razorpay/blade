@@ -44,7 +44,7 @@ const getIndicatorButtonStyles = ({
         paddingTop: makeSize(size[20]),
       },
       '&:focus-visible': {
-        ...getFocusRingStyles(theme),
+        ...getFocusRingStyles({ theme }),
       },
     }),
   };

@@ -144,7 +144,7 @@ const StyledCell = styled(Cell)(({ theme }) => ({
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
-    '&:focus-visible': getFocusRingStyles(theme),
+    '&:focus-visible': getFocusRingStyles({ theme, negativeOffset: true }),
   },
 }));
 
@@ -258,7 +258,7 @@ const StyledRow = styled(Row)<{ $isSelectable: boolean }>(({ theme, $isSelectabl
           cursor: 'pointer',
         },
       }),
-      '&:focus': getFocusRingStyles(theme),
+      '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
     },
   };
 });

@@ -58,7 +58,7 @@ export default {
 } as Meta<TableProps<unknown>>;
 
 const nodes: Item[] = [
-  ...Array.from({ length: 5 }, (_, i) => ({
+  ...Array.from({ length: 100 }, (_, i) => ({
     id: (i + 1).toString(),
     paymentId: `rzp${Math.floor(Math.random() * 1000000)}`,
     amount: Number((Math.random() * 10000).toFixed(2)),
@@ -108,7 +108,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
       <TableComponent
         {...args}
         data={data}
-        selectionType="single"
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>

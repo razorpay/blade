@@ -75,8 +75,7 @@ const getNavigationButtonStyles = (props: {
           },
 
           '&:focus-visible': {
-            // TODO: refactor to use focus ring token
-            ...getFocusRingStyles(theme),
+            ...getFocusRingStyles({ theme }),
             color: iconColor[variant].highlighted,
             backgroundColor: backgroundColor[variant].highlighted,
           },
