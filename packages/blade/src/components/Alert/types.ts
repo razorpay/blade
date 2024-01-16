@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
 
-import type { ColorContrast, FeedbackColors } from '~tokens/theme/theme';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 
 export type StyledAlertProps = {
   children: ReactNode;
-  contrastType: keyof ColorContrast;
+  emphasis: SubtleOrIntense;
   color: FeedbackColors;
   isFullWidth: boolean;
   isDesktop: boolean;

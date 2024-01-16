@@ -7,7 +7,7 @@ describe('<Alert />', () => {
     const { container } = renderWithSSR(
       <Alert
         description="Currently you can only accept payments in international currencies using PayPal."
-        intent="positive"
+        color="positive"
         actions={{
           primary: { text: 'Primary', onClick: () => {} },
           secondary: { text: 'Link', onClick: () => {} },

@@ -1,6 +1,7 @@
 # Upgrade Guide for v11 (Brand Refresh)
 
 ## Upgrade Workflow Overview
+
 All the rebranding upgrade activity starts at the design end and is then followed by engineering
 
 <img alt="Upgrade Workflow Overview" src="./upgrade-v11-workflow.png" width="800px">
@@ -66,7 +67,6 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
   + <Heading size={isMobile ? "large" : "xlarge"}> Hello </Heading>
   ```
 
-
 - With Blade v11, we have removed `highContrast` & `lowContrast` terminology from color tokens. If you have used any color token which has `highContrast` in its name or `contrast="high"` prop in typography components, the codemod will replace it with `"UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"` string. You will have to discuss these instances with designers & manually update this value with a new color token that matches the contrast you need.
 
   ```diff
@@ -77,9 +77,11 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
 **Step 5**: Test your page and make sure everything works as expected. Once the migration is complete for all pages, you can remove the old version of Blade from your project.
 
 ## Available Rebranded Components
+
 To check out the list of available components, visit [Blade Component Status](https://blade.razorpay.com/?path=/docs/guides-component-status--docs).
 
 ## Manual Migration Guide
+
 Only use this if you're unable to run the codemod described above.
 
 ### Theme Tokens
@@ -110,6 +112,15 @@ Only use this if you're unable to run the codemod described above.
 - **The `font-size` and `line-height` tokens have been updated to a new scale. You may need to update your custom component styles to match the new scale:**
   - [font-size scale](https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=244%3A188858&mode=design&t=vpFlyrSzO1jdpAPu-1)
   - [line-height scale](https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=244%3A188858&mode=design&t=vpFlyrSzO1jdpAPu-1)
+
+### ActionList
+
+- **The `surfaceLevel` prop has been removed without replacement.**
+
+  ```diff
+  - <ActionList surfaceLevel={2/3} >
+  + <ActionList >
+  ```
 
 ### Amount
 
@@ -145,6 +156,25 @@ Only use this if you're unable to run the codemod described above.
 
   - <Amount size="title-medium" value={123456.789} />
   + <Amount value={123456.789} type="heading" size="xlarge" />
+  ```
+
+### Alert
+
+- **The `contrast` prop has been removed in favor of the new `emphasis` prop.**
+
+  ```diff
+  - <Alert description="Hello World" contrast="low" />
+  + <Alert description="Hello World" emphasis="subtle" />
+
+  - <Alert description="Hello World" contrast="high" />
+  + <Alert description="Hello World" emphasis="intense" />
+  ```
+
+- **The `intent` prop has been removed in favor of the `color` prop.**
+
+  ```diff
+  - <Alert description="Hello World" intent="positive|negative|information|notice|neutral" />
+  + <Alert description="Hello World" color="positive|negative|information|notice|neutral" />
   ```
 
 ### Typography Components
@@ -298,6 +328,26 @@ Only use this if you're unable to run the codemod described above.
   + <Card backgroundColor="surface.background.gray.moderate"> Hello </Card>
   ```
 
+- The `CardHeaderBadge`, `CardHeaderCounter`, `CardHeaderAmount`, `CardHeaderText`, `CardHeaderLink`, and `CardHeaderIconButton` components have the same changes as `Badge`, `Counter`, `Amount`, `Text`, `Link`, and `Button` components respectively.
+
+### Chip & ChipGroup
+
+- **The `intent` prop has been removed in favor of the `color` prop.**
+
+  ```diff
+  - <Chip intent="none"> Hello </Chip>
+  + <Chip color="primary"> Hello </Chip>
+
+  - <Chip intent="positive|negative"> Hello </Chip>
+  + <Chip color="positive|negative"> Hello </Chip>
+
+  - <ChipGroup intent="none">
+  + <ChipGroup color="primary">
+
+  - <ChipGroup intent="positive|negative">
+  + <ChipGroup color="positive|negative">
+  ```
+
 ### Counter
 
 - **The `contrast` prop has been removed in favor of the new `emphasis` prop.**
@@ -343,6 +393,30 @@ Only use this if you're unable to run the codemod described above.
   + <Divider variant="muted"> Hello </Divider>
   ```
 
+### Dropdown
+
+- **The `onDismiss` prop has been removed in favor of the `onOpenChange` prop.**
+
+  ```diff
+  - <Dropdown onDismiss={() => console.log("Dismissed!!!)}> Hello </Dropdown>
+  + <Dropdown
+  +   onOpenChange={(isOpen) => {
+  +     if (!isOpen) {
+  +       console.log("Dismissed!!!");
+  +     }
+  +   }}
+  + >
+
+  - <Dropdown onDismiss={handleDropdownDismiss}> Hello </Dropdown>
+  + <Dropdown
+  +   onOpenChange={(isOpen) => {
+  +     if (!isOpen) {
+  +       handleDropdownDismiss();
+  +     }
+  +   }}
+  + >
+  ```
+
 ### Indicator
 
 - **The `intent` prop has been removed in favor of the `color` prop.**
@@ -372,7 +446,7 @@ Only use this if you're unable to run the codemod described above.
 - **The `contrast` prop has been removed without replacement.**
 
   ```diff
-  - <ProgressBar contrast="low" value={20} />
+  - <ProgressBar contrast="low|high" value={20} />
   + <ProgressBar value={20} />
   ```
 
@@ -381,4 +455,13 @@ Only use this if you're unable to run the codemod described above.
   ```diff
   - <ProgressBar intent="positive|negative|information|notice|neutral" value={20} />
   + <ProgressBar color="positive|negative|information|notice|neutral" value={20} />
+  ```
+
+### Skeleton
+
+- **The `contrast` prop has been removed without replacement.**
+
+  ```diff
+  - <Skeleton contrast="low|high" />
+  + <Skeleton />
   ```

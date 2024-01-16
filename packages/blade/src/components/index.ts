@@ -1,4 +1,5 @@
 export * from './Amount';
+export * from './Alert';
 export * from './Accordion';
 export * from './ActionList';
 export * from './Badge';
@@ -8,6 +9,7 @@ export * from './Box';
 export * from './Button';
 export * from './Button/IconButton';
 export * from './Card';
+export * from './Chip';
 export * from './Counter';
 export * from './Collapsible';
 export * from './Carousel';

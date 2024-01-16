@@ -37,7 +37,7 @@ type OnChange = ({
 }) => void;
 
 const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
-  { isDisabled, value, children, icon: Icon, intent, color, testID, ...styledProps },
+  { isDisabled, value, children, icon: Icon, color, testID, ...styledProps },
   ref,
 ) => {
   const { theme } = useTheme();
@@ -67,10 +67,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
       : groupProps?.defaultValue?.includes(value as string); // If multiple selection, check if value is in defaultValue array
   const useChip = groupProps?.selectionType === 'single' ? useRadio : useCheckbox;
   const _size = groupProps?.size || 'small';
-  const _intent = intent ?? groupProps?.intent;
-  // If intent is proovided and it's not none, use intent otherwise use color
-  const _color = color ?? groupProps?.color ?? 'default';
-  const chipColor = _intent && _intent !== 'none' ? _intent : _color;
+  const chipColor = color ?? groupProps?.color ?? 'primary';
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -129,13 +126,13 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const chipTextColor = chipColorTokens.text[textVariant];
   const chipIconColor = chipColorTokens.icon[textVariant];
 
-  let intentVariant = 'unchecked';
+  let colorVariant = 'unchecked';
   const stateVariant = _isDisabled ? 'disabled' : 'default';
   if (_isChecked && chipColor) {
-    intentVariant = chipColor;
+    colorVariant = chipColor;
   }
-  const chipBackgroundColor = chipColorTokens.background[intentVariant][stateVariant];
-  const chipBorderColor = chipColorTokens.border[intentVariant][stateVariant];
+  const chipBackgroundColor = chipColorTokens.background[colorVariant][stateVariant];
+  const chipBorderColor = chipColorTokens.border[colorVariant][stateVariant];
 
   return (
     <BaseBox
@@ -200,12 +197,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
                     <Icon color={chipIconColor} size={chipIconSizes[_size]} />
                   </BaseBox>
                 ) : null}
-                <Text
-                  {...chipTextSizes[_size]}
-                  type="normal"
-                  truncateAfterLines={1}
-                  color={chipTextColor}
-                >
+                <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
                   {children}
                 </Text>
               </StyledChipWrapper>

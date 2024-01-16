@@ -22,8 +22,8 @@ const AnimatedChip = ({
 }: Omit<AnimatedChipProps, 'theme'>): React.ReactElement => {
   const { theme } = useTheme();
 
-  const easing = getIn(theme, chipMotionTokens.easing);
-  const duration = getIn(theme, chipMotionTokens.duration);
+  const easing = getIn(theme.motion, chipMotionTokens.easing);
+  const duration = getIn(theme.motion, chipMotionTokens.duration);
 
   const chipAnimation = useAnimatedStyle(() => {
     return {
