@@ -5,7 +5,9 @@ function migrateAmountComponent({ root, j, file }): void {
   try {
     root
       .find(j.JSXElement)
-      .filter((path) => ['Amount'].includes(path.value.openingElement.name.name))
+      .filter((path) =>
+        ['Amount', 'CardHeaderAmount'].includes(path.value.openingElement.name.name),
+      )
       .replaceWith((path) => {
         const { node } = path;
 

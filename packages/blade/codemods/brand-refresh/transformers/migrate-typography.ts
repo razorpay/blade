@@ -7,7 +7,9 @@ function migrateTypographyComponents({ root, j, file }): void {
   const typographyJSXElements = root
     .find(j.JSXElement)
     .filter((path) =>
-      ['Text', 'Title', 'Code', 'Display', 'Heading'].includes(path.value.openingElement.name.name),
+      ['Text', 'Title', 'Code', 'Display', 'Heading', 'CardHeaderText'].includes(
+        path.value.openingElement.name.name,
+      ),
     );
 
   // Update <Text variant="caption" size="medium" > to <Text variant="caption" size="small" >
@@ -15,7 +17,7 @@ function migrateTypographyComponents({ root, j, file }): void {
     typographyJSXElements
       .filter(
         (path) =>
-          path.value.openingElement.name.name === 'Text' &&
+          path.value.openingElement.name.name.includes('Text') &&
           path.value.openingElement.attributes.some(
             (attribute) =>
               attribute.name?.name === 'variant' && attribute.value?.value === 'caption',
@@ -287,7 +289,9 @@ function migrateTypographyComponents({ root, j, file }): void {
   try {
     typographyJSXElements
       .filter((path) =>
-        ['Heading', 'Text', 'Display'].includes(path.value.openingElement.name.name),
+        ['Heading', 'Text', 'Display', 'CardHeaderText'].includes(
+          path.value.openingElement.name.name,
+        ),
       )
       .find(j.JSXAttribute)
       .filter((path) => path.node.name.name === 'weight' && path.node.value.value === 'bold')

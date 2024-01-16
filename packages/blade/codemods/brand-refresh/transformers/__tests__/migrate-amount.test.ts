@@ -1,13 +1,13 @@
 import { applyTransform } from '@hypermod/utils';
 import * as transformer from '..';
 
-it('should update token values contextually', async () => {
+it('should migrate the Amount component', async () => {
   const result = await applyTransform(
     transformer,
     `
     const App = () => (
         <>
-          <Amount value={1234} color="positive" />
+          <Amount value={1234} intent="positive" />
 
           <Amount size="body-small" value={123456.789} />
 
@@ -27,7 +27,27 @@ it('should update token values contextually', async () => {
  
           <Amount size="title-small" value={123456.789} />
 
-          <Amount size="title-medium" value={123456.789} />
+          <CardHeaderAmount size="title-medium" value={123456.789} />
+
+          <CardHeaderAmount size="body-small" value={123456.789} />
+
+          <CardHeaderAmount size="body-small-bold" value={123456.789} />
+          
+          <CardHeaderAmount size="body-medium" value={123456.789} />
+    
+          <CardHeaderAmount size="body-medium-bold" value={123456.789} />
+           
+          <CardHeaderAmount size="heading-small" value={123456.789} />
+    
+          <CardHeaderAmount size="heading-small-bold" value={123456.789} />
+          
+          <CardHeaderAmount size="heading-large" value={123456.789} />
+
+          <CardHeaderAmount size="heading-large-bold" value={123456.789} />  
+ 
+          <CardHeaderAmount size="title-small" value={123456.789} />
+
+          <CardHeaderAmount size="title-medium" value={123456.789} />
         </>
       );
     `,
@@ -57,7 +77,27 @@ it('should update token values contextually', async () => {
      
               <Amount value={123456.789} type="heading" size="large" />
 
-              <Amount value={123456.789} type="heading" size="xlarge" />
+              <CardHeaderAmount value={123456.789} type="heading" size="xlarge" />
+
+              <CardHeaderAmount value={123456.789} type="body" size="small" />
+
+              <CardHeaderAmount value={123456.789} type="body" size="small" weight="semibold" />
+              
+              <CardHeaderAmount value={123456.789} type="body" size="medium" />
+        
+              <CardHeaderAmount value={123456.789} type="body" size="medium" weight="semibold" />
+               
+              <CardHeaderAmount value={123456.789} type="body" size="large" />
+        
+              <CardHeaderAmount value={123456.789} type="body" size="large" weight="semibold" />
+              
+              <CardHeaderAmount value={123456.789} type="heading" size="medium" />
+
+              <CardHeaderAmount value={123456.789} type="heading" size="medium" weight="semibold" />  
+     
+              <CardHeaderAmount value={123456.789} type="heading" size="large" />
+
+              <CardHeaderAmount value={123456.789} type="heading" size="xlarge" />
             </>
           );"
   `);
