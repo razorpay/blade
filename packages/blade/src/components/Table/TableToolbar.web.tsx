@@ -53,13 +53,7 @@ const _TableToolbar = ({
   title,
   selectedTitle: controlledSelectedTitle,
 }: TableToolbarProps): React.ReactElement => {
-  const {
-    selectedRows,
-    deselectAllRows,
-    currentPaginationState,
-    totalItems,
-    surfaceLevel,
-  } = useTableContext();
+  const { selectedRows, deselectAllRows, currentPaginationState, totalItems } = useTableContext();
   const { platform } = useTheme();
   const isSelected = selectedRows && selectedRows.length > 0;
 
@@ -83,7 +77,7 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`}>
+    <BaseBox backgroundColor="surface.background.gray.intense">
       <ToolbarWrapper
         display="flex"
         backgroundColor={
@@ -96,7 +90,11 @@ const _TableToolbar = ({
       >
         <BaseBox display="flex" alignItems="center" flex={1}>
           <BaseBox>
-            <Text size="medium" weight="semibold">
+            <Text
+              size="medium"
+              weight="medium"
+              color={isSelected ? 'surface.text.gray.normal' : 'surface.text.gray.subtle'}
+            >
               {selectedTitle ?? title ?? defaultTitle}
             </Text>
           </BaseBox>

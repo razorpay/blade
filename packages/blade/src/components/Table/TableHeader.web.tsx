@@ -12,10 +12,10 @@ import { castWebType, makeMotionTime, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
-import type { SurfaceLevels } from '~tokens/theme/theme';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',
@@ -30,10 +30,7 @@ const SortButton = styled.button(({ theme }) => ({
   transitionProperty: 'color, box-shadow',
   transitionDuration: castWebType(makeMotionTime(getIn(theme.motion, 'duration.quick'))),
   transitionTimingFunction: (theme.motion.easing.standard as unknown) as string,
-  '&:focus-visible': {
-    boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-    outline: 'none',
-  },
+  '&:focus-visible': getFocusRingStyles(theme),
 }));
 
 const SortIcon = ({
@@ -44,8 +41,8 @@ const SortIcon = ({
   isSortReversed: boolean;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const defaultColor = getIn(theme.colors, 'surface.action.icon.default.lowContrast');
-  const activeColor = getIn(theme.colors, 'brand.primary.500');
+  const defaultColor = getIn(theme.colors, 'interactive.icon.gray.muted');
+  const activeColor = getIn(theme.colors, 'interactive.icon.primary.normal');
   const upArrowColor = isSorted && isSortReversed ? activeColor : defaultColor;
   const downArrowColor = isSorted && !isSortReversed ? activeColor : defaultColor;
   return (
@@ -83,11 +80,9 @@ const TableHeader = assignWithoutSideEffects(_TableHeader, {
 });
 
 const StyledHeaderCell = styled(HeaderCell)<{
-  $surfaceLevel: SurfaceLevels;
   $isSortable: boolean;
-}>(({ theme, $surfaceLevel, $isSortable }) => ({
+}>(({ theme, $isSortable }) => ({
   '&&&': {
-    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
     height: '100%',
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
@@ -108,10 +103,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
       paddingLeft: makeSpace(getIn(theme, tableHeader.paddingLeft)),
       paddingRight: makeSpace(getIn(theme, tableHeader.paddingRight)),
     },
-    '&:focus-visible': {
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]} inset`,
-      outline: 'none',
-    },
+    '&:focus-visible': getFocusRingStyles(theme),
   },
 }));
 
@@ -133,7 +125,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
       {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
     >
       {isChildrenString ? (
-        <Text size="medium" weight="semibold">
+        <Text size="medium" weight="medium" color="surface.text.gray.normal">
           {children}
         </Text>
       ) : (

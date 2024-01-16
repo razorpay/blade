@@ -198,7 +198,7 @@ const _Table = <Item,>({
     Table: `
     height:${isFooterSticky ? `100%` : undefined};
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
-      theme.colors.surface.border.normal.lowContrast
+      theme.colors.surface.border.gray.muted
     };
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns ??
@@ -206,7 +206,7 @@ const _Table = <Item,>({
         selectionType === 'multiple' ? 'min-content' : ''
       } repeat(${columnCount},minmax(100px, 1fr)) !important;`
     } !important;
-    background-color: ${theme.colors.surface.background[`level${surfaceLevel}`].lowContrast};
+    background-color: ${theme.colors.surface.background.gray.intense};
     `,
     HeaderCell: `
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
@@ -423,7 +423,7 @@ const _Table = <Item,>({
               width="100%"
               height="100%"
               zIndex={refreshWrapperZIndex}
-              backgroundColor={theme.colors.surface.overlay.background[800]}
+              backgroundColor="overlay.background.moderate"
               justifyContent="center"
               alignItems="center"
               display="flex"

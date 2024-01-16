@@ -8,7 +8,6 @@ import type { TableFooterProps, TableFooterRowProps, TableFooterCellProps } from
 import { Text } from '~components/Typography';
 import { makeSpace } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import type { SurfaceLevels } from '~tokens/theme/theme';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import getIn from '~utils/lodashButBetter/get';
 
@@ -43,12 +42,9 @@ const TableFooterRow = assignWithoutSideEffects(_TableFooterRow, {
   componentId: ComponentIds.TableFooterRow,
 });
 
-const StyledFooterCell = styled(FooterCell)<{
-  $surfaceLevel: SurfaceLevels;
-}>(({ theme, $surfaceLevel }) => ({
+const StyledFooterCell = styled(FooterCell)(({ theme }) => ({
   '&&&': {
     height: '100%',
-    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableFooter.borderBottomAndTopWidth)),
     borderBottomColor: getIn(theme.colors, tableFooter.borderBottomAndTopColor),
@@ -77,7 +73,7 @@ const _TableFooterCell = ({ children }: TableFooterCellProps): React.ReactElemen
       {...metaAttribute({ name: MetaConstants.TableFooterCell })}
     >
       {isChildrenString ? (
-        <Text size="medium" weight="semibold">
+        <Text size="medium" weight="medium">
           {children}
         </Text>
       ) : (

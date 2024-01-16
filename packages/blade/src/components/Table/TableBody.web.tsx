@@ -12,8 +12,8 @@ import { Checkbox } from '~components/Checkbox';
 import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import type { SurfaceLevels } from '~tokens/theme/theme';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledBody = styled(Body)<{ $isSelectable: boolean; $showStripedRows: boolean }>(
   ({ theme, $showStripedRows, $isSelectable }) => {
@@ -137,19 +137,14 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
   componentId: ComponentIds.TableBody,
 });
 
-const StyledCell = styled(Cell)<{
-  $surfaceLevel: SurfaceLevels;
-}>(({ theme, $surfaceLevel }) => ({
+const StyledCell = styled(Cell)(({ theme }) => ({
   '&&&': {
     height: '100%',
-    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
+    backgroundColor: getIn(theme.colors, 'surface.background.gray.intense'),
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
-    '&:focus-visible': {
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${getIn(theme.colors, tableRow.focusRingColor)} inset`,
-    },
+    '&:focus-visible': getFocusRingStyles(theme),
   },
 }));
 
@@ -263,10 +258,7 @@ const StyledRow = styled(Row)<{ $isSelectable: boolean }>(({ theme, $isSelectabl
           cursor: 'pointer',
         },
       }),
-      '&:focus': {
-        outline: 'none',
-        boxShadow: `0 0 0 2px ${getIn(theme.colors, 'brand.primary.300')}`,
-      },
+      '&:focus': getFocusRingStyles(theme),
     },
   };
 });

@@ -3,12 +3,16 @@ import type { TableData, TableProps } from '../types';
 import { Table as TableComponent } from '../Table';
 import { TableHeader, TableHeaderRow, TableHeaderCell } from '../TableHeader';
 import { TableBody, TableRow, TableCell } from '../TableBody';
+import { TableToolbar, TableToolbarActions } from '../TableToolbar';
+import { TableFooter, TableFooterRow, TableFooterCell } from '../TableFooter';
+import { TablePagination } from '../TablePagination';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Amount } from '~components/Amount';
 import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Button } from '~components/Button';
 
 export default {
   title: 'Components/Table',
@@ -96,12 +100,42 @@ const data: TableData<Item> = {
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
     >
-      <TableComponent {...args} data={data} sortFunctions={{}}>
+      <TableComponent
+        {...args}
+        data={data}
+        selectionType="single"
+        toolbar={
+          <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
+            <TableToolbarActions>
+              <Button variant="secondary" marginRight="spacing.2">
+                Export
+              </Button>
+              <Button>Refund</Button>
+            </TableToolbarActions>
+          </TableToolbar>
+        }
+        sortFunctions={{
+          ID: (array) => array.sort((a, b) => Number(a.id) - Number(b.id)),
+          AMOUNT: (array) => array.sort((a, b) => a.amount - b.amount),
+          PAYMENT_ID: (array) => array.sort((a, b) => a.paymentId.localeCompare(b.paymentId)),
+          DATE: (array) => array.sort((a, b) => a.date.getTime() - b.date.getTime()),
+          STATUS: (array) => array.sort((a, b) => a.status.localeCompare(b.status)),
+        }}
+        pagination={
+          <TablePagination
+            onPageChange={console.log}
+            defaultPageSize={10}
+            onPageSizeChange={console.log}
+            showPageSizePicker
+            showPageNumberSelector
+          />
+        }
+      >
         {(tableData) => (
           <>
             <TableHeader>
@@ -142,7 +176,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                           ? 'notice'
                           : tableItem.status === 'Failed'
                           ? 'negative'
-                          : 'default'
+                          : 'primary'
                       }
                     >
                       {tableItem.status}
@@ -151,6 +185,18 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 </TableRow>
               ))}
             </TableBody>
+            <TableFooter>
+              <TableFooterRow>
+                <TableFooterCell>Total</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>-</TableFooterCell>
+                <TableFooterCell>
+                  <Amount value={10} />
+                </TableFooterCell>
+              </TableFooterRow>
+            </TableFooter>
           </>
         )}
       </TableComponent>
