@@ -8,6 +8,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { SubtleOrIntense } from '~tokens/theme/theme';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeMotionTime } from '~utils/makeMotionTime';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 type StyledButtonProps = {
   emphasis: SubtleOrIntense;
@@ -40,8 +41,7 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
     },
 
     '&:focus-visible': {
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${theme.colors.interactive.background.primary.faded}`,
+      ...getFocusRingStyles(theme),
       color: theme.colors.interactive.icon[emphasisColor].subtle,
     },
 

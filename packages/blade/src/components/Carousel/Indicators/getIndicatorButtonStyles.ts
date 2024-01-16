@@ -2,6 +2,7 @@ import type { CSSObject, DefaultTheme } from 'styled-components';
 import type { IndicatorButtonProps } from './types';
 import { size } from '~tokens/global';
 import { castWebType, isReactNative, makeMotionTime, makeSize, makeSpace } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const getIndicatorButtonStyles = ({
   theme,
@@ -43,9 +44,7 @@ const getIndicatorButtonStyles = ({
         paddingTop: makeSize(size[20]),
       },
       '&:focus-visible': {
-        // TODO: refactor to use focus ring token
-        outline: 'none',
-        boxShadow: `0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
+        ...getFocusRingStyles(theme),
       },
     }),
   };

@@ -1,6 +1,7 @@
 import type { CSSObject, DefaultTheme } from 'styled-components';
 import type { NavigationButtonProps } from './types';
 import { castWebType, isReactNative, makeMotionTime, makeSpace } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const getNavigationButtonStyles = (props: {
   theme: DefaultTheme;
@@ -75,8 +76,7 @@ const getNavigationButtonStyles = (props: {
 
           '&:focus-visible': {
             // TODO: refactor to use focus ring token
-            outline: 'none',
-            boxShadow: `0px 0px 0px 4px ${theme.colors.surface.border.primary.muted}`,
+            ...getFocusRingStyles(theme),
             color: iconColor[variant].highlighted,
             backgroundColor: backgroundColor[variant].highlighted,
           },
