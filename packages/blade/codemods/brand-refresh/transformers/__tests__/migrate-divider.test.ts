@@ -1,7 +1,7 @@
 import { applyTransform } from '@hypermod/utils';
 import * as transformer from '..';
 
-it('should update token values contextually', async () => {
+it('should migrate the Divider component', async () => {
   const result = await applyTransform(
     transformer,
     `

@@ -13,7 +13,7 @@ import * as radioStories from '../../components/Radio/Radio.stories';
 import * as switchStories from '../../components/Switch/Switch.stories';
 import * as textInputStories from '../../components/Input/TextInput/TextInput.stories';
 import * as otpInputStories from '../../components/Input/OTPInput/OTPInput.stories';
-import * as autoCompleteStories from '../../components/Input/DropdownInputTriggers/AutoComplete.stories';
+// import * as autoCompleteStories from '../../components/Input/DropdownInputTriggers/AutoComplete.stories';
 import { Card, CardBody } from '~components/Card';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
@@ -61,7 +61,7 @@ const allStories = [
   ...Object.values(composeStories(radioStories)),
   ...Object.values(composeStories(switchStories)),
   ...Object.values(composeStories(chipGroupStories)),
-  ...Object.values(composeStories(autoCompleteStories)),
+  // ...Object.values(composeStories(autoCompleteStories)),
   ...Object.values(composeStories(accordionStories)),
   ...Object.values(composeStories(collapsibleStories)),
   ...Object.values(composeStories(modalStories)),
@@ -74,13 +74,13 @@ const filteredstories = allStories.filter((Story) => includedStories.includes(St
 
 const BrandedComponentKitchenSink = (): React.ReactElement => {
   return (
-    <Card surfaceLevel={2} elevation="lowRaised">
+    <Card elevation="lowRaised">
       <CardBody>
         {filteredstories.map((Story, index) => {
           return (
             <>
               {index === 0 ? null : <Divider orientation="horizontal" marginBottom="spacing.6" />}
-              <Heading type="subtle" size="large" marginBottom="spacing.4">
+              <Heading size="large" marginBottom="spacing.4">
                 {StoryNameToHeadingMap[Story.storyName] ?? Story.storyName}:
               </Heading>
               <Story />

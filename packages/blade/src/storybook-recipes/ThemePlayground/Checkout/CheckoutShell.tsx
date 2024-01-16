@@ -13,8 +13,8 @@ import {
   BottomSheet,
   BottomSheetHeader,
   BottomSheetBody,
-  ActionList,
-  ActionListItem,
+  // ActionList,
+  // ActionListItem,
 } from '../../../components';
 
 const StyledHeader = styled.div(({ theme }) => ({
@@ -22,7 +22,7 @@ const StyledHeader = styled.div(({ theme }) => ({
   backgroundImage: 'linear-gradient(to bottom right,rgba(255,255,255,0.2),rgba(0,0,0,0.2))',
   height: '80px',
   width: '100%',
-  backgroundColor: theme.colors.brand.primary[500],
+  backgroundColor: theme.colors.surface.background.primary.intense,
   padding: makeSpace(theme.spacing[4]),
   borderTopLeftRadius: 'medium',
   borderTopRightRadius: 'medium',
@@ -35,7 +35,7 @@ const StyledHeader = styled.div(({ theme }) => ({
 
 const StyledFooter = styled.div(({ theme }) => ({
   boxShadow: `0 -2px 6px  rgba(23,26,30,.15)`, // not in box
-  borderTop: `1px solid ${theme.colors.brand.gray[400].lowContrast}`,
+  borderTop: `1px solid ${theme.colors.surface.border.primary.muted}`,
   zIndex: 2,
   display: 'flex',
   padding: makeSpace(theme.spacing[4]),
@@ -74,14 +74,14 @@ const LanguageSelector = styled.div(({ theme }) => ({
 
 const CheckoutShell = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const [isLanguageSheetOpen, setIsLanguageSheetOpen] = useState(false);
-  const hideLanguageSheet = (): void => setIsLanguageSheetOpen(false);
+  // const hideLanguageSheet = (): void => setIsLanguageSheetOpen(false);
   return (
     <Box
       maxWidth="375px"
       height="640px"
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       borderWidth="thin"
-      borderColor="surface.border.normal.lowContrast"
+      borderColor="surface.border.gray.muted"
       borderRadius="medium"
       display="flex"
       flexDirection="column"
@@ -90,19 +90,20 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
       <BottomSheet isOpen={isLanguageSheetOpen} onDismiss={() => setIsLanguageSheetOpen(false)}>
         <BottomSheetHeader title="Choose Language" />
         <BottomSheetBody>
-          <ActionList>
+          {/* TODO: Uncomment once ActionList is done */}
+          {/* <ActionList>
             <ActionListItem onClick={hideLanguageSheet} title="English" value="English" />
             <ActionListItem onClick={hideLanguageSheet} title="Hindi" value="Hindi" />
             <ActionListItem onClick={hideLanguageSheet} title="Marathi" value="Marathi" />
             <ActionListItem onClick={hideLanguageSheet} title="Gujarati" value="Gujarati" />
             <ActionListItem onClick={hideLanguageSheet} title="Kannada" value="Kannada" />
-          </ActionList>
+          </ActionList> */}
         </BottomSheetBody>
       </BottomSheet>
       <StyledHeader>
         <MerchantAvatar src="https://i.imgur.com/buGhEkT.png" />
         <Box zIndex={1}>
-          <Heading color="action.text.primary.default">Merchant Name</Heading>
+          <Heading color="interactive.text.onPrimary.normal">Merchant Name</Heading>
           <TrustedBusinessWrapper>
             <img
               src="https://checkout-static-next.razorpay.com/build/assets/images/rtb-live.d7eecf4c.svg"
@@ -114,16 +115,16 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
               marginLeft="spacing.2"
               marginRight="spacing.2"
               size="small"
-              color="action.text.primary.default"
+              color="interactive.text.onPrimary.normal"
             >
               Razorpay trusted business
             </Text>
-            <InfoIcon size="xsmall" color="action.icon.primary.default" />
+            <InfoIcon size="xsmall" color="interactive.icon.onPrimary.normal" />
           </TrustedBusinessWrapper>
         </Box>
 
         <Box display="flex" alignItems="flex-end" flexDirection="column" flex={1}>
-          <CloseIcon size="medium" color="action.icon.primary.default" />
+          <CloseIcon size="medium" color="interactive.icon.onPrimary.normal" />
           <LanguageSelector onClick={() => setIsLanguageSheetOpen(true)}>
             <svg
               width="15px"
@@ -172,7 +173,7 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
                 mask="url(#path-5-outside-1_4902_36286)"
               />
             </svg>
-            <ChevronDownIcon size="xsmall" color="action.icon.primary.default" />
+            <ChevronDownIcon size="xsmall" color="interactive.icon.onPrimary.normal" />
           </LanguageSelector>
         </Box>
       </StyledHeader>
@@ -182,9 +183,7 @@ const CheckoutShell = ({ children }: { children: React.ReactNode }): React.React
       <StyledFooter>
         <Box flex={1} flexDirection="column">
           <Amount value={5500} />
-          <Text size="small" type="subdued">
-            View Details
-          </Text>
+          <Text size="small">View Details</Text>
         </Box>
         <Box flex={2}>
           <Button size="large" isFullWidth>

@@ -58,7 +58,7 @@ const radioIconColors: RadioIconColors = {
   variants: {
     default: {
       dot: {
-        checked: 'colors.interactive.icon.staticWhite.normal',
+        checked: 'colors.interactive.icon.onPrimary.normal',
         unchecked: 'colors.transparent',
       },
       border: {
@@ -72,8 +72,8 @@ const radioIconColors: RadioIconColors = {
     },
     disabled: {
       dot: {
-        checked: 'colors.interactive.icon.staticWhite.normal',
-        unchecked: 'colors.interactive.icon.staticWhite.normal',
+        checked: 'colors.interactive.icon.onPrimary.normal',
+        unchecked: 'colors.interactive.icon.onPrimary.normal',
       },
       border: {
         checked: 'colors.transparent',
@@ -86,7 +86,7 @@ const radioIconColors: RadioIconColors = {
     },
     negative: {
       dot: {
-        checked: 'colors.interactive.icon.staticWhite.normal',
+        checked: 'colors.interactive.icon.onPrimary.normal',
         unchecked: 'colors.transparent',
       },
       border: {

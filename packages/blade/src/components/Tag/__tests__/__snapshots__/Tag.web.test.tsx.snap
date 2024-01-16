@@ -89,8 +89,14 @@ exports[`<Tag /> should render tag 1`] = `
 }
 
 .c5.c5.c5.c5.c5:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(211,26%,34%,1);
 }
 

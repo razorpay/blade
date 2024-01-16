@@ -6,7 +6,7 @@ import { PhantomUI } from './PhantomUI';
 import { ThemeSelector } from './ThemeSelector';
 import { BrandedComponentKitchenSink } from './BrandedComponentKitchenSink';
 import { BladeProvider } from '~components/BladeProvider';
-import { bankingTheme, createTheme, overrideTheme, paymentTheme } from '~tokens/theme';
+import { bladeTheme, createTheme, overrideTheme } from '~tokens/theme';
 import type { ColorSchemeNames, ThemeTokens } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
@@ -17,7 +17,7 @@ const ThemePlayground = (): React.ReactElement => {
   const [borderBase, setBorderBase] = useState<string>('2');
   const [colorScheme, setColorScheme] = useState<ColorSchemeNames>('light');
   const [selectedPreBuiltTheme, setSelectedPreBuiltTheme] = useState<string | undefined>(
-    'paymentTheme',
+    'bladeTheme',
   );
   const [showInternalDemoConfig, setShowInternalDemoConfig] = useState(false);
   const getTheme = (): ThemeTokens => {
@@ -25,10 +25,10 @@ const ThemePlayground = (): React.ReactElement => {
       return createTheme({ brandColor: selectedColor });
     }
     if (selectedPreBuiltTheme === 'paymentTheme') {
-      return paymentTheme;
+      return bladeTheme;
     }
 
-    return bankingTheme;
+    return bladeTheme;
   };
 
   const getOverriddenTheme = (): ThemeTokens => {
@@ -72,29 +72,29 @@ const ThemePlayground = (): React.ReactElement => {
             showInternalDemoConfig={showInternalDemoConfig}
             setShowInternalDemoConfig={setShowInternalDemoConfig}
           />
-          <Card surfaceLevel={3}>
+          <Card>
             <CardBody>
               <Box>
                 <Box flex={1}>
-                  <Heading size="xlarge" marginBottom="spacing.4">
+                  <Heading size="medium" marginBottom="spacing.4">
                     Checkout Home Page
                   </Heading>
                   <CheckoutHome />
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
-                  <Heading size="xlarge" marginBottom="spacing.4">
+                  <Heading size="medium" marginBottom="spacing.4">
                     Checkout Card
                   </Heading>
                   <CheckoutCard />
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
-                  <Heading size="xlarge" marginBottom="spacing.4">
+                  <Heading size="medium" marginBottom="spacing.4">
                     Phantom UI
                   </Heading>
                   <PhantomUI />
                 </Box>
                 <Box marginTop="spacing.8">
-                  <Heading size="xlarge" marginBottom="spacing.4">
+                  <Heading size="medium" marginBottom="spacing.4">
                     Component Showcase
                   </Heading>
                   <BrandedComponentKitchenSink />

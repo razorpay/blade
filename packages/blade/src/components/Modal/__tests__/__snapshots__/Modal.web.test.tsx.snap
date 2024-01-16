@@ -341,8 +341,14 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c22.c22.c22.c22.c22:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(211,26%,34%,1);
 }
 
@@ -454,7 +460,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c28.c28.c28.c28.c28 * {

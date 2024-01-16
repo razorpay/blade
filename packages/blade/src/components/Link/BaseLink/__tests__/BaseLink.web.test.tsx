@@ -229,7 +229,7 @@ describe('<BaseLink />', () => {
     // default state
     const linkButtonText = getByText(textContent);
     expect(linkButtonText).toHaveStyle({
-      color: bladeTheme.colors.onLight.interactive.text.primary.subtle,
+      color: bladeTheme.colors.onLight.interactive.text.primary.normal,
     });
 
     // click and focus
@@ -241,7 +241,7 @@ describe('<BaseLink />', () => {
     // click outside
     fireEvent.focusOut(linkButtonText);
     expect(linkButtonText).toHaveStyle({
-      color: bladeTheme.colors.onLight.interactive.text.primary.subtle,
+      color: bladeTheme.colors.onLight.interactive.text.primary.normal,
     });
   });
 });

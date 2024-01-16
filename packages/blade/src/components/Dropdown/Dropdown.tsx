@@ -56,7 +56,6 @@ const _Dropdown = ({
   isOpen: isOpenControlled,
   onOpenChange,
   selectionType = 'single',
-  onDismiss,
   testID,
   ...styledProps
 }: DropdownProps): React.ReactElement => {
@@ -101,9 +100,6 @@ const _Dropdown = ({
 
   useDidUpdate(() => {
     onOpenChange?.(isOpen);
-    if (!isOpen) {
-      onDismiss?.();
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 

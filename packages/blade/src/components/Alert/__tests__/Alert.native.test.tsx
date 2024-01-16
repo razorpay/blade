@@ -11,11 +11,11 @@ describe('<Alert />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render positive intent and full width', () => {
+  it('should render positive color and full width', () => {
     const { toJSON } = renderWithTheme(
       <Alert
         description="Currently you can only accept payments in international currencies using PayPal."
-        intent="positive"
+        color="positive"
         isFullWidth
       />,
     );
@@ -60,7 +60,7 @@ describe('<Alert />', () => {
     const { getByLabelText, getByRole, queryByRole } = renderWithTheme(
       <Alert
         description="Currently you can only accept payments in international currencies using PayPal."
-        intent="notice"
+        color="notice"
       />,
     );
     const closeButton = getByLabelText('Dismiss alert');
@@ -86,27 +86,12 @@ describe('<Alert />', () => {
     const { getByRole } = renderWithTheme(
       <Alert
         description="Currently you can only accept payments in international currencies using PayPal."
-        intent="negative"
+        color="negative"
       />,
     );
     const alert = getByRole('alert');
 
     expect(alert).toBeTruthy();
-  });
-
-  it('should throw an error if secondary action is defined without primary action', () => {
-    const onClickSecondary = jest.fn();
-    expect(() =>
-      renderWithTheme(
-        <Alert
-          description="Currently you can only accept payments in international currencies using PayPal."
-          // @ts-expect-error testing failure case when there is no primary action passed
-          actions={{
-            secondary: { text: 'Link', onClick: onClickSecondary },
-          }}
-        />,
-      ),
-    ).toThrow(`[Blade: Alert]: SecondaryAction is allowed only when PrimaryAction is defined.`);
   });
 
   it('should accept testID', () => {

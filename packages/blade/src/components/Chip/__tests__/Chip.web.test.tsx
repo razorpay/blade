@@ -39,22 +39,6 @@ describe('<Chip />', () => {
     expect(getByRole('radio', { name: 'Mango' })).toBeInTheDocument();
   });
 
-  it('should render chip with intent', () => {
-    const { getByRole } = renderWithTheme(
-      <ChipGroup accessibilityLabel="Was this message helpful?">
-        <Chip value="apple" intent="positive">
-          Yes
-        </Chip>
-        <Chip value="mango" intent="negative">
-          No
-        </Chip>
-      </ChipGroup>,
-    );
-
-    expect(getByRole('radio', { name: 'Yes' })).toBeInTheDocument();
-    expect(getByRole('radio', { name: 'No' })).toBeInTheDocument();
-  });
-
   it('should render chip with color', () => {
     const { getByRole } = renderWithTheme(
       <ChipGroup accessibilityLabel="Was this message helpful?">

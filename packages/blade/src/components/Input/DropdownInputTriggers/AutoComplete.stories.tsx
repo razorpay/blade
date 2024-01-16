@@ -529,9 +529,11 @@ export const InternalWithValidations = (): React.ReactElement => {
   return (
     <Dropdown
       selectionType="single"
-      onDismiss={() => {
-        console.log('dismiss');
-        setIsDismissed(true);
+      onOpenChange={(isOpen) => {
+        if (!isOpen) {
+          console.log('dismiss');
+          setIsDismissed(true);
+        }
       }}
     >
       <AutoComplete
