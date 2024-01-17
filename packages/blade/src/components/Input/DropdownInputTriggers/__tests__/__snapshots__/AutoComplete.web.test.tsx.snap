@@ -441,7 +441,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c53.c53.c53.c53.c53 * {
@@ -612,8 +612,14 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c35.c35.c35.c35.c35:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   color: hsla(211,26%,34%,1);
 }
 
@@ -2053,7 +2059,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c42.c42.c42.c42.c42 * {

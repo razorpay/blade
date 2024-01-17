@@ -3653,7 +3653,7 @@ exports[`<BaseButton /> should render information color secondary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(200,84%,44%,1);
+  color: hsla(200,84%,37%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
@@ -4173,7 +4173,7 @@ exports[`<BaseButton /> should render negative color secondary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(4,86%,58%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
@@ -4433,7 +4433,7 @@ exports[`<BaseButton /> should render neutral color secondary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(211,26%,34%,1);
+  color: hsla(211,33%,21%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
@@ -4693,7 +4693,7 @@ exports[`<BaseButton /> should render notice color secondary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(25,90%,48%,1);
+  color: hsla(25,85%,42%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
@@ -4953,7 +4953,7 @@ exports[`<BaseButton /> should render positive color secondary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(150,100%,32%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
