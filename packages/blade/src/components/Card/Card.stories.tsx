@@ -24,13 +24,15 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 
 import { Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
-import { TrashIcon, CheckCircleIcon } from '~components/Icons';
+import { UsersIcon, TrashIcon, CheckCircleIcon } from '~components/Icons';
 
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import iconMap from '~components/Icons/iconMap';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import type { Elevation } from '~tokens/global';
 import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
+import { TextInput } from '~components/Input/TextInput';
 
 const Page = (): React.ReactElement => {
   return (
@@ -341,92 +343,91 @@ FigmaExample.args = {
   footerSubtitle: 'Footer Subtitle',
 };
 
-// TODO: Rebranding - Uncomment this when TextInput is ready
-// const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement => {
-//   return (
-//     <Card backgroundColor={args.backgroundColor}>
-//       <CardHeader>
-//         <CardHeaderLeading
-//           title="Profile Information"
-//           subtitle="We will use this information to keep your account updated"
-//           prefix={<CardHeaderIcon icon={UsersIcon} />}
-//         />
-//         <CardHeaderTrailing visual={<CardHeaderIconButton icon={TrashIcon} />} />
-//       </CardHeader>
-//       <CardBody>
-//         <BaseBox display="flex" flexDirection="row" gap="spacing.5">
-//           <BaseBox flex={1}>
-//             <TextInput
-//               label="First Name"
-//               isRequired
-//               necessityIndicator="required"
-//               placeholder="Enter your first name"
-//             />
-//           </BaseBox>
-//           <BaseBox flex={1}>
-//             <TextInput
-//               label="Last Name"
-//               isRequired
-//               necessityIndicator="required"
-//               placeholder="Enter your last name"
-//             />
-//           </BaseBox>
-//         </BaseBox>
-//         <BaseBox marginTop="spacing.5" />
-//         <TextInput
-//           label="Address Line 1"
-//           isRequired
-//           placeholder="Apartment name, number, suite, etc."
-//           necessityIndicator="required"
-//         />
-//         <BaseBox marginTop="spacing.5" />
-//         <TextInput label="Address Line 2" isRequired placeholder="Area, Locality, etc." />
-//         <BaseBox marginTop="spacing.5" />
-//         <BaseBox display="flex" flexDirection="row" gap="spacing.5">
-//           <BaseBox flex={1}>
-//             <TextInput
-//               label="Postal Code"
-//               isRequired
-//               necessityIndicator="required"
-//               placeholder="Zipcode"
-//             />
-//           </BaseBox>
-//           <BaseBox flex={1}>
-//             <TextInput
-//               label="Country"
-//               isRequired
-//               necessityIndicator="required"
-//               placeholder="Country"
-//             />
-//           </BaseBox>
-//         </BaseBox>
-//         <BaseBox marginTop="spacing.5" />
-//         <TextInput
-//           label="Mobile Number"
-//           necessityIndicator="optional"
-//           placeholder="Area, Locality, etc."
-//         />
-//       </CardBody>
-//       <CardFooter>
-//         <CardFooterLeading subtitle="Last updated on 20th Sep 2022" />
-//         <CardFooterTrailing
-//           actions={{
-//             primary: {
-//               text: 'Save Details',
-//               onClick: () => console.log('Saved'),
-//             },
-//             secondary: {
-//               text: 'Reset',
-//               onClick: () => console.log('Reset'),
-//             },
-//           }}
-//         />
-//       </CardFooter>
-//     </Card>
-//   );
-// };
+const CardChildrenExample = ({ ...args }: StoryControlProps): React.ReactElement => {
+  return (
+    <Card backgroundColor={args.backgroundColor}>
+      <CardHeader>
+        <CardHeaderLeading
+          title="Profile Information"
+          subtitle="We will use this information to keep your account updated"
+          prefix={<CardHeaderIcon icon={UsersIcon} />}
+        />
+        <CardHeaderTrailing visual={<CardHeaderIconButton icon={TrashIcon} />} />
+      </CardHeader>
+      <CardBody>
+        <BaseBox display="flex" flexDirection="row" gap="spacing.5">
+          <BaseBox flex={1}>
+            <TextInput
+              label="First Name"
+              isRequired
+              necessityIndicator="required"
+              placeholder="Enter your first name"
+            />
+          </BaseBox>
+          <BaseBox flex={1}>
+            <TextInput
+              label="Last Name"
+              isRequired
+              necessityIndicator="required"
+              placeholder="Enter your last name"
+            />
+          </BaseBox>
+        </BaseBox>
+        <BaseBox marginTop="spacing.5" />
+        <TextInput
+          label="Address Line 1"
+          isRequired
+          placeholder="Apartment name, number, suite, etc."
+          necessityIndicator="required"
+        />
+        <BaseBox marginTop="spacing.5" />
+        <TextInput label="Address Line 2" isRequired placeholder="Area, Locality, etc." />
+        <BaseBox marginTop="spacing.5" />
+        <BaseBox display="flex" flexDirection="row" gap="spacing.5">
+          <BaseBox flex={1}>
+            <TextInput
+              label="Postal Code"
+              isRequired
+              necessityIndicator="required"
+              placeholder="Zipcode"
+            />
+          </BaseBox>
+          <BaseBox flex={1}>
+            <TextInput
+              label="Country"
+              isRequired
+              necessityIndicator="required"
+              placeholder="Country"
+            />
+          </BaseBox>
+        </BaseBox>
+        <BaseBox marginTop="spacing.5" />
+        <TextInput
+          label="Mobile Number"
+          necessityIndicator="optional"
+          placeholder="Area, Locality, etc."
+        />
+      </CardBody>
+      <CardFooter>
+        <CardFooterLeading subtitle="Last updated on 20th Sep 2022" />
+        <CardFooterTrailing
+          actions={{
+            primary: {
+              text: 'Save Details',
+              onClick: () => console.log('Saved'),
+            },
+            secondary: {
+              text: 'Reset',
+              onClick: () => console.log('Reset'),
+            },
+          }}
+        />
+      </CardFooter>
+    </Card>
+  );
+};
 
-// export const CardBodyContent = CardChildrenExample.bind({});
+export const CardBodyContent = CardChildrenExample.bind({});
 
 const CardWithoutPaddingExample: StoryFn<typeof Card> = (): React.ReactElement => {
   return (
