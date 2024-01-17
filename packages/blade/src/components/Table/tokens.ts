@@ -47,7 +47,7 @@ const tableRow = {
     backgroundColor: 'transparent',
     backgroundColorHover: 'interactive.background.gray.default',
     backgroundColorFocus: 'transparent',
-    // TODO on design side: explore pressed state color change, right now both hover & active are same
+    // TODO: Rebranding - on design side: explore pressed state color change, right now both hover & active are same
     backgroundColorActive: 'interactive.background.gray.default',
     backgroundColorSelected: 'interactive.background.primary.faded',
     backgroundColorSelectedHover: 'interactive.background.primary.fadedHighlighted',

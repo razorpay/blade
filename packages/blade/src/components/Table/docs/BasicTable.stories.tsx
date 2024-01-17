@@ -191,6 +191,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
                 <TableFooterCell>-</TableFooterCell>
+                {args.selectionType === 'multiple' ? <TableFooterCell>-</TableFooterCell> : null}
                 <TableFooterCell>
                   <Amount value={10} />
                 </TableFooterCell>

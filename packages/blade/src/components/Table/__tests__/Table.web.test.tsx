@@ -389,7 +389,7 @@ describe('<Table />', () => {
 
   it('should render table with backgroundColor', () => {
     const { container } = renderWithTheme(
-      <Table data={{ nodes: nodes.slice(0, 2) }} backgroundColor="surface.background.sea.intense">
+      <Table data={{ nodes: nodes.slice(0, 2) }} backgroundColor="surface.background.gray.intense">
         {(tableData) => (
           <>
             <TableHeader>
