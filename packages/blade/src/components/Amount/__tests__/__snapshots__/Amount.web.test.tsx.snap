@@ -1554,7 +1554,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(0,83%,33%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1572,7 +1572,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(0,83%,33%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1637,7 +1637,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  color: hsla(150,100%,21%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
   font-weight: 400;
@@ -1655,7 +1655,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(150,100%,21%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
@@ -1672,7 +1672,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,21%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
   font-weight: 400;

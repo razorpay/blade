@@ -703,7 +703,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                     style={
                                       [
                                         {
-                                          "color": "hsla(150, 100%, 21%, 1)",
+                                          "color": "hsla(150, 100%, 27%, 1)",
                                           "fontFamily": "Inter",
                                           "fontSize": 12,
                                           "fontStyle": "normal",
@@ -864,7 +864,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               style={
                                 [
                                   {
-                                    "color": "hsla(150, 100%, 21%, 1)",
+                                    "color": "hsla(150, 100%, 27%, 1)",
                                     "fontFamily": "Inter",
                                     "fontSize": 12,
                                     "fontStyle": "normal",

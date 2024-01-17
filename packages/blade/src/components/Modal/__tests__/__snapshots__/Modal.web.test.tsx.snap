@@ -213,7 +213,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(150,100%,21%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;

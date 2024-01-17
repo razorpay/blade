@@ -1546,7 +1546,7 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(200,84%,29%,1);
+  color: hsla(200,84%,37%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -1643,7 +1643,7 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(200,84%,29%,1);
+  color: hsla(200,84%,37%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -1740,7 +1740,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,83%,33%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -1837,7 +1837,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,83%,33%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -2322,7 +2322,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,21%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -2419,7 +2419,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,21%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;

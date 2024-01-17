@@ -2454,7 +2454,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         style={
           [
             {
-              "color": "hsla(200, 84%, 29%, 1)",
+              "color": "hsla(200, 84%, 37%, 1)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -2487,7 +2487,7 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         style={
           [
             {
-              "color": "hsla(200, 84%, 29%, 1)",
+              "color": "hsla(200, 84%, 37%, 1)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -2558,7 +2558,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
         style={
           [
             {
-              "color": "hsla(150, 100%, 21%, 1)",
+              "color": "hsla(150, 100%, 27%, 1)",
               "fontFamily": "Inter",
               "fontSize": 10,
               "fontStyle": "normal",
@@ -2623,7 +2623,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           style={
             [
               {
-                "color": "hsla(150, 100%, 21%, 1)",
+                "color": "hsla(150, 100%, 27%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
@@ -2657,7 +2657,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           style={
             [
               {
-                "color": "hsla(150, 100%, 21%, 1)",
+                "color": "hsla(150, 100%, 27%, 1)",
                 "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",

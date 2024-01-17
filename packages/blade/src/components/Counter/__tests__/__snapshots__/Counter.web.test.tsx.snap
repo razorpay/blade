@@ -1619,7 +1619,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 1`]
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(200,84%,29%,1);
+  color: hsla(200,84%,37%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -1717,7 +1717,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 2`]
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(200,84%,29%,1);
+  color: hsla(200,84%,37%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -1815,7 +1815,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,83%,33%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -1913,7 +1913,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(0,83%,33%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -2403,7 +2403,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,21%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
@@ -2501,7 +2501,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = 
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(150,100%,21%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 500;
