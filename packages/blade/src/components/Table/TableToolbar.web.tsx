@@ -53,7 +53,13 @@ const _TableToolbar = ({
   title,
   selectedTitle: controlledSelectedTitle,
 }: TableToolbarProps): React.ReactElement => {
-  const { selectedRows, deselectAllRows, currentPaginationState, totalItems } = useTableContext();
+  const {
+    selectedRows,
+    deselectAllRows,
+    currentPaginationState,
+    totalItems,
+    backgroundColor,
+  } = useTableContext();
   const { platform } = useTheme();
   const isSelected = selectedRows && selectedRows.length > 0;
 
@@ -77,7 +83,7 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox backgroundColor="surface.background.gray.intense">
+    <BaseBox backgroundColor={backgroundColor}>
       <ToolbarWrapper
         display="flex"
         backgroundColor={

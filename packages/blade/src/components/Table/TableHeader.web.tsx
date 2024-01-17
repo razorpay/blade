@@ -4,7 +4,7 @@ import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-librar
 import { tableHeader } from './tokens';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
-import type { TableHeaderRowProps, TableHeaderCellProps } from './types';
+import type { TableHeaderRowProps, TableHeaderCellProps, TableBackgroundColors } from './types';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
@@ -81,9 +81,11 @@ const TableHeader = assignWithoutSideEffects(_TableHeader, {
 
 const StyledHeaderCell = styled(HeaderCell)<{
   $isSortable: boolean;
-}>(({ theme, $isSortable }) => ({
+  $backgroundColor: TableBackgroundColors;
+}>(({ theme, $isSortable, $backgroundColor }) => ({
   '&&&': {
     height: '100%',
+    backgroundColor: getIn(theme.colors, $backgroundColor),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderBottomColor: getIn(theme.colors, tableHeader.borderBottomAndTopColor),
@@ -108,7 +110,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
 }));
 
 const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
-  const { toggleSort, currentSortedState } = useTableContext();
+  const { toggleSort, currentSortedState, backgroundColor } = useTableContext();
   const isChildrenString = typeof children === 'string';
   const isSortable =
     headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
@@ -116,6 +118,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
     <StyledHeaderCell
       tabIndex={0}
       $isSortable={isSortable}
+      $backgroundColor={backgroundColor}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);

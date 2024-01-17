@@ -4,7 +4,13 @@ import styled from 'styled-components';
 import { useTableContext } from './TableContext';
 import { checkboxCellWidth, tableRow } from './tokens';
 import { ComponentIds } from './componentIds';
-import type { TableProps, TableBodyProps, TableRowProps, TableCellProps } from './types';
+import type {
+  TableProps,
+  TableBodyProps,
+  TableRowProps,
+  TableCellProps,
+  TableBackgroundColors,
+} from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
@@ -137,10 +143,12 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
   componentId: ComponentIds.TableBody,
 });
 
-const StyledCell = styled(Cell)(({ theme }) => ({
+const StyledCell = styled(Cell)<{
+  $backgroundColor: TableBackgroundColors;
+}>(({ theme, $backgroundColor }) => ({
   '&&&': {
     height: '100%',
-    backgroundColor: getIn(theme.colors, 'surface.background.gray.intense'),
+    backgroundColor: getIn(theme.colors, $backgroundColor),
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
@@ -176,11 +184,16 @@ const CellWrapper = styled(BaseBox)<{
 
 const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripedRows } = useTableContext();
+  const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
   return (
-    <StyledCell tabIndex={0} role="cell" {...metaAttribute({ name: MetaConstants.TableCell })}>
+    <StyledCell
+      tabIndex={0}
+      role="cell"
+      $backgroundColor={backgroundColor}
+      {...metaAttribute({ name: MetaConstants.TableCell })}
+    >
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
         <CellWrapper
           className="cell-wrapper"

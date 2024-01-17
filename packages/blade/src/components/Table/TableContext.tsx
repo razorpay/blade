@@ -2,7 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 import React from 'react';
 import type { TableNode } from '@table-library/react-table-library/table';
-import type { TableProps } from './types';
+import type { TableBackgroundColors, TableProps } from './types';
 
 export type TableContextType = {
   selectionType?: TableProps<unknown>['selectionType'];
@@ -27,6 +27,7 @@ export type TableContextType = {
   showStripedRows?: boolean;
   disabledRows: TableNode['id'][];
   setDisabledRows: React.Dispatch<React.SetStateAction<TableNode['id'][]>>;
+  backgroundColor: TableBackgroundColors;
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -46,6 +47,7 @@ const TableContext = React.createContext<TableContextType>({
   setPaginationRowSize: () => {},
   disabledRows: [],
   setDisabledRows: () => {},
+  backgroundColor: 'surface.background.gray.intense',
 });
 
 const useTableContext = (): TableContextType => {

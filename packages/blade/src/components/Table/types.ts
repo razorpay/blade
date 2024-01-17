@@ -1,5 +1,7 @@
+import type { Theme } from '~components/BladeProvider';
 import type { BoxProps } from '~components/Box';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 type TableNode<Item> = Item & {
   id: Identifier;
@@ -8,6 +10,10 @@ type TableNode<Item> = Item & {
 type TableData<Item> = {
   nodes: TableNode<Item>[];
 };
+
+type TableBackgroundColors = `surface.background.${DotNotationToken<
+  Theme['colors']['surface']['background']
+>}`;
 
 type TableHeaderProps = {
   /**
@@ -134,6 +140,10 @@ type TableProps<Item> = {
    * The default value is `repeat(${columnCount},minmax(100px, 1fr))`.
    **/
   gridTemplateColumns?: string;
+  /**
+   * background color of the table
+   **/
+  backgroundColor?: TableBackgroundColors;
   /**
    * The isLoading prop determines whether the table is loading or not.
    * The default value is `false`.
@@ -319,4 +329,5 @@ export type {
   TablePaginationProps,
   TableToolbarProps,
   TableToolbarActionsProps,
+  TableBackgroundColors,
 };

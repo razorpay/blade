@@ -28,6 +28,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
+import getIn from '~utils/lodashButBetter/get';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -123,6 +124,7 @@ const _Table = <Item,>({
   gridTemplateColumns,
   isLoading = false,
   isRefreshing = false,
+  backgroundColor = 'surface.background.gray.intense',
   ...styledProps
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -205,7 +207,7 @@ const _Table = <Item,>({
         selectionType === 'multiple' ? 'min-content' : ''
       } repeat(${columnCount},minmax(100px, 1fr)) !important;`
     } !important;
-    background-color: ${theme.colors.surface.background.gray.intense};
+    background-color: ${getIn(theme.colors, backgroundColor)};
     `,
     HeaderCell: `
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
@@ -373,6 +375,7 @@ const _Table = <Item,>({
       showStripedRows,
       disabledRows,
       setDisabledRows,
+      backgroundColor,
     }),
     [
       selectionType,
@@ -390,6 +393,7 @@ const _Table = <Item,>({
       showStripedRows,
       disabledRows,
       setDisabledRows,
+      backgroundColor,
     ],
   );
 
