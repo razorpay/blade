@@ -465,3 +465,12 @@ Only use this if you're unable to run the codemod described above.
   - <Skeleton contrast="low|high" />
   + <Skeleton />
   ```
+
+### Table
+
+- **The `surfaceLevel` prop has been removed without replacement.**
+
+  ```diff
+  - <Table data={tableData} surfaceLevel={1/2/3}>
+  + <Table data={tableData} >
+  ```
