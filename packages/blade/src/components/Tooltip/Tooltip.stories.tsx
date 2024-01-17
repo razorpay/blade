@@ -284,13 +284,13 @@ const CustomTriggerDocs = () => {
       </ListItem>
       <ListItem>
         Make sure that your component can receive focus{' '}
-        <ListItemText as="span" type="subdued">
+        <ListItemText as="span" color="surface.text.gray.muted">
           (eg: have tabIndex:0)
         </ListItemText>
       </ListItem>
       <ListItem>
         Forward event handlers to the custom trigger{' '}
-        <ListItemText as="span" type="subdued">
+        <ListItemText as="span" color="surface.text.gray.muted">
           (you can import the TooltipTriggerProps type from blade when using TypeScript)
         </ListItemText>
         <List>
