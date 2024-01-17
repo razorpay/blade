@@ -91,13 +91,15 @@ describe('<Amount />', () => {
   });
 
   it('should render positive intent Amount ', () => {
-    const { container } = renderWithTheme(<Amount color="positive" value={1000} />);
+    const { container } = renderWithTheme(
+      <Amount color="feedback.text.positive.intense" value={1000} />,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('should render negative intent Amount ', () => {
     const { container } = renderWithTheme(
-      <Amount isAffixSubtle={false} color="negative" value={1000} />,
+      <Amount isAffixSubtle={false} color="feedback.text.negative.intense" value={1000} />,
     );
     expect(container).toMatchSnapshot();
   });

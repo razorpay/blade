@@ -127,8 +127,17 @@ Only use this if you're unable to run the codemod described above.
 - **The `intent` prop has been removed in favor of the `color` prop.**
 
   ```diff
-  - <Amount intent="positive|negative|information|notice" value={123456.789} />
-  + <Amount color="positive|negative|information|notice" value={123456.789} />
+  - <Amount intent="positive" value={123456.789} />
+  + <Amount color="feedback.text.positive.intense" value={123456.789} />
+
+  - <Amount intent="negative" value={123456.789} />
+  + <Amount color="feedback.text.negative.intense" value={123456.789} />
+
+  - <Amount intent="information" value={123456.789} />
+  + <Amount color="feedback.text.information.intense" value={123456.789} />
+
+  - <Amount intent="notice" value={123456.789} />
+  + <Amount color="feedback.text.notice.intense" value={123456.789} />
   ```
 
 ### Alert
