@@ -51,6 +51,7 @@ const config: StorybookConfig = {
     '../../src/components/SpotlightPopoverTour/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Switch/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/components/Checkbox/**/**/*.stories.@(ts|tsx|js|jsx)',
+    '../../src/components/Table/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../docs/**/*.stories.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../src/**/*.stories.mdx',

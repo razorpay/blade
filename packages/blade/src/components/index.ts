@@ -31,6 +31,7 @@ export * from './Spinner';
 export * from './SpotlightPopoverTour';
 export * from './Tabs';
 export * from './Tag';
+export * from './Table';
 export * from './Tooltip';
 export * from './Skeleton';
 export * from './Input/DropdownInputTriggers';

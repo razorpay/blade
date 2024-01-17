@@ -45,7 +45,7 @@ const data: TableData<Item> = {
 function App(): React.ReactElement {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -142,7 +142,7 @@ const data: TableData<Item> = {
 function App(): React.ReactElement {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -322,7 +322,7 @@ const data: TableData<Item> = {
 function App(): React.ReactElement {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -448,7 +448,7 @@ function App(): React.ReactElement {
   const [selectedItem, setSelectedItem] = useState<Item | undefined>(undefined);
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -582,7 +582,7 @@ function App(): React.ReactElement {
   const selectedItemsLength = selectedItems.length;
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -724,7 +724,7 @@ function App(): React.ReactElement {
   const onMobile = platform === 'onMobile';
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -859,7 +859,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -999,7 +999,7 @@ const data: TableData<Item> = {
 function App(): React.ReactElement {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -1126,7 +1126,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -1278,7 +1278,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -1362,7 +1362,7 @@ function App(): React.ReactElement {
 export default App;
 `;
 
-const TableWithSurfaceLevelsStory = `
+const TableWithBackgroundColorStory = `
 import {
   Table,
   Heading,
@@ -1411,38 +1411,38 @@ const data: TableData<Item> = {
   nodes,
 };
 
-type SurfaceLevels = 1 | 2 | 3;
+type Emphasis = 'subtle' | 'intense' | 'moderate'
 
 function App(): React.ReactElement {
-  const [surfaceLevel, setSurfaceLevel] = useState<SurfaceLevels>(1);
+  const [emphasis, setEmphasis] = useState<Emphasis>('subtle');
   return (
     <Box
-      backgroundColor={\`surface.background.level\${surfaceLevel}.lowContrast\`}
+      backgroundColor={\`surface.background.gray\${emphasis}\`}
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
     >
       <Box marginBottom="spacing.4">
         <Heading marginBottom="spacing.3">
-          Table on various Surface Levels
+          Table on various background colors
         </Heading>
         <RadioGroup
-          label="Select Surface Level"
+          label="Select Emphasis Level"
           onChange={({ value }) =>
-            setSurfaceLevel(Number(value) as SurfaceLevels)
+            setEmphasis(Number(value) as Emphasis)
           }
-          value={\`\${surfaceLevel}\`}
+          value={\`\${emphasis}\`}
         >
-          <Radio value="1">1</Radio>
-          <Radio value="2">2</Radio>
-          <Radio value="3">3</Radio>
+          <Radio value="subtle">subtle</Radio>
+          <Radio value="moderate">moderate</Radio>
+          <Radio value="intense">intense</Radio>
         </RadioGroup>
       </Box>
       <Table
         selectionType="multiple"
         showStripedRows={true}
         data={data}
-        surfaceLevel={surfaceLevel}
+        backgroundColor={emphasis}
       >
         {(tableData) => (
           <>
@@ -1552,7 +1552,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
     >
       <Heading>Table with initial isLoading state</Heading>
@@ -1720,7 +1720,7 @@ function App(): React.ReactElement {
 
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
@@ -1828,7 +1828,7 @@ export {
   TableWithStickyFirstColumnStory,
   TableWithPaginationStory,
   TableWithDisabledRowsStory,
-  TableWithSurfaceLevelsStory,
+  TableWithBackgroundColorStory,
   TableWithIsLoadingStory,
   TableWithIsRefreshingStory,
 };

@@ -40,7 +40,7 @@ const StyledInput = styled.input<HoverProps>(
   ({ theme, isChecked, isDisabled, hasError, hoverTokens }) => ({
     ...screenReaderStyles,
     '&:focus-visible + div': {
-      ...getFocusRingStyles(theme),
+      ...getFocusRingStyles({ theme }),
     },
     '&:hover + div': {
       ...getHoverStyles({ theme, isChecked, isDisabled, hasError, hoverTokens }),

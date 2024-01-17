@@ -8,7 +8,7 @@ import type { EasingType } from '~tokens/global/motion';
  * @description Tokenises objects to dot notation strings, eg: `surface.text.normal.lowContrast`
  */
 export type DotNotationToken<_TokenType, TokenType = Omit<_TokenType, 'name'>> = {
-  [K in keyof TokenType]: TokenType[K] extends string | ElevationStyles
+  [K in keyof TokenType]: TokenType[K] extends string | number | ElevationStyles
     ? `${Extract<K, number | string>}`
     : `${Extract<K, number | string>}.${TokenType[K] extends Record<
         string,

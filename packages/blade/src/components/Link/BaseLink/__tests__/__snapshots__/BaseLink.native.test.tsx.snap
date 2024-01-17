@@ -195,7 +195,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
         color="interactive.text.primary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -204,7 +204,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -310,7 +310,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
         color="interactive.text.primary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -319,7 +319,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
@@ -425,7 +425,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
         color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="semibold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
@@ -434,7 +434,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "600",
+              "fontWeight": "500",
               "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,

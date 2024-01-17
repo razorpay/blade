@@ -407,7 +407,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
           fontSize={fontSize}
           lineHeight={lineHeight}
           textAlign="center"
-          fontWeight={variant === 'button' ? 'semibold' : 'medium'}
+          fontWeight="medium"
         >
           {children}
         </BaseText>
