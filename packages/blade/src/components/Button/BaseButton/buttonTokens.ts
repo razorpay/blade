@@ -125,8 +125,8 @@ const textColor = (property: 'icon' | 'text') => {
           disabled: `interactive.${property}.${color}.disabled`,
         },
         secondary: {
-          default: `interactive.${property}.${color}.subtle`,
-          highlighted: `interactive.${property}.${color}.subtle`,
+          default: `interactive.${property}.${color}.normal`,
+          highlighted: `interactive.${property}.${color}.normal`,
           disabled: `interactive.${property}.${color}.disabled`,
         },
       } as const;

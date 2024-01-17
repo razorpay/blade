@@ -2486,7 +2486,7 @@ exports[`<Button /> should render negative color secondary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(4,86%,58%,1);
+  color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
@@ -2746,7 +2746,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(150,100%,32%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 500;

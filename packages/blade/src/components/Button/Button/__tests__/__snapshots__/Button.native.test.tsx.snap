@@ -3069,7 +3069,7 @@ exports[`<Button /> should render negative color secondary button 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.negative.subtle"
+        color="interactive.text.negative.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -3077,7 +3077,7 @@ exports[`<Button /> should render negative color secondary button 1`] = `
         style={
           [
             {
-              "color": "hsla(4, 86%, 58%, 1)",
+              "color": "hsla(4, 74%, 49%, 1)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
@@ -3381,7 +3381,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
     >
       <Text
         accessible={true}
-        color="interactive.text.positive.subtle"
+        color="interactive.text.positive.normal"
         data-blade-component="base-text"
         fontSize={100}
         fontWeight="medium"
@@ -3389,7 +3389,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
         style={
           [
             {
-              "color": "hsla(150, 100%, 32%, 1)",
+              "color": "hsla(150, 100%, 27%, 1)",
               "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
