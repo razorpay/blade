@@ -333,7 +333,7 @@ it('should correctly convert Title to Heading component', async () => {
   );
 
   expect(result).toMatchInlineSnapshot(`
-    "import { Heading } from "@razorpay/blade-rebranded/components";
+    "import { Heading } from '@razorpay/blade/components';
           const App = () => (
             <>
               <Heading size="large"> Lorem ipsum </Heading>  

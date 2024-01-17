@@ -91,7 +91,7 @@ it('should migrate the Card component', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
             <>
-                <Card elevation="lowRaised" padding="spacing.7" backgroundColor="surface.background.gray.intense">
+                <Card elevation="lowRaised" padding="spacing.7" backgroundColor="surface.background.gray.moderate">
                     <CardBody>
                         <Text>
                             Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.
@@ -99,7 +99,7 @@ it('should migrate the Card component', async () => {
                     </CardBody>
                 </Card>
 
-                <Card elevation="lowRaised" padding="spacing.7" backgroundColor="surface.background.gray.moderate">
+                <Card elevation="lowRaised" padding="spacing.7" backgroundColor="surface.background.gray.intense">
                     <CardBody>
                         <Text>
                             Create Razorpay Payments Links and share them with your customers from the Razorpay Dashboard or using APIs and start accepting payments. Check the advantages, payment methods, international currency support and more.

@@ -85,6 +85,35 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
     );
   }
 
+  // Spinner: Change `contrast` prop to `color`
+  // <Spinner contrast="low|high" /> -> <Spinner color="primary|white" />
+  try {
+    root
+      .find(j.JSXElement)
+      .filter((path) => path.value.openingElement.name.name === 'Spinner')
+      .find(j.JSXAttribute)
+      .filter((path) => path.node.name.name === 'contrast')
+      .replaceWith((path) => {
+        path.node.name.name = 'color';
+
+        const contrastToColorMap = {
+          high: 'white',
+          low: 'primary',
+        };
+
+        path.node.value.value = contrastToColorMap[path.node.value.value];
+
+        return path.node;
+      });
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the "contrast" prop in Spinner.`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
+
   // Remove 'contrast' prop from the Skeleton Component
   try {
     root
@@ -189,7 +218,7 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
     );
   }
 
-  // Change color="default" to color="primary" in Button/Link/Badge/Counter/Chip/ChipGroup
+  // Change color="default" to color="primary" in Button/Link/Badge/Counter/Chip/ChipGroup/Spinner
   // <Button variant="secondary" color="default"> -> <Button variant="secondary" color="primary">
   try {
     root
@@ -206,6 +235,7 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
           'CardHeaderCounter',
           'CardHeaderIconButton',
           'CardHeaderLink',
+          'Spinner',
         ].includes(path.value.openingElement.name.name),
       )
       .find(j.JSXAttribute)

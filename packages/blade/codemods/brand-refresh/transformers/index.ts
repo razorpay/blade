@@ -1,11 +1,11 @@
 import type { Transform } from 'jscodeshift';
 import migrateAmountComponent from './migrate-amount';
 import migrateDividerComponent from './migrate-divider';
-import migrateCardComponent from './migrate-card';
+import migrateCardAndTableComponent from './migrate-card-and-table';
 import migrateBadgeComponent from './migrate-badge';
 import migrateContrastIntentAndColorProps from './migrate-contrast-intent-color-props';
 import migrateTypographyComponents from './migrate-typography';
-import migrateActionListAndTable from './migrate-actionlist-and-table';
+import migrateActionListComponent from './migrate-actionlist';
 import { red, isExpression } from './utils';
 // eslint-disable-next-line import/extensions
 import colorTokensMapping from './colorTokensMapping.json';
@@ -171,28 +171,17 @@ const transformer: Transform = (file, api, options) => {
   migrateTypographyComponents({ root, j, file });
   migrateContrastIntentAndColorProps({ root, j, file });
   migrateBadgeComponent({ root, j, file });
-  migrateCardComponent({ root, j, file });
+  migrateCardAndTableComponent({ root, j, file });
   migrateAmountComponent({ root, j, file });
   migrateDividerComponent({ root, j, file });
-  migrateActionListAndTable({ root, j, file });
+  migrateActionListComponent({ root, j, file });
   migrateDropdownComponent({ root, j, file });
 
-  // Update ImportDeclaration from "@razorpay/blade/components" to "@razorpay/blade-rebranded/components"
   // Update ImportSpecifier from "paymentTheme"/"bankingTheme" to "bladeTheme"
   try {
     root
       .find(j.ImportDeclaration)
-      .filter((path) =>
-        /@razorpay\/blade\/(components|utils|tokens)/i.test(path.value.source.value as string),
-      )
-      .replaceWith((path) => {
-        path.value.source.value = (path.value.source.value as string).replace(
-          'blade',
-          'blade-rebranded',
-        );
-
-        return path.node;
-      })
+      .filter((path) => /@razorpay\/blade\/tokens/i.test(path.value.source.value as string))
       .find(j.ImportSpecifier)
       .filter((path) => ['paymentTheme', 'bankingTheme'].includes(path.value.imported.name))
       .replaceWith((path) => {
@@ -203,7 +192,7 @@ const transformer: Transform = (file, api, options) => {
   } catch (error) {
     console.error(
       red(
-        `⛔️ ${file.path}: Oops! Ran into an issue while updating the ImportDeclaration from "@razorpay/blade" to "@razorpay/blade-rebranded".`,
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the ImportSpecifier from "paymentTheme"/"bankingTheme" to "bladeTheme".`,
       ),
       `\n${red(error.stack)}\n`,
     );

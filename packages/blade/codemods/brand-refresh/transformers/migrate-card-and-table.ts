@@ -1,20 +1,22 @@
 import { red } from './utils';
 
-// Card component Migration
-// <Card surfaceLevel={2|3} > -> <Card backgroundColor=”surface.background.gray.intense|surface.background.gray.moderate”>
-function migrateCardComponent({ root, j, file }): void {
+// Card & Table components Migration
+// <Card surfaceLevel={2|3} > -> <Card backgroundColor=”surface.background.gray.moderate”|surface.background.gray.intense>
+// <Table surfaceLevel={2|3} > -> <Table backgroundColor=”surface.background.gray.subtle|surface.background.gray.moderate|surface.background.gray.intense”>
+function migrateCardAndTable({ root, j, file }): void {
   try {
     root
       .find(j.JSXElement)
-      .filter((path) => ['Card'].includes(path.value.openingElement.name.name))
+      .filter((path) => ['Card', 'Table'].includes(path.value.openingElement.name.name))
       .find(j.JSXAttribute)
       .filter((path) => path.node.name.name === 'surfaceLevel')
       .replaceWith((path) => {
         const { node } = path;
 
         const surfaceLevelMap = {
-          2: 'surface.background.gray.intense',
-          3: 'surface.background.gray.moderate',
+          1: 'surface.background.subtle',
+          2: 'surface.background.gray.moderate',
+          3: 'surface.background.gray.intense',
         };
 
         node.name.name = 'backgroundColor';
@@ -33,4 +35,4 @@ function migrateCardComponent({ root, j, file }): void {
   }
 }
 
-export default migrateCardComponent;
+export default migrateCardAndTable;
