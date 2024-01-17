@@ -84,9 +84,13 @@ export type CardProps = {
    */
   height?: BoxProps['height'];
     /**
-    Stops UI breakage when height is 100% 
+    Sets minimum height of the card
    */
   minHeight?: BoxProps['minHeight'];
+      /**
+    Sets minimum width of the card
+   */
+  minWidth?: BoxProps['minWidth'];
   /**
    * If `true`, the card will be in selected state
    * Card will have a primary color border around it.
@@ -152,6 +156,7 @@ const Card = ({
   width,
   height,
   minHeight,
+  minWidth,
   onClick,
   isSelected = false,
   accessibilityLabel,
@@ -197,6 +202,8 @@ const Card = ({
         onClick={isReactNative() ? onClick : undefined}
         width={width}
         height={height}
+        minHeight={minHeight}
+        minWidth={minWidth}
         href={href}
         accessibilityLabel={accessibilityLabel}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
