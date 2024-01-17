@@ -1528,7 +1528,7 @@ exports[`<Table /> should render table with backgroundColor 1`] = `
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
   height: 100%;
-  background-color: hsla(180,61%,20%,1);
+  background-color: hsla(0,0%,100%,1);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 > div:first-child {
@@ -1587,7 +1587,7 @@ exports[`<Table /> should render table with backgroundColor 1`] = `
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
   height: 100%;
-  background-color: hsla(180,61%,20%,1);
+  background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
@@ -1618,7 +1618,7 @@ exports[`<Table /> should render table with backgroundColor 1`] = `
 
 .c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
   height: 100%;
-  background-color: hsla(180,61%,20%,1);
+  background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
@@ -1699,7 +1699,7 @@ exports[`<Table /> should render table with backgroundColor 1`] = `
     data-blade-component="table"
   >
     <table
-      class="css-xwqlcp-Table"
+      class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
