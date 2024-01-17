@@ -11,8 +11,8 @@ type TableData<Item> = {
   nodes: TableNode<Item>[];
 };
 
-type TableBackgroundColors = `surface.background.${DotNotationToken<
-  Theme['colors']['surface']['background']
+type TableBackgroundColors = `surface.background.gray.${DotNotationToken<
+  Theme['colors']['surface']['background']['gray']
 >}`;
 
 type TableHeaderProps = {
