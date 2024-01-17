@@ -100,7 +100,7 @@ const data: TableData<Item> = {
 const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
   return (
     <Box
-      backgroundColor="surface.background.gray.intense"
+      backgroundColor={args.backgroundColor ?? 'surface.background.gray.intense'}
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
