@@ -198,7 +198,7 @@ const ComponentStatusTable = (): React.ReactElement => {
                     <ComponentStatusBadge status={data.status} />
                   </td>
                   <td align="left">
-                    <Text size="medium" color="surface.text.subtle.lowContrast">
+                    <Text size="medium" color="surface.text.gray.subtle">
                       {data.description}
                     </Text>
                   </td>

@@ -112,7 +112,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             description={props.note}
             isFullWidth
             isDismissible={false}
-            intent="notice"
+            color="notice"
             marginBottom="spacing.5"
           />
         ) : null}

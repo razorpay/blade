@@ -54,7 +54,7 @@ const config: StorybookConfig = {
     '../../src/components/Table/**/**/*.stories.@(ts|tsx|js|jsx)',
     '../../docs/**/*.stories.mdx',
     '../../docs/**/*.stories.@(ts|tsx|js|jsx)',
-    // '../../src/**/*.stories.mdx',
+    '../../src/**/*.stories.mdx',
     // '../../src/**/*.stories.@(ts|tsx|js|jsx)',
     // '../../src/**/*.internal.stories.mdx',
     // '../../src/**/*.internal.stories.@(ts|tsx|js|jsx)',

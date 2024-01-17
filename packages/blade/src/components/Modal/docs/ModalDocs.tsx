@@ -72,38 +72,38 @@ const ModalDocs = (): React.ReactElement => {
         marginBottom="spacing.4"
         data={{
           isOpen: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">boolean</Code> (required)
               </Text>
               Toggles modal state
             </Text>
           ),
           onDismiss: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">function</Code> (required)
               </Text>
               Called when the modal is closed, either by user state, hitting esc or tapping backdrop
             </Text>
           ),
           size: (
-            <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
               <Text size="small">{`'small' | 'medium' | 'large'`}</Text>
               Size of the modal
             </Text>
           ),
           initialFocusRef: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">function</Code>
               </Text>
               ref element you want to get keyboard focus when opening the modal
             </Text>
           ),
           accessibilityLabel: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">string</Code>
               </Text>
               The accessibility label (aria-label) for the Modal.
@@ -116,8 +116,8 @@ const ModalDocs = (): React.ReactElement => {
             </Text>
           ),
           zIndex: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">number</Code>
               </Text>
               Sets the z-index of the modal
@@ -130,32 +130,32 @@ const ModalDocs = (): React.ReactElement => {
         marginBottom="spacing.4"
         data={{
           title: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">string</Code>
               </Text>
               Title of the Header
             </Text>
           ),
           subtitle: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">string</Code>
               </Text>
               Subtitle of the Header
             </Text>
           ),
           leading: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">React.ReactNode</Code>
               </Text>
               leading asset or icon to be placed at the left most side of the ModalHeader
             </Text>
           ),
           trailing: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">Badge</Code>,<Code>Link</Code>,<Code>Text</Code>,
                 <Code>IconButton</Code>
               </Text>
@@ -163,8 +163,8 @@ const ModalDocs = (): React.ReactElement => {
             </Text>
           ),
           titleSuffix: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">Counter</Code>
               </Text>
               A component to be placed adjacent to the title text
@@ -181,13 +181,13 @@ const ModalDocs = (): React.ReactElement => {
             <Text>
               [<Code>{'<ModalBody />'}</Code>, <Code>{'<ModalHeader />'}</Code>,
               <Code>{'<ModalHeader />'}</Code>]
-              <Text size="small" type="subdued">
+              <Text size="small" color="surface.text.gray.subtle">
                 (required)
               </Text>
             </Text>
           ),
           padding: (
-            <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
               <Text size="small">{`'spacing.0' | 'spacing.6'`}</Text>
               {`Padding for the Modal Body. Default : 'spacing.6'`}
             </Text>
@@ -202,7 +202,7 @@ const ModalDocs = (): React.ReactElement => {
           children: (
             <Text>
               <Code>{'React.ReactElement'}</Code>
-              <Text size="small" type="subdued">
+              <Text size="small" color="surface.text.gray.subtle">
                 (required)
               </Text>
             </Text>
