@@ -31,8 +31,6 @@ function migrateCardAndTable({ root, j, file }): void {
 
         node.value = j.literal(surfaceLevelMap[node.value.expression.value]);
 
-        delete node.value.expression;
-
         return node;
       });
   } catch (error) {
