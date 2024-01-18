@@ -96,7 +96,7 @@ it('should migrate the ActionList component', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
             <>
-                <Table {...args} data={data} backgroundColor="surface.background.gray.intense">
+                <Table {...args} data={data}>
                     {(tableData) => (
                         <>
                             <TableHeader>
@@ -123,7 +123,7 @@ it('should migrate the ActionList component', async () => {
                     )}
                 </Table>
 
-                <Table {...args} data={data} backgroundColor="surface.background.gray.moderate">
+                <Table {...args} data={data}>
                     {(tableData) => (
                         <>
                             <TableHeader>
@@ -150,7 +150,7 @@ it('should migrate the ActionList component', async () => {
                     )}
                 </Table>
 
-                <Table {...args} data={data} backgroundColor="surface.background.subtle">
+                <Table {...args} data={data}>
                     {(tableData) => (
                         <>
                             <TableHeader>

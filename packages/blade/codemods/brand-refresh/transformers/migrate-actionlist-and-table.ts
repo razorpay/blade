@@ -1,6 +1,6 @@
 import { red } from './utils';
 
-function migrateActionListComponent({ root, j, file }): void {
+function migrateActionListAndTable({ root, j, file }): void {
   // ActionList & Table components: Remove the `surfaceLevel` prop
   // <ActionList surfaceLevel={2}> -> <ActionList >
   // <Table surfaceLevel={2}> -> <Table >
@@ -9,7 +9,7 @@ function migrateActionListComponent({ root, j, file }): void {
       .find(j.JSXElement, {
         openingElement: {
           name: {
-            name: 'ActionList',
+            name: (name) => ['ActionList', 'Table'].includes(name),
           },
         },
       })
@@ -29,4 +29,4 @@ function migrateActionListComponent({ root, j, file }): void {
   }
 }
 
-export default migrateActionListComponent;
+export default migrateActionListAndTable;

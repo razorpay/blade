@@ -1,15 +1,14 @@
 import { red } from './utils';
 
-// Card & Table components Migration
+// Card components Migration
 // <Card surfaceLevel={2|3} > -> <Card backgroundColor=”surface.background.gray.moderate”|surface.background.gray.intense>
-// <Table surfaceLevel={2|3} > -> <Table backgroundColor=”surface.background.gray.subtle|surface.background.gray.moderate|surface.background.gray.intense”>
 function migrateCardAndTable({ root, j, file }): void {
   try {
     root
       .find(j.JSXElement, {
         openingElement: {
           name: {
-            name: (name) => ['Card', 'Table'].includes(name),
+            name: 'Card',
           },
         },
       })

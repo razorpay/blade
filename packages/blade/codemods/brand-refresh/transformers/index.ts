@@ -1,11 +1,11 @@
 import type { Transform } from 'jscodeshift';
 import migrateAmountComponent from './migrate-amount';
 import migrateDividerComponent from './migrate-divider';
-import migrateCardAndTableComponent from './migrate-card-and-table';
+import migrateCardComponent from './migrate-card';
 import migrateBadgeComponent from './migrate-badge';
 import migrateContrastIntentAndColorProps from './migrate-contrast-intent-color-props';
 import migrateTypographyComponents from './migrate-typography';
-import migrateActionListComponent from './migrate-actionlist';
+import migrateActionListAndTable from './migrate-actionlist-and-table';
 import { red, isExpression } from './utils';
 // eslint-disable-next-line import/extensions
 import colorTokensMapping from './colorTokensMapping.json';
@@ -185,10 +185,10 @@ const transformer: Transform = (file, api, options) => {
   migrateTypographyComponents({ root, j, file });
   migrateContrastIntentAndColorProps({ root, j, file });
   migrateBadgeComponent({ root, j, file });
-  migrateCardAndTableComponent({ root, j, file });
+  migrateCardComponent({ root, j, file });
   migrateAmountComponent({ root, j, file });
   migrateDividerComponent({ root, j, file });
-  migrateActionListComponent({ root, j, file });
+  migrateActionListAndTable({ root, j, file });
   migrateDropdownComponent({ root, j, file });
 
   // Update ImportSpecifier from "paymentTheme"/"bankingTheme" to "bladeTheme"

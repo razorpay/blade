@@ -460,15 +460,9 @@ Only use this if you're unable to run the codemod described above.
 
 ### Table
 
-- **The `surfaceLevel` prop has been removed in favor of the `backgroundColor` prop.**
+- **The `surfaceLevel` prop has been removed without replacement.**
 
   ```diff
-  - <Table data={tableData} surfaceLevel={1}>
-  + <Table backgroundColor="surface.background.gray.subtle">
-
-  - <Table data={tableData} surfaceLevel={2}>
-  + <Table backgroundColor="surface.background.gray.moderate">
-
-  - <Table data={tableData} surfaceLevel={3}>
-  + <Table backgroundColor="surface.background.gray.intense">
+  - <Table data={tableData} surfaceLevel={1/2/3} >
+  + <Table data={tableData} >
   ```
