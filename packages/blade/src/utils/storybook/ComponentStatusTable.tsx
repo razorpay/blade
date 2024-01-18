@@ -178,9 +178,6 @@ const ComponentStatusTable = (): React.ReactElement => {
               <th align="right">
                 <Text weight="semibold">Released In</Text>
               </th>
-              <th align="right">
-                <Text weight="semibold">Rebranded In</Text>
-              </th>
             </tr>
           </thead>
           <tbody>
@@ -204,9 +201,6 @@ const ComponentStatusTable = (): React.ReactElement => {
                   </td>
                   <td align="right">
                     <ReleasedInLink version={data.releasedIn} />
-                  </td>
-                  <td align="right">
-                    <ReleasedInLink version={data.rebrandedIn} />
                   </td>
                 </tr>
               );
