@@ -10,7 +10,6 @@ import type {
 
 export type ColorSchemeNames = 'dark' | 'light';
 export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
-export type SurfaceLevels = 1 | 2 | 3;
 
 export type ColorSchemeModes = 'onDark' | 'onLight';
 

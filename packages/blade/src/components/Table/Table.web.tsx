@@ -14,6 +14,7 @@ import {
   checkboxCellWidth,
   firstColumnStickyHeaderFooterZIndex,
   refreshWrapperZIndex,
+  tableBackgroundColor,
   tablePagination,
 } from './tokens';
 import type { TableProps, TableNode, Identifier } from './types';
@@ -124,7 +125,6 @@ const _Table = <Item,>({
   gridTemplateColumns,
   isLoading = false,
   isRefreshing = false,
-  backgroundColor = 'surface.background.gray.intense',
   ...styledProps
 }: TableProps<Item>): React.ReactElement => {
   const { theme } = useTheme();
@@ -133,6 +133,7 @@ const _Table = <Item,>({
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
+  const backgroundColor = tableBackgroundColor;
 
   const {
     isEntering: isRefreshSpinnerEntering,
