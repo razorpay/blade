@@ -1,4 +1,5 @@
-import React, { DOMAttributes } from 'react';
+import React from 'react';
+import type { DOMAttributes } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Tag } from './Tag';
