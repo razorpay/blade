@@ -23,7 +23,6 @@ import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
-import { throwBladeError } from '~utils/logger';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
@@ -206,19 +205,6 @@ const _TablePagination = ({
       handlePageChange(controlledCurrentPage);
     }
   }, [controlledCurrentPage, currentPage, handlePageChange, onPageChange]);
-
-  if (currentPage > totalPages - 1) {
-    if (!isUndefined(controlledCurrentPage)) {
-      if (__DEV__) {
-        throwBladeError({
-          moduleName: 'TablePagination',
-          message: `Value of 'currentPage' prop cannot be greater than the total pages`,
-        });
-      }
-    } else {
-      handlePageChange(totalPages - 1);
-    }
-  }
 
   const handlePageSizeChange = (pageSize: number): void => {
     onPageSizeChange?.({ pageSize });
