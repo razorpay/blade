@@ -4,13 +4,17 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
   // Break `contrast="high"` prop from Typography & ProgressBar Components
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) =>
-        ['Text', 'Title', 'Display', 'Heading', 'ProgressBar', 'CardHeaderText'].includes(
-          path.value.openingElement.name.name,
-        ),
-      )
-      .find(j.JSXAttribute) // Find all props
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) =>
+              ['Text', 'Title', 'Display', 'Heading', 'ProgressBar', 'CardHeaderText'].includes(
+                name,
+              ),
+          },
+        },
+      })
+      .find(j.JSXAttribute)
       .filter(
         (path, index, self) =>
           ['Text', 'Title', 'Display', 'Heading', 'ProgressBar', 'CardHeaderText'].includes(
@@ -36,19 +40,26 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
   // Bade/Counter/IconButton/Alert Components: Change `contrast` prop to `emphasis`
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) =>
-        [
-          'Badge',
-          'Counter',
-          'IconButton',
-          'Alert',
-          'CardHeaderBadge',
-          'CardHeaderCounter',
-        ].includes(path.value.openingElement.name.name),
-      )
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'contrast')
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) =>
+              [
+                'Badge',
+                'Counter',
+                'IconButton',
+                'Alert',
+                'CardHeaderBadge',
+                'CardHeaderCounter',
+              ].includes(name),
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'contrast',
+        },
+      })
       .replaceWith((path) => {
         path.node.name.name = 'emphasis';
 
@@ -89,10 +100,18 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
   // <Spinner contrast="low|high" /> -> <Spinner color="primary|white" />
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) => path.value.openingElement.name.name === 'Spinner')
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'contrast')
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: 'Spinner',
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'contrast',
+        },
+      })
       .replaceWith((path) => {
         path.node.name.name = 'color';
 
@@ -117,10 +136,18 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
   // Remove 'contrast' prop from the Skeleton Component
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) => path.value.openingElement.name.name === 'Skeleton')
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'contrast')
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: 'Skeleton',
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'contrast',
+        },
+      })
       .remove();
   } catch (error) {
     console.error(
@@ -134,22 +161,26 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
   // Remove deprecated 'intent'/'variant' props in favor of color
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) =>
-        [
-          'Alert',
-          'Badge',
-          'Counter',
-          'Chip',
-          'ChipGroup',
-          'Indicator',
-          'ProgressBar',
-          'Amount',
-          'CardHeaderBadge',
-          'CardHeaderCounter',
-          'CardHeaderAmount',
-        ].includes(path.value.openingElement.name.name),
-      )
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) =>
+              [
+                'Alert',
+                'Badge',
+                'Counter',
+                'Chip',
+                'ChipGroup',
+                'Indicator',
+                'ProgressBar',
+                'Amount',
+                'CardHeaderBadge',
+                'CardHeaderCounter',
+                'CardHeaderAmount',
+              ].includes(name),
+          },
+        },
+      })
       .replaceWith((path) => {
         const { node } = path;
 
@@ -194,11 +225,14 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
 
         return node;
       })
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'intent' || path.node.name.name === 'variant')
+      .find(j.JSXAttribute, {
+        name: {
+          name: (name) => name === 'intent' || name === 'variant',
+        },
+      })
+      // Remove duplicate intent/variant props
       .filter(
         (path, index, self) =>
-          (path.node.name.name === 'intent' || path.node.name.name === 'variant') &&
           index === self.findIndex((obj) => path.node.start === obj.node.start),
       )
       .replaceWith((path) => {
@@ -222,24 +256,34 @@ function migrateContrastIntentAndColorProps({ root, j, file }): void {
   // <Button variant="secondary" color="default"> -> <Button variant="secondary" color="primary">
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) =>
-        [
-          'Button',
-          'Link',
-          'Badge',
-          'Counter',
-          'Chip',
-          'ChipGroup',
-          'CardHeaderBadge',
-          'CardHeaderCounter',
-          'CardHeaderIconButton',
-          'CardHeaderLink',
-          'Spinner',
-        ].includes(path.value.openingElement.name.name),
-      )
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'color' && path.node.value.value === 'default')
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) =>
+              [
+                'Button',
+                'Link',
+                'Badge',
+                'Counter',
+                'Chip',
+                'ChipGroup',
+                'CardHeaderBadge',
+                'CardHeaderCounter',
+                'CardHeaderIconButton',
+                'CardHeaderLink',
+                'Spinner',
+              ].includes(name),
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'color',
+        },
+        value: {
+          value: 'default',
+        },
+      })
       .replaceWith((path) => {
         path.node.value.value = 'primary';
 

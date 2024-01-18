@@ -92,14 +92,22 @@ const transformer: Transform = (file, api, options) => {
   // Update the themeTokens prop in BladeProvider
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) => path.value.openingElement.name.name === 'BladeProvider')
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'themeTokens')
-      .replaceWith((path) => {
-        path.node.value.expression.name = 'bladeTheme';
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: 'BladeProvider',
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'themeTokens',
+        },
+      })
+      .replaceWith(({ node }) => {
+        node.value.expression.name = 'bladeTheme';
 
-        return path.node;
+        return node;
       });
   } catch (error) {
     console.error(
@@ -113,13 +121,19 @@ const transformer: Transform = (file, api, options) => {
   // Update color token value based on the context
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) =>
-        /(Text|Title|Code|Display|Heading|Box|Icon)/i.test(path.value.openingElement.name.name),
-      )
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) => /(Text|Title|Code|Display|Heading|Box|Icon)/i.test(name),
+          },
+        },
+      })
       // Find all color props
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name.toLowerCase().includes('color'))
+      .find(j.JSXAttribute, {
+        name: {
+          name: (name) => name.toLowerCase().includes('color'),
+        },
+      })
       .replaceWith((path) => {
         const { node, parent } = path;
 
@@ -180,10 +194,16 @@ const transformer: Transform = (file, api, options) => {
   // Update ImportSpecifier from "paymentTheme"/"bankingTheme" to "bladeTheme"
   try {
     root
-      .find(j.ImportDeclaration)
-      .filter((path) => /@razorpay\/blade\/tokens/i.test(path.value.source.value as string))
-      .find(j.ImportSpecifier)
-      .filter((path) => ['paymentTheme', 'bankingTheme'].includes(path.value.imported.name))
+      .find(j.ImportDeclaration, {
+        source: {
+          value: '@razorpay/blade/tokens',
+        },
+      })
+      .find(j.ImportSpecifier, {
+        imported: {
+          name: (name) => ['paymentTheme', 'bankingTheme'].includes(name),
+        },
+      })
       .replaceWith((path) => {
         path.value.imported.name = 'bladeTheme';
 

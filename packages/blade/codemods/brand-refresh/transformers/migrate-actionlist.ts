@@ -6,10 +6,18 @@ function migrateActionListComponent({ root, j, file }): void {
   // <Table surfaceLevel={2}> -> <Table >
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) => path.value.openingElement.name.name === 'ActionList')
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'surfaceLevel')
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: 'ActionList',
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'surfaceLevel',
+        },
+      })
       .remove();
   } catch (error) {
     console.error(
