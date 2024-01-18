@@ -21,6 +21,7 @@ const componentData: ComponentStatusDataType = [
     name: 'ActionList',
     status: 'released',
     releasedIn: '6.2.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Dropdown/With Select',
     description:
       'List of multiple actionable items. Can be used as menu items inside `Dropdown`, `BottomSheet` and as selectable items when combined with `SelectInput`',
@@ -29,6 +30,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Alert',
     status: 'released',
     releasedIn: '1.1.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Alert',
     description:
       'Alerts are messages that communicate information to users about any significant changes or explanations inside the system in a prominent way.',
@@ -64,6 +66,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Checkbox',
     status: 'released',
     releasedIn: '0.13.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Checkbox/Checkbox',
     description:
       'Checkbox can be used in forms when a user needs to select multiple values from several options.',
@@ -72,6 +75,7 @@ const componentData: ComponentStatusDataType = [
     name: 'CheckboxGroup',
     status: 'released',
     releasedIn: '0.13.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Checkbox/CheckboxGroup',
     description:
       'CheckboxGroup can be used to group together multiple checkboxes in a forms which provides out of the box state management for the multi-checkboxes and other features.',
@@ -143,6 +147,7 @@ const componentData: ComponentStatusDataType = [
     name: 'TextInput',
     status: 'released',
     releasedIn: '2.1.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Input/TextInput',
     description:
       'TextInput component is a component that can be used to input name, email, telephone, url, search or plain text.',
@@ -151,6 +156,7 @@ const componentData: ComponentStatusDataType = [
     name: 'TextArea',
     status: 'released',
     releasedIn: '2.3.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Input/TextArea',
     description:
       'TextArea component lets you enter long form text which spans over multiple lines.',
@@ -159,6 +165,7 @@ const componentData: ComponentStatusDataType = [
     name: 'OTPInput',
     status: 'released',
     releasedIn: '3.1.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Input/OTPInput',
     description:
       'A one-time password (OTP), also known as a one-time PIN, one-time authorization code (OTAC) or dynamic password, is a password that is valid for only one login session or a transaction. These are a group of inputs and can be either 4 or 6 characters long.',
@@ -167,6 +174,7 @@ const componentData: ComponentStatusDataType = [
     name: 'PasswordInput',
     status: 'released',
     releasedIn: '2.5.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Input/PasswordInput',
     description:
       'PasswordInput is an input field for entering passwords. The input is masked by default. On mobile devices the last typed letter is shown for a brief moment. The masking can be toggled using an optional reveal button.',
@@ -175,6 +183,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Radio',
     status: 'released',
     releasedIn: '1.0.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Radio & RadioGroup',
     description:
       'Radio & RadioGroup can be used in forms when a user needs to single value from several options.',
@@ -183,6 +192,7 @@ const componentData: ComponentStatusDataType = [
     name: 'RadioGroup',
     status: 'released',
     releasedIn: '1.0.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Radio & RadioGroup',
     description:
       'RadioGroup can be used to group together multiple radios in a forms which provides out of the box state management for the multi-radio and other features.',
@@ -244,6 +254,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Dropdown',
     status: 'released',
     releasedIn: '6.2.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Dropdown/With Select',
     description:
       'Dropdown Menu displays a list of choices on temporary surfaces. They allow users to make a selection from multiple options. They appear when users interact with a button, action, or other control.',
@@ -252,6 +263,7 @@ const componentData: ComponentStatusDataType = [
     name: 'SelectInput',
     status: 'released',
     releasedIn: '6.2.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Dropdown/With Select',
     description:
       'Select displays a list of choices on temporary surfaces. They allows users pick a value from predefined options',
@@ -294,6 +306,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Switch',
     status: 'released',
     releasedIn: '8.5.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Switch',
     description:
       'Switch component is used as an alternative for the checkbox component, It can be used to switch between two states: often on or off.',
@@ -348,6 +361,7 @@ const componentData: ComponentStatusDataType = [
     description:
       'Chips represents a collection of selectable objects which enable users to make selections, filter content, and trigger relevant actions. Chips can have either single selection or multiple (based on context).',
     releasedIn: '10.4.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Chip/Chip',
   },
   {
@@ -364,6 +378,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Slot',
     status: 'released',
     releasedIn: '5.3.0',
+    rebrandedIn: '11.0.0',
     description:
       'The Slot component is a generic component which can be used as container. (This is a design only component)',
   },
@@ -371,6 +386,7 @@ const componentData: ComponentStatusDataType = [
     name: 'SkeletonLoader',
     status: 'released',
     releasedIn: '9.1.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Skeleton',
     description:
       'Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view.',
@@ -397,6 +413,7 @@ const componentData: ComponentStatusDataType = [
     name: 'Table',
     status: 'released',
     releasedIn: '10.19.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Table',
     description: 'Table will allow you to display your data in tabular manner',
   },
@@ -409,6 +426,7 @@ const componentData: ComponentStatusDataType = [
     name: 'AutoComplete',
     status: 'released',
     releasedIn: '10.9.0',
+    rebrandedIn: '11.0.0',
     storybookLink: 'Components/Dropdown/With AutoComplete',
     description:
       'AutoComplete Component will allow you to filter Dropdown options as you type ahead in the Input',
