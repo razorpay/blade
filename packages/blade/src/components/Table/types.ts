@@ -141,10 +141,6 @@ type TableProps<Item> = {
    **/
   gridTemplateColumns?: string;
   /**
-   * background color of the table
-   **/
-  backgroundColor?: TableBackgroundColors;
-  /**
    * The isLoading prop determines whether the table is loading or not.
    * The default value is `false`.
    **/
