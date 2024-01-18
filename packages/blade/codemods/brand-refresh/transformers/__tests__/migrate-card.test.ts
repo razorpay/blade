@@ -76,7 +76,9 @@ it('should migrate the Card component', async () => {
                         prefix={<CardHeaderIcon icon={InfoIcon} />}
                         suffix={<CardHeaderCounter intent="positive" value={12} />}
                     />
-                    <CardHeaderTrailing visual={<CardHeaderAmount value={123} intent="positive" size="title-small" />} />
+                    <CardHeaderTrailing
+                        visual={<CardHeaderAmount value={123} intent="positive" size="title-small" />}
+                    />
                 </CardHeader>
                 <CardBody>
                     <Text> Hello World</Text>
@@ -160,7 +162,13 @@ it('should migrate the Card component', async () => {
                             prefix={<CardHeaderIcon icon={InfoIcon} />}
                             suffix={<CardHeaderCounter value={12} color="positive" />}
                         />
-                        <CardHeaderTrailing visual={<CardHeaderAmount value={123} color="positive" type="heading" size="large" />} />
+                        <CardHeaderTrailing
+                            visual={<CardHeaderAmount
+                                value={123}
+                                color="feedback.text.positive.intense"
+                                type="heading"
+                                size="large" />}
+                        />
                     </CardHeader>
                     <CardBody>
                         <Text> Hello World</Text>

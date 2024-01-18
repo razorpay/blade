@@ -189,9 +189,9 @@ it('should remove variant/intent prop in favor of color prop', async () => {
               <Chip value="no" color="primary"> No </Chip>
             </ChipGroup>
 
-            <Amount value={1234} color="positive" />
+            <Amount color="feedback.text.positive.intense" value={1234} />
 
-            <CardHeaderAmount value={1234} color="positive" />
+            <CardHeaderAmount color="feedback.text.positive.intense" value={1234} />
 
             <ProgressBar label="Label" size="medium" value={10} color="positive" />
             <ProgressBar label="Label" size="medium" value={10} color="positive" />

@@ -1,8 +1,9 @@
 import { red, isExpression } from './utils';
 
-// Amount component <Amount size=”heading-small-bold”> -> <Amount type=”heading” size=”small” weight=”semibold”>
+// Amount component: changes to intent & size props
 function migrateAmountComponent({ root, j, file }): void {
   try {
+    // <Amount size=”heading-small-bold”> -> <Amount type=”heading” size=”small” weight=”semibold”>
     root
       .find(j.JSXElement, {
         openingElement: {
@@ -98,7 +99,41 @@ function migrateAmountComponent({ root, j, file }): void {
       });
   } catch (error) {
     console.error(
-      red(`⛔️ ${file.path}: Oops! Ran into an issue while updating the Amount component.`),
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the "size" prop in "Amount" component.`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
+
+  // <Amount intent=”positive”> -> <Amount color="feedback.text.positive.intense">
+  try {
+    root
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) => ['Amount', 'CardHeaderAmount'].includes(name),
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: (name) => name === 'intent',
+        },
+      })
+      .replaceWith((path) => {
+        const { node } = path;
+
+        node.name.name = 'color';
+        node.value.value = `feedback.text.${node.value.value}.intense`;
+
+        return node;
+      });
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the "intent" prop in "Amount" component.`,
+      ),
       `\n${red(error.stack)}\n`,
     );
   }
