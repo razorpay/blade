@@ -20,7 +20,7 @@ describe('<Collapsible />', () => {
         <CollapsibleBody>
           <Box display="flex" flexDirection="column" minWidth="200px">
             <Text>Actual amount</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
         </CollapsibleBody>
       </Collapsible>,
@@ -36,7 +36,7 @@ describe('<Collapsible />', () => {
         <CollapsibleBody>
           <Box display="flex" flexDirection="column" minWidth="200px">
             <Text>Actual amount</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
         </CollapsibleBody>
       </Collapsible>,
@@ -55,7 +55,7 @@ describe('<Collapsible />', () => {
         <CollapsibleBody>
           <Box display="flex" flexDirection="column" minWidth="200px">
             <Text>{bodyText}</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
         </CollapsibleBody>
       </Collapsible>,
@@ -95,7 +95,7 @@ describe('<Collapsible />', () => {
             <CollapsibleBody>
               <Box display="flex" flexDirection="column" minWidth="200px">
                 <Text>{bodyText}</Text>
-                <Amount value={1000} intent="positive" />
+                <Amount value={1000} color="feedback.text.positive.intense" />
               </Box>
             </CollapsibleBody>
           </Collapsible>
@@ -136,7 +136,7 @@ describe('<Collapsible />', () => {
         <CollapsibleBody testID="collapsible-body">
           <Box display="flex" flexDirection="column" minWidth="200px">
             <Text>Actual amount</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
         </CollapsibleBody>
       </Collapsible>,
@@ -154,7 +154,7 @@ describe('<Collapsible />', () => {
         <CollapsibleBody testID="collapsible-body">
           <Box display="flex" flexDirection="column" minWidth="200px">
             <Text>Actual amount</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
         </CollapsibleBody>
       </Collapsible>,
@@ -172,7 +172,7 @@ describe('<Collapsible />', () => {
         <CollapsibleBody>
           <Box display="flex" flexDirection="column" minWidth="200px">
             <Text>Actual amount</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
         </CollapsibleBody>
       </Collapsible>,
@@ -192,7 +192,7 @@ describe('<Collapsible />', () => {
         <CollapsibleBody>
           <Box display="flex" flexDirection="column" minWidth="200px">
             <Text>Actual amount</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
         </CollapsibleBody>
       </Collapsible>,

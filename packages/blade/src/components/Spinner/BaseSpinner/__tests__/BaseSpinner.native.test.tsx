@@ -3,7 +3,7 @@ import { BaseSpinner } from '../BaseSpinner';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 const colors: BaseSpinnerProps['color'][] = [
-  'default',
+  'primary',
   'white',
   'positive',
   'negative',
@@ -33,38 +33,16 @@ describe('<BaseSpinner />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render low contrast BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(<BaseSpinner accessibilityLabel="Loading" contrast="low" />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast BaseSpinner', () => {
-    const { toJSON } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" contrast="high" />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
   it('should render low contrast BaseSpinner with right label', () => {
     const { toJSON } = renderWithTheme(
-      <BaseSpinner
-        accessibilityLabel="Loading"
-        contrast="low"
-        label="Loading"
-        labelPosition="right"
-      />,
+      <BaseSpinner accessibilityLabel="Loading" label="Loading" labelPosition="right" />,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render high contrast BaseSpinner with bottom label', () => {
     const { toJSON } = renderWithTheme(
-      <BaseSpinner
-        accessibilityLabel="Loading"
-        contrast="high"
-        label="Loading"
-        labelPosition="bottom"
-      />,
+      <BaseSpinner accessibilityLabel="Loading" label="Loading" labelPosition="bottom" />,
     );
     expect(toJSON()).toMatchSnapshot();
   });
