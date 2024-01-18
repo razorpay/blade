@@ -83,12 +83,12 @@ export type CardProps = {
    * Sets the height of the card
    */
   height?: BoxProps['height'];
-    /**
-    Sets minimum height of the card
+  /**
+   * Sets minimum height of the card
    */
   minHeight?: BoxProps['minHeight'];
-      /**
-    Sets minimum width of the card
+  /**
+   * Sets minimum width of the card
    */
   minWidth?: BoxProps['minWidth'];
   /**
