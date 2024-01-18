@@ -4,10 +4,13 @@ import { red, isExpression } from './utils';
 function migrateAmountComponent({ root, j, file }): void {
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) =>
-        ['Amount', 'CardHeaderAmount'].includes(path.value.openingElement.name.name),
-      )
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) => ['Amount', 'CardHeaderAmount'].includes(name),
+          },
+        },
+      })
       .replaceWith((path) => {
         const { node } = path;
 

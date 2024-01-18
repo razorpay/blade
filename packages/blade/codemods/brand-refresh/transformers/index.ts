@@ -5,7 +5,7 @@ import migrateCardComponent from './migrate-card';
 import migrateBadgeComponent from './migrate-badge';
 import migrateContrastIntentAndColorProps from './migrate-contrast-intent-color-props';
 import migrateTypographyComponents from './migrate-typography';
-import migrateActionListComponent from './migrate-actionlist';
+import migrateActionListAndTable from './migrate-actionlist-and-table';
 import { red, isExpression } from './utils';
 // eslint-disable-next-line import/extensions
 import colorTokensMapping from './colorTokensMapping.json';
@@ -92,14 +92,22 @@ const transformer: Transform = (file, api, options) => {
   // Update the themeTokens prop in BladeProvider
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) => path.value.openingElement.name.name === 'BladeProvider')
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'themeTokens')
-      .replaceWith((path) => {
-        path.node.value.expression.name = 'bladeTheme';
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: 'BladeProvider',
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'themeTokens',
+        },
+      })
+      .replaceWith(({ node }) => {
+        node.value.expression.name = 'bladeTheme';
 
-        return path.node;
+        return node;
       });
   } catch (error) {
     console.error(
@@ -113,13 +121,19 @@ const transformer: Transform = (file, api, options) => {
   // Update color token value based on the context
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) =>
-        /(Text|Title|Code|Display|Heading|Box|Icon)/i.test(path.value.openingElement.name.name),
-      )
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) => /(Text|Title|Code|Display|Heading|Box|Icon)/i.test(name),
+          },
+        },
+      })
       // Find all color props
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name.toLowerCase().includes('color'))
+      .find(j.JSXAttribute, {
+        name: {
+          name: (name) => name.toLowerCase().includes('color'),
+        },
+      })
       .replaceWith((path) => {
         const { node, parent } = path;
 
@@ -174,27 +188,22 @@ const transformer: Transform = (file, api, options) => {
   migrateCardComponent({ root, j, file });
   migrateAmountComponent({ root, j, file });
   migrateDividerComponent({ root, j, file });
-  migrateActionListComponent({ root, j, file });
+  migrateActionListAndTable({ root, j, file });
   migrateDropdownComponent({ root, j, file });
 
-  // Update ImportDeclaration from "@razorpay/blade/components" to "@razorpay/blade-rebranded/components"
   // Update ImportSpecifier from "paymentTheme"/"bankingTheme" to "bladeTheme"
   try {
     root
-      .find(j.ImportDeclaration)
-      .filter((path) =>
-        /@razorpay\/blade\/(components|utils|tokens)/i.test(path.value.source.value as string),
-      )
-      .replaceWith((path) => {
-        path.value.source.value = (path.value.source.value as string).replace(
-          'blade',
-          'blade-rebranded',
-        );
-
-        return path.node;
+      .find(j.ImportDeclaration, {
+        source: {
+          value: '@razorpay/blade/tokens',
+        },
       })
-      .find(j.ImportSpecifier)
-      .filter((path) => ['paymentTheme', 'bankingTheme'].includes(path.value.imported.name))
+      .find(j.ImportSpecifier, {
+        imported: {
+          name: (name) => ['paymentTheme', 'bankingTheme'].includes(name),
+        },
+      })
       .replaceWith((path) => {
         path.value.imported.name = 'bladeTheme';
 
@@ -203,7 +212,7 @@ const transformer: Transform = (file, api, options) => {
   } catch (error) {
     console.error(
       red(
-        `⛔️ ${file.path}: Oops! Ran into an issue while updating the ImportDeclaration from "@razorpay/blade" to "@razorpay/blade-rebranded".`,
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the ImportSpecifier from "paymentTheme"/"bankingTheme" to "bladeTheme".`,
       ),
       `\n${red(error.stack)}\n`,
     );

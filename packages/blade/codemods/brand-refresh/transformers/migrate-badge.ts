@@ -4,14 +4,18 @@ import { red } from './utils';
 function migrateBadgeComponent({ root, j, file }): void {
   try {
     root
-      .find(j.JSXElement)
-      .filter(
-        (path) =>
-          path.value.openingElement.name.name === 'Badge' ||
-          path.value.openingElement.name.name === 'CardHeaderBadge',
-      )
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'fontWeight')
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) => ['Badge', 'CardHeaderBadge'].includes(name),
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'fontWeight',
+        },
+      })
       .remove();
   } catch (error) {
     console.error(

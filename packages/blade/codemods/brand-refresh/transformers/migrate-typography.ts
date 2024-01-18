@@ -4,13 +4,14 @@ import colorTokensMapping from './colorTokensMapping.json';
 
 function migrateTypographyComponents({ root, j, file }): void {
   // Select Typography elements based on their names
-  const typographyJSXElements = root
-    .find(j.JSXElement)
-    .filter((path) =>
-      ['Text', 'Title', 'Code', 'Display', 'Heading', 'CardHeaderText'].includes(
-        path.value.openingElement.name.name,
-      ),
-    );
+  const typographyJSXElements = root.find(j.JSXElement, {
+    openingElement: {
+      name: {
+        name: (name) =>
+          ['Text', 'Title', 'Code', 'Display', 'Heading', 'CardHeaderText'].includes(name),
+      },
+    },
+  });
 
   // Update <Text variant="caption" size="medium" > to <Text variant="caption" size="small" >
   try {
@@ -23,8 +24,14 @@ function migrateTypographyComponents({ root, j, file }): void {
               attribute.name?.name === 'variant' && attribute.value?.value === 'caption',
           ),
       )
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'size' && path.node.value.value === 'medium')
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'size',
+        },
+        value: {
+          value: 'medium',
+        },
+      })
       .replaceWith((path) => {
         path.node.value.value = 'small';
         return path.node;
@@ -184,10 +191,16 @@ function migrateTypographyComponents({ root, j, file }): void {
   // Remove/Update the Title import from "@razorpay/blade/components"
   try {
     root
-      .find(j.ImportDeclaration)
-      .filter((path) => path.value.source.value === '@razorpay/blade/components')
-      .find(j.ImportSpecifier)
-      .filter((path) => ['Title'].includes(path.value.imported.name))
+      .find(j.ImportDeclaration, {
+        source: {
+          value: '@razorpay/blade/components',
+        },
+      })
+      .find(j.ImportSpecifier, {
+        imported: {
+          name: 'Title',
+        },
+      })
       .replaceWith((path) => {
         // Check if Heading import is already present
         const isHeadingImportPresent = path.parent.value.specifiers.some(
@@ -216,10 +229,16 @@ function migrateTypographyComponents({ root, j, file }): void {
   // Remove `type` and contrast="low" prop from Typography & ProgressBar Components
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) =>
-        /(Text|Title|Display|Heading|ProgressBar)/i.test(path.value.openingElement.name.name),
-      )
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) =>
+              ['Text', 'Title', 'Display', 'Heading', 'ProgressBar', 'CardHeaderText'].includes(
+                name,
+              ),
+          },
+        },
+      })
       .replaceWith((path) => {
         const { node } = path;
 
@@ -267,13 +286,18 @@ function migrateTypographyComponents({ root, j, file }): void {
 
         return node;
       })
-      .find(j.JSXAttribute) // Find all Heading props
+      .find(j.JSXAttribute, {
+        name: {
+          name: (name) => name === 'type' || name === 'contrast',
+        },
+        value: {
+          value: (value) => value !== 'high',
+        },
+      })
       .filter(
         (path, index, self) =>
-          (path.node.name.name === 'type' ||
-            (path.node.name.name === 'contrast' && path.node.value.value === 'low')) &&
           index === self.findIndex((obj) => path.node.start === obj.node.start),
-      ) // Filter by name `type` and remove any duplicates
+      ) // remove any duplicates
       .remove();
   } catch (error) {
     console.error(
@@ -293,8 +317,14 @@ function migrateTypographyComponents({ root, j, file }): void {
           path.value.openingElement.name.name,
         ),
       )
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'weight' && path.node.value.value === 'bold')
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'weight',
+        },
+        value: {
+          value: 'bold',
+        },
+      })
       .replaceWith((path) => {
         path.node.value.value = 'semibold';
         return path.node;
