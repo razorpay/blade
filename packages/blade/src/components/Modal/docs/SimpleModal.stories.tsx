@@ -6,7 +6,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { Text } from '~components/Typography';
+import { Radio, RadioGroup } from '~components/Radio';
 
 export default {
   title: 'Components/Modal/SimpleModal',
@@ -46,15 +46,11 @@ const ModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
           subtitle="This example is created for Modal snapshot testing"
         />
         <ModalBody>
-          {/* TODO: Rebranding - use this when Radio is fixed
           <RadioGroup label="Addresses">
             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
             <Radio value="office-1">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
             <Radio value="office-2">Work - 5938 New York, Main Street</Radio>
-          </RadioGroup> */}
-          <Text>Home - 11850 Florida 24, Cedar Key, Florida</Text>
-          <Text>Office - 2033 Florida 21, Cedar Key, Florida</Text>
-          <Text>Work - 5938 New York, Main Street</Text>
+          </RadioGroup>
         </ModalBody>
         <ModalFooter>
           <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">

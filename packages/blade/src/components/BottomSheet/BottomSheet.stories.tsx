@@ -13,7 +13,7 @@ import {
   BottomSheetHeader,
 } from './';
 
-import { InfoIcon } from '~components/Icons';
+import { ArrowRightIcon, InfoIcon } from '~components/Icons';
 
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
@@ -27,6 +27,11 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { isReactNative } from '~utils';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { Dropdown } from '~components/Dropdown';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import { OTPInput } from '~components/Input/OTPInput';
+import { Radio, RadioGroup } from '~components/Radio';
 
 const Page = (): React.ReactElement => {
   return (
@@ -855,314 +860,314 @@ const ZeroPaddingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
 
 export const ZeroPadding = ZeroPaddingTemplate.bind({});
 
-// const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-//   const fruites = [
-//     'Apple',
-//     'Apricot',
-//     'Avocado',
-//     'Banana',
-//     'Blackberry',
-//     'Blueberry',
-//     'Cherry',
-//     'Coconut',
-//     'Cucumber',
-//     'Durian',
-//     'Dragonfruit',
-//     'Fig',
-//     'Gooseberry',
-//     'Grape',
-//     'Guava',
-//     'Jackfruit',
-//     'Plum',
-//     'Kiwifruit',
-//     'Kumquat',
-//     'Lemon',
-//     'Lime',
-//     'Mango',
-//     'Watermelon',
-//     'Mulberry',
-//     'Orange',
-//     'Papaya',
-//     'Passionfruit',
-//     'Peach',
-//     'Pear',
-//     'Persimmon',
-//     'Pineapple',
-//     'Pineberry',
-//     'Quince',
-//     'Raspberry',
-//     'Soursop',
-//     'Star fruit',
-//     'Strawberry',
-//     'Tamarind',
-//     'Yuzu',
-//   ];
+const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  const fruites = [
+    'Apple',
+    'Apricot',
+    'Avocado',
+    'Banana',
+    'Blackberry',
+    'Blueberry',
+    'Cherry',
+    'Coconut',
+    'Cucumber',
+    'Durian',
+    'Dragonfruit',
+    'Fig',
+    'Gooseberry',
+    'Grape',
+    'Guava',
+    'Jackfruit',
+    'Plum',
+    'Kiwifruit',
+    'Kumquat',
+    'Lemon',
+    'Lime',
+    'Mango',
+    'Watermelon',
+    'Mulberry',
+    'Orange',
+    'Papaya',
+    'Passionfruit',
+    'Peach',
+    'Pear',
+    'Persimmon',
+    'Pineapple',
+    'Pineberry',
+    'Quince',
+    'Raspberry',
+    'Soursop',
+    'Star fruit',
+    'Strawberry',
+    'Tamarind',
+    'Yuzu',
+  ];
 
-//   return (
-//     <BaseBox>
-//       <Box marginBottom="spacing.5">
-//         <Text marginBottom="spacing.4">Example of Custom SnapPoints at [50%, 80%, 100%]</Text>
-//         <Dropdown selectionType="multiple">
-//           <SelectInput label="Cuisines Filter" />
-//           <BottomSheetComponent snapPoints={[0.5, 0.8, 1]}>
-//             <BottomSheetHeader title="Fruits" />
-//             <BottomSheetBody>
-//               <ActionList>
-//                 {fruites.map((fruit) => {
-//                   return <ActionListItem key={fruit} title={fruit} value={fruit} />;
-//                 })}
-//               </ActionList>
-//             </BottomSheetBody>
-//           </BottomSheetComponent>
-//         </Dropdown>
-//       </Box>
-//       <Heading marginBottom="spacing.3">SnapPoint Behaviour</Heading>
+  return (
+    <BaseBox>
+      <Box marginBottom="spacing.5">
+        <Text marginBottom="spacing.4">Example of Custom SnapPoints at [50%, 80%, 100%]</Text>
+        <Dropdown selectionType="multiple">
+          <SelectInput label="Cuisines Filter" />
+          <BottomSheetComponent snapPoints={[0.5, 0.8, 1]}>
+            <BottomSheetHeader title="Fruits" />
+            <BottomSheetBody>
+              <ActionList>
+                {fruites.map((fruit) => {
+                  return <ActionListItem key={fruit} title={fruit} value={fruit} />;
+                })}
+              </ActionList>
+            </BottomSheetBody>
+          </BottomSheetComponent>
+        </Dropdown>
+      </Box>
+      <Heading marginBottom="spacing.3">SnapPoint Behaviour</Heading>
 
-//       <Box display="flex" gap="spacing.2" flexWrap="wrap">
-//         <Text>By default BottomSheet's SnapPoints are</Text>
-//         <Text weight="bold">[35%, 50%, 85%]</Text>
-//       </Box>
+      <Box display="flex" gap="spacing.2" flexWrap="wrap">
+        <Text>By default BottomSheet's SnapPoints are</Text>
+        <Text weight="semibold">[35%, 50%, 85%]</Text>
+      </Box>
 
-//       <Text>
-//         Below is the behaviour BottomSheet follows to inteligently open the content at the optimal
-//         SnapPoint initially
-//       </Text>
+      <Text>
+        Below is the behaviour BottomSheet follows to inteligently open the content at the optimal
+        SnapPoint initially
+      </Text>
 
-//       <Box marginTop="spacing.3">
-//         <Text weight="bold">At SnapPoint 1: 35% Screen Height</Text>
-//         <List>
-//           <ListItem>
-//             If content height is less than 35% of screen height - then bottom sheet takes the height
-//             of the content.
-//           </ListItem>
-//           <ListItem>
-//             If content height is {'>'}35% screen height (and {'<'}50% of screen’s height) - then
-//             bottom sheet’s initial snap point should be 35%.
-//             <List>
-//               <ListItem>
-//                 Bottom sheet will extend till the height of the content on upwards drag.
-//               </ListItem>
-//             </List>
-//           </ListItem>
-//         </List>
+      <Box marginTop="spacing.3">
+        <Text weight="semibold">At SnapPoint 1: 35% Screen Height</Text>
+        <List>
+          <ListItem>
+            If content height is less than 35% of screen height - then bottom sheet takes the height
+            of the content.
+          </ListItem>
+          <ListItem>
+            If content height is {'>'}35% screen height (and {'<'}50% of screen’s height) - then
+            bottom sheet’s initial snap point should be 35%.
+            <List>
+              <ListItem>
+                Bottom sheet will extend till the height of the content on upwards drag.
+              </ListItem>
+            </List>
+          </ListItem>
+        </List>
 
-//         <Text weight="bold">At SnapPoint 2: 50% Screen Height</Text>
-//         <List>
-//           <ListItem>
-//             If content height {'>'}35% but {'<'}50% screen height - the bottom sheet extends till
-//             the height of the content.
-//           </ListItem>
-//           <ListItem>
-//             If content height {'>'}50% (but {'<'}85% screen height) then bottom sheet’s initial snap
-//             point should be at 50% screen height.
-//             <List>
-//               <ListItem>
-//                 The bottom sheet extends till the height of the content on upwards drag.
-//               </ListItem>
-//             </List>
-//           </ListItem>
-//         </List>
+        <Text weight="semibold">At SnapPoint 2: 50% Screen Height</Text>
+        <List>
+          <ListItem>
+            If content height {'>'}35% but {'<'}50% screen height - the bottom sheet extends till
+            the height of the content.
+          </ListItem>
+          <ListItem>
+            If content height {'>'}50% (but {'<'}85% screen height) then bottom sheet’s initial snap
+            point should be at 50% screen height.
+            <List>
+              <ListItem>
+                The bottom sheet extends till the height of the content on upwards drag.
+              </ListItem>
+            </List>
+          </ListItem>
+        </List>
 
-//         <Text weight="bold">At SnapPoint 3: 85% Screen Height</Text>
-//         <List>
-//           <ListItem>
-//             If content height {'>'}50% but {'<'}85% screen height - the bottom sheet extends till
-//             the height of the content.
-//           </ListItem>
-//           <ListItem>Bottom Sheet’s height can extend maximum until 85% screen size.</ListItem>
-//           <ListItem>
-//             If content height {'>'}85% of screen height then bottom sheet’s initial snap point
-//             should be at 85% of screen height.
-//             <List>
-//               <ListItem>On further scroll or drag, contents scrolls internally.</ListItem>
-//             </List>
-//           </ListItem>
-//         </List>
+        <Text weight="semibold">At SnapPoint 3: 85% Screen Height</Text>
+        <List>
+          <ListItem>
+            If content height {'>'}50% but {'<'}85% screen height - the bottom sheet extends till
+            the height of the content.
+          </ListItem>
+          <ListItem>Bottom Sheet’s height can extend maximum until 85% screen size.</ListItem>
+          <ListItem>
+            If content height {'>'}85% of screen height then bottom sheet’s initial snap point
+            should be at 85% of screen height.
+            <List>
+              <ListItem>On further scroll or drag, contents scrolls internally.</ListItem>
+            </List>
+          </ListItem>
+        </List>
 
-//         <Text>
-//           Checkout the{' '}
-//           <Link href="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=1-583405&t=1Fde8E8CnBaRPGsV-0">
-//             design guideline
-//           </Link>{' '}
-//           here for more details
-//         </Text>
-//       </Box>
-//     </BaseBox>
-//   );
-// };
+        <Text>
+          Checkout the{' '}
+          <Link href="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=1-583405&t=1Fde8E8CnBaRPGsV-0">
+            design guideline
+          </Link>{' '}
+          here for more details
+        </Text>
+      </Box>
+    </BaseBox>
+  );
+};
 
-// export const CustomSnapPoints = SnapPointsTemplate.bind({});
+export const CustomSnapPoints = SnapPointsTemplate.bind({});
 
-// const WithOTPInputTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-//   const [isOpen, setIsOpen] = React.useState(false);
-//   const [isLoading, setIsLoading] = React.useState(false);
+const WithOTPInputTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
-//   const submitOTP = React.useCallback(() => {
-//     setIsLoading(true);
-//     window.setTimeout(() => {
-//       setIsLoading(false);
-//       setIsOpen(false);
-//     }, 2000);
-//   }, []);
+  const submitOTP = React.useCallback(() => {
+    setIsLoading(true);
+    window.setTimeout(() => {
+      setIsLoading(false);
+      setIsOpen(false);
+    }, 2000);
+  }, []);
 
-//   return (
-//     <BaseBox>
-//       <Button onClick={() => setIsOpen(true)}>Open</Button>
-//       <BottomSheetComponent
-//         isOpen={isOpen}
-//         onDismiss={() => {
-//           setIsOpen(false);
-//         }}
-//       >
-//         <BottomSheetHeader title="1. Saved Address" />
-//         <BottomSheetBody>
-//           <Box display="flex" flexDirection="column" alignItems="center">
-//             <OTPInput
-//               onOTPFilled={submitOTP}
-//               marginBottom="spacing.5"
-//               label="Enter the OTP sent to +9190909090"
-//             />
-//             <Text textAlign="center">
-//               By clicking “Submit OTP”, I agree to <Link href="#">Terms and Conditions</Link>,
-//               <Link href="#">Privacy Policy</Link>, and <Link href="#">Service Agreement</Link>.
-//             </Text>
-//           </Box>
-//         </BottomSheetBody>
+  return (
+    <BaseBox>
+      <Button onClick={() => setIsOpen(true)}>Open</Button>
+      <BottomSheetComponent
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="1. Saved Address" />
+        <BottomSheetBody>
+          <Box display="flex" flexDirection="column" alignItems="center">
+            <OTPInput
+              onOTPFilled={submitOTP}
+              marginBottom="spacing.5"
+              label="Enter the OTP sent to +9190909090"
+            />
+            <Text textAlign="center">
+              By clicking “Submit OTP”, I agree to <Link href="#">Terms and Conditions</Link>,
+              <Link href="#">Privacy Policy</Link>, and <Link href="#">Service Agreement</Link>.
+            </Text>
+          </Box>
+        </BottomSheetBody>
 
-//         <BottomSheetFooter>
-//           <Button isFullWidth variant="tertiary">
-//             Cancel
-//           </Button>
-//           <Button isLoading={isLoading} onClick={submitOTP} isFullWidth marginTop="spacing.5">
-//             Submit
-//           </Button>
-//         </BottomSheetFooter>
-//       </BottomSheetComponent>
-//     </BaseBox>
-//   );
-// };
+        <BottomSheetFooter>
+          <Button isFullWidth variant="tertiary">
+            Cancel
+          </Button>
+          <Button isLoading={isLoading} onClick={submitOTP} isFullWidth marginTop="spacing.5">
+            Submit
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </BaseBox>
+  );
+};
 
-// export const WithOTPInput = WithOTPInputTemplate.bind({});
+export const WithOTPInput = WithOTPInputTemplate.bind({});
 
-// type ValidationState = 'none' | 'success' | 'error';
+type ValidationState = 'none' | 'success' | 'error';
 
-// interface Props {
-//   isOpen?: boolean;
-//   onDismiss: () => void;
-//   onCtaClick: (selectedPhoneNumber: string) => void;
-//   isCtaLoading?: boolean;
-//   phoneNumbers: Array<string>;
-// }
+interface Props {
+  isOpen?: boolean;
+  onDismiss: () => void;
+  onCtaClick: (selectedPhoneNumber: string) => void;
+  isCtaLoading?: boolean;
+  phoneNumbers: Array<string>;
+}
 
-// // Example by: https://github.com/razorpay/blade/issues/1777
-// const SimSelectionBottomSheet: React.FC<Props> = ({
-//   isOpen = false,
-//   onCtaClick,
-//   isCtaLoading = false,
-//   phoneNumbers = [],
-//   onDismiss,
-// }) => {
-//   const [isCtaDisabled, setIsCtaDisabled] = React.useState(true);
-//   const [selectedPhoneNumber, setSelectedPhoneNumber] = React.useState<string | undefined>(
-//     undefined,
-//   );
-//   const [simSelectionError, setSimSelectionError] = React.useState<string | undefined>(undefined);
+// Example by: https://github.com/razorpay/blade/issues/1777
+const SimSelectionBottomSheet: React.FC<Props> = ({
+  isOpen = false,
+  onCtaClick,
+  isCtaLoading = false,
+  phoneNumbers = [],
+  onDismiss,
+}) => {
+  const [isCtaDisabled, setIsCtaDisabled] = React.useState(true);
+  const [selectedPhoneNumber, setSelectedPhoneNumber] = React.useState<string | undefined>(
+    undefined,
+  );
+  const [simSelectionError, setSimSelectionError] = React.useState<string | undefined>(undefined);
 
-//   // should be able to handle content changes inside bottomsheet
-//   const handleSimChange = ({ value }: { value: string }): void => {
-//     setSimSelectionError(undefined);
-//     setSelectedPhoneNumber(value);
-//     setIsCtaDisabled(false);
-//   };
+  // should be able to handle content changes inside bottomsheet
+  const handleSimChange = ({ value }: { value: string }): void => {
+    setSimSelectionError(undefined);
+    setSelectedPhoneNumber(value);
+    setIsCtaDisabled(false);
+  };
 
-//   const handleCtaClick = (): void => {
-//     if (selectedPhoneNumber !== undefined && selectedPhoneNumber.length > 0) {
-//       setSimSelectionError(undefined);
-//       setIsCtaDisabled(false);
-//       onCtaClick(selectedPhoneNumber);
-//     } else {
-//       setSimSelectionError('Please select a SIM to verify mobile number');
-//       setIsCtaDisabled(true);
-//     }
-//   };
+  const handleCtaClick = (): void => {
+    if (selectedPhoneNumber !== undefined && selectedPhoneNumber.length > 0) {
+      setSimSelectionError(undefined);
+      setIsCtaDisabled(false);
+      onCtaClick(selectedPhoneNumber);
+    } else {
+      setSimSelectionError('Please select a SIM to verify mobile number');
+      setIsCtaDisabled(true);
+    }
+  };
 
-//   const radioGroupValidationState: ValidationState = simSelectionError ? 'error' : 'none';
-//   return (
-//     <Box>
-//       <BottomSheetComponent isOpen={isOpen} onDismiss={onDismiss}>
-//         <BottomSheetHeader title="Select SIM" showBackButton onBackButtonClick={onDismiss} />
-//         <BottomSheetBody>
-//           <RadioGroup
-//             name="select-sim"
-//             label="Please select a SIM to verify your mobile number"
-//             value={selectedPhoneNumber}
-//             onChange={handleSimChange}
-//             size="medium"
-//             errorText={simSelectionError}
-//             validationState={radioGroupValidationState}
-//           >
-//             {phoneNumbers.map((number, index) => {
-//               return (
-//                 <Radio value={number} key={`sim-${index}`}>
-//                   {number}
-//                 </Radio>
-//               );
-//             })}
-//           </RadioGroup>
-//         </BottomSheetBody>
-//         <BottomSheetFooter>
-//           <Box
-//             display="flex"
-//             flexDirection="column"
-//             alignItems="center"
-//             justifyContent="space-between"
-//             gap="spacing.4"
-//           >
-//             <Button
-//               icon={ArrowRightIcon}
-//               iconPosition="right"
-//               isLoading={isCtaLoading}
-//               isDisabled={isCtaDisabled}
-//               isFullWidth
-//               onClick={handleCtaClick}
-//             >
-//               Verify
-//             </Button>
-//             <Button
-//               onClick={() => {
-//                 // should be able to close the bottom sheet
-//                 onDismiss();
-//               }}
-//               variant="tertiary"
-//               isFullWidth
-//             >
-//               Close
-//             </Button>
-//           </Box>
-//         </BottomSheetFooter>
-//       </BottomSheetComponent>
-//     </Box>
-//   );
-// };
+  const radioGroupValidationState: ValidationState = simSelectionError ? 'error' : 'none';
+  return (
+    <Box>
+      <BottomSheetComponent isOpen={isOpen} onDismiss={onDismiss}>
+        <BottomSheetHeader title="Select SIM" showBackButton onBackButtonClick={onDismiss} />
+        <BottomSheetBody>
+          <RadioGroup
+            name="select-sim"
+            label="Please select a SIM to verify your mobile number"
+            value={selectedPhoneNumber}
+            onChange={handleSimChange}
+            size="medium"
+            errorText={simSelectionError}
+            validationState={radioGroupValidationState}
+          >
+            {phoneNumbers.map((number, index) => {
+              return (
+                <Radio value={number} key={`sim-${index}`}>
+                  {number}
+                </Radio>
+              );
+            })}
+          </RadioGroup>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="space-between"
+            gap="spacing.4"
+          >
+            <Button
+              icon={ArrowRightIcon}
+              iconPosition="right"
+              isLoading={isCtaLoading}
+              isDisabled={isCtaDisabled}
+              isFullWidth
+              onClick={handleCtaClick}
+            >
+              Verify
+            </Button>
+            <Button
+              onClick={() => {
+                // should be able to close the bottom sheet
+                onDismiss();
+              }}
+              variant="tertiary"
+              isFullWidth
+            >
+              Close
+            </Button>
+          </Box>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+    </Box>
+  );
+};
 
-// const ProductUseCase1Example: StoryFn<typeof BottomSheetComponent> = () => {
-//   // should be initially opened
-//   const [isOpen, setIsOpen] = React.useState(true);
-//   return (
-//     <>
-//       <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
-//       <SimSelectionBottomSheet
-//         isOpen={isOpen}
-//         onDismiss={() => {
-//           setIsOpen(false);
-//         }}
-//         phoneNumbers={['1234567890', '0987654321']}
-//         onCtaClick={(selectedPhoneNumber) => {
-//           console.log('selectedPhoneNumber', selectedPhoneNumber);
-//         }}
-//       />
-//     </>
-//   );
-// };
+const ProductUseCase1Example: StoryFn<typeof BottomSheetComponent> = () => {
+  // should be initially opened
+  const [isOpen, setIsOpen] = React.useState(true);
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>
+      <SimSelectionBottomSheet
+        isOpen={isOpen}
+        onDismiss={() => {
+          setIsOpen(false);
+        }}
+        phoneNumbers={['1234567890', '0987654321']}
+        onCtaClick={(selectedPhoneNumber) => {
+          console.log('selectedPhoneNumber', selectedPhoneNumber);
+        }}
+      />
+    </>
+  );
+};
 
-// export const ProductUseCase1 = ProductUseCase1Example.bind({});
+export const ProductUseCase1 = ProductUseCase1Example.bind({});

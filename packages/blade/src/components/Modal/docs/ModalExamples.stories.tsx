@@ -6,6 +6,8 @@ import {
   ModalWithNoBodyPaddingStory,
   ModalWithScrollableBackgroundStory,
   ModalWithScrollableContentStory,
+  ModalWithHeaderFooterStory,
+  ModalStackingStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -36,13 +38,13 @@ const ModalTemplate: StoryFn<typeof Modal> = () => {
 
 export const BasicModal = ModalTemplate.bind({});
 
-// export const ModalWithHeaderFooter = (): React.ReactElement => {
-//   return (
-//     <Sandbox padding="spacing.0" editorHeight="90vh">
-//       {ModalWithHeaderFooterStory}
-//     </Sandbox>
-//   );
-// };
+export const ModalWithHeaderFooter = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {ModalWithHeaderFooterStory}
+    </Sandbox>
+  );
+};
 
 export const ModalWithScrollableBackground = (): React.ReactElement => {
   return (
@@ -60,13 +62,13 @@ export const ModalWithScrollableContent = (): React.ReactElement => {
   );
 };
 
-// export const ModalStacking = (): React.ReactElement => {
-//   return (
-//     <Sandbox padding="spacing.0" editorHeight="90vh">
-//       {ModalStackingStory}
-//     </Sandbox>
-//   );
-// };
+export const ModalStacking = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {ModalStackingStory}
+    </Sandbox>
+  );
+};
 
 export const ModalWithNoBodyPadding = (): React.ReactElement => {
   return (
