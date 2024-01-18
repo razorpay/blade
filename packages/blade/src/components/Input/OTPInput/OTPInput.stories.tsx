@@ -9,6 +9,9 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { SelectInput } from '../DropdownInputTriggers';
+import { ActionList, ActionListItem } from '~components/ActionList';
 // import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 // import { ActionList, ActionListItem } from '~components/ActionList';
 
@@ -248,7 +251,7 @@ export const OTPInputControlled = OTPInputControlledTemplate.bind({});
 
 export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [focusOn] = React.useState(0);
+  const [focusOn, setFocusOn] = React.useState(0);
   const inputRef = React.useRef<HTMLInputElement[]>([]);
 
   return (
@@ -260,8 +263,7 @@ export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
         otpLength={4}
         onChange={({ name, value }): void => console.log({ name, value })}
       />
-      {/* TODO: Rebranding - uncomment when Dropdown is ready */}
-      {/* <Dropdown selectionType="single">
+      <Dropdown selectionType="single">
         <SelectInput
           label="Item to focus"
           placeholder="Select Item To Focus"
@@ -279,7 +281,7 @@ export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
             <ActionListItem title="3" value="3" />
           </ActionList>
         </DropdownOverlay>
-      </Dropdown> */}
+      </Dropdown>
       <Button
         onClick={() => {
           console.log(inputRef);

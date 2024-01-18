@@ -1,4 +1,3 @@
-// TODO: Rebranding - check this when Radio, Checkbox, TextInput, TextArea is fixed
 const Playground = `
 import {
   Button,

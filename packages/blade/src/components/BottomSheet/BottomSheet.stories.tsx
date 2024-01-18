@@ -13,7 +13,17 @@ import {
   BottomSheetHeader,
 } from './';
 
-import { ArrowRightIcon, InfoIcon } from '~components/Icons';
+import {
+  ArrowRightIcon,
+  InfoIcon,
+  CustomersIcon,
+  ClockIcon,
+  ThumbsUpIcon,
+  TrendingUpIcon,
+  TrendingDownIcon,
+  CheckIcon,
+  CloseIcon,
+} from '~components/Icons';
 
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
@@ -27,11 +37,17 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { isReactNative } from '~utils';
 import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
-import { ActionList, ActionListItem } from '~components/ActionList';
-import { Dropdown } from '~components/Dropdown';
+import {
+  ActionList,
+  ActionListItem,
+  ActionListItemIcon,
+  ActionListSection,
+} from '~components/ActionList';
+import { Dropdown, DropdownButton } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { OTPInput } from '~components/Input/OTPInput';
 import { Radio, RadioGroup } from '~components/Radio';
+import { TextInput } from '~components/Input/TextInput';
 
 const Page = (): React.ReactElement => {
   return (
@@ -353,15 +369,11 @@ const WithHeaderFooterTemplate: StoryFn<any> = (args: StoryControlProps) => {
           titleSuffix={args.titleSuffix}
         />
         <BottomSheetBody>
-          {/* TODO: Rebranding - Uncomment when Radio is fixed 
           <RadioGroup label="Addresses">
             <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
             <Radio value="office-1">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
             <Radio value="office-2">Work - 5938 New York, Main Street</Radio>
-          </RadioGroup> */}
-          <Text>Home - 11850 Florida 24, Cedar Key, Florida</Text>
-          <Text>Office - 2033 Florida 21, Cedar Key, Florida</Text>
-          <Text>Work - 5938 New York, Main Street</Text>
+          </RadioGroup>
         </BottomSheetBody>
         <BottomSheetFooter>
           <Button isFullWidth variant="tertiary">
@@ -385,249 +397,109 @@ WithHeaderFooter.args = {
   showBackButton: false,
 };
 
-// TODO: Rebranding - Uncomment when ActionList is fixed
+const WithDropdownSingleSelectTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  return (
+    <Dropdown selectionType="single">
+      <SelectInput label="Sort Dishes" />
+      <BottomSheetComponent>
+        <BottomSheetHeader title="Sort By" />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem
+              leading={<ActionListItemIcon icon={CustomersIcon} />}
+              title="Relevance (Default)"
+              value="relavance"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={ClockIcon} />}
+              title="Delivery Time"
+              value="delveiry-time"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={ThumbsUpIcon} />}
+              title="Rating"
+              value="rating"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={TrendingUpIcon} />}
+              title="Cost: Low to High"
+              value="Cost: Low to High"
+            />
+            <ActionListItem
+              leading={<ActionListItemIcon icon={TrendingDownIcon} />}
+              title="Cost: High to Low"
+              value="Cost: High to Low"
+            />
+          </ActionList>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </Dropdown>
+  );
+};
 
-// const WithDropdownSingleSelectTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-//   return (
-//     <Dropdown selectionType="single">
-//       <SelectInput label="Sort Dishes" />
-//       <BottomSheetComponent>
-//         <BottomSheetHeader title="Sort By" />
-//         <BottomSheetBody>
-//           <ActionList>
-//             <ActionListItem
-//               leading={<ActionListItemIcon icon={CustomersIcon} />}
-//               title="Relevance (Default)"
-//               value="relavance"
-//             />
-//             <ActionListItem
-//               leading={<ActionListItemIcon icon={ClockIcon} />}
-//               title="Delivery Time"
-//               value="delveiry-time"
-//             />
-//             <ActionListItem
-//               leading={<ActionListItemIcon icon={ThumbsUpIcon} />}
-//               title="Rating"
-//               value="rating"
-//             />
-//             <ActionListItem
-//               leading={<ActionListItemIcon icon={TrendingUpIcon} />}
-//               title="Cost: Low to High"
-//               value="Cost: Low to High"
-//             />
-//             <ActionListItem
-//               leading={<ActionListItemIcon icon={TrendingDownIcon} />}
-//               title="Cost: High to Low"
-//               value="Cost: High to Low"
-//             />
-//           </ActionList>
-//         </BottomSheetBody>
-//       </BottomSheetComponent>
-//     </Dropdown>
-//   );
-// };
+export const WithDropdownSingleSelect = WithDropdownSingleSelectTemplate.bind({});
 
-// export const WithDropdownSingleSelect = WithDropdownSingleSelectTemplate.bind({});
-
-// const WithDropdownButtonTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-//   const [status, setStatus] = React.useState<string | undefined>('approve');
-
-//   return (
-//     <Box minHeight="200px">
-//       <Dropdown>
-//         <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
-//         <BottomSheetComponent>
-//           <BottomSheetBody>
-//             <BottomSheetHeader />
-//             <ActionList>
-//               <ActionListItem
-//                 onClick={({ name, value }) => {
-//                   console.log({ name, value });
-//                   setStatus(name);
-//                 }}
-//                 leading={<ActionListItemIcon icon={CheckIcon} />}
-//                 isSelected={status === 'approve'}
-//                 title="Approve"
-//                 value="approve"
-//               />
-//               <ActionListItem
-//                 onClick={({ name, value }) => {
-//                   console.log({ name, value });
-//                   setStatus(name);
-//                 }}
-//                 leading={<ActionListItemIcon icon={ClockIcon} />}
-//                 isSelected={status === 'in-progress'}
-//                 title="In Progress"
-//                 value="in-progress"
-//               />
-
-//               <ActionListItem
-//                 onClick={({ name, value }) => {
-//                   console.log({ name, value });
-//                   setStatus(name);
-//                 }}
-//                 leading={<ActionListItemIcon icon={CloseIcon} />}
-//                 isSelected={status === 'reject'}
-//                 title="Reject"
-//                 value="reject"
-//                 intent="negative"
-//               />
-//             </ActionList>
-//           </BottomSheetBody>
-//         </BottomSheetComponent>
-//       </Dropdown>
-//     </Box>
-//   );
-// };
-
-// export const WithDropdownButton = WithDropdownButtonTemplate.bind({});
-
-// const WithDropdownMultiSelectTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-//   return (
-//     <Dropdown selectionType="multiple">
-//       <SelectInput label="Cuisines Filter" />
-//       <BottomSheetComponent>
-//         <BottomSheetHeader title="Filter By Cuisines" />
-//         <BottomSheetBody>
-//           <ActionList>
-//             <ActionListItem title="Chinese" value="Chinese" />
-//             <ActionListItem title="Italian" value="Italian" />
-//             <ActionListItem title="Mexican" value="Mexican" />
-//             <ActionListItem title="Indian" value="Indian" />
-//             <ActionListItem title="Thai" value="Thai" />
-//             <ActionListItem title="French" value="French" />
-//             <ActionListItem title="Japanese" value="Japanese" />
-//             <ActionListItem title="Spanish" value="Spanish" />
-//             <ActionListItem title="Middle Eastern" value="Middle Eastern" />
-//             <ActionListItem title="Korean" value="Korean" />
-//             <ActionListItem title="Greek" value="Greek" />
-//             <ActionListItem title="Vietnamese" value="Vietnamese" />
-//             <ActionListItem title="Brazilian" value="Brazilian" />
-//             <ActionListItem title="Moroccan" value="Moroccan" />
-//             <ActionListItem title="Caribbean" value="Caribbean" />
-//             <ActionListItem title="Turkish" value="Turkish" />
-//             <ActionListItem title="Lebanese" value="Lebanese" />
-//             <ActionListItem title="Malaysian" value="Malaysian" />
-//             <ActionListItem title="Indonesian" value="Indonesian" />
-//             <ActionListItem title="Peruvian" value="Peruvian" />
-//             <ActionListItem title="Ethiopian" value="Ethiopian" />
-//             <ActionListItem title="Filipino" value="Filipino" />
-//             <ActionListItem title="Cuban" value="Cuban" />
-//             <ActionListItem title="German" value="German" />
-//             <ActionListItem title="Nigerian" value="Nigerian" />
-//           </ActionList>
-//         </BottomSheetBody>
-//       </BottomSheetComponent>
-//     </Dropdown>
-//   );
-// };
-
-// export const WithDropdownMultiSelect = WithDropdownMultiSelectTemplate.bind({});
-
-// const WithDropdownSectionsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-//   return (
-//     <Dropdown selectionType="multiple">
-//       <SelectInput label="Cuisines Filter" />
-//       <BottomSheetComponent>
-//         <BottomSheetHeader title="Filter By Cuisines" />
-//         <BottomSheetBody>
-//           <ActionList>
-//             <ActionListSection title="Asia">
-//               <ActionListItem title="Chinese" value="Chinese" />
-//               <ActionListItem title="Indian" value="Indian" />
-//               <ActionListItem title="Thai" value="Thai" />
-//               <ActionListItem title="Japanese" value="Japanese" />
-//               <ActionListItem title="Korean" value="Korean" />
-//               <ActionListItem title="Vietnamese" value="Vietnamese" />
-//               <ActionListItem title="Malaysian" value="Malaysian" />
-//               <ActionListItem title="Indonesian" value="Indonesian" />
-//             </ActionListSection>
-
-//             <ActionListSection title="Europe">
-//               <ActionListItem title="Italian" value="Italian" />
-//               <ActionListItem title="French" value="French" />
-//               <ActionListItem title="Spanish" value="Spanish" />
-//               <ActionListItem title="Greek" value="Greek" />
-//               <ActionListItem title="German" value="German" />
-//             </ActionListSection>
-
-//             <ActionListSection title="North America">
-//               <ActionListItem title="Mexican" value="Mexican" />
-//               <ActionListItem title="Caribbean" value="Caribbean" />
-//             </ActionListSection>
-
-//             <ActionListSection title="South America">
-//               <ActionListItem title="Brazilian" value="Brazilian" />
-//               <ActionListItem title="Peruvian" value="Peruvian" />
-//             </ActionListSection>
-
-//             <ActionListSection title="Africa">
-//               <ActionListItem title="Middle Eastern" value="Middle Eastern" />
-//               <ActionListItem title="Moroccan" value="Moroccan" />
-//               <ActionListItem title="Ethiopian" value="Ethiopian" />
-//               <ActionListItem title="Nigerian" value="Nigerian" />
-//             </ActionListSection>
-//           </ActionList>
-//         </BottomSheetBody>
-//       </BottomSheetComponent>
-//     </Dropdown>
-//   );
-// };
-
-// export const WithDropdownSectionsSelect = WithDropdownSectionsTemplate.bind({});
-
-const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-  const [isFirstOpen, setFirstOpen] = React.useState(false);
-  const [isSecondOpen, setSecondOpen] = React.useState(false);
-  const [isThirdOpen, setThirdOpen] = React.useState(false);
+const WithDropdownButtonTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  const [status, setStatus] = React.useState<string | undefined>('approve');
 
   return (
-    <BaseBox>
-      <Box display="flex" gap="spacing.2" flexWrap="wrap">
-        <Button onClick={() => setFirstOpen(true)}>Open 1st BottomSheet</Button>
-        <Button onClick={() => setSecondOpen(true)}>Open 2nd BottomSheet</Button>
-        <Button onClick={() => setThirdOpen(true)}>Open 3rd BottomSheet</Button>
-      </Box>
+    <Box minHeight="200px">
+      <Dropdown>
+        <DropdownButton variant="tertiary">Status: {status ?? ''}</DropdownButton>
+        <BottomSheetComponent>
+          <BottomSheetBody>
+            <BottomSheetHeader />
+            <ActionList>
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                leading={<ActionListItemIcon icon={CheckIcon} />}
+                isSelected={status === 'approve'}
+                title="Approve"
+                value="approve"
+              />
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                leading={<ActionListItemIcon icon={ClockIcon} />}
+                isSelected={status === 'in-progress'}
+                title="In Progress"
+                value="in-progress"
+              />
 
-      <BottomSheetComponent
-        isOpen={isFirstOpen}
-        onDismiss={() => {
-          setFirstOpen(false);
-        }}
-      >
-        <BottomSheetHeader title="1. Saved Address" />
-        <BottomSheetBody>
-          {/* <RadioGroup label="Addresses" marginBottom="spacing.4">
-            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
-            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
-          </RadioGroup> */}
-          <Text>Home - 11850 Florida 24, Cedar Key, Florida</Text>
-          <Text>Office - 2033 Florida 21, Cedar Key, Florida</Text>
-        </BottomSheetBody>
-        <BottomSheetFooter>
-          <Button
-            isFullWidth
-            variant="tertiary"
-            onClick={() => setSecondOpen(true)}
-            isDisabled={isSecondOpen}
-          >
-            Open 2nd BottomSheet
-          </Button>
-          <Button
-            isFullWidth
-            marginTop="spacing.5"
-            onClick={() => setThirdOpen(true)}
-            isDisabled={isThirdOpen}
-          >
-            Open third BottomSheet
-          </Button>
-        </BottomSheetFooter>
-      </BottomSheetComponent>
+              <ActionListItem
+                onClick={({ name, value }) => {
+                  console.log({ name, value });
+                  setStatus(name);
+                }}
+                leading={<ActionListItemIcon icon={CloseIcon} />}
+                isSelected={status === 'reject'}
+                title="Reject"
+                value="reject"
+                intent="negative"
+              />
+            </ActionList>
+          </BottomSheetBody>
+        </BottomSheetComponent>
+      </Dropdown>
+    </Box>
+  );
+};
 
-      <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
-        <BottomSheetHeader title="2. Sort By" />
+export const WithDropdownButton = WithDropdownButtonTemplate.bind({});
+
+const WithDropdownMultiSelectTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Cuisines Filter" />
+      <BottomSheetComponent>
+        <BottomSheetHeader title="Filter By Cuisines" />
         <BottomSheetBody>
-          {/* <ActionList>
+          <ActionList>
             <ActionListItem title="Chinese" value="Chinese" />
             <ActionListItem title="Italian" value="Italian" />
             <ActionListItem title="Mexican" value="Mexican" />
@@ -653,34 +525,23 @@ const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => 
             <ActionListItem title="Cuban" value="Cuban" />
             <ActionListItem title="German" value="German" />
             <ActionListItem title="Nigerian" value="Nigerian" />
-          </ActionList> */}
-          <Text>Home - 11850 Florida 24, Cedar Key, Florida</Text>
-          <Text>Office - 2033 Florida 21, Cedar Key, Florida</Text>
+          </ActionList>
         </BottomSheetBody>
-        <BottomSheetFooter>
-          <Button
-            isFullWidth
-            variant="tertiary"
-            onClick={() => setFirstOpen(true)}
-            isDisabled={isFirstOpen}
-          >
-            Open 1st BottomSheet
-          </Button>
-          <Button
-            isFullWidth
-            marginTop="spacing.5"
-            onClick={() => setThirdOpen(true)}
-            isDisabled={isThirdOpen}
-          >
-            Open 3rd BottomSheet
-          </Button>
-        </BottomSheetFooter>
       </BottomSheetComponent>
+    </Dropdown>
+  );
+};
 
-      <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
-        <BottomSheetHeader title="3. Sort By" />
+export const WithDropdownMultiSelect = WithDropdownMultiSelectTemplate.bind({});
+
+const WithDropdownSectionsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  return (
+    <Dropdown selectionType="multiple">
+      <SelectInput label="Cuisines Filter" />
+      <BottomSheetComponent>
+        <BottomSheetHeader title="Filter By Cuisines" />
         <BottomSheetBody>
-          {/* <ActionList>
+          <ActionList>
             <ActionListSection title="Asia">
               <ActionListItem title="Chinese" value="Chinese" />
               <ActionListItem title="Indian" value="Indian" />
@@ -716,9 +577,152 @@ const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => 
               <ActionListItem title="Ethiopian" value="Ethiopian" />
               <ActionListItem title="Nigerian" value="Nigerian" />
             </ActionListSection>
-          </ActionList> */}
-          <Text>Home - 11850 Florida 24, Cedar Key, Florida</Text>
-          <Text>Office - 2033 Florida 21, Cedar Key, Florida</Text>
+          </ActionList>
+        </BottomSheetBody>
+      </BottomSheetComponent>
+    </Dropdown>
+  );
+};
+
+export const WithDropdownSectionsSelect = WithDropdownSectionsTemplate.bind({});
+
+const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
+  const [isFirstOpen, setFirstOpen] = React.useState(false);
+  const [isSecondOpen, setSecondOpen] = React.useState(false);
+  const [isThirdOpen, setThirdOpen] = React.useState(false);
+
+  return (
+    <BaseBox>
+      <Box display="flex" gap="spacing.2" flexWrap="wrap">
+        <Button onClick={() => setFirstOpen(true)}>Open 1st BottomSheet</Button>
+        <Button onClick={() => setSecondOpen(true)}>Open 2nd BottomSheet</Button>
+        <Button onClick={() => setThirdOpen(true)}>Open 3rd BottomSheet</Button>
+      </Box>
+
+      <BottomSheetComponent
+        isOpen={isFirstOpen}
+        onDismiss={() => {
+          setFirstOpen(false);
+        }}
+      >
+        <BottomSheetHeader title="1. Saved Address" />
+        <BottomSheetBody>
+          <RadioGroup label="Addresses" marginBottom="spacing.4">
+            <Radio value="home">Home - 11850 Florida 24, Cedar Key, Florida</Radio>
+            <Radio value="office">Office - 2033 Florida 21, Cedar Key, Florida</Radio>
+          </RadioGroup>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="tertiary"
+            onClick={() => setSecondOpen(true)}
+            isDisabled={isSecondOpen}
+          >
+            Open 2nd BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setThirdOpen(true)}
+            isDisabled={isThirdOpen}
+          >
+            Open third BottomSheet
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+
+      <BottomSheetComponent isOpen={isSecondOpen} onDismiss={() => setSecondOpen(false)}>
+        <BottomSheetHeader title="2. Sort By" />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListItem title="Chinese" value="Chinese" />
+            <ActionListItem title="Italian" value="Italian" />
+            <ActionListItem title="Mexican" value="Mexican" />
+            <ActionListItem title="Indian" value="Indian" />
+            <ActionListItem title="Thai" value="Thai" />
+            <ActionListItem title="French" value="French" />
+            <ActionListItem title="Japanese" value="Japanese" />
+            <ActionListItem title="Spanish" value="Spanish" />
+            <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+            <ActionListItem title="Korean" value="Korean" />
+            <ActionListItem title="Greek" value="Greek" />
+            <ActionListItem title="Vietnamese" value="Vietnamese" />
+            <ActionListItem title="Brazilian" value="Brazilian" />
+            <ActionListItem title="Moroccan" value="Moroccan" />
+            <ActionListItem title="Caribbean" value="Caribbean" />
+            <ActionListItem title="Turkish" value="Turkish" />
+            <ActionListItem title="Lebanese" value="Lebanese" />
+            <ActionListItem title="Malaysian" value="Malaysian" />
+            <ActionListItem title="Indonesian" value="Indonesian" />
+            <ActionListItem title="Peruvian" value="Peruvian" />
+            <ActionListItem title="Ethiopian" value="Ethiopian" />
+            <ActionListItem title="Filipino" value="Filipino" />
+            <ActionListItem title="Cuban" value="Cuban" />
+            <ActionListItem title="German" value="German" />
+            <ActionListItem title="Nigerian" value="Nigerian" />
+          </ActionList>
+        </BottomSheetBody>
+        <BottomSheetFooter>
+          <Button
+            isFullWidth
+            variant="tertiary"
+            onClick={() => setFirstOpen(true)}
+            isDisabled={isFirstOpen}
+          >
+            Open 1st BottomSheet
+          </Button>
+          <Button
+            isFullWidth
+            marginTop="spacing.5"
+            onClick={() => setThirdOpen(true)}
+            isDisabled={isThirdOpen}
+          >
+            Open 3rd BottomSheet
+          </Button>
+        </BottomSheetFooter>
+      </BottomSheetComponent>
+
+      <BottomSheetComponent isOpen={isThirdOpen} onDismiss={() => setThirdOpen(false)}>
+        <BottomSheetHeader title="3. Sort By" />
+        <BottomSheetBody>
+          <ActionList>
+            <ActionListSection title="Asia">
+              <ActionListItem title="Chinese" value="Chinese" />
+              <ActionListItem title="Indian" value="Indian" />
+              <ActionListItem title="Thai" value="Thai" />
+              <ActionListItem title="Japanese" value="Japanese" />
+              <ActionListItem title="Korean" value="Korean" />
+              <ActionListItem title="Vietnamese" value="Vietnamese" />
+              <ActionListItem title="Malaysian" value="Malaysian" />
+              <ActionListItem title="Indonesian" value="Indonesian" />
+            </ActionListSection>
+
+            <ActionListSection title="Europe">
+              <ActionListItem title="Italian" value="Italian" />
+              <ActionListItem title="French" value="French" />
+              <ActionListItem title="Spanish" value="Spanish" />
+              <ActionListItem title="Greek" value="Greek" />
+              <ActionListItem title="German" value="German" />
+            </ActionListSection>
+
+            <ActionListSection title="North America">
+              <ActionListItem title="Mexican" value="Mexican" />
+              <ActionListItem title="Caribbean" value="Caribbean" />
+            </ActionListSection>
+
+            <ActionListSection title="South America">
+              <ActionListItem title="Brazilian" value="Brazilian" />
+              <ActionListItem title="Peruvian" value="Peruvian" />
+            </ActionListSection>
+
+            <ActionListSection title="Africa">
+              <ActionListItem title="Middle Eastern" value="Middle Eastern" />
+              <ActionListItem title="Moroccan" value="Moroccan" />
+              <ActionListItem title="Ethiopian" value="Ethiopian" />
+              <ActionListItem title="Nigerian" value="Nigerian" />
+            </ActionListSection>
+          </ActionList>
         </BottomSheetBody>
         <BottomSheetFooter>
           <Button
@@ -746,7 +750,7 @@ const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => 
 export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
 
 const InitialFocusTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(true);
   const initialFocusRef = React.useRef<HTMLButtonElement>(null);
 
   return (
@@ -761,9 +765,8 @@ const InitialFocusTemplate: StoryFn<typeof BottomSheetComponent> = () => {
       >
         <BottomSheetHeader title="Users" />
         <BottomSheetBody>
-          {/* TODO: Rebranding - Uncomment when TextInput is fixed
-          <TextInput label="Search Users" ref={initialFocusRef} /> */}
-          <Button ref={initialFocusRef}>Search Users</Button>
+          <TextInput label="Search Users" ref={initialFocusRef} />
+          <Button marginTop="spacing.3">Search Users</Button>
 
           <Text marginTop="spacing.5">
             By default the initial focus is set to the close button, but you can modify it by
