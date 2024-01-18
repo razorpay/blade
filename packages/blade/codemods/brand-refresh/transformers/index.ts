@@ -1,7 +1,7 @@
 import type { Transform } from 'jscodeshift';
 import migrateAmountComponent from './migrate-amount';
 import migrateDividerComponent from './migrate-divider';
-import migrateCardAndTableComponent from './migrate-card-and-table';
+import migrateCardComponent from './migrate-card';
 import migrateBadgeComponent from './migrate-badge';
 import migrateContrastIntentAndColorProps from './migrate-contrast-intent-color-props';
 import migrateTypographyComponents from './migrate-typography';
@@ -185,7 +185,7 @@ const transformer: Transform = (file, api, options) => {
   migrateTypographyComponents({ root, j, file });
   migrateContrastIntentAndColorProps({ root, j, file });
   migrateBadgeComponent({ root, j, file });
-  migrateCardAndTableComponent({ root, j, file });
+  migrateCardComponent({ root, j, file });
   migrateAmountComponent({ root, j, file });
   migrateDividerComponent({ root, j, file });
   migrateActionListAndTable({ root, j, file });
