@@ -187,7 +187,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
   font-weight: 400;
@@ -205,7 +205,24 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c13.c13.c13.c13.c13 {
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
   font-weight: 400;
@@ -312,14 +329,14 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                     ₹
                   </span>
                   <span
-                    class="c8"
+                    class="c12"
                     data-blade-component="base-text"
                   >
                     1,000
                     .
                   </span>
                   <span
-                    class="c12"
+                    class="c13"
                     data-blade-component="base-text"
                   >
                     00
@@ -463,7 +480,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
   font-weight: 400;
@@ -481,7 +498,24 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(212,39%,16%,1);
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c14.c14.c14.c14.c14 {
+  color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
   font-weight: 400;
@@ -676,14 +710,14 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     ₹
                   </span>
                   <span
-                    class="c9"
+                    class="c13"
                     data-blade-component="base-text"
                   >
                     1,000
                     .
                   </span>
                   <span
-                    class="c13"
+                    class="c14"
                     data-blade-component="base-text"
                   >
                     00
