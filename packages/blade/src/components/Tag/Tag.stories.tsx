@@ -1,4 +1,5 @@
 import React from 'react';
+import type { DOMAttributes } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Tag } from './Tag';
@@ -8,6 +9,10 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import iconMap from '~components/Icons/iconMap';
+import { isReactNative } from '~utils';
+import { TextInput } from '~components/Input/TextInput';
+import { Button } from '~components/Button';
+import { PlusIcon } from '~components/Icons';
 
 const Page = (): React.ReactElement => {
   return (
@@ -98,76 +103,75 @@ Disabled.args = {
   isDisabled: true,
 } as TagProps & { icon: string };
 
-// const CrossPlatformForm = ({
-//   children,
-//   onSubmit,
-// }: {
-//   children: React.ReactElement[];
-//   onSubmit: DOMAttributes<HTMLFormElement>['onSubmit'];
-// }): React.ReactElement => {
-//   if (isReactNative()) {
-//     return <Box>{children}</Box>;
-//   }
+const CrossPlatformForm = ({
+  children,
+  onSubmit,
+}: {
+  children: React.ReactElement[];
+  onSubmit: DOMAttributes<HTMLFormElement>['onSubmit'];
+}): React.ReactElement => {
+  if (isReactNative()) {
+    return <Box>{children}</Box>;
+  }
 
-//   return <form onSubmit={onSubmit}>{children}</form>;
-// };
+  return <form onSubmit={onSubmit}>{children}</form>;
+};
 
-// TODO: Rebranding - Uncomment this when TextInput is ready
-// export const ControlledTags = (props: TagProps): React.ReactElement => {
-//   const [inputValue, setInputValue] = React.useState('');
-//   const [tags, setTags] = React.useState<string[]>([]);
+export const ControlledTags = (props: TagProps): React.ReactElement => {
+  const [inputValue, setInputValue] = React.useState('');
+  const [tags, setTags] = React.useState<string[]>([]);
 
-//   const addTag = (): void => {
-//     // Add input value to tags and clear the input value
-//     if (inputValue) {
-//       setTags([...tags, inputValue]);
-//       setInputValue('');
-//     }
-//   };
+  const addTag = (): void => {
+    // Add input value to tags and clear the input value
+    if (inputValue) {
+      setTags([...tags, inputValue]);
+      setInputValue('');
+    }
+  };
 
-//   const removeTag = (tagName: TagProps['children']): void => {
-//     setTags(tags.filter((tagNameValue) => tagNameValue !== tagName));
-//   };
+  const removeTag = (tagName: TagProps['children']): void => {
+    setTags(tags.filter((tagNameValue) => tagNameValue !== tagName));
+  };
 
-//   return (
-//     <Box>
-//       <Box paddingY="spacing.4">
-//         {tags.map((tagName) => (
-//           <Tag
-//             key={tagName}
-//             {...props}
-//             marginRight="spacing.2"
-//             onDismiss={() => removeTag(tagName)}
-//           >
-//             {tagName}
-//           </Tag>
-//         ))}
-//       </Box>
-//       <Box>
-//         <CrossPlatformForm
-//           onSubmit={(e) => {
-//             e.preventDefault();
-//             addTag();
-//           }}
-//         >
-//           <TextInput
-//             label="Tag Label"
-//             value={inputValue}
-//             onChange={({ value }) => setInputValue(value ?? '')}
-//             {...{ onSubmit: isReactNative() ? () => addTag() : undefined }}
-//           />
-//           <Button
-//             icon={PlusIcon}
-//             iconPosition="right"
-//             variant="secondary"
-//             marginTop="spacing.2"
-//             type="submit"
-//             {...{ onClick: isReactNative() ? () => addTag() : undefined }}
-//           >
-//             Create Tag
-//           </Button>
-//         </CrossPlatformForm>
-//       </Box>
-//     </Box>
-//   );
-// };
+  return (
+    <Box>
+      <Box paddingY="spacing.4">
+        {tags.map((tagName) => (
+          <Tag
+            key={tagName}
+            {...props}
+            marginRight="spacing.2"
+            onDismiss={() => removeTag(tagName)}
+          >
+            {tagName}
+          </Tag>
+        ))}
+      </Box>
+      <Box>
+        <CrossPlatformForm
+          onSubmit={(e) => {
+            e.preventDefault();
+            addTag();
+          }}
+        >
+          <TextInput
+            label="Tag Label"
+            value={inputValue}
+            onChange={({ value }) => setInputValue(value ?? '')}
+            {...{ onSubmit: isReactNative() ? () => addTag() : undefined }}
+          />
+          <Button
+            icon={PlusIcon}
+            iconPosition="right"
+            variant="secondary"
+            marginTop="spacing.2"
+            type="submit"
+            {...{ onClick: isReactNative() ? () => addTag() : undefined }}
+          >
+            Create Tag
+          </Button>
+        </CrossPlatformForm>
+      </Box>
+    </Box>
+  );
+};
