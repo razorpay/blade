@@ -28,7 +28,7 @@ Explore Blade's theme tokens.
 export const ThemeExplorer = () => {
   const { theme } = useTheme();
   return (
-    <Box>
+    <Box paddingX="spacing.5" paddingY="spacing.2" backgroundColor="surface.background.gray.moderate">
       <JSONTree
         data={theme}
         hideRoot
