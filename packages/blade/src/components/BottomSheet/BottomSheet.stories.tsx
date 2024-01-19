@@ -748,7 +748,7 @@ const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => 
 export const BottomSheetStacking = BottomSheetStackingTemplate.bind({});
 
 const InitialFocusTemplate: StoryFn<typeof BottomSheetComponent> = () => {
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
   const initialFocusRef = React.useRef<HTMLButtonElement>(null);
 
   return (
