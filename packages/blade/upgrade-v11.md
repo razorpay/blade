@@ -12,41 +12,7 @@ All the rebranding upgrade activity starts at the design end and is then followe
 
 **Step 2:** Install new fonts (Inter & Tasa) by following [this file](https://blade.razorpay.com/?path=/docs/guides-installation--docs#-installing-fonts).
 
-**Step 3:** The migration should be done page by page. Wrap your page that needs to be migrated under `BladeProvider` imported from `@razorpay/blade-rebranded`. Till the time the migration is not complete, you will have to maintain two versions of Blade in your project. To do that, you can use the `BladeProvider` component from different versions of Blade in different parts of your app.
-
-```jsx
-// HomePage.tsx
-import { BladeProvider } from '@razorpay/blade-rebranded'; // <-- v11
-import { bladeTheme } from '@razorpay/blade-rebranded/tokens';
-
-const HomePage = () => {
-  return (
-    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
-      <div>
-        <Text>Hello World</Text>
-      </div>
-    </BladeProvider>
-  );
-};
-```
-
-```jsx
-// OldPage.tsx (v10)
-import { BladeProvider } from '@razorpay/blade'; // <-- v10
-import { paymentTheme } from '@razorpay/blade/tokens';
-
-const OldPage = () => {
-  return (
-    <BladeProvider themeTokens={payment} colorScheme="light">
-      <div>
-        <Text>Hello World</Text>
-      </div>
-    </BladeProvider>
-  );
-};
-```
-
-**Step 4:** The codemod will update the components to the new version of Blade. Execute the codemod on the file/directory that needs to be migrated for the page via the following command:
+**Step 3:** The codemod will update the components to the new version of Blade. Execute the codemod on the file/directory that needs to be migrated for the page via the following command:
 
 > Need help? Check out [jscodeshift docs](https://github.com/facebook/jscodeshift) for CLI usage tips.
 
@@ -156,6 +122,22 @@ Only use this if you're unable to run the codemod described above.
 
   - <Amount size="title-medium" value={123456.789} />
   + <Amount value={123456.789} type="heading" size="xlarge" />
+  ```
+
+- **The `intent` prop has been removed in favor of the `color` prop.**
+
+  ```diff
+  - <Amount intent="positive" value={123456.789} />
+  + <Amount color="feedback.text.positive.intense" value={123456.789} />
+
+  - <Amount intent="negative" value={123456.789} />
+  + <Amount color="feedback.text.negative.intense" value={123456.789} />
+
+  - <Amount intent="information" value={123456.789} />
+  + <Amount color="feedback.text.information.intense" value={123456.789} />
+
+  - <Amount intent="notice" value={123456.789} />
+  + <Amount color="feedback.text.notice.intense" value={123456.789} />
   ```
 
 ### Alert
@@ -322,10 +304,10 @@ Only use this if you're unable to run the codemod described above.
 
   ```diff
   - <Card surfaceLevel={2}> Hello </Card>
-  + <Card backgroundColor="surface.background.gray.intense"> Hello </Card>
+  + <Card backgroundColor="surface.background.gray.moderate"> Hello </Card>
 
   - <Card surfaceLevel={3}> Hello </Card>
-  + <Card backgroundColor="surface.background.gray.moderate"> Hello </Card>
+  + <Card backgroundColor="surface.background.gray.intense"> Hello </Card>
   ```
 
 - The `CardHeaderBadge`, `CardHeaderCounter`, `CardHeaderAmount`, `CardHeaderText`, `CardHeaderLink`, and `CardHeaderIconButton` components have the same changes as `Badge`, `Counter`, `Amount`, `Text`, `Link`, and `Button` components respectively.
@@ -464,4 +446,32 @@ Only use this if you're unable to run the codemod described above.
   ```diff
   - <Skeleton contrast="low|high" />
   + <Skeleton />
+  ```
+
+### Spinner
+
+- **The `contrast` prop has been removed in favor of the `color` prop.**
+
+  ```diff
+  - <Spinner contrast="low" />
+  + <Spinner color="primary" />
+
+  - <Spinner contrast="high" />
+  + <Spinner color="white" />
+  ```
+
+- **The `"default"` value for the `color` prop has been removed in favor of the new `"primary"` value.**
+
+  ```diff
+  - <Spinner color="default" />
+  + <Spinner color="primary" />
+  ```
+
+### Table
+
+- **The `surfaceLevel` prop has been removed without replacement.**
+
+  ```diff
+  - <Table data={tableData} surfaceLevel={1/2/3} >
+  + <Table data={tableData} >
   ```

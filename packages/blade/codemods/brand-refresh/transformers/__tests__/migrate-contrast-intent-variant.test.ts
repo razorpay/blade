@@ -121,6 +121,10 @@ it('should remove variant/intent prop in favor of color prop', async () => {
         <ProgressBar intent="positive" label="Label" size="medium" value={10} />
         <ProgressBar intent="positive" label="Label" size="medium" value={10}  contrast="low"  />
         <ProgressBar intent="positive" label="Label" size="medium" value={10}  contrast="high"  />
+
+        <Spinner contrast="high" />
+        <Spinner contrast="low" />
+        <Spinner color="default" />
       </>
     );
     `,
@@ -185,13 +189,17 @@ it('should remove variant/intent prop in favor of color prop', async () => {
               <Chip value="no" color="primary"> No </Chip>
             </ChipGroup>
 
-            <Amount value={1234} color="positive" />
+            <Amount color="feedback.text.positive.intense" value={1234} />
 
-            <CardHeaderAmount value={1234} color="positive" />
+            <CardHeaderAmount color="feedback.text.positive.intense" value={1234} />
 
             <ProgressBar label="Label" size="medium" value={10} color="positive" />
             <ProgressBar label="Label" size="medium" value={10} color="positive" />
             <ProgressBar label="Label" size="medium" value={10} contrast="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"  color="positive"  />
+
+            <Spinner color="white" />
+            <Spinner color="primary" />
+            <Spinner color="primary" />
           </>
         );"
   `);

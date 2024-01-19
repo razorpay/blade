@@ -11,10 +11,18 @@ function migrateDropdownComponent({ root, j, file }): void {
   // >
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) => path.value.openingElement.name.name === 'Dropdown')
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'onDismiss')
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: 'Dropdown',
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'onDismiss',
+        },
+      })
       .replaceWith((path) => {
         const { node } = path;
 

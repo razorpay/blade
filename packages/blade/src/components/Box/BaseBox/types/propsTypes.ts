@@ -177,8 +177,8 @@ type BaseBoxVisualProps = MakeObjectResponsive<
       | BackgroundColorString<'interactive'>
       | BackgroundColorString<'overlay'>
       | BackgroundColorString<'popup'>
-      | 'transparent';
-    // | (string & Record<never, never>);
+      | 'transparent'
+      | (string & Record<never, never>);
     lineHeight: SpacingValueType;
     touchAction: CSSObject['touchAction'];
     userSelect: CSSObject['userSelect'];

@@ -8,7 +8,6 @@ import {
   subtleFontSizes,
   amountLineHeights,
 } from './amountTokens';
-import type { FeedbackColors } from '~tokens/theme/theme';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
@@ -34,7 +33,7 @@ type AmountCommonProps = {
    *
    * @default undefined
    */
-  color?: Exclude<FeedbackColors, 'neutral'>;
+  color?: BaseTextProps['color'];
   /**
    * Indicates what the suffix of amount should be
    *
@@ -74,7 +73,7 @@ const getTextColorProps = ({ color }: { color: AmountProps['color'] }): ColorPro
     amountValueColor: 'surface.text.gray.normal',
   };
   if (!color) return props;
-  props.amountValueColor = `feedback.text.${color}.intense`;
+  props.amountValueColor = color;
   return props;
 };
 

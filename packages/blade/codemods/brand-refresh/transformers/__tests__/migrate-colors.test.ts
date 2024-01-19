@@ -120,8 +120,8 @@ it('should update the theme in BladeProvider', async () => {
   );
 
   expect(result).toMatchInlineSnapshot(`
-    "import { BladeProvider } from "@razorpay/blade-rebranded/components";
-        import { bladeTheme } from "@razorpay/blade-rebranded/tokens";
+    "import { BladeProvider } from '@razorpay/blade/components';
+        import { bladeTheme } from '@razorpay/blade/tokens';
 
         const AppWrapper = () => {
           return (
@@ -156,8 +156,8 @@ it('should update the theme in BladeProvider', async () => {
   );
 
   expect(result).toMatchInlineSnapshot(`
-    "import { BladeProvider } from "@razorpay/blade-rebranded/components";
-        import { bladeTheme } from "@razorpay/blade-rebranded/tokens";
+    "import { BladeProvider } from '@razorpay/blade/components';
+        import { bladeTheme } from '@razorpay/blade/tokens';
 
         const AppWrapper = () => {
           return (

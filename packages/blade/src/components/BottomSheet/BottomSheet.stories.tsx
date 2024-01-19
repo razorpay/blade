@@ -12,19 +12,17 @@ import {
   BottomSheetFooter,
   BottomSheetHeader,
 } from './';
-
 import {
   ArrowRightIcon,
-  InfoIcon,
-  CustomersIcon,
-  ClockIcon,
-  ThumbsUpIcon,
-  TrendingUpIcon,
-  TrendingDownIcon,
   CheckIcon,
+  ClockIcon,
   CloseIcon,
+  CustomersIcon,
+  InfoIcon,
+  ThumbsUpIcon,
+  TrendingDownIcon,
+  TrendingUpIcon,
 } from '~components/Icons';
-
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { Heading, Text } from '~components/Typography';
@@ -47,6 +45,7 @@ import { Dropdown, DropdownButton } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { OTPInput } from '~components/Input/OTPInput';
 import { Radio, RadioGroup } from '~components/Radio';
+import { Checkbox } from '~components/Checkbox';
 import { TextInput } from '~components/Input/TextInput';
 
 const Page = (): React.ReactElement => {
@@ -338,8 +337,7 @@ const BottomSheetTemplate: StoryFn<typeof BottomSheetComponent> = ({ ...args }) 
             justifyContent="space-between"
           >
             <Box flexShrink={0}>
-              {/* <Checkbox>I accept terms and condition</Checkbox> */}
-              <Text>I accept terms and condition</Text>
+              <Checkbox>I accept terms and condition</Checkbox>
             </Box>
             <Button>Continue</Button>
           </Box>
@@ -766,7 +764,7 @@ const InitialFocusTemplate: StoryFn<typeof BottomSheetComponent> = () => {
         <BottomSheetHeader title="Users" />
         <BottomSheetBody>
           <TextInput label="Search Users" ref={initialFocusRef} />
-          <Button marginTop="spacing.3">Search Users</Button>
+          <Button ref={initialFocusRef}>Search Users</Button>
 
           <Text marginTop="spacing.5">
             By default the initial focus is set to the close button, but you can modify it by
@@ -807,7 +805,7 @@ const HeadingBanner = (): React.ReactElement => {
 
   return (
     <Box position="relative" height="250px" overflow="hidden">
-      <Box position="absolute" top="-150px" left="spacing.0">
+      <Box position="absolute" top="-150px" left="spacing.0" width="100%">
         <video
           autoPlay
           style={{ objectFit: 'cover' }}
@@ -1154,8 +1152,7 @@ const SimSelectionBottomSheet: React.FC<Props> = ({
 };
 
 const ProductUseCase1Example: StoryFn<typeof BottomSheetComponent> = () => {
-  // should be initially opened
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>

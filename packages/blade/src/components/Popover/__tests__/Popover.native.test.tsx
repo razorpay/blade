@@ -46,7 +46,7 @@ describe('<Popover />', () => {
     const { toJSON, getByRole } = renderWithTheme(
       <Popover
         title="This is title"
-        titleLeading={<InfoIcon color="surface.text.gray.disabled" size="small" />}
+        titleLeading={<InfoIcon color="surface.icon.gray.disabled" size="small" />}
         content={<Text>{popoverContent}</Text>}
         footer={<Text>Footer</Text>}
       >

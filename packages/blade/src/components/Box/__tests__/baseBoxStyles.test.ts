@@ -13,7 +13,7 @@ describe('getColorValue', () => {
   it('should return correct background color value', () => {
     expect(
       getColorValue('interactive.background.primary.default', bladeLightTheme, 'base'),
-    ).toMatchInlineSnapshot(`"hsla(230, 100%, 42%, 1)"`);
+    ).toMatchInlineSnapshot(`"hsla(227, 100%, 59%, 1)"`);
     expect(getColorValue('red', bladeLightTheme, 'base')).toBe('red');
     expect(getColorValue('red', bladeLightTheme, 'm')).toBe(undefined);
     expect(getColorValue({ base: 'red', s: '#f30' }, bladeLightTheme, 's')).toBe('#f30');
