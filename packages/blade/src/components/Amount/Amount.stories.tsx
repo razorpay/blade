@@ -134,7 +134,7 @@ const AmountTemplate: StoryFn<typeof AmountComponent> = (args) => {
           flexDirection="column"
         >
           <Text marginBottom="spacing.1">{color}</Text>
-          <AmountComponent {...args} color={color} />
+          <AmountComponent {...args} color={`feedback.text.${color}.intense`} />
         </BaseBox>
       ))}
     </BaseBox>

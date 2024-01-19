@@ -23,7 +23,7 @@ describe('<Spinner />', () => {
   });
 
   it('should render default color Spinner', () => {
-    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="default" />);
+    const { toJSON } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="primary" />);
     expect(toJSON()).toMatchSnapshot();
   });
 
