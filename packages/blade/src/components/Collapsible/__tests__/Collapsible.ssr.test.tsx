@@ -21,7 +21,7 @@ describe('<Collapsible />', () => {
               alignItems="baseline"
             >
               <Text>Actual amount</Text>
-              <Amount value={1000} intent="positive" />
+              <Amount value={1000} color="feedback.text.positive.intense" />
             </Box>
             <Box
               display="flex"

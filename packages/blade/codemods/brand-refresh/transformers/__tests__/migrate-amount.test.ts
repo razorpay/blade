@@ -9,6 +9,12 @@ it('should migrate the Amount component', async () => {
         <>
           <Amount value={1234} intent="positive" />
 
+          <Amount value={1234} intent="negative" />
+
+          <Amount value={1234} intent="information" />
+
+          <Amount value={1234} intent="notice" />
+
           <Amount size="body-small" value={123456.789} />
 
           <Amount size="body-small-bold" value={123456.789} />
@@ -26,6 +32,14 @@ it('should migrate the Amount component', async () => {
           <Amount size="heading-large-bold" value={123456.789} />  
  
           <Amount size="title-small" value={123456.789} />
+
+          <CardHeaderAmount value={1234} intent="positive" />
+
+          <CardHeaderAmount value={1234} intent="negative" />
+
+          <CardHeaderAmount value={1234} intent="information" />
+
+          <CardHeaderAmount value={1234} intent="notice" />
 
           <CardHeaderAmount size="title-medium" value={123456.789} />
 
@@ -57,7 +71,13 @@ it('should migrate the Amount component', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
             <>
-              <Amount value={1234} color="positive" />
+              <Amount value={1234} color="feedback.text.positive.intense" />
+
+              <Amount value={1234} color="feedback.text.negative.intense" />
+
+              <Amount value={1234} color="feedback.text.information.intense" />
+
+              <Amount value={1234} color="feedback.text.notice.intense" />
 
               <Amount value={123456.789} type="body" size="small" />
 
@@ -76,6 +96,14 @@ it('should migrate the Amount component', async () => {
               <Amount value={123456.789} type="heading" size="medium" weight="semibold" />  
      
               <Amount value={123456.789} type="heading" size="large" />
+
+              <CardHeaderAmount value={1234} color="feedback.text.positive.intense" />
+
+              <CardHeaderAmount value={1234} color="feedback.text.negative.intense" />
+
+              <CardHeaderAmount value={1234} color="feedback.text.information.intense" />
+
+              <CardHeaderAmount value={1234} color="feedback.text.notice.intense" />
 
               <CardHeaderAmount value={123456.789} type="heading" size="xlarge" />
 

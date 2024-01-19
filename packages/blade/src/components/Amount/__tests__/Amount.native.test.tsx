@@ -75,13 +75,15 @@ describe('<Amount />', () => {
   });
 
   it('should render positive intent Amount ', () => {
-    const { toJSON } = renderWithTheme(<Amount color="positive" value={1000} />);
+    const { toJSON } = renderWithTheme(
+      <Amount color="feedback.text.positive.intense" value={1000} />,
+    );
     expect(toJSON()).toMatchSnapshot();
   });
 
   it('should render information intent Amount ', () => {
     const { toJSON } = renderWithTheme(
-      <Amount isAffixSubtle={false} color="information" value={1000} />,
+      <Amount isAffixSubtle={false} color="feedback.text.information.intense" value={1000} />,
     );
     expect(toJSON()).toMatchSnapshot();
   });

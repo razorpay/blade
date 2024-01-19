@@ -6,6 +6,7 @@ const refreshWrapperZIndex = 3;
 
 const checkboxCellWidth = size['44'];
 
+const tableBackgroundColor = 'surface.background.gray.intense';
 const tableHeader = {
   paddingTop: 'spacing.5',
   paddingBottom: 'spacing.5',
@@ -126,6 +127,7 @@ export {
   tableToolbar,
   tablePagination,
   refreshWrapperZIndex,
+  tableBackgroundColor,
   firstColumnStickyHeaderFooterZIndex,
   checkboxCellWidth,
 };

@@ -4,7 +4,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
 const colors: BaseSpinnerProps['color'][] = [
-  'default',
+  'primary',
   'white',
   'positive',
   'negative',
@@ -40,40 +40,16 @@ describe('<BaseSpinner />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render low contrast BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" contrast="low" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast BaseSpinner', () => {
-    const { container } = renderWithTheme(
-      <BaseSpinner accessibilityLabel="Loading" contrast="high" />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
   it('should render low contrast BaseSpinner with right label', () => {
     const { container } = renderWithTheme(
-      <BaseSpinner
-        accessibilityLabel="Loading"
-        contrast="low"
-        label="Loading"
-        labelPosition="right"
-      />,
+      <BaseSpinner accessibilityLabel="Loading" label="Loading" labelPosition="right" />,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should render high contrast BaseSpinner with bottom label', () => {
     const { container } = renderWithTheme(
-      <BaseSpinner
-        accessibilityLabel="Loading"
-        contrast="high"
-        label="Loading"
-        labelPosition="bottom"
-      />,
+      <BaseSpinner accessibilityLabel="Loading" label="Loading" labelPosition="bottom" />,
     );
     expect(container).toMatchSnapshot();
   });

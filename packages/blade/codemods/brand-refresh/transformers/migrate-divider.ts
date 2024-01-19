@@ -1,13 +1,25 @@
 import { red } from './utils';
 
-// Divider component <Divider variant=”normal”> -> <Divider variant=”muted”>
+// Divider component migration: Change the variant prop value from “normal” to “muted”
+// <Divider variant=”normal”> -> <Divider variant=”muted”>
 function migrateDividerComponent({ root, j, file }): void {
   try {
     root
-      .find(j.JSXElement)
-      .filter((path) => ['Divider'].includes(path.value.openingElement.name.name))
-      .find(j.JSXAttribute)
-      .filter((path) => path.node.name.name === 'variant' && path.node.value.value === 'normal')
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: 'Divider',
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: 'variant',
+        },
+        value: {
+          value: 'normal',
+        },
+      })
       .replaceWith((path) => {
         const { node } = path;
 

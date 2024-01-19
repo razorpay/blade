@@ -13,7 +13,6 @@ const actionListPropsTables: {
   ActionListSection: PropsTableType<ActionListSectionProps>;
 } = {
   ActionList: {
-    surfaceLevel: '2 | 3',
     children: (
       <>
         <ScrollLink href="#actionlistitem">&lt;ActionListItem[] /&gt;</ScrollLink> |{' '}

@@ -7,6 +7,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useId } from '~utils/useId';
 import { useTheme } from '~components/BladeProvider';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type { FeedbackColors } from '~tokens/theme/theme';
 import { size } from '~tokens/global';
@@ -123,7 +124,8 @@ const ProgressBar = ({
     }
   }
 
-  const unfilledBackgroundColor = theme.colors.feedback.background.neutral.subtle;
+  const unfilledBackgroundColor = theme.colors.feedback.background.neutral
+    .subtle as BaseBoxProps['backgroundColor'];
   const filledBackgroundColor = color
     ? theme.colors.feedback.background[color].intense
     : theme.colors.surface.background.primary.intense;
