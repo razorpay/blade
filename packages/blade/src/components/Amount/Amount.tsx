@@ -4,10 +4,11 @@ import type { AmountTypeProps, Currency } from './amountTokens';
 import {
   normalAmountSizes,
   getCurrencyAbbreviations,
-  currencyPrefixMapping,
+  currencyIndicatorMapping,
   subtleFontSizes,
   amountLineHeights,
 } from './amountTokens';
+import { StyledAmountWrapper } from './StyledAmountWrapper';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
@@ -19,7 +20,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { objectKeysWithType } from '~utils/objectKeysWithType';
 import { BaseText } from '~components/Typography/BaseText';
-import { Text } from '~components/Typography';
 import type { FontFamily } from '~tokens/global';
 
 type AmountCommonProps = {
@@ -53,12 +53,30 @@ type AmountCommonProps = {
    */
   currencyIndicator?: 'currency-symbol' | 'currency-code';
   /**
+   * Determines the position of the currency indicator.
+   *
+   * @default 'left'
+   */
+  currencyPosition?: 'left' | 'right';
+  /**
    * The currency of the amount.  Note that this component
    * only displays the provided value in the specified currency, it does not perform any currency conversion.
    *
    * @default 'INR'
    * */
   currency?: Currency;
+  /**
+   * Determines the position of the denomination.
+   *
+   * @default 'right'
+   */
+  denominationPosition?: 'left' | 'right';
+  /**
+   * If true, the amount text will have a line through it.
+   *
+   * @default false
+   */
+  isStrikethrough?: boolean;
 } & TestID &
   StyledPropsBlade;
 
@@ -90,6 +108,7 @@ const AmountValue = ({
   weight = 'regular',
   amountValueColor,
   isAffixSubtle,
+  isStrikethrough,
   suffix,
 }: AmountValue): ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
@@ -99,11 +118,14 @@ const AmountValue = ({
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
 
-    // Native does not support alignItems of Text inside a div, insted we need to wrap is in a Text
-    const AmountWrapper = getPlatformType() === 'react-native' ? Text : React.Fragment;
-
     return (
-      <AmountWrapper>
+      <StyledAmountWrapper
+        isStrikethrough={isStrikethrough}
+        color={amountValueColor}
+        fontWeight={weight}
+        fontSize={normalAmountSizes[type][size]}
+        lineHeight={amountLineHeights[type][size]}
+      >
         <BaseText
           fontSize={normalAmountSizes[type][size]}
           fontWeight={weight}
@@ -124,7 +146,7 @@ const AmountValue = ({
         >
           {decimal || '00'}
         </BaseText>
-      </AmountWrapper>
+      </StyledAmountWrapper>
     );
   }
   return (
@@ -134,6 +156,7 @@ const AmountValue = ({
       fontFamily={numberFontFamily}
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
+      textDecorationLine={isStrikethrough ? 'line-through' : 'none'}
     >
       {value}
     </BaseText>
@@ -159,29 +182,45 @@ export const addCommas = (amountValue: number, currency: Currency, decimalPlaces
  * ie: for INR 2000 => 2K
  * for MYR 2000000 => 2M
  */
-export const getHumanizedAmount = (amountValue: number, currency: Currency): string => {
+export const getHumanizedAmount = ({
+  value,
+  currency,
+  denominationPosition,
+}: {
+  value: number;
+  currency: Currency;
+  denominationPosition?: AmountCommonProps['denominationPosition'];
+}): string => {
+  let amountValue = value;
   const abbreviations = getCurrencyAbbreviations(currency);
-
   const abbreviation = abbreviations.find((abbr) => amountValue >= abbr.value);
+
   if (abbreviation) {
     amountValue = amountValue / abbreviation.value;
     const formattedAmountValue = getFlooredFixed(amountValue, 2);
-    return addCommas(formattedAmountValue, currency) + abbreviation.symbol;
-  } else {
-    return amountValue.toString();
+
+    if (denominationPosition === 'right') {
+      return `${addCommas(formattedAmountValue, currency)}${abbreviation.symbol}`;
+    }
+
+    return `${abbreviation.symbol}${addCommas(formattedAmountValue, currency)}`;
   }
+
+  return amountValue.toString();
 };
 
 type FormatAmountWithSuffixType = {
   suffix: AmountProps['suffix'];
   value: number;
   currency: Currency;
+  denominationPosition?: AmountCommonProps['denominationPosition'];
 };
 
 export const formatAmountWithSuffix = ({
   suffix,
   value,
   currency,
+  denominationPosition,
 }: FormatAmountWithSuffixType): string => {
   switch (suffix) {
     case 'decimals': {
@@ -189,7 +228,7 @@ export const formatAmountWithSuffix = ({
       return addCommas(decimalNumber, currency, 2);
     }
     case 'humanize': {
-      return getHumanizedAmount(value, currency);
+      return getHumanizedAmount({ value, currency, denominationPosition });
     }
     case 'none': {
       return addCommas(getFlooredFixed(value, 0), currency);
@@ -206,10 +245,13 @@ const _Amount = ({
   size = 'medium',
   weight = 'regular',
   isAffixSubtle = true,
+  isStrikethrough = false,
   color,
   currencyIndicator = 'currency-symbol',
-  testID,
+  currencyPosition = 'left',
+  denominationPosition = 'right',
   currency = 'INR',
+  testID,
   ...styledProps
 }: AmountProps): ReactElement => {
   if (__DEV__) {
@@ -252,8 +294,8 @@ const _Amount = ({
     }
   }
 
-  const currencyPrefix = currencyPrefixMapping[currency][currencyIndicator];
-  const renderedValue = formatAmountWithSuffix({ suffix, value, currency });
+  const currencySymbolOrCode = currencyIndicatorMapping[currency][currencyIndicator];
+  const renderedValue = formatAmountWithSuffix({ suffix, value, currency, denominationPosition });
   const { amountValueColor } = getTextColorProps({
     color,
   });
@@ -274,15 +316,17 @@ const _Amount = ({
         alignItems="baseline"
         flexDirection="row"
       >
-        <BaseText
-          marginRight="spacing.1"
-          fontWeight={weight}
-          fontSize={currencyFontSize}
-          color={amountValueColor}
-          as={isReactNative ? undefined : 'span'}
-        >
-          {currencyPrefix}
-        </BaseText>
+        {currencyPosition === 'left' && (
+          <BaseText
+            marginRight="spacing.1"
+            fontWeight={weight}
+            fontSize={currencyFontSize}
+            color={amountValueColor}
+            as={isReactNative ? undefined : 'span'}
+          >
+            {currencySymbolOrCode}
+          </BaseText>
+        )}
         <AmountValue
           value={renderedValue}
           amountValueColor={amountValueColor}
@@ -290,8 +334,20 @@ const _Amount = ({
           weight={weight}
           size={size}
           isAffixSubtle={isAffixSubtle}
+          isStrikethrough={isStrikethrough}
           suffix={suffix}
         />
+        {currencyPosition === 'right' && (
+          <BaseText
+            marginLeft="spacing.1"
+            fontWeight={weight}
+            fontSize={currencyFontSize}
+            color={amountValueColor}
+            as={isReactNative ? undefined : 'span'}
+          >
+            {currencySymbolOrCode}
+          </BaseText>
+        )}
       </BaseBox>
     </BaseBox>
   );

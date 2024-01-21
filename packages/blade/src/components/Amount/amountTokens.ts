@@ -99,7 +99,7 @@ const amountLineHeights: Record<
 };
 
 // All the supported currency codes are taken from Razorpay's Merchant Dashboard codebase
-const currencyPrefixMapping = {
+const currencyIndicatorMapping = {
   AED: { 'currency-symbol': 'د.إ', 'currency-code': 'AED' },
   ALL: { 'currency-symbol': 'Lek', 'currency-code': 'ALL' },
   AMD: { 'currency-symbol': '֏', 'currency-code': 'AMD' },
@@ -202,7 +202,7 @@ type CurrencyAbbreviation = {
   symbol: string;
 };
 
-type Currency = keyof typeof currencyPrefixMapping;
+type Currency = keyof typeof currencyIndicatorMapping;
 
 const getCurrencyAbbreviations = (currency: Currency): CurrencyAbbreviation[] => {
   if (currency === 'INR') {
@@ -224,7 +224,7 @@ export {
   subtleFontSizes,
   normalAmountSizes,
   amountLineHeights,
-  currencyPrefixMapping,
+  currencyIndicatorMapping,
   getCurrencyAbbreviations,
 };
 
