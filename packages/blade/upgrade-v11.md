@@ -140,6 +140,16 @@ Only use this if you're unable to run the codemod described above.
   + <Amount color="feedback.text.notice.intense" value={123456.789} />
   ```
 
+- **The `prefix` prop has been removed in favor of the new `currencyIndicator` prop.**
+
+  ```diff
+  - <Amount prefix="currency-symbol" value={123456.789} />
+  + <Amount currencyIndicator="currency-symbol" value={123456.789} />
+
+  - <Amount prefix="currency-code" value={123456.789} />
+  + <Amount currencyIndicator="currency-code" value={123456.789} />
+  ```
+
 ### Alert
 
 - **The `contrast` prop has been removed in favor of the new `emphasis` prop.**

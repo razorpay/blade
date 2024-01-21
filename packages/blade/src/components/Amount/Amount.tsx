@@ -41,17 +41,17 @@ type AmountCommonProps = {
    */
   suffix?: 'decimals' | 'none' | 'humanize';
   /**
-   * Makes the prefix symbol and decimal digits small and faded
+   * Makes the currency indicator(currency symbol/code) and decimal digits small and faded
    *
    * @default true
    */
   isAffixSubtle?: true | false;
   /**
-   * Prefix to be shown before the amount value. The prefix can be either a currency symbol or a currency code.
+   * Determines the visual representation of the currency, choose between displaying the currency symbol or code.
    *
    * @default 'currency-symbol'
    */
-  prefix?: 'currency-symbol' | 'currency-code';
+  currencyIndicator?: 'currency-symbol' | 'currency-code';
   /**
    * The currency of the amount.  Note that this component
    * only displays the provided value in the specified currency, it does not perform any currency conversion.
@@ -207,7 +207,7 @@ const _Amount = ({
   weight = 'regular',
   isAffixSubtle = true,
   color,
-  prefix = 'currency-symbol',
+  currencyIndicator = 'currency-symbol',
   testID,
   currency = 'INR',
   ...styledProps
@@ -252,7 +252,7 @@ const _Amount = ({
     }
   }
 
-  const currencyPrefix = currencyPrefixMapping[currency][prefix];
+  const currencyPrefix = currencyPrefixMapping[currency][currencyIndicator];
   const renderedValue = formatAmountWithSuffix({ suffix, value, currency });
   const { amountValueColor } = getTextColorProps({
     color,
