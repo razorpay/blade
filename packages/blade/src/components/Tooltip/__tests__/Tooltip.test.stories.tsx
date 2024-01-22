@@ -24,23 +24,23 @@ export const TestTooltipOpenClose: StoryFn<typeof TooltipComponent> = (
 };
 
 TestTooltipOpenClose.args = {
-  title: 'Hello World',
   content: 'Some text',
 };
 TestTooltipOpenClose.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  await expect(queryByText('Hello World')).not.toBeInTheDocument();
+  const tooltipContent = 'Some text';
+  await expect(queryByText(tooltipContent)).not.toBeInTheDocument();
   const showButton = getByRole('button', { name: 'Hover me' });
   // open
   await userEvent.hover(showButton);
-  await sleep(400);
+  await sleep(600);
   await expect(onOpenChange).toBeCalledWith({ isOpen: true });
-  await expect(queryByText('Hello World')).toBeVisible();
+  await expect(queryByText(tooltipContent)).toBeVisible();
   // close
   await userEvent.unhover(showButton);
-  await sleep(500);
+  await sleep(600);
   await expect(onOpenChange).toBeCalledWith({ isOpen: false });
-  await expect(queryByText('Hello World')).not.toBeInTheDocument();
+  await expect(queryByText(tooltipContent)).not.toBeInTheDocument();
 };
 
 // TooltipInteractiveWrapper
@@ -66,12 +66,12 @@ TestTooltipInteractiveWrapper.play = async () => {
   const badge = getByText('NEW');
   // open
   await userEvent.hover(badge);
-  await sleep(400);
+  await sleep(600);
   await expect(onOpenChange).toBeCalledWith({ isOpen: true });
   await expect(queryByText(tooltipContent)).toBeVisible();
   // close
   await userEvent.unhover(badge);
-  await sleep(500);
+  await sleep(600);
   await expect(onOpenChange).toBeCalledWith({ isOpen: false });
   await expect(queryByText(tooltipContent)).not.toBeInTheDocument();
 };
@@ -132,12 +132,12 @@ TestCustomTrigger.play = async () => {
   const trigger = getByText('Custom Trigger');
   // open
   await userEvent.hover(trigger);
-  await sleep(400);
+  await sleep(600);
   await expect(onOpenChange).toBeCalledWith({ isOpen: true });
   await expect(queryByText(tooltipContent)).toBeVisible();
   // close
   await userEvent.unhover(trigger);
-  await sleep(500);
+  await sleep(600);
   await expect(onOpenChange).toBeCalledWith({ isOpen: false });
   await expect(queryByText(tooltipContent)).not.toBeInTheDocument();
 };
@@ -154,22 +154,22 @@ export const TestTooltipOpenCloseFocus: StoryFn<typeof TooltipComponent> = (
 };
 
 TestTooltipOpenCloseFocus.args = {
-  title: 'Hello World',
   content: 'Some text',
 };
 TestTooltipOpenCloseFocus.play = async () => {
   const { queryByText } = within(document.body);
-  await expect(queryByText('Hello World')).not.toBeInTheDocument();
+  const tooltipContent = 'Some text';
+  await expect(queryByText(tooltipContent)).not.toBeInTheDocument();
   // open
   await userEvent.keyboard('{Tab}', {});
-  await sleep(200);
+  await sleep(600);
   await expect(onOpenChange).toBeCalledWith({ isOpen: true });
-  await expect(queryByText('Hello World')).toBeVisible();
+  await expect(queryByText(tooltipContent)).toBeVisible();
   // close
   await userEvent.keyboard('{Tab}', {});
-  await sleep(300);
+  await sleep(600);
   await expect(onOpenChange).toBeCalledWith({ isOpen: false });
-  await expect(queryByText('Hello World')).not.toBeInTheDocument();
+  await expect(queryByText(tooltipContent)).not.toBeInTheDocument();
 };
 
 export default {
