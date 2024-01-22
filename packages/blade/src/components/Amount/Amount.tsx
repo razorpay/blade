@@ -133,7 +133,6 @@ const AmountValue = ({
           {integer}
         </BaseText>
         <BaseText
-          marginLeft="spacing.1"
           fontWeight={weight}
           fontSize={affixFontSize}
           fontFamily={numberFontFamily}

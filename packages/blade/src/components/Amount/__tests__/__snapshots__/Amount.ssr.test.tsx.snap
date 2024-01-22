@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx caXXVm"><span opacity="0.5" class="StyledBaseText-dVBfTO cuHkRB" data-blade-component="base-text">₹</span><div data-blade-component="base-box" class="BaseBox-bmPWx jjDQyK"><span class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="base-text">10,000</span><span opacity="0.5" class="StyledBaseText-dVBfTO czjVEK" data-blade-component="base-text">.<!-- -->00</span></div></div></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx caXXVm"><span opacity="0.5" class="StyledBaseText-dVBfTO cuHkRB" data-blade-component="base-text">₹</span><div data-blade-component="base-box" class="BaseBox-bmPWx jjDQyK"><span class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="base-text">10,000</span><span opacity="0.5" class="StyledBaseText-dVBfTO gXWwtd" data-blade-component="base-text">.<!-- -->00</span></div></div></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -80,7 +80,6 @@ exports[`<Amount /> should render Amount on server 2`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div

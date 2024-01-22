@@ -78,7 +78,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -199,7 +198,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -320,7 +318,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -441,7 +438,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -647,7 +643,6 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -768,7 +763,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -823,7 +817,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 .c9.c9.c9.c9.c9 {
@@ -912,7 +905,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 .c14.c14.c14.c14.c14 {
@@ -967,7 +959,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1022,7 +1013,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 .c20.c20.c20.c20.c20 {
@@ -1077,7 +1067,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 .c23.c23.c23.c23.c23 {
@@ -1132,7 +1121,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -1541,7 +1529,6 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -1662,7 +1649,6 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -1783,7 +1769,6 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -1904,7 +1889,6 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>
@@ -2006,6 +1990,24 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  opacity: 0.5;
   margin-left: 2px;
 }
 
@@ -2038,7 +2040,7 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
         </span>
       </div>
       <span
-        class="c4"
+        class="c5"
         data-blade-component="base-text"
         opacity="0.5"
       >
@@ -2136,7 +2138,6 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 @media screen and (min-width:320px) {
@@ -2376,7 +2377,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 <div>

@@ -242,7 +242,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -548,7 +547,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.5;
-  margin-left: 2px;
 }
 
 .c5.c5.c5.c5.c5 {

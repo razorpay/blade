@@ -136,7 +136,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -149,7 +148,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -307,7 +306,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -320,7 +318,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -478,7 +476,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -491,7 +488,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -649,7 +646,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -662,7 +658,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -820,7 +816,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -833,7 +828,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -980,7 +975,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="semibold"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -993,7 +987,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -1140,7 +1134,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -1153,7 +1146,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -1300,7 +1293,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="semibold"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -1313,7 +1305,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -1460,7 +1452,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={200}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -1473,7 +1464,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -1620,7 +1611,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={200}
           fontWeight="semibold"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -1633,7 +1623,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -1780,7 +1770,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -1793,7 +1782,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -1940,7 +1929,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="semibold"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -1953,7 +1941,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -2100,7 +2088,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={700}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -2113,7 +2100,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -2271,7 +2258,6 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -2284,7 +2270,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -2549,7 +2535,6 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -2562,7 +2547,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -2720,7 +2705,6 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -2733,7 +2717,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -2857,7 +2841,6 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -2870,7 +2853,7 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -3169,7 +3152,6 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -3182,7 +3164,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,
@@ -3361,7 +3343,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           opacity={0.5}
           style={
             [
@@ -3374,7 +3355,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "opacity": 0.5,

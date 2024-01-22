@@ -410,7 +410,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         fontFamily="text"
                         fontSize={25}
                         fontWeight="regular"
-                        marginLeft="spacing.1"
                         opacity={0.5}
                         style={
                           [
@@ -423,7 +422,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
-                              "marginLeft": 2,
+                              "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 0,
                               "opacity": 0.5,
@@ -904,7 +903,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         fontFamily="text"
                         fontSize={25}
                         fontWeight="regular"
-                        marginLeft="spacing.1"
                         opacity={0.5}
                         style={
                           [
@@ -917,7 +915,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
-                              "marginLeft": 2,
+                              "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 0,
                               "opacity": 0.5,
