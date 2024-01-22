@@ -75,6 +75,10 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   align-items: baseline;
 }
 
+.c11.c11.c11.c11.c11 {
+  opacity: 0.5;
+}
+
 .c5.c5.c5.c5.c5 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
@@ -186,7 +190,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -204,7 +208,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   margin-right: 2px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c14.c14.c14.c14.c14 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -221,7 +225,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c15.c15.c15.c15.c15 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -236,11 +240,14 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-  margin-left: 2px;
 }
 
 .c3.c3.c3.c3.c3 {
   opacity: 1;
+}
+
+.c13.c13.c13.c13.c13 {
+  position: relative;
 }
 
 @media screen and (min-width:480px) {
@@ -324,23 +331,40 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 >
                   <span
                     class="c11"
-                    data-blade-component="base-text"
+                    data-blade-component="base-box"
+                    opacity="0.5"
                   >
-                    ₹
+                    <span
+                      class="c12"
+                      data-blade-component="base-text"
+                    >
+                      ₹
+                    </span>
                   </span>
-                  <span
-                    class="c12"
-                    data-blade-component="base-text"
+                  <div
+                    class=" c13"
+                    data-blade-component="base-box"
                   >
-                    1,000
-                    .
-                  </span>
-                  <span
-                    class="c13"
-                    data-blade-component="base-text"
-                  >
-                    00
-                  </span>
+                    <span
+                      class="c14"
+                      data-blade-component="base-text"
+                    >
+                      1,000
+                    </span>
+                    <span
+                      class="c11"
+                      data-blade-component="base-box"
+                      opacity="0.5"
+                    >
+                      <span
+                        class="c15"
+                        data-blade-component="base-text"
+                      >
+                        .
+                        00
+                      </span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -431,6 +455,10 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   align-items: baseline;
 }
 
+.c12.c12.c12.c12.c12 {
+  opacity: 0.5;
+}
+
 .c6.c6.c6.c6.c6 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
@@ -479,7 +507,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -497,7 +525,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   margin-right: 2px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c15.c15.c15.c15.c15 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -514,7 +542,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
+.c16.c16.c16.c16.c16 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -529,7 +557,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-  margin-left: 2px;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -592,6 +619,10 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
   transition-duration: 70ms;
+}
+
+.c14.c14.c14.c14.c14 {
+  position: relative;
 }
 
 @media screen and (min-width:480px) {
@@ -705,23 +736,40 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 >
                   <span
                     class="c12"
-                    data-blade-component="base-text"
+                    data-blade-component="base-box"
+                    opacity="0.5"
                   >
-                    ₹
+                    <span
+                      class="c13"
+                      data-blade-component="base-text"
+                    >
+                      ₹
+                    </span>
                   </span>
-                  <span
-                    class="c13"
-                    data-blade-component="base-text"
+                  <div
+                    class=" c14"
+                    data-blade-component="base-box"
                   >
-                    1,000
-                    .
-                  </span>
-                  <span
-                    class="c14"
-                    data-blade-component="base-text"
-                  >
-                    00
-                  </span>
+                    <span
+                      class="c15"
+                      data-blade-component="base-text"
+                    >
+                      1,000
+                    </span>
+                    <span
+                      class="c12"
+                      data-blade-component="base-box"
+                      opacity="0.5"
+                    >
+                      <span
+                        class="c16"
+                        data-blade-component="base-text"
+                      >
+                        .
+                        00
+                      </span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
