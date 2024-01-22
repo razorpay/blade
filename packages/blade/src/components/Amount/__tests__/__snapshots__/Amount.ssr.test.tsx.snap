@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx caXXVm"><span opacity="0.5" data-blade-component="base-box" class="BaseBox-bmPWx eDtOPh"><span class="StyledBaseText-dVBfTO kkBehy" data-blade-component="base-text">₹</span></span><div data-blade-component="base-box" class="BaseBox-bmPWx StyledAmountWrapperweb__StyledAmountWrapper-yr6op-0  cDRxpF"><span class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="base-text">10,000</span><span opacity="0.5" data-blade-component="base-box" class="BaseBox-bmPWx eDtOPh"><span class="StyledBaseText-dVBfTO ivqtbO" data-blade-component="base-text">.<!-- -->00</span></span></div></div></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx caXXVm"><span opacity="0.5" class="StyledBaseText-dVBfTO cuHkRB" data-blade-component="base-text">₹</span><div data-blade-component="base-box" class="BaseBox-bmPWx jjDQyK"><span class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="base-text">10,000</span><span opacity="0.5" class="StyledBaseText-dVBfTO czjVEK" data-blade-component="base-text">.<!-- -->00</span></div></div></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -24,15 +24,11 @@ exports[`<Amount /> should render Amount on server 2`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -47,10 +43,11 @@ exports[`<Amount /> should render Amount on server 2`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -67,7 +64,7 @@ exports[`<Amount /> should render Amount on server 2`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -82,6 +79,8 @@ exports[`<Amount /> should render Amount on server 2`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div
@@ -97,39 +96,29 @@ exports[`<Amount /> should render Amount on server 2`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           10,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            <!-- -->
-            00
-          </span>
+          .
+          <!-- -->
+          00
         </span>
       </div>
     </div>

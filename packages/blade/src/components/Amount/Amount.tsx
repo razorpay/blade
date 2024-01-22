@@ -8,7 +8,6 @@ import {
   subtleFontSizes,
   amountLineHeights,
 } from './amountTokens';
-import { StyledAmountWrapper } from './StyledAmountWrapper';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
@@ -118,11 +117,11 @@ const AmountValue = ({
     const integer = value.split('.')[0];
     const decimal = value.split('.')[1];
 
+    // Native does not support alignItems of Text inside a div, instead we need to wrap is in a Text
+    const AmountWrapper = isReactNative ? BaseText : BaseBox;
+
     return (
-      <StyledAmountWrapper
-        textDecorationLine={!isReactNative && isStrikethrough ? 'line-through' : 'none'}
-        color={amountValueColor}
-      >
+      <AmountWrapper position="relative">
         <BaseText
           fontSize={normalAmountSizes[type][size]}
           fontWeight={weight}
@@ -133,29 +132,30 @@ const AmountValue = ({
         >
           {integer}
         </BaseText>
-        {isReactNative ? (
-          <BaseText
-            fontWeight={weight}
-            fontSize={affixFontSize}
-            fontFamily={numberFontFamily}
-            color={amountValueColor}
-          >
-            .{decimal || '00'}
-          </BaseText>
-        ) : (
-          <BaseBox as="span" opacity={isAffixSubtle ? 0.5 : 1}>
-            <BaseText
-              fontWeight={weight}
-              fontSize={affixFontSize}
-              fontFamily={numberFontFamily}
-              color={amountValueColor}
-              as={isReactNative ? undefined : 'span'}
-            >
-              .{decimal || '00'}
-            </BaseText>
-          </BaseBox>
+        <BaseText
+          marginLeft="spacing.1"
+          fontWeight={weight}
+          fontSize={affixFontSize}
+          fontFamily={numberFontFamily}
+          color={amountValueColor}
+          as={isReactNative ? undefined : 'span'}
+          opacity={isAffixSubtle ? 0.5 : 1}
+        >
+          .{decimal || '00'}
+        </BaseText>
+
+        {isStrikethrough && (
+          <BaseBox
+            // @ts-expect-error - intentionally setting the border color to the color prop for this hacky strikethrough
+            borderBottomColor={amountValueColor}
+            borderBottomWidth={type === 'body' ? 'thin' : 'thicker'}
+            borderBottomStyle="solid"
+            position="absolute"
+            width="100%"
+            top="50%"
+          />
         )}
-      </StyledAmountWrapper>
+      </AmountWrapper>
     );
   }
   return (
@@ -326,17 +326,16 @@ const _Amount = ({
         flexDirection="row"
       >
         {currencyPosition === 'left' && (
-          <BaseBox as={isReactNative ? undefined : 'span'} opacity={isAffixSubtle ? 0.5 : 1}>
-            <BaseText
-              marginRight="spacing.1"
-              fontWeight={weight}
-              fontSize={currencyFontSize}
-              color={amountValueColor}
-              as={isReactNative ? undefined : 'span'}
-            >
-              {currencySymbolOrCode}
-            </BaseText>
-          </BaseBox>
+          <BaseText
+            marginRight="spacing.1"
+            fontWeight={weight}
+            fontSize={currencyFontSize}
+            color={amountValueColor}
+            as={isReactNative ? undefined : 'span'}
+            opacity={isAffixSubtle ? 0.5 : 1}
+          >
+            {currencySymbolOrCode}
+          </BaseText>
         )}
         <AmountValue
           value={renderedValue}
@@ -349,20 +348,16 @@ const _Amount = ({
           suffix={suffix}
         />
         {currencyPosition === 'right' && (
-          <BaseBox
+          <BaseText
+            marginLeft="spacing.1"
+            fontWeight={weight}
+            fontSize={currencyFontSize}
+            color={amountValueColor}
             as={isReactNative ? undefined : 'span'}
-            opacity={isAffixSubtle && !isReactNative ? 0.5 : 1}
+            opacity={isAffixSubtle ? 0.5 : 1}
           >
-            <BaseText
-              marginLeft="spacing.1"
-              fontWeight={weight}
-              fontSize={currencyFontSize}
-              color={amountValueColor}
-              as={isReactNative ? undefined : 'span'}
-            >
-              {currencySymbolOrCode}
-            </BaseText>
-          </BaseBox>
+            {currencySymbolOrCode}
+          </BaseText>
         )}
       </BaseBox>
     </BaseBox>

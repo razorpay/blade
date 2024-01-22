@@ -22,15 +22,11 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -45,10 +41,11 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -65,7 +62,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -80,6 +77,8 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -93,38 +92,28 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          د.إ
-        </span>
+        د.إ
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -154,15 +143,11 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -177,10 +162,11 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -197,7 +183,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -212,6 +198,8 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -225,38 +213,28 @@ exports[`<Amount /> should render Amount with default props 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -286,15 +264,11 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -309,10 +283,11 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -329,7 +304,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -344,6 +319,8 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -357,38 +334,28 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          RM
-        </span>
+        RM
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -418,15 +385,11 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -441,10 +404,11 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -461,7 +425,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -476,6 +440,8 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -489,38 +455,28 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          $
-        </span>
+        $
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -551,10 +507,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 2.5rem;
@@ -569,10 +521,11 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 3.5rem;
@@ -600,18 +553,13 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class="c4"
+        class="c3"
         data-blade-component="base-text"
       >
         1k
@@ -643,15 +591,11 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -666,10 +610,11 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -686,7 +631,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -701,6 +646,8 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -714,38 +661,28 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -775,15 +712,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -798,10 +731,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -816,29 +750,31 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c7.c7.c7.c7.c7 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
@@ -850,10 +786,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c7.c7.c7.c7.c7 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -870,7 +807,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -879,6 +816,25 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
+}
+
+.c9.c9.c9.c9.c9 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
   -webkit-letter-spacing: 0px;
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
@@ -891,7 +847,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
@@ -907,23 +863,6 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 .c11.c11.c11.c11.c11 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.125rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c12.c12.c12.c12.c12 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -936,29 +875,30 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
+}
+
+.c12.c12.c12.c12.c12 {
+  color: hsla(212,39%,16%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .c13.c13.c13.c13.c13 {
   color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 2rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c14.c14.c14.c14.c14 {
-  color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -971,9 +911,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
@@ -988,29 +930,30 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(212,39%,16%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 2rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .c16.c16.c16.c16.c16 {
   color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 2rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c17.c17.c17.c17.c17 {
-  color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -1023,9 +966,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
-.c18.c18.c18.c18.c18 {
+.c17.c17.c17.c17.c17 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -1040,29 +985,30 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
+}
+
+.c18.c18.c18.c18.c18 {
+  color: hsla(212,39%,16%,1);
+  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
 }
 
 .c19.c19.c19.c19.c19 {
   color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 1.125rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-}
-
-.c20.c20.c20.c20.c20 {
-  color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -1075,9 +1021,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -1092,10 +1040,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c22.c22.c22.c22.c22 {
+.c21.c21.c21.c21.c21 {
   color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1.125rem;
@@ -1112,7 +1061,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c23.c23.c23.c23.c23 {
+.c22.c22.c22.c22.c22 {
   color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -1127,9 +1076,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
-.c24.c24.c24.c24.c24 {
+.c23.c23.c23.c23.c23 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 2.5rem;
@@ -1144,10 +1095,11 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c25.c25.c25.c25.c25 {
+.c24.c24.c24.c24.c24 {
   color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 3.5rem;
@@ -1164,7 +1116,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c26.c26.c26.c26.c26 {
+.c25.c25.c25.c25.c25 {
   color: hsla(212,39%,16%,1);
   font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 2.5rem;
@@ -1179,6 +1131,8 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -1192,38 +1146,28 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1237,39 +1181,29 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
       data-blade-component="base-box"
     >
       <span
-        class="c2"
-        data-blade-component="base-box"
+        class="c6"
+        data-blade-component="base-text"
         opacity="0.5"
+      >
+        ₹
+      </span>
+      <div
+        class="c3"
+        data-blade-component="base-box"
       >
         <span
           class="c7"
           data-blade-component="base-text"
         >
-          ₹
-        </span>
-      </span>
-      <div
-        class=" c4"
-        data-blade-component="base-box"
-      >
-        <span
-          class="c8"
-          data-blade-component="base-text"
-        >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c8"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c9"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1284,18 +1218,49 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
+        data-blade-component="base-box"
+      >
+        <span
+          class="c9"
+          data-blade-component="base-text"
+        >
+          1,000
+        </span>
+        <span
+          class="c5"
+          data-blade-component="base-text"
+          opacity="0.5"
+        >
+          .
+          00
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="c0"
+    data-blade-component="amount"
+  >
+    <div
+      class="c1"
+      data-blade-component="base-box"
+    >
+      <span
+        class="c6"
+        data-blade-component="base-text"
+        opacity="0.5"
+      >
+        ₹
+      </span>
+      <div
+        class="c3"
         data-blade-component="base-box"
       >
         <span
@@ -1305,17 +1270,12 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c8"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1329,85 +1289,29 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
       data-blade-component="base-box"
     >
       <span
-        class="c2"
-        data-blade-component="base-box"
+        class="c11"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c7"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
-      >
-        <span
-          class="c11"
-          data-blade-component="base-text"
-        >
-          1,000
-        </span>
-        <span
-          class="c2"
-          data-blade-component="base-box"
-          opacity="0.5"
-        >
-          <span
-            class="c9"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div
-    class="c0"
-    data-blade-component="amount"
-  >
-    <div
-      class="c1"
-      data-blade-component="base-box"
-    >
-      <span
-        class="c2"
-        data-blade-component="base-box"
-        opacity="0.5"
       >
         <span
           class="c12"
           data-blade-component="base-text"
         >
-          ₹
-        </span>
-      </span>
-      <div
-        class=" c4"
-        data-blade-component="base-box"
-      >
-        <span
-          class="c13"
-          data-blade-component="base-text"
-        >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c13"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c14"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1421,39 +1325,29 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
       data-blade-component="base-box"
     >
       <span
-        class="c2"
-        data-blade-component="base-box"
+        class="c14"
+        data-blade-component="base-text"
         opacity="0.5"
+      >
+        ₹
+      </span>
+      <div
+        class="c3"
+        data-blade-component="base-box"
       >
         <span
           class="c15"
           data-blade-component="base-text"
         >
-          ₹
-        </span>
-      </span>
-      <div
-        class=" c4"
-        data-blade-component="base-box"
-      >
-        <span
-          class="c16"
-          data-blade-component="base-text"
-        >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c16"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c17"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1467,39 +1361,29 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
       data-blade-component="base-box"
     >
       <span
-        class="c2"
-        data-blade-component="base-box"
+        class="c17"
+        data-blade-component="base-text"
         opacity="0.5"
+      >
+        ₹
+      </span>
+      <div
+        class="c3"
+        data-blade-component="base-box"
       >
         <span
           class="c18"
           data-blade-component="base-text"
         >
-          ₹
-        </span>
-      </span>
-      <div
-        class=" c4"
-        data-blade-component="base-box"
-      >
-        <span
-          class="c19"
-          data-blade-component="base-text"
-        >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c19"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c20"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1513,39 +1397,29 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
       data-blade-component="base-box"
     >
       <span
-        class="c2"
-        data-blade-component="base-box"
+        class="c20"
+        data-blade-component="base-text"
         opacity="0.5"
+      >
+        ₹
+      </span>
+      <div
+        class="c3"
+        data-blade-component="base-box"
       >
         <span
           class="c21"
           data-blade-component="base-text"
         >
-          ₹
-        </span>
-      </span>
-      <div
-        class=" c4"
-        data-blade-component="base-box"
-      >
-        <span
-          class="c22"
-          data-blade-component="base-text"
-        >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c22"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c23"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1559,39 +1433,29 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
       data-blade-component="base-box"
     >
       <span
-        class="c2"
-        data-blade-component="base-box"
+        class="c23"
+        data-blade-component="base-text"
         opacity="0.5"
+      >
+        ₹
+      </span>
+      <div
+        class="c3"
+        data-blade-component="base-box"
       >
         <span
           class="c24"
           data-blade-component="base-text"
         >
-          ₹
-        </span>
-      </span>
-      <div
-        class=" c4"
-        data-blade-component="base-box"
-      >
-        <span
-          class="c25"
-          data-blade-component="base-text"
-        >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c25"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c26"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1621,15 +1485,11 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -1644,10 +1504,11 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -1664,7 +1525,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -1679,6 +1540,8 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -1692,38 +1555,28 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1753,15 +1606,11 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -1776,10 +1625,11 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
@@ -1796,7 +1646,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -1811,6 +1661,8 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -1824,38 +1676,28 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -1885,15 +1727,11 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -1908,10 +1746,11 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -1928,7 +1767,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -1943,6 +1782,8 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -1956,38 +1797,28 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          INR
-        </span>
+        INR
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -2017,15 +1848,11 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -2040,10 +1867,11 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -2060,7 +1888,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -2075,6 +1903,8 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -2088,38 +1918,28 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>
@@ -2149,10 +1969,6 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
   align-items: baseline;
 }
 
-.c4.c4.c4.c4.c4 {
-  opacity: 0.5;
-}
-
 .c2.c2.c2.c2.c2 {
   position: relative;
 }
@@ -2174,7 +1990,7 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -2189,23 +2005,7 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-}
-
-.c6.c6.c6.c6.c6 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
-  font-size: 0.625rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
+  opacity: 0.5;
   margin-left: 2px;
 }
 
@@ -2219,7 +2019,7 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
       data-blade-component="base-box"
     >
       <div
-        class=" c2"
+        class="c2"
         data-blade-component="base-box"
       >
         <span
@@ -2230,29 +2030,19 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
         </span>
         <span
           class="c4"
-          data-blade-component="base-box"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c5"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
       <span
         class="c4"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c6"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
     </div>
   </div>
@@ -2281,24 +2071,20 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c4.c4.c4.c4.c4:before {
-  content: "";
-  width: 100%;
-  height: 2px;
+.c6.c6.c6.c6.c6 {
   position: absolute;
+  width: 100%;
   top: 50%;
-  background-color: hsla(212,39%,16%,1);
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(212,39%,16%,1);
+  border-bottom-style: solid;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -2313,10 +2099,11 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -2333,7 +2120,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -2348,6 +2135,38 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
+}
+
+@media screen and (min-width:320px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c6.c6.c6.c6.c6 {
+    border-bottom-style: solid;
+  }
 }
 
 <div>
@@ -2361,39 +2180,33 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
+        <div
+          class="c6"
+          data-blade-component="base-box"
+        />
       </div>
     </div>
   </div>
@@ -2423,10 +2236,6 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
-  opacity: 1;
-}
-
-.c3.c3.c3.c3.c3 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -2441,10 +2250,11 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 1;
   margin-right: 2px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -2472,18 +2282,13 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="1"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class="c4"
+        class="c3"
         data-blade-component="base-text"
       >
         1,000.00
@@ -2515,15 +2320,11 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   align-items: baseline;
 }
 
-.c2.c2.c2.c2.c2 {
-  opacity: 0.5;
-}
-
-.c4.c4.c4.c4.c4 {
+.c3.c3.c3.c3.c3 {
   position: relative;
 }
 
-.c3.c3.c3.c3.c3 {
+.c2.c2.c2.c2.c2 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -2538,10 +2339,11 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
   margin-right: 2px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c4.c4.c4.c4.c4 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -2558,7 +2360,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c5.c5.c5.c5.c5 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -2573,6 +2375,8 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  opacity: 0.5;
+  margin-left: 2px;
 }
 
 <div>
@@ -2586,38 +2390,28 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
     >
       <span
         class="c2"
-        data-blade-component="base-box"
+        data-blade-component="base-text"
         opacity="0.5"
       >
-        <span
-          class="c3"
-          data-blade-component="base-text"
-        >
-          ₹
-        </span>
+        ₹
       </span>
       <div
-        class=" c4"
+        class="c3"
         data-blade-component="base-box"
       >
         <span
-          class="c5"
+          class="c4"
           data-blade-component="base-text"
         >
           1,000
         </span>
         <span
-          class="c2"
-          data-blade-component="base-box"
+          class="c5"
+          data-blade-component="base-text"
           opacity="0.5"
         >
-          <span
-            class="c6"
-            data-blade-component="base-text"
-          >
-            .
-            00
-          </span>
+          .
+          00
         </span>
       </div>
     </div>

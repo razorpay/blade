@@ -308,58 +308,48 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       ]
                     }
                   >
-                    <View
-                      data-blade-component="base-box"
-                      opacity={0.5}
-                      style={
-                        [
-                          {
-                            "opacity": 0.5,
-                          },
-                        ]
-                      }
-                    >
-                      <Text
-                        accessible={true}
-                        color="feedback.text.positive.intense"
-                        data-blade-component="base-text"
-                        fontSize={25}
-                        fontWeight="regular"
-                        marginRight="spacing.1"
-                        style={
-                          [
-                            {
-                              "color": "hsla(150, 100%, 27%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 10,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 2,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
-                            },
-                          ]
-                        }
-                      >
-                        ₹
-                      </Text>
-                    </View>
                     <Text
                       accessible={true}
                       color="feedback.text.positive.intense"
                       data-blade-component="base-text"
+                      fontSize={25}
+                      fontWeight="regular"
+                      marginRight="spacing.1"
+                      opacity={0.5}
                       style={
                         [
                           {
                             "color": "hsla(150, 100%, 27%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 10,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 2,
+                            "marginTop": 0,
+                            "opacity": 0.5,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      ₹
+                    </Text>
+                    <Text
+                      accessible={true}
+                      data-blade-component="base-text"
+                      position="relative"
+                      style={
+                        [
+                          {
+                            "color": "hsla(212, 39%, 16%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 16,
                             "fontStyle": "normal",
@@ -374,11 +364,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "position": "relative",
                             "textDecorationLine": "none",
                           },
                         ]
                       }
-                      textDecorationLine="none"
                     >
                       <Text
                         accessible={true}
@@ -420,6 +410,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         fontFamily="text"
                         fontSize={25}
                         fontWeight="regular"
+                        marginLeft="spacing.1"
+                        opacity={0.5}
                         style={
                           [
                             {
@@ -431,9 +423,10 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
-                              "marginLeft": 0,
+                              "marginLeft": 2,
                               "marginRight": 0,
                               "marginTop": 0,
+                              "opacity": 0.5,
                               "paddingBottom": 0,
                               "paddingLeft": 0,
                               "paddingRight": 0,
@@ -809,58 +802,48 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       ]
                     }
                   >
-                    <View
-                      data-blade-component="base-box"
-                      opacity={0.5}
-                      style={
-                        [
-                          {
-                            "opacity": 0.5,
-                          },
-                        ]
-                      }
-                    >
-                      <Text
-                        accessible={true}
-                        color="feedback.text.positive.intense"
-                        data-blade-component="base-text"
-                        fontSize={25}
-                        fontWeight="regular"
-                        marginRight="spacing.1"
-                        style={
-                          [
-                            {
-                              "color": "hsla(150, 100%, 27%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 10,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 2,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textDecorationLine": "none",
-                            },
-                          ]
-                        }
-                      >
-                        ₹
-                      </Text>
-                    </View>
                     <Text
                       accessible={true}
                       color="feedback.text.positive.intense"
                       data-blade-component="base-text"
+                      fontSize={25}
+                      fontWeight="regular"
+                      marginRight="spacing.1"
+                      opacity={0.5}
                       style={
                         [
                           {
                             "color": "hsla(150, 100%, 27%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 10,
+                            "fontStyle": "normal",
+                            "fontWeight": "400",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 2,
+                            "marginTop": 0,
+                            "opacity": 0.5,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                    >
+                      ₹
+                    </Text>
+                    <Text
+                      accessible={true}
+                      data-blade-component="base-text"
+                      position="relative"
+                      style={
+                        [
+                          {
+                            "color": "hsla(212, 39%, 16%, 1)",
                             "fontFamily": "Inter",
                             "fontSize": 16,
                             "fontStyle": "normal",
@@ -875,11 +858,11 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                             "paddingLeft": 0,
                             "paddingRight": 0,
                             "paddingTop": 0,
+                            "position": "relative",
                             "textDecorationLine": "none",
                           },
                         ]
                       }
-                      textDecorationLine="none"
                     >
                       <Text
                         accessible={true}
@@ -921,6 +904,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         fontFamily="text"
                         fontSize={25}
                         fontWeight="regular"
+                        marginLeft="spacing.1"
+                        opacity={0.5}
                         style={
                           [
                             {
@@ -932,9 +917,10 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
-                              "marginLeft": 0,
+                              "marginLeft": 2,
                               "marginRight": 0,
                               "marginTop": 0,
+                              "opacity": 0.5,
                               "paddingBottom": 0,
                               "paddingLeft": 0,
                               "paddingRight": 0,

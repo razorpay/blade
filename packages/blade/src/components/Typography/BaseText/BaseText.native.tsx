@@ -19,6 +19,7 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
     letterSpacing,
     textAlign,
     as,
+    opacity,
     ...props
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
@@ -35,6 +36,7 @@ const StyledBaseText = styled.Text<StyledBaseTextProps>(
         lineHeight,
         letterSpacing,
         textAlign,
+        opacity,
         theme: props.theme,
       }),
       ...styledPropsCSSObject,
@@ -54,6 +56,7 @@ export const BaseText = ({
   textAlign,
   children,
   truncateAfterLines,
+  opacity,
   className,
   style,
   accessibilityProps = {},
@@ -74,6 +77,7 @@ export const BaseText = ({
       as={undefined}
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
+      opacity={opacity}
       className={className}
       style={style}
       id={id}
