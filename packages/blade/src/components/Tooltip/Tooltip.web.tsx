@@ -53,13 +53,8 @@ const Tooltip = ({
     open: isOpen,
     strategy: 'fixed',
     onOpenChange: (open) => {
-      if (open) {
-        setIsOpen(true);
-        onOpenChange?.({ isOpen: open });
-      } else {
-        setIsOpen(false);
-        onOpenChange?.({ isOpen: open });
-      }
+      setIsOpen(open);
+      onOpenChange?.({ isOpen: open });
     },
     middleware: [
       shift({ crossAxis: false, padding: GAP }),
