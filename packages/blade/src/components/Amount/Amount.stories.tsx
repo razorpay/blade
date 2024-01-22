@@ -208,5 +208,15 @@ export const AffixSubtleOff = AmountDefaultTemplate.bind({});
 AffixSubtleOff.args = {
   ...defaultArgs,
   isAffixSubtle: false,
+  isStrikeThrough: true,
 };
 AffixSubtleOff.storyName = 'Affix Subtle Off';
+
+export const StrikeThrough = AmountDefaultTemplate.bind({});
+StrikeThrough.args = {
+  ...defaultArgs,
+  type: 'heading',
+  isStrikethrough: true,
+  isAffixSubtle: false,
+};
+StrikeThrough.storyName = 'Strike Through';

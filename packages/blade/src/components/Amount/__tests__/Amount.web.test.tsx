@@ -83,6 +83,30 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render currencyPosition="right"', () => {
+    const { container } = renderWithTheme(<Amount currencyPosition="right" value={1000} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render isStrikethrough={true}', () => {
+    const { container } = renderWithTheme(<Amount isStrikethrough={true} value={1000} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render currencyIndicator="currency-symbol"', () => {
+    const { container } = renderWithTheme(
+      <Amount currencyIndicator="currency-symbol" value={1000} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render currencyIndicator="currency-code"', () => {
+    const { container } = renderWithTheme(
+      <Amount currencyIndicator="currency-code" value={1000} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render amount with Humanize value', () => {
     const { container } = renderWithTheme(
       <Amount type="display" size="medium" suffix="humanize" value={1000.22} />,
@@ -128,12 +152,21 @@ describe('<Amount />', () => {
   });
 
   it('should check if getHumanizedAmount is returning the humanized value', () => {
-    expect(getHumanizedAmount(1000.22, 'INR')).toBe('1k');
-    expect(getHumanizedAmount(1000000, 'INR')).toBe('10L');
-    expect(getHumanizedAmount(10000000, 'INR')).toBe('1Cr');
-    expect(getHumanizedAmount(1000.22, 'MYR')).toBe('1K');
-    expect(getHumanizedAmount(1000000, 'MYR')).toBe('1M');
-    expect(getHumanizedAmount(10000000, 'MYR')).toBe('10M');
+    expect(getHumanizedAmount({ value: 1000.22, currency: 'INR' })).toBe('1k');
+    expect(getHumanizedAmount({ value: 1000000, currency: 'INR' })).toBe('10L');
+    expect(getHumanizedAmount({ value: 10000000, currency: 'INR' })).toBe('1Cr');
+    expect(getHumanizedAmount({ value: 1000.22, currency: 'MYR' })).toBe('1K');
+    expect(getHumanizedAmount({ value: 1000000, currency: 'MYR' })).toBe('1M');
+    expect(getHumanizedAmount({ value: 10000000, currency: 'MYR' })).toBe('10M');
+    expect(
+      getHumanizedAmount({ value: 1000.22, currency: 'MYR', denominationPosition: 'left' }),
+    ).toBe('K1');
+    expect(
+      getHumanizedAmount({ value: 1000000, currency: 'MYR', denominationPosition: 'left' }),
+    ).toBe('M1');
+    expect(
+      getHumanizedAmount({ value: 10000000, currency: 'MYR', denominationPosition: 'left' }),
+    ).toBe('M10');
   });
 
   it('should check if formatAmountWithSuffix is returning the right value for humanize decimals and none', () => {

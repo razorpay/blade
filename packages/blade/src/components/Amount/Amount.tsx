@@ -120,11 +120,8 @@ const AmountValue = ({
 
     return (
       <StyledAmountWrapper
-        isStrikethrough={isStrikethrough}
+        textDecorationLine={!isReactNative && isStrikethrough ? 'line-through' : 'none'}
         color={amountValueColor}
-        fontWeight={weight}
-        fontSize={normalAmountSizes[type][size]}
-        lineHeight={amountLineHeights[type][size]}
       >
         <BaseText
           fontSize={normalAmountSizes[type][size]}
@@ -185,7 +182,7 @@ export const addCommas = (amountValue: number, currency: Currency, decimalPlaces
 export const getHumanizedAmount = ({
   value,
   currency,
-  denominationPosition,
+  denominationPosition = 'right',
 }: {
   value: number;
   currency: Currency;

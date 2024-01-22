@@ -69,18 +69,13 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -97,6 +92,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -240,18 +236,13 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -268,6 +259,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -411,18 +403,13 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -439,6 +426,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -582,18 +570,13 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -610,6 +593,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -753,18 +737,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -781,6 +760,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -913,18 +893,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -941,6 +916,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -1073,18 +1049,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1101,6 +1072,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -1233,18 +1205,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1261,6 +1228,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -1393,18 +1361,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1421,6 +1384,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -1553,18 +1517,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1581,6 +1540,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -1713,18 +1673,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1741,6 +1696,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -1873,18 +1829,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1901,6 +1852,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -2033,18 +1985,13 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -2061,6 +2008,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -2204,18 +2152,13 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       <Text
         accessible={true}
         color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        data-blade-component="base-text"
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -2232,6 +2175,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}
@@ -2402,8 +2346,510 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         1k
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="amount"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="baseline"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        fontSize={25}
+        fontWeight="regular"
+        marginRight="spacing.1"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 2,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        INR
+      </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textDecorationLine="none"
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={100}
+          fontWeight="regular"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          1,000
+          .
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={25}
+          fontWeight="regular"
+          marginLeft="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 2,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          00
+        </Text>
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="amount"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="baseline"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        fontSize={25}
+        fontWeight="regular"
+        marginRight="spacing.1"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 2,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        ₹
+      </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textDecorationLine="none"
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={100}
+          fontWeight="regular"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          1,000
+          .
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={25}
+          fontWeight="regular"
+          marginLeft="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 2,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          00
+        </Text>
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Amount /> should render currencyPosition="right" 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="amount"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="baseline"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textDecorationLine="none"
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={100}
+          fontWeight="regular"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          1,000
+          .
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={25}
+          fontWeight="regular"
+          marginLeft="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 2,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          00
+        </Text>
+      </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        fontSize={25}
+        fontWeight="regular"
+        marginLeft="spacing.1"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 2,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        ₹
       </Text>
     </View>
   </View>
@@ -2506,8 +2952,176 @@ exports[`<Amount /> should render information intent Amount  1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         1,000.00
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Amount /> should render isStrikethrough={true} 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="amount"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="baseline"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "baseline",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        fontSize={25}
+        fontWeight="regular"
+        marginRight="spacing.1"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 10,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 2,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+      >
+        ₹
+      </Text>
+      <Text
+        accessible={true}
+        color="surface.text.gray.normal"
+        data-blade-component="base-text"
+        style={
+          [
+            {
+              "color": "hsla(212, 39%, 16%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontStyle": "normal",
+              "fontWeight": "400",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textDecorationLine="none"
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={100}
+          fontWeight="regular"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          1,000
+          .
+        </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontFamily="text"
+          fontSize={25}
+          fontWeight="regular"
+          marginLeft="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 2,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          00
+        </Text>
       </Text>
     </View>
   </View>
@@ -2582,19 +3196,14 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       </Text>
       <Text
         accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="text"
-        fontFamily="text"
-        fontSize={100}
-        fontStyle="normal"
-        fontWeight="regular"
-        lineHeight={100}
+        color="feedback.text.positive.intense"
+        data-blade-component="base-text"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
+              "color": "hsla(150, 100%, 27%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 14,
+              "fontSize": 16,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -2611,6 +3220,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
             },
           ]
         }
+        textDecorationLine="none"
       >
         <Text
           accessible={true}

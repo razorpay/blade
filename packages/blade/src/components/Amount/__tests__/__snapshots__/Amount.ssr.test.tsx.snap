@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx caXXVm"><span class="StyledBaseText-dVBfTO kkBehy" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="base-text">10,000<!-- -->.</span><span class="StyledBaseText-dVBfTO kGBFNJ" data-blade-component="base-text">00</span></div></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx caXXVm"><span class="StyledBaseText-dVBfTO kkBehy" data-blade-component="base-text">₹</span><div data-blade-component="base-box" class="BaseBox-bmPWx StyledAmountWrapperweb__StyledAmountWrapper-yr6op-0  cDRxpF"><span class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="base-text">10,000<!-- -->.</span><span class="StyledBaseText-dVBfTO kGBFNJ" data-blade-component="base-text">00</span></div></div></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -24,6 +24,10 @@ exports[`<Amount /> should render Amount on server 2`] = `
   align-items: baseline;
 }
 
+.c3.c3.c3.c3.c3 {
+  position: relative;
+}
+
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
@@ -42,7 +46,7 @@ exports[`<Amount /> should render Amount on server 2`] = `
   margin-right: 2px;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -59,7 +63,7 @@ exports[`<Amount /> should render Amount on server 2`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -94,20 +98,25 @@ exports[`<Amount /> should render Amount on server 2`] = `
       >
         ₹
       </span>
-      <span
-        class="c3"
-        data-blade-component="base-text"
+      <div
+        class=" c3"
+        data-blade-component="base-box"
       >
-        10,000
-        <!-- -->
-        .
-      </span>
-      <span
-        class="c4"
-        data-blade-component="base-text"
-      >
-        00
-      </span>
+        <span
+          class="c4"
+          data-blade-component="base-text"
+        >
+          10,000
+          <!-- -->
+          .
+        </span>
+        <span
+          class="c5"
+          data-blade-component="base-text"
+        >
+          00
+        </span>
+      </div>
     </div>
   </div>
 </div>
