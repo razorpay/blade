@@ -34,38 +34,50 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        د.إ
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          د.إ
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -126,7 +138,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -135,7 +146,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -147,7 +157,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -159,6 +169,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -201,38 +212,50 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -293,7 +316,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -302,7 +324,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -314,7 +335,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -326,6 +347,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -368,38 +390,50 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        RM
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          RM
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -460,7 +494,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -469,7 +502,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -481,7 +513,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -493,6 +525,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -535,38 +568,50 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        $
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          $
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -627,7 +672,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -636,7 +680,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -648,7 +691,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -660,6 +703,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -702,38 +746,50 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -794,7 +850,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -803,7 +858,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -815,7 +869,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -827,6 +881,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -858,38 +913,50 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="semibold"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "600",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="semibold"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -950,7 +1017,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -959,7 +1025,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="semibold"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -971,7 +1036,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -983,6 +1048,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -1014,38 +1080,50 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -1106,7 +1184,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -1115,7 +1192,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -1127,7 +1203,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1139,6 +1215,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -1170,38 +1247,50 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="semibold"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "600",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="semibold"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -1262,7 +1351,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -1271,7 +1359,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="semibold"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -1283,7 +1370,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1295,6 +1382,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -1326,38 +1414,50 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={200}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 16,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={200}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -1418,7 +1518,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -1427,7 +1526,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={200}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -1439,7 +1537,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1451,6 +1549,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -1482,38 +1581,50 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={200}
-        fontWeight="semibold"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 16,
-              "fontStyle": "normal",
-              "fontWeight": "600",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={200}
+          fontWeight="semibold"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -1574,7 +1685,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -1583,7 +1693,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={200}
           fontWeight="semibold"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -1595,7 +1704,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1607,6 +1716,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -1638,38 +1748,50 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={75}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -1730,7 +1852,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -1739,7 +1860,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -1751,7 +1871,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1763,6 +1883,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -1794,38 +1915,50 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="semibold"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "600",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={75}
+          fontWeight="semibold"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "600",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -1886,7 +2019,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -1895,7 +2027,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="semibold"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -1907,7 +2038,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -1919,6 +2050,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -1950,38 +2082,50 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={700}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 32,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={700}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 32,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -2042,7 +2186,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -2051,7 +2194,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={700}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -2063,7 +2205,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -2075,6 +2217,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -2117,38 +2260,50 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={75}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -2209,7 +2364,6 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -2218,7 +2372,6 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -2230,7 +2383,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -2242,6 +2395,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
             ]
           }
         >
+          .
           22
         </Text>
       </Text>
@@ -2284,38 +2438,50 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={75}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 12,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={75}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -2389,38 +2555,50 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        INR
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          INR
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -2481,7 +2659,6 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -2490,7 +2667,6 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -2502,7 +2678,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -2514,6 +2690,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -2556,38 +2733,50 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -2648,7 +2837,6 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -2657,7 +2845,6 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -2669,7 +2856,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -2681,6 +2868,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -2783,13 +2971,56 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
           color="surface.text.gray.normal"
           data-blade-component="base-text"
           fontFamily="text"
+          fontSize={25}
+          fontWeight="regular"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          .
+          00
+        </Text>
+      </Text>
+      <View
+        data-blade-component="base-box"
+        opacity={1}
+        style={
+          [
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
           fontSize={25}
           fontWeight="regular"
           marginLeft="spacing.1"
@@ -2816,41 +3047,9 @@ exports[`<Amount /> should render currencyPosition="right" 1`] = `
             ]
           }
         >
-          00
+          ₹
         </Text>
-      </Text>
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginLeft="spacing.1"
-        style={
-          [
-            {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 2,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-      >
-        ₹
-      </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2890,38 +3089,50 @@ exports[`<Amount /> should render information intent Amount  1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="feedback.text.information.intense"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={1}
         style={
           [
             {
-              "color": "hsla(200, 84%, 37%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 1,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="feedback.text.information.intense"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(200, 84%, 37%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="feedback.text.information.intense"
@@ -2995,38 +3206,50 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="surface.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="surface.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="surface.text.gray.normal"
@@ -3087,7 +3310,6 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -3096,7 +3318,6 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -3108,7 +3329,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -3120,6 +3341,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
@@ -3162,38 +3384,50 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
         ]
       }
     >
-      <Text
-        accessible={true}
-        color="feedback.text.positive.intense"
-        data-blade-component="base-text"
-        fontSize={25}
-        fontWeight="regular"
-        marginRight="spacing.1"
+      <View
+        data-blade-component="base-box"
+        opacity={0.5}
         style={
           [
             {
-              "color": "hsla(150, 100%, 27%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 10,
-              "fontStyle": "normal",
-              "fontWeight": "400",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 2,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textDecorationLine": "none",
+              "opacity": 0.5,
             },
           ]
         }
       >
-        ₹
-      </Text>
+        <Text
+          accessible={true}
+          color="feedback.text.positive.intense"
+          data-blade-component="base-text"
+          fontSize={25}
+          fontWeight="regular"
+          marginRight="spacing.1"
+          style={
+            [
+              {
+                "color": "hsla(150, 100%, 27%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 10,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 2,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          ₹
+        </Text>
+      </View>
       <Text
         accessible={true}
         color="feedback.text.positive.intense"
@@ -3254,7 +3488,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           }
         >
           1,000
-          .
         </Text>
         <Text
           accessible={true}
@@ -3263,7 +3496,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          marginLeft="spacing.1"
           style={
             [
               {
@@ -3275,7 +3507,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
                 "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
-                "marginLeft": 2,
+                "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
                 "paddingBottom": 0,
@@ -3287,6 +3519,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
             ]
           }
         >
+          .
           00
         </Text>
       </Text>
