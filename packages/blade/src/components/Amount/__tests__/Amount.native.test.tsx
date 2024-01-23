@@ -74,11 +74,6 @@ describe('<Amount />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render currencyPosition="right"', () => {
-    const { toJSON } = renderWithTheme(<Amount currencyPosition="right" value={1000} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
   it('should render isStrikethrough={true}', () => {
     const { toJSON } = renderWithTheme(<Amount isStrikethrough={true} value={1000} />);
     expect(toJSON()).toMatchSnapshot();

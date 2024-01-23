@@ -83,11 +83,6 @@ describe('<Amount />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render currencyPosition="right"', () => {
-    const { container } = renderWithTheme(<Amount currencyPosition="right" value={1000} />);
-    expect(container).toMatchSnapshot();
-  });
-
   it('should render isStrikethrough={true}', () => {
     const { container } = renderWithTheme(<Amount isStrikethrough={true} value={1000} />);
     expect(container).toMatchSnapshot();

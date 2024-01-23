@@ -220,10 +220,18 @@ const getCurrencyAbbreviations = (currency: Currency): CurrencyAbbreviation[] =>
   ];
 };
 
+const currencyPositionMapping: Record<string, string> = {
+  DZD: 'right',
+  BHD: 'right',
+  OMR: 'right',
+  KWD: 'right',
+};
+
 export {
   subtleFontSizes,
   normalAmountSizes,
   amountLineHeights,
+  currencyPositionMapping,
   currencyIndicatorMapping,
   getCurrencyAbbreviations,
 };

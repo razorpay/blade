@@ -7,6 +7,7 @@ import {
   currencyIndicatorMapping,
   subtleFontSizes,
   amountLineHeights,
+  currencyPositionMapping,
 } from './amountTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
@@ -52,24 +53,12 @@ type AmountCommonProps = {
    */
   currencyIndicator?: 'currency-symbol' | 'currency-code';
   /**
-   * Determines the position of the currency indicator.
-   *
-   * @default 'left'
-   */
-  currencyPosition?: 'left' | 'right';
-  /**
    * The currency of the amount.  Note that this component
    * only displays the provided value in the specified currency, it does not perform any currency conversion.
    *
    * @default 'INR'
    * */
   currency?: Currency;
-  /**
-   * Determines the position of the denomination.
-   *
-   * @default 'right'
-   */
-  denominationPosition?: 'left' | 'right';
   /**
    * If true, the amount text will have a line through it.
    *
@@ -197,7 +186,7 @@ export const getHumanizedAmount = ({
 }: {
   value: number;
   currency: Currency;
-  denominationPosition?: AmountCommonProps['denominationPosition'];
+  denominationPosition?: 'left' | 'right';
 }): string => {
   let amountValue = value;
   const abbreviations = getCurrencyAbbreviations(currency);
@@ -221,7 +210,7 @@ type FormatAmountWithSuffixType = {
   suffix: AmountProps['suffix'];
   value: number;
   currency: Currency;
-  denominationPosition?: AmountCommonProps['denominationPosition'];
+  denominationPosition?: 'left' | 'right';
 };
 
 export const formatAmountWithSuffix = ({
@@ -256,8 +245,6 @@ const _Amount = ({
   isStrikethrough = false,
   color,
   currencyIndicator = 'currency-symbol',
-  currencyPosition = 'left',
-  denominationPosition = 'right',
   currency = 'INR',
   testID,
   ...styledProps
@@ -303,6 +290,8 @@ const _Amount = ({
   }
 
   const currencySymbolOrCode = currencyIndicatorMapping[currency][currencyIndicator];
+  const currencyPosition = currencyPositionMapping[currency] || 'left';
+  const denominationPosition = currencyPosition === 'left' ? 'right' : 'left';
   const renderedValue = formatAmountWithSuffix({ suffix, value, currency, denominationPosition });
   const { amountValueColor } = getTextColorProps({
     color,
