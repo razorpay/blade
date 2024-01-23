@@ -211,6 +211,7 @@ const Card = ({
       >
         <CardSurface
           height={height}
+          minHeight={minHeight}
           padding={padding}
           borderRadius="medium"
           surfaceLevel={surfaceLevel}
