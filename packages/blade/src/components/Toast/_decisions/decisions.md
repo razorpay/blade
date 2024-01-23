@@ -215,6 +215,10 @@ const Example = () => {
 <img src="./example-promotional-toast.png" width="380" alt="Promotional toast example" />
 
 
+## Motion
+
+- TBD
+
 ## Accessibility
 
 - Toast components will follow the WAI-ARIA guidelines for [alert](https://www.w3.org/WAI/ARIA/apg/patterns/alert/examples/alert/). For error toast we will use the `alert` role and for informational toast we will use the `status` role.
