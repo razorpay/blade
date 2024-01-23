@@ -80,18 +80,22 @@ type Toast = {
    * @default `informational`
    */
   type: 'informational' | 'promotional';
+
   /**
    * @default `neutral`
    */
   color: 'neutral' | 'positive' | 'negative' | 'warning' | 'information'
+
   /**
    * If the type is `promotional`, the content will be `React.ReactNode`
    */
   content: string | React.ReactNode;
+
   /**
    * Can be used to render an icon
    */
   leading?: IconComponent;
+
   /**
    * If true, the toast will be dismissed after few seconds
    * 
@@ -101,10 +105,12 @@ type Toast = {
    * @default false
    */
   autoDismiss?: boolean;
+
   /**
    * Called when the toast is dismissed or duration runs out
    */
   onDismissButtonClick?: () => void;
+
   /**
    * Primary action of toast
    */
@@ -113,6 +119,7 @@ type Toast = {
     onClick?: () => void;
     isLoading? boolean;
   }
+
   /**
    * Forwarded to react-hot-toast
    * 
@@ -132,6 +139,7 @@ type useToastReturnType = {
    * @returns id of the toast
    */
   showToast: (toast: Toast) => string;
+
   /**
    * id of the toast to be dismissed
    * 
