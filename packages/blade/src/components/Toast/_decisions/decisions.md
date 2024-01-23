@@ -231,4 +231,18 @@ const Example = () => {
 
 ## Open Questions
 
-- What should be the default duration for auto dismissable toasts?
+1. What should be the default duration for auto dismissable toasts?
+
+2. In the `useToast` hook should we call the returned functions `showToast`/`dismissToast` or `show`/`dismiss`?
+
+If we call them `show` & `dismiss` consumer can do this and might look more cleaner:
+
+```jsx
+const App = () => {
+  const toast = useToast();
+
+  toast.show(); // <-- they will also get auto complete when writing `toast.`
+  toast.dismiss();
+}
+```
+
