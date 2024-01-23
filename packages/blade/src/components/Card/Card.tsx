@@ -84,11 +84,20 @@ export type CardProps = {
    */
   height?: BoxProps['height'];
   /**
+   * Sets minimum height of the card
+   */
+  minHeight?: BoxProps['minHeight'];
+  /**
+   * Sets minimum width of the card
+   */
+  minWidth?: BoxProps['minWidth'];
+  /**
    * If `true`, the card will be in selected state
    * Card will have a primary color border around it.
    *
    * @default false
    */
+
   isSelected?: boolean;
   /**
    * Makes the Card linkable by setting the `href` prop
@@ -146,6 +155,8 @@ const Card = ({
   padding = 'spacing.7',
   width,
   height,
+  minHeight,
+  minWidth,
   onClick,
   isSelected = false,
   accessibilityLabel,
@@ -191,6 +202,8 @@ const Card = ({
         onClick={isReactNative() ? onClick : undefined}
         width={width}
         height={height}
+        minHeight={minHeight}
+        minWidth={minWidth}
         href={href}
         accessibilityLabel={accessibilityLabel}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
@@ -198,6 +211,7 @@ const Card = ({
       >
         <CardSurface
           height={height}
+          minHeight={minHeight}
           padding={padding}
           borderRadius="medium"
           surfaceLevel={surfaceLevel}
