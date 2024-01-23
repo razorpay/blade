@@ -96,6 +96,10 @@ const CustomTrigger = React.forwardRef<
   ) => {
     return (
       <BaseBox
+        width="80px"
+        height="80px"
+        backgroundColor="surface.background.level2.lowContrast"
+        textAlign="center"
         ref={ref}
         tabIndex={0}
         onBlur={onBlur}
