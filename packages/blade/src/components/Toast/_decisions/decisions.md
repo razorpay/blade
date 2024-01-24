@@ -233,7 +233,10 @@ const Example = () => {
 
 1. What should be the default duration for auto dismissable toasts?
 
-2. In the `useToast` hook should we call the returned functions `showToast`/`dismissToast` or `show`/`dismiss`?
+2. Should we call it `onDismissButtonClick` or `onDismiss`? 
+   - Should the dismiss handler be called even when the toast is auto dismissed?
+
+3. In the `useToast` hook should we call the returned functions `showToast`/`dismissToast` or `show`/`dismiss`?
 
 If we call them `show` & `dismiss` consumer can do this and might look more cleaner:
 
