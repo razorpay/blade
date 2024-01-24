@@ -1,4 +1,5 @@
 import React from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
@@ -17,6 +18,7 @@ import type { SurfaceLevels } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 
 export const ComponentIds = {
@@ -134,7 +136,12 @@ export type CardProps = {
   /**
    * Callback triggered when the card is clicked
    */
-  onClick?: () => void;
+  onClick?: (
+    event: Platform.Select<{
+      web: React.MouseEvent<HTMLLabelElement, MouseEvent>;
+      native: GestureResponderEvent;
+    }>,
+  ) => void;
   /**
    * Sets the HTML element for the Card
    *
