@@ -24,12 +24,14 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -41,7 +43,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -56,7 +58,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -70,14 +72,19 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -90,7 +97,6 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -136,7 +142,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -151,7 +157,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -194,12 +200,14 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -211,7 +219,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -226,7 +234,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -240,14 +248,19 @@ exports[`<Amount /> should render Amount with default props 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -260,7 +273,6 @@ exports[`<Amount /> should render Amount with default props 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -306,7 +318,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -321,7 +333,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -364,12 +376,14 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -381,7 +395,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -396,7 +410,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -410,14 +424,19 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -430,7 +449,6 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -476,7 +494,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -491,7 +509,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -534,12 +552,14 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -551,7 +571,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -566,7 +586,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -580,14 +600,19 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -600,7 +625,6 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -646,7 +670,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -661,7 +685,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -704,12 +728,14 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -721,7 +747,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -736,7 +762,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -750,14 +776,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -770,7 +801,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -816,7 +846,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -831,7 +861,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -863,12 +893,14 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -880,7 +912,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontSize={25}
         fontWeight="semibold"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -895,7 +927,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -909,14 +941,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -929,7 +966,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -975,7 +1011,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="semibold"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -990,7 +1026,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1022,12 +1058,14 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -1039,7 +1077,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -1054,7 +1092,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -1068,14 +1106,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1088,7 +1131,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -1134,7 +1176,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -1149,7 +1191,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1181,12 +1223,14 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -1198,7 +1242,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontSize={25}
         fontWeight="semibold"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -1213,7 +1257,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -1227,14 +1271,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1247,7 +1296,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -1293,7 +1341,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="semibold"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -1308,7 +1356,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1340,12 +1388,14 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -1357,7 +1407,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontSize={200}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -1372,7 +1422,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -1386,14 +1436,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1406,7 +1461,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -1452,7 +1506,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={200}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -1467,7 +1521,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1499,12 +1553,14 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -1516,7 +1572,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontSize={200}
         fontWeight="semibold"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -1531,7 +1587,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -1545,14 +1601,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1565,7 +1626,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -1611,7 +1671,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={200}
           fontWeight="semibold"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -1626,7 +1686,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1658,12 +1718,14 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -1675,7 +1737,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontSize={75}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -1690,7 +1752,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -1704,14 +1766,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1724,7 +1791,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -1770,7 +1836,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -1785,7 +1851,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1817,12 +1883,14 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -1834,7 +1902,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontSize={75}
         fontWeight="semibold"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -1849,7 +1917,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -1863,14 +1931,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -1883,7 +1956,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -1929,7 +2001,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="semibold"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -1944,7 +2016,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -1976,12 +2048,14 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -1993,7 +2067,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
         fontSize={700}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -2008,7 +2082,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -2022,14 +2096,19 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -2042,7 +2121,6 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -2088,7 +2166,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
           fontFamily="heading"
           fontSize={700}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -2103,7 +2181,7 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -2146,12 +2224,14 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -2163,7 +2243,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
         fontSize={75}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -2178,7 +2258,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -2192,14 +2272,19 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -2212,7 +2297,6 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -2258,7 +2342,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
           fontFamily="heading"
           fontSize={75}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -2273,7 +2357,7 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -2316,12 +2400,14 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -2333,7 +2419,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         fontSize={75}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -2348,7 +2434,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -2390,7 +2476,6 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
             },
           ]
         }
-        textDecorationLine="none"
       >
         1k
       </Text>
@@ -2423,12 +2508,14 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -2440,7 +2527,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -2455,7 +2542,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -2469,14 +2556,19 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -2489,7 +2581,6 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -2535,7 +2626,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -2550,7 +2641,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -2593,12 +2684,14 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -2610,7 +2703,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -2625,7 +2718,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -2639,14 +2732,19 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -2659,7 +2757,6 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -2705,7 +2802,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -2720,7 +2817,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -2763,12 +2860,14 @@ exports[`<Amount /> should render information intent Amount  1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -2837,7 +2936,6 @@ exports[`<Amount /> should render information intent Amount  1`] = `
             },
           ]
         }
-        textDecorationLine="none"
       >
         1,000.00
       </Text>
@@ -2870,12 +2968,14 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -2887,7 +2987,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -2902,7 +3002,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -2916,14 +3016,19 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -2936,7 +3041,6 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -2982,7 +3086,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -2997,7 +3101,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,
@@ -3010,28 +3114,28 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
           .
           00
         </Text>
-        <View
-          borderBottomColor="surface.text.gray.normal"
-          borderBottomStyle="solid"
-          borderBottomWidth="thin"
-          data-blade-component="base-box"
-          position="absolute"
-          style={
-            [
-              {
-                "borderBottomColor": "hsla(212, 39%, 16%, 1)",
-                "borderBottomStyle": "solid",
-                "borderBottomWidth": 1,
-                "position": "absolute",
-                "top": "50%",
-                "width": "100%",
-              },
-            ]
-          }
-          top="50%"
-          width="100%"
-        />
       </Text>
+      <View
+        borderBottomColor="surface.text.gray.normal"
+        borderBottomStyle="solid"
+        borderBottomWidth="thin"
+        data-blade-component="base-box"
+        position="absolute"
+        style={
+          [
+            {
+              "borderBottomColor": "hsla(212, 39%, 16%, 1)",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "position": "absolute",
+              "top": "50%",
+              "width": "100%",
+            },
+          ]
+        }
+        top="50%"
+        width="100%"
+      />
     </View>
   </View>
 </View>
@@ -3061,12 +3165,14 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      position="relative"
       style={
         [
           {
             "alignItems": "baseline",
             "display": "flex",
             "flexDirection": "row",
+            "position": "relative",
           },
         ]
       }
@@ -3078,7 +3184,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
         fontSize={25}
         fontWeight="regular"
         marginRight="spacing.1"
-        opacity={0.5}
+        opacity={0.64}
         style={
           [
             {
@@ -3093,7 +3199,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
               "marginLeft": 0,
               "marginRight": 2,
               "marginTop": 0,
-              "opacity": 0.5,
+              "opacity": 0.64,
               "paddingBottom": 0,
               "paddingLeft": 0,
               "paddingRight": 0,
@@ -3107,14 +3213,19 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
       </Text>
       <Text
         accessible={true}
-        data-blade-component="base-text"
-        position="relative"
+        color="surface.text.gray.normal"
+        data-blade-component="text"
+        fontFamily="text"
+        fontSize={100}
+        fontStyle="normal"
+        fontWeight="regular"
+        lineHeight={100}
         style={
           [
             {
               "color": "hsla(212, 39%, 16%, 1)",
               "fontFamily": "Inter",
-              "fontSize": 16,
+              "fontSize": 14,
               "fontStyle": "normal",
               "fontWeight": "400",
               "letterSpacing": 0,
@@ -3127,7 +3238,6 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
-              "position": "relative",
               "textDecorationLine": "none",
             },
           ]
@@ -3173,7 +3283,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
           fontFamily="text"
           fontSize={25}
           fontWeight="regular"
-          opacity={0.5}
+          opacity={0.64}
           style={
             [
               {
@@ -3188,7 +3298,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
                 "marginLeft": 0,
                 "marginRight": 0,
                 "marginTop": 0,
-                "opacity": 0.5,
+                "opacity": 0.64,
                 "paddingBottom": 0,
                 "paddingLeft": 0,
                 "paddingRight": 0,

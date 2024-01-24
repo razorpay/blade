@@ -73,9 +73,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-}
-
-.c12.c12.c12.c12.c12 {
   position: relative;
 }
 
@@ -205,11 +202,11 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-  opacity: 0.5;
+  opacity: 0.64;
   margin-right: 2px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -226,7 +223,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -241,7 +238,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-  opacity: 0.5;
+  opacity: 0.64;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -330,29 +327,24 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                   <span
                     class="c11"
                     data-blade-component="base-text"
-                    opacity="0.5"
+                    opacity="0.64"
                   >
                     ₹
                   </span>
-                  <div
+                  <span
                     class="c12"
-                    data-blade-component="base-box"
+                    data-blade-component="base-text"
                   >
-                    <span
-                      class="c13"
-                      data-blade-component="base-text"
-                    >
-                      1,000
-                    </span>
-                    <span
-                      class="c14"
-                      data-blade-component="base-text"
-                      opacity="0.5"
-                    >
-                      .
-                      00
-                    </span>
-                  </div>
+                    1,000
+                  </span>
+                  <span
+                    class="c13"
+                    data-blade-component="base-text"
+                    opacity="0.64"
+                  >
+                    .
+                    00
+                  </span>
                 </div>
               </div>
             </div>
@@ -441,9 +433,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-}
-
-.c13.c13.c13.c13.c13 {
   position: relative;
 }
 
@@ -510,11 +499,11 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-  opacity: 0.5;
+  opacity: 0.64;
   margin-right: 2px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -531,7 +520,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -546,7 +535,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-  opacity: 0.5;
+  opacity: 0.64;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -723,29 +712,24 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                   <span
                     class="c12"
                     data-blade-component="base-text"
-                    opacity="0.5"
+                    opacity="0.64"
                   >
                     ₹
                   </span>
-                  <div
+                  <span
                     class="c13"
-                    data-blade-component="base-box"
+                    data-blade-component="base-text"
                   >
-                    <span
-                      class="c14"
-                      data-blade-component="base-text"
-                    >
-                      1,000
-                    </span>
-                    <span
-                      class="c15"
-                      data-blade-component="base-text"
-                      opacity="0.5"
-                    >
-                      .
-                      00
-                    </span>
-                  </div>
+                    1,000
+                  </span>
+                  <span
+                    class="c14"
+                    data-blade-component="base-text"
+                    opacity="0.64"
+                  >
+                    .
+                    00
+                  </span>
                 </div>
               </div>
             </div>

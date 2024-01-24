@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id="root"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx RvefM"><button type="button" data-blade-component="button" role="button" aria-controls="collapsible-body-undefined" aria-expanded="true" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 ctKBsz"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO bewYNq" data-blade-component="base-text">View Price Breakdown</div></div></button><div id="collapsible-body-undefined" role="region" aria-hidden="false" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 rdBDV"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="box" class="BaseBox-bmPWx RDiNQ"><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Actual amount</p><div data-blade-component="amount" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx caXXVm"><span opacity="0.5" class="StyledBaseText-dVBfTO keCDSl" data-blade-component="base-text">₹</span><div data-blade-component="base-box" class="BaseBox-bmPWx jjDQyK"><span class="StyledBaseText-dVBfTO gmsvnN" data-blade-component="base-text">1,000</span><span opacity="0.5" class="StyledBaseText-dVBfTO jWnmMl" data-blade-component="base-text">.<!-- -->00</span></div></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO ekqPVM" data-blade-component="text">Razorpay Platform Fees</p><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">2%</p></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO ekqPVM" data-blade-component="text">GST</p><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">18%</p></div></div></div></div></div></div></div></div>"`;
+exports[`<Collapsible /> should render Collapsible on server 1`] = `"<div id="root"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx RvefM"><button type="button" data-blade-component="button" role="button" aria-controls="collapsible-body-undefined" aria-expanded="true" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 ctKBsz"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO bewYNq" data-blade-component="base-text">View Price Breakdown</div></div></button><div id="collapsible-body-undefined" role="region" aria-hidden="false" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 rdBDV"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="box" class="BaseBox-bmPWx RDiNQ"><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Actual amount</p><div data-blade-component="amount" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx boSJQS"><span opacity="0.64" class="StyledBaseText-dVBfTO elcRLO" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO gmsvnN" data-blade-component="base-text">1,000</span><span opacity="0.64" class="StyledBaseText-dVBfTO kqvvnG" data-blade-component="base-text">.<!-- -->00</span></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO ekqPVM" data-blade-component="text">Razorpay Platform Fees</p><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">2%</p></div><div data-blade-component="box" class="BaseBox-bmPWx bfJYDa"><p class="StyledBaseText-dVBfTO ekqPVM" data-blade-component="text">GST</p><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">18%</p></div></div></div></div></div></div></div></div>"`;
 
 exports[`<Collapsible /> should render Collapsible on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -93,9 +93,6 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   -webkit-box-align: baseline;
   -ms-flex-align: baseline;
   align-items: baseline;
-}
-
-.c13.c13.c13.c13.c13 {
   position: relative;
 }
 
@@ -212,11 +209,11 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-  opacity: 0.5;
+  opacity: 0.64;
   margin-right: 2px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -233,7 +230,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.625rem;
@@ -248,10 +245,10 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
-  opacity: 0.5;
+  opacity: 0.64;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -374,30 +371,25 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
                     <span
                       class="c12"
                       data-blade-component="base-text"
-                      opacity="0.5"
+                      opacity="0.64"
                     >
                       ₹
                     </span>
-                    <div
+                    <span
                       class="c13"
-                      data-blade-component="base-box"
+                      data-blade-component="base-text"
                     >
-                      <span
-                        class="c14"
-                        data-blade-component="base-text"
-                      >
-                        1,000
-                      </span>
-                      <span
-                        class="c15"
-                        data-blade-component="base-text"
-                        opacity="0.5"
-                      >
-                        .
-                        <!-- -->
-                        00
-                      </span>
-                    </div>
+                      1,000
+                    </span>
+                    <span
+                      class="c14"
+                      data-blade-component="base-text"
+                      opacity="0.64"
+                    >
+                      .
+                      <!-- -->
+                      00
+                    </span>
                   </div>
                 </div>
               </div>
@@ -406,7 +398,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c16"
+                  class="c15"
                   data-blade-component="text"
                 >
                   Razorpay Platform Fees
@@ -423,7 +415,7 @@ exports[`<Collapsible /> should render Collapsible on server 2`] = `
                 data-blade-component="box"
               >
                 <p
-                  class="c16"
+                  class="c15"
                   data-blade-component="text"
                 >
                   GST

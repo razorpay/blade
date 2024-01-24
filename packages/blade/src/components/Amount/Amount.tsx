@@ -20,6 +20,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { objectKeysWithType } from '~utils/objectKeysWithType';
 import { BaseText } from '~components/Typography/BaseText';
+import { Text } from '~components/Typography';
+import { opacity } from '~tokens/global';
 import type { FontFamily } from '~tokens/global';
 
 type AmountCommonProps = {
@@ -96,7 +98,6 @@ const AmountValue = ({
   weight = 'regular',
   amountValueColor,
   isAffixSubtle,
-  isStrikethrough = false,
   suffix,
 }: AmountValue): ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
@@ -107,10 +108,10 @@ const AmountValue = ({
     const decimal = value.split('.')[1];
 
     // Native does not support alignItems of Text inside a div, instead we need to wrap is in a Text
-    const AmountWrapper = isReactNative ? BaseText : BaseBox;
+    const AmountWrapper = isReactNative ? Text : React.Fragment;
 
     return (
-      <AmountWrapper position="relative">
+      <AmountWrapper>
         <BaseText
           fontSize={normalAmountSizes[type][size]}
           fontWeight={weight}
@@ -127,22 +128,10 @@ const AmountValue = ({
           fontFamily={numberFontFamily}
           color={amountValueColor}
           as={isReactNative ? undefined : 'span'}
-          opacity={isAffixSubtle ? 0.5 : 1}
+          opacity={isAffixSubtle ? opacity[8] : 1}
         >
           .{decimal || '00'}
         </BaseText>
-
-        {isStrikethrough && (
-          <BaseBox
-            // @ts-expect-error - intentionally setting the border color to the color prop for this hacky strikethrough
-            borderBottomColor={amountValueColor}
-            borderBottomWidth={type === 'body' ? 'thin' : 'thicker'}
-            borderBottomStyle="solid"
-            position="absolute"
-            width="100%"
-            top="50%"
-          />
-        )}
       </AmountWrapper>
     );
   }
@@ -153,7 +142,6 @@ const AmountValue = ({
       fontFamily={numberFontFamily}
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
-      textDecorationLine={isStrikethrough ? 'line-through' : 'none'}
     >
       {value}
     </BaseText>
@@ -312,6 +300,7 @@ const _Amount = ({
         display={(isReactNative ? 'flex' : 'inline-flex') as never}
         alignItems="baseline"
         flexDirection="row"
+        position="relative"
       >
         {currencyPosition === 'left' && (
           <BaseText
@@ -320,7 +309,7 @@ const _Amount = ({
             fontSize={currencyFontSize}
             color={amountValueColor}
             as={isReactNative ? undefined : 'span'}
-            opacity={isAffixSubtle ? 0.5 : 1}
+            opacity={isAffixSubtle ? opacity[8] : 1}
           >
             {currencySymbolOrCode}
           </BaseText>
@@ -342,10 +331,21 @@ const _Amount = ({
             fontSize={currencyFontSize}
             color={amountValueColor}
             as={isReactNative ? undefined : 'span'}
-            opacity={isAffixSubtle ? 0.5 : 1}
+            opacity={isAffixSubtle ? opacity[8] : 1}
           >
             {currencySymbolOrCode}
           </BaseText>
+        )}
+        {isStrikethrough && (
+          <BaseBox
+            // @ts-expect-error - intentionally setting the border color to the color prop for this hacky strikethrough
+            borderBottomColor={amountValueColor}
+            borderBottomWidth={type === 'body' ? 'thin' : 'thicker'}
+            borderBottomStyle="solid"
+            position="absolute"
+            width="100%"
+            top="50%"
+          />
         )}
       </BaseBox>
     </BaseBox>
