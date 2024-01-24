@@ -6,6 +6,9 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -118,6 +121,9 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -230,6 +236,9 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -342,6 +351,9 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -454,6 +466,9 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -540,6 +555,9 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -652,6 +670,9 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1370,6 +1391,9 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1482,6 +1506,9 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1594,6 +1621,9 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1706,6 +1736,9 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1818,6 +1851,9 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1973,6 +2009,9 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -2059,6 +2098,9 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c1.c1.c1.c1.c1 {

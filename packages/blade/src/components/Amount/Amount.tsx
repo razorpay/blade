@@ -293,6 +293,7 @@ const _Amount = ({
   return (
     <BaseBox
       display={(isReactNative ? 'flex' : 'inline-flex') as never}
+      flexDirection="row"
       {...metaAttribute({ name: MetaConstants.Amount, testID })}
       {...getStyledProps(styledProps)}
     >

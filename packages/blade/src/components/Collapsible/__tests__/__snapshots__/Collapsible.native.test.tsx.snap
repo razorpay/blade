@@ -285,10 +285,12 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 <View
                   data-blade-component="amount"
                   display="flex"
+                  flexDirection="row"
                   style={
                     [
                       {
                         "display": "flex",
+                        "flexDirection": "row",
                       },
                     ]
                   }
@@ -784,10 +786,12 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 <View
                   data-blade-component="amount"
                   display="flex"
+                  flexDirection="row"
                   style={
                     [
                       {
                         "display": "flex",
+                        "flexDirection": "row",
                       },
                     ]
                   }

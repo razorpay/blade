@@ -59,6 +59,9 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -419,6 +422,9 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
   display: inline-flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .c11.c11.c11.c11.c11 {

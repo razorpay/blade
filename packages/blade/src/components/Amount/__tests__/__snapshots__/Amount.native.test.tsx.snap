@@ -11,10 +11,12 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -187,10 +189,12 @@ exports[`<Amount /> should render Amount with default props 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -363,10 +367,12 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -539,10 +545,12 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -715,10 +723,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -880,10 +890,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -1045,10 +1057,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -1210,10 +1224,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -1375,10 +1391,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -1540,10 +1558,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -1705,10 +1725,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -1870,10 +1892,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -2035,10 +2059,12 @@ exports[`<Amount /> should render all sizes of Amount 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -2211,10 +2237,12 @@ exports[`<Amount /> should render amount with Decimal value 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -2387,10 +2415,12 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -2495,10 +2525,12 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -2671,10 +2703,12 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -2847,10 +2881,12 @@ exports[`<Amount /> should render information intent Amount  1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -2955,10 +2991,12 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
@@ -3152,10 +3190,12 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
   <View
     data-blade-component="amount"
     display="flex"
+    flexDirection="row"
     style={
       [
         {
           "display": "flex",
+          "flexDirection": "row",
         },
       ]
     }
