@@ -11,7 +11,7 @@ type Collection =
   | undefined;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default function isEmpty(value: Collection): boolean {
+export default function isEmpty(value: Collection): value is null | undefined {
   // Check if the value is null or undefined
   if (value == null) {
     return true;

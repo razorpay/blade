@@ -21,7 +21,7 @@ exports[`<Tag /> should render tag 1`] = `
   >
     <View
       alignSelf="center"
-      backgroundColor="brand.gray.a100.lowContrast"
+      backgroundColor="interactive.background.gray.default"
       borderRadius="max"
       data-blade-component="base-box"
       display="flex"
@@ -31,7 +31,7 @@ exports[`<Tag /> should render tag 1`] = `
         [
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexDirection": "row",
@@ -64,24 +64,25 @@ exports[`<Tag /> should render tag 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.subtle.lowContrast"
+          color="interactive.text.gray.subtle"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
           fontWeight="regular"
-          lineHeight={50}
+          lineHeight={75}
           marginRight="spacing.2"
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "lineHeight": 16,
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 4,
@@ -137,7 +138,7 @@ exports[`<Tag /> should render tag 1`] = `
           }
           accessible={true}
           collapsable={false}
-          contrast="low"
+          emphasis="intense"
           focusable={true}
           onBlur={[Function]}
           onClick={[Function]}
@@ -199,7 +200,7 @@ exports[`<Tag /> should render tag 1`] = `
             >
               <RNSVGPath
                 d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                fill={4288851646}
+                fill={4285959847}
                 propList={
                   [
                     "fill",

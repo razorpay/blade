@@ -12,7 +12,7 @@ const StyledArgsTable = styled(BaseBox)(
   &,
   & th,
   & td {
-    border: 1px solid ${props.theme.colors.surface.border.normal.lowContrast};
+    border: 1px solid ${props.theme.colors.surface.border.gray.normal};
     border-collapse: collapse;
   }
 
@@ -36,10 +36,10 @@ const ArgsTable = ({
     <StyledArgsTable as="table" marginBottom={marginBottom} marginTop={marginTop}>
       <tr>
         <th>
-          <Text weight="bold">Prop</Text>
+          <Text weight="semibold">Prop</Text>
         </th>
         <th>
-          <Text weight="bold">Type</Text>
+          <Text weight="semibold">Type</Text>
         </th>
       </tr>
       {Object.entries(data).map(([propName, propType]) => {
@@ -60,7 +60,7 @@ const ArgsTable = ({
         return (
           <tr key={propName}>
             <td>
-              <Text size="medium" variant="caption">
+              <Text size="medium" variant="body">
                 <Code size="medium">{propName}</Code> {propNote}
               </Text>
             </td>

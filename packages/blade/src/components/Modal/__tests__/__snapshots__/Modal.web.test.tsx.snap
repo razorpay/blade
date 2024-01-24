@@ -113,7 +113,8 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c13.c13.c13.c13.c13 {
-  background-color: hsla(155,100%,31%,0.09);
+  min-height: 20px;
+  background-color: hsla(150,100%,32%,0.09);
 }
 
 .c15.c15.c15.c15.c15 {
@@ -133,16 +134,13 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-top: 2px;
-  padding-bottom: 2px;
   padding-right: 8px;
   padding-left: 8px;
 }
 
 .c23.c23.c23.c23.c23 {
-  border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-style: solid;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
 }
 
 .c25.c25.c25.c25.c25 {
@@ -174,6 +172,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c18.c18.c18.c18.c18 {
@@ -182,10 +181,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 .c19.c19.c19.c19.c19 {
   text-align: left;
-  background-color: hsla(36,100%,44%,0.09);
+  height: 20px;
+  background-color: hsla(25,90%,48%,0.09);
 }
 
 .c24.c24.c24.c24.c24 {
+  border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -195,27 +196,35 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c16.c16.c16.c16.c16 {
-  color: hsla(160,100%,26%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -227,54 +236,70 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c26.c26.c26.c26.c26 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c31.c31.c31.c31.c31 {
   color: hsla(0,0%,100%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
 }
 
 .c21.c21.c21.c21.c21 {
-  color: hsla(38,97%,38%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(25,85%,42%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -302,7 +327,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,22%,56%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 150ms;
@@ -312,17 +337,23 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c22.c22.c22.c22.c22:hover {
-  color: hsla(217,18%,45%,1);
+  color: hsla(211,26%,34%,1);
 }
 
 .c22.c22.c22.c22.c22:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(217,18%,45%,1);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  color: hsla(211,26%,34%,1);
 }
 
 .c22.c22.c22.c22.c22:active {
-  color: hsla(217,18%,45%,1);
+  color: hsla(211,26%,34%,1);
 }
 
 .c1.c1.c1.c1.c1 {
@@ -333,11 +364,11 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(0,0%,0%,0.56);
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
@@ -348,7 +379,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c20.c20.c20.c20.c20 {
-  background-color: hsla(36,100%,44%,0.09);
+  background-color: hsla(25,90%,48%,0.09);
   border-radius: 9999px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -363,7 +394,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c14.c14.c14.c14.c14 {
-  background-color: hsla(155,100%,31%,0.09);
+  background-color: hsla(150,100%,32%,0.09);
   border-radius: 9999px;
   max-width: 120px;
   display: -webkit-box;
@@ -382,10 +413,10 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(218,89%,51%,1);
-  border-color: hsla(218,89%,51%,1);
-  border-width: 1px;
-  border-radius: 2px;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -401,6 +432,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -415,25 +447,25 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c28.c28.c28.c28.c28:hover {
-  background-color: hsla(223,95%,48%,1);
-  border-color: hsla(223,95%,48%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c28.c28.c28.c28.c28:active {
-  background-color: hsla(230,100%,42%,1);
-  border-color: hsla(230,100%,42%,1);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c28.c28.c28.c28.c28:focus-visible {
-  background-color: hsla(227,100%,45%,1);
-  border-color: hsla(227,100%,45%,1);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c28.c28.c28.c28.c28 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -455,31 +487,31 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 @media screen and (min-width:320px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
   .c23.c23.c23.c23.c23 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
@@ -534,12 +566,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
                 class="c8"
                 data-blade-component="base-box"
               >
-                <h6
+                <p
                   class="c9"
-                  data-blade-component="heading"
+                  data-blade-component="text"
                 >
                   Address Details
-                </h6>
+                </p>
                 <div
                   class="c10"
                   data-blade-component="base-box"
@@ -726,14 +758,18 @@ exports[`Modal renders a basic Modal 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -746,11 +782,11 @@ exports[`Modal renders a basic Modal 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(0,0%,0%,0.56);
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
@@ -828,14 +864,18 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -848,11 +888,11 @@ exports[`Modal renders a basic Modal of large size 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(0,0%,0%,0.56);
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
@@ -930,14 +970,18 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -950,11 +994,11 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
   -webkit-transition-property: opacity;
   transition-property: opacity;
   opacity: 0;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(0,0%,0%,0.56);
 }
 
 .c3.c3.c3.c3.c3 {
-  box-shadow: 0 24px 48px -12px hsla(217,56%,17%,0.18);
+  box-shadow: 0px 16px 48px -4px hsla(217,56%,17%,0.18);
   position: fixed;
   -webkit-transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);

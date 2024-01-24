@@ -1,7 +1,7 @@
 import type { WrapperComponent } from '@testing-library/react-hooks';
 import { renderHook, act } from '@testing-library/react-hooks';
-import paymentLightTheme from './paymentLightTheme';
-import { paymentTheme } from '~tokens/theme';
+import bladeLightTheme from './bladeLightTheme';
+import { bladeTheme } from '~tokens/theme';
 import { colorSchemeNamesInput } from '~tokens/theme/theme';
 import type { BladeProviderProps } from '~components/BladeProvider';
 import { BladeProvider, useTheme } from '~components/BladeProvider';
@@ -27,13 +27,13 @@ describe('<BladeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        themeTokens: paymentTheme,
+        themeTokens: bladeTheme,
         colorScheme: 'light',
         children: null,
       },
     });
 
-    expect(result.current.theme).toEqual(paymentLightTheme);
+    expect(result.current.theme).toEqual(bladeLightTheme);
     expect(result.current.colorScheme).toBe('light');
   });
 
@@ -41,7 +41,7 @@ describe('<BladeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        themeTokens: paymentTheme,
+        themeTokens: bladeTheme,
         children: null,
       },
     });
@@ -53,7 +53,7 @@ describe('<BladeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        themeTokens: paymentTheme,
+        themeTokens: bladeTheme,
         colorScheme: 'light',
         children: null,
       },
@@ -86,7 +86,7 @@ describe('<BladeProvider/>', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper,
       initialProps: {
-        themeTokens: paymentTheme,
+        themeTokens: bladeTheme,
         // @ts-expect-error testing the error case when colorscheme is not one of [light, dark, system]
         colorScheme: initialColorScheme,
         children: null,

@@ -29,8 +29,6 @@ const useStackblitzSetup = ({
   const docsContext = React.useContext(DocsContext);
 
   // @ts-expect-error docsContext.store exists
-  const themeTokenName = docsContext?.store?.globals?.globals?.themeTokenName ?? 'paymentTheme';
-  // @ts-expect-error docsContext.store exists
   const colorScheme = docsContext?.store?.globals?.globals?.colorScheme ?? 'light';
   // @ts-expect-error docsContext.store exists
   const brandColor = docsContext?.store?.globals?.globals?.brandColor;
@@ -54,7 +52,12 @@ const useStackblitzSetup = ({
           4,
         ),
         'index.html': indexHTML,
-        'index.tsx': getIndexTSX({ themeTokenName, colorScheme, brandColor, showConsole }),
+        'index.tsx': getIndexTSX({
+          themeTokenName: 'bladeTheme',
+          colorScheme,
+          brandColor,
+          showConsole,
+        }),
         'App.tsx': dedent(code),
         'Logger.tsx': logger,
         'vite.config.ts': viteConfigTS,
@@ -64,7 +67,7 @@ const useStackblitzSetup = ({
       },
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [themeTokenName, colorScheme, brandColor]);
+  }, [colorScheme, brandColor]);
 
   React.useEffect(() => {
     void sdk.embedProject('sb-embed', stackblitzProject, {
@@ -78,7 +81,7 @@ const useStackblitzSetup = ({
       showSidebar: false,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [themeTokenName, colorScheme, brandColor]);
+  }, [colorScheme, brandColor]);
 
   return stackblitzProject;
 };

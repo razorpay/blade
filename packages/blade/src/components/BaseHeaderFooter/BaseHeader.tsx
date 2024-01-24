@@ -3,7 +3,7 @@ import React from 'react';
 import type { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading, Text } from '~components/Typography';
+import { Text } from '~components/Typography';
 import { IconButton } from '~components/Button/IconButton';
 import { ChevronLeftIcon, CloseIcon } from '~components/Icons';
 import type { TestID } from '~utils/types';
@@ -93,7 +93,8 @@ const propRestrictionMap = {
     variant: 'body',
   },
   Amount: {
-    size: 'body-medium',
+    type: 'body',
+    size: 'medium',
   },
 } as const;
 
@@ -229,9 +230,9 @@ const _BaseHeader = ({
                 flexDirection="row"
               >
                 {title ? (
-                  <Heading size="small" variant="regular" type="normal">
+                  <Text size="large" weight="semibold" color="surface.text.gray.normal">
                     {title}
-                  </Heading>
+                  </Text>
                 ) : null}
                 {titleSuffix && (
                   <BaseBox marginLeft="spacing.3">
@@ -240,7 +241,7 @@ const _BaseHeader = ({
                 )}
               </BaseBox>
               {subtitle ? (
-                <Text variant="body" size="small" weight="regular" type="muted">
+                <Text variant="body" size="small" weight="regular" color="surface.text.gray.muted">
                   {subtitle}
                 </Text>
               ) : null}

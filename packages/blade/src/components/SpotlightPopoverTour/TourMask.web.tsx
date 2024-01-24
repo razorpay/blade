@@ -152,7 +152,7 @@ const _SpotlightPopoverTourMask = ({
         y={y + borderWidth / 2}
         width={width - borderWidth}
         height={height - borderWidth}
-        stroke={theme.colors.brand.primary[500]}
+        stroke={theme.colors.surface.background.primary.intense}
         strokeWidth={makeSpace(borderWidth)}
         rx={borderRadius - 1}
         ry={borderRadius - 1}
@@ -179,7 +179,7 @@ const _SpotlightPopoverTourMask = ({
         height="100%"
         width="100%"
         mask="url(#tour-mask)"
-        fill={theme.colors.surface.overlay.background[800]}
+        fill={theme.colors.overlay.background.subtle}
       />
     </svg>
   );

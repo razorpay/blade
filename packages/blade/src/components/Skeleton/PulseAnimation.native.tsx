@@ -17,10 +17,7 @@ import { useTheme } from '~components/BladeProvider';
 
 const AnimatedBox = Animated.createAnimatedComponent(BaseBox);
 
-const PulseAnimation = ({
-  contrast,
-  ...props
-}: { contrast: 'low' | 'high' } & SkeletonProps): React.ReactElement => {
+const PulseAnimation = (props: SkeletonProps): React.ReactElement => {
   const { theme } = useTheme();
   const durationPluseOff = theme.motion.duration.xmoderate;
   const durationPluseOn = theme.motion.duration['2xgentle'];
@@ -68,8 +65,8 @@ const PulseAnimation = ({
         progress.value,
         [1, 0],
         [
-          theme.colors.brand.gray.a50[`${contrast}Contrast`],
-          theme.colors.brand.gray.a100[`${contrast}Contrast`],
+          theme.colors.interactive.background.gray.highlighted,
+          theme.colors.interactive.background.gray.default,
         ],
       ),
     };

@@ -10,7 +10,7 @@ afterAll(() => jest.restoreAllMocks());
 
 const variants: BaseButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
 const colors: BaseButtonProps['color'][] = [
-  'default',
+  'primary',
   'white',
   'positive',
   'negative',
@@ -161,7 +161,7 @@ describe('<BaseButton />', () => {
   colors.forEach((color) => {
     variants.forEach((variant) => {
       // We support only white and default color for tertiary variant
-      if (variant === 'tertiary' && color !== 'white' && color !== 'default') return;
+      if (variant === 'tertiary' && color !== 'white' && color !== 'primary') return;
 
       it(`should render ${color} color ${variant} button`, () => {
         const buttonText = 'Pay Now';

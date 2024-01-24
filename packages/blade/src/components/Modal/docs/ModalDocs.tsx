@@ -1,7 +1,7 @@
 import React from 'react';
 import { Playground } from './stories';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Code, Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { ArgsTable } from '~utils/storybook/ArgsTable';
@@ -16,21 +16,16 @@ const ModalDocs = (): React.ReactElement => {
       componentDescription="Modals are often used to present information, notifications, or requests that require immediate attention or confirmation from the user"
       imports=""
       showStorybookControls={false}
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=39809-559333&t=j3ZK6zZSwP5CJ8Al-0',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=16459-684636&t=7KYEW7ENNS5GmLIO-0',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=39809-559333&t=j3ZK6zZSwP5CJ8Al-0"
     >
       <Box as="section">
-        <Title size="medium">Playground</Title>
+        <Heading size="xlarge">Playground</Heading>
         <Sandbox editorHeight={400}>{Playground}</Sandbox>
       </Box>
 
-      <Title size="medium" marginBottom="spacing.4">
+      <Heading size="xlarge" marginBottom="spacing.4">
         ⚠️ Modal for mWeb and React Native
-      </Title>
+      </Heading>
       <Text>
         Modals should not be used on mWeb & React Native Apps. Instead we should use{' '}
         <Link href="/?path=/story/components-bottomsheet--default">BottomSheet Component</Link> for
@@ -61,9 +56,9 @@ const ModalDocs = (): React.ReactElement => {
       </List>
 
       <BaseBox id="modal" as="section">
-        <Title size="medium" marginBottom="spacing.4">
+        <Heading size="xlarge" marginBottom="spacing.4">
           Modal
-        </Title>
+        </Heading>
         <Text>A Modal in Blade is usually a composite of 4 elements -</Text>
         <List variant="ordered-filled" marginY="spacing.5">
           <ListItem>Modal - Handles opening / closing of Modal</ListItem>
@@ -77,38 +72,38 @@ const ModalDocs = (): React.ReactElement => {
         marginBottom="spacing.4"
         data={{
           isOpen: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">boolean</Code> (required)
               </Text>
               Toggles modal state
             </Text>
           ),
           onDismiss: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">function</Code> (required)
               </Text>
               Called when the modal is closed, either by user state, hitting esc or tapping backdrop
             </Text>
           ),
           size: (
-            <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
               <Text size="small">{`'small' | 'medium' | 'large'`}</Text>
               Size of the modal
             </Text>
           ),
           initialFocusRef: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">function</Code>
               </Text>
               ref element you want to get keyboard focus when opening the modal
             </Text>
           ),
           accessibilityLabel: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">string</Code>
               </Text>
               The accessibility label (aria-label) for the Modal.
@@ -121,8 +116,8 @@ const ModalDocs = (): React.ReactElement => {
             </Text>
           ),
           zIndex: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">number</Code>
               </Text>
               Sets the z-index of the modal
@@ -135,32 +130,32 @@ const ModalDocs = (): React.ReactElement => {
         marginBottom="spacing.4"
         data={{
           title: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">string</Code>
               </Text>
               Title of the Header
             </Text>
           ),
           subtitle: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">string</Code>
               </Text>
               Subtitle of the Header
             </Text>
           ),
           leading: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">React.ReactNode</Code>
               </Text>
               leading asset or icon to be placed at the left most side of the ModalHeader
             </Text>
           ),
           trailing: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">Badge</Code>,<Code>Link</Code>,<Code>Text</Code>,
                 <Code>IconButton</Code>
               </Text>
@@ -168,8 +163,8 @@ const ModalDocs = (): React.ReactElement => {
             </Text>
           ),
           titleSuffix: (
-            <Text size="small" type="subdued">
-              <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
+              <Text size="small" color="surface.text.gray.subtle">
                 <Code size="medium">Counter</Code>
               </Text>
               A component to be placed adjacent to the title text
@@ -186,13 +181,13 @@ const ModalDocs = (): React.ReactElement => {
             <Text>
               [<Code>{'<ModalBody />'}</Code>, <Code>{'<ModalHeader />'}</Code>,
               <Code>{'<ModalHeader />'}</Code>]
-              <Text size="small" type="subdued">
+              <Text size="small" color="surface.text.gray.subtle">
                 (required)
               </Text>
             </Text>
           ),
           padding: (
-            <Text size="small" type="subdued">
+            <Text size="small" color="surface.text.gray.subtle">
               <Text size="small">{`'spacing.0' | 'spacing.6'`}</Text>
               {`Padding for the Modal Body. Default : 'spacing.6'`}
             </Text>
@@ -207,7 +202,7 @@ const ModalDocs = (): React.ReactElement => {
           children: (
             <Text>
               <Code>{'React.ReactElement'}</Code>
-              <Text size="small" type="subdued">
+              <Text size="small" color="surface.text.gray.subtle">
                 (required)
               </Text>
             </Text>

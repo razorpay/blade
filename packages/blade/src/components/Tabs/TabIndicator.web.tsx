@@ -14,7 +14,7 @@ const StyledTabIndicator = styled(BaseBox)(({ theme }) => {
   return {
     cursor: 'pointer',
     '&:hover': {
-      backgroundColor: theme.colors.brand.primary[400],
+      backgroundColor: theme.colors.interactive.background.primary.fadedHighlighted,
     },
   };
 });
@@ -48,7 +48,7 @@ const TabIndicator = ({
         variant === 'filled'
           ? // on filled variant the indicator is positioned on top of the tab item
             // so no need to add offsetHeight
-            activeTabItem.offsetTop - 1
+            activeTabItem.offsetTop
           : activeTabItem.offsetTop + activeTabItem.offsetHeight - 1.5,
     });
   }, [baseId, selectedValue, tabListContainerRef, variant]);
@@ -106,11 +106,12 @@ const TabIndicator = ({
   if (variant === 'filled') {
     return (
       <StyledTabIndicator
+        pointerEvents="none"
         position="absolute"
         left="0px"
         top="0px"
         borderRadius="small"
-        backgroundColor="brand.primary.300"
+        backgroundColor="interactive.background.primary.faded"
         style={{
           ...transitionProps,
           width: `${activeElementDimensions.width}px`,
@@ -127,9 +128,9 @@ const TabIndicator = ({
       pointerEvents="none"
       position="absolute"
       left="0%"
-      top="0px"
-      height="1.5px"
-      backgroundColor="brand.primary.500"
+      top="-0.5px"
+      height="2px"
+      backgroundColor="interactive.background.primary.default"
       style={{
         ...transitionProps,
         width: `${activeElementDimensions.width}px`,

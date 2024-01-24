@@ -20,9 +20,9 @@ Blade Issue:
 
 ## Summary
 
-After Brand Refresh, we have 2 major fonts. `Inter` and `Tasa Orbiter`.
+After Brand Refresh, we have 2 major fonts. `Inter` and `TASA Orbiter`.
 
-So far when we had Lato, we could load it from `@fontsource/lato`. But Tasa Orbiter does not exist on fontsource and we also selectively load weights from Inter and Lato.
+So far when we had Lato, we could load it from `@fontsource/lato`. But TASA Orbiter does not exist on fontsource and we also selectively load weights from Inter and Lato.
 
 This document is created to explore and decide on what should be the font loading strategy after brand refresh
 
@@ -92,7 +92,7 @@ Our recommended font loading strategy should find a good balance between followi
 
 ```css
 @font-face {
-  font-family: 'TasaOrbiter';
+  font-family: 'TASA Orbiter';
   src: url('/fonts/TASAOrbiterVF.woff2') format('woff2-variations');
   font-weight: 125 950;
   font-stretch: 75% 125%;
@@ -151,7 +151,7 @@ import '@razorpay/blade/fonts.css';
 
 - Fonts cannot be preloaded with HTML preload in CSR apps (SSR apps can loop through their build manifest to know the font URLs and preload them if required)
 
-#### 3. Contribute Tasa Orbiter to fontsource
+#### 3. Contribute TASA Orbiter to fontsource
 
 TASA Orbiter is compatible with license requirements of fontsource. Thus we can contribute TASA Orbiter to fontsource open-source repo and then use fonts from fontsource.
 
@@ -189,7 +189,7 @@ Similar to how you install from google font, except we can have `https://cdn.raz
 
 #### 5. Load from existing third-party CDN
 
-While Inter can be loaded from [Google Fonts](https://fonts.google.com/specimen/Inter), Tasa Orbiter can be loaded from [CDNFonts](https://www.cdnfonts.com/tasa-orbiter-display.font)
+While Inter can be loaded from [Google Fonts](https://fonts.google.com/specimen/Inter), TASA Orbiter can be loaded from [CDNFonts](https://www.cdnfonts.com/tasa-orbiter-display.font)
 
 Cons from all of the above 🙈
 
@@ -213,12 +213,12 @@ The performance of variable font vs static font depends on how many weights and 
 
 These are the weights and styles being used right now
 
-**Tasa Orbiter:** 400, 500, 600
+**TASA Orbiter:** 400, 500, 600
 **Inter:** 400, 500, 600
 
 **Conclusion**
 
-We'll be using variable fonts in both Tasa and Inter based on the size below-
+We'll be using variable fonts in both TASA and Inter based on the size below-
 
 |                  | **Static**                 | **Variable**                    |
 | ---------------- | -------------------------- | ------------------------------- |
@@ -233,7 +233,7 @@ We'll be using variable fonts in both Tasa and Inter based on the size below-
 
 ```css
  {
-  font-family: 'Tasa Orbiter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica
+  font-family: 'TASA Orbiter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica
       Neue, sans-serif;
 
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica

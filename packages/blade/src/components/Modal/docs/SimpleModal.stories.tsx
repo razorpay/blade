@@ -4,9 +4,9 @@ import isChromatic from 'chromatic/isChromatic';
 import type { ModalProps } from '../Modal';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from '../Modal';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Radio, RadioGroup } from '~components/Radio';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+import { Radio, RadioGroup } from '~components/Radio';
 
 export default {
   title: 'Components/Modal/SimpleModal',
@@ -54,7 +54,7 @@ const ModalTemplate: StoryFn<typeof Modal> = ({ size }) => {
         </ModalBody>
         <ModalFooter>
           <Box display="flex" gap="spacing.3" justifyContent="flex-end" width="100%">
-            <Button variant="secondary">Remove address</Button>
+            <Button variant="tertiary">Remove address</Button>
             <Button>Add address</Button>
           </Box>
         </ModalFooter>

@@ -170,12 +170,7 @@ export default {
           componentDescription="The TextArea component lets you enter long form text which spans over multiple lines."
           componentName="TextArea"
           apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/TextArea/_decisions/decisions.md"
-          figmaURL={{
-            paymentTheme:
-              'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11115%3A166804',
-            bankingTheme:
-              'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10050%3A180805',
-          }}
+          figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11115%3A166804'"
         >
           <Title>Usage</Title>
           <Sandbox>

@@ -50,7 +50,7 @@ const Page = (): React.ReactElement => {
 
           function App(): React.ReactElement {
               return (
-                  <Box backgroundColor="surface.background.level2.lowContrast">
+                  <Box backgroundColor="surface.background.gray.intense">
                   <ActionList>
                     <ActionListItem
                       title="Profile"
@@ -105,7 +105,7 @@ export default {
 
 const ActionListExample: StoryFn<typeof ActionListComponent> = () => (
   <BaseBox display="flex" flexDirection="column">
-    <Box backgroundColor="surface.background.level2.lowContrast">
+    <Box backgroundColor="surface.background.gray.intense">
       <ActionListComponent>
         <ActionListItem title="Item 1" value="item1" />
         <ActionListItem title="Item 2" value="item2" />
@@ -126,7 +126,7 @@ ActionList.parameters = {
 const ActionListWithLeadingComponentsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.level2.lowContrast">
+      <Box backgroundColor="surface.background.gray.intense">
         <ActionListComponent>
           <ActionListItem
             leading={<ActionListItemIcon icon={SettingsIcon} />}
@@ -161,7 +161,7 @@ ActionListWithLeadingComponents.parameters = {
 const ActionListWithTrailingComponentsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.level2.lowContrast">
+      <Box backgroundColor="surface.background.gray.intense">
         <ActionListComponent>
           <ActionListItem
             title="Bank Settings"
@@ -191,7 +191,7 @@ ActionListWithTrailingComponents.parameters = {
 const ActionListWithSectionsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.level2.lowContrast">
+      <Box backgroundColor="surface.background.gray.intense">
         <ActionListComponent>
           <ActionListItem
             title="Profile"
@@ -234,7 +234,7 @@ ActionListWithSections.parameters = {
 const ActionListWithCustomItemsExample: StoryFn<typeof ActionListComponent> = () => {
   return (
     <BaseBox display="flex" flexDirection="column">
-      <Box backgroundColor="surface.background.level2.lowContrast">
+      <Box backgroundColor="surface.background.gray.intense">
         <ActionListComponent>
           <ActionListSection title="Account">
             <ActionListItem

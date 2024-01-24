@@ -118,7 +118,6 @@ const _List = ({
     <ListProvider value={listContextValue}>
       <BaseBox {...getStyledProps(styledProps)}>
         <ListElement
-          marginTop={level ? undefined : 'spacing.3'}
           {...metaAttribute({ name: MetaConstants.List, testID })}
           {...makeAccessible({ role: 'list' })} // Role needed for react-native
         >

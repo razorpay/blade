@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Carousel /> should render a Carousel ssr 1`] = `"<div id="root"><div data-blade-component="carousel" class="BaseBox-bmPWx cDXDci"><div data-blade-component="base-box" class="BaseBox-bmPWx bHGIpZ"><div tabindex="0" role="group" aria-roledescription="carousel" data-blade-component="base-box" class="BaseBox-bmPWx Carouselweb__CarouselContainer-v6xykj-0 biROtj binoEC"><div role="tabpanel" aria-roledescription="slide" aria-label="1 of 5" id="carousel-undefined-carousel-item-0" data-slide-index="0" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Carousel Item 1</p></div><div role="tabpanel" aria-roledescription="slide" aria-label="2 of 5" id="carousel-undefined-carousel-item-1" data-slide-index="1" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Carousel Item 2</p></div><div role="tabpanel" aria-roledescription="slide" aria-label="3 of 5" id="carousel-undefined-carousel-item-2" data-slide-index="2" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Carousel Item 3</p></div><div role="tabpanel" aria-roledescription="slide" aria-label="4 of 5" id="carousel-undefined-carousel-item-3" data-slide-index="3" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Carousel Item 4</p></div><div role="tabpanel" aria-roledescription="slide" aria-label="5 of 5" id="carousel-undefined-carousel-item-4" data-slide-index="4" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">Carousel Item 5</p></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx cuFcuZ"><button data-blade-component="NavigationButton" aria-label="Previous Slide" class="StyledNavigationButtonweb__StyledNavigationButton-p5u8i5-0 dWywUY"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button><div role="tablist" aria-label="Slides" data-blade-component="base-box" class="BaseBox-bmPWx jDluQZ"><button role="tab" aria-label="Slide 1" aria-selected="true" aria-controls="carousel-undefined-carousel-item-0" data-blade-component="carousel-indicator-button" class="StyledIndicatorButtonweb__StyledIndicatorButton-egnakv-0 dnbBHb"></button><button role="tab" aria-label="Slide 3" aria-selected="false" aria-controls="carousel-undefined-carousel-item-2" data-blade-component="carousel-indicator-button" class="StyledIndicatorButtonweb__StyledIndicatorButton-egnakv-0 jfETdl"></button><button role="tab" aria-label="Slide 5" aria-selected="false" aria-controls="carousel-undefined-carousel-item-4" data-blade-component="carousel-indicator-button" class="StyledIndicatorButtonweb__StyledIndicatorButton-egnakv-0 jfETdl"></button></div><button data-blade-component="NavigationButton" aria-label="Next Slide" class="StyledNavigationButtonweb__StyledNavigationButton-p5u8i5-0 dWywUY"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button></div></div></div>"`;
+exports[`<Carousel /> should render a Carousel ssr 1`] = `"<div id="root"><div data-blade-component="carousel" class="BaseBox-bmPWx cDXDci"><div data-blade-component="base-box" class="BaseBox-bmPWx bHGIpZ"><div tabindex="0" role="group" aria-roledescription="carousel" data-blade-component="base-box" class="BaseBox-bmPWx Carouselweb__CarouselContainer-v6xykj-0 biROtj binoEC"><div role="tabpanel" aria-roledescription="slide" aria-label="1 of 5" id="carousel-undefined-carousel-item-0" data-slide-index="0" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Carousel Item 1</p></div><div role="tabpanel" aria-roledescription="slide" aria-label="2 of 5" id="carousel-undefined-carousel-item-1" data-slide-index="1" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Carousel Item 2</p></div><div role="tabpanel" aria-roledescription="slide" aria-label="3 of 5" id="carousel-undefined-carousel-item-2" data-slide-index="2" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Carousel Item 3</p></div><div role="tabpanel" aria-roledescription="slide" aria-label="4 of 5" id="carousel-undefined-carousel-item-3" data-slide-index="3" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Carousel Item 4</p></div><div role="tabpanel" aria-roledescription="slide" aria-label="5 of 5" id="carousel-undefined-carousel-item-4" data-slide-index="4" data-blade-component="base-box" class="BaseBox-bmPWx CarouselItemweb__StyledCarouselItem-sc-56ppo3-0  kKlDzW"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">Carousel Item 5</p></div></div></div><div data-blade-component="box" class="BaseBox-bmPWx cuFcuZ"><button data-blade-component="NavigationButton" aria-label="Previous Slide" class="StyledNavigationButtonweb__StyledNavigationButton-p5u8i5-0 uokoK"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button><div role="tablist" aria-label="Slides" data-blade-component="base-box" class="BaseBox-bmPWx jDluQZ"><button role="tab" aria-label="Slide 1" aria-selected="true" aria-controls="carousel-undefined-carousel-item-0" data-blade-component="carousel-indicator-button" class="StyledIndicatorButtonweb__StyledIndicatorButton-egnakv-0 gzDKit"></button><button role="tab" aria-label="Slide 3" aria-selected="false" aria-controls="carousel-undefined-carousel-item-2" data-blade-component="carousel-indicator-button" class="StyledIndicatorButtonweb__StyledIndicatorButton-egnakv-0 dApwcC"></button><button role="tab" aria-label="Slide 5" aria-selected="false" aria-controls="carousel-undefined-carousel-item-4" data-blade-component="carousel-indicator-button" class="StyledIndicatorButtonweb__StyledIndicatorButton-egnakv-0 dApwcC"></button></div><button data-blade-component="NavigationButton" aria-label="Next Slide" class="StyledNavigationButtonweb__StyledNavigationButton-p5u8i5-0 uokoK"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></button></div></div></div>"`;
 
 exports[`<Carousel /> should render a Carousel ssr 2`] = `
 .c9.c9.c9.c9.c9 {
@@ -8,7 +8,7 @@ exports[`<Carousel /> should render a Carousel ssr 2`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,1);
+  background-color: hsla(211,22%,56%,1);
   width: 18px;
   height: 6px;
   -webkit-transition-property: width;
@@ -26,8 +26,14 @@ exports[`<Carousel /> should render a Carousel ssr 2`] = `
 }
 
 .c9.c9.c9.c9.c9:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10 {
@@ -35,7 +41,7 @@ exports[`<Carousel /> should render a Carousel ssr 2`] = `
   cursor: pointer;
   padding: 0px;
   border-radius: 9999px;
-  background-color: hsla(214,18%,69%,0.64);
+  background-color: hsla(211,20%,52%,0.32);
   width: 6px;
   height: 6px;
   -webkit-transition-property: width;
@@ -53,8 +59,14 @@ exports[`<Carousel /> should render a Carousel ssr 2`] = `
 }
 
 .c10.c10.c10.c10.c10:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -127,9 +139,9 @@ exports[`<Carousel /> should render a Carousel ssr 2`] = `
   border-style: solid;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(0,0%,100%,0);
   background-color: hsla(0,0%,100%,1);
-  color: hsla(218,89%,51%,1);
+  color: hsla(0,0%,0%,0.72);
   padding: 8px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -152,24 +164,30 @@ exports[`<Carousel /> should render a Carousel ssr 2`] = `
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  box-shadow: 0 12px 16px -4px hsla(217,56%,17%,0.08),0 4px 6px -2px hsla(217,56%,17%,0.03);
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
 }
 
 .c7.c7.c7.c7.c7:hover {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,6%,94%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c7.c7.c7.c7.c7:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c7.c7.c7.c7.c7:active {
-  color: hsla(218,89%,51%,1);
-  background-color: hsla(216,4%,89%,1);
+  color: hsla(0,0%,0%,0.72);
+  background-color: hsla(0,0%,100%,0.8);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -225,14 +243,18 @@ exports[`<Carousel /> should render a Carousel ssr 2`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }

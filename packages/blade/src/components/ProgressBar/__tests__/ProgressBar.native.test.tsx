@@ -4,6 +4,8 @@ import { ProgressBar } from '../ProgressBar';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { Button } from '~components/Button';
 
+const colors = ['information', 'negative', 'neutral', 'notice', 'positive'] as const;
+
 describe('<ProgressBar />', () => {
   it('should render ProgressBar with default props', () => {
     const { toJSON } = renderWithTheme(<ProgressBar label="Label" value={20} />);
@@ -47,67 +49,11 @@ describe('<ProgressBar />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render high contrast ProgressBar', () => {
-    const { toJSON } = renderWithTheme(<ProgressBar contrast="high" value={20} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render low contrast positive intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(<ProgressBar intent="positive" contrast="low" value={20} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast positive intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(
-      <ProgressBar intent="positive" contrast="high" value={20} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render low contrast negative intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(<ProgressBar intent="negative" contrast="low" value={20} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast negative intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(
-      <ProgressBar intent="negative" contrast="high" value={20} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render low contrast notice intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(<ProgressBar intent="notice" contrast="low" value={20} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast notice intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(<ProgressBar intent="notice" contrast="high" value={20} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render low contrast information intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(
-      <ProgressBar intent="information" contrast="low" value={20} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast information intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(
-      <ProgressBar intent="information" contrast="high" value={20} />,
-    );
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render low contrast neutral intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(<ProgressBar intent="neutral" contrast="low" value={20} />);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render high contrast neutral intent ProgressBar', () => {
-    const { toJSON } = renderWithTheme(<ProgressBar intent="neutral" contrast="high" value={20} />);
-    expect(toJSON()).toMatchSnapshot();
+  colors.forEach((color) => {
+    it(`should render color=${color} ProgressBar`, () => {
+      const { toJSON } = renderWithTheme(<ProgressBar color={color} value={20} />);
+      expect(toJSON()).toMatchSnapshot();
+    });
   });
 
   it('should have accessibility attributes for progress variant', () => {

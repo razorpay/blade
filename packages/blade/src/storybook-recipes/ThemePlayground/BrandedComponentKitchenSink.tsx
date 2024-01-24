@@ -74,13 +74,13 @@ const filteredstories = allStories.filter((Story) => includedStories.includes(St
 
 const BrandedComponentKitchenSink = (): React.ReactElement => {
   return (
-    <Card surfaceLevel={2} elevation="lowRaised">
+    <Card elevation="lowRaised">
       <CardBody>
         {filteredstories.map((Story, index) => {
           return (
             <>
               {index === 0 ? null : <Divider orientation="horizontal" marginBottom="spacing.6" />}
-              <Heading type="subtle" size="large" marginBottom="spacing.4">
+              <Heading size="large" marginBottom="spacing.4">
                 {StoryNameToHeadingMap[Story.storyName] ?? Story.storyName}:
               </Heading>
               <Story />

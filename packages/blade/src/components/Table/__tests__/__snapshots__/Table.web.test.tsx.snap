@@ -25,7 +25,7 @@ exports[`<Table /> should render table 1`] = `
   flex-direction: row;
   padding: 12px;
   gap: 16px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -42,7 +42,7 @@ exports[`<Table /> should render table 1`] = `
   align-items: center;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -54,7 +54,7 @@ exports[`<Table /> should render table 1`] = `
   height: 100%;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -70,78 +70,109 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c8.c8.c8.c8.c8 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
   border: none;
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 tr:last-child .cell-wrapper {
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 tr:last-child .cell-wrapper {
   border-bottom: none;
 }
 
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-single-selected .cell-wrapper-base,
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
 }
 
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
 }
 
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
 }
 
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
 }
 
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
 }
 
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 > div:first-child {
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 > div:first-child {
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
 }
 
-.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14.c14 {
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
@@ -151,40 +182,46 @@ exports[`<Table /> should render table 1`] = `
   padding-right: 12px;
   height: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
   background-color: transparent;
 }
 
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px hsla(218,89%,51%,0.09);
-}
-
-.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 {
-  background-color: hsla(216,15%,54%,0.09);
-}
-
-.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 tr:last-child th {
-  border-bottom: none;
+.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 {
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 tr:last-child th {
+  border-bottom: none;
+}
+
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 {
   height: 100%;
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
-.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > div {
-  background-color: hsla(216,15%,54%,0.09);
+.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17.c17 > div {
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -204,19 +241,19 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
-  background-color: hsla(0,0%,100%,1);
   height: 100%;
+  background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 > div {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -240,8 +277,14 @@ exports[`<Table /> should render table 1`] = `
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
-  outline: none;
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -250,31 +293,31 @@ exports[`<Table /> should render table 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c13.c13.c13.c13.c13 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c13.c13.c13.c13.c13 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c13.c13.c13.c13.c13 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c13.c13.c13.c13.c13 {
     pointer-events: auto;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c13.c13.c13.c13.c13 {
     pointer-events: auto;
   }
 }
@@ -311,7 +354,7 @@ exports[`<Table /> should render table 1`] = `
       </div>
     </div>
     <table
-      class="css-1ja8l55-Table"
+      class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -339,7 +382,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 Payment ID
@@ -357,7 +400,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 Amount
@@ -375,7 +418,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 Status
@@ -393,7 +436,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 Type
@@ -411,7 +454,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 Method
@@ -429,7 +472,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 Name
@@ -439,18 +482,18 @@ exports[`<Table /> should render table 1`] = `
         </tr>
       </thead>
       <tbody
-        class="c8 css-8eb0m3-Body"
+        class="c9 css-8eb0m3-Body"
         data-blade-component="table-body"
         data-table-library_body=""
       >
         <tr
-          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -458,16 +501,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     rzp01
@@ -477,7 +520,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -485,11 +528,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -499,7 +542,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -507,16 +550,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     pending
@@ -526,7 +569,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -534,16 +577,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     credit
@@ -553,7 +596,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -561,16 +604,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Netbanking
@@ -580,7 +623,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -588,16 +631,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     John Doe
@@ -608,13 +651,13 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -622,16 +665,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     rzp02
@@ -641,7 +684,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -649,11 +692,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -663,7 +706,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -671,16 +714,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     pending
@@ -690,7 +733,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -698,16 +741,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     credit
@@ -717,7 +760,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -725,16 +768,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     UPI
@@ -744,7 +787,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -752,16 +795,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Jane Doe
@@ -772,13 +815,13 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -786,16 +829,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     rzp03
@@ -805,7 +848,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -813,11 +856,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -827,7 +870,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -835,16 +878,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     failed
@@ -854,7 +897,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -862,16 +905,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     debit
@@ -881,7 +924,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -889,16 +932,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Debit Card
@@ -908,7 +951,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -916,16 +959,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Alice Smith
@@ -936,13 +979,13 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -950,16 +993,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     rzp04
@@ -969,7 +1012,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -977,11 +1020,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -991,7 +1034,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -999,16 +1042,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     completed
@@ -1018,7 +1061,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1026,16 +1069,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     credit
@@ -1045,7 +1088,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1053,16 +1096,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Credit Card
@@ -1072,7 +1115,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1080,16 +1123,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Bob Smith
@@ -1100,13 +1143,13 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c10 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
         >
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1114,16 +1157,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     rzp05
@@ -1133,7 +1176,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1141,11 +1184,11 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
@@ -1155,7 +1198,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1163,16 +1206,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     completed
@@ -1182,7 +1225,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1190,16 +1233,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     credit
@@ -1209,7 +1252,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1217,16 +1260,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     Netbanking
@@ -1236,7 +1279,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </td>
           <td
-            class="td c10 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            class="td c11 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
             data-blade-component="table-cell"
             data-table-library_td=""
             role="cell"
@@ -1244,16 +1287,16 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <div
-                class="c11 cell-wrapper-base"
+                class="c12 cell-wrapper-base"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c12 c13 cell-wrapper"
+                  class="c13 c14 cell-wrapper"
                   data-blade-component="base-box"
                   pointer-events="auto"
                 >
                   <p
-                    class="c14"
+                    class="c15"
                     data-blade-component="text"
                   >
                     John Doe
@@ -1265,7 +1308,7 @@ exports[`<Table /> should render table 1`] = `
         </tr>
       </tbody>
       <tfoot
-        class="c15 css-1a28xfp-Header"
+        class="c16 css-1a28xfp-Header"
         data-blade-component="table-footer"
         role="rowgroup"
       >
@@ -1276,7 +1319,7 @@ exports[`<Table /> should render table 1`] = `
           role="rowfooter"
         >
           <th
-            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c17 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1285,7 +1328,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 -
@@ -1293,7 +1336,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c17 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1302,7 +1345,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 -
@@ -1310,7 +1353,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c17 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1319,7 +1362,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 -
@@ -1327,7 +1370,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c17 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1336,7 +1379,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 -
@@ -1344,7 +1387,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c17 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1353,7 +1396,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 -
@@ -1361,7 +1404,7 @@ exports[`<Table /> should render table 1`] = `
             </div>
           </th>
           <th
-            class="th c16 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            class="th c17 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
             data-blade-component="table-footer-cell"
             data-hide="false"
             data-resize-min-width="75"
@@ -1370,7 +1413,7 @@ exports[`<Table /> should render table 1`] = `
           >
             <div>
               <p
-                class="c5"
+                class="c8"
                 data-blade-component="text"
               >
                 -
@@ -1420,27 +1463,35 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1457,22 +1508,22 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected .cell-wrapper-base,
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
@@ -1487,8 +1538,14 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
@@ -1501,7 +1558,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   padding-right: 12px;
   height: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
@@ -1510,12 +1567,18 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 tr:last-child th {
@@ -1527,14 +1590,14 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 > div {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1554,19 +1617,19 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
-  background-color: hsla(0,0%,100%,1);
   height: 100%;
+  background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 > div {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1590,8 +1653,14 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
 }
 
 .c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2:focus-visible {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
-  outline: none;
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 @media screen and (min-width:320px) {
@@ -1630,7 +1699,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
     data-blade-component="table"
   >
     <table
-      class="css-1ja8l55-Table"
+      class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -2288,18 +2357,18 @@ exports[`<Table /> should render table with isLoading 1`] = `
             <path
               d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z"
               data-blade-component="svg-path"
-              fill="hsla(217, 18%, 45%, 1)"
+              fill="hsla(211, 29%, 26%, 1)"
               fill-opacity="0.2"
             />
             <path
               d="M24 12C24 13.8937 23.5518 15.7606 22.6921 17.4479C21.8324 19.1352 20.5855 20.5951 19.0534 21.7082C17.5214 22.8213 15.7476 23.556 13.8772 23.8523C12.0068 24.1485 10.0928 23.9979 8.29181 23.4127L9.21886 20.5595C10.5696 20.9984 12.0051 21.1114 13.4079 20.8892C14.8107 20.667 16.141 20.116 17.2901 19.2812C18.4391 18.4463 19.3743 17.3514 20.0191 16.0859C20.6639 14.8204 21 13.4203 21 12H24Z"
               data-blade-component="svg-path"
-              fill="hsla(217, 18%, 45%, 1)"
+              fill="hsla(211, 29%, 26%, 1)"
             />
             <path
               d="M-1.33514e-05 12C-1.33514e-05 10.1063 0.448176 8.23944 1.30791 6.55211C2.16764 4.86479 3.41451 3.4049 4.94656 2.2918C6.47862 1.17869 8.25236 0.443983 10.1228 0.147739C11.9932 -0.148504 13.9072 0.00212896 15.7082 0.587322L14.7811 3.44049C13.4304 3.0016 11.9949 2.88862 10.5921 3.11081C9.18927 3.33299 7.85896 3.88402 6.70992 4.71885C5.56088 5.55367 4.62573 6.64859 3.98093 7.91409C3.33613 9.17958 2.99999 10.5797 2.99999 12H-1.33514e-05Z"
               data-blade-component="svg-path"
-              fill="hsla(217, 18%, 45%, 1)"
+              fill="hsla(211, 29%, 26%, 1)"
             />
           </svg>
         </div>
@@ -2334,7 +2403,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   z-index: 3;
   height: 100%;
   width: 100%;
-  background-color: hsla(214,15%,18%,0.64);
+  background-color: hsla(0,0%,0%,0.56);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -2392,27 +2461,35 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c14.c14.c14.c14.c14 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -2435,22 +2512,22 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-single-selected .cell-wrapper-base,
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8.c8 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
@@ -2465,8 +2542,14 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 {
@@ -2479,7 +2562,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   padding-right: 12px;
   height: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
@@ -2488,12 +2571,18 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15.c15 tr:last-child th {
@@ -2505,14 +2594,14 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16.c16 > div {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2532,19 +2621,19 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
-  background-color: hsla(0,0%,100%,1);
   height: 100%;
+  background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 > div {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2568,8 +2657,14 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus-visible {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
-  outline: none;
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 @media screen and (min-width:320px) {
@@ -2656,7 +2751,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
       </div>
     </div>
     <table
-      class="css-1ja8l55-Table"
+      class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -3273,27 +3368,35 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -3310,26 +3413,26 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected .cell-wrapper-base,
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 tr:nth-child(even) .cell-wrapper {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 tr:nth-child(even) .cell-wrapper-base {
@@ -3348,8 +3451,14 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
@@ -3368,12 +3477,18 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 tr:last-child th {
@@ -3385,14 +3500,14 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 > div {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3412,19 +3527,19 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
-  background-color: hsla(0,0%,100%,1);
   height: 100%;
+  background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 > div {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3448,8 +3563,14 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
 }
 
 .c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2:focus-visible {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
-  outline: none;
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 @media screen and (min-width:320px) {
@@ -3488,7 +3609,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
     data-blade-component="table"
   >
     <table
-      class="css-1ja8l55-Table"
+      class="css-8lcbdy-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -4105,27 +4226,35 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -4146,22 +4275,22 @@ exports[`<Table /> should render table with sticky header, footer & first column
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
 .c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7 {
@@ -4176,8 +4305,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7.c7:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10.c10 {
@@ -4190,7 +4325,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
   padding-right: 12px;
   height: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
@@ -4199,12 +4334,18 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px hsla(218,89%,51%,0.09);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 tr:last-child th {
@@ -4216,14 +4357,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
   background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
 }
 
 .c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13.c13 > div {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4243,19 +4384,19 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 {
-  background-color: hsla(0,0%,100%,1);
   height: 100%;
+  background-color: hsla(0,0%,100%,1);
   border-bottom-width: 1px;
   border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
   border-top-style: solid;
   cursor: auto;
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3 > div {
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4279,8 +4420,14 @@ exports[`<Table /> should render table with sticky header, footer & first column
 }
 
 .c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3.c3:focus-visible {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
-  outline: none;
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 @media screen and (min-width:320px) {
@@ -4319,7 +4466,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
     data-blade-component="table"
   >
     <table
-      class="c1 css-adg849-Table"
+      class="c1 css-j8ql1d-Table"
       data-blade-component="table"
       data-table-library_table=""
       role="table"
@@ -6199,833 +6346,6 @@ exports[`<Table /> should render table with sticky header, footer & first column
             <div>
               <p
                 class="c4"
-                data-blade-component="text"
-              >
-                -
-              </p>
-            </div>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-</div>
-`;
-
-exports[`<Table /> should render table with surfaceLevel 1`] = `
-.c0.c0.c0.c0.c0 {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  position: relative;
-}
-
-.c7.c7.c7.c7.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-}
-
-.c8.c8.c8.c8.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  pointer-events: auto;
-}
-
-.c3.c3.c3.c3.c3 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 700;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c10.c10.c10.c10.c10 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  margin: 0;
-  padding: 0;
-}
-
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
-  border: none;
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-}
-
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 tr:last-child .cell-wrapper {
-  border-bottom: none;
-}
-
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected .cell-wrapper-base,
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
-}
-
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
-}
-
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.09);
-}
-
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
-.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
-  background-color: hsla(218,89%,51%,0.18);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
-  height: 100%;
-  background-color: hsla(220,27%,98%,1);
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 > div:first-child {
-  -webkit-align-self: stretch;
-  -ms-flex-item-align: stretch;
-  align-self: stretch;
-}
-
-.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
-}
-
-.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
-  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
-  background-color: transparent;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 12px;
-  padding-right: 12px;
-  height: 100%;
-  border-bottom-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-bottom-style: solid;
-}
-
-.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
-  background-color: transparent;
-}
-
-.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px hsla(218,89%,51%,0.09);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
-  background-color: hsla(216,15%,54%,0.09);
-}
-
-.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 tr:last-child th {
-  border-bottom: none;
-}
-
-.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
-  height: 100%;
-  background-color: hsla(220,27%,98%,1);
-  border-bottom-width: 1px;
-  border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
-  border-bottom-style: solid;
-  border-top-style: solid;
-}
-
-.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 > div {
-  background-color: hsla(216,15%,54%,0.09);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  height: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-
-.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1 tr:first-child th {
-  border-top: none;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
-  background-color: hsla(220,27%,98%,1);
-  height: 100%;
-  border-bottom-width: 1px;
-  border-top-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-top-color: hsla(216,15%,54%,0.18);
-  border-bottom-style: solid;
-  border-top-style: solid;
-  cursor: auto;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 > div {
-  background-color: hsla(216,15%,54%,0.09);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  height: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-
-.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2:focus-visible {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18) inset;
-  outline: none;
-}
-
-@media screen and (min-width:320px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: auto;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: auto;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: auto;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: auto;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c8.c8.c8.c8.c8 {
-    pointer-events: auto;
-  }
-}
-
-<div>
-  <div
-    class="c0"
-    data-blade-component="table"
-  >
-    <table
-      class="css-1fddph5-Table"
-      data-blade-component="table"
-      data-table-library_table=""
-      role="table"
-      style="--data-table-library_grid-template-columns: 150px 150px 150px 150px 150px 150px;"
-    >
-      <thead
-        class="c1 css-1a28xfp-Header"
-        data-blade-component="table-header"
-        role="rowgroup"
-      >
-        <tr
-          class="tr tr-header css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
-          data-blade-component="table-header-row"
-          data-table-library_tr-header=""
-          role="rowheader"
-        >
-          <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-header-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnheader"
-            tabindex="0"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                Payment ID
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-header-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnheader"
-            tabindex="0"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                Amount
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-header-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnheader"
-            tabindex="0"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                Status
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-header-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnheader"
-            tabindex="0"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                Type
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-header-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnheader"
-            tabindex="0"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                Method
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-header-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnheader"
-            tabindex="0"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                Name
-              </p>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody
-        class="c4 css-8eb0m3-Body"
-        data-blade-component="table-body"
-        data-table-library_body=""
-      >
-        <tr
-          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
-          data-blade-component="table-row"
-          data-table-library_tr-body=""
-          role="row"
-        >
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    rzp01
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  100
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    pending
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    credit
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    Netbanking
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    John Doe
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr
-          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
-          data-blade-component="table-row"
-          data-table-library_tr-body=""
-          role="row"
-        >
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    rzp02
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  240
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    pending
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    credit
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    UPI
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-          <td
-            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
-            data-blade-component="table-cell"
-            data-table-library_td=""
-            role="cell"
-            tabindex="0"
-          >
-            <div>
-              <div
-                class="c7 cell-wrapper-base"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c8 c9 cell-wrapper"
-                  data-blade-component="base-box"
-                  pointer-events="auto"
-                >
-                  <p
-                    class="c10"
-                    data-blade-component="text"
-                  >
-                    Jane Doe
-                  </p>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-      <tfoot
-        class="c11 css-1a28xfp-Header"
-        data-blade-component="table-footer"
-        role="rowgroup"
-      >
-        <tr
-          class="tr tr-footer css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
-          data-blade-component="table-footer-row"
-          data-table-library_tr-header=""
-          role="rowfooter"
-        >
-          <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-footer-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnfooter"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                -
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-footer-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnfooter"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                -
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-footer-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnfooter"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                -
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-footer-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnfooter"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                -
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-footer-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnfooter"
-          >
-            <div>
-              <p
-                class="c3"
-                data-blade-component="text"
-              >
-                -
-              </p>
-            </div>
-          </th>
-          <th
-            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
-            data-blade-component="table-footer-cell"
-            data-hide="false"
-            data-resize-min-width="75"
-            data-table-library_th=""
-            role="columnfooter"
-          >
-            <div>
-              <p
-                class="c3"
                 data-blade-component="text"
               >
                 -

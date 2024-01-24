@@ -19,7 +19,7 @@ describe('<Display />', () => {
   it('should render Display with variant "small" and contrast "high"', () => {
     const displayText = 'Displaying Landing Screen Display';
     const { toJSON, getByText } = renderWithTheme(
-      <Display type="normal" size="small" contrast="high">
+      <Display color="surface.text.gray.normal" size="small">
         {displayText}
       </Display>,
     );
@@ -31,7 +31,7 @@ describe('<Display />', () => {
     it(`should render Display with variant "${size}"`, () => {
       const displayText = 'Displaying Landing Screen Display';
       const { toJSON, getByText } = renderWithTheme(
-        <Display type="normal" size={size}>
+        <Display color="surface.text.gray.normal" size={size}>
           {displayText}
         </Display>,
       );
@@ -43,7 +43,7 @@ describe('<Display />', () => {
   it('should render Display with color', () => {
     const displayText = 'Displaying Landing Page Display';
     const { toJSON } = renderWithTheme(
-      <Display color="surface.text.subtle.highContrast">{displayText}</Display>,
+      <Display color="surface.text.gray.subtle">{displayText}</Display>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
@@ -52,7 +52,7 @@ describe('<Display />', () => {
     const { toJSON } = renderWithTheme(
       <Display>
         Supercharge your business with the all‑powerful{' '}
-        <Display as="span" color="feedback.information.action.text.primary.default.lowContrast">
+        <Display as="span" color="interactive.text.information.subtle">
           Payment Gateway
         </Display>
       </Display>,
@@ -63,7 +63,7 @@ describe('<Display />', () => {
   it('should render with as prop without errors', () => {
     const displayText = 'Displaying Landing Screen Display';
     const { getByText } = renderWithTheme(
-      <Display as="span" type="subdued" size="large">
+      <Display as="span" color="surface.text.gray.muted" size="large">
         {displayText}
       </Display>,
     );

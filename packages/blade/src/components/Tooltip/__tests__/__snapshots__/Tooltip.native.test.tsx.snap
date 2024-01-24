@@ -28,24 +28,22 @@ exports[`<Tooltip /> should render 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
-    activeBorderColor="hsla(230, 100%, 42%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
+    borderRadius="4px"
+    borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
-    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
-    focusBorderColor="hsla(227, 100%, 45%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
+    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
+    focusBorderColor="hsla(227, 100%, 59%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
-    hoverBorderColor="hsla(223, 95%, 48%, 1)"
+    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
+    hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -67,15 +65,16 @@ exports[`<Tooltip /> should render 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderRadius": 4,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "justifyContent": "center",
           "minHeight": 36,
+          "overflow": "hidden",
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
@@ -86,8 +85,8 @@ exports[`<Tooltip /> should render 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
         },
       ]
     }
@@ -110,28 +109,31 @@ exports[`<Tooltip /> should render 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+            "zIndex": 1,
           },
           {
             "opacity": 1,
           },
         ]
       }
+      zIndex={1}
     >
       <Text
         accessible={true}
-        color="action.text.primary.default"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -225,8 +227,8 @@ exports[`<Tooltip /> should render 1`] = `
                 "position": "absolute",
               },
               {
-                "backgroundColor": "hsla(216, 33%, 29%, 1)",
-                "borderColor": "hsla(216, 27%, 36%, 1)",
+                "backgroundColor": "hsla(211, 29%, 26%, 1)",
+                "borderColor": "hsla(211, 26%, 34%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 1,
@@ -236,14 +238,14 @@ exports[`<Tooltip /> should render 1`] = `
                 "zIndex": 1100,
               },
               {
-                "elevation": 4,
-                "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+                "elevation": 8,
+                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
                 "shadowOffset": {
-                  "height": 3,
+                  "height": 2,
                   "width": 0,
                 },
-                "shadowOpacity": 0.12,
-                "shadowRadius": 2,
+                "shadowOpacity": 0.2,
+                "shadowRadius": 4,
               },
             ]
           }
@@ -258,22 +260,23 @@ exports[`<Tooltip /> should render 1`] = `
         >
           <Text
             accessible={true}
-            color="feedback.text.neutral.highContrast"
+            color="surface.text.staticWhite.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(0, 0%, 100%, 0.88)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -347,12 +350,12 @@ exports[`<Tooltip /> should render 1`] = `
                       "strokeWidth",
                     ]
                   }
-                  stroke={4282603381}
+                  stroke={4282406509}
                   strokeWidth="2px"
                 />
                 <RNSVGPath
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={4281484642}
+                  fill={4281287254}
                   propList={
                     [
                       "fill",
@@ -399,24 +402,22 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
-    activeBorderColor="hsla(230, 100%, 42%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
+    borderRadius="4px"
+    borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
-    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
-    focusBorderColor="hsla(227, 100%, 45%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
+    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
+    focusBorderColor="hsla(227, 100%, 59%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
-    hoverBorderColor="hsla(223, 95%, 48%, 1)"
+    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
+    hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -438,15 +439,16 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderRadius": 4,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "justifyContent": "center",
           "minHeight": 36,
+          "overflow": "hidden",
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
@@ -457,8 +459,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
         },
       ]
     }
@@ -481,28 +483,31 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+            "zIndex": 1,
           },
           {
             "opacity": 1,
           },
         ]
       }
+      zIndex={1}
     >
       <Text
         accessible={true}
-        color="action.text.primary.default"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -596,8 +601,8 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                 "position": "absolute",
               },
               {
-                "backgroundColor": "hsla(216, 33%, 29%, 1)",
-                "borderColor": "hsla(216, 27%, 36%, 1)",
+                "backgroundColor": "hsla(211, 29%, 26%, 1)",
+                "borderColor": "hsla(211, 26%, 34%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 1,
@@ -607,14 +612,14 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                 "zIndex": 9999,
               },
               {
-                "elevation": 4,
-                "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+                "elevation": 8,
+                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
                 "shadowOffset": {
-                  "height": 3,
+                  "height": 2,
                   "width": 0,
                 },
-                "shadowOpacity": 0.12,
-                "shadowRadius": 2,
+                "shadowOpacity": 0.2,
+                "shadowRadius": 4,
               },
             ]
           }
@@ -629,22 +634,23 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
         >
           <Text
             accessible={true}
-            color="feedback.text.neutral.highContrast"
+            color="surface.text.staticWhite.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(0, 0%, 100%, 0.88)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -718,12 +724,12 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                       "strokeWidth",
                     ]
                   }
-                  stroke={4282603381}
+                  stroke={4282406509}
                   strokeWidth="2px"
                 />
                 <RNSVGPath
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={4281484642}
+                  fill={4281287254}
                   propList={
                     [
                       "fill",
@@ -770,24 +776,22 @@ exports[`<Tooltip /> should render with title 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
-    activeBorderColor="hsla(230, 100%, 42%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
+    borderRadius="4px"
+    borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
-    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
-    focusBorderColor="hsla(227, 100%, 45%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
+    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
+    focusBorderColor="hsla(227, 100%, 59%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
-    hoverBorderColor="hsla(223, 95%, 48%, 1)"
+    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
+    hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -809,15 +813,16 @@ exports[`<Tooltip /> should render with title 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderRadius": 4,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "justifyContent": "center",
           "minHeight": 36,
+          "overflow": "hidden",
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
@@ -828,8 +833,8 @@ exports[`<Tooltip /> should render with title 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
         },
       ]
     }
@@ -852,28 +857,31 @@ exports[`<Tooltip /> should render with title 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+            "zIndex": 1,
           },
           {
             "opacity": 1,
           },
         ]
       }
+      zIndex={1}
     >
       <Text
         accessible={true}
-        color="action.text.primary.default"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -967,8 +975,8 @@ exports[`<Tooltip /> should render with title 1`] = `
                 "position": "absolute",
               },
               {
-                "backgroundColor": "hsla(216, 33%, 29%, 1)",
-                "borderColor": "hsla(216, 27%, 36%, 1)",
+                "backgroundColor": "hsla(211, 29%, 26%, 1)",
+                "borderColor": "hsla(211, 26%, 34%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
                 "borderWidth": 1,
@@ -978,14 +986,14 @@ exports[`<Tooltip /> should render with title 1`] = `
                 "zIndex": 1100,
               },
               {
-                "elevation": 4,
-                "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+                "elevation": 8,
+                "shadowColor": "hsla(217, 56%, 17%, 0.4)",
                 "shadowOffset": {
-                  "height": 3,
+                  "height": 2,
                   "width": 0,
                 },
-                "shadowOpacity": 0.12,
-                "shadowRadius": 2,
+                "shadowOpacity": 0.2,
+                "shadowRadius": 4,
               },
             ]
           }
@@ -1000,21 +1008,22 @@ exports[`<Tooltip /> should render with title 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.normal.highContrast"
+            color="surface.text.staticWhite.normal"
             data-blade-component="text"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
-            fontWeight="bold"
+            fontWeight="semibold"
             lineHeight={100}
             style={
               [
                 {
                   "color": "hsla(0, 0%, 100%, 1)",
-                  "fontFamily": "Lato",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
-                  "fontWeight": "700",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -1033,22 +1042,23 @@ exports[`<Tooltip /> should render with title 1`] = `
           </Text>
           <Text
             accessible={true}
-            color="feedback.text.neutral.highContrast"
+            color="surface.text.staticWhite.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(0, 0%, 100%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(0, 0%, 100%, 0.88)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -1122,12 +1132,12 @@ exports[`<Tooltip /> should render with title 1`] = `
                       "strokeWidth",
                     ]
                   }
-                  stroke={4282603381}
+                  stroke={4282406509}
                   strokeWidth="2px"
                 />
                 <RNSVGPath
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={4281484642}
+                  fill={4281287254}
                   propList={
                     [
                       "fill",

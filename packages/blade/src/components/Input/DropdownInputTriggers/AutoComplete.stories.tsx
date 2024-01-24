@@ -200,12 +200,7 @@ export default {
           componentDescription="The AutoComplete component is SelectInput-like component where you can type text and search through the list"
           componentName="AutoComplete"
           note="AutoComplete is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
-          figmaURL={{
-            paymentTheme:
-              'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590-171090',
-            bankingTheme:
-              'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=13344-389834',
-          }}
+          figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590-171090'"
         >
           <Title>Usage</Title>
           <Sandbox showConsole>
@@ -534,9 +529,11 @@ export const InternalWithValidations = (): React.ReactElement => {
   return (
     <Dropdown
       selectionType="single"
-      onDismiss={() => {
-        console.log('dismiss');
-        setIsDismissed(true);
+      onOpenChange={(isOpen) => {
+        if (!isOpen) {
+          console.log('dismiss');
+          setIsDismissed(true);
+        }
       }}
     >
       <AutoComplete

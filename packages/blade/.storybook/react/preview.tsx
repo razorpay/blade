@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { theme, toggleHiddenStoryStyle } from './manager';
 import { global } from '@storybook/design-system';
 import { BladeProvider } from '../../src/components';
-import { paymentTheme, bankingTheme } from '../../src/tokens/theme';
+import { bladeTheme } from '../../src/tokens/theme';
 import { createTheme } from '../../src/tokens/theme/createTheme';
 import ErrorBoundary from './ErrorBoundary';
 import { INTERNAL_STORY_ADDON_PARAM } from './constants';
@@ -84,13 +84,15 @@ export const parameters = {
         if (context.store.globals.globals.brandColor) {
           return createTheme({ brandColor: context.store.globals.globals.brandColor });
         }
-        if (context.store.globals.globals.themeTokenName === 'paymentTheme') {
-          return paymentTheme;
-        }
-        if (context.store.globals.globals.themeTokenName === 'bankingTheme') {
-          return bankingTheme;
-        }
+        return bladeTheme;
       };
+
+      if (context.store.globals.globals.version === '10' && window.top) {
+        window.top.location.href =
+          'https://v10--61c19ee8d3d282003ac1d81c.chromatic.com' +
+          window.top.location.pathname +
+          window.top.location.search;
+      }
       return (
         <DocsContainer context={context}>
           <BladeProvider
@@ -108,25 +110,26 @@ export const parameters = {
       summary: styled.summary`
         font-family: ${theme.fontBase};
         color: ${theme.textColor};
-        font-weight: normal;
+        font-size: 14px;
         cursor: pointer;
       `,
-      li: styled.li`
-        :not(:first-child) {
-          padding-top: 12px;
-        }
-        font-size: 14px;
-
-        & :not(pre) > code {
-          margin: 0 2px;
-          padding: 3px 5px;
-          white-space: nowrap;
-          border-radius: 3px;
-          font-size: 13px;
-          border: 1px solid #eeeeee;
-          background-color: #f8f8f8;
-        }
+      a: styled.a`
+        color: ${theme.colorPrimary};
+        font-weight: 500;
       `,
+      // Setting font-weight back to 600 in headings since storybook tries to override it
+      ...(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] as const).reduce<Record<`h${number}`, string>>(
+        (headingOverride, headingLevel) => {
+          headingOverride[headingLevel] = styled[headingLevel]`
+            & a {
+              font-weight: 600;
+            }
+          `;
+
+          return headingOverride;
+        },
+        {},
+      ),
     },
   },
 };
@@ -134,7 +137,6 @@ export const parameters = {
 const StoryCanvas = styled.div<{ context }>(
   ({ theme, context }) =>
     `
-      border: ${theme.border.width.thin}px solid ${theme.colors.surface.border.subtle.lowContrast};
       width: 100%;
       height: ${context.viewMode === 'story' ? '100vh' : '100%'};
       overflow: auto;
@@ -146,12 +148,12 @@ const StoryCanvas = styled.div<{ context }>(
           ? '0rem'
           : '2rem'
       };
+      background-color: ${theme.colors.surface.background.gray.subtle};
       border-radius: ${
         context.viewMode === 'story'
           ? `${theme.border.radius.none}px`
           : `${theme.border.radius.medium}px`
       };
-      background: ${theme.colors.surface.background.level1.lowContrast};
     `,
 );
 
@@ -162,13 +164,15 @@ export const decorators = [
       if (context.globals.brandColor) {
         return createTheme({ brandColor: context.globals.brandColor });
       }
-      if (context.globals.themeTokenName === 'paymentTheme') {
-        return paymentTheme;
-      }
-      if (context.globals.themeTokenName === 'bankingTheme') {
-        return bankingTheme;
-      }
+      return bladeTheme;
     };
+
+    if (context.globals.version === '10' && window.top) {
+      window.top.location.href =
+        'https://v10--61c19ee8d3d282003ac1d81c.chromatic.com' +
+        window.top.location.pathname +
+        window.top.location.search;
+    }
 
     return (
       <ErrorBoundary>
@@ -188,19 +192,21 @@ export const decorators = [
 ];
 
 export const globalTypes = {
-  themeTokenName: {
-    name: 'Theme Tokens',
-    description: 'Theme Tokens for Blade',
-    defaultValue: 'paymentTheme',
+  version: {
+    name: 'Blade Documentation Version',
+    description: 'Version of the Blade',
+    defaultValue: '11',
     toolbar: {
-      icon: 'paintbrush',
+      icon: 'time',
+      title: ' v11 - Rebranded',
       // Array of plain string values or MenuItem shape (see below)
       items: [
-        { value: 'paymentTheme', title: 'Payment' },
-        { value: 'bankingTheme', title: 'Banking' },
+        { value: '10', title: ' v10 - Old' },
+        { value: '11', title: ' v11 - Rebranded', default: true },
       ],
+      dynamicTitle: true,
       // Property that specifies if the name of the item will be displayed
-      showName: true,
+      showName: false,
     },
   },
   colorScheme: {
@@ -219,12 +225,13 @@ export const globalTypes = {
       showName: true,
     },
   },
+  // TODO: Rebranding - Uncomment this when we fix white-labeling
   brandColor: {
     name: 'Brand Color',
     description: 'Brand Color (You can pass any valid color to BladeProvider)',
     defaultValue: undefined,
     toolbar: {
-      icon: 'contrast',
+      icon: 'paintbrush',
       // Array of plain string values or MenuItem shape (see below)
       items: [
         { value: undefined, title: 'Razorpay' },

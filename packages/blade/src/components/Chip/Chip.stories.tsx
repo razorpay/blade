@@ -27,12 +27,7 @@ const Page = (): React.ReactElement => {
           </Link>
         </Text>
       }
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=52377%3A23885&mode=design&t=y7gUIBIzzNMRd3w6-1',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=18358%3A3135&mode=design&t=FzNrQV6ZZaLoxzcj-1',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=52377%3A23885&mode=design&t=y7gUIBIzzNMRd3w6-1"
     />
   );
 };
@@ -81,29 +76,16 @@ export default {
         },
       },
     },
-    intent: {
-      description: 'This is deprecated in favor of the `color` prop.',
-      table: {
-        category: propsCategory.CHIP,
-        type: {
-          summary: '"none" | "positive" | "negative"',
-        },
-      },
-      options: ['none', 'positive', 'negative'],
-      control: {
-        type: 'radio',
-      },
-    },
     color: {
       description:
         'Sets the color of the Chip. This overwrites the color set by the parent `ChipGroup` component',
       table: {
         category: propsCategory.CHIP,
         type: {
-          summary: '"default" | "positive" | "negative"',
+          summary: '"primary" | "positive" | "negative"',
         },
       },
-      options: ['default', 'positive', 'negative'],
+      options: ['primary', 'positive', 'negative'],
       control: {
         type: 'radio',
       },
@@ -138,5 +120,5 @@ const ChipTemplate: StoryFn<typeof ChipComponent> = ({ children, ...args }) => {
 export const Default = ChipTemplate.bind({});
 Default.storyName = 'Default';
 Default.args = {
-  color: 'default',
+  color: 'primary',
 };

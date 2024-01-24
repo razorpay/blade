@@ -4,6 +4,8 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
 
+const colors = ['information', 'negative', 'neutral', 'notice', 'positive'] as const;
+
 describe('<ProgressBar />', () => {
   it('should render ProgressBar with default props', () => {
     const { container } = renderWithTheme(<ProgressBar label="Label" value={20} />);
@@ -48,79 +50,11 @@ describe('<ProgressBar />', () => {
     expect(getByRole('meter')).toBeTruthy();
   });
 
-  it('should render high contrast ProgressBar', () => {
-    const { container } = renderWithTheme(<ProgressBar contrast="high" value={20} />);
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast positive intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="positive" contrast="low" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast positive intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="positive" contrast="high" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast negative intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="negative" contrast="low" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast negative intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="negative" contrast="high" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast notice intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="notice" contrast="low" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast notice intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="notice" contrast="high" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast information intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="information" contrast="low" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast information intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="information" contrast="high" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render low contrast neutral intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="neutral" contrast="low" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
-  it('should render high contrast neutral intent ProgressBar', () => {
-    const { container } = renderWithTheme(
-      <ProgressBar intent="neutral" contrast="high" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
+  colors.forEach((color) => {
+    it(`should render color=${color} ProgressBar`, () => {
+      const { container } = renderWithTheme(<ProgressBar color={color} value={20} />);
+      expect(container).toMatchSnapshot();
+    });
   });
 
   it('should have the right accessibility attributes for progress variant', () => {

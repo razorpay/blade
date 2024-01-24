@@ -116,23 +116,24 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.subdued.lowContrast"
+                    color="surface.text.gray.subtle"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={75}
                     fontStyle="normal"
-                    fontWeight="bold"
-                    lineHeight={50}
+                    fontWeight="semibold"
+                    lineHeight={75}
                     numberOfLines={2}
                     style={
                       [
                         {
-                          "color": "hsla(217, 18%, 45%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
-                          "fontWeight": "700",
-                          "lineHeight": 16,
+                          "fontWeight": "600",
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -179,7 +180,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   >
                     <Text
                       accessible={true}
-                      color="surface.text.normal.lowContrast"
+                      color="surface.text.gray.normal"
                       data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
@@ -189,11 +190,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       style={
                         [
                           {
-                            "color": "hsla(217, 56%, 17%, 1)",
-                            "fontFamily": "Lato",
+                            "color": "hsla(212, 39%, 16%, 1)",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -219,8 +221,8 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+                    "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                    "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": 1,
                     "borderTopLeftRadius": 2,
@@ -356,15 +358,16 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         style={
                           {
                             "backgroundColor": "transparent",
-                            "color": "hsla(214, 18%, 69%, 1)",
+                            "color": "hsla(211, 20%, 52%, 0.32)",
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "fontFamily": "Lato",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
                             "height": 36,
+                            "letterSpacing": 0,
                             "marginBottom": 0,
                             "marginLeft": 0,
                             "marginRight": 0,
@@ -383,7 +386,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.placeholder.lowContrast"
+                          color="surface.text.gray.disabled"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -394,11 +397,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(214, 18%, 69%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(211, 20%, 52%, 0.32)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -573,7 +577,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         <RNSVGPath
                           clipRule={0}
                           d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4279445060}
+                          fill={4285959847}
                           fillRule={0}
                           propList={
                             [
@@ -632,7 +636,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         <RNSVGPath
                           clipRule={0}
                           d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          fill={4279445060}
+                          fill={4285959847}
                           fillRule={0}
                           propList={
                             [
@@ -650,7 +654,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 style={
                   [
                     {
-                      "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                      "backgroundColor": "hsla(227, 100%, 59%, 1)",
                       "bottom": 0,
                       "height": 1,
                       "left": 0,
@@ -763,19 +767,19 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   "width": "100%",
                 },
                 {
-                  "elevation": 12,
-                  "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+                  "elevation": 16,
+                  "shadowColor": "hsla(217, 56%, 17%, 0.55)",
                   "shadowOffset": {
-                    "height": 8,
+                    "height": 4,
                     "width": 0,
                   },
-                  "shadowOpacity": 0.1,
-                  "shadowRadius": 4,
+                  "shadowOpacity": 0.17,
+                  "shadowRadius": 6,
                 },
                 [
                   {
                     "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                    "borderColor": "hsla(216, 15%, 54%, 0.18)",
+                    "borderColor": "hsla(211, 20%, 52%, 0.18)",
                     "borderRadius": 4,
                     "borderStyle": "solid",
                     "borderWidth": 1,
@@ -888,23 +892,23 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           }
                         >
                           <Text
-                            accessibilityRole="header"
                             accessible={true}
-                            color="surface.text.normal.lowContrast"
-                            data-blade-component="heading"
+                            color="surface.text.gray.normal"
+                            data-blade-component="text"
                             fontFamily="text"
                             fontSize={200}
                             fontStyle="normal"
-                            fontWeight="bold"
-                            lineHeight={300}
+                            fontWeight="semibold"
+                            lineHeight={200}
                             style={
                               [
                                 {
-                                  "color": "hsla(217, 56%, 17%, 1)",
-                                  "fontFamily": "Lato",
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
                                   "fontSize": 16,
                                   "fontStyle": "normal",
-                                  "fontWeight": "700",
+                                  "fontWeight": "600",
+                                  "letterSpacing": 0,
                                   "lineHeight": 24,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -927,22 +931,21 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   </View>
                 </View>
                 <View
-                  borderBottomColor="surface.border.normal.lowContrast"
+                  borderBottomColor="surface.border.gray.muted"
                   borderPosition="borderBottom"
-                  borderWidth="none"
                   data-blade-component="divider"
                   dividerStyle="solid"
                   isDividerHorizontal={true}
                   style={
                     [
                       {
-                        "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                        "borderStyle": "solid",
-                        "borderWidth": 0,
+                        "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                        "borderBottomStyle": "solid",
                       },
                       {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
+                        "borderWidth": 0,
                         "flexGrow": 1,
                       },
                     ]
@@ -989,7 +992,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 getItemCount={[Function]}
                 isInBottomSheet={false}
                 keyExtractor={[Function]}
-                marginBottom={0}
+                marginBottom="0px"
                 onContentSizeChange={[Function]}
                 onLayout={[Function]}
                 onMomentumScrollBegin={[Function]}
@@ -1003,7 +1006,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 style={
                   [
                     {
-                      "marginBottom": 0,
+                      "marginBottom": "0pxpx",
                       "maxHeight": 300,
                       "paddingBottom": 8,
                       "paddingLeft": 8,
@@ -1125,7 +1128,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.normal.lowContrast"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1136,11 +1139,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(217, 56%, 17%, 1)",
-                                  "fontFamily": "Lato",
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1284,7 +1288,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                         >
                           <Text
                             accessible={true}
-                            color="surface.text.normal.lowContrast"
+                            color="interactive.text.gray.normal"
                             data-blade-component="text"
                             fontFamily="text"
                             fontSize={100}
@@ -1295,11 +1299,12 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                             style={
                               [
                                 {
-                                  "color": "hsla(217, 56%, 17%, 1)",
-                                  "fontFamily": "Lato",
+                                  "color": "hsla(212, 39%, 16%, 1)",
+                                  "fontFamily": "Inter",
                                   "fontSize": 14,
                                   "fontStyle": "normal",
                                   "fontWeight": "400",
+                                  "letterSpacing": 0,
                                   "lineHeight": 20,
                                   "marginBottom": 0,
                                   "marginLeft": 0,
@@ -1356,22 +1361,21 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               }
             >
               <View
-                borderBottomColor="surface.border.normal.lowContrast"
+                borderBottomColor="surface.border.gray.muted"
                 borderPosition="borderBottom"
-                borderWidth="none"
                 data-blade-component="divider"
                 dividerStyle="solid"
                 isDividerHorizontal={true}
                 style={
                   [
                     {
-                      "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
+                      "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                      "borderBottomStyle": "solid",
                     },
                     {
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
+                      "borderWidth": 0,
                       "flexGrow": 1,
                     },
                   ]

@@ -1,7 +1,6 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
 import BaseBox from '~components/Box/BaseBox';
@@ -14,12 +13,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentName="Alert"
       componentDescription="Alerts are messages that communicate information to users about any significant changes or explanations inside the system in a prominent way."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11098%3A286031',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789"
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
@@ -65,8 +59,8 @@ const meta: Meta<AlertProps> = {
       'Currently you can only accept payments in international currencies using PayPal. You cannot accept payments in INR (₹) using PayPal.',
     isFullWidth: false,
     isDismissible: true,
-    contrast: 'low',
-    intent: 'information',
+    emphasis: 'subtle',
+    color: 'information',
     actions: {
       primary: {
         text: 'Primary Action',
@@ -102,15 +96,15 @@ const AlertTemplate: StoryFn<typeof AlertComponent> = ({ ...args }) => {
 
 export const Default = AlertTemplate.bind({});
 
-export const HighContrast = AlertTemplate.bind({});
-HighContrast.args = {
-  contrast: 'high',
-  intent: 'notice',
+export const HighEmphasis = AlertTemplate.bind({});
+HighEmphasis.args = {
+  emphasis: 'intense',
+  color: 'notice',
 };
-HighContrast.parameters = {
+HighEmphasis.parameters = {
   docs: {
     description: {
-      story: 'A high contrast Alert for more prominent look',
+      story: 'A high emphasis Alert for more prominent look',
     },
   },
 };
@@ -143,7 +137,7 @@ export const DescriptionOnly = AlertTemplate.bind({});
 DescriptionOnly.args = {
   description:
     'The payment was made 6 months ago, therefore you can’t issue refund to this merchant.',
-  intent: 'notice',
+  color: 'notice',
   actions: undefined,
   title: undefined,
 };
@@ -159,7 +153,7 @@ export const PrimaryActionOnly = AlertTemplate.bind({});
 PrimaryActionOnly.args = {
   description:
     'There was some internal error while fetching the merchants list, this might also be due to the poor internet connection.',
-  intent: 'negative',
+  color: 'negative',
   actions: {
     primary: {
       text: 'Try Refetching',
@@ -189,7 +183,7 @@ export const FullWidth: StoryFn<typeof AlertComponent> = ({ ...args }) => {
 };
 FullWidth.args = {
   description: 'Currently you can only accept payments in international currencies using PayPal.',
-  intent: 'notice',
+  color: 'notice',
   actions: undefined,
   title: undefined,
   isFullWidth: true,
@@ -214,7 +208,7 @@ export const FullWidthWithActions: StoryFn<typeof AlertComponent> = ({ ...args }
 };
 FullWidthWithActions.args = {
   description: 'Currently you can only accept payments in international currencies using PayPal.',
-  intent: 'negative',
+  color: 'negative',
   isFullWidth: true,
 };
 FullWidthWithActions.parameters = {

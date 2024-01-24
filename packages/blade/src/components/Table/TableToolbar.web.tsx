@@ -58,7 +58,7 @@ const _TableToolbar = ({
     deselectAllRows,
     currentPaginationState,
     totalItems,
-    surfaceLevel,
+    backgroundColor,
   } = useTableContext();
   const { platform } = useTheme();
   const isSelected = selectedRows && selectedRows.length > 0;
@@ -83,7 +83,7 @@ const _TableToolbar = ({
   );
 
   return (
-    <BaseBox backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`}>
+    <BaseBox backgroundColor={backgroundColor}>
       <ToolbarWrapper
         display="flex"
         backgroundColor={
@@ -96,7 +96,11 @@ const _TableToolbar = ({
       >
         <BaseBox display="flex" alignItems="center" flex={1}>
           <BaseBox>
-            <Text size="medium" weight="bold">
+            <Text
+              size="medium"
+              weight="medium"
+              color={isSelected ? 'surface.text.gray.normal' : 'surface.text.gray.subtle'}
+            >
               {selectedTitle ?? title ?? defaultTitle}
             </Text>
           </BaseBox>

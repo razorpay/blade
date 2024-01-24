@@ -6,12 +6,11 @@ import { componentIds } from './componentIds';
 import type { StyledActionListItemProps } from './styles/getBaseActionListItemStyles';
 import { validateActionListItemProps, getNormalTextColor } from './actionListUtils';
 import { getActionListItemRole, getActionListSectionRole, isRoleMenu } from './getA11yRoles';
-import { useActionListContext } from './ActionList';
 import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import type { Feedback } from '~tokens/theme/theme';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -67,7 +66,7 @@ type ActionListItemProps = {
    */
   titleSuffix?: React.ReactElement;
   isDisabled?: boolean;
-  intent?: Extract<Feedback, 'negative'>;
+  intent?: Extract<FeedbackColors, 'negative'>;
   /**
    * Can be used in combination of `onClick` to highlight item as selected in Button Triggers.
    *
@@ -117,7 +116,6 @@ const _ActionListSection = ({
   _hideDivider,
   _sectionChildValues,
 }: ActionListSectionProps): React.ReactElement => {
-  const { surfaceLevel } = useActionListContext();
   const { hasAutoCompleteInBottomSheetHeader, dropdownTriggerer, filteredValues } = useDropdown();
   const hasAutoComplete =
     hasAutoCompleteInBottomSheetHeader ||
@@ -146,13 +144,12 @@ const _ActionListSection = ({
         role: getActionListSectionRole(),
         label: title,
       })}
-      backgroundColor={`surface.background.level${surfaceLevel}.lowContrast`}
       {...metaAttribute({ name: MetaConstants.ActionListSection, testID })}
     >
       {/* We're announcing title as group label so we can hide this */}
       {isSectionVisible ? (
         <StyledActionListSectionTitle {...makeAccessible({ hidden: true })}>
-          <Text color="surface.text.muted.lowContrast" size="small" weight="bold">
+          <Text color="surface.text.gray.muted" size="small" weight="semibold">
             {title}
           </Text>
         </StyledActionListSectionTitle>
@@ -180,12 +177,13 @@ const ActionListSection = assignWithoutSideEffects(_ActionListSection, {
 const _ActionListItemIcon = ({ icon }: { icon: IconComponent }): React.ReactElement => {
   const Icon = icon;
   const { intent, isDisabled } = React.useContext(ActionListItemContext);
+  const iconState = isDisabled ? 'disabled' : 'muted';
   return (
     <Icon
       color={
         intent === 'negative'
-          ? 'feedback.icon.negative.lowContrast'
-          : getNormalTextColor(isDisabled, { isMuted: true })
+          ? 'feedback.icon.negative.intense'
+          : `interactive.icon.gray.${iconState}`
       }
       size="medium"
     />
@@ -313,7 +311,7 @@ const _ActionListItemBody = ({
             truncateAfterLines={1}
             color={
               intent === 'negative'
-                ? 'feedback.text.negative.lowContrast'
+                ? 'feedback.text.negative.intense'
                 : getNormalTextColor(isDisabled)
             }
           >

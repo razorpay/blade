@@ -1,5 +1,5 @@
 import overrideTheme from '../overrideTheme';
-import { paymentTheme, bankingTheme } from '../';
+import { bladeTheme } from '../';
 import type { ThemeTokens } from '../../theme';
 import cloneDeep from '~utils/lodashButBetter/cloneDeep';
 
@@ -8,19 +8,21 @@ const invalidBaseThemeError =
   '[Blade: overrideTheme]: The base theme provided is not a valid Blade theme';
 
 describe('overrideTheme', () => {
-  it('should return new theme based on overrides for paymentTheme', () => {
+  it('should return new theme based on overrides for bladeTheme', () => {
     const overrides = {
       colors: {
         onLight: {
-          brand: {
-            primary: {
-              300: 'someothercolor',
+          surface: {
+            background: {
+              primary: {
+                intense: 'someothercolor',
+              },
             },
           },
           feedback: {
             background: {
               positive: {
-                highContrast: 'someothercolor',
+                intense: 'someothercolor',
               },
             },
           },
@@ -28,12 +30,13 @@ describe('overrideTheme', () => {
       },
     };
 
-    const overridenTheme: ThemeTokens = cloneDeep(paymentTheme);
-    overridenTheme.colors.onLight.brand.primary[300] = overrides.colors.onLight.brand.primary[300];
-    overridenTheme.colors.onLight.feedback.background.positive.highContrast =
-      overrides.colors.onLight.feedback.background.positive.highContrast;
+    const overridenTheme: ThemeTokens = cloneDeep(bladeTheme);
+    overridenTheme.colors.onLight.surface.background.primary.intense =
+      overrides.colors.onLight.surface.background.primary.intense;
+    overridenTheme.colors.onLight.feedback.background.positive.intense =
+      overrides.colors.onLight.feedback.background.positive.intense;
 
-    const overrideThemeResult = overrideTheme({ baseThemeTokens: paymentTheme, overrides });
+    const overrideThemeResult = overrideTheme({ baseThemeTokens: bladeTheme, overrides });
     expect(overrideThemeResult).toEqual(overridenTheme);
   });
 
@@ -41,15 +44,17 @@ describe('overrideTheme', () => {
     const overrides = {
       colors: {
         onLight: {
-          brand: {
-            primary: {
-              300: 'someothercolor',
+          surface: {
+            background: {
+              primary: {
+                intense: 'someothercolor',
+              },
             },
           },
           feedback: {
             background: {
               positive: {
-                highContrast: 'someothercolor',
+                intense: 'someothercolor',
               },
             },
           },
@@ -57,12 +62,13 @@ describe('overrideTheme', () => {
       },
     };
 
-    const overridenTheme: ThemeTokens = cloneDeep(bankingTheme);
-    overridenTheme.colors.onLight.brand.primary[300] = overrides.colors.onLight.brand.primary[300];
-    overridenTheme.colors.onLight.feedback.background.positive.highContrast =
-      overrides.colors.onLight.feedback.background.positive.highContrast;
+    const overridenTheme: ThemeTokens = cloneDeep(bladeTheme);
+    overridenTheme.colors.onLight.surface.background.primary.intense =
+      overrides.colors.onLight.surface.background.primary.intense;
+    overridenTheme.colors.onLight.feedback.background.positive.intense =
+      overrides.colors.onLight.feedback.background.positive.intense;
 
-    const overrideThemeResult = overrideTheme({ baseThemeTokens: bankingTheme, overrides });
+    const overrideThemeResult = overrideTheme({ baseThemeTokens: bladeTheme, overrides });
     expect(overrideThemeResult).toEqual(overridenTheme);
   });
 
@@ -71,16 +77,18 @@ describe('overrideTheme', () => {
     const overrides = {
       colors: {
         onLight: {
-          brand: {
-            primary: {
-              // this will fail the test since empty value is not allowed
-              300: '',
+          surface: {
+            background: {
+              primary: {
+                // this will fail test since empty values are not allowed
+                intense: '',
+              },
             },
           },
           feedback: {
             background: {
               positive: {
-                highContrast: 'someothercolor',
+                intense: 'someothercolor',
               },
             },
           },
@@ -90,7 +98,7 @@ describe('overrideTheme', () => {
 
     expect(() => {
       overrideTheme({
-        baseThemeTokens: paymentTheme,
+        baseThemeTokens: bladeTheme,
         overrides,
       });
     }).toThrowError(invalidOverridesObjectError);
@@ -102,16 +110,18 @@ describe('overrideTheme', () => {
     const invalidBaseTheme = {
       colors: {
         onLight: {
-          brand: {
-            primary: {
-              // this will fail the test since empty value is not allowed
-              300: '',
+          surface: {
+            background: {
+              primary: {
+                // this will fail test since empty values are not allowed
+                intense: '',
+              },
             },
           },
           feedback: {
             background: {
               positive: {
-                highContrast: 'someothercolor',
+                intense: 'someothercolor',
               },
             },
           },

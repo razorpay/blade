@@ -105,70 +105,68 @@ const paddingX: TabItemPadding = {
   },
 };
 
+const trackColor = 'surface.border.gray.muted';
 const textColor = {
   selected: {
-    default: 'brand.primary.500',
-    hover: 'brand.primary.600',
-    focus: 'brand.primary.600',
-    active: 'brand.primary.600',
-    disabled: 'surface.text.placeholder.lowContrast',
+    default: 'interactive.text.primary.subtle',
+    highlighted: 'interactive.text.primary.normal',
+    disabled: 'interactive.text.primary.normal',
   },
   unselected: {
-    default: 'surface.text.muted.lowContrast',
-    hover: 'surface.text.subdued.lowContrast',
-    focus: 'surface.text.subdued.lowContrast',
-    active: 'surface.text.subdued.lowContrast',
-    disabled: 'surface.text.placeholder.lowContrast',
+    default: 'interactive.text.gray.muted',
+    highlighted: 'interactive.text.gray.subtle',
+    disabled: 'interactive.text.gray.disabled',
   },
 } as const;
 
 const backgroundColor = {
   unselected: {
     bordered: {
-      default: 'transparent',
-      hover: 'transparent',
-      focus: 'transparent',
-      active: 'transparent',
-      disabled: 'transparent',
+      default: 'colors.transparent',
+      highlighted: 'colors.transparent',
+      disabled: 'colors.transparent',
     },
     borderless: {
-      default: 'transparent',
-      hover: 'transparent',
-      focus: 'transparent',
-      active: 'transparent',
-      disabled: 'transparent',
+      default: 'colors.transparent',
+      highlighted: 'colors.transparent',
+      disabled: 'colors.transparent',
     },
     filled: {
-      default: 'transparent',
-      hover: 'colors.brand.gray.a50.lowContrast',
-      focus: 'colors.brand.gray.a50.lowContrast',
-      active: 'colors.brand.gray.a50.lowContrast',
-      disabled: 'transparent',
+      default: 'colors.transparent',
+      highlighted: 'colors.interactive.background.gray.default',
+      disabled: 'colors.transparent',
     },
   },
   selected: {
     bordered: {
-      default: 'transparent',
-      hover: 'transparent',
-      focus: 'transparent',
-      active: 'transparent',
-      disabled: 'transparent',
+      default: 'colors.transparent',
+      highlighted: 'colors.transparent',
+      disabled: 'colors.transparent',
     },
     borderless: {
-      default: 'transparent',
-      hover: 'transparent',
-      focus: 'transparent',
-      active: 'transparent',
-      disabled: 'transparent',
+      default: 'colors.transparent',
+      highlighted: 'colors.transparent',
+      disabled: 'colors.transparent',
     },
     filled: {
-      default: 'colors.brand.primary.300',
-      hover: 'colors.brand.primary.400',
-      focus: 'colors.brand.primary.400',
-      active: 'colors.brand.primary.400',
-      disabled: 'transparent',
+      default: 'colors.interactive.background.primary.faded',
+      highlighted: 'colors.interactive.background.primary.faded',
+      disabled: 'colors.transparent',
     },
   },
 } as const;
 
-export { backgroundColor, textColor, paddingY, paddingX };
+const iconColor = {
+  unselected: {
+    default: 'interactive.icon.gray.muted',
+    highlighted: 'interactive.icon.gray.subtle',
+    disabled: 'interactive.icon.gray.disabled',
+  },
+  selected: {
+    default: 'interactive.icon.primary.subtle',
+    highlighted: 'interactive.icon.primary.normal',
+    disabled: 'interactive.icon.primary.disabled',
+  },
+} as const;
+
+export { backgroundColor, textColor, iconColor, trackColor, paddingY, paddingX };

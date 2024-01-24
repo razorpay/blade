@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Accordion /> should render Accordion on server 1`] = `"<div id="root"><div data-blade-component="accordion" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kPjdiT"><div data-blade-component="accordion-item" class="BaseBox-bmPWx"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fOtKhr"><div role="heading" aria-level="3" data-blade-component="base-box" class="BaseBox-bmPWx mhVFF"><button aria-expanded="false" aria-controls="collapsible-body-undefined" data-blade-component="accordion-button" class="StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 bekHjN"><div data-blade-component="base-box" class="BaseBox-bmPWx clwwYS"><span class="StyledBaseText-dVBfTO iFUkNH" data-blade-component="heading">How can I setup Route?</span></div><div direction="bottom" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  fQPXYw"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></button></div><div id="collapsible-body-undefined" role="region" aria-hidden="true" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 jjhSqa"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="base-box" class="BaseBox-bmPWx eZsRMv"><p class="StyledBaseText-dVBfTO kMtjEL" data-blade-component="text">You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.</p></div></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 fFIlDE kNKFQm"></div></div><div data-blade-component="accordion-item" class="BaseBox-bmPWx"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fOtKhr"><div role="heading" aria-level="3" data-blade-component="base-box" class="BaseBox-bmPWx mhVFF"><button aria-expanded="false" aria-controls="collapsible-body-undefined" data-blade-component="accordion-button" class="StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 bekHjN"><div data-blade-component="base-box" class="BaseBox-bmPWx clwwYS"><span class="StyledBaseText-dVBfTO iFUkNH" data-blade-component="heading">How can I setup QR Codes?</span></div><div direction="bottom" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  fQPXYw"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></button></div><div id="collapsible-body-undefined" role="region" aria-hidden="true" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 jjhSqa"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="base-box" class="BaseBox-bmPWx eZsRMv"><p class="StyledBaseText-dVBfTO kMtjEL" data-blade-component="text">Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.</p></div></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 fFIlDE kNKFQm"></div></div><div data-blade-component="accordion-item" class="BaseBox-bmPWx"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fOtKhr"><div role="heading" aria-level="3" data-blade-component="base-box" class="BaseBox-bmPWx mhVFF"><button aria-expanded="false" aria-controls="collapsible-body-undefined" data-blade-component="accordion-button" class="StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 bekHjN"><div data-blade-component="base-box" class="BaseBox-bmPWx clwwYS"><span class="StyledBaseText-dVBfTO iFUkNH" data-blade-component="heading">How can I setup Subscriptions?</span></div><div direction="bottom" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  fQPXYw"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></button></div><div id="collapsible-body-undefined" role="region" aria-hidden="true" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 jjhSqa"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="base-box" class="BaseBox-bmPWx eZsRMv"><p class="StyledBaseText-dVBfTO kMtjEL" data-blade-component="text">Just use Razorpay.</p></div></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 fFIlDE kNKFQm"></div></div></div></div></div>"`;
+exports[`<Accordion /> should render Accordion on server 1`] = `"<div id="root"><div data-blade-component="accordion" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kPjdiT"><div data-blade-component="accordion-item" class="BaseBox-bmPWx"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fOtKhr"><div role="heading" aria-level="3" data-blade-component="base-box" class="BaseBox-bmPWx mhVFF"><button aria-expanded="false" aria-controls="collapsible-body-undefined" data-blade-component="accordion-button" class="StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 boALAZ"><div data-blade-component="base-box" class="BaseBox-bmPWx clwwYS"><span class="StyledBaseText-dVBfTO eWWvyY" data-blade-component="text">How can I setup Route?</span></div><div direction="bottom" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  fQPXYw"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></button></div><div id="collapsible-body-undefined" role="region" aria-hidden="true" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 jjhSqa"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="base-box" class="BaseBox-bmPWx eZsRMv"><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.</p></div></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 bWVnPN WrXok"></div></div><div data-blade-component="accordion-item" class="BaseBox-bmPWx"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fOtKhr"><div role="heading" aria-level="3" data-blade-component="base-box" class="BaseBox-bmPWx mhVFF"><button aria-expanded="false" aria-controls="collapsible-body-undefined" data-blade-component="accordion-button" class="StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 boALAZ"><div data-blade-component="base-box" class="BaseBox-bmPWx clwwYS"><span class="StyledBaseText-dVBfTO eWWvyY" data-blade-component="text">How can I setup QR Codes?</span></div><div direction="bottom" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  fQPXYw"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></button></div><div id="collapsible-body-undefined" role="region" aria-hidden="true" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 jjhSqa"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="base-box" class="BaseBox-bmPWx eZsRMv"><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.</p></div></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 bWVnPN WrXok"></div></div><div data-blade-component="accordion-item" class="BaseBox-bmPWx"><div data-blade-component="collapsible" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fOtKhr"><div role="heading" aria-level="3" data-blade-component="base-box" class="BaseBox-bmPWx mhVFF"><button aria-expanded="false" aria-controls="collapsible-body-undefined" data-blade-component="accordion-button" class="StyledAccordionButtonweb__StyledAccordionButton-sc-1qxmqda-0 boALAZ"><div data-blade-component="base-box" class="BaseBox-bmPWx clwwYS"><span class="StyledBaseText-dVBfTO eWWvyY" data-blade-component="text">How can I setup Subscriptions?</span></div><div direction="bottom" aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx CollapsibleChevronIconweb__StyledCollapsibleChevronIcon-sc-1kwlg5h-0  fQPXYw"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></button></div><div id="collapsible-body-undefined" role="region" aria-hidden="true" data-blade-component="collapsible-body" class="BaseBox-bmPWx"><div class="CollapsibleBodyContentweb__StyledCollapsibleBodyContent-sc-1oi3ngc-0 jjhSqa"><div data-blade-component="box" class="BaseBox-bmPWx jYeWPh"><div data-blade-component="base-box" class="BaseBox-bmPWx eZsRMv"><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">Just use Razorpay.</p></div></div></div></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 bWVnPN WrXok"></div></div></div></div></div>"`;
 
 exports[`<Accordion /> should render Accordion on server 2`] = `
 .c3.c3.c3.c3.c3 {
@@ -28,7 +28,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   cursor: pointer;
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,22%,56%,1);
   width: 100%;
   border: none;
   text-align: left;
@@ -36,18 +36,20 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
 
 .c3.c3.c3.c3.c3:hover,
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(216,15%,54%,0.09);
-}
-
-.c3.c3.c3.c3.c3:hover {
-  color: hsla(217,18%,45%,1);
+  background-color: hsla(211,20%,52%,0.12);
+  color: hsla(211,26%,34%,1);
 }
 
 .c3.c3.c3.c3.c3:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   border-radius: 2px;
-  color: hsla(217,18%,45%,1);
 }
 
 .c0.c0.c0.c0.c0 {
@@ -109,33 +111,40 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
 }
 
 .c11.c11.c11.c11.c11 {
-  border-width: 0px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  border-style: solid;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c10.c10.c10.c10.c10 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -165,6 +174,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
 }
 
 .c12.c12.c12.c12.c12 {
+  border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   -webkit-box-flex: 1;
@@ -209,31 +219,31 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
 
 @media screen and (min-width:320px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
   .c11.c11.c11.c11.c11 {
-    border-style: solid;
+    border-bottom-style: solid;
   }
 }
 
@@ -278,7 +288,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
                 >
                   <span
                     class="c5"
-                    data-blade-component="heading"
+                    data-blade-component="text"
                   >
                     How can I setup Route?
                   </span>
@@ -375,7 +385,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
                 >
                   <span
                     class="c5"
-                    data-blade-component="heading"
+                    data-blade-component="text"
                   >
                     How can I setup QR Codes?
                   </span>
@@ -472,7 +482,7 @@ exports[`<Accordion /> should render Accordion on server 2`] = `
                 >
                   <span
                     class="c5"
-                    data-blade-component="heading"
+                    data-blade-component="text"
                   >
                     How can I setup Subscriptions?
                   </span>

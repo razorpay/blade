@@ -4,7 +4,13 @@ import styled from 'styled-components';
 import { useTableContext } from './TableContext';
 import { checkboxCellWidth, tableRow } from './tokens';
 import { ComponentIds } from './componentIds';
-import type { TableProps, TableBodyProps, TableRowProps, TableCellProps } from './types';
+import type {
+  TableProps,
+  TableBodyProps,
+  TableRowProps,
+  TableCellProps,
+  TableBackgroundColors,
+} from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
@@ -12,8 +18,8 @@ import { Checkbox } from '~components/Checkbox';
 import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import type { SurfaceLevels } from '~tokens/theme/theme';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledBody = styled(Body)<{ $isSelectable: boolean; $showStripedRows: boolean }>(
   ({ theme, $showStripedRows, $isSelectable }) => {
@@ -138,18 +144,15 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
 });
 
 const StyledCell = styled(Cell)<{
-  $surfaceLevel: SurfaceLevels;
-}>(({ theme, $surfaceLevel }) => ({
+  $backgroundColor: TableBackgroundColors;
+}>(({ theme, $backgroundColor }) => ({
   '&&&': {
     height: '100%',
-    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
+    backgroundColor: getIn(theme.colors, $backgroundColor),
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
-    '&:focus-visible': {
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${getIn(theme.colors, tableRow.focusRingColor)} inset`,
-    },
+    '&:focus-visible': getFocusRingStyles({ theme, negativeOffset: true }),
   },
 }));
 
@@ -181,14 +184,14 @@ const CellWrapper = styled(BaseBox)<{
 
 const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripedRows, surfaceLevel } = useTableContext();
+  const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
   return (
     <StyledCell
       tabIndex={0}
       role="cell"
-      $surfaceLevel={surfaceLevel}
+      $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
@@ -266,10 +269,7 @@ const StyledRow = styled(Row)<{ $isSelectable: boolean; $isHoverable: boolean }>
             cursor: 'pointer',
           },
         }),
-        '&:focus': {
-          outline: 'none',
-          boxShadow: `0 0 0 2px ${getIn(theme.colors, 'brand.primary.300')}`,
-        },
+        '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
       },
     };
   },

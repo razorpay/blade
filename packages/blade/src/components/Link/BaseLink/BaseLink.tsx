@@ -2,13 +2,13 @@
 /* eslint-disable @typescript-eslint/prefer-ts-expect-error */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { SyntheticEvent } from 'react';
-import React, { useState } from 'react';
+import React from 'react';
 import type { CSSObject } from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseLink from './StyledBaseLink';
 import getIn from '~utils/lodashButBetter/get';
 import useInteraction from '~utils/useInteraction';
-import type { IconComponent, IconProps } from '~components/Icons';
+import type { IconColors, IconComponent, IconProps } from '~components/Icons';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -22,9 +22,12 @@ import type {
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
-import type { LinkActionStates } from '~tokens/theme/theme';
 import type { DurationString, EasingString, FontSize, Typography } from '~tokens/global';
-import type { BaseTextProps, BaseTextSizes } from '~components/Typography/BaseText/types';
+import type {
+  BaseTextProps,
+  BaseTextSizes,
+  TextColors,
+} from '~components/Typography/BaseText/types';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -33,9 +36,10 @@ import { makeAccessible } from '~utils/makeAccessible';
 import type { BladeCommonEvents } from '~components/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
+import type { ActionStates } from '~utils/useInteraction';
 
 type BaseLinkCommonProps = {
-  color?: 'default' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
+  color?: 'primary' | 'white' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   icon?: IconComponent;
   iconPosition?: 'left' | 'right';
   onClick?: (event: SyntheticEvent) => void;
@@ -145,37 +149,39 @@ type BaseLinkStyleProps = {
   lineHeight: BaseTextProps['lineHeight'];
 };
 
+type LinkActionStates = ActionStates;
 const getColorToken = ({
   variant,
   color,
-  element,
   currentInteraction,
   isDisabled,
-  isVisited,
+  element,
 }: {
   variant: BaseLinkProps['variant'];
   color: BaseLinkProps['color'];
   element: 'icon' | 'text';
-  currentInteraction: keyof LinkActionStates;
+  currentInteraction: LinkActionStates;
   isDisabled: boolean;
-  isVisited: boolean;
-}): IconProps['color'] | BaseTextProps['color'] => {
+}): IconColors | TextColors => {
   let state = currentInteraction;
+  const map = {
+    default: 'normal',
+    hover: 'subtle',
+    focus: 'normal',
+    disabled: 'disabled',
+  } as const;
+
   if (isDisabled && variant == 'button') {
     state = 'disabled';
   }
-  if (isVisited && variant == 'anchor') {
-    // visited state is only valid for anchor variant
-    state = 'visited';
-  }
 
-  if (color && color !== 'default' && state !== 'visited') {
+  if (color && color !== 'primary') {
     if (color !== 'white') {
-      return `feedback.${color}.action.${element}.link.${state}.lowContrast`;
+      return `interactive.${element}.${color}.${map[state]}`;
     }
-    return `white.action.${element}.link.${state}`;
+    return `interactive.${element}.staticWhite.${map[state]}`;
   }
-  return `action.${element}.link.${state}`;
+  return `interactive.${element}.primary.${map[state]}`;
 };
 
 const getProps = ({
@@ -185,17 +191,15 @@ const getProps = ({
   children,
   isDisabled,
   color,
-  isVisited,
   target,
   size,
 }: {
   theme: Theme;
   variant: NonNullable<BaseLinkProps['variant']>;
-  currentInteraction: keyof LinkActionStates;
+  currentInteraction: LinkActionStates;
   children?: string;
   isDisabled: boolean;
   color: BaseLinkProps['color'];
-  isVisited: boolean;
   target: BaseLinkProps['target'];
   size: NonNullable<BaseLinkProps['size']>;
 }): BaseLinkStyleProps => {
@@ -211,10 +215,10 @@ const getProps = ({
       large: 200,
     },
     lineHeight: {
-      xsmall: 50,
-      small: 50,
+      xsmall: 25,
+      small: 75,
       medium: 100,
-      large: 300,
+      large: 200,
     },
   };
 
@@ -227,7 +231,6 @@ const getProps = ({
       element: 'icon',
       currentInteraction,
       isDisabled,
-      isVisited,
     }) as IconProps['color'],
     fontSize: textSizes.fontSize[size],
     lineHeight: textSizes.lineHeight[size],
@@ -239,9 +242,8 @@ const getProps = ({
       element: 'text',
       currentInteraction,
       isDisabled,
-      isVisited,
     }) as BaseTextProps['color'],
-    focusRingColor: getIn(theme.colors, 'brand.primary.400'),
+    focusRingColor: getIn(theme.colors, 'interactive.background.primary.faded'),
     motionDuration: 'duration.2xquick',
     motionEasing: 'easing.standard.effective',
     cursor: isButton && isDisabled ? 'not-allowed' : 'pointer',
@@ -266,7 +268,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     href,
     target,
     rel,
-    color = 'default',
+    color = 'primary',
     accessibilityProps,
     // @ts-expect-error avoiding exposing to public
     className,
@@ -288,7 +290,6 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
   },
   ref,
 ) => {
-  const [isVisited, setIsVisited] = useState(false);
   const childrenString = getStringFromReactText(children);
   const { currentInteraction, setCurrentInteraction, ...syntheticEvents } = useInteraction();
   const { theme } = useTheme();
@@ -324,17 +325,11 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     children: childrenString,
     isDisabled,
     color,
-    isVisited,
     target,
     size,
   });
 
   const handleOnClick = (event: SyntheticEvent): void => {
-    if (!isVisited && variant === 'anchor') {
-      // visited state is only valid for anchor variant
-      setIsVisited(true);
-    }
-
     if (onClick) {
       onClick(event);
     }
@@ -412,7 +407,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
           fontSize={fontSize}
           lineHeight={lineHeight}
           textAlign="center"
-          fontWeight="bold"
+          fontWeight="medium"
         >
           {children}
         </BaseText>
