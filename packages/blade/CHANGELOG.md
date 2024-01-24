@@ -1,5 +1,18 @@
 # @razorpay/blade
 
+## 11.0.0
+
+### Major Changes
+
+- abd99bba: feat: revamp Blade with brand refresh changes
+
+  > [!WARNING]
+  >
+  > Breaking Change!
+  > This is a breaking change for all components in the library.
+  >
+  > Refer the [detailed v11 upgrade guide](https://github.com/razorpay/blade/blob/master/packages/blade/upgrade-v11.md) that contains instructions on how to use codemods for auto-upgrade along with manual steps if required
+
 ## 10.23.5
 
 ### Patch Changes
