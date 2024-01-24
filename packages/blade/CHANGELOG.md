@@ -1,5 +1,17 @@
 # @razorpay/blade
 
+## 10.23.5
+
+### Patch Changes
+
+- 3ac92ae4: fix(blade): expose card event type
+
+## 10.23.4
+
+### Patch Changes
+
+- d2a27c8a: feat(blade): add minHeight prop to Card
+
 ## 10.23.3
 
 ### Patch Changes

@@ -1,4 +1,5 @@
 import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
+import type { CardProps } from './Card';
 
 type CardSpacingValueType = Extract<
   SpacingValueType,
@@ -9,7 +10,7 @@ type CardRootProps = {
   isSelected?: boolean;
   isFocused?: boolean;
   shouldScaleOnHover?: boolean;
-  onClick?: () => void;
+  onClick?: CardProps['onClick'];
   children?: React.ReactNode;
   href?: string;
   as?: 'label';
