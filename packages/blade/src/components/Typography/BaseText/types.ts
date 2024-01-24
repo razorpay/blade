@@ -40,6 +40,7 @@ export type BaseTextProps = {
   lineHeight?: keyof Theme['typography']['lineHeights'];
   letterSpacing?: keyof Theme['typography']['letterSpacings'];
   wordBreak?: 'normal' | 'break-all' | 'keep-all' | 'break-word';
+  opacity?: number;
   /**
    * Web only
    */
@@ -73,6 +74,7 @@ export type StyledBaseTextProps = Pick<
   | 'numberOfLines'
   | 'truncateAfterLines'
   | 'wordBreak'
+  | 'opacity'
 > & { theme: Theme };
 
 export type BaseTextSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';

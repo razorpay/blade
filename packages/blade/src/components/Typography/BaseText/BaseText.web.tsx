@@ -24,6 +24,7 @@ const StyledBaseText = styled.div.withConfig({
     letterSpacing,
     textAlign,
     wordBreak,
+    opacity,
     ...props
   }) => {
     const styledPropsCSSObject = useStyledProps(props);
@@ -40,6 +41,7 @@ const StyledBaseText = styled.div.withConfig({
         letterSpacing,
         textAlign,
         wordBreak,
+        opacity,
         theme: props.theme,
       }),
       ...styledPropsCSSObject,
@@ -62,6 +64,7 @@ export const BaseText = ({
   children,
   truncateAfterLines,
   wordBreak,
+  opacity,
   className,
   style,
   accessibilityProps = {},
@@ -84,6 +87,7 @@ export const BaseText = ({
       textAlign={textAlign}
       numberOfLines={truncateAfterLines}
       wordBreak={wordBreak}
+      opacity={opacity}
       className={className}
       style={style}
       id={id}

@@ -17,6 +17,7 @@ const getBaseTextStyles = ({
   lineHeight = 100,
   letterSpacing = 100,
   textAlign,
+  opacity,
   theme,
 }: StyledBaseTextProps): CSSObject => {
   const textColor = getIn(theme.colors, color);
@@ -68,6 +69,7 @@ const getBaseTextStyles = ({
     textAlign,
     margin: 0,
     padding: 0,
+    opacity,
     ...truncateStyles,
     ...wordBreakStyles,
   };

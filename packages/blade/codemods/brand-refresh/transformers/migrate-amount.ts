@@ -1,6 +1,6 @@
 import { red, isExpression } from './utils';
 
-// Amount component: changes to intent & size props
+// Amount component: changes to intent, size, & prefix props
 function migrateAmountComponent({ root, j, file }): void {
   try {
     // <Amount size=”heading-small-bold”> -> <Amount type=”heading” size=”small” weight=”semibold”>
@@ -133,6 +133,37 @@ function migrateAmountComponent({ root, j, file }): void {
     console.error(
       red(
         `⛔️ ${file.path}: Oops! Ran into an issue while updating the "intent" prop in "Amount" component.`,
+      ),
+      `\n${red(error.stack)}\n`,
+    );
+  }
+
+  // <Amount prefix=”currency-symbol”> -> <Amount currencyIndicator=”currency-symbol”>
+  try {
+    root
+      .find(j.JSXElement, {
+        openingElement: {
+          name: {
+            name: (name) => ['Amount', 'CardHeaderAmount'].includes(name),
+          },
+        },
+      })
+      .find(j.JSXAttribute, {
+        name: {
+          name: (name) => name === 'prefix',
+        },
+      })
+      .replaceWith((path) => {
+        const { node } = path;
+
+        node.name.name = 'currencyIndicator';
+
+        return node;
+      });
+  } catch (error) {
+    console.error(
+      red(
+        `⛔️ ${file.path}: Oops! Ran into an issue while updating the "prefix" prop in "Amount" component.`,
       ),
       `\n${red(error.stack)}\n`,
     );

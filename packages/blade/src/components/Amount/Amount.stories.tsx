@@ -3,7 +3,7 @@ import { Title } from '@storybook/addon-docs';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
 import type { AmountHeadingProps, AmountDisplayProps, AmountBodyProps } from './amountTokens';
-import { currencyPrefixMapping } from './amountTokens';
+import { currencyIndicatorMapping } from './amountTokens';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -176,7 +176,7 @@ HumanizeSuffix.args = {
 HumanizeSuffix.storyName = 'Humanize Suffix';
 
 const AmountCurrencyTemplate: StoryFn<typeof AmountComponent> = (args) => {
-  const values = Object.keys(currencyPrefixMapping);
+  const values = Object.keys(currencyIndicatorMapping);
 
   return (
     <BaseBox justifyContent="flex-start" maxHeight="300px" overflowY="auto">
@@ -210,3 +210,10 @@ AffixSubtleOff.args = {
   isAffixSubtle: false,
 };
 AffixSubtleOff.storyName = 'Affix Subtle Off';
+
+export const StrikeThrough = AmountDefaultTemplate.bind({});
+StrikeThrough.args = {
+  ...defaultArgs,
+  isStrikethrough: true,
+};
+StrikeThrough.storyName = 'Strike Through';

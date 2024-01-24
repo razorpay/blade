@@ -24,7 +24,7 @@ export default {
   title: 'Components/KitchenSink/Amount',
   component: Amount,
   parameters: {
-    // enable Chromatic's snapshotting only for kitchensink
+    // enable Chromatic's snapshots only for kitchen sink
     chromatic: { disableSnapshot: false },
     options: { showPanel: false },
   },

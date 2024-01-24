@@ -4,10 +4,10 @@
     Fix these overrides when there is better resolution to this issue-
     https://github.com/storybookjs/storybook/discussions/21109
   */
-  * :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)),
+  * :where(p:not([data-blade-component="base-text"], .sb-anchor, .sb-unstyled, .sb-unstyled p)),
   * :where(a:not(.sb-anchor, .sb-unstyled, .sb-unstyled a)),
-  * :where(div:not(.sb-anchor, .sb-unstyled, .sb-unstyled div)),
-  * :where(span:not(.sb-anchor, .sb-unstyled, .sb-unstyled span)),
+  * :where(div:not([data-blade-component="base-text"], .sb-anchor, .sb-unstyled, .sb-unstyled div)),
+  * :where(span:not([data-blade-component="base-text"], .sb-anchor, .sb-unstyled, .sb-unstyled span)),
   * :where(ul:not(.sb-anchor, .sb-unstyled, .sb-unstyled ul)),
   * :where(ol:not(.sb-anchor, .sb-unstyled, .sb-unstyled ol)),
   * :where(li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li)) {

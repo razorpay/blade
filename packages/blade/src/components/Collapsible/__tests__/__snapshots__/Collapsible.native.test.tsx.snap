@@ -285,10 +285,12 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                 <View
                   data-blade-component="amount"
                   display="flex"
+                  flexDirection="row"
                   style={
                     [
                       {
                         "display": "flex",
+                        "flexDirection": "row",
                       },
                     ]
                   }
@@ -298,12 +300,14 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
+                    position="relative"
                     style={
                       [
                         {
                           "alignItems": "baseline",
                           "display": "flex",
                           "flexDirection": "row",
+                          "position": "relative",
                         },
                       ]
                     }
@@ -315,6 +319,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                       fontSize={25}
                       fontWeight="regular"
                       marginRight="spacing.1"
+                      opacity={0.64}
                       style={
                         [
                           {
@@ -329,6 +334,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                             "marginLeft": 0,
                             "marginRight": 2,
                             "marginTop": 0,
+                            "opacity": 0.64,
                             "paddingBottom": 0,
                             "paddingLeft": 0,
                             "paddingRight": 0,
@@ -404,7 +410,6 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         }
                       >
                         1,000
-                        .
                       </Text>
                       <Text
                         accessible={true}
@@ -413,7 +418,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                         fontFamily="text"
                         fontSize={25}
                         fontWeight="regular"
-                        marginLeft="spacing.1"
+                        opacity={0.64}
                         style={
                           [
                             {
@@ -425,9 +430,10 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
-                              "marginLeft": 2,
+                              "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 0,
+                              "opacity": 0.64,
                               "paddingBottom": 0,
                               "paddingLeft": 0,
                               "paddingRight": 0,
@@ -437,6 +443,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
                           ]
                         }
                       >
+                        .
                         00
                       </Text>
                     </Text>
@@ -779,10 +786,12 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                 <View
                   data-blade-component="amount"
                   display="flex"
+                  flexDirection="row"
                   style={
                     [
                       {
                         "display": "flex",
+                        "flexDirection": "row",
                       },
                     ]
                   }
@@ -792,12 +801,14 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                     data-blade-component="base-box"
                     display="flex"
                     flexDirection="row"
+                    position="relative"
                     style={
                       [
                         {
                           "alignItems": "baseline",
                           "display": "flex",
                           "flexDirection": "row",
+                          "position": "relative",
                         },
                       ]
                     }
@@ -809,6 +820,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                       fontSize={25}
                       fontWeight="regular"
                       marginRight="spacing.1"
+                      opacity={0.64}
                       style={
                         [
                           {
@@ -823,6 +835,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                             "marginLeft": 0,
                             "marginRight": 2,
                             "marginTop": 0,
+                            "opacity": 0.64,
                             "paddingBottom": 0,
                             "paddingLeft": 0,
                             "paddingRight": 0,
@@ -898,7 +911,6 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         }
                       >
                         1,000
-                        .
                       </Text>
                       <Text
                         accessible={true}
@@ -907,7 +919,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                         fontFamily="text"
                         fontSize={25}
                         fontWeight="regular"
-                        marginLeft="spacing.1"
+                        opacity={0.64}
                         style={
                           [
                             {
@@ -919,9 +931,10 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                               "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
-                              "marginLeft": 2,
+                              "marginLeft": 0,
                               "marginRight": 0,
                               "marginTop": 0,
+                              "opacity": 0.64,
                               "paddingBottom": 0,
                               "paddingLeft": 0,
                               "paddingRight": 0,
@@ -931,6 +944,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
                           ]
                         }
                       >
+                        .
                         00
                       </Text>
                     </Text>
