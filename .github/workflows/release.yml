@@ -42,8 +42,8 @@ jobs:
         if: steps.changesets.outputs.published == 'false'
         working-directory: packages/blade
         run: yarn build
-      - name: Run & store bundle metadata
-        run: yarn bundlemon
-        working-directory: packages/blade
+      # - name: Run & store bundle metadata
+      #   run: yarn bundlemon
+      #   working-directory: packages/blade
 
           
