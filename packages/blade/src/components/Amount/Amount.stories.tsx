@@ -48,7 +48,11 @@ export default {
 } as Meta<AmountProps>;
 
 const AmountDefaultTemplate: StoryFn<typeof AmountComponent> = (args) => {
-  return <AmountComponent {...args} />;
+  return (
+    <BaseBox display="flex" flexDirection="row" flexWrap="wrap">
+      <AmountComponent {...args} />
+    </BaseBox>
+  );
 };
 
 export const Amount = AmountDefaultTemplate.bind({});

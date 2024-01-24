@@ -321,7 +321,6 @@ const _Amount = ({
           weight={weight}
           size={size}
           isAffixSubtle={isAffixSubtle}
-          isStrikethrough={isStrikethrough}
           suffix={suffix}
         />
         {currencyPosition === 'right' && (
