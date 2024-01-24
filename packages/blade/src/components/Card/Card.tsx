@@ -138,7 +138,7 @@ export type CardProps = {
    */
   onClick?: (
     event: Platform.Select<{
-      web: React.MouseEvent<HTMLLabelElement, MouseEvent>;
+      web: React.MouseEvent;
       native: GestureResponderEvent;
     }>,
   ) => void;
