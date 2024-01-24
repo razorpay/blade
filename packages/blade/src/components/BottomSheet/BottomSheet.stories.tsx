@@ -12,7 +12,6 @@ import {
   BottomSheetFooter,
   BottomSheetHeader,
 } from './';
-
 import {
   ArrowRightIcon,
   CheckIcon,
@@ -24,30 +23,30 @@ import {
   TrendingDownIcon,
   TrendingUpIcon,
 } from '~components/Icons';
+import BaseBox from '~components/Box/BaseBox';
+import { Button } from '~components/Button';
+import { Heading, Text } from '~components/Typography';
+import { Badge } from '~components/Badge';
+import { List, ListItem } from '~components/List';
+import { Counter } from '~components/Counter';
+import { Box } from '~components/Box';
+import { Link } from '~components/Link';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { isReactNative } from '~utils';
+import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
 import {
   ActionList,
   ActionListItem,
   ActionListItemIcon,
   ActionListSection,
 } from '~components/ActionList';
-import BaseBox from '~components/Box/BaseBox';
-import { Button } from '~components/Button';
 import { Dropdown, DropdownButton } from '~components/Dropdown';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
-import { Heading, Text, Title } from '~components/Typography';
-import { Badge } from '~components/Badge';
-import { TextInput } from '~components/Input/TextInput';
-import { Radio, RadioGroup } from '~components/Radio';
-import { List, ListItem } from '~components/List';
-import { Counter } from '~components/Counter';
-import { Box } from '~components/Box';
-import { Checkbox } from '~components/Checkbox';
 import { OTPInput } from '~components/Input/OTPInput';
-import { Link } from '~components/Link';
-import { Sandbox } from '~utils/storybook/Sandbox';
-import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { isReactNative } from '~utils';
-import { SandboxHighlighter } from '~utils/storybook/Sandbox/SandpackEditor';
+import { Radio, RadioGroup } from '~components/Radio';
+import { Checkbox } from '~components/Checkbox';
+import { TextInput } from '~components/Input/TextInput';
 
 const Page = (): React.ReactElement => {
   return (
@@ -68,15 +67,10 @@ const Page = (): React.ReactElement => {
         BottomSheetHeaderProps
       } from '@razorpay/blade/components';
       `}
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=26477-578228&t=agFItKEmWAzA4N13-0',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=16767-706689&t=6FVL3Ha33gwM45Cm-0',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=26477-578228&t=agFItKEmWAzA4N13-0"
     >
-      <Title>Usage</Title>
-      <Sandbox editorHeight={600}>
+      <Heading size="large">Usage</Heading>
+      <Sandbox showConsole editorHeight={600}>
         {`
           import React from 'react';
           import { 
@@ -135,7 +129,7 @@ const Page = (): React.ReactElement => {
           export default App;
         `}
       </Sandbox>
-      <Title>iOS Safari Specific Setup</Title>
+      <Heading size="large">iOS Safari Specific Setup</Heading>
       <Text marginTop="spacing.4">
         When using BottomSheet or SpotlightPopoverTour, Make sure to set a width/height to the
         `body` otherwise when they open, the page will get clipped. This happens due to a bug in iOS
@@ -155,7 +149,7 @@ const Page = (): React.ReactElement => {
 
 const propsCategory = { HEADER: 'Header Props' };
 const headerTrailingMap = {
-  Badge: <Badge variant="positive">Action Needed</Badge>,
+  Badge: <Badge color="positive">Action Needed</Badge>,
   Text: <Text>$12,000</Text>,
   Link: <Link href="#">Link</Link>,
   IconButton: <Button icon={InfoIcon} accessibilityLabel="Trailing icon" />,
@@ -163,7 +157,7 @@ const headerTrailingMap = {
 
 const headerTitleSuffixMap = {
   None: undefined,
-  Counter: <Counter value={12} intent="positive" />,
+  Counter: <Counter value={12} color="positive" />,
 };
 
 type StoryControlProps = BottomSheetProps & BottomSheetHeaderProps;
@@ -380,7 +374,7 @@ const WithHeaderFooterTemplate: StoryFn<any> = (args: StoryControlProps) => {
           </RadioGroup>
         </BottomSheetBody>
         <BottomSheetFooter>
-          <Button isFullWidth variant="secondary">
+          <Button isFullWidth variant="tertiary">
             Remove address
           </Button>
           <Button isFullWidth marginTop="spacing.5">
@@ -619,7 +613,7 @@ const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => 
         <BottomSheetFooter>
           <Button
             isFullWidth
-            variant="secondary"
+            variant="tertiary"
             onClick={() => setSecondOpen(true)}
             isDisabled={isSecondOpen}
           >
@@ -670,7 +664,7 @@ const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => 
         <BottomSheetFooter>
           <Button
             isFullWidth
-            variant="secondary"
+            variant="tertiary"
             onClick={() => setFirstOpen(true)}
             isDisabled={isFirstOpen}
           >
@@ -731,7 +725,7 @@ const BottomSheetStackingTemplate: StoryFn<typeof BottomSheetComponent> = () => 
         <BottomSheetFooter>
           <Button
             isFullWidth
-            variant="secondary"
+            variant="tertiary"
             onClick={() => setFirstOpen(true)}
             isDisabled={isFirstOpen}
           >
@@ -770,6 +764,7 @@ const InitialFocusTemplate: StoryFn<typeof BottomSheetComponent> = () => {
         <BottomSheetHeader title="Users" />
         <BottomSheetBody>
           <TextInput label="Search Users" ref={initialFocusRef} />
+          <Button ref={initialFocusRef}>Search Users</Button>
 
           <Text marginTop="spacing.5">
             By default the initial focus is set to the close button, but you can modify it by
@@ -799,12 +794,10 @@ const HeadingBanner = (): React.ReactElement => {
           left="spacing.0"
           width="100%"
           height="100%"
-          backgroundColor="surface.background.level1.highContrast"
+          backgroundColor="surface.background.cloud.subtle"
         />
         <Box position="absolute" bottom="spacing.4" left="spacing.5">
-          <Heading color="surface.text.normal.highContrast">
-            All-in-one Escrow management platform
-          </Heading>
+          <Heading color="surface.text.gray.normal">All-in-one Escrow management platform</Heading>
         </Box>
       </Box>
     );
@@ -812,7 +805,7 @@ const HeadingBanner = (): React.ReactElement => {
 
   return (
     <Box position="relative" height="250px" overflow="hidden">
-      <Box position="absolute" top="-150px" left="spacing.0">
+      <Box position="absolute" top="-150px" left="spacing.0" width="100%">
         <video
           autoPlay
           style={{ objectFit: 'cover' }}
@@ -822,7 +815,7 @@ const HeadingBanner = (): React.ReactElement => {
         />
       </Box>
       <Box position="absolute" bottom="spacing.4" left="spacing.5">
-        <Heading color="surface.text.normal.highContrast">
+        <Heading color="surface.text.staticWhite.normal">
           All-in-one Escrow management platform
         </Heading>
       </Box>
@@ -852,7 +845,7 @@ const ZeroPaddingTemplate: StoryFn<typeof BottomSheetComponent> = () => {
                 ONE place to deliver a seamless user experience for you. Work with our experts to
                 ensure your escrow money transfers are always compliant, safe & effortless.
               </Text>
-              <Text marginTop="spacing.3" type="muted">
+              <Text marginTop="spacing.3" color="surface.text.gray.muted">
                 100% secure | Instant payouts | Unbeatable pricing
               </Text>
             </Box>
@@ -933,7 +926,7 @@ const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
 
       <Box display="flex" gap="spacing.2" flexWrap="wrap">
         <Text>By default BottomSheet's SnapPoints are</Text>
-        <Text weight="bold">[35%, 50%, 85%]</Text>
+        <Text weight="semibold">[35%, 50%, 85%]</Text>
       </Box>
 
       <Text>
@@ -942,7 +935,7 @@ const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
       </Text>
 
       <Box marginTop="spacing.3">
-        <Text weight="bold">At SnapPoint 1: 35% Screen Height</Text>
+        <Text weight="semibold">At SnapPoint 1: 35% Screen Height</Text>
         <List>
           <ListItem>
             If content height is less than 35% of screen height - then bottom sheet takes the height
@@ -959,7 +952,7 @@ const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
           </ListItem>
         </List>
 
-        <Text weight="bold">At SnapPoint 2: 50% Screen Height</Text>
+        <Text weight="semibold">At SnapPoint 2: 50% Screen Height</Text>
         <List>
           <ListItem>
             If content height {'>'}35% but {'<'}50% screen height - the bottom sheet extends till
@@ -976,7 +969,7 @@ const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
           </ListItem>
         </List>
 
-        <Text weight="bold">At SnapPoint 3: 85% Screen Height</Text>
+        <Text weight="semibold">At SnapPoint 3: 85% Screen Height</Text>
         <List>
           <ListItem>
             If content height {'>'}50% but {'<'}85% screen height - the bottom sheet extends till
@@ -1043,7 +1036,7 @@ const WithOTPInputTemplate: StoryFn<typeof BottomSheetComponent> = () => {
         </BottomSheetBody>
 
         <BottomSheetFooter>
-          <Button isFullWidth variant="secondary">
+          <Button isFullWidth variant="tertiary">
             Cancel
           </Button>
           <Button isLoading={isLoading} onClick={submitOTP} isFullWidth marginTop="spacing.5">
@@ -1146,7 +1139,7 @@ const SimSelectionBottomSheet: React.FC<Props> = ({
                 // should be able to close the bottom sheet
                 onDismiss();
               }}
-              variant="secondary"
+              variant="tertiary"
               isFullWidth
             >
               Close
@@ -1159,8 +1152,7 @@ const SimSelectionBottomSheet: React.FC<Props> = ({
 };
 
 const ProductUseCase1Example: StoryFn<typeof BottomSheetComponent> = () => {
-  // should be initially opened
-  const [isOpen, setIsOpen] = React.useState(true);
+  const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
       <Button onClick={() => setIsOpen(true)}>{isOpen ? 'close' : 'open'}</Button>

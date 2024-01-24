@@ -20,18 +20,20 @@ exports[`<Counter /> should render Counter with default props 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.neutral.lowContrast"
+      backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -55,33 +57,32 @@ exports[`<Counter /> should render Counter with default props 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.neutral.lowContrast"
+          color="feedback.text.neutral.intense"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 33%, 21%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -105,7 +106,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
+exports[`<Counter /> should render intense emphasis information color Counter 1`] = `
 <View
   style={
     {
@@ -125,18 +126,20 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
     }
   >
     <View
-      backgroundColor="badge.background.blue.highContrast"
+      backgroundColor="feedback.background.information.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+            "backgroundColor": "hsla(200, 84%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -160,33 +163,32 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="badge.text.blue.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -210,7 +212,7 @@ exports[`<Counter /> should render high contrast blue variant Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast default color Counter 1`] = `
+exports[`<Counter /> should render intense emphasis information color Counter 2`] = `
 <View
   style={
     {
@@ -230,18 +232,20 @@ exports[`<Counter /> should render high contrast default color Counter 1`] = `
     }
   >
     <View
-      backgroundColor="badge.background.blue.highContrast"
+      backgroundColor="feedback.background.information.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+            "backgroundColor": "hsla(200, 84%, 44%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(218, 89%, 51%, 1)",
+            "backgroundColor": "hsla(200, 84%, 44%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -265,33 +269,32 @@ exports[`<Counter /> should render high contrast default color Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="badge.text.blue.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -315,7 +318,7 @@ exports[`<Counter /> should render high contrast default color Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast information color Counter 1`] = `
+exports[`<Counter /> should render intense emphasis negative color Counter 1`] = `
 <View
   style={
     {
@@ -335,18 +338,20 @@ exports[`<Counter /> should render high contrast information color Counter 1`] =
     }
   >
     <View
-      backgroundColor="feedback.background.information.highContrast"
+      backgroundColor="feedback.background.negative.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(193, 100%, 35%, 1)",
+            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(193, 100%, 35%, 1)",
+            "backgroundColor": "hsla(4, 74%, 49%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -370,33 +375,32 @@ exports[`<Counter /> should render high contrast information color Counter 1`] =
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.information.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -420,7 +424,7 @@ exports[`<Counter /> should render high contrast information color Counter 1`] =
 </View>
 `;
 
-exports[`<Counter /> should render high contrast information variant Counter 1`] = `
+exports[`<Counter /> should render intense emphasis negative color Counter 2`] = `
 <View
   style={
     {
@@ -440,18 +444,20 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
     }
   >
     <View
-      backgroundColor="feedback.background.information.highContrast"
+      backgroundColor="feedback.background.negative.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(193, 100%, 35%, 1)",
+            "backgroundColor": "hsla(4, 74%, 49%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(193, 100%, 35%, 1)",
+            "backgroundColor": "hsla(4, 74%, 49%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -475,33 +481,32 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.information.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -525,7 +530,7 @@ exports[`<Counter /> should render high contrast information variant Counter 1`]
 </View>
 `;
 
-exports[`<Counter /> should render high contrast negative color Counter 1`] = `
+exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = `
 <View
   style={
     {
@@ -545,18 +550,20 @@ exports[`<Counter /> should render high contrast negative color Counter 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.negative.highContrast"
+      backgroundColor="feedback.background.neutral.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(8, 73%, 47%, 1)",
+            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(8, 73%, 47%, 1)",
+            "backgroundColor": "hsla(211, 29%, 26%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -580,33 +587,32 @@ exports[`<Counter /> should render high contrast negative color Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.negative.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -630,7 +636,7 @@ exports[`<Counter /> should render high contrast negative color Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast negative variant Counter 1`] = `
+exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = `
 <View
   style={
     {
@@ -650,18 +656,20 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
     }
   >
     <View
-      backgroundColor="feedback.background.negative.highContrast"
+      backgroundColor="feedback.background.neutral.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(8, 73%, 47%, 1)",
+            "backgroundColor": "hsla(211, 29%, 26%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(8, 73%, 47%, 1)",
+            "backgroundColor": "hsla(211, 29%, 26%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -685,33 +693,32 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.negative.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -735,7 +742,7 @@ exports[`<Counter /> should render high contrast negative variant Counter 1`] = 
 </View>
 `;
 
-exports[`<Counter /> should render high contrast neutral color Counter 1`] = `
+exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
 <View
   style={
     {
@@ -755,18 +762,20 @@ exports[`<Counter /> should render high contrast neutral color Counter 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.neutral.highContrast"
+      backgroundColor="feedback.background.notice.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(216, 33%, 29%, 1)",
+            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(216, 33%, 29%, 1)",
+            "backgroundColor": "hsla(25, 90%, 48%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -790,33 +799,32 @@ exports[`<Counter /> should render high contrast neutral color Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.neutral.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -840,7 +848,7 @@ exports[`<Counter /> should render high contrast neutral color Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
+exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
 <View
   style={
     {
@@ -860,18 +868,20 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.neutral.highContrast"
+      backgroundColor="feedback.background.notice.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(216, 33%, 29%, 1)",
+            "backgroundColor": "hsla(25, 90%, 48%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(216, 33%, 29%, 1)",
+            "backgroundColor": "hsla(25, 90%, 48%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -895,33 +905,32 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.neutral.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -945,7 +954,7 @@ exports[`<Counter /> should render high contrast neutral variant Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast notice color Counter 1`] = `
+exports[`<Counter /> should render intense emphasis positive color Counter 1`] = `
 <View
   style={
     {
@@ -965,18 +974,20 @@ exports[`<Counter /> should render high contrast notice color Counter 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.notice.highContrast"
+      backgroundColor="feedback.background.positive.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(38, 97%, 38%, 1)",
+            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(38, 97%, 38%, 1)",
+            "backgroundColor": "hsla(150, 100%, 32%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1000,33 +1011,32 @@ exports[`<Counter /> should render high contrast notice color Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.notice.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1050,7 +1060,7 @@ exports[`<Counter /> should render high contrast notice color Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
+exports[`<Counter /> should render intense emphasis positive color Counter 2`] = `
 <View
   style={
     {
@@ -1070,18 +1080,20 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.notice.highContrast"
+      backgroundColor="feedback.background.positive.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(38, 97%, 38%, 1)",
+            "backgroundColor": "hsla(150, 100%, 32%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(38, 97%, 38%, 1)",
+            "backgroundColor": "hsla(150, 100%, 32%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1105,33 +1117,32 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.notice.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1155,7 +1166,7 @@ exports[`<Counter /> should render high contrast notice variant Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast positive color Counter 1`] = `
+exports[`<Counter /> should render intense emphasis primary color Counter 1`] = `
 <View
   style={
     {
@@ -1175,18 +1186,20 @@ exports[`<Counter /> should render high contrast positive color Counter 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.positive.highContrast"
+      backgroundColor="surface.background.primary.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(160, 100%, 26%, 1)",
+            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(160, 100%, 26%, 1)",
+            "backgroundColor": "hsla(227, 100%, 59%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1210,33 +1223,32 @@ exports[`<Counter /> should render high contrast positive color Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.positive.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1260,7 +1272,7 @@ exports[`<Counter /> should render high contrast positive color Counter 1`] = `
 </View>
 `;
 
-exports[`<Counter /> should render high contrast positive variant Counter 1`] = `
+exports[`<Counter /> should render intense emphasis primary color Counter 2`] = `
 <View
   style={
     {
@@ -1280,18 +1292,20 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
     }
   >
     <View
-      backgroundColor="feedback.background.positive.highContrast"
+      backgroundColor="surface.background.primary.intense"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(160, 100%, 26%, 1)",
+            "backgroundColor": "hsla(227, 100%, 59%, 1)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(160, 100%, 26%, 1)",
+            "backgroundColor": "hsla(227, 100%, 59%, 1)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1315,33 +1329,32 @@ exports[`<Counter /> should render high contrast positive variant Counter 1`] = 
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.positive.highContrast"
+          color="surface.text.staticWhite.normal"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
                 "color": "hsla(0, 0%, 100%, 1)",
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -1385,18 +1398,20 @@ exports[`<Counter /> should render large size Counter 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.neutral.lowContrast"
+      backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
+      minHeight="24px"
       platform="onMobile"
       size="large"
       style={
         [
           {
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "minHeight": 24,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -1420,1293 +1435,32 @@ exports[`<Counter /> should render large size Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.neutral.lowContrast"
+          color="feedback.text.neutral.intense"
           data-blade-component="text"
           fontFamily="text"
           fontSize={100}
           fontStyle="normal"
-          fontWeight="regular"
+          fontWeight="medium"
           lineHeight={100}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 33%, 21%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "500",
+                "letterSpacing": 0,
                 "lineHeight": 20,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast blue variant Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="badge.background.blue.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="badge.text.blue.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(218, 89%, 51%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast default color Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="badge.background.blue.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(218, 89%, 51%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="badge.text.blue.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(218, 89%, 51%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast information color Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.information.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.information.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(193, 100%, 35%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast information variant Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.information.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(193, 100%, 35%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.information.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(193, 100%, 35%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast negative color Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.negative.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.negative.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(8, 73%, 47%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast negative variant Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.negative.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(9, 91%, 56%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.negative.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(8, 73%, 47%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast neutral color Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.neutral.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.neutral.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast neutral variant Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.neutral.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.neutral.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast notice color Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.notice.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.notice.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(38, 97%, 38%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast notice variant Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.notice.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(36, 100%, 44%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.notice.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(38, 97%, 38%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast positive color Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.positive.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.positive.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(160, 100%, 26%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textAlign": "center",
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-          textAlign="center"
-        >
-          20
-        </Text>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Counter /> should render low contrast positive variant Counter 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="counter"
-    display="flex"
-    style={
-      [
-        {
-          "display": "flex",
-        },
-      ]
-    }
-  >
-    <View
-      backgroundColor="feedback.background.positive.lowContrast"
-      data-blade-component="base-box"
-      platform="onMobile"
-      size="medium"
-      style={
-        [
-          {
-            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-          },
-          {
-            "alignSelf": "center",
-            "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
-            "borderRadius": 9999,
-            "display": "flex",
-            "flexWrap": "nowrap",
-            "maxWidth": 100,
-          },
-        ]
-      }
-    >
-      <View
-        alignItems="center"
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        overflow="hidden"
-        style={
-          [
-            {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "overflow": "hidden",
-              "paddingBottom": 2,
-              "paddingLeft": 8,
-              "paddingRight": 8,
-              "paddingTop": 2,
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="feedback.text.positive.lowContrast"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "hsla(160, 100%, 26%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2750,18 +1504,20 @@ exports[`<Counter /> should render medium size Counter 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.neutral.lowContrast"
+      backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
+      minHeight="20px"
       platform="onMobile"
       size="medium"
       style={
         [
           {
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "minHeight": 20,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2785,33 +1541,32 @@ exports[`<Counter /> should render medium size Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 2,
               "paddingLeft": 8,
               "paddingRight": 8,
-              "paddingTop": 2,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.neutral.lowContrast"
+          color="feedback.text.neutral.intense"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 33%, 21%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -2855,18 +1610,20 @@ exports[`<Counter /> should render small size Counter 1`] = `
     }
   >
     <View
-      backgroundColor="feedback.background.neutral.lowContrast"
+      backgroundColor="feedback.background.neutral.subtle"
       data-blade-component="base-box"
+      minHeight="16px"
       platform="onMobile"
       size="small"
       style={
         [
           {
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "minHeight": 16,
           },
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
             "borderRadius": 9999,
             "display": "flex",
             "flexWrap": "nowrap",
@@ -2890,33 +1647,1304 @@ exports[`<Counter /> should render small size Counter 1`] = `
               "flexDirection": "row",
               "justifyContent": "center",
               "overflow": "hidden",
-              "paddingBottom": 0,
               "paddingLeft": 4,
               "paddingRight": 4,
-              "paddingTop": 0,
             },
           ]
         }
       >
         <Text
           accessible={true}
-          color="feedback.text.neutral.lowContrast"
+          color="feedback.text.neutral.intense"
           data-blade-component="text"
           fontFamily="text"
           fontSize={25}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={25}
           numberOfLines={1}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 33%, 21%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 10,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 14,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis information color Counter 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.information.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.information.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(200, 84%, 37%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis information color Counter 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.information.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(200, 84%, 44%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.information.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(200, 84%, 37%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.negative.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.negative.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(4, 74%, 49%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.negative.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(4, 74%, 49%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.negative.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(4, 74%, 49%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis neutral color Counter 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.neutral.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.neutral.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(211, 33%, 21%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis neutral color Counter 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.neutral.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.neutral.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(211, 33%, 21%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis notice color Counter 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.notice.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.notice.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(25, 85%, 42%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis notice color Counter 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.notice.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(25, 90%, 48%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.notice.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(25, 85%, 42%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.positive.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.positive.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(150, 100%, 27%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="feedback.background.positive.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="feedback.text.positive.intense"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(150, 100%, 27%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis primary color Counter 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="surface.background.primary.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.primary.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(227, 100%, 59%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="counter"
+    display="flex"
+    style={
+      [
+        {
+          "display": "flex",
+        },
+      ]
+    }
+  >
+    <View
+      backgroundColor="surface.background.primary.subtle"
+      data-blade-component="base-box"
+      minHeight="20px"
+      platform="onMobile"
+      size="medium"
+      style={
+        [
+          {
+            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "minHeight": 20,
+          },
+          {
+            "alignSelf": "center",
+            "backgroundColor": "hsla(227, 100%, 59%, 0.09)",
+            "borderRadius": 9999,
+            "display": "flex",
+            "flexWrap": "nowrap",
+            "maxWidth": 100,
+          },
+        ]
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="center"
+        overflow="hidden"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "overflow": "hidden",
+              "paddingLeft": 8,
+              "paddingRight": 8,
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.primary.normal"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="medium"
+          lineHeight={75}
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "hsla(227, 100%, 59%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,

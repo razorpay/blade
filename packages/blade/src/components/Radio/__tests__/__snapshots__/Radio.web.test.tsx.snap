@@ -21,8 +21,8 @@ exports[`<Radio /> should render radio with label 1`] = `
   border-style: solid;
   margin: 2px;
   border-radius: 9999px;
-  background-color: transparent;
-  border-color: hsla(214,18%,69%,1);
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(211,27%,76%,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.7,0,0.5,1);
@@ -94,14 +94,18 @@ exports[`<Radio /> should render radio with label 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -112,27 +116,35 @@ exports[`<Radio /> should render radio with label 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -172,13 +184,19 @@ exports[`<Radio /> should render radio with label 1`] = `
 }
 
 .c9.c9.c9.c9.c9:focus-visible + div {
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9:hover + div {
-  border-color: hsla(214,18%,69%,1);
-  background-color: hsla(216,15%,54%,0.09);
+  border-color: hsla(211,27%,76%,1);
+  background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -275,12 +293,12 @@ exports[`<Radio /> should render radio with label 1`] = `
                       class="c11"
                       data-blade-component="base-box"
                     />
-                    <div
+                    <p
                       class="c12"
-                      data-blade-component="base-text"
+                      data-blade-component="text"
                     >
                       Apple
-                    </div>
+                    </p>
                   </div>
                 </div>
               </label>
@@ -314,8 +332,8 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   border-style: solid;
   margin: 2px;
   border-radius: 9999px;
-  background-color: transparent;
-  border-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(214,40%,92%,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.7,0,0.5,1);
@@ -387,14 +405,18 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -405,27 +427,35 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(214,18%,69%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,20%,52%,0.32);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -465,8 +495,14 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
 }
 
 .c9.c9.c9.c9.c9:focus-visible + div {
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 <div>
@@ -560,12 +596,12 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
                       class="c11"
                       data-blade-component="base-box"
                     />
-                    <div
+                    <p
                       class="c12"
-                      data-blade-component="base-text"
+                      data-blade-component="text"
                     >
                       Apple
-                    </div>
+                    </p>
                   </div>
                 </div>
               </label>

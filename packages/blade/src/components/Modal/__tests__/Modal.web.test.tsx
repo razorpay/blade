@@ -52,8 +52,8 @@ describe('Modal', () => {
         <ModalHeader
           title="Address Details"
           subtitle="Saving addresses will improve your checkout experience"
-          trailing={<Badge variant="notice">Action Needed</Badge>}
-          titleSuffix={<Counter variant="positive" value={2} />}
+          trailing={<Badge color="notice">Action Needed</Badge>}
+          titleSuffix={<Counter color="positive" value={2} />}
         />
         <ModalBody>
           <Text>Test Content</Text>

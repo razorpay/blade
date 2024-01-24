@@ -62,7 +62,7 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
               "strokeLinejoin",
             ]
           }
-          stroke={4282603381}
+          stroke={4280563015}
           strokeLinecap={1}
           strokeLinejoin={1}
           strokeWidth="2"
@@ -73,7 +73,7 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
           name="clip0_59_170"
         >
           <RNSVGRect
-            fill={4282603381}
+            fill={4280563015}
             height="24"
             propList={
               [

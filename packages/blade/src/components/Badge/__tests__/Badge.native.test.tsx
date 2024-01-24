@@ -7,7 +7,7 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 const colors: BadgeProps['color'][] = [
-  'default',
+  'primary',
   'information',
   'negative',
   'neutral',
@@ -57,126 +57,120 @@ describe('<Badge />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render Badge with bold font', () => {
-    const label = 'LABEL';
-    const { toJSON } = renderWithTheme(<Badge fontWeight="bold">{label}</Badge>);
-    expect(toJSON()).toMatchSnapshot();
-  });
-
-  it('should render low contrast positive variant Badge', () => {
+  it('should render subtle emphasis positive color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="positive" contrast="low">
+      <Badge color="positive" emphasis="subtle">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render high contrast positive variant Badge', () => {
+  it('should render intense emphasis positive color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="positive" contrast="high">
+      <Badge color="positive" emphasis="intense">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render low contrast negative variant Badge', () => {
+  it('should render subtle emphasis negative color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="negative" contrast="low">
+      <Badge color="negative" emphasis="subtle">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render high contrast negative variant Badge', () => {
+  it('should render intense emphasis negative color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="negative" contrast="high">
+      <Badge color="negative" emphasis="intense">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render low contrast notice variant Badge', () => {
+  it('should render subtle emphasis notice color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="notice" contrast="low">
+      <Badge color="notice" emphasis="subtle">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render high contrast notice variant Badge', () => {
+  it('should render intense emphasis notice color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="notice" contrast="high">
+      <Badge color="notice" emphasis="intense">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render low contrast information variant Badge', () => {
+  it('should render subtle emphasis information color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="information" contrast="low">
+      <Badge color="information" emphasis="subtle">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render high contrast information variant Badge', () => {
+  it('should render intense emphasis information color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="information" contrast="high">
+      <Badge color="information" emphasis="intense">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render low contrast neutral variant Badge', () => {
+  it('should render subtle emphasis neutral color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="neutral" contrast="low">
+      <Badge color="neutral" emphasis="subtle">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render high contrast neutral variant Badge', () => {
+  it('should render intense emphasis neutral color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="neutral" contrast="high">
+      <Badge color="neutral" emphasis="intense">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render low contrast blue variant Badge', () => {
+  it('should render subtle emphasis primary color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="blue" contrast="low">
+      <Badge color="primary" emphasis="subtle">
         {label}
       </Badge>,
     );
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render high contrast blue variant Badge', () => {
+  it('should render intense emphasis primary color Badge', () => {
     const label = 'Label';
     const { toJSON } = renderWithTheme(
-      <Badge variant="blue" contrast="high">
+      <Badge color="primary" emphasis="intense">
         {label}
       </Badge>,
     );
@@ -184,20 +178,20 @@ describe('<Badge />', () => {
   });
 
   colors.forEach((color) => {
-    it(`should render low contrast ${color} color Badge`, () => {
+    it(`should render subtle emphasis ${color} color Badge`, () => {
       const label = 'Label';
       const { toJSON } = renderWithTheme(
-        <Badge color={color} contrast="low">
+        <Badge color={color} emphasis="subtle">
           {label}
         </Badge>,
       );
       expect(toJSON()).toMatchSnapshot();
     });
 
-    it(`should render high contrast ${color} color Badge`, () => {
+    it(`should render intense emphasis ${color} color Badge`, () => {
       const label = 'Label';
       const { toJSON } = renderWithTheme(
-        <Badge color={color} contrast="high">
+        <Badge color={color} emphasis="intense">
           {label}
         </Badge>,
       );

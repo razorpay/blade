@@ -14,27 +14,6 @@ type DropdownProps = {
    */
   onOpenChange?: (isOpen: boolean) => void;
   selectionType?: 'single' | 'multiple';
-  /**
-   * ## Deprecated ⚠️
-   *
-   * Use `onOpenChange` instead for knowing when dropdown gets dismissed.
-   *
-   * ### Migration
-   * ```diff
-   * <Dropdown
-   * - onDismiss={() => console.log('dismissed')}
-   * + onOpenChange={(isOpen) => {
-   * +  if (!isOpen) {
-   * +    console.log('dismissed');
-   * +  }
-   * + }}
-   * />
-   *
-   * ```
-   *
-   * @deprecated
-   */
-  onDismiss?: () => void;
   children: React.ReactNode[];
 } & TestID &
   StyledPropsBlade;

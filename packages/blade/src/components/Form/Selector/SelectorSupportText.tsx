@@ -1,27 +1,29 @@
-import { BaseText } from '~components/Typography/BaseText';
-import { getPlatformType } from '~utils';
+import { Box } from '~components/Box';
+import { Text } from '~components/Typography/Text';
+import { castWebType, getPlatformType } from '~utils';
 
 const SelectorSupportText = ({
   children,
   id,
+  isNegative,
 }: {
   children: React.ReactNode;
   id?: string;
+  isNegative?: boolean;
 }): React.ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <BaseText
-      id={id}
-      as={isReactNative ? undefined : 'span'}
-      color="surface.text.muted.lowContrast"
-      fontSize={50}
-      lineHeight={50}
-      fontStyle="italic"
-      fontFamily="text"
-    >
-      {children}
-    </BaseText>
+    <Box id={id} display={isReactNative ? undefined : castWebType('contents')}>
+      <Text
+        variant="caption"
+        size="small"
+        as={isReactNative ? undefined : 'span'}
+        color={isNegative ? 'feedback.text.negative.intense' : 'surface.text.gray.muted'}
+      >
+        {children}
+      </Text>
+    </Box>
   );
 };
 

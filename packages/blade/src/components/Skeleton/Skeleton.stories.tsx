@@ -11,7 +11,7 @@ import {
   CardHeaderTrailing,
 } from '~components/Card';
 import { Box } from '~components/Box';
-import { Code, Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import { Amount } from '~components/Amount';
 import { Button } from '~components/Button';
 import { Alert } from '~components/Alert';
@@ -27,16 +27,11 @@ import { kebabCase } from '~utils/lodashButBetter/kebabCase';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522',
-        bankingTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522"
       componentName="Skeleton"
       componentDescription="Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view."
     >
-      <Title>Usage</Title>
+      <Heading size="large">Usage</Heading>{' '}
       <Sandbox>
         {`
         import { Skeleton } from '@razorpay/blade/components';
@@ -146,7 +141,7 @@ const BasicSkeleton = (): React.ReactElement => {
       width="100%"
       padding="spacing.5"
       borderRadius="medium"
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
     >
       <Box display="flex" flexDirection="row" alignItems="center">
         <SkeletonComponent
@@ -208,7 +203,7 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
           <Box
             display="flex"
             flexDirection="column"
-            backgroundColor="surface.background.level2.lowContrast"
+            backgroundColor="surface.background.gray.intense"
           >
             <Box display="flex" flexDirection="column" marginBottom="spacing.3">
               <Skeleton
@@ -237,18 +232,18 @@ const LoadableCard = ({ isLoading }: { isLoading: boolean }): React.ReactElement
             display="flex"
             flexDirection="column"
             gap="spacing.3"
-            backgroundColor="surface.background.level2.lowContrast"
+            backgroundColor="surface.background.gray.intense"
           >
             <Box display="flex" flexDirection="column" gap="spacing.3">
               <Heading size="medium">Total Repayable Amount</Heading>
-              <Amount size="title-medium" value={160000} />
+              <Amount size="large" value={160000} />
               <Text>
                 Principal:{' '}
-                <Text as="span" weight="bold">
+                <Text as="span" weight="semibold">
                   ₹16000
                 </Text>{' '}
                 Interest:{' '}
-                <Text as="span" weight="bold">
+                <Text as="span" weight="semibold">
                   ₹450
                 </Text>
               </Text>
@@ -331,7 +326,7 @@ const SkeletonCardTemplate: StoryFn<typeof SkeletonComponent> = () => {
             display="flex"
             gap="spacing.2"
             flexDirection="column"
-            backgroundColor="surface.background.level2.lowContrast"
+            backgroundColor="surface.background.gray.intense"
             elevation="lowRaised"
             borderRadius="medium"
           >
@@ -346,9 +341,7 @@ const SkeletonCardTemplate: StoryFn<typeof SkeletonComponent> = () => {
           <Card>
             <CardHeader>
               <CardHeaderLeading title="Payment Pages" subtitle="Automated Receipts Enabled" />
-              <CardHeaderTrailing
-                visual={<CardHeaderBadge variant="neutral">UPI</CardHeaderBadge>}
-              />
+              <CardHeaderTrailing visual={<CardHeaderBadge color="neutral">UPI</CardHeaderBadge>} />
             </CardHeader>
             <CardBody>
               <Text>
@@ -415,7 +408,7 @@ const SkeletonAccessibilityTemplate: StoryFn<typeof SkeletonComponent> = () => {
             display="flex"
             gap="spacing.2"
             flexDirection="column"
-            backgroundColor="surface.background.level2.lowContrast"
+            backgroundColor="surface.background.gray.intense"
             elevation="lowRaised"
             borderRadius="medium"
           >
@@ -430,9 +423,7 @@ const SkeletonAccessibilityTemplate: StoryFn<typeof SkeletonComponent> = () => {
           <Card>
             <CardHeader>
               <CardHeaderLeading title="Payment Pages" subtitle="Automated Receipts Enabled" />
-              <CardHeaderTrailing
-                visual={<CardHeaderBadge variant="neutral">UPI</CardHeaderBadge>}
-              />
+              <CardHeaderTrailing visual={<CardHeaderBadge color="neutral">UPI</CardHeaderBadge>} />
             </CardHeader>
             <CardBody>
               <Text>

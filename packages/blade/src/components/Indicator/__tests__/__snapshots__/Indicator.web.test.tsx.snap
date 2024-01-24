@@ -27,14 +27,18 @@ exports[`<Indicator /> should render 1`] = `
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -64,16 +68,8 @@ exports[`<Indicator /> should render 1`] = `
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(216, 33%, 29%, 1)"
+          fill="hsla(211, 29%, 26%, 1)"
           r="5"
-        />
-        <circle
-          cx="5"
-          cy="5"
-          data-blade-component="svg-circle"
-          r="4.75"
-          stroke="hsla(214, 21%, 94%, 0.18)"
-          stroke-width="0.5"
         />
       </svg>
       <div
@@ -90,7 +86,7 @@ exports[`<Indicator /> should render 1`] = `
 </div>
 `;
 
-exports[`<Indicator /> should render different variants for size and intent 1`] = `
+exports[`<Indicator /> should render different variants for size and color 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
@@ -117,28 +113,36 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
 .c4.c4.c4.c4.c4 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: left;
   margin: 0;
   padding: 0;
@@ -168,16 +172,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(38, 97%, 38%, 1)"
+          fill="hsla(25, 90%, 48%, 1)"
           r="5"
-        />
-        <circle
-          cx="5"
-          cy="5"
-          data-blade-component="svg-circle"
-          r="4.75"
-          stroke="hsla(214, 21%, 94%, 0.18)"
-          stroke-width="0.5"
         />
       </svg>
       <div
@@ -214,16 +210,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(160, 100%, 26%, 1)"
+          fill="hsla(150, 100%, 32%, 1)"
           r="5"
-        />
-        <circle
-          cx="5"
-          cy="5"
-          data-blade-component="svg-circle"
-          r="4.75"
-          stroke="hsla(214, 21%, 94%, 0.18)"
-          stroke-width="0.5"
         />
       </svg>
       <div
@@ -260,16 +248,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(8, 73%, 47%, 1)"
+          fill="hsla(4, 74%, 49%, 1)"
           r="5"
-        />
-        <circle
-          cx="5"
-          cy="5"
-          data-blade-component="svg-circle"
-          r="4.75"
-          stroke="hsla(214, 21%, 94%, 0.18)"
-          stroke-width="0.5"
         />
       </svg>
       <div
@@ -306,16 +286,8 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(193, 100%, 35%, 1)"
+          fill="hsla(200, 84%, 44%, 1)"
           r="5"
-        />
-        <circle
-          cx="5"
-          cy="5"
-          data-blade-component="svg-circle"
-          r="4.75"
-          stroke="hsla(214, 21%, 94%, 0.18)"
-          stroke-width="0.5"
         />
       </svg>
       <div

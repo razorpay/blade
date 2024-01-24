@@ -16,8 +16,8 @@ describe('createTheme', () => {
 
     expect(
       tinycolor.isReadable(
-        theme.colors.onLight.action.background.primary.default,
-        theme.colors.onLight.action.text.primary.default,
+        theme.colors.onLight.interactive.background.primary.default,
+        theme.colors.onLight.interactive.text.onPrimary.normal,
         {
           level: 'AAA',
           size: 'large',
@@ -38,8 +38,8 @@ describe('createTheme', () => {
     );
     expect(
       tinycolor.isReadable(
-        theme.colors.onLight.action.background.primary.default,
-        theme.colors.onLight.action.text.primary.default,
+        theme.colors.onLight.interactive.background.primary.default,
+        theme.colors.onLight.interactive.text.onPrimary.normal,
         {
           level: 'AAA',
           size: 'large',

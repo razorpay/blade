@@ -3,7 +3,7 @@ import React from 'react';
 import { AppRegistry } from 'react-native';
 import { getStorybookUI } from '@storybook/react-native';
 import { BladeProvider } from '../../src/components/BladeProvider';
-import { paymentTheme } from '../../src/tokens/theme';
+import { bladeTheme } from '../../src/tokens/theme';
 import './storybook.requires';
 
 import { name as appName } from '../../app.json';
@@ -12,21 +12,21 @@ const App = (): React.ReactElement => {
   const Storybook = getStorybookUI({
     shouldPersistSelection: true,
     // keeping in comments becuase this is not documented properly in the docs
-    // theme: {
-    //   backgroundColor: 'white',
-    //   headerTextColor: 'black',
-    //   labelColor: 'black',
-    //   borderColor: '#e6e6e6',
-    //   previewBorderColor: '#b3b3b3',
-    //   buttonTextColor: '#999999',
-    //   buttonActiveTextColor: '#444444',
-    // },
+    theme: {
+      backgroundColor: bladeTheme.colors.onLight.surface.background.gray.subtle,
+      // headerTextColor: 'black',
+      // labelColor: 'black',
+      // borderColor: '#e6e6e6',
+      // previewBorderColor: '#b3b3b3',
+      // buttonTextColor: '#999999',
+      // buttonActiveTextColor: '#444444',
+    },
   });
 
   return (
     <BladeProvider
       // key={`${context.globals.themeTokens}-${context.globals.colorScheme}`}
-      themeTokens={paymentTheme}
+      themeTokens={bladeTheme}
     >
       <Storybook />
     </BladeProvider>

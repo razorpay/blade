@@ -6,7 +6,6 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const Skeleton = ({
-  contrast = 'low',
   width,
   maxWidth,
   minWidth,
@@ -54,7 +53,6 @@ const Skeleton = ({
       placeSelf={placeSelf}
       placeItems={placeItems}
       order={order}
-      contrast={contrast}
       {...getStyledProps(props)}
       {...makeAccessible({ hidden: true })}
       {...metaAttribute({ name: MetaConstants.Skeleton, testID })}

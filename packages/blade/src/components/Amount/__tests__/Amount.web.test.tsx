@@ -30,53 +30,95 @@ describe('<Amount />', () => {
     mockConsoleError.mockRestore();
   });
 
+  it('should throw an error when invalid type and size is passed', () => {
+    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="display" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="display"',
+    );
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="heading" size="xsmall" />)).toThrow(
+      '[Blade: Amount]: size="xsmall" is not allowed with type="heading"',
+    );
+    mockConsoleError.mockRestore();
+
+    // @ts-expect-error testing failure case when value is passed as a string
+    expect(() => renderWithTheme(<Amount value={1000} type="body" size="2xlarge" />)).toThrow(
+      '[Blade: Amount]: size="2xlarge" is not allowed with type="body"',
+    );
+    mockConsoleError.mockRestore();
+  });
+
   it('should render body-small size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-small" value={1000} />);
+    const { container } = renderWithTheme(<Amount type="body" size="small" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-small-bold size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-small-bold" value={1000} />);
+    const { container } = renderWithTheme(
+      <Amount type="body" size="small" weight="semibold" value={1000} />,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-medium size Amount', () => {
-    const { container } = renderWithTheme(<Amount size="body-medium" value={1000} />);
+    const { container } = renderWithTheme(<Amount type="body" size="medium" value={1000} />);
     expect(container).toMatchSnapshot();
   });
 
   it('should render body-medium-bold size Amount', () => {
     const { container } = renderWithTheme(
       <>
-        <Amount size="body-medium" value={1000} />
-        <Amount size="body-medium-bold" value={1000} />
-        <Amount size="body-small" value={1000} />
-        <Amount size="body-small-bold" value={1000} />
-        <Amount size="heading-large" value={1000} />
-        <Amount size="heading-large-bold" value={1000} />
-        <Amount size="heading-small" value={1000} />
-        <Amount size="heading-small-bold" value={1000} />
-        <Amount size="title-medium" value={1000} />
+        <Amount type="body" size="medium" value={1000} />
+        <Amount type="body" size="medium" weight="semibold" value={1000} />
+        <Amount type="body" size="small" value={1000} />
+        <Amount type="body" size="small" weight="semibold" value={1000} />
+        <Amount type="heading" size="large" value={1000} />
+        <Amount type="heading" size="large" weight="semibold" value={1000} />
+        <Amount type="heading" size="small" value={1000} />
+        <Amount type="heading" size="small" weight="semibold" value={1000} />
+        <Amount type="display" size="medium" value={1000} />
       </>,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render isStrikethrough={true}', () => {
+    const { container } = renderWithTheme(<Amount isStrikethrough={true} value={1000} />);
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render currencyIndicator="currency-symbol"', () => {
+    const { container } = renderWithTheme(
+      <Amount currencyIndicator="currency-symbol" value={1000} />,
+    );
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render currencyIndicator="currency-code"', () => {
+    const { container } = renderWithTheme(
+      <Amount currencyIndicator="currency-code" value={1000} />,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should render amount with Humanize value', () => {
     const { container } = renderWithTheme(
-      <Amount size="title-medium" suffix="humanize" value={1000.22} />,
+      <Amount type="display" size="medium" suffix="humanize" value={1000.22} />,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should render positive intent Amount ', () => {
-    const { container } = renderWithTheme(<Amount intent="positive" value={1000} />);
+    const { container } = renderWithTheme(
+      <Amount color="feedback.text.positive.intense" value={1000} />,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('should render negative intent Amount ', () => {
     const { container } = renderWithTheme(
-      <Amount isAffixSubtle={false} intent="negative" value={1000} />,
+      <Amount isAffixSubtle={false} color="feedback.text.negative.intense" value={1000} />,
     );
     expect(container).toMatchSnapshot();
   });
@@ -105,12 +147,21 @@ describe('<Amount />', () => {
   });
 
   it('should check if getHumanizedAmount is returning the humanized value', () => {
-    expect(getHumanizedAmount(1000.22, 'INR')).toBe('1k');
-    expect(getHumanizedAmount(1000000, 'INR')).toBe('10L');
-    expect(getHumanizedAmount(10000000, 'INR')).toBe('1Cr');
-    expect(getHumanizedAmount(1000.22, 'MYR')).toBe('1K');
-    expect(getHumanizedAmount(1000000, 'MYR')).toBe('1M');
-    expect(getHumanizedAmount(10000000, 'MYR')).toBe('10M');
+    expect(getHumanizedAmount({ value: 1000.22, currency: 'INR' })).toBe('1k');
+    expect(getHumanizedAmount({ value: 1000000, currency: 'INR' })).toBe('10L');
+    expect(getHumanizedAmount({ value: 10000000, currency: 'INR' })).toBe('1Cr');
+    expect(getHumanizedAmount({ value: 1000.22, currency: 'MYR' })).toBe('1K');
+    expect(getHumanizedAmount({ value: 1000000, currency: 'MYR' })).toBe('1M');
+    expect(getHumanizedAmount({ value: 10000000, currency: 'MYR' })).toBe('10M');
+    expect(
+      getHumanizedAmount({ value: 1000.22, currency: 'MYR', denominationPosition: 'left' }),
+    ).toBe('K1');
+    expect(
+      getHumanizedAmount({ value: 1000000, currency: 'MYR', denominationPosition: 'left' }),
+    ).toBe('M1');
+    expect(
+      getHumanizedAmount({ value: 10000000, currency: 'MYR', denominationPosition: 'left' }),
+    ).toBe('M10');
   });
 
   it('should check if formatAmountWithSuffix is returning the right value for humanize decimals and none', () => {

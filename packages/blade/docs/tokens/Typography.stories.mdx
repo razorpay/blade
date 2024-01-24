@@ -1,29 +1,20 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
-import { useTheme, BladeProvider } from '../../src//components';
-import { paymentTheme, bankingTheme } from '../../src/tokens';
+import { useTheme, BladeProvider, Box } from '../../src//components';
+import { bladeTheme } from '../../src/tokens';
 import { makeTypographySize } from '../../src/utils';
+import FigmaEmbed from '../../src/utils/storybook/FigmaEmbed';
 
 <Meta
   title="Tokens/Typography"
   parameters={{
     docs: {
       container: ({ children, context }) => {
-        const themeTokenName = context.store.globals.globals.themeTokenName;
         const colorScheme = context.store.globals.globals.colorScheme;
-        const getThemeTokens = () => {
-          if (themeTokenName === 'paymentTheme') {
-            return paymentTheme;
-          }
-          if (themeTokenName === 'bankingTheme') {
-            return bankingTheme;
-          }
-          return null;
-        };
         return (
           <DocsContainer context={context}>
             <BladeProvider
-              key={`${themeTokenName}-${colorScheme}`}
-              themeTokens={getThemeTokens()}
+              key={colorScheme}
+              themeTokens={bladeTheme}
               colorScheme={colorScheme}
             >
               {children}
@@ -38,6 +29,10 @@ import { makeTypographySize } from '../../src/utils';
 # 🔡 Typography
 
 > These tokens should be used along with the [makeTypographySize util](?path=/story/utils-maketypographysize--page).
+
+<Box paddingY="spacing.6">
+  <FigmaEmbed src="https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=101-99618&mode=design&t=KdVVWtntizpKmsBt-0" />
+</Box>
 
 export const Typography = () => {
   const { theme } = useTheme();

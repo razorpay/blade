@@ -17,11 +17,6 @@ import figmaToken from '../images/figma-token.png';
 
 The first step to get all the capabilities of Blade is to wrap your Application root under Blade's Provider.
 
-Blade offers 2 pre-built themes out of the box:
-
-1. `paymentTheme` - To be used in Payment(PG) products.
-2. `bankingTheme` - To be used in RazorpayX products.
-
 The benefits of using `BladeProvider`?
 
 - Your components will automatically become responsive on different breakpoints.
@@ -31,12 +26,12 @@ The benefits of using `BladeProvider`?
 ```jsx
 // App entry point
 import { BladeProvider } from '@razorpay/blade/components';
-import { paymentTheme } from '@razorpay/blade/tokens';
+import { bladeTheme } from '@razorpay/blade/tokens';
 import App from from './App';
 
 function AppWrapper(): JSX.Element {
   return (
-    <BladeProvider themeTokens={paymentTheme} colorScheme="light">
+    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
       <App />
     </BladeProvider>
   );
@@ -47,8 +42,8 @@ export default AppWrapper;
 
 ## iOS Safari Specific Setup
 
-When using BottomSheet or SpotlightPopoverTour, 
-Make sure to set a width/height to the `body` otherwise when they open, the page will get clipped. 
+When using BottomSheet or SpotlightPopoverTour,
+Make sure to set a width/height to the `body` otherwise when they open, the page will get clipped.
 
 This happens due to a bug in iOS safari where it won't compute the height of the body correctly.
 

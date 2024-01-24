@@ -1,6 +1,7 @@
 import type { CSSObject, DefaultTheme } from 'styled-components';
 import type { NavigationButtonProps } from './types';
 import { castWebType, isReactNative, makeMotionTime, makeSpace } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const getNavigationButtonStyles = (props: {
   theme: DefaultTheme;
@@ -12,44 +13,36 @@ const getNavigationButtonStyles = (props: {
 
   const iconColor = {
     filled: {
-      default: theme.colors.white.action.icon.primary.default,
-      hover: theme.colors.white.action.icon.primary.hover,
-      focus: theme.colors.white.action.icon.primary.focus,
-      active: theme.colors.white.action.icon.primary.active,
+      default: theme.colors.interactive.icon.staticBlack.muted,
+      highlighted: theme.colors.interactive.icon.staticBlack.muted,
     },
     stroked: {
-      default: theme.colors.surface.action.icon.active.highContrast,
-      hover: theme.colors.surface.action.icon.hover.highContrast,
-      focus: theme.colors.surface.action.icon.focus.highContrast,
-      active: theme.colors.surface.action.icon.active.highContrast,
+      default: theme.colors.interactive.icon.gray.normal,
+      highlighted: theme.colors.interactive.icon.gray.normal,
     },
   };
 
   const backgroundColor = {
     filled: {
-      default: theme.colors.white.action.background.primary.default,
-      hover: theme.colors.white.action.background.primary.hover,
-      focus: theme.colors.white.action.background.primary.focus,
-      active: theme.colors.white.action.background.primary.active,
+      default: theme.colors.interactive.background.staticWhite.default,
+      highlighted: theme.colors.interactive.background.staticWhite.highlighted,
     },
     stroked: {
-      default: theme.colors.action.background.tertiary.default,
-      hover: theme.colors.action.background.tertiary.hover,
-      focus: theme.colors.action.background.tertiary.focus,
-      active: theme.colors.action.background.tertiary.active,
+      default: theme.colors.interactive.background.staticWhite.faded,
+      highlighted: theme.colors.interactive.background.staticWhite.fadedHighlighted,
     },
   };
 
   const borderColors = {
-    filled: theme.colors.surface.border.normal.lowContrast,
-    stroked: theme.colors.brand.gray[400].lowContrast,
+    filled: theme.colors.transparent,
+    stroked: theme.colors.interactive.border.gray.faded,
   } as const;
 
   const borderColor = borderColors[variant];
   const borderWidth = theme.border.width.thin;
   const borderRadius = theme.border.radius.max;
   // on react-native isPressed will be passed
-  const state = isPressed ? 'active' : 'default';
+  const state = isPressed ? 'highlighted' : 'default';
 
   return {
     cursor: 'pointer',
@@ -77,21 +70,19 @@ const getNavigationButtonStyles = (props: {
           boxShadow: variant === 'filled' ? castWebType(theme.elevation.midRaised) : undefined,
 
           '&:hover': {
-            color: iconColor[variant].hover,
-            backgroundColor: backgroundColor[variant].hover,
+            color: iconColor[variant].highlighted,
+            backgroundColor: backgroundColor[variant].highlighted,
           },
 
           '&:focus-visible': {
-            // TODO: refactor to use focus ring token
-            outline: 'none',
-            boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-            color: iconColor[variant].focus,
-            backgroundColor: backgroundColor[variant].focus,
+            ...getFocusRingStyles({ theme }),
+            color: iconColor[variant].highlighted,
+            backgroundColor: backgroundColor[variant].highlighted,
           },
 
           '&:active': {
-            color: iconColor[variant].active,
-            backgroundColor: backgroundColor[variant].active,
+            color: iconColor[variant].highlighted,
+            backgroundColor: backgroundColor[variant].highlighted,
           },
         }),
   };

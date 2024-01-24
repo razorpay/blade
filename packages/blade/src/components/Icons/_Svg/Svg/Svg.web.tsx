@@ -20,6 +20,7 @@ const Svg = ({
   fill,
   testID,
   display,
+  fillOpacity,
   ...styledProps
 }: SvgProps): ReactElement => {
   return (
@@ -32,6 +33,7 @@ const Svg = ({
       fill={fill}
       // svg has its own display prop, which conflicts with our styled display prop
       styledDisplay={display}
+      fillOpacity={fillOpacity}
       {...styledProps}
     >
       {children}

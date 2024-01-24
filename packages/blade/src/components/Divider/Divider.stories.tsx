@@ -1,5 +1,4 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
 import type { DividerProps } from './Divider';
 import { Divider as DividerComponent } from './Divider';
 import { Heading } from '~components/Typography/Heading';
@@ -16,17 +15,12 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=608-883166&mode=design&t=6uRroMDHC66zlvxT-0',
-        bankingTheme:
-          'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=608-883166&mode=design&t=6uRroMDHC66zlvxT-0',
-      }}
+      figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=608-883166&mode=design&t=6uRroMDHC66zlvxT-0"
       componentName="Divider"
       componentDescription="Divider is a visual element that is used to separate or divide content within a layout"
       apiDecisionLink={null}
     >
-      <Title>Usage</Title>
+      <Heading size="large">Usage</Heading>
       <Sandbox>
         {`
           import {

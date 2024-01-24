@@ -86,23 +86,24 @@ exports[`<TextArea /> should render 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subdued.lowContrast"
+              color="surface.text.gray.subtle"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
+              fontWeight="semibold"
+              lineHeight={75}
               numberOfLines={2}
               style={
                 [
                   {
-                    "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 26%, 34%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -149,7 +150,7 @@ exports[`<TextArea /> should render 1`] = `
             >
               <Text
                 accessible={true}
-                color="surface.text.normal.lowContrast"
+                color="surface.text.gray.normal"
                 data-blade-component="text"
                 fontFamily="text"
                 fontSize={100}
@@ -159,11 +160,12 @@ exports[`<TextArea /> should render 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
+                      "color": "hsla(212, 39%, 16%, 1)",
+                      "fontFamily": "Inter",
                       "fontSize": 14,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "letterSpacing": 0,
                       "lineHeight": 20,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -189,8 +191,8 @@ exports[`<TextArea /> should render 1`] = `
           [
             {
               "alignItems": "flex-start",
-              "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-              "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
+              "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+              "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
               "borderBottomStyle": "solid",
               "borderBottomWidth": 1,
               "borderTopLeftRadius": 2,
@@ -231,21 +233,22 @@ exports[`<TextArea /> should render 1`] = `
           onFocus={[Function]}
           onKeyPress={[Function]}
           onSubmitEditing={[Function]}
-          placeholderTextColor="hsla(214, 18%, 69%, 1)"
+          placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
           secureTextEntry={false}
           style={
             [
               {
                 "backgroundColor": "transparent",
-                "color": "hsla(216, 27%, 36%, 1)",
+                "color": "hsla(211, 26%, 34%, 1)",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "fontFamily": "Lato",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
                 "fontWeight": "400",
-                "height": 48,
+                "height": 44,
+                "letterSpacing": 0,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -266,7 +269,7 @@ exports[`<TextArea /> should render 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                "backgroundColor": "hsla(227, 100%, 59%, 1)",
                 "bottom": 0,
                 "height": 1,
                 "left": 0,

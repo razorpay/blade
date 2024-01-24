@@ -1,30 +1,28 @@
 import React from 'react';
 import { ArgsTable, Primary, PRIMARY_STORY, Stories } from '@storybook/addon-docs';
 import styled from 'styled-components';
-import useMakeFigmaURL from './useMakeFigmaURL';
 import FigmaEmbed from './FigmaEmbed';
 import { SandboxHighlighter } from './Sandbox/SandpackEditor';
 import { componentData } from './componentStatusData';
 import BaseBox from '~components/Box/BaseBox';
 import { Alert } from '~components/Alert';
 import { BladeProvider } from '~components/BladeProvider';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
 import { Link } from '~components/Link';
 import type { HeadingProps } from '~components/Typography';
-import { Title, Text, Heading } from '~components/Typography';
+import { Display, Text, Heading } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { AnnouncementIcon } from '~components/Icons';
 
-const Subtitle = (props: HeadingProps<{ variant: 'regular' }>): React.ReactElement => {
-  return <Heading type="subtle" size="large" weight="regular" as="span" {...props} />;
+const Subtitle = (props: HeadingProps): React.ReactElement => {
+  return (
+    <Heading color="surface.text.gray.subtle" size="large" weight="regular" as="span" {...props} />
+  );
 };
 
 type StoryPageWrapperTypes = {
-  figmaURL?: {
-    paymentTheme: string;
-    bankingTheme: string;
-  };
+  figmaURL?: string;
   argTableComponent?: unknown;
   componentDescription: string;
   propsDescription?: string;
@@ -73,19 +71,6 @@ const WithGlobalStyles = styled(BaseBox)`
 `;
 
 const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
-  const figmaURL = useMakeFigmaURL([
-    {
-      themeTokenName: 'paymentTheme',
-      lightModeURL: props.figmaURL?.paymentTheme,
-      darkModeURL: props.figmaURL?.paymentTheme,
-    },
-    {
-      themeTokenName: 'bankingTheme',
-      lightModeURL: props.figmaURL?.bankingTheme,
-      darkModeURL: props.figmaURL?.bankingTheme,
-    },
-  ]);
-
   React.useEffect(() => {
     // Storybook renders inside iframe so by default it doesn't support scrolling to the sections.
     // So we manually read location.hash of parent window and scroll to that section on load
@@ -101,15 +86,13 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
   const { showStorybookControls = true, showArgsTable = true, showDefaultExample = true } = props;
 
   return (
-    <BladeProvider themeTokens={paymentTheme}>
+    <BladeProvider themeTokens={bladeTheme}>
       <WithGlobalStyles>
-        <Title size="xlarge" marginBottom="spacing.3">
+        <Display size="small" marginBottom="spacing.3">
           {props.componentName}
-        </Title>
+        </Display>
         <Box marginBottom="spacing.4" paddingLeft="spacing.1">
-          <Heading type="subtle" size="large" weight="regular" as="span">
-            {props.componentDescription}
-          </Heading>
+          <Subtitle>{props.componentDescription}</Subtitle>
         </Box>
         {componentMetaInfo?.releasedIn ? (
           <Box paddingBottom="spacing.6" paddingLeft="spacing.1">
@@ -118,7 +101,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
               target="_blank"
               rel="noreferrer"
             >
-              <Badge color="default" fontWeight="bold" size="large" icon={AnnouncementIcon}>
+              <Badge color="primary" size="large" icon={AnnouncementIcon}>
                 Release: v{componentMetaInfo.releasedIn}
               </Badge>
             </a>
@@ -129,17 +112,17 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             description={props.note}
             isFullWidth
             isDismissible={false}
-            intent="notice"
+            color="notice"
             marginBottom="spacing.5"
           />
         ) : null}
-        {figmaURL !== '#' ? (
-          <FigmaEmbed src={figmaURL} title={`${props.componentName} Figma Designs`} />
+        {props.figmaURL && props.figmaURL !== '#' ? (
+          <FigmaEmbed src={props.figmaURL} title={`${props.componentName} Figma Designs`} />
         ) : null}
         {props.children}
         {props.imports === '' ? null : (
           <>
-            <Title size="large">Imports</Title>
+            <Heading size="xlarge">Imports</Heading>
             <SandboxHighlighter showLineNumbers={false} showTabs={false}>
               {props.imports
                 ? props.imports
@@ -153,7 +136,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
           <>
             {showDefaultExample ? (
               <>
-                <Title size="large">Example</Title>
+                <Heading size="xlarge">Example</Heading>
                 <Subtitle size="medium" marginY="spacing.4">
                   {`This is the default ${props.componentName}. You can change the properties using the controls below.`}
                 </Subtitle>
@@ -163,7 +146,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             {showArgsTable ? (
               <>
                 <BaseBox id="properties-ref">
-                  <Title size="large">Properties</Title>
+                  <Heading size="xlarge">Properties</Heading>
                   {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (
                     <Text marginY="spacing.5">
                       Check out{' '}
@@ -180,7 +163,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
                   )}
                   {props.propsDescription ? (
                     // adding box with surface background so that when theme of storybook is changed, the alert doesn't become invisible
-                    <Box backgroundColor="surface.background.level3.lowContrast">
+                    <Box backgroundColor="surface.background.gray.subtle">
                       <Alert
                         isFullWidth
                         marginTop="spacing.5"

@@ -5,19 +5,20 @@ import React from 'react';
 import type { StyledIconButtonProps } from './types';
 import { castWebType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-import type { ColorContrastTypes } from '~tokens/theme/theme';
+import type { SubtleOrIntense } from '~tokens/theme/theme';
 import { makeAccessible } from '~utils/makeAccessible';
 import { makeMotionTime } from '~utils/makeMotionTime';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 type StyledButtonProps = {
-  contrast: ColorContrastTypes;
+  emphasis: SubtleOrIntense;
 };
 
 const StyledButton = styled.button<StyledButtonProps>((props) => {
-  const { theme, contrast } = props;
-  const iconColorToken = theme.colors.surface.action.icon;
-  const contrastToken = contrast === 'high' ? 'highContrast' : 'lowContrast';
+  const { theme, emphasis } = props;
   const motionToken = theme.motion;
+
+  const emphasisColor = emphasis === 'intense' ? 'gray' : 'staticWhite';
 
   return {
     border: 'none',
@@ -28,23 +29,24 @@ const StyledButton = styled.button<StyledButtonProps>((props) => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    color: iconColorToken.default[contrastToken],
+    color: props.disabled
+      ? theme.colors.interactive.icon[emphasisColor].disabled
+      : theme.colors.interactive.icon[emphasisColor].muted,
     transitionProperty: 'color, box-shadow',
     transitionDuration: castWebType(makeMotionTime(motionToken.duration.xquick)),
     transitionTimingFunction: motionToken.easing.standard.effective as string,
 
     '&:hover': {
-      color: iconColorToken.hover[contrastToken],
+      color: theme.colors.interactive.icon[emphasisColor].subtle,
     },
 
     '&:focus-visible': {
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-      color: iconColorToken.focus[contrastToken],
+      ...getFocusRingStyles({ theme }),
+      color: theme.colors.interactive.icon[emphasisColor].subtle,
     },
 
     '&:active': {
-      color: iconColorToken.active[contrastToken],
+      color: theme.colors.interactive.icon[emphasisColor].subtle,
     },
   };
 });
@@ -55,7 +57,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       icon: Icon,
       onClick,
       size,
-      contrast,
+      emphasis,
       accessibilityLabel,
       isDisabled,
       testID,
@@ -74,7 +76,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
     <StyledButton
       ref={ref}
       onClick={castWebType(onClick)}
-      contrast={contrast}
+      emphasis={emphasis}
       type="button"
       onBlur={onBlur}
       onFocus={onFocus}
@@ -89,10 +91,7 @@ const StyledIconButton = React.forwardRef<HTMLButtonElement, StyledIconButtonPro
       {...makeAccessible({ label: accessibilityLabel })}
       {...metaAttribute({ name: MetaConstants.IconButton, testID })}
     >
-      <Icon
-        size={size}
-        color={isDisabled ? 'surface.action.icon.disabled.lowContrast' : 'currentColor'}
-      />
+      <Icon size={size} color={isDisabled ? 'interactive.icon.gray.disabled' : 'currentColor'} />
     </StyledButton>
   ),
 );

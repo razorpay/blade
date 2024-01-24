@@ -9,7 +9,6 @@
   "workspaces": {
     "packages": [
       "packages/blade",
-      "packages/razorsharp",
       "packages/eslint-plugin-blade"
     ],
     "nohoist": [

@@ -75,7 +75,7 @@ exports[`<Switch /> should render switch with label 1`] = `
           [
             {
               "alignItems": "center",
-              "backgroundColor": "hsla(214, 18%, 69%, 1)",
+              "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
               "borderRadius": 9999,
               "display": "flex",
               "height": 24,
@@ -127,7 +127,7 @@ exports[`<Switch /> should render switch with label 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "hsla(220, 30%, 96%, 1)",
+                  "backgroundColor": "hsla(0, 0%, 100%, 1)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -199,7 +199,7 @@ exports[`<Switch /> should render switch with label 1`] = `
                   <RNSVGPath
                     clipRule={0}
                     d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
-                    fill={4281484642}
+                    fill={4278190080}
                     fillRule={0}
                     propList={
                       [
@@ -294,7 +294,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
           [
             {
               "alignItems": "center",
-              "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+              "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
               "borderRadius": 9999,
               "display": "flex",
               "height": 24,
@@ -347,7 +347,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
               [
                 {
                   "alignItems": "center",
-                  "backgroundColor": "hsla(220, 27%, 98%, 1)",
+                  "backgroundColor": "hsla(0, 0%, 100%, 0.18)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -419,7 +419,7 @@ exports[`<Switch /> should set disabled state with isDisabled 1`] = `
                   <RNSVGPath
                     clipRule={0}
                     d="M8.81891 0.546661C9.12722 0.238352 9.62709 0.238353 9.9354 0.546661C10.2437 0.85497 10.2437 1.35484 9.9354 1.66315L4.14592 7.45262C3.83761 7.76093 3.33775 7.76093 3.02944 7.45262L0.397858 4.82104C0.0895488 4.51273 0.0895488 4.01286 0.397857 3.70456C0.706166 3.39625 1.20603 3.39625 1.51434 3.70456L3.58768 5.77789L8.81891 0.546661Z"
-                    fill={4288851646}
+                    fill={1375731712}
                     fillRule={0}
                     propList={
                       [

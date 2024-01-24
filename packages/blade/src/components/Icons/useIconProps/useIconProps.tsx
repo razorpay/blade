@@ -15,7 +15,7 @@ const iconSize = {
 
 function useIconProps({
   size = 'medium',
-  color = 'surface.text.normal.lowContrast',
+  color = 'surface.icon.gray.normal',
 }: IconProps): {
   height: `${typeof iconSize[keyof typeof iconSize]}px`;
   width: `${typeof iconSize[keyof typeof iconSize]}px`;

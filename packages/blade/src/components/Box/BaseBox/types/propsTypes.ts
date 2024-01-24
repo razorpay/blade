@@ -4,9 +4,10 @@ import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
 import type { Border, Elevation } from '~tokens/global';
-import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~utils/types';
+import type { PickCSSByPlatform, TestID } from '~utils/types';
 import type { Platform } from '~utils';
 import type { BladeCommonEvents } from '~components/types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -97,11 +98,12 @@ type GridProps = MakeObjectResponsive<
   >
 >;
 
-type ColorObjects = 'feedback' | 'surface' | 'action';
-type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationColorStringToken<
-  Theme['colors'][T]['background']
->}`;
-type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationColorStringToken<
+type ColorObjects = 'feedback' | 'surface' | 'interactive';
+type BackgroundOnlyColorObjects = 'popup' | 'overlay';
+type BackgroundColorString<
+  T extends ColorObjects | BackgroundOnlyColorObjects
+> = `${T}.background.${DotNotationToken<Theme['colors'][T]['background']>}`;
+type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationToken<
   Theme['colors'][T]['border']
 >}`;
 
@@ -120,22 +122,20 @@ const validBoxAsValues = [
 
 type BoxAsType = typeof validBoxAsValues[number];
 
-type BrandColorString = `brand.${DotNotationColorStringToken<Theme['colors']['brand']>}`;
-
 // Visual props that are common for both Box and BaseBox
 type CommonBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
     borderWidth: keyof Border['width'];
-    borderColor: BorderColorString<'surface'> | BrandColorString;
+    borderColor: BorderColorString<'surface'>;
     borderTopWidth: keyof Border['width'];
-    borderTopColor: BorderColorString<'surface'> | BrandColorString;
+    borderTopColor: BorderColorString<'surface'>;
     borderRightWidth: keyof Border['width'];
-    borderRightColor: BorderColorString<'surface'> | BrandColorString;
+    borderRightColor: BorderColorString<'surface'>;
     borderBottomWidth: keyof Border['width'];
-    borderBottomColor: BorderColorString<'surface'> | BrandColorString;
+    borderBottomColor: BorderColorString<'surface'>;
     borderLeftWidth: keyof Border['width'];
-    borderLeftColor: BorderColorString<'surface'> | BrandColorString;
+    borderLeftColor: BorderColorString<'surface'>;
     borderTopLeftRadius: keyof Border['radius'];
     borderTopRightRadius: keyof Border['radius'];
     borderBottomRightRadius: keyof Border['radius'];
@@ -174,8 +174,9 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     backgroundColor:
       | BackgroundColorString<'feedback'>
       | BackgroundColorString<'surface'>
-      | BackgroundColorString<'action'>
-      | BrandColorString
+      | BackgroundColorString<'interactive'>
+      | BackgroundColorString<'overlay'>
+      | BackgroundColorString<'popup'>
       | 'transparent'
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
@@ -194,7 +195,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
 
 // Visual props that are specific to Box
 type BoxVisualProps = MakeObjectResponsive<{
-  backgroundColor: BackgroundColorString<'surface'> | BrandColorString | 'transparent';
+  backgroundColor: BackgroundColorString<'surface'> | 'transparent';
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
   // styled-components do not support passing `as` prop as an object

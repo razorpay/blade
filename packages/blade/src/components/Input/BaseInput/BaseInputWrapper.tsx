@@ -3,8 +3,8 @@ import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
 import { AnimatedBaseInputWrapper } from './AnimatedBaseInputWrapper';
-import type { ActionStates } from '~tokens/theme/theme';
 import type { ContainerElementType } from '~utils/types';
+import type { ActionStates } from '~utils/useInteraction';
 
 type BaseInputWrapperProps = Pick<
   BaseInputProps,
@@ -17,7 +17,7 @@ type BaseInputWrapperProps = Pick<
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
-  currentInteraction: keyof ActionStates;
+  currentInteraction: ActionStates;
   isTextArea?: boolean;
   setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;

@@ -29,12 +29,7 @@ const Page = (): React.ReactElement => {
       showDefaultExample={false}
       componentName="SpotlightPopoverTour"
       componentDescription="The SpotlightPopoverTour component is used to provide context as well as enable users to take certain actions on it. These are used to highlight a new feature or provide a guided tour to a new user."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev',
-        bankingTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=63871%3A13263&mode=dev"
     >
       <Title>Usage</Title>
       <Sandbox>{BasicExample}</Sandbox>
@@ -55,7 +50,7 @@ const Page = (): React.ReactElement => {
       <Title>Examples</Title>
       <Text marginY="spacing.5">
         To see examples properly, switch to the{' '}
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           story view
         </Text>
       </Text>
@@ -250,8 +245,8 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
         content: () => {
           return (
             <Box>
-              <Text>{args.tourStepsContent}</Text>
-              <Text marginTop="spacing.2">
+              <Text color="surface.text.gray.subtle">{args.tourStepsContent}</Text>
+              <Text color="surface.text.gray.subtle" marginTop="spacing.2">
                 You can also issue partial refunds - for example, if a customer purchased multiple
                 items.
               </Text>
@@ -267,7 +262,7 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
         content: () => {
           return (
             <Box>
-              <Text>
+              <Text color="surface.text.gray.subtle">
                 Disputes are raised by customers when they have a problem with a transaction.
               </Text>
             </Box>
@@ -281,7 +276,7 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
         title: 'Dispute Statuses',
         content: () => {
           return (
-            <Text>
+            <Text color="surface.text.gray.subtle">
               Disputes which are open or under review will be shown here. You can also review them
               by clicking on the button.
             </Text>
@@ -335,10 +330,10 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
                   <Box display="flex" flexDirection="column" gap="spacing.3">
                     <Box display="flex" alignItems="center" gap="spacing.3">
                       <Text>Refunds</Text>
-                      <InfoIcon color="surface.text.subdued.lowContrast" />
+                      <InfoIcon color="surface.icon.gray.muted" />
                     </Box>
-                    <Amount value={40000} size="title-small" />
-                    <Text type="subdued">3 Processed</Text>
+                    <Amount value={40000} type="heading" size="large" />
+                    <Text color="surface.text.gray.muted">3 Processed</Text>
                   </Box>
                 </CardBody>
               </Card>
@@ -351,9 +346,9 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
                   <Box display="flex" flexDirection="column" gap="spacing.3">
                     <Box display="flex" alignItems="center" gap="spacing.3">
                       <Text>Disputes</Text>
-                      <InfoIcon color="surface.text.subdued.lowContrast" />
+                      <InfoIcon color="interactive.icon.gray.muted" />
                     </Box>
-                    <Amount value={0} size="title-small" />
+                    <Amount value={0} type="heading" size="large" />
                     <SpotlightPopoverTourStep name="step-3">
                       <Box
                         display="flex"
@@ -361,7 +356,7 @@ const TourTemplate: StoryFn<(props: StoryControlProps) => React.ReactElement> = 
                         alignItems="center"
                         gap="spacing.3"
                       >
-                        <Text type="subdued">0 Open | 0 Under review</Text>
+                        <Text color="surface.text.gray.muted">0 Open | 0 Under review</Text>
                         <Button size="small" variant="tertiary">
                           Review
                         </Button>
@@ -396,7 +391,7 @@ export const CustomPlacement = () => {
         content: () => {
           return (
             <Box>
-              <Text>Top</Text>
+              <Text color="surface.text.gray.subtle">Top</Text>
             </Box>
           );
         },
@@ -408,7 +403,7 @@ export const CustomPlacement = () => {
         content: () => {
           return (
             <Box>
-              <Text>Bottom</Text>
+              <Text color="surface.text.gray.subtle">Bottom</Text>
             </Box>
           );
         },
@@ -420,7 +415,7 @@ export const CustomPlacement = () => {
         content: () => {
           return (
             <Box>
-              <Text>Left</Text>
+              <Text color="surface.text.gray.subtle">Left</Text>
             </Box>
           );
         },
@@ -432,7 +427,7 @@ export const CustomPlacement = () => {
         content: () => {
           return (
             <Box>
-              <Text>Right</Text>
+              <Text color="surface.text.gray.subtle">Right</Text>
             </Box>
           );
         },
@@ -479,22 +474,22 @@ export const CustomPlacement = () => {
         <Center>
           <Box display="flex" gap="spacing.4" alignItems="stretch">
             <SpotlightPopoverTourStep name="top">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 top
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="bottom">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 bottom
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="left">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 left
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="right">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 right
               </Box>
             </SpotlightPopoverTourStep>
@@ -521,7 +516,7 @@ export const WithScrollablePage = () => {
         content: () => {
           return (
             <Box>
-              <Text>
+              <Text color="surface.text.gray.subtle">
                 Razorpay provides a Powerful Dashboard for you to get reports and detailed
                 statistics on payments, settlements, refunds and much more for you to take better
                 business decisions.
@@ -538,7 +533,7 @@ export const WithScrollablePage = () => {
         content: () => {
           return (
             <Box>
-              <Text>
+              <Text color="surface.text.gray.subtle">
                 With Amazon AWS, we are built for scale. To ensure that products built with Razorpay
                 are always available, we have a highly scalable and reliable infrastructure.
               </Text>
@@ -554,7 +549,7 @@ export const WithScrollablePage = () => {
         content: () => {
           return (
             <Box>
-              <Text>
+              <Text color="surface.text.gray.subtle">
                 With SDKs and documentation for all major languages and platforms, Razorpay is built
                 for developers.
               </Text>
@@ -735,7 +730,7 @@ const InterruptibleTourFooter = ({
   const isFirst = activeStep === 0;
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
-      <Text size="small" weight="bold">
+      <Text size="small" weight="semibold">
         {activeStep + 1} / {totalSteps}
       </Text>
       <Box display="flex" gap="spacing.4">
@@ -797,7 +792,7 @@ export const InterruptibleTour = () => {
         content: () => {
           return (
             <Box>
-              <Text>This is step 1, press skip</Text>
+              <Text color="surface.text.gray.subtle">This is step 1, press skip</Text>
             </Box>
           );
         },
@@ -812,7 +807,7 @@ export const InterruptibleTour = () => {
         content: () => {
           return (
             <Box>
-              <Text>This is step 2</Text>
+              <Text color="surface.text.gray.subtle">This is step 2</Text>
             </Box>
           );
         },
@@ -827,7 +822,7 @@ export const InterruptibleTour = () => {
             title: 'Tour Incomplete!',
             content: () => {
               return (
-                <Text>
+                <Text color="surface.text.gray.subtle">
                   We reccommend that you complete the tour to make the most of the new features. You
                   can find it here when you want to take it.
                 </Text>
@@ -851,7 +846,7 @@ export const InterruptibleTour = () => {
             title: 'Tour Complete!',
             content: () => {
               return (
-                <Text>
+                <Text color="surface.text.gray.subtle">
                   You have completed the tour. You can find it here when you want to take it.
                 </Text>
               );
@@ -916,12 +911,12 @@ export const InterruptibleTour = () => {
         <Center>
           <Box display="flex" gap="spacing.4" alignItems="stretch">
             <SpotlightPopoverTourStep name="step-1">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 Step 1
               </Box>
             </SpotlightPopoverTourStep>
             <SpotlightPopoverTourStep name="step-2">
-              <Box padding="spacing.4" backgroundColor="surface.background.level2.lowContrast">
+              <Box padding="spacing.4" backgroundColor="surface.background.gray.intense">
                 Step 2
               </Box>
             </SpotlightPopoverTourStep>

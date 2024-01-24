@@ -4,7 +4,7 @@ import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
 import { BaseBox } from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import { Heading } from '~components/Typography';
+import { Text } from '~components/Typography';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -20,13 +20,18 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
 
   const _index =
     typeof index === 'number' && showNumberPrefix ? (
-      <Heading size="small" marginRight="spacing.2" as="span">
+      <Text size="large" weight="semibold" marginRight="spacing.2" as="span">
         {index + 1}.
-      </Heading>
+      </Text>
     ) : null;
 
   const _icon = Icon && (
-    <Icon size="medium" color="currentColor" marginRight="spacing.3" marginY="spacing.2" />
+    <Icon
+      size="medium"
+      color="surface.icon.gray.muted"
+      marginRight="spacing.3"
+      marginY="spacing.2"
+    />
   );
 
   if (__DEV__) {
@@ -55,9 +60,9 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
         <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">
           {_index}
           {_icon}
-          <Heading size="small" as="span">
+          <Text size="large" weight="semibold" as="span">
             {children}
-          </Heading>
+          </Text>
         </BaseBox>
         <CollapsibleChevronIcon color="currentColor" size="large" />
       </StyledAccordionButton>

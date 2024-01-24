@@ -2,13 +2,13 @@ import type React from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
-import type { ActionStates } from '~tokens/theme/theme';
 import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
   FormInputOnClickEvent,
 } from '~components/Form/FormTypes';
 import type { ContainerElementType } from '~utils/types';
+import type { ActionStates } from '~utils/useInteraction';
 
 export type InputWrapperRef = React.MutableRefObject<ContainerElementType | null>;
 
@@ -34,7 +34,7 @@ export type BaseInputWrapperProps = Pick<
 > & {
   isFocused?: boolean;
   isLabelLeftPositioned?: boolean;
-  currentInteraction: keyof ActionStates;
+  currentInteraction: ActionStates;
   isTextArea?: boolean;
   setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;
@@ -51,8 +51,8 @@ export type StyledBaseInputProps = {
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   accessibilityProps: Record<string, unknown>;
-  currentInteraction: keyof ActionStates;
-  setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
+  currentInteraction: ActionStates;
+  setCurrentInteraction: Dispatch<SetStateAction<ActionStates>>;
   isTextArea?: boolean;
   hasTags?: boolean;
 } & Pick<
