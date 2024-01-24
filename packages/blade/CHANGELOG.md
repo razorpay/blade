@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 10.23.5
+
+### Patch Changes
+
+- 3ac92ae4: fix(blade): expose card event type
+
 ## 10.23.4
 
 ### Patch Changes
