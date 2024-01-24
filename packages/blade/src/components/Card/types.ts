@@ -1,5 +1,5 @@
-import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
 import type { CardProps } from './Card';
+import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
 
 type CardSpacingValueType = Extract<
   SpacingValueType,
