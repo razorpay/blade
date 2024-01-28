@@ -138,6 +138,7 @@
     "use-presence": "1.1.0",
     "@use-gesture/react": "10.2.24",
     "@floating-ui/react": "0.25.4",
+    "react-hot-toast": "2.4.1",
     "@emotion/react": "11.11.1",
     "@table-library/react-table-library": "4.1.7",
     "tinycolor2": "1.6.0"
@@ -282,6 +283,7 @@
     "react-native-pager-view": "^6.2.1",
     "react-native-svg": "^12.3.0",
     "react-native-gesture-handler": "^2.9.0",
+    "react-hot-toast": "2.4.1",
     "@gorhom/bottom-sheet": "^4.4.6",
     "@gorhom/portal": "^1.0.14"
   },

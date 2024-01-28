@@ -1,0 +1,21 @@
+import toast from 'react-hot-toast';
+import type { ToastProps } from './types';
+import { Toast } from './Toast';
+
+type UseToastReturn = {
+  show: (props: ToastProps) => string;
+  dismiss: (id?: string) => void;
+};
+
+const useToast = (): UseToastReturn => {
+  const show = (props: ToastProps): string => {
+    return toast.custom(({ id, visible }) => <Toast isVisible={visible} {...props} id={id} />);
+  };
+
+  return {
+    show,
+    dismiss: toast.dismiss,
+  };
+};
+
+export { useToast };
