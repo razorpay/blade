@@ -31,6 +31,65 @@ Blade is the Design System that powers [Razorpay](https://razorpay.com/).
 - [Accessible](https://github.com/razorpay/blade/blob/master/rfcs/2022-04-09-accessibility.md#manual-testing)
 - Documented [RFCs](https://github.com/razorpay/blade/tree/docs/make-docs-pretty/rfcs) and [API Decisions](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Alert/_decisions/decisions.md)
 
+## Document global.navigator.product configuration for jest on React Native
+
+Create a jest-setup.js File:
+
+In your project's root directory, create a file named jest-setup.js.
+Edit jest-setup.js with the following content:
+
+javascript
+Copy code
+// jest-setup.js
+
+// Configure global.navigator.product for React Native detection
+
+ global.navigator = {
+  product: 'ReactNative',
+};
+Update Jest Configuration:
+
+Open your package.json file.
+Locate the "jest" configuration section.
+Add or update the "setupFilesAfterEnv" property to include the path to your jest-setup.js file:
+json
+Copy code
+"jest": {
+  "setupFilesAfterEnv": ["<rootDir>/jest-setup.js"],
+  // other Jest configurations...
+}
+Save Changes:
+
+Save the changes to your package.json file.
+Run Jest Tests:
+
+Execute your Jest tests as usual with the following command:
+bash
+Copy code
+npm test
+Explanation:
+The jest-setup.js file is a setup script that Jest runs before executing the tests. By adding the global configuration for navigator.product within this file, you ensure that Jest recognizes the React Native environment during test execution.
+
+This setup mimics the behavior of React Native in a production environment, allowing your tests to behave consistently with the runtime environment.
+
+Note:
+Make sure to update the path in the "setupFilesAfterEnv" property if your jest-setup.js file is located in a different directory.
+
+Example:
+Suppose your project structure is as follows:
+
+lua
+Copy code
+project-root
+|-- src
+|-- tests
+|-- jest-setup.js
+|-- package.json
+In this case, the "setupFilesAfterEnv" property should be updated to "setupFilesAfterEnv": ["<rootDir>/jest-setup.js"]. Adjust the path based on your specific project structure.
+
+
+
+
 ## 📝 License
 
 Licensed under the [MIT License](https://github.com/razorpay/blade/blob/master/LICENSE.md).
