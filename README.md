@@ -63,6 +63,8 @@ Save Changes:
 Save the changes to your package.json file.
 Run Jest Tests:
 
+// installation process 
+
 Execute your Jest tests as usual with the following command:
 bash
 Copy code
