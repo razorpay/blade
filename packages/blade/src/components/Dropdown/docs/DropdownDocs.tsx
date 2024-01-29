@@ -23,7 +23,7 @@ const DropdownDocs = (): React.ReactElement => {
       componentDescription="Dropdown component to help you create select menu or action menu. To create a menu, you would have to use this component + Trigger (SelectInput, AutoComplete, DropdownButton, DropdownLink) + ActionList"
       imports=""
       showStorybookControls={false}
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=38643-719971"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=22673-499058&mode=design&t=jyVG8aXFc1Dlw2Se-4"
     >
       <Box as="section">
         <Heading size="xlarge">Playground</Heading>

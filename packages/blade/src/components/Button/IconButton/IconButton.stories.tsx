@@ -15,7 +15,7 @@ const Page = (): ReactElement => {
       componentName="IconButton"
       componentDescription="Useful for making clickable icons. For example - close button for modals, inputs, etc."
       apiDecisionLink={null}
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71108-309592&mode=design&t=JkDSnlo8KJOBJimR-4"
     >
       <Title>Usage</Title>
       <Sandbox showConsole>
