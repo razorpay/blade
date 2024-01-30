@@ -22,6 +22,8 @@ Toasts can also be used to provide feedback to the user when a system event occu
 
 ## Simple Usage
 
+The blade toasts will use [react-hot-toast](https://react-hot-toast.com/) under the hood with a similar imperative API to show, dismiss and create new toasts without needing for consumer to handle positional or stacking logic. 
+
 ```jsx
 import { BladeProvider, ToastContainer, useToast } from "@razorpay/blade/components"
 
@@ -102,7 +104,8 @@ type Toast = {
    * Duration for promotional toast is 6s
    * Duration for informational toast is 4s
    * 
-   * @default false
+   * @default true - for informational toast
+   * @default false - for promotional toast
    */
   autoDismiss?: boolean;
 
@@ -217,7 +220,7 @@ const Example = () => {
 
 ## Motion
 
-- TBD
+You can checkout the toast motion [here](https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75848-1063056&t=QZkki0ZrlcG4sKzw-0&scaling=min-zoom&page-id=7665%3A27414).
 
 ## Accessibility
 
