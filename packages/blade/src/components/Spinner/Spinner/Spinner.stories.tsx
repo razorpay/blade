@@ -15,7 +15,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="A spinner is an element with a looping animation that indicates loading is in process."
       componentName="Spinner"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=14825%3A203592"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74922-185038&mode=design&t=Qm80tBqhFBFB5BvZ-4"
     >
       <Title>Usage</Title>
       <Sandbox>

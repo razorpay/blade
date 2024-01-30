@@ -19,7 +19,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Carousel"
       componentDescription="Carousel is a UI component that allows the display and navigation of a set of content items, typically images or cards, within a limited space. It is often used to showcase multiple pieces of content in a visually appealing and interactive way."
-      figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=2115-975755&mode=design&t=5g2Lqj2ez02pxQfO-0"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=53853-58706&mode=design&t=jyVG8aXFc1Dlw2Se-4"
     >
       <AddonTitle>Usage</AddonTitle>
       <Sandbox editorHeight={500}>

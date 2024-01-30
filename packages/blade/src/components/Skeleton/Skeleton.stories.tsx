@@ -27,9 +27,9 @@ import { kebabCase } from '~utils/lodashButBetter/kebabCase';
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=16508%3A258522"
       componentName="Skeleton"
       componentDescription="Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73282-409843&mode=design&t=Qm80tBqhFBFB5BvZ-4"
     >
       <Heading size="large">Usage</Heading>{' '}
       <Sandbox>
