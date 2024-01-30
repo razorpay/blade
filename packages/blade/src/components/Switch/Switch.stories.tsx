@@ -23,7 +23,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Switch"
       componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13227%3A163026"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73282-409938&mode=design&t=Qm80tBqhFBFB5BvZ-4"
     >
       <Title>Usage</Title>
       <Sandbox>

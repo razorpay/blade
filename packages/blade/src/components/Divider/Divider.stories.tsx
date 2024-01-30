@@ -15,10 +15,10 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      figmaURL="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=608-883166&mode=design&t=6uRroMDHC66zlvxT-0"
       componentName="Divider"
       componentDescription="Divider is a visual element that is used to separate or divide content within a layout"
       apiDecisionLink={null}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71106-265680&mode=design&t=jyVG8aXFc1Dlw2Se-4"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox>
