@@ -1847,7 +1847,7 @@ type APIResult = {
 
 const fetchData = async ({ page }: { page: number }): Promise<APIResult> => {
   const response = await fetch(
-    \`https://rickandmortyapi.com/api/character?page=${page}\`,
+    \`https://rickandmortyapi.com/api/character?page=\${page}\`,
     {
       method: 'GET',
       redirect: 'follow',
