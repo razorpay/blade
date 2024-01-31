@@ -6,15 +6,15 @@ const refreshWrapperZIndex = 3;
 
 const checkboxCellWidth = size['44'];
 
+const tableBackgroundColor = 'surface.background.gray.intense';
 const tableHeader = {
   paddingTop: 'spacing.5',
   paddingBottom: 'spacing.5',
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
-  backgroundColor: 'brand.gray.a50.lowContrast',
+  backgroundColor: 'interactive.background.gray.default',
   borderBottomAndTopWidth: 'thin',
-  borderBottomAndTopColor: 'surface.border.normal.lowContrast',
-  focusRingColor: 'brand.primary.400',
+  borderBottomAndTopColor: 'surface.border.gray.muted',
 } as const;
 
 const tableFooter = {
@@ -23,9 +23,8 @@ const tableFooter = {
   paddingLeft: 'spacing.4',
   paddingRight: 'spacing.4',
   borderBottomAndTopWidth: 'thin',
-  borderBottomAndTopColor: 'surface.border.normal.lowContrast',
-  backgroundColor: 'brand.gray.a50.lowContrast',
-  focusRingColor: 'brand.primary.400',
+  borderBottomAndTopColor: 'surface.border.gray.muted',
+  backgroundColor: 'interactive.background.gray.default',
 } as const;
 
 const tableRow = {
@@ -47,20 +46,21 @@ const tableRow = {
   },
   nonStripe: {
     backgroundColor: 'transparent',
-    backgroundColorHover: 'brand.gray.a50.lowContrast',
+    backgroundColorHover: 'interactive.background.gray.default',
     backgroundColorFocus: 'transparent',
-    backgroundColorActive: 'brand.gray.a100.lowContrast',
-    backgroundColorSelected: 'brand.primary.300',
-    backgroundColorSelectedHover: 'brand.primary.400',
-    backgroundColorSelectedFocus: 'brand.primary.300',
-    backgroundColorSelectedActive: 'brand.primary.400',
+    // TODO: Rebranding - on design side: explore pressed state color change, right now both hover & active are same
+    backgroundColorActive: 'interactive.background.gray.default',
+    backgroundColorSelected: 'interactive.background.primary.faded',
+    backgroundColorSelectedHover: 'interactive.background.primary.fadedHighlighted',
+    backgroundColorSelectedFocus: 'interactive.background.primary.faded',
+    backgroundColorSelectedActive: 'interactive.background.primary.fadedHighlighted',
   },
   nonStripeWrapper: {
     // not used anywhere
     backgroundColor: 'transparent',
     backgroundColorHover: 'transparent',
     backgroundColorFocus: 'transparent',
-    backgroundColorActive: 'brand.gray.a50.lowContrast',
+    backgroundColorActive: 'interactive.background.gray.default',
     backgroundColorSelected: 'transparent',
     backgroundColorSelectedHover: 'transparent',
     backgroundColorSelectedFocus: 'transparent',
@@ -68,54 +68,52 @@ const tableRow = {
   },
   stripe: {
     backgroundColor: 'transparent',
-    backgroundColorHover: 'brand.gray.a50.lowContrast',
+    backgroundColorHover: 'interactive.background.gray.default',
     backgroundColorFocus: 'transparent',
-    backgroundColorActive: 'brand.gray.a100.lowContrast',
-    backgroundColorSelected: 'brand.primary.300',
-    backgroundColorSelectedHover: 'brand.primary.400',
-    backgroundColorSelectedFocus: 'brand.primary.300',
-    backgroundColorSelectedActive: 'brand.primary.400',
+    backgroundColorActive: 'interactive.background.gray.default',
+    backgroundColorSelected: 'interactive.background.primary.faded',
+    backgroundColorSelectedHover: 'interactive.background.primary.fadedHighlighted',
+    backgroundColorSelectedFocus: 'interactive.background.primary.faded',
+    backgroundColorSelectedActive: 'interactive.background.primary.fadedHighlighted',
   },
   stripeWrapper: {
-    backgroundColor: 'brand.gray.a50.lowContrast',
-    backgroundColorHover: 'brand.gray.a50.lowContrast',
-    backgroundColorFocus: 'brand.gray.a50.lowContrast',
-    backgroundColorActive: 'brand.gray.a100.lowContrast',
-    backgroundColorSelected: 'brand.primary.300',
-    backgroundColorSelectedHover: 'brand.primary.300',
-    backgroundColorSelectedFocus: 'brand.primary.300',
-    backgroundColorSelectedActive: 'brand.primary.400',
+    backgroundColor: 'interactive.background.gray.default',
+    backgroundColorHover: 'interactive.background.gray.default',
+    backgroundColorFocus: 'interactive.background.gray.default',
+    backgroundColorActive: 'interactive.background.gray.default',
+    backgroundColorSelected: 'interactive.background.primary.faded',
+    backgroundColorSelectedHover: 'interactive.background.primary.faded',
+    backgroundColorSelectedFocus: 'interactive.background.primary.faded',
+    backgroundColorSelectedActive: 'interactive.background.primary.faded',
   },
   borderBottomWidth: 'thin',
-  borderBottomColor: 'surface.border.normal.lowContrast',
+  borderBottomColor: 'surface.border.gray.muted',
   backgroundColorMotionEasing: 'easing.standard.effective',
   backgroundColorMotionDuration: 'duration.xquick',
-  focusRingColor: 'brand.primary.400',
 } as const;
 
 const tableToolbar = {
   backgroundColor: 'transparent',
-  backgroundColorSelected: 'brand.primary.300',
+  backgroundColorSelected: 'interactive.background.primary.faded',
   backgroundColorMotionEasing: 'easing.standard.effective',
   backgroundColorMotionDuration: 'duration.xquick',
 } as const;
 
 const tablePagination = {
-  backgroundColor: ' surface.background.level2.lowContrast',
+  backgroundColor: 'transparent',
   padding: 'spacing.4',
   pageSelectionButton: {
-    backgroundColor: 'surface.background.level2.lowContrast',
-    backgroundColorHover: 'brand.gray.a50.lowContrast',
-    backgroundColorActive: 'brand.gray.a100.lowContrast',
-    backgroundColorSelected: 'brand.primary.300',
-    backgroundColorSelectedHover: 'brand.primary.400',
-    backgroundColorSelectedActive: 'brand.primary.400',
-    backgroundColorDisabled: 'surface.background.level2.lowContrast',
+    backgroundColor: 'transparent',
+    backgroundColorHover: 'interactive.background.gray.default',
+    backgroundColorActive: 'interactive.background.gray.highlighted',
+    backgroundColorSelected: 'interactive.background.primary.faded',
+    backgroundColorSelectedHover: 'interactive.background.primary.fadedHighlighted',
+    backgroundColorSelectedActive: 'interactive.background.primary.fadedHighlighted',
     padding: 'spacing.2',
     borderRadius: 'small',
-    focusRingColor: 'brand.primary.400',
-    textColor: 'surface.text.subtle.lowContrast',
-    textColorSelected: 'brand.primary.500',
+    focusRingColor: 'surface.border.primary.muted',
+    textColor: 'surface.text.gray.subtle',
+    textColorSelected: 'surface.text.primary.normal',
     height: size['32'],
     width: size['32'],
   },
@@ -129,6 +127,7 @@ export {
   tableToolbar,
   tablePagination,
   refreshWrapperZIndex,
+  tableBackgroundColor,
   firstColumnStickyHeaderFooterZIndex,
   checkboxCellWidth,
 };

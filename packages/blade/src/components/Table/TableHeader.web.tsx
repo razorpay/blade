@@ -4,7 +4,7 @@ import { Header, HeaderRow, HeaderCell } from '@table-library/react-table-librar
 import { tableHeader } from './tokens';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
-import type { TableHeaderRowProps, TableHeaderCellProps } from './types';
+import type { TableHeaderRowProps, TableHeaderCellProps, TableBackgroundColors } from './types';
 import type { CheckboxProps } from '~components/Checkbox';
 import { Checkbox } from '~components/Checkbox';
 import { Text } from '~components/Typography';
@@ -12,10 +12,10 @@ import { castWebType, makeMotionTime, makeSpace } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
-import type { SurfaceLevels } from '~tokens/theme/theme';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const SortButton = styled.button(({ theme }) => ({
   cursor: 'pointer',
@@ -30,10 +30,7 @@ const SortButton = styled.button(({ theme }) => ({
   transitionProperty: 'color, box-shadow',
   transitionDuration: castWebType(makeMotionTime(getIn(theme.motion, 'duration.quick'))),
   transitionTimingFunction: (theme.motion.easing.standard as unknown) as string,
-  '&:focus-visible': {
-    boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-    outline: 'none',
-  },
+  '&:focus-visible': getFocusRingStyles({ theme }),
 }));
 
 const SortIcon = ({
@@ -44,8 +41,8 @@ const SortIcon = ({
   isSortReversed: boolean;
 }): React.ReactElement => {
   const { theme } = useTheme();
-  const defaultColor = getIn(theme.colors, 'surface.action.icon.default.lowContrast');
-  const activeColor = getIn(theme.colors, 'brand.primary.500');
+  const defaultColor = getIn(theme.colors, 'interactive.icon.gray.muted');
+  const activeColor = getIn(theme.colors, 'interactive.icon.primary.subtle');
   const upArrowColor = isSorted && isSortReversed ? activeColor : defaultColor;
   const downArrowColor = isSorted && !isSortReversed ? activeColor : defaultColor;
   return (
@@ -83,12 +80,12 @@ const TableHeader = assignWithoutSideEffects(_TableHeader, {
 });
 
 const StyledHeaderCell = styled(HeaderCell)<{
-  $surfaceLevel: SurfaceLevels;
   $isSortable: boolean;
-}>(({ theme, $surfaceLevel, $isSortable }) => ({
+  $backgroundColor: TableBackgroundColors;
+}>(({ theme, $isSortable, $backgroundColor }) => ({
   '&&&': {
-    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
     height: '100%',
+    backgroundColor: getIn(theme.colors, $backgroundColor),
     borderBottomWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderTopWidth: makeSpace(getIn(theme.border.width, tableHeader.borderBottomAndTopWidth)),
     borderBottomColor: getIn(theme.colors, tableHeader.borderBottomAndTopColor),
@@ -108,23 +105,20 @@ const StyledHeaderCell = styled(HeaderCell)<{
       paddingLeft: makeSpace(getIn(theme, tableHeader.paddingLeft)),
       paddingRight: makeSpace(getIn(theme, tableHeader.paddingRight)),
     },
-    '&:focus-visible': {
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]} inset`,
-      outline: 'none',
-    },
+    '&:focus-visible': getFocusRingStyles({ theme, negativeOffset: true }),
   },
 }));
 
 const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
-  const { toggleSort, currentSortedState, surfaceLevel } = useTableContext();
+  const { toggleSort, currentSortedState, backgroundColor } = useTableContext();
   const isChildrenString = typeof children === 'string';
   const isSortable =
     headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
   return (
     <StyledHeaderCell
       tabIndex={0}
-      $surfaceLevel={surfaceLevel}
       $isSortable={isSortable}
+      $backgroundColor={backgroundColor}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);
@@ -133,7 +127,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
       {...metaAttribute({ name: MetaConstants.TableHeaderCell })}
     >
       {isChildrenString ? (
-        <Text size="medium" weight="bold">
+        <Text size="medium" weight="medium" color="surface.text.gray.normal">
           {children}
         </Text>
       ) : (

@@ -3,6 +3,7 @@ import { Composite } from '@floating-ui/react';
 import styled from 'styled-components';
 import { useTabsContext } from './TabsContext';
 import { TabIndicator } from './TabIndicator';
+import { trackColor } from './tabTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { Divider } from '~components/Divider';
@@ -57,11 +58,12 @@ const TabList = ({
               <BaseBox flexDirection="row" display="flex">
                 {isVertical && isBordered ? (
                   <BaseBox
-                    width="1.5px"
+                    width="0px"
                     height="auto"
                     flexGrow={1}
                     flexShrink={0}
-                    backgroundColor="surface.border.normal.lowContrast"
+                    borderColor={trackColor}
+                    borderWidth="thin"
                     style={{ transform: 'translateX(1.5px)' }}
                   />
                 ) : null}
@@ -80,10 +82,10 @@ const TabList = ({
                     ? {
                         borderRadius: 'small',
                         borderWidth: 'thin',
-                        borderColor: 'surface.border.normal.lowContrast',
+                        borderColor: 'interactive.border.gray.faded',
                         padding: 'spacing.2',
                         gap: isVertical ? 'spacing.0' : 'spacing.1',
-                        backgroundColor: 'surface.background.level2.lowContrast',
+                        backgroundColor: 'surface.background.gray.intense',
                       }
                     : {
                         padding: 'spacing.0',
@@ -121,7 +123,7 @@ const TabList = ({
       {!isVertical && isBordered ? (
         <BaseBox
           style={{ transform: 'translateY(-1px)' }}
-          borderBottomColor="surface.border.normal.lowContrast"
+          borderBottomColor={trackColor}
           borderBottomWidth="thin"
         />
       ) : null}

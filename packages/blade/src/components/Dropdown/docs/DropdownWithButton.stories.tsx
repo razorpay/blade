@@ -168,7 +168,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
         <Dropdown>
           <DropdownButton>Top Left Menu</DropdownButton>
           <DropdownOverlay width="70%">
-            <ActionList surfaceLevel={3}>
+            <ActionList>
               <ActionListItem title="Apples" value="Apples" />
               <ActionListItem title="Appricots" value="Appricots" />
             </ActionList>
@@ -179,7 +179,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
         <Dropdown>
           <DropdownButton>Top Right Menu</DropdownButton>
           <DropdownOverlay>
-            <ActionList surfaceLevel={3}>
+            <ActionList>
               <ActionListItem title="Apples" value="Apples" />
               <ActionListItem title="Appricots" value="Appricots" />
             </ActionList>
@@ -190,7 +190,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
         <Dropdown>
           <DropdownButton>Bottom Right Menu</DropdownButton>
           <DropdownOverlay>
-            <ActionList surfaceLevel={3}>
+            <ActionList>
               <ActionListItem title="Apples" value="Apples" />
               <ActionListItem title="Appricots" value="Appricots" />
             </ActionList>
@@ -201,7 +201,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
         <Dropdown>
           <DropdownButton>Bottom Left Menu</DropdownButton>
           <DropdownOverlay>
-            <ActionList surfaceLevel={3}>
+            <ActionList>
               <ActionListItem title="Apples" value="Apples" />
               <ActionListItem title="Appricots" value="Appricots" />
             </ActionList>

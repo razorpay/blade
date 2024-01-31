@@ -189,10 +189,13 @@ const BaseInputTagSlot = ({
       {visibleTags}
       {tags && !showAllTags && invisibleTagsCount ? (
         <Text
-          type={isDisabled ? 'placeholder' : 'normal'}
+          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
           alignSelf="center"
           marginY="spacing.2"
           marginRight="spacing.4"
+          variant="body"
+          size="small"
+          weight="regular"
         >
           <BaseBox as="span" whiteSpace="nowrap">
             {visibleTags?.length === 0

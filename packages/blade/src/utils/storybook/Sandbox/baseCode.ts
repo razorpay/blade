@@ -240,13 +240,8 @@ import { ${themeTokenName}, createTheme } from "@razorpay/blade/tokens";
 
 import App from "./App";
 ${showConsole ? 'import { Logger } from "./Logger";' : ''}
+import '@razorpay/blade/fonts.css';
 
-// Only way to load font correctly in sandbpack. Use @fontsource/lato in your actual projects
-document.head.innerHTML += \`
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-\`
 
 const GlobalStyles = createGlobalStyle\`
   * { 

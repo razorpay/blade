@@ -10,7 +10,7 @@ export const CharacterCounter = ({
   currentCount,
   maxCount,
 }: CharacterCounterProps): ReactElement => (
-  <Text variant="caption" weight="regular" type="muted">
+  <Text variant="caption" weight="regular" color="surface.text.gray.muted">
     {currentCount}/{maxCount}
   </Text>
 );

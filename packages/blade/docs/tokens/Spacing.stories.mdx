@@ -1,6 +1,6 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
 import { useTheme, BladeProvider } from '../../src/components';
-import { paymentTheme, bankingTheme } from '../../src/tokens';
+import { bladeTheme } from '../../src/tokens';
 import { makeSpace } from '../../src/utils';
 
 <Meta
@@ -8,22 +8,12 @@ import { makeSpace } from '../../src/utils';
   parameters={{
     docs: {
       container: ({ children, context }) => {
-        const themeTokenName = context.store.globals.globals.themeTokenName;
         const colorScheme = context.store.globals.globals.colorScheme;
-        const getThemeTokens = () => {
-          if (themeTokenName === 'paymentTheme') {
-            return paymentTheme;
-          }
-          if (themeTokenName === 'bankingTheme') {
-            return bankingTheme;
-          }
-          return null;
-        };
         return (
           <DocsContainer context={context}>
             <BladeProvider
-              key={`${themeTokenName}-${colorScheme}`}
-              themeTokens={getThemeTokens()}
+              key={colorScheme}
+              themeTokens={bladeTheme}
               colorScheme={colorScheme}
             >
               {children}

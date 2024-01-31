@@ -8,7 +8,7 @@ import { InfoIcon } from '~components/Icons';
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
-const colors: LinkProps['color'][] = ['default', 'white', 'neutral'];
+const colors: LinkProps['color'][] = ['primary', 'white', 'neutral'];
 
 describe('<Link />', () => {
   it('should render link with default properties', () => {

@@ -77,133 +77,20 @@ exports[`<Link /> should render button variant of link 1`] = `
     >
       <Text
         accessible={true}
-        color="action.text.link.default"
+        color="interactive.text.primary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-        textDecorationLine="none"
-      >
-        Learn More
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Link /> should render default color link 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="link"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": false,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        {
-          "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-        },
-      ]
-    }
-  >
-    <View
-      alignItems="center"
-      className="content-container"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="action.text.link.default"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -305,133 +192,20 @@ exports[`<Link /> should render disabled button variant of link 1`] = `
     >
       <Text
         accessible={true}
-        color="action.text.link.disabled"
+        color="interactive.text.primary.disabled"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(218, 19%, 81%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(227, 100%, 59%, 0.18)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-        textDecorationLine="none"
-      >
-        Learn More
-      </Text>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<Link /> should render disabled default color link 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    accessibilityRole="link"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": false,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        {
-          "alignSelf": "flex-start",
-          "backgroundColor": "transparent",
-          "borderColor": "black",
-          "borderStyle": "solid",
-          "borderWidth": 0,
-          "outline": "none",
-          "paddingBottom": 0,
-          "paddingLeft": 0,
-          "paddingRight": 0,
-          "paddingTop": 0,
-          "textDecorationColor": "black",
-          "textDecorationLine": "none",
-          "textDecorationStyle": "solid",
-        },
-      ]
-    }
-  >
-    <View
-      alignItems="center"
-      className="content-container"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <Text
-        accessible={true}
-        color="action.text.link.default"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="bold"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -533,19 +307,135 @@ exports[`<Link /> should render disabled neutral color link 1`] = `
     >
       <Text
         accessible={true}
-        color="feedback.neutral.action.text.link.default.lowContrast"
+        color="interactive.text.neutral.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(216, 27%, 36%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(211, 33%, 21%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+        textDecorationLine="none"
+      >
+        Learn More
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Link /> should render disabled primary color link 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="link"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "alignSelf": "flex-start",
+          "backgroundColor": "transparent",
+          "borderColor": "black",
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "outline": "none",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      className="content-container"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="interactive.text.primary.normal"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="medium"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -647,19 +537,20 @@ exports[`<Link /> should render disabled white color link 1`] = `
     >
       <Text
         accessible={true}
-        color="white.action.text.link.default"
+        color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -761,19 +652,20 @@ exports[`<Link /> should render link with default properties 1`] = `
     >
       <Text
         accessible={true}
-        color="action.text.link.default"
+        color="interactive.text.primary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -930,7 +822,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
           >
             <RNSVGPath
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -939,7 +831,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
             />
             <RNSVGPath
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -949,7 +841,7 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
             <RNSVGPath
               clipRule={0}
               d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-              fill={4279461105}
+              fill={4280897755}
               fillRule={0}
               propList={
                 [
@@ -963,19 +855,20 @@ exports[`<Link /> should render link with icon with default iconPosition 1`] = `
       </View>
       <Text
         accessible={true}
-        color="action.text.link.default"
+        color="interactive.text.primary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1132,7 +1025,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
           >
             <RNSVGPath
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -1141,7 +1034,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
             />
             <RNSVGPath
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -1151,7 +1044,7 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
             <RNSVGPath
               clipRule={0}
               d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-              fill={4279461105}
+              fill={4280897755}
               fillRule={0}
               propList={
                 [
@@ -1165,19 +1058,20 @@ exports[`<Link /> should render link with icon with left iconPosition 1`] = `
       </View>
       <Text
         accessible={true}
-        color="action.text.link.default"
+        color="interactive.text.primary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1279,19 +1173,20 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
     >
       <Text
         accessible={true}
-        color="action.text.link.default"
+        color="interactive.text.primary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1368,7 +1263,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
           >
             <RNSVGPath
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -1377,7 +1272,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
             />
             <RNSVGPath
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -1387,7 +1282,7 @@ exports[`<Link /> should render link with icon with right iconPosition 1`] = `
             <RNSVGPath
               clipRule={0}
               d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-              fill={4279461105}
+              fill={4280897755}
               fillRule={0}
               propList={
                 [
@@ -1536,7 +1431,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
           >
             <RNSVGPath
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -1545,7 +1440,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
             />
             <RNSVGPath
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -1555,7 +1450,7 @@ exports[`<Link /> should render link with icon without text 1`] = `
             <RNSVGPath
               clipRule={0}
               d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-              fill={4279461105}
+              fill={4280897755}
               fillRule={0}
               propList={
                 [
@@ -1569,19 +1464,20 @@ exports[`<Link /> should render link with icon without text 1`] = `
       </View>
       <Text
         accessible={true}
-        color="action.text.link.default"
+        color="interactive.text.primary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1681,19 +1577,135 @@ exports[`<Link /> should render neutral color link 1`] = `
     >
       <Text
         accessible={true}
-        color="feedback.neutral.action.text.link.default.lowContrast"
+        color="interactive.text.neutral.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
-              "color": "hsla(216, 27%, 36%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(211, 33%, 21%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
+              "lineHeight": 20,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "textAlign": "center",
+              "textDecorationLine": "none",
+            },
+          ]
+        }
+        textAlign="center"
+        textDecorationLine="none"
+      >
+        Learn More
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<Link /> should render primary color link 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="link"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      [
+        {
+          "alignSelf": "flex-start",
+          "backgroundColor": "transparent",
+          "borderColor": "black",
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "outline": "none",
+          "paddingBottom": 0,
+          "paddingLeft": 0,
+          "paddingRight": 0,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+        },
+      ]
+    }
+  >
+    <View
+      alignItems="center"
+      className="content-container"
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="row"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <Text
+        accessible={true}
+        color="interactive.text.primary.normal"
+        data-blade-component="base-text"
+        fontSize={100}
+        fontWeight="medium"
+        lineHeight={100}
+        style={
+          [
+            {
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontStyle": "normal",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1795,19 +1807,20 @@ exports[`<Link /> should render white color link 1`] = `
     >
       <Text
         accessible={true}
-        color="white.action.text.link.default"
+        color="interactive.text.staticWhite.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -1964,7 +1977,7 @@ exports[`<Link /> should render with small size 1`] = `
           >
             <RNSVGPath
               d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -1973,7 +1986,7 @@ exports[`<Link /> should render with small size 1`] = `
             />
             <RNSVGPath
               d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-              fill={4279461105}
+              fill={4280897755}
               propList={
                 [
                   "fill",
@@ -1983,7 +1996,7 @@ exports[`<Link /> should render with small size 1`] = `
             <RNSVGPath
               clipRule={0}
               d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-              fill={4279461105}
+              fill={4280897755}
               fillRule={0}
               propList={
                 [
@@ -1997,20 +2010,21 @@ exports[`<Link /> should render with small size 1`] = `
       </View>
       <Text
         accessible={true}
-        color="action.text.link.default"
+        color="interactive.text.primary.normal"
         data-blade-component="base-text"
         fontSize={75}
-        fontWeight="bold"
-        lineHeight={50}
+        fontWeight="medium"
+        lineHeight={75}
         style={
           [
             {
-              "color": "hsla(218, 89%, 51%, 1)",
-              "fontFamily": "Lato",
+              "color": "hsla(227, 71%, 51%, 1)",
+              "fontFamily": "Inter",
               "fontSize": 12,
               "fontStyle": "normal",
-              "fontWeight": "700",
-              "lineHeight": 16,
+              "fontWeight": "500",
+              "letterSpacing": 0,
+              "lineHeight": 18,
               "marginBottom": 0,
               "marginLeft": 0,
               "marginRight": 0,

@@ -4,7 +4,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 describe('<RepeatIcon />', () => {
   it('should render RepeatIcon', () => {
     const { container } = renderWithTheme(
-      <RepeatIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <RepeatIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

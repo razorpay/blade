@@ -69,12 +69,14 @@ exports[`<Card /> should render a clickable Card 1`] = `
       }
     >
       <View
+        backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
         data-blade-component="base-box"
         elevation="lowRaised"
         style={
           [
             {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "borderRadius": 4,
               "paddingBottom": 24,
               "paddingLeft": 24,
@@ -83,18 +85,17 @@ exports[`<Card /> should render a clickable Card 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "display": "flex",
                 "flexDirection": "column",
                 "width": "100%",
@@ -102,7 +103,6 @@ exports[`<Card /> should render a clickable Card 1`] = `
             ],
           ]
         }
-        surfaceLevel={2}
         textAlign="left"
       >
         <View
@@ -182,7 +182,7 @@ exports[`<Card /> should render a interactive Card 1`] = `
             "display": "block",
           },
           {
-            "borderColor": "hsla(218, 89%, 51%, 1)",
+            "borderColor": "hsla(227, 100%, 59%, 1)",
             "borderStyle": "solid",
             "borderWidth": 2,
           },
@@ -190,12 +190,14 @@ exports[`<Card /> should render a interactive Card 1`] = `
       }
     >
       <View
+        backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
         data-blade-component="base-box"
         elevation="lowRaised"
         style={
           [
             {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "borderRadius": 4,
               "paddingBottom": 24,
               "paddingLeft": 24,
@@ -204,18 +206,17 @@ exports[`<Card /> should render a interactive Card 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "display": "flex",
                 "flexDirection": "column",
                 "width": "100%",
@@ -223,7 +224,6 @@ exports[`<Card /> should render a interactive Card 1`] = `
             ],
           ]
         }
-        surfaceLevel={2}
         textAlign="left"
       >
         <View
@@ -312,12 +312,14 @@ exports[`<Card /> should render a linkable Card 1`] = `
       }
     >
       <View
+        backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
         data-blade-component="base-box"
         elevation="lowRaised"
         style={
           [
             {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "borderRadius": 4,
               "paddingBottom": 24,
               "paddingLeft": 24,
@@ -326,18 +328,17 @@ exports[`<Card /> should render a linkable Card 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "display": "flex",
                 "flexDirection": "column",
                 "width": "100%",
@@ -345,7 +346,6 @@ exports[`<Card /> should render a linkable Card 1`] = `
             ],
           ]
         }
-        surfaceLevel={2}
         textAlign="left"
       >
         <View
@@ -434,12 +434,14 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
       }
     >
       <View
+        backgroundColor="surface.background.gray.intense"
         borderRadius="medium"
         data-blade-component="base-box"
         elevation="lowRaised"
         style={
           [
             {
+              "backgroundColor": "hsla(0, 0%, 100%, 1)",
               "borderRadius": 4,
               "paddingBottom": 24,
               "paddingLeft": 24,
@@ -448,18 +450,17 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
               "textAlign": "left",
             },
             {
-              "elevation": 4,
-              "shadowColor": "hsla(217, 56%, 17%, 0.64)",
+              "elevation": 8,
+              "shadowColor": "hsla(217, 56%, 17%, 0.4)",
               "shadowOffset": {
-                "height": 3,
+                "height": 2,
                 "width": 0,
               },
-              "shadowOpacity": 0.12,
-              "shadowRadius": 2,
+              "shadowOpacity": 0.2,
+              "shadowRadius": 4,
             },
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "display": "flex",
                 "flexDirection": "column",
                 "width": "100%",
@@ -467,7 +468,6 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
             ],
           ]
         }
-        surfaceLevel={2}
         textAlign="left"
       >
         <View

@@ -5,7 +5,7 @@ import type { PopoverContentProps } from './types';
 import { PopoverCloseButton } from './PopoverCloseButton';
 import { usePopoverContext } from './PopoverContext';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading } from '~components/Typography';
+import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { useIsMobile } from '~utils/useIsMobile';
 
@@ -46,9 +46,9 @@ const PopoverHeader = ({ title, titleLeading }: PopoverHeaderProps): React.React
         : null}
       {title ? (
         <BaseBox id={titleId} paddingRight="spacing.4">
-          <Heading size="small" weight="bold" type="normal">
+          <Text size="large" weight="semibold">
             {title}
-          </Heading>
+          </Text>
         </BaseBox>
       ) : null}
       <BaseBox marginLeft="auto">

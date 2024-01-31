@@ -21,7 +21,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
         isVisible={isVisible}
       >
         {title ? (
-          <Text contrast="high" weight="bold" size="medium">
+          <Text weight="semibold" size="medium" color="surface.text.staticWhite.normal">
             {title}
           </Text>
         ) : null}
@@ -29,8 +29,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
           variant="body"
           size="small"
           weight="regular"
-          contrast="high"
-          color="feedback.text.neutral.highContrast"
+          color="surface.text.staticWhite.subtle"
           wordBreak="break-word"
         >
           {children}

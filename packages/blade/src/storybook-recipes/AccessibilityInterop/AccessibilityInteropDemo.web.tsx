@@ -31,9 +31,9 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
   return (
     <BaseBox display="flex" alignItems="center" gap="spacing.3">
       {isChecked ? (
-        <EyeIcon color="action.icon.link.active" size="medium" />
+        <EyeIcon color="interactive.icon.primary.normal" size="medium" />
       ) : (
-        <CloseIcon color="action.icon.link.active" size="medium" />
+        <CloseIcon color="interactive.icon.primary.normal" size="medium" />
       )}
       <BaseBox
         onKeyDown={handleOnKeyDown}
@@ -43,8 +43,8 @@ const Checkbox: React.FC<{ label: string; checked?: boolean; disabled?: boolean 
         style={{
           // @ts-ignore
           color: disabled
-            ? theme.colors.action.text.primary.disabled
-            : theme.colors.surface.text.normal.lowContrast,
+            ? theme.colors.interactive.text.primary.disabled
+            : theme.colors.interactive.text.gray.normal,
         }}
       >
         {label}

@@ -2,9 +2,9 @@ import { Spinner } from '../Spinner';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<Spinner />', () => {
-  it('should render default color Spinner', () => {
+  it('should render primary color Spinner', () => {
     const { container, getByText } = renderWithSSR(
-      <Spinner accessibilityLabel="Loading" color="default" label="Loading" />,
+      <Spinner accessibilityLabel="Loading" color="primary" label="Loading" />,
     );
     expect(getByText('Loading')).toBeInTheDocument();
     expect(container).toMatchSnapshot();

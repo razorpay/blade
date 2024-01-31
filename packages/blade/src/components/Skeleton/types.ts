@@ -8,7 +8,6 @@ type SkeletonProps = StyledPropsBlade &
     'width' | 'maxWidth' | 'minWidth' | 'height' | 'maxHeight' | 'minHeight' | 'borderRadius'
   > &
   Partial<FlexboxProps> & {
-    contrast?: 'low' | 'high';
     testID?: string;
   };
 

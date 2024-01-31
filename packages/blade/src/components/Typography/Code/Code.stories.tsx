@@ -14,12 +14,7 @@ const Page = (): ReactElement => {
       componentDescription="Code component can be used for displaying token, variable names, or inlined code snippets."
       componentName="Code"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10344%3A189840',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -75,7 +70,7 @@ export const Code = CodeTemplate.bind({});
 
 export const WithBoldColor = CodeTemplate.bind({});
 WithBoldColor.args = {
-  color: 'feedback.positive.action.text.primary.default.lowContrast',
+  color: 'interactive.text.positive.subtle',
   isHighlighted: false,
   weight: 'bold',
 };

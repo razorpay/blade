@@ -10,8 +10,6 @@ export type StyledBaseButtonProps = Omit<
   BaseButtonProps,
   'icon' | 'children' | 'accessibilityLabel'
 > & {
-  activeBorderColor: string;
-  activeBackgroundColor: string;
   defaultBorderColor: string;
   minHeight: `${ButtonMinHeight}px`;
   buttonPaddingTop: SpacingValues;

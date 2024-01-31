@@ -168,23 +168,23 @@ exports[`<Accordion /> should render 1`] = `
                   }
                 >
                   <Text
-                    accessibilityRole="header"
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
-                    data-blade-component="heading"
+                    color="surface.text.gray.normal"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={200}
                     fontStyle="normal"
-                    fontWeight="bold"
-                    lineHeight={300}
+                    fontWeight="semibold"
+                    lineHeight={200}
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 16,
                           "fontStyle": "normal",
-                          "fontWeight": "700",
+                          "fontWeight": "600",
+                          "letterSpacing": 0,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -267,7 +267,7 @@ exports[`<Accordion /> should render 1`] = `
                         <RNSVGPath
                           clipRule={0}
                           d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4288851646}
+                          fill={4285959847}
                           fillRule={0}
                           propList={
                             [
@@ -343,7 +343,7 @@ exports[`<Accordion /> should render 1`] = `
                     >
                       <Text
                         accessible={true}
-                        color="surface.text.subtle.lowContrast"
+                        color="interactive.text.gray.subtle"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={100}
@@ -353,11 +353,12 @@ exports[`<Accordion /> should render 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(216, 27%, 36%, 1)",
-                              "fontFamily": "Lato",
+                              "color": "hsla(211, 26%, 34%, 1)",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -396,7 +397,7 @@ exports[`<Accordion /> should render 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -406,11 +407,12 @@ exports[`<Accordion /> should render 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -436,22 +438,21 @@ exports[`<Accordion /> should render 1`] = `
           </View>
         </View>
         <View
-          borderBottomColor="surface.border.normal.lowContrast"
+          borderBottomColor="surface.border.gray.muted"
           borderPosition="borderBottom"
-          borderWidth="none"
           data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
             [
               {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
               },
               {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
+                "borderWidth": 0,
                 "flexGrow": 1,
               },
             ]
@@ -584,23 +585,23 @@ exports[`<Accordion /> should render 1`] = `
                   }
                 >
                   <Text
-                    accessibilityRole="header"
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
-                    data-blade-component="heading"
+                    color="surface.text.gray.normal"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={200}
                     fontStyle="normal"
-                    fontWeight="bold"
-                    lineHeight={300}
+                    fontWeight="semibold"
+                    lineHeight={200}
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 16,
                           "fontStyle": "normal",
-                          "fontWeight": "700",
+                          "fontWeight": "600",
+                          "letterSpacing": 0,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -683,7 +684,7 @@ exports[`<Accordion /> should render 1`] = `
                         <RNSVGPath
                           clipRule={0}
                           d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4288851646}
+                          fill={4285959847}
                           fillRule={0}
                           propList={
                             [
@@ -759,7 +760,7 @@ exports[`<Accordion /> should render 1`] = `
                     >
                       <Text
                         accessible={true}
-                        color="surface.text.subtle.lowContrast"
+                        color="interactive.text.gray.subtle"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={100}
@@ -769,11 +770,12 @@ exports[`<Accordion /> should render 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(216, 27%, 36%, 1)",
-                              "fontFamily": "Lato",
+                              "color": "hsla(211, 26%, 34%, 1)",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -812,7 +814,7 @@ exports[`<Accordion /> should render 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -822,11 +824,12 @@ exports[`<Accordion /> should render 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -852,22 +855,21 @@ exports[`<Accordion /> should render 1`] = `
           </View>
         </View>
         <View
-          borderBottomColor="surface.border.normal.lowContrast"
+          borderBottomColor="surface.border.gray.muted"
           borderPosition="borderBottom"
-          borderWidth="none"
           data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
             [
               {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
               },
               {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
+                "borderWidth": 0,
                 "flexGrow": 1,
               },
             ]
@@ -1000,23 +1002,23 @@ exports[`<Accordion /> should render 1`] = `
                   }
                 >
                   <Text
-                    accessibilityRole="header"
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
-                    data-blade-component="heading"
+                    color="surface.text.gray.normal"
+                    data-blade-component="text"
                     fontFamily="text"
                     fontSize={200}
                     fontStyle="normal"
-                    fontWeight="bold"
-                    lineHeight={300}
+                    fontWeight="semibold"
+                    lineHeight={200}
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 16,
                           "fontStyle": "normal",
-                          "fontWeight": "700",
+                          "fontWeight": "600",
+                          "letterSpacing": 0,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -1099,7 +1101,7 @@ exports[`<Accordion /> should render 1`] = `
                         <RNSVGPath
                           clipRule={0}
                           d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4288851646}
+                          fill={4285959847}
                           fillRule={0}
                           propList={
                             [
@@ -1175,7 +1177,7 @@ exports[`<Accordion /> should render 1`] = `
                     >
                       <Text
                         accessible={true}
-                        color="surface.text.subtle.lowContrast"
+                        color="interactive.text.gray.subtle"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={100}
@@ -1185,11 +1187,12 @@ exports[`<Accordion /> should render 1`] = `
                         style={
                           [
                             {
-                              "color": "hsla(216, 27%, 36%, 1)",
-                              "fontFamily": "Lato",
+                              "color": "hsla(211, 26%, 34%, 1)",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
                               "fontWeight": "400",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -1228,7 +1231,7 @@ exports[`<Accordion /> should render 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -1238,11 +1241,12 @@ exports[`<Accordion /> should render 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1268,22 +1272,21 @@ exports[`<Accordion /> should render 1`] = `
           </View>
         </View>
         <View
-          borderBottomColor="surface.border.normal.lowContrast"
+          borderBottomColor="surface.border.gray.muted"
           borderPosition="borderBottom"
-          borderWidth="none"
           data-blade-component="divider"
           dividerStyle="solid"
           isDividerHorizontal={true}
           style={
             [
               {
-                "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                "borderStyle": "solid",
-                "borderWidth": 0,
+                "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                "borderBottomStyle": "solid",
               },
               {
                 "borderBottomStyle": "solid",
                 "borderBottomWidth": 1,
+                "borderWidth": 0,
                 "flexGrow": 1,
               },
             ]

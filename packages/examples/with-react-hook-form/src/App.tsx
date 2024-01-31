@@ -6,11 +6,8 @@ import {
   TextArea,
   TextInput,
 } from '@razorpay/blade/components';
-import { paymentTheme } from '@razorpay/blade/tokens';
-import '@fontsource/lato/400.css';
-import '@fontsource/lato/400-italic.css';
-import '@fontsource/lato/700.css';
-import '@fontsource/lato/700-italic.css';
+import { bladeTheme } from '@razorpay/blade/tokens';
+import '@razorpay/blade/fonts.css';
 
 type FormFields = {
   firstName: string;
@@ -54,7 +51,7 @@ function App(): JSX.Element {
   });
 
   return (
-    <BladeProvider themeTokens={paymentTheme} colorScheme="light">
+    <BladeProvider themeTokens={bladeTheme} colorScheme="light">
       <form onSubmit={handleSubmit((data) => console.log(data))}>
         <TextInput
           {...firstName.field}

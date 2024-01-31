@@ -1,25 +1,25 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { useState } from 'react';
-import type { ActionStates } from '~tokens/theme/theme';
 
+export type ActionStates = 'default' | 'hover' | 'focus' | 'disabled';
 const useInteraction = (): {
   onMouseEnter: () => void;
   onMouseLeave: () => void;
   onFocus: () => void;
   onBlur: () => void;
-  currentInteraction: keyof ActionStates;
-  setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
+  currentInteraction: ActionStates;
+  setCurrentInteraction: Dispatch<SetStateAction<ActionStates>>;
 } => {
-  const [currentInteraction, setCurrentInteraction] = useState<keyof ActionStates>('default');
+  const [currentInteraction, setCurrentInteraction] = useState<ActionStates>('default');
 
   const onMouseEnter = (): void => {
-    if (currentInteraction !== 'active') setCurrentInteraction('hover');
+    if (currentInteraction !== 'focus') setCurrentInteraction('hover');
   };
   const onMouseLeave = (): void => {
-    if (currentInteraction !== 'active') setCurrentInteraction('default');
+    if (currentInteraction !== 'focus') setCurrentInteraction('default');
   };
   const onFocus = (): void => {
-    setCurrentInteraction('active');
+    setCurrentInteraction('focus');
   };
   const onBlur = (): void => {
     setCurrentInteraction('default');

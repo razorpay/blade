@@ -4,7 +4,13 @@ import styled from 'styled-components';
 import { useTableContext } from './TableContext';
 import { checkboxCellWidth, tableRow } from './tokens';
 import { ComponentIds } from './componentIds';
-import type { TableProps, TableBodyProps, TableRowProps, TableCellProps } from './types';
+import type {
+  TableProps,
+  TableBodyProps,
+  TableRowProps,
+  TableCellProps,
+  TableBackgroundColors,
+} from './types';
 import getIn from '~utils/lodashButBetter/get';
 import { Text } from '~components/Typography';
 import type { CheckboxProps } from '~components/Checkbox';
@@ -12,8 +18,8 @@ import { Checkbox } from '~components/Checkbox';
 import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
-import type { SurfaceLevels } from '~tokens/theme/theme';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledBody = styled(Body)<{ $isSelectable: boolean; $showStripedRows: boolean }>(
   ({ theme, $showStripedRows, $isSelectable }) => {
@@ -138,18 +144,15 @@ const TableBody = assignWithoutSideEffects(_TableBody, {
 });
 
 const StyledCell = styled(Cell)<{
-  $surfaceLevel: SurfaceLevels;
-}>(({ theme, $surfaceLevel }) => ({
+  $backgroundColor: TableBackgroundColors;
+}>(({ theme, $backgroundColor }) => ({
   '&&&': {
     height: '100%',
-    backgroundColor: getIn(theme.colors, `surface.background.level${$surfaceLevel}.lowContrast`),
+    backgroundColor: getIn(theme.colors, $backgroundColor),
     '& > div:first-child': {
       alignSelf: 'stretch',
     },
-    '&:focus-visible': {
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${getIn(theme.colors, tableRow.focusRingColor)} inset`,
-    },
+    '&:focus-visible': getFocusRingStyles({ theme, negativeOffset: true }),
   },
 }));
 
@@ -181,14 +184,14 @@ const CellWrapper = styled(BaseBox)<{
 
 const _TableCell = ({ children }: TableCellProps): React.ReactElement => {
   const isChildrenString = typeof children === 'string';
-  const { selectionType, rowDensity, showStripedRows, surfaceLevel } = useTableContext();
+  const { selectionType, rowDensity, showStripedRows, backgroundColor } = useTableContext();
   const isSelectable = selectionType !== 'none';
 
   return (
     <StyledCell
       tabIndex={0}
       role="cell"
-      $surfaceLevel={surfaceLevel}
+      $backgroundColor={backgroundColor}
       {...metaAttribute({ name: MetaConstants.TableCell })}
     >
       <BaseBox className="cell-wrapper-base" display="flex" alignItems="center" height="100%">
@@ -238,43 +241,46 @@ const TableCheckboxCell = ({
   );
 };
 
-const StyledRow = styled(Row)<{ $isSelectable: boolean }>(({ theme, $isSelectable }) => {
-  const rowBackgroundTransition = `background-color ${makeMotionTime(
-    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
+const StyledRow = styled(Row)<{ $isSelectable: boolean; $isHoverable: boolean }>(
+  ({ theme, $isSelectable, $isHoverable }) => {
+    const rowBackgroundTransition = `background-color ${makeMotionTime(
+      getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+    )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
 
-  return {
-    '&&&': {
-      backgroundColor: 'transparent',
-      ...($isSelectable && {
-        '&:hover:not(.disabled-row) .cell-wrapper-base': {
-          transition: rowBackgroundTransition,
-          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
-          cursor: 'pointer',
-        },
-        '&:focus:not(.disabled-row) .cell-wrapper-base': {
-          transition: rowBackgroundTransition,
-          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorFocus),
-          cursor: 'pointer',
-        },
-        '&:active:not(.disabled-row) .cell-wrapper-base': {
-          transition: rowBackgroundTransition,
-          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
-          cursor: 'pointer',
-        },
-      }),
-      '&:focus': {
-        outline: 'none',
-        boxShadow: `0 0 0 2px ${getIn(theme.colors, 'brand.primary.300')}`,
+    return {
+      '&&&': {
+        backgroundColor: 'transparent',
+        ...(($isHoverable || $isSelectable) && {
+          '&:hover:not(.disabled-row) .cell-wrapper-base': {
+            transition: rowBackgroundTransition,
+            cursor: 'pointer',
+            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
+          },
+        }),
+        ...($isSelectable && {
+          '&:focus:not(.disabled-row) .cell-wrapper-base': {
+            transition: rowBackgroundTransition,
+            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorFocus),
+            cursor: 'pointer',
+          },
+          '&:active:not(.disabled-row) .cell-wrapper-base': {
+            transition: rowBackgroundTransition,
+            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
+            cursor: 'pointer',
+          },
+        }),
+        '&:focus': getFocusRingStyles({ theme, negativeOffset: true }),
       },
-    },
-  };
-});
+    };
+  },
+);
 
 const _TableRow = <Item,>({
   children,
   item,
   isDisabled,
+  onHover,
+  onClick,
 }: TableRowProps<Item>): React.ReactElement => {
   const {
     selectionType,
@@ -295,8 +301,11 @@ const _TableRow = <Item,>({
     <StyledRow
       disabled={isDisabled}
       $isSelectable={isDisabled ? false : isSelectable}
+      $isHoverable={isDisabled ? false : Boolean(onHover) || Boolean(onClick)}
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
+      onMouseEnter={() => onHover?.({ item })}
+      onClick={() => onClick?.({ item })}
       {...metaAttribute({ name: MetaConstants.TableRow })}
     >
       {isMultiSelect && (

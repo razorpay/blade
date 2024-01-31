@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable consistent-return */
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
@@ -97,7 +98,7 @@ const CarouselContainer = styled(BaseBox)<{
   isScrollAtStart: boolean;
   isScrollAtEnd: boolean;
 }>(({ theme, showOverlay, scrollOverlayColor, isScrollAtStart, isScrollAtEnd }) => {
-  const gradientStop1: string = getIn(theme.colors, scrollOverlayColor as string);
+  const gradientStop1: string = getIn(theme.colors, scrollOverlayColor!);
   const gradientStop2 = 'hsla(0, 0%, 100%, 0)';
 
   const overlayCommonStyle: CSSObject = {

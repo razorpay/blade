@@ -9,8 +9,9 @@ exports[`<Card /> should render a clickable Card 1`] = `
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
+  background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
+  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -23,7 +24,6 @@ exports[`<Card /> should render a clickable Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: hsla(0,0%,100%,1);
   box-sizing: border-box;
 }
 
@@ -106,8 +106,9 @@ exports[`<Card /> should render a linkable Card 1`] = `
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
+  background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
+  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -120,7 +121,6 @@ exports[`<Card /> should render a linkable Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: hsla(0,0%,100%,1);
   box-sizing: border-box;
 }
 
@@ -205,8 +205,9 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
+  background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
+  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -219,7 +220,6 @@ exports[`<Card /> should render a linkable Card with onClick 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: hsla(0,0%,100%,1);
   box-sizing: border-box;
 }
 
@@ -304,8 +304,9 @@ exports[`<Card /> should render an interactive Card 1`] = `
 .c2.c2.c2.c2.c2 {
   text-align: left;
   padding: 24px;
+  background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  box-shadow: 0 4px 8px -2px hsla(217,56%,17%,0.1),0 2px 4px -2px hsla(217,56%,17%,0.06);
+  box-shadow: 0px 2px 16px 0px hsla(217,56%,17%,0.10);
 }
 
 .c3.c3.c3.c3.c3 {
@@ -318,7 +319,6 @@ exports[`<Card /> should render an interactive Card 1`] = `
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: hsla(0,0%,100%,1);
   box-sizing: border-box;
 }
 
@@ -346,7 +346,7 @@ exports[`<Card /> should render an interactive Card 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  box-shadow: 0px 0px 0px 2px hsla(218,89%,51%,1);
+  box-shadow: 0px 0px 0px 2px hsla(227,100%,59%,1);
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);

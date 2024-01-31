@@ -6,7 +6,7 @@ import { StyledAccordionButton } from './StyledAccordionButton.native';
 import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
 import { getBackgroundColor, getTransitionDuration, getTransitionEasing } from './commonStyles';
-import { Heading } from '~components/Typography';
+import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { castNativeType } from '~utils';
@@ -62,9 +62,9 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
   const _showNumberPrefix = typeof index === 'number' && showNumberPrefix;
 
   const _index = _showNumberPrefix ? (
-    <Heading size="small" marginRight="spacing.2">
+    <Text size="large" weight="semibold" marginRight="spacing.2">
       {index + 1}.
-    </Heading>
+    </Text>
   ) : null;
 
   const a11yLabel = _showNumberPrefix ? `${index + 1}. ${children}` : children;
@@ -72,12 +72,16 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
   const renderChildren: PressableProps['children'] = ({ pressed }) => {
     isPressed.value = pressed;
 
-    const iconColor: IconProps['color'] = pressed
-      ? 'surface.action.icon.focus.lowContrast'
-      : 'surface.action.icon.default.lowContrast';
+    const iconColor: IconProps['color'] =
+      pressed || isExpanded ? 'interactive.icon.gray.subtle' : 'interactive.icon.gray.muted';
 
     const _icon = Icon && (
-      <Icon size="medium" color={iconColor} marginRight="spacing.3" marginY="spacing.2" />
+      <Icon
+        size="medium"
+        color="surface.icon.gray.muted"
+        marginRight="spacing.3"
+        marginY="spacing.2"
+      />
     );
 
     if (__DEV__) {
@@ -111,7 +115,9 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
         >
           {_index}
           {_icon}
-          <Heading size="small">{children}</Heading>
+          <Text size="large" weight="semibold">
+            {children}
+          </Text>
         </BaseBox>
         <BaseBox>
           <CollapsibleChevronIcon color={iconColor} size="large" />

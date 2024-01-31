@@ -387,50 +387,6 @@ describe('<Table />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render table with surfaceLevel', () => {
-    const { container } = renderWithTheme(
-      <Table data={{ nodes: nodes.slice(0, 2) }} surfaceLevel={3}>
-        {(tableData) => (
-          <>
-            <TableHeader>
-              <TableHeaderRow>
-                <TableHeaderCell>Payment ID</TableHeaderCell>
-                <TableHeaderCell>Amount</TableHeaderCell>
-                <TableHeaderCell>Status</TableHeaderCell>
-                <TableHeaderCell>Type</TableHeaderCell>
-                <TableHeaderCell>Method</TableHeaderCell>
-                <TableHeaderCell>Name</TableHeaderCell>
-              </TableHeaderRow>
-            </TableHeader>
-            <TableBody>
-              {tableData.map((tableItem, index) => (
-                <TableRow item={tableItem} key={index}>
-                  <TableCell>{tableItem.paymentId}</TableCell>
-                  <TableCell>{tableItem.amount}</TableCell>
-                  <TableCell>{tableItem.status}</TableCell>
-                  <TableCell>{tableItem.type}</TableCell>
-                  <TableCell>{tableItem.method}</TableCell>
-                  <TableCell>{tableItem.name}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-            <TableFooter>
-              <TableFooterRow>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-                <TableFooterCell>-</TableFooterCell>
-              </TableFooterRow>
-            </TableFooter>
-          </>
-        )}
-      </Table>,
-    );
-    expect(container).toMatchSnapshot();
-  });
-
   it('should render table with isLoading', () => {
     const { container } = renderWithTheme(
       <Table data={{ nodes: nodes.slice(0, 2) }} isLoading={true}>
@@ -615,6 +571,84 @@ describe('<Table />', () => {
     fireEvent.click(sortButton);
     expect(onSortChange).toHaveBeenCalledWith({ sortKey: 'STATUS', isSortReversed: true });
     expect(getAllByRole('row')[0]).toHaveTextContent('completed');
+  });
+
+  it('should call onHover when mouse enters the row', async () => {
+    const onHover = jest.fn();
+    const user = userEvent.setup();
+    const { getByText } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 5) }} selectionType="single">
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index} onHover={onHover}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const firstSelectableRow = getByText('rzp01').closest('td');
+    if (firstSelectableRow) await user.hover(firstSelectableRow);
+    expect(onHover).toHaveBeenCalledWith({ item: nodes[0] });
+  });
+
+  it('should call onClick when the row is clicked', async () => {
+    const onClick = jest.fn();
+    const user = userEvent.setup();
+    const { getByText } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 5) }} selectionType="single">
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index} onClick={onClick}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const firstSelectableRow = getByText('rzp01').closest('td');
+    if (firstSelectableRow) await user.click(firstSelectableRow);
+    expect(onClick).toHaveBeenCalledWith({ item: nodes[0] });
   });
 
   it('should render table with single select', async () => {
@@ -806,48 +840,4 @@ describe('<Table />', () => {
     fireEvent.click(goBack5PagesButton);
     expect(onPageChange).toHaveBeenLastCalledWith({ page: 0 });
   }, 10000);
-
-  it('should throw error if currentPage is greater than total pages', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-    expect(() =>
-      renderWithTheme(
-        <Table
-          data={{
-            nodes: [...nodes, ...nodes],
-          }}
-          pagination={<TablePagination defaultPageSize={10} currentPage={50} />}
-        >
-          {(tableData) => (
-            <>
-              <TableHeader>
-                <TableHeaderRow>
-                  <TableHeaderCell>Payment ID</TableHeaderCell>
-                  <TableHeaderCell>Amount</TableHeaderCell>
-                  <TableHeaderCell>Status</TableHeaderCell>
-                  <TableHeaderCell>Type</TableHeaderCell>
-                  <TableHeaderCell>Method</TableHeaderCell>
-                  <TableHeaderCell>Name</TableHeaderCell>
-                </TableHeaderRow>
-              </TableHeader>
-              <TableBody>
-                {tableData.map((tableItem, index) => (
-                  <TableRow item={tableItem} key={index}>
-                    <TableCell>{tableItem.paymentId}</TableCell>
-                    <TableCell>{tableItem.amount}</TableCell>
-                    <TableCell>{tableItem.status}</TableCell>
-                    <TableCell>{tableItem.type}</TableCell>
-                    <TableCell>{tableItem.method}</TableCell>
-                    <TableCell>{tableItem.name}</TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </>
-          )}
-        </Table>,
-      ),
-    ).toThrow(
-      `[Blade: TablePagination]: Value of 'currentPage' prop cannot be greater than the total pages`,
-    );
-    mockConsoleError.mockRestore();
-  });
 });

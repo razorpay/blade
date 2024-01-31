@@ -101,11 +101,13 @@ describe('<Box />', () => {
   // https://github.com/razorpay/blade/issues/1480
   it('should not throw error and render properly with undefined backgroundColor', () => {
     const { container } = renderWithTheme(
-      <Box backgroundColor={{ base: 'brand.primary.300', l: undefined }}>I am Visible</Box>,
+      <Box backgroundColor={{ base: 'surface.background.cloud.intense', l: undefined }}>
+        I am Visible
+      </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
       .c0.c0.c0.c0.c0 {
-        background-color: hsla(218,89%,51%,0.09);
+        background-color: hsla(200,61%,20%,1);
       }
 
       <div>
@@ -121,16 +123,18 @@ describe('<Box />', () => {
 
   it('should accept "transparent" value for backgroundColor', () => {
     const { container } = renderWithTheme(
-      <Box backgroundColor={{ base: 'brand.primary.300', l: 'transparent' }}>I am Visible</Box>,
+      <Box backgroundColor={{ base: 'surface.background.cloud.intense', l: 'transparent' }}>
+        I am Visible
+      </Box>,
     );
     expect(container).toMatchInlineSnapshot(`
       .c0.c0.c0.c0.c0 {
-        background-color: hsla(218,89%,51%,0.09);
+        background-color: hsla(200,61%,20%,1);
       }
 
       @media screen and (min-width:1024px) {
         .c0.c0.c0.c0.c0 {
-          background-color: transparent;
+          background-color: hsla(0,0%,100%,0);
         }
       }
 
@@ -205,14 +209,14 @@ describe('<Box />', () => {
   // https://github.com/razorpay/blade/issues/1624
   it('should apply borderBottomColor prop to border bottom only', () => {
     const { container } = renderWithTheme(
-      <Box borderBottomColor="surface.border.normal.lowContrast">I am Visible</Box>,
+      <Box borderBottomColor="surface.border.gray.normal">I am Visible</Box>,
     );
     expect(container).toMatchSnapshot();
   });
 
   it('should apply borderColor prop to all borders', () => {
     const { container } = renderWithTheme(
-      <Box borderColor="surface.border.normal.lowContrast">I am Visible</Box>,
+      <Box borderColor="surface.border.gray.normal">I am Visible</Box>,
     );
     expect(container).toMatchSnapshot();
   });

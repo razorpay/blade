@@ -11,7 +11,9 @@ import { logger } from '~utils/logger';
 import { makeAccessible } from '~utils/makeAccessible/makeAccessible.native';
 
 const StyledCardRoot = styled(BaseBox)<CardRootProps>(({ isSelected, ...props }) => {
-  const selectedColor = isSelected ? props.theme.colors.brand.primary[500] : 'transparent';
+  const selectedColor = isSelected
+    ? props.theme.colors.surface.border.primary.normal
+    : 'transparent';
   return {
     border: `${props.theme.border.width.thicker}px solid ${selectedColor}`,
   };
@@ -71,9 +73,9 @@ const CardRoot = ({
           selected: isSelected,
         })}
         style={styles}
-        onPressIn={() => {
+        onPressIn={(event) => {
           if (onClick) {
-            onClick();
+            onClick(event);
           }
           setIsPressed(true);
         }}

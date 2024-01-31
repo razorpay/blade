@@ -23,7 +23,7 @@ import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
-import { throwBladeError } from '~utils/logger';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
 
@@ -49,13 +49,7 @@ const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, is
       ? getIn(theme.colors, tablePagination.pageSelectionButton.backgroundColorSelectedActive)
       : getIn(theme.colors, tablePagination.pageSelectionButton.backgroundColorActive),
     outline: 'none',
-    '&:focus-visible': {
-      outline: `1px solid ${theme.colors.surface.background.level1.lowContrast}`,
-      boxShadow: `0px 0px 0px 4px ${getIn(
-        theme.colors,
-        tablePagination.pageSelectionButton.focusRingColor,
-      )}`,
-    },
+    '&:focus-visible': getFocusRingStyles({ theme }),
   },
   '&:active': {
     backgroundColor: isSelected
@@ -212,19 +206,6 @@ const _TablePagination = ({
     }
   }, [controlledCurrentPage, currentPage, handlePageChange, onPageChange]);
 
-  if (currentPage > totalPages - 1) {
-    if (!isUndefined(controlledCurrentPage)) {
-      if (__DEV__) {
-        throwBladeError({
-          moduleName: 'TablePagination',
-          message: `Value of 'currentPage' prop cannot be greater than the total pages`,
-        });
-      }
-    } else {
-      handlePageChange(totalPages - 1);
-    }
-  }
-
   const handlePageSizeChange = (pageSize: number): void => {
     onPageSizeChange?.({ pageSize });
     setPaginationRowSize(pageSize);
@@ -248,7 +229,7 @@ const _TablePagination = ({
     >
       {showLabel && !onMobile && (
         <BaseBox display="flex" justifyContent="center" alignItems="center">
-          <Text size="medium" weight="bold">
+          <Text size="medium" weight="semibold">
             {label ?? defaultLabel}
           </Text>
         </BaseBox>

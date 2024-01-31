@@ -7,7 +7,7 @@ import React from 'react';
 import { Popover, PopoverInteractiveWrapper } from '..';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { InfoIcon } from '~components/Icons';
 
@@ -33,7 +33,7 @@ describe('<Popover />', () => {
     fireEvent(getByRole('button', { name: buttonText }), 'touchEnd');
 
     await act(async () => {
-      jest.advanceTimersByTime(paymentTheme.motion.duration.quick);
+      jest.advanceTimersByTime(bladeTheme.motion.duration.quick);
     });
     expect(getByTestId(popoverModalId)).toHaveProp('visible', true);
 
@@ -46,7 +46,7 @@ describe('<Popover />', () => {
     const { toJSON, getByRole } = renderWithTheme(
       <Popover
         title="This is title"
-        titleLeading={<InfoIcon color="surface.text.placeholder.lowContrast" size="small" />}
+        titleLeading={<InfoIcon color="surface.icon.gray.disabled" size="small" />}
         content={<Text>{popoverContent}</Text>}
         footer={<Text>Footer</Text>}
       >
@@ -56,7 +56,7 @@ describe('<Popover />', () => {
     fireEvent(getByRole('button', { name: buttonText }), 'touchEnd');
 
     await act(async () => {
-      jest.advanceTimersByTime(paymentTheme.motion.duration.quick);
+      jest.advanceTimersByTime(bladeTheme.motion.duration.quick);
     });
     expect(toJSON()).toMatchSnapshot();
   });
@@ -99,7 +99,7 @@ describe('<Popover />', () => {
 
     // wait for closing animation to finish
     await act(async () => {
-      jest.advanceTimersByTime(paymentTheme.motion.duration.gentle);
+      jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
     expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
   });
@@ -123,7 +123,7 @@ describe('<Popover />', () => {
 
     // wait for closing animation to finish
     await act(async () => {
-      jest.advanceTimersByTime(paymentTheme.motion.duration.gentle);
+      jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
     expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
   });
@@ -165,7 +165,7 @@ describe('<Popover />', () => {
 
     // wait for closing animation to finish
     await act(async () => {
-      jest.advanceTimersByTime(paymentTheme.motion.duration.gentle);
+      jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
 
     expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
@@ -201,7 +201,7 @@ describe('<Popover />', () => {
 
     // wait for closing animation to finish
     await act(async () => {
-      jest.advanceTimersByTime(paymentTheme.motion.duration.gentle);
+      jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
 
     expect(getByTestId(popoverModalId)).toHaveProp('visible', false);
@@ -216,7 +216,7 @@ describe('<Popover />', () => {
 
     // wait for closing animation to finish
     await act(async () => {
-      jest.advanceTimersByTime(paymentTheme.motion.duration.gentle);
+      jest.advanceTimersByTime(bladeTheme.motion.duration.gentle);
     });
 
     expect(getByTestId(popoverModalId)).toHaveProp('visible', false);

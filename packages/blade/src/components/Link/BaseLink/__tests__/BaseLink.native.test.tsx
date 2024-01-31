@@ -14,7 +14,7 @@ beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
 const colors: BaseLinkProps['color'][] = [
-  'default',
+  'primary',
   'white',
   'positive',
   'negative',

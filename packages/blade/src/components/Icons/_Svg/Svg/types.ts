@@ -7,5 +7,6 @@ export type SvgProps = {
   height: string;
   viewBox: string;
   width: string;
+  fillOpacity?: number;
 } & TestID &
   Omit<StyledPropsBlade, 'order'>; // Order prop on SVG has different meaning so removing this prop from styledProps

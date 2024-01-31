@@ -16,7 +16,7 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '.';
-import { Code, Text, Title } from '~components/Typography';
+import { Code, Text, Heading } from '~components/Typography';
 import { RupeeIcon } from '~components/Icons';
 import { Link } from '~components/Link';
 import { Box } from '~components/Box';
@@ -35,14 +35,9 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Interactive Card"
       componentDescription="Enhancing the Card component to add additional interactions and behaviour. This includes making the card clickable, hoverable, linkable, selectable and more."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=21248%3A400833&t=ZCWT255jVK78xf1J-4',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=12791%3A336279&t=ZCWT255jVK78xf1J-4',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=21248%3A400833&t=ZCWT255jVK78xf1J-4"
     >
-      <Title>Usage</Title>
+      <Heading size="large">Usage</Heading>
       <Box marginY="spacing.6">
         <Sandbox>
           {`
@@ -92,9 +87,9 @@ const Page = (): React.ReactElement => {
                     value="free"
                     name="pricing-card"
                   />
-                  <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
+                  <Amount marginBottom="spacing.1" value={0} currency="USD" size="large" />
                   <Box paddingX="spacing.2">
-                    <Text marginBottom="spacing.3" size="large" type="subtle">
+                    <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                       Free
                     </Text>
                     <Text>
@@ -116,9 +111,9 @@ const Page = (): React.ReactElement => {
                     value="standard"
                     name="pricing-card"
                   />
-                  <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
+                  <Amount marginBottom="spacing.1" value={10} currency="USD" size="large" />
                   <Box paddingX="spacing.2">
-                    <Text marginBottom="spacing.3" size="large" type="subtle">
+                    <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                       Standard
                     </Text>
                     <Text>
@@ -140,9 +135,9 @@ const Page = (): React.ReactElement => {
                     value="premium"
                     name="pricing-card"
                   />
-                  <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
+                  <Amount marginBottom="spacing.1" value={20} currency="USD" size="large" />
                   <Box paddingX="spacing.2">
-                    <Text marginBottom="spacing.3" size="large" type="subtle">
+                    <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                       Premium
                     </Text>
                     <Text>
@@ -282,7 +277,7 @@ const CardTemplate: StoryFn<typeof Card> = (args): React.ReactElement => {
       href={args.href}
       target={args.target}
       accessibilityLabel={args.accessibilityLabel}
-      surfaceLevel={args.surfaceLevel}
+      backgroundColor={args.backgroundColor}
       elevation={args.elevation}
       padding={args.padding}
       width={{ s: '100%', m: '400px' }}
@@ -294,7 +289,7 @@ const CardTemplate: StoryFn<typeof Card> = (args): React.ReactElement => {
           prefix={<CardHeaderIcon icon={RupeeIcon} />}
           suffix={<CardHeaderCounter value={12} />}
         />
-        <CardHeaderTrailing visual={<CardHeaderBadge variant="positive">NEW</CardHeaderBadge>} />
+        <CardHeaderTrailing visual={<CardHeaderBadge color="positive">NEW</CardHeaderBadge>} />
       </CardHeader>
       <CardBody>
         <Text>
@@ -347,13 +342,13 @@ export const ClickableCard = (): React.ReactElement => {
           </Text>
           <Text marginY="spacing.2">
             Card Clicked:{' '}
-            <Text as="span" weight="bold">
+            <Text as="span" weight="semibold">
               {cardClickCount}
             </Text>
           </Text>
           <Text marginY="spacing.2">
             Button Clicked:{' '}
-            <Text as="span" weight="bold">
+            <Text as="span" weight="semibold">
               {buttonClickCount}
             </Text>
           </Text>
@@ -516,9 +511,9 @@ const SingleSelectCardWeb = (): React.ReactElement => {
               value="free"
               name="pricing-card"
             />
-            <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={0} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Free
               </Text>
               <Text>
@@ -540,9 +535,9 @@ const SingleSelectCardWeb = (): React.ReactElement => {
               value="standard"
               name="pricing-card"
             />
-            <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={10} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Standard
               </Text>
               <Text>
@@ -563,9 +558,9 @@ const SingleSelectCardWeb = (): React.ReactElement => {
               value="premium"
               name="pricing-card"
             />
-            <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={20} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Premium
               </Text>
               <Text>
@@ -607,9 +602,9 @@ const MultiSelectCardWeb = (): React.ReactElement => {
               value="free"
               name="pricing-card"
             />
-            <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={0} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Free
               </Text>
               <Text>
@@ -627,9 +622,9 @@ const MultiSelectCardWeb = (): React.ReactElement => {
               value="standard"
               name="pricing-card"
             />
-            <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={10} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Standard
               </Text>
               <Text>
@@ -646,9 +641,9 @@ const MultiSelectCardWeb = (): React.ReactElement => {
               value="premium"
               name="pricing-card"
             />
-            <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={20} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Premium
               </Text>
               <Text>
@@ -681,9 +676,9 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
           isSelected={selected === 'free'}
         >
           <CardBody>
-            <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={0} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Free
               </Text>
               <Text>
@@ -700,9 +695,9 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
           isSelected={selected === 'standard'}
         >
           <CardBody>
-            <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={10} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Standard
               </Text>
               <Text>
@@ -718,9 +713,9 @@ const SingleSelectCardReactNative = (): React.ReactElement => {
           isSelected={selected === 'premium'}
         >
           <CardBody>
-            <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={20} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Premium
               </Text>
               <Text>
@@ -761,9 +756,9 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           shouldScaleOnHover
         >
           <CardBody>
-            <Amount marginBottom="spacing.1" value={0} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={0} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Free
               </Text>
               <Text>
@@ -780,9 +775,9 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           shouldScaleOnHover
         >
           <CardBody>
-            <Amount marginBottom="spacing.1" value={10} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={10} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Standard
               </Text>
               <Text>
@@ -798,9 +793,9 @@ const MultiSelectCardReactNative = (): React.ReactElement => {
           shouldScaleOnHover
         >
           <CardBody>
-            <Amount marginBottom="spacing.1" value={20} currency="USD" size="heading-large-bold" />
+            <Amount marginBottom="spacing.1" value={20} currency="USD" size="large" />
             <Box paddingX="spacing.2">
-              <Text marginBottom="spacing.3" size="large" type="subtle">
+              <Text marginBottom="spacing.3" size="large" color="surface.text.gray.subtle">
                 Premium
               </Text>
               <Text>
@@ -834,12 +829,12 @@ const RadioCard = ({ value, label }: { value: string; label: string }) => {
       <Radio value={value} />
       <Box display="flex" flexDirection="column" gap="spacing.3">
         <Box display="flex" flexDirection="row" gap="spacing.4">
-          <Text weight="bold">{label}</Text>
-          <Badge variant="positive">Issued</Badge>
+          <Text weight="semibold">{label}</Text>
+          <Badge color="positive">Issued</Badge>
         </Box>
         <Box display="flex" flexDirection="row" gap="spacing.4">
           <Text size="small">13 Aug’23</Text>
-          <Amount size="body-small" value={1000} />
+          <Amount size="small" value={1000} />
           <Text size="small">Un-billed/₹1,000</Text>
         </Box>
       </Box>
@@ -895,13 +890,13 @@ const CheckboxCard = ({ value, label }: { value: string; label: string }) => {
       <Checkbox value={value} />
       <Box display="flex" flexDirection="column" gap="spacing.3">
         <Box display="flex" flexDirection="row" gap="spacing.4">
-          <Text weight="bold">{label}</Text>
-          <Badge variant="positive">Issued</Badge>
+          <Text weight="medium">{label}</Text>
+          <Badge color="positive">Issued</Badge>
         </Box>
         <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.4">
           <Text size="small">13 Aug’23</Text>
-          <Amount size="body-small" value={1000} />
-          <Text size="small">Un-billed/₹1,000</Text>
+          <Amount size="small" weight="medium" value={1000} />
+          <Text size="small">Un-billed | ₹1,000</Text>
         </Box>
       </Box>
     </Box>

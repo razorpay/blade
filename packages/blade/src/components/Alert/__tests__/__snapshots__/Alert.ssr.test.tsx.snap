@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Alert /> should render Alert on server 1`] = `"<div id="root"><div role="status" data-blade-component="alert" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledAlert-sc-1dcpe4h-0 edNXIx fvZuAv"><div data-blade-component="base-box" class="BaseBox-bmPWx dFcqBl"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><g clip-path="url(#clip0_60_208)" data-blade-component="svg-g"><path d="M4.15845 7.14679C6.74812 4.11688 11.0222 3.1512 14.663 4.77343C15.1675 4.99821 15.7586 4.77147 15.9834 4.267C16.2082 3.76253 15.9815 3.17135 15.477 2.94657C11.0272 0.96385 5.80325 2.14413 2.6381 5.84735C-0.527049 9.55057 -0.879431 14.8946 1.77205 18.9813C4.42353 23.0681 9.44725 24.9241 14.1189 23.5429C18.7905 22.1616 21.9972 17.8716 22 13V12.07C22 11.5177 21.5523 11.07 21 11.07C20.4477 11.07 20 11.5177 20 12.07V12.9994C19.9977 16.9852 17.3741 20.4948 13.5518 21.6249C9.72957 22.7551 5.61926 21.2365 3.44986 17.8928C1.28047 14.5491 1.56878 10.1767 4.15845 7.14679Z" fill="hsla(160, 100%, 26%, 1)" data-blade-component="svg-path"></path><path d="M22.7071 4.70711C23.0976 4.31658 23.0976 3.68342 22.7071 3.29289C22.3166 2.90237 21.6834 2.90237 21.2929 3.29289L11 13.5858L8.70711 11.2929C8.31658 10.9024 7.68342 10.9024 7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071L10.2929 15.7071C10.6834 16.0976 11.3166 16.0976 11.7071 15.7071L22.7071 4.70711Z" fill="hsla(160, 100%, 26%, 1)" data-blade-component="svg-path"></path></g><defs data-blade-component="svg-defs"><clipPath id="clip0_60_208" data-blade-component="svg-clippath"><rect data-blade-component="svg-rect" height="24" width="24" fill="white"></rect></clipPath></defs></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx csAaGy"><div data-blade-component="base-box" class="BaseBox-bmPWx kipYPx"><p class="StyledBaseText-dVBfTO hwHLce" data-blade-component="text">Currently you can only accept payments in international currencies using PayPal.</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx ghjKxw"><div data-blade-component="base-box" class="BaseBox-bmPWx hggoXP"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 cfGYvN"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 gTzyYZ esItiH"><div class="StyledBaseText-dVBfTO ctPzMx" data-blade-component="base-text">Primary</div></div></button></div><div data-blade-component="base-box" class="BaseBox-bmPWx cplkfv"><a data-blade-component="link" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 csnivf" role="link" aria-disabled="false"><span class="BaseBox-bmPWx fAEwZa content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO ctPzMx" data-blade-component="base-text">Link</span></span></a></div></div></div><button type="button" aria-label="Dismiss alert" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 dOswfI"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button></div></div></div>"`;
+exports[`<Alert /> should render Alert on server 1`] = `"<div id="root"><div role="status" data-blade-component="alert" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledAlert-sc-1dcpe4h-0 edNXIx tUExz"><div data-blade-component="base-box" class="BaseBox-bmPWx bqifXC"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><g clip-path="url(#clip0_60_208)" data-blade-component="svg-g"><path d="M4.15845 7.14679C6.74812 4.11688 11.0222 3.1512 14.663 4.77343C15.1675 4.99821 15.7586 4.77147 15.9834 4.267C16.2082 3.76253 15.9815 3.17135 15.477 2.94657C11.0272 0.96385 5.80325 2.14413 2.6381 5.84735C-0.527049 9.55057 -0.879431 14.8946 1.77205 18.9813C4.42353 23.0681 9.44725 24.9241 14.1189 23.5429C18.7905 22.1616 21.9972 17.8716 22 13V12.07C22 11.5177 21.5523 11.07 21 11.07C20.4477 11.07 20 11.5177 20 12.07V12.9994C19.9977 16.9852 17.3741 20.4948 13.5518 21.6249C9.72957 22.7551 5.61926 21.2365 3.44986 17.8928C1.28047 14.5491 1.56878 10.1767 4.15845 7.14679Z" fill="hsla(150, 100%, 27%, 1)" data-blade-component="svg-path"></path><path d="M22.7071 4.70711C23.0976 4.31658 23.0976 3.68342 22.7071 3.29289C22.3166 2.90237 21.6834 2.90237 21.2929 3.29289L11 13.5858L8.70711 11.2929C8.31658 10.9024 7.68342 10.9024 7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071L10.2929 15.7071C10.6834 16.0976 11.3166 16.0976 11.7071 15.7071L22.7071 4.70711Z" fill="hsla(150, 100%, 27%, 1)" data-blade-component="svg-path"></path></g><defs data-blade-component="svg-defs"><clipPath id="clip0_60_208" data-blade-component="svg-clippath"><rect data-blade-component="svg-rect" height="24" width="24" fill="white"></rect></clipPath></defs></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx csAaGy"><div data-blade-component="base-box" class="BaseBox-bmPWx kipYPx"><p class="StyledBaseText-dVBfTO bLchiZ" data-blade-component="text">Currently you can only accept payments in international currencies using PayPal.</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx ghjKxw"><div data-blade-component="base-box" class="BaseBox-bmPWx hggoXP"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 ctwkUZ"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO SzFCk" data-blade-component="base-text">Primary</div></div></button></div><div data-blade-component="base-box" class="BaseBox-bmPWx cplkfv"><a data-blade-component="link" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 eEDbkf" role="link" aria-disabled="false"><span class="BaseBox-bmPWx fAEwZa content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO bMehCe" data-blade-component="base-text">Link</span></span></a></div></div></div><button type="button" aria-label="Dismiss alert" data-blade-component="icon-button" class="StyledIconButtonweb__StyledButton-sc-1f4cg7d-0 jCUyST"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z" fill="currentColor" data-blade-component="svg-path"></path></svg></button></div></div></div>"`;
 
 exports[`<Alert /> should render Alert on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -12,6 +12,9 @@ exports[`<Alert /> should render Alert on server 2`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
   margin-top: 2px;
 }
 
@@ -65,6 +68,7 @@ exports[`<Alert /> should render Alert on server 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
+  z-index: 1;
 }
 
 .c12.c12.c12.c12.c12 {
@@ -90,12 +94,9 @@ exports[`<Alert /> should render Alert on server 2`] = `
 }
 
 .c1.c1.c1.c1.c1 {
-  background: hsla(155,100%,31%,0.09);
-  padding: 8px 8px 12px 8px;
+  background: hsla(150,100%,32%,0.09);
+  padding: 12px;
   border-radius: 4px;
-  border-color: hsla(155,100%,31%,0.32);
-  border-width: 1px;
-  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -111,7 +112,7 @@ exports[`<Alert /> should render Alert on server 2`] = `
   box-sizing: border-box;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -129,7 +130,7 @@ exports[`<Alert /> should render Alert on server 2`] = `
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  color: hsla(214,18%,69%,1);
+  color: hsla(211,22%,56%,1);
   -webkit-transition-property: color,box-shadow;
   transition-property: color,box-shadow;
   -webkit-transition-duration: 150ms;
@@ -138,42 +139,74 @@ exports[`<Alert /> should render Alert on server 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15:hover {
-  color: hsla(217,18%,45%,1);
+.c16.c16.c16.c16.c16:hover {
+  color: hsla(211,26%,34%,1);
 }
 
-.c15.c15.c15.c15.c15:focus-visible {
-  outline: none;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  color: hsla(217,18%,45%,1);
+.c16.c16.c16.c16.c16:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  color: hsla(211,26%,34%,1);
 }
 
-.c15.c15.c15.c15.c15:active {
-  color: hsla(217,18%,45%,1);
+.c16.c16.c16.c16.c16:active {
+  color: hsla(211,26%,34%,1);
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(160,100%,26%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
-  font-size: 0.75rem;
-  font-weight: 700;
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c15.c15.c15.c15.c15 {
+  color: hsla(150,100%,27%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   text-align: center;
   margin: 0;
   padding: 0;
@@ -183,10 +216,10 @@ exports[`<Alert /> should render Alert on server 2`] = `
   min-height: 32px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(155,100%,31%,0.09);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(150,100%,32%,0.09);
+  border-color: hsla(150,100%,32%,1);
   border-width: 1px;
-  border-radius: 2px;
+  border-radius: 4px;
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
@@ -202,6 +235,7 @@ exports[`<Alert /> should render Alert on server 2`] = `
   align-items: center;
   -webkit-text-decoration: none;
   text-decoration: none;
+  overflow: hidden;
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -216,25 +250,25 @@ exports[`<Alert /> should render Alert on server 2`] = `
 }
 
 .c8.c8.c8.c8.c8:hover {
-  background-color: hsla(155,100%,31%,0.18);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(150,100%,32%,0.18);
+  border-color: hsla(150,100%,32%,1);
 }
 
 .c8.c8.c8.c8.c8:active {
-  background-color: hsla(155,100%,31%,0.32);
-  border-color: hsla(155,100%,31%,0.32);
+  background-color: hsla(150,100%,32%,0.18);
+  border-color: hsla(150,100%,32%,1);
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
-  background-color: hsla(155,100%,31%,0.32);
-  border-color: hsla(155,100%,31%,0.32);
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  background-color: hsla(150,100%,32%,0.18);
+  border-color: hsla(150,100%,32%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
 .c8.c8.c8.c8.c8 * {
-  -webkit-transition-property: color,fill;
-  transition-property: color,fill;
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -271,7 +305,7 @@ exports[`<Alert /> should render Alert on server 2`] = `
 }
 
 .c13.c13.c13.c13.c13:focus-visible .content-container {
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
 }
 
 .c13.c13.c13.c13.c13 * {
@@ -315,12 +349,12 @@ exports[`<Alert /> should render Alert on server 2`] = `
             <path
               d="M4.15845 7.14679C6.74812 4.11688 11.0222 3.1512 14.663 4.77343C15.1675 4.99821 15.7586 4.77147 15.9834 4.267C16.2082 3.76253 15.9815 3.17135 15.477 2.94657C11.0272 0.96385 5.80325 2.14413 2.6381 5.84735C-0.527049 9.55057 -0.879431 14.8946 1.77205 18.9813C4.42353 23.0681 9.44725 24.9241 14.1189 23.5429C18.7905 22.1616 21.9972 17.8716 22 13V12.07C22 11.5177 21.5523 11.07 21 11.07C20.4477 11.07 20 11.5177 20 12.07V12.9994C19.9977 16.9852 17.3741 20.4948 13.5518 21.6249C9.72957 22.7551 5.61926 21.2365 3.44986 17.8928C1.28047 14.5491 1.56878 10.1767 4.15845 7.14679Z"
               data-blade-component="svg-path"
-              fill="hsla(160, 100%, 26%, 1)"
+              fill="hsla(150, 100%, 27%, 1)"
             />
             <path
               d="M22.7071 4.70711C23.0976 4.31658 23.0976 3.68342 22.7071 3.29289C22.3166 2.90237 21.6834 2.90237 21.2929 3.29289L11 13.5858L8.70711 11.2929C8.31658 10.9024 7.68342 10.9024 7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071L10.2929 15.7071C10.6834 16.0976 11.3166 16.0976 11.7071 15.7071L22.7071 4.70711Z"
               data-blade-component="svg-path"
-              fill="hsla(160, 100%, 26%, 1)"
+              fill="hsla(150, 100%, 27%, 1)"
             />
           </g>
           <defs
@@ -397,7 +431,7 @@ exports[`<Alert /> should render Alert on server 2`] = `
                 data-blade-component="base-box"
               >
                 <span
-                  class="c11"
+                  class="c15"
                   data-blade-component="base-text"
                 >
                   Link
@@ -409,7 +443,7 @@ exports[`<Alert /> should render Alert on server 2`] = `
       </div>
       <button
         aria-label="Dismiss alert"
-        class="c15"
+        class="c16"
         data-blade-component="icon-button"
         type="button"
       >
@@ -418,9 +452,9 @@ exports[`<Alert /> should render Alert on server 2`] = `
           class="Svgweb__StyledSvg-vcmjs8-0"
           data-blade-component="icon"
           fill="none"
-          height="16px"
+          height="20px"
           viewBox="0 0 24 24"
-          width="16px"
+          width="20px"
         >
           <path
             d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"

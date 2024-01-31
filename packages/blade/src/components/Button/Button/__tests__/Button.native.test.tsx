@@ -16,7 +16,7 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
 }));
 
 const variants: ButtonProps['variant'][] = ['primary', 'secondary', 'tertiary'];
-const colors: ButtonProps['color'][] = ['default', 'white', 'positive', 'negative'];
+const colors: ButtonProps['color'][] = ['primary', 'white', 'positive', 'negative'];
 
 describe('<Button />', () => {
   it('should render button with default properties', () => {
@@ -89,7 +89,7 @@ describe('<Button />', () => {
   colors.forEach((color) => {
     variants.forEach((variant) => {
       // We support only white and default color for tertiary variant
-      if (variant === 'tertiary' && color !== 'white' && color !== 'default') return;
+      if (variant === 'tertiary' && color !== 'white' && color !== 'primary') return;
 
       it(`should render ${color} color ${variant} button`, () => {
         const buttonText = 'Pay Now';

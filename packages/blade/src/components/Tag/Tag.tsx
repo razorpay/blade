@@ -18,9 +18,9 @@ const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtua
     if (props._isVirtuallyFocused && !isReactNative()) {
       return {
         outline: `${makeSize(globalSizeTokens['1'])} solid ${
-          props.theme.colors.surface.background.level1.lowContrast
+          props.theme.colors.surface.background.gray.subtle
         }`,
-        boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
+        boxShadow: `0px 0px 0px 4px ${props.theme.colors.interactive.background.primary.faded}`,
       };
     }
 
@@ -68,9 +68,11 @@ const Tag = ({
 }: TagProps): React.ReactElement | null => {
   const isMobile = useIsMobile();
 
-  const textColor = isDisabled
-    ? 'surface.text.placeholder.lowContrast'
-    : 'surface.text.subtle.lowContrast';
+  const textColor = isDisabled ? 'interactive.text.gray.disabled' : 'interactive.text.gray.subtle';
+  const iconColor = isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted';
+  const backgroundColor = isDisabled
+    ? 'interactive.background.gray.disabled'
+    : 'interactive.background.gray.default';
 
   const mediumPadding: PaddingProps['padding'] = {
     base: ['spacing.2', 'spacing.3', 'spacing.2', 'spacing.4'],
@@ -101,7 +103,7 @@ const Tag = ({
         alignSelf={isReactNative() ? 'center' : undefined}
         flexDirection="row"
         flexWrap="nowrap"
-        backgroundColor="brand.gray.a100.lowContrast"
+        backgroundColor={backgroundColor}
         borderRadius="max"
         padding={size === 'medium' ? mediumPadding : largePadding}
         _isVirtuallyFocused={_isVirtuallyFocused}
@@ -109,7 +111,7 @@ const Tag = ({
         {/* Leading Icon */}
         {Icon ? (
           <Box display="flex" flexDirection="row" alignItems="center">
-            <Icon color={textColor} size={assetSize} marginRight="spacing.2" />
+            <Icon color={iconColor} size={assetSize} marginRight="spacing.2" />
           </Box>
         ) : null}
 

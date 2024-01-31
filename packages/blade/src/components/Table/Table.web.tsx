@@ -14,6 +14,7 @@ import {
   checkboxCellWidth,
   firstColumnStickyHeaderFooterZIndex,
   refreshWrapperZIndex,
+  tableBackgroundColor,
   tablePagination,
 } from './tokens';
 import type { TableProps, TableNode, Identifier } from './types';
@@ -28,6 +29,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
+import getIn from '~utils/lodashButBetter/get';
 
 const rowSelectType: Record<
   NonNullable<TableProps<unknown>['selectionType']>,
@@ -121,7 +123,6 @@ const _Table = <Item,>({
   height,
   showStripedRows,
   gridTemplateColumns,
-  surfaceLevel = 2,
   isLoading = false,
   isRefreshing = false,
   ...styledProps
@@ -132,6 +133,7 @@ const _Table = <Item,>({
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
+  const backgroundColor = tableBackgroundColor;
 
   const {
     isEntering: isRefreshSpinnerEntering,
@@ -198,7 +200,7 @@ const _Table = <Item,>({
     Table: `
     height:${isFooterSticky ? `100%` : undefined};
     border: ${makeBorderSize(theme.border.width.thin)} solid ${
-      theme.colors.surface.border.normal.lowContrast
+      theme.colors.surface.border.gray.muted
     };
     --data-table-library_grid-template-columns: ${
       gridTemplateColumns ??
@@ -206,7 +208,7 @@ const _Table = <Item,>({
         selectionType === 'multiple' ? 'min-content' : ''
       } repeat(${columnCount},minmax(100px, 1fr)) !important;`
     } !important;
-    background-color: ${theme.colors.surface.background[`level${surfaceLevel}`].lowContrast};
+    background-color: ${getIn(theme.colors, backgroundColor)};
     `,
     HeaderCell: `
     position: ${shouldHeaderBeSticky ? 'sticky' : 'relative'};
@@ -372,9 +374,9 @@ const _Table = <Item,>({
       setPaginationRowSize,
       currentPaginationState,
       showStripedRows,
-      surfaceLevel,
       disabledRows,
       setDisabledRows,
+      backgroundColor,
     }),
     [
       selectionType,
@@ -390,9 +392,9 @@ const _Table = <Item,>({
       setPaginationRowSize,
       currentPaginationState,
       showStripedRows,
-      surfaceLevel,
       disabledRows,
       setDisabledRows,
+      backgroundColor,
     ],
   );
 
@@ -423,7 +425,7 @@ const _Table = <Item,>({
               width="100%"
               height="100%"
               zIndex={refreshWrapperZIndex}
-              backgroundColor={theme.colors.surface.overlay.background[800]}
+              backgroundColor="overlay.background.subtle"
               justifyContent="center"
               alignItems="center"
               display="flex"

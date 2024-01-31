@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CheckboxGroup /> should render errorText when validationState is set to error 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="group" aria-labelledby="checkbox-group-undefined-label-undefined" data-blade-component="checkbox-group" class="BaseBox-bmPWx fnwmJW"><span style="width:auto;flex-shrink:0;margin-right:16px" id="checkbox-group-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO karMJT" data-blade-component="text">Select fruits</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO hJVyJT" data-blade-component="text">,Invalid selection </p></div></div></div></span><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="checkbox" class="BaseBox-bmPWx"><label data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="true" aria-disabled="false" aria-checked="false" aria-errormessage="checkbox-undefined-errortext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 glQaoY" value="apple"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 isIHBR"><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(220, 27%, 98%, 1)" fill-rule="evenodd" stroke="hsla(220, 27%, 98%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0 dyGiAZ"></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><div class="StyledBaseText-dVBfTO kMtjEL" data-blade-component="base-text">Apple</div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="checkbox" class="BaseBox-bmPWx"><label data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="true" aria-disabled="false" aria-checked="false" aria-errormessage="checkbox-undefined-errortext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 glQaoY" value="mango"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 isIHBR"><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(220, 27%, 98%, 1)" fill-rule="evenodd" stroke="hsla(220, 27%, 98%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0 dyGiAZ"></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><div class="StyledBaseText-dVBfTO kMtjEL" data-blade-component="base-text">Mango</div></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hlbQIL"><div data-blade-component="checkbox" class="BaseBox-bmPWx"><label data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="true" aria-disabled="false" aria-checked="false" aria-errormessage="checkbox-undefined-errortext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 glQaoY" value="orange"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 isIHBR"><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(220, 27%, 98%, 1)" fill-rule="evenodd" stroke="hsla(220, 27%, 98%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0 dyGiAZ"></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><div class="StyledBaseText-dVBfTO kMtjEL" data-blade-component="base-text">Orange</div></div></div></label></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span style="word-break:break-all" data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(8, 73%, 47%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(8, 73%, 47%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(8, 73%, 47%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><div data-blade-component="base-box" class="BaseBox-bmPWx eLBOzs"></div><span class="StyledBaseText-dVBfTO cwRPCX" data-blade-component="base-text">Invalid selection</span></span></div></div></div></div></div>"`;
+exports[`<CheckboxGroup /> should render errorText when validationState is set to error 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div role="group" aria-labelledby="checkbox-group-undefined-label-undefined" data-blade-component="checkbox-group" class="BaseBox-bmPWx fnwmJW"><span style="width:auto;flex-shrink:0;margin-right:16px" id="checkbox-group-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO itNENY" data-blade-component="text">Select fruits</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text">,Invalid selection </p></div></div></div></span><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="checkbox" class="BaseBox-bmPWx"><label data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="true" aria-disabled="false" aria-checked="false" aria-errormessage="checkbox-undefined-errortext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bJPbHG" value="apple"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 ctRwLs"><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0 dyGiAZ"></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">Apple</p></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="checkbox" class="BaseBox-bmPWx"><label data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="true" aria-disabled="false" aria-checked="false" aria-errormessage="checkbox-undefined-errortext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bJPbHG" value="mango"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 ctRwLs"><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0 dyGiAZ"></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">Mango</p></div></div></label></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hlbQIL"><div data-blade-component="checkbox" class="BaseBox-bmPWx"><label data-blade-component="checkbox-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx fnwmJW"><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input type="checkbox" role="checkbox" aria-required="false" aria-invalid="true" aria-disabled="false" aria-checked="false" aria-errormessage="checkbox-undefined-errortext-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 bJPbHG" value="orange"/><div data-blade-component="checkbox-icon-wrapper" class="CheckboxIconWrapperweb__CheckboxIconWrapper-sc-3hpze0-0 ctRwLs"><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 8 8" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z" clip-rule="evenodd" fill="hsla(0, 0%, 100%, 1)" fill-rule="evenodd" stroke="hsla(0, 0%, 100%, 1)" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" data-blade-component="svg-path"></path></svg></div><div style="opacity:0;position:absolute;display:flex" class="Fadeweb__AnimatedFade-sc-1h424tv-0 dyGiAZ"></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"></div><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">Orange</p></div></div></label></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span style="word-break:break-all" data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(4, 74%, 49%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(4, 74%, 49%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><div data-blade-component="base-box" class="BaseBox-bmPWx eLBOzs"></div><span class="StyledBaseText-dVBfTO mgsbJ" data-blade-component="text">Invalid selection</span></span></div></div></div></div></div>"`;
 
 exports[`<CheckboxGroup /> should render errorText when validationState is set to error 2`] = `
 .c9.c9.c9.c9.c9 {
@@ -26,8 +26,8 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
   border-style: solid;
   margin: 2px;
   border-radius: 2px;
-  background-color: hsla(9,91%,56%,0.09);
-  border-color: hsla(8,73%,47%,1);
+  background-color: hsla(0,0%,100%,0);
+  border-color: hsla(4,74%,49%,1);
 }
 
 .c10.c10.c10.c10.c10 {
@@ -109,14 +109,18 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
 }
 
 .c3.c3.c3.c3.c3 {
-  color: hsla(217,18%,45%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -127,40 +131,52 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
 }
 
 .c5.c5.c5.c5.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c12.c12.c12.c12.c12 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,26%,34%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c17.c17.c17.c17.c17 {
-  color: hsla(8,73%,47%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(4,74%,49%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.6875rem;
   font-weight: 400;
   font-style: italic;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -209,8 +225,14 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
 }
 
 .c8.c8.c8.c8.c8:focus-visible + div {
-  outline: 1px solid hsla(220,30%,96%,1);
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 <div
@@ -319,9 +341,9 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
                             clip-rule="evenodd"
                             d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
                             data-blade-component="svg-path"
-                            fill="hsla(220, 27%, 98%, 1)"
+                            fill="hsla(0, 0%, 100%, 1)"
                             fill-rule="evenodd"
-                            stroke="hsla(220, 27%, 98%, 1)"
+                            stroke="hsla(0, 0%, 100%, 1)"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="0.5"
@@ -337,12 +359,12 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
                       class="c11"
                       data-blade-component="base-box"
                     />
-                    <div
+                    <p
                       class="c12"
-                      data-blade-component="base-text"
+                      data-blade-component="text"
                     >
                       Apple
-                    </div>
+                    </p>
                   </div>
                 </div>
               </label>
@@ -400,9 +422,9 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
                             clip-rule="evenodd"
                             d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
                             data-blade-component="svg-path"
-                            fill="hsla(220, 27%, 98%, 1)"
+                            fill="hsla(0, 0%, 100%, 1)"
                             fill-rule="evenodd"
-                            stroke="hsla(220, 27%, 98%, 1)"
+                            stroke="hsla(0, 0%, 100%, 1)"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="0.5"
@@ -418,12 +440,12 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
                       class="c11"
                       data-blade-component="base-box"
                     />
-                    <div
+                    <p
                       class="c12"
-                      data-blade-component="base-text"
+                      data-blade-component="text"
                     >
                       Mango
-                    </div>
+                    </p>
                   </div>
                 </div>
               </label>
@@ -481,9 +503,9 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
                             clip-rule="evenodd"
                             d="M1.3335 3.99984C1.3335 3.81574 1.48273 3.6665 1.66683 3.6665H6.3335C6.51759 3.6665 6.66683 3.81574 6.66683 3.99984C6.66683 4.18393 6.51759 4.33317 6.3335 4.33317H1.66683C1.48273 4.33317 1.3335 4.18393 1.3335 3.99984Z"
                             data-blade-component="svg-path"
-                            fill="hsla(220, 27%, 98%, 1)"
+                            fill="hsla(0, 0%, 100%, 1)"
                             fill-rule="evenodd"
-                            stroke="hsla(220, 27%, 98%, 1)"
+                            stroke="hsla(0, 0%, 100%, 1)"
                             stroke-linecap="round"
                             stroke-linejoin="round"
                             stroke-width="0.5"
@@ -499,12 +521,12 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
                       class="c11"
                       data-blade-component="base-box"
                     />
-                    <div
+                    <p
                       class="c12"
-                      data-blade-component="base-text"
+                      data-blade-component="text"
                     >
                       Orange
-                    </div>
+                    </p>
                   </div>
                 </div>
               </label>
@@ -532,18 +554,18 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
               <path
                 d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
                 data-blade-component="svg-path"
-                fill="hsla(8, 73%, 47%, 1)"
+                fill="hsla(4, 74%, 49%, 1)"
               />
               <path
                 d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
                 data-blade-component="svg-path"
-                fill="hsla(8, 73%, 47%, 1)"
+                fill="hsla(4, 74%, 49%, 1)"
               />
               <path
                 clip-rule="evenodd"
                 d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
                 data-blade-component="svg-path"
-                fill="hsla(8, 73%, 47%, 1)"
+                fill="hsla(4, 74%, 49%, 1)"
                 fill-rule="evenodd"
               />
             </svg>
@@ -553,7 +575,7 @@ exports[`<CheckboxGroup /> should render errorText when validationState is set t
             />
             <span
               class="c17"
-              data-blade-component="base-text"
+              data-blade-component="text"
             >
               Invalid selection
             </span>

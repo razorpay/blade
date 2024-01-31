@@ -55,7 +55,6 @@ const _Dropdown = ({
   isOpen: isOpenControlled,
   onOpenChange,
   selectionType = 'single',
-  onDismiss,
   testID,
   ...styledProps
 }: DropdownProps): React.ReactElement => {
@@ -100,9 +99,6 @@ const _Dropdown = ({
 
   const setIsOpenControlled = (isControlledStateOpen: boolean): void => {
     onOpenChange?.(isControlledStateOpen);
-    if (!isControlledStateOpen) {
-      onDismiss?.();
-    }
   };
 
   const close = React.useCallback(() => {

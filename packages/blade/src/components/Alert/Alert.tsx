@@ -15,16 +15,13 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { IconButton } from '~components/Button/IconButton';
 import BaseBox from '~components/Box/BaseBox';
-import { Heading, Text } from '~components/Typography';
+import { Text } from '~components/Typography';
 import BaseButton from '~components/Button/BaseButton';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { useTheme } from '~components/BladeProvider';
 import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import { makeAccessible } from '~utils/makeAccessible';
-import { throwBladeError } from '~utils/logger';
-
-type Nullable<Type> = Type | null;
 
 type PrimaryAction = {
   text: string;
@@ -73,11 +70,11 @@ type AlertProps = {
   onDismiss?: () => void;
 
   /**
-   * Can be set to `high` for a more prominent look. Not to be confused with a11y contrast.
+   * Can be set to `high` for a more prominent look. Not to be confused with a11y emphasis.
    *
-   * @default low
+   * @default subtle
    */
-  contrast?: ColorContrastTypes;
+  emphasis?: SubtleOrIntense;
 
   /**
    * Makes the Alert span the entire container width, instead of the default max width of `584px`.
@@ -88,17 +85,9 @@ type AlertProps = {
   isFullWidth?: boolean;
 
   /**
-   * This prop is deprecated in favor of the `color` prop.
-   *
-   * @deprecated Use `color` instead
-   * @default neutral
-   */
-  intent?: Feedback;
-
-  /**
    * Sets the color tone
    */
-  color?: Feedback;
+  color?: FeedbackColors;
 
   /**
    * Renders a primary action button and a secondary action link button
@@ -107,8 +96,7 @@ type AlertProps = {
     /**
      * Renders a button (should **always** be present if `secondary` action is being used)
      */
-    primary: PrimaryAction;
-
+    primary?: PrimaryAction;
     /**
      * Renders a Link button
      */
@@ -135,35 +123,21 @@ const Alert = ({
   title,
   isDismissible = true,
   onDismiss,
-  contrast = 'low',
+  emphasis = 'subtle',
   isFullWidth = false,
-  // TODO: Remove intent prop in favor of color in the next major release
-  intent = 'neutral',
-  color,
+  color = 'neutral',
   actions,
   testID,
   ...styledProps
 }: AlertProps): ReactElement | null => {
-  if (__DEV__) {
-    if (!actions?.primary && actions?.secondary) {
-      throwBladeError({
-        message: 'SecondaryAction is allowed only when PrimaryAction is defined.',
-        moduleName: 'Alert',
-      });
-    }
-  }
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
+  const [isVisible, setIsVisible] = useState(true);
+
   const isDesktop = matchedDeviceType === 'desktop';
   const isMobile = !isDesktop;
 
-  const [isVisible, setIsVisible] = useState(true);
-  const contrastType = `${contrast}Contrast` as const;
-  const iconSize = isFullWidth ? 'large' : 'medium';
-  const textSize = isFullWidth ? 'medium' : 'small';
-  const alertColor = color ?? intent;
-
-  const Icon = intentIconMap[alertColor];
+  const Icon = intentIconMap[color];
   let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
 
   // certain special cases below needs special care for near perfect alignment
@@ -182,32 +156,40 @@ const Alert = ({
       iconOffset = 'spacing.2';
     }
   } else if (isFullWidth) {
-    iconOffset = 'spacing.0';
+    iconOffset = 'spacing.1';
   }
 
+  const shouldCenterAlign = isFullWidth && !title;
+  let alignment: 'center' | 'flex-start' = 'flex-start';
+  if (!isFullWidth) alignment = 'flex-start';
+  if (shouldCenterAlign) alignment = 'center';
+
   const icon = (
-    <BaseBox marginTop={iconOffset} display="flex">
-      <Icon color={`feedback.icon.${alertColor}.${contrastType}`} size={iconSize} />
+    <BaseBox display="flex" alignSelf={alignment} marginTop={iconOffset}>
+      <Icon
+        color={
+          emphasis === 'intense'
+            ? 'surface.icon.staticWhite.normal'
+            : `feedback.icon.${color}.${emphasis === 'subtle' ? 'intense' : 'subtle'}`
+        }
+        size="medium"
+      />
     </BaseBox>
   );
 
+  const textColor =
+    emphasis === 'intense' ? 'surface.text.staticWhite.normal' : 'surface.text.gray.subtle';
   const _title = title ? (
     <BaseBox marginBottom="spacing.2">
-      {isFullWidth ? (
-        <Heading type="subtle" size="small" contrast={contrast}>
-          {title}
-        </Heading>
-      ) : (
-        <Text type="subtle" weight="bold" contrast={contrast}>
-          {title}
-        </Text>
-      )}
+      <Text color={textColor} size="medium" weight="semibold">
+        {title}
+      </Text>
     </BaseBox>
   ) : null;
 
   const _description = (
     <BaseBox marginTop={title || isReactNative ? 'spacing.0' : 'spacing.1'}>
-      <Text type="subtle" size={textSize} contrast={contrast}>
+      <Text color={textColor} size="small">
         {description}
       </Text>
     </BaseBox>
@@ -219,17 +201,17 @@ const Alert = ({
       display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
     >
       <BaseButton
-        size={textSize}
+        size="small"
         onClick={actions.primary.onClick}
-        color={alertColor}
-        variant={contrast === 'high' ? 'primary' : 'secondary'}
+        color={emphasis === 'intense' ? 'white' : color}
+        variant="secondary"
       >
         {actions.primary.text}
       </BaseButton>
     </BaseBox>
   ) : null;
 
-  const secondaryActionParams: Nullable<Partial<SecondaryActionLinkButton>> = actions?.secondary
+  const secondaryActionParams: Partial<SecondaryActionLinkButton> | null = actions?.secondary
     ? {
         onClick: actions.secondary.onClick,
       }
@@ -246,14 +228,12 @@ const Alert = ({
     secondaryActionParams.target = actions.secondary.target;
     secondaryActionParams.rel = actions.secondary.rel;
   }
+
   const secondaryAction = actions?.secondary ? (
-    <BaseBox
-      marginRight="spacing.4"
-      display={isReactNative ? castNativeType('flex') : castWebType('inline-flex')}
-    >
+    <BaseBox marginRight="spacing.4" display={(isReactNative ? 'flex' : 'inline-flex') as never}>
       <BaseLink
-        size={textSize}
-        color={contrast === 'high' ? 'white' : alertColor}
+        size="small"
+        color={emphasis === 'intense' ? 'white' : color}
         {...secondaryActionParams}
       >
         {actions.secondary.text}
@@ -291,8 +271,8 @@ const Alert = ({
       <IconButton
         accessibilityLabel="Dismiss alert"
         onClick={onClickDismiss}
-        contrast={contrast}
-        size={iconSize}
+        emphasis={emphasis === 'intense' ? 'subtle' : 'intense'}
+        size="large"
         icon={CloseIcon}
       />
     </CloseButtonWrapper>
@@ -300,10 +280,9 @@ const Alert = ({
 
   const a11yProps = makeAccessible({
     // React Native doesn't has status as role
-    role:
-      isReactNative || alertColor === 'negative' || alertColor === 'notice' ? 'alert' : 'status',
+    role: isReactNative || color === 'negative' || color === 'notice' ? 'alert' : 'status',
     // override the implicit live region of role `alert`
-    ...(alertColor === 'notice' && { liveRegion: 'polite' }),
+    ...(color === 'notice' && { liveRegion: 'polite' }),
   });
 
   if (!isVisible) {
@@ -317,8 +296,8 @@ const Alert = ({
       {...getStyledProps(styledProps)}
     >
       <StyledAlert
-        color={alertColor}
-        contrastType={contrastType}
+        color={color}
+        emphasis={emphasis}
         isFullWidth={isFullWidth}
         isDesktop={isDesktop}
         textAlign={'left' as never}

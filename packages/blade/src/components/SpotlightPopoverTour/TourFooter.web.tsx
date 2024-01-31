@@ -34,7 +34,7 @@ const SpotlightPopoverTourFooter = ({
 
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center" gap="spacing.7">
-      <Text size="small" weight="bold">
+      <Text size="small" weight="semibold">
         {activeStep + 1} / {totalSteps}
       </Text>
       <Box display="flex" gap={isBothIcon ? 'spacing.3' : 'spacing.4'}>
