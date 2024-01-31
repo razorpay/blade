@@ -237,7 +237,9 @@ You can checkout the toast motion [here](https://www.figma.com/proto/jubmQL9Z8V7
 - Q. What should be the default duration for auto dismissable toasts?
   - A. 4s for informational toasts and 6s for promotional toasts
 
-- Q. Should we call it `onDismissButtonClick` or `onDismiss`? Should the dismiss handler be called even when the toast is auto dismissed?
+- Q. Should we call it `onDismissButtonClick` or `onDismiss`? 
+  
+- Q. Should the dismiss handler be called even when the toast is auto dismissed? Or should we have different handlers for auto dismiss and manual dismiss? (eg: `onAutoDismiss` `onDismissButtonClick`)
 
 - Q. In the `useToast` hook should we call the returned functions `showToast`/`dismissToast` or `show`/`dismiss`?
 
@@ -253,3 +255,7 @@ const App = () => {
 ```
 
 - Q. In design we are restricting the Toast position to be bottom-left. In that case should we also do the same or should we allow all the positions & set the default to bottom-left? (If we allow all the positions, we will have to add some additional logic to handle stacking/animation of toasts coming from top instead of bottom)
+
+- Q. Should we keep the ToastContainer inside BladeProvider? 
+
+The problem is if we keep it inside BladeProvider, given our new light/dark mode setup where consumers will need to nest BladeProviders it would cause ToastContainer to render [multiple times](https://github.com/razorpay/blade/pull/1990#discussion_r1470796627).
