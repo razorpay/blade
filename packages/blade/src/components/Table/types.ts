@@ -290,6 +290,11 @@ type TablePaginationProps = {
    * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server. This information must be provided by your server.
    */
   totalItemCount?: number;
+  /**
+   * Whether the pagination is happening on server or not. If this is true, all of the data passed in Table's data prop will be rendered at once and actual pagination will happen on server.
+   * @default false
+   * */
+  isServerSidePagination?: boolean;
 };
 
 type TableToolbarProps = {

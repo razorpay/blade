@@ -151,12 +151,14 @@ const _TablePagination = ({
   showLabel,
   label,
   totalItemCount,
+  isServerSidePagination,
 }: TablePaginationProps): React.ReactElement => {
   const {
     setPaginationPage,
     currentPaginationState,
     totalItems,
     setPaginationRowSize,
+    setIsServerSidePagination,
   } = useTableContext();
   const [currentPageSize, setCurrentPageSize] = React.useState<number>(defaultPageSize);
   const [currentPage, setCurrentPage] = React.useState<number>(
@@ -176,6 +178,7 @@ const _TablePagination = ({
   const onMobile = platform === 'onMobile';
   useEffect(() => {
     setPaginationRowSize(currentPageSize);
+    setIsServerSidePagination(Boolean(isServerSidePagination));
   }, []);
 
   useEffect(() => {
