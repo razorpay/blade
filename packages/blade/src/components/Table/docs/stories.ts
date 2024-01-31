@@ -1828,10 +1828,10 @@ import {
   TableRow,
   TableCell,
   TablePagination,
-} from '@razorpay/blade/components';
-import React, { useEffect, useState } from 'react';
-
-type APIResult = {
+  } from '@razorpay/blade/components';
+  import React, { useEffect, useState } from 'react';
+  
+  type APIResult = {
   info: {
     count: number;
     pages: number;
@@ -1843,9 +1843,9 @@ type APIResult = {
     status: string;
     origin: { name: string };
   }[];
-};
-
-const fetchData = async ({ page }: { page: number }): Promise<APIResult> => {
+  };
+  
+  const fetchData = async ({ page }: { page: number }): Promise<APIResult> => {
   const response = await fetch(
     \`https://rickandmortyapi.com/api/character?page=\${page}\`,
     {
@@ -1855,37 +1855,37 @@ const fetchData = async ({ page }: { page: number }): Promise<APIResult> => {
   );
   const result = await response.json();
   return result as APIResult;
-};
-
-function App(): React.ReactElement {
+  };
+  
+  function App(): React.ReactElement {
   const [apiData, setApiData] = useState<{ nodes: APIResult['results'] }>({
     nodes: [],
   });
   const [dataCount, setDataCount] = useState<number>(0);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
-
+  
   useEffect(() => {
     if (apiData.nodes.length === 0) {
       fetchData({ page: 1 }).then((res) => {
+        // rick & morty api returns 20 items and we cannot change that. Hence limiting to show only first 10 items from the result of this API. Ideally an API should have \`limit\` & \`offset\` params that help us define the response we get.
         const firstTenItems = res.results.slice(0, 10);
         setApiData({ nodes: firstTenItems });
         setDataCount(res.info.count / 2);
       });
     }
   }, []);
-
+  
   const handlePageChange = ({ page }: { page: number }) => {
-    console.log('page changed', page);
-    console.log('loading data');
     setIsRefreshing(true);
     fetchData({ page: page + 1 }).then((res) => {
+      // rick & morty api returns 20 items and we cannot change that. Hence limiting to show only first 10 items from the result of this API. Ideally an API should have \`limit\` & \`offset\` params that help us define the response we get.
       const firstTenItems = res.results.slice(0, 10);
       setApiData({ nodes: firstTenItems });
       setDataCount(res.info.count / 2);
       setIsRefreshing(false);
     });
   };
-
+  
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"
@@ -1931,9 +1931,9 @@ function App(): React.ReactElement {
       </Table>
     </Box>
   );
-}
-
-export default App;
+  }
+  
+  export default App;
 `;
 
 export {
