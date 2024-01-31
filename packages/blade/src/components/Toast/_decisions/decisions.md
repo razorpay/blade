@@ -128,7 +128,7 @@ type Toast = {
    * 
    * This can be used to programatically update toasts by providing an id
    */
-  id?: string; 
+  toastId?: string; 
 }
 ```
 
@@ -148,7 +148,7 @@ type useToastReturnType = {
    * 
    * if id is not provided, all the toasts will be dismissed
    */
-  dismissToast: (id?: string) => void;
+  dismissToast: (toastId?: string) => void;
 }
 ```
 
