@@ -101,13 +101,18 @@ type Toast = {
   /**
    * If true, the toast will be dismissed after few seconds
    * 
-   * Duration for promotional toast is 6s
-   * Duration for informational toast is 4s
-   * 
    * @default true - for informational toast
    * @default false - for promotional toast
    */
   autoDismiss?: boolean;
+
+  /**
+   * Duration after which the toast will be dismissed (in ms)
+   * 
+   * Duration for promotional toast is 8s
+   * Duration for informational toast is 4s
+   */
+  duration?: 8000 | 4000;
 
   /**
    * Called when the toast is dismissed or duration runs out
