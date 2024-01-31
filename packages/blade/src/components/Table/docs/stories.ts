@@ -1817,6 +1817,125 @@ function App(): React.ReactElement {
 export default App;
 `;
 
+const TableWithServerSidePaginationStory = `
+import {
+  Table,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  TablePagination,
+} from '@razorpay/blade/components';
+import React, { useEffect, useState } from 'react';
+
+type APIResult = {
+  info: {
+    count: number;
+    pages: number;
+  };
+  results: {
+    id: number;
+    name: string;
+    species: string;
+    status: string;
+    origin: { name: string };
+  }[];
+};
+
+const fetchData = async ({ page }: { page: number }): Promise<APIResult> => {
+  const response = await fetch(
+    \`https://rickandmortyapi.com/api/character?page=${page}\`,
+    {
+      method: 'GET',
+      redirect: 'follow',
+    }
+  );
+  const result = await response.json();
+  return result as APIResult;
+};
+
+function App(): React.ReactElement {
+  const [apiData, setApiData] = useState<{ nodes: APIResult['results'] }>({
+    nodes: [],
+  });
+  const [dataCount, setDataCount] = useState<number>(0);
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (apiData.nodes.length === 0) {
+      fetchData({ page: 1 }).then((res) => {
+        const firstTenItems = res.results.slice(0, 10);
+        setApiData({ nodes: firstTenItems });
+        setDataCount(res.info.count / 2);
+      });
+    }
+  }, []);
+
+  const handlePageChange = ({ page }: { page: number }) => {
+    console.log('page changed', page);
+    console.log('loading data');
+    setIsRefreshing(true);
+    fetchData({ page: page + 1 }).then((res) => {
+      const firstTenItems = res.results.slice(0, 10);
+      setApiData({ nodes: firstTenItems });
+      setDataCount(res.info.count / 2);
+      setIsRefreshing(false);
+    });
+  };
+
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Table
+        data={apiData}
+        isRefreshing={isRefreshing}
+        pagination={
+          <TablePagination
+            showPageNumberSelector
+            onPageChange={handlePageChange}
+            totalItemCount={dataCount}
+            defaultPageSize={10}
+            isServerSidePagination
+          />
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Origin</TableHeaderCell>
+                <TableHeaderCell>Species</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>{tableItem.origin.name}</TableCell>
+                  <TableCell>{tableItem.species}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -1831,4 +1950,5 @@ export {
   TableWithSurfaceLevelsStory,
   TableWithIsLoadingStory,
   TableWithIsRefreshingStory,
+  TableWithServerSidePaginationStory,
 };
