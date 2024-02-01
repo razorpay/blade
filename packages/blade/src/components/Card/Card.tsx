@@ -1,4 +1,5 @@
 import React from 'react';
+import type { GestureResponderEvent } from 'react-native';
 import { CardSurface } from './CardSurface';
 import { CardProvider, useVerifyInsideCard } from './CardContext';
 import { LinkOverlay } from './LinkOverlay';
@@ -17,6 +18,7 @@ import type { SurfaceLevels } from '~tokens/theme/theme';
 import type { BoxProps } from '~components/Box';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 
 export const ComponentIds = {
@@ -84,11 +86,20 @@ export type CardProps = {
    */
   height?: BoxProps['height'];
   /**
+   * Sets minimum height of the card
+   */
+  minHeight?: BoxProps['minHeight'];
+  /**
+   * Sets minimum width of the card
+   */
+  minWidth?: BoxProps['minWidth'];
+  /**
    * If `true`, the card will be in selected state
    * Card will have a primary color border around it.
    *
    * @default false
    */
+
   isSelected?: boolean;
   /**
    * Makes the Card linkable by setting the `href` prop
@@ -125,7 +136,12 @@ export type CardProps = {
   /**
    * Callback triggered when the card is clicked
    */
-  onClick?: () => void;
+  onClick?: (
+    event: Platform.Select<{
+      web: React.MouseEvent;
+      native: GestureResponderEvent;
+    }>,
+  ) => void;
   /**
    * Sets the HTML element for the Card
    *
@@ -146,6 +162,8 @@ const Card = ({
   padding = 'spacing.7',
   width,
   height,
+  minHeight,
+  minWidth,
   onClick,
   isSelected = false,
   accessibilityLabel,
@@ -191,6 +209,8 @@ const Card = ({
         onClick={isReactNative() ? onClick : undefined}
         width={width}
         height={height}
+        minHeight={minHeight}
+        minWidth={minWidth}
         href={href}
         accessibilityLabel={accessibilityLabel}
         {...metaAttribute({ name: MetaConstants.Card, testID })}
@@ -198,6 +218,7 @@ const Card = ({
       >
         <CardSurface
           height={height}
+          minHeight={minHeight}
           padding={padding}
           borderRadius="medium"
           surfaceLevel={surfaceLevel}
