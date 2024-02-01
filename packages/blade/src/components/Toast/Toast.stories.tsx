@@ -51,7 +51,7 @@ export default {
   },
 } as Meta<ToastProps>;
 
-const ToastTemplate: StoryFn<typeof ToastComponent> = ({ ...args }) => {
+const ToastTemplate: StoryFn<typeof ToastComponent> = () => {
   const toast = useToast();
 
   return (
@@ -60,10 +60,15 @@ const ToastTemplate: StoryFn<typeof ToastComponent> = ({ ...args }) => {
       <Button
         onClick={() =>
           toast.show({
-            content: 'Payment Successful',
+            content:
+              Math.random() > 0.5
+                ? 'Payment Successful'
+                : 'Long long long text with some important information that needs to be conveyed to the user',
+            // @ts-expect-error
             color: ['positive', 'negative', 'warning', 'information', 'neutral'][
               Math.floor(Math.random() * 5)
             ],
+            duration: 4000,
             action: {
               text: 'Okay',
               onClick: () => console.log(1),

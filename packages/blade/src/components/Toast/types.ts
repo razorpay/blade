@@ -24,6 +24,7 @@ type PromotionalToastProps = {
 };
 
 type ToastCommonProps = {
+  isVisible?: boolean;
   /**
    * @default `neutral`
    */

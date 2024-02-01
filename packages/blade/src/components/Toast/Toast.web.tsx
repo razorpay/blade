@@ -25,7 +25,7 @@ const iconMap = {
   warning: AlertTriangleIcon,
 };
 
-const StyledToast = styled(BaseBox)<{ isVisible: boolean }>(({ isVisible }) => {
+const StyledToast = styled(BaseBox)<{ isVisible?: boolean }>(({ isVisible }) => {
   return {
     transition: '0.3s ease-in-out',
     opacity: isVisible ? 1 : 0,
@@ -39,7 +39,7 @@ const Toast = ({
   action,
   content,
   onDismissButtonClick,
-  autoDismiss = false,
+  // autoDismiss = false,
   isVisible,
   id,
 }: ToastProps): React.ReactElement => {
@@ -98,7 +98,7 @@ const Toast = ({
       ) : null}
       <Box display="flex" flexDirection="column" gap="spacing.3">
         <Text size="small" color="surface.text.staticWhite.normal">
-          {content}
+          {id} - {content}
         </Text>
         {isPromotional && actionButton}
       </Box>

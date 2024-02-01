@@ -9,7 +9,10 @@ type UseToastReturn = {
 
 const useToast = (): UseToastReturn => {
   const show = (props: ToastProps): string => {
-    return toast.custom(({ id, visible }) => <Toast isVisible={visible} {...props} id={id} />);
+    return toast.custom(
+      ({ id, visible }) => <Toast isVisible={visible} {...props} id={id} />,
+      props,
+    );
   };
 
   return {
