@@ -332,8 +332,6 @@ const _Table = <Item,>({
     },
   );
 
-  console.log('🚀 ~ paginationConfig:', paginationConfig);
-
   const currentPaginationState = useMemo(() => {
     return hasPagination
       ? {

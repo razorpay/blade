@@ -10,12 +10,10 @@ import {
   MultiSelectableWithZebraStripesStory,
   TableWithStickyHeaderAndFooterStory,
   TableWithStickyFirstColumnStory,
-  TableWithPaginationStory,
   TableWithDisabledRowsStory,
   TableWithSurfaceLevelsStory,
   TableWithIsLoadingStory,
   TableWithIsRefreshingStory,
-  TableWithServerSidePaginationStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
@@ -102,14 +100,6 @@ export const MultiSelectableWithZebraStripes = (): React.ReactElement => {
   );
 };
 
-export const TableWithPagination = (): React.ReactElement => {
-  return (
-    <Sandbox padding="spacing.0" editorHeight="90vh">
-      {TableWithPaginationStory}
-    </Sandbox>
-  );
-};
-
 export const TableWithDisabledRows = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
@@ -138,14 +128,6 @@ export const TableWithIsRefreshing = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {TableWithIsRefreshingStory}
-    </Sandbox>
-  );
-};
-
-export const TableWithServerSidePagination = (): React.ReactElement => {
-  return (
-    <Sandbox padding="spacing.0" editorHeight="90vh">
-      {TableWithServerSidePaginationStory}
     </Sandbox>
   );
 };

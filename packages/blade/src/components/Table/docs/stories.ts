@@ -1069,7 +1069,7 @@ function App(): React.ReactElement {
 export default App;
 `;
 
-const TableWithPaginationStory = `
+const TableWithClientSidePaginationStory = `
 import {
   Table,
   Code,
@@ -1870,7 +1870,7 @@ import {
         // rick & morty api returns 20 items and we cannot change that. Hence limiting to show only first 10 items from the result of this API. Ideally an API should have \`limit\` & \`offset\` params that help us define the response we get.
         const firstTenItems = res.results.slice(0, 10);
         setApiData({ nodes: firstTenItems });
-        setDataCount(res.info.count / 2);
+        setDataCount(res.info.count / 2); // rick & morty api returns 20 items and we cannot change that. Hence dividing by 2 to get the actual count.
       });
     }
   }, []);
@@ -1880,8 +1880,11 @@ import {
     fetchData({ page: page + 1 }).then((res) => {
       // rick & morty api returns 20 items and we cannot change that. Hence limiting to show only first 10 items from the result of this API. Ideally an API should have \`limit\` & \`offset\` params that help us define the response we get.
       const firstTenItems = res.results.slice(0, 10);
+      // When paginationType is server, we are assuming that pagination is taken care of on the server and we are receiving and displaying per page data.
+      // Instead of appending the new data to existing data like we do for client side pagination, we replace the existing data with the new data for server side pagination.
+      // All of the data will be rendered when paginationType is server. So on every page change, we fetch new data for the specific page and replace the existing data with the new data.
       setApiData({ nodes: firstTenItems });
-      setDataCount(res.info.count / 2);
+      setDataCount(res.info.count / 2); // rick & morty api returns 20 items and we cannot change that. Hence dividing by 2 to get the actual count.
       setIsRefreshing(false);
     });
   };
@@ -1898,11 +1901,11 @@ import {
         isRefreshing={isRefreshing}
         pagination={
           <TablePagination
-            showPageNumberSelector
+            showPageNumberSelector={true}
+            showPageSizePicker={false}
+            paginationType="server"
             onPageChange={handlePageChange}
             totalItemCount={dataCount}
-            defaultPageSize={10}
-            isServerSidePagination
           />
         }
       >
@@ -1945,10 +1948,10 @@ export {
   MultiSelectableWithZebraStripesStory,
   TableWithStickyHeaderAndFooterStory,
   TableWithStickyFirstColumnStory,
-  TableWithPaginationStory,
   TableWithDisabledRowsStory,
   TableWithSurfaceLevelsStory,
   TableWithIsLoadingStory,
   TableWithIsRefreshingStory,
+  TableWithClientSidePaginationStory,
   TableWithServerSidePaginationStory,
 };
