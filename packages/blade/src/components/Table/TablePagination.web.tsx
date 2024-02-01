@@ -23,6 +23,7 @@ import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
+import { throwBladeError } from '~utils/logger';
 
 const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
 
@@ -151,14 +152,14 @@ const _TablePagination = ({
   showLabel,
   label,
   totalItemCount,
-  isServerSidePagination,
+  paginationType = 'client',
 }: TablePaginationProps): React.ReactElement => {
   const {
     setPaginationPage,
     currentPaginationState,
     totalItems,
     setPaginationRowSize,
-    setIsServerSidePagination,
+    setPaginationType,
   } = useTableContext();
   const [currentPageSize, setCurrentPageSize] = React.useState<number>(defaultPageSize);
   const [currentPage, setCurrentPage] = React.useState<number>(
@@ -178,7 +179,7 @@ const _TablePagination = ({
   const onMobile = platform === 'onMobile';
   useEffect(() => {
     setPaginationRowSize(currentPageSize);
-    setIsServerSidePagination(Boolean(isServerSidePagination));
+    setPaginationType(paginationType);
   }, []);
 
   useEffect(() => {
@@ -217,18 +218,15 @@ const _TablePagination = ({
     }
   }, [controlledCurrentPage, currentPage, handlePageChange, onPageChange]);
 
-  // if (currentPage > totalPages - 1) {
-  //   if (!isUndefined(controlledCurrentPage)) {
-  //     if (__DEV__) {
-  //       throwBladeError({
-  //         moduleName: 'TablePagination',
-  //         message: `Value of 'currentPage' prop cannot be greater than the total pages`,
-  //       });
-  //     }
-  //   } else {
-  //     handlePageChange(totalPages - 1);
-  //   }
-  // }
+  if (__DEV__) {
+    if (paginationType === 'server' && (isUndefined(totalItemCount) || isUndefined(onPageChange))) {
+      throwBladeError({
+        message:
+          '`onPageChange` and `totalItemCount` props are required when paginationType is server',
+        moduleName: 'TablePagination',
+      });
+    }
+  }
 
   const handlePageSizeChange = (pageSize: number): void => {
     onPageSizeChange?.({ pageSize });

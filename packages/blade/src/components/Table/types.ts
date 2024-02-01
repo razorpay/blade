@@ -287,14 +287,17 @@ type TablePaginationProps = {
    */
   showLabel?: boolean;
   /**
-   * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server. This information must be provided by your server.
+   * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server and not all the data is fetched at once.
    */
   totalItemCount?: number;
   /**
-   * Whether the pagination is happening on server or not. If this is true, all of the data passed in Table's data prop will be rendered at once and actual pagination will happen on server.
-   * @default false
+   * Whether the pagination is happening on client or server.
+   * If the pagination is happening on `client`, the Table component will **divide the data into pages** and show the pages based on the page size.
+   * If the pagination is happening on `server`, the Table component will **not divide the data into pages and will show all the data**. You will have to fetch data for each page as the page changes and pass it to the Table component.
+   * When paginationType is `server`, the `onPageChange` & `totalItemCount` props are required.
+   * @default 'client'
    * */
-  isServerSidePagination?: boolean;
+  paginationType?: 'client' | 'server';
 };
 
 type TableToolbarProps = {

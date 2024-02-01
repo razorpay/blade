@@ -16,7 +16,7 @@ import {
   refreshWrapperZIndex,
   tablePagination,
 } from './tokens';
-import type { TableProps, TableNode, Identifier } from './types';
+import type { TableProps, TableNode, Identifier, TablePaginationProps } from './types';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -130,7 +130,9 @@ const _Table = <Item,>({
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
-  const [isServerSidePagination, setIsServerSidePagination] = React.useState(false);
+  const [paginationType, setPaginationType] = React.useState<
+    NonNullable<TablePaginationProps['paginationType']>
+  >('client');
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
 
@@ -326,7 +328,7 @@ const _Table = <Item,>({
       },
     },
     {
-      isServer: isServerSidePagination,
+      isServer: paginationType === 'server',
     },
   );
 
@@ -384,8 +386,8 @@ const _Table = <Item,>({
       surfaceLevel,
       disabledRows,
       setDisabledRows,
-      isServerSidePagination,
-      setIsServerSidePagination,
+      paginationType,
+      setPaginationType,
     }),
     [
       selectionType,
@@ -404,8 +406,8 @@ const _Table = <Item,>({
       surfaceLevel,
       disabledRows,
       setDisabledRows,
-      isServerSidePagination,
-      setIsServerSidePagination,
+      paginationType,
+      setPaginationType,
     ],
   );
 

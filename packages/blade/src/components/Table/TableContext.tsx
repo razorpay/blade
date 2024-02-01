@@ -2,7 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 import React from 'react';
 import type { TableNode } from '@table-library/react-table-library/table';
-import type { TableProps } from './types';
+import type { TablePaginationProps, TableProps } from './types';
 import type { SurfaceLevels } from '~tokens/theme/theme';
 
 export type TableContextType = {
@@ -29,8 +29,10 @@ export type TableContextType = {
   surfaceLevel: SurfaceLevels;
   disabledRows: TableNode['id'][];
   setDisabledRows: React.Dispatch<React.SetStateAction<TableNode['id'][]>>;
-  isServerSidePagination?: boolean;
-  setIsServerSidePagination: React.Dispatch<React.SetStateAction<boolean>>;
+  paginationType: NonNullable<TablePaginationProps['paginationType']>;
+  setPaginationType: React.Dispatch<
+    React.SetStateAction<NonNullable<TablePaginationProps['paginationType']>>
+  >;
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -51,7 +53,8 @@ const TableContext = React.createContext<TableContextType>({
   surfaceLevel: 1,
   disabledRows: [],
   setDisabledRows: () => {},
-  setIsServerSidePagination: () => {},
+  paginationType: 'client',
+  setPaginationType: () => {},
 });
 
 const useTableContext = (): TableContextType => {
