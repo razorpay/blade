@@ -19,12 +19,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentName="Collapsible"
       componentDescription="Collapsible is used to allow users to toggle the visibility of hidden content within a container."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=79-629874&t=sVxH3DOnx3L3F9rO-0',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?type=design&node-id=16868-832623&t=rK6ydo54uVejIH9p-0',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73237-255926&mode=design&t=jyVG8aXFc1Dlw2Se-4"
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
@@ -44,7 +39,7 @@ const Page = (): ReactElement => {
                     alignItems="baseline"
                   >
                     <Text>Actual amount</Text>
-                    <Amount value={1000} intent="positive" />
+                    <Amount value={1000} color="positive" />
                   </Box>
                   <Box
                     display="flex"
@@ -105,7 +100,7 @@ const CollapsibleButtonTemplate: StoryFn<typeof CollapsibleComponent> = ({ ...ar
             alignItems="baseline"
           >
             <Text>Actual amount</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
           <Box
             display="flex"
@@ -146,7 +141,7 @@ const CollapsibleLinkTemplate: StoryFn<typeof CollapsibleComponent> = ({ ...args
             alignItems="baseline"
           >
             <Text>Actual amount</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
           <Box
             display="flex"
@@ -218,7 +213,7 @@ const CollapsibleControlledTemplate: StoryFn<typeof CollapsibleComponent> = ({
             alignItems="baseline"
           >
             <Text>Actual amount</Text>
-            <Amount value={1000} intent="positive" />
+            <Amount value={1000} color="feedback.text.positive.intense" />
           </Box>
           <Box
             display="flex"

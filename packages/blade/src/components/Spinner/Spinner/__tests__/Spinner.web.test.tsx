@@ -23,7 +23,7 @@ describe('<Spinner />', () => {
   });
 
   it('should render default color Spinner', () => {
-    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="default" />);
+    const { container } = renderWithTheme(<Spinner accessibilityLabel="Loading" color="primary" />);
     expect(container).toMatchSnapshot();
   });
 

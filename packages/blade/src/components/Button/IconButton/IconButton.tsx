@@ -7,6 +7,7 @@ import type { IconComponent } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
 import type { BladeCommonEvents } from '~components/types';
 import type { Platform } from '~utils';
+import type { SubtleOrIntense } from '~tokens/theme/theme';
 
 type IconButtonProps = {
   /**
@@ -24,9 +25,9 @@ type IconButtonProps = {
   /**
    * Icon contrast
    *
-   * @default 'low'
+   * @default 'intense'
    */
-  contrast?: 'low' | 'high';
+  emphasis?: SubtleOrIntense;
 
   /**
    * Sets aria-label to help users know what the action does, eg 'Dismiss alert'
@@ -61,7 +62,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     icon,
     onClick,
     size = 'medium',
-    contrast = 'low',
+    emphasis = 'intense',
     accessibilityLabel,
     isDisabled,
     onBlur,
@@ -80,7 +81,7 @@ const _IconButton: React.ForwardRefRenderFunction<BladeElementRef, IconButtonPro
     <StyledIconButton
       ref={ref as any}
       onClick={onClick}
-      contrast={contrast}
+      emphasis={emphasis}
       size={size}
       icon={icon}
       tabIndex={_tabIndex}

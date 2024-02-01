@@ -65,7 +65,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
               "strokeLinejoin",
             ]
           }
-          stroke={4282603381}
+          stroke={4280563015}
           strokeLinecap={1}
           strokeLinejoin={1}
           strokeWidth="2"
@@ -83,7 +83,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
               "strokeLinejoin",
             ]
           }
-          stroke={4282603381}
+          stroke={4280563015}
           strokeLinecap={1}
           strokeLinejoin={1}
           strokeWidth="2"
@@ -98,7 +98,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
               "strokeLinejoin",
             ]
           }
-          stroke={4282603381}
+          stroke={4280563015}
           strokeLinecap={1}
           strokeLinejoin={1}
           strokeWidth="2"
@@ -113,7 +113,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
               "strokeLinejoin",
             ]
           }
-          stroke={4282603381}
+          stroke={4280563015}
           strokeLinecap={1}
           strokeLinejoin={1}
           strokeWidth="2"
@@ -128,7 +128,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
               "strokeLinejoin",
             ]
           }
-          stroke={4282603381}
+          stroke={4280563015}
           strokeLinecap={1}
           strokeLinejoin={1}
           strokeWidth="2"
@@ -139,7 +139,7 @@ exports[`<ScissorsIcon /> should render ScissorsIcon 1`] = `
           name="clip0_83_463"
         >
           <RNSVGRect
-            fill={4282603381}
+            fill={4280563015}
             height="24"
             propList={
               [

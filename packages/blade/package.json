@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "10.23.5",
+  "version": "11.0.0",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -24,6 +24,8 @@
     "tokens.native.js",
     "utils.d.ts",
     "utils.js",
+    "fonts",
+    "fonts.css",
     "utils.native.js",
     "coverageUtils.d.ts"
   ],
@@ -35,6 +37,9 @@
     "blade"
   ],
   "exports": {
+    "./fonts.css": {
+      "default": "./fonts.css"
+    },
     "./components": {
       "react-native": {
         "types": "./components.d.ts",
@@ -82,7 +87,7 @@
     "typecheck": "run-p types:typecheck:*",
     "test": "run-p test:*",
     "prepare": "yarn build",
-    "build": "run-s build:clean build:generate-types build:react-prod build:react-dev build:react-native build:clean-declarations build:generate-root-imports build:generate-css-variables build:clean-theme-bundle",
+    "build": "run-s build:clean build:generate-types build:react-prod build:react-dev build:react-native build:clean-declarations build:generate-root-imports build:clean-theme-bundle",
     "clearCache": "jest --clearCache",
     "build:clean": "rm -rf build",
     "build:generate-types": "run-s types:generate-types:*",
@@ -99,7 +104,6 @@
     "build:react-prod": "cross-env FRAMEWORK=REACT NODE_ENV=production rollup -c",
     "build:react-native": "cross-env FRAMEWORK=REACT_NATIVE rollup -c",
     "build:clean-theme-bundle": "rm -rf build/js-bundle-for-css",
-    "build:generate-css-variables": "cross-env GENERATE_CSS_VARIABLES=true FRAMEWORK=REACT rollup -c && node ./scripts/generateCssThemeVariables.js",
     "react-native:get-stories": "sb-rn-get-stories --config-path=./.storybook/react-native && yarn prettier --write ./.storybook/react-native/storybook.requires.js",
     "react-native:storybook:android": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-android",
     "react-native:storybook:ios": "yarn react-native:get-stories && cross-env FRAMEWORK=REACT_NATIVE react-native run-ios",
@@ -160,6 +164,7 @@
     "@floating-ui/react-native": "0.10.0",
     "react-native-tab-view": "3.5.2",
     "react-native-pager-view": "6.2.1",
+    "@hypermod/utils": "0.4.2",
     "@react-native/metro-config": "0.72.9",
     "@react-native-async-storage/async-storage": "1.19.1",
     "@react-native-community/datetimepicker": "5.0.1",
@@ -256,6 +261,7 @@
     "postinstall-postinstall": "2.1.0",
     "react-refresh": "0.11.0",
     "react-docgen-typescript-plugin": "1.0.5",
+    "react-json-tree": "0.18.0",
     "metro-config": "0.66.2",
     "@babel/plugin-proposal-class-static-block": "7.21.0",
     "react-native-safe-area-context": "3.4.1",
@@ -334,7 +340,7 @@
       "name": "Import Button only",
       "path": "./build/lib/web/production/components/index.js",
       "import": "{ Button }",
-      "limit": "30 kb",
+      "limit": "31 kb",
       "running": false
     },
     {

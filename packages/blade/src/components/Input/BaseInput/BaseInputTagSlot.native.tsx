@@ -69,7 +69,14 @@ const ClickableText = ({
       }}
     >
       <BaseBox alignSelf="center" marginRight="spacing.4">
-        <Text type={isDisabled ? 'placeholder' : 'normal'}>{children}</Text>
+        <Text
+          size="small"
+          variant="body"
+          weight="regular"
+          color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
+        >
+          {children}
+        </Text>
       </BaseBox>
     </TouchableWithoutFeedback>
   );

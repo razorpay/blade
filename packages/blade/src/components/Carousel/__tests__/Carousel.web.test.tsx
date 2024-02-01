@@ -146,7 +146,7 @@ describe('Carousel Snapshots', () => {
 
   it('should render with showOverlay', () => {
     const { container } = renderWithTheme(
-      <Carousel scrollOverlayColor="surface.background.level1.lowContrast" shouldAddStartEndSpacing>
+      <Carousel scrollOverlayColor="surface.background.gray.subtle" shouldAddStartEndSpacing>
         <CarouselItem>
           <TestimonialCard />
         </CarouselItem>
@@ -182,7 +182,7 @@ describe('Carousel Snapshots', () => {
     const viewport = mockViewport({ width: '320px', height: '568px' });
 
     const { container } = renderWithTheme(
-      <Carousel scrollOverlayColor="surface.background.level1.lowContrast" shouldAddStartEndSpacing>
+      <Carousel scrollOverlayColor="surface.background.gray.subtle" shouldAddStartEndSpacing>
         <CarouselItem>
           <TestimonialCard />
         </CarouselItem>

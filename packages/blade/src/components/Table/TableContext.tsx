@@ -2,8 +2,7 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 import React from 'react';
 import type { TableNode } from '@table-library/react-table-library/table';
-import type { TablePaginationProps, TableProps } from './types';
-import type { SurfaceLevels } from '~tokens/theme/theme';
+import type { TableBackgroundColors, TableProps, TablePaginationProps } from './types';
 
 export type TableContextType = {
   selectionType?: TableProps<unknown>['selectionType'];
@@ -26,13 +25,13 @@ export type TableContextType = {
     size: number;
   };
   showStripedRows?: boolean;
-  surfaceLevel: SurfaceLevels;
   disabledRows: TableNode['id'][];
   setDisabledRows: React.Dispatch<React.SetStateAction<TableNode['id'][]>>;
   paginationType: NonNullable<TablePaginationProps['paginationType']>;
   setPaginationType: React.Dispatch<
     React.SetStateAction<NonNullable<TablePaginationProps['paginationType']>>
   >;
+  backgroundColor: TableBackgroundColors;
 };
 
 const TableContext = React.createContext<TableContextType>({
@@ -50,11 +49,11 @@ const TableContext = React.createContext<TableContextType>({
   },
   setPaginationPage: () => {},
   setPaginationRowSize: () => {},
-  surfaceLevel: 1,
   disabledRows: [],
   setDisabledRows: () => {},
   paginationType: 'client',
   setPaginationType: () => {},
+  backgroundColor: 'surface.background.gray.intense',
 });
 
 const useTableContext = (): TableContextType => {

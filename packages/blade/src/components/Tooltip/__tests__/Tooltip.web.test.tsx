@@ -7,7 +7,7 @@ import React from 'react';
 import { Tooltip, TooltipInteractiveWrapper } from '..';
 import type { BladeCommonEvents } from '~components/types';
 import { Button } from '~components/Button';
-import { paymentTheme } from '~tokens/theme';
+import { bladeTheme } from '~tokens/theme';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
@@ -16,7 +16,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 
 const waitForPosition = () => act(async () => {});
-const animationDuration = paymentTheme.motion.duration.quick;
+const animationDuration = bladeTheme.motion.duration.quick;
 
 describe('<Tooltip />', () => {
   jest.useFakeTimers();
@@ -136,7 +136,7 @@ describe('<Tooltip />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Tooltip content={tooltipContent}>
         <TooltipInteractiveWrapper>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color="interactive.icon.gray.normal" size="medium" />
         </TooltipInteractiveWrapper>
       </Tooltip>,
     );
@@ -175,7 +175,7 @@ describe('<Tooltip />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Tooltip content="Hello world">
         <TooltipInteractiveWrapper>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color="interactive.icon.gray.normal" size="medium" />
         </TooltipInteractiveWrapper>
       </Tooltip>,
     );
@@ -235,7 +235,7 @@ describe('<Tooltip />', () => {
             onTouchStart={onTouchStart}
             data-testid={testId}
           >
-            <Text contrast="low">{children}</Text>
+            <Text>{children}</Text>
           </BaseBox>
         );
       },
@@ -295,7 +295,7 @@ describe('<Tooltip />', () => {
     const { getByTestId, queryByRole } = renderWithTheme(
       <Tooltip content={tooltipContent}>
         <TooltipInteractiveWrapper>
-          <InfoIcon color="surface.action.icon.default.highContrast" size="medium" />
+          <InfoIcon color="interactive.icon.gray.normal" size="medium" />
         </TooltipInteractiveWrapper>
       </Tooltip>,
     );

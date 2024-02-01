@@ -3,11 +3,11 @@ import type { StoryFn, Meta } from '@storybook/react';
 import { Modal } from '../Modal';
 import {
   BasicModalStory,
-  ModalStackingStory,
-  ModalWithHeaderFooterStory,
   ModalWithNoBodyPaddingStory,
   ModalWithScrollableBackgroundStory,
   ModalWithScrollableContentStory,
+  ModalWithHeaderFooterStory,
+  ModalStackingStory,
 } from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 

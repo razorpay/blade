@@ -5,6 +5,7 @@ import type { BaseBoxProps } from '~components/Box/BaseBox';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useMemoizedStyles } from '~components/Box/BaseBox/useMemoizedStyles';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledPopoverInteractiveWrapper = styled.button((props) => {
   const cssObject = useMemoizedStyles(props as never);
@@ -16,9 +17,7 @@ const StyledPopoverInteractiveWrapper = styled.button((props) => {
     cursor: 'pointer',
     lineHeight: 0,
     '&:focus-visible': {
-      // TODO: refactor to use focus ring token
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${props.theme.colors.brand.primary[400]}`,
+      ...getFocusRingStyles({ theme: props.theme }),
     },
   };
 });

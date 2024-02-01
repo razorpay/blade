@@ -4,7 +4,7 @@ import renderWithTheme from '~utils/testing/renderWithTheme.native';
 describe('<EyeOffIcon />', () => {
   it('should render EyeOffIcon', () => {
     const renderTree = renderWithTheme(
-      <EyeOffIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <EyeOffIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

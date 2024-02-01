@@ -62,16 +62,16 @@ exports[`Tabs should render 1`] = `
 
 .c9.c9.c9.c9.c9 {
   position: absolute;
-  height: 1.5px;
-  top: 0px;
+  height: 2px;
+  top: -0.5px;
   left: 0%;
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(227,100%,59%,1);
   pointer-events: none;
 }
 
 .c11.c11.c11.c11.c11 {
   border-bottom-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
@@ -84,40 +84,52 @@ exports[`Tabs should render 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(227,100%,59%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -148,7 +160,7 @@ exports[`Tabs should render 1`] = `
   padding-bottom: 16px;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-radius: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -162,19 +174,19 @@ exports[`Tabs should render 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  background-color: transparent;
+  border-bottom-color: hsla(211,27%,76%,1);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  background-color: transparent;
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6 * {
@@ -191,7 +203,7 @@ exports[`Tabs should render 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
@@ -442,24 +454,24 @@ exports[`Tabs should render with filled variant 1`] = `
   background-color: hsla(0,0%,100%,1);
   border-radius: 2px;
   border-width: 1px;
-  border-color: hsla(216,15%,54%,0.18);
+  border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
 .c8.c8.c8.c8.c8 {
   margin: auto;
   height: 20px;
-  border-width: 0px;
-  border-left-color: hsla(216,15%,54%,0.09);
-  border-style: solid;
+  border-left-color: hsla(214,28%,84%,1);
+  border-left-style: solid;
 }
 
 .c12.c12.c12.c12.c12 {
   position: absolute;
   top: 0px;
   left: 0px;
-  background-color: hsla(218,89%,51%,0.09);
+  background-color: hsla(227,100%,59%,0.09);
   border-radius: 2px;
+  pointer-events: none;
 }
 
 .c14.c14.c14.c14.c14 {
@@ -471,40 +483,52 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(227,100%,59%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c15.c15.c15.c15.c15 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -536,7 +560,7 @@ exports[`Tabs should render with filled variant 1`] = `
   padding-bottom: 8px;
   padding-left: 8px;
   padding-right: 8px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-radius: 2px;
   border-bottom-style: solid;
   border-bottom-width: 0;
@@ -550,19 +574,19 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  background-color: hsla(216,15%,54%,0.09);
+  border-bottom-color: hsla(211,27%,76%,1);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  background-color: hsla(216,15%,54%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
 }
 
 .c6.c6.c6.c6.c6 * {
@@ -615,19 +639,19 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover {
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,27%,76%,1);
   background-color: transparent;
 }
 
 .c10.c10.c10.c10.c10:disabled {
   cursor: not-allowed;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c10.c10.c10.c10.c10:focus-visible {
   border-radius: 4px;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  background-color: hsla(218,89%,51%,0.18);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(227,100%,59%,0.09);
 }
 
 .c10.c10.c10.c10.c10 * {
@@ -644,10 +668,11 @@ exports[`Tabs should render with filled variant 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c9.c9.c9.c9.c9 {
+  border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
   -webkit-align-self: stretch;
@@ -692,31 +717,61 @@ exports[`Tabs should render with filled variant 1`] = `
 
 @media screen and (min-width:320px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
   .c8.c8.c8.c8.c8 {
-    border-style: solid;
+    border-left-style: solid;
+  }
+}
+
+@media screen and (min-width:320px) {
+  .c12.c12.c12.c12.c12 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c12.c12.c12.c12.c12 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c12.c12.c12.c12.c12 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c12.c12.c12.c12.c12 {
+    pointer-events: none;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c12.c12.c12.c12.c12 {
+    pointer-events: none;
   }
 }
 
@@ -804,7 +859,8 @@ exports[`Tabs should render with filled variant 1`] = `
           <div
             class="c12 c13"
             data-blade-component="tab-indicator"
-            style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; height: 0px; transform: translate(0px, -1px);"
+            pointer-events="none"
+            style="transition-property: transform, width, background-color; transition-duration: 0ms; transition-timing-function: cubic-bezier(0.3, 0, 0.2, 1); width: 0px; height: 0px; transform: translate(0px, 0px);"
           />
         </div>
       </div>
@@ -907,16 +963,16 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 
 .c9.c9.c9.c9.c9 {
   position: absolute;
-  height: 1.5px;
-  top: 0px;
+  height: 2px;
+  top: -0.5px;
   left: 0%;
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(227,100%,59%,1);
   pointer-events: none;
 }
 
 .c11.c11.c11.c11.c11 {
   border-bottom-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
@@ -929,40 +985,52 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(227,100%,59%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -994,7 +1062,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
   padding-bottom: 16px;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-radius: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -1008,19 +1076,19 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  background-color: transparent;
+  border-bottom-color: hsla(211,27%,76%,1);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  background-color: transparent;
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6 * {
@@ -1037,7 +1105,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
@@ -1289,16 +1357,16 @@ exports[`Tabs should render with size 1`] = `
 
 .c9.c9.c9.c9.c9 {
   position: absolute;
-  height: 1.5px;
-  top: 0px;
+  height: 2px;
+  top: -0.5px;
   left: 0%;
-  background-color: hsla(218,89%,51%,1);
+  background-color: hsla(227,100%,59%,1);
   pointer-events: none;
 }
 
 .c11.c11.c11.c11.c11 {
   border-bottom-width: 1px;
-  border-bottom-color: hsla(216,15%,54%,0.18);
+  border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
@@ -1311,40 +1379,52 @@ exports[`Tabs should render with size 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c8.c8.c8.c8.c8 {
-  color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(227,100%,59%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c13.c13.c13.c13.c13 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1375,7 +1455,7 @@ exports[`Tabs should render with size 1`] = `
   padding-bottom: 12px;
   padding-left: 0px;
   padding-right: 0px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-radius: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -1389,19 +1469,19 @@ exports[`Tabs should render with size 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-bottom-color: hsla(216,15%,54%,0.18);
-  background-color: transparent;
+  border-bottom-color: hsla(211,27%,76%,1);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  background-color: transparent;
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6 * {
@@ -1418,7 +1498,7 @@ exports[`Tabs should render with size 1`] = `
 }
 
 .c10.c10.c10.c10.c10:hover {
-  background-color: hsla(218,89%,51%,0.18);
+  background-color: hsla(227,100%,59%,0.18);
 }
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
@@ -1649,8 +1729,10 @@ exports[`Tabs should render with vertical orientation 1`] = `
   -ms-flex-negative: 0;
   flex-shrink: 0;
   height: auto;
-  width: 1.5px;
-  background-color: hsla(216,15%,54%,0.18);
+  width: 0px;
+  border-width: 1px;
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -1684,40 +1766,52 @@ exports[`Tabs should render with vertical orientation 1`] = `
 }
 
 .c7.c7.c7.c7.c7 {
-  color: hsla(216,16%,60%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c9.c9.c9.c9.c9 {
-  color: hsla(218,89%,51%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(227,100%,59%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
 .c11.c11.c11.c11.c11 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
@@ -1748,7 +1842,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
   padding-bottom: 4px;
   padding-left: 12px;
   padding-right: 12px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-radius: 0;
   border-left-style: solid;
   border-left-width: 1.5px;
@@ -1762,19 +1856,19 @@ exports[`Tabs should render with vertical orientation 1`] = `
 }
 
 .c6.c6.c6.c6.c6:hover {
-  border-left-color: hsla(216,15%,54%,0.18);
-  background-color: transparent;
+  border-left-color: hsla(211,27%,76%,1);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6:disabled {
   cursor: not-allowed;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  background-color: transparent;
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c6.c6.c6.c6.c6 * {
@@ -1812,11 +1906,11 @@ exports[`Tabs should render with vertical orientation 1`] = `
   padding-bottom: 4px;
   padding-left: 12px;
   padding-right: 12px;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
   border-radius: 0;
   border-left-style: solid;
   border-left-width: 1.5px;
-  border-left-color: hsla(218,89%,51%,1);
+  border-left-color: hsla(227,100%,59%,1);
   -webkit-transition-property: all;
   transition-property: all;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1826,19 +1920,19 @@ exports[`Tabs should render with vertical orientation 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover {
-  border-left-color: hsla(218,89%,51%,1);
-  background-color: transparent;
+  border-left-color: hsla(227,100%,59%,1);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c8.c8.c8.c8.c8:disabled {
   cursor: not-allowed;
-  background-color: transparent;
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c8.c8.c8.c8.c8:focus-visible {
   border-radius: 4px;
-  box-shadow: 0px 0px 0px 4px hsla(218,89%,51%,0.18);
-  background-color: transparent;
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+  background-color: hsla(0,0%,100%,0);
 }
 
 .c8.c8.c8.c8.c8 * {
@@ -1852,6 +1946,36 @@ exports[`Tabs should render with vertical orientation 1`] = `
 
 .c3.c3.c3.c3.c3::-webkit-scrollbar {
   display: none;
+}
+
+@media screen and (min-width:320px) {
+  .c4.c4.c4.c4.c4 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c4.c4.c4.c4.c4 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c4.c4.c4.c4.c4 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c4.c4.c4.c4.c4 {
+    border-style: solid;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c4.c4.c4.c4.c4 {
+    border-style: solid;
+  }
 }
 
 @media screen and (min-width:0px) and (max-width:768px) {

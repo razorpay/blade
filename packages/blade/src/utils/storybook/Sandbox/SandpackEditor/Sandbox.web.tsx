@@ -30,8 +30,6 @@ const useSandpackSetup = ({
   const docsContext = React.useContext(DocsContext);
 
   // @ts-expect-error docsContext.store exists
-  const themeTokenName = docsContext?.store?.globals?.globals?.themeTokenName ?? 'paymentTheme';
-  // @ts-expect-error docsContext.store exists
   const colorScheme = docsContext?.store?.globals?.globals?.colorScheme ?? 'light';
   // @ts-expect-error docsContext.store exists
   const brandColor = docsContext?.store?.globals?.globals?.brandColor;
@@ -39,7 +37,7 @@ const useSandpackSetup = ({
   return {
     template: 'react-ts',
     files: {
-      '/index.tsx': getIndexTSX({ themeTokenName, brandColor, colorScheme }),
+      '/index.tsx': getIndexTSX({ themeTokenName: 'bladeTheme', brandColor, colorScheme }),
       [`/App.${language}`]: dedent(code),
     },
     customSetup: getReactScriptsJSDependencies(),
@@ -167,7 +165,7 @@ const VerticalSandbox = ({
         maxHeight={castWebType('100vh')}
       >
         <BaseBox
-          backgroundColor="surface.background.level1.lowContrast"
+          backgroundColor="surface.background.gray.intense"
           border={castWebType('1px solid #EFEFEF')}
           flex="1"
         >

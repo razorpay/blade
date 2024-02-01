@@ -1,7 +1,7 @@
 import { StyledCounter } from './StyledCounter';
 import type { StyledCounterProps } from './types';
-import { horizontalPadding, verticalPadding } from './counterTokens';
-import type { Feedback } from '~tokens/theme/theme';
+import { counterHeight, horizontalPadding } from './counterTokens';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -10,8 +10,7 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
-import { isReactNative } from '~utils';
-import { logger } from '~utils/logger';
+import { isReactNative, makeSize } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 export type CounterProps = {
@@ -25,31 +24,17 @@ export type CounterProps = {
    */
   max?: number;
   /**
-   * This prop is deprecated in favor of `color`.
-   *
-   * @default 'neutral'
-   * @deprecated Use `color` instead
-   */
-  intent?: Feedback;
-  /**
-   * This prop is deprecated in favor of `color`.
-   *
-   * @default 'neutral'
-   * @deprecated Use `color` instead
-   */
-  variant?: Feedback | 'blue';
-  /**
    * Sets the color of the counter.
    *
    * @default 'neutral'
    */
-  color?: Feedback | 'default';
+  color?: FeedbackColors | 'primary';
   /**
    * Sets the contrast of the counter.
    *
-   * @default 'low'
+   * @default 'subtle'
    */
-  contrast?: 'high' | 'low';
+  emphasis?: SubtleOrIntense;
   /**
    * Sets the size of the counter.
    *
@@ -64,29 +49,28 @@ type ColorProps = {
   backgroundColor: StyledCounterProps['backgroundColor'];
 };
 
-const isFeedbackVariant = (variant: string): variant is Feedback => {
-  const feedbackVariants = ['information', 'negative', 'neutral', 'notice', 'positive'];
-  return feedbackVariants.includes(variant);
-};
-
 const getColorProps = ({
-  variant = 'neutral',
-  contrast = 'low',
+  color = 'neutral',
+  emphasis = 'subtle',
 }: {
-  variant: NonNullable<CounterProps['color'] | 'blue'>;
-  contrast: NonNullable<CounterProps['contrast']>;
+  color: NonNullable<CounterProps['color']>;
+  emphasis: NonNullable<CounterProps['emphasis']>;
 }): ColorProps => {
-  const counterVariant = variant === 'default' ? 'blue' : variant;
   const props: ColorProps = {
-    textColor: 'feedback.text.neutral.lowContrast',
-    backgroundColor: 'feedback.background.neutral.lowContrast',
+    textColor: 'feedback.text.neutral.intense',
+    backgroundColor: 'feedback.background.neutral.subtle',
   };
-  if (isFeedbackVariant(counterVariant)) {
-    props.textColor = `feedback.text.${counterVariant}.${contrast}Contrast`;
-    props.backgroundColor = `feedback.background.${counterVariant}.${contrast}Contrast`;
+
+  if (color === 'primary') {
+    // primary color badge
+    props.textColor =
+      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `surface.text.primary.normal`;
+    props.backgroundColor = `surface.background.primary.${emphasis}`;
   } else {
-    props.textColor = `badge.text.${counterVariant}.${contrast}Contrast`;
-    props.backgroundColor = `badge.background.${counterVariant}.${contrast}Contrast`;
+    // feedback colors badge
+    props.textColor =
+      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `feedback.text.${color}.intense`;
+    props.backgroundColor = `feedback.background.${color}.${emphasis}`;
   }
   return props;
 };
@@ -94,10 +78,8 @@ const getColorProps = ({
 const _Counter = ({
   value,
   max,
-  intent,
-  variant = 'neutral',
-  color,
-  contrast = 'low',
+  color = 'neutral',
+  emphasis = 'subtle',
   size = 'medium',
   testID,
   ...styledProps
@@ -109,20 +91,9 @@ const _Counter = ({
 
   const { platform } = useTheme();
   const { backgroundColor, textColor } = getColorProps({
-    variant: color ?? intent ?? variant,
-    contrast,
+    color,
+    emphasis,
   });
-
-  if (__DEV__) {
-    if (intent) {
-      logger({
-        type: 'warn',
-        message:
-          'The prop `intent` is deprecated and will be removed in a future release. Please use `variant` instead.',
-        moduleName: 'Counter',
-      });
-    }
-  }
 
   const counterTextSizes = {
     small: {
@@ -145,12 +116,14 @@ const _Counter = ({
       {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(styledProps)}
     >
-      <StyledCounter backgroundColor={backgroundColor} size={size} platform={platform}>
+      <StyledCounter
+        minHeight={makeSize(counterHeight[size])}
+        backgroundColor={backgroundColor}
+        size={size}
+        platform={platform}
+      >
         <BaseBox
-          paddingRight={horizontalPadding[size]}
-          paddingLeft={horizontalPadding[size]}
-          paddingTop={verticalPadding[size]}
-          paddingBottom={verticalPadding[size]}
+          paddingX={horizontalPadding[size]}
           display="flex"
           flexDirection="row"
           justifyContent="center"
@@ -160,8 +133,7 @@ const _Counter = ({
           <Text
             {...counterTextSizes[size]}
             textAlign="center"
-            type="normal"
-            weight="regular"
+            weight="medium"
             truncateAfterLines={1}
             color={textColor}
           >

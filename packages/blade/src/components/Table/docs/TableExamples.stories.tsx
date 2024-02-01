@@ -11,7 +11,7 @@ import {
   TableWithStickyHeaderAndFooterStory,
   TableWithStickyFirstColumnStory,
   TableWithDisabledRowsStory,
-  TableWithSurfaceLevelsStory,
+  TableWithBackgroundColorStory,
   TableWithIsLoadingStory,
   TableWithIsRefreshingStory,
 } from './stories';
@@ -108,10 +108,10 @@ export const TableWithDisabledRows = (): React.ReactElement => {
   );
 };
 
-export const TableWithSurfaceLevels = (): React.ReactElement => {
+export const TableWithBackgroundColor = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
-      {TableWithSurfaceLevelsStory}
+      {TableWithBackgroundColorStory}
     </Sandbox>
   );
 };

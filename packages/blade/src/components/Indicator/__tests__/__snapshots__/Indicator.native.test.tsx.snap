@@ -80,26 +80,13 @@ exports[`<Indicator /> should render 1`] = `
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4281484642}
+            fill={4281287254}
             propList={
               [
                 "fill",
               ]
             }
             r="5"
-          />
-          <RNSVGCircle
-            cx="5"
-            cy="5"
-            propList={
-              [
-                "stroke",
-                "strokeWidth",
-              ]
-            }
-            r="4.75"
-            stroke={787279859}
-            strokeWidth="0.5"
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -115,21 +102,22 @@ exports[`<Indicator /> should render 1`] = `
       >
         <Text
           accessible={true}
-          color="surface.text.subtle.lowContrast"
+          color="surface.text.gray.subtle"
           data-blade-component="text"
           fontFamily="text"
           fontSize={100}
           fontStyle="normal"
-          fontWeight="regular"
+          fontWeight="medium"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "500",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -152,7 +140,7 @@ exports[`<Indicator /> should render 1`] = `
 </View>
 `;
 
-exports[`<Indicator /> should render different variants for size and intent 1`] = `
+exports[`<Indicator /> should render different variants for size and color 1`] = `
 <View
   style={
     {
@@ -232,26 +220,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4290738691}
+            fill={4293486604}
             propList={
               [
                 "fill",
               ]
             }
             r="5"
-          />
-          <RNSVGCircle
-            cx="5"
-            cy="5"
-            propList={
-              [
-                "stroke",
-                "strokeWidth",
-              ]
-            }
-            r="4.75"
-            stroke={787279859}
-            strokeWidth="0.5"
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -267,22 +242,23 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       >
         <Text
           accessible={true}
-          color="surface.text.subtle.lowContrast"
+          color="surface.text.gray.subtle"
           data-blade-component="text"
           fontFamily="text"
           fontSize={75}
           fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={50}
+          fontWeight="medium"
+          lineHeight={75}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 12,
                 "fontStyle": "normal",
-                "fontWeight": "400",
-                "lineHeight": 16,
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
                 "marginBottom": 0,
                 "marginLeft": 0,
                 "marginRight": 0,
@@ -373,26 +349,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4278224216}
+            fill={4278231890}
             propList={
               [
                 "fill",
               ]
             }
             r="5"
-          />
-          <RNSVGCircle
-            cx="5"
-            cy="5"
-            propList={
-              [
-                "stroke",
-                "strokeWidth",
-              ]
-            }
-            r="4.75"
-            stroke={787279859}
-            strokeWidth="0.5"
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -408,21 +371,22 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       >
         <Text
           accessible={true}
-          color="surface.text.subtle.lowContrast"
+          color="surface.text.gray.subtle"
           data-blade-component="text"
           fontFamily="text"
           fontSize={100}
           fontStyle="normal"
-          fontWeight="regular"
+          fontWeight="medium"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "500",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -514,26 +478,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4291770400}
+            fill={4292422944}
             propList={
               [
                 "fill",
               ]
             }
             r="5"
-          />
-          <RNSVGCircle
-            cx="5"
-            cy="5"
-            propList={
-              [
-                "stroke",
-                "strokeWidth",
-              ]
-            }
-            r="4.75"
-            stroke={787279859}
-            strokeWidth="0.5"
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -549,21 +500,22 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       >
         <Text
           accessible={true}
-          color="surface.text.subtle.lowContrast"
+          color="surface.text.gray.subtle"
           data-blade-component="text"
           fontFamily="text"
           fontSize={100}
           fontStyle="normal"
-          fontWeight="regular"
+          fontWeight="medium"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "500",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,
@@ -655,26 +607,13 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4278226099}
+            fill={4279406798}
             propList={
               [
                 "fill",
               ]
             }
             r="5"
-          />
-          <RNSVGCircle
-            cx="5"
-            cy="5"
-            propList={
-              [
-                "stroke",
-                "strokeWidth",
-              ]
-            }
-            r="4.75"
-            stroke={787279859}
-            strokeWidth="0.5"
           />
         </RNSVGGroup>
       </RNSVGSvgView>
@@ -690,21 +629,22 @@ exports[`<Indicator /> should render different variants for size and intent 1`] 
       >
         <Text
           accessible={true}
-          color="surface.text.subtle.lowContrast"
+          color="surface.text.gray.subtle"
           data-blade-component="text"
           fontFamily="text"
           fontSize={100}
           fontStyle="normal"
-          fontWeight="regular"
+          fontWeight="medium"
           lineHeight={100}
           style={
             [
               {
-                "color": "hsla(216, 27%, 36%, 1)",
-                "fontFamily": "Lato",
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
                 "fontSize": 14,
                 "fontStyle": "normal",
-                "fontWeight": "400",
+                "fontWeight": "500",
+                "letterSpacing": 0,
                 "lineHeight": 20,
                 "marginBottom": 0,
                 "marginLeft": 0,

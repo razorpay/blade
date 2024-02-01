@@ -13,171 +13,90 @@ export type ColorSchemeNamesInput = ColorSchemeNames | 'system';
 
 export type ColorSchemeModes = 'onDark' | 'onLight';
 
-export type TextTypes = 'muted' | 'normal' | 'placeholder' | 'subdued' | 'subtle';
+export type FeedbackColors = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
 
-export type ColorContrastTypes = 'low' | 'high';
-
-export type Feedback = 'information' | 'negative' | 'neutral' | 'notice' | 'positive';
-
-export type ColorContrast = {
-  [K in ColorContrastTypes as `${Extract<K, string>}Contrast`]: string;
-};
-
-// @TODO: this shall rather be Surface = 'level1' | 'level2' | 'level3' to keep in sync with color tokens
-export type SurfaceLevels = 1 | 2 | 3;
-
-export type ActionStates = {
-  default: string;
-  hover: string;
-  focus: string;
-  active: string;
+export type Emphasis = {
+  subtle: string;
+  moderate: string;
+  intense: string;
+  normal: string;
+  muted: string;
   disabled: string;
 };
 
-export type LinkActionStates = ActionStates & {
-  visited: string;
+type SubtleOrIntenseEmphasis = Pick<Emphasis, 'subtle' | 'intense'>;
+// Exporting this for usage in other components
+export type SubtleOrIntense = keyof SubtleOrIntenseEmphasis;
+type InteractiveStates = {
+  default: string;
+  highlighted: string;
+  disabled: string;
+  faded: string;
 };
 
-export type ActionStatesWithContrast = {
-  default: ColorContrast;
-  hover: ColorContrast;
-  focus: ColorContrast;
-  active: ColorContrast;
-  disabled: ColorContrast;
+type OnEmphasis = {
+  onSubtle: string;
+  onIntense: string;
 };
 
-export type ActionStatesWithLowContrast = {
-  default: Pick<ColorContrast, 'lowContrast'>;
-  hover: Pick<ColorContrast, 'lowContrast'>;
-  focus: Pick<ColorContrast, 'lowContrast'>;
-  active: Pick<ColorContrast, 'lowContrast'>;
-  disabled: Pick<ColorContrast, 'lowContrast'>;
+type ColorCategories = {
+  staticBlack: Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>;
+  staticWhite: Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>;
+  gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>;
+  onSea: Pick<OnEmphasis, 'onSubtle' | 'onIntense'>;
+  onCloud: Pick<OnEmphasis, 'onSubtle' | 'onIntense'>;
+  primary: Pick<Emphasis, 'normal'>;
 };
 
-export type LinkActionStatesWithContrast = ActionStatesWithContrast & {
-  visited: ColorContrast;
-};
-
-export type ActionVariants = {
-  primary: ActionStates;
-  secondary: ActionStates;
-  tertiary: ActionStates;
-  link: LinkActionStates;
-};
-
-export type ActionVariantsWithContrast = {
-  primary: ActionStatesWithContrast;
-  secondary: ActionStatesWithContrast;
-  tertiary: ActionStatesWithContrast;
-  link: ActionStatesWithContrast;
-};
-
-export type SecondaryFeedbackActionStatesWithContrast = {
-  secondary: {
-    default: Pick<ColorContrast, 'lowContrast'>;
-    hover: Pick<ColorContrast, 'lowContrast'>;
-    focus: Pick<ColorContrast, 'lowContrast'>;
-    active: Pick<ColorContrast, 'lowContrast'>;
-    disabled: Pick<ColorContrast, 'lowContrast'>;
-  };
-};
-
-// export type ActionProperties = {
-//   background: ActionVariants;
-//   border: ActionVariants;
-//   text: ActionVariants;
-//   icon: ActionVariants;
-// };
-
-export type FeedbackActions = {
-  action: {
-    background: {
-      primary: ActionStatesWithContrast;
-      secondary: ActionStatesWithLowContrast;
-    };
-    border: {
-      primary: ActionStatesWithContrast;
-      secondary: ActionStatesWithLowContrast;
-    };
-    text: {
-      link: ActionStatesWithContrast;
-      primary: ActionStatesWithContrast;
-      secondary: ActionStatesWithLowContrast;
-    };
-    icon: {
-      link: ActionStatesWithContrast;
-      primary: ActionStatesWithContrast;
-      secondary: ActionStatesWithLowContrast;
-    };
-  };
-};
-
-export type WhiteColors = {
-  background: Pick<ActionVariants, 'primary' | 'secondary' | 'tertiary'>;
-  border: Pick<ActionVariants, 'primary' | 'secondary' | 'tertiary'>;
-  text: Pick<ActionVariants, 'link' | 'primary' | 'secondary' | 'tertiary'>;
-  icon: Pick<ActionVariants, 'link' | 'primary' | 'secondary' | 'tertiary'>;
-};
+type InteractiveColorKeys = FeedbackColors | Exclude<keyof ColorCategories, 'onSea' | 'onCloud'>;
 
 export type Colors = {
-  brand: {
-    primary: Record<300 | 400 | 500 | 600 | 700 | 800, string>;
-    secondary: Record<500, string>;
-    gray: Record<200 | 300 | 400 | 500 | 600 | 700 | 'a50' | 'a100', ColorContrast>;
+  interactive: {
+    background: Record<InteractiveColorKeys, InteractiveStates & { fadedHighlighted: string }>;
+    border: Record<InteractiveColorKeys, InteractiveStates>;
+    text: Record<
+      InteractiveColorKeys | 'onPrimary',
+      Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
+    >;
+    icon: Record<
+      InteractiveColorKeys | 'onPrimary',
+      Pick<Emphasis, 'normal' | 'subtle' | 'muted' | 'disabled'>
+    >;
   };
   feedback: {
-    background: Record<Feedback, ColorContrast>;
-    border: Record<Feedback, ColorContrast>;
-    text: Record<Feedback, ColorContrast>;
-    icon: Record<Feedback, ColorContrast>;
-    positive: FeedbackActions;
-    negative: FeedbackActions;
-    information: FeedbackActions;
-    notice: FeedbackActions;
-    neutral: FeedbackActions;
+    background: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
+    border: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
+    text: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
+    icon: Record<FeedbackColors, SubtleOrIntenseEmphasis>;
   };
   surface: {
-    background: Record<'level1' | 'level2' | 'level3', ColorContrast>;
-    border: Record<'normal' | 'subtle', ColorContrast>;
-    text: Record<TextTypes, ColorContrast>;
-    action: {
-      icon: ActionStatesWithContrast;
-    };
-    overlay: Record<'background', Record<400 | 800, string>>;
-    popup: Record<'background', string>;
-  };
-  action: {
-    background: Omit<ActionVariants, 'link'>;
-    border: Omit<ActionVariants, 'link'>;
-    text: ActionVariants;
-    icon: ActionVariants;
-  };
-  badge: {
     background: {
-      blue: ColorContrast;
+      gray: Pick<Emphasis, 'subtle' | 'moderate' | 'intense'>;
+      primary: SubtleOrIntenseEmphasis;
+      sea: SubtleOrIntenseEmphasis;
+      cloud: SubtleOrIntenseEmphasis;
     };
     border: {
-      blue: ColorContrast;
+      gray: Pick<Emphasis, 'normal' | 'subtle' | 'muted'>;
+      primary: Pick<Emphasis, 'normal' | 'muted'>;
     };
-    text: {
-      blue: ColorContrast;
-    };
-    icon: {
-      blue: ColorContrast;
-    };
+    text: ColorCategories;
+    icon: ColorCategories;
   };
-  static: {
-    white: string;
+  overlay: {
+    background: Pick<Emphasis, 'moderate' | 'subtle'>;
   };
-  white: {
-    action: WhiteColors;
+  popup: {
+    background: SubtleOrIntenseEmphasis;
+    border: SubtleOrIntenseEmphasis;
   };
+  transparent: string;
 };
 
 export type ColorsWithModes = Record<ColorSchemeModes, Colors>;
 
 export type ThemeTokens = {
-  name: 'paymentTheme' | 'bankingTheme' | StringWithAutocomplete; // Can be used to watch over state changes between theme without watching over entire theme object
+  name: 'bladeTheme' | StringWithAutocomplete; // Can be used to watch over state changes between theme without watching over entire theme object
   border: Border;
   breakpoints: Breakpoints;
   colors: ColorsWithModes;

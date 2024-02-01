@@ -1,5 +1,10 @@
 import type { CardProps } from './Card';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
+
+type CardSpacingValueType = Extract<
+  SpacingValueType,
+  'spacing.0' | 'spacing.3' | 'spacing.4' | 'spacing.5' | 'spacing.7'
+>;
 
 type CardRootProps = {
   isSelected?: boolean;
@@ -16,4 +21,4 @@ type LinkOverlayProps = {
   href?: string;
 } & BaseBoxProps;
 
-export type { CardRootProps, LinkOverlayProps };
+export type { CardRootProps, LinkOverlayProps, CardSpacingValueType };

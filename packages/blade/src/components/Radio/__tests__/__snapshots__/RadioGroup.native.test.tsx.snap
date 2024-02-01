@@ -66,23 +66,24 @@ exports[`<RadioGroup /> should render with help text 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.subdued.lowContrast"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="bold"
-            lineHeight={50}
+            fontWeight="semibold"
+            lineHeight={75}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "700",
-                  "lineHeight": 16,
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -129,7 +130,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -139,11 +140,12 @@ exports[`<RadioGroup /> should render with help text 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -287,8 +289,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                         [
                           {
                             "alignItems": "center",
-                            "backgroundColor": "transparent",
-                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                            "borderColor": "hsla(211, 27%, 76%, 1)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -317,20 +319,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <Text
                       accessible={true}
-                      color="surface.text.subtle.lowContrast"
-                      data-blade-component="base-text"
+                      color="surface.text.gray.subtle"
+                      data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
+                      fontStyle="normal"
                       fontWeight="regular"
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(216, 27%, 36%, 1)",
-                            "fontFamily": "Lato",
+                            "color": "hsla(211, 26%, 34%, 1)",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -455,8 +459,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                         [
                           {
                             "alignItems": "center",
-                            "backgroundColor": "transparent",
-                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                            "borderColor": "hsla(211, 27%, 76%, 1)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -485,20 +489,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <Text
                       accessible={true}
-                      color="surface.text.subtle.lowContrast"
-                      data-blade-component="base-text"
+                      color="surface.text.gray.subtle"
+                      data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
+                      fontStyle="normal"
                       fontWeight="regular"
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(216, 27%, 36%, 1)",
-                            "fontFamily": "Lato",
+                            "color": "hsla(211, 26%, 34%, 1)",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -623,8 +629,8 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                         [
                           {
                             "alignItems": "center",
-                            "backgroundColor": "transparent",
-                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                            "borderColor": "hsla(211, 27%, 76%, 1)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -653,20 +659,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
                     />
                     <Text
                       accessible={true}
-                      color="surface.text.subtle.lowContrast"
-                      data-blade-component="base-text"
+                      color="surface.text.gray.subtle"
+                      data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
+                      fontStyle="normal"
                       fontWeight="regular"
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(216, 27%, 36%, 1)",
-                            "fontFamily": "Lato",
+                            "color": "hsla(211, 26%, 34%, 1)",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -716,20 +724,22 @@ exports[`<RadioGroup /> should render with help text 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.muted.lowContrast"
-              data-blade-component="base-text"
+              color="surface.text.gray.muted"
+              data-blade-component="text"
               fontFamily="text"
               fontSize={50}
               fontStyle="italic"
+              fontWeight="regular"
               lineHeight={50}
               style={
                 [
                   {
-                    "color": "hsla(216, 16%, 60%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 11,
                     "fontStyle": "italic",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 16,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -820,23 +830,24 @@ exports[`<RadioGroup /> should render with label 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.subdued.lowContrast"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
-            fontWeight="bold"
-            lineHeight={50}
+            fontWeight="semibold"
+            lineHeight={75}
             numberOfLines={2}
             style={
               [
                 {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
-                  "fontWeight": "700",
-                  "lineHeight": 16,
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -883,7 +894,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -893,11 +904,12 @@ exports[`<RadioGroup /> should render with label 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1039,8 +1051,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                         [
                           {
                             "alignItems": "center",
-                            "backgroundColor": "transparent",
-                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                            "borderColor": "hsla(211, 27%, 76%, 1)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -1069,20 +1081,22 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <Text
                       accessible={true}
-                      color="surface.text.subtle.lowContrast"
-                      data-blade-component="base-text"
+                      color="surface.text.gray.subtle"
+                      data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
+                      fontStyle="normal"
                       fontWeight="regular"
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(216, 27%, 36%, 1)",
-                            "fontFamily": "Lato",
+                            "color": "hsla(211, 26%, 34%, 1)",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -1207,8 +1221,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                         [
                           {
                             "alignItems": "center",
-                            "backgroundColor": "transparent",
-                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                            "borderColor": "hsla(211, 27%, 76%, 1)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -1237,20 +1251,22 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <Text
                       accessible={true}
-                      color="surface.text.subtle.lowContrast"
-                      data-blade-component="base-text"
+                      color="surface.text.gray.subtle"
+                      data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
+                      fontStyle="normal"
                       fontWeight="regular"
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(216, 27%, 36%, 1)",
-                            "fontFamily": "Lato",
+                            "color": "hsla(211, 26%, 34%, 1)",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,
@@ -1375,8 +1391,8 @@ exports[`<RadioGroup /> should render with label 1`] = `
                         [
                           {
                             "alignItems": "center",
-                            "backgroundColor": "transparent",
-                            "borderColor": "hsla(214, 18%, 69%, 1)",
+                            "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                            "borderColor": "hsla(211, 27%, 76%, 1)",
                             "borderRadius": 9999,
                             "borderStyle": "solid",
                             "borderWidth": 1.5,
@@ -1405,20 +1421,22 @@ exports[`<RadioGroup /> should render with label 1`] = `
                     />
                     <Text
                       accessible={true}
-                      color="surface.text.subtle.lowContrast"
-                      data-blade-component="base-text"
+                      color="surface.text.gray.subtle"
+                      data-blade-component="text"
                       fontFamily="text"
                       fontSize={100}
+                      fontStyle="normal"
                       fontWeight="regular"
                       lineHeight={100}
                       style={
                         [
                           {
-                            "color": "hsla(216, 27%, 36%, 1)",
-                            "fontFamily": "Lato",
+                            "color": "hsla(211, 26%, 34%, 1)",
+                            "fontFamily": "Inter",
                             "fontSize": 14,
                             "fontStyle": "normal",
                             "fontWeight": "400",
+                            "letterSpacing": 0,
                             "lineHeight": 20,
                             "marginBottom": 0,
                             "marginLeft": 0,

@@ -11,11 +11,11 @@ const ActionListNoResults = (): React.ReactElement => {
       justifyContent="center"
       padding="spacing.5"
     >
-      <SearchIcon size="xlarge" color="surface.text.normal.lowContrast" />
-      <Text marginTop="spacing.5" weight="bold">
+      <SearchIcon size="xlarge" color="surface.icon.gray.muted" />
+      <Text marginTop="spacing.5" weight="semibold">
         No Search Result Found
       </Text>
-      <Text marginTop="spacing.3" size="small" type="subtle">
+      <Text color="surface.text.gray.subtle" marginTop="spacing.3" size="small">
         Try searching for a different value
       </Text>
     </Box>

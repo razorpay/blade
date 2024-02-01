@@ -7,6 +7,7 @@ import {
   getTransitionEasing,
 } from './commonStyles';
 import { castWebType } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) => {
   const { theme, isExpanded } = props;
@@ -18,25 +19,19 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
     transitionDuration: castWebType(getTransitionDuration(theme)),
     transitionTimingFunction: castWebType(getTransitionEasing(theme)),
     cursor: 'pointer',
-    color: theme.colors.surface.action.icon.default.lowContrast,
+    color: theme.colors.interactive.icon.gray[isExpanded ? 'subtle' : 'muted'],
     width: '100%',
     border: 'none',
     textAlign: 'left',
 
     '&:hover, &:focus-visible': {
       backgroundColor: getBackgroundColor({ theme, isExpanded, isActive: true }),
+      color: theme.colors.interactive.icon.gray.subtle,
     },
-
-    '&:hover': {
-      color: theme.colors.surface.action.icon.hover.lowContrast,
-    },
-
     '&:focus-visible': {
-      outline: 'none',
-      boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
+      ...getFocusRingStyles({ theme }),
       // only need border radius on the focus ring
       borderRadius: theme.border.radius.small,
-      color: theme.colors.surface.action.icon.focus.lowContrast,
     },
   };
 });

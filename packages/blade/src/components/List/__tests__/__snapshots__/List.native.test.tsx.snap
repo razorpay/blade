@@ -20,12 +20,9 @@ exports[`<List /> should render List with default properties 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -117,7 +114,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 <RNSVGCircle
                   cx="3px"
                   cy="3px"
-                  fill={4288851646}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -145,7 +142,7 @@ exports[`<List /> should render List with default properties 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -155,11 +152,12 @@ exports[`<List /> should render List with default properties 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -290,7 +288,7 @@ exports[`<List /> should render List with default properties 1`] = `
                           ]
                         }
                         r="2.5px"
-                        stroke={4288851646}
+                        stroke={4285959847}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -312,7 +310,7 @@ exports[`<List /> should render List with default properties 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
+                    color="surface.text.gray.normal"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={100}
@@ -322,11 +320,12 @@ exports[`<List /> should render List with default properties 1`] = `
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
+                          "letterSpacing": 0,
                           "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -449,7 +448,7 @@ exports[`<List /> should render List with default properties 1`] = `
                             }
                           >
                             <RNSVGRect
-                              fill={4288851646}
+                              fill={4285959847}
                               height="6px"
                               propList={
                                 [
@@ -481,7 +480,7 @@ exports[`<List /> should render List with default properties 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -491,11 +490,12 @@ exports[`<List /> should render List with default properties 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -546,12 +546,9 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -643,7 +640,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 <RNSVGCircle
                   cx="3px"
                   cy="3px"
-                  fill={4288851646}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -671,7 +668,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -681,11 +678,12 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -711,7 +709,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                   {},
                   {
                     "alignSelf": "center",
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                    "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                     "borderRadius": 4,
                     "display": "flex",
                     "lineHeight": 0,
@@ -726,7 +724,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
             >
               <Text
                 accessible={true}
-                color="surface.text.subtle.lowContrast"
+                color="surface.text.gray.subtle"
                 data-blade-component="base-text"
                 fontFamily="code"
                 fontSize={25}
@@ -735,11 +733,12 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 style={
                   [
                     {
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "fontFamily": "Courier",
+                      "color": "hsla(211, 26%, 34%, 1)",
+                      "fontFamily": "Menlo",
                       "fontSize": 10,
                       "fontStyle": "normal",
                       "fontWeight": "400",
+                      "letterSpacing": 0,
                       "lineHeight": 14,
                       "marginBottom": 0,
                       "marginLeft": 0,
@@ -848,7 +847,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
                 <RNSVGCircle
                   cx="3px"
                   cy="3px"
-                  fill={4288851646}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -876,7 +875,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -886,11 +885,12 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -935,12 +935,9 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -1032,7 +1029,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 <RNSVGCircle
                   cx="3px"
                   cy="3px"
-                  fill={4288851646}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -1060,7 +1057,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -1070,11 +1067,12 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1160,19 +1158,20 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               >
                 <Text
                   accessible={true}
-                  color="action.text.link.default"
+                  color="interactive.text.primary.normal"
                   data-blade-component="base-text"
                   fontSize={100}
-                  fontWeight="bold"
+                  fontWeight="medium"
                   lineHeight={100}
                   style={
                     [
                       {
-                        "color": "hsla(218, 89%, 51%, 1)",
-                        "fontFamily": "Lato",
+                        "color": "hsla(227, 71%, 51%, 1)",
+                        "fontFamily": "Inter",
                         "fontSize": 14,
                         "fontStyle": "normal",
-                        "fontWeight": "700",
+                        "fontWeight": "500",
+                        "letterSpacing": 0,
                         "lineHeight": 20,
                         "marginBottom": 0,
                         "marginLeft": 0,
@@ -1285,7 +1284,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
                 <RNSVGCircle
                   cx="3px"
                   cy="3px"
-                  fill={4288851646}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -1313,7 +1312,7 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -1323,11 +1322,12 @@ exports[`<List /> should render List with inline ListItemLink 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1372,12 +1372,9 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -1469,7 +1466,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
                 <RNSVGCircle
                   cx="3px"
                   cy="3px"
-                  fill={4288851646}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -1497,21 +1494,22 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
           >
             <Text
               accessible={true}
-              color="action.text.secondary.default"
+              color="interactive.text.primary.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
               fontStyle="normal"
-              fontWeight="bold"
+              fontWeight="semibold"
               lineHeight={100}
               style={
                 [
                   {
-                    "color": "hsla(218, 89%, 51%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(227, 71%, 51%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
-                    "fontWeight": "700",
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1556,12 +1554,9 @@ exports[`<List /> should render large ordered List 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -1621,21 +1616,22 @@ exports[`<List /> should render large ordered List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={300}
+              lineHeight={200}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1670,21 +1666,22 @@ exports[`<List /> should render large ordered List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={300}
+              lineHeight={200}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -1815,7 +1812,7 @@ exports[`<List /> should render large ordered List 1`] = `
                           ]
                         }
                         r="2.5px"
-                        stroke={4288851646}
+                        stroke={4285959847}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -1837,21 +1834,22 @@ exports[`<List /> should render large ordered List 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
+                    color="surface.text.gray.normal"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={200}
                     fontStyle="normal"
                     fontWeight="regular"
-                    lineHeight={300}
+                    lineHeight={200}
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 16,
                           "fontStyle": "normal",
                           "fontWeight": "400",
+                          "letterSpacing": 0,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -1974,7 +1972,7 @@ exports[`<List /> should render large ordered List 1`] = `
                             }
                           >
                             <RNSVGRect
-                              fill={4288851646}
+                              fill={4285959847}
                               height="6px"
                               propList={
                                 [
@@ -2006,21 +2004,22 @@ exports[`<List /> should render large ordered List 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={200}
                           fontStyle="normal"
                           fontWeight="regular"
-                          lineHeight={300}
+                          lineHeight={200}
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 16,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 24,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -2071,12 +2070,9 @@ exports[`<List /> should render large ordered-filled List 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -2112,7 +2108,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
-            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            backgroundColor="hsla(211, 20%, 52%, 0.09)"
             borderRadius="max"
             data-blade-component="base-box"
             display="flex"
@@ -2124,7 +2120,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                 {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -2140,22 +2136,23 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={25}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 14,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -2189,21 +2186,22 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={300}
+              lineHeight={200}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2255,7 +2253,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
-            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            backgroundColor="hsla(211, 20%, 52%, 0.09)"
             borderRadius="max"
             data-blade-component="base-box"
             display="flex"
@@ -2267,7 +2265,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                 {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -2283,22 +2281,23 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={25}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 14,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -2332,21 +2331,22 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={300}
+              lineHeight={200}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2398,7 +2398,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
-            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            backgroundColor="hsla(211, 20%, 52%, 0.09)"
             borderRadius="max"
             data-blade-component="base-box"
             display="flex"
@@ -2410,7 +2410,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
                 {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -2426,22 +2426,23 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={25}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 14,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -2475,21 +2476,22 @@ exports[`<List /> should render large ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={300}
+              lineHeight={200}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2534,12 +2536,9 @@ exports[`<List /> should render large unordered List with icon 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -2630,7 +2629,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
               >
                 <RNSVGPath
                   d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
-                  fill={4284378759}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -2657,21 +2656,22 @@ exports[`<List /> should render large unordered List with icon 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={200}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={300}
+              lineHeight={200}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 16,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 24,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -2795,7 +2795,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                     >
                       <RNSVGPath
                         d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
-                        fill={4284378759}
+                        fill={4285959847}
                         propList={
                           [
                             "fill",
@@ -2822,21 +2822,22 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
+                    color="surface.text.gray.normal"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={200}
                     fontStyle="normal"
                     fontWeight="regular"
-                    lineHeight={300}
+                    lineHeight={200}
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 16,
                           "fontStyle": "normal",
                           "fontWeight": "400",
+                          "letterSpacing": 0,
                           "lineHeight": 24,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -2959,7 +2960,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                             }
                           >
                             <RNSVGRect
-                              fill={4288851646}
+                              fill={4285959847}
                               height="6px"
                               propList={
                                 [
@@ -2991,21 +2992,22 @@ exports[`<List /> should render large unordered List with icon 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={200}
                           fontStyle="normal"
                           fontWeight="regular"
-                          lineHeight={300}
+                          lineHeight={200}
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 16,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 24,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -3056,12 +3058,9 @@ exports[`<List /> should render medium ordered List 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -3121,7 +3120,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -3131,11 +3130,12 @@ exports[`<List /> should render medium ordered List 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -3170,7 +3170,7 @@ exports[`<List /> should render medium ordered List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -3180,11 +3180,12 @@ exports[`<List /> should render medium ordered List 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -3315,7 +3316,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                           ]
                         }
                         r="2.5px"
-                        stroke={4288851646}
+                        stroke={4285959847}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -3337,7 +3338,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
+                    color="surface.text.gray.normal"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={100}
@@ -3347,11 +3348,12 @@ exports[`<List /> should render medium ordered List 1`] = `
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
+                          "letterSpacing": 0,
                           "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -3474,7 +3476,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                             }
                           >
                             <RNSVGRect
-                              fill={4288851646}
+                              fill={4285959847}
                               height="6px"
                               propList={
                                 [
@@ -3506,7 +3508,7 @@ exports[`<List /> should render medium ordered List 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -3516,11 +3518,12 @@ exports[`<List /> should render medium ordered List 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -3571,12 +3574,9 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -3612,7 +3612,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
-            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            backgroundColor="hsla(211, 20%, 52%, 0.09)"
             borderRadius="max"
             data-blade-component="base-box"
             display="flex"
@@ -3624,7 +3624,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                 {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -3640,22 +3640,23 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={25}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 14,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -3689,7 +3690,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -3699,11 +3700,12 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -3755,7 +3757,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
-            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            backgroundColor="hsla(211, 20%, 52%, 0.09)"
             borderRadius="max"
             data-blade-component="base-box"
             display="flex"
@@ -3767,7 +3769,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                 {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -3783,22 +3785,23 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={25}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 14,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -3832,7 +3835,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -3842,11 +3845,12 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -3898,7 +3902,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
-            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            backgroundColor="hsla(211, 20%, 52%, 0.09)"
             borderRadius="max"
             data-blade-component="base-box"
             display="flex"
@@ -3910,7 +3914,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
                 {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -3926,22 +3930,23 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={25}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 14,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -3975,7 +3980,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -3985,11 +3990,12 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -4034,12 +4040,9 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -4130,7 +4133,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               >
                 <RNSVGPath
                   d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
-                  fill={4284378759}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -4157,7 +4160,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={100}
@@ -4167,11 +4170,12 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 14,
                     "fontStyle": "normal",
                     "fontWeight": "400",
+                    "letterSpacing": 0,
                     "lineHeight": 20,
                     "marginBottom": 0,
                     "marginLeft": 0,
@@ -4295,7 +4299,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     >
                       <RNSVGPath
                         d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
-                        fill={4284378759}
+                        fill={4285959847}
                         propList={
                           [
                             "fill",
@@ -4322,7 +4326,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
+                    color="surface.text.gray.normal"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={100}
@@ -4332,11 +4336,12 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 14,
                           "fontStyle": "normal",
                           "fontWeight": "400",
+                          "letterSpacing": 0,
                           "lineHeight": 20,
                           "marginBottom": 0,
                           "marginLeft": 0,
@@ -4459,7 +4464,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                             }
                           >
                             <RNSVGRect
-                              fill={4288851646}
+                              fill={4285959847}
                               height="6px"
                               propList={
                                 [
@@ -4491,7 +4496,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -4501,11 +4506,12 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -4556,12 +4562,9 @@ exports[`<List /> should render small ordered List 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -4621,22 +4624,23 @@ exports[`<List /> should render small ordered List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={75}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -4670,22 +4674,23 @@ exports[`<List /> should render small ordered List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={75}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -4815,7 +4820,7 @@ exports[`<List /> should render small ordered List 1`] = `
                           ]
                         }
                         r="2.5px"
-                        stroke={4288851646}
+                        stroke={4285959847}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -4837,22 +4842,23 @@ exports[`<List /> should render small ordered List 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
+                    color="surface.text.gray.normal"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={75}
                     fontStyle="normal"
                     fontWeight="regular"
-                    lineHeight={50}
+                    lineHeight={75}
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -4974,7 +4980,7 @@ exports[`<List /> should render small ordered List 1`] = `
                             }
                           >
                             <RNSVGRect
-                              fill={4288851646}
+                              fill={4285959847}
                               height="5px"
                               propList={
                                 [
@@ -5006,22 +5012,23 @@ exports[`<List /> should render small ordered List 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={75}
                           fontStyle="normal"
                           fontWeight="regular"
-                          lineHeight={50}
+                          lineHeight={75}
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 12,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "lineHeight": 16,
+                                "letterSpacing": 0,
+                                "lineHeight": 18,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
                                 "marginRight": 0,
@@ -5071,12 +5078,9 @@ exports[`<List /> should render small ordered-filled List 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -5112,7 +5116,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
-            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            backgroundColor="hsla(211, 20%, 52%, 0.09)"
             borderRadius="max"
             data-blade-component="base-box"
             display="flex"
@@ -5124,7 +5128,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                 {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -5140,22 +5144,23 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={25}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 14,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5189,22 +5194,23 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={75}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5255,7 +5261,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
-            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            backgroundColor="hsla(211, 20%, 52%, 0.09)"
             borderRadius="max"
             data-blade-component="base-box"
             display="flex"
@@ -5267,7 +5273,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                 {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -5283,22 +5289,23 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={25}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 14,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5332,22 +5339,23 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={75}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5398,7 +5406,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           <View
             alignItems="center"
             alignSelf="flex-start"
-            backgroundColor="hsla(216, 15%, 54%, 0.18)"
+            backgroundColor="hsla(211, 20%, 52%, 0.09)"
             borderRadius="max"
             data-blade-component="base-box"
             display="flex"
@@ -5410,7 +5418,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
                 {
                   "alignItems": "center",
                   "alignSelf": "flex-start",
-                  "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                  "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                   "borderRadius": 9999,
                   "display": "flex",
                   "flexShrink": 0,
@@ -5426,22 +5434,23 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.subtle.lowContrast"
+              color="surface.text.gray.muted"
               data-blade-component="text"
               fontFamily="text"
               fontSize={25}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={25}
               style={
                 [
                   {
-                    "color": "hsla(216, 27%, 36%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(211, 22%, 56%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 10,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 14,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5475,22 +5484,23 @@ exports[`<List /> should render small ordered-filled List 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={75}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5534,12 +5544,9 @@ exports[`<List /> should render small unordered List with icon 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -5630,7 +5637,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
               >
                 <RNSVGPath
                   d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
-                  fill={4284378759}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -5657,22 +5664,23 @@ exports[`<List /> should render small unordered List with icon 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={75}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -5795,7 +5803,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                     >
                       <RNSVGPath
                         d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
-                        fill={4284378759}
+                        fill={4285959847}
                         propList={
                           [
                             "fill",
@@ -5822,22 +5830,23 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
+                    color="surface.text.gray.normal"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={75}
                     fontStyle="normal"
                     fontWeight="regular"
-                    lineHeight={50}
+                    lineHeight={75}
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -5959,7 +5968,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                             }
                           >
                             <RNSVGRect
-                              fill={4288851646}
+                              fill={4285959847}
                               height="5px"
                               propList={
                                 [
@@ -5991,22 +6000,23 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={75}
                           fontStyle="normal"
                           fontWeight="regular"
-                          lineHeight={50}
+                          lineHeight={75}
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 12,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "lineHeight": 16,
+                                "letterSpacing": 0,
+                                "lineHeight": 18,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
                                 "marginRight": 0,
@@ -6056,12 +6066,9 @@ exports[`<List /> should render unordered List of small size 1`] = `
       accessibilityRole="list"
       accessible={true}
       data-blade-component="list"
-      marginTop="spacing.3"
       style={
         [
-          {
-            "marginTop": 8,
-          },
+          {},
         ]
       }
     >
@@ -6153,7 +6160,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 <RNSVGCircle
                   cx="3px"
                   cy="3px"
-                  fill={4288851646}
+                  fill={4285959847}
                   propList={
                     [
                       "fill",
@@ -6181,22 +6188,23 @@ exports[`<List /> should render unordered List of small size 1`] = `
           >
             <Text
               accessible={true}
-              color="surface.text.normal.lowContrast"
+              color="surface.text.gray.normal"
               data-blade-component="text"
               fontFamily="text"
               fontSize={75}
               fontStyle="normal"
               fontWeight="regular"
-              lineHeight={50}
+              lineHeight={75}
               style={
                 [
                   {
-                    "color": "hsla(217, 56%, 17%, 1)",
-                    "fontFamily": "Lato",
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
                     "fontSize": 12,
                     "fontStyle": "normal",
                     "fontWeight": "400",
-                    "lineHeight": 16,
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
                     "marginBottom": 0,
                     "marginLeft": 0,
                     "marginRight": 0,
@@ -6326,7 +6334,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           ]
                         }
                         r="2.5px"
-                        stroke={4288851646}
+                        stroke={4285959847}
                       />
                     </RNSVGGroup>
                   </RNSVGSvgView>
@@ -6348,22 +6356,23 @@ exports[`<List /> should render unordered List of small size 1`] = `
                 >
                   <Text
                     accessible={true}
-                    color="surface.text.normal.lowContrast"
+                    color="surface.text.gray.normal"
                     data-blade-component="text"
                     fontFamily="text"
                     fontSize={75}
                     fontStyle="normal"
                     fontWeight="regular"
-                    lineHeight={50}
+                    lineHeight={75}
                     style={
                       [
                         {
-                          "color": "hsla(217, 56%, 17%, 1)",
-                          "fontFamily": "Lato",
+                          "color": "hsla(212, 39%, 16%, 1)",
+                          "fontFamily": "Inter",
                           "fontSize": 12,
                           "fontStyle": "normal",
                           "fontWeight": "400",
-                          "lineHeight": 16,
+                          "letterSpacing": 0,
+                          "lineHeight": 18,
                           "marginBottom": 0,
                           "marginLeft": 0,
                           "marginRight": 0,
@@ -6485,7 +6494,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
                             }
                           >
                             <RNSVGRect
-                              fill={4288851646}
+                              fill={4285959847}
                               height="5px"
                               propList={
                                 [
@@ -6517,22 +6526,23 @@ exports[`<List /> should render unordered List of small size 1`] = `
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
+                          color="surface.text.gray.normal"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={75}
                           fontStyle="normal"
                           fontWeight="regular"
-                          lineHeight={50}
+                          lineHeight={75}
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 12,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
-                                "lineHeight": 16,
+                                "letterSpacing": 0,
+                                "lineHeight": 18,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
                                 "marginRight": 0,

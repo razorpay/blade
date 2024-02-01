@@ -13,7 +13,7 @@ function FigmaEmbed(props: { src: string; title: string }): JSX.Element {
         allowFullScreen
       />
 
-      <Text size="small" type="subdued">
+      <Text size="small" color="surface.text.gray.muted">
         Note: Figma designs are only accessible to Razorpay Employees
       </Text>
       <br />

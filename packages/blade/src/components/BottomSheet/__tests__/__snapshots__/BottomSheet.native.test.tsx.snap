@@ -33,7 +33,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
             "top": 0,
           },
           {
-            "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
+            "backgroundColor": "hsla(0, 0%, 0%, 0.56)",
             "zIndex": 100,
           },
         ],
@@ -188,7 +188,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
               onLayout={[Function]}
             >
               <View
-                backgroundColor="hsla(0, 0%, 100%, 1)"
+                backgroundColor="popup.background.subtle"
                 data-blade-component="base-box"
                 flexShrink={0}
                 style={
@@ -208,22 +208,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 zIndex={2}
               >
                 <View
-                  borderBottomColor="surface.border.normal.lowContrast"
+                  borderBottomColor="surface.border.gray.muted"
                   borderPosition="borderBottom"
-                  borderWidth="none"
                   data-blade-component="divider"
                   dividerStyle="solid"
                   isDividerHorizontal={true}
                   style={
                     [
                       {
-                        "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                        "borderStyle": "solid",
-                        "borderWidth": 0,
+                        "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                        "borderBottomStyle": "solid",
                       },
                       {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
+                        "borderWidth": 0,
                         "flexGrow": 1,
                       },
                     ]
@@ -263,9 +262,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       }
                     }
                     accessible={true}
-                    activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
-                    activeBorderColor="hsla(218, 89%, 51%, 1)"
-                    borderRadius="2px"
+                    borderRadius="4px"
                     borderWidth="1px"
                     buttonPaddingBottom="0px"
                     buttonPaddingLeft="20px"
@@ -273,14 +270,14 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     buttonPaddingTop="0px"
                     collapsable={false}
                     data-blade-component="button"
-                    defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
-                    defaultBorderColor="hsla(218, 89%, 51%, 1)"
-                    focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-                    focusBorderColor="hsla(218, 89%, 51%, 1)"
-                    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+                    defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
+                    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+                    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+                    focusBorderColor="hsla(227, 100%, 59%, 1)"
+                    focusRingColor="hsla(227, 100%, 59%, 0.18)"
                     focusable={true}
-                    hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
-                    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+                    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+                    hoverBorderColor="hsla(227, 100%, 59%, 1)"
                     isFullWidth={true}
                     isLoading={false}
                     minHeight="36px"
@@ -301,15 +298,16 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                          "borderColor": "hsla(218, 89%, 51%, 1)",
-                          "borderRadius": 2,
+                          "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                          "borderColor": "hsla(227, 100%, 59%, 1)",
+                          "borderRadius": 4,
                           "borderStyle": "solid",
                           "borderWidth": 1,
                           "cursor": "pointer",
                           "display": "flex",
                           "justifyContent": "center",
                           "minHeight": 36,
+                          "overflow": "hidden",
                           "paddingBottom": 0,
                           "paddingLeft": 20,
                           "paddingRight": 20,
@@ -320,8 +318,8 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           "width": "100%",
                         },
                         {
-                          "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                          "borderColor": "hsla(218, 89%, 51%, 1)",
+                          "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                          "borderColor": "hsla(227, 100%, 59%, 1)",
                         },
                       ]
                     }
@@ -344,28 +342,31 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                             "flexGrow": 1,
                             "flexShrink": 1,
                             "justifyContent": "center",
+                            "zIndex": 1,
                           },
                           {
                             "opacity": 1,
                           },
                         ]
                       }
+                      zIndex={1}
                     >
                       <Text
                         accessible={true}
-                        color="action.text.secondary.default"
+                        color="interactive.text.primary.subtle"
                         data-blade-component="base-text"
                         fontSize={100}
-                        fontWeight="bold"
+                        fontWeight="medium"
                         lineHeight={100}
                         style={
                           [
                             {
-                              "color": "hsla(218, 89%, 51%, 1)",
-                              "fontFamily": "Lato",
+                              "color": "hsla(227, 100%, 59%, 1)",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
-                              "fontWeight": "700",
+                              "fontWeight": "500",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -460,7 +461,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   [
                     {},
                     {
-                      "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                      "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
                       "borderRadius": 16,
                       "content": "''",
                       "height": 4,
@@ -574,23 +575,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         }
                       >
                         <Text
-                          accessibilityRole="header"
                           accessible={true}
-                          color="surface.text.normal.lowContrast"
-                          data-blade-component="heading"
+                          color="surface.text.gray.normal"
+                          data-blade-component="text"
                           fontFamily="text"
                           fontSize={200}
                           fontStyle="normal"
-                          fontWeight="bold"
-                          lineHeight={300}
+                          fontWeight="semibold"
+                          lineHeight={200}
                           style={
                             [
                               {
-                                "color": "hsla(217, 56%, 17%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(212, 39%, 16%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 16,
                                 "fontStyle": "normal",
-                                "fontWeight": "700",
+                                "fontWeight": "600",
+                                "letterSpacing": 0,
                                 "lineHeight": 24,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -646,18 +647,20 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                               }
                             >
                               <View
-                                backgroundColor="feedback.background.positive.lowContrast"
+                                backgroundColor="feedback.background.positive.subtle"
                                 data-blade-component="base-box"
+                                minHeight="20px"
                                 platform="onMobile"
                                 size="medium"
                                 style={
                                   [
                                     {
-                                      "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+                                      "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+                                      "minHeight": 20,
                                     },
                                     {
                                       "alignSelf": "center",
-                                      "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+                                      "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
                                       "borderRadius": 9999,
                                       "display": "flex",
                                       "flexWrap": "nowrap",
@@ -681,33 +684,32 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                         "flexDirection": "row",
                                         "justifyContent": "center",
                                         "overflow": "hidden",
-                                        "paddingBottom": 2,
                                         "paddingLeft": 8,
                                         "paddingRight": 8,
-                                        "paddingTop": 2,
                                       },
                                     ]
                                   }
                                 >
                                   <Text
                                     accessible={true}
-                                    color="feedback.text.positive.lowContrast"
+                                    color="feedback.text.positive.intense"
                                     data-blade-component="text"
                                     fontFamily="text"
                                     fontSize={75}
                                     fontStyle="normal"
-                                    fontWeight="regular"
-                                    lineHeight={50}
+                                    fontWeight="medium"
+                                    lineHeight={75}
                                     numberOfLines={1}
                                     style={
                                       [
                                         {
-                                          "color": "hsla(160, 100%, 26%, 1)",
-                                          "fontFamily": "Lato",
+                                          "color": "hsla(150, 100%, 27%, 1)",
+                                          "fontFamily": "Inter",
                                           "fontSize": 12,
                                           "fontStyle": "normal",
-                                          "fontWeight": "400",
-                                          "lineHeight": 16,
+                                          "fontWeight": "500",
+                                          "letterSpacing": 0,
+                                          "lineHeight": 18,
                                           "marginBottom": 0,
                                           "marginLeft": 0,
                                           "marginRight": 0,
@@ -733,22 +735,23 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       </View>
                       <Text
                         accessible={true}
-                        color="surface.text.muted.lowContrast"
+                        color="surface.text.gray.muted"
                         data-blade-component="text"
                         fontFamily="text"
                         fontSize={75}
                         fontStyle="normal"
                         fontWeight="regular"
-                        lineHeight={50}
+                        lineHeight={75}
                         style={
                           [
                             {
-                              "color": "hsla(216, 16%, 60%, 1)",
-                              "fontFamily": "Lato",
+                              "color": "hsla(211, 22%, 56%, 1)",
+                              "fontFamily": "Inter",
                               "fontSize": 12,
                               "fontStyle": "normal",
                               "fontWeight": "400",
-                              "lineHeight": 16,
+                              "letterSpacing": 0,
+                              "lineHeight": 18,
                               "marginBottom": 0,
                               "marginLeft": 0,
                               "marginRight": 0,
@@ -805,18 +808,20 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         }
                       >
                         <View
-                          backgroundColor="feedback.background.positive.lowContrast"
+                          backgroundColor="feedback.background.positive.subtle"
                           data-blade-component="base-box"
+                          height="20px"
                           size="medium"
                           style={
                             [
                               {
-                                "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+                                "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
+                                "height": 20,
                                 "textAlign": "left",
                               },
                               {
                                 "alignSelf": "center",
-                                "backgroundColor": "hsla(155, 100%, 31%, 0.09)",
+                                "backgroundColor": "hsla(150, 100%, 32%, 0.09)",
                                 "borderRadius": 9999,
                                 "display": "flex",
                                 "flexWrap": "nowrap",
@@ -840,33 +845,32 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                   "flexDirection": "row",
                                   "justifyContent": "center",
                                   "overflow": "hidden",
-                                  "paddingBottom": 2,
                                   "paddingLeft": 8,
                                   "paddingRight": 8,
-                                  "paddingTop": 2,
                                 },
                               ]
                             }
                           >
                             <Text
                               accessible={true}
-                              color="feedback.text.positive.lowContrast"
+                              color="feedback.text.positive.intense"
                               data-blade-component="text"
                               fontFamily="text"
                               fontSize={75}
                               fontStyle="normal"
-                              fontWeight="regular"
-                              lineHeight={50}
+                              fontWeight="medium"
+                              lineHeight={75}
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "hsla(160, 100%, 26%, 1)",
-                                    "fontFamily": "Lato",
+                                    "color": "hsla(150, 100%, 27%, 1)",
+                                    "fontFamily": "Inter",
                                     "fontSize": 12,
                                     "fontStyle": "normal",
-                                    "fontWeight": "400",
-                                    "lineHeight": 16,
+                                    "fontWeight": "500",
+                                    "letterSpacing": 0,
+                                    "lineHeight": 18,
                                     "marginBottom": 0,
                                     "marginLeft": 0,
                                     "marginRight": 0,
@@ -926,7 +930,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                       }
                       accessible={true}
                       collapsable={false}
-                      contrast="low"
+                      emphasis="intense"
                       focusable={true}
                       onBlur={[Function]}
                       onClick={[Function]}
@@ -988,7 +992,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                         >
                           <RNSVGPath
                             d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                            fill={4288851646}
+                            fill={4285959847}
                             propList={
                               [
                                 "fill",
@@ -1002,22 +1006,21 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                 </View>
               </View>
               <View
-                borderBottomColor="surface.border.normal.lowContrast"
+                borderBottomColor="surface.border.gray.muted"
                 borderPosition="borderBottom"
-                borderWidth="none"
                 data-blade-component="divider"
                 dividerStyle="solid"
                 isDividerHorizontal={true}
                 style={
                   [
                     {
-                      "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
+                      "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                      "borderBottomStyle": "solid",
                     },
                     {
                       "borderBottomStyle": "solid",
                       "borderBottomWidth": 1,
+                      "borderWidth": 0,
                       "flexGrow": 1,
                     },
                   ]
@@ -1066,7 +1069,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             "top": 0,
           },
           {
-            "backgroundColor": "hsla(214, 15%, 18%, 0.64)",
+            "backgroundColor": "hsla(0, 0%, 0%, 0.56)",
             "zIndex": 100,
           },
         ],
@@ -1221,7 +1224,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
               onLayout={[Function]}
             >
               <View
-                backgroundColor="hsla(0, 0%, 100%, 1)"
+                backgroundColor="popup.background.subtle"
                 data-blade-component="base-box"
                 flexShrink={0}
                 style={
@@ -1241,22 +1244,21 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                 zIndex={2}
               >
                 <View
-                  borderBottomColor="surface.border.normal.lowContrast"
+                  borderBottomColor="surface.border.gray.muted"
                   borderPosition="borderBottom"
-                  borderWidth="none"
                   data-blade-component="divider"
                   dividerStyle="solid"
                   isDividerHorizontal={true}
                   style={
                     [
                       {
-                        "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                        "borderStyle": "solid",
-                        "borderWidth": 0,
+                        "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
+                        "borderBottomStyle": "solid",
                       },
                       {
                         "borderBottomStyle": "solid",
                         "borderBottomWidth": 1,
+                        "borderWidth": 0,
                         "flexGrow": 1,
                       },
                     ]
@@ -1296,9 +1298,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                       }
                     }
                     accessible={true}
-                    activeBackgroundColor="hsla(218, 89%, 51%, 0.32)"
-                    activeBorderColor="hsla(218, 89%, 51%, 1)"
-                    borderRadius="2px"
+                    borderRadius="4px"
                     borderWidth="1px"
                     buttonPaddingBottom="0px"
                     buttonPaddingLeft="20px"
@@ -1306,14 +1306,14 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     buttonPaddingTop="0px"
                     collapsable={false}
                     data-blade-component="button"
-                    defaultBackgroundColor="hsla(218, 89%, 51%, 0)"
-                    defaultBorderColor="hsla(218, 89%, 51%, 1)"
-                    focusBackgroundColor="hsla(218, 89%, 51%, 0.18)"
-                    focusBorderColor="hsla(218, 89%, 51%, 1)"
-                    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+                    defaultBackgroundColor="hsla(0, 0%, 100%, 0)"
+                    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+                    focusBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+                    focusBorderColor="hsla(227, 100%, 59%, 1)"
+                    focusRingColor="hsla(227, 100%, 59%, 0.18)"
                     focusable={true}
-                    hoverBackgroundColor="hsla(218, 89%, 51%, 0.09)"
-                    hoverBorderColor="hsla(218, 89%, 51%, 1)"
+                    hoverBackgroundColor="hsla(227, 100%, 59%, 0.09)"
+                    hoverBorderColor="hsla(227, 100%, 59%, 1)"
                     isFullWidth={true}
                     isLoading={false}
                     minHeight="36px"
@@ -1334,15 +1334,16 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                         {
                           "alignItems": "center",
                           "alignSelf": "center",
-                          "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                          "borderColor": "hsla(218, 89%, 51%, 1)",
-                          "borderRadius": 2,
+                          "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                          "borderColor": "hsla(227, 100%, 59%, 1)",
+                          "borderRadius": 4,
                           "borderStyle": "solid",
                           "borderWidth": 1,
                           "cursor": "pointer",
                           "display": "flex",
                           "justifyContent": "center",
                           "minHeight": 36,
+                          "overflow": "hidden",
                           "paddingBottom": 0,
                           "paddingLeft": 20,
                           "paddingRight": 20,
@@ -1353,8 +1354,8 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                           "width": "100%",
                         },
                         {
-                          "backgroundColor": "hsla(218, 89%, 51%, 0)",
-                          "borderColor": "hsla(218, 89%, 51%, 1)",
+                          "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                          "borderColor": "hsla(227, 100%, 59%, 1)",
                         },
                       ]
                     }
@@ -1377,28 +1378,31 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                             "flexGrow": 1,
                             "flexShrink": 1,
                             "justifyContent": "center",
+                            "zIndex": 1,
                           },
                           {
                             "opacity": 1,
                           },
                         ]
                       }
+                      zIndex={1}
                     >
                       <Text
                         accessible={true}
-                        color="action.text.secondary.default"
+                        color="interactive.text.primary.subtle"
                         data-blade-component="base-text"
                         fontSize={100}
-                        fontWeight="bold"
+                        fontWeight="medium"
                         lineHeight={100}
                         style={
                           [
                             {
-                              "color": "hsla(218, 89%, 51%, 1)",
-                              "fontFamily": "Lato",
+                              "color": "hsla(227, 100%, 59%, 1)",
+                              "fontFamily": "Inter",
                               "fontSize": 14,
                               "fontStyle": "normal",
-                              "fontWeight": "700",
+                              "fontWeight": "500",
+                              "letterSpacing": 0,
                               "lineHeight": 20,
                               "marginBottom": 0,
                               "marginLeft": 0,
@@ -1493,7 +1497,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   [
                     {},
                     {
-                      "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                      "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
                       "borderRadius": 16,
                       "content": "''",
                       "height": 4,
@@ -1542,7 +1546,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
             >
               <View
                 alignItems="center"
-                backgroundColor="hsla(0, 0%, 100%, 1)"
+                backgroundColor="popup.background.subtle"
                 borderRadius="max"
                 data-blade-component="base-box"
                 display="flex"
@@ -1595,7 +1599,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   }
                   accessible={true}
                   collapsable={false}
-                  contrast="low"
+                  emphasis="intense"
                   focusable={true}
                   onBlur={[Function]}
                   onClick={[Function]}
@@ -1657,7 +1661,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     >
                       <RNSVGPath
                         d="M18.7071 6.70711C19.0976 6.31658 19.0976 5.68342 18.7071 5.29289C18.3166 4.90237 17.6834 4.90237 17.2929 5.29289L12 10.5858L6.70711 5.29289C6.31658 4.90237 5.68342 4.90237 5.29289 5.29289C4.90237 5.68342 4.90237 6.31658 5.29289 6.70711L10.5858 12L5.29289 17.2929C4.90237 17.6834 4.90237 18.3166 5.29289 18.7071C5.68342 19.0976 6.31658 19.0976 6.70711 18.7071L12 13.4142L17.2929 18.7071C17.6834 19.0976 18.3166 19.0976 18.7071 18.7071C19.0976 18.3166 19.0976 17.6834 18.7071 17.2929L13.4142 12L18.7071 6.70711Z"
-                        fill={4288851646}
+                        fill={4285959847}
                         propList={
                           [
                             "fill",

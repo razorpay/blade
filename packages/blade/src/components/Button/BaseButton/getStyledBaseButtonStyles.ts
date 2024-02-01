@@ -32,6 +32,7 @@ const getBaseButtonStyles = ({
   justifyContent: 'center',
   alignItems: 'center',
   textDecoration: 'none',
+  overflow: 'hidden',
 });
 
 export default getBaseButtonStyles;

@@ -26,15 +26,15 @@ const TabIndicator = (props: TabBarIndicatorProps<any>): React.ReactElement => {
         pointerEvents: 'none',
         ...(isFilled
           ? {
-              height: props.layout.height - theme.border.width.thick - theme.spacing[2] * 2,
+              height: props.layout.height - theme.border.width.thicker - theme.spacing[2] * 2,
               left: theme.spacing[2],
               bottom: theme.spacing[2],
-              backgroundColor: theme.colors.brand.primary[300],
+              backgroundColor: theme.colors.interactive.background.primary.faded,
               borderRadius: theme.border.radius.small,
             }
           : {
-              height: theme.border.width.thick,
-              backgroundColor: theme.colors.brand.primary[500],
+              height: theme.border.width.thicker,
+              backgroundColor: theme.colors.interactive.border.primary.default,
             }),
       }}
     />

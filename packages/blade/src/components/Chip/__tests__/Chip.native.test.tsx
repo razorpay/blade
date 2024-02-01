@@ -38,13 +38,13 @@ describe('<Chip />', () => {
     expect(getByText('Mango')).toBeDefined();
   });
 
-  it('should render chip with intent', () => {
+  it('should render chip with color', () => {
     const { getByText } = renderWithTheme(
       <ChipGroup accessibilityLabel="Was this message helpful?">
-        <Chip value="apple" intent="positive">
+        <Chip value="apple" color="positive">
           Yes
         </Chip>
-        <Chip value="mango" intent="negative">
+        <Chip value="mango" color="negative">
           No
         </Chip>
       </ChipGroup>,

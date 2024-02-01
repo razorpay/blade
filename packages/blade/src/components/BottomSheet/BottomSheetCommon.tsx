@@ -9,7 +9,6 @@ import { CloseIcon } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
 import { isReactNative } from '~utils';
 import { size } from '~tokens/global';
-import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { makeSize } from '~utils/makeSize';
 
@@ -40,7 +39,6 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
     ref,
   ) => {
     const { close, isHeaderFloating } = useBottomSheetContext();
-    const { theme } = useTheme();
     const webOnlyEventHandlers: Record<string, any> = isReactNative()
       ? {}
       : {
@@ -86,7 +84,7 @@ const BottomSheetEmptyHeader = React.forwardRef<BladeElementRef, BottomSheetEmpt
           width={makeSize(size[28])}
           height={makeSize(size[28])}
           flexShrink={0}
-          backgroundColor={theme.colors.surface.background.level2.lowContrast}
+          backgroundColor="popup.background.subtle"
           borderRadius="max"
           zIndex={100}
         >

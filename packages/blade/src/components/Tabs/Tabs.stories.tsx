@@ -6,7 +6,7 @@ import StoryRouter from 'storybook-react-router';
 import { Route, useHistory } from 'react-router-dom';
 import type { TabItemProps, TabsProps } from './types';
 import { Tabs, TabItem, TabList, TabPanel } from './';
-import { Code, Heading, Text, Title } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
 import {
   ExternalLinkIcon,
@@ -39,14 +39,9 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Tabs"
       componentDescription="A tab is a navigation component used in the interface to switch between different views in the same context. Tabs are contextual to the section or the page and are triggered by user interaction."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=60965%3A367088&mode=dev',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=19064%3A77449&mode=dev',
-      }}
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73282-389156&mode=design&t=Qm80tBqhFBFB5BvZ-4"
     >
-      <Title>Usage</Title>
+      <Heading size="large">Usage</Heading>
       <Sandbox editorHeight={500}>
         {`
         import {
@@ -251,25 +246,25 @@ const SubscriptionPanel = ({ isVertical }: { isVertical: boolean }) => {
         <Alert
           title="1 - Active Subscriptions"
           description="You have 1 active subscription. Active subscriptions are subscriptions that are currently being charged."
-          intent="positive"
+          color="positive"
           isDismissible={false}
         />
         <Alert
           title="2 - Halted Subscriptions"
           description="You have 2 halted subscriptions. Halted subscriptions are subscriptions that have been stopped by the customer or by you."
-          intent="notice"
+          color="notice"
           isDismissible={false}
         />
         <Alert
           title="1 - Failed Subscriptions"
           description="You have 1 failed subscription. Failed subscriptions are subscriptions that have failed to charge the customer."
-          intent="negative"
+          color="negative"
           isDismissible={false}
         />
         <Alert
           title="3 - Expired Subscriptions"
           description="You have 3 expired subscriptions. Expired subscriptions are subscriptions that have reached the end of their billing cycle."
-          intent="information"
+          color="information"
           isDismissible={false}
         />
       </Box>
@@ -296,10 +291,10 @@ const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
           <CardBody>
             <Box display="flex" flexDirection="row" gap="spacing.4">
               <Box display="flex" flexDirection="column" gap="spacing.2">
-                <Text weight="bold">Name</Text>
-                <Text weight="bold">Description</Text>
-                <Text weight="bold">Bill Amount</Text>
-                <Text weight="bold">Bill Frequency</Text>
+                <Text weight="semibold">Name</Text>
+                <Text weight="semibold">Description</Text>
+                <Text weight="semibold">Bill Amount</Text>
+                <Text weight="semibold">Bill Frequency</Text>
               </Box>
               <Box display="flex" flexDirection="column" gap="spacing.2">
                 <Text>Basic Plan</Text>
@@ -317,10 +312,10 @@ const PlansPanel = ({ isVertical }: { isVertical: boolean }) => {
           <CardBody>
             <Box display="flex" flexDirection="row" gap="spacing.4">
               <Box display="flex" flexDirection="column" gap="spacing.2">
-                <Text weight="bold">Name</Text>
-                <Text weight="bold">Description</Text>
-                <Text weight="bold">Bill Amount</Text>
-                <Text weight="bold">Bill Frequency</Text>
+                <Text weight="semibold">Name</Text>
+                <Text weight="semibold">Description</Text>
+                <Text weight="semibold">Bill Amount</Text>
+                <Text weight="semibold">Bill Frequency</Text>
               </Box>
               <Box display="flex" flexDirection="column" gap="spacing.2">
                 <Text>Premium Plan</Text>
@@ -356,7 +351,7 @@ const SettingsCard = ({
             alignItems="center"
           >
             <Box display="flex" flexDirection="row" gap="spacing.4" alignItems="center">
-              <Icon size="large" color="surface.text.subtle.lowContrast" />
+              <Icon size="large" color="surface.icon.gray.subtle" />
               <Heading>{title}</Heading>
             </Box>
             <Switch accessibilityLabel="Enable Card" />
@@ -393,7 +388,7 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
 
           <Alert
             isDismissible={false}
-            intent="information"
+            color="information"
             title="Payment limits"
             description="Accept payments upto ₹ 2,00,000 ₹ - Indian Rupee (INR) Payments above ₹ 15,000 ₹ - Indian Rupee (INR) will ask the customer for OTP verification as well."
           />
@@ -407,7 +402,7 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
 
           <Alert
             isDismissible={false}
-            intent="information"
+            color="information"
             title="Payment limits"
             description="Accept payments upto ₹ 1,00,000 ₹ - Indian Rupee (INR) (For BFSI: ₹ 2,00,000 ₹ - Indian Rupee (INR)) Payments above ₹ 15,000 ₹ - Indian Rupee (INR) will ask the customer for UPI PIN verification as well."
           />
@@ -421,7 +416,7 @@ const SettingsPanel = ({ isVertical }: { isVertical: boolean }) => {
 
           <Alert
             isDismissible={false}
-            intent="information"
+            color="information"
             title="Payment limits"
             description="Accept payments upto: ₹ 1,00,00,000"
           />
@@ -492,7 +487,7 @@ const ControlledTabsTemplate: StoryFn<(props: StoryControlProps) => React.ReactE
     <Box height={isReactNative() ? '100%' : undefined}>
       <Box padding="spacing.3" marginBottom="spacing.5">
         <Text>Tab's state can be controlled by using the value & onChange prop.</Text>
-        <Text weight="bold" marginBottom="spacing.4">
+        <Text weight="semibold" marginBottom="spacing.4">
           Current Tab: {value}
         </Text>
         <Box display="flex" flexDirection="row" gap="spacing.4">
@@ -567,7 +562,7 @@ const TabsWithTooltipTemplate: StoryFn<(props: StoryControlProps) => React.React
         wrapping the <Code size="medium">TabItem</Code> with{' '}
         <Code size="medium">TooltipInteractiveWrapper</Code>.
       </Text>
-      <Text marginBottom="spacing.5" type="subdued">
+      <Text marginBottom="spacing.5" color="surface.text.gray.subtle">
         (Hover over the Settings tab to see it in action)
       </Text>
       <Card elevation="none" padding="spacing.0">
@@ -749,7 +744,7 @@ const ProductUseCase2Template: StoryFn<(props: StoryControlProps) => React.React
         the <Code size="medium">TabList</Code> with a <Code size="medium">Box</Code> and aligning
         buttons or links to the right side of the box with flex.
       </Text>
-      <Text type="subdued">
+      <Text color="surface.text.gray.muted">
         Note: In mobile devices the real estate is limited, thus the UI should be tweaked.
       </Text>
 
@@ -809,7 +804,7 @@ const AccountRoute = ({
     };
   };
 }) => (
-  <Text weight="bold" marginY="spacing.4">
+  <Text weight="semibold" marginY="spacing.4">
     Router param: {match.params.id}
   </Text>
 );
@@ -852,7 +847,7 @@ const ReactRouterExample = () => {
         </ListItem>
       </List>
 
-      <Text type="subdued">
+      <Text color="surface.text.gray.muted">
         Switch to the <Code size="medium">Actions</Code> addon panel in storybook to see how routes
         are changing, and also notice how we can detect which route is active by using the{' '}
         <Code size="medium">Route</Code>

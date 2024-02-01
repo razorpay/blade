@@ -46,135 +46,40 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={
@@ -187,22 +92,23 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.subdued.lowContrast"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -241,7 +147,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -249,7 +155,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -258,12 +164,12 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(218, 89%, 51%, 1)"
+            backgroundColor="hsla(227, 100%, 59%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -362,7 +268,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         }
       >
         <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -370,7 +276,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
           style={
             [
               {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -379,12 +285,12 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
           }
         >
           <View
-            backgroundColor="hsla(218, 89%, 51%, 1)"
+            backgroundColor="hsla(227, 100%, 59%, 1)"
             progress={50}
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
                   "height": "100%",
                   "width": "50%",
                 },
@@ -417,7 +323,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
 </View>
 `;
 
-exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
+exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
 <View
   style={
     {
@@ -475,22 +381,23 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.subdued.highContrast"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -528,7 +435,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(214, 21%, 94%, 0.18)"
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -536,7 +443,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -545,12 +452,12 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(218, 89%, 51%, 1)"
+            backgroundColor="hsla(200, 84%, 44%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(200, 84%, 44%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -583,7 +490,7 @@ exports[`<ProgressBar /> should render high contrast ProgressBar 1`] = `
 </View>
 `;
 
-exports[`<ProgressBar /> should render high contrast information intent ProgressBar 1`] = `
+exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
 <View
   style={
     {
@@ -641,1516 +548,23 @@ exports[`<ProgressBar /> should render high contrast information intent Progress
         >
           <Text
             accessible={true}
-            color="surface.text.subdued.highContrast"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-30"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(214, 21%, 94%, 0.18)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(193, 100%, 35%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(193, 100%, 35%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ProgressBar /> should render high contrast negative intent ProgressBar 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="flex-end"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.subdued.highContrast"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={50}
-            style={
-              [
-                {
-                  "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 16,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-22"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(214, 21%, 94%, 0.18)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(8, 73%, 47%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(8, 73%, 47%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ProgressBar /> should render high contrast neutral intent ProgressBar 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="flex-end"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.subdued.highContrast"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={50}
-            style={
-              [
-                {
-                  "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 16,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-34"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(214, 21%, 94%, 0.18)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(216, 33%, 29%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(216, 33%, 29%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ProgressBar /> should render high contrast notice intent ProgressBar 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="flex-end"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.subdued.highContrast"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={50}
-            style={
-              [
-                {
-                  "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 16,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-26"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(214, 21%, 94%, 0.18)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(38, 97%, 38%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(38, 97%, 38%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ProgressBar /> should render high contrast positive intent ProgressBar 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="flex-end"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.subdued.highContrast"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={50}
-            style={
-              [
-                {
-                  "color": "hsla(216, 19%, 89%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 16,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-18"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(214, 21%, 94%, 0.18)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(214, 21%, 94%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(160, 100%, 26%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(160, 100%, 26%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ProgressBar /> should render low contrast information intent ProgressBar 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="flex-end"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={50}
-            style={
-              [
-                {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 16,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-28"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(193, 100%, 35%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(193, 100%, 35%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ProgressBar /> should render low contrast negative intent ProgressBar 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="flex-end"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={50}
-            style={
-              [
-                {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 16,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-20"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(8, 73%, 47%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(8, 73%, 47%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ProgressBar /> should render low contrast neutral intent ProgressBar 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="flex-end"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={50}
-            style={
-              [
-                {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 16,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-32"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(216, 33%, 29%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(216, 33%, 29%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ProgressBar /> should render low contrast notice intent ProgressBar 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="flex-end"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={50}
-            style={
-              [
-                {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 16,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-24"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(38, 97%, 38%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(38, 97%, 38%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
-exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="flex-end"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "flex-end",
-            },
-          ]
-        }
-      >
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.subdued.lowContrast"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={50}
-            style={
-              [
-                {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2188,7 +602,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
         }
       >
         <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -2196,7 +610,7 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
           style={
             [
               {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2205,12 +619,513 @@ exports[`<ProgressBar /> should render low contrast positive intent ProgressBar 
           }
         >
           <View
-            backgroundColor="hsla(160, 100%, 26%, 1)"
+            backgroundColor="hsla(4, 74%, 49%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(160, 100%, 26%, 1)",
+                  "backgroundColor": "hsla(4, 74%, 49%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="progress-18"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(211, 29%, 26%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(211, 29%, 26%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="progress-20"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(25, 90%, 48%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(25, 90%, 48%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="progress-22"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(150, 100%, 32%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(150, 100%, 32%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -2289,135 +1204,40 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={
@@ -2430,22 +1250,23 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.subdued.lowContrast"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2484,7 +1305,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
           data-blade-component="base-box"
           height="4px"
           overflow="hidden"
@@ -2492,7 +1313,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 4,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2501,12 +1322,12 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(218, 89%, 51%, 1)"
+            backgroundColor="hsla(227, 100%, 59%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -2605,7 +1426,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
         }
       >
         <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -2613,7 +1434,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2622,12 +1443,12 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
           }
         >
           <View
-            backgroundColor="hsla(218, 89%, 51%, 1)"
+            backgroundColor="hsla(227, 100%, 59%, 1)"
             progress={70}
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
                   "height": "100%",
                   "width": "70%",
                 },
@@ -2706,135 +1527,40 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={
@@ -2847,22 +1573,23 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.subdued.lowContrast"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -2901,7 +1628,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -2909,7 +1636,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -2918,12 +1645,12 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(218, 89%, 51%, 1)"
+            backgroundColor="hsla(227, 100%, 59%, 1)"
             progress={20}
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
                   "height": "100%",
                   "width": "20%",
                 },
@@ -2984,24 +1711,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
-    activeBorderColor="hsla(230, 100%, 42%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
+    borderRadius="4px"
+    borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
-    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
-    focusBorderColor="hsla(227, 100%, 45%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
+    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
+    focusBorderColor="hsla(227, 100%, 59%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
-    hoverBorderColor="hsla(223, 95%, 48%, 1)"
+    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
+    hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -3022,15 +1747,16 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderRadius": 4,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "justifyContent": "center",
           "minHeight": 36,
+          "overflow": "hidden",
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
@@ -3041,8 +1767,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
         },
       ]
     }
@@ -3065,28 +1791,31 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+            "zIndex": 1,
           },
           {
             "opacity": 1,
           },
         ]
       }
+      zIndex={1}
     >
       <Text
         accessible={true}
-        color="action.text.primary.default"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3145,135 +1874,40 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={
@@ -3286,22 +1920,23 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.subdued.lowContrast"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -3340,7 +1975,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -3348,7 +1983,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -3357,12 +1992,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
           }
         >
           <View
-            backgroundColor="hsla(218, 89%, 51%, 1)"
+            backgroundColor="hsla(227, 100%, 59%, 1)"
             progress={0}
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
                   "height": "100%",
                   "width": "0%",
                 },
@@ -3423,24 +2058,22 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
       }
     }
     accessible={true}
-    activeBackgroundColor="hsla(230, 100%, 42%, 1)"
-    activeBorderColor="hsla(230, 100%, 42%, 1)"
-    borderRadius="2px"
-    borderWidth="1px"
+    borderRadius="4px"
+    borderWidth="0px"
     buttonPaddingBottom="0px"
     buttonPaddingLeft="20px"
     buttonPaddingRight="20px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(218, 89%, 51%, 1)"
-    defaultBorderColor="hsla(218, 89%, 51%, 1)"
-    focusBackgroundColor="hsla(227, 100%, 45%, 1)"
-    focusBorderColor="hsla(227, 100%, 45%, 1)"
-    focusRingColor="hsla(218, 89%, 51%, 0.18)"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
+    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
+    focusBorderColor="hsla(227, 100%, 59%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
-    hoverBackgroundColor="hsla(223, 95%, 48%, 1)"
-    hoverBorderColor="hsla(223, 95%, 48%, 1)"
+    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
+    hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
     minHeight="36px"
@@ -3461,15 +2094,16 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
-          "borderRadius": 2,
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderRadius": 4,
           "borderStyle": "solid",
-          "borderWidth": 1,
+          "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
           "justifyContent": "center",
           "minHeight": 36,
+          "overflow": "hidden",
           "paddingBottom": 0,
           "paddingLeft": 20,
           "paddingRight": 20,
@@ -3480,8 +2114,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(218, 89%, 51%, 1)",
-          "borderColor": "hsla(218, 89%, 51%, 1)",
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
         },
       ]
     }
@@ -3504,28 +2138,31 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
             "flexGrow": 1,
             "flexShrink": 1,
             "justifyContent": "center",
+            "zIndex": 1,
           },
           {
             "opacity": 1,
           },
         ]
       }
+      zIndex={1}
     >
       <Text
         accessible={true}
-        color="action.text.primary.default"
+        color="interactive.text.onPrimary.normal"
         data-blade-component="base-text"
         fontSize={100}
-        fontWeight="bold"
+        fontWeight="medium"
         lineHeight={100}
         style={
           [
             {
               "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Lato",
+              "fontFamily": "Inter",
               "fontSize": 14,
               "fontStyle": "normal",
-              "fontWeight": "700",
+              "fontWeight": "500",
+              "letterSpacing": 0,
               "lineHeight": 20,
               "marginBottom": 0,
               "marginLeft": 0,
@@ -3584,135 +2221,40 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           ]
         }
       >
-        <View
-          data-blade-component="base-box"
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
           style={
             [
               {
-                "marginBottom": 4,
-                "marginRight": 16,
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
               },
             ]
           }
         >
-          <View
-            alignItems="center"
-            data-blade-component="base-box"
-            display="flex"
-            flexDirection="row"
-            flexWrap="wrap"
-            gap="spacing.0"
-            maxHeight="36px"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "display": "flex",
-                  "flexDirection": "row",
-                  "flexWrap": "wrap",
-                  "gap": 0,
-                  "maxHeight": 36,
-                },
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              color="surface.text.subdued.lowContrast"
-              data-blade-component="text"
-              fontFamily="text"
-              fontSize={75}
-              fontStyle="normal"
-              fontWeight="bold"
-              lineHeight={50}
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "hsla(217, 18%, 45%, 1)",
-                    "fontFamily": "Lato",
-                    "fontSize": 12,
-                    "fontStyle": "normal",
-                    "fontWeight": "700",
-                    "lineHeight": 16,
-                    "marginBottom": 0,
-                    "marginLeft": 0,
-                    "marginRight": 0,
-                    "marginTop": 0,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "textDecorationLine": "none",
-                  },
-                ]
-              }
-            >
-              Label
-            </Text>
-            <View
-              data-blade-component="visually-hidden"
-              style={
-                [
-                  {
-                    "borderColor": "black",
-                    "borderStyle": "solid",
-                    "borderWidth": 0,
-                    "clip": "rect(0 0 0 0)",
-                    "clipPath": "inset(50%)",
-                    "height": 1,
-                    "left": -10000,
-                    "marginBottom": -1,
-                    "marginLeft": 0,
-                    "marginRight": -1,
-                    "marginTop": 0,
-                    "overflow": "hidden",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "position": "absolute",
-                    "whiteSpace": "nowrap",
-                    "width": 1,
-                    "wordWrap": "normal",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessible={true}
-                color="surface.text.normal.lowContrast"
-                data-blade-component="text"
-                fontFamily="text"
-                fontSize={100}
-                fontStyle="normal"
-                fontWeight="regular"
-                lineHeight={100}
-                style={
-                  [
-                    {
-                      "color": "hsla(217, 56%, 17%, 1)",
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "lineHeight": 20,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 0,
-                      "paddingLeft": 0,
-                      "paddingRight": 0,
-                      "paddingTop": 0,
-                      "textDecorationLine": "none",
-                    },
-                  ]
-                }
-              />
-            </View>
-          </View>
-        </View>
+          Label
+        </Text>
         <View
           data-blade-component="base-box"
           style={
@@ -3725,22 +2267,23 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         >
           <Text
             accessible={true}
-            color="surface.text.subdued.lowContrast"
+            color="surface.text.gray.subtle"
             data-blade-component="text"
             fontFamily="text"
             fontSize={75}
             fontStyle="normal"
             fontWeight="regular"
-            lineHeight={50}
+            lineHeight={75}
             style={
               [
                 {
-                  "color": "hsla(217, 18%, 45%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 12,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "lineHeight": 16,
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
@@ -3779,7 +2322,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         }
       >
         <View
-          backgroundColor="hsla(216, 15%, 54%, 0.18)"
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
           data-blade-component="base-box"
           height="2px"
           overflow="hidden"
@@ -3787,7 +2330,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           style={
             [
               {
-                "backgroundColor": "hsla(216, 15%, 54%, 0.18)",
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
@@ -3796,12 +2339,12 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
           }
         >
           <View
-            backgroundColor="hsla(218, 89%, 51%, 1)"
+            backgroundColor="hsla(227, 100%, 59%, 1)"
             progress={60}
             style={
               [
                 {
-                  "backgroundColor": "hsla(218, 89%, 51%, 1)",
+                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
                   "height": "100%",
                   "width": "60%",
                 },

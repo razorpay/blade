@@ -8,11 +8,15 @@ import { addons, types } from '@storybook/manager-api';
 
 const surafaceTextNormal = 'rgba(19, 38, 68, 1)';
 const bladePrimary = 'rgba(21, 102, 241, 1)';
+const bladeTextFont =
+  '"Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif';
+
+const bladeCodeFont = '"Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace';
 
 export const theme = create({
   base: 'light',
 
-  colorPrimary: 'red',
+  colorPrimary: bladePrimary,
   colorSecondary: bladePrimary,
 
   // UI
@@ -22,9 +26,8 @@ export const theme = create({
   appBorderRadius: 4,
 
   // Typography
-  fontBase:
-    'Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-  fontCode: 'monospace',
+  fontBase: bladeTextFont,
+  fontCode: bladeCodeFont,
 
   // Text colors
   textColor: surafaceTextNormal,

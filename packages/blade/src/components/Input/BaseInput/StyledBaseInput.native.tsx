@@ -254,7 +254,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         setCurrentInteraction('default');
       }
     },
-    isFocused: currentInteraction === 'active',
+    isFocused: currentInteraction === 'focus',
   };
 
   return renderAs === 'button' ? (
@@ -267,7 +267,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       }}
       onFocus={(): void => {
         handleOnFocus?.({ name, value: props.value });
-        setCurrentInteraction('active');
+        setCurrentInteraction('focus');
       }}
       as={undefined}
       {...commonProps}
@@ -275,7 +275,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       {...accessibilityProps}
     >
       <Text
-        type={props.value && !isDisabled ? 'subtle' : 'placeholder'}
+        color={
+          props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+        }
         truncateAfterLines={1}
         textAlign={props.textAlign}
       >
@@ -291,12 +293,12 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       numberOfLines={numberOfLines}
       editable={!isDisabled}
       maxLength={maxCharacters}
-      placeholderTextColor={theme.colors.surface.text.placeholder.lowContrast}
+      placeholderTextColor={theme.colors.surface.text.gray.disabled}
       onFocus={(event): void => {
         handleOnFocus?.({ name, value: event?.nativeEvent.text });
         // React Native does not have native onPress event on Input elements so for consistency of API we call it on onFocus which also gets triggered on clicks
         handleOnClick?.({ name, value: event?.nativeEvent.text });
-        setCurrentInteraction('active');
+        setCurrentInteraction('focus');
       }}
       onChangeText={(text): void => {
         handleOnChange?.({ name, value: text });

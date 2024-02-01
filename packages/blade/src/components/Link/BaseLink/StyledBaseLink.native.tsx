@@ -80,7 +80,7 @@ const _StyledLink: React.ForwardRefRenderFunction<
       {...accessibilityProps}
       disabled={disabled}
       onPress={handleOnPress}
-      onPressIn={(): void => setCurrentInteraction('active')}
+      onPressIn={(): void => setCurrentInteraction('focus')}
       onPressOut={(): void => setCurrentInteraction('default')}
       onTouchStart={castNativeType(onTouchStart)}
       onTouchEnd={castNativeType(onTouchEnd)}

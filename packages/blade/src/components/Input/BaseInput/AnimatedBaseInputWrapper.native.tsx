@@ -15,7 +15,7 @@ import { useTheme } from '~components/BladeProvider';
 const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((props) => ({
   ...getInputBackgroundAndBorderStyles({
     theme: props.theme,
-    isFocused: props.currentInteraction === 'active',
+    isFocused: props.currentInteraction === 'focus',
     isDisabled: props.isDisabled,
     validationState: props.validationState,
     isTextArea: props.isTextArea,

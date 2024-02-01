@@ -17,7 +17,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
     }
   >
     <View
-      accessibilityLabelledBy="chip-group-180-label"
+      accessibilityLabelledBy="chip-group-141-label"
       accessible={true}
       data-blade-component="chip-group"
       display="flex"
@@ -70,7 +70,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
         >
           <Text
             accessible={true}
-            color="surface.text.normal.lowContrast"
+            color="surface.text.gray.normal"
             data-blade-component="text"
             fontFamily="text"
             fontSize={100}
@@ -80,11 +80,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
             style={
               [
                 {
-                  "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -213,7 +214,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     }
                   >
                     <View
-                      borderColor="brand.gray.400.lowContrast"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -221,7 +222,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -245,10 +246,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="brand.gray.400.lowContrast"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
-                        color="default"
+                        color="primary"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
@@ -261,8 +262,8 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -283,7 +284,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.subtle.lowContrast"
+                          color="interactive.text.gray.subtle"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -294,11 +295,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           style={
                             [
                               {
-                                "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -418,7 +420,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     }
                   >
                     <View
-                      borderColor="brand.gray.400.lowContrast"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -426,7 +428,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -450,10 +452,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="brand.gray.400.lowContrast"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
-                        color="default"
+                        color="primary"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
@@ -466,8 +468,8 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -488,7 +490,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.subtle.lowContrast"
+                          color="interactive.text.gray.subtle"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -499,11 +501,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           style={
                             [
                               {
-                                "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -623,7 +626,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     }
                   >
                     <View
-                      borderColor="brand.gray.400.lowContrast"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -631,7 +634,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -655,10 +658,10 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="brand.gray.400.lowContrast"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
-                        color="default"
+                        color="primary"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
@@ -671,8 +674,8 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -693,7 +696,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.subtle.lowContrast"
+                          color="interactive.text.gray.subtle"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -704,11 +707,12 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           style={
                             [
                               {
-                                "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -810,7 +814,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
         >
           <Text
             accessible={true}
-            color="surface.text.normal.lowContrast"
+            color="surface.text.gray.normal"
             data-blade-component="text"
             fontFamily="text"
             fontSize={100}
@@ -820,11 +824,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
             style={
               [
                 {
-                  "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -954,7 +959,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     }
                   >
                     <View
-                      borderColor="brand.gray.400.lowContrast"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -962,7 +967,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -986,10 +991,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="brand.gray.400.lowContrast"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
-                        color="default"
+                        color="primary"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
@@ -1002,8 +1007,8 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -1024,7 +1029,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.subtle.lowContrast"
+                          color="interactive.text.gray.subtle"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -1035,11 +1040,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           style={
                             [
                               {
-                                "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1160,7 +1166,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     }
                   >
                     <View
-                      borderColor="brand.gray.400.lowContrast"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -1168,7 +1174,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -1192,10 +1198,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="brand.gray.400.lowContrast"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
-                        color="default"
+                        color="primary"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
@@ -1208,8 +1214,8 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -1230,7 +1236,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.subtle.lowContrast"
+                          color="interactive.text.gray.subtle"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -1241,11 +1247,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           style={
                             [
                               {
-                                "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,
@@ -1366,7 +1373,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     }
                   >
                     <View
-                      borderColor="brand.gray.400.lowContrast"
+                      borderColor="interactive.border.gray.faded"
                       isDisabled={false}
                       style={
                         [
@@ -1374,7 +1381,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                             "alignItems": "center",
                             "alignSelf": "center",
                             "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                            "borderColor": "hsla(216, 19%, 89%, 1)",
+                            "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
                             "display": "flex",
@@ -1398,10 +1405,10 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       <View
                         alignItems="center"
                         backgroundColor="transparent"
-                        borderColor="brand.gray.400.lowContrast"
+                        borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
-                        color="default"
+                        color="primary"
                         data-blade-component="base-box"
                         display="flex"
                         flexDirection="row"
@@ -1414,8 +1421,8 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "transparent",
-                              "borderColor": "hsla(216, 19%, 89%, 1)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
                               "borderWidth": 0.5,
@@ -1436,7 +1443,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                       >
                         <Text
                           accessible={true}
-                          color="surface.text.subtle.lowContrast"
+                          color="interactive.text.gray.subtle"
                           data-blade-component="text"
                           fontFamily="text"
                           fontSize={100}
@@ -1447,11 +1454,12 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           style={
                             [
                               {
-                                "color": "hsla(216, 27%, 36%, 1)",
-                                "fontFamily": "Lato",
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "fontFamily": "Inter",
                                 "fontSize": 14,
                                 "fontStyle": "normal",
                                 "fontWeight": "400",
+                                "letterSpacing": 0,
                                 "lineHeight": 20,
                                 "marginBottom": 0,
                                 "marginLeft": 0,

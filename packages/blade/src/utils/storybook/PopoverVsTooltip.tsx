@@ -18,16 +18,16 @@ const Table = styled.table`
   }
 
   tr:nth-child(odd) {
-    background-color: ${({ theme }) => theme.colors.brand.gray[200].lowContrast};
+    background-color: ${({ theme }) => theme.colors.surface.background.gray.moderate};
   }
 
   tr:nth-child(even) {
-    background-color: ${({ theme }) => theme.colors.brand.gray[300].lowContrast};
+    background-color: ${({ theme }) => theme.colors.surface.background.gray.subtle};
   }
 `;
 
 const Strong = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  return <Text weight="bold">{children}</Text>;
+  return <Text weight="semibold">{children}</Text>;
 };
 
 const PopoverVsTooltip = (): React.ReactElement => {

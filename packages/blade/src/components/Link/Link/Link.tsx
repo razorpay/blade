@@ -13,7 +13,7 @@ import type { BladeCommonEvents } from '~components/types';
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
   icon?: IconComponent;
-  color?: 'default' | 'white' | 'neutral';
+  color?: 'primary' | 'white' | 'neutral';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   onClick?: (event: SyntheticEvent) => void;
@@ -123,7 +123,7 @@ const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
     isDisabled = false,
     onClick,
     variant = 'anchor',
-    color = 'default',
+    color = 'primary',
     href,
     target,
     rel,

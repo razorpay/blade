@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-implicit-any-catch */
 /* eslint-disable no-template-curly-in-string */
 import setValue from '../utils/setValue';
+import { opacity as opacityTokens } from '../../../blade/src/tokens/global/opacity';
 import showNotification from './showNotification';
 
 const THEME_TOKENS_COLLECTION = 'Blade Theme Tokens';
@@ -20,21 +21,12 @@ const makeThemeTokenName = (variableName: string): string => {
     .replace(/\.[0-9]+/, (matchedString: any) => `[${matchedString.replace('.', '')}]`);
 };
 
-const rgbaToHsla = ({ r, g, b, a }: RGBA): string => {
-  const opacity = {
-    '0.00': '${opacity[0]}',
-    '0.09': '${opacity[1]}',
-    '0.10': '${opacity[1]}',
-    '0.12': '${opacity[2]}',
-    '0.18': '${opacity[3]}',
-    '0.32': '${opacity[4]}',
-    '0.48': '${opacity[5]}',
-    '0.56': '${opacity[6]}',
-    '0.64': '${opacity[7]}',
-    '0.72': '${opacity[8]}',
-    '1.00': '${opacity[9]}',
-  };
+const opacityMap = {};
+for (const [key, value] of Object.entries(opacityTokens)) {
+  opacityMap[value.toFixed(2)] = `\${opacity[${key}]}`;
+}
 
+const rgbaToHsla = ({ r, g, b, a }: RGBA): string => {
   // Find greatest and smallest channel values
   const cmin = Math.min(r, g, b);
   const cmax = Math.max(r, g, b);
@@ -72,7 +64,7 @@ const rgbaToHsla = ({ r, g, b, a }: RGBA): string => {
   s = +(s * 100).toFixed(1);
   l = +(l * 100).toFixed(1);
 
-  return `hsla(${h}, ${Math.round(s)}%, ${Math.round(l)}%, ${opacity[a.toFixed(2)]})`;
+  return `hsla(${h}, ${Math.round(s)}%, ${Math.round(l)}%, ${opacityMap[a.toFixed(2)]})`;
 };
 const makeThemeColorTokens = (): Record<string, any> => {
   const themeColorTokens = {
@@ -97,7 +89,7 @@ const makeThemeColorTokens = (): Record<string, any> => {
 
       // replace the "/" from token name with "." to store in json structure
       const tokenName = makeThemeTokenName(variable.name);
-      if (tokenName.includes('❌') || tokenName.includes('_')) {
+      if (tokenName.includes('❌') || tokenName.includes('_') || tokenName.includes('elevation')) {
         return;
       }
 

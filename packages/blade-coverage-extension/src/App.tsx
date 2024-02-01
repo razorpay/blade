@@ -13,12 +13,9 @@ import {
   Text,
   Checkbox,
 } from '@razorpay/blade/components';
-import { paymentTheme } from '@razorpay/blade/tokens';
+import { bladeTheme } from '@razorpay/blade/tokens';
 import styled from 'styled-components';
-import '@fontsource/lato/400.css';
-import '@fontsource/lato/400-italic.css';
-import '@fontsource/lato/700.css';
-import '@fontsource/lato/700-italic.css';
+import '@razorpay/blade/fonts.css';
 import BarChartImg from './bar-chart.png';
 import { useMediaQuery } from './useMediaQuery';
 
@@ -55,7 +52,7 @@ const App = (): ReactElement => {
     },
   );
   return (
-    <BladeProvider themeTokens={paymentTheme} colorScheme={isDarkMode ? 'dark' : 'light'}>
+    <BladeProvider themeTokens={bladeTheme} colorScheme={isDarkMode ? 'dark' : 'light'}>
       <Box height="312px" width="500px">
         <Card elevation="lowRaised" padding="spacing.7" surfaceLevel={2}>
           <CardBody>
