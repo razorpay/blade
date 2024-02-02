@@ -8,5 +8,4 @@
     "@testing-library/user-event/dist/types/**",
     "@storybook/*"
   ],
-  "nuxt.isNuxtApp": false
 }
