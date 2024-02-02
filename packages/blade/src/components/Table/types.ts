@@ -332,15 +332,8 @@ type TablePaginationClientProps = TablePaginationCommonProps & {
   onPageChange?: ({ page }: { page: number }) => void;
 };
 
-type TablePaginationProps<T> = T extends {
-  paginationType: infer TablePaginationType;
-}
-  ? TablePaginationType extends 'server'
-    ? TablePaginationServerProps
-    : TablePaginationType extends 'client'
-    ? TablePaginationClientProps
-    : T
-  : T;
+type TablePaginationProps = TablePaginationCommonProps &
+  (TablePaginationServerProps | TablePaginationClientProps);
 
 type TableToolbarProps = {
   /**
