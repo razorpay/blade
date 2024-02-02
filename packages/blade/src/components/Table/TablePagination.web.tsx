@@ -3,7 +3,11 @@ import styled from 'styled-components';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import { tablePagination } from './tokens';
-import type { TablePaginationProps } from './types';
+import type {
+  TablePaginationCommonProps,
+  TablePaginationProps,
+  TablePaginationType,
+} from './types';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
@@ -26,7 +30,7 @@ import { useTheme } from '~components/BladeProvider';
 import { throwBladeError } from '~utils/logger';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
-const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
+const pageSizeOptions: NonNullable<TablePaginationCommonProps['defaultPageSize']>[] = [10, 25, 50];
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
@@ -137,7 +141,7 @@ const getPaginationButtons = ({
   };
 };
 
-const _TablePagination = ({
+const _TablePagination = <T extends { paginationType: TablePaginationType }>({
   currentPage: controlledCurrentPage,
   onPageChange,
   onPageSizeChange,
@@ -148,7 +152,7 @@ const _TablePagination = ({
   label,
   totalItemCount,
   paginationType = 'client',
-}: TablePaginationProps): React.ReactElement => {
+}: TablePaginationProps<T>): React.ReactElement => {
   const {
     setPaginationPage,
     currentPaginationState,
