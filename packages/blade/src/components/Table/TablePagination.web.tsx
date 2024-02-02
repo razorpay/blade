@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import { tablePagination } from './tokens';
-import type { TablePaginationProps } from './types';
+import type { TablePaginationCommonProps, TablePaginationProps } from './types';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
@@ -23,9 +23,10 @@ import { Button } from '~components/Button';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useTheme } from '~components/BladeProvider';
+import { throwBladeError } from '~utils/logger';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
-const pageSizeOptions: NonNullable<TablePaginationProps['defaultPageSize']>[] = [10, 25, 50];
+const pageSizeOptions: NonNullable<TablePaginationCommonProps['defaultPageSize']>[] = [10, 25, 50];
 
 const PageSelectionButton = styled.button<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   backgroundColor: isSelected
@@ -145,12 +146,15 @@ const _TablePagination = ({
   showPageNumberSelector = false,
   showLabel,
   label,
+  totalItemCount,
+  paginationType = 'client',
 }: TablePaginationProps): React.ReactElement => {
   const {
     setPaginationPage,
     currentPaginationState,
     totalItems,
     setPaginationRowSize,
+    setPaginationType,
   } = useTableContext();
   const [currentPageSize, setCurrentPageSize] = React.useState<number>(defaultPageSize);
   const [currentPage, setCurrentPage] = React.useState<number>(
@@ -170,6 +174,7 @@ const _TablePagination = ({
   const onMobile = platform === 'onMobile';
   useEffect(() => {
     setPaginationRowSize(currentPageSize);
+    setPaginationType(paginationType);
   }, []);
 
   useEffect(() => {
@@ -178,7 +183,9 @@ const _TablePagination = ({
     }
   }, [currentPage, currentPaginationState?.page, setPaginationPage]);
 
-  const totalPages = Math.ceil(totalItems / currentPageSize);
+  const totalPages = isUndefined(totalItemCount)
+    ? Math.ceil(totalItems / currentPageSize)
+    : Math.ceil(totalItemCount / currentPageSize);
 
   const handlePageChange = useCallback(
     (page: number): void => {
@@ -205,6 +212,16 @@ const _TablePagination = ({
       handlePageChange(controlledCurrentPage);
     }
   }, [controlledCurrentPage, currentPage, handlePageChange, onPageChange]);
+
+  if (__DEV__) {
+    if (paginationType === 'server' && (isUndefined(totalItemCount) || isUndefined(onPageChange))) {
+      throwBladeError({
+        message:
+          '`onPageChange` and `totalItemCount` props are required when paginationType is server.',
+        moduleName: 'TablePagination',
+      });
+    }
+  }
 
   const handlePageSizeChange = (pageSize: number): void => {
     onPageSizeChange?.({ pageSize });
