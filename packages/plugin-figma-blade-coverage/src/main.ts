@@ -8,9 +8,9 @@ import {
 import {
   BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS,
   BLADE_BOX_BORDER_COLOR_STYLE_IDS,
-  BLADE_COLOR_STYLE_IDS,
   BLADE_COMPONENT_IDS,
   BLADE_COMPONENT_IDS_HAVING_SLOT,
+  BLADE_TEXT_COLOR_STYLE_IDS,
   BLADE_TEXT_STYLE_IDS,
 } from './bladeLibraryConstants';
 import { sendAnalytics } from './utils/sendAnalytics';
@@ -248,8 +248,8 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           // check if the text is using Blade's text styles
           let isMixedTextStyleOfBlade = false;
           let traversedNodeTextStyleId = '';
-          let isMixedColorStyleOfBlade = false;
-          let traversedNodeColorStyleId = '';
+          let isTextRangeFillsOfBlade = false;
+          let traversedNodeColorVariableId = '';
 
           /**
            * The textSyleId can have figma.mixed. so in that case we need to go character by character
@@ -284,62 +284,66 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             }
           }
 
-          /** the fillstyleId can have figma.mixed. so in that case we need to go character by character
-           * and do getRangeFillStyleId(4,5) instead of fillStyleId
-           * */
-          if (traversedNode?.fillStyleId === figma.mixed) {
-            isMixedColorStyleOfBlade = traversedNode.characters
-              .split('')
-              .every((character, index) => {
-                if (/\s/.test(character)) {
-                  return true;
-                }
-                return BLADE_COLOR_STYLE_IDS.includes(
-                  (traversedNode.getRangeFillStyleId(index, index + 1) as string).split(',')[0],
-                );
-              });
-
-            if (isMixedColorStyleOfBlade) {
+          // check if text is using blade color styles
+          if (traversedNode.boundVariables?.fills?.length) {
+            traversedNodeColorVariableId = traversedNode.boundVariables.fills[0].id.split('/')[0];
+            if (BLADE_TEXT_COLOR_STYLE_IDS.includes(traversedNodeColorVariableId ?? '')) {
               bladeColorStyles++;
             } else {
               nonBladeColorStyles++;
-              highlightNonBladeNode(traversedNode, 'Color Style is not from Blade Tokens');
+              highlightNonBladeNode(
+                traversedNode,
+                'Text Color Style should only use surface/text or feedback/text tokens',
+              );
             }
-          } else {
-            traversedNodeColorStyleId = traversedNode?.fillStyleId?.split(',')[0];
-
-            if (BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
-              bladeColorStyles++;
+          }
+          // check if text is using blade text styles
+          // textRangeFills is used when the text has different colors for different characters
+          if (traversedNode.boundVariables?.textRangeFills?.length) {
+            isTextRangeFillsOfBlade = traversedNode.boundVariables.textRangeFills.every((fill) => {
+              if (BLADE_TEXT_COLOR_STYLE_IDS.includes(fill.id.split('/')[0])) {
+                return true;
+              }
+              return false;
+            });
+            if (isTextRangeFillsOfBlade) {
+              bladeTextStyles++;
             } else {
-              nonBladeColorStyles++;
-              highlightNonBladeNode(traversedNode, 'Color Style is not from Blade Tokens');
+              nonBladeTextStyles++;
+              highlightNonBladeNode(
+                traversedNode,
+                'Text Color Style should only use surface/text or feedback/text tokens',
+              );
             }
+          }
+
+          if (
+            traversedNode.boundVariables &&
+            Object.keys(traversedNode.boundVariables).length === 0
+          ) {
+            nonBladeTextStyles++;
+            highlightNonBladeNode(
+              traversedNode,
+              'Text Color Style should only use surface/text or feedback/text tokens',
+            );
           }
 
           // this check is for typography components, if the typography uses color and text both from blade styles then they are typography blade components
           if (
             (isMixedTextStyleOfBlade || BLADE_TEXT_STYLE_IDS.includes(traversedNodeTextStyleId)) &&
-            (isMixedColorStyleOfBlade || BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId))
+            (isTextRangeFillsOfBlade ||
+              BLADE_TEXT_COLOR_STYLE_IDS.includes(traversedNodeColorVariableId))
           ) {
             bladeComponents++;
           }
         } else if (traversedNode.type === 'LINE') {
-          // check if the line is using Blade's color styles
-          const traversedNodeColorStyleId = traversedNode.strokeStyleId.split(',')[0];
-          const useDividerComponentError = 'Use a Divider Component Instead';
-          if (BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
-            bladeColorStyles++;
-            // even though the color matches blade, we want to encourage people to use Divider component instead
-            highlightNonBladeNode(traversedNode, useDividerComponentError);
-          } else {
-            nonBladeColorStyles++;
-            highlightNonBladeNode(traversedNode, useDividerComponentError);
-          }
+          nonBladeComponents++;
+          highlightNonBladeNode(traversedNode, 'Use a Divider Component Instead');
         } else if (traversedNode.type === 'RECTANGLE') {
           let isImage = false;
 
           if (traversedNode.fills !== figma.mixed) {
-            // figma considers images as rectangles with fille type as IMAGE
+            // figma considers images as rectangles with fill type as IMAGE
             isImage = Boolean(traversedNode.fills.find((fill) => fill.type === 'IMAGE'));
           }
 
@@ -347,30 +351,37 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             NODES_SKIP_FROM_COVERAGE.push('RECTANGLE');
           }
 
-          if (!isImage && (traversedNode.strokeStyleId || traversedNode.fillStyleId)) {
+          // replace with variables
+          const hasFillsVariable = traversedNode.boundVariables?.fills?.length;
+          const hasStrokesVariable = traversedNode.boundVariables?.strokes?.length;
+          if (!isImage && (hasFillsVariable || hasStrokesVariable)) {
             // check if rectangle uses blade surface.border.* colors for border
-            if (traversedNode.strokeStyleId) {
-              const traversedNodeColorStyleId = traversedNode.strokeStyleId.split(',')[0];
-              if (BLADE_BOX_BORDER_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
+            if (hasStrokesVariable) {
+              const traversedNodeColorVariableId = traversedNode.boundVariables.strokes[0].id.split(
+                '/',
+              )[0];
+              if (BLADE_BOX_BORDER_COLOR_STYLE_IDS.includes(traversedNodeColorVariableId ?? '')) {
                 bladeColorStyles++;
               } else {
                 nonBladeColorStyles++;
                 highlightNonBladeNode(
                   traversedNode,
-                  'Border color style can only have Surface/Border/* colors',
+                  'Box Border color should only use surface/border/* tokens',
                 );
               }
             }
-            // check if rectangle uses blade brand.* or surface.background.* colors for background
-            if (traversedNode.fillStyleId && traversedNode.fillStyleId !== figma.mixed) {
-              const traversedNodeFillStyleId = traversedNode.fillStyleId.split(',')[0];
+            // check if rectangle is using blade surface.background.* tokens for background
+            if (hasFillsVariable) {
+              const traversedNodeFillStyleId = traversedNode.boundVariables.fills[0].id.split(
+                '/',
+              )[0];
               if (BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS.includes(traversedNodeFillStyleId ?? '')) {
                 bladeColorStyles++;
               } else {
                 nonBladeColorStyles++;
                 highlightNonBladeNode(
                   traversedNode,
-                  'Background color style can only have Surface/Background/* or Brand/* colors',
+                  'Box Background color should only use surface/background/* tokens',
                 );
               }
             }
