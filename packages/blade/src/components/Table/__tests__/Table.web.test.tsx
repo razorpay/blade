@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
@@ -8,7 +9,6 @@ import { TableToolbar } from '../TableToolbar';
 import { TablePagination } from '../TablePagination';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Amount } from '~components/Amount';
-import { useState } from 'react';
 
 type Item = {
   id: string;
@@ -962,6 +962,7 @@ describe('<Table />', () => {
         <Table
           data={apiData}
           pagination={
+            // @ts-expect-error onPageChange and totalItemCount are missing intentionally
             <TablePagination paginationType="server" showPageSizePicker showPageNumberSelector />
           }
         >

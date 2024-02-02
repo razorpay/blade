@@ -16,7 +16,7 @@ import {
   refreshWrapperZIndex,
   tablePagination,
 } from './tokens';
-import type { TableProps, TableNode, Identifier, TablePaginationProps } from './types';
+import type { TableProps, TableNode, Identifier, TablePaginationType } from './types';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -130,9 +130,9 @@ const _Table = <Item,>({
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
-  const [paginationType, setPaginationType] = React.useState<
-    NonNullable<TablePaginationProps['paginationType']>
-  >('client');
+  const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
+    'client',
+  );
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
 
