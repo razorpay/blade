@@ -1,11 +1,6 @@
+import { setState } from '@razorpay/i18nify-js';
 import type { AmountProps } from '../Amount';
-import {
-  addCommas,
-  Amount,
-  formatAmountWithSuffix,
-  getFlooredFixed,
-  getHumanizedAmount,
-} from '../Amount';
+import { Amount, formatAmountWithSuffix } from '../Amount';
 
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
@@ -112,60 +107,66 @@ describe('<Amount />', () => {
     });
   }
 
-  it('should check if getFlooredFixed is returning the floored value', () => {
-    expect(getFlooredFixed(1000.22, 2)).toBe(1000.22);
-  });
-
-  it('should check if addCommas is returning the value with commas', () => {
-    expect(addCommas(1000.22, 'INR')).toBe('1,000.22');
-  });
-
-  it('should check if getHumanizedAmount is returning the right humanized value', () => {
-    expect(getHumanizedAmount({ value: 1000.22, currency: 'INR' })).toBe('1k');
-    expect(getHumanizedAmount({ value: 1000000, currency: 'INR' })).toBe('10L');
-    expect(getHumanizedAmount({ value: 10000000, currency: 'INR' })).toBe('1Cr');
-    expect(getHumanizedAmount({ value: 1000.22, currency: 'MYR' })).toBe('1K');
-    expect(getHumanizedAmount({ value: 1000000, currency: 'MYR' })).toBe('1M');
-    expect(getHumanizedAmount({ value: 10000000, currency: 'MYR' })).toBe('10M');
-    expect(
-      getHumanizedAmount({ value: 1000.22, currency: 'MYR', denominationPosition: 'left' }),
-    ).toBe('K1');
-    expect(
-      getHumanizedAmount({ value: 1000000, currency: 'MYR', denominationPosition: 'left' }),
-    ).toBe('M1');
-    expect(
-      getHumanizedAmount({ value: 10000000, currency: 'MYR', denominationPosition: 'left' }),
-    ).toBe('M10');
-  });
-
-  it('should check if formatAmountWithSuffix is returning values for humanize decimals and none', () => {
-    expect(formatAmountWithSuffix({ value: 1000.22, currency: 'INR', suffix: 'humanize' })).toBe(
-      '1k',
-    );
-    expect(formatAmountWithSuffix({ value: 1000000, currency: 'INR', suffix: 'decimals' })).toBe(
-      '10,00,000.00',
-    );
-    expect(formatAmountWithSuffix({ value: 10000000, currency: 'INR', suffix: 'none' })).toBe(
-      '1,00,00,000',
-    );
-    expect(formatAmountWithSuffix({ value: 1000.22, currency: 'MYR', suffix: 'humanize' })).toBe(
-      '1K',
-    );
-    expect(formatAmountWithSuffix({ value: 1000000, currency: 'MYR', suffix: 'decimals' })).toBe(
-      '1,000,000.00',
-    );
-    expect(formatAmountWithSuffix({ value: 10000000, currency: 'MYR', suffix: 'none' })).toBe(
-      '10,000,000',
-    );
+  it('should check if formatAmountWithSuffix is returning the right value for humanize decimals and none', () => {
+    setState({ locale: 'en-IN' });
+    expect(formatAmountWithSuffix({ value: 1000.22, suffix: 'humanize' })).toEqual({
+      formatted: '1T',
+    });
+    expect(formatAmountWithSuffix({ value: 1000000.0, suffix: 'decimals' })).toEqual({
+      decimal: '.',
+      formatted: '10,00,000.00',
+      fraction: '00',
+      integer: '10,00,000',
+      isPrefixSymbol: false,
+      rawParts: [
+        { type: 'integer', value: '10' },
+        { type: 'group', value: ',' },
+        { type: 'integer', value: '00' },
+        { type: 'group', value: ',' },
+        { type: 'integer', value: '000' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '00' },
+      ],
+    });
+    expect(formatAmountWithSuffix({ value: 10000000, suffix: 'none' })).toEqual({
+      formatted: '1,00,00,000',
+    });
     // Related issue - https://github.com/razorpay/blade/issues/1572
-    expect(formatAmountWithSuffix({ value: 2.07, currency: 'INR', suffix: 'decimals' })).toBe(
-      '2.07',
-    );
-    expect(formatAmountWithSuffix({ value: 2.077, currency: 'INR', suffix: 'decimals' })).toBe(
-      '2.08',
-    );
-    expect(formatAmountWithSuffix({ value: 2.3, currency: 'INR', suffix: 'decimals' })).toBe(
-      '2.30',
-    );
+    expect(formatAmountWithSuffix({ value: 2.07, suffix: 'decimals' })).toEqual({
+      decimal: '.',
+      formatted: '2.07',
+      fraction: '07',
+      integer: '2',
+      isPrefixSymbol: false,
+      rawParts: [
+        { type: 'integer', value: '2' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '07' },
+      ],
+    });
+    expect(formatAmountWithSuffix({ value: 2.077, suffix: 'decimals' })).toEqual({
+      decimal: '.',
+      formatted: '2.08',
+      fraction: '08',
+      integer: '2',
+      isPrefixSymbol: false,
+      rawParts: [
+        { type: 'integer', value: '2' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '08' },
+      ],
+    });
+    expect(formatAmountWithSuffix({ value: 2.3, suffix: 'decimals' })).toEqual({
+      decimal: '.',
+      formatted: '2.30',
+      fraction: '30',
+      integer: '2',
+      isPrefixSymbol: false,
+      rawParts: [
+        { type: 'integer', value: '2' },
+        { type: 'decimal', value: '.' },
+        { type: 'fraction', value: '30' },
+      ],
+    });
   });
 });

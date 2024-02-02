@@ -1,9 +1,9 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import { getCurrencyList } from '@razorpay/i18nify-js';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
 import type { AmountHeadingProps, AmountDisplayProps, AmountBodyProps } from './amountTokens';
-import { currencyIndicatorMapping } from './amountTokens';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -176,7 +176,7 @@ HumanizeSuffix.args = {
 HumanizeSuffix.storyName = 'Humanize Suffix';
 
 const AmountCurrencyTemplate: StoryFn<typeof AmountComponent> = (args) => {
-  const values = Object.keys(currencyIndicatorMapping);
+  const values = Object.keys(getCurrencyList());
 
   return (
     <BaseBox justifyContent="flex-start" maxHeight="300px" overflowY="auto">
