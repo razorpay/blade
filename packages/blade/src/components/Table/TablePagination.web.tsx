@@ -187,9 +187,9 @@ const _TablePagination = <T extends { paginationType: TablePaginationType }>({
     }
   }, [currentPage, currentPaginationState?.page, setPaginationPage]);
 
-  const totalPages = !isUndefined(totalItemCount)
-    ? Math.ceil(totalItemCount / currentPageSize)
-    : Math.ceil(totalItems / currentPageSize);
+const totalPages = isUndefined(totalItemCount)
+    ? Math.ceil(totalItems / currentPageSize);
+    : Math.ceil(totalItemCount / currentPageSize)
 
   const handlePageChange = useCallback(
     (page: number): void => {
