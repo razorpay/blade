@@ -3,11 +3,7 @@ import styled from 'styled-components';
 import { useTableContext } from './TableContext';
 import { ComponentIds } from './componentIds';
 import { tablePagination } from './tokens';
-import type {
-  TablePaginationCommonProps,
-  TablePaginationProps,
-  TablePaginationType,
-} from './types';
+import type { TablePaginationCommonProps, TablePaginationProps } from './types';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
@@ -146,7 +142,7 @@ const getPaginationButtons = ({
   };
 };
 
-const _TablePagination = <T extends { paginationType: TablePaginationType }>({
+const _TablePagination = ({
   currentPage: controlledCurrentPage,
   onPageChange,
   onPageSizeChange,
@@ -157,7 +153,7 @@ const _TablePagination = <T extends { paginationType: TablePaginationType }>({
   label,
   totalItemCount,
   paginationType = 'client',
-}: TablePaginationProps<T>): React.ReactElement => {
+}: TablePaginationProps): React.ReactElement => {
   const {
     setPaginationPage,
     currentPaginationState,

@@ -1828,10 +1828,10 @@ import {
   TableRow,
   TableCell,
   TablePagination,
-  } from '@razorpay/blade/components';
-  import React, { useEffect, useState } from 'react';
-  
-  type APIResult = {
+} from '@razorpay/blade/components';
+import React, { useEffect, useState } from 'react';
+
+type APIResult = {
   info: {
     count: number;
     pages: number;
@@ -1843,9 +1843,9 @@ import {
     status: string;
     origin: { name: string };
   }[];
-  };
-  
-  const fetchData = async ({ page }: { page: number }): Promise<APIResult> => {
+};
+
+const fetchData = async ({ page }: { page: number }): Promise<APIResult> => {
   const response = await fetch(
     \`https://rickandmortyapi.com/api/character?page=\${page}\`,
     {
@@ -1855,15 +1855,15 @@ import {
   );
   const result = await response.json();
   return result as APIResult;
-  };
-  
-  function App(): React.ReactElement {
+};
+
+function App(): React.ReactElement {
   const [apiData, setApiData] = useState<{ nodes: APIResult['results'] }>({
     nodes: [],
   });
   const [dataCount, setDataCount] = useState<number>(0);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
-  
+
   useEffect(() => {
     if (apiData.nodes.length === 0) {
       fetchData({ page: 1 }).then((res) => {
@@ -1874,7 +1874,7 @@ import {
       });
     }
   }, []);
-  
+
   const handlePageChange = ({ page }: { page: number }) => {
     setIsRefreshing(true);
     fetchData({ page: page + 1 }).then((res) => {
@@ -1888,7 +1888,7 @@ import {
       setIsRefreshing(false);
     });
   };
-  
+
   return (
     <Box
       backgroundColor="surface.background.level2.lowContrast"
@@ -1934,9 +1934,9 @@ import {
       </Table>
     </Box>
   );
-  }
-  
-  export default App;
+}
+
+export default App;
 `;
 
 export {
