@@ -222,7 +222,7 @@ const _TablePagination = ({
     if (paginationType === 'server' && (isUndefined(totalItemCount) || isUndefined(onPageChange))) {
       throwBladeError({
         message:
-          '`onPageChange` and `totalItemCount` props are required when paginationType is server',
+          '`onPageChange` and `totalItemCount` props are required when paginationType is server.',
         moduleName: 'TablePagination',
       });
     }
