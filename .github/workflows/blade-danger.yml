@@ -59,7 +59,6 @@ jobs:
         env:
           BUNDLE_SIZE_STATS_FILENAME: 'baseBundleSizeStats.json'
       - name: Commit Updated Bundle Size Data
-        if: ${{ github.event_name == 'pull_request' }}
         run: |
           git config user.email "tools+cibot@razorpay.com"
           git config user.name "rzpcibot"
