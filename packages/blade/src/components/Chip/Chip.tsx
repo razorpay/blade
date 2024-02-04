@@ -135,6 +135,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   const chipBorderColor = chipColorTokens.border[colorVariant][stateVariant];
 
   return (
+    <div>
     <BaseBox
       {...metaAttribute({ name: MetaConstants.Chip, testID })}
       {...getStyledProps(styledProps)}
@@ -206,6 +207,151 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
         </BaseBox>
       </SelectorLabel>
     </BaseBox>
+
+    <BaseBox
+      {...metaAttribute({ name: MetaConstants.Chip, testID })}
+      {...getStyledProps(styledProps)}
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+    >
+      <SelectorLabel
+        componentName={MetaConstants.ChipLabel}
+        onTouchStart={handlePointerPressedIn}
+        onTouchEnd={handlePointerPressedOut}
+        onMouseDown={handlePointerPressedIn}
+        onMouseUp={handlePointerPressedOut}
+        onMouseOut={handlePointerPressedOut}
+        onKeyDown={handleKeyboardPressedIn}
+        onKeyUp={handleKeyboardPressedOut}
+        inputProps={isReactNative() ? inputProps : {}}
+        style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
+      >
+        <BaseBox display="flex" flexDirection="column">
+          <BaseBox display="flex" alignItems="center" flexDirection="row">
+            <SelectorInput
+              hoverTokens={getChipInputHoverTokens(chipColor)}
+              isChecked={state.isChecked}
+              isDisabled={_isDisabled}
+              inputProps={inputProps}
+              ref={ref}
+            />
+            <AnimatedChip
+              borderColor={chipBorderColor}
+              isDisabled={_isDisabled}
+              isPressed={isPressed}
+              isDesktop={matchedDeviceType === 'desktop'}
+            >
+              <StyledChipWrapper
+                borderColor={chipBorderColor}
+                isChecked={_isChecked}
+                isDisabled={_isDisabled}
+                color={chipColor}
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                overflow="hidden"
+                backgroundColor={chipBackgroundColor}
+                borderRadius="max"
+                borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
+                paddingLeft={
+                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].left[
+                    _size
+                  ]
+                }
+                paddingRight={
+                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].right[
+                    _size
+                  ]
+                }
+                height={makeSize(chipHeightTokens[_size])}
+              >
+                {Icon ? (
+                  <BaseBox paddingRight="spacing.3" display="flex">
+                    <Icon color={chipIconColor} size={chipIconSizes[_size]} />
+                  </BaseBox>
+                ) : null}
+                <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
+                  {children}
+                </Text>
+              </StyledChipWrapper>
+            </AnimatedChip>
+          </BaseBox>
+        </BaseBox>
+      </SelectorLabel>
+    </BaseBox>
+
+    <BaseBox
+      {...metaAttribute({ name: MetaConstants.Chip, testID })}
+      {...getStyledProps(styledProps)}
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+    >
+      <SelectorLabel
+        componentName={MetaConstants.ChipLabel}
+        onTouchStart={handlePointerPressedIn}
+        onTouchEnd={handlePointerPressedOut}
+        onMouseDown={handlePointerPressedIn}
+        onMouseUp={handlePointerPressedOut}
+        onMouseOut={handlePointerPressedOut}
+        onKeyDown={handleKeyboardPressedIn}
+        onKeyUp={handleKeyboardPressedOut}
+        inputProps={isReactNative() ? inputProps : {}}
+        style={{ cursor: _isDisabled ? 'not-allowed' : 'pointer' }}
+      >
+        <BaseBox display="flex" flexDirection="column">
+          <BaseBox display="flex" alignItems="center" flexDirection="row">
+            <SelectorInput
+              hoverTokens={getChipInputHoverTokens(chipColor)}
+              isChecked={state.isChecked}
+              isDisabled={_isDisabled}
+              inputProps={inputProps}
+              ref={ref}
+            />
+            <AnimatedChip
+              borderColor={chipBorderColor}
+              isDisabled={_isDisabled}
+              isPressed={isPressed}
+              isDesktop={matchedDeviceType === 'desktop'}
+            >
+              <StyledChipWrapper
+                borderColor={chipBorderColor}
+                isChecked={_isChecked}
+                isDisabled={_isDisabled}
+                color={chipColor}
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                overflow="hidden"
+                backgroundColor={chipBackgroundColor}
+                borderRadius="max"
+                borderWidth={['xsmall', 'small'].includes(_size) ? 'thinner' : 'thin'}
+                paddingLeft={
+                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].left[
+                    _size
+                  ]
+                }
+                paddingRight={
+                  chipHorizontalPaddingTokens[Boolean(Icon) ? 'withIcon' : 'withoutIcon'].right[
+                    _size
+                  ]
+                }
+                height={makeSize(chipHeightTokens[_size])}
+              >
+                {Icon ? (
+                  <BaseBox paddingRight="spacing.3" display="flex">
+                    <Icon color={chipIconColor} size={chipIconSizes[_size]} />
+                  </BaseBox>
+                ) : null}
+                <Text {...chipTextSizes[_size]} truncateAfterLines={1} color={chipTextColor}>
+                  {children}
+                </Text>
+              </StyledChipWrapper>
+            </AnimatedChip>
+          </BaseBox>
+        </BaseBox>
+      </SelectorLabel>
+    </BaseBox>
+    </div>
   );
 };
 

@@ -81,6 +81,19 @@ const Divider = ({
       });
 
   return (
+    <>
+      <StyledDivider
+      borderPosition={borderPosition}
+      isDividerHorizontal={isDividerHorizontal}
+      dividerStyle={dividerStyle}
+      thickness={thickness}
+      height={height}
+      width={width}
+      {...borderColor}
+      {...metaAttribute({ name: MetaConstants.Divider, testID })}
+      {...getStyledProps(styledProps)}
+      {...accessibilityProps}
+    />
     <StyledDivider
       borderPosition={borderPosition}
       isDividerHorizontal={isDividerHorizontal}
@@ -93,6 +106,92 @@ const Divider = ({
       {...getStyledProps(styledProps)}
       {...accessibilityProps}
     />
+    <StyledDivider
+      borderPosition={borderPosition}
+      isDividerHorizontal={isDividerHorizontal}
+      dividerStyle={dividerStyle}
+      thickness={thickness}
+      height={height}
+      width={width}
+      {...borderColor}
+      {...metaAttribute({ name: MetaConstants.Divider, testID })}
+      {...getStyledProps(styledProps)}
+      {...accessibilityProps}
+    />
+    <StyledDivider
+      borderPosition={borderPosition}
+      isDividerHorizontal={isDividerHorizontal}
+      dividerStyle={dividerStyle}
+      thickness={thickness}
+      height={height}
+      width={width}
+      {...borderColor}
+      {...metaAttribute({ name: MetaConstants.Divider, testID })}
+      {...getStyledProps(styledProps)}
+      {...accessibilityProps}
+    />
+    <StyledDivider
+      borderPosition={borderPosition}
+      isDividerHorizontal={isDividerHorizontal}
+      dividerStyle={dividerStyle}
+      thickness={thickness}
+      height={height}
+      width={width}
+      {...borderColor}
+      {...metaAttribute({ name: MetaConstants.Divider, testID })}
+      {...getStyledProps(styledProps)}
+      {...accessibilityProps}
+    />
+    <StyledDivider
+      borderPosition={borderPosition}
+      isDividerHorizontal={isDividerHorizontal}
+      dividerStyle={dividerStyle}
+      thickness={thickness}
+      height={height}
+      width={width}
+      {...borderColor}
+      {...metaAttribute({ name: MetaConstants.Divider, testID })}
+      {...getStyledProps(styledProps)}
+      {...accessibilityProps}
+    />
+    <StyledDivider
+      borderPosition={borderPosition}
+      isDividerHorizontal={isDividerHorizontal}
+      dividerStyle={dividerStyle}
+      thickness={thickness}
+      height={height}
+      width={width}
+      {...borderColor}
+      {...metaAttribute({ name: MetaConstants.Divider, testID })}
+      {...getStyledProps(styledProps)}
+      {...accessibilityProps}
+    />
+    <StyledDivider
+      borderPosition={borderPosition}
+      isDividerHorizontal={isDividerHorizontal}
+      dividerStyle={dividerStyle}
+      thickness={thickness}
+      height={height}
+      width={width}
+      {...borderColor}
+      {...metaAttribute({ name: MetaConstants.Divider, testID })}
+      {...getStyledProps(styledProps)}
+      {...accessibilityProps}
+    />
+    <StyledDivider
+      borderPosition={borderPosition}
+      isDividerHorizontal={isDividerHorizontal}
+      dividerStyle={dividerStyle}
+      thickness={thickness}
+      height={height}
+      width={width}
+      {...borderColor}
+      {...metaAttribute({ name: MetaConstants.Divider, testID })}
+      {...getStyledProps(styledProps)}
+      {...accessibilityProps}
+    />
+    </>
+    
   );
 };
 
