@@ -26,6 +26,18 @@ const main = () => {
     'getTextProps',
     'screenReaderStyles',
     'useActionListContext',
+    'ActionListItemAsset', // This is just an <img> tag
+    // These are same as Badge, Amount, Counter, Link, Text components
+    'CardHeaderAmount',
+    'CardHeaderBadge',
+    'CardHeaderCounter',
+    'CardHeaderLink',
+    'CardHeaderText',
+    'ComponentIds',
+    // Accessibility components
+    'SkipNavContent',
+    'SkipNavLink',
+    'VisuallyHidden',
   ];
 
   // Traverse the AST to get the component names
