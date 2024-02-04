@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Button",
+    "passed": true,
+    "size": 25142,
+    "sizeLimit": 2000000,
+    "loading": 0.5496484375
+  },
+  {
+    "name": "Card",
+    "passed": true,
+    "size": 39142,
+    "sizeLimit": 2000000,
+    "loading": 0.5496484375
+  },
+  {
+    "name": "Link",
+    "passed": true,
+    "size": 20142,
+    "sizeLimit": 2000000,
+    "loading": 0.5496484375
+  }
+]
