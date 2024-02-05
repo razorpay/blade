@@ -106,6 +106,8 @@ const _Dropdown = ({
     },
   });
 
+  // This variable needs to be defined after its usage in onChange above. We anyways know onChange will always run async after the change
+  // eslint-disable-next-line
   const isDropdownOpenRef = React.useRef(isDropdownOpen);
 
   const setIsOpen = (isOpenValue: boolean): void => {
