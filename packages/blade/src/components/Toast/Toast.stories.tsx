@@ -68,7 +68,7 @@ const ToastTemplate: StoryFn<typeof ToastComponent> = () => {
             color: ['positive', 'negative', 'warning', 'information', 'neutral'][
               Math.floor(Math.random() * 5)
             ],
-            duration: 4000,
+            duration: Infinity,
             action: {
               text: 'Okay',
               onClick: () => console.log(1),

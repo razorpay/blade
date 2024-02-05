@@ -2,7 +2,8 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import React from 'react';
 import toast from 'react-hot-toast';
-import styled from 'styled-components';
+import type { FlattenSimpleInterpolation } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import type { ToastProps } from './types';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -16,6 +17,7 @@ import {
 } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+import { makeMotionTime, useTheme } from '~utils';
 
 const iconMap = {
   positive: CheckCircleIcon,
@@ -25,12 +27,47 @@ const iconMap = {
   warning: AlertTriangleIcon,
 };
 
-const StyledToast = styled(BaseBox)<{ isVisible?: boolean }>(({ isVisible }) => {
-  return {
-    transition: '0.3s ease-in-out',
-    opacity: isVisible ? 1 : 0,
-  };
-});
+const slideIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const slideOut = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+`;
+
+const AnimatedFade = styled(BaseBox)<{ animationType: FlattenSimpleInterpolation | null }>(
+  ({ animationType }) => {
+    return css`
+      ${animationType}
+    `;
+  },
+);
 
 const Toast = ({
   type,
@@ -38,11 +75,14 @@ const Toast = ({
   leading,
   action,
   content,
+  // @ts-expect-error no index
+  index,
   onDismissButtonClick,
   // autoDismiss = false,
   isVisible,
   id,
 }: ToastProps): React.ReactElement => {
+  const { theme } = useTheme();
   const Icon = leading || iconMap[color!];
 
   const colorMap = {
@@ -68,16 +108,32 @@ const Toast = ({
     </Box>
   ) : null;
 
+  const isFirst = index === 0;
+
+  const enter = css`
+    opacity: 0;
+    animation: ${slideIn} ${makeMotionTime(theme.motion.duration.gentle)}
+      ${theme.motion.easing.entrance.effective as string} forwards;
+  `;
+
+  const exit = css`
+    opacity: 1;
+    animation: ${isFirst ? slideOut : fadeOut} ${makeMotionTime(theme.motion.duration.moderate)}
+      ${theme.motion.easing.exit.effective as string} forwards;
+  `;
+
   return (
-    <StyledToast
-      isVisible={isVisible}
-      width="360px"
+    <AnimatedFade
+      animationType={isVisible ? enter : exit}
+      width="100%"
       display="flex"
       gap="spacing.3"
       paddingX="spacing.4"
       paddingY={isPromotional ? 'spacing.4' : 'spacing.3'}
       borderRadius="medium"
       alignItems="center"
+      // TODO: fix border color
+      border="2px solid white"
       backgroundColor={
         isPromotional
           ? 'surface.background.gray.intense'
@@ -116,7 +172,7 @@ const Toast = ({
           />
         ) : null}
       </Box>
-    </StyledToast>
+    </AnimatedFade>
   );
 };
 

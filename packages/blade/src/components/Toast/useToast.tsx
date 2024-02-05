@@ -10,7 +10,8 @@ type UseToastReturn = {
 const useToast = (): UseToastReturn => {
   const show = (props: ToastProps): string => {
     return toast.custom(
-      ({ id, visible }) => <Toast isVisible={visible} {...props} id={id} />,
+      // @ts-expect-error - customProps is not a valid prop
+      ({ visible, ...customProps }) => <Toast {...customProps} isVisible={visible} />,
       props,
     );
   };
