@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.1.0
+
+### Minor Changes
+
+- b21e3aea: chore: add server-side pagination with `totalItemCount` & `paginationType`
+
 ## 11.0.0
 
 ### Major Changes
