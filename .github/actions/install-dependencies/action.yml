@@ -1,24 +1,10 @@
 name: install npm packages
 description: Installs npm packages and manages it's cache
-inputs:
-  npm_token:
-    required: true
-  github_access_token:
-    required: true
-
 runs:
   using: composite
   steps:
     - name: Install Yarn
       run: npm install -g yarn
-      shell: bash
-
-    - name: Set up npmrc
-      run: |
-        echo "@razorpay:registry=https://npm.pkg.github.com/" > .npmrc
-        echo "//npm.pkg.github.com/:_authToken=${{ inputs.github_access_token }}" >> .npmrc
-        echo "//registry.npmjs.org/:_authToken=${{ inputs.npm_token }}" >> .npmrc
-        echo "registry=http://registry.npmjs.org/" >> .npmrc
       shell: bash
 
     - name: Cache setup for node modules
