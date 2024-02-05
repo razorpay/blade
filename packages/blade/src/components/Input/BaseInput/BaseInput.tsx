@@ -908,7 +908,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               handleOnSubmit={handleOnSubmit}
               handleOnInput={handleOnInput}
               handleOnKeyDown={handleOnKeyDown}
-              handleOnClick={handleOnClick}
+              // In DropdownTrigger, click is handled on BaseInputTagSlot to cover padding around the real input
+              handleOnClick={isDropdownTrigger ? undefined : handleOnClick}
               leadingIcon={leadingIcon}
               prefix={prefix}
               interactionElement={interactionElement}

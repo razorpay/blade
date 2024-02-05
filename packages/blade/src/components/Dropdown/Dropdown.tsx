@@ -14,6 +14,7 @@ import { isReactNative } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
 import type { ContainerElementType } from '~utils/types';
+import { useControllableState } from '~utils/useControllable';
 
 const validDropdownChildren = [
   dropdownComponentIds.triggers.SelectInput,
@@ -58,7 +59,6 @@ const _Dropdown = ({
   testID,
   ...styledProps
 }: DropdownProps): React.ReactElement => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(isOpenControlled ?? false);
   const [options, setOptions] = React.useState<DropdownContextType['options']>([]);
   const [filteredValues, setFilteredValues] = React.useState<string[]>([]);
   const [selectedIndices, setSelectedIndices] = React.useState<
@@ -97,19 +97,27 @@ const _Dropdown = ({
 
   const dropdownBaseId = useId('dropdown');
 
-  const setIsOpenControlled = (isControlledStateOpen: boolean): void => {
-    onOpenChange?.(isControlledStateOpen);
+  const [isDropdownOpen, setIsDropdownOpen] = useControllableState({
+    value: isOpenControlled,
+    defaultValue: false,
+    onChange: (isOpenControlledValue) => {
+      isDropdownOpenRef.current = isOpenControlledValue;
+      onOpenChange?.(isOpenControlledValue);
+    },
+  });
+
+  const isDropdownOpenRef = React.useRef(isDropdownOpen);
+
+  const setIsOpen = (isOpenValue: boolean): void => {
+    isDropdownOpenRef.current = isOpenValue;
+    setIsDropdownOpen(() => isOpenValue);
   };
 
   const close = React.useCallback(() => {
     setActiveTagIndex(-1);
-    if (isOpenControlled === undefined) {
-      setIsOpen(false);
-    } else {
-      setIsOpenControlled(false);
-    }
+    setIsOpen(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpenControlled]);
+  }, []);
 
   React.Children.map(children, (child) => {
     if (React.isValidElement(child)) {
@@ -140,8 +148,8 @@ const _Dropdown = ({
 
   const contextValue = React.useMemo<DropdownContextType>(
     () => ({
-      isOpen: isOpenControlled === undefined ? isOpen : isOpenControlled,
-      setIsOpen: isOpenControlled === undefined ? setIsOpen : setIsOpenControlled,
+      isOpen: isDropdownOpen,
+      setIsOpen,
       close,
       selectedIndices,
       setSelectedIndices,
@@ -178,7 +186,7 @@ const _Dropdown = ({
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
-      isOpen,
+      isDropdownOpen,
       isOpenControlled,
       selectedIndices,
       controlledValueIndices,
@@ -197,7 +205,7 @@ const _Dropdown = ({
 
   const BottomSheetAndDropdownGlueContextValue = React.useMemo((): BottomSheetAndDropdownGlueContext => {
     return {
-      isOpen,
+      isOpen: isDropdownOpen,
       dropdownHasBottomSheet,
       hasAutoCompleteInBottomSheetHeader,
       setDropdownHasBottomSheet,
@@ -205,7 +213,7 @@ const _Dropdown = ({
       // Basically <BottomSheet onDismiss={onBottomSheetDismiss} />
       onBottomSheetDismiss: close,
     };
-  }, [dropdownHasBottomSheet, hasAutoCompleteInBottomSheetHeader, isOpen, close]);
+  }, [dropdownHasBottomSheet, hasAutoCompleteInBottomSheetHeader, isDropdownOpen, close]);
 
   React.useEffect((): (() => void) | undefined => {
     if (!isReactNative()) {
@@ -219,9 +227,9 @@ const _Dropdown = ({
         }
 
         const isOutsideClick = !dropdown.contains(target) && !isTagDismissedRef.current?.value;
-        const dropdownIsOpen = typeof isOpenControlled === 'undefined' ? isOpen : isOpenControlled;
 
-        if (isOutsideClick && dropdownIsOpen) {
+        const isDropdownOpenState = isDropdownOpenRef.current;
+        if (isOutsideClick && isDropdownOpenState) {
           close();
         }
 
