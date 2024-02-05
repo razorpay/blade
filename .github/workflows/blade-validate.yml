@@ -18,6 +18,10 @@ jobs:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+        with:
+          npm_token: ${{ secrets.NPM_TOKEN }}
+          github_access_token: ${{ secrets.CI_BOT_TOKEN }}
+
       - name: Build Blade
         run: yarn build
         working-directory: packages/blade
@@ -46,6 +50,9 @@ jobs:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
+        with:
+          npm_token: ${{ secrets.NPM_TOKEN }}
+          github_access_token: ${{ secrets.CI_BOT_TOKEN }}
       - name: Run Unit Tests
         run: yarn test
         working-directory: packages/blade
