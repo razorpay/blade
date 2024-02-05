@@ -236,16 +236,16 @@ ControlledDropdownSingleSelect.play = async ({ canvasElement }) => {
   // external button control selection test
   await expect(selectInput).toHaveTextContent('Select Option');
   await userEvent.click(getByRole('button', { name: 'Select Bangalore' }));
-  await expect(selectInput).toHaveTextContent('Bangalore');
+  await waitFor(() => expect(selectInput).toHaveTextContent('Bangalore'));
 
   // select input's control test
   await userEvent.click(selectInput);
   await userEvent.click(getByRole('option', { name: 'Pune' }));
-  await expect(selectInput).toHaveTextContent('Pune');
+  await waitFor(() => expect(selectInput).toHaveTextContent('Pune'));
 
   // Clear button test
   await userEvent.click(getByRole('button', { name: 'Clear Selection' }));
-  await expect(selectInput).toHaveTextContent('Select Option');
+  await waitFor(() => expect(selectInput).toHaveTextContent('Select Option'));
 
   // toggle dropdown test
   await userEvent.click(getByRole('button', { name: 'Open Dropdown' }));
@@ -298,12 +298,12 @@ ControlledDropdownMultiSelect.play = async ({ canvasElement }) => {
   // Select 1 item programatically
   await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeFalsy();
   await userEvent.click(getByRole('button', { name: 'Select Bangalore' }));
-  await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
+  await waitFor(() => expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument());
 
   // select 2nd item from actionlist
   await userEvent.click(selectInput);
   await userEvent.click(getByRole('option', { name: 'Pune' }));
-  await expect(queryAllByLabelText('Close Pune tag')?.[0]).toBeInTheDocument();
+  await waitFor(() => expect(queryAllByLabelText('Close Pune tag')?.[0]).toBeInTheDocument());
   await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
 
   // dropdown open test
