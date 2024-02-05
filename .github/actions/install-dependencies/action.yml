@@ -1,8 +1,11 @@
 name: install npm packages
 description: Installs npm packages and manages it's cache
-env:
-  GITHUB_ACCESS_TOKEN: ${{ inputs.github_access_token }}
-  NPM_TOKEN: ${{ inputs.npm_token }}
+inputs:
+  npm_token:
+    required: true
+  github_access_token:
+    required: true
+
 runs:
   using: composite
   steps:
@@ -13,8 +16,8 @@ runs:
     - name: Set up npmrc
       run: |
         echo "@razorpay:registry=https://npm.pkg.github.com/" > .npmrc
-        echo "//npm.pkg.github.com/:_authToken=${GITHUB_ACCESS_TOKEN}" >> .npmrc
-        echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+        echo "//npm.pkg.github.com/:_authToken=${{ inputs.github_access_token }}" >> .npmrc
+        echo "//registry.npmjs.org/:_authToken=${{ inputs.npm_token }}" >> .npmrc
         echo "registry=http://registry.npmjs.org/" >> .npmrc
       shell: bash
 
