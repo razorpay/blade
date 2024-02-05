@@ -96,6 +96,7 @@ const _Dropdown = ({
   const dropdownContainerRef = React.useRef<HTMLDivElement>(null);
 
   const dropdownBaseId = useId('dropdown');
+  const isDropdownOpenRef = React.useRef(isOpenControlled);
 
   const [isDropdownOpen, setIsDropdownOpen] = useControllableState({
     value: isOpenControlled,
@@ -106,9 +107,7 @@ const _Dropdown = ({
     },
   });
 
-  // This variable needs to be defined after its usage in onChange above. We anyways know onChange will always run async after the change
-  // eslint-disable-next-line
-  const isDropdownOpenRef = React.useRef(isDropdownOpen);
+  isDropdownOpenRef.current = isDropdownOpen;
 
   const setIsOpen = (isOpenValue: boolean): void => {
     isDropdownOpenRef.current = isOpenValue;
