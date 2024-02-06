@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ToastPosition, ToasterProps, Toast } from 'react-hot-toast';
@@ -5,39 +6,41 @@ import { resolveValue, useToaster } from 'react-hot-toast';
 import React from 'react';
 import styled from 'styled-components';
 import type { ToastContainerProps } from './types';
-import { usePrevious } from '~utils';
 
-type ToastWrapperProps = {
-  isVisible: boolean;
-  style?: React.CSSProperties;
-  children: React.ReactNode;
+type CalculateYPositionProps = {
+  toast: Toast;
   index: number;
+  isExpanded: boolean;
+  reverseOrder?: boolean;
+  defaultPosition?: ToastPosition;
 };
 
-const StyledToastWrapper = styled.div<{ isVisible: boolean; index: number }>(
-  ({ isVisible, index }) => {
-    const activeStyle = isVisible
-      ? ({
-          zIndex: 9999,
-          '& > *': {
-            pointerEvents: 'auto',
-          },
-        } as const)
-      : {};
-    return {
-      ...activeStyle,
-      opacity: isVisible ? (index < 3 ? 1 : 0) : 0,
-    };
-  },
-);
+const GUTTER = 8;
+const PEEK_GUTTER = 16;
+const DEFAULT_OFFSET = 8;
+const SCALE_FACTOR = 0.05;
+const MAX_TOASTS = 3;
 
-const ToastWrapper = React.forwardRef<HTMLDivElement, ToastWrapperProps>(
-  ({ style, isVisible, children, index }, ref) => {
-    return (
-      <StyledToastWrapper index={index} ref={ref} isVisible={isVisible} style={style}>
-        {children}
-      </StyledToastWrapper>
-    );
+const StyledToastWrapper = styled.div<{ isVisible: boolean; index: number; isExpanded: boolean }>(
+  ({ isVisible, index, isExpanded }) => {
+    // const activeStyle = isVisible
+    //   ? ({
+    //       zIndex: 9999,
+    //       '& > *': {
+    //         pointerEvents: 'auto',
+    //       },
+    //     } as const)
+    //   : ({} as const);
+    const indexLimit = isExpanded ? 1 : index < 3 + MAX_TOASTS ? 1 : 0;
+    const isUnderMax = index < MAX_TOASTS;
+
+    return {
+      // ...activeStyle,
+      '& > *': {
+        pointerEvents: isExpanded ? 'auto' : isUnderMax ? 'auto' : undefined,
+      },
+      opacity: isVisible ? indexLimit : 0,
+    };
   },
 );
 
@@ -72,63 +75,38 @@ const getPositionStyle = (
   };
 };
 
-const DEFAULT_OFFSET = 16;
-
 const MyToaster: React.FC<ToasterProps> = ({
   reverseOrder,
   position = 'top-center',
   toastOptions,
-  gutter,
-  // children,
   containerStyle,
   containerClassName,
 }) => {
   const [isMouseOver, setIsMouseOver] = React.useState(false);
   const { toasts, handlers } = useToaster(toastOptions);
   const [frontToastHeight, setFrontToastHeight] = React.useState(0);
-  const scrollViewRef = React.useRef<HTMLDivElement>(null);
-  const [totalHeight, setTotalHeight] = React.useState(0);
-  const prevHeight = usePrevious(totalHeight);
+  const isExpanded = isMouseOver;
 
   React.useLayoutEffect(() => {
-    setFrontToastHeight(toasts.find((t) => t.visible)?.height ?? 0);
+    // find the first toast which is visible
+    setFrontToastHeight(
+      toasts.find((t, index) => t.visible && index === MAX_TOASTS - 1)?.height ?? 0,
+    );
   }, [toasts]);
 
-  React.useLayoutEffect(() => {
-    const calculated =
-      toasts.reduce((prev, curr) => {
-        return prev + (curr.height ?? 0);
-      }, 0) +
-      toasts.length * DEFAULT_OFFSET;
+  // calculate total height of all toasts
+  const totalHeight = React.useMemo(() => {
+    return (
+      toasts
+        // only consider visible toasts
+        .filter((toast) => toast.visible)
+        .reduce((prevHeight, toast) => prevHeight + (toast.height ?? 0), 0) +
+      toasts.length * DEFAULT_OFFSET
+    );
+  }, [toasts]);
 
-    if (!prevHeight) {
-      setTotalHeight(calculated);
-      return;
-    }
-    if (calculated > prevHeight) {
-      setTotalHeight(calculated);
-    }
-  }, [prevHeight, toasts]);
-
-  React.useLayoutEffect(() => {
-    if (scrollViewRef.current && !isMouseOver) {
-      scrollViewRef.current.scrollTo({
-        top: totalHeight,
-      });
-    }
-  }, [isMouseOver, toasts.length, totalHeight]);
-  const calculateOffset = React.useCallback(
-    (
-      toast: Toast,
-      index: number,
-      opts?: {
-        reverseOrder?: boolean;
-        gutter?: number;
-        defaultPosition?: ToastPosition;
-      },
-    ) => {
-      const { reverseOrder = false, gutter = 16, defaultPosition } = opts || {};
-
+  const calculateYPosition = React.useCallback(
+    ({ toast, reverseOrder = false, index, defaultPosition }: CalculateYPositionProps) => {
       const relevantToasts = toasts.filter(
         (t) => (t.position || defaultPosition) === (toast.position || defaultPosition) && t.height,
       );
@@ -136,15 +114,26 @@ const MyToaster: React.FC<ToasterProps> = ({
       const toastsBefore = relevantToasts.filter((toast, i) => i < toastIndex && toast.visible)
         .length;
 
+      const scale =
+        index < MAX_TOASTS ? 1 : Math.max(0.7, 2 - ((toastsBefore - 1) * SCALE_FACTOR + 1));
+      // y position of toast,
       const offset = relevantToasts
-        .filter((t) => t.visible)
+        .filter((toast) => toast.visible)
         .slice(...(reverseOrder ? [toastsBefore + 1] : [0, toastsBefore]))
-        .reduce((acc) => acc + (toastsBefore || 0) + gutter, 0);
-      const scale = 2 - (toastsBefore * 0.05 + 1);
+        .reduce((acc, toast, index) => {
+          const minToastsToShow = index < MAX_TOASTS - 1;
+          const gutter = minToastsToShow ? GUTTER : PEEK_GUTTER;
+          if (isExpanded) {
+            return acc + (toast.height || 0) + GUTTER;
+          }
+          // for the first 3 toasts we don't need to peek, instead we will add the height of those toasts as is
+          const threeHeights = minToastsToShow ? toast.height : 0;
+          return acc + (toastsBefore + threeHeights!) + gutter;
+        }, 0);
 
-      return { offset, scale };
+      return { offset, scale: isExpanded ? 1 : scale };
     },
-    [toasts],
+    [isExpanded, toasts],
   );
 
   return (
@@ -170,34 +159,58 @@ const MyToaster: React.FC<ToasterProps> = ({
         handlers.endPause();
       }}
     >
-      {toasts.map((t, index) => {
-        const toastPosition = t.position ?? position;
-        const { offset, scale } = calculateOffset(t, index, {
+      <div
+        style={{
+          width: '100%',
+          pointerEvents: isExpanded ? 'all' : 'none',
+          height: isExpanded ? totalHeight : frontToastHeight,
+          bottom: 0,
+          left: 0,
+          position: 'absolute',
+          zIndex: -100,
+        }}
+      />
+      {toasts.map((toast, index) => {
+        const toastPosition = toast.position ?? position;
+        const { offset, scale } = calculateYPosition({
+          toast,
+          isExpanded,
           reverseOrder,
-          gutter,
+          index,
         });
         const positionStyle = getPositionStyle(toastPosition, offset, scale);
+        // recalculate height of toast
         const ref = (el: HTMLDivElement) => {
-          if (el && typeof t.height !== 'number') {
+          if (el && typeof toast.height !== 'number') {
             const height = el.getBoundingClientRect().height;
-            handlers.updateHeight(t.id, height);
+            handlers.updateHeight(toast.id, height);
           }
         };
 
+        // isExpanded ? toast.height : index > 0 ? frontToastHeight : toast.height
+        let toastHeight = toast.height;
+        if (index > MAX_TOASTS - 1) {
+          toastHeight = frontToastHeight;
+        }
+        if (isExpanded) {
+          toastHeight = toast.height;
+        }
+
         return (
-          <ToastWrapper
+          <StyledToastWrapper
+            key={toast.id}
             index={index}
             ref={ref}
-            key={t.id}
+            isExpanded={isExpanded}
+            isVisible={toast.visible}
             style={{
               ...positionStyle,
               zIndex: -1 * index,
-              height: index > 0 ? frontToastHeight : t.height,
+              height: toastHeight,
             }}
-            isVisible={t.visible}
           >
-            {resolveValue(t.message, { ...t, index })}
-          </ToastWrapper>
+            {resolveValue(toast.message, { ...toast, index })}
+          </StyledToastWrapper>
         );
       })}
     </div>

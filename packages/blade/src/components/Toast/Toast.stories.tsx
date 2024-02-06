@@ -63,7 +63,7 @@ const ToastTemplate: StoryFn<typeof ToastComponent> = () => {
             content:
               Math.random() > 0.5
                 ? 'Payment Successful'
-                : 'Long long long text with some important information that needs to be conveyed to the user',
+                : 'Long long long text with some ajd ja dja djawjd jawdjawjdnja ndjaw dnjanjdnajwdn janjd najn djanwdj najd njawndjanjdn jadnjanwjd njadnja ndjnaj dn important information that needs to be conveyed to the user',
             // @ts-expect-error
             color: ['positive', 'negative', 'warning', 'information', 'neutral'][
               Math.floor(Math.random() * 5)

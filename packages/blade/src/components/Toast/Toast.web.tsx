@@ -64,6 +64,7 @@ const fadeOut = keyframes`
 const AnimatedFade = styled(BaseBox)<{ animationType: FlattenSimpleInterpolation | null }>(
   ({ animationType }) => {
     return css`
+      overflow: hidden;
       ${animationType}
     `;
   },
