@@ -6,28 +6,32 @@ import {
 } from '@create-figma-plugin/utilities';
 
 import {
-  BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS,
-  BLADE_BOX_BORDER_COLOR_STYLE_IDS,
+  BLADE_BOX_BACKGROUND_COLOR_VARIABLE_IDS,
+  BLADE_BOX_BORDER_COLOR_VARIABLE_IDS,
   BLADE_COMPONENT_IDS,
   BLADE_COMPONENT_IDS_HAVING_SLOT,
   BLADE_TEXT_COLOR_STYLE_IDS,
-  BLADE_TEXT_STYLE_IDS,
+  BLADE_TEXT_TYPEFACE_STYLE_IDS,
+  BLADE_EFFECT_STYLE_IDS,
 } from './bladeLibraryConstants';
 import { sendAnalytics } from './utils/sendAnalytics';
+import { getComponentKeyToNameMap } from './utils/getComponentKeyToNameMap';
 
 type CoverageMetrics = {
   bladeComponents: number;
   bladeTextStyles: number;
   bladeColorStyles: number;
+  // bladeEffectStyles: number;
+  nonBladeComponents: number;
   nonBladeTextStyles: number;
   nonBladeColorStyles: number;
-  nonBladeComponents: number; // rename to non-blade components
-  totalLayers: number; // rename to total layers
+  // nonBladeEffectStyles: number;
+  totalLayers: number;
   bladeCoverage: number;
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
-const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME', 'ELLIPSE', 'INSTANCE'];
+const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'ELLIPSE', 'INSTANCE'];
 const nonBladeHighlighterNodes: BaseNode[] = [];
 const bladeCoverageCards: BaseNode[] = [];
 
@@ -37,7 +41,7 @@ const highlightNonBladeNode = (node: SceneNode, desc?: string): void => {
     .toUpperCase()
     .charAt(0)
     .toUpperCase()}${node.type.toLowerCase().slice(1)}`;
-  highlighterBox.name = `Desc: ${desc}, Type: ${nodeType}, Name: ${node.name}`;
+  highlighterBox.name = `${desc}, Type: ${nodeType}, Name: ${node.name}`;
   // selection node just gives the x and y relative to the frame we need WRT canvas hence, we need to use absoluteTransform prop
   highlighterBox.x = node.absoluteTransform[0][2] - 1;
   highlighterBox.y = node.absoluteTransform[1][2] - 1;
@@ -113,17 +117,14 @@ const renderCoverageCard = async ({
     }
 
     let coverageColorIntent = BLADE_INTENT_COLOR_KEYS.negative.id;
-    let bladeCoverageType = 'Very Low 😭';
+    let bladeCoverageType = 'Below 90% 😪';
     const PROGRESS_BAR_MAX_WIDTH = 254;
     const bladeCoverageProgress = (bladeCoverage / 100) * PROGRESS_BAR_MAX_WIDTH;
 
     // calculate coverage type and intent colors for coverage
-    if (bladeCoverage > 70) {
-      bladeCoverageType = 'Good 😊';
+    if (bladeCoverage > 90) {
+      bladeCoverageType = `Good 🎉`;
       coverageColorIntent = BLADE_INTENT_COLOR_KEYS.positive.id;
-    } else if (bladeCoverage > 50 && bladeCoverage < 70) {
-      bladeCoverageType = 'Low 😥';
-      coverageColorIntent = BLADE_INTENT_COLOR_KEYS.notice.id;
     }
 
     coverageCardInstance.setProperties({
@@ -164,9 +165,11 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
   let bladeComponents = 0;
   let bladeTextStyles = 0;
   let bladeColorStyles = 0;
+  // let bladeEffectStyles = 0;
   let nonBladeComponents = 0;
   let nonBladeTextStyles = 0;
   let nonBladeColorStyles = 0;
+  // let nonBladeEffectStyles = 0;
   let totalLayers = 0;
 
   try {
@@ -181,6 +184,11 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         if (!traversedNode.visible) {
           return;
         }
+
+        if (traversedNode.type === 'INSTANCE') {
+          console.log(getComponentKeyToNameMap(traversedNode));
+        }
+
         if (
           traversedNode.type === 'INSTANCE' &&
           (BLADE_COMPONENT_IDS.includes(
@@ -262,7 +270,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 if (/\s/.test(character)) {
                   return true;
                 }
-                return BLADE_TEXT_STYLE_IDS.includes(
+                return BLADE_TEXT_TYPEFACE_STYLE_IDS.includes(
                   (traversedNode.getRangeTextStyleId(index, index + 1) as string).split(',')[0],
                 );
               });
@@ -276,7 +284,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           } else {
             traversedNodeTextStyleId = traversedNode?.textStyleId?.split(',')[0];
 
-            if (BLADE_TEXT_STYLE_IDS.includes(traversedNodeTextStyleId ?? '')) {
+            if (BLADE_TEXT_TYPEFACE_STYLE_IDS.includes(traversedNodeTextStyleId ?? '')) {
               bladeTextStyles++;
             } else {
               nonBladeTextStyles++;
@@ -330,7 +338,8 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
 
           // this check is for typography components, if the typography uses color and text both from blade styles then they are typography blade components
           if (
-            (isMixedTextStyleOfBlade || BLADE_TEXT_STYLE_IDS.includes(traversedNodeTextStyleId)) &&
+            (isMixedTextStyleOfBlade ||
+              BLADE_TEXT_TYPEFACE_STYLE_IDS.includes(traversedNodeTextStyleId)) &&
             (isTextRangeFillsOfBlade ||
               BLADE_TEXT_COLOR_STYLE_IDS.includes(traversedNodeColorVariableId))
           ) {
@@ -351,6 +360,16 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             NODES_SKIP_FROM_COVERAGE.push('RECTANGLE');
           }
 
+          const hasEffects = traversedNode.effects?.length;
+          const hasBladeEffectStyles = BLADE_EFFECT_STYLE_IDS.includes(traversedNode.effectStyleId);
+
+          if (hasEffects && hasBladeEffectStyles) {
+            // bladeEffectStyles++;
+          } else if (hasEffects && !hasBladeEffectStyles) {
+            // nonBladeEffectStyles++;
+            highlightNonBladeNode(traversedNode, `Effects not from Blade's elevation styles`);
+          }
+
           // replace with variables
           const hasFillsVariable = traversedNode.boundVariables?.fills?.length;
           const hasStrokesVariable = traversedNode.boundVariables?.strokes?.length;
@@ -360,7 +379,9 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               const traversedNodeColorVariableId = traversedNode.boundVariables.strokes[0].id.split(
                 '/',
               )[0];
-              if (BLADE_BOX_BORDER_COLOR_STYLE_IDS.includes(traversedNodeColorVariableId ?? '')) {
+              if (
+                BLADE_BOX_BORDER_COLOR_VARIABLE_IDS.includes(traversedNodeColorVariableId ?? '')
+              ) {
                 bladeColorStyles++;
               } else {
                 nonBladeColorStyles++;
@@ -375,7 +396,9 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
               const traversedNodeFillStyleId = traversedNode.boundVariables.fills[0].id.split(
                 '/',
               )[0];
-              if (BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS.includes(traversedNodeFillStyleId ?? '')) {
+              if (
+                BLADE_BOX_BACKGROUND_COLOR_VARIABLE_IDS.includes(traversedNodeFillStyleId ?? '')
+              ) {
                 bladeColorStyles++;
               } else {
                 nonBladeColorStyles++;
@@ -390,8 +413,48 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           }
         }
 
+        /** check if frame is being used as a custom component
+         * has fills?
+         * has strokes?
+         * has effects?
+         * if any of the above is true then it's a custom component
+         * */
+        const ignoreInstanceFrameNodeNames = [
+          'root',
+          'wrapper',
+          'bottom-sheet-container',
+          'accordion-header',
+          'Summary Row',
+        ];
         if (
-          ![...NODES_SKIP_FROM_COVERAGE, 'TEXT', 'LINE', 'RECTANGLE'].includes(
+          traversedNode.type === 'FRAME' &&
+          !ignoreInstanceFrameNodeNames.includes(traversedNode.name) &&
+          getParentNode(traversedNode)?.type !== 'PAGE'
+        ) {
+          const hasStrokes =
+            traversedNode?.boundVariables?.strokes?.length ?? traversedNode.strokes.length;
+          const hasEffects = traversedNode.effects?.length || traversedNode.effectStyleId;
+          const hasNonMixedFills =
+            traversedNode.fills !== figma.mixed && traversedNode.fills.length;
+          const hasFills =
+            traversedNode?.boundVariables?.fills?.length ??
+            hasNonMixedFills ??
+            traversedNode.fillStyleId;
+          if (
+            Boolean(hasStrokes || hasEffects || hasFills) &&
+            !Boolean(traversedNode.fills === figma.mixed)
+          ) {
+            // this is non-blade component error
+            // push the frame layer to be included in component count
+            nonBladeComponents++;
+            highlightNonBladeNode(traversedNode, 'Use relevant Blade component');
+          } else {
+            NODES_SKIP_FROM_COVERAGE.push('FRAME');
+          }
+        }
+
+        if (
+          ![...NODES_SKIP_FROM_COVERAGE, 'TEXT', 'LINE', 'RECTANGLE', 'FRAME'].includes(
             traversedNode.type,
           ) &&
           getParentNode(traversedNode)?.type !== 'PAGE'
@@ -401,19 +464,23 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
 
         if (
           getParentNode(traversedNode)?.type !== 'PAGE' &&
-          !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type)
+          !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type) &&
+          // if the frame instances are from Blade's components then we don't want to include them in the count because these are components with slots
+          !ignoreInstanceFrameNodeNames.includes(traversedNode.name)
         ) {
           // exclude the main frame itself from the count to remove false negatives
           totalLayers++;
         }
 
         // remove rectangle node index for next iteration because we don't want to remove all the rectangle nodes, only the image ones
-        const rectangleImageNodeIndex = NODES_SKIP_FROM_COVERAGE.findIndex(
-          (nodeName) => nodeName === 'RECTANGLE',
-        );
-        if (rectangleImageNodeIndex !== -1) {
-          NODES_SKIP_FROM_COVERAGE.splice(rectangleImageNodeIndex, 1);
-        }
+        // remove frame node index for next iteration because we don't want to remove layout frame nodes, only the one that has being used as card
+        const nodesToBeRemoved = ['RECTANGLE', 'FRAME'];
+        nodesToBeRemoved.forEach((nodeName) => {
+          const nodeIndex = NODES_SKIP_FROM_COVERAGE.findIndex((node) => node === nodeName);
+          if (nodeIndex !== -1) {
+            NODES_SKIP_FROM_COVERAGE.splice(nodeIndex, 1);
+          }
+        });
       },
       (traversedNode) => {
         // callback to stopTraversal for children of a node

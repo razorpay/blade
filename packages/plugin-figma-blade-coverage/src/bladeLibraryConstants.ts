@@ -4,10 +4,10 @@ export const bladeThemeData = {
       key: '1e18a66e07ce9830b6a4e440a9b7c02ae55d069b',
     },
     'Accordion Group': {
-      key: 'a776cbd4cade27a19e056919a098bbe0dc5745f0',
+      key: 'f2c9831bc8da8ca8bdfd4594c76099a707c5b9fe',
     },
     'Accordion Item': {
-      key: '3902aef3c76b94bf4a7f41c083deb8f6ecbfa052',
+      key: 'db5e8797115a4badc366e4bb155f8caca290730c',
     },
     'AccordionHeader-Base': {
       key: '4ab4fdf876a4783349814b2fcfa9fab1b7e2d843',
@@ -40,13 +40,13 @@ export const bladeThemeData = {
       key: '063524ef7b32522cdc65d22ddf525b6a4ec0640c',
     },
     Card: {
-      key: 'dc6406818c4669b367f2c08d23744d75a48cd806',
+      key: '431b3364429e3418780323f3e3c17da3efd9e9c2',
     },
     '_Card-Header': {
-      key: '278896f60273caddd021e079730dc613697e1b4a',
+      key: '7674f99a82d73e6e2ba90e9c60dc3a8f472dce25',
     },
     '_Card-Footer': {
-      key: '79d7da3514b2287d7db435f3e77cf2b7e48f4e1c',
+      key: 'a42de59079bf53b29c3686e3e4b2708593745ec6',
     },
     Carousel: {
       key: '7e472b0cdda8f1cc8fad4b06d5f584dcde2ffe1e',
@@ -115,10 +115,13 @@ export const bladeThemeData = {
     'Popover/Footer': {
       key: 'a63e1855eaaae27bf7cd60efe0aa7475dee14158',
     },
+    'Popover/Arrow': {
+      key: '6dc8d1344154858c847cb35b4524e153c4fd24d5',
+    },
 
     // Feedback Components
     Alert: {
-      key: '3907e42380851a0648ed6d34aba02f9d540d053d',
+      key: 'c6d39848e6157c4f6936aabb7275c09f9607a17d',
     },
     Badge: {
       key: 'ebcbd4a499165aba97710a7f06e169992411af93',
@@ -142,9 +145,6 @@ export const bladeThemeData = {
     },
     Text: {
       key: '61339dd51608d6de7b898abc2aa2ff7bb1b58cf3',
-    },
-    Title: {
-      key: '856b8daacf67b0dda92fca150324a1ceb888cc0f',
     },
     Heading: {
       key: 'c91a7dfbe196427235d83d1f2d0616cf9d68adb0',
@@ -170,16 +170,16 @@ export const bladeThemeData = {
       key: 'acf3eb63bacc1f1ed3d20adda0987e5b79e3b39c',
     },
     'Radio-Group': {
-      key: 'a57c8eca46440b6aa34b51d1d177c6921c1bcea8',
+      key: 'cf97c2d61fde8367bd5e905e8048728069d32e0b',
     },
-    'Radio-Button': {
-      key: 'b89d299d42a6118a2f6e225ca6b2bc89ee3b7c0a',
+    Radio: {
+      key: '4d4d734faec8db9bb096b761621b884eb8d0a203',
     },
     'Checkbox-Group': {
-      key: 'bec7d287193c3745a8319e83430ba77807c931fa',
+      key: 'b54c74fa9efafec9e7c93c0f5afe6ef52ed85d6b',
     },
     Checkbox: {
-      key: '67cb235833f1326ec27c51540ecc24566f986263',
+      key: '1152ee3ac26900ac71a00af4d7a2531fd1ad9240',
     },
     'Chip-Group': {
       key: 'eff67f34d291eac58798fb832066fc1aefb2191f',
@@ -194,6 +194,60 @@ export const bladeThemeData = {
     },
     IconButton: {
       key: 'da16ecb1aaad66d8e93a96a8f01ed231f623f1f9',
+    },
+
+    //Table
+    Table: {
+      key: 'c0b5199fa9b8db4c034fd57c234af2e3aff46d9c',
+    },
+    'Table Header-Base': {
+      key: '397a351b6c7abd7236f1c6f6a139eea566b4267e',
+    },
+    'Table Footer-Base': {
+      key: 'eecb37197a8f2c9dafc8c20ea0051ed757289c28',
+    },
+    'Table Cell-Base': {
+      key: 'edb97728f381c68a7d282a113123b95bba82f6de',
+    },
+    'Table Header-Cell-Base': {
+      key: '1847d4740fc071487c7f3d874410829b94aa54e5',
+    },
+    'Table Row': {
+      key: '3f40331fcec055d8da832784d441e59c3a4ca52b',
+    },
+    'Table Column': {
+      key: '22144313b38fb21ad10e7b38272e770a6835e811',
+    },
+    'Table Header-Row': {
+      key: '79811d1c737a253f18b7ee5d601b6f38507e2712',
+    },
+    Pagination: {
+      key: '28bda99a354011886eafe8fab61bfea9bf0614de',
+    },
+
+    // Spotlight
+    'Spotlight Popover': {
+      key: 'f5f1ef488cc172b8375d9dfa8b06d1cdebd19b53',
+    },
+    'Spotlight Popover/Header': {
+      key: 'a3abd8eb480d451590c9e8a0529eb3f05fd2973c',
+    },
+    'Spotlight Popover/Footer': {
+      key: '63c71b476460be6a4ccfdc6fc4a659566d46523d',
+    },
+    'Spotlight Popover/Arrow': {
+      key: '3991460bbbe1d0fb22fd45ed8672350a8be592aa',
+    },
+
+    // Utility Components
+    'Dashboard / Sidebar': {
+      key: '938574fa23373c6a9a9a75eb19c2224ad40ff238',
+    },
+    Browsers: {
+      key: '89affaa18c972d661e866cb1f5c3882424d539f6',
+    },
+    'Wordmarks-Logos': {
+      key: 'e792328de5953d34fcbb749c3569fb46061dad6a',
     },
 
     // icons
@@ -698,9 +752,7 @@ export const bladeThemeData = {
     cloud: {
       key: '927c8cd69bb02767a457b38143e7fa615be17938',
     },
-    'Dashboard / Sidebar': {
-      key: '938574fa23373c6a9a9a75eb19c2224ad40ff238',
-    },
+
     bluetooth: {
       key: '939d76d52579880e2f89f14e9c24f8389a78f08f',
     },
@@ -1015,12 +1067,6 @@ export const bladeThemeData = {
     },
     invoices: {
       key: 'fd4d573099d6f1d691cb3ed6c43124722326659a',
-    },
-    Browsers: {
-      key: '89affaa18c972d661e866cb1f5c3882424d539f6',
-    },
-    'Wordmarks-Logos': {
-      key: 'e792328de5953d34fcbb749c3569fb46061dad6a',
     },
   },
   colorStyles: {
@@ -1414,7 +1460,7 @@ export const bladeThemeData = {
     'Elevation/lowRaised': 'S:0e93e8cb4c180708ece288bc717fd354aaf01e4d',
     'Elevation/midRaised': 'S:a4c06c124f87ec273f7976cac87bc563cf2f86bf',
     'Elevation/highRaised': 'S:83e8795c0548afa8e1e99ecdcaffa261a112a57d',
-    'Eleation/_bottomSheet': 'S:43bf80562d506bf0541a1237233edd455bbebb7a',
+    // 'Eleation/_bottomSheet': 'S:43bf80562d506bf0541a1237233edd455bbebb7a', // private style
   },
 };
 
@@ -1438,13 +1484,16 @@ export const BLADE_COMPONENT_IDS_HAVING_SLOT = [
   bladeThemeData.components.Modal,
   bladeThemeData.components['Modal/Footer'],
   bladeThemeData.components.Popover,
+  bladeThemeData.components['Spotlight Popover'],
+  bladeThemeData.components.Collapsible,
+  bladeThemeData.components.Table,
 ]
   .map((component) => component.key)
   .flat();
 
-export const BLADE_TEXT_STYLE_IDS = Object.values(bladeThemeData.textStyles);
+export const BLADE_EFFECT_STYLE_IDS = Object.values(bladeThemeData.effectStyles);
 
-export const BLADE_COLOR_STYLE_IDS = Object.values(bladeThemeData.colorStyles);
+export const BLADE_TEXT_TYPEFACE_STYLE_IDS = Object.values(bladeThemeData.textStyles);
 
 const allowedTextColorTokenNames = ['surface/text', 'feedback/text'];
 export const BLADE_TEXT_COLOR_STYLE_IDS = Object.entries(bladeThemeData.colorStyles)
@@ -1460,7 +1509,7 @@ export const BLADE_TEXT_COLOR_STYLE_IDS = Object.entries(bladeThemeData.colorSty
   .filter(Boolean);
 
 const allowedBackgroundColorTokenNames = ['surface/background'];
-export const BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS = Object.entries(bladeThemeData.colorStyles)
+export const BLADE_BOX_BACKGROUND_COLOR_VARIABLE_IDS = Object.entries(bladeThemeData.colorStyles)
   .map(([colorVariableTokenName, colorVariableKey]) => {
     return allowedBackgroundColorTokenNames.reduce<string[]>((acc, backgroundTokenName) => {
       if (colorVariableTokenName.includes(backgroundTokenName)) {
@@ -1473,7 +1522,7 @@ export const BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS = Object.entries(bladeThemeDat
   .filter(Boolean);
 
 const allowedBorderColorTokenNames = ['surface/border'];
-export const BLADE_BOX_BORDER_COLOR_STYLE_IDS = Object.entries(bladeThemeData.colorStyles)
+export const BLADE_BOX_BORDER_COLOR_VARIABLE_IDS = Object.entries(bladeThemeData.colorStyles)
   .map(([colorVariableTokenName, colorVariableKey]) => {
     return allowedBorderColorTokenNames.reduce((_, borderTokenName) => {
       if (colorVariableTokenName.includes(borderTokenName)) {
