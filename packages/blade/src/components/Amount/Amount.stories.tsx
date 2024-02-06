@@ -224,7 +224,7 @@ StrikeThrough.args = {
 };
 StrikeThrough.storyName = 'Strike Through';
 
-// TODO: Replace below with i18nify getDefaultLocales
+// TODO: Replace below with i18nify getDefaultLocales API
 const localeList = [
   {
     country: 'India',
@@ -248,7 +248,7 @@ const localeList = [
   },
 ];
 
-const I18nAmountWrapper = (args: AmountProps) => {
+const I18nAmountWrapper = (args: AmountProps): JSX.Element => {
   const { setI18nState } = useI18nContext();
   const [currency, setCurrency] = useState('INR');
 
@@ -256,24 +256,6 @@ const I18nAmountWrapper = (args: AmountProps) => {
     <>
       <AmountComponent {...args} currency={currency as AmountProps['currency']} />
       <Divider marginY="spacing.4" marginTop="spacing.8" />
-      <Dropdown selectionType="single">
-        <SelectInput label="Select locale" />
-        <DropdownOverlay>
-          <ActionList>
-            {localeList.map((item) => (
-              <ActionListItem
-                key={item.locale}
-                title={`${item.country}(${item.locale})`}
-                value={item.locale}
-                onClick={({ name }) => {
-                  setI18nState({ locale: name });
-                }}
-              />
-            ))}
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-      <Divider marginY="spacing.4" />
       <Dropdown selectionType="single">
         <SelectInput label="Select currency" />
         <DropdownOverlay>
@@ -291,6 +273,24 @@ const I18nAmountWrapper = (args: AmountProps) => {
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
+      <Divider marginY="spacing.4" />
+      <Dropdown selectionType="single">
+        <SelectInput label="Select locale" />
+        <DropdownOverlay>
+          <ActionList>
+            {localeList.map((item) => (
+              <ActionListItem
+                key={item.locale}
+                title={`${item.country}(${item.locale})`}
+                value={item.locale}
+                onClick={({ name }) => {
+                  setI18nState?.({ locale: name });
+                }}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
     </>
   );
 };
@@ -298,7 +298,7 @@ const I18nAmountWrapper = (args: AmountProps) => {
 const I18nAmountTemplate: StoryFn<typeof AmountComponent> = (args) => {
   return (
     <I18nProvider>
-      <BaseBox justifyContent="flex-start" maxHeight="300px" overflowY="auto">
+      <BaseBox justifyContent="flex-start" minHeight="300px" overflowY="auto">
         <BaseBox
           display="flex"
           alignItems="baseline"
