@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import React from 'react';
-import type { CurrencyCodeType } from '@razorpay/i18nify-js';
-import { formatNumber, formatNumberByParts } from '@razorpay/i18nify-js';
+import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
+import { formatNumber, formatNumberByParts } from '@razorpay/i18nify-js/currency';
 import type { AmountTypeProps } from './amountTokens';
 import { normalAmountSizes, subtleFontSizes, amountLineHeights } from './amountTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
@@ -187,7 +187,6 @@ export const formatAmountWithSuffix = ({
         const formatted = formatNumber(value, {
           intlOptions: {
             notation: 'compact',
-            roundingMode: 'floor',
           },
         });
         return {
