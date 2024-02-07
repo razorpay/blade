@@ -190,7 +190,6 @@ const MyToaster: React.FC<ToasterProps> = ({
           left: 0,
           position: 'absolute',
           zIndex: -100,
-          backgroundColor: 'red',
         }}
       />
       {toasts.map((toast, index) => {
