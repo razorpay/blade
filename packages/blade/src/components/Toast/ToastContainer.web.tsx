@@ -29,15 +29,6 @@ const StyledToastWrapper = styled.div<{
   isExpanded: boolean;
   isPromotional: boolean;
 }>(({ isVisible, index, isExpanded, isPromotional }) => {
-  // const activeStyle = isVisible
-  //   ? ({
-  //       zIndex: 9999,
-  //       '& > *': {
-  //         pointerEvents: 'auto',
-  //       },
-  //     } as const)
-  //   : ({} as const);
-
   let opacity = isVisible ? 1 : 0;
   if (index < PEEKS + MAX_TOASTS) {
     opacity = 1;
@@ -46,12 +37,10 @@ const StyledToastWrapper = styled.div<{
   } else {
     opacity = 0;
   }
-  const isUnderMax = index < MAX_TOASTS;
 
   return {
-    // ...activeStyle,
     '& > *': {
-      pointerEvents: isExpanded || isPromotional ? 'auto' : isUnderMax ? 'auto' : undefined,
+      pointerEvents: opacity === 1 ? 'auto' : 'none',
     },
     opacity,
   };
@@ -201,6 +190,7 @@ const MyToaster: React.FC<ToasterProps> = ({
           left: 0,
           position: 'absolute',
           zIndex: -100,
+          backgroundColor: 'red',
         }}
       />
       {toasts.map((toast, index) => {
