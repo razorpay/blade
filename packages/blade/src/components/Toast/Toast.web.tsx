@@ -154,9 +154,13 @@ const Toast = ({
         </Box>
       ) : null}
       <Box display="flex" flexDirection="column" gap="spacing.3">
-        <Text size="small" color="surface.text.staticWhite.normal">
-          {id} - {content}
-        </Text>
+        {isPromotional ? (
+          content
+        ) : (
+          <Text as="span" size="small" color="surface.text.staticWhite.normal">
+            {content}
+          </Text>
+        )}
         {isPromotional && actionButton}
       </Box>
       <Box alignSelf="start" marginLeft="auto" display="flex" gap="spacing.4">

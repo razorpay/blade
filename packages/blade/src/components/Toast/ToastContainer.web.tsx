@@ -16,35 +16,46 @@ type CalculateYPositionProps = {
 };
 
 const GUTTER = 8;
-const PEEK_GUTTER = 16;
+const PEEK_GUTTER = 14;
 const DEFAULT_OFFSET = 8;
 const SCALE_FACTOR = 0.05;
 const MAX_TOASTS = 1;
 const MIN_TOASTS = 3;
 const PEEKS = 3;
 
-const StyledToastWrapper = styled.div<{ isVisible: boolean; index: number; isExpanded: boolean }>(
-  ({ isVisible, index, isExpanded }) => {
-    // const activeStyle = isVisible
-    //   ? ({
-    //       zIndex: 9999,
-    //       '& > *': {
-    //         pointerEvents: 'auto',
-    //       },
-    //     } as const)
-    //   : ({} as const);
-    const indexLimit = isExpanded ? 1 : index < PEEKS + MAX_TOASTS ? 1 : 0;
-    const isUnderMax = index < MAX_TOASTS;
+const StyledToastWrapper = styled.div<{
+  isVisible: boolean;
+  index: number;
+  isExpanded: boolean;
+  isPromotional: boolean;
+}>(({ isVisible, index, isExpanded, isPromotional }) => {
+  // const activeStyle = isVisible
+  //   ? ({
+  //       zIndex: 9999,
+  //       '& > *': {
+  //         pointerEvents: 'auto',
+  //       },
+  //     } as const)
+  //   : ({} as const);
 
-    return {
-      // ...activeStyle,
-      '& > *': {
-        pointerEvents: isExpanded ? 'auto' : isUnderMax ? 'auto' : undefined,
-      },
-      opacity: isVisible ? indexLimit : 0,
-    };
-  },
-);
+  let opacity = isVisible ? 1 : 0;
+  if (index < PEEKS + MAX_TOASTS) {
+    opacity = 1;
+  } else if (isPromotional || isExpanded) {
+    opacity = 1;
+  } else {
+    opacity = 0;
+  }
+  const isUnderMax = index < MAX_TOASTS;
+
+  return {
+    // ...activeStyle,
+    '& > *': {
+      pointerEvents: isExpanded || isPromotional ? 'auto' : isUnderMax ? 'auto' : undefined,
+    },
+    opacity,
+  };
+});
 
 const getPositionStyle = (
   position: ToastPosition,
@@ -77,6 +88,11 @@ const getPositionStyle = (
   };
 };
 
+function isPromotionalToast(toast: Toast) {
+  // @ts-expect-error
+  return toast.type == 'promotional';
+}
+
 const MyToaster: React.FC<ToasterProps> = ({
   reverseOrder,
   position = 'top-center',
@@ -87,14 +103,23 @@ const MyToaster: React.FC<ToasterProps> = ({
   const [isMouseOver, setIsMouseOver] = React.useState(false);
   const { toasts, handlers } = useToaster(toastOptions);
   const [frontToastHeight, setFrontToastHeight] = React.useState(0);
+
+  const infoToasts = React.useMemo(
+    () => toasts.filter((toast) => !isPromotionalToast(toast) && toast.visible),
+    [toasts],
+  );
+  const promoToasts = React.useMemo(
+    () => toasts.filter((toast) => isPromotionalToast(toast) && toast.visible),
+    [toasts],
+  );
+  const hasPromoToast = promoToasts.length > 0;
+  const promoToastHeight = promoToasts[0]?.height ?? 0;
   const isExpanded = isMouseOver || toasts.length <= MIN_TOASTS;
 
   React.useLayoutEffect(() => {
     // find the first toast which is visible
-    setFrontToastHeight(
-      toasts.find((t, index) => t.visible && index === MAX_TOASTS - 1)?.height ?? 0,
-    );
-  }, [toasts]);
+    setFrontToastHeight(infoToasts.find((t, index) => t.visible && index === 0)?.height ?? 0);
+  }, [infoToasts]);
 
   // calculate total height of all toasts
   const totalHeight = React.useMemo(() => {
@@ -109,32 +134,39 @@ const MyToaster: React.FC<ToasterProps> = ({
 
   const calculateYPosition = React.useCallback(
     ({ toast, reverseOrder = false, index, defaultPosition }: CalculateYPositionProps) => {
-      const relevantToasts = toasts.filter(
+      const relevantToasts = infoToasts.filter(
         (t) => (t.position || defaultPosition) === (toast.position || defaultPosition) && t.height,
       );
       const toastIndex = relevantToasts.findIndex((t) => t.id === toast.id);
+      // number of toasts before this toast
       const toastsBefore = relevantToasts.filter((toast, i) => i < toastIndex && toast.visible)
         .length;
 
-      const scale = index < MAX_TOASTS ? 1 : Math.max(0.7, 2 - (toastsBefore * SCALE_FACTOR + 1));
+      let scale = index < MAX_TOASTS ? 1 : Math.max(0.7, 2 - (toastsBefore * SCALE_FACTOR + 1));
       // y position of toast,
-      const offset = relevantToasts
+      let offset = relevantToasts
         .filter((toast) => toast.visible)
         .slice(...(reverseOrder ? [toastsBefore + 1] : [0, toastsBefore]))
-        .reduce((acc, toast, index) => {
-          const minToastsToShow = index < MAX_TOASTS - 1;
-          const gutter = minToastsToShow ? GUTTER : PEEK_GUTTER;
+        .reduce((acc, toast) => {
           if (isExpanded) {
             return acc + (toast.height || 0) + GUTTER;
           }
-          // for the first 3 toasts we don't need to peek, instead we will add the height of those toasts as is
-          const threeHeights = minToastsToShow ? toast.height : 0;
-          return acc + threeHeights! + gutter;
+          return acc + PEEK_GUTTER;
         }, 0);
+
+      // lift all info toasts up if there is a promo toast
+      if (hasPromoToast) {
+        offset += GUTTER + promoToastHeight;
+      }
+      // promo toasts should always be on bottom
+      if (isPromotionalToast(toast)) {
+        offset = 0;
+        scale = 1;
+      }
 
       return { offset, scale: isExpanded ? 1 : scale };
     },
-    [isExpanded, toasts],
+    [hasPromoToast, infoToasts, isExpanded, promoToastHeight],
   );
 
   return (
@@ -164,7 +196,7 @@ const MyToaster: React.FC<ToasterProps> = ({
         style={{
           width: '100%',
           pointerEvents: isExpanded ? 'all' : 'none',
-          height: isExpanded ? totalHeight : frontToastHeight,
+          height: isExpanded ? totalHeight : promoToastHeight + frontToastHeight,
           bottom: 0,
           left: 0,
           position: 'absolute',
@@ -173,6 +205,7 @@ const MyToaster: React.FC<ToasterProps> = ({
       />
       {toasts.map((toast, index) => {
         const toastPosition = toast.position ?? position;
+        const isPromotional = isPromotionalToast(toast);
         const { offset, scale } = calculateYPosition({
           toast,
           isExpanded,
@@ -188,9 +221,8 @@ const MyToaster: React.FC<ToasterProps> = ({
           }
         };
 
-        // isExpanded ? toast.height : index > 0 ? frontToastHeight : toast.height
         let toastHeight = toast.height;
-        if (index > MAX_TOASTS - 1) {
+        if (index > MAX_TOASTS - 1 && !isPromotional) {
           toastHeight = frontToastHeight;
         }
         if (isExpanded) {
@@ -204,13 +236,17 @@ const MyToaster: React.FC<ToasterProps> = ({
             ref={ref}
             isExpanded={isExpanded}
             isVisible={toast.visible}
+            isPromotional={isPromotional}
             style={{
               ...positionStyle,
               zIndex: -1 * index,
               height: toastHeight,
+              overflow: 'hidden',
             }}
           >
-            {resolveValue(toast.message, { ...toast, index })}
+            <div style={{ height: 'fit-content', width: '100%' }}>
+              {resolveValue(toast.message, { ...toast, index })}
+            </div>
           </StyledToastWrapper>
         );
       })}
