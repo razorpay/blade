@@ -135,6 +135,12 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       name={name}
       type="button"
       onClick={(event: React.MouseEvent<HTMLInputElement>): void => {
+        if (props.isDropdownTrigger) {
+          // dropdown triggers have click event on outer container as well on web to handle outer padding clicks of input
+          // we don't want the clicks to be called twice in such cases so we stop propogation if this click has happened
+          event.stopPropagation();
+        }
+
         handleOnClick?.({ name, value: event });
       }}
       {...commonProps}
@@ -169,6 +175,12 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         handleOnInput?.({ name, value: event });
       }}
       onClick={(event) => {
+        if (props.isDropdownTrigger) {
+          // dropdown triggers have click event on outer container as well on web to handle outer padding clicks of input
+          // we don't want the clicks to be called twice in such cases so we stop propogation if this click has happened
+          event.stopPropagation();
+        }
+
         handleOnClick?.({ name, value: event });
       }}
       autoCapitalize={autoCapitalize}
