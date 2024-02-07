@@ -65,7 +65,7 @@ const generateBundleDiff = async () => {
   ${bundleDiff
     .map(
       ({ name, baseSize, prSize, diffSize, isSizeIncreased }) =>
-        `| ${isSizeIncreased ? '🚫' : '✅'} | ${name} | ${baseSize} | ${prSize} | ${
+        `| ${isSizeIncreased ? '🔴' : '🟢'} | ${name} | ${baseSize} | ${prSize} | ${
           isSizeIncreased ? `+${diffSize}` : diffSize
         } kb |`,
     )

@@ -13,7 +13,7 @@ env:
 jobs:
   pr-bundle-size:
     name: Generate PR Report
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    runs-on: macos-14 # nosemgrep: non-self-hosted-runner
     if: ${{ github.event_name == 'pull_request' }}
     steps:
       - name: Checkout Codebase
@@ -39,7 +39,7 @@ jobs:
 
   master-bundle-size:
     name: Update Base Stats
-    runs-on: ubuntu-latest # nosemgrep: non-self-hosted-runner
+    runs-on: macos-14 # nosemgrep: non-self-hosted-runner
     if: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout Codebase
