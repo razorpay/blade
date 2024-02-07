@@ -19,7 +19,9 @@ const GUTTER = 8;
 const PEEK_GUTTER = 16;
 const DEFAULT_OFFSET = 8;
 const SCALE_FACTOR = 0.05;
-const MAX_TOASTS = 3;
+const MAX_TOASTS = 1;
+const MIN_TOASTS = 3;
+const PEEKS = 3;
 
 const StyledToastWrapper = styled.div<{ isVisible: boolean; index: number; isExpanded: boolean }>(
   ({ isVisible, index, isExpanded }) => {
@@ -31,7 +33,7 @@ const StyledToastWrapper = styled.div<{ isVisible: boolean; index: number; isExp
     //       },
     //     } as const)
     //   : ({} as const);
-    const indexLimit = isExpanded ? 1 : index < 3 + MAX_TOASTS ? 1 : 0;
+    const indexLimit = isExpanded ? 1 : index < PEEKS + MAX_TOASTS ? 1 : 0;
     const isUnderMax = index < MAX_TOASTS;
 
     return {
@@ -85,7 +87,7 @@ const MyToaster: React.FC<ToasterProps> = ({
   const [isMouseOver, setIsMouseOver] = React.useState(false);
   const { toasts, handlers } = useToaster(toastOptions);
   const [frontToastHeight, setFrontToastHeight] = React.useState(0);
-  const isExpanded = isMouseOver;
+  const isExpanded = isMouseOver || toasts.length <= MIN_TOASTS;
 
   React.useLayoutEffect(() => {
     // find the first toast which is visible
@@ -114,8 +116,7 @@ const MyToaster: React.FC<ToasterProps> = ({
       const toastsBefore = relevantToasts.filter((toast, i) => i < toastIndex && toast.visible)
         .length;
 
-      const scale =
-        index < MAX_TOASTS ? 1 : Math.max(0.7, 2 - ((toastsBefore - 1) * SCALE_FACTOR + 1));
+      const scale = index < MAX_TOASTS ? 1 : Math.max(0.7, 2 - (toastsBefore * SCALE_FACTOR + 1));
       // y position of toast,
       const offset = relevantToasts
         .filter((toast) => toast.visible)
@@ -128,7 +129,7 @@ const MyToaster: React.FC<ToasterProps> = ({
           }
           // for the first 3 toasts we don't need to peek, instead we will add the height of those toasts as is
           const threeHeights = minToastsToShow ? toast.height : 0;
-          return acc + (toastsBefore + threeHeights!) + gutter;
+          return acc + threeHeights! + gutter;
         }, 0);
 
       return { offset, scale: isExpanded ? 1 : scale };
