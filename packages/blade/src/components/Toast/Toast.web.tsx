@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
-/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import toast from 'react-hot-toast';
 import type { FlattenSimpleInterpolation } from 'styled-components';
@@ -84,7 +83,7 @@ const Toast = ({
   id,
 }: ToastProps): React.ReactElement => {
   const { theme } = useTheme();
-  const Icon = leading || iconMap[color!];
+  const Icon = leading || iconMap[color];
 
   const colorMap = {
     positive: 'positive',
@@ -101,10 +100,13 @@ const Toast = ({
         size="xsmall"
         variant={isPromotional ? 'secondary' : 'tertiary'}
         color={isPromotional ? 'primary' : 'white'}
-        onClick={action?.onClick}
+        onClick={(e) => {
+          e.stopPropagation();
+          action?.onClick?.(e as never);
+        }}
         isLoading={action?.isLoading}
       >
-        {action?.text!}
+        {action?.text}
       </Button>
     </Box>
   ) : null;
@@ -138,7 +140,7 @@ const Toast = ({
       backgroundColor={
         isPromotional
           ? 'surface.background.gray.intense'
-          : `feedback.background.${colorMap[color!]}.intense`
+          : `feedback.background.${colorMap[color]}.intense`
       }
     >
       {Icon ? (
@@ -169,7 +171,8 @@ const Toast = ({
           <IconButton
             emphasis={isPromotional ? 'intense' : 'subtle'}
             accessibilityLabel="Dismiss toast"
-            onClick={() => {
+            onClick={(e: any) => {
+              e.stopPropagation();
               onDismissButtonClick?.();
               toast.dismiss(id);
             }}

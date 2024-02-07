@@ -13,7 +13,7 @@ const useToast = (): UseToastReturn => {
     // Do not show promotional toasts if there is already one
     if (
       toasts.find((t) => {
-        // @ts-expect-error
+        // @ts-expect-error - react-hot-toast doesn't recognize our promotional type
         return t.type === 'promotional';
       }) &&
       props.type === 'promotional'

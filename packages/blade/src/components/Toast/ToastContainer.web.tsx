@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import type { ToastPosition, ToasterProps, Toast } from 'react-hot-toast';
 import { resolveValue, useToaster } from 'react-hot-toast';
 import React from 'react';
 import styled from 'styled-components';
 import type { ToastContainerProps } from './types';
+import { makeSize, useTheme } from '~utils';
+import BaseBox from '~components/Box/BaseBox';
 
 type CalculateYPositionProps = {
   toast: Toast;
@@ -20,7 +19,6 @@ const PEEK_GUTTER = 14;
 const DEFAULT_OFFSET = 8;
 const SCALE_FACTOR = 0.05;
 const MAX_TOASTS = 1;
-const MIN_TOASTS = 3;
 const PEEKS = 3;
 
 const StyledToastWrapper = styled.div<{
@@ -77,21 +75,23 @@ const getPositionStyle = (
   };
 };
 
-function isPromotionalToast(toast: Toast) {
+function isPromotionalToast(toast: Toast): boolean {
   // @ts-expect-error
   return toast.type == 'promotional';
 }
 
-const MyToaster: React.FC<ToasterProps> = ({
+const Toaster: React.FC<ToasterProps> = ({
   reverseOrder,
   position = 'top-center',
   toastOptions,
-  containerStyle,
   containerClassName,
 }) => {
-  const [isMouseOver, setIsMouseOver] = React.useState(false);
   const { toasts, handlers } = useToaster(toastOptions);
   const [frontToastHeight, setFrontToastHeight] = React.useState(0);
+  const [hasManuallyExpanded, setHasManuallyExpanded] = React.useState(false);
+  const { platform } = useTheme();
+  const isMobile = platform === 'onMobile';
+  const MIN_TOASTS = isMobile ? 1 : 3;
 
   const infoToasts = React.useMemo(
     () => toasts.filter((toast) => !isPromotionalToast(toast) && toast.visible),
@@ -103,7 +103,15 @@ const MyToaster: React.FC<ToasterProps> = ({
   );
   const hasPromoToast = promoToasts.length > 0;
   const promoToastHeight = promoToasts[0]?.height ?? 0;
-  const isExpanded = isMouseOver || toasts.length <= MIN_TOASTS;
+  const isExpanded = hasManuallyExpanded || toasts.length <= MIN_TOASTS;
+
+  React.useEffect(() => {
+    if (hasManuallyExpanded) {
+      handlers.startPause();
+    } else {
+      handlers.endPause();
+    }
+  }, [handlers, hasManuallyExpanded]);
 
   React.useLayoutEffect(() => {
     // find the first toast which is visible
@@ -124,7 +132,7 @@ const MyToaster: React.FC<ToasterProps> = ({
   const calculateYPosition = React.useCallback(
     ({ toast, reverseOrder = false, index, defaultPosition }: CalculateYPositionProps) => {
       const relevantToasts = infoToasts.filter(
-        (t) => (t.position || defaultPosition) === (toast.position || defaultPosition) && t.height,
+        (t) => (t.position ?? defaultPosition) === (toast.position ?? defaultPosition) && t.height,
       );
       const toastIndex = relevantToasts.findIndex((t) => t.id === toast.id);
       // number of toasts before this toast
@@ -138,7 +146,7 @@ const MyToaster: React.FC<ToasterProps> = ({
         .slice(...(reverseOrder ? [toastsBefore + 1] : [0, toastsBefore]))
         .reduce((acc, toast) => {
           if (isExpanded) {
-            return acc + (toast.height || 0) + GUTTER;
+            return acc + (toast.height ?? 0) + GUTTER;
           }
           return acc + PEEK_GUTTER;
         }, 0);
@@ -159,38 +167,42 @@ const MyToaster: React.FC<ToasterProps> = ({
   );
 
   return (
-    <div
-      style={{
-        position: 'fixed',
-        zIndex: 9999,
-        top: DEFAULT_OFFSET,
-        left: DEFAULT_OFFSET,
-        right: DEFAULT_OFFSET,
-        bottom: DEFAULT_OFFSET,
-        width: '360px',
-        pointerEvents: 'none',
-        ...containerStyle,
-      }}
+    <BaseBox
+      position="fixed"
+      zIndex={9999}
+      top={makeSize(DEFAULT_OFFSET)}
+      left={makeSize(DEFAULT_OFFSET)}
+      right={makeSize(DEFAULT_OFFSET)}
+      bottom={makeSize(DEFAULT_OFFSET)}
+      width={`calc(100% - ${DEFAULT_OFFSET * 2}px)`}
+      maxWidth="360px"
+      pointerEvents="none"
       className={containerClassName}
       onMouseEnter={() => {
-        setIsMouseOver(true);
-        handlers.startPause();
+        if (isMobile) return;
+        setHasManuallyExpanded(true);
       }}
       onMouseLeave={() => {
-        setIsMouseOver(false);
-        handlers.endPause();
+        if (isMobile) return;
+        setHasManuallyExpanded(false);
+      }}
+      onClick={() => {
+        if (!isMobile) return;
+        setHasManuallyExpanded((prev) => !prev);
       }}
     >
-      <div
-        style={{
-          width: '100%',
-          pointerEvents: isExpanded ? 'all' : 'none',
-          height: isExpanded ? totalHeight : promoToastHeight + frontToastHeight,
-          bottom: 0,
-          left: 0,
-          position: 'absolute',
-          zIndex: -100,
-        }}
+      {/*
+       * Mouseover container,
+       * fills in the gap between toasts so that mouseleave doesn't trigger in the gaps
+       */}
+      <BaseBox
+        position="absolute"
+        bottom="0px"
+        left="0px"
+        width="100%"
+        pointerEvents={isExpanded ? 'all' : 'none'}
+        height={makeSize(isExpanded ? totalHeight : promoToastHeight + frontToastHeight)}
+        zIndex={-100}
       />
       {toasts.map((toast, index) => {
         const toastPosition = toast.position ?? position;
@@ -203,7 +215,7 @@ const MyToaster: React.FC<ToasterProps> = ({
         });
         const positionStyle = getPositionStyle(toastPosition, offset, scale);
         // recalculate height of toast
-        const ref = (el: HTMLDivElement) => {
+        const ref = (el: HTMLDivElement): void => {
           if (el && typeof toast.height !== 'number') {
             const height = el.getBoundingClientRect().height;
             handlers.updateHeight(toast.id, height);
@@ -233,18 +245,18 @@ const MyToaster: React.FC<ToasterProps> = ({
               overflow: 'hidden',
             }}
           >
-            <div style={{ height: 'fit-content', width: '100%' }}>
+            <BaseBox height="fit-content" width="100%">
               {resolveValue(toast.message, { ...toast, index })}
-            </div>
+            </BaseBox>
           </StyledToastWrapper>
         );
       })}
-    </div>
+    </BaseBox>
   );
 };
 
 const ToastContainer = ({ position = 'bottom-left' }: ToastContainerProps): React.ReactElement => {
-  return <MyToaster position={position} />;
+  return <Toaster position={position} />;
 };
 
 export { ToastContainer };

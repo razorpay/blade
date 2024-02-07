@@ -1,4 +1,5 @@
 import type { ToastPosition } from 'react-hot-toast';
+import type { ButtonProps } from '~components/Button';
 import type { IconComponent } from '~components/Icons';
 
 type InformationalToastProps = {
@@ -55,7 +56,7 @@ type ToastCommonProps = {
    */
   action?: {
     text: string;
-    onClick?: () => void;
+    onClick?: ButtonProps['onClick'];
     isLoading?: boolean;
   };
 
