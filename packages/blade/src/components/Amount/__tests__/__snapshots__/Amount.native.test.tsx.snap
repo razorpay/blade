@@ -70,7 +70,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
           ]
         }
       >
-        د.إ
+        AED
       </Text>
       <Text
         accessible={true}
@@ -426,7 +426,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
           ]
         }
       >
-        RM
+        MYR
       </Text>
       <Text
         accessible={true}
@@ -2507,7 +2507,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
           ]
         }
       >
-        1k
+        1T
       </Text>
     </View>
   </View>
