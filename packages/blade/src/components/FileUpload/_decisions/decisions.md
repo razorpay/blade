@@ -10,8 +10,8 @@ This document outlines the API details of the `FileUpload` & `FileUploadItem` co
 
 - [Design](#design)
 - [Anatomy](#anatomy)
-- [`FileUpload` API](#fileupload-api)
-- [`FileUploadItem` API](#fileuploaditem-api)
+- [`FileUpload` Props](#fileupload-props)
+- [`FileUploadItem` Props](#fileuploaditem-props)
 - [Examples](#examples)
   - [Uncontrolled Usage](#uncontrolled-usage)
     - [Single File selection](#single-file-selection)
@@ -22,7 +22,7 @@ This document outlines the API details of the `FileUpload` & `FileUploadItem` co
     - [Multiple File selection:](#multiple-file-selection-1)
     - [With custom upload progress](#with-custom-upload-progress-1)
 - [Accessibility](#accessibility)
-
+ 
 ## Design
 
 [Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=78150%3A2625&mode=design&t=bKQvPInRmAoeAAFV-1) to all variants of the `FileUpload` component.
@@ -32,41 +32,156 @@ This document outlines the API details of the `FileUpload` & `FileUploadItem` co
 <img width="100%" src="./file-upload-anatomy.png" alt="Single File Upload">
 <img width="100%" src="./file-upload-item-anatomy.png" alt="Multiple Files Upload">
 
-## `FileUpload` API
+## `FileUpload` Props
 
-| Prop                   | Type                                  | Default    | Description                                                                                                                                  | Required |
-| ---------------------- | ------------------------------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| **label**              | `string`                              | `-`        | Label for the FileUpload component                                                                                                           | ❌       |
-| **accessibilityLabel** | `string`                              | `-`        | Accessibility label for the FileUpload component                                                                                             | ✅       |
-| **labelPosition**      | `'top' \| 'left'`                     | `'top'`    | Position of the label relative to the file upload area. Desktop only prop. Default value on mobile will be `'top'`                           | ❌       |
-| **accept**             | `string`                              | `-`        | File types that can be accepted. See [input's accept attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept) | ❌       |
-| **isDisabled**         | `boolean`                             | `false`    | Disables or enables the FileUpload component.                                                                                                | ❌       |
-| **name**               | `string`                              | `-`        | The name of the file upload input, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)        | ❌       |
-| **selectionType**      | `'single' \| 'multiple'`              | `'single'` | Defines the selection behavior within the FileUpload component                                                                               | ❌       |
-| **defaultFileList**    | `fileList`                            | `-`        | Default list of files that have been uploaded                                                                                                | ❌       |
-| **hideSelectedFiles**  | `boolean`                             | `false`    | Determines whether to display selected files. Set to `true` when customizing the upload process and managing progress independently.         | ❌       |
-| **fileList**           | `string \|string[]`                   | `-`        | List of files that have been uploaded (controlled)                                                                                           | ❌       |
-| **maxCount**           | `number`                              | `-`        | Limit the number of uploaded files                                                                                                           | ❌       |
-| **maxSize**            | `number`                              | `-`        | Limit the size of the uploaded files (in bytes)                                                                                              | ❌       |
-| **onChange**           | `({ name, fileList }) => void`        | `-`        | Callback function triggered when files are selected                                                                                          | ❌       |
-| **onDrop**             | `(event: React.DragEvent) => void`    | `-`        | Callback function executed when files are dropped into the upload area                                                                       | ❌       |
-| **onRemove**           | `({ removedFile, fileList }) => void` | `-`        | Callback function triggered when a file is removed                                                                                           | ❌       |
-| **validationState**    | `'none' \| 'error'`                   | `-`        | State indicating whether there is an error in the FileUpload component                                                                       | ❌       |
-| **helpText**           | `string`                              | `-`        | Additional text providing assistance or guidance                                                                                             | ❌       |
-| **errorText**          | `string`                              | `-`        | Text indicating an error state                                                                                                               | ❌       |
+```ts
+type File = {
+  /**
+   * The unique identifier of the file.
+   */
+  id: string;
+  /**
+   * The name of the file.
+   */
+  name: string;
+  /**
+   * The size of the file in bytes.
+   */
+  size: number;
+  /**
+   * The file's MIME type.
+   */
+  type: string;
+  /**
+   * The file's upload status.
+   */
+  status?: 'uploading' | 'success' | 'error';
+  /**
+   * The percentage of file upload completion.
+   */
+  percent?: number;
+};
 
+type FileList = File[];
 
-## `FileUploadItem` API
+type FileUploadProps = {
+  /**
+   * Label for the FileUpload component
+   */
+  label?: string;
+  /**
+   * Accessibility label for the FileUpload component, required if label is not provided
+   */
+  accessibilityLabel?: string;
+  /**
+   * Position of the label relative to the file upload area. Desktop only prop. Default value on mobile will be 'top'
+   */
+  labelPosition?: 'top' | 'left';
+  /**
+   * Defines the selection behavior of the FileUpload component
+   */
+  selectionType?: 'single' | 'multiple';
+  /**
+   * File types that can be accepted. See [input's accept attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)
+   * 
+   * Usage: accept=".jpg, .png, .pdf", accept="image/*", accept="image/png, image/jpeg, application/pdf" 
+   */
+  accept?: string;
+  /**
+   * Disables or enables the FileUpload component
+   */
+  isDisabled?: boolean;
+  /**
+   * The name of the file upload input, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)
+   */
+  name?: string;
+  /**
+   * Default list of files that have been uploaded, useful when the component is uncontrolled
+   */
+  defaultFileList?: FileList;
+  /**
+   * Controls the visibility of selected files. Set to `false` when customizing the display of uploaded files and managing progress independently.
+   * 
+   * @default true
+   */
+  showSelectedFiles?: boolean;
+  /**
+   * List of files that have been selected/uploaded, useful when the component is controlled
+   */
+  fileList?: FileList;
+  /**
+   * Limit the number of files that can be uploaded
+   */
+  maxCount?: number;
+  /**
+   * Limit the size of the uploaded files (in bytes)
+   */
+  maxSize?: number;
+  /**
+   * Callback function triggered when files are selected
+   */
+  onChange?: ({ name, fileList }: { name: string; fileList: FileList }) => void;
+  /**
+   * Callback function executed when files are dropped into the upload area
+   */
+  onDrop?: (event: React.DragEvent) => void;
+  /**
+   * Callback function triggered when a file is removed
+   */
+  onRemove?: ({ removedFile, fileList }: { removedFile: File; fileList: FileList }) => void;
+  /**
+   * State indicating whether there is an error in the FileUpload component
+   */
+  validationState?: 'none' | 'error';
+  /**
+   * Additional text providing assistance or guidance
+   */
+  helpText?: string;
+  /**
+   * Text indicating an error state
+   */
+  errorText?: string;
+};
+```
 
-| Prop                | Type                                  | Default | Description                                                  | Required |
-| ------------------- | ------------------------------------- | ------- | ------------------------------------------------------------ | -------- |
-| **fileName**        | `string`                              | `-`     | Name of the uploaded file                                    | ✅       |
-| **fileSize**        | `'single' \| 'multiple'`              | `-`     | Size of the uploaded file                                    | ✅       |
-| **onRemove**        | `({ file }) => void`                  | `-`     | Callback function triggered when the file is removed         | ✅       |
-| **uploadState**     | `'uploading' \| 'success' \| 'error'` | `-`     | State indicating the upload status                           | ✅       |
-| **percent**         | `number`                              | `-`     | Percentage of file upload completion                         | ❌       |
-| **showPreviewIcon** | `boolean`                             | `false` | Percentage of file upload completion                         | ❌       |
-| **onPreview**       | `(file) => void`                      | `-`     | Callback function triggered when the preview icon is clicked | ❌       |
+## `FileUploadItem` Props
+
+```ts
+type FileUploadItemProps = {
+  /**
+   * Name of the uploaded file
+   */
+  fileName: string;
+  /**
+   * State indicating the upload status
+   */
+  status: 'uploading' | 'success' | 'error';
+  /**
+   * Size of the uploaded file
+   */
+  fileSize?: number;
+  /**
+   * Percentage of file upload completion
+   */
+  percent?: number;
+  /**
+   * Text indicating an error state
+   */
+  errorText?: string;
+   /**
+   * Callback function triggered when the file is removed
+   */
+  onRemove?: ({ file }: { file: File }) => void;
+  /**
+   * Show a preview icon for the file
+   */
+  hasPreviewIcon?: boolean;
+  /**
+   * Callback function triggered when the preview icon is clicked
+   */
+  onPreview?: (file: File) => void;
+};
+```
 
 ## Examples
 
@@ -264,7 +379,7 @@ const UncontrolledCustomProgressFileUploadForm = () => {
           label="GSTIN Certificate"
           selectionType="single"
           onChange={handleFileChange}
-          hideSelectedFiles={true}
+          showSelectedFiles={false}
           accept=".jpg, .png, .pdf"
           helpText="Upload .jpg, .png, or .pdf files only"
           onDrop={(e) => console.log('Files dropped!', e)}
@@ -274,7 +389,7 @@ const UncontrolledCustomProgressFileUploadForm = () => {
           <FileUploadItem
             fileName={uploadedFile.name}
             fileSize={uploadedFile.size}
-            uploadState={uploadState}
+            status={uploadState}
             percent={uploadPercent}
           />
         )}
@@ -481,7 +596,7 @@ const ControlledCustomProgressFileUploadForm = () => {
           selectionType="single"
           fileList={file}
           onChange={handleFileChange}
-          hideSelectedFiles={true}
+          showSelectedFiles={false}
           accept=".jpg, .png, .pdf"
           helpText="Upload .jpg, .png, or .pdf files only"
           onDrop={(e) => console.log('Files dropped!', e)}
@@ -491,7 +606,7 @@ const ControlledCustomProgressFileUploadForm = () => {
           <FileUploadItem
             fileName={uploadedFile.name}
             fileSize={uploadedFile.size}
-            uploadState={uploadState}
+            status={uploadState}
             percent={uploadPercent}
           />
         )}
