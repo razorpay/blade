@@ -28,12 +28,12 @@ The blade toasts will use [react-hot-toast](https://react-hot-toast.com/) under 
 import { BladeProvider, ToastContainer, useToast } from "@razorpay/blade/components"
 
 const HomePage = () => {
-  const { showToast } = useToast();
+  const toast = useToast();
 
   return (
     <Button
       onClick={() => {
-        showToast({
+        toast.show({
           type: 'informational',
           color: 'success',
           content: 'Payment Successful',
@@ -68,35 +68,27 @@ const App = () => {
 
 ## Props
 
-### ToastContainer
-
 ```ts
-type ToastContainer = {
-  position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
-}
-```
-
-```ts
-type Toast = {
+type ToastProps = {
   /**
    * @default `informational`
    */
-  type: 'informational' | 'promotional';
+  type?: 'informational' | 'promotional';
 
   /**
    * @default `neutral`
    */
-  color: 'neutral' | 'positive' | 'negative' | 'warning' | 'information'
+  color?: 'neutral' | 'positive' | 'negative' | 'warning' | 'information'
 
   /**
-   * If the type is `promotional`, the content will be `React.ReactNode`
+   * Content of the toast
    */
-  content: string | React.ReactNode;
+  content: React.ReactNode;
 
   /**
-   * Can be used to render an icon
+   * Can be used to render an icon or asset
    */
-  leading?: IconComponent;
+  leading?: React.ReactElement;
 
   /**
    * If true, the toast will be dismissed after few seconds
@@ -124,7 +116,7 @@ type Toast = {
    */
   action?: {
     text: string;
-    onClick?: () => void;
+    onClick?: (e: Event) => void;
     isLoading? boolean;
   }
 
@@ -146,14 +138,14 @@ type useToastReturnType = {
   /**
    * @returns id of the toast
    */
-  showToast: (toast: Toast) => string;
+  show: (toast: Toast) => string;
 
   /**
    * id of the toast to be dismissed
    * 
    * if id is not provided, all the toasts will be dismissed
    */
-  dismissToast: (toastId?: string) => void;
+  dismiss: (toastId?: string) => void;
 }
 ```
 
@@ -168,13 +160,13 @@ import { BladeProvider, ToastContainer, useToast } from "@razorpay/blade/compone
 
 const Example = () => {
   const toastId = React.useRef(null);
-  const { showToast, dismissToast } = useToast();
+  const toast = useToast();
 
   return (
     <Box>
       <Button
         onClick={() => {
-          toastId.current = showToast({
+          toastId.current = toast.show({
             color: 'success',
             content: 'Payment Successful',
           });
@@ -182,7 +174,7 @@ const Example = () => {
       >
         Show Toast
       </Button>
-      <Button onClick={() => dismissToast(toastId.current)}>Dismiss Toast</Button>
+      <Button onClick={() => toast.dismiss(toastId.current)}>Dismiss Toast</Button>
     </Box>
   );
 };
@@ -194,12 +186,12 @@ const Example = () => {
 import { BladeProvider, ToastContainer, useToast } from "@razorpay/blade/components"
 
 const Example = () => {
-  const { showToast } = useToast();
+  const toast = useToast();
 
   return (
     <Button
       onClick={() => {
-        showToast({
+        toast.show({
           type: 'promotional',
           content: (
             <Box>
