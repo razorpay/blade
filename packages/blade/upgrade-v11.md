@@ -40,6 +40,8 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
   + <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
   ```
 
+- In a move towards internationalization, the default formatting of number in Amount component has now changed. It relies on locale state managed by [@razorpay/i18nify-js](https://www.npmjs.com/package/@razorpay/i18nify-js) library and fallbacks to browser locale to drive formatting. To maintain the previous formatting experience of the Amount component, ensure you follow the steps outlined in this [section](https://github.com/razorpay/blade/blob/master/packages/blade/upgrade-v11.md#amount).
+
 **Step 5**: Test your page and make sure everything works as expected. Once the migration is complete for all pages, you can remove the old version of Blade from your project.
 
 ## Documentation
@@ -106,34 +108,34 @@ Only use this if you're unable to run the codemod described above.
 
 Example with `@razorpay/i18nify-react`
 
-```
-import React, { useEffect } from "react";
-import { I18nProvider, useI18nContext } from "@razorpay/i18nify-react";
+```jsx
+import React, { useEffect } from 'react';
+import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
 import { BladeProvider, Amount } from '@razorpay/blade/components';
 
 const ToggleAmount = ({ value }) => {
- const { setI18nState } = useI18nContext();
+  const { setI18nState } = useI18nContext();
 
- function onLocaleChange() {
-   setI18nState({ locale: "de-DE" });
- }
+  function onLocaleChange() {
+    setI18nState({ locale: 'de-DE' });
+  }
 
- return (
-   <>
-     <Amount value={value} />
-     <button onClick={onLocaleChange}>change locale to German</button>
-   </>
- );
+  return (
+    <>
+      <Amount value={value} />
+      <button onClick={onLocaleChange}>change locale to German</button>
+    </>
+  );
 };
 
 const App = () => {
- return (
-   <I18nProvider initData={{locale: 'en-IN'}}>
+  return (
+    <I18nProvider initData={{ locale: 'en-IN' }}>
       <BladeProvider>
-       <ToggleAmount value={2000000} />
-     </BladeProvider>
-   </I18nProvider>
- );
+        <ToggleAmount value={2000000} />
+      </BladeProvider>
+    </I18nProvider>
+  );
 };
 ```
 
