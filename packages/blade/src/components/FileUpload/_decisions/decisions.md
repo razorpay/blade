@@ -1,6 +1,6 @@
 # FileUpload Decisions <!-- omit in toc -->
 
-Form field used for handling file attachments including the drag-and-drop interaction.
+The `FileUpload` component is used to handle file attachments, including the drag-and-drop interaction. It can be used in both controlled and uncontrolled forms. Primarily, it is used to upload files to a server or to display a list of uploaded files.
 
 This document outlines the API details of the `FileUpload` & `FileUploadItem` components, encompassing their structural composition, functional attributes, and visual representation.
 
@@ -11,18 +11,18 @@ This document outlines the API details of the `FileUpload` & `FileUploadItem` co
 - [Design](#design)
 - [Anatomy](#anatomy)
 - [`FileUpload` Props](#fileupload-props)
-- [`FileUploadItem` Props](#fileuploaditem-props)
+- [Usage](#usage)
+  - [Submit Button File Upload](#submit-button-file-upload)
+  - [Direct Upload with Progress Display](#direct-upload-with-progress-display)
 - [Examples](#examples)
   - [Uncontrolled Usage](#uncontrolled-usage)
     - [Single File selection](#single-file-selection)
     - [Multiple File selection:](#multiple-file-selection)
-    - [With custom upload progress](#with-custom-upload-progress)
+    - [Using `defaultFileList` to display uploaded files](#using-defaultfilelist-to-display-uploaded-files)
   - [Controlled Usage](#controlled-usage)
-    - [Single File selection](#single-file-selection-1)
-    - [Multiple File selection:](#multiple-file-selection-1)
-    - [With custom upload progress](#with-custom-upload-progress-1)
+    - [Direct Upload with Progress Display](#direct-upload-with-progress-display-1)
 - [Accessibility](#accessibility)
- 
+
 ## Design
 
 [Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=78150%3A2625&mode=design&t=bKQvPInRmAoeAAFV-1) to all variants of the `FileUpload` component.
@@ -49,7 +49,7 @@ type File = {
    */
   size: number;
   /**
-   * The file's MIME type.
+   * The file's [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
    */
   type: string;
   /**
@@ -60,6 +60,10 @@ type File = {
    * The percentage of file upload completion.
    */
   percent?: number;
+  /**
+   * Text indicating an error state
+   */
+  errorText?: string;
 };
 
 type FileList = File[];
@@ -100,12 +104,6 @@ type FileUploadProps = {
    */
   defaultFileList?: FileList;
   /**
-   * Controls the visibility of selected files. Set to `false` when customizing the display of uploaded files and managing progress independently.
-   * 
-   * @default true
-   */
-  showSelectedFiles?: boolean;
-  /**
    * List of files that have been selected/uploaded, useful when the component is controlled
    */
   fileList?: FileList;
@@ -122,13 +120,17 @@ type FileUploadProps = {
    */
   onChange?: ({ name, fileList }: { name: string; fileList: FileList }) => void;
   /**
-   * Callback function executed when files are dropped into the upload area
+   * Callback function triggered when the preview icon is clicked
    */
-  onDrop?: (event: React.DragEvent) => void;
+  onPreview?: (previewedFile: File) => void;
   /**
    * Callback function triggered when a file is removed
    */
   onRemove?: ({ removedFile, fileList }: { removedFile: File; fileList: FileList }) => void;
+  /**
+   * Callback function executed when files are dropped into the upload area
+   */
+  onDrop?: (event: React.DragEvent) => void;
   /**
    * State indicating whether there is an error in the FileUpload component
    */
@@ -144,48 +146,21 @@ type FileUploadProps = {
 };
 ```
 
-## `FileUploadItem` Props
+## Usage
 
-```ts
-type FileUploadItemProps = {
-  /**
-   * Name of the uploaded file
-   */
-  fileName: string;
-  /**
-   * State indicating the upload status
-   */
-  status: 'uploading' | 'success' | 'error';
-  /**
-   * Size of the uploaded file
-   */
-  fileSize?: number;
-  /**
-   * Percentage of file upload completion
-   */
-  percent?: number;
-  /**
-   * Text indicating an error state
-   */
-  errorText?: string;
-   /**
-   * Callback function triggered when the file is removed
-   */
-  onRemove?: ({ file }: { file: File }) => void;
-  /**
-   * Show a preview icon for the file
-   */
-  hasPreviewIcon?: boolean;
-  /**
-   * Callback function triggered when the preview icon is clicked
-   */
-  onPreview?: (file: File) => void;
-};
-```
+Primarily, there are two types of usage for the `FileUpload` component:
+
+### Submit Button File Upload
+
+https://github.com/razorpay/blade/assets/46647141/d78ec694-f6f7-413d-a32c-58da8f2582fb
+
+### Direct Upload with Progress Display
+
+https://github.com/razorpay/blade/assets/46647141/cb690625-011b-4c20-b610-9af5f0c5e077
 
 ## Examples
 
-Here are a few illustrative examples showcasing the utilization of the `FileUpload` and `FileUploadItem` components:
+Here are a few illustrative examples showcasing the utilization of the `FileUpload` component:
 
 ### Uncontrolled Usage
 
@@ -315,223 +290,12 @@ const UncontrolledMultiFileUploadForm = () => {
 export default UncontrolledMultiFileUploadForm;
 ```
 
-#### With custom upload progress
+#### Using `defaultFileList` to display uploaded files
 
-```jsx
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Box, FileUpload, FileUploadItem } from '@razorpay/blade/components';
-
-const UncontrolledCustomProgressFileUploadForm = () => {
-  const [file, setFile] = useState();
-  const [uploadPercent, setUploadPercent] = useState(0);
-  const [uploadState, setUploadState] = useState();
-  const [uploadedFile, setUploadedFile] = useState();
-
-  const handleFileChange = ({ files }) => {
-    setFile(files[0]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Create a FormData object to append files
-    const formData = new FormData();
-
-    formData.append('files', file);
-    setUploadedFile(file);
-
-    try {
-      // Simulate a file upload using axios
-      const response = await axios.post(
-        'https://run.mocky.io/v3/bb0b32f0-fc54-4d78-9c9b-08b3a4d8f7c5',
-        formData,
-        {
-          headers: {
-            'content-type': 'multipart/form-data',
-          },
-          onUploadProgress: (progressEvent) => {
-            const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-            setUploadPercent(percentCompleted);
-
-            if (percentCompleted === 100) {
-              setUploadState('success');
-            } else {
-              setUploadState('uploading');
-            }
-          },
-        },
-      );
-
-      // Handle success, reset form, etc.
-      console.log('Files uploaded successfully:', response.data);
-    } catch (error) {
-      // Handle errors
-      setUploadState('error');
-      console.error('File upload failed:', error.message);
-    }
-  };
-
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <FileUpload
-          label="GSTIN Certificate"
-          selectionType="single"
-          onChange={handleFileChange}
-          showSelectedFiles={false}
-          accept=".jpg, .png, .pdf"
-          helpText="Upload .jpg, .png, or .pdf files only"
-          onDrop={(e) => console.log('Files dropped!', e)}
-        />
-
-        {uploadState && uploadedFile && (
-          <FileUploadItem
-            fileName={uploadedFile.name}
-            fileSize={uploadedFile.size}
-            status={uploadState}
-            percent={uploadPercent}
-          />
-        )}
-
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
-};
-
-export default UncontrolledCustomProgressFileUploadForm;
-```
 
 ### Controlled Usage
 
-#### Single File selection
-
-```jsx
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Box, FileUpload, FileUploadItem } from '@razorpay/blade/components';
-
-const ControlledSingleFileUploadForm = () => {
-  const [file, setFile] = useState();
-
-  const handleFileChange = ({ files }) => {
-    setFile(files[0]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Create a FormData object to append files
-    const formData = new FormData();
-    formData.append('files', file);
-    try {
-      // Simulate a file upload using axios
-      const response = await axios.post(
-        'https://run.mocky.io/v3/bb0b32f0-fc54-4d78-9c9b-08b3a4d8f7c5',
-        formData,
-        {
-          headers: {
-            'content-type': 'multipart/form-data',
-          },
-        },
-      );
-
-      // Handle success, reset form, etc.
-      console.log('Files uploaded successfully:', response.data);
-    } catch (error) {
-      // Handle errors
-      console.error('File upload failed:', error.message);
-    }
-  };
-
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <FileUpload
-          label="GSTIN Certificate"
-          selectionType="single"
-          fileList={file}
-          onChange={handleFileChange}
-          accept=".jpg, .png, .pdf"
-          helpText="Upload .jpg, .png, or .pdf file only"
-          onDrop={(e) => console.log('Files dropped!', e)}
-        />
-
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
-};
-
-export default ControlledSingleFileUploadForm;
-```
-
-#### Multiple File selection:
-
-```jsx
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Box, FileUpload, FileUploadItem } from '@razorpay/blade/components';
-
-const ControlledMultiFileUploadForm = () => {
-  const [files, setFiles] = useState();
-
-  const handleFileChange = ({ files }) => {
-    setFiles(files);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Create a FormData object to append files
-    const formData = new FormData();
-
-    files.forEach((file, index) => {
-      formData.append(`file-${index}`, file);
-    });
-
-    try {
-      // Simulate a file upload using axios
-      const response = await axios.post(
-        'https://run.mocky.io/v3/bb0b32f0-fc54-4d78-9c9b-08b3a4d8f7c5',
-        formData,
-        {
-          headers: {
-            'content-type': 'multipart/form-data',
-          },
-        },
-      );
-
-      // Handle success, reset form, etc.
-      console.log('Files uploaded successfully:', response.data);
-    } catch (error) {
-      // Handle errors
-      console.error('File upload failed:', error.message);
-    }
-  };
-
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <FileUpload
-          label="GSTIN Certificate"
-          selectionType="multiple"
-          fileList={files}
-          onChange={handleFileChange}
-          accept=".jpg, .png, .pdf"
-          helpText="Upload .jpg, .png, or .pdf files only"
-          onDrop={(e) => console.log('Files dropped!', e)}
-        />
-
-        <button type="submit">Submit</button>
-      </form>
-    </div>
-  );
-};
-```
-
-#### With custom upload progress
+#### Direct Upload with Progress Display
 
 ```jsx
 import React, { useState } from 'react';
@@ -539,81 +303,72 @@ import axios from 'axios';
 import { Box, FileUpload, FileUploadItem } from '@razorpay/blade/components';
 
 const ControlledCustomProgressFileUploadForm = () => {
-  const [file, setFile] = useState();
-  const [uploadPercent, setUploadPercent] = useState(0);
-  const [uploadState, setUploadState] = useState();
   const [uploadedFile, setUploadedFile] = useState();
-
-  const handleFileChange = ({ files }) => {
-    setFile(files[0]);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  
+  const handleFileChange = async ({ files }) => {
     // Create a FormData object to append files
     const formData = new FormData();
 
-    formData.append('files', file);
-    setUploadedFile(file);
+    formData.append("files", files[0]);
+    setUploadedFile(files[0])
 
     try {
       // Simulate a file upload using axios
       const response = await axios.post(
-        'https://run.mocky.io/v3/bb0b32f0-fc54-4d78-9c9b-08b3a4d8f7c5',
+        "https://run.mocky.io/v3/bb0b32f0-fc54-4d78-9c9b-08b3a4d8f7c5",
         formData,
         {
           headers: {
-            'content-type': 'multipart/form-data',
+            "content-type": "multipart/form-data",
           },
           onUploadProgress: (progressEvent) => {
-            const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-            setUploadPercent(percentCompleted);
+            setUploadedFile(previousState => {
+                const percentCompleted = Math.round(
+                    (progressEvent.loaded * 100) / progressEvent.total
+                  );
 
-            if (percentCompleted === 100) {
-              setUploadState('success');
-            } else {
-              setUploadState('uploading');
-            }
+                return {
+                    ...previousState,
+                    percent: percentCompleted,
+                    status: percentCompleted === 100 ? "success" : "uploading"
+                };
+            });
           },
-        },
+        }
       );
 
       // Handle success, reset form, etc.
-      console.log('Files uploaded successfully:', response.data);
+      console.log("Files uploaded successfully:", response.data);
     } catch (error) {
       // Handle errors
-      setUploadState('error');
-      console.error('File upload failed:', error.message);
+      setUploadedFile(previousState => {
+        return {
+            ...previousState,
+            status: "error",
+            errorText: error.message,
+        };
+      });
+      console.error("File upload failed:", error.message);
     }
   };
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
         <FileUpload
           label="GSTIN Certificate"
           selectionType="single"
-          fileList={file}
+          fileList={uploadedFile ? [uploadedFile] : []}
           onChange={handleFileChange}
           showSelectedFiles={false}
           accept=".jpg, .png, .pdf"
           helpText="Upload .jpg, .png, or .pdf files only"
           onDrop={(e) => console.log('Files dropped!', e)}
         />
+    </div>
+  );
+};
 
-        {uploadState && uploadedFile && (
-          <FileUploadItem
-            fileName={uploadedFile.name}
-            fileSize={uploadedFile.size}
-            status={uploadState}
-            percent={uploadPercent}
-          />
-        )}
-
-        <button type="submit">Submit</button>
-      </form>
-    </
+export default ControlledCustomProgressFileUploadForm;
 ```
 
 ## Accessibility
