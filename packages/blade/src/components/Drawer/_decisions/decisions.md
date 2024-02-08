@@ -2,7 +2,7 @@
 
 A drawer is a panel that slides in mostly from right side of the screen over the existing content in the viewport. It helps in providing additional details or context and can also be used to promote product features or new products.
 
-![Drawer Figma Skeleton](2024-02-07-20-04-07.png)
+<img width="500px" src="./2024-02-07-20-04-07.png" alt="Drawer Figma Skeleton">
 
 ## Design
 
