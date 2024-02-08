@@ -1,7 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
 import type { BaseInputProps } from './BaseInput';
-import { BaseInputAnimatedBorder } from './BaseInputAnimatedBorder';
 import { AnimatedBaseInputWrapper } from './AnimatedBaseInputWrapper';
 import type { ContainerElementType } from '~utils/types';
 import type { ActionStates } from '~utils/useInteraction';
@@ -55,10 +54,10 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
       {...props}
     >
       {children}
-      <BaseInputAnimatedBorder
+      {/* <BaseInputAnimatedBorder
         currentInteraction={currentInteraction}
         validationState={validationState}
-      />
+      /> */}
     </AnimatedBaseInputWrapper>
   );
 };

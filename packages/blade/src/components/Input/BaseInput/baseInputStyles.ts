@@ -7,6 +7,7 @@ import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -46,47 +47,56 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isDropdownTrigger'
 >): CSSObject => {
   // normal state
-  let backgroundColor = theme.colors.interactive.background.gray.default;
-  let borderBottomColor = theme.colors.interactive.background.gray.highlighted;
+  let backgroundColor = theme.colors.surface.background.gray.intense;
+  let borderColor = theme.colors.interactive.border.gray.default;
+  let borderWidth: Theme['border']['width'][keyof Theme['border']['width']] =
+    theme.border.width.thin;
 
   // hoverState
   if (isHovered) {
-    backgroundColor = theme.colors.interactive.background.gray.highlighted;
+    backgroundColor = theme.colors.surface.background.gray.moderate;
+    borderColor = theme.colors.interactive.border.gray.highlighted;
   }
 
   // focused state
   if (isFocused) {
-    backgroundColor = theme.colors.interactive.background.primary.faded;
+    backgroundColor = theme.colors.surface.background.gray.moderate;
+    borderColor = theme.colors.interactive.border.primary.default;
+    borderWidth = theme.border.width.thin; // TODO: Check with design on why this is thick
   }
 
   // disabled state
   if (isDisabled) {
-    backgroundColor = theme.colors.interactive.background.gray.disabled;
-    borderBottomColor = 'transparent';
+    backgroundColor = theme.colors.surface.background.gray.intense;
+    borderColor = theme.colors.interactive.border.gray.disabled;
   }
 
   // validation state
   if (validationState === 'error') {
-    backgroundColor = theme.colors.interactive.background.negative.faded;
-    borderBottomColor = theme.colors.interactive.background.negative.default;
+    backgroundColor = theme.colors.surface.background.gray.intense;
+    borderColor = theme.colors.interactive.border.negative.default;
+    borderWidth = theme.border.width.thin; // TODO: Check with design on why this is thick
   } else if (validationState === 'success') {
-    backgroundColor = theme.colors.interactive.background.positive.faded;
-    borderBottomColor = theme.colors.interactive.background.positive.default;
+    backgroundColor = theme.colors.surface.background.gray.intense;
+    borderColor = theme.colors.interactive.border.positive.default;
+    borderWidth = theme.border.width.thin; // TODO: Check with design on why this is thick
   }
 
   return {
     backgroundColor,
-    borderBottomColor,
-    borderTopLeftRadius: makeBorderSize(theme.border.radius.small),
-    borderTopRightRadius: makeBorderSize(theme.border.radius.small),
-    borderBottomWidth: makeBorderSize(theme.border.width.thin),
-    borderBottomStyle: 'solid',
+    borderRadius: makeBorderSize(theme.border.radius.medium),
+    borderWidth: makeBorderSize(borderWidth),
+    borderColor,
+    borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',
     width: '100%',
     alignItems: isTextArea ? 'flex-start' : undefined,
     position: 'relative',
     height: isDropdownTrigger ? 'auto' : undefined,
+    '&:has(input:focus-visible)': {
+      ...getFocusRingStyles({ theme }),
+    },
   };
 };
 
@@ -153,6 +163,7 @@ export const getBaseInputStyles = ({
     // take the full available width of parent container for input field
     flex: 1,
     backgroundColor: 'transparent',
+
     paddingTop: makeSpace(theme.spacing[3]),
     paddingBottom: makeSpace(theme.spacing[3]),
     paddingLeft: makeSpace(getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix })),
