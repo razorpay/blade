@@ -19,12 +19,12 @@ A drawer is a panel that slides in mostly from right side of the screen over the
   <DrawerHeader
     title=""
     subtitle=""
-    leading={<DropdownHeaderIcon />}
-    titleSuffix={<DropdownHeaderBadge />}
+    leading={<DrawerHeaderIcon />}
+    titleSuffix={<DrawerHeaderBadge />}
     trailing={
       <>
-        <DropdownHeaderLink />
-        <DropdownHeaderButton />
+        <DrawerHeaderLink />
+        <DrawerHeaderButton />
       </>
     }
   />
