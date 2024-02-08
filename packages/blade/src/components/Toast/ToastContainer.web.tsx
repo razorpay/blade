@@ -101,9 +101,16 @@ const Toaster: React.FC<ToasterProps> = ({
     () => toasts.filter((toast) => isPromotionalToast(toast) && toast.visible),
     [toasts],
   );
+
+  // always keep promo toasts at the bottom of the stack
+  const recomputedToasts = React.useMemo(() => [...infoToasts, ...promoToasts], [
+    infoToasts,
+    promoToasts,
+  ]);
+
   const hasPromoToast = promoToasts.length > 0;
   const promoToastHeight = promoToasts[0]?.height ?? 0;
-  const isExpanded = hasManuallyExpanded || toasts.length <= MIN_TOASTS;
+  const isExpanded = hasManuallyExpanded || recomputedToasts.length <= MIN_TOASTS;
 
   React.useEffect(() => {
     if (hasManuallyExpanded) {
@@ -121,13 +128,13 @@ const Toaster: React.FC<ToasterProps> = ({
   // calculate total height of all toasts
   const totalHeight = React.useMemo(() => {
     return (
-      toasts
-        // only consider visible toasts
+      recomputedToasts
+        // only consider visible recomputedToasts
         .filter((toast) => toast.visible)
         .reduce((prevHeight, toast) => prevHeight + (toast.height ?? 0), 0) +
-      toasts.length * DEFAULT_OFFSET
+      recomputedToasts.length * DEFAULT_OFFSET
     );
-  }, [toasts]);
+  }, [recomputedToasts]);
 
   const calculateYPosition = React.useCallback(
     ({ toast, reverseOrder = false, index, defaultPosition }: CalculateYPositionProps) => {
@@ -204,7 +211,7 @@ const Toaster: React.FC<ToasterProps> = ({
         height={makeSize(isExpanded ? totalHeight : promoToastHeight + frontToastHeight)}
         zIndex={-100}
       />
-      {toasts.map((toast, index) => {
+      {recomputedToasts.map((toast, index) => {
         const toastPosition = toast.position ?? position;
         const isPromotional = isPromotionalToast(toast);
         const { offset, scale } = calculateYPosition({
