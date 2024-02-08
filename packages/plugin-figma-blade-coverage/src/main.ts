@@ -185,10 +185,6 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           return;
         }
 
-        if (traversedNode.type === 'INSTANCE') {
-          console.log(getComponentKeyToNameMap(traversedNode));
-        }
-
         if (
           traversedNode.type === 'INSTANCE' &&
           (BLADE_COMPONENT_IDS.includes(
