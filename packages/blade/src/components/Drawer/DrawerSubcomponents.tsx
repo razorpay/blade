@@ -2,17 +2,29 @@ import React from 'react';
 import { Badge, BadgeProps } from '~components/Badge';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { Box } from '~components/Box';
-import { Button, ButtonProps } from '~components/Button';
 import { IconComponent } from '~components/Icons';
-import { Link, LinkProps } from '~components/Link';
 import { DrawerContext } from './DrawerContext';
 import { DrawerHeaderProps } from './types';
 import { DrawerHeaderAsset } from './DrawerHeaderAsset';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { drawerComponentIds } from './drawerComponentIds';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 
 const _DrawerHeader = ({ title, subtitle, leading, trailing, titleSuffix }: DrawerHeaderProps) => {
   const { close, defaultInitialFocusRef, stackingLevel } = React.useContext(DrawerContext);
+
+  useVerifyAllowedChildren({
+    children: titleSuffix,
+    componentName: 'DrawerHeader titleSuffix',
+    allowedComponents: [drawerComponentIds.DrawerHeaderBadge],
+  });
+
+  useVerifyAllowedChildren({
+    children: leading,
+    componentName: 'DrawerHeader leading',
+    allowedComponents: [drawerComponentIds.DrawerHeaderIcon, drawerComponentIds.DrawerHeaderAsset],
+  });
+
   return (
     <BaseHeader
       showCloseButton={stackingLevel < 2}
@@ -61,20 +73,6 @@ const DrawerHeaderBadge = assignWithoutSideEffects(_DrawerHeaderBadge, {
   componentId: drawerComponentIds.DrawerHeaderBadge,
 });
 
-const _DrawerHeaderLink = (props: LinkProps) => {
-  return <Link {...props} />;
-};
-const DrawerHeaderLink = assignWithoutSideEffects(_DrawerHeaderLink, {
-  componentId: drawerComponentIds.DrawerHeaderLink,
-});
-
-const _DrawerHeaderButton = (props: ButtonProps) => {
-  return <Button size="xsmall" {...props} />;
-};
-const DrawerHeaderButton = assignWithoutSideEffects(_DrawerHeaderButton, {
-  componentId: drawerComponentIds.DrawerHeaderButton,
-});
-
 const _DrawerHeaderIcon = ({ icon: Icon }: { icon: IconComponent }) => {
   return <Icon color="surface.icon.gray.normal" size="medium" />;
 };
@@ -82,12 +80,4 @@ const DrawerHeaderIcon = assignWithoutSideEffects(_DrawerHeaderIcon, {
   componentId: drawerComponentIds.DrawerHeaderIcon,
 });
 
-export {
-  DrawerHeader,
-  DrawerBody,
-  DrawerHeaderBadge,
-  DrawerHeaderButton,
-  DrawerHeaderIcon,
-  DrawerHeaderLink,
-  DrawerHeaderAsset,
-};
+export { DrawerHeader, DrawerBody, DrawerHeaderBadge, DrawerHeaderIcon, DrawerHeaderAsset };

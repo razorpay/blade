@@ -16,6 +16,7 @@ import { useGlobalState } from '~utils/GlobalStateProvider';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { drawerComponentIds } from './drawerComponentIds';
 import { DrawerContext } from './DrawerContext';
 import { DrawerProps } from './types';
@@ -68,6 +69,12 @@ const _Drawer = ({
   testID,
 }: DrawerProps): React.ReactElement => {
   const defaultInitialFocusRef = React.useRef<HTMLDivElement>(null);
+
+  useVerifyAllowedChildren({
+    children,
+    componentName: 'Drawer',
+    allowedComponents: [drawerComponentIds.DrawerHeader, drawerComponentIds.DrawerBody],
+  });
 
   const { theme } = useTheme();
   const drawerId = useId('drawer');

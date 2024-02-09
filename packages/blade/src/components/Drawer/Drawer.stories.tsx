@@ -2,7 +2,7 @@ import React from 'react';
 import type { DOMAttributes } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import { Drawer, DrawerBody, DrawerHeader } from './';
+import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderBadge, DrawerHeaderIcon } from './';
 import type { DrawerProps } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -12,7 +12,7 @@ import iconMap from '~components/Icons/iconMap';
 import { isReactNative } from '~utils';
 import { TextInput } from '~components/Input/TextInput';
 import { Button } from '~components/Button';
-import { PlusIcon } from '~components/Icons';
+import { AnnouncementIcon, DownloadIcon, PlusIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
 
 // const Page = (): React.ReactElement => {
@@ -85,7 +85,13 @@ const DrawerTemplate: StoryFn<typeof Drawer> = ({ children, ...args }) => {
     <Box>
       <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
       <Drawer isOpen={isDrawerOpen} onDismiss={() => setIsDrawerOpen(false)}>
-        <DrawerHeader title="Announcements" subtitle="This is an announcement" />
+        <DrawerHeader
+          leading={<DrawerHeaderIcon icon={AnnouncementIcon} />}
+          title="Announcements"
+          titleSuffix={<DrawerHeaderBadge color="positive">New</DrawerHeaderBadge>}
+          subtitle="This is an announcement"
+          trailing={<Button variant="tertiary" icon={DownloadIcon} />}
+        />
         <DrawerBody>
           <Card padding="spacing.0">
             <CardBody>
