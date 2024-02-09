@@ -15,7 +15,6 @@ import {
   BLADE_EFFECT_STYLE_IDS,
 } from './bladeLibraryConstants';
 import { sendAnalytics } from './utils/sendAnalytics';
-import { getComponentKeyToNameMap } from './utils/getComponentKeyToNameMap';
 
 type CoverageMetrics = {
   bladeComponents: number;
