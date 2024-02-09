@@ -50,7 +50,7 @@ const _DrawerHeader = ({ title, subtitle, leading, trailing, titleSuffix }: Draw
  *  subtitle="Checkout what's new in Razorpay"
  *  titleSuffix={<DrawerHeaderBadge>New</DrawerHeaderBadge>}
  *  leading={<DrawerHeaderIcon icon={AnnouncementIcon} />}
- *  trailing={<DrawerHeaderButton icon={DownloadIcon} />}
+ *  trailing={<Button icon={DownloadIcon} />}
  * />
  * ```
  *

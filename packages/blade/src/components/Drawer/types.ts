@@ -63,9 +63,9 @@ type DrawerHeaderProps = {
   titleSuffix?: React.ReactNode;
 
   /**
-   * Title trailing element
+   * Trailing element
    *
-   * DrawerHeaderLink, DrawerHeaderButton[]
+   * Link, Button[]
    */
   trailing?: React.ReactNode;
 };
