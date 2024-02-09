@@ -93,14 +93,12 @@ const Toaster: React.FC<ToasterProps> = ({
   const isMobile = platform === 'onMobile';
   const MIN_TOASTS = isMobile ? 1 : 3;
 
-  const infoToasts = React.useMemo(
-    () => toasts.filter((toast) => !isPromotionalToast(toast) && toast.visible),
-    [toasts],
-  );
-  const promoToasts = React.useMemo(
-    () => toasts.filter((toast) => isPromotionalToast(toast) && toast.visible),
-    [toasts],
-  );
+  const infoToasts = React.useMemo(() => toasts.filter((toast) => !isPromotionalToast(toast)), [
+    toasts,
+  ]);
+  const promoToasts = React.useMemo(() => toasts.filter((toast) => isPromotionalToast(toast)), [
+    toasts,
+  ]);
 
   // always keep promo toasts at the bottom of the stack
   const recomputedToasts = React.useMemo(() => [...infoToasts, ...promoToasts], [
@@ -108,7 +106,7 @@ const Toaster: React.FC<ToasterProps> = ({
     promoToasts,
   ]);
 
-  const hasPromoToast = promoToasts.length > 0;
+  const hasPromoToast = promoToasts.length > 0 && promoToasts[0]?.visible;
   const promoToastHeight = promoToasts[0]?.height ?? 0;
   const isExpanded = hasManuallyExpanded || recomputedToasts.length <= MIN_TOASTS;
 
@@ -139,7 +137,10 @@ const Toaster: React.FC<ToasterProps> = ({
   const calculateYPosition = React.useCallback(
     ({ toast, reverseOrder = false, index, defaultPosition }: CalculateYPositionProps) => {
       const relevantToasts = infoToasts.filter(
-        (t) => (t.position ?? defaultPosition) === (toast.position ?? defaultPosition) && t.height,
+        (t) =>
+          (t.position ?? defaultPosition) === (toast.position ?? defaultPosition) &&
+          t.height &&
+          t.visible,
       );
       const toastIndex = relevantToasts.findIndex((t) => t.id === toast.id);
       // number of toasts before this toast
