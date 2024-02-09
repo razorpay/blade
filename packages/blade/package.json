@@ -270,8 +270,8 @@
     "typescript-transform-paths": "3.4.6",
     "@types/body-scroll-lock": "3.1.0",
     "ramda": "0.29.1",
-    "@razorpay/i18nify-js": "^1.4.0",
-    "@razorpay/i18nify-react": "^4.0.0"
+    "@razorpay/i18nify-js": "1.4.0",
+    "@razorpay/i18nify-react": "4.0.0"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -301,9 +301,7 @@
     "@storybook/**/react": "18.2.0",
     "react-dom": "18.2.0",
     "react": "18.2.0",
-    "styled-components": "^5",
-    "@types/react": "17.0.38",
-    "@types/react-native": "0.72.2"
+    "styled-components": "^5"
   },
   "bundlemon": {
     "files": [

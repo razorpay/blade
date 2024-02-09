@@ -18,6 +18,6 @@ References**
 
 **How to update ?**
 
-1. Install i18nify peer dependency `yarn add @razorpay/i18nify-js`
-2. _[Optional]_: Install i18nify-react peer dependency to manage state effectively `yarn add @razorpay/i18nify-react`
+1. Install i18nify as dependency `yarn add @razorpay/i18nify-js`
+2. _[Optional]_: Install i18nify-react as dependency to manage state effectively `yarn add @razorpay/i18nify-react`
 3. Install latest Blade `yarn add @razorpay/blade@latest`
