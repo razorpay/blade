@@ -17,13 +17,14 @@ import { ActionList, ActionListItem } from '~components/ActionList';
 import { SelectInput } from '~components/Input/DropdownInputTriggers';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { Divider } from '~components/Divider';
+import { Link } from '~components/Link';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Amount"
       componentDescription="Amounts are used to show small amount of color coded metadata, which are ideal for getting user attention."
-      note="This component only displays the provided value in the specified currency, it does not perform any currency conversion."
+      note="This component only displays the provided value in the specified currency with the formatting capabilities enabled by @razorpay/i18nify-js (https://www.npmjs.com/package/@razorpay/i18nify-js), it does not perform any currency conversion."
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73328-558626&mode=design&t=JkDSnlo8KJOBJimR-4"
     >
       <Title>Usage</Title>
@@ -37,6 +38,22 @@ const Page = (): React.ReactElement => {
         export default App;
         `}
       </Sandbox>
+      <Box marginBottom="spacing.10">
+        <Text>
+          The Amount component automatically formats numbers based on the user's browser locale
+          enabled by{' '}
+          <Link href="https://www.npmjs.com/package/@razorpay/i18nify-js">
+            @razorpay/i18nify-js
+          </Link>
+          . To adjust the locale according to your page, add{' '}
+          <Link href="https://www.npmjs.com/package/@razorpay/i18nify-react">
+            @razorpay/i18nify-react
+          </Link>{' '}
+          library and utilise its hooks for updating the locale. For more details, please refer to
+          the{' '}
+          <Link href="https://www.npmjs.com/package/@razorpay/i18nify-react">documentation.</Link>
+        </Text>
+      </Box>
     </StoryPageWrapper>
   );
 };

@@ -46,6 +46,8 @@ type AmountCommonProps = {
   /**
    * Determines the visual representation of the currency, choose between displaying the currency symbol or code.
    *
+   * Note: Currency symbol and code is determined by the locale set in user's browser or set via @razorpay/i18nify-react library.
+   *
    * @default 'currency-symbol'
    */
   currencyIndicator?: 'currency-symbol' | 'currency-code';
