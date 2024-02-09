@@ -5,97 +5,53 @@ import {
   useFloating,
 } from '@floating-ui/react';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import usePresence from 'use-presence';
-import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { Box } from '~components/Box';
-// import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import { componentZIndices } from '~utils/componentZIndices';
 import { useGlobalState } from '~utils/GlobalStateProvider';
 import { makeAccessible } from '~utils/makeAccessible';
-
-type DrawerProps = {
-  /**
-   * Controlled state of drawer open or not
-   */
-  isOpen: boolean;
-
-  /**
-   * Dismiss handler
-   */
-  onDismiss: () => void;
-
-  /**
-   * Show or hide overlay.
-   *
-   * Also decides if clicking outside on overlay closes the drawer or not
-   */
-  showOverlay?: boolean;
-  children: React.ReactNode;
-  /**
-   * zIndex property of Drawer
-   */
-  zIndex?: number;
-  accessibilityLabel?: string;
-  stackingLevel?: 1 | 2;
-};
-
-const DrawerContext = React.createContext<{
-  close: () => void;
-  defaultInitialFocusRef?: React.MutableRefObject<any>;
-  stackingLevel: Exclude<DrawerProps['stackingLevel'], undefined>;
-}>({ close: () => {}, stackingLevel: 1 });
+import { useId } from '~utils/useId';
+import { DrawerContext } from './DrawerContext';
+import { DrawerProps } from './types';
 
 const AnimatedDrawerContainer = styled(BaseBox)<{ isVisible: boolean }>(({ theme, isVisible }) => {
-  return css`
-    opacity: ${isVisible ? 1 : 0};
-    right: ${isVisible ? '0%' : '-100%'};
-    transition: all
+  return {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible ? 'translateX(-100%)' : 'translateX(0%)',
+    transition: `all
       ${castWebType(
         isVisible
           ? makeMotionTime(theme.motion.duration.xgentle)
           : makeMotionTime(theme.motion.duration.xmoderate),
       )}
-      ${isVisible
-        ? castWebType(theme.motion.easing.entrance.revealing)
-        : castWebType(theme.motion.easing.exit.revealing)};
-  `;
+      ${
+        isVisible
+          ? castWebType(theme.motion.easing.entrance.revealing)
+          : castWebType(theme.motion.easing.exit.revealing)
+      }`,
+  };
 });
 
 const DrawerOverlay = styled(FloatingOverlay)<{ isVisible: boolean }>(({ isVisible, theme }) => {
-  return css`
-    opacity: ${isVisible ? 1 : 0};
-    transition: opacity
-      ${isVisible
-        ? makeMotionTime(theme.motion.duration.xgentle)
-        : makeMotionTime(theme.motion.duration.xmoderate)}
-      ${isVisible
-        ? castWebType(theme.motion.easing.entrance.revealing)
-        : castWebType(theme.motion.easing.exit.revealing)};
-    background-color: ${theme.colors.overlay.background.subtle};
-  `;
+  return {
+    opacity: isVisible ? 1 : 0,
+    transition: `opacity
+      ${
+        isVisible
+          ? makeMotionTime(theme.motion.duration.xgentle)
+          : makeMotionTime(theme.motion.duration.xmoderate)
+      }
+      ${
+        isVisible
+          ? castWebType(theme.motion.easing.entrance.revealing)
+          : castWebType(theme.motion.easing.exit.revealing)
+      }`,
+    backgroundColor: theme.colors.overlay.background.subtle,
+  };
 });
-
-const DrawerHeader = ({ title, subtitle }: { title: string; subtitle: string }) => {
-  const { close, defaultInitialFocusRef, stackingLevel } = React.useContext(DrawerContext);
-  return (
-    <BaseHeader
-      showCloseButton={stackingLevel === 1}
-      showBackButton={stackingLevel === 2}
-      closeButtonRef={defaultInitialFocusRef}
-      title={title}
-      subtitle={subtitle}
-      onCloseButtonClick={() => close()}
-      onBackButtonClick={() => close()}
-    />
-  );
-};
-
-const DrawerBody = ({ children }: { children: React.ReactNode }) => {
-  return <Box padding="spacing.6">{children}</Box>;
-};
 
 const Drawer = ({
   isOpen,
@@ -104,12 +60,13 @@ const Drawer = ({
   children,
   accessibilityLabel,
   showOverlay = true,
-  stackingLevel = 1,
+  initialFocusRef,
 }: DrawerProps): React.ReactElement => {
   const defaultInitialFocusRef = React.useRef<HTMLDivElement>(null);
 
   const { theme } = useTheme();
-  const { openDrawers, setOpenDrawers } = useGlobalState();
+  const drawerId = useId('drawer');
+  const { drawerStack, addToDrawerStack, removeFromDrawerStack } = useGlobalState();
 
   const { isMounted, isVisible } = usePresence(isOpen, {
     enterTransitionDuration: theme.motion.duration.xgentle,
@@ -117,15 +74,17 @@ const Drawer = ({
     initialEnter: true,
   });
 
+  const stackingLevel = drawerStack.indexOf(drawerId) + 1;
+
   const { refs, context } = useFloating({
     open: isMounted,
   });
 
   React.useEffect(() => {
     if (isMounted) {
-      setOpenDrawers(openDrawers + 1);
+      addToDrawerStack(drawerId);
     } else {
-      setOpenDrawers(openDrawers - 1);
+      removeFromDrawerStack(drawerId);
     }
   }, [isMounted]);
 
@@ -133,7 +92,10 @@ const Drawer = ({
     <DrawerContext.Provider value={{ close: onDismiss, defaultInitialFocusRef, stackingLevel }}>
       <FloatingPortal>
         {isMounted ? (
-          <FloatingFocusManager context={context} initialFocus={defaultInitialFocusRef}>
+          <FloatingFocusManager
+            context={context}
+            initialFocus={initialFocusRef ?? defaultInitialFocusRef}
+          >
             <Box position="fixed" zIndex={zIndex + stackingLevel}>
               {showOverlay || stackingLevel === 2 ? (
                 <DrawerOverlay
@@ -154,6 +116,7 @@ const Drawer = ({
                 })}
                 position="fixed"
                 top="spacing.0"
+                left="100%"
                 backgroundColor="popup.background.subtle"
                 elevation="highRaised"
                 height="100%"
@@ -174,4 +137,4 @@ const Drawer = ({
   );
 };
 
-export { Drawer, DrawerProps, DrawerHeader, DrawerBody };
+export { Drawer, DrawerProps };

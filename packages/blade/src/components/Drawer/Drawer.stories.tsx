@@ -2,8 +2,8 @@ import React from 'react';
 import type { DOMAttributes } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import { Drawer, DrawerBody, DrawerHeader } from './Drawer';
-import type { DrawerProps } from './Drawer';
+import { Drawer, DrawerBody, DrawerHeader } from './';
+import type { DrawerProps } from './';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -104,11 +104,7 @@ const DrawerTemplate: StoryFn<typeof Drawer> = ({ children, ...args }) => {
         </DrawerBody>
       </Drawer>
 
-      <Drawer
-        stackingLevel={2}
-        isOpen={isSecondDrawerOpen}
-        onDismiss={() => setIsSecondDrawerOpen(false)}
-      >
+      <Drawer isOpen={isSecondDrawerOpen} onDismiss={() => setIsSecondDrawerOpen(false)}>
         <DrawerHeader title="Announcements Two" subtitle="This is second drawer" />
         <DrawerBody>
           <Card>
