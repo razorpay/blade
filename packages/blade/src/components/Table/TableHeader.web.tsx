@@ -105,7 +105,7 @@ const StyledHeaderCell = styled(HeaderCell)<{
       paddingLeft: makeSpace(getIn(theme, tableHeader.paddingLeft)),
       paddingRight: makeSpace(getIn(theme, tableHeader.paddingRight)),
     },
-    '&:focus-visible': getFocusRingStyles({ theme, negativeOffset: true }),
+    '&:focus-visible': getFocusRingStyles({ theme, hasNegativeOffset: true }),
   },
 }));
 

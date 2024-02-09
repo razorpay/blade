@@ -4,7 +4,8 @@ import { castWebType, makeMotionTime } from '~utils';
 
 type GetFocusRingProps = {
   theme: Theme;
-  negativeOffset?: boolean;
+  hasNegativeOffset?: boolean;
+  hasNoOffset?: boolean;
 };
 
 /**
@@ -12,10 +13,14 @@ type GetFocusRingProps = {
  * @param props.negativeOffset if set the outline offset will be set to -4px, this is useful
  * in table component where the outline will get cutoff by the table border
  */
-function getFocusRingStyles({ theme, negativeOffset = false }: GetFocusRingProps) {
+function getFocusRingStyles({
+  theme,
+  hasNegativeOffset = false,
+  hasNoOffset = true,
+}: GetFocusRingProps) {
   return {
     outline: `4px solid ${theme.colors.surface.border.primary.muted}`,
-    outlineOffset: negativeOffset ? '-4px' : '1px',
+    outlineOffset: hasNoOffset ? '0px' : hasNegativeOffset ? '-4px' : '1px',
     transitionProperty: 'outline-width',
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
     transitionTimingFunction: castWebType(theme.motion.easing.standard.effective),

@@ -95,7 +95,7 @@ export const getInputBackgroundAndBorderStyles = ({
     position: 'relative',
     height: isDropdownTrigger ? 'auto' : undefined,
     '&:has(input:focus-visible)': {
-      ...getFocusRingStyles({ theme }),
+      ...getFocusRingStyles({ theme, hasNoOffset: true }),
     },
   };
 };
