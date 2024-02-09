@@ -1,3 +1,5 @@
+import { TestID } from '~utils/types';
+
 type DrawerProps = {
   /**
    * Controlled state of drawer open or not
@@ -33,7 +35,7 @@ type DrawerProps = {
    *  Ref to the element to be focused on opening the drawer.
    */
   initialFocusRef?: React.MutableRefObject<any>;
-};
+} & TestID;
 
 type DrawerHeaderProps = {
   /**

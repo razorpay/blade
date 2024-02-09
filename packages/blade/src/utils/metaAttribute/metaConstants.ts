@@ -25,6 +25,7 @@ export const MetaConstants = {
   Counter: 'counter',
   Display: 'display',
   Divider: 'divider',
+  Drawer: 'drawer',
   Dropdown: 'dropdown',
   DropdownOverlay: 'dropdown-overlay',
   DropdownFooter: 'dropdown-footer',
