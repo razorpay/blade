@@ -9,6 +9,7 @@ import { ThemeContext } from './useTheme';
 import { useBladeProvider } from './useBladeProvider';
 import type { BladeProviderProps } from './types';
 import { BottomSheetStackProvider } from '~components/BottomSheet/BottomSheetStack';
+import { GlobalStateProvider } from '~utils/GlobalStateProvider';
 
 const tooltipDelays = { open: 300, close: 300 };
 
@@ -24,7 +25,9 @@ const BladeProvider = ({
       <FloatingDelayGroup delay={tooltipDelays}>
         <StyledComponentThemeProvider theme={theme}>
           <StyleSheetManager stylisPlugins={[stylisCSSHigherSpecificity()]}>
-            <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
+            <GlobalStateProvider>
+              <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
+            </GlobalStateProvider>
           </StyleSheetManager>
         </StyledComponentThemeProvider>
       </FloatingDelayGroup>

@@ -13,6 +13,7 @@ import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import { componentZIndices } from '~utils/componentZIndices';
+import { useGlobalState } from '~utils/GlobalStateProvider';
 import { makeAccessible } from '~utils/makeAccessible';
 
 type DrawerProps = {
@@ -51,7 +52,12 @@ const AnimatedDrawerContainer = styled(BaseBox)<{ isVisible: boolean }>(({ theme
   return css`
     opacity: ${isVisible ? 1 : 0};
     right: ${isVisible ? '0%' : '-100%'};
-    transition: all ${castWebType(makeMotionTime(theme.motion.duration.xgentle))}
+    transition: all
+      ${castWebType(
+        isVisible
+          ? makeMotionTime(theme.motion.duration.xgentle)
+          : makeMotionTime(theme.motion.duration.xmoderate),
+      )}
       ${isVisible
         ? castWebType(theme.motion.easing.entrance.revealing)
         : castWebType(theme.motion.easing.exit.revealing)};
@@ -61,7 +67,10 @@ const AnimatedDrawerContainer = styled(BaseBox)<{ isVisible: boolean }>(({ theme
 const DrawerOverlay = styled(FloatingOverlay)<{ isVisible: boolean }>(({ isVisible, theme }) => {
   return css`
     opacity: ${isVisible ? 1 : 0};
-    transition: opacity ${makeMotionTime(theme.motion.duration.xmoderate)}
+    transition: opacity
+      ${isVisible
+        ? makeMotionTime(theme.motion.duration.xgentle)
+        : makeMotionTime(theme.motion.duration.xmoderate)}
       ${isVisible
         ? castWebType(theme.motion.easing.entrance.revealing)
         : castWebType(theme.motion.easing.exit.revealing)};
@@ -97,18 +106,28 @@ const Drawer = ({
   showOverlay = true,
   stackingLevel = 1,
 }: DrawerProps): React.ReactElement => {
-  const { theme } = useTheme();
-
   const defaultInitialFocusRef = React.useRef<HTMLDivElement>(null);
 
+  const { theme } = useTheme();
+  const { openDrawers, setOpenDrawers } = useGlobalState();
+
   const { isMounted, isVisible } = usePresence(isOpen, {
-    transitionDuration: theme.motion.duration.xgentle,
+    enterTransitionDuration: theme.motion.duration.xgentle,
+    exitTransitionDuration: theme.motion.duration.xmoderate,
     initialEnter: true,
   });
 
   const { refs, context } = useFloating({
     open: isMounted,
   });
+
+  React.useEffect(() => {
+    if (isMounted) {
+      setOpenDrawers(openDrawers + 1);
+    } else {
+      setOpenDrawers(openDrawers - 1);
+    }
+  }, [isMounted]);
 
   return (
     <DrawerContext.Provider value={{ close: onDismiss, defaultInitialFocusRef, stackingLevel }}>
