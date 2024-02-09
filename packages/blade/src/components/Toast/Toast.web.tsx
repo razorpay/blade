@@ -50,16 +50,6 @@ const slideOut = keyframes`
   }
 `;
 
-const fadeOut = keyframes`
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-`;
-
 const AnimatedFade = styled(BaseBox)<{ animationType: FlattenSimpleInterpolation | null }>(
   ({ animationType }) => {
     return css`
@@ -75,10 +65,7 @@ const Toast = ({
   leading,
   action,
   content,
-  // @ts-expect-error no index
-  index,
   onDismissButtonClick,
-  // autoDismiss = false,
   isVisible,
   id,
 }: ToastProps): React.ReactElement => {
@@ -111,8 +98,6 @@ const Toast = ({
     </Box>
   ) : null;
 
-  const isFirst = index === 0;
-
   const enter = css`
     opacity: 0;
     animation: ${slideIn} ${makeMotionTime(theme.motion.duration.gentle)}
@@ -121,7 +106,7 @@ const Toast = ({
 
   const exit = css`
     opacity: 1;
-    animation: ${isFirst ? slideOut : fadeOut} ${makeMotionTime(theme.motion.duration.moderate)}
+    animation: ${slideOut} ${makeMotionTime(theme.motion.duration.moderate)}
       ${theme.motion.easing.exit.effective as string} forwards;
   `;
 

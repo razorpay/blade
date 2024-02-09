@@ -3,8 +3,9 @@ import { resolveValue, useToaster } from 'react-hot-toast';
 import React from 'react';
 import styled from 'styled-components';
 import type { ToastContainerProps } from './types';
-import { makeSize, useTheme } from '~utils';
+import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
+import type { Theme } from '~components/BladeProvider';
 
 type CalculateYPositionProps = {
   toast: Toast;
@@ -48,6 +49,7 @@ const getPositionStyle = (
   position: ToastPosition,
   offset: number,
   scale: number,
+  theme: Theme,
 ): React.CSSProperties => {
   const top = position.includes('top');
   const verticalStyle: React.CSSProperties = top ? { top: 0 } : { bottom: 0 };
@@ -67,7 +69,9 @@ const getPositionStyle = (
     display: 'flex',
     position: 'absolute',
     transformOrigin: 'center',
-    transition: `400ms ease`,
+    transition: `${makeMotionTime(theme.motion.duration.gentle)} ${
+      theme.motion.easing.standard.effective
+    }`,
     transitionProperty: 'transform, opacity, height',
     transform: `translateY(${offset * (top ? 1 : -1)}px) scale(${scale})`,
     ...verticalStyle,
@@ -87,6 +91,7 @@ const Toaster: React.FC<ToasterProps> = ({
   containerClassName,
 }) => {
   const { toasts, handlers } = useToaster(toastOptions);
+  const { theme } = useTheme();
   const [frontToastHeight, setFrontToastHeight] = React.useState(0);
   const [hasManuallyExpanded, setHasManuallyExpanded] = React.useState(false);
   const { platform } = useTheme();
@@ -137,10 +142,7 @@ const Toaster: React.FC<ToasterProps> = ({
   const calculateYPosition = React.useCallback(
     ({ toast, reverseOrder = false, index, defaultPosition }: CalculateYPositionProps) => {
       const relevantToasts = infoToasts.filter(
-        (t) =>
-          (t.position ?? defaultPosition) === (toast.position ?? defaultPosition) &&
-          t.height &&
-          t.visible,
+        (t) => (t.position ?? defaultPosition) === (toast.position ?? defaultPosition) && t.height,
       );
       const toastIndex = relevantToasts.findIndex((t) => t.id === toast.id);
       // number of toasts before this toast
@@ -221,7 +223,7 @@ const Toaster: React.FC<ToasterProps> = ({
           reverseOrder,
           index,
         });
-        const positionStyle = getPositionStyle(toastPosition, offset, scale);
+        const positionStyle = getPositionStyle(toastPosition, offset, scale, theme);
         // recalculate height of toast
         const ref = (el: HTMLDivElement): void => {
           if (el && typeof toast.height !== 'number') {
