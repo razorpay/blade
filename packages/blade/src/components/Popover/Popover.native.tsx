@@ -4,7 +4,7 @@ import React from 'react';
 import { Modal, TouchableOpacity } from 'react-native';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverProps } from './types';
-import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from './constants';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { PopoverContext } from './PopoverContext';
 import { useTheme } from '~components/BladeProvider';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -12,13 +12,14 @@ import { mergeProps } from '~utils/mergeProps';
 import { useControllableState } from '~utils/useControllable';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const Popover = ({
   content,
   children,
   placement = 'top',
   onOpenChange,
-  zIndex = popoverZIndex,
+  zIndex = componentZIndices.popover,
   title,
   titleLeading,
   footer,

@@ -4,13 +4,13 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import usePresence from 'use-presence';
 import type { SpotlightPopoverTourMaskRect } from './types';
-import { tourMaskZIndex } from './tourTokens';
 import { useTheme } from '~components/BladeProvider';
 import { useWindowSize } from '~utils/useWindowSize';
 import { makeSpace } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const scaleIn = keyframes`
   from {
@@ -118,7 +118,7 @@ const absoluteFill = {
   left: 0,
   bottom: 0,
   right: 0,
-  zIndex: tourMaskZIndex,
+  zIndex: componentZIndices.tourMask,
 } as const;
 
 const _SpotlightPopoverTourMask = ({
