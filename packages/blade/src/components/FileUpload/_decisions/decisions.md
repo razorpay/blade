@@ -2,7 +2,7 @@
 
 The `FileUpload` component is used to handle file attachments, including the drag-and-drop interaction. It can be used in both controlled and uncontrolled forms. Primarily, it is used to upload files to a server or to display a list of uploaded files.
 
-This document outlines the API details of the `FileUpload` & `FileUploadItem` components, encompassing their structural composition, functional attributes, and visual representation.
+This document outlines the API details of the `FileUpload` component, encompassing their structural composition, functional attributes, and visual representation.
 
 <img width="100%" src="./single-upload-variant.png" alt="Single File Upload">
 <img width="100%" src="./multiple-upload-variant.png" alt="Multiple Files Upload">
@@ -12,15 +12,14 @@ This document outlines the API details of the `FileUpload` & `FileUploadItem` co
 - [Anatomy](#anatomy)
 - [`FileUpload` Props](#fileupload-props)
 - [Usage](#usage)
-  - [Submit Button File Upload](#submit-button-file-upload)
-  - [Direct Upload with Progress Display](#direct-upload-with-progress-display)
+  - [Submit Button File Upload (Uncontrolled)](#submit-button-file-upload-uncontrolled)
+  - [Direct Upload with Progress Display (Controlled)](#direct-upload-with-progress-display-controlled)
 - [Examples](#examples)
   - [Uncontrolled Usage](#uncontrolled-usage)
     - [Single File selection](#single-file-selection)
     - [Multiple File selection:](#multiple-file-selection)
-    - [Using `defaultFileList` to display uploaded files](#using-defaultfilelist-to-display-uploaded-files)
   - [Controlled Usage](#controlled-usage)
-    - [Direct Upload with Progress Display](#direct-upload-with-progress-display-1)
+    - [Direct Upload with Progress Display](#direct-upload-with-progress-display)
 - [Accessibility](#accessibility)
 
 ## Design
@@ -150,11 +149,11 @@ type FileUploadProps = {
 
 Primarily, there are two types of usage for the `FileUpload` component:
 
-### Submit Button File Upload
+### Submit Button File Upload (Uncontrolled)
 
 https://github.com/razorpay/blade/assets/46647141/d78ec694-f6f7-413d-a32c-58da8f2582fb
 
-### Direct Upload with Progress Display
+### Direct Upload with Progress Display (Controlled)
 
 https://github.com/razorpay/blade/assets/46647141/cb690625-011b-4c20-b610-9af5f0c5e077
 
@@ -169,7 +168,7 @@ Here are a few illustrative examples showcasing the utilization of the `FileUplo
 ```jsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Box, FileUpload, FileUploadItem } from '@razorpay/blade/components';
+import { Box, FileUpload } from '@razorpay/blade/components';
 
 const UncontrolledSingleFileUploadForm = () => {
   const [file, setFile] = useState();
@@ -205,7 +204,7 @@ const UncontrolledSingleFileUploadForm = () => {
   };
 
   return (
-    <div>
+    <Box>
       <form onSubmit={handleSubmit}>
         <FileUpload
           label="GSTIN Certificate"
@@ -218,7 +217,7 @@ const UncontrolledSingleFileUploadForm = () => {
 
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </Box>
   );
 };
 
@@ -230,7 +229,7 @@ export default UncontrolledSingleFileUploadForm;
 ```jsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Box, FileUpload, FileUploadItem } from '@razorpay/blade/components';
+import { Box, FileUpload } from '@razorpay/blade/components';
 
 const UncontrolledMultiFileUploadForm = () => {
   const [files, setFiles] = useState();
@@ -270,7 +269,7 @@ const UncontrolledMultiFileUploadForm = () => {
   };
 
   return (
-    <div>
+    <Box>
       <form onSubmit={handleSubmit}>
         <FileUpload
           label="GSTIN Certificate"
@@ -283,15 +282,12 @@ const UncontrolledMultiFileUploadForm = () => {
 
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </Box>
   );
 };
 
 export default UncontrolledMultiFileUploadForm;
 ```
-
-#### Using `defaultFileList` to display uploaded files
-
 
 ### Controlled Usage
 
@@ -300,7 +296,7 @@ export default UncontrolledMultiFileUploadForm;
 ```jsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Box, FileUpload, FileUploadItem } from '@razorpay/blade/components';
+import { Box, FileUpload } from '@razorpay/blade/components';
 
 const ControlledCustomProgressFileUploadForm = () => {
   const [uploadedFile, setUploadedFile] = useState();
@@ -353,18 +349,18 @@ const ControlledCustomProgressFileUploadForm = () => {
   };
 
   return (
-    <div>
+    <Box>
         <FileUpload
-          label="GSTIN Certificate"
+          label="Upload product image"
           selectionType="single"
           fileList={uploadedFile ? [uploadedFile] : []}
           onChange={handleFileChange}
           showSelectedFiles={false}
-          accept=".jpg, .png, .pdf"
+          accept=".jpg, .png"
           helpText="Upload .jpg, .png, or .pdf files only"
           onDrop={(e) => console.log('Files dropped!', e)}
         />
-    </div>
+    </Box>
   );
 };
 
