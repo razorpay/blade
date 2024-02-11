@@ -153,18 +153,16 @@ const Toast = ({
       </Box>
       <Box alignSelf="start" marginLeft="auto" display="flex" gap="spacing.4">
         {!isPromotional && actionButton}
-        {onDismissButtonClick ? (
-          <IconButton
-            emphasis={isPromotional ? 'intense' : 'subtle'}
-            accessibilityLabel="Dismiss toast"
-            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-              event.stopPropagation();
-              onDismissButtonClick?.({ event, toastId: id! });
-              toast.dismiss(id);
-            }}
-            icon={CloseIcon}
-          />
-        ) : null}
+        <IconButton
+          emphasis={isPromotional ? 'intense' : 'subtle'}
+          accessibilityLabel="Dismiss toast"
+          onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+            event.stopPropagation();
+            onDismissButtonClick?.({ event, toastId: id! });
+            toast.dismiss(id);
+          }}
+          icon={CloseIcon}
+        />
       </Box>
     </AnimatedFade>
   );

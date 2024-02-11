@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
+import { metaAttribute } from '~utils/metaAttribute';
 
 type CalculateYPositionProps = {
   toast: Toast;
@@ -212,6 +213,7 @@ const Toaster: React.FC<ToasterProps> = ({
         pointerEvents={isExpanded ? 'all' : 'none'}
         height={makeSize(isExpanded ? totalHeight : promoToastHeight + frontToastHeight)}
         zIndex={-100}
+        {...metaAttribute({ testID: 'toast-mouseover-container' })}
       />
       {recomputedToasts.map((toast, index) => {
         const toastPosition = toast.position ?? position;
