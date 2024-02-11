@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import toast from 'react-hot-toast';
@@ -87,9 +88,9 @@ const Toast = ({
         size="xsmall"
         variant={isPromotional ? 'secondary' : 'tertiary'}
         color={isPromotional ? 'primary' : 'white'}
-        onClick={(e) => {
-          e.stopPropagation();
-          action?.onClick?.(e as never);
+        onClick={(event) => {
+          event.stopPropagation();
+          action?.onClick?.({ event: event as never, toastId: id! });
         }}
         isLoading={action?.isLoading}
       >
@@ -120,8 +121,6 @@ const Toast = ({
       paddingY={isPromotional ? 'spacing.4' : 'spacing.3'}
       borderRadius="medium"
       alignItems="center"
-      // TODO: fix border color
-      border="2px solid white"
       backgroundColor={
         isPromotional
           ? 'surface.background.gray.intense'
@@ -156,9 +155,9 @@ const Toast = ({
           <IconButton
             emphasis={isPromotional ? 'intense' : 'subtle'}
             accessibilityLabel="Dismiss toast"
-            onClick={(e: any) => {
-              e.stopPropagation();
-              onDismissButtonClick?.();
+            onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
+              event.stopPropagation();
+              onDismissButtonClick?.({ event, toastId: id! });
               toast.dismiss(id);
             }}
             icon={CloseIcon}

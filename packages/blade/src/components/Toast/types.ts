@@ -1,31 +1,23 @@
-import type { ToastPosition } from 'react-hot-toast';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import type React from 'react';
 import type { ButtonProps } from '~components/Button';
-import type { IconComponent } from '~components/Icons';
 
-type InformationalToastProps = {
+type ToastProps = {
   /**
    * @default `informational`
    */
-  type?: 'informational';
-  /**
-   * If the type is `promotional`, the content will be `React.ReactNode`
-   */
-  content: string;
-};
+  type?: 'informational' | 'promotional';
 
-type PromotionalToastProps = {
   /**
-   * @default `promotional`
-   */
-  type?: 'promotional';
-  /**
-   * If the type is `promotional`, the content will be `React.ReactNode`
+   * Content of the toast
    */
   content: React.ReactNode;
-};
 
-type ToastCommonProps = {
+  /**
+   * @internal
+   */
   isVisible?: boolean;
+
   /**
    * @default `neutral`
    */
@@ -34,7 +26,7 @@ type ToastCommonProps = {
   /**
    * Can be used to render an icon
    */
-  leading?: IconComponent;
+  leading?: React.ComponentType<any>;
 
   /**
    * If true, the toast will be dismissed after few seconds
@@ -47,16 +39,30 @@ type ToastCommonProps = {
   autoDismiss?: boolean;
 
   /**
+   * Duration in milliseconds for which the toast will be visible
+   *
+   * @default 4000 for informational toast
+   * @default 6000 for promotional toast
+   */
+  duration?: number;
+
+  /**
    * Called when the toast is dismissed or duration runs out
    */
-  onDismissButtonClick?: () => void;
+  onDismissButtonClick?: ({
+    event,
+    toastId,
+  }: {
+    event: React.MouseEvent<HTMLButtonElement>;
+    toastId: string;
+  }) => void;
 
   /**
    * Primary action of toast
    */
   action?: {
     text: string;
-    onClick?: ButtonProps['onClick'];
+    onClick?: ({ event, toastId }: { event: ButtonProps['onClick']; toastId: string }) => void;
     isLoading?: boolean;
   };
 
@@ -68,10 +74,4 @@ type ToastCommonProps = {
   id?: string;
 };
 
-type ToastProps = (InformationalToastProps | PromotionalToastProps) & ToastCommonProps;
-
-type ToastContainerProps = {
-  position?: ToastPosition;
-};
-
-export type { ToastProps, ToastContainerProps };
+export type { ToastProps };

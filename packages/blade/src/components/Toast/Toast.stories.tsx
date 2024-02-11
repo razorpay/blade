@@ -6,7 +6,7 @@ import React from 'react';
 import { useToasterStore } from 'react-hot-toast';
 import { useToast } from './useToast';
 import type { ToastProps } from './';
-import { Toast as ToastComponent, ToastContainer } from './';
+import { ToastContainer } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
@@ -44,7 +44,7 @@ const Page = (): React.ReactElement => {
 
 export default {
   title: 'Components/Toast',
-  component: ToastComponent,
+  component: ToastContainer,
   tags: ['autodocs'],
   parameters: {
     docs: {
@@ -53,7 +53,7 @@ export default {
   },
 } as Meta<ToastProps>;
 
-const ToastTemplate: StoryFn<typeof ToastComponent> = () => {
+const ToastTemplate: StoryFn<typeof ToastContainer> = () => {
   const toast = useToast();
   const { toasts } = useToasterStore();
   const promoToasts = React.useMemo(
@@ -76,7 +76,6 @@ const ToastTemplate: StoryFn<typeof ToastComponent> = () => {
             color: ['positive', 'negative', 'warning', 'information', 'neutral'][
               Math.floor(Math.random() * 5)
             ],
-            duration: Infinity,
             action: {
               text: 'Okay',
               onClick: () => console.log(1),
@@ -118,8 +117,6 @@ const ToastTemplate: StoryFn<typeof ToastComponent> = () => {
               text: 'Try TurboUPI',
               onClick: () => console.log(1),
             },
-            // @ts-expect-error
-            duration: Infinity,
             onDismissButtonClick: () => console.log(1),
           })
         }

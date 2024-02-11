@@ -2,7 +2,6 @@ import type { ToastPosition, ToasterProps, Toast } from 'react-hot-toast';
 import { resolveValue, useToaster } from 'react-hot-toast';
 import React from 'react';
 import styled from 'styled-components';
-import type { ToastContainerProps } from './types';
 import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
@@ -265,8 +264,8 @@ const Toaster: React.FC<ToasterProps> = ({
   );
 };
 
-const ToastContainer = ({ position = 'bottom-left' }: ToastContainerProps): React.ReactElement => {
-  return <Toaster position={position} />;
+const ToastContainer = (): React.ReactElement => {
+  return <Toaster position="bottom-left" />;
 };
 
 export { ToastContainer };
