@@ -14,11 +14,6 @@ type ToastProps = {
   content: React.ReactNode;
 
   /**
-   * @internal
-   */
-  isVisible?: boolean;
-
-  /**
    * @default `neutral`
    */
   color?: 'neutral' | 'positive' | 'negative' | 'warning' | 'information';

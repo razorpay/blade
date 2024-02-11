@@ -69,7 +69,9 @@ const Toast = ({
   onDismissButtonClick,
   isVisible,
   id,
-}: ToastProps): React.ReactElement => {
+}: ToastProps & {
+  isVisible?: boolean;
+}): React.ReactElement => {
   const { theme } = useTheme();
   const Icon = leading || iconMap[color];
 
