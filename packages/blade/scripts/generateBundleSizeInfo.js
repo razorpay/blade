@@ -4,23 +4,17 @@ const babelParser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const execa = require('execa');
 
-const main = () => {
-  // Get all the components name exported from the bundle and add them to the size-limit configuration
-  const fileContent = fs.readFileSync(
-    path.resolve(__dirname, '../build/lib/web/production/components/index.js'),
-    'utf8',
-  );
+const main = async () => {
+  const { globby } = await import('globby');
 
-  // Parse the file content to generate an AST
-  const ast = babelParser.parse(fileContent, {
-    sourceType: 'module',
-  });
+  const indexPaths = await globby([
+    'build/lib/web/production/components/**/index.js',
+    '!build/lib/web/production/components/{Icons,Form}/**/index.js',
+    '!build/lib/web/production/components/index.js',
+  ]);
 
-  // Arrays to store size-limit stats and component names to exclude
-  const sizes = [];
   const excludedComponents = [
     'useTheme',
-    'BladeProvider',
     'announce',
     'clearAnnouncer',
     'destroyAnnouncer',
@@ -40,51 +34,81 @@ const main = () => {
     'SkipNavLink',
     'VisuallyHidden',
   ];
+  const sizes = [];
+  // Get all the components name exported from the bundle and add them to the size-limit configuration
+  indexPaths.forEach((indexPath) => {
+    const fileContent = fs.readFileSync(path.resolve(__dirname, `../${indexPath}`), 'utf8');
 
-  // Traverse the AST to get the component names
-  traverse(ast, {
-    // Get the component name from the export statement
-    ExportSpecifier: ({ node }) => {
-      const componentName = node.exported.name;
-      // We don't want to add Icon components to the size-limit configuration
-      if (!(componentName.includes('Icon') || excludedComponents.includes(componentName))) {
-        // Write size-limit configuration to .size-limit.json for each component
-        fs.writeFileSync(
-          path.resolve(__dirname, '../.size-limit.json'),
-          JSON.stringify(
-            [
-              {
-                name: componentName,
-                path: './build/lib/web/production/components/index.js',
-                import: `{ ${componentName} }`,
-                // Set high limit for the component size so that it doesn't fail the size-limit check
-                limit: '2000 kb',
-                running: false,
-                gzip: true,
-              },
-            ],
-            null,
-            2,
-          ),
-        );
+    // Parse the file content to generate an AST
+    const ast = babelParser.parse(fileContent, {
+      sourceType: 'module',
+    });
+    // Arrays to store size-limit stats and component names to exclude
+    const sizes = [];
+    const sizeLimitConfig = [];
+    const exportedComponents = [];
 
-        // Run size-limit command and capture the output to gather size information
-        const { stdout } = execa.commandSync('yarn size-limit --json');
+    // Traverse the AST to get the component names
+    traverse(ast, {
+      // Get the component name from the export statement
+      ExportSpecifier: ({ node }) => {
+        const componentName = node.exported.name;
 
-        // Process the size-limit output to extract relevant information
-        const jsonLikeString = stdout
-          .split('\n') // remove new line chars => []
-          .map((item) => item.trim()) // remove whitespace
-          .filter((item) => item !== '') // filter empty array items
-          .join('');
+        // We don't want to add Icon components to the size-limit configuration
+        if (!(excludedComponents.includes(componentName) || componentName.startsWith('Base'))) {
+          exportedComponents.push(componentName);
+        }
+      },
+    });
 
-        sizes.push(
-          JSON.parse(
-            jsonLikeString.substring(jsonLikeString.indexOf('[') + 1, jsonLikeString.indexOf(']')),
-          ),
-        );
-      }
-    },
+    if (excludedComponents.length > 0) {
+      const imports = excludedComponents.join(', ');
+      // sizeLimitConfig.push({
+      //   name: imports,
+      //   path: './build/lib/web/production/components/index.js',
+      //   import: `{ ${excludedComponents.join(', ')} }`,
+      //   // Set high limit for the component size so that it doesn't fail the size-limit check
+      //   limit: '2000 kb',
+      //   running: false,
+      //   gzip: true,
+      // });
+
+      // Write size-limit configuration to .size-limit.json for each component
+      fs.writeFileSync(
+        path.resolve(__dirname, '../.size-limit.json'),
+        JSON.stringify(
+          [
+            {
+              name: imports,
+              path: './build/lib/web/production/components/index.js',
+              import: `{ ${excludedComponents.join(', ')} }`,
+              // Set high limit for the component size so that it doesn't fail the size-limit check
+              limit: '2000 kb',
+              running: false,
+              gzip: true,
+            },
+          ],
+          null,
+          2,
+        ),
+      );
+    }
+
+    // Run size-limit command and capture the output to gather size information
+    const { stdout } = execa.commandSync('yarn size-limit --json');
+
+    // Process the size-limit output to extract relevant information
+    const jsonLikeString = stdout
+      .split('\n') // remove new line chars => []
+      .map((item) => item.trim()) // remove whitespace
+      .filter((item) => item !== '') // filter empty array items
+      .join('');
+
+    sizes.push(
+      JSON.parse(
+        jsonLikeString.substring(jsonLikeString.indexOf('[') + 1, jsonLikeString.indexOf(']')),
+      ),
+    );
   });
 
   // Write the gathered size information to the specified file
