@@ -11,6 +11,7 @@ const main = async () => {
     'build/lib/web/production/components/**/index.js',
     '!build/lib/web/production/components/{Icons,Form}/**/index.js',
     '!build/lib/web/production/components/index.js',
+    '!build/lib/web/production/components/Box/styledProps/index.js',
   ]);
 
   const excludedComponents = [
@@ -35,6 +36,7 @@ const main = async () => {
     'VisuallyHidden',
   ];
   const sizes = [];
+  const sizeLimitConfig = [];
   // Get all the components name exported from the bundle and add them to the size-limit configuration
   indexPaths.forEach((indexPath) => {
     const fileContent = fs.readFileSync(path.resolve(__dirname, `../${indexPath}`), 'utf8');
@@ -59,55 +61,43 @@ const main = async () => {
       },
     });
 
-    if (excludedComponents.length > 0) {
-      const imports = excludedComponents.join(', ');
-      // sizeLimitConfig.push({
-      //   name: imports,
-      //   path: './build/lib/web/production/components/index.js',
-      //   import: `{ ${excludedComponents.join(', ')} }`,
-      //   // Set high limit for the component size so that it doesn't fail the size-limit check
-      //   limit: '2000 kb',
-      //   running: false,
-      //   gzip: true,
-      // });
+    console.log('🚀 ~ indexPaths.forEach ~ exportedComponents:', exportedComponents);
 
-      // Write size-limit configuration to .size-limit.json for each component
-      fs.writeFileSync(
-        path.resolve(__dirname, '../.size-limit.json'),
-        JSON.stringify(
-          [
-            {
-              name: imports,
-              path: './build/lib/web/production/components/index.js',
-              import: `{ ${excludedComponents.join(', ')} }`,
-              // Set high limit for the component size so that it doesn't fail the size-limit check
-              limit: '2000 kb',
-              running: false,
-              gzip: true,
-            },
-          ],
-          null,
-          2,
-        ),
-      );
+    if (exportedComponents.length > 0 && !exportedComponents.includes('default')) {
+      const imports = exportedComponents.join(', ');
+      sizeLimitConfig.push({
+        name: imports,
+        path: './build/lib/web/production/components/index.js',
+        import: `{ ${exportedComponents.join(', ')} }`,
+        // Set high limit for the component size so that it doesn't fail the size-limit check
+        limit: '2000 kb',
+        running: false,
+        gzip: true,
+      });
     }
-
-    // Run size-limit command and capture the output to gather size information
-    const { stdout } = execa.commandSync('yarn size-limit --json');
-
-    // Process the size-limit output to extract relevant information
-    const jsonLikeString = stdout
-      .split('\n') // remove new line chars => []
-      .map((item) => item.trim()) // remove whitespace
-      .filter((item) => item !== '') // filter empty array items
-      .join('');
-
-    sizes.push(
-      JSON.parse(
-        jsonLikeString.substring(jsonLikeString.indexOf('[') + 1, jsonLikeString.indexOf(']')),
-      ),
-    );
   });
+
+  // Write size-limit configuration to .size-limit.json for each component
+  fs.writeFileSync(
+    path.resolve(__dirname, '../.size-limit.json'),
+    JSON.stringify(sizeLimitConfig, null, 2),
+  );
+
+  // Run size-limit command and capture the output to gather size information
+  const { stdout } = execa.commandSync('yarn size-limit --json');
+
+  // Process the size-limit output to extract relevant information
+  const jsonLikeString = stdout
+    .split('\n') // remove new line chars => []
+    .map((item) => item.trim()) // remove whitespace
+    .filter((item) => item !== '') // filter empty array items
+    .join('');
+
+  sizes.push(
+    JSON.parse(
+      jsonLikeString.substring(jsonLikeString.indexOf('[') + 1, jsonLikeString.indexOf(']')),
+    ),
+  );
 
   // Write the gathered size information to the specified file
   const filename = process.env.BUNDLE_SIZE_STATS_FILENAME || 'PRBundleSizeStats.json';
