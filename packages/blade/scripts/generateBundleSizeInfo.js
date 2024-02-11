@@ -44,8 +44,6 @@ const main = async () => {
       sourceType: 'module',
     });
     // Arrays to store size-limit stats and component names to exclude
-    const sizes = [];
-    const sizeLimitConfig = [];
     const exportedComponents = [];
 
     // Traverse the AST to get the component names
