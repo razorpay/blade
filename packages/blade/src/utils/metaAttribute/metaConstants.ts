@@ -29,6 +29,8 @@ export const MetaConstants = {
   DropdownOverlay: 'dropdown-overlay',
   DropdownFooter: 'dropdown-footer',
   DropdownHeader: 'dropdown-header',
+  FileUpload: 'file-upload',
+  FileUploadItem: 'file-upload-item',
   Icon: 'icon',
   IconButton: 'icon-button',
   Indicator: 'indicator',
