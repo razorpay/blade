@@ -43,28 +43,18 @@ Before you install the package, make sure that you have performed the following 
 1. Install blade as a dependency.
    Blade has a peer dependency on a few libraries, you can skip adding it if you already have it installed in your project.
 
+```shell
+yarn add @razorpay/blade styled-components@5.3.11 @razorpay/i18nify-js @razorpay/i18nify-react
+```
+
 - `styled-components`
   > **Note**
   >
   > Currently, blade only supports styled-components v5 only
-
-```shell
-yarn add @razorpay/blade styled-components@5.3.11
-```
-
 - `@razorpay/i18nify-js`
   - Blade uses this library for formatting capabilities in [Amount](https://blade.razorpay.com/?path=/docs/components-amount--docs) and other components based on the locale. Follow [this guide](https://www.npmjs.com/package/@razorpay/i18nify-js) to install it.
-
-```shell
-yarn add @razorpay/i18nify-js
-```
-
 - `@razorpay/i18nify-react`
   - A state management React wrapper for `@razorpay/i18nify-js` that maintains locale state of your page. Follow [this guide](https://www.npmjs.com/package/@razorpay/i18nify-react) to configure and install it.
-
-```shell
-yarn add @razorpay/i18nify-react
-```
 
 2. Follow [this guide](#-install-fonts) to install the fonts.
 
