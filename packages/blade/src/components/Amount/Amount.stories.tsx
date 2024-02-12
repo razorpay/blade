@@ -26,7 +26,7 @@ const Page = (): React.ReactElement => {
       note="This component only displays the provided value in the specified currency with the formatting capabilities enabled by @razorpay/i18nify-react, it does not perform any currency conversion."
       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73328-558626&mode=design&t=JkDSnlo8KJOBJimR-4"
       propsDescription="The Amount component automatically formats numbers based on the user's browser locale enabled by @razorpay/i18nify-react. To adjust the locale according to your page, utilise its hooks for updating the locale. For more details, please refer to
-      the documentation."
+      the documentation of @razorpay/i18nify-react library."
     >
       <Title>Usage</Title>
       <Sandbox>
