@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
+import { useIsMobile } from '~utils/useIsMobile';
 
 type CalculateYPositionProps = {
   toast: Toast;
@@ -93,8 +94,7 @@ const Toaster: React.FC<ToasterProps> = ({
   const { theme } = useTheme();
   const [frontToastHeight, setFrontToastHeight] = React.useState(0);
   const [hasManuallyExpanded, setHasManuallyExpanded] = React.useState(false);
-  const { platform } = useTheme();
-  const isMobile = platform === 'onMobile';
+  const isMobile = useIsMobile();
   const MIN_TOASTS = isMobile ? 1 : 3;
 
   const infoToasts = React.useMemo(() => toasts.filter((toast) => !isPromotionalToast(toast)), [
