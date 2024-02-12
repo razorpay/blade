@@ -32,7 +32,7 @@ const useToast = (): UseToastReturn => {
     if (props.duration === undefined) {
       // Set default durations
       if (isPromoToast) {
-        props.duration = 6000;
+        props.duration = 8000;
       } else {
         props.duration = 4000;
       }
