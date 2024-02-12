@@ -5,7 +5,6 @@ import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderBadge, DrawerHeaderIcon }
 import type { DrawerProps } from './';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
-import iconMap from '~components/Icons/iconMap';
 import { Button } from '~components/Button';
 import { AnnouncementIcon, DownloadIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
@@ -106,7 +105,7 @@ export default {
   },
 } as Meta<DrawerProps>;
 
-const DrawerTemplate: StoryFn<typeof Drawer> = () => {
+const DrawerTemplate: StoryFn<typeof Drawer> = (args) => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [isSecondDrawerOpen, setIsSecondDrawerOpen] = React.useState(false);
   return (
