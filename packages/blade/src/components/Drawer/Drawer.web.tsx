@@ -12,7 +12,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { componentZIndices } from '~utils/componentZIndices';
-import { useGlobalState } from '~utils/GlobalStateProvider';
+import { useDrawerStack } from '~components/Drawer/StackProvider';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
@@ -80,7 +80,7 @@ const _Drawer = ({
 
   const { theme } = useTheme();
   const drawerId = useId('drawer');
-  const { drawerStack, addToDrawerStack, removeFromDrawerStack } = useGlobalState();
+  const { drawerStack, addToDrawerStack, removeFromDrawerStack } = useDrawerStack();
 
   const { isMounted, isVisible } = usePresence(isOpen, {
     enterTransitionDuration: theme.motion.duration.gentle,

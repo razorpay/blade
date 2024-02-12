@@ -2,13 +2,13 @@ import React from 'react';
 
 type StackActionType = (elementId: string) => void;
 
-type GlobalStateType = {
+type GlobalStackStateType = {
   drawerStack: string[];
   addToDrawerStack: StackActionType;
   removeFromDrawerStack: StackActionType;
 };
 
-const GlobalState = React.createContext<GlobalStateType>({
+const StackingContext = React.createContext<GlobalStackStateType>({
   drawerStack: [],
   addToDrawerStack: () => {},
   removeFromDrawerStack: () => {},
@@ -32,10 +32,10 @@ const useStacking = (): [string[], StackActionType, StackActionType] => {
   return [stack, addToStack, removeFromStack];
 };
 
-const GlobalStateProvider = ({ children }: { children: React.ReactNode }) => {
+const DrawerStackProvider = ({ children }: { children: React.ReactNode }) => {
   const [drawerStack, addToDrawerStack, removeFromDrawerStack] = useStacking();
 
-  const contextValue = React.useMemo<GlobalStateType>(
+  const contextValue = React.useMemo<GlobalStackStateType>(
     () => ({
       drawerStack,
       addToDrawerStack,
@@ -45,11 +45,11 @@ const GlobalStateProvider = ({ children }: { children: React.ReactNode }) => {
     [drawerStack],
   );
 
-  return <GlobalState.Provider value={contextValue}>{children}</GlobalState.Provider>;
+  return <StackingContext.Provider value={contextValue}>{children}</StackingContext.Provider>;
 };
 
-const useGlobalState = (): GlobalStateType => {
-  return React.useContext(GlobalState);
+const useDrawerStack = (): GlobalStackStateType => {
+  return React.useContext(StackingContext);
 };
 
-export { GlobalStateProvider, useGlobalState };
+export { DrawerStackProvider, useDrawerStack };

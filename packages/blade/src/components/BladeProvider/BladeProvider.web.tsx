@@ -9,7 +9,7 @@ import { ThemeContext } from './useTheme';
 import { useBladeProvider } from './useBladeProvider';
 import type { BladeProviderProps } from './types';
 import { BottomSheetStackProvider } from '~components/BottomSheet/BottomSheetStack';
-import { GlobalStateProvider } from '~utils/GlobalStateProvider';
+import { DrawerStackProvider } from '~components/Drawer/StackProvider';
 
 const tooltipDelays = { open: 300, close: 300 };
 
@@ -25,9 +25,14 @@ const BladeProvider = ({
       <FloatingDelayGroup delay={tooltipDelays}>
         <StyledComponentThemeProvider theme={theme}>
           <StyleSheetManager stylisPlugins={[stylisCSSHigherSpecificity()]}>
-            <GlobalStateProvider>
+            {/* 
+              If you want to add a new provider for keeping track of stack in component,
+              You can move DrawerStackProvider to common utils and rename to GlobalStackProvider
+              and reuse it for your component.
+            */}
+            <DrawerStackProvider>
               <BottomSheetStackProvider>{children}</BottomSheetStackProvider>
-            </GlobalStateProvider>
+            </DrawerStackProvider>
           </StyleSheetManager>
         </StyledComponentThemeProvider>
       </FloatingDelayGroup>
