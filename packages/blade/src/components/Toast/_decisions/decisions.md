@@ -17,7 +17,13 @@ Toasts can also be used to provide feedback to the user when a system event occu
 
 ## Anatomy
 
+### Informational Toast
+
 <img src="./toast-anatomy.png" width="100%" alt="Toast anatomy" />
+
+### Promotional Toast
+
+<img src="./example-promotional-toast.png" width="380" alt="Promotional toast example" />
 
 ## Simple Usage
 
