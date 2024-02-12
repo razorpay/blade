@@ -65,13 +65,7 @@ const main = async () => {
           exportedComponents.push(componentName);
         }
       },
-      ExportNamedDeclaration: ({ node }) => {
-        if (node.specifiers[0].exported.name === 'default')
-          console.log('specifiers->', node.source.value);
-      },
     });
-
-    console.log('🚀 ~ indexPaths.forEach ~ exportedComponents:', exportedComponents);
 
     if (exportedComponents.length > 0) {
       const imports = exportedComponents.join(', ');
