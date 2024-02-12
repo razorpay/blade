@@ -13,7 +13,6 @@ Toasts can also be used to provide feedback to the user when a system event occu
 
 - Stackable
 - Auto dismissable / manual dismissable
-- Positioning
 - `informational` or `promotional` types
 
 ## Anatomy
