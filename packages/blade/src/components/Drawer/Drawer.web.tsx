@@ -7,19 +7,20 @@ import {
 import React from 'react';
 import styled from 'styled-components';
 import usePresence from 'use-presence';
+import { drawerComponentIds } from './drawerComponentIds';
+import { DrawerContext } from './DrawerContext';
+import type { DrawerProps } from './types';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { componentZIndices } from '~utils/componentZIndices';
-import { useGlobalState } from '~utils/GlobalStateProvider';
+import { useDrawerStack } from '~components/Drawer/StackProvider';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
-import { drawerComponentIds } from './drawerComponentIds';
-import { DrawerContext } from './DrawerContext';
-import { DrawerProps } from './types';
 
 const SHOW_DRAWER = 'show-drawer';
 
@@ -79,7 +80,7 @@ const _Drawer = ({
 
   const { theme } = useTheme();
   const drawerId = useId('drawer');
-  const { drawerStack, addToDrawerStack, removeFromDrawerStack } = useGlobalState();
+  const { drawerStack, addToDrawerStack, removeFromDrawerStack } = useDrawerStack();
 
   const { isMounted, isVisible } = usePresence(isOpen, {
     enterTransitionDuration: theme.motion.duration.gentle,
@@ -87,13 +88,14 @@ const _Drawer = ({
     initialEnter: true,
   });
 
+  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
   const stackingLevel = drawerStack.indexOf(drawerId) + 1;
 
   const { refs, context } = useFloating({
     open: isMounted,
   });
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (isMounted) {
       addToDrawerStack(drawerId);
     } else {
@@ -101,27 +103,23 @@ const _Drawer = ({
     }
   }, [isMounted]);
 
-  React.useEffect(() => {
-    // We have to set focus on back button manually because back button is displayed after state update
-    // So initialFocus from FloatingFocusManager cannot track it.
-    if (stackingLevel > 1 && backButtonRef.current && !initialFocusRef?.current) {
-      backButtonRef.current?.focus();
-    }
-  }, [stackingLevel]);
-
   return (
     <DrawerContext.Provider
       value={{ close: onDismiss, closeButtonRef, backButtonRef, stackingLevel }}
     >
       <FloatingPortal>
         {isMounted ? (
-          <FloatingFocusManager context={context} initialFocus={initialFocusRef ?? closeButtonRef}>
+          <FloatingFocusManager
+            context={context}
+            initialFocus={initialFocusRef ?? (stackingLevel >= 2 ? backButtonRef : closeButtonRef)}
+          >
             <Box
               position="fixed"
               {...metaAttribute({
                 name: MetaConstants.Drawer,
                 testID,
               })}
+              // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
               zIndex={zIndex + stackingLevel}
             >
               {showOverlay || stackingLevel === 2 ? (
@@ -205,4 +203,4 @@ const Drawer = assignWithoutSideEffects(_Drawer, {
   componentId: drawerComponentIds.Drawer,
 });
 
-export { Drawer, DrawerProps };
+export { Drawer };

@@ -106,7 +106,7 @@ export default {
   },
 } as Meta<DrawerProps>;
 
-const DrawerTemplate: StoryFn<typeof Drawer> = ({ children, ...args }) => {
+const DrawerTemplate: StoryFn<typeof Drawer> = () => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const [isSecondDrawerOpen, setIsSecondDrawerOpen] = React.useState(false);
   return (
@@ -128,6 +128,7 @@ const DrawerTemplate: StoryFn<typeof Drawer> = ({ children, ...args }) => {
                 style={{
                   aspectRatio: '2 / 1',
                 }}
+                alt="dancing cat"
                 src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExMTdtZzAzNTQ5dHQ3d2hnampjdzZ2MmduOGJ5djRlMndmdWx3eHFsZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xJjs8eGVbjNYY/giphy.gif"
               />
             </CardBody>

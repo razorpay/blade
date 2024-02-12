@@ -1,4 +1,4 @@
-import { TestID } from '~utils/types';
+import type { TestID } from '~utils/types';
 
 type DrawerProps = {
   /**
@@ -34,6 +34,7 @@ type DrawerProps = {
   /**
    *  Ref to the element to be focused on opening the drawer.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialFocusRef?: React.MutableRefObject<any>;
 } & TestID;
 
@@ -70,4 +71,4 @@ type DrawerHeaderProps = {
   trailing?: React.ReactNode;
 };
 
-export { DrawerProps, DrawerHeaderProps };
+export type { DrawerProps, DrawerHeaderProps };

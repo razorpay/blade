@@ -1,6 +1,6 @@
 # Drawer
 
-A drawer is a panel that slides in mostly from right side of the screen over the existing content in the viewport. It helps in providing additional details or context and can also be used to promote product features or new products.
+A drawer is a panel that slides in mostly from the right side of the screen over the existing content in the viewport. It helps in providing additional details or context and can also be used to promote product features or new products.
 
 <img width="500px" src="./2024-02-07-20-04-07.png" alt="Drawer Figma Skeleton">
 
@@ -23,8 +23,8 @@ A drawer is a panel that slides in mostly from right side of the screen over the
     titleSuffix={<DrawerHeaderBadge />}
     trailing={
       <>
-        <DrawerHeaderLink />
-        <DrawerHeaderButton />
+        <Link />
+        <Button />
       </>
     }
   />
@@ -86,6 +86,30 @@ type DrawerProps = {
    * Also decides if clicking outside on overlay closes the drawer or not
    */
   showOverlay?: boolean;
+
+  /**
+   * Initial focus reference element
+   */
+  initialFocusRef?: React.MutableRefObject<any>;
+
+  /**
+   * children node.
+   *
+   * Supports DrawerHeader and DrawerBody
+   */
+  children: React.ReactNode;
+
+  /**
+   * Override z-index of Drawer.
+   *
+   * @default 1002
+   */
+  zIndex?: number;
+
+  /**
+   *  Accessibility label for the drawer
+   */
+  accessibilityLabel?: string;
 };
 
 type DrawerHeaderProps = {
@@ -116,7 +140,7 @@ type DrawerHeaderProps = {
   /**
    * Title trailing element
    *
-   * DrawerHeaderLink, DrawerHeaderButton[]
+   * Link, Button[]
    */
   trailing?: ReactNode;
 };
@@ -127,15 +151,22 @@ Other supporting wrapper components for trailing and leading space-
 - DrawerHeaderBadge
 - DrawerHeaderIcon
 - DrawerHeaderAsset
-- DrawerHeaderLink
-- DrawerHeaderButton
 
 _No alternate APIs were considered because Drawer is closer to Modal on overall meaning and API perspective so made sense to go with API that is closer to Modal, also all DS Drawer components I referenced have similar API_
+
+## Drawer Stacking
+
+- Only 2 Drawers can be stacked on top of each other
+- 2nd Drawer always has overlay independent of `showOverlay` prop
+- 2nd Drawer always has back button instead of close button. Clicking on back button closes the 2nd drawer.
+
+<img width="500px" src="./2024-02-12-11-01-32.png" />
 
 ## Accessibility
 
 - **Aria Attributes:** Drawer will have `aria-modal="true"` and `role="dialog"` and will be treated as modal for voiceover users.
-- **Focus Handling:** Ensure Close Icon is focussable
+- **Focus Handling:** Ensure Close Icon and Back Icon is focussable
+- **Keyboard Handling:** Pressing `ESC` should close the drawer
 
 Will work in a similar manner as [Ant Design - Drawer](https://ant.design/components/drawer)
 
