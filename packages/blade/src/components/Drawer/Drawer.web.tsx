@@ -16,6 +16,7 @@ import { useGlobalState } from '~utils/GlobalStateProvider';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 import { drawerComponentIds } from './drawerComponentIds';
 import { DrawerContext } from './DrawerContext';
@@ -93,7 +94,7 @@ const _Drawer = ({
     open: isMounted,
   });
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (isMounted) {
       addToDrawerStack(drawerId);
     } else {
@@ -101,21 +102,16 @@ const _Drawer = ({
     }
   }, [isMounted]);
 
-  React.useEffect(() => {
-    // We have to set focus on back button manually because back button is displayed after state update
-    // So initialFocus from FloatingFocusManager cannot track it.
-    if (stackingLevel > 1 && backButtonRef.current && !initialFocusRef?.current) {
-      backButtonRef.current?.focus();
-    }
-  }, [stackingLevel]);
-
   return (
     <DrawerContext.Provider
       value={{ close: onDismiss, closeButtonRef, backButtonRef, stackingLevel }}
     >
       <FloatingPortal>
         {isMounted ? (
-          <FloatingFocusManager context={context} initialFocus={initialFocusRef ?? closeButtonRef}>
+          <FloatingFocusManager
+            context={context}
+            initialFocus={initialFocusRef ?? (stackingLevel >= 2 ? backButtonRef : closeButtonRef)}
+          >
             <Box
               position="fixed"
               {...metaAttribute({
