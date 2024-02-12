@@ -23,8 +23,8 @@ A drawer is a panel that slides in mostly from right side of the screen over the
     titleSuffix={<DrawerHeaderBadge />}
     trailing={
       <>
-        <DrawerHeaderLink />
-        <DrawerHeaderButton />
+        <Link />
+        <Button />
       </>
     }
   />
@@ -140,7 +140,7 @@ type DrawerHeaderProps = {
   /**
    * Title trailing element
    *
-   * DrawerHeaderLink, DrawerHeaderButton[]
+   * Link, Button[]
    */
   trailing?: ReactNode;
 };
@@ -151,8 +151,6 @@ Other supporting wrapper components for trailing and leading space-
 - DrawerHeaderBadge
 - DrawerHeaderIcon
 - DrawerHeaderAsset
-- DrawerHeaderLink
-- DrawerHeaderButton
 
 _No alternate APIs were considered because Drawer is closer to Modal on overall meaning and API perspective so made sense to go with API that is closer to Modal, also all DS Drawer components I referenced have similar API_
 
