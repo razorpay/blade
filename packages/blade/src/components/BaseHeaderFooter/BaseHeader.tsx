@@ -45,6 +45,7 @@ type BaseHeaderProps = {
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
+  backButtonRef?: React.MutableRefObject<any>;
   metaComponentName?: string;
   /**
    * inner child of BottomSheetHeader. Meant to be used for AutoComplete only
@@ -152,6 +153,7 @@ const _BaseHeader = ({
   onBackButtonClick,
   onCloseButtonClick,
   closeButtonRef,
+  backButtonRef,
   testID,
   onClickCapture,
   onKeyDown,
@@ -193,6 +195,7 @@ const _BaseHeader = ({
             <BaseBox overflow="visible" marginRight="spacing.5">
               <Box {...centerBoxProps}>
                 <IconButton
+                  ref={backButtonRef}
                   size="large"
                   icon={ChevronLeftIcon}
                   onClick={() => onBackButtonClick?.()}

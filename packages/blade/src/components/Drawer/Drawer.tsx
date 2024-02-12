@@ -34,7 +34,7 @@ const AnimatedDrawerContainer = styled(BaseBox)(({ theme }) => {
     [`&.${SHOW_DRAWER}`]: {
       opacity: 1,
       transform: 'translateX(-100%)',
-      transition: `all ${castWebType(makeMotionTime(theme.motion.duration.xgentle))} ${castWebType(
+      transition: `all ${castWebType(makeMotionTime(theme.motion.duration.gentle))} ${castWebType(
         theme.motion.easing.entrance.revealing,
       )}`,
     },
@@ -51,7 +51,7 @@ const DrawerOverlay = styled(FloatingOverlay)(({ theme }) => {
 
     [`&.${SHOW_DRAWER}`]: {
       opacity: 1,
-      transition: `opacity ${makeMotionTime(theme.motion.duration.xgentle)} ${castWebType(
+      transition: `opacity ${makeMotionTime(theme.motion.duration.gentle)} ${castWebType(
         theme.motion.easing.entrance.revealing,
       )}`,
     },
@@ -68,7 +68,8 @@ const _Drawer = ({
   initialFocusRef,
   testID,
 }: DrawerProps): React.ReactElement => {
-  const defaultInitialFocusRef = React.useRef<HTMLDivElement>(null);
+  const closeButtonRef = React.useRef<HTMLDivElement>(null);
+  const backButtonRef = React.useRef<HTMLDivElement>(null);
 
   useVerifyAllowedChildren({
     children,
@@ -81,7 +82,7 @@ const _Drawer = ({
   const { drawerStack, addToDrawerStack, removeFromDrawerStack } = useGlobalState();
 
   const { isMounted, isVisible } = usePresence(isOpen, {
-    enterTransitionDuration: theme.motion.duration.xgentle,
+    enterTransitionDuration: theme.motion.duration.gentle,
     exitTransitionDuration: theme.motion.duration.xmoderate,
     initialEnter: true,
   });
@@ -101,12 +102,14 @@ const _Drawer = ({
   }, [isMounted]);
 
   return (
-    <DrawerContext.Provider value={{ close: onDismiss, defaultInitialFocusRef, stackingLevel }}>
+    <DrawerContext.Provider
+      value={{ close: onDismiss, closeButtonRef, backButtonRef, stackingLevel }}
+    >
       <FloatingPortal>
         {isMounted ? (
           <FloatingFocusManager
             context={context}
-            initialFocus={initialFocusRef ?? defaultInitialFocusRef}
+            initialFocus={stackingLevel < 2 ? closeButtonRef : 0}
           >
             <Box
               position="fixed"

@@ -11,7 +11,9 @@ import { drawerComponentIds } from './drawerComponentIds';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 
 const _DrawerHeader = ({ title, subtitle, leading, trailing, titleSuffix }: DrawerHeaderProps) => {
-  const { close, defaultInitialFocusRef, stackingLevel } = React.useContext(DrawerContext);
+  const { close, closeButtonRef, backButtonRef, stackingLevel } = React.useContext(DrawerContext);
+
+  const isLevelOneStacking = stackingLevel < 2;
 
   useVerifyAllowedChildren({
     children: titleSuffix,
@@ -27,9 +29,10 @@ const _DrawerHeader = ({ title, subtitle, leading, trailing, titleSuffix }: Draw
 
   return (
     <BaseHeader
-      showCloseButton={stackingLevel < 2}
-      showBackButton={stackingLevel >= 2}
-      closeButtonRef={defaultInitialFocusRef}
+      showCloseButton={isLevelOneStacking}
+      showBackButton={!isLevelOneStacking}
+      closeButtonRef={closeButtonRef}
+      backButtonRef={backButtonRef}
       onCloseButtonClick={() => close()}
       onBackButtonClick={() => close()}
       title={title}
