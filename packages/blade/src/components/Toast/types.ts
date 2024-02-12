@@ -26,7 +26,7 @@ type ToastProps = {
   /**
    * If true, the toast will be dismissed after few seconds
    *
-   * Duration for promotional toast is 6s
+   * Duration for promotional toast is 8s
    * Duration for informational toast is 4s
    *
    * @default false
@@ -37,7 +37,7 @@ type ToastProps = {
    * Duration in milliseconds for which the toast will be visible
    *
    * @default 4000 for informational toast
-   * @default 6000 for promotional toast
+   * @default 8000 for promotional toast
    */
   duration?: number;
 
