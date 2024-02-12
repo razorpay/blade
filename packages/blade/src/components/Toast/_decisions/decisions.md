@@ -237,22 +237,26 @@ You can checkout the toast motion [here](https://www.figma.com/proto/jubmQL9Z8V7
 - Q. Should we call it `onDismissButtonClick` or `onDismiss`? 
   
 - Q. Should the dismiss handler be called even when the toast is auto dismissed? Or should we have different handlers for auto dismiss and manual dismiss? (eg: `onAutoDismiss` `onDismissButtonClick`)
+  - A. We will call it `onDismissButtonClick` and it will only be called when the user clicks on the dismiss button.
 
 - Q. In the `useToast` hook should we call the returned functions `showToast`/`dismissToast` or `show`/`dismiss`?
 
-If we call them `show` & `dismiss` consumer can do this and might look more cleaner:
+  If we call them `show` & `dismiss` consumer can do this and might look more cleaner:
 
-```jsx
-const App = () => {
-  const toast = useToast();
+  ```jsx
+  const App = () => {
+    const toast = useToast();
 
-  toast.show(); // <-- they will also get auto complete when writing `toast.`
-  toast.dismiss();
-}
-```
+    toast.show(); // <-- they will also get auto complete when writing `toast.`
+    toast.dismiss();
+  }
+  ```
+  - A. We will call them `show` & `dismiss`
 
 - Q. In design we are restricting the Toast position to be bottom-left. In that case should we also do the same or should we allow all the positions & set the default to bottom-left? (If we allow all the positions, we will have to add some additional logic to handle stacking/animation of toasts coming from top instead of bottom)
+  - A. We will only allow bottom-left position for now.
 
 - Q. Should we keep the ToastContainer inside BladeProvider? 
 
-The problem is if we keep it inside BladeProvider, given our new light/dark mode setup where consumers will need to nest BladeProviders it would cause ToastContainer to render [multiple times](https://github.com/razorpay/blade/pull/1990#discussion_r1470796627).
+  The problem is if we keep it inside BladeProvider, given our new light/dark mode setup where consumers will need to nest BladeProviders it would cause ToastContainer to render [multiple times](https://github.com/razorpay/blade/pull/1990#discussion_r1470796627).
+  - A. We will expose ToastContainer, so that users can render it at the root level of their app regardless of where BladeProvider is.
