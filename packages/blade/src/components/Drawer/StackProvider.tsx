@@ -10,7 +10,9 @@ type GlobalStackStateType = {
 
 const StackingContext = React.createContext<GlobalStackStateType>({
   drawerStack: [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   addToDrawerStack: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   removeFromDrawerStack: () => {},
 });
 
@@ -32,7 +34,7 @@ const useStacking = (): [string[], StackActionType, StackActionType] => {
   return [stack, addToStack, removeFromStack];
 };
 
-const DrawerStackProvider = ({ children }: { children: React.ReactNode }) => {
+const DrawerStackProvider = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const [drawerStack, addToDrawerStack, removeFromDrawerStack] = useStacking();
 
   const contextValue = React.useMemo<GlobalStackStateType>(

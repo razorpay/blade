@@ -7,6 +7,9 @@ import {
 import React from 'react';
 import styled from 'styled-components';
 import usePresence from 'use-presence';
+import { drawerComponentIds } from './drawerComponentIds';
+import { DrawerContext } from './DrawerContext';
+import type { DrawerProps } from './types';
 import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
@@ -18,9 +21,6 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
-import { drawerComponentIds } from './drawerComponentIds';
-import { DrawerContext } from './DrawerContext';
-import { DrawerProps } from './types';
 
 const SHOW_DRAWER = 'show-drawer';
 
@@ -88,6 +88,7 @@ const _Drawer = ({
     initialEnter: true,
   });
 
+  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
   const stackingLevel = drawerStack.indexOf(drawerId) + 1;
 
   const { refs, context } = useFloating({
@@ -118,6 +119,7 @@ const _Drawer = ({
                 name: MetaConstants.Drawer,
                 testID,
               })}
+              // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
               zIndex={zIndex + stackingLevel}
             >
               {showOverlay || stackingLevel === 2 ? (

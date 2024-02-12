@@ -1,8 +1,8 @@
+import type { DrawerProps } from './types';
 import { Text } from '~components/Typography';
 import { logger } from '~utils/logger';
-import { DrawerProps } from './types';
 
-const Drawer = (props: DrawerProps): React.ReactElement => {
+const Drawer = (_props: DrawerProps): React.ReactElement => {
   if (__DEV__) {
     logger({
       type: 'warn',

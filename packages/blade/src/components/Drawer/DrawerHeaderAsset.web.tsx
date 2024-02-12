@@ -1,6 +1,6 @@
+import { drawerComponentIds } from './drawerComponentIds';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size } from '~tokens/global';
-import { drawerComponentIds } from './drawerComponentIds';
 
 type DrawerHeaderAssetProps = {
   /**
