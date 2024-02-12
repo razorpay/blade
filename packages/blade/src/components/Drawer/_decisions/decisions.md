@@ -86,6 +86,30 @@ type DrawerProps = {
    * Also decides if clicking outside on overlay closes the drawer or not
    */
   showOverlay?: boolean;
+
+  /**
+   * Initial focus reference element
+   */
+  initialFocusRef?: React.MutableRefObject<any>;
+
+  /**
+   * children node.
+   *
+   * Supports DrawerHeader and DrawerBody
+   */
+  children: React.ReactNode;
+
+  /**
+   * Override z-index of Drawer.
+   *
+   * @default 1002
+   */
+  zIndex?: number;
+
+  /**
+   *  Accessibility label for the drawer
+   */
+  accessibilityLabel?: string;
 };
 
 type DrawerHeaderProps = {
@@ -132,10 +156,19 @@ Other supporting wrapper components for trailing and leading space-
 
 _No alternate APIs were considered because Drawer is closer to Modal on overall meaning and API perspective so made sense to go with API that is closer to Modal, also all DS Drawer components I referenced have similar API_
 
+## Drawer Stacking
+
+- Only 2 Drawers can be stacked on top of each other
+- 2nd Drawer always has overlay independent of `showOverlay` prop
+- 2nd Drawer always has back button instead of close button. Clicking on back button closes the 2nd drawer.
+
+<img width="500px" src="./2024-02-12-11-01-32.png" />
+
 ## Accessibility
 
 - **Aria Attributes:** Drawer will have `aria-modal="true"` and `role="dialog"` and will be treated as modal for voiceover users.
-- **Focus Handling:** Ensure Close Icon is focussable
+- **Focus Handling:** Ensure Close Icon and Back Icon is focussable
+- **Keyboard Handling:** Pressing `ESC` should close the drawer
 
 Will work in a similar manner as [Ant Design - Drawer](https://ant.design/components/drawer)
 
