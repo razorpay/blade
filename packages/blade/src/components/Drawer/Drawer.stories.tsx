@@ -1,57 +1,13 @@
 import React from 'react';
-import type { DOMAttributes } from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import { Title } from '@storybook/addon-docs';
 import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderBadge, DrawerHeaderIcon } from './';
 import type { DrawerProps } from './';
-import { Sandbox } from '~utils/storybook/Sandbox';
-import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import iconMap from '~components/Icons/iconMap';
-import { isReactNative } from '~utils';
-import { TextInput } from '~components/Input/TextInput';
 import { Button } from '~components/Button';
-import { AnnouncementIcon, DownloadIcon, PlusIcon } from '~components/Icons';
+import { AnnouncementIcon, DownloadIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
-
-// const Page = (): React.ReactElement => {
-//   return (
-//     <StoryPageWrapper
-//       componentName="Tag"
-//       componentDescription="These are set of interactive keywords that help organise & categorise objects. Tags can be added or removed from an object by the users."
-//       figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71188-528135&mode=design&t=Qm80tBqhFBFB5BvZ-4"
-//     >
-//       <Title>Usage</Title>
-//       <Sandbox>
-//         {`
-//         import React from 'react';
-//         import { Tag, FileTextIcon } from '@razorpay/blade/components';
-
-//         function App(): React.ReactElement {
-//           const [isTagVisible, setIsTagVisible] = React.useState(true);
-
-//           return (
-//             isTagVisible
-//             ? <Tag
-//                 icon={FileTextIcon}
-//                 onDismiss={() => {
-//                   console.log('Unpaid Tag dismissed');
-//                   setIsTagVisible(false);
-//                 }}
-//               >
-//                 Unpaid
-//               </Tag>
-//             : null
-//           )
-//         }
-
-//         export default App;
-//         `}
-//       </Sandbox>
-//     </StoryPageWrapper>
-//   );
-// };
 
 export default {
   title: 'Components/Drawer',
@@ -71,11 +27,6 @@ export default {
       },
     },
   },
-  // parameters: {
-  //   docs: {
-  //     page: Page,
-  //   },
-  // },
 } as Meta<DrawerProps>;
 
 const DrawerTemplate: StoryFn<typeof Drawer> = ({ children, ...args }) => {
@@ -90,7 +41,7 @@ const DrawerTemplate: StoryFn<typeof Drawer> = ({ children, ...args }) => {
           title="Announcements"
           titleSuffix={<DrawerHeaderBadge color="positive">New</DrawerHeaderBadge>}
           subtitle="This is an announcement"
-          trailing={<Button variant="tertiary" icon={DownloadIcon} />}
+          trailing={<Button icon={DownloadIcon} />}
         />
         <DrawerBody>
           <Card padding="spacing.0">

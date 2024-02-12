@@ -101,16 +101,21 @@ const _Drawer = ({
     }
   }, [isMounted]);
 
+  React.useEffect(() => {
+    // We have to set focus on back button manually because back button is displayed after state update
+    // So initialFocus from FloatingFocusManager cannot track it.
+    if (stackingLevel > 1 && backButtonRef.current && !initialFocusRef?.current) {
+      backButtonRef.current?.focus();
+    }
+  }, [stackingLevel]);
+
   return (
     <DrawerContext.Provider
       value={{ close: onDismiss, closeButtonRef, backButtonRef, stackingLevel }}
     >
       <FloatingPortal>
         {isMounted ? (
-          <FloatingFocusManager
-            context={context}
-            initialFocus={stackingLevel < 2 ? closeButtonRef : 0}
-          >
+          <FloatingFocusManager context={context} initialFocus={initialFocusRef ?? closeButtonRef}>
             <Box
               position="fixed"
               {...metaAttribute({
