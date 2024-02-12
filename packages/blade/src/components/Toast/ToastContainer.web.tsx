@@ -16,9 +16,8 @@ type CalculateYPositionProps = {
   defaultPosition?: ToastPosition;
 };
 
-const GUTTER = 8;
+const GUTTER = 12;
 const PEEK_GUTTER = 14;
-const DEFAULT_OFFSET = 8;
 const SCALE_FACTOR = 0.05;
 const MAX_TOASTS = 1;
 const PEEKS = 3;
@@ -97,6 +96,7 @@ const Toaster: React.FC<ToasterProps> = ({
   const [hasManuallyExpanded, setHasManuallyExpanded] = React.useState(false);
   const isMobile = useIsMobile();
   const MIN_TOASTS = isMobile ? 1 : 3;
+  const CONTAINER_OFFSET = isMobile ? 16 : 24;
 
   const infoToasts = React.useMemo(() => toasts.filter((toast) => !isPromotionalToast(toast)), [
     toasts,
@@ -135,9 +135,9 @@ const Toaster: React.FC<ToasterProps> = ({
         // only consider visible recomputedToasts
         .filter((toast) => toast.visible)
         .reduce((prevHeight, toast) => prevHeight + (toast.height ?? 0), 0) +
-      recomputedToasts.length * DEFAULT_OFFSET
+      recomputedToasts.length * CONTAINER_OFFSET
     );
-  }, [recomputedToasts]);
+  }, [recomputedToasts, CONTAINER_OFFSET]);
 
   const calculateYPosition = React.useCallback(
     ({ toast, reverseOrder = false, index, defaultPosition }: CalculateYPositionProps) => {
@@ -180,11 +180,11 @@ const Toaster: React.FC<ToasterProps> = ({
     <BaseBox
       position="fixed"
       zIndex={9999}
-      top={makeSize(DEFAULT_OFFSET)}
-      left={makeSize(DEFAULT_OFFSET)}
-      right={makeSize(DEFAULT_OFFSET)}
-      bottom={makeSize(DEFAULT_OFFSET)}
-      width={`calc(100% - ${DEFAULT_OFFSET * 2}px)`}
+      top={makeSize(CONTAINER_OFFSET)}
+      left={makeSize(CONTAINER_OFFSET)}
+      right={makeSize(CONTAINER_OFFSET)}
+      bottom={makeSize(CONTAINER_OFFSET)}
+      width={`calc(100% - ${CONTAINER_OFFSET * 2}px)`}
       maxWidth="360px"
       pointerEvents="none"
       className={containerClassName}
