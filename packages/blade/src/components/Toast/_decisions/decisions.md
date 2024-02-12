@@ -237,7 +237,7 @@ You can checkout the toast motion [here](https://www.figma.com/proto/jubmQL9Z8V7
 ## Open Questions
 
 - Q. What should be the default duration for auto dismissable toasts?
-  - A. 4s for informational toasts and 6s for promotional toasts
+  - A. 4s for informational toasts and 8s for promotional toasts
 
 - Q. Should we call it `onDismissButtonClick` or `onDismiss`? 
   
