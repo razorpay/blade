@@ -205,4 +205,4 @@ const Drawer = assignWithoutSideEffects(_Drawer, {
   componentId: drawerComponentIds.Drawer,
 });
 
-export { Drawer, DrawerProps };
+export { Drawer };
