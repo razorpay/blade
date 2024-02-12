@@ -36,7 +36,7 @@ const main = async () => {
     'VisuallyHidden',
   ];
   const sizes = [];
-  const sizeLimitConfig = [];
+
   // Get all the components name exported from the bundle and add them to the size-limit configuration
   indexPaths.forEach((indexPath) => {
     const fileContent = fs.readFileSync(path.resolve(__dirname, `../${indexPath}`), 'utf8');
@@ -55,15 +55,25 @@ const main = async () => {
         const componentName = node.exported.name;
 
         // We don't want to add Icon components to the size-limit configuration
-        if (!(excludedComponents.includes(componentName) || componentName.startsWith('Base'))) {
+        if (
+          !(
+            excludedComponents.includes(componentName) ||
+            componentName.startsWith('Base') ||
+            componentName === 'default'
+          )
+        ) {
           exportedComponents.push(componentName);
         }
+      },
+      ExportNamedDeclaration: ({ node }) => {
+        if (node.specifiers[0].exported.name === 'default')
+          console.log('specifiers->', node.source.value);
       },
     });
 
     console.log('🚀 ~ indexPaths.forEach ~ exportedComponents:', exportedComponents);
 
-    if (exportedComponents.length > 0 && !exportedComponents.includes('default')) {
+    if (exportedComponents.length > 0) {
       const imports = exportedComponents.join(', ');
       // Write size-limit configuration to .size-limit.json for each component
       fs.writeFileSync(
@@ -84,23 +94,23 @@ const main = async () => {
           2,
         ),
       );
+
+      // Run size-limit command and capture the output to gather size information
+      const { stdout } = execa.commandSync('yarn size-limit --json');
+
+      // Process the size-limit output to extract relevant information
+      const jsonLikeString = stdout
+        .split('\n') // remove new line chars => []
+        .map((item) => item.trim()) // remove whitespace
+        .filter((item) => item !== '') // filter empty array items
+        .join('');
+
+      sizes.push(
+        JSON.parse(
+          jsonLikeString.substring(jsonLikeString.indexOf('[') + 1, jsonLikeString.indexOf(']')),
+        ),
+      );
     }
-
-    // Run size-limit command and capture the output to gather size information
-    const { stdout } = execa.commandSync('yarn size-limit --json');
-
-    // Process the size-limit output to extract relevant information
-    const jsonLikeString = stdout
-      .split('\n') // remove new line chars => []
-      .map((item) => item.trim()) // remove whitespace
-      .filter((item) => item !== '') // filter empty array items
-      .join('');
-
-    sizes.push(
-      JSON.parse(
-        jsonLikeString.substring(jsonLikeString.indexOf('[') + 1, jsonLikeString.indexOf(']')),
-      ),
-    );
   });
 
   // Write the gathered size information to the specified file
