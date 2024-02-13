@@ -34,23 +34,12 @@ This document outlines the API details of the `FileUpload` component, encompassi
 ## `FileUpload` Props
 
 ```ts
-type File = {
+// Check the File type from MDN for more details: https://developer.mozilla.org/en-US/docs/Web/API/File
+interface BladeFile extends File {
   /**
    * The unique identifier of the file.
    */
   id: string;
-  /**
-   * The name of the file.
-   */
-  name: string;
-  /**
-   * The size of the file in bytes.
-   */
-  size: number;
-  /**
-   * The file's [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types).
-   */
-  type: string;
   /**
    * The file's upload status.
    */
@@ -63,9 +52,9 @@ type File = {
    * Text indicating an error state
    */
   errorText?: string;
-};
+}
 
-type FileList = File[];
+type BladeFileList = BladeFile[];
 
 type FileUploadProps = {
   /**
@@ -86,8 +75,8 @@ type FileUploadProps = {
   selectionType?: 'single' | 'multiple';
   /**
    * File types that can be accepted. See [input's accept attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)
-   * 
-   * Usage: accept=".jpg, .png, .pdf", accept="image/*", accept="image/png, image/jpeg, application/pdf" 
+   *
+   * Usage: accept=".jpg, .png, .pdf", accept="image/*", accept="image/png, image/jpeg, application/pdf"
    */
   accept?: string;
   /**
@@ -101,11 +90,11 @@ type FileUploadProps = {
   /**
    * Default list of files that have been uploaded, useful when the component is uncontrolled
    */
-  defaultFileList?: FileList;
+  defaultFileList?: BladeFileList;
   /**
    * List of files that have been selected/uploaded, useful when the component is controlled
    */
-  fileList?: FileList;
+  fileList?: BladeFileList;
   /**
    * Limit the number of files that can be uploaded
    */
@@ -117,15 +106,15 @@ type FileUploadProps = {
   /**
    * Callback function triggered when files are selected
    */
-  onChange?: ({ name, fileList }: { name: string; fileList: FileList }) => void;
+  onChange?: ({ name, fileList }: { name: string; fileList: BladeFileList }) => void;
   /**
    * Callback function triggered when the preview icon is clicked
    */
-  onPreview?: (previewedFile: File) => void;
+  onPreview?: (previewedFile: BladeFile) => void;
   /**
    * Callback function triggered when a file is removed
    */
-  onRemove?: ({ removedFile, fileList }: { removedFile: File; fileList: FileList }) => void;
+  onRemove?: (removedFile: BladeFile) => void;
   /**
    * Callback function executed when files are dropped into the upload area
    */
@@ -166,23 +155,19 @@ Here are a few illustrative examples showcasing the utilization of the `FileUplo
 #### Single File selection
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import axios from 'axios';
 import { Box, FileUpload } from '@razorpay/blade/components';
 
 const UncontrolledSingleFileUploadForm = () => {
-  const [file, setFile] = useState();
-
-  const handleFileChange = ({ files }) => {
-    setFile(files[0]);
-  };
+  const fileUploadRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Create a FormData object to append files
     const formData = new FormData();
-    formData.append('files', file);
+    formData.append('files', fileUploadRef.current.files[0]);
     try {
       // Simulate a file upload using axios
       const response = await axios.post(
@@ -209,7 +194,7 @@ const UncontrolledSingleFileUploadForm = () => {
         <FileUpload
           label="GSTIN Certificate"
           selectionType="single"
-          onChange={handleFileChange}
+          ref={fileUploadRef}
           accept=".jpg, .png, .pdf"
           helpText="Upload .jpg, .png, or .pdf file only"
           onDrop={(e) => console.log('Files dropped!', e)}
@@ -227,16 +212,12 @@ export default UncontrolledSingleFileUploadForm;
 #### Multiple File selection:
 
 ```jsx
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import axios from 'axios';
 import { Box, FileUpload } from '@razorpay/blade/components';
 
 const UncontrolledMultiFileUploadForm = () => {
-  const [files, setFiles] = useState();
-
-  const handleFileChange = ({ files }) => {
-    setFiles(files);
-  };
+  const fileUploadRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -244,7 +225,7 @@ const UncontrolledMultiFileUploadForm = () => {
     // Create a FormData object to append files
     const formData = new FormData();
 
-    files.forEach((file, index) => {
+    fileUploadRef.current.files.forEach((file, index) => {
       formData.append(`file-${index}`, file);
     });
 
@@ -274,7 +255,7 @@ const UncontrolledMultiFileUploadForm = () => {
         <FileUpload
           label="GSTIN Certificate"
           selectionType="multiple"
-          onChange={handleFileChange}
+          ref={fileUploadRef}
           accept=".jpg, .png, .pdf"
           helpText="Upload .jpg, .png, or .pdf files only"
           onDrop={(e) => console.log('Files dropped!', e)}
@@ -300,66 +281,66 @@ import { Box, FileUpload } from '@razorpay/blade/components';
 
 const ControlledCustomProgressFileUploadForm = () => {
   const [uploadedFile, setUploadedFile] = useState();
-  
+
   const handleFileChange = async ({ files }) => {
     // Create a FormData object to append files
     const formData = new FormData();
 
-    formData.append("files", files[0]);
-    setUploadedFile(files[0])
+    formData.append('files', files[0]);
+    setUploadedFile(files[0]);
 
     try {
       // Simulate a file upload using axios
       const response = await axios.post(
-        "https://run.mocky.io/v3/bb0b32f0-fc54-4d78-9c9b-08b3a4d8f7c5",
+        'https://run.mocky.io/v3/bb0b32f0-fc54-4d78-9c9b-08b3a4d8f7c5',
         formData,
         {
           headers: {
-            "content-type": "multipart/form-data",
+            'content-type': 'multipart/form-data',
           },
           onUploadProgress: (progressEvent) => {
-            setUploadedFile(previousState => {
-                const percentCompleted = Math.round(
-                    (progressEvent.loaded * 100) / progressEvent.total
-                  );
+            setUploadedFile((previousState) => {
+              const percentCompleted = Math.round(
+                (progressEvent.loaded * 100) / progressEvent.total,
+              );
 
-                return {
-                    ...previousState,
-                    percent: percentCompleted,
-                    status: percentCompleted === 100 ? "success" : "uploading"
-                };
+              return {
+                ...previousState,
+                percent: percentCompleted,
+                status: percentCompleted === 100 ? 'success' : 'uploading',
+              };
             });
           },
-        }
+        },
       );
 
       // Handle success, reset form, etc.
-      console.log("Files uploaded successfully:", response.data);
+      console.log('Files uploaded successfully:', response.data);
     } catch (error) {
       // Handle errors
-      setUploadedFile(previousState => {
+      setUploadedFile((previousState) => {
         return {
-            ...previousState,
-            status: "error",
-            errorText: error.message,
+          ...previousState,
+          status: 'error',
+          errorText: error.message,
         };
       });
-      console.error("File upload failed:", error.message);
+      console.error('File upload failed:', error.message);
     }
   };
 
   return (
     <Box>
-        <FileUpload
-          label="Upload product image"
-          selectionType="single"
-          fileList={uploadedFile ? [uploadedFile] : []}
-          onChange={handleFileChange}
-          showSelectedFiles={false}
-          accept=".jpg, .png"
-          helpText="Upload .jpg, .png, or .pdf files only"
-          onDrop={(e) => console.log('Files dropped!', e)}
-        />
+      <FileUpload
+        label="Upload product image"
+        selectionType="single"
+        fileList={uploadedFile ? [uploadedFile] : []}
+        onChange={handleFileChange}
+        showSelectedFiles={false}
+        accept=".jpg, .png"
+        helpText="Upload .jpg, .png, or .pdf files only"
+        onDrop={(e) => console.log('Files dropped!', e)}
+      />
     </Box>
   );
 };
@@ -371,3 +352,8 @@ export default ControlledCustomProgressFileUploadForm;
 
 - The component accepts an `accessibilityLabel` prop to let users pass an `aria-label` used by screen readers.
 - When the input is in focus, the `FileUpload` component will display a focus ring around the input area to indicate the current focus state. Using `Space` and `Enter` keys can be used to open the file picker dialog.
+
+## References
+
+- [MDN Web Docs: File API](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications)
+- [Ant Design: Upload](https://ant.design/components/upload)
