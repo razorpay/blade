@@ -2,6 +2,7 @@ import type { ToastPosition, ToasterProps, Toast } from 'react-hot-toast';
 import { resolveValue, useToaster } from 'react-hot-toast';
 import React from 'react';
 import styled from 'styled-components';
+import { PEEKS, MAX_TOASTS, SCALE_FACTOR, GUTTER, PEEK_GUTTER, TOAST_MAX_WIDTH } from './constants';
 import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
@@ -15,19 +16,15 @@ type CalculateYPositionProps = {
   defaultPosition?: ToastPosition;
 };
 
-const GUTTER = 12;
-const PEEK_GUTTER = 14;
-const SCALE_FACTOR = 0.05;
-const MAX_TOASTS = 1;
-const PEEKS = 3;
-
-const StyledToastWrapper = styled.div<{
+const StyledToastWrapper = styled(BaseBox)<{
   isVisible: boolean;
   index: number;
   isExpanded: boolean;
   isPromotional: boolean;
 }>(({ isVisible, index, isExpanded, isPromotional }) => {
   let opacity = isVisible ? 1 : 0;
+  // Only make the PEEKING and MAX_TOASTS toasts visible,
+  // Every other toasts should be hidden
   if (index < PEEKS + MAX_TOASTS) {
     opacity = 1;
   } else if (isPromotional || isExpanded) {
@@ -184,7 +181,7 @@ const Toaster: React.FC<ToasterProps> = ({
       right={makeSize(CONTAINER_OFFSET)}
       bottom={makeSize(CONTAINER_OFFSET)}
       width={`calc(100% - ${CONTAINER_OFFSET * 2}px)`}
-      maxWidth="360px"
+      maxWidth={makeSize(TOAST_MAX_WIDTH)}
       pointerEvents="none"
       className={containerClassName}
       onMouseEnter={() => {

@@ -189,4 +189,4 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
 };
 
 export const ToastVariants = ToastVariantsTemplate.bind({});
-ToastVariants.storyName = 'ToastVariants';
+ToastVariants.storyName = 'Toast Variants';
