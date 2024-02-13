@@ -13,7 +13,6 @@ type CalculateYPositionProps = {
   index: number;
   isExpanded: boolean;
   reverseOrder?: boolean;
-  defaultPosition?: ToastPosition;
 };
 
 const StyledToastWrapper = styled(BaseBox)<{
@@ -130,33 +129,50 @@ const Toaster: React.FC<ToasterProps> = ({
     );
   }, [recomputedToasts, CONTAINER_OFFSET]);
 
+  // Stacking logic explained in detail:
+  // https://www.loom.com/share/522d9a445e2f41e1886cce4decb9ab9d?sid=4287acf6-8d44-431b-93e1-c1a0d40a0aba
+  //
+  // 1. 3 toasts can be stacked on top of each other
+  // 2. After 3 toasts, the toasts will be scaled down and peek from behind
+  // 3. There can be maximum of 3 toasts peeking from behind
+  // 4. After 3 peeking toasts, the toasts will be hidden
+  // 5. If there is a promo toast, all toasts will be lifted up
+  // 6. Promo toasts will always be on the bottom
   const calculateYPosition = React.useCallback(
-    ({ toast, reverseOrder = false, index, defaultPosition }: CalculateYPositionProps) => {
-      const relevantToasts = infoToasts.filter(
-        (t) => (t.position ?? defaultPosition) === (toast.position ?? defaultPosition) && t.height,
-      );
-      const toastIndex = relevantToasts.findIndex((t) => t.id === toast.id);
+    ({ toast, index }: CalculateYPositionProps) => {
+      // find the current toast index
+      const toastIndex = infoToasts.findIndex((t) => t.id === toast.id);
       // number of toasts before this toast
-      const toastsBefore = relevantToasts.filter((toast, i) => i < toastIndex && toast.visible)
-        .length;
+      const toastsBefore = infoToasts.filter((toast, i) => i < toastIndex && toast.visible).length;
 
-      let scale = index < MAX_TOASTS ? 1 : Math.max(0.7, 2 - (toastsBefore * SCALE_FACTOR + 1));
+      if (index === 2) {
+        console.log({ index, toastsBefore });
+      }
+      let scale = Math.max(0.7, 1 - toastsBefore * SCALE_FACTOR);
+      // first toast should always have a scale of 1
+      if (index < MAX_TOASTS) {
+        scale = 1;
+      }
+
       // y position of toast,
-      let offset = relevantToasts
+      let offset = infoToasts
         .filter((toast) => toast.visible)
-        .slice(...(reverseOrder ? [toastsBefore + 1] : [0, toastsBefore]))
-        .reduce((acc, toast) => {
+        .slice(0, toastsBefore)
+        .reduce((y, toast) => {
+          // if the toast is expanded, add the height of the toast + gutter
           if (isExpanded) {
-            return acc + (toast.height ?? 0) + GUTTER;
+            return y + (toast.height ?? 0) + GUTTER;
           }
-          return acc + PEEK_GUTTER;
+          // if the toast is not expanded, add only the peek gutter
+          return y + PEEK_GUTTER;
         }, 0);
 
       // lift all info toasts up if there is a promo toast
       if (hasPromoToast) {
         offset += GUTTER + promoToastHeight;
       }
-      // promo toasts should always be on bottom
+
+      // if this is a promo toast, then put it at the bottom and force the scale to 1
       if (isPromotionalToast(toast)) {
         offset = 0;
         scale = 1;
