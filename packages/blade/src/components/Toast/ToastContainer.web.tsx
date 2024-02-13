@@ -111,13 +111,13 @@ const Toaster: React.FC<ToasterProps> = ({
   const promoToastHeight = promoToasts[0]?.height ?? 0;
   const isExpanded = hasManuallyExpanded || recomputedToasts.length <= MIN_TOASTS;
 
-  React.useEffect(() => {
-    if (hasManuallyExpanded) {
-      handlers.startPause();
-    } else {
-      handlers.endPause();
-    }
-  }, [handlers, hasManuallyExpanded]);
+  // React.useEffect(() => {
+  //   if (hasManuallyExpanded) {
+  //     handlers.startPause();
+  //   } else {
+  //     handlers.endPause();
+  //   }
+  // }, [handlers, hasManuallyExpanded]);
 
   React.useLayoutEffect(() => {
     // find the first toast which is visible
@@ -187,14 +187,24 @@ const Toaster: React.FC<ToasterProps> = ({
       onMouseEnter={() => {
         if (isMobile) return;
         setHasManuallyExpanded(true);
+        handlers.startPause();
       }}
       onMouseLeave={() => {
         if (isMobile) return;
         setHasManuallyExpanded(false);
+        handlers.endPause();
       }}
       onClick={() => {
         if (!isMobile) return;
-        setHasManuallyExpanded((prev) => !prev);
+        setHasManuallyExpanded((prev) => {
+          const next = !prev;
+          if (next) {
+            handlers.startPause();
+          } else {
+            handlers.endPause();
+          }
+          return next;
+        });
       }}
     >
       {/*
