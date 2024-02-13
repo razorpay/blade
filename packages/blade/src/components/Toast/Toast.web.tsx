@@ -18,6 +18,7 @@ import {
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeMotionTime, useTheme } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
 
 const iconMap = {
   positive: CheckCircleIcon,
@@ -26,6 +27,14 @@ const iconMap = {
   neutral: InfoIcon,
   warning: AlertTriangleIcon,
 };
+
+const borderColorMap = {
+  positive: 'feedback.border.positive.intense',
+  negative: 'feedback.border.negative.intense',
+  warning: 'feedback.border.notice.intense',
+  information: 'feedback.border.information.intense',
+  neutral: 'feedback.border.neutral.intense',
+} as const;
 
 const slideIn = keyframes`
   from {
@@ -51,14 +60,16 @@ const slideOut = keyframes`
   }
 `;
 
-const AnimatedFade = styled(BaseBox)<{ animationType: FlattenSimpleInterpolation | null }>(
-  ({ animationType }) => {
-    return css`
-      overflow: hidden;
-      ${animationType}
-    `;
-  },
-);
+const AnimatedFade = styled(BaseBox)<{
+  animationType: FlattenSimpleInterpolation | null;
+  toastBorderColor: string;
+}>(({ animationType, toastBorderColor }) => {
+  return css`
+    overflow: hidden;
+    border: 1px solid ${toastBorderColor};
+    ${animationType}
+  `;
+});
 
 const Toast = ({
   type,
@@ -115,6 +126,10 @@ const Toast = ({
 
   return (
     <AnimatedFade
+      toastBorderColor={getIn(
+        theme.colors,
+        isPromotional ? 'surface.border.gray.muted' : borderColorMap[color],
+      )}
       animationType={isVisible ? enter : exit}
       width="100%"
       display="flex"
