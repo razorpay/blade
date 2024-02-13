@@ -21,17 +21,11 @@ interface BladeFile extends File {
 
 type BladeFileList = BladeFile[];
 
-type FileUploadProps = {
-  /**
-   * Label for the FileUpload component
-   */
-  label?: string;
-  /**
-   * Accessibility label for the FileUpload component, required if label is not provided
-   */
-  accessibilityLabel?: string;
+type FileUploadCommonProps = {
   /**
    * Position of the label relative to the file upload area. Desktop only prop. Default value on mobile will be 'top'
+   *
+   * @default 'top'
    */
   labelPosition?: 'top' | 'left';
   /**
@@ -48,6 +42,16 @@ type FileUploadProps = {
    * Disables or enables the FileUpload component
    */
   isDisabled?: boolean;
+  /**
+   * Sets the required state of the file input
+   *
+   * @default false
+   */
+  isRequired?: boolean;
+  /**
+   * Renders a necessity indicator after the label. If `isRequired` is `true`, it defaults to `'required'`
+   */
+  necessityIndicator?: 'required' | 'optional' | 'none';
   /**
    * The name of the file upload input, [useful in form submissions](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name)
    */
@@ -71,7 +75,7 @@ type FileUploadProps = {
   /**
    * Callback function triggered when files are selected
    */
-  onChange?: ({ name, fileList }: { name: string; fileList: BladeFileList }) => void;
+  onChange?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**
    * Callback function triggered when the preview icon is clicked
    */
@@ -101,6 +105,37 @@ type FileUploadProps = {
    */
   testID?: string;
 };
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type FileUploadPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type FileUploadPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
+  FileUploadCommonProps;
 
 type FileUploadItemProps = Pick<FileUploadProps, 'onPreview' | 'onRemove'> & {
   file: BladeFile;

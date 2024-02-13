@@ -31,6 +31,7 @@ export const MetaConstants = {
   DropdownHeader: 'dropdown-header',
   FileUpload: 'file-upload',
   FileUploadItem: 'file-upload-item',
+  FileUploadLabel: 'file-upload-label',
   Icon: 'icon',
   IconButton: 'icon-button',
   Indicator: 'indicator',

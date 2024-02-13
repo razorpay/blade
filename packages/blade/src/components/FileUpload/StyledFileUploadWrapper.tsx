@@ -17,7 +17,6 @@ const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
       display: 'flex',
       borderStyle: 'dashed',
       height: '54px',
-      minWidth: '350px',
 
       ...(!isDisabled && {
         '&:hover': {

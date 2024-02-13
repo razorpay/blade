@@ -3,6 +3,7 @@ import type { FileUploadProps } from './FileUpload';
 import { FileUpload as FileUploadComponent } from './FileUpload';
 import { Heading } from '~components/Typography/Heading';
 import BaseBox from '~components/Box/BaseBox';
+
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Text } from '~components/Typography/Text';
@@ -107,7 +108,7 @@ const FileUploadDefaultTemplate: StoryFn<typeof FileUploadComponent> = (args) =>
       <CardBody>
         <BaseBox display="flex" flexDirection={args.orientation == 'vertical' ? 'row' : 'column'}>
           <Heading margin="spacing.4">Payment Links</Heading>
-          <FileUploadComponent {...args} />
+          <FileUploadComponent label="Upload GST" {...args} />
           <Box margin="spacing.4">
             <Text>Share payment link via:</Text>
             <List>
