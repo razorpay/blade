@@ -42,7 +42,7 @@ export const TestToastShow: StoryFn<typeof Toast> = (): React.ReactElement => {
 
 TestToastShow.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  await sleep(500);
+  await sleep(1000);
 
   const toastContent = 'Payment successful';
   await expect(queryByText(toastContent)).not.toBeInTheDocument();
@@ -61,7 +61,7 @@ export const TestToastDismiss: StoryFn<typeof Toast> = (): React.ReactElement =>
 
 TestToastDismiss.play = async () => {
   const { getByRole, queryByText } = within(document.body);
-  await sleep(500);
+  await sleep(1000);
 
   const toastContent = 'Payment successful';
   await expect(queryByText(toastContent)).not.toBeInTheDocument();
@@ -83,7 +83,7 @@ export const ToastHover: StoryFn<typeof Toast> = (): React.ReactElement => {
 
 ToastHover.play = async () => {
   const { getByRole, queryByText, getByTestId } = within(document.body);
-  await sleep(500);
+  await sleep(1000);
 
   const toastContent = 'Payment successful';
   await expect(queryByText(toastContent)).not.toBeInTheDocument();
@@ -157,7 +157,7 @@ export const ToastStacking: StoryFn<typeof Toast> = (): React.ReactElement => {
 
 ToastStacking.play = async () => {
   const { getByRole, getAllByRole, queryByText, getByTestId } = within(document.body);
-  await sleep(500);
+  await sleep(1000);
 
   const button1 = getByRole('button', { name: 'Show 1' });
   const button2 = getByRole('button', { name: 'Show 2' });
