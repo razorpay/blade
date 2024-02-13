@@ -111,17 +111,12 @@ const Toaster: React.FC<ToasterProps> = ({
   const promoToastHeight = promoToasts[0]?.height ?? 0;
   const isExpanded = hasManuallyExpanded || recomputedToasts.length <= MIN_TOASTS;
 
-  // React.useEffect(() => {
-  //   if (hasManuallyExpanded) {
-  //     handlers.startPause();
-  //   } else {
-  //     handlers.endPause();
-  //   }
-  // }, [handlers, hasManuallyExpanded]);
-
   React.useLayoutEffect(() => {
     // find the first toast which is visible
-    setFrontToastHeight(infoToasts.find((t, index) => t.visible && index === 0)?.height ?? 0);
+    const firstToast = infoToasts.find((t, index) => t.visible && index === 0);
+    if (firstToast) {
+      setFrontToastHeight(firstToast.height ?? 0);
+    }
   }, [infoToasts]);
 
   // calculate total height of all toasts
