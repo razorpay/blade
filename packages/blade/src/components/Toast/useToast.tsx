@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import type { Toast } from 'react-hot-toast';
 import toast, { useToasterStore } from 'react-hot-toast';
 import type { ToastProps } from './types';
 import { Toast as ToastComponent } from './Toast';
 import { logger } from '~utils/logger';
 
+type BladeToast = Omit<Toast, 'type'> & ToastProps;
 type UseToastReturn = {
-  toasts: Toast[];
+  toasts: BladeToast[];
   show: (props: ToastProps) => string;
   dismiss: (id?: string) => void;
 };
@@ -13,6 +15,8 @@ type UseToastReturn = {
 const useToast = (): UseToastReturn => {
   const { toasts } = useToasterStore();
   const show = (props: ToastProps): string => {
+    props.type = props.type || 'informational';
+
     // Do not show promotional toasts if there is already one
     if (
       toasts.find((t) => {
@@ -51,15 +55,13 @@ const useToast = (): UseToastReturn => {
       props.duration = Infinity;
     }
 
-    return toast.custom(
-      // @ts-expect-error - customProps is not a valid prop
-      ({ visible, ...customProps }) => <ToastComponent {...customProps} isVisible={visible} />,
-      props,
-    );
+    return toast.custom(({ visible, id }) => {
+      return <ToastComponent {...props} id={id} isVisible={visible} />;
+    }, props);
   };
 
   return {
-    toasts,
+    toasts: (toasts as unknown) as BladeToast[],
     show,
     dismiss: toast.dismiss,
   };

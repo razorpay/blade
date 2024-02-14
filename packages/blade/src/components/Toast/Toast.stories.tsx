@@ -114,6 +114,7 @@ Basic.args = {
 
 const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
   const toast = useToast();
+  const hasPromoToast = toast.toasts.some((t) => t.type === 'promotional');
 
   const showInformationalToast = ({ color }: { color: ToastProps['color'] }) => {
     toast.show({
@@ -160,7 +161,7 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
   return (
     <Box>
       <Text>Show Informational Toasts:</Text>
-      <Box display="flex" gap="spacing.3" marginY="spacing.4">
+      <Box display="flex" gap="spacing.3" marginY="spacing.5">
         <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'positive' })}>
           Positive
         </Button>
@@ -178,8 +179,15 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
         </Button>
       </Box>
       <Text>Show Promotional Toasts:</Text>
-      <Box display="flex" gap="spacing.3" marginY="spacing.4">
-        <Button variant="tertiary" onClick={() => showPromotionalToast()}>
+      <Text size="small" color="surface.text.gray.muted">
+        Note: There can only be 1 promotional toast at a time
+      </Text>
+      <Box display="flex" gap="spacing.3" marginY="spacing.5">
+        <Button
+          variant="tertiary"
+          onClick={() => showPromotionalToast()}
+          isDisabled={hasPromoToast}
+        >
           Promotional
         </Button>
       </Box>

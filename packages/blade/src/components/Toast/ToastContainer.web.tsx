@@ -145,9 +145,6 @@ const Toaster: React.FC<ToasterProps> = ({
       // number of toasts before this toast
       const toastsBefore = infoToasts.filter((toast, i) => i < toastIndex && toast.visible).length;
 
-      if (index === 2) {
-        console.log({ index, toastsBefore });
-      }
       let scale = Math.max(0.7, 1 - toastsBefore * SCALE_FACTOR);
       // first toast should always have a scale of 1
       if (index < MAX_TOASTS) {
