@@ -19,19 +19,20 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const iconMap = {
   positive: CheckCircleIcon,
   negative: AlertOctagonIcon,
   information: InfoIcon,
   neutral: InfoIcon,
-  warning: AlertTriangleIcon,
+  notice: AlertTriangleIcon,
 };
 
 const borderColorMap = {
   positive: 'feedback.border.positive.intense',
   negative: 'feedback.border.negative.intense',
-  warning: 'feedback.border.notice.intense',
+  notice: 'feedback.border.notice.intense',
   information: 'feedback.border.information.intense',
   neutral: 'feedback.border.neutral.intense',
 } as const;
@@ -85,15 +86,6 @@ const Toast = ({
 }): React.ReactElement => {
   const { theme } = useTheme();
   const Icon = leading || iconMap[color];
-
-  const colorMap = {
-    positive: 'positive',
-    negative: 'negative',
-    warning: 'notice',
-    information: 'information',
-    neutral: 'neutral',
-  } as const;
-
   const isPromotional = type === 'promotional';
   const actionButton = action ? (
     <Box>
@@ -126,6 +118,7 @@ const Toast = ({
 
   return (
     <AnimatedFade
+      {...makeAccessible({ role: 'status', liveRegion: 'polite' })}
       toastBorderColor={getIn(
         theme.colors,
         isPromotional ? 'surface.border.gray.muted' : borderColorMap[color],
@@ -139,9 +132,7 @@ const Toast = ({
       borderRadius="medium"
       alignItems="center"
       backgroundColor={
-        isPromotional
-          ? 'surface.background.gray.intense'
-          : `feedback.background.${colorMap[color]}.intense`
+        isPromotional ? 'surface.background.gray.intense' : `feedback.background.${color}.intense`
       }
     >
       {Icon ? (

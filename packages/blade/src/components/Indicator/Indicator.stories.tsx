@@ -16,7 +16,7 @@ const Page = (): ReactElement => {
       componentName="Indicator"
       componentDescription="Indicators describe the condition of an entity. They can be used to convey semantic meaning,
     such as statuses and semantical-categories."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8224%3A1"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71114-258498&mode=design&t=jyVG8aXFc1Dlw2Se-4"
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
@@ -44,7 +44,7 @@ const meta: Meta<IndicatorProps> = {
   args: {
     accessibilityLabel: 'Status OK',
     children: 'Success',
-    intent: 'neutral',
+    color: 'neutral',
     size: 'medium',
   },
   tags: ['autodocs'],

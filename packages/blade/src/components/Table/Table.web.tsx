@@ -17,7 +17,7 @@ import {
   tableBackgroundColor,
   tablePagination,
 } from './tokens';
-import type { TableProps, TableNode, Identifier } from './types';
+import type { TableProps, TableNode, Identifier, TablePaginationType } from './types';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -131,6 +131,9 @@ const _Table = <Item,>({
   const [selectedRows, setSelectedRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [disabledRows, setDisabledRows] = React.useState<TableNode<unknown>['id'][]>([]);
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
+  const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
+    'client',
+  );
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
   const backgroundColor = tableBackgroundColor;
@@ -318,12 +321,18 @@ const _Table = <Item,>({
 
   const hasPagination = Boolean(pagination);
 
-  const paginationConfig = usePagination(data, {
-    state: {
-      page: 0,
-      size: tablePagination.defaultPageSize,
+  const paginationConfig = usePagination(
+    data,
+    {
+      state: {
+        page: 0,
+        size: tablePagination.defaultPageSize,
+      },
     },
-  });
+    {
+      isServer: paginationType === 'server',
+    },
+  );
 
   const currentPaginationState = useMemo(() => {
     return hasPagination
@@ -376,6 +385,8 @@ const _Table = <Item,>({
       showStripedRows,
       disabledRows,
       setDisabledRows,
+      paginationType,
+      setPaginationType,
       backgroundColor,
     }),
     [
@@ -394,6 +405,8 @@ const _Table = <Item,>({
       showStripedRows,
       disabledRows,
       setDisabledRows,
+      paginationType,
+      setPaginationType,
       backgroundColor,
     ],
   );

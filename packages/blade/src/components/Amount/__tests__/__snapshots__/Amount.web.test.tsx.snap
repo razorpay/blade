@@ -94,7 +94,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
         data-blade-component="base-text"
         opacity="0.64"
       >
-        د.إ
+        AED
       </span>
       <span
         class="c3"
@@ -324,7 +324,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
         data-blade-component="base-text"
         opacity="0.64"
       >
-        RM
+        MYR
       </span>
       <span
         class="c3"
@@ -542,7 +542,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
         class="c3"
         data-blade-component="base-text"
       >
-        1k
+        1K
       </div>
     </div>
   </div>

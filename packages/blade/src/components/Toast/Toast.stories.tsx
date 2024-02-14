@@ -83,7 +83,7 @@ const BasicToastTemplate: StoryFn<ToastProps> = (args) => {
   }
 
   return (
-    <Box>
+    <Box height="80vh">
       <Text marginBottom="spacing.3" color="surface.text.gray.subtle">
         After changing storybook controls, press the show "toast button" to see changes
       </Text>
@@ -114,6 +114,7 @@ Basic.args = {
 
 const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
   const toast = useToast();
+  const hasPromoToast = toast.toasts.some((t) => t.type === 'promotional');
 
   const showInformationalToast = ({ color }: { color: ToastProps['color'] }) => {
     toast.show({
@@ -158,17 +159,17 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
   };
 
   return (
-    <Box>
+    <Box height="80vh">
       <Text>Show Informational Toasts:</Text>
-      <Box display="flex" gap="spacing.3" marginY="spacing.4">
+      <Box display="flex" gap="spacing.3" marginY="spacing.5">
         <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'positive' })}>
           Positive
         </Button>
         <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'negative' })}>
           Negative
         </Button>
-        <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'warning' })}>
-          Warning
+        <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'notice' })}>
+          Notice
         </Button>
         <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'information' })}>
           Information
@@ -178,8 +179,15 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
         </Button>
       </Box>
       <Text>Show Promotional Toasts:</Text>
-      <Box display="flex" gap="spacing.3" marginY="spacing.4">
-        <Button variant="tertiary" onClick={() => showPromotionalToast()}>
+      <Text size="small" color="surface.text.gray.muted">
+        Note: There can only be 1 promotional toast at a time
+      </Text>
+      <Box display="flex" gap="spacing.3" marginY="spacing.5">
+        <Button
+          variant="tertiary"
+          onClick={() => showPromotionalToast()}
+          isDisabled={hasPromoToast}
+        >
           Promotional
         </Button>
       </Box>
