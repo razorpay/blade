@@ -70,16 +70,21 @@ const useStackblitzSetup = ({
   }, [colorScheme, brandColor]);
 
   React.useEffect(() => {
-    void sdk.embedProject('sb-embed', stackblitzProject, {
-      height: editorHeight,
-      openFile: 'App.tsx',
-      terminalHeight: 0,
-      hideDevTools: true,
-      hideNavigation: true,
-      hideExplorer: true,
-      theme: 'light',
-      showSidebar: false,
-    });
+    try {
+      void sdk.embedProject('sb-embed', stackblitzProject, {
+        height: editorHeight,
+        openFile: 'App.tsx',
+        terminalHeight: 0,
+        hideDevTools: true,
+        hideNavigation: true,
+        hideExplorer: true,
+        theme: 'light',
+        showSidebar: false,
+      });
+      // eslint-disable-next-line @typescript-eslint/no-implicit-any-catch, @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      console.error(err);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorScheme, brandColor]);
 
