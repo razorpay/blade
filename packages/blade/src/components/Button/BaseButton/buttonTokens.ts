@@ -195,8 +195,8 @@ const buttonIconOnlyPadding: Record<
   xsmall: {
     top: 0,
     bottom: 0,
-    left: 4, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
-    right: 4, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
+    left: 3, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
+    right: 3, // should be `6px` as per design but we're making it `8px` since `6px` is not available as a spacing token
   },
   small: {
     top: 0,

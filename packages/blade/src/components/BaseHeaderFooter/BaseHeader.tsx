@@ -11,9 +11,10 @@ import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { isReactNative } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { logger, throwBladeError } from '~utils/logger';
+import { size } from '~tokens/global';
 
 type BaseHeaderProps = {
   title?: string;
@@ -233,7 +234,12 @@ const _BaseHeader = ({
                 flexDirection="row"
               >
                 {title ? (
-                  <Text size="large" weight="semibold" color="surface.text.gray.normal">
+                  <Text
+                    size="large"
+                    marginTop={makeSize(size['1'])}
+                    weight="semibold"
+                    color="surface.text.gray.normal"
+                  >
                     {title}
                   </Text>
                 ) : null}
