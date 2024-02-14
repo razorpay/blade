@@ -40,6 +40,8 @@ npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/
   + <Text color="UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN"> Lorem ipsum </Text>
   ```
 
+- In a move towards internationalization, the default formatting of number in Amount component has now changed. It relies on locale state managed by [@razorpay/i18nify-js](https://www.npmjs.com/package/@razorpay/i18nify-js) library and fallbacks to browser locale to drive formatting. To maintain the previous formatting experience of the Amount component, ensure you follow the steps outlined in this [section](https://github.com/razorpay/blade/blob/master/packages/blade/upgrade-v11.md#amount).
+
 **Step 5**: Test your page and make sure everything works as expected. Once the migration is complete for all pages, you can remove the old version of Blade from your project.
 
 ## Documentation
@@ -95,6 +97,47 @@ Only use this if you're unable to run the codemod described above.
   ```
 
 ### Amount
+
+- **Amount component is now internationalized via [@razorpay/i18nify-js](https://www.npmjs.com/package/@razorpay/i18nify-js).**
+
+1. The `<Amount />` component will now automatically format numbers based on the user's browser locale. For example, `<Amount value={123456.789} currency="INR">` will render `₹1,23,456.79` for browsers with the `en-IN` default locale, whereas it will render `₹123,456.79` for browsers with the `en-US` locale.
+
+2. If you want to enable users to change the locale of your page, add the `@razorpay/i18nify-react` package and wrap your app inside the `I18nProvider`. Utilize the `setI18nState` utility to modify the locale. For more details, please refer to the [documentation](https://www.npmjs.com/package/@razorpay/i18nify-react).
+
+3. Additionally, if you prefer to maintain a fixed locale for your page and amount component, enclose your app within `<I18nProvider initData={{locale: 'locale-you-want'}}>..`. For more details, please refer to the [documentation](https://www.npmjs.com/package/@razorpay/i18nify-react).
+
+Example with `@razorpay/i18nify-react`
+
+```jsx
+import React, { useEffect } from 'react';
+import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
+import { BladeProvider, Amount } from '@razorpay/blade/components';
+
+const ToggleAmount = ({ value }) => {
+  const { setI18nState } = useI18nContext();
+
+  function onLocaleChange() {
+    setI18nState({ locale: 'de-DE' });
+  }
+
+  return (
+    <>
+      <Amount value={value} />
+      <button onClick={onLocaleChange}>change locale to German</button>
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <I18nProvider initData={{ locale: 'en-IN' }}>
+      <BladeProvider>
+        <ToggleAmount value={2000000} />
+      </BladeProvider>
+    </I18nProvider>
+  );
+};
+```
 
 - **The accepted values for the `size` prop has been updated.**
 
