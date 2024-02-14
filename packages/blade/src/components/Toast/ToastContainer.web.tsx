@@ -137,9 +137,9 @@ const Toaster: React.FC<ToasterProps> = ({
         // only consider visible recomputedToasts
         .filter((toast) => toast.visible)
         .reduce((prevHeight, toast) => prevHeight + (toast.height ?? 0), 0) +
-      recomputedToasts.length * containerGutter
+      recomputedToasts.length * GUTTER
     );
-  }, [recomputedToasts, containerGutter]);
+  }, [recomputedToasts]);
 
   // Stacking logic explained in detail:
   // https://www.loom.com/share/522d9a445e2f41e1886cce4decb9ab9d?sid=4287acf6-8d44-431b-93e1-c1a0d40a0aba
