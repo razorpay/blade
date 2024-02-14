@@ -79,11 +79,14 @@ const BasicToastTemplate: StoryFn<ToastProps> = (args) => {
   const toast = useToast();
 
   if (args.type === 'promotional') {
-    args.content = <Text>{args.content}</Text>;
+    args.content = <Text size="small">{args.content}</Text>;
   }
 
   return (
     <Box>
+      <Text marginBottom="spacing.3" color="surface.text.gray.subtle">
+        After changing storybook controls, press the show "toast button" to see changes
+      </Text>
       <Button
         onClick={() => {
           toast.show(args);
@@ -186,4 +189,4 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
 };
 
 export const ToastVariants = ToastVariantsTemplate.bind({});
-ToastVariants.storyName = 'ToastVariants';
+ToastVariants.storyName = 'Toast Variants';

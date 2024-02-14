@@ -17,7 +17,7 @@ import {
 } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { makeMotionTime, useTheme } from '~utils';
+import { castWebType, makeMotionTime, useTheme } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 
 const iconMap = {
@@ -115,13 +115,13 @@ const Toast = ({
   const enter = css`
     opacity: 0;
     animation: ${slideIn} ${makeMotionTime(theme.motion.duration.gentle)}
-      ${theme.motion.easing.entrance.effective as string} forwards;
+      ${castWebType(theme.motion.easing.entrance.effective)} forwards;
   `;
 
   const exit = css`
     opacity: 1;
     animation: ${slideOut} ${makeMotionTime(theme.motion.duration.moderate)}
-      ${theme.motion.easing.exit.effective as string} forwards;
+      ${castWebType(theme.motion.easing.exit.effective)} forwards;
   `;
 
   return (

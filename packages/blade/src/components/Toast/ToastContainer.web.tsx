@@ -2,6 +2,7 @@ import type { ToastPosition, ToasterProps, Toast } from 'react-hot-toast';
 import { resolveValue, useToaster } from 'react-hot-toast';
 import React from 'react';
 import styled from 'styled-components';
+import { PEEKS, MAX_TOASTS, SCALE_FACTOR, GUTTER, PEEK_GUTTER, TOAST_MAX_WIDTH } from './constants';
 import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
@@ -13,22 +14,17 @@ type CalculateYPositionProps = {
   index: number;
   isExpanded: boolean;
   reverseOrder?: boolean;
-  defaultPosition?: ToastPosition;
 };
 
-const GUTTER = 12;
-const PEEK_GUTTER = 14;
-const SCALE_FACTOR = 0.05;
-const MAX_TOASTS = 1;
-const PEEKS = 3;
-
-const StyledToastWrapper = styled.div<{
+const StyledToastWrapper = styled(BaseBox)<{
   isVisible: boolean;
   index: number;
   isExpanded: boolean;
   isPromotional: boolean;
 }>(({ isVisible, index, isExpanded, isPromotional }) => {
   let opacity = isVisible ? 1 : 0;
+  // Only make the PEEKING and MAX_TOASTS toasts visible,
+  // Every other toasts should be hidden
   if (index < PEEKS + MAX_TOASTS) {
     opacity = 1;
   } else if (isPromotional || isExpanded) {
@@ -115,17 +111,12 @@ const Toaster: React.FC<ToasterProps> = ({
   const promoToastHeight = promoToasts[0]?.height ?? 0;
   const isExpanded = hasManuallyExpanded || recomputedToasts.length <= MIN_TOASTS;
 
-  React.useEffect(() => {
-    if (hasManuallyExpanded) {
-      handlers.startPause();
-    } else {
-      handlers.endPause();
-    }
-  }, [handlers, hasManuallyExpanded]);
-
   React.useLayoutEffect(() => {
     // find the first toast which is visible
-    setFrontToastHeight(infoToasts.find((t, index) => t.visible && index === 0)?.height ?? 0);
+    const firstToast = infoToasts.find((t, index) => t.visible && index === 0);
+    if (firstToast) {
+      setFrontToastHeight(firstToast.height ?? 0);
+    }
   }, [infoToasts]);
 
   // calculate total height of all toasts
@@ -139,33 +130,50 @@ const Toaster: React.FC<ToasterProps> = ({
     );
   }, [recomputedToasts, CONTAINER_OFFSET]);
 
+  // Stacking logic explained in detail:
+  // https://www.loom.com/share/522d9a445e2f41e1886cce4decb9ab9d?sid=4287acf6-8d44-431b-93e1-c1a0d40a0aba
+  //
+  // 1. 3 toasts can be stacked on top of each other
+  // 2. After 3 toasts, the toasts will be scaled down and peek from behind
+  // 3. There can be maximum of 3 toasts peeking from behind
+  // 4. After 3 peeking toasts, the toasts will be hidden
+  // 5. If there is a promo toast, all toasts will be lifted up
+  // 6. Promo toasts will always be on the bottom
   const calculateYPosition = React.useCallback(
-    ({ toast, reverseOrder = false, index, defaultPosition }: CalculateYPositionProps) => {
-      const relevantToasts = infoToasts.filter(
-        (t) => (t.position ?? defaultPosition) === (toast.position ?? defaultPosition) && t.height,
-      );
-      const toastIndex = relevantToasts.findIndex((t) => t.id === toast.id);
+    ({ toast, index }: CalculateYPositionProps) => {
+      // find the current toast index
+      const toastIndex = infoToasts.findIndex((t) => t.id === toast.id);
       // number of toasts before this toast
-      const toastsBefore = relevantToasts.filter((toast, i) => i < toastIndex && toast.visible)
-        .length;
+      const toastsBefore = infoToasts.filter((toast, i) => i < toastIndex && toast.visible).length;
 
-      let scale = index < MAX_TOASTS ? 1 : Math.max(0.7, 2 - (toastsBefore * SCALE_FACTOR + 1));
+      if (index === 2) {
+        console.log({ index, toastsBefore });
+      }
+      let scale = Math.max(0.7, 1 - toastsBefore * SCALE_FACTOR);
+      // first toast should always have a scale of 1
+      if (index < MAX_TOASTS) {
+        scale = 1;
+      }
+
       // y position of toast,
-      let offset = relevantToasts
+      let offset = infoToasts
         .filter((toast) => toast.visible)
-        .slice(...(reverseOrder ? [toastsBefore + 1] : [0, toastsBefore]))
-        .reduce((acc, toast) => {
+        .slice(0, toastsBefore)
+        .reduce((y, toast) => {
+          // if the toast is expanded, add the height of the toast + gutter
           if (isExpanded) {
-            return acc + (toast.height ?? 0) + GUTTER;
+            return y + (toast.height ?? 0) + GUTTER;
           }
-          return acc + PEEK_GUTTER;
+          // if the toast is not expanded, add only the peek gutter
+          return y + PEEK_GUTTER;
         }, 0);
 
       // lift all info toasts up if there is a promo toast
       if (hasPromoToast) {
         offset += GUTTER + promoToastHeight;
       }
-      // promo toasts should always be on bottom
+
+      // if this is a promo toast, then put it at the bottom and force the scale to 1
       if (isPromotionalToast(toast)) {
         offset = 0;
         scale = 1;
@@ -185,20 +193,30 @@ const Toaster: React.FC<ToasterProps> = ({
       right={makeSize(CONTAINER_OFFSET)}
       bottom={makeSize(CONTAINER_OFFSET)}
       width={`calc(100% - ${CONTAINER_OFFSET * 2}px)`}
-      maxWidth="360px"
+      maxWidth={makeSize(TOAST_MAX_WIDTH)}
       pointerEvents="none"
       className={containerClassName}
       onMouseEnter={() => {
         if (isMobile) return;
         setHasManuallyExpanded(true);
+        handlers.startPause();
       }}
       onMouseLeave={() => {
         if (isMobile) return;
         setHasManuallyExpanded(false);
+        handlers.endPause();
       }}
       onClick={() => {
         if (!isMobile) return;
-        setHasManuallyExpanded((prev) => !prev);
+        setHasManuallyExpanded((prev) => {
+          const next = !prev;
+          if (next) {
+            handlers.startPause();
+          } else {
+            handlers.endPause();
+          }
+          return next;
+        });
       }}
     >
       {/*
