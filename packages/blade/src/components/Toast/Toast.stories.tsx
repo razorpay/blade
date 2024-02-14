@@ -168,8 +168,8 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
         <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'negative' })}>
           Negative
         </Button>
-        <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'warning' })}>
-          Warning
+        <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'notice' })}>
+          Notice
         </Button>
         <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'information' })}>
           Information

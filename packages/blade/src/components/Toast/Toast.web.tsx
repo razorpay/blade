@@ -26,13 +26,13 @@ const iconMap = {
   negative: AlertOctagonIcon,
   information: InfoIcon,
   neutral: InfoIcon,
-  warning: AlertTriangleIcon,
+  notice: AlertTriangleIcon,
 };
 
 const borderColorMap = {
   positive: 'feedback.border.positive.intense',
   negative: 'feedback.border.negative.intense',
-  warning: 'feedback.border.notice.intense',
+  notice: 'feedback.border.notice.intense',
   information: 'feedback.border.information.intense',
   neutral: 'feedback.border.neutral.intense',
 } as const;
@@ -86,15 +86,6 @@ const Toast = ({
 }): React.ReactElement => {
   const { theme } = useTheme();
   const Icon = leading || iconMap[color];
-
-  const colorMap = {
-    positive: 'positive',
-    negative: 'negative',
-    warning: 'notice',
-    information: 'information',
-    neutral: 'neutral',
-  } as const;
-
   const isPromotional = type === 'promotional';
   const actionButton = action ? (
     <Box>
@@ -141,9 +132,7 @@ const Toast = ({
       borderRadius="medium"
       alignItems="center"
       backgroundColor={
-        isPromotional
-          ? 'surface.background.gray.intense'
-          : `feedback.background.${colorMap[color]}.intense`
+        isPromotional ? 'surface.background.gray.intense' : `feedback.background.${color}.intense`
       }
     >
       {Icon ? (

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type React from 'react';
 import type { ButtonProps } from '~components/Button';
+import type { FeedbackColors } from '~tokens/theme/theme';
 
 type ToastProps = {
   /**
@@ -16,7 +17,7 @@ type ToastProps = {
   /**
    * @default `neutral`
    */
-  color?: 'neutral' | 'positive' | 'negative' | 'warning' | 'information';
+  color?: FeedbackColors;
 
   /**
    * Can be used to render an icon
