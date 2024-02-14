@@ -83,7 +83,7 @@ const BasicToastTemplate: StoryFn<ToastProps> = (args) => {
   }
 
   return (
-    <Box>
+    <Box height="80vh">
       <Text marginBottom="spacing.3" color="surface.text.gray.subtle">
         After changing storybook controls, press the show "toast button" to see changes
       </Text>
@@ -159,7 +159,7 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
   };
 
   return (
-    <Box>
+    <Box height="80vh">
       <Text>Show Informational Toasts:</Text>
       <Box display="flex" gap="spacing.3" marginY="spacing.5">
         <Button variant="tertiary" onClick={() => showInformationalToast({ color: 'positive' })}>
