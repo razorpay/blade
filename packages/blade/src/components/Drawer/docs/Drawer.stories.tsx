@@ -1,9 +1,7 @@
 import React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderBadge } from '../';
-import type { DrawerProps } from '../';
-import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { DownloadIcon } from '~components/Icons';
@@ -91,21 +89,14 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/Drawer',
   component: Drawer,
+  subcomponents: { Drawer, DrawerHeader, DrawerBody },
   tags: ['autodocs'],
-  argTypes: {
-    ...getStyledPropsArgTypes(),
-    isOpen: {
-      control: {
-        type: 'none',
-      },
-    },
-  },
   parameters: {
     docs: {
       page: Page,
     },
   },
-} as Meta<DrawerProps>;
+};
 
 const DrawerTemplate: StoryFn<typeof Drawer> = (args) => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);

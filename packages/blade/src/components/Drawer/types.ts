@@ -25,6 +25,8 @@ type DrawerProps = {
   children: React.ReactNode;
   /**
    * zIndex property of drawer
+   *
+   * @default 1001
    */
   zIndex?: number;
   /**
