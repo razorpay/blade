@@ -29,7 +29,7 @@ const getPrefixStyles = ({
 }): Pick<BaseBoxProps, 'paddingLeft'> => {
   if (hasPrefix && hasLeadingIcon) {
     return {
-      paddingLeft: 'spacing.2',
+      paddingLeft: 'spacing.3',
     };
   }
 
@@ -79,7 +79,7 @@ const getSuffixStyles = ({
 }): Pick<BaseBoxProps, 'paddingRight'> => {
   if (hasSuffix && hasTrailingIcon) {
     return {
-      paddingRight: 'spacing.2',
+      paddingRight: 'spacing.3',
     };
   }
 
