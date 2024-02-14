@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import type { Toast } from 'react-hot-toast';
 import toast, { useToasterStore } from 'react-hot-toast';
 import type { ToastProps } from './types';
@@ -15,7 +14,7 @@ type UseToastReturn = {
 const useToast = (): UseToastReturn => {
   const { toasts } = useToasterStore();
   const show = (props: ToastProps): string => {
-    props.type = props.type || 'informational';
+    props.type = props.type ?? 'informational';
 
     // Do not show promotional toasts if there is already one
     if (
