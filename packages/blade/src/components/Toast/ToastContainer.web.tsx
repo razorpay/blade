@@ -10,6 +10,10 @@ import {
   PEEK_GUTTER,
   TOAST_MAX_WIDTH,
   TOAST_Z_INDEX,
+  MIN_TOAST_MOBILE,
+  MIN_TOAST_DESKTOP,
+  CONTAINER_GUTTER_MOBILE,
+  CONTAINER_GUTTER_DESKTOP,
 } from './constants';
 import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
@@ -98,8 +102,8 @@ const Toaster: React.FC<ToasterProps> = ({
   const [frontToastHeight, setFrontToastHeight] = React.useState(0);
   const [hasManuallyExpanded, setHasManuallyExpanded] = React.useState(false);
   const isMobile = useIsMobile();
-  const MIN_TOASTS = isMobile ? 1 : 3;
-  const CONTAINER_OFFSET = isMobile ? 16 : 24;
+  const minToasts = isMobile ? MIN_TOAST_MOBILE : MIN_TOAST_DESKTOP;
+  const containerGutter = isMobile ? CONTAINER_GUTTER_MOBILE : CONTAINER_GUTTER_DESKTOP;
 
   const infoToasts = React.useMemo(() => toasts.filter((toast) => !isPromotionalToast(toast)), [
     toasts,
@@ -116,7 +120,7 @@ const Toaster: React.FC<ToasterProps> = ({
 
   const hasPromoToast = promoToasts.length > 0 && promoToasts[0]?.visible;
   const promoToastHeight = promoToasts[0]?.height ?? 0;
-  const isExpanded = hasManuallyExpanded || recomputedToasts.length <= MIN_TOASTS;
+  const isExpanded = hasManuallyExpanded || recomputedToasts.length <= minToasts;
 
   React.useLayoutEffect(() => {
     // find the first toast which is visible
@@ -133,9 +137,9 @@ const Toaster: React.FC<ToasterProps> = ({
         // only consider visible recomputedToasts
         .filter((toast) => toast.visible)
         .reduce((prevHeight, toast) => prevHeight + (toast.height ?? 0), 0) +
-      recomputedToasts.length * CONTAINER_OFFSET
+      recomputedToasts.length * containerGutter
     );
-  }, [recomputedToasts, CONTAINER_OFFSET]);
+  }, [recomputedToasts, containerGutter]);
 
   // Stacking logic explained in detail:
   // https://www.loom.com/share/522d9a445e2f41e1886cce4decb9ab9d?sid=4287acf6-8d44-431b-93e1-c1a0d40a0aba
@@ -192,11 +196,11 @@ const Toaster: React.FC<ToasterProps> = ({
     <BaseBox
       position="fixed"
       zIndex={TOAST_Z_INDEX}
-      top={makeSize(CONTAINER_OFFSET)}
-      left={makeSize(CONTAINER_OFFSET)}
-      right={makeSize(CONTAINER_OFFSET)}
-      bottom={makeSize(CONTAINER_OFFSET)}
-      width={`calc(100% - ${CONTAINER_OFFSET * 2}px)`}
+      top={makeSize(containerGutter)}
+      left={makeSize(containerGutter)}
+      right={makeSize(containerGutter)}
+      bottom={makeSize(containerGutter)}
+      width={`calc(100% - ${containerGutter * 2}px)`}
       maxWidth={makeSize(TOAST_MAX_WIDTH)}
       pointerEvents="none"
       className={containerClassName}
