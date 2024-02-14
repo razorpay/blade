@@ -177,6 +177,6 @@ Will work in a similar manner as [Ant Design - Drawer](https://ant.design/compon
 
 ## Open Questions
 
-- **Design:** Should 2nd Drawer have back button or should it continue to have close button ([context](https://github.com/razorpay/blade/pull/2009#discussion_r1487305755))
+- **Design:** Should 2nd Drawer have back button or should it continue to have close button ([Context](https://github.com/razorpay/blade/pull/2009#discussion_r1487305755))
 - **Dev:** Should there be a prop for dismissing component on outside click. E.g. `shouldDismissOnOutsideClick` or should we handle it as part of controlled component (with the UX that confirmation modal is always shown irrespective of whether its outside click or close button click)
-- **Dev:** Should we build components like `DrawerHeaderIcon`, `DrawerHeaderAsset` (similar to `ActionListItemIcon`, `CardHeaderIcon`) or should rely on consumer to pass correct sizes and colors without building additional wrappers (similar to `DropdownHeader`, `ModalHeader`, `BottomSheetHeader`)?
+- **Dev:** Should we build components like `DrawerHeaderIcon`, `DrawerHeaderAsset` (similar to `ActionListItemIcon`, `CardHeaderIcon`) or should rely on consumer to pass correct sizes and colors without building additional wrappers (similar to `DropdownHeader`, `ModalHeader`, `BottomSheetHeader`)? ([Discussion](https://razorpay.slack.com/archives/G01B3LQ9H0W/p1707822018408929))
