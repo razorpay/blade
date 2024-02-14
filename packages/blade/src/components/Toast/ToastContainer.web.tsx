@@ -2,7 +2,15 @@ import type { ToastPosition, ToasterProps, Toast } from 'react-hot-toast';
 import { resolveValue, useToaster } from 'react-hot-toast';
 import React from 'react';
 import styled from 'styled-components';
-import { PEEKS, MAX_TOASTS, SCALE_FACTOR, GUTTER, PEEK_GUTTER, TOAST_MAX_WIDTH } from './constants';
+import {
+  PEEKS,
+  MAX_TOASTS,
+  SCALE_FACTOR,
+  GUTTER,
+  PEEK_GUTTER,
+  TOAST_MAX_WIDTH,
+  TOAST_Z_INDEX,
+} from './constants';
 import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
@@ -183,7 +191,7 @@ const Toaster: React.FC<ToasterProps> = ({
   return (
     <BaseBox
       position="fixed"
-      zIndex={9999}
+      zIndex={TOAST_Z_INDEX}
       top={makeSize(CONTAINER_OFFSET)}
       left={makeSize(CONTAINER_OFFSET)}
       right={makeSize(CONTAINER_OFFSET)}
