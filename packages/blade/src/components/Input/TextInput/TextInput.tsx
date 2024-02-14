@@ -260,7 +260,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
-      return <Spinner accessibilityLabel="Loading Content" />;
+      return <Spinner accessibilityLabel="Loading Content" color="primary" />;
     }
 
     if (shouldShowClearButton) {
