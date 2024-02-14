@@ -13,9 +13,9 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8110%3A417"
       componentName="Badge"
       componentDescription="Badges are used to show small amount of color coded metadata, which are ideal for getting user attention."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73237-214550&mode=design&t=JkDSnlo8KJOBJimR-4"
     >
       <Title>Usage</Title>
       <Sandbox>

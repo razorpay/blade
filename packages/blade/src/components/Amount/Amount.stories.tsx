@@ -1,9 +1,11 @@
 import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
+import { getCurrencyList } from '@razorpay/i18nify-js/currency';
+import { I18nProvider, useI18nContext } from '@razorpay/i18nify-react';
+import { useState } from 'react';
 import type { AmountProps } from './Amount';
 import { Amount as AmountComponent } from './Amount';
 import type { AmountHeadingProps, AmountDisplayProps, AmountBodyProps } from './amountTokens';
-import { currencyIndicatorMapping } from './amountTokens';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -11,14 +13,20 @@ import { Display, Text } from '~components/Typography';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Box } from '~components/Box';
 import { objectKeysWithType } from '~utils/objectKeysWithType';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { SelectInput } from '~components/Input/DropdownInputTriggers';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { Divider } from '~components/Divider';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=28012%3A580578&t=WfWp7qiwZ3lvvbdw-0"
       componentName="Amount"
       componentDescription="Amounts are used to show small amount of color coded metadata, which are ideal for getting user attention."
-      note="This component only displays the provided value in the specified currency, it does not perform any currency conversion."
+      note="This component only displays the provided value in the specified currency with the formatting capabilities enabled by @razorpay/i18nify-react, it does not perform any currency conversion."
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73328-558626&mode=design&t=JkDSnlo8KJOBJimR-4"
+      propsDescription="The Amount component automatically formats numbers based on the user's browser locale enabled by @razorpay/i18nify-react. To adjust the locale according to your page, utilise its hooks for updating the locale. For more details, please refer to
+      the documentation of @razorpay/i18nify-react library."
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -176,7 +184,7 @@ HumanizeSuffix.args = {
 HumanizeSuffix.storyName = 'Humanize Suffix';
 
 const AmountCurrencyTemplate: StoryFn<typeof AmountComponent> = (args) => {
-  const values = Object.keys(currencyIndicatorMapping);
+  const values = Object.keys(getCurrencyList());
 
   return (
     <BaseBox justifyContent="flex-start" maxHeight="300px" overflowY="auto">
@@ -217,3 +225,98 @@ StrikeThrough.args = {
   isStrikethrough: true,
 };
 StrikeThrough.storyName = 'Strike Through';
+
+// TODO: Replace below with i18nify getDefaultLocales API
+const localeList = [
+  {
+    country: 'India',
+    locale: 'en-IN',
+  },
+  {
+    country: 'USA',
+    locale: 'en-US',
+  },
+  {
+    country: 'Malaysia',
+    locale: 'ms-MY',
+  },
+  {
+    country: 'France',
+    locale: 'fr-FR',
+  },
+  {
+    country: 'Germany',
+    locale: 'de-DE',
+  },
+];
+
+const I18nAmountWrapper = (args: AmountProps): JSX.Element => {
+  const { setI18nState } = useI18nContext();
+  const [currency, setCurrency] = useState('INR');
+
+  return (
+    <>
+      <AmountComponent {...args} currency={currency as AmountProps['currency']} />
+      <Divider marginY="spacing.4" marginTop="spacing.8" />
+      <Dropdown selectionType="single">
+        <SelectInput label="Select currency" />
+        <DropdownOverlay>
+          <ActionList>
+            {Object.keys(getCurrencyList()).map((value) => (
+              <ActionListItem
+                key={value}
+                title={value}
+                value={value}
+                onClick={({ name }) => {
+                  setCurrency(name);
+                }}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Divider marginY="spacing.4" />
+      <Dropdown selectionType="single">
+        <SelectInput label="Select locale" />
+        <DropdownOverlay>
+          <ActionList>
+            {localeList.map((item) => (
+              <ActionListItem
+                key={item.locale}
+                title={`${item.country}(${item.locale})`}
+                value={item.locale}
+                onClick={({ name }) => {
+                  setI18nState?.({ locale: name });
+                }}
+              />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </>
+  );
+};
+
+const I18nAmountTemplate: StoryFn<typeof AmountComponent> = (args) => {
+  return (
+    <I18nProvider>
+      <BaseBox justifyContent="flex-start" minHeight="300px" overflowY="auto">
+        <BaseBox
+          display="flex"
+          alignItems="baseline"
+          paddingRight="spacing.3"
+          paddingTop="spacing.3"
+          flexDirection="column"
+        >
+          <I18nAmountWrapper {...args} />
+        </BaseBox>
+      </BaseBox>
+    </I18nProvider>
+  );
+};
+
+export const I18nAmount = I18nAmountTemplate.bind({});
+I18nAmount.args = {
+  ...defaultArgs,
+};
+I18nAmount.storyName = 'Amount in diff locales';

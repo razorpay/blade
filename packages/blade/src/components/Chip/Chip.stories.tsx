@@ -27,7 +27,7 @@ const Page = (): React.ReactElement => {
           </Link>
         </Text>
       }
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=52377%3A23885&mode=design&t=y7gUIBIzzNMRd3w6-1"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71286-204634&mode=design&t=jyVG8aXFc1Dlw2Se-4"
     />
   );
 };
