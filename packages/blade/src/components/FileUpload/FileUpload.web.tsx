@@ -1,4 +1,4 @@
-import { useState, forwardRef } from 'react';
+import { useState, useCallback, forwardRef } from 'react';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -24,7 +24,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   {
     name,
     accept,
-    selectionType = 'multiple',
+    selectionType = 'single',
     onChange,
     onPreview,
     onRemove,
@@ -72,7 +72,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     // Attach a unique id to each file
     for (const file of inputFiles) {
       file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
-      file.status = 'success';
     }
 
     if (maxCount && inputFiles.length > maxCount) {
@@ -82,9 +81,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       setErrorMessage('File size exceeded.');
       setInternalValidationState('error');
     } else {
+      onChange?.({ name, fileList: inputFiles });
       setSelectedFiles(inputFiles);
       setInternalValidationState('none');
-      onChange?.({ name, fileList: inputFiles });
     }
   }
 
@@ -93,12 +92,14 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       display="inline-flex"
       {...metaAttribute({ name: MetaConstants.FileUpload, testID })}
       {...getStyledProps(styledProps)}
+      width="100%"
     >
       <BaseBox
         display="flex"
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
         position="relative"
+        width="100%"
       >
         {label ? (
           <FormLabel
@@ -141,6 +142,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                       type: 'file',
                       onChange: handleInputChange,
                       multiple: isMultiple,
+                      required: isRequired,
                       accept,
                     }}
                     ref={ref}

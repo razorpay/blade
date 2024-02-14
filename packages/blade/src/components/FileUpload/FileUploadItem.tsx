@@ -21,7 +21,12 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
         <FileIcon />
         <BaseBox marginLeft="spacing.4" marginRight="spacing.4">
           <BaseBox display="flex" flexDirection="row" alignItems="center">
-            <Text size="medium" weight="medium" color="surface.text.gray.subtle">
+            <Text
+              size="medium"
+              weight="medium"
+              color="surface.text.gray.subtle"
+              truncateAfterLines={1}
+            >
               {name}
             </Text>
             <CheckCircleIcon marginLeft="spacing.3" color="interactive.icon.positive.normal" />
@@ -32,7 +37,13 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
           </Text>
         </BaseBox>
       </BaseBox>
-      {status === 'success' ? (
+      {status === 'error' || status === 'uploading' ? (
+        <BaseBox display="flex" flexDirection="row">
+          <BaseBox onClick={() => onRemove?.({ removedFile: file })} style={{ cursor: 'pointer' }}>
+            <CloseIcon color="interactive.icon.gray.muted" />
+          </BaseBox>
+        </BaseBox>
+      ) : (
         <BaseBox display="flex" flexDirection="row" alignItems="center">
           <BaseBox
             onClick={() => onPreview?.({ previewedFile: file })}
@@ -43,12 +54,6 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
           <Divider orientation="vertical" thickness="thinner" variant="normal" />
           <BaseBox onClick={() => onRemove?.({ removedFile: file })} style={{ cursor: 'pointer' }}>
             <TrashIcon color="interactive.icon.gray.muted" />
-          </BaseBox>
-        </BaseBox>
-      ) : (
-        <BaseBox display="flex" flexDirection="row">
-          <BaseBox onClick={() => onRemove?.({ removedFile: file })} style={{ cursor: 'pointer' }}>
-            <CloseIcon color="interactive.icon.gray.muted" />
           </BaseBox>
         </BaseBox>
       )}
