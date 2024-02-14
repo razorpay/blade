@@ -1,4 +1,5 @@
 import type { Theme } from '~components/BladeProvider';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 interface BladeFile extends File {
   /**
@@ -147,10 +148,30 @@ type StyledFileUploadWrapperProps = {
   children: React.ReactNode;
 };
 
+type StyledFileUploadItemWrapperProps = {
+  status: NonNullable<BladeFile['status']>;
+  theme: Theme;
+  children: React.ReactNode;
+};
+
+type InteractiveBackgroundColors<
+  T extends 'gray' | 'negative'
+> = `interactive.background.${T}.${DotNotationToken<
+  Theme['colors']['interactive']['background'][T]
+>}`;
+
+type FileUploadItemBackgroundColors =
+  | InteractiveBackgroundColors<'gray'>
+  | InteractiveBackgroundColors<'negative'>
+  | 'feedback.background.negative.subtle'
+  | 'surface.background.gray.intense';
+
 export type {
   BladeFile,
   BladeFileList,
   FileUploadProps,
   FileUploadItemProps,
   StyledFileUploadWrapperProps,
+  StyledFileUploadItemWrapperProps,
+  FileUploadItemBackgroundColors,
 };

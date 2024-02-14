@@ -4,6 +4,7 @@ import type { IconProps } from '~components/Icons';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { DurationString, EasingString } from '~tokens/global';
 import { size } from '~tokens/global';
+import { BladeFile, FileUploadItemBackgroundColors } from './types';
 
 const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {
   return {
@@ -25,4 +26,22 @@ const fileUploadMotionTokens: Record<'duration' | 'easing', DurationString | Eas
   easing: 'easing.standard.effective',
 };
 
-export { getFileUploadInputHoverTokens, fileUploadMotionTokens };
+const fileUploadItemBackgroundColors: Record<
+  NonNullable<BladeFile['status']>,
+  Record<'default' | 'hover', FileUploadItemBackgroundColors>
+> = {
+  success: {
+    default: 'interactive.background.gray.default',
+    hover: 'interactive.background.gray.highlighted',
+  },
+  error: {
+    default: 'feedback.background.negative.subtle',
+    hover: 'interactive.background.negative.fadedHighlighted',
+  },
+  uploading: {
+    default: 'surface.background.gray.intense',
+    hover: 'surface.background.gray.intense',
+  },
+};
+
+export { getFileUploadInputHoverTokens, fileUploadMotionTokens, fileUploadItemBackgroundColors };

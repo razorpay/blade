@@ -41,7 +41,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     validationState,
     helpText,
     errorText,
-    maxCount = 2,
+    maxCount,
     maxSize,
     ...styledProps
   },
@@ -52,26 +52,38 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     fileList ?? defaultFileList ?? [],
   );
   const [errorMessage, setErrorMessage] = useState(errorText);
+  const [internalValidationState, setInternalValidationState] = useState('none');
   const isMultiple = selectionType === 'multiple';
   const inputLabelPosition = platform === 'onMobile' ? 'top' : labelPosition;
   const isLabelLeftPositioned = inputLabelPosition === 'left';
   const willRenderHintText = Boolean(helpText) || Boolean(errorMessage);
-  const showError = validationState === 'error' && errorMessage;
+  const showError = validationState === 'error' || internalValidationState === 'error';
   const showHelpText = !showError && helpText;
   const accessibilityText =
     accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { inputId, labelId, helpTextId, errorTextId } = useFormId('fileinput');
 
   function handleInputChange(event): void {
-    let inputFiles: BladeFileList =
+    const inputFiles: BladeFileList =
       selectionType === 'multiple' && selectedFiles.length > 0
         ? [...selectedFiles, ...event.target.files]
         : [...event.target.files];
 
+    // Attach a unique id to each file
+    for (const file of inputFiles) {
+      file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
+      file.status = 'success';
+    }
+
     if (maxCount && inputFiles.length > maxCount) {
-      setErrorMessage("You can't upload more than 5 files.");
+      setErrorMessage(`You can't upload more than ${maxCount} files.`);
+      setInternalValidationState('error');
+    } else if (maxSize && inputFiles.some((file) => file.size > maxSize)) {
+      setErrorMessage('File size exceeded.');
+      setInternalValidationState('error');
     } else {
       setSelectedFiles(inputFiles);
+      setInternalValidationState('none');
       onChange?.({ name, fileList: inputFiles });
     }
   }
@@ -87,7 +99,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
         flexDirection={isLabelLeftPositioned ? 'row' : 'column'}
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
         position="relative"
-        width="100%"
       >
         {label ? (
           <FormLabel
@@ -100,63 +111,68 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             {label}
           </FormLabel>
         ) : null}
-        {isMultiple || (!isMultiple && selectedFiles.length === 0) ? (
-          <SelectorLabel
-            componentName={MetaConstants.FileUploadLabel}
-            inputProps={{}}
-            style={{ cursor: isDisabled ? 'not-allowed' : 'pointer' }}
-          >
-            <BaseBox display="flex" flexDirection="column">
-              <StyledFileUploadWrapper
-                display="flex"
-                flexDirection="row"
-                justifyContent="center"
-                borderRadius="medium"
-                borderWidth="thin"
-                borderColor="interactive.border.gray.default"
-                padding="spacing.5"
-              >
-                <SelectorInput
-                  id={inputId}
-                  hoverTokens={getFileUploadInputHoverTokens()}
-                  isChecked={false}
-                  isDisabled={isDisabled}
-                  inputProps={{
-                    name,
-                    type: 'file',
-                    onChange: handleInputChange,
-                    multiple: isMultiple,
-                    accept,
-                  }}
-                  ref={ref}
-                />
 
-                <BaseBox display="flex" justifyContent="center" flexDirection="row">
-                  <Text>Drag files here or </Text>
-                  <Text as="span" color="interactive.text.primary.subtle" marginLeft="spacing.2">
-                    <UploadIcon
-                      size="small"
-                      color="interactive.icon.primary.subtle"
-                      marginRight="spacing.2"
-                    />
-                    Upload
-                  </Text>
-                </BaseBox>
-              </StyledFileUploadWrapper>
-              {willRenderHintText && (
-                <FormHint
-                  type={getHintType({
-                    validationState: showError ? 'error' : validationState,
-                    hasHelpText: Boolean(helpText),
-                  })}
-                  helpText={helpText}
-                  errorText={errorMessage}
-                  helpTextId={helpTextId}
-                  errorTextId={errorTextId}
-                />
-              )}
-            </BaseBox>
-          </SelectorLabel>
+        {isMultiple || (!isMultiple && selectedFiles.length === 0) ? (
+          <BaseBox display="flex" flexDirection="column" marginBottom="spacing.5">
+            <SelectorLabel
+              componentName={MetaConstants.FileUploadLabel}
+              inputProps={{}}
+              style={{ cursor: isDisabled ? 'not-allowed' : 'pointer' }}
+            >
+              <BaseBox display="flex" flexDirection="column" width="100%">
+                <StyledFileUploadWrapper
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="center"
+                  alignItems="center"
+                  borderRadius="medium"
+                  borderWidth="thin"
+                  borderColor="interactive.border.gray.default"
+                  paddingLeft="spacing.10"
+                  paddingRight="spacing.10"
+                >
+                  <SelectorInput
+                    id={inputId}
+                    hoverTokens={getFileUploadInputHoverTokens()}
+                    isChecked={false}
+                    isDisabled={isDisabled}
+                    inputProps={{
+                      name,
+                      type: 'file',
+                      onChange: handleInputChange,
+                      multiple: isMultiple,
+                      accept,
+                    }}
+                    ref={ref}
+                  />
+
+                  <BaseBox display="flex" justifyContent="center" flexDirection="row">
+                    <Text>Drag files here or </Text>
+                    <Text as="span" color="interactive.text.primary.subtle" marginLeft="spacing.2">
+                      <UploadIcon
+                        size="small"
+                        color="interactive.icon.primary.subtle"
+                        marginRight="spacing.2"
+                      />
+                      Upload
+                    </Text>
+                  </BaseBox>
+                </StyledFileUploadWrapper>
+                {willRenderHintText && (
+                  <FormHint
+                    type={getHintType({
+                      validationState: showError ? 'error' : validationState,
+                      hasHelpText: Boolean(helpText),
+                    })}
+                    helpText={helpText}
+                    errorText={errorMessage}
+                    helpTextId={helpTextId}
+                    errorTextId={errorTextId}
+                  />
+                )}
+              </BaseBox>
+            </SelectorLabel>
+          </BaseBox>
         ) : null}
 
         {selectedFiles.map((file) => (
