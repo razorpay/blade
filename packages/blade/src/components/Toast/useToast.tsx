@@ -2,6 +2,7 @@ import type { Toast } from 'react-hot-toast';
 import toast, { useToasterStore } from 'react-hot-toast';
 import type { ToastProps } from './types';
 import { Toast as ToastComponent } from './Toast';
+import { logger } from '~utils/logger';
 
 type UseToastReturn = {
   toasts: Toast[];
@@ -20,6 +21,13 @@ const useToast = (): UseToastReturn => {
       }) &&
       props.type === 'promotional'
     ) {
+      if (__DEV__) {
+        logger({
+          message: 'There can only be one promotional toast at a time',
+          type: 'warn',
+          moduleName: 'Toast',
+        });
+      }
       return '';
     }
 
