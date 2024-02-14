@@ -120,6 +120,7 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
     toast.show({
       content: `Payment ${color}`,
       color,
+      autoDismiss: false,
       action: {
         text: 'Okay',
         onClick: ({ toastId }) => toast.dismiss(toastId),
