@@ -19,6 +19,7 @@ import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
 import { useIsMobile } from '~utils/useIsMobile';
+import { metaAttribute } from '~utils/metaAttribute';
 
 type CalculateYPositionProps = {
   toast: Toast;
@@ -245,6 +246,7 @@ const Toaster: React.FC<ToasterProps> = ({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleToastClick}
+        {...metaAttribute({ testID: 'toast-mouseover-container' })}
       />
       {recomputedToasts.map((toast, index) => {
         const toastPosition = toast.position ?? position;
