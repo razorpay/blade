@@ -6801,12 +6801,12 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@razorpay/i18nify-js@^1.4.0":
+"@razorpay/i18nify-js@1.4.0", "@razorpay/i18nify-js@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@razorpay/i18nify-js/-/i18nify-js-1.4.0.tgz#4988e9a10b55c6fbe1b045afa7f0f240eea01845"
   integrity sha512-JY1g3Kn4e8ktsMbrDHOh8TEtPvJOT/A6FKGfNcaEVZ7uJM5Ew9fwP5j6orSF7FaGEZ8PVEIoCsycKhwm9fLfrA==
 
-"@razorpay/i18nify-react@^4.0.0":
+"@razorpay/i18nify-react@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@razorpay/i18nify-react/-/i18nify-react-4.0.0.tgz#f7cd2a019cb5b201c9086398486e492971d16ca5"
   integrity sha512-dOLilNaWS9397R/1hZM4ffFJDmqLUPkqZBp+Bmra3wo8tdhbk43fTAMrZhk1o9EU+WqxiP9Wup8mnZQ33qP0/g==
@@ -18010,6 +18010,11 @@ gonzales-pe@^4.3.0:
   dependencies:
     minimist "^1.2.5"
 
+goober@^2.1.10:
+  version "2.1.14"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.1.14.tgz#4a5c94fc34dc086a8e6035360ae1800005135acd"
+  integrity sha512-4UpC0NdGyAFqLNPnhCT2iHpza2q+RAY3GV85a/mRPdzyPQMsj0KmMMuetdIkzWRbJ+Hgau1EZztq8ImmiMGhsg==
+
 gopd@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/gopd/-/gopd-1.0.1.tgz#29ff76de69dac7489b7c0918a5788e56477c332c"
@@ -27000,6 +27005,13 @@ react-github-button@^0.1.11:
   integrity sha1-/GHh8eE3EWnTYYwbo3MGugQIHlY=
   dependencies:
     prop-types "^15.5.10"
+
+react-hot-toast@2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/react-hot-toast/-/react-hot-toast-2.4.1.tgz#df04295eda8a7b12c4f968e54a61c8d36f4c0994"
+  integrity sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==
+  dependencies:
+    goober "^2.1.10"
 
 react-inspector@^6.0.0:
   version "6.0.2"

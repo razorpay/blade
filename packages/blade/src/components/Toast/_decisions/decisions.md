@@ -83,7 +83,7 @@ type ToastProps = {
   /**
    * @default `neutral`
    */
-  color?: 'neutral' | 'positive' | 'negative' | 'warning' | 'information'
+  color?: 'neutral' | 'positive' | 'negative' | 'notice' | 'information'
 
   /**
    * Content of the toast
