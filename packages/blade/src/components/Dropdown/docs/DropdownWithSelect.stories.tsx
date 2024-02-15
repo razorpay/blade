@@ -194,6 +194,8 @@ export const InternalMultiSelect = (): React.ReactElement => {
           <DropdownHeader title="Header Title" subtitle="Header subtitle" />
           <ActionList>
             <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Navi Mumbai" value="navi-mumbai" />
+            <ActionListItem title="Farrukhabad Fatehgarh" value="farrukhabad-fatehgarh" />
             <ActionListItem title="Bangalore" value="bangalore" />
             <ActionListItem title="Pune" value="pune" />
             <ActionListItem title="Chennai" value="chennai" />

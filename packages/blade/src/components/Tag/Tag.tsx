@@ -102,7 +102,7 @@ const Tag = ({
         display={(isReactNative() ? 'flex' : 'inline-flex') as never}
         alignSelf={isReactNative() ? 'center' : undefined}
         flexDirection="row"
-        flexWrap="nowrap"
+        flexShrink={0}
         backgroundColor={backgroundColor}
         borderRadius="max"
         padding={size === 'medium' ? mediumPadding : largePadding}
