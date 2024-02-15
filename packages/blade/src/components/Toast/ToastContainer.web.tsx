@@ -192,6 +192,31 @@ const Toaster: React.FC<ToasterProps> = ({
     [hasPromoToast, infoToasts, isExpanded, promoToastHeight],
   );
 
+  const handleMouseEnter = (): void => {
+    if (isMobile) return;
+    setHasManuallyExpanded(true);
+    handlers.startPause();
+  };
+
+  const handleMouseLeave = (): void => {
+    if (isMobile) return;
+    setHasManuallyExpanded(false);
+    handlers.endPause();
+  };
+
+  const handleToastClick = (): void => {
+    if (!isMobile) return;
+    setHasManuallyExpanded((prev) => {
+      const next = !prev;
+      if (next) {
+        handlers.startPause();
+      } else {
+        handlers.endPause();
+      }
+      return next;
+    });
+  };
+
   return (
     <BaseBox
       position="fixed"
@@ -204,28 +229,6 @@ const Toaster: React.FC<ToasterProps> = ({
       maxWidth={makeSize(TOAST_MAX_WIDTH)}
       pointerEvents="none"
       className={containerClassName}
-      onMouseEnter={() => {
-        if (isMobile) return;
-        setHasManuallyExpanded(true);
-        handlers.startPause();
-      }}
-      onMouseLeave={() => {
-        if (isMobile) return;
-        setHasManuallyExpanded(false);
-        handlers.endPause();
-      }}
-      onClick={() => {
-        if (!isMobile) return;
-        setHasManuallyExpanded((prev) => {
-          const next = !prev;
-          if (next) {
-            handlers.startPause();
-          } else {
-            handlers.endPause();
-          }
-          return next;
-        });
-      }}
     >
       {/*
        * Mouseover container,
@@ -233,12 +236,15 @@ const Toaster: React.FC<ToasterProps> = ({
        */}
       <BaseBox
         position="absolute"
-        bottom="0px"
+        bottom={`${promoToastHeight}px`}
         left="0px"
         width="100%"
         pointerEvents={isExpanded ? 'all' : 'none'}
-        height={makeSize(isExpanded ? totalHeight : promoToastHeight + frontToastHeight)}
+        height={makeSize(isExpanded ? totalHeight - promoToastHeight : frontToastHeight)}
         zIndex={-100}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleToastClick}
       />
       {recomputedToasts.map((toast, index) => {
         const toastPosition = toast.position ?? position;
@@ -279,6 +285,18 @@ const Toaster: React.FC<ToasterProps> = ({
               zIndex: -1 * index,
               height: toastHeight,
               overflow: 'hidden',
+            }}
+            onMouseEnter={() => {
+              if (isPromotional) return;
+              handleMouseEnter();
+            }}
+            onMouseLeave={() => {
+              if (isPromotional) return;
+              handleMouseLeave();
+            }}
+            onClick={() => {
+              if (isPromotional) return;
+              handleToastClick();
             }}
           >
             <BaseBox height="fit-content" width="100%">
