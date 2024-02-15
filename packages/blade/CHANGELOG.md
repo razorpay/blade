@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.3.0
+
+### Minor Changes
+
+- 497799df: feat(blade): add toast component
+
 ## 11.2.1
 
 ### Patch Changes
