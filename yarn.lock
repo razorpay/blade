@@ -6801,12 +6801,12 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@razorpay/i18nify-js@^1.4.0":
+"@razorpay/i18nify-js@1.4.0", "@razorpay/i18nify-js@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@razorpay/i18nify-js/-/i18nify-js-1.4.0.tgz#4988e9a10b55c6fbe1b045afa7f0f240eea01845"
   integrity sha512-JY1g3Kn4e8ktsMbrDHOh8TEtPvJOT/A6FKGfNcaEVZ7uJM5Ew9fwP5j6orSF7FaGEZ8PVEIoCsycKhwm9fLfrA==
 
-"@razorpay/i18nify-react@^4.0.0":
+"@razorpay/i18nify-react@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@razorpay/i18nify-react/-/i18nify-react-4.0.0.tgz#f7cd2a019cb5b201c9086398486e492971d16ca5"
   integrity sha512-dOLilNaWS9397R/1hZM4ffFJDmqLUPkqZBp+Bmra3wo8tdhbk43fTAMrZhk1o9EU+WqxiP9Wup8mnZQ33qP0/g==
