@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Title } from '@storybook/addon-docs';
@@ -75,6 +76,14 @@ export default {
   },
 } as Meta<ToastProps>;
 
+const texts = {
+  negative: 'Unable to fetch merchant details',
+  positive: 'Customer details failed successfully',
+  notice: 'Your KYC is pending',
+  information: 'Your transaction will be settled in 3 business days',
+  neutral: 'Your transaction will be settled in 3 business days',
+} as const;
+
 const BasicToastTemplate: StoryFn<ToastProps> = (args) => {
   const toast = useToast();
 
@@ -118,9 +127,8 @@ const ToastVariantsTemplate: StoryFn<ToastProps> = () => {
 
   const showInformationalToast = ({ color }: { color: ToastProps['color'] }) => {
     toast.show({
-      content: `Payment ${color}`,
+      content: texts[color!],
       color,
-      autoDismiss: false,
       action: {
         text: 'Okay',
         onClick: ({ toastId }) => toast.dismiss(toastId),
