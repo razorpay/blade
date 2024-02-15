@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.2.1
+
+### Patch Changes
+
+- 16a0e737: fix(Dropdown): remove scrollbar on tag slot and allow clicks on DropdownLink and DropdownButton chevron icons
+
 ## 11.2.0
 
 ### Minor Changes
