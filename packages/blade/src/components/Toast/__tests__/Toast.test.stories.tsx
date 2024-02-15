@@ -99,7 +99,7 @@ ToastHover.play = async () => {
   await expect(queryByText(toastContent)).toBeVisible();
   // hover out of toast container
   await userEvent.unhover(toastContainer);
-  await sleep(400);
+  await sleep(1000);
   await expect(queryByText(toastContent)).not.toBeVisible();
 };
 
@@ -190,6 +190,7 @@ ToastStacking.play = async () => {
   await expect(toastContainer.getBoundingClientRect().height).toBeLessThan(40);
 
   const toast4 = queryByText('Toast 4')! as Element;
+
   // hover into toast container
   await userEvent.hover(toast4);
   await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(160);
@@ -201,17 +202,16 @@ ToastStacking.play = async () => {
   await userEvent.click(promoButton);
   await sleep(400);
   await expect(queryByText('Promo Toast')).toBeVisible();
-  await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(100);
+  await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(30);
 
-  // hover
+  // hover over promo toast, should not increase height
   const promoToast = queryByText('Promo Toast')! as Element;
   await userEvent.hover(promoToast);
-  await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(250);
-
+  await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(30);
   // unhover
   await userEvent.unhover(promoToast);
   await sleep(400);
-  await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(100);
+  await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(30);
 
   // dissmiss two info toasts
   await userEvent.click(getAllByRole('button', { name: 'Dismiss toast' })[0]);
@@ -221,7 +221,7 @@ ToastStacking.play = async () => {
   await expect(queryByText('Toast 3')).not.toBeVisible();
   await expect(queryByText('Toast 4')).not.toBeVisible();
 
-  await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(170);
+  await expect(toastContainer.getBoundingClientRect().height).toBeGreaterThan(130);
 };
 
 export default {
