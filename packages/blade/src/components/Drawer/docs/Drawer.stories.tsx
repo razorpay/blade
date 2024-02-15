@@ -139,3 +139,8 @@ const DrawerTemplate: StoryFn<typeof Drawer> = (args) => {
 };
 
 export const SimpleDrawer = DrawerTemplate.bind({});
+
+export const NoOverlay = DrawerTemplate.bind({});
+NoOverlay.args = {
+  showOverlay: false,
+};
