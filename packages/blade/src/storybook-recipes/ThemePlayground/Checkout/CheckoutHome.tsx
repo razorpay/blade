@@ -85,7 +85,7 @@ const CheckoutHome = (): React.ReactElement => {
   const { theme } = useTheme();
   return (
     <CheckoutShell>
-      <Box padding="spacing.4" paddingBottom="spacing.8" overflowY="scroll">
+      <Box padding="spacing.7" paddingBottom="spacing.8" overflowY="scroll">
         <Heading marginTop="spacing.3" marginBottom="spacing.3">
           Pay With UPI QR
         </Heading>
