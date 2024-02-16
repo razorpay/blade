@@ -238,43 +238,49 @@ const TableCheckboxCell = ({
   );
 };
 
-const StyledRow = styled(Row)<{ $isSelectable: boolean }>(({ theme, $isSelectable }) => {
-  const rowBackgroundTransition = `background-color ${makeMotionTime(
-    getIn(theme.motion, tableRow.backgroundColorMotionDuration),
-  )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
+const StyledRow = styled(Row)<{ $isSelectable: boolean; $isHoverable: boolean }>(
+  ({ theme, $isSelectable, $isHoverable }) => {
+    const rowBackgroundTransition = `background-color ${makeMotionTime(
+      getIn(theme.motion, tableRow.backgroundColorMotionDuration),
+    )} ${getIn(theme.motion, tableRow.backgroundColorMotionEasing)}`;
 
-  return {
-    '&&&': {
-      backgroundColor: 'transparent',
-      ...($isSelectable && {
-        '&:hover:not(.disabled-row) .cell-wrapper-base': {
-          transition: rowBackgroundTransition,
-          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
-          cursor: 'pointer',
+    return {
+      '&&&': {
+        backgroundColor: 'transparent',
+        ...(($isHoverable || $isSelectable) && {
+          '&:hover:not(.disabled-row) .cell-wrapper-base': {
+            transition: rowBackgroundTransition,
+            cursor: 'pointer',
+            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorHover),
+          },
+        }),
+        ...($isSelectable && {
+          '&:focus:not(.disabled-row) .cell-wrapper-base': {
+            transition: rowBackgroundTransition,
+            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorFocus),
+            cursor: 'pointer',
+          },
+          '&:active:not(.disabled-row) .cell-wrapper-base': {
+            transition: rowBackgroundTransition,
+            backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
+            cursor: 'pointer',
+          },
+        }),
+        '&:focus': {
+          outline: 'none',
+          boxShadow: `0 0 0 2px ${getIn(theme.colors, 'brand.primary.300')}`,
         },
-        '&:focus:not(.disabled-row) .cell-wrapper-base': {
-          transition: rowBackgroundTransition,
-          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorFocus),
-          cursor: 'pointer',
-        },
-        '&:active:not(.disabled-row) .cell-wrapper-base': {
-          transition: rowBackgroundTransition,
-          backgroundColor: getIn(theme.colors, tableRow.nonStripe.backgroundColorActive),
-          cursor: 'pointer',
-        },
-      }),
-      '&:focus': {
-        outline: 'none',
-        boxShadow: `0 0 0 2px ${getIn(theme.colors, 'brand.primary.300')}`,
       },
-    },
-  };
-});
+    };
+  },
+);
 
 const _TableRow = <Item,>({
   children,
   item,
   isDisabled,
+  onHover,
+  onClick,
 }: TableRowProps<Item>): React.ReactElement => {
   const {
     selectionType,
@@ -295,8 +301,11 @@ const _TableRow = <Item,>({
     <StyledRow
       disabled={isDisabled}
       $isSelectable={isDisabled ? false : isSelectable}
+      $isHoverable={isDisabled ? false : Boolean(onHover) || Boolean(onClick)}
       item={item}
       className={isDisabled ? 'disabled-row' : ''}
+      onMouseEnter={() => onHover?.({ item })}
+      onClick={() => onClick?.({ item })}
       {...metaAttribute({ name: MetaConstants.TableRow })}
     >
       {isMultiSelect && (

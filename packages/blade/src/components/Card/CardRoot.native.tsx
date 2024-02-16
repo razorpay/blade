@@ -71,9 +71,9 @@ const CardRoot = ({
           selected: isSelected,
         })}
         style={styles}
-        onPressIn={() => {
+        onPressIn={(event) => {
           if (onClick) {
-            onClick();
+            onClick(event);
           }
           setIsPressed(true);
         }}

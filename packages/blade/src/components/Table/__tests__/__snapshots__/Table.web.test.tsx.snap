@@ -444,7 +444,7 @@ exports[`<Table /> should render table 1`] = `
         data-table-library_body=""
       >
         <tr
-          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -608,7 +608,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -772,7 +772,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -936,7 +936,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -1100,7 +1100,7 @@ exports[`<Table /> should render table 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -1763,7 +1763,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
         data-table-library_body=""
       >
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -1927,7 +1927,7 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -2789,7 +2789,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
         data-table-library_body=""
       >
         <tr
-          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -2953,7 +2953,7 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c9 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c9 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -3621,7 +3621,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
         data-table-library_body=""
       >
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -3785,7 +3785,7 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -4452,7 +4452,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
         data-table-library_body=""
       >
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -4616,7 +4616,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -4780,7 +4780,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -4944,7 +4944,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -5108,7 +5108,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -5272,7 +5272,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -5436,7 +5436,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -5600,7 +5600,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -5764,7 +5764,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -5928,7 +5928,7 @@ exports[`<Table /> should render table with sticky header, footer & first column
           </td>
         </tr>
         <tr
-          class="tr tr-body c6 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c6 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -6591,7 +6591,7 @@ exports[`<Table /> should render table with surfaceLevel 1`] = `
         data-table-library_body=""
       >
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"
@@ -6755,7 +6755,7 @@ exports[`<Table /> should render table with surfaceLevel 1`] = `
           </td>
         </tr>
         <tr
-          class="tr tr-body c5 css-1rzx1gz-getRowContainerStyle-Row"
+          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
           data-blade-component="table-row"
           data-table-library_tr-body=""
           role="row"

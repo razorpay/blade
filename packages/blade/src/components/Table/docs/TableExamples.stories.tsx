@@ -10,7 +10,6 @@ import {
   MultiSelectableWithZebraStripesStory,
   TableWithStickyHeaderAndFooterStory,
   TableWithStickyFirstColumnStory,
-  TableWithPaginationStory,
   TableWithDisabledRowsStory,
   TableWithSurfaceLevelsStory,
   TableWithIsLoadingStory,
@@ -97,14 +96,6 @@ export const MultiSelectableWithZebraStripes = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {MultiSelectableWithZebraStripesStory}
-    </Sandbox>
-  );
-};
-
-export const TableWithPagination = (): React.ReactElement => {
-  return (
-    <Sandbox padding="spacing.0" editorHeight="90vh">
-      {TableWithPaginationStory}
     </Sandbox>
   );
 };
