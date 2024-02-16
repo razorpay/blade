@@ -326,12 +326,12 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'FileUpload',
-    status: 'to-be-decided',
+    status: 'in-development',
     description: 'FileUpload component allow users to select one or more files to upload.',
   },
   {
     name: 'Drawer',
-    status: 'to-be-decided',
+    status: 'in-development',
     description: 'The Drawer component is a panel that slides out from the edge of the screen.',
   },
   {
@@ -394,8 +394,14 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'Button Group',
-    status: 'to-be-decided',
+    status: 'in-design',
     description: 'ButtonGroup component can be used to group related buttons.',
+  },
+  {
+    name: 'Breadcrumbs',
+    status: 'in-design',
+    description:
+      'Breadcrumbs is a navigation pattern that helps users understand the hierarchy of a website.',
   },
   {
     name: 'Popover',
