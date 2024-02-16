@@ -59,6 +59,7 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@emotion/react': '11.11.1',
       '@table-library/react-table-library': '4.1.7',
+      '@razorpay/i18nify-js': '1.4.0',
     },
   };
 };
@@ -74,6 +75,7 @@ const getViteReactTSDependencies = (): Dependencies => {
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@emotion/react': '11.11.1',
       '@table-library/react-table-library': '4.1.7',
+      '@razorpay/i18nify-js': '1.4.0',
     },
     devDependencies: {
       vite: '4.5.0',

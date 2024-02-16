@@ -72,7 +72,7 @@ const ThemePlayground = (): React.ReactElement => {
             showInternalDemoConfig={showInternalDemoConfig}
             setShowInternalDemoConfig={setShowInternalDemoConfig}
           />
-          <Card>
+          <Card backgroundColor="surface.background.gray.subtle">
             <CardBody>
               <Box>
                 <Box flex={1}>
@@ -89,7 +89,7 @@ const ThemePlayground = (): React.ReactElement => {
                 </Box>
                 <Box flex={1} marginTop="spacing.8">
                   <Heading size="medium" marginBottom="spacing.4">
-                    Phantom UI
+                    Onboarding Flow
                   </Heading>
                   <PhantomUI />
                 </Box>
