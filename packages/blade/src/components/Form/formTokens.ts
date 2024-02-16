@@ -14,4 +14,14 @@ const labelOptionalIndicatorTextSize = {
   large: 'medium',
 } as const;
 
-export { labelTextSize, labelOptionalIndicatorTextSize };
+const hintTextSize = {
+  medium: 'small',
+  large: 'medium',
+} as const;
+
+const hintIconSize = {
+  medium: 'small',
+  large: 'medium',
+} as const;
+
+export { labelTextSize, labelOptionalIndicatorTextSize, hintTextSize, hintIconSize };

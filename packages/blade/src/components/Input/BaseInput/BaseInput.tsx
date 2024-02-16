@@ -949,9 +949,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           />
         </BaseInputWrapper>
       </BaseBox>
-      {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
+      {/* the magic number 192 is basically max-width of label i.e 176 and then right margin i.e 16 which is the spacing between label and input field */}
       {!hideFormHint && (
-        <BaseBox marginLeft={makeSize(isLabelLeftPositioned && !hideLabelText ? 136 : 0)}>
+        <BaseBox marginLeft={makeSize(isLabelLeftPositioned && !hideLabelText ? 192 : 0)}>
           <BaseBox
             display="flex"
             flexDirection="row"
@@ -965,6 +965,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               helpTextId={helpTextId}
               errorTextId={errorTextId}
               successTextId={successTextId}
+              size={size}
             />
             {trailingFooterSlot?.(value ?? inputValue)}
           </BaseBox>
