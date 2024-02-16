@@ -20,6 +20,7 @@ import { Text } from '~components/Typography';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 import { makeAccessible } from '~utils/makeAccessible';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const iconMap = {
   positive: CheckCircleIcon,
@@ -119,6 +120,7 @@ const Toast = ({
   return (
     <AnimatedFade
       {...makeAccessible({ role: 'status', liveRegion: 'polite' })}
+      {...metaAttribute({ name: MetaConstants.Toast })}
       toastBorderColor={getIn(
         theme.colors,
         isPromotional ? 'surface.border.gray.muted' : borderColorMap[color],
