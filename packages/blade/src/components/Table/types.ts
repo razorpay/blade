@@ -195,6 +195,14 @@ type TableRowProps<Item> = {
    * </TableRow>
    **/
   isDisabled?: boolean;
+  /**
+   * Callback triggered when the row is hovered. It is called with the current row item prop.
+   */
+  onHover?: ({ item }: { item: TableNode<Item> }) => void;
+  /**
+   * Callback triggered when the row is clicked. It is called with the current row item prop.
+   */
+  onClick?: ({ item }: { item: TableNode<Item> }) => void;
 };
 
 type TableCellProps = {
@@ -245,7 +253,7 @@ type TableFooterCellProps = {
   children: string | React.ReactNode;
 };
 
-type TablePaginationProps = {
+type TablePaginationCommonProps = {
   /**
    * The default page size.
    * Page size controls how rows are shown per page.
@@ -256,10 +264,6 @@ type TablePaginationProps = {
    * The current page. Passing this prop will make the component controlled and will not update the page on its own.
    **/
   currentPage?: number;
-  /**
-   * Callback function that is called when the page is changed
-   */
-  onPageChange?: ({ page }: { page: number }) => void;
   /**
    * Callback function that is called when the page size is changed
    */
@@ -287,6 +291,49 @@ type TablePaginationProps = {
    */
   showLabel?: boolean;
 };
+
+type TablePaginationType = 'client' | 'server';
+
+type TablePaginationServerProps = TablePaginationCommonProps & {
+  /**
+   * Whether the pagination is happening on client or server.
+   * If the pagination is happening on `client`, the Table component will **divide the data into pages** and show the pages based on the page size.
+   * If the pagination is happening on `server`, the Table component will **not divide the data into pages and will show all the data**. You will have to fetch data for each page as the page changes and pass it to the Table component.
+   * When paginationType is `server`, the `onPageChange` & `totalItemCount` props are required.
+   * @default 'client'
+   * */
+  paginationType?: Extract<TablePaginationType, 'server'>;
+  /**
+   * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server and not all the data is fetched at once.
+   */
+  totalItemCount: number;
+  /**
+   * Callback function that is called when the page is changed
+   */
+  onPageChange: ({ page }: { page: number }) => void;
+};
+
+type TablePaginationClientProps = TablePaginationCommonProps & {
+  /**
+   * Whether the pagination is happening on client or server.
+   * If the pagination is happening on `client`, the Table component will **divide the data into pages** and show the pages based on the page size.
+   * If the pagination is happening on `server`, the Table component will **not divide the data into pages and will show all the data**. You will have to fetch data for each page as the page changes and pass it to the Table component.
+   * When paginationType is `server`, the `onPageChange` & `totalItemCount` props are required.
+   * @default 'client'
+   * */
+  paginationType?: Extract<TablePaginationType, 'client'>;
+  /**
+   * The total number of possible items in the table. This is used to calculate the total number of pages when pagination is happening on server and not all the data is fetched at once.
+   */
+  totalItemCount?: number;
+  /**
+   * Callback function that is called when the page is changed
+   */
+  onPageChange?: ({ page }: { page: number }) => void;
+};
+
+type TablePaginationProps = TablePaginationCommonProps &
+  (TablePaginationServerProps | TablePaginationClientProps);
 
 type TableToolbarProps = {
   /**
@@ -326,4 +373,6 @@ export type {
   TablePaginationProps,
   TableToolbarProps,
   TableToolbarActionsProps,
+  TablePaginationType,
+  TablePaginationCommonProps,
 };

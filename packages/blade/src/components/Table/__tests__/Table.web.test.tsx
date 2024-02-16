@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import { fireEvent, waitFor } from '@testing-library/react';
 import { Table } from '../Table';
@@ -617,6 +618,84 @@ describe('<Table />', () => {
     expect(getAllByRole('row')[0]).toHaveTextContent('completed');
   });
 
+  it('should call onHover when mouse enters the row', async () => {
+    const onHover = jest.fn();
+    const user = userEvent.setup();
+    const { getByText } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 5) }} selectionType="single">
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index} onHover={onHover}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const firstSelectableRow = getByText('rzp01').closest('td');
+    if (firstSelectableRow) await user.hover(firstSelectableRow);
+    expect(onHover).toHaveBeenCalledWith({ item: nodes[0] });
+  });
+
+  it('should call onClick when the row is clicked', async () => {
+    const onClick = jest.fn();
+    const user = userEvent.setup();
+    const { getByText } = renderWithTheme(
+      <Table data={{ nodes: nodes.slice(0, 5) }} selectionType="single">
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Payment ID</TableHeaderCell>
+                <TableHeaderCell>Amount</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+                <TableHeaderCell>Type</TableHeaderCell>
+                <TableHeaderCell>Method</TableHeaderCell>
+                <TableHeaderCell>Name</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow item={tableItem} key={index} onClick={onClick}>
+                  <TableCell>{tableItem.paymentId}</TableCell>
+                  <TableCell>{tableItem.amount}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                  <TableCell>{tableItem.type}</TableCell>
+                  <TableCell>{tableItem.method}</TableCell>
+                  <TableCell>{tableItem.name}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>,
+    );
+
+    const firstSelectableRow = getByText('rzp01').closest('td');
+    if (firstSelectableRow) await user.click(firstSelectableRow);
+    expect(onClick).toHaveBeenCalledWith({ item: nodes[0] });
+  });
+
   it('should render table with single select', async () => {
     const onSelectionChange = jest.fn();
     const user = userEvent.setup();
@@ -718,7 +797,7 @@ describe('<Table />', () => {
     expect(onSelectionChange).toHaveBeenCalledWith({ values: [] });
   });
 
-  it('should render table with pagination', async () => {
+  it('should render table with client side pagination', async () => {
     const onPageChange = jest.fn();
     const onPageSizeChange = jest.fn();
     const user = userEvent.setup();
@@ -807,15 +886,25 @@ describe('<Table />', () => {
     expect(onPageChange).toHaveBeenLastCalledWith({ page: 0 });
   }, 10000);
 
-  it('should throw error if currentPage is greater than total pages', () => {
-    const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
-    expect(() =>
-      renderWithTheme(
+  it('should render table with server side pagination', () => {
+    const ServerPaginatedTable = (): React.ReactElement => {
+      const [apiData, setAPIData] = useState({ nodes: nodes.slice(0, 10) });
+      const onPageChange = ({ page }: { page: number }): void => {
+        setAPIData({ nodes: nodes.slice(page * 10, page * 10 + 10) });
+      };
+
+      return (
         <Table
-          data={{
-            nodes: [...nodes, ...nodes],
-          }}
-          pagination={<TablePagination defaultPageSize={10} currentPage={50} />}
+          data={apiData}
+          pagination={
+            <TablePagination
+              onPageChange={onPageChange}
+              paginationType="server"
+              totalItemCount={nodes.length}
+              showPageSizePicker
+              showPageNumberSelector
+            />
+          }
         >
           {(tableData) => (
             <>
@@ -843,11 +932,77 @@ describe('<Table />', () => {
               </TableBody>
             </>
           )}
-        </Table>,
-      ),
-    ).toThrow(
-      `[Blade: TablePagination]: Value of 'currentPage' prop cannot be greater than the total pages`,
-    );
-    mockConsoleError.mockRestore();
+        </Table>
+      );
+    };
+    const { getByLabelText, queryByText } = renderWithTheme(<ServerPaginatedTable />);
+    const nextPageButton = getByLabelText('Next Page');
+    const previousPageButton = getByLabelText('Previous Page');
+    // Check if pagination buttons work
+    expect(nextPageButton).toBeInTheDocument();
+    expect(previousPageButton).toBeInTheDocument();
+    expect(queryByText('rzp01')).toBeInTheDocument();
+    // Go to next page
+    fireEvent.click(nextPageButton);
+    expect(queryByText('rzp01')).not.toBeInTheDocument();
+    expect(queryByText('rzp11')).toBeInTheDocument();
+    // Go to previous page
+    fireEvent.click(previousPageButton);
+    expect(queryByText('rzp01')).toBeInTheDocument();
+  });
+
+  beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
+  afterAll(() => jest.restoreAllMocks());
+
+  it('should throw error for missing props in server side pagination', () => {
+    const ServerPaginatedTable = (): React.ReactElement => {
+      const [apiData] = useState({ nodes: nodes.slice(0, 10) });
+
+      return (
+        <Table
+          data={apiData}
+          pagination={
+            // @ts-expect-error onPageChange and totalItemCount are missing intentionally
+            <TablePagination paginationType="server" showPageSizePicker showPageNumberSelector />
+          }
+        >
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Payment ID</TableHeaderCell>
+                  <TableHeaderCell>Amount</TableHeaderCell>
+                  <TableHeaderCell>Status</TableHeaderCell>
+                  <TableHeaderCell>Type</TableHeaderCell>
+                  <TableHeaderCell>Method</TableHeaderCell>
+                  <TableHeaderCell>Name</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => (
+                  <TableRow item={tableItem} key={index}>
+                    <TableCell>{tableItem.paymentId}</TableCell>
+                    <TableCell>{tableItem.amount}</TableCell>
+                    <TableCell>{tableItem.status}</TableCell>
+                    <TableCell>{tableItem.type}</TableCell>
+                    <TableCell>{tableItem.method}</TableCell>
+                    <TableCell>{tableItem.name}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </>
+          )}
+        </Table>
+      );
+    };
+    try {
+      renderWithTheme(<ServerPaginatedTable />);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        expect(error.message).toEqual(
+          '[Blade: TablePagination]: `onPageChange` and `totalItemCount` props are required when paginationType is server.',
+        );
+      }
+    }
   });
 });

@@ -1069,7 +1069,7 @@ function App(): React.ReactElement {
 export default App;
 `;
 
-const TableWithPaginationStory = `
+const TableWithClientSidePaginationStory = `
 import {
   Table,
   Code,
@@ -1817,6 +1817,128 @@ function App(): React.ReactElement {
 export default App;
 `;
 
+const TableWithServerSidePaginationStory = `
+import {
+  Table,
+  Box,
+  TableHeader,
+  TableHeaderRow,
+  TableHeaderCell,
+  TableBody,
+  TableRow,
+  TableCell,
+  TablePagination,
+} from '@razorpay/blade/components';
+import React, { useEffect, useState } from 'react';
+
+type APIResult = {
+  info: {
+    count: number;
+    pages: number;
+  };
+  results: {
+    id: number;
+    name: string;
+    species: string;
+    status: string;
+    origin: { name: string };
+  }[];
+};
+
+const fetchData = async ({ page }: { page: number }): Promise<APIResult> => {
+  const response = await fetch(
+    \`https://rickandmortyapi.com/api/character?page=\${page}\`,
+    {
+      method: 'GET',
+      redirect: 'follow',
+    }
+  );
+  const result = await response.json();
+  return result as APIResult;
+};
+
+function App(): React.ReactElement {
+  const [apiData, setApiData] = useState<{ nodes: APIResult['results'] }>({
+    nodes: [],
+  });
+  const [dataCount, setDataCount] = useState<number>(0);
+  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (apiData.nodes.length === 0) {
+      fetchData({ page: 1 }).then((res) => {
+        // rick & morty api returns 20 items and we cannot change that. Hence limiting to show only first 10 items from the result of this API. Ideally an API should have \`limit\` & \`offset\` params that help us define the response we get.
+        const firstTenItems = res.results.slice(0, 10);
+        setApiData({ nodes: firstTenItems });
+        setDataCount(res.info.count / 2); // rick & morty api returns 20 items and we cannot change that. Hence dividing by 2 to get the actual count.
+      });
+    }
+  }, []);
+
+  const handlePageChange = ({ page }: { page: number }) => {
+    setIsRefreshing(true);
+    fetchData({ page: page + 1 }).then((res) => {
+      // rick & morty api returns 20 items and we cannot change that. Hence limiting to show only first 10 items from the result of this API. Ideally an API should have \`limit\` & \`offset\` params that help us define the response we get.
+      const firstTenItems = res.results.slice(0, 10);
+      // When paginationType is server, we are assuming that pagination is taken care of on the server and we are receiving and displaying per page data.
+      // Instead of appending the new data to existing data like we do for client side pagination, we replace the existing data with the new data for server side pagination.
+      // All of the data will be rendered when paginationType is server. So on every page change, we fetch new data for the specific page and replace the existing data with the new data.
+      setApiData({ nodes: firstTenItems });
+      setDataCount(res.info.count / 2); // rick & morty api returns 20 items and we cannot change that. Hence dividing by 2 to get the actual count.
+      setIsRefreshing(false);
+    });
+  };
+
+  return (
+    <Box
+      backgroundColor="surface.background.level2.lowContrast"
+      padding="spacing.5"
+      overflow="auto"
+      minHeight="400px"
+    >
+      <Table
+        data={apiData}
+        isRefreshing={isRefreshing}
+        pagination={
+          <TablePagination
+            showPageNumberSelector={true}
+            showPageSizePicker={false}
+            paginationType="server"
+            onPageChange={handlePageChange}
+            totalItemCount={dataCount}
+          />
+        }
+      >
+        {(tableData) => (
+          <>
+            <TableHeader>
+              <TableHeaderRow>
+                <TableHeaderCell>Name</TableHeaderCell>
+                <TableHeaderCell>Origin</TableHeaderCell>
+                <TableHeaderCell>Species</TableHeaderCell>
+                <TableHeaderCell>Status</TableHeaderCell>
+              </TableHeaderRow>
+            </TableHeader>
+            <TableBody>
+              {tableData.map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>{tableItem.name}</TableCell>
+                  <TableCell>{tableItem.origin.name}</TableCell>
+                  <TableCell>{tableItem.species}</TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </>
+        )}
+      </Table>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   BasicTableStory,
   TableWithCustomCellComponentsStory,
@@ -1826,9 +1948,10 @@ export {
   MultiSelectableWithZebraStripesStory,
   TableWithStickyHeaderAndFooterStory,
   TableWithStickyFirstColumnStory,
-  TableWithPaginationStory,
   TableWithDisabledRowsStory,
   TableWithSurfaceLevelsStory,
   TableWithIsLoadingStory,
   TableWithIsRefreshingStory,
+  TableWithClientSidePaginationStory,
+  TableWithServerSidePaginationStory,
 };

@@ -1,5 +1,30 @@
 # @razorpay/blade
 
+## 10.23.5
+
+### Patch Changes
+
+- 3ac92ae4: fix(blade): expose card event type
+
+## 10.23.4
+
+### Patch Changes
+
+- d2a27c8a: feat(blade): add minHeight prop to Card
+
+## 10.23.3
+
+### Patch Changes
+
+- eebe574b: fix: remove page change check that would cause infinite renders
+- 3ab8c0ef: feat: add `onHover` & `onClick` callback to `TableRow`
+
+## 10.23.2
+
+### Patch Changes
+
+- bd7d8dc5: feat(Skeleton): add minHeight and minWidth prop
+
 ## 10.23.1
 
 ### Patch Changes
