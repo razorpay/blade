@@ -19,7 +19,7 @@ import { makeMotionTime, makeSize, useTheme } from '~utils';
 import BaseBox from '~components/Box/BaseBox';
 import type { Theme } from '~components/BladeProvider';
 import { useIsMobile } from '~utils/useIsMobile';
-import { metaAttribute } from '~utils/metaAttribute';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type CalculateYPositionProps = {
   toast: Toast;
@@ -230,6 +230,7 @@ const Toaster: React.FC<ToasterProps> = ({
       maxWidth={makeSize(TOAST_MAX_WIDTH)}
       pointerEvents="none"
       className={containerClassName}
+      {...metaAttribute({ name: MetaConstants.ToastContainer })}
     >
       {/*
        * Mouseover container,

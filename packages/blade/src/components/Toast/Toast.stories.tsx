@@ -13,6 +13,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Heading, Text } from '~components/Typography';
+import { List, ListItem, ListItemCode } from '~components/List';
 
 const Page = (): React.ReactElement => {
   return (
@@ -93,8 +94,21 @@ const BasicToastTemplate: StoryFn<ToastProps> = (args) => {
 
   return (
     <Box height="80vh">
-      <Text marginBottom="spacing.3" color="surface.text.gray.subtle">
-        After changing storybook controls, press the show "toast button" to see changes
+      <Text size="medium" marginBottom="spacing.4">
+        To start using toast simply:
+      </Text>
+      <List>
+        <ListItem>
+          Import and render the <ListItemCode>ToastContainer</ListItemCode> component from blade at
+          the root of your project
+        </ListItem>
+        <ListItem>
+          Utilize the methods exposed via <ListItemCode>useToast()</ListItemCode> hook to
+          show/dismiss toasts
+        </ListItem>
+      </List>
+      <Text marginY="spacing.4" color="surface.text.gray.muted">
+        After changing storybook controls, press the "show toast" button to see changes
       </Text>
       <Button
         onClick={() => {
