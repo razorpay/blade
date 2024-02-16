@@ -1,7 +1,7 @@
 import React from 'react';
 import type { StoryFn } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
-import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderBadge } from '../';
+import { Drawer, DrawerBody, DrawerHeader } from '../';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { DownloadIcon } from '~components/Icons';
@@ -106,7 +106,7 @@ const DrawerTemplate: StoryFn<typeof Drawer> = (args) => {
       <Drawer {...args} isOpen={isDrawerOpen} onDismiss={() => setIsDrawerOpen(false)}>
         <DrawerHeader
           title="Vendor Payment Details"
-          titleSuffix={<DrawerHeaderBadge color="positive">New</DrawerHeaderBadge>}
+          titleSuffix={<Badge color="positive">New</Badge>}
           subtitle="See your payment details here"
           trailing={<Button icon={DownloadIcon} />}
         />

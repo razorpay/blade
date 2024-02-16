@@ -24,23 +24,25 @@ import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 
 const SHOW_DRAWER = 'show-drawer';
 
-const AnimatedDrawerContainer = styled(BaseBox)(({ theme }) => {
-  return {
-    opacity: 0,
-    transform: 'translateX(0%)',
-    transition: `all
+const AnimatedDrawerContainer = styled(BaseBox)<{ isFirstDrawerInStack: boolean }>(
+  ({ theme, isFirstDrawerInStack }) => {
+    return {
+      opacity: 0,
+      transform: 'translateX(0%)',
+      transition: `all
       ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
       ${castWebType(theme.motion.easing.exit.revealing)}`,
 
-    [`&.${SHOW_DRAWER}`]: {
-      opacity: 1,
-      transform: 'translateX(-100%)',
-      transition: `all ${castWebType(makeMotionTime(theme.motion.duration.gentle))} ${castWebType(
-        theme.motion.easing.entrance.revealing,
-      )}`,
-    },
-  };
-});
+      [`&.${SHOW_DRAWER}`]: {
+        opacity: 1,
+        transform: 'translateX(-100%)',
+        transition: `all ${castWebType(makeMotionTime(theme.motion.duration.gentle))} ${castWebType(
+          theme.motion.easing.entrance.revealing,
+        )}`,
+      },
+    };
+  },
+);
 
 const DrawerOverlay = styled(FloatingOverlay)(({ theme }) => {
   return {
@@ -70,7 +72,6 @@ const _Drawer = ({
   testID,
 }: DrawerProps): React.ReactElement => {
   const closeButtonRef = React.useRef<HTMLDivElement>(null);
-  const backButtonRef = React.useRef<HTMLDivElement>(null);
 
   useVerifyAllowedChildren({
     children,
@@ -90,6 +91,7 @@ const _Drawer = ({
 
   // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
   const stackingLevel = drawerStack.indexOf(drawerId) + 1;
+  const isFirstDrawerInStack = stackingLevel === 1 && drawerStack.length > 1;
 
   const { refs, context } = useFloating({
     open: isMounted,
@@ -104,15 +106,10 @@ const _Drawer = ({
   }, [isMounted]);
 
   return (
-    <DrawerContext.Provider
-      value={{ close: onDismiss, closeButtonRef, backButtonRef, stackingLevel }}
-    >
+    <DrawerContext.Provider value={{ close: onDismiss, closeButtonRef }}>
       <FloatingPortal>
         {isMounted ? (
-          <FloatingFocusManager
-            context={context}
-            initialFocus={initialFocusRef ?? (stackingLevel >= 2 ? backButtonRef : closeButtonRef)}
-          >
+          <FloatingFocusManager context={context} initialFocus={initialFocusRef ?? closeButtonRef}>
             <Box
               position="fixed"
               {...metaAttribute({
@@ -133,7 +130,12 @@ const _Drawer = ({
               ) : null}
               <AnimatedDrawerContainer
                 className={isVisible ? SHOW_DRAWER : ''}
-                width={{ base: '90%', s: '375px', m: '420px' }}
+                isFirstDrawerInStack={isFirstDrawerInStack}
+                width={{
+                  base: stackingLevel > 1 ? 'calc(90% - 16px)' : '90%',
+                  s: stackingLevel > 1 ? 'calc(375px - 16px)' : '375px',
+                  m: stackingLevel > 1 ? 'calc(420px - 16px)' : '420px',
+                }}
                 {...makeAccessible({
                   role: 'dialog',
                   modal: true,

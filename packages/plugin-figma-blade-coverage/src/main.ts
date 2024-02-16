@@ -6,12 +6,13 @@ import {
 } from '@create-figma-plugin/utilities';
 
 import {
-  BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS,
-  BLADE_BOX_BORDER_COLOR_STYLE_IDS,
-  BLADE_COLOR_STYLE_IDS,
+  BLADE_BOX_BACKGROUND_COLOR_VARIABLE_IDS,
+  BLADE_BOX_BORDER_COLOR_VARIABLE_IDS,
   BLADE_COMPONENT_IDS,
   BLADE_COMPONENT_IDS_HAVING_SLOT,
-  BLADE_TEXT_STYLE_IDS,
+  BLADE_TEXT_COLOR_STYLE_IDS,
+  BLADE_TEXT_TYPEFACE_STYLE_IDS,
+  BLADE_EFFECT_STYLE_IDS,
 } from './bladeLibraryConstants';
 import { sendAnalytics } from './utils/sendAnalytics';
 
@@ -19,15 +20,17 @@ type CoverageMetrics = {
   bladeComponents: number;
   bladeTextStyles: number;
   bladeColorStyles: number;
+  // bladeEffectStyles: number;
+  nonBladeComponents: number;
   nonBladeTextStyles: number;
   nonBladeColorStyles: number;
-  nonBladeComponents: number; // rename to non-blade components
-  totalLayers: number; // rename to total layers
+  // nonBladeEffectStyles: number;
+  totalLayers: number;
   bladeCoverage: number;
 };
 
 const MAIN_FRAME_NODES = ['FRAME', 'SECTION'];
-const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'FRAME', 'ELLIPSE', 'INSTANCE'];
+const NODES_SKIP_FROM_COVERAGE = ['GROUP', 'SECTION', 'VECTOR', 'ELLIPSE', 'INSTANCE'];
 const nonBladeHighlighterNodes: BaseNode[] = [];
 const bladeCoverageCards: BaseNode[] = [];
 
@@ -37,7 +40,7 @@ const highlightNonBladeNode = (node: SceneNode, desc?: string): void => {
     .toUpperCase()
     .charAt(0)
     .toUpperCase()}${node.type.toLowerCase().slice(1)}`;
-  highlighterBox.name = `Desc: ${desc}, Type: ${nodeType}, Name: ${node.name}`;
+  highlighterBox.name = `${desc}, Type: ${nodeType}, Name: ${node.name}`;
   // selection node just gives the x and y relative to the frame we need WRT canvas hence, we need to use absoluteTransform prop
   highlighterBox.x = node.absoluteTransform[0][2] - 1;
   highlighterBox.y = node.absoluteTransform[1][2] - 1;
@@ -113,17 +116,14 @@ const renderCoverageCard = async ({
     }
 
     let coverageColorIntent = BLADE_INTENT_COLOR_KEYS.negative.id;
-    let bladeCoverageType = 'Very Low 😭';
+    let bladeCoverageType = 'Below 90% 😪';
     const PROGRESS_BAR_MAX_WIDTH = 254;
     const bladeCoverageProgress = (bladeCoverage / 100) * PROGRESS_BAR_MAX_WIDTH;
 
     // calculate coverage type and intent colors for coverage
-    if (bladeCoverage > 70) {
-      bladeCoverageType = 'Good 😊';
+    if (bladeCoverage > 90) {
+      bladeCoverageType = `Good 🎉`;
       coverageColorIntent = BLADE_INTENT_COLOR_KEYS.positive.id;
-    } else if (bladeCoverage > 50 && bladeCoverage < 70) {
-      bladeCoverageType = 'Low 😥';
-      coverageColorIntent = BLADE_INTENT_COLOR_KEYS.notice.id;
     }
 
     coverageCardInstance.setProperties({
@@ -164,9 +164,11 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
   let bladeComponents = 0;
   let bladeTextStyles = 0;
   let bladeColorStyles = 0;
+  // let bladeEffectStyles = 0;
   let nonBladeComponents = 0;
   let nonBladeTextStyles = 0;
   let nonBladeColorStyles = 0;
+  // let nonBladeEffectStyles = 0;
   let totalLayers = 0;
 
   try {
@@ -181,6 +183,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
         if (!traversedNode.visible) {
           return;
         }
+
         if (
           traversedNode.type === 'INSTANCE' &&
           (BLADE_COMPONENT_IDS.includes(
@@ -248,8 +251,8 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           // check if the text is using Blade's text styles
           let isMixedTextStyleOfBlade = false;
           let traversedNodeTextStyleId = '';
-          let isMixedColorStyleOfBlade = false;
-          let traversedNodeColorStyleId = '';
+          let isTextRangeFillsOfBlade = false;
+          let traversedNodeColorVariableId = '';
 
           /**
            * The textSyleId can have figma.mixed. so in that case we need to go character by character
@@ -262,7 +265,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
                 if (/\s/.test(character)) {
                   return true;
                 }
-                return BLADE_TEXT_STYLE_IDS.includes(
+                return BLADE_TEXT_TYPEFACE_STYLE_IDS.includes(
                   (traversedNode.getRangeTextStyleId(index, index + 1) as string).split(',')[0],
                 );
               });
@@ -276,7 +279,7 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           } else {
             traversedNodeTextStyleId = traversedNode?.textStyleId?.split(',')[0];
 
-            if (BLADE_TEXT_STYLE_IDS.includes(traversedNodeTextStyleId ?? '')) {
+            if (BLADE_TEXT_TYPEFACE_STYLE_IDS.includes(traversedNodeTextStyleId ?? '')) {
               bladeTextStyles++;
             } else {
               nonBladeTextStyles++;
@@ -284,62 +287,67 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             }
           }
 
-          /** the fillstyleId can have figma.mixed. so in that case we need to go character by character
-           * and do getRangeFillStyleId(4,5) instead of fillStyleId
-           * */
-          if (traversedNode?.fillStyleId === figma.mixed) {
-            isMixedColorStyleOfBlade = traversedNode.characters
-              .split('')
-              .every((character, index) => {
-                if (/\s/.test(character)) {
-                  return true;
-                }
-                return BLADE_COLOR_STYLE_IDS.includes(
-                  (traversedNode.getRangeFillStyleId(index, index + 1) as string).split(',')[0],
-                );
-              });
-
-            if (isMixedColorStyleOfBlade) {
+          // check if text is using blade color styles
+          if (traversedNode.boundVariables?.fills?.length) {
+            traversedNodeColorVariableId = traversedNode.boundVariables.fills[0].id.split('/')[0];
+            if (BLADE_TEXT_COLOR_STYLE_IDS.includes(traversedNodeColorVariableId ?? '')) {
               bladeColorStyles++;
             } else {
               nonBladeColorStyles++;
-              highlightNonBladeNode(traversedNode, 'Color Style is not from Blade Tokens');
+              highlightNonBladeNode(
+                traversedNode,
+                'Text Color Style should only use surface/text or feedback/text tokens',
+              );
             }
-          } else {
-            traversedNodeColorStyleId = traversedNode?.fillStyleId?.split(',')[0];
-
-            if (BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
-              bladeColorStyles++;
+          }
+          // check if text is using blade text styles
+          // textRangeFills is used when the text has different colors for different characters
+          if (traversedNode.boundVariables?.textRangeFills?.length) {
+            isTextRangeFillsOfBlade = traversedNode.boundVariables.textRangeFills.every((fill) => {
+              if (BLADE_TEXT_COLOR_STYLE_IDS.includes(fill.id.split('/')[0])) {
+                return true;
+              }
+              return false;
+            });
+            if (isTextRangeFillsOfBlade) {
+              bladeTextStyles++;
             } else {
-              nonBladeColorStyles++;
-              highlightNonBladeNode(traversedNode, 'Color Style is not from Blade Tokens');
+              nonBladeTextStyles++;
+              highlightNonBladeNode(
+                traversedNode,
+                'Text Color Style should only use surface/text or feedback/text tokens',
+              );
             }
+          }
+
+          if (
+            traversedNode.boundVariables &&
+            Object.keys(traversedNode.boundVariables).length === 0
+          ) {
+            nonBladeTextStyles++;
+            highlightNonBladeNode(
+              traversedNode,
+              'Text Color Style should only use surface/text or feedback/text tokens',
+            );
           }
 
           // this check is for typography components, if the typography uses color and text both from blade styles then they are typography blade components
           if (
-            (isMixedTextStyleOfBlade || BLADE_TEXT_STYLE_IDS.includes(traversedNodeTextStyleId)) &&
-            (isMixedColorStyleOfBlade || BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId))
+            (isMixedTextStyleOfBlade ||
+              BLADE_TEXT_TYPEFACE_STYLE_IDS.includes(traversedNodeTextStyleId)) &&
+            (isTextRangeFillsOfBlade ||
+              BLADE_TEXT_COLOR_STYLE_IDS.includes(traversedNodeColorVariableId))
           ) {
             bladeComponents++;
           }
         } else if (traversedNode.type === 'LINE') {
-          // check if the line is using Blade's color styles
-          const traversedNodeColorStyleId = traversedNode.strokeStyleId.split(',')[0];
-          const useDividerComponentError = 'Use a Divider Component Instead';
-          if (BLADE_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
-            bladeColorStyles++;
-            // even though the color matches blade, we want to encourage people to use Divider component instead
-            highlightNonBladeNode(traversedNode, useDividerComponentError);
-          } else {
-            nonBladeColorStyles++;
-            highlightNonBladeNode(traversedNode, useDividerComponentError);
-          }
+          nonBladeComponents++;
+          highlightNonBladeNode(traversedNode, 'Use a Divider Component Instead');
         } else if (traversedNode.type === 'RECTANGLE') {
           let isImage = false;
 
           if (traversedNode.fills !== figma.mixed) {
-            // figma considers images as rectangles with fille type as IMAGE
+            // figma considers images as rectangles with fill type as IMAGE
             isImage = Boolean(traversedNode.fills.find((fill) => fill.type === 'IMAGE'));
           }
 
@@ -347,30 +355,51 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
             NODES_SKIP_FROM_COVERAGE.push('RECTANGLE');
           }
 
-          if (!isImage && (traversedNode.strokeStyleId || traversedNode.fillStyleId)) {
+          const hasEffects = traversedNode.effects?.length;
+          const hasBladeEffectStyles = BLADE_EFFECT_STYLE_IDS.includes(traversedNode.effectStyleId);
+
+          if (hasEffects && hasBladeEffectStyles) {
+            // bladeEffectStyles++;
+          } else if (hasEffects && !hasBladeEffectStyles) {
+            // nonBladeEffectStyles++;
+            highlightNonBladeNode(traversedNode, `Effects not from Blade's elevation styles`);
+          }
+
+          // replace with variables
+          const hasFillsVariable = traversedNode.boundVariables?.fills?.length;
+          const hasStrokesVariable = traversedNode.boundVariables?.strokes?.length;
+          if (!isImage && (hasFillsVariable || hasStrokesVariable)) {
             // check if rectangle uses blade surface.border.* colors for border
-            if (traversedNode.strokeStyleId) {
-              const traversedNodeColorStyleId = traversedNode.strokeStyleId.split(',')[0];
-              if (BLADE_BOX_BORDER_COLOR_STYLE_IDS.includes(traversedNodeColorStyleId ?? '')) {
+            if (hasStrokesVariable) {
+              const traversedNodeColorVariableId = traversedNode.boundVariables.strokes[0].id.split(
+                '/',
+              )[0];
+              if (
+                BLADE_BOX_BORDER_COLOR_VARIABLE_IDS.includes(traversedNodeColorVariableId ?? '')
+              ) {
                 bladeColorStyles++;
               } else {
                 nonBladeColorStyles++;
                 highlightNonBladeNode(
                   traversedNode,
-                  'Border color style can only have Surface/Border/* colors',
+                  'Box Border color should only use surface/border/* tokens',
                 );
               }
             }
-            // check if rectangle uses blade brand.* or surface.background.* colors for background
-            if (traversedNode.fillStyleId && traversedNode.fillStyleId !== figma.mixed) {
-              const traversedNodeFillStyleId = traversedNode.fillStyleId.split(',')[0];
-              if (BLADE_BOX_BACKGROUND_COLOR_STYLE_IDS.includes(traversedNodeFillStyleId ?? '')) {
+            // check if rectangle is using blade surface.background.* tokens for background
+            if (hasFillsVariable) {
+              const traversedNodeFillStyleId = traversedNode.boundVariables.fills[0].id.split(
+                '/',
+              )[0];
+              if (
+                BLADE_BOX_BACKGROUND_COLOR_VARIABLE_IDS.includes(traversedNodeFillStyleId ?? '')
+              ) {
                 bladeColorStyles++;
               } else {
                 nonBladeColorStyles++;
                 highlightNonBladeNode(
                   traversedNode,
-                  'Background color style can only have Surface/Background/* or Brand/* colors',
+                  'Box Background color should only use surface/background/* tokens',
                 );
               }
             }
@@ -379,8 +408,48 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
           }
         }
 
+        /** check if frame is being used as a custom component
+         * has fills?
+         * has strokes?
+         * has effects?
+         * if any of the above is true then it's a custom component
+         * */
+        const ignoreInstanceFrameNodeNames = [
+          'root',
+          'wrapper',
+          'bottom-sheet-container',
+          'accordion-header',
+          'Summary Row',
+        ];
         if (
-          ![...NODES_SKIP_FROM_COVERAGE, 'TEXT', 'LINE', 'RECTANGLE'].includes(
+          traversedNode.type === 'FRAME' &&
+          !ignoreInstanceFrameNodeNames.includes(traversedNode.name) &&
+          getParentNode(traversedNode)?.type !== 'PAGE'
+        ) {
+          const hasStrokes =
+            traversedNode?.boundVariables?.strokes?.length ?? traversedNode.strokes.length;
+          const hasEffects = traversedNode.effects?.length || traversedNode.effectStyleId;
+          const hasNonMixedFills =
+            traversedNode.fills !== figma.mixed && traversedNode.fills.length;
+          const hasFills =
+            traversedNode?.boundVariables?.fills?.length ??
+            hasNonMixedFills ??
+            traversedNode.fillStyleId;
+          if (
+            Boolean(hasStrokes || hasEffects || hasFills) &&
+            !Boolean(traversedNode.fills === figma.mixed)
+          ) {
+            // this is non-blade component error
+            // push the frame layer to be included in component count
+            nonBladeComponents++;
+            highlightNonBladeNode(traversedNode, 'Use relevant Blade component');
+          } else {
+            NODES_SKIP_FROM_COVERAGE.push('FRAME');
+          }
+        }
+
+        if (
+          ![...NODES_SKIP_FROM_COVERAGE, 'TEXT', 'LINE', 'RECTANGLE', 'FRAME'].includes(
             traversedNode.type,
           ) &&
           getParentNode(traversedNode)?.type !== 'PAGE'
@@ -390,19 +459,23 @@ const calculateCoverage = (node: SceneNode): CoverageMetrics | null => {
 
         if (
           getParentNode(traversedNode)?.type !== 'PAGE' &&
-          !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type)
+          !NODES_SKIP_FROM_COVERAGE.includes(traversedNode.type) &&
+          // if the frame instances are from Blade's components then we don't want to include them in the count because these are components with slots
+          !ignoreInstanceFrameNodeNames.includes(traversedNode.name)
         ) {
           // exclude the main frame itself from the count to remove false negatives
           totalLayers++;
         }
 
         // remove rectangle node index for next iteration because we don't want to remove all the rectangle nodes, only the image ones
-        const rectangleImageNodeIndex = NODES_SKIP_FROM_COVERAGE.findIndex(
-          (nodeName) => nodeName === 'RECTANGLE',
-        );
-        if (rectangleImageNodeIndex !== -1) {
-          NODES_SKIP_FROM_COVERAGE.splice(rectangleImageNodeIndex, 1);
-        }
+        // remove frame node index for next iteration because we don't want to remove layout frame nodes, only the one that has being used as card
+        const nodesToBeRemoved = ['RECTANGLE', 'FRAME'];
+        nodesToBeRemoved.forEach((nodeName) => {
+          const nodeIndex = NODES_SKIP_FROM_COVERAGE.findIndex((node) => node === nodeName);
+          if (nodeIndex !== -1) {
+            NODES_SKIP_FROM_COVERAGE.splice(nodeIndex, 1);
+          }
+        });
       },
       (traversedNode) => {
         // callback to stopTraversal for children of a node

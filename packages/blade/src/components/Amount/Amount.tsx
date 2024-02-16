@@ -1,14 +1,9 @@
 import type { ReactElement } from 'react';
 import React from 'react';
-import type { AmountTypeProps, Currency } from './amountTokens';
-import {
-  normalAmountSizes,
-  getCurrencyAbbreviations,
-  currencyIndicatorMapping,
-  subtleFontSizes,
-  amountLineHeights,
-  currencyPositionMapping,
-} from './amountTokens';
+import type { CurrencyCodeType } from '@razorpay/i18nify-js/currency';
+import { formatNumber, formatNumberByParts } from '@razorpay/i18nify-js/currency';
+import type { AmountTypeProps } from './amountTokens';
+import { normalAmountSizes, subtleFontSizes, amountLineHeights } from './amountTokens';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import BaseBox from '~components/Box/BaseBox';
 import type { TestID } from '~utils/types';
@@ -51,6 +46,8 @@ type AmountCommonProps = {
   /**
    * Determines the visual representation of the currency, choose between displaying the currency symbol or code.
    *
+   * Note: Currency symbol and code is determined by the locale set in user's browser or set via @razorpay/i18nify-react library.
+   *
    * @default 'currency-symbol'
    */
   currencyIndicator?: 'currency-symbol' | 'currency-code';
@@ -60,7 +57,7 @@ type AmountCommonProps = {
    *
    * @default 'INR'
    * */
-  currency?: Currency;
+  currency?: CurrencyCodeType;
   /**
    * If true, the amount text will have a line through it.
    *
@@ -85,14 +82,16 @@ const getTextColorProps = ({ color }: { color: AmountProps['color'] }): ColorPro
   return props;
 };
 
+type AmountType = Partial<ReturnType<typeof formatNumberByParts>> & { formatted: string };
+
 interface AmountValue extends Omit<AmountProps, 'value'> {
   amountValueColor: BaseTextProps['color'];
-  value: string;
+  amount: AmountType;
   size: Exclude<AmountProps['size'], undefined>;
 }
 
 const AmountValue = ({
-  value,
+  amount,
   size = 'medium',
   type = 'body',
   weight = 'regular',
@@ -104,9 +103,6 @@ const AmountValue = ({
   const affixFontSize = isAffixSubtle ? subtleFontSizes[type][size] : normalAmountSizes[type][size];
   const numberFontFamily: keyof FontFamily = type === 'body' ? 'text' : 'heading';
   if (suffix === 'decimals' && isAffixSubtle) {
-    const integer = value.split('.')[0];
-    const decimal = value.split('.')[1];
-
     // Native does not support alignItems of Text inside a div, instead we need to wrap is in a Text
     const AmountWrapper = isReactNative ? Text : React.Fragment;
 
@@ -120,7 +116,7 @@ const AmountValue = ({
           fontFamily={numberFontFamily}
           as={isReactNative ? undefined : 'span'}
         >
-          {integer}
+          {amount.integer}
         </BaseText>
         <BaseText
           fontWeight={weight}
@@ -130,11 +126,13 @@ const AmountValue = ({
           as={isReactNative ? undefined : 'span'}
           opacity={isAffixSubtle ? opacity[8] : 1}
         >
-          .{decimal || '00'}
+          {amount.decimal}
+          {amount.fraction}
         </BaseText>
       </AmountWrapper>
     );
   }
+
   return (
     <BaseText
       fontSize={normalAmountSizes[type][size]}
@@ -143,83 +141,77 @@ const AmountValue = ({
       color={amountValueColor}
       lineHeight={amountLineHeights[type][size]}
     >
-      {value}
+      {amount.formatted}
     </BaseText>
   );
-};
-
-// This function rounds a number to a specified number of decimal places
-// and floors the result.
-export const getFlooredFixed = (value: number, decimalPlaces: number): number => {
-  const factor = 100 ** decimalPlaces;
-  const roundedValue = Math.floor(value * factor) / factor;
-  return Number(roundedValue.toFixed(decimalPlaces));
-};
-
-export const addCommas = (amountValue: number, currency: Currency, decimalPlaces = 0): string => {
-  // If the currency is 'INR', set the locale to 'en-IN' (Indian English).
-  // Otherwise, set the locale to 'en-US' (U.S. English).
-  const locale = currency === 'INR' ? 'en-IN' : 'en-US';
-  return amountValue.toLocaleString(locale, { minimumFractionDigits: decimalPlaces });
-};
-/**
- * This function returns the humanized amount
- * ie: for INR 2000 => 2K
- * for MYR 2000000 => 2M
- */
-export const getHumanizedAmount = ({
-  value,
-  currency,
-  denominationPosition = 'right',
-}: {
-  value: number;
-  currency: Currency;
-  denominationPosition?: 'left' | 'right';
-}): string => {
-  let amountValue = value;
-  const abbreviations = getCurrencyAbbreviations(currency);
-  const abbreviation = abbreviations.find((abbr) => amountValue >= abbr.value);
-
-  if (abbreviation) {
-    amountValue = amountValue / abbreviation.value;
-    const formattedAmountValue = getFlooredFixed(amountValue, 2);
-
-    if (denominationPosition === 'right') {
-      return `${addCommas(formattedAmountValue, currency)}${abbreviation.symbol}`;
-    }
-
-    return `${abbreviation.symbol}${addCommas(formattedAmountValue, currency)}`;
-  }
-
-  return amountValue.toString();
 };
 
 type FormatAmountWithSuffixType = {
   suffix: AmountProps['suffix'];
   value: number;
-  currency: Currency;
-  denominationPosition?: 'left' | 'right';
 };
 
+/**
+ * Returns a parsed object based on the suffix passed in parameters
+ * === Logic ===
+ * value = 12500.45 
+ * if suffix === 'decimals' => {
+    "formatted": "12,500.45",
+    "integer": "12,500",
+    "decimal": ".",
+    "fraction": "45",
+    "isPrefixSymbol": false,
+    "rawParts": [{"type": "integer","value": "12"},{"type": "group","value": ","},{"type": "integer","value": "500"},{"type": "decimal","value": "."},{"type": "fraction","value": "45"}]
+}
+ * else if suffix === 'humanize' => { formatted: "1.2T" }
+ * else => { formatted: "1,23,456" }
+ * @returns {AmountType}
+ */
 export const formatAmountWithSuffix = ({
   suffix,
   value,
-  currency,
-  denominationPosition,
-}: FormatAmountWithSuffixType): string => {
-  switch (suffix) {
-    case 'decimals': {
-      const decimalNumber = getFlooredFixed(value, 2);
-      return addCommas(decimalNumber, currency, 2);
+}: FormatAmountWithSuffixType): AmountType => {
+  try {
+    switch (suffix) {
+      case 'decimals': {
+        const options = {
+          intlOptions: {
+            maximumFractionDigits: 2,
+            minimumFractionDigits: 2,
+          },
+        };
+        return {
+          ...formatNumberByParts(value, options),
+          formatted: formatNumber(value, options),
+        };
+      }
+      case 'humanize': {
+        const formatted = formatNumber(value, {
+          intlOptions: {
+            notation: 'compact',
+          },
+        });
+        return {
+          formatted,
+        };
+      }
+
+      default: {
+        const formatted = formatNumber(value, {
+          intlOptions: {
+            maximumFractionDigits: 0,
+            roundingMode: 'floor',
+          },
+        });
+        return {
+          formatted,
+        };
+      }
     }
-    case 'humanize': {
-      return getHumanizedAmount({ value, currency, denominationPosition });
-    }
-    case 'none': {
-      return addCommas(getFlooredFixed(value, 0), currency);
-    }
-    default:
-      return addCommas(getFlooredFixed(value, 0), currency);
+  } catch (err: unknown) {
+    return {
+      formatted: `${value}`,
+    };
   }
 };
 
@@ -277,13 +269,25 @@ const _Amount = ({
     }
   }
 
-  const currencySymbolOrCode = currencyIndicatorMapping[currency][currencyIndicator];
-  const currencyPosition = currencyPositionMapping[currency] || 'left';
-  const denominationPosition = currencyPosition === 'left' ? 'right' : 'left';
-  const renderedValue = formatAmountWithSuffix({ suffix, value, currency, denominationPosition });
   const { amountValueColor } = getTextColorProps({
     color,
   });
+
+  let isPrefixSymbol, currencySymbol;
+  try {
+    const byParts = formatNumberByParts(value, {
+      currency,
+    });
+    isPrefixSymbol = byParts.isPrefixSymbol;
+    currencySymbol = byParts.currency;
+  } catch (err: unknown) {
+    isPrefixSymbol = true;
+    currencySymbol = currency;
+  }
+
+  const currencyPosition = isPrefixSymbol ? 'left' : 'right';
+  const renderedValue = formatAmountWithSuffix({ suffix, value });
+  const currencySymbolOrCode = currencyIndicator === 'currency-symbol' ? currencySymbol : currency;
 
   const currencyFontSize = isAffixSubtle
     ? subtleFontSizes[type][size]
@@ -316,13 +320,14 @@ const _Amount = ({
           </BaseText>
         )}
         <AmountValue
-          value={renderedValue}
+          amount={renderedValue}
           amountValueColor={amountValueColor}
           type={type}
           weight={weight}
           size={size}
           isAffixSubtle={isAffixSubtle}
           suffix={suffix}
+          currency={currency}
         />
         {currencyPosition === 'right' && (
           <BaseText
