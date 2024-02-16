@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
-import { Drawer, DrawerBody, DrawerHeader, DrawerHeaderBadge, DrawerHeaderIcon } from './';
+import { Drawer, DrawerBody, DrawerHeader } from './';
 import type { DrawerProps } from './';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
@@ -8,6 +8,7 @@ import iconMap from '~components/Icons/iconMap';
 import { Button } from '~components/Button';
 import { AnnouncementIcon, DownloadIcon } from '~components/Icons';
 import { Card, CardBody } from '~components/Card';
+import { Badge } from '~components/Badge';
 
 export default {
   title: 'Components/Drawer',
@@ -37,9 +38,9 @@ const DrawerTemplate: StoryFn<typeof Drawer> = () => {
       <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
       <Drawer isOpen={isDrawerOpen} onDismiss={() => setIsDrawerOpen(false)}>
         <DrawerHeader
-          leading={<DrawerHeaderIcon icon={AnnouncementIcon} />}
+          leading={<AnnouncementIcon size="large" />}
           title="Announcements"
-          titleSuffix={<DrawerHeaderBadge color="positive">New</DrawerHeaderBadge>}
+          titleSuffix={<Badge color="positive">New</Badge>}
           subtitle="This is an announcement"
           trailing={<Button icon={DownloadIcon} />}
         />
