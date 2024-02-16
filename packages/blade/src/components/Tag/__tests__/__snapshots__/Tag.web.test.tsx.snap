@@ -19,6 +19,9 @@ exports[`<Tag /> should render tag 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
   padding: 4px 8px 4px 12px;
   background-color: hsla(216,15%,54%,0.18);
   border-radius: 9999px;

@@ -101,6 +101,7 @@ const Tag = ({
         alignSelf={isReactNative() ? 'center' : undefined}
         flexDirection="row"
         flexWrap="nowrap"
+        flexShrink={0}
         backgroundColor="brand.gray.a100.lowContrast"
         borderRadius="max"
         padding={size === 'medium' ? mediumPadding : largePadding}

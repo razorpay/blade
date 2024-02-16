@@ -26,6 +26,7 @@ exports[`<Tag /> should render tag 1`] = `
       data-blade-component="base-box"
       display="flex"
       flexDirection="row"
+      flexShrink={0}
       flexWrap="nowrap"
       style={
         [
@@ -35,6 +36,7 @@ exports[`<Tag /> should render tag 1`] = `
             "borderRadius": 9999,
             "display": "flex",
             "flexDirection": "row",
+            "flexShrink": 0,
             "flexWrap": "nowrap",
             "paddingBottom": 4,
             "paddingLeft": 12,
