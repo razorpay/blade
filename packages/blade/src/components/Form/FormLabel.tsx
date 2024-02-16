@@ -1,4 +1,5 @@
 import React from 'react';
+import { labelOptionalIndicatorTextSize, labelTextSize } from './formTokens';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { getPlatformType, useBreakpoint } from '~utils';
@@ -6,8 +7,8 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
-import { makeSize } from '~utils/makeSize';
-import { size } from '~tokens/global';
+// import { makeSize } from '~utils/makeSize';
+import { size as sizeToken } from '~tokens/global';
 
 type CommonProps = {
   as: 'span' | 'label';
@@ -16,6 +17,11 @@ type CommonProps = {
   accessibilityText?: string;
   children: string | undefined;
   id?: string;
+  /**
+   * Sets the size of the label
+   * @default medium
+   */
+  size?: 'medium' | 'large';
 };
 
 type LabelProps = CommonProps & {
@@ -53,6 +59,7 @@ const FormLabel = ({
   children,
   id,
   htmlFor,
+  size = 'medium',
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -65,7 +72,11 @@ const FormLabel = ({
 
   if (necessityIndicator === 'optional') {
     necessityLabel = (
-      <Text variant="caption" size="small" color="surface.text.gray.muted">
+      <Text
+        variant="caption"
+        size={labelOptionalIndicatorTextSize[size]}
+        color="surface.text.gray.muted"
+      >
         (optional)
       </Text>
     );
@@ -96,11 +107,11 @@ const FormLabel = ({
       flexDirection="row"
       alignItems="center"
       flexWrap="wrap"
-      maxHeight={makeSpace(size[36])}
+      maxHeight={makeSpace(sizeToken[36])}
     >
       <Text
         variant="body"
-        size={isLabelLeftPositioned ? 'medium' : 'small'}
+        size={labelTextSize[isLabelLeftPositioned ? 'left' : 'top'][size]}
         color="surface.text.gray.subtle"
         truncateAfterLines={2}
         weight="semibold"
@@ -125,7 +136,8 @@ const FormLabel = ({
 
   const Component = as;
   // only set 120px label when device is desktop
-  const width = isLabelLeftPositioned && isDesktop ? makeSize(size[120]) : 'auto';
+  // const width = isLabelLeftPositioned && isDesktop ? makeSize(sizeToken[120]) : 'auto';
+  const width = isLabelLeftPositioned && isDesktop ? '176px' : 'auto'; // TODO: use size token
 
   return (
     <Component

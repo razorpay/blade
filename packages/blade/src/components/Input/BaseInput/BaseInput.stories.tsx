@@ -10,6 +10,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Tag } from '~components/Tag';
+import { Text } from '~components/Typography';
 
 const propsCategory = {
   BASE_PROPS: 'Base Input Props',
@@ -272,6 +273,7 @@ const BaseInputTemplate: StoryFn<typeof BaseInputComponent> = ({
       {...args}
       leadingIcon={iconMap[(leadingIcon as unknown) as string]}
       trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+      // interactionElement={<Text>hello</Text>}
     />
   );
 };

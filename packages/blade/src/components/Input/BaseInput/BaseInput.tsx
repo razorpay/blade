@@ -282,6 +282,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * State setter for active tag index
      */
     setActiveTagIndex?: (activeTagIndex: number) => void;
+    /**
+     * Sets the size of the input field
+     * @default medium
+     */
+    size?: 'medium' | 'large';
   } & TestID &
   Platform.Select<{
     native: {
@@ -737,6 +742,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     testID,
     isDropdownTrigger,
     isLabelInsideInput,
+    size = 'medium',
     ...styledProps
   },
   ref,
@@ -846,6 +852,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               position={labelPosition}
               id={labelId}
               htmlFor={inputId}
+              size={size}
             >
               {label}
             </FormLabel>
