@@ -387,7 +387,9 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'Toast',
-    status: 'to-be-decided',
+    status: 'released',
+    releasedIn: '11.3.0',
+    storybookLink: 'Components/Toast/Docs',
     description: 'Toast is a component to show a simple floating messages to your users',
   },
   {
