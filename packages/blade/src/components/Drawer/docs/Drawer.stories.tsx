@@ -26,9 +26,8 @@ const Page = (): React.ReactElement => {
           Drawer, 
           DrawerHeader, 
           DrawerBody, 
-          DrawerHeaderBadge, 
-          DrawerHeaderIcon,
           Box,
+          Badge, 
           Button,
           Card,
           CardBody,
@@ -43,9 +42,9 @@ const Page = (): React.ReactElement => {
               <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
               <Drawer isOpen={isDrawerOpen} onDismiss={() => setIsDrawerOpen(false)}>
                 <DrawerHeader
-                  leading={<DrawerHeaderIcon icon={AnnouncementIcon} />}
+                  leading={<AnnouncementIcon size="large" />}
                   title="Announcements"
-                  titleSuffix={<DrawerHeaderBadge color="positive">New</DrawerHeaderBadge>}
+                  titleSuffix={<Badge color="positive">New</Badge>}
                   subtitle="This is an announcement"
                   trailing={<Button icon={DownloadIcon} />}
                 />
