@@ -42,6 +42,8 @@ export const MetaConstants = {
   PasswordInput: 'password-input',
   TextArea: 'textarea',
   TextInput: 'textinput',
+  Toast: 'toast',
+  ToastContainer: 'toast-container',
   ProgressBar: 'progress-bar',
   Radio: 'radio',
   RadioGroup: 'radio-group',
