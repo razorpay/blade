@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import type { StyledFileUploadWrapperProps } from './types';
-import { fileUploadMotionTokens } from './fileUploadTokens';
+import { fileUploadMotionTokens, fileUploadBackgroundColors } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import { castWebType } from '~utils';
 
 const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
-  ({ theme, isDisabled }) => {
+  ({ theme, isDisabled, isActive }) => {
     const easing = getIn(theme.motion, fileUploadMotionTokens.easing);
     const duration = castWebType(
       makeMotionTime(getIn(theme.motion, fileUploadMotionTokens.duration)),
@@ -18,12 +18,16 @@ const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
       borderStyle: 'dashed',
       height: '54px',
 
+      ...(isActive && {
+        backgroundColor: getIn(theme.colors, fileUploadBackgroundColors.active),
+      }),
+
       ...(!isDisabled && {
         '&:hover': {
-          // backgroundColor: getIn(
-          //   theme.colors,
-          //   fileUploadColorTokens.background[isChecked && color ? color : 'unchecked'].hover,
-          // ),
+          backgroundColor: getIn(
+            theme.colors,
+            fileUploadBackgroundColors[isActive ? 'active' : 'hover'],
+          ),
           transitionTimingFunction: easing,
           transitionDuration: duration,
         },

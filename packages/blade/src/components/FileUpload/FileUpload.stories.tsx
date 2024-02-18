@@ -177,7 +177,13 @@ const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => 
   };
 
   return (
-    <Box display="flex" flexDirection="column" margin="spacing.4">
+    <Box
+      display="flex"
+      flexDirection="column"
+      margin="spacing.4"
+      padding="spacing.10"
+      backgroundColor="surface.background.gray.intense"
+    >
       {responseData ? (
         <Box display="flex" flexDirection="column" gap="spacing.5">
           {responseData.url && (
@@ -213,12 +219,14 @@ const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => 
                 label="Upload GST"
                 helpText="Upload .jpg, .jpeg, or .png file only"
                 accept=".jpg, .jpeg, .png"
+                //maxSize={100}
                 onChange={({ fileList }) => {
                   setSelectedFile(fileList[0]);
                 }}
                 isRequired
                 necessityIndicator="required"
               />
+              {/* ///<FileUploadItem file={upload} /> */}
               <Button type="submit" variant="primary">
                 Submit
               </Button>
@@ -282,7 +290,13 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
   };
 
   return (
-    <Box display="flex" flexDirection="column" margin="spacing.4">
+    <Box
+      display="flex"
+      flexDirection="column"
+      margin="spacing.4"
+      padding="spacing.10"
+      backgroundColor="surface.background.gray.intense"
+    >
       {responseData ? (
         <Box display="flex" flexDirection="column" gap="spacing.5">
           {responseData.map((res, index) => {
@@ -347,3 +361,108 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
 
 export const MultipleFilesUpload = MultipleFilesUploadTemplate.bind({});
 MultipleFilesUpload.storyName = 'Multiple Files Upload';
+
+const ShowFileUploadProgressTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
+  const [uploadedFiles, setUploadedFiles] = useState<BladeFileLists>();
+  const [uploadProgress, setUploadProgress] = useState<number>(0);
+
+  const handleFileChange = ({ fileList }) => {
+    setUploadedFiles(fileList);
+    // Create a FormData object to append files
+    const formData = new FormData();
+
+    formData.append('file', fileList[0]);
+    formData.append('upload_preset', 'blade-file-upload-demo');
+    formData.append('cloud_name', 'snitin315');
+
+    const xhr = new XMLHttpRequest();
+
+    xhr.addEventListener(
+      'load',
+      () => {
+        setUploadedFiles(
+          fileList.map((file: BladeFile) => {
+            if (file) {
+              file.status = 'success';
+            }
+
+            return file;
+          }),
+        );
+      },
+      false,
+    );
+    xhr.addEventListener(
+      'error',
+      () => {
+        setUploadedFiles(
+          fileList.map((file: BladeFile) => {
+            if (file) {
+              file.errorText = 'Oops! Something went wrong. Please try again later.';
+              file.status = 'error';
+            }
+
+            return file;
+          }),
+        );
+      },
+      false,
+    );
+
+    xhr.upload.onprogress = (event) => {
+      const percent = Math.round((event.loaded / event.total) * 100);
+
+      setUploadedFiles(
+        fileList.map((file: BladeFile) => {
+          if (file) {
+            file.percent = percent;
+            file.status = 'uploading';
+          }
+
+          return file;
+        }),
+      );
+    };
+
+    xhr.open('POST', 'https://api.cloudinary.com/v1_1/snitin315/image/upload', true);
+    xhr.send(formData);
+  };
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      padding="spacing.10"
+      backgroundColor="surface.background.gray.intense"
+    >
+      <Box>
+        <Heading marginBottom="spacing.4">Add GST Details</Heading>
+
+        <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.5">
+          <TextInput
+            label="GSTIN"
+            placeholder="12DWWPB9503H1Z3"
+            isRequired
+            necessityIndicator="required"
+          />
+          <FileUploadComponent
+            selectionType="multiple"
+            label="Upload GST"
+            helpText="Upload .jpg, .jpeg, or .png file only"
+            accept=".jpg, .jpeg, .png"
+            fileList={uploadedFiles}
+            onChange={handleFileChange}
+            isRequired
+            necessityIndicator="required"
+          />
+          <Button type="submit" variant="primary">
+            Submit
+          </Button>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export const ShowFileUploadProgress = ShowFileUploadProgressTemplate.bind({});
+ShowFileUploadProgress.storyName = 'Display File Upload Progress';

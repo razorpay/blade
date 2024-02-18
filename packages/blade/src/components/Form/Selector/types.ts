@@ -34,8 +34,8 @@ type ColorTokens = `colors.${DotNotationToken<Theme['colors']>}`;
 type SelectorInputHoverTokens = {
   default: {
     background: {
-      checked: ColorTokens;
-      unchecked: ColorTokens;
+      checked: ColorTokens | 'transparent';
+      unchecked: ColorTokens | 'transparent';
     };
     border?: {
       checked: ColorTokens;

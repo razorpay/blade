@@ -10,11 +10,11 @@ const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {
   return {
     default: {
       background: {
-        checked: 'colors.interactive.background.staticWhite.default',
-        unchecked: 'colors.interactive.background.staticWhite.default',
+        checked: 'transparent',
+        unchecked: 'transparent',
       },
       border: {
-        checked: `colors.interactive.border.gray.default`,
+        checked: 'colors.interactive.border.gray.default',
         unchecked: 'colors.interactive.border.gray.default',
       },
     },
@@ -25,6 +25,16 @@ const fileUploadMotionTokens: Record<'duration' | 'easing', DurationString | Eas
   duration: 'duration.xquick',
   easing: 'easing.standard.effective',
 };
+
+const fileUploadBackgroundColors = {
+  hover: 'interactive.background.gray.highlighted',
+  active: 'interactive.background.primary.faded',
+} as const;
+
+const fileUploadBorderColors = {
+  default: 'interactive.border.gray.default',
+  disabled: 'interactive.border.gray.disabled',
+} as const;
 
 const fileUploadItemBackgroundColors: Record<
   NonNullable<BladeFile['status']>,
@@ -44,4 +54,10 @@ const fileUploadItemBackgroundColors: Record<
   },
 };
 
-export { getFileUploadInputHoverTokens, fileUploadMotionTokens, fileUploadItemBackgroundColors };
+export {
+  getFileUploadInputHoverTokens,
+  fileUploadMotionTokens,
+  fileUploadBorderColors,
+  fileUploadBackgroundColors,
+  fileUploadItemBackgroundColors,
+};

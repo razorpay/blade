@@ -1,6 +1,7 @@
 import { useState, useCallback, forwardRef } from 'react';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import BaseBox from '~components/Box/BaseBox';
+import { Box } from '~components/Box';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import { FormHint, FormLabel } from '~components/Form';
@@ -17,6 +18,7 @@ import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import { Link } from '~components/Link';
 import { UploadIcon } from '~components/Icons';
 import getIn from '~utils/lodashButBetter/get';
+import cloneDeep from '~utils/lodashButBetter/cloneDeep';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 
@@ -53,6 +55,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   );
   const [errorMessage, setErrorMessage] = useState(errorText);
   const [internalValidationState, setInternalValidationState] = useState('none');
+  const [isActive, setIsActive] = useState(false);
+
   const isMultiple = selectionType === 'multiple';
   const inputLabelPosition = platform === 'onMobile' ? 'top' : labelPosition;
   const isLabelLeftPositioned = inputLabelPosition === 'left';
@@ -114,7 +118,12 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
         ) : null}
 
         {isMultiple || (!isMultiple && selectedFiles.length === 0) ? (
-          <BaseBox display="flex" flexDirection="column" marginBottom="spacing.5">
+          <BaseBox
+            display="flex"
+            flexDirection="column"
+            marginBottom="spacing.5"
+            onClick={() => setIsActive(true)}
+          >
             <SelectorLabel
               componentName={MetaConstants.FileUploadLabel}
               inputProps={{}}
@@ -122,6 +131,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             >
               <BaseBox display="flex" flexDirection="column" width="100%">
                 <StyledFileUploadWrapper
+                  isDisabled={isDisabled}
+                  isActive={isActive}
                   display="flex"
                   flexDirection="row"
                   justifyContent="center"
@@ -129,8 +140,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   borderRadius="medium"
                   borderWidth="thin"
                   borderColor="interactive.border.gray.default"
-                  paddingLeft="spacing.10"
-                  paddingRight="spacing.10"
+                  padding="spacing.5"
                 >
                   <SelectorInput
                     id={inputId}
@@ -144,12 +154,18 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                       multiple: isMultiple,
                       required: isRequired,
                       accept,
+                      onBlur: () => setIsActive(false),
                     }}
                     ref={ref}
                   />
 
-                  <BaseBox display="flex" justifyContent="center" flexDirection="row">
-                    <Text>Drag files here or </Text>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    flexDirection={{ xs: 'column', s: 'row' }}
+                  >
+                    <Text color="surface.text.gray.subtle">Drag files here or </Text>
                     <Text as="span" color="interactive.text.primary.subtle" marginLeft="spacing.2">
                       <UploadIcon
                         size="small"
@@ -158,7 +174,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                       />
                       Upload
                     </Text>
-                  </BaseBox>
+                  </Box>
                 </StyledFileUploadWrapper>
                 {willRenderHintText && (
                   <FormHint

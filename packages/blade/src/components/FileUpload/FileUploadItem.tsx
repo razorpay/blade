@@ -4,59 +4,94 @@ import { FileIcon, TrashIcon, EyeIcon, CloseIcon, CheckCircleIcon } from '~compo
 import { BaseBox } from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { Divider } from '~components/Divider';
+import { IconButton } from '~components/Button/IconButton';
+import { ProgressBar } from '~components/ProgressBar';
 
+//TODO: 1. add file icon as per type
 const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): React.ReactElement => {
   const { name, type, size, percent, errorText, status } = file;
+  const isUploading = status === 'uploading';
 
   return (
     <StyledFileUploadItemWrapper
       status={status ?? 'success'}
-      padding="spacing.3"
       borderRadius="medium"
       borderWidth="thin"
       borderColor="interactive.border.gray.default"
       marginBottom="spacing.3"
     >
-      <BaseBox display="flex" flexDirection="row" justifyContent="center" alignItems="center">
-        <FileIcon />
-        <BaseBox marginLeft="spacing.4" marginRight="spacing.4">
-          <BaseBox display="flex" flexDirection="row" alignItems="center">
-            <Text
-              size="medium"
-              weight="medium"
-              color="surface.text.gray.subtle"
-              truncateAfterLines={1}
-            >
-              {name}
-            </Text>
-            <CheckCircleIcon marginLeft="spacing.3" color="interactive.icon.positive.normal" />
-          </BaseBox>
+      <BaseBox width="100%">
+        <BaseBox
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          margin="spacing.3"
+          marginBottom={isUploading ? 'spacing.2' : 'spacing.3'}
+        >
+          <FileIcon />
+          <BaseBox marginLeft="spacing.4" marginRight="spacing.4" flexGrow={1}>
+            <BaseBox display="flex" flexDirection="row" width="100%">
+              <BaseBox alignItems="center" maxWidth={name.length > 30 ? '90%' : '100%'}>
+                <Text
+                  size="medium"
+                  weight="medium"
+                  color="surface.text.gray.subtle"
+                  truncateAfterLines={1}
+                  marginRight="spacing.3"
+                >
+                  {name}
+                </Text>
+              </BaseBox>
+              <CheckCircleIcon color="interactive.icon.positive.normal" />
+            </BaseBox>
 
-          <Text size="small" weight="regular" color="surface.text.gray.muted">
-            {errorText ?? `${(size / 1000).toFixed(2)} KB`}
-          </Text>
+            <Text size="small" weight="regular" color="surface.text.gray.muted">
+              {errorText ??
+                `${(size / 1000).toFixed(2)} KB ${isUploading && percent ? `${percent}%` : ''}`}
+            </Text>
+          </BaseBox>
+          {status === 'error' || status === 'uploading' ? (
+            <BaseBox display="flex" flexDirection="row">
+              <IconButton
+                accessibilityLabel="Remove File"
+                icon={CloseIcon}
+                onClick={() => onRemove?.({ removedFile: file })}
+              />
+            </BaseBox>
+          ) : (
+            <BaseBox display="flex" flexDirection="row" alignItems="center">
+              {onPreview ? (
+                <BaseBox
+                  display="flex"
+                  flexDirection="row"
+                  alignItems="center"
+                  padding="spacing.0"
+                  gap="spacing.3"
+                >
+                  <IconButton
+                    accessibilityLabel="Preview File"
+                    icon={EyeIcon}
+                    onClick={() => onPreview?.({ previewedFile: file })}
+                  />
+                  <Divider orientation="vertical" thickness="thinner" variant="normal" />
+                  <IconButton
+                    accessibilityLabel="Remove File"
+                    icon={TrashIcon}
+                    onClick={() => onRemove?.({ removedFile: file })}
+                  />
+                </BaseBox>
+              ) : (
+                <IconButton
+                  accessibilityLabel="Remove File"
+                  icon={TrashIcon}
+                  onClick={() => onRemove?.({ removedFile: file })}
+                />
+              )}
+            </BaseBox>
+          )}
         </BaseBox>
+        {isUploading && <ProgressBar showPercentage={false} value={percent} isIndeterminate />}
       </BaseBox>
-      {status === 'error' || status === 'uploading' ? (
-        <BaseBox display="flex" flexDirection="row">
-          <BaseBox onClick={() => onRemove?.({ removedFile: file })} style={{ cursor: 'pointer' }}>
-            <CloseIcon color="interactive.icon.gray.muted" />
-          </BaseBox>
-        </BaseBox>
-      ) : (
-        <BaseBox display="flex" flexDirection="row" alignItems="center">
-          <BaseBox
-            onClick={() => onPreview?.({ previewedFile: file })}
-            style={{ cursor: 'pointer' }}
-          >
-            <EyeIcon color="interactive.icon.gray.muted" />
-          </BaseBox>
-          <Divider orientation="vertical" thickness="thinner" variant="normal" />
-          <BaseBox onClick={() => onRemove?.({ removedFile: file })} style={{ cursor: 'pointer' }}>
-            <TrashIcon color="interactive.icon.gray.muted" />
-          </BaseBox>
-        </BaseBox>
-      )}
     </StyledFileUploadItemWrapper>
   );
 };
