@@ -8,7 +8,7 @@ import { Divider } from '~components/Divider';
 import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 
-// TODO: 1. Fix upload progress sync with the file upload item,
+// TODO: 1. Fix upload progress sync with the file upload item, close icon placement
 const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): React.ReactElement => {
   const { name, size, percent, errorText, status } = file;
   const isUploading = status === 'uploading';
@@ -29,7 +29,7 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
           margin="spacing.3"
           marginBottom={isUploading ? 'spacing.2' : 'spacing.3'}
         >
-          <FileUploadItemIcon fileName={name} />
+          <FileUploadItemIcon fileName={name} uploadStatus={status} />
           <BaseBox marginLeft="spacing.4" marginRight="spacing.4" flexGrow={1}>
             <BaseBox display="flex" flexDirection="row" width="100%">
               <BaseBox alignItems="center" maxWidth={name.length > 30 ? '90%' : '100%'}>
@@ -43,10 +43,16 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
                   {name}
                 </Text>
               </BaseBox>
-              <CheckCircleIcon color="interactive.icon.positive.normal" />
+              {status === 'success' && <CheckCircleIcon color="interactive.icon.positive.normal" />}
             </BaseBox>
 
-            <Text size="small" weight="regular" color="surface.text.gray.muted">
+            <Text
+              size="small"
+              weight="regular"
+              color={
+                status === 'error' ? 'feedback.text.negative.intense' : 'surface.text.gray.muted'
+              }
+            >
               {errorText ??
                 `${(size / 1000).toFixed(2)} KB ${isUploading && percent ? `${percent}%` : ''}`}
             </Text>

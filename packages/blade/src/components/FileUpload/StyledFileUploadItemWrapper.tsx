@@ -12,8 +12,7 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       display: 'flex',
       justifyContent: 'space-between',
       borderStyle: 'solid',
-      ///borderBottomStyle: 'none',
-      height: '54px',
+      minHeighteight: '54px',
       width: '100%',
       backgroundColor: getIn(theme.colors, fileUploadItemBackgroundColors[status].default),
 

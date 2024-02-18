@@ -14,6 +14,14 @@ import { TextInput } from '~components/Input/TextInput';
 import { ProgressBar } from '~components/ProgressBar';
 import { Divider } from '~components/Divider';
 
+// Single File upload 🎉
+// Multi File Upload 🎉
+// Multi File Upload on selection 🎉
+// Multi File Upload with Progress 🎉
+// Custom Preview
+// Disabled
+// Max Count & Max Size
+
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
@@ -219,14 +227,12 @@ const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => 
                 label="Upload GST"
                 helpText="Upload .jpg, .jpeg, or .png file only"
                 accept=".jpg, .jpeg, .png"
-                //maxSize={100}
                 onChange={({ fileList }) => {
                   setSelectedFile(fileList[0]);
                 }}
                 isRequired
                 necessityIndicator="required"
               />
-              {/* ///<FileUploadItem file={upload} /> */}
               <Button type="submit" variant="primary">
                 Submit
               </Button>
@@ -254,7 +260,7 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
     }[]
   >();
 
-  const uploadFile = (file) => {
+  const uploadFile = (file: BladeFile): Promise<Response> => {
     const data = new FormData();
     data.append('file', file);
     data.append('upload_preset', 'blade-file-upload-demo');
@@ -336,9 +342,9 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
                 selectionType="multiple"
                 label="Upload Product Images"
                 helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
-                //maxCount={5}
-                ///maxSize={2 * 1024 * 1024}
-                ///accept=".jpg, .jpeg, .png"
+                maxCount={5}
+                maxSize={2 * 1024 * 1024}
+                accept=".jpg, .jpeg, .png"
                 onChange={({ fileList }) => {
                   setSelectedFiles(fileList);
                 }}
@@ -362,18 +368,161 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
 export const MultipleFilesUpload = MultipleFilesUploadTemplate.bind({});
 MultipleFilesUpload.storyName = 'Multiple Files Upload';
 
-const ShowFileUploadProgressTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
-  const [uploadedFiles, setUploadedFiles] = useState<BladeFileLists>();
-  const [uploadProgress, setUploadProgress] = useState<number>(0);
+const AutoFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
+  const [productName, setProductName] = useState();
+  const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>([]);
+  const [responseData, setResponseData] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleFileChange = ({ fileList }) => {
-    setUploadedFiles(fileList);
-    // Create a FormData object to append files
-    const formData = new FormData();
+  const uploadFile = (file: BladeFile, fileList: BladeFileList): Promise<Response> => {
+    setUploadedFiles(
+      fileList.map((f) => {
+        if (f.id === file.id) {
+          f.status = 'uploading';
+        }
+        return file;
+      }),
+    );
+    const data = new FormData();
+    data.append('file', file);
+    data.append('upload_preset', 'blade-file-upload-demo');
+    data.append('cloud_name', 'snitin315');
 
-    formData.append('file', fileList[0]);
-    formData.append('upload_preset', 'blade-file-upload-demo');
-    formData.append('cloud_name', 'snitin315');
+    return fetch('https://api.cloudinary.com/v1_1/snitin315/image/upload', {
+      method: 'POST',
+      body: data,
+    })
+      .then((res) => {
+        setUploadedFiles(
+          fileList.map((f) => {
+            if (f.id === file.id) {
+              f.status = 'success';
+            }
+            return file;
+          }),
+        );
+
+        return res.json();
+      })
+      .then((data) => {
+        if (data.error) {
+          setUploadedFiles(
+            fileList.map((f) => {
+              if (f.id === file.id) {
+                f.status = 'error';
+                f.errorText = `Oops! Something went wrong. ${data.error.message}`;
+              }
+              return file;
+            }),
+          );
+        }
+        return data;
+      })
+      .catch((error) => {
+        setUploadedFiles(
+          fileList.map((f) => {
+            if (f.id === file.id) {
+              f.status = 'error';
+              f.errorText = `Oops! Something went wrong. ${error.message}`;
+            }
+            return file;
+          }),
+        );
+      });
+  };
+
+  const handleFileChange: FileUploadProps['onChange'] = ({ fileList }) => {
+    Promise.all(fileList.map((file) => uploadFile(file, fileList)))
+      .then((res) => {
+        setResponseData(res);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  return (
+    <Box
+      display="flex"
+      flexDirection="column"
+      padding="spacing.10"
+      backgroundColor="surface.background.gray.intense"
+    >
+      <Box>
+        {!isSubmitted ? (
+          <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.5">
+            <Heading marginBottom="spacing.4">Add New Product</Heading>
+            <TextInput
+              label="Product Name"
+              placeholder="Add product name"
+              isRequired
+              necessityIndicator="required"
+              onChange={({ value }) => setProductName(value)}
+            />
+            <FileUploadComponent
+              selectionType="multiple"
+              label="Upload Product Images"
+              helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
+              maxCount={5}
+              maxSize={2 * 1024 * 1024}
+              accept=".jpg, .jpeg, .png"
+              fileList={uploadedFiles}
+              onChange={({ fileList }) => handleFileChange({ fileList })}
+              isRequired
+              necessityIndicator="required"
+            />
+            <Button
+              type="submit"
+              variant="primary"
+              onClick={() => {
+                setIsSubmitted(true);
+              }}
+            >
+              Submit
+            </Button>
+          </Box>
+        ) : (
+          <Box>
+            <Heading marginBottom="spacing.4">Product: {productName}</Heading>
+
+            <Heading>Images:</Heading>
+            {responseData.map((res, index) => {
+              return (
+                <Box key={index} display="flex" flexDirection="column" gap="spacing.5">
+                  <img src={res.url} height="30%" width="30%" alt={`Your product ${index}`} />
+                  <Divider thickness="thicker" variant="normal" />
+                </Box>
+              );
+            })}
+          </Box>
+        )}
+      </Box>
+    </Box>
+  );
+};
+
+export const AutoFileUpload = AutoFileUploadTemplate.bind({});
+AutoFileUpload.storyName = 'Auto File Upload on Selection';
+
+const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
+  const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>();
+  const [productName, setProductName] = useState<string | undefined>();
+  const [responseData, setResponseData] = useState([]);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const uploadFile = (file: BladeFile, fileList: BladeFileList): void => {
+    setUploadedFiles(
+      fileList.map((f) => {
+        if (f.id === file.id) {
+          f.status = 'uploading';
+        }
+        return file;
+      }),
+    );
+    const data = new FormData();
+    data.append('file', file);
+    data.append('upload_preset', 'blade-file-upload-demo');
+    data.append('cloud_name', 'snitin315');
 
     const xhr = new XMLHttpRequest();
 
@@ -381,27 +530,27 @@ const ShowFileUploadProgressTemplate: StoryFn<typeof FileUploadComponent> = (arg
       'load',
       () => {
         setUploadedFiles(
-          fileList.map((file: BladeFile) => {
-            if (file) {
-              file.status = 'success';
+          fileList.map((f) => {
+            if (f.id === file.id) {
+              f.status = 'success';
             }
-
             return file;
           }),
         );
+        setResponseData((prevData) => [...prevData, JSON.parse(xhr.responseText)]);
       },
       false,
     );
+
     xhr.addEventListener(
       'error',
       () => {
         setUploadedFiles(
-          fileList.map((file: BladeFile) => {
-            if (file) {
+          fileList.map((f) => {
+            if (f.id === file.id) {
               file.errorText = 'Oops! Something went wrong. Please try again later.';
               file.status = 'error';
             }
-
             return file;
           }),
         );
@@ -413,19 +562,22 @@ const ShowFileUploadProgressTemplate: StoryFn<typeof FileUploadComponent> = (arg
       const percent = Math.round((event.loaded / event.total) * 100);
 
       setUploadedFiles(
-        fileList.map((file: BladeFile) => {
-          if (file) {
+        fileList.map((f) => {
+          if (f.id === file.id) {
             file.percent = percent;
             file.status = 'uploading';
           }
-
           return file;
         }),
       );
     };
 
     xhr.open('POST', 'https://api.cloudinary.com/v1_1/snitin315/image/upload', true);
-    xhr.send(formData);
+    xhr.send(data);
+  };
+
+  const handleFileChange: FileUploadProps['onChange'] = ({ fileList }) => {
+    void Promise.all(fileList.map((file) => uploadFile(file, fileList)));
   };
 
   return (
@@ -435,34 +587,61 @@ const ShowFileUploadProgressTemplate: StoryFn<typeof FileUploadComponent> = (arg
       padding="spacing.10"
       backgroundColor="surface.background.gray.intense"
     >
-      <Box>
-        <Heading marginBottom="spacing.4">Add GST Details</Heading>
+      {!isSubmitted ? (
+        <Box>
+          <Heading marginBottom="spacing.4">Add New Product</Heading>
 
-        <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.5">
-          <TextInput
-            label="GSTIN"
-            placeholder="12DWWPB9503H1Z3"
-            isRequired
-            necessityIndicator="required"
-          />
-          <FileUploadComponent
-            selectionType="multiple"
-            label="Upload GST"
-            helpText="Upload .jpg, .jpeg, or .png file only"
-            accept=".jpg, .jpeg, .png"
-            fileList={uploadedFiles}
-            onChange={handleFileChange}
-            isRequired
-            necessityIndicator="required"
-          />
-          <Button type="submit" variant="primary">
-            Submit
-          </Button>
+          <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.5">
+            <TextInput
+              label="Product Name"
+              placeholder="Add product name"
+              isRequired
+              necessityIndicator="required"
+              onChange={({ value }) => setProductName(value)}
+            />
+            <FileUploadComponent
+              selectionType="multiple"
+              label="Upload Product Images"
+              helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
+              maxCount={5}
+              maxSize={2 * 1024 * 1024}
+              accept=".jpg, .jpeg, .png"
+              fileList={uploadedFiles}
+              onChange={handleFileChange}
+              isRequired
+              necessityIndicator="required"
+            />
+            <Button
+              type="submit"
+              variant="primary"
+              isDisabled={
+                uploadedFiles?.length === 0 ||
+                uploadedFiles?.some((file) => file.status === 'uploading')
+              }
+              onClick={() => setIsSubmitted(true)}
+            >
+              Submit
+            </Button>
+          </Box>
         </Box>
-      </Box>
+      ) : (
+        <Box>
+          <Heading marginBottom="spacing.4">Product: {productName}</Heading>
+
+          <Heading>Images:</Heading>
+          {responseData.map((res, index) => {
+            return (
+              <Box key={index} display="flex" flexDirection="column" gap="spacing.5">
+                <img src={res.url} height="30%" width="30%" alt={`Your product ${index}`} />
+                <Divider thickness="thicker" variant="normal" />
+              </Box>
+            );
+          })}
+        </Box>
+      )}
     </Box>
   );
 };
 
-export const ShowFileUploadProgress = ShowFileUploadProgressTemplate.bind({});
-ShowFileUploadProgress.storyName = 'Display File Upload Progress';
+export const AutoFileUploadWithProgress = AutoFileUploadWithProgressTemplate.bind({});
+AutoFileUploadWithProgress.storyName = 'Display File Upload Progress';

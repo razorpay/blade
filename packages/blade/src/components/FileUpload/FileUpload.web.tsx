@@ -18,7 +18,7 @@ import { UploadIcon } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 
-// TODO: A11y, Animation, Drag and Drop, re-rendering issue
+// TODO: A11y, Animation, Drag and Drop, re-rendering issue,
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
     name,
