@@ -1,15 +1,16 @@
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps } from './types';
-import { FileIcon, TrashIcon, EyeIcon, CloseIcon, CheckCircleIcon } from '~components/Icons';
+import { FileUploadItemIcon } from './FileUploadItemIcon';
+import { TrashIcon, EyeIcon, CloseIcon, CheckCircleIcon } from '~components/Icons';
 import { BaseBox } from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { Divider } from '~components/Divider';
 import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 
-//TODO: 1. add file icon as per type
+// TODO: 1. Fix upload progress sync with the file upload item,
 const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): React.ReactElement => {
-  const { name, type, size, percent, errorText, status } = file;
+  const { name, size, percent, errorText, status } = file;
   const isUploading = status === 'uploading';
 
   return (
@@ -28,7 +29,7 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
           margin="spacing.3"
           marginBottom={isUploading ? 'spacing.2' : 'spacing.3'}
         >
-          <FileIcon />
+          <FileUploadItemIcon fileName={name} />
           <BaseBox marginLeft="spacing.4" marginRight="spacing.4" flexGrow={1}>
             <BaseBox display="flex" flexDirection="row" width="100%">
               <BaseBox alignItems="center" maxWidth={name.length > 30 ? '90%' : '100%'}>
@@ -90,7 +91,9 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
             </BaseBox>
           )}
         </BaseBox>
-        {isUploading && <ProgressBar showPercentage={false} value={percent} isIndeterminate />}
+        {isUploading && (
+          <ProgressBar showPercentage={false} value={percent} isIndeterminate={!Boolean(percent)} />
+        )}
       </BaseBox>
     </StyledFileUploadItemWrapper>
   );

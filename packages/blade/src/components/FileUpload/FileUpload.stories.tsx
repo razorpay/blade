@@ -336,9 +336,9 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
                 selectionType="multiple"
                 label="Upload Product Images"
                 helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
-                maxCount={5}
-                maxSize={2 * 1024 * 1024}
-                accept=".jpg, .jpeg, .png"
+                //maxCount={5}
+                ///maxSize={2 * 1024 * 1024}
+                ///accept=".jpg, .jpeg, .png"
                 onChange={({ fileList }) => {
                   setSelectedFiles(fileList);
                 }}

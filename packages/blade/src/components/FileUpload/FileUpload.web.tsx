@@ -1,5 +1,8 @@
-import { useState, useCallback, forwardRef } from 'react';
+import { useState, forwardRef } from 'react';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
+import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
+import { getFileUploadInputHoverTokens } from './fileUploadTokens';
+import { FileUploadItem } from './FileUploadItem';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -9,19 +12,13 @@ import { useFormId } from '~components/Form/useFormId';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
-import { throwBladeError } from '~utils/logger';
-import { makeSize, useTheme } from '~utils';
+import { useTheme } from '~utils';
 import { Text } from '~components/Typography';
-import { FileUploadItem } from './FileUploadItem';
-import { getFileUploadInputHoverTokens } from './fileUploadTokens';
-import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
-import { Link } from '~components/Link';
 import { UploadIcon } from '~components/Icons';
-import getIn from '~utils/lodashButBetter/get';
-import cloneDeep from '~utils/lodashButBetter/cloneDeep';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 
+// TODO: A11y, Animation, Drag and Drop, re-rendering issue
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
     name,
@@ -53,6 +50,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const [selectedFiles, setSelectedFiles] = useState<BladeFileList>(
     fileList ?? defaultFileList ?? [],
   );
+  const [selectedInputFiles, setSelectedInputFiles] = useState<BladeFileList>([]);
   const [errorMessage, setErrorMessage] = useState(errorText);
   const [internalValidationState, setInternalValidationState] = useState('none');
   const [isActive, setIsActive] = useState(false);
@@ -77,6 +75,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     for (const file of inputFiles) {
       file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
     }
+    setSelectedInputFiles(inputFiles);
 
     if (maxCount && inputFiles.length > maxCount) {
       setErrorMessage(`You can't upload more than ${maxCount} files.`);
