@@ -1,10 +1,6 @@
-import type { DotNotationSpacingStringToken } from '~utils/types';
+import type { BladeFile, FileUploadItemBackgroundColors } from './types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
-import type { IconProps } from '~components/Icons';
-import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import type { DurationString, EasingString } from '~tokens/global';
-import { size } from '~tokens/global';
-import { BladeFile, FileUploadItemBackgroundColors } from './types';
 
 const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {
   return {

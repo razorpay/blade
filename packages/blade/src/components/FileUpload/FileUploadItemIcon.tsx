@@ -7,7 +7,6 @@ import getIn from '~utils/lodashButBetter/get';
 
 type FileUploadItemIconProps = { fileName: string; uploadStatus: BladeFile['status'] };
 
-// TODO: add error icon
 const FileUploadItemIcon: React.ComponentType<FileUploadItemIconProps> = ({
   fileName,
   uploadStatus,
@@ -60,19 +59,13 @@ const FileUploadItemIcon: React.ComponentType<FileUploadItemIconProps> = ({
       iconColor = '#46265C';
   }
 
-  if (iconColor.includes('.')) {
+  if (!iconColor.startsWith('#')) {
     iconColor = getIn(theme.colors, iconColor);
     iconBackgroundColor = getIn(theme.colors, iconBackgroundColor);
   }
 
   return (
-    <BaseBox
-      position="relative"
-      display="flex"
-      flexDirection="column"
-      justifyItems="center"
-      alignItems="center"
-    >
+    <BaseBox position="relative" display="flex" flexDirection="column" alignItems="center">
       <Svg {...styledProps} width="33" height="36" viewBox="0 0 33 36" fill="none">
         <Path
           fillRule="evenodd"

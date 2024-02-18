@@ -3,8 +3,8 @@ import type { StyledFileUploadItemWrapperProps } from './types';
 import { fileUploadItemBackgroundColors } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
-import { makeMotionTime } from '~utils/makeMotionTime';
-import { castWebType } from '~utils';
+// import { makeMotionTime } from '~utils/makeMotionTime';
+// import { castWebType } from '~utils';
 
 const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperProps>(
   ({ theme, status }) => {
