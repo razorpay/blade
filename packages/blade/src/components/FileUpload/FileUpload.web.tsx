@@ -18,7 +18,7 @@ import { UploadIcon } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 
-// TODO: A11y, Animation, Drag and Drop, re-rendering issue,
+// TODO: A11y (default name & file ids if not passed), Animation, re-rendering issue
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
     name,
@@ -50,7 +50,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const [selectedFiles, setSelectedFiles] = useState<BladeFileList>(
     fileList ?? defaultFileList ?? [],
   );
-  const [selectedInputFiles, setSelectedInputFiles] = useState<BladeFileList>([]);
   const [errorMessage, setErrorMessage] = useState(errorText);
   const [internalValidationState, setInternalValidationState] = useState('none');
   const [isActive, setIsActive] = useState(false);
@@ -65,17 +64,62 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { inputId, labelId, helpTextId, errorTextId } = useFormId('fileinput');
 
+  const handleDragOver = (event: React.DragEvent): void => {
+    event.preventDefault();
+    setIsActive(true);
+  };
+
+  const handleDragLeave = (event: React.DragEvent): void => {
+    event.preventDefault();
+    setIsActive(false);
+  };
+
+  const handleDrop = (event: React.DragEvent): void => {
+    event.preventDefault();
+    setIsActive(false);
+
+    const droppedFiles = Array.from(event.dataTransfer.files);
+
+    if (selectionType === 'single' && droppedFiles.length > 1) {
+      setErrorMessage('You can only upload one file.');
+      setInternalValidationState('error');
+      return;
+    }
+
+    if (maxCount && selectedFiles.length + droppedFiles.length > maxCount) {
+      setErrorMessage(`You can't upload more than ${maxCount} files.`);
+      setInternalValidationState('error');
+      return;
+    }
+
+    if (maxSize && droppedFiles.some((file) => file.size > maxSize)) {
+      setErrorMessage('File size exceeded.');
+      setInternalValidationState('error');
+      return;
+    }
+
+    const inputFiles: BladeFileList =
+      selectionType === 'multiple' && selectedFiles.length > 0
+        ? [...selectedFiles, ...droppedFiles]
+        : droppedFiles;
+
+    // Attach a unique id to each file
+    for (const file of inputFiles) {
+      if (!file.id) {
+        file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
+      }
+    }
+
+    setSelectedFiles(inputFiles);
+    onDrop?.({ name, fileList: inputFiles });
+    setInternalValidationState('none');
+  };
+
   function handleInputChange(event): void {
     const inputFiles: BladeFileList =
       selectionType === 'multiple' && selectedFiles.length > 0
         ? [...selectedFiles, ...event.target.files]
         : [...event.target.files];
-
-    // Attach a unique id to each file
-    for (const file of inputFiles) {
-      file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
-    }
-    setSelectedInputFiles(inputFiles);
 
     if (maxCount && inputFiles.length > maxCount) {
       setErrorMessage(`You can't upload more than ${maxCount} files.`);
@@ -84,6 +128,13 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       setErrorMessage('File size exceeded.');
       setInternalValidationState('error');
     } else {
+      // Attach a unique id to each file
+      for (const file of inputFiles) {
+        if (!file.id) {
+          file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
+        }
+      }
+
       onChange?.({ name, fileList: inputFiles });
       setSelectedFiles(inputFiles);
       setInternalValidationState('none');
@@ -140,6 +191,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   borderWidth="thin"
                   borderColor="interactive.border.gray.default"
                   padding="spacing.5"
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
                 >
                   <SelectorInput
                     id={inputId}

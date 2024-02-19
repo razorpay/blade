@@ -230,6 +230,9 @@ const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => 
                 onChange={({ fileList }) => {
                   setSelectedFile(fileList[0]);
                 }}
+                onDrop={({ fileList }) => {
+                  setSelectedFile(fileList[0]);
+                }}
                 isRequired
                 necessityIndicator="required"
               />
@@ -261,6 +264,7 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
   >();
 
   const uploadFile = (file: BladeFile): Promise<Response> => {
+    console.log('🚀 ~ uploadFile ~ file:', file);
     const data = new FormData();
     data.append('file', file);
     data.append('upload_preset', 'blade-file-upload-demo');
@@ -284,6 +288,7 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
     if (selectedFiles.length > 0) {
       Promise.all(selectedFiles.map((file) => uploadFile(file)))
         .then((res) => {
+          console.log('🚀 ~ .then ~ res:', res);
           setResponseData(res);
           setIsLoading(false);
         })
@@ -348,10 +353,13 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
                 onChange={({ fileList }) => {
                   setSelectedFiles(fileList);
                 }}
+                onDrop={({ fileList }) => {
+                  setSelectedFiles(fileList);
+                }}
                 isRequired
                 necessityIndicator="required"
               />
-              <Button type="submit" variant="primary">
+              <Button type="submit" variant="primary" onClick={handleSubmit}>
                 Submit
               </Button>
               {isLoading && (
@@ -468,6 +476,7 @@ const AutoFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
               accept=".jpg, .jpeg, .png"
               fileList={uploadedFiles}
               onChange={({ fileList }) => handleFileChange({ fileList })}
+              onDrop={({ fileList }) => handleFileChange({ fileList })}
               isRequired
               necessityIndicator="required"
             />
@@ -576,7 +585,9 @@ const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = 
     xhr.send(data);
   };
 
-  const handleFileChange: FileUploadProps['onChange'] = ({ fileList }) => {
+  const handleFileChange: FileUploadProps['onChange'] | FileUploadProps['onDrop'] = ({
+    fileList,
+  }) => {
     void Promise.all(fileList.map((file) => uploadFile(file, fileList)));
   };
 
@@ -608,6 +619,7 @@ const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = 
               accept=".jpg, .jpeg, .png"
               fileList={uploadedFiles}
               onChange={handleFileChange}
+              onDrop={handleFileChange}
               isRequired
               necessityIndicator="required"
             />

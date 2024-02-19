@@ -5,7 +5,7 @@ interface BladeFile extends File {
   /**
    * The unique identifier of the file.
    */
-  id: string;
+  id?: string;
   /**
    * The file's upload status.
    */
@@ -88,7 +88,7 @@ type FileUploadCommonProps = {
   /**
    * Callback function executed when files are dropped into the upload area
    */
-  onDrop?: (event: React.DragEvent) => void;
+  onDrop?: ({ name, fileList }: { name?: string; fileList: BladeFileList }) => void;
   /**
    * State indicating whether there is an error in the FileUpload component
    */
