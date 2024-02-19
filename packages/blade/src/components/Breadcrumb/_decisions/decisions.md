@@ -8,6 +8,9 @@ Breadcrumbs are used for navigating through or to show user’s location in an a
 - [API](#api)
   - [Breadcrumb](#breadcrumb)
   - [BreadcrumbItem](#breadcrumbitem)
+  - [Examples](#examples)
+    - [Show Last Separator](#show-last-separator)
+  - [Usage with Routing Libraries](#usage-with-routing-libraries)
 - [Accessibility](#accessibility)
 - [Open Questions](#open-questions)
 
