@@ -24,4 +24,9 @@ const hintIconSize = {
   large: 'medium',
 } as const;
 
-export { labelTextSize, labelOptionalIndicatorTextSize, hintTextSize, hintIconSize };
+const hintMarginTop = {
+  medium: 'spacing.2',
+  large: 'spacing.3',
+} as const;
+
+export { labelTextSize, labelOptionalIndicatorTextSize, hintTextSize, hintIconSize, hintMarginTop };

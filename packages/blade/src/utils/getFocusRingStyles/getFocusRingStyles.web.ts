@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { Theme } from '../../components/BladeProvider';
+import type { GetFocusRingArgs } from './focusRingTypes';
 import { castWebType, makeMotionTime } from '~utils';
-
-type GetFocusRingProps = {
-  theme: Theme;
-  hasNegativeOffset?: boolean;
-  hasNoOffset?: boolean;
-};
 
 /**
  * @param props.theme Blade Theme Object
@@ -17,7 +11,7 @@ function getFocusRingStyles({
   theme,
   hasNegativeOffset = false,
   hasNoOffset = true,
-}: GetFocusRingProps) {
+}: GetFocusRingArgs) {
   return {
     outline: `4px solid ${theme.colors.surface.border.primary.muted}`,
     outlineOffset: hasNoOffset ? '0px' : hasNegativeOffset ? '-4px' : '1px',

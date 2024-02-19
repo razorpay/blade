@@ -2,7 +2,7 @@
 import type { ReactElement } from 'react';
 import React from 'react';
 import { FormHintWrapper } from './FormHintWrapper';
-import { hintIconSize, hintTextSize } from './formTokens';
+import { hintIconSize, hintMarginTop, hintTextSize } from './formTokens';
 import type { TextProps } from '~components/Typography/Text';
 import { Text } from '~components/Typography/Text';
 import BaseBox from '~components/Box/BaseBox';
@@ -21,7 +21,7 @@ const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): Rea
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
-    <BaseBox marginTop="spacing.2" id={id}>
+    <BaseBox marginTop={hintMarginTop[size]} id={id}>
       <FormHintWrapper>
         {Icon ? <Icon /> : null}
         <Text
