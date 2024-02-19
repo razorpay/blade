@@ -59,8 +59,11 @@ const FileUploadItemIcon: React.ComponentType<FileUploadItemIconProps> = ({
       iconColor = '#46265C';
   }
 
+  // When iconColor is not a hex color, it is a token. Design has used colors which are not in the theme.
   if (!iconColor.startsWith('#')) {
+    // @ts-expect-error In this case, iconColor is a token
     iconColor = getIn(theme.colors, iconColor);
+    // @ts-expect-error In this case, iconColor is a token
     iconBackgroundColor = getIn(theme.colors, iconBackgroundColor);
   }
 

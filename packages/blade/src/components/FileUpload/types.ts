@@ -143,7 +143,7 @@ type FileUploadItemProps = Pick<FileUploadProps, 'onPreview' | 'onRemove'> & {
 };
 
 type StyledFileUploadWrapperProps = {
-  isDisabled: boolean;
+  isDisabled?: boolean;
   isActive: boolean;
   theme: Theme;
   children: React.ReactNode;
