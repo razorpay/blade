@@ -1,4 +1,4 @@
-import { useState, forwardRef } from 'react';
+import { useState, useCallback, forwardRef, memo } from 'react';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import { getFileUploadInputHoverTokens } from './fileUploadTokens';
@@ -18,7 +18,9 @@ import { UploadIcon } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 
-// TODO: A11y (default name & file ids if not passed), Animation, re-rendering issue
+const MemoizedFileUploadItem = memo(FileUploadItem);
+
+// TODO: A11y (default name & file ids if not passed)
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
     name,
@@ -64,6 +66,54 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { inputId, labelId, helpTextId, errorTextId } = useFormId('fileinput');
 
+  const handleFilesChange = useCallback((inputFiles: BladeFileList) => {
+    // Attach a unique id to each file
+    for (const file of inputFiles) {
+      if (!file.id) {
+        file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
+      }
+    }
+
+    setSelectedFiles((prevFiles) => {
+      if (prevFiles.length > 0) {
+        const allFiles = [...prevFiles, ...inputFiles];
+        return allFiles;
+      }
+
+      return inputFiles;
+    });
+  }, []);
+
+  const validateFiles = (inputFiles: BladeFileList, allFiles: BladeFileList): boolean => {
+    if (isRequired && allFiles.length === 0) {
+      setErrorMessage('Please select a file.');
+      setInternalValidationState('error');
+      return true;
+    }
+
+    if (selectionType === 'single' && inputFiles.length > 1) {
+      setErrorMessage('You can upload only one file.');
+      setInternalValidationState('error');
+      return true;
+    }
+
+    if (maxCount && allFiles.length > maxCount) {
+      setErrorMessage(`You can't upload more than ${maxCount} files.`);
+      setInternalValidationState('error');
+      return true;
+    }
+
+    if (maxSize && inputFiles.some((file) => file.size > maxSize)) {
+      setErrorMessage('File size exceeded.');
+      setInternalValidationState('error');
+      return true;
+    }
+
+    setInternalValidationState('none');
+    setErrorMessage('');
+    return false;
+  };
+
   const handleDragOver = (event: React.DragEvent): void => {
     event.preventDefault();
     setIsActive(true);
@@ -79,67 +129,27 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     setIsActive(false);
 
     const droppedFiles = Array.from(event.dataTransfer.files);
+    const allFiles = selectedFiles.length > 0 ? [...selectedFiles, ...droppedFiles] : droppedFiles;
 
-    if (selectionType === 'single' && droppedFiles.length > 1) {
-      setErrorMessage('You can only upload one file.');
-      setInternalValidationState('error');
-      return;
+    const hasValidationErrors = validateFiles(droppedFiles, allFiles);
+
+    if (!hasValidationErrors) {
+      handleFilesChange(droppedFiles);
+      onDrop?.({ name, fileList: allFiles });
     }
-
-    if (maxCount && selectedFiles.length + droppedFiles.length > maxCount) {
-      setErrorMessage(`You can't upload more than ${maxCount} files.`);
-      setInternalValidationState('error');
-      return;
-    }
-
-    if (maxSize && droppedFiles.some((file) => file.size > maxSize)) {
-      setErrorMessage('File size exceeded.');
-      setInternalValidationState('error');
-      return;
-    }
-
-    const inputFiles: BladeFileList =
-      selectionType === 'multiple' && selectedFiles.length > 0
-        ? [...selectedFiles, ...droppedFiles]
-        : droppedFiles;
-
-    // Attach a unique id to each file
-    for (const file of inputFiles) {
-      if (!file.id) {
-        file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
-      }
-    }
-
-    setSelectedFiles(inputFiles);
-    onDrop?.({ name, fileList: inputFiles });
-    setInternalValidationState('none');
   };
 
-  function handleInputChange(event): void {
-    const inputFiles: BladeFileList =
-      selectionType === 'multiple' && selectedFiles.length > 0
-        ? [...selectedFiles, ...event.target.files]
-        : [...event.target.files];
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const inputFiles = Array.from(event.target.files ?? []);
+    const allFiles = selectedFiles.length > 0 ? [...selectedFiles, ...inputFiles] : inputFiles;
 
-    if (maxCount && inputFiles.length > maxCount) {
-      setErrorMessage(`You can't upload more than ${maxCount} files.`);
-      setInternalValidationState('error');
-    } else if (maxSize && inputFiles.some((file) => file.size > maxSize)) {
-      setErrorMessage('File size exceeded.');
-      setInternalValidationState('error');
-    } else {
-      // Attach a unique id to each file
-      for (const file of inputFiles) {
-        if (!file.id) {
-          file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
-        }
-      }
+    const hasValidationErrors = validateFiles(inputFiles, allFiles);
 
-      onChange?.({ name, fileList: inputFiles });
-      setSelectedFiles(inputFiles);
-      setInternalValidationState('none');
+    if (!hasValidationErrors) {
+      handleFilesChange(inputFiles);
+      onChange?.({ name, fileList: allFiles });
     }
-  }
+  };
 
   return (
     <BaseBox
@@ -247,7 +257,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
         ) : null}
 
         {selectedFiles.map((file) => (
-          <FileUploadItem
+          <MemoizedFileUploadItem
             key={file.id}
             file={file}
             onRemove={() => {

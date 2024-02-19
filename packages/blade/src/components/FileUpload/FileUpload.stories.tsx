@@ -264,7 +264,6 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
   >();
 
   const uploadFile = (file: BladeFile): Promise<Response> => {
-    console.log('🚀 ~ uploadFile ~ file:', file);
     const data = new FormData();
     data.append('file', file);
     data.append('upload_preset', 'blade-file-upload-demo');
@@ -288,7 +287,6 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
     if (selectedFiles.length > 0) {
       Promise.all(selectedFiles.map((file) => uploadFile(file)))
         .then((res) => {
-          console.log('🚀 ~ .then ~ res:', res);
           setResponseData(res);
           setIsLoading(false);
         })
@@ -359,7 +357,7 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
                 isRequired
                 necessityIndicator="required"
               />
-              <Button type="submit" variant="primary" onClick={handleSubmit}>
+              <Button type="submit" variant="primary">
                 Submit
               </Button>
               {isLoading && (
@@ -440,9 +438,10 @@ const AutoFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
   };
 
   const handleFileChange: FileUploadProps['onChange'] = ({ fileList }) => {
-    Promise.all(fileList.map((file) => uploadFile(file, fileList)))
-      .then((res) => {
-        setResponseData(res);
+    const unUploadedFiles = fileList.filter((file) => !file.status);
+    Promise.all(unUploadedFiles.map((file) => uploadFile(file, fileList)))
+      .then((resData) => {
+        setResponseData((prevResponseData) => [...prevResponseData, ...resData]);
       })
       .catch((error) => {
         console.error(error);
@@ -588,7 +587,8 @@ const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = 
   const handleFileChange: FileUploadProps['onChange'] | FileUploadProps['onDrop'] = ({
     fileList,
   }) => {
-    void Promise.all(fileList.map((file) => uploadFile(file, fileList)));
+    const unUploadedFiles = fileList.filter((file) => !file.status);
+    void Promise.all(unUploadedFiles.map((file) => uploadFile(file, fileList)));
   };
 
   return (
