@@ -26,6 +26,7 @@ type GetInputStyles = Pick<
   isTextArea?: boolean;
   hasTags?: boolean;
   theme: Theme;
+  size: NonNullable<BaseInputProps['size']>;
 };
 
 export const getInputBackgroundAndBorderStyles = ({
@@ -100,16 +101,37 @@ export const getInputBackgroundAndBorderStyles = ({
   };
 };
 
+const inputPadding = {
+  top: {
+    medium: 3,
+    large: 4,
+  },
+  bottom: {
+    medium: 3,
+    large: 4,
+  },
+  left: {
+    medium: 4,
+    large: 4,
+  },
+  right: {
+    medium: 4,
+    large: 4,
+  },
+} as const;
+
 const getLeftPadding = ({
   theme,
   isDropdownTrigger,
   hasLeadingIcon,
   hasPrefix,
+  size,
 }: {
   theme: Theme;
   hasLeadingIcon: boolean;
   hasPrefix: boolean;
   isDropdownTrigger: GetInputStyles['isDropdownTrigger'];
+  size: GetInputStyles['size'];
 }): number => {
   if (isDropdownTrigger) {
     return theme.spacing[0];
@@ -119,7 +141,26 @@ const getLeftPadding = ({
     return theme.spacing[3];
   }
 
-  return theme.spacing[4];
+  return theme.spacing[inputPadding.left[size]];
+};
+
+const getRightPadding = ({
+  theme,
+  hasInteractionElement,
+  hasSuffix,
+  hasTrailingIcon,
+  size,
+}: {
+  theme: Theme;
+  hasInteractionElement: boolean;
+  hasSuffix: boolean;
+  hasTrailingIcon: boolean;
+  size: GetInputStyles['size'];
+}): number => {
+  if (hasInteractionElement || hasSuffix || hasTrailingIcon) {
+    return theme.spacing[3];
+  }
+  return theme.spacing[inputPadding.right[size]];
 };
 
 export const getBaseInputStyles = ({
@@ -134,6 +175,7 @@ export const getBaseInputStyles = ({
   isTextArea,
   hasTags,
   isDropdownTrigger,
+  size,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -147,6 +189,7 @@ export const getBaseInputStyles = ({
     interactionElement,
     suffix,
     trailingIcon,
+    size,
   });
 
   const isDropdownWithTags = isDropdownTrigger && hasTags;
@@ -154,7 +197,7 @@ export const getBaseInputStyles = ({
 
   return {
     ...getTextStyles({
-      size: 'medium',
+      size,
       variant: 'body',
       weight: 'regular',
       color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
@@ -164,13 +207,19 @@ export const getBaseInputStyles = ({
     flex: 1,
     backgroundColor: 'transparent',
 
-    paddingTop: makeSpace(theme.spacing[3]),
-    paddingBottom: makeSpace(theme.spacing[3]),
-    paddingLeft: makeSpace(getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix })),
-    paddingRight:
-      hasInteractionElement || hasSuffix || hasTrailingIcon
-        ? makeSpace(theme.spacing[3])
-        : makeSpace(theme.spacing[4]),
+    paddingTop: makeSpace(theme.spacing[inputPadding.top[size]]),
+    paddingBottom: makeSpace(theme.spacing[inputPadding.bottom[size]]),
+    paddingLeft: makeSpace(
+      getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix, size }),
+    ),
+    paddingRight: getRightPadding({
+      theme,
+      hasInteractionElement,
+      hasSuffix,
+      hasTrailingIcon,
+      size,
+    }),
+
     textAlign,
     width: '100%',
     height: isTextArea || isDropdownWithTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),

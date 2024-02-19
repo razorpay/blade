@@ -55,6 +55,7 @@ export type StyledBaseInputProps = {
   setCurrentInteraction: Dispatch<SetStateAction<ActionStates>>;
   isTextArea?: boolean;
   hasTags?: boolean;
+  $size: NonNullable<BaseInputProps['size']>;
 } & Pick<
   BaseInputProps,
   | 'as'

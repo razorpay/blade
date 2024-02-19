@@ -943,6 +943,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
               autoCapitalize={autoCapitalize}
               isDropdownTrigger={isDropdownTrigger}
+              $size={size}
               {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
             />
           </BaseInputTagSlot>

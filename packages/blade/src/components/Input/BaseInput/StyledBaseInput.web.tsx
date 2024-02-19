@@ -27,12 +27,13 @@ const getWebInputStyles = (
       isTextArea: props.isTextArea,
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
+      size: props.$size,
     }),
     outline: 'none',
     border: 'none',
     '::placeholder': {
       ...getTextStyles({
-        size: 'medium',
+        size: props.$size,
         variant: 'body',
         weight: 'regular',
         color: 'surface.text.gray.disabled',
@@ -101,6 +102,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     hasPopup,
     shouldIgnoreBlurAnimation,
     autoCapitalize,
+    $size,
     ...props
   },
   ref,
@@ -143,6 +145,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
 
         handleOnClick?.({ name, value: event });
       }}
+      $size={$size}
       {...commonProps}
       {...props}
       {...accessibilityProps}
@@ -154,6 +157,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         }
         truncateAfterLines={1}
         textAlign={props.textAlign}
+        size={$size}
       >
         {props.value ? props.value : props.placeholder}
       </Text>
@@ -184,6 +188,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         handleOnClick?.({ name, value: event });
       }}
       autoCapitalize={autoCapitalize}
+      $size={$size}
       {...commonProps}
       {...props}
       {...accessibilityProps}

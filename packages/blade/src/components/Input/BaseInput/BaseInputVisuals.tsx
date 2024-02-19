@@ -15,6 +15,7 @@ type InputVisuals = Pick<
   | 'trailingIcon'
   | 'isDisabled'
   | 'validationState'
+  | 'size'
 > & {
   size: NonNullable<BaseInputProps['size']>;
 };
