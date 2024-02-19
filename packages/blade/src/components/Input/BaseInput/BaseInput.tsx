@@ -901,6 +901,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
             maxTagRows={maxTagRows}
             inputWrapperRef={inputWrapperRef}
+            size={size}
           >
             <StyledBaseInput
               as={as}

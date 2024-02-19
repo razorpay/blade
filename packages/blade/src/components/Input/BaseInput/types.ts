@@ -26,6 +26,7 @@ export type BaseInputTagSlotProps = {
   isDropdownTrigger: BaseInputProps['isDropdownTrigger'];
   inputWrapperRef: InputWrapperRef;
   labelPrefix?: string;
+  size: NonNullable<BaseInputProps['size']>;
 };
 
 export type BaseInputWrapperProps = Pick<

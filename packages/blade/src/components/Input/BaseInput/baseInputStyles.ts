@@ -1,7 +1,7 @@
 import type { CSSObject } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
-import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
+import { baseInputHeight } from './baseInputConfig';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';
@@ -222,8 +222,8 @@ export const getBaseInputStyles = ({
 
     textAlign,
     width: '100%',
-    height: isTextArea || isDropdownWithTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
-    minHeight: isDropdownWithTags ? undefined : makeSpace(BASEINPUT_DEFAULT_HEIGHT),
+    height: isTextArea || isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
+    minHeight: isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };
