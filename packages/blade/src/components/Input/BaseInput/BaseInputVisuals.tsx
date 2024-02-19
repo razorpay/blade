@@ -4,10 +4,17 @@ import type { BaseInputProps } from './BaseInput';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { IconColors } from '~components/Icons';
 
 type InputVisuals = Pick<
   BaseInputProps,
-  'leadingIcon' | 'prefix' | 'interactionElement' | 'suffix' | 'trailingIcon' | 'isDisabled'
+  | 'leadingIcon'
+  | 'prefix'
+  | 'interactionElement'
+  | 'suffix'
+  | 'trailingIcon'
+  | 'isDisabled'
+  | 'validationState'
 >;
 
 const getVisualContainerStyles = (): Pick<
@@ -19,6 +26,12 @@ const getVisualContainerStyles = (): Pick<
   alignItems: 'center',
   alignSelf: 'center',
 });
+
+const trailingIconColor: Record<NonNullable<InputVisuals['validationState']>, IconColors> = {
+  none: 'surface.icon.gray.subtle',
+  error: 'feedback.icon.negative.intense',
+  success: 'feedback.icon.positive.intense',
+};
 
 const getPrefixStyles = ({
   hasLeadingIcon,
@@ -115,6 +128,7 @@ export const BaseInputVisuals = ({
   suffix,
   trailingIcon: TrailingIcon,
   isDisabled,
+  validationState = 'none',
 }: InputVisuals): ReactElement | null => {
   const {
     hasLeadingIcon,
@@ -191,7 +205,7 @@ export const BaseInputVisuals = ({
               <TrailingIcon
                 size="medium"
                 color={
-                  isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'
+                  isDisabled ? 'interactive.icon.gray.disabled' : trailingIconColor[validationState]
                 }
               />
             }

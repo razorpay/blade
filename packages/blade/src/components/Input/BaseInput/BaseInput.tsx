@@ -946,6 +946,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             suffix={suffix}
             trailingIcon={trailingIcon}
             isDisabled={isDisabled}
+            validationState={validationState}
           />
         </BaseInputWrapper>
       </BaseBox>

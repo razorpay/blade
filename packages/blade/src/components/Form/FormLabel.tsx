@@ -1,5 +1,5 @@
 import React from 'react';
-import { labelOptionalIndicatorTextSize, labelTextSize } from './formTokens';
+import { labelMarginBottom, labelOptionalIndicatorTextSize, labelTextSize } from './formTokens';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
 import { getPlatformType, useBreakpoint } from '~utils';
@@ -150,7 +150,9 @@ const FormLabel = ({
       id={id}
       {...metaAttribute({ name: MetaConstants.FormLabel })}
     >
-      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.2'}>{textNode}</BaseBox>
+      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : labelMarginBottom[size]}>
+        {textNode}
+      </BaseBox>
     </Component>
   );
 };

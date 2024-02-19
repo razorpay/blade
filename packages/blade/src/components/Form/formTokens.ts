@@ -29,4 +29,16 @@ const hintMarginTop = {
   large: 'spacing.3',
 } as const;
 
-export { labelTextSize, labelOptionalIndicatorTextSize, hintTextSize, hintIconSize, hintMarginTop };
+const labelMarginBottom = {
+  medium: 'spacing.2',
+  large: 'spacing.3',
+} as const;
+
+export {
+  labelTextSize,
+  labelOptionalIndicatorTextSize,
+  hintTextSize,
+  hintIconSize,
+  hintMarginTop,
+  labelMarginBottom,
+};
