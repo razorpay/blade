@@ -7,6 +7,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
+import { screenReaderStyles } from '~components/VisuallyHidden';
 import { FormHint, FormLabel } from '~components/Form';
 import { useFormId } from '~components/Form/useFormId';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -17,10 +18,10 @@ import { Text } from '~components/Typography';
 import { UploadIcon } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const MemoizedFileUploadItem = memo(FileUploadItem);
 
-// TODO: A11y (default name & file ids if not passed)
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
     name,
@@ -65,6 +66,13 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const accessibilityText =
     accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { inputId, labelId, helpTextId, errorTextId } = useFormId('fileinput');
+
+  const accessibilityProps = makeAccessible({
+    required: Boolean(isRequired),
+    invalid: Boolean(showError),
+    disabled: Boolean(isDisabled),
+    describedBy: helpTextId,
+  });
 
   // In control mode attach a unique id to each file if not provided
   useMemo(() => {
@@ -173,38 +181,56 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           </FormLabel>
         ) : null}
 
-        {isMultiple || (!isMultiple && selectedFiles.length === 0) ? (
-          <BaseBox
-            display="flex"
-            flexDirection="column"
-            marginBottom="spacing.5"
-            onClick={() => setIsActive(true)}
+        <BaseBox
+          display="flex"
+          flexDirection="column"
+          marginBottom="spacing.5"
+          onClick={() => setIsActive(true)}
+        >
+          <SelectorLabel
+            componentName={MetaConstants.FileUploadLabel}
+            inputProps={{}}
+            style={{
+              cursor: isDisabled ? 'not-allowed' : 'pointer',
+              ...(!isMultiple && selectedFiles.length === 1 ? screenReaderStyles : {}),
+            }}
           >
-            <SelectorLabel
-              componentName={MetaConstants.FileUploadLabel}
-              inputProps={{}}
-              style={{ cursor: isDisabled ? 'not-allowed' : 'pointer' }}
-            >
-              <BaseBox display="flex" flexDirection="column" width="100%">
-                <StyledFileUploadWrapper
-                  isDisabled={isDisabled}
-                  isActive={isActive}
+            <BaseBox display="flex" flexDirection="column" width="100%">
+              <StyledFileUploadWrapper
+                isDisabled={isDisabled}
+                isActive={isActive}
+                display="flex"
+                flexDirection="row"
+                justifyContent="center"
+                alignItems="center"
+                borderRadius="medium"
+                borderWidth="thin"
+                borderColor={
+                  isDisabled
+                    ? fileUploadColorTokens.border.disabled
+                    : fileUploadColorTokens.border.default
+                }
+                padding="spacing.5"
+                onDragOver={handleDragOver}
+                onDragLeave={handleDragLeave}
+                onDrop={handleDrop}
+              >
+                <Box
                   display="flex"
-                  flexDirection="row"
                   justifyContent="center"
                   alignItems="center"
-                  borderRadius="medium"
-                  borderWidth="thin"
-                  borderColor={
-                    isDisabled
-                      ? fileUploadColorTokens.border.disabled
-                      : fileUploadColorTokens.border.default
-                  }
-                  padding="spacing.5"
-                  onDragOver={handleDragOver}
-                  onDragLeave={handleDragLeave}
-                  onDrop={handleDrop}
+                  flexDirection={{ xs: 'column', s: 'row' }}
+                  gap={makeSize(6)}
                 >
+                  <Text
+                    color={
+                      isDisabled
+                        ? fileUploadColorTokens.text.disabled
+                        : fileUploadColorTokens.text.default
+                    }
+                  >
+                    Drag files here or{' '}
+                  </Text>
                   <SelectorInput
                     id={inputId}
                     hoverTokens={getFileUploadInputHoverTokens()}
@@ -219,6 +245,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                       disabled: isDisabled,
                       accept,
                       onBlur: () => setIsActive(false),
+                      ...accessibilityProps,
                     }}
                     ref={ref}
                   />
@@ -228,17 +255,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     justifyContent="center"
                     alignItems="center"
                     flexDirection={{ xs: 'column', s: 'row' }}
-                    gap={makeSize(6)}
+                    borderRadius="small"
                   >
-                    <Text
-                      color={
-                        isDisabled
-                          ? fileUploadColorTokens.text.disabled
-                          : fileUploadColorTokens.text.default
-                      }
-                    >
-                      Drag files here or{' '}
-                    </Text>
                     <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
                       <UploadIcon
                         size="medium"
@@ -259,23 +277,23 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                       </Text>
                     </Box>
                   </Box>
-                </StyledFileUploadWrapper>
-                {willRenderHintText && (
-                  <FormHint
-                    type={getHintType({
-                      validationState: showError ? 'error' : validationState,
-                      hasHelpText: Boolean(helpText),
-                    })}
-                    helpText={helpText}
-                    errorText={errorMessage}
-                    helpTextId={helpTextId}
-                    errorTextId={errorTextId}
-                  />
-                )}
-              </BaseBox>
-            </SelectorLabel>
-          </BaseBox>
-        ) : null}
+                </Box>
+              </StyledFileUploadWrapper>
+            </BaseBox>
+          </SelectorLabel>
+          {willRenderHintText && (
+            <FormHint
+              type={getHintType({
+                validationState: showError ? 'error' : validationState,
+                hasHelpText: Boolean(helpText),
+              })}
+              helpText={helpText}
+              errorText={errorMessage}
+              helpTextId={helpTextId}
+              errorTextId={errorTextId}
+            />
+          )}
+        </BaseBox>
 
         {selectedFiles.map((file) => (
           <MemoizedFileUploadItem

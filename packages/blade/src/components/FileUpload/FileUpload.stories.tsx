@@ -15,13 +15,6 @@ import { ProgressBar } from '~components/ProgressBar';
 import { Divider } from '~components/Divider';
 import { Modal, ModalHeader, ModalBody } from '~components/Modal';
 
-// Single File upload 🎉
-// Multi File Upload 🎉
-// Multi File Upload on selection 🎉
-// Multi File Upload with Progress 🎉
-// Custom Preview 🎉
-// Disabled
-
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
