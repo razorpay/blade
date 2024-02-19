@@ -10,7 +10,10 @@ export const TAG_GAP = spacing['3'];
 /**
  * 36px
  */
-export const baseInputHeight: Record<NonNullable<BaseInputProps['size']>, number> = {
+export const baseInputHeight: Record<
+  NonNullable<BaseInputProps['size']>,
+  typeof size[keyof typeof size]
+> = {
   medium: size['36'],
   large: size['48'],
 } as const;
@@ -19,8 +22,8 @@ export const baseInputHeight: Record<NonNullable<BaseInputProps['size']>, number
  * 37px (36px height + 1px bottom line height)
  */
 export const baseInputWrapperMinHeight = {
-  medium: baseInputHeight.medium + BASEINPUT_BOTTOM_LINE_HEIGHT,
-  large: baseInputHeight.large + BASEINPUT_BOTTOM_LINE_HEIGHT,
+  medium: (baseInputHeight.medium as number) + BASEINPUT_BOTTOM_LINE_HEIGHT,
+  large: (baseInputHeight.large as number) + BASEINPUT_BOTTOM_LINE_HEIGHT,
 };
 
 /**

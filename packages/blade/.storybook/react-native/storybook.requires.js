@@ -106,6 +106,7 @@ const getStories = () => {
     './src/components/Table/docs/APIStories/TableToolbarAPI.stories.tsx': require('../../src/components/Table/docs/APIStories/TableToolbarAPI.stories.tsx'),
     './src/components/Table/docs/BasicTable.stories.tsx': require('../../src/components/Table/docs/BasicTable.stories.tsx'),
     './src/components/Table/docs/TableExamples.stories.tsx': require('../../src/components/Table/docs/TableExamples.stories.tsx'),
+    './src/components/Table/docs/TablePaginationExamples.stories.tsx': require('../../src/components/Table/docs/TablePaginationExamples.stories.tsx'),
     './src/components/Tabs/Tabs.stories.tsx': require('../../src/components/Tabs/Tabs.stories.tsx'),
     './src/components/Tag/Tag.stories.tsx': require('../../src/components/Tag/Tag.stories.tsx'),
     './src/components/Tooltip/Tooltip.stories.tsx': require('../../src/components/Tooltip/Tooltip.stories.tsx'),
