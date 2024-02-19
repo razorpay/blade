@@ -2,6 +2,8 @@
 
 Breadcrumbs are used for navigating through or to show user’s location in an application.
 
+<img width="426" alt="Breadcrumb Thumbnail" src="./breadcrumb-thumbnail.png" />
+
 - [Design](#design)
 - [Anatomy](#anatomy)
 - [Basic Usage](#basic-usage)
@@ -13,6 +15,7 @@ Breadcrumbs are used for navigating through or to show user’s location in an a
   - [Usage with Routing Libraries](#usage-with-routing-libraries)
 - [Accessibility](#accessibility)
 - [Open Questions](#open-questions)
+- [References](#references)
 
 ## Design
 
@@ -190,3 +193,11 @@ Breadcrumb follows the WAI-ARIA Pattern for [Breadcrumbs Navigation](https://www
 
 ## Open Questions
 
+- N/A
+
+## References
+
+- [Paste](https://paste.twilio.design/components/breadcrumb)
+- [ChakraUI](https://chakra-ui.com/docs/components/breadcrumb/usage)
+- [Mantine](https://mantine.dev/core/breadcrumbs/)
+- [Reshaped](https://reshaped.so/docs/components/breadcrumbs)
