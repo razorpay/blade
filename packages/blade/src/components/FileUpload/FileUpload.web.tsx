@@ -181,12 +181,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           </FormLabel>
         ) : null}
 
-        <BaseBox
-          display="flex"
-          flexDirection="column"
-          marginBottom="spacing.5"
-          onClick={() => setIsActive(true)}
-        >
+        <BaseBox display="flex" flexDirection="column" marginBottom="spacing.5">
           <SelectorLabel
             componentName={MetaConstants.FileUploadLabel}
             inputProps={{}}
@@ -214,6 +209,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
+                onClick={() => setIsActive(true)}
               >
                 <Box
                   display="flex"
