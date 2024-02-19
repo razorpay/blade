@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import type { StyledFileUploadWrapperProps } from './types';
-import { fileUploadMotionTokens, fileUploadBackgroundColors } from './fileUploadTokens';
+import { fileUploadMotionTokens, fileUploadColorTokens } from './fileUploadTokens';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
@@ -19,19 +19,17 @@ const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
       height: '54px',
 
       ...(isActive && {
-        backgroundColor: getIn(theme.colors, fileUploadBackgroundColors.active),
+        backgroundColor: getIn(theme.colors, fileUploadColorTokens.background.active),
       }),
 
-      ...(!isDisabled && {
-        '&:hover': {
-          backgroundColor: getIn(
-            theme.colors,
-            fileUploadBackgroundColors[isActive ? 'active' : 'hover'],
-          ),
-          transitionTimingFunction: easing,
-          transitionDuration: duration,
-        },
-      }),
+      ...(!isDisabled &&
+        !isActive && {
+          '&:hover': {
+            backgroundColor: getIn(theme.colors, fileUploadColorTokens.background.hover),
+            transitionTimingFunction: easing,
+            transitionDuration: duration,
+          },
+        }),
     };
   },
 );

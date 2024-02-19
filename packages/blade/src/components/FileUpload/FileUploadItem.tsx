@@ -8,7 +8,6 @@ import { Divider } from '~components/Divider';
 import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 
-// TODO: 1. Fix upload progress sync with the file upload item, close icon placement
 const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): React.ReactElement => {
   const { name, size, percent, errorText, status } = file;
   const isUploading = status === 'uploading';
@@ -25,7 +24,6 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
         <BaseBox
           display="flex"
           flexDirection="row"
-          alignItems="center"
           margin="spacing.3"
           marginBottom={isUploading ? 'spacing.2' : 'spacing.3'}
         >
@@ -58,7 +56,7 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
             </Text>
           </BaseBox>
           {status === 'error' || status === 'uploading' ? (
-            <BaseBox display="flex" flexDirection="row">
+            <BaseBox>
               <IconButton
                 accessibilityLabel="Remove File"
                 icon={CloseIcon}

@@ -1,7 +1,7 @@
-import { useState, useCallback, forwardRef, memo } from 'react';
+import { useState, useCallback, useMemo, forwardRef, memo } from 'react';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
-import { getFileUploadInputHoverTokens } from './fileUploadTokens';
+import { fileUploadColorTokens, getFileUploadInputHoverTokens } from './fileUploadTokens';
 import { FileUploadItem } from './FileUploadItem';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
@@ -12,7 +12,7 @@ import { useFormId } from '~components/Form/useFormId';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
-import { useTheme } from '~utils';
+import { makeSize, useTheme } from '~utils';
 import { Text } from '~components/Typography';
 import { UploadIcon } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
@@ -66,14 +66,16 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
   const { inputId, labelId, helpTextId, errorTextId } = useFormId('fileinput');
 
-  const handleFilesChange = useCallback((inputFiles: BladeFileList) => {
-    // Attach a unique id to each file
-    for (const file of inputFiles) {
+  // In control mode attach a unique id to each file if not provided
+  useMemo(() => {
+    for (const file of selectedFiles) {
       if (!file.id) {
         file.id = `${new Date().getTime().toString()}${Math.floor(Math.random() * 1000000)}`;
       }
     }
+  }, [selectedFiles]);
 
+  const handleFilesChange = useCallback((inputFiles: BladeFileList) => {
     setSelectedFiles((prevFiles) => {
       if (prevFiles.length > 0) {
         const allFiles = [...prevFiles, ...inputFiles];
@@ -85,12 +87,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   }, []);
 
   const validateFiles = (inputFiles: BladeFileList, allFiles: BladeFileList): boolean => {
-    if (isRequired && allFiles.length === 0) {
-      setErrorMessage('Please select a file.');
-      setInternalValidationState('error');
-      return true;
-    }
-
     if (selectionType === 'single' && inputFiles.length > 1) {
       setErrorMessage('You can upload only one file.');
       setInternalValidationState('error');
@@ -199,7 +195,11 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   alignItems="center"
                   borderRadius="medium"
                   borderWidth="thin"
-                  borderColor="interactive.border.gray.default"
+                  borderColor={
+                    isDisabled
+                      ? fileUploadColorTokens.border.disabled
+                      : fileUploadColorTokens.border.default
+                  }
                   padding="spacing.5"
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
@@ -216,6 +216,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                       onChange: handleInputChange,
                       multiple: isMultiple,
                       required: isRequired,
+                      disabled: isDisabled,
                       accept,
                       onBlur: () => setIsActive(false),
                     }}
@@ -227,16 +228,36 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     justifyContent="center"
                     alignItems="center"
                     flexDirection={{ xs: 'column', s: 'row' }}
+                    gap={makeSize(6)}
                   >
-                    <Text color="surface.text.gray.subtle">Drag files here or </Text>
-                    <Text as="span" color="interactive.text.primary.subtle" marginLeft="spacing.2">
-                      <UploadIcon
-                        size="small"
-                        color="interactive.icon.primary.subtle"
-                        marginRight="spacing.2"
-                      />
-                      Upload
+                    <Text
+                      color={
+                        isDisabled
+                          ? fileUploadColorTokens.text.disabled
+                          : fileUploadColorTokens.text.default
+                      }
+                    >
+                      Drag files here or{' '}
                     </Text>
+                    <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
+                      <UploadIcon
+                        size="medium"
+                        color={
+                          isDisabled
+                            ? fileUploadColorTokens.icon.disabled
+                            : fileUploadColorTokens.icon.default
+                        }
+                      />
+                      <Text
+                        color={
+                          isDisabled
+                            ? fileUploadColorTokens.link.disabled
+                            : fileUploadColorTokens.link.default
+                        }
+                      >
+                        Upload
+                      </Text>
+                    </Box>
                   </Box>
                 </StyledFileUploadWrapper>
                 {willRenderHintText && (

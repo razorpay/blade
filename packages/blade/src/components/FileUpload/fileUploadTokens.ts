@@ -32,6 +32,29 @@ const fileUploadBorderColors = {
   disabled: 'interactive.border.gray.disabled',
 } as const;
 
+const fileUploadColorTokens = {
+  text: {
+    default: 'surface.text.gray.subtle',
+    disabled: 'surface.text.gray.disabled',
+  },
+  border: {
+    default: 'interactive.border.gray.default',
+    disabled: 'interactive.border.gray.disabled',
+  },
+  background: {
+    hover: 'interactive.background.gray.highlighted',
+    active: 'interactive.background.primary.faded',
+  },
+  icon: {
+    default: 'interactive.icon.primary.subtle',
+    disabled: 'interactive.icon.primary.disabled',
+  },
+  link: {
+    default: 'interactive.text.primary.subtle',
+    disabled: 'interactive.text.primary.disabled',
+  },
+} as const;
+
 const fileUploadItemBackgroundColors: Record<
   NonNullable<BladeFile['status']>,
   Record<'default' | 'hover', FileUploadItemBackgroundColors>
@@ -56,4 +79,5 @@ export {
   fileUploadBorderColors,
   fileUploadBackgroundColors,
   fileUploadItemBackgroundColors,
+  fileUploadColorTokens,
 };
