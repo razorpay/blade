@@ -876,7 +876,12 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
           }}
           maxTagRows={maxTagRows}
         >
-          <BaseInputVisuals leadingIcon={leadingIcon} prefix={prefix} isDisabled={isDisabled} />
+          <BaseInputVisuals
+            size={size}
+            leadingIcon={leadingIcon}
+            prefix={prefix}
+            isDisabled={isDisabled}
+          />
           <BaseInputTagSlot
             renderAs={as}
             tags={tags}
@@ -947,6 +952,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             trailingIcon={trailingIcon}
             isDisabled={isDisabled}
             validationState={validationState}
+            size={size}
           />
         </BaseInputWrapper>
       </BaseBox>

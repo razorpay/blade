@@ -15,7 +15,9 @@ type InputVisuals = Pick<
   | 'trailingIcon'
   | 'isDisabled'
   | 'validationState'
->;
+> & {
+  size: NonNullable<BaseInputProps['size']>;
+};
 
 const getVisualContainerStyles = (): Pick<
   BaseBoxProps,
@@ -32,6 +34,16 @@ const trailingIconColor: Record<NonNullable<InputVisuals['validationState']>, Ic
   error: 'feedback.icon.negative.intense',
   success: 'feedback.icon.positive.intense',
 };
+
+const iconSize = {
+  medium: 'medium',
+  large: 'large',
+} as const;
+
+const textSize = {
+  medium: 'medium',
+  large: 'large',
+} as const;
 
 const getPrefixStyles = ({
   hasLeadingIcon,
@@ -129,6 +141,7 @@ export const BaseInputVisuals = ({
   trailingIcon: TrailingIcon,
   isDisabled,
   validationState = 'none',
+  size,
 }: InputVisuals): ReactElement | null => {
   const {
     hasLeadingIcon,
@@ -142,6 +155,7 @@ export const BaseInputVisuals = ({
     interactionElement,
     suffix,
     trailingIcon: TrailingIcon,
+    size,
   });
 
   const hasLeadingVisuals = hasLeadingIcon || hasPrefix;
@@ -153,7 +167,7 @@ export const BaseInputVisuals = ({
         {LeadingIcon ? (
           <BaseBox paddingLeft="spacing.4" display="flex">
             <LeadingIcon
-              size="medium"
+              size={iconSize[size]}
               color={isDisabled ? 'surface.icon.gray.disabled' : 'surface.icon.gray.subtle'}
             />
           </BaseBox>
@@ -161,7 +175,7 @@ export const BaseInputVisuals = ({
         {hasPrefix ? (
           <BaseBox {...getPrefixStyles({ hasLeadingIcon, hasPrefix })}>
             <Text
-              size="medium"
+              size={textSize[size]}
               variant="body"
               weight="regular"
               color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
@@ -190,7 +204,7 @@ export const BaseInputVisuals = ({
         {hasSuffix ? (
           <BaseBox {...getSuffixStyles({ hasTrailingIcon, hasSuffix })}>
             <Text
-              size="medium"
+              size={textSize[size]}
               variant="body"
               weight="regular"
               color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle'}
@@ -203,7 +217,7 @@ export const BaseInputVisuals = ({
           <BaseBox paddingRight="spacing.4" display="flex">
             {
               <TrailingIcon
-                size="medium"
+                size={iconSize[size]}
                 color={
                   isDisabled ? 'interactive.icon.gray.disabled' : trailingIconColor[validationState]
                 }
