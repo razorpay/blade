@@ -92,10 +92,6 @@ type FileUploadCommonProps = {
    */
   name?: string;
   /**
-   * Default list of files that have been uploaded, useful when the component is uncontrolled
-   */
-  defaultFileList?: BladeFileList;
-  /**
    * List of files that have been selected/uploaded, useful when the component is controlled
    */
   fileList?: BladeFileList;
