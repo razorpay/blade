@@ -78,6 +78,7 @@ type BaseLinkCommonProps = {
    * The title of the link which is displayed as a tooltip. This is a web only prop and has no effect on react-native.
    */
   htmlTitle?: string;
+  opacity: number;
 } & TestID &
   StyledPropsBlade &
   Omit<BladeCommonEvents, 'onBlur' | 'onMouseLeave'>;
@@ -269,6 +270,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
     target,
     rel,
     color = 'primary',
+    opacity,
     accessibilityProps,
     // @ts-expect-error avoiding exposing to public
     className,
@@ -394,6 +396,7 @@ const _BaseLink: React.ForwardRefRenderFunction<BladeElementRef, BaseLinkProps> 
         flexDirection="row"
         className="content-container"
         alignItems="center"
+        opacity={opacity}
       >
         {Icon && iconPosition == 'left' ? (
           <BaseBox as={asProp} paddingRight={iconPadding} display="flex" alignItems="center">
