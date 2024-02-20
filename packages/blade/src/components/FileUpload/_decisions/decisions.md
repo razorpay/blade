@@ -104,7 +104,7 @@ type FileUploadCommonProps = {
    */
   maxCount?: number;
   /**
-   * Limit the size of the uploaded files (in bytes)
+   * Maximum size per file (in bytes)
    */
   maxSize?: number;
   /**
@@ -122,7 +122,7 @@ type FileUploadCommonProps = {
   /**
    * Callback function executed when files are dropped into the upload area
    */
-  onDrop?: (event: React.DragEvent) => void;
+  onDrop?: ({ name, fileList }: { name: string; fileList: BladeFileList }) => void;
   /**
    * State indicating whether there is an error in the FileUpload component
    */
