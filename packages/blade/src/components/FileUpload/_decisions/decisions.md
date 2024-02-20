@@ -66,7 +66,7 @@ type FileUploadCommonProps = {
   /**
    * Defines the selection behavior of the FileUpload component
    */
-  selectionType?: 'single' | 'multiple';
+  uploadType?: 'single' | 'multiple';
   /**
    * File types that can be accepted. See [input's accept attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)
    *
@@ -114,11 +114,15 @@ type FileUploadCommonProps = {
   /**
    * Callback function triggered when the preview icon is clicked
    */
-  onPreview?: ({ previewedFile }: { previewedFile: File }) => void;
+  onPreview?: ({ file }: { file: File }) => void;
   /**
    * Callback function triggered when a file is removed
    */
-  onRemove?: ({ removedFile }: { removedFile: File }) => void;
+  onRemove?: ({ file }: { file: File }) => void;
+  /**
+   * Callback function triggered when a file upload is cancelled
+   */
+  onCancel?: ({ file }: { file: File }) => void;
   /**
    * Callback function executed when files are dropped into the upload area
    */
@@ -232,7 +236,7 @@ const UncontrolledSingleFileUploadForm = () => {
       <form onSubmit={handleSubmit}>
         <FileUpload
           label="GSTIN Certificate"
-          selectionType="single"
+          uploadType="single"
           ref={fileUploadRef}
           accept=".jpg, .png, .pdf"
           helpText="Upload .jpg, .png, or .pdf file only"
@@ -293,7 +297,7 @@ const UncontrolledMultiFileUploadForm = () => {
       <form onSubmit={handleSubmit}>
         <FileUpload
           label="GSTIN Certificate"
-          selectionType="multiple"
+          uploadType="multiple"
           ref={fileUploadRef}
           accept=".jpg, .png, .pdf"
           helpText="Upload .jpg, .png, or .pdf files only"
@@ -372,7 +376,7 @@ const ControlledCustomProgressFileUploadForm = () => {
     <Box>
       <FileUpload
         label="Upload product image"
-        selectionType="single"
+        uploadType="single"
         fileList={uploadedFile ? [uploadedFile] : []}
         onChange={handleFileChange}
         showSelectedFiles={false}
