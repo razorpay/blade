@@ -1,13 +1,14 @@
 import type { BreadcrumbItemProps, BreadcrumbProps } from './types';
 import { BaseLink } from '~components/Link/BaseLink';
 import { Text } from '~components/Typography';
+import BaseBox from '~components/Box/BaseBox';
 
 const BreadcrumbItem = ({
   _size,
   _color,
   children,
   href,
-  icon,
+  icon: Icon,
   isCurrentPage,
   onClick,
   accessibilityLabel,
@@ -16,14 +17,23 @@ const BreadcrumbItem = ({
   _color?: BreadcrumbProps['color'];
 }): React.ReactElement => {
   if (isCurrentPage) {
+    const isWhite = _color === 'white';
     return (
-      <Text
-        weight="medium"
-        size={_size}
-        color={_color === 'white' ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal'}
-      >
-        {children}
-      </Text>
+      <BaseBox display="flex" gap="spacing.2" alignItems="center">
+        {Icon && (
+          <Icon
+            size={_size}
+            color={isWhite ? 'surface.icon.staticWhite.normal' : 'surface.icon.gray.normal'}
+          />
+        )}
+        <Text
+          weight="medium"
+          size={_size}
+          color={isWhite ? 'surface.text.staticWhite.normal' : 'surface.text.gray.normal'}
+        >
+          {children}
+        </Text>
+      </BaseBox>
     );
   }
 
@@ -32,7 +42,7 @@ const BreadcrumbItem = ({
       size={_size}
       color={_color}
       opacity={_color !== 'primary' ? 0.5 : 1}
-      icon={icon}
+      icon={Icon}
       href={href}
       onClick={onClick}
       accessibilityProps={{ label: accessibilityLabel }}
