@@ -1,6 +1,6 @@
 # Breadcrumb Decisions <!-- omit in toc -->
 
-Breadcrumbs are used for navigating through or to show user’s location in an application.
+Breadcrumbs are used for navigating through or to show a user’s location in an application.
 
 <img width="426" alt="Breadcrumb Thumbnail" src="./breadcrumb-thumbnail.png" />
 
@@ -19,7 +19,7 @@ Breadcrumbs are used for navigating through or to show user’s location in an a
 
 ## Design
 
-[Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=81170-57117&mode=design&t=qeUPSKFBYZfBCFBT-0) to all variants of the Breadcrumb component
+[Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=81454-67196&mode=design&t=6sCjPO2iUqIMuPHT-0) to all variants of the Breadcrumb component
 
 ## Anatomy
 
