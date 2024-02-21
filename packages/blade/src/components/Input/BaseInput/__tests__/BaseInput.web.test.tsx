@@ -84,6 +84,23 @@ describe('<BaseInput />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render with large size input', () => {
+    const { container } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        placeholder="First Last"
+        id="name"
+        leadingIcon={EyeIcon}
+        trailingIcon={CloseIcon}
+        successText="Success"
+        validationState="success"
+        size="large"
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should be focussed when autoFocus flag is passed', () => {
     const label = 'Enter name';
     // eslint-disable-next-line jsx-a11y/no-autofocus

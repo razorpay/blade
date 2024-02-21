@@ -52,11 +52,11 @@ exports[`<TextInput /> should render 1`] = `
   gap: 0px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   margin-left: 0px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -213,24 +213,12 @@ exports[`<TextInput /> should render 1`] = `
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -242,13 +230,23 @@ exports[`<TextInput /> should render 1`] = `
   position: relative;
 }
 
+.c7.c7.c7.c7.c7:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:hover {
-  background-color: hsla(211,20%,52%,0.18);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -266,13 +264,23 @@ exports[`<TextInput /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c7.c7.c7.c7.c7:hover:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:focus-within {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -282,6 +290,17 @@ exports[`<TextInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+}
+
+.c7.c7.c7.c7.c7:focus-within:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -364,18 +383,14 @@ exports[`<TextInput /> should render 1`] = `
           type="text"
           value=""
         />
-        <div
-          class=" c9"
-          data-blade-component="base-box"
-        />
       </div>
     </div>
     <div
-      class="c10"
+      class="c9"
       data-blade-component="base-box"
     >
       <div
-        class="c11"
+        class="c10"
         data-blade-component="base-box"
       />
     </div>
@@ -461,18 +476,18 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  padding-left: 4px;
+  padding-left: 8px;
 }
 
 .c13.c13.c13.c13.c13 {
   padding-right: 12px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   margin-left: 0px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -646,24 +661,12 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   outline: none;
 }
 
-.c14.c14.c14.c14.c14 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -675,13 +678,23 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   position: relative;
 }
 
+.c7.c7.c7.c7.c7:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:hover {
-  background-color: hsla(211,20%,52%,0.18);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -699,13 +712,23 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c7.c7.c7.c7.c7:hover:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:focus-within {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -715,6 +738,17 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+}
+
+.c7.c7.c7.c7.c7:focus-within:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -864,18 +898,14 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             </p>
           </div>
         </div>
-        <div
-          class=" c14"
-          data-blade-component="base-box"
-        />
       </div>
     </div>
     <div
-      class="c15"
+      class="c14"
       data-blade-component="base-box"
     >
       <div
-        class="c16"
+        class="c15"
         data-blade-component="base-box"
       />
     </div>

@@ -64,14 +64,14 @@ exports[`<OTPInput /> should render 1`] = `
   width: 100%;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   margin-left: 0px;
 }
 
@@ -223,24 +223,12 @@ exports[`<OTPInput /> should render 1`] = `
   outline: none;
 }
 
-.c11.c11.c11.c11.c11 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
 .c9.c9.c9.c9.c9 {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -252,13 +240,23 @@ exports[`<OTPInput /> should render 1`] = `
   position: relative;
 }
 
+.c9.c9.c9.c9.c9:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(211,20%,52%,0.18);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -276,13 +274,23 @@ exports[`<OTPInput /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c9.c9.c9.c9.c9:hover:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9:focus-within {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -292,6 +300,17 @@ exports[`<OTPInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+}
+
+.c9.c9.c9.c9.c9:focus-within:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -393,16 +412,12 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -433,16 +448,12 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -473,16 +484,12 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -513,16 +520,12 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -553,16 +556,12 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -593,10 +592,6 @@ exports[`<OTPInput /> should render 1`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
@@ -604,7 +599,7 @@ exports[`<OTPInput /> should render 1`] = `
       </div>
     </div>
     <div
-      class="c13"
+      class="c12"
       data-blade-component="base-box"
     />
   </div>

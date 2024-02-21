@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextInput /> should render TextInput 1`] = `"<div id="root"><div data-blade-component="textinput" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx jaAmIu"><label for="textinput-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO itNENY" data-blade-component="text">Enter company website</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  inxdRN"><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx hdqaij"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(211, 26%, 34%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx gqvBWc"><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">https://</p></div></div><input type="url" inputMode="url" autoCapitalize="none" enterKeyHint="go" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="something" prefix="https://" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gpfLQk"/><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx SGzvk"><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">.com</p></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  HaFJL"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div>"`;
+exports[`<TextInput /> should render TextInput 1`] = `"<div id="root"><div data-blade-component="textinput" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx jaAmIu"><label for="textinput-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO itNENY" data-blade-component="text">Enter company website</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  iQdrcH"><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx hdqaij"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z" fill="hsla(211, 26%, 34%, 1)" data-blade-component="svg-path"></path><path d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z" clip-rule="evenodd" fill="hsla(211, 26%, 34%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div><div data-blade-component="base-box" class="BaseBox-bmPWx bmakVs"><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">https://</p></div></div><input type="url" inputMode="url" autoCapitalize="none" enterKeyHint="go" autoComplete="off" id="textinput-undefined-input-undefined" placeholder="something" prefix="https://" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gpfLQk"/><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx SGzvk"><p class="StyledBaseText-dVBfTO fmkfYs" data-blade-component="text">.com</p></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div>"`;
 
 exports[`<TextInput /> should render TextInput 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -80,18 +80,18 @@ exports[`<TextInput /> should render TextInput 2`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  padding-left: 4px;
+  padding-left: 8px;
 }
 
 .c13.c13.c13.c13.c13 {
   padding-right: 12px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   margin-left: 0px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -265,24 +265,12 @@ exports[`<TextInput /> should render TextInput 2`] = `
   outline: none;
 }
 
-.c14.c14.c14.c14.c14 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -294,13 +282,23 @@ exports[`<TextInput /> should render TextInput 2`] = `
   position: relative;
 }
 
+.c7.c7.c7.c7.c7:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:hover {
-  background-color: hsla(211,20%,52%,0.18);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -318,13 +316,23 @@ exports[`<TextInput /> should render TextInput 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c7.c7.c7.c7.c7:hover:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:focus-within {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -334,6 +342,17 @@ exports[`<TextInput /> should render TextInput 2`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+}
+
+.c7.c7.c7.c7.c7:focus-within:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -485,18 +504,14 @@ exports[`<TextInput /> should render TextInput 2`] = `
             </p>
           </div>
         </div>
-        <div
-          class=" c14"
-          data-blade-component="base-box"
-        />
       </div>
     </div>
     <div
-      class="c15"
+      class="c14"
       data-blade-component="base-box"
     >
       <div
-        class="c16"
+        class="c15"
         data-blade-component="base-box"
       />
     </div>

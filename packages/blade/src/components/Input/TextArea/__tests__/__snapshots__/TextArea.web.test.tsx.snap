@@ -55,11 +55,11 @@ exports[`<TextArea /> should render 1`] = `
   gap: 0px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   margin-left: 0px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -215,24 +215,12 @@ exports[`<TextArea /> should render 1`] = `
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -248,13 +236,23 @@ exports[`<TextArea /> should render 1`] = `
   position: relative;
 }
 
+.c7.c7.c7.c7.c7:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:hover {
-  background-color: hsla(211,20%,52%,0.18);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -272,13 +270,23 @@ exports[`<TextArea /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c7.c7.c7.c7.c7:hover:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:focus-within {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -288,6 +296,17 @@ exports[`<TextArea /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+}
+
+.c7.c7.c7.c7.c7:focus-within:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -367,18 +386,14 @@ exports[`<TextArea /> should render 1`] = `
           rows="2"
           type="text"
         />
-        <div
-          class=" c9"
-          data-blade-component="base-box"
-        />
       </div>
     </div>
     <div
-      class="c10"
+      class="c9"
       data-blade-component="base-box"
     >
       <div
-        class="c11"
+        class="c10"
         data-blade-component="base-box"
       />
     </div>
@@ -441,11 +456,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   gap: 0px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   margin-left: 0px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -601,24 +616,12 @@ exports[`<TextArea /> should set number of lines 1`] = `
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
 .c7.c7.c7.c7.c7 {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -634,13 +637,23 @@ exports[`<TextArea /> should set number of lines 1`] = `
   position: relative;
 }
 
+.c7.c7.c7.c7.c7:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:hover {
-  background-color: hsla(211,20%,52%,0.18);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -658,13 +671,23 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c7.c7.c7.c7.c7:hover:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c7.c7.c7.c7.c7:focus-within {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -674,6 +697,17 @@ exports[`<TextArea /> should set number of lines 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+}
+
+.c7.c7.c7.c7.c7:focus-within:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -753,18 +787,14 @@ exports[`<TextArea /> should set number of lines 1`] = `
           rows="3"
           type="text"
         />
-        <div
-          class=" c9"
-          data-blade-component="base-box"
-        />
       </div>
     </div>
     <div
-      class="c10"
+      class="c9"
       data-blade-component="base-box"
     >
       <div
-        class="c11"
+        class="c10"
         data-blade-component="base-box"
       />
     </div>

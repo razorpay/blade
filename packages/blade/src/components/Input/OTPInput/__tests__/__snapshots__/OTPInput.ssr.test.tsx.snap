@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<OTPInput /> should have hidden input for form submissions 1`] = `"<div id="root"><div data-blade-component="otp-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx gbruaa"><label for="otp-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO itNENY" data-blade-component="text">Enter OTP</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text"></p></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input hidden="" id="otp-undefined-input-undefined" name="otpInput" readonly="" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx kYybk"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  inxdRN"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-0-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Enter OTP character 1" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  HaFJL"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  inxdRN"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-1-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 2" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  HaFJL"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  inxdRN"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-2-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 3" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  HaFJL"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  inxdRN"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-3-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 4" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  HaFJL"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  inxdRN"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-4-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 5" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  HaFJL"></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  inxdRN"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-5-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 6" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  HaFJL"></div></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"></div></div></div>"`;
+exports[`<OTPInput /> should have hidden input for form submissions 1`] = `"<div id="root"><div data-blade-component="otp-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx gbruaa"><label for="otp-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO itNENY" data-blade-component="text">Enter OTP</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text"></p></div></div></div></label><div data-blade-component="base-box" class="BaseBox-bmPWx bFzCEy"><input hidden="" id="otp-undefined-input-undefined" name="otpInput" readonly="" value=""/><div data-blade-component="base-box" class="BaseBox-bmPWx kYybk"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  iQdrcH"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-0-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label="Enter OTP character 1" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  iQdrcH"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-1-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 2" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  iQdrcH"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-2-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 3" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  iQdrcH"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-3-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 4" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  iQdrcH"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-4-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 5" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx emHbgU"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  iQdrcH"><input name="otpInput" type="text" required="" inputMode="decimal" autoComplete="one-time-code" id="otp-undefined-input-undefined-5-undefined-input-undefined" placeholder="" data-blade-component="styled-base-input" aria-required="true" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-label=" character 6" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 olDXE" value=""/></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"></div></div></div>"`;
 
 exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -66,14 +66,14 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
   width: 100%;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   margin-left: 0px;
 }
 
@@ -225,24 +225,12 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
   outline: none;
 }
 
-.c11.c11.c11.c11.c11 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
 .c9.c9.c9.c9.c9 {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -254,13 +242,23 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
   position: relative;
 }
 
+.c9.c9.c9.c9.c9:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9:hover {
-  background-color: hsla(211,20%,52%,0.18);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -278,13 +276,23 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c9.c9.c9.c9.c9:hover:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c9.c9.c9.c9.c9:focus-within {
-  background-color: hsla(211,20%,52%,0.09);
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,27%,76%,1);
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -294,6 +302,17 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+}
+
+.c9.c9.c9.c9.c9:focus-within:has(input:focus-visible) {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 0px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -399,16 +418,12 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -440,16 +455,12 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -481,16 +492,12 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -522,16 +529,12 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -563,16 +566,12 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c12"
+          class="c11"
           data-blade-component="base-box"
         >
           <div
@@ -604,10 +603,6 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
                   type="text"
                   value=""
                 />
-                <div
-                  class=" c11"
-                  data-blade-component="base-box"
-                />
               </div>
             </div>
           </div>
@@ -615,7 +610,7 @@ exports[`<OTPInput /> should have hidden input for form submissions 2`] = `
       </div>
     </div>
     <div
-      class="c13"
+      class="c12"
       data-blade-component="base-box"
     />
   </div>
