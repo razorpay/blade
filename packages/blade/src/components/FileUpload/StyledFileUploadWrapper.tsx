@@ -17,6 +17,9 @@ const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
       display: 'flex',
       borderStyle: 'dashed',
       height: '54px',
+      transitionProperty: 'background-color',
+      transitionTimingFunction: easing,
+      transitionDuration: duration,
 
       ...(isActive && {
         backgroundColor: getIn(theme.colors, fileUploadColorTokens.background.active),
@@ -26,8 +29,6 @@ const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
         !isActive && {
           '&:hover': {
             backgroundColor: getIn(theme.colors, fileUploadColorTokens.background.hover),
-            transitionTimingFunction: easing,
-            transitionDuration: duration,
           },
         }),
     };

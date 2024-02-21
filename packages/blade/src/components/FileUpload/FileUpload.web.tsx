@@ -15,7 +15,6 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import { makeSize, useTheme } from '~utils';
 import { Text } from '~components/Typography';
-import { UploadIcon } from '~components/Icons';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
@@ -253,15 +252,17 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     flexDirection={{ xs: 'column', s: 'row' }}
                     borderRadius="small"
                   >
-                    <Box display="flex" flexDirection="row" alignItems="center" gap="spacing.2">
-                      <UploadIcon
-                        size="medium"
-                        color={
-                          isDisabled
-                            ? fileUploadColorTokens.icon.disabled
-                            : fileUploadColorTokens.icon.default
-                        }
-                      />
+                    <Box
+                      display="flex"
+                      flexDirection="row"
+                      alignItems="center"
+                      borderBottomColor={
+                        isDisabled
+                          ? 'surface.border.primary.muted'
+                          : 'surface.border.primary.normal'
+                      }
+                      borderBottomWidth="thin"
+                    >
                       <Text
                         color={
                           isDisabled

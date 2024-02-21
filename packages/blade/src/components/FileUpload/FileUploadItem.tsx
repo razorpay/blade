@@ -11,6 +11,9 @@ import { ProgressBar } from '~components/ProgressBar';
 const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): React.ReactElement => {
   const { name, size, percent, errorText, status } = file;
   const isUploading = status === 'uploading';
+  const sizeInKB = size / 1024;
+  const sizeInMB = sizeInKB / 1024;
+  const showSizeInKB = sizeInKB < 1024;
 
   return (
     <StyledFileUploadItemWrapper
@@ -52,7 +55,9 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
               }
             >
               {errorText ??
-                `${(size / 1000).toFixed(2)} KB ${isUploading && percent ? `${percent}%` : ''}`}
+                `${(showSizeInKB ? sizeInKB : sizeInMB).toFixed(2)} ${showSizeInKB ? 'KB' : 'MB'} ${
+                  isUploading && percent ? `${percent}%` : ''
+                }`}
             </Text>
           </BaseBox>
           {status === 'error' || status === 'uploading' ? (

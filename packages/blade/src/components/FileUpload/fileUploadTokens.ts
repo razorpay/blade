@@ -18,19 +18,9 @@ const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {
 };
 
 const fileUploadMotionTokens: Record<'duration' | 'easing', DurationString | EasingString> = {
-  duration: 'duration.xquick',
+  duration: 'duration.2xquick',
   easing: 'easing.standard.effective',
 };
-
-const fileUploadBackgroundColors = {
-  hover: 'interactive.background.gray.highlighted',
-  active: 'interactive.background.primary.faded',
-} as const;
-
-const fileUploadBorderColors = {
-  default: 'interactive.border.gray.default',
-  disabled: 'interactive.border.gray.disabled',
-} as const;
 
 const fileUploadColorTokens = {
   text: {
@@ -60,8 +50,8 @@ const fileUploadItemBackgroundColors: Record<
   Record<'default' | 'hover', FileUploadItemBackgroundColors>
 > = {
   success: {
-    default: 'interactive.background.gray.default',
-    hover: 'interactive.background.gray.highlighted',
+    default: 'interactive.background.gray.faded',
+    hover: 'interactive.background.gray.fadedHighlighted',
   },
   error: {
     default: 'feedback.background.negative.subtle',
@@ -76,8 +66,6 @@ const fileUploadItemBackgroundColors: Record<
 export {
   getFileUploadInputHoverTokens,
   fileUploadMotionTokens,
-  fileUploadBorderColors,
-  fileUploadBackgroundColors,
   fileUploadItemBackgroundColors,
   fileUploadColorTokens,
 };
