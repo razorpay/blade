@@ -26,6 +26,10 @@ export const baseInputWrapperMinHeight = {
   large: (baseInputHeight.large as number) + BASEINPUT_BOTTOM_LINE_HEIGHT,
 };
 
+// TODO: Replace the usage of this with `baseInputWrapperMinHeight[size]` when working on SelectInput
+export const BASEINPUT_WRAPPER_MIN_HEIGHT =
+  (baseInputHeight.medium as number) + BASEINPUT_BOTTOM_LINE_HEIGHT;
+
 /**
  * 145px (36px height * 4 rows + 1px bottom line height)
  */
