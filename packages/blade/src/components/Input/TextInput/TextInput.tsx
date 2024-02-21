@@ -16,6 +16,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import type { BladeElementRef } from '~utils/types';
+import { hintMarginTop } from '~components/Form/formTokens';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -344,7 +345,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       successText={successText}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <BaseBox marginTop="spacing.2" marginRight="spacing.1">
+          <BaseBox marginTop={hintMarginTop[size]} marginRight="spacing.1">
             <CharacterCounter
               currentCount={value?.length ?? 0}
               maxCount={maxCharacters}
