@@ -321,7 +321,7 @@ const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({
       maxCharacters={maxCharacters}
       size={size}
       trailingFooterSlot={(value) => (
-        <BaseBox marginTop="spacing.2">
+        <BaseBox marginTop={size === 'medium' ? 'spacing.2' : 'spacing.3'}>
           <CharacterCounter
             size={size}
             currentCount={value?.length ?? 0}
@@ -329,6 +329,7 @@ const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({
           />
         </BaseBox>
       )}
+      helpText="Help Text"
       onChange={({ name, value }): void => console.log({ name, value })}
     />
   );
