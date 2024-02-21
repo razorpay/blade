@@ -227,7 +227,10 @@ const _Dropdown = ({
           return;
         }
 
-        const isOutsideClick = !dropdown.contains(target) && !isTagDismissedRef.current?.value;
+        const isOutsideClick =
+          !dropdown.contains(target) &&
+          !isTagDismissedRef.current?.value &&
+          document.body.contains(target);
 
         const isDropdownOpenState = isDropdownOpenRef.current;
         if (isOutsideClick && isDropdownOpenState) {
