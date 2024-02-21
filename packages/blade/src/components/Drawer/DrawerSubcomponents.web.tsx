@@ -49,7 +49,7 @@ const DrawerHeader = assignWithoutSideEffects(_DrawerHeader, {
 
 const _DrawerBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
-    <Box padding="spacing.6" overflowY="auto">
+    <Box padding="spacing.6" overflow="auto" flex="1">
       {children}
     </Box>
   );
