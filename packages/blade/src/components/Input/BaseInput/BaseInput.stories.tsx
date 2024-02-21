@@ -11,6 +11,7 @@ import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Tag } from '~components/Tag';
 import { Text } from '~components/Typography';
+import { Box } from '~components/Box';
 
 const propsCategory = {
   BASE_PROPS: 'Base Input Props',
@@ -66,6 +67,11 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     id: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    size: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -273,7 +279,6 @@ const BaseInputTemplate: StoryFn<typeof BaseInputComponent> = ({
       {...args}
       leadingIcon={iconMap[(leadingIcon as unknown) as string]}
       trailingIcon={iconMap[(trailingIcon as unknown) as string]}
-      // interactionElement={<Text>hello</Text>}
     />
   );
 };
@@ -408,3 +413,34 @@ const BaseInputControlledWithTagsTemplate: StoryFn<typeof BaseInputComponent> = 
 };
 
 export const BaseInputControlledWithTags = BaseInputControlledWithTagsTemplate.bind({});
+
+const BaseInputSizesTemplate: StoryFn<typeof BaseInputComponent> = ({
+  leadingIcon,
+  trailingIcon,
+  ...args
+}) => {
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <Text size="large" marginBottom="spacing.1">
+        Medium Size:
+      </Text>
+      <BaseInputComponent
+        {...args}
+        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        size="medium"
+      />
+      <Text size="large" marginBottom="spacing.1">
+        Large Size:
+      </Text>
+      <BaseInputComponent
+        {...args}
+        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        size="large"
+      />
+    </Box>
+  );
+};
+
+export const BaseInputSizes = BaseInputSizesTemplate.bind({});
