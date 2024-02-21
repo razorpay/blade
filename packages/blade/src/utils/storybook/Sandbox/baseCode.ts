@@ -3,52 +3,39 @@ import dedent from 'dedent';
 // @ts-expect-error We don't resolve JSON files right now. didn't want to change TS config for single JSON
 import packageJson from '../../../../package.json'; // eslint-disable-line
 
-let fetchedSha = '';
-const getSHAFromBranch = async (branchName: string): Promise<string> => {
-  if (fetchedSha) {
-    return fetchedSha;
+const getBladeVersionFromSHA = (sha: string): string => {
+  const shortSha = sha.slice(0, 8);
+  return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
+};
+
+let fetchedVersion = '';
+export const getBladeVersionFromBranch = async (
+  branchName?: string | null,
+): Promise<string | undefined> => {
+  if (!branchName) {
+    return undefined;
+  }
+
+  if (fetchedVersion) {
+    return fetchedVersion;
   }
 
   const data = await fetch(
     `https://api.github.com/repos/razorpay/blade/commits/${branchName}`,
   ).then((res) => res.json());
-  console.log(data);
-  fetchedSha = data.sha;
-  return data.sha as string;
+
+  const bladeVersion = getBladeVersionFromSHA(data.sha);
+  fetchedVersion = bladeVersion;
+  return bladeVersion;
 };
-
-const searchParams = new URLSearchParams(window.top?.location.search);
-
-const versionBranch = searchParams.get('version_branch');
-
-if (versionBranch) {
-  // eslint-disable-next-line @typescript-eslint/no-floating-promises
-  getSHAFromBranch(versionBranch).then((latestSha) => {
-    searchParams.append('version_commit', latestSha);
-    searchParams.delete('version_branch');
-    if (window.top) {
-      window.top.location.href = `${window.top.location.protocol}//${
-        window.top?.location.host
-      }/?${decodeURIComponent(searchParams.toString())}`;
-    }
-  });
-}
 
 const getBladeVersion = (): string => {
   // We don't publish codesandbox ci on master so version is not present
   const isMaster = process.env.GITHUB_REF === 'refs/heads/master';
   const sha = process.env.GITHUB_SHA;
 
-  const shaParam = searchParams.get('version_commit');
-
-  if (shaParam) {
-    const shortSha = shaParam.slice(0, 8);
-    return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
-  }
-
   if (sha && !isMaster) {
-    const shortSha = sha.slice(0, 8);
-    return `https://pkg.csb.dev/razorpay/blade/commit/${shortSha}/@razorpay/blade`;
+    return getBladeVersionFromSHA(sha);
   }
 
   return '*';
@@ -103,14 +90,14 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
   };
 };
 
-const getViteReactTSDependencies = (): Dependencies => {
+const getViteReactTSDependencies = (bladeVersionOverride?: string): Dependencies => {
   return {
     dependencies: {
       react: '^18',
       'react-dom': '^18',
       '@types/react': '^18',
       '@types/react-dom': '^18',
-      '@razorpay/blade': getBladeVersion(),
+      '@razorpay/blade': bladeVersionOverride ?? getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
       '@emotion/react': '11.11.1',
       '@table-library/react-table-library': '4.1.7',
@@ -121,6 +108,24 @@ const getViteReactTSDependencies = (): Dependencies => {
       '@vitejs/plugin-react': '4.1.1',
     },
   };
+};
+
+export const getVitePackageJSON = (bladeVersionOverride?: string): string => {
+  return JSON.stringify(
+    {
+      scripts: {
+        dev: 'vite',
+        build: 'vite build',
+      },
+      stackblitz: {
+        startCommand: 'yarn install && yarn dev',
+        installDependencies: false,
+      },
+      ...getViteReactTSDependencies(bladeVersionOverride),
+    },
+    null,
+    4,
+  );
 };
 
 export const vitePackageJSON = JSON.stringify(
