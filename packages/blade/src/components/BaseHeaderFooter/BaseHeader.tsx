@@ -214,12 +214,7 @@ const _BaseHeader = ({
             alignItems="flex-start"
           >
             {leading ? (
-              <BaseBox
-                width="spacing.8"
-                height="spacing.8"
-                marginRight="spacing.3"
-                {...centerBoxProps}
-              >
+              <BaseBox marginRight="spacing.3" {...centerBoxProps}>
                 {leading}
               </BaseBox>
             ) : null}

@@ -48,7 +48,11 @@ const DrawerHeader = assignWithoutSideEffects(_DrawerHeader, {
 });
 
 const _DrawerBody = ({ children }: { children: React.ReactNode }): React.ReactElement => {
-  return <Box padding="spacing.6">{children}</Box>;
+  return (
+    <Box padding="spacing.6" overflowY="auto">
+      {children}
+    </Box>
+  );
 };
 const DrawerBody = assignWithoutSideEffects(_DrawerBody, {
   componentId: drawerComponentIds.DrawerBody,

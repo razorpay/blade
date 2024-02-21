@@ -4,6 +4,7 @@ import {
   FloatingPortal,
   useFloating,
 } from '@floating-ui/react';
+import type { CSSProperties } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import usePresence from 'use-presence';
@@ -19,30 +20,33 @@ import { useDrawerStack } from '~components/Drawer/StackProvider';
 import { makeAccessible } from '~utils/makeAccessible';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useId } from '~utils/useId';
-import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 
 const SHOW_DRAWER = 'show-drawer';
 
-const AnimatedDrawerContainer = styled(BaseBox)<{ isFirstDrawerInStack: boolean }>(
-  ({ theme, isFirstDrawerInStack }) => {
-    return {
-      opacity: 0,
-      transform: 'translateX(0%)',
-      transition: `all
-      ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
-      ${castWebType(theme.motion.easing.exit.revealing)}`,
+const AnimatedDrawerContainer = styled(BaseBox)<{
+  isFirstDrawerInStack: boolean;
+  isVisible: boolean;
+}>(({ theme, isFirstDrawerInStack, isVisible }) => {
+  const entranceTransition: CSSProperties['transition'] = `all ${castWebType(
+    castWebType(makeMotionTime(theme.motion.duration.gentle)),
+  )} ${castWebType(theme.motion.easing.entrance.revealing)}`;
 
-      [`&.${SHOW_DRAWER}`]: {
-        opacity: 1,
-        transform: 'translateX(-100%)',
-        transition: `all ${castWebType(makeMotionTime(theme.motion.duration.gentle))} ${castWebType(
-          theme.motion.easing.entrance.revealing,
-        )}`,
-      },
-    };
-  },
-);
+  const exitTransition: CSSProperties['transition'] = `all
+  ${castWebType(makeMotionTime(theme.motion.duration.xmoderate))}
+  ${castWebType(theme.motion.easing.exit.revealing)}`;
+
+  return {
+    opacity: isVisible ? 1 : 0,
+    transform: isVisible
+      ? isFirstDrawerInStack
+        ? 'translateX(calc(-100% - 16px))'
+        : 'translateX(-100%)'
+      : 'translateX(0%)',
+    transition: isVisible ? entranceTransition : exitTransition,
+    animationFillMode: 'initial',
+  };
+});
 
 const DrawerOverlay = styled(FloatingOverlay)(({ theme }) => {
   return {
@@ -72,6 +76,7 @@ const _Drawer = ({
   testID,
 }: DrawerProps): React.ReactElement => {
   const closeButtonRef = React.useRef<HTMLDivElement>(null);
+  const [zIndexState, setZIndexState] = React.useState<number>(zIndex);
 
   useVerifyAllowedChildren({
     children,
@@ -89,20 +94,34 @@ const _Drawer = ({
     initialEnter: true,
   });
 
-  // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-  const stackingLevel = drawerStack.indexOf(drawerId) + 1;
-  const isFirstDrawerInStack = stackingLevel === 1 && drawerStack.length > 1;
+  const { stackingLevel, isFirstDrawerInStack } = React.useMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    const level = drawerStack.indexOf(drawerId) + 1;
+    return {
+      stackingLevel: level,
+      isFirstDrawerInStack: level === 1 && drawerStack.length > 1,
+    };
+  }, [drawerId, drawerStack]);
 
   const { refs, context } = useFloating({
     open: isMounted,
   });
 
-  useIsomorphicLayoutEffect(() => {
-    if (isMounted) {
+  React.useEffect(() => {
+    if (isOpen) {
       addToDrawerStack(drawerId);
     } else {
       removeFromDrawerStack(drawerId);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
+
+  // When z-index is not defined by user, we use default drawer z index and add stackingLevel to ensure
+  // new drawer that opens, always opens on top of previous one.
+  React.useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+    setZIndexState(componentZIndices.drawer + stackingLevel);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);
 
   return (
@@ -117,7 +136,7 @@ const _Drawer = ({
                 testID,
               })}
               // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-              zIndex={zIndex + stackingLevel}
+              zIndex={zIndexState}
             >
               {showOverlay || stackingLevel === 2 ? (
                 <DrawerOverlay
@@ -129,13 +148,9 @@ const _Drawer = ({
                 />
               ) : null}
               <AnimatedDrawerContainer
-                className={isVisible ? SHOW_DRAWER : ''}
+                isVisible={isVisible}
                 isFirstDrawerInStack={isFirstDrawerInStack}
-                width={{
-                  base: stackingLevel > 1 ? 'calc(90% - 16px)' : '90%',
-                  s: stackingLevel > 1 ? 'calc(375px - 16px)' : '375px',
-                  m: stackingLevel > 1 ? 'calc(420px - 16px)' : '420px',
-                }}
+                width={{ base: '90%', s: '375px', m: '420px' }}
                 {...makeAccessible({
                   role: 'dialog',
                   modal: true,
