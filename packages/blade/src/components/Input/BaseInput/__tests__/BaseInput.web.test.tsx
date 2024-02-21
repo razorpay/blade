@@ -6,6 +6,7 @@ import { BaseInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { CloseIcon, EyeIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 
 describe('<BaseInput />', () => {
   it('should render', () => {
@@ -96,6 +97,14 @@ describe('<BaseInput />', () => {
         validationState="success"
         size="large"
       />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with trailingLinkButton', () => {
+    const { container } = renderWithTheme(
+      <BaseInput id="coupon" label="Coupon" trailingLinkButton={<Link>Apply</Link>} />,
     );
 
     expect(container).toMatchSnapshot();

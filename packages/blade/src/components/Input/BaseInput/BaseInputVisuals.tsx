@@ -135,7 +135,6 @@ const getTrailingIconStyles = ({
   hasTrailingIcon: boolean;
   hasTrailingLinkButton: boolean;
 }): Pick<BaseBoxProps, 'paddingRight'> => {
-  console.log({ hasTrailingIcon, hasTrailingLinkButton });
   if (hasTrailingIcon && hasTrailingLinkButton) {
     return {
       paddingRight: 'spacing.3',
