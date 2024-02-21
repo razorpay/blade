@@ -1,7 +1,12 @@
 import React from 'react';
-import type { StoryFn, Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Drawer } from '../Drawer';
-import { BasicDrawerStory } from './stories';
+import {
+  BasicDrawerStory,
+  DrawerStackingStory,
+  DrawerWithTableStory,
+  ScrollableContentStory,
+} from './stories';
 import { Sandbox } from '~utils/storybook/Sandbox';
 
 const DrawerMeta: Meta = {
@@ -21,7 +26,7 @@ const DrawerMeta: Meta = {
   },
 };
 
-const DrawerTemplate: StoryFn<typeof Drawer> = () => {
+export const BasicDrawer = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="90vh">
       {BasicDrawerStory}
@@ -29,46 +34,28 @@ const DrawerTemplate: StoryFn<typeof Drawer> = () => {
   );
 };
 
-export const BasicDrawer = DrawerTemplate.bind({});
+export const DrawerStacking = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {DrawerStackingStory}
+    </Sandbox>
+  );
+};
 
-// export const DrawerWithHeaderFooter = (): React.ReactElement => {
-//   return (
-//     <Sandbox padding="spacing.0" editorHeight="90vh">
-//       {DrawerWithHeaderFooterStory}
-//     </Sandbox>
-//   );
-// };
+export const DrawerWithTable = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {DrawerWithTableStory}
+    </Sandbox>
+  );
+};
 
-// export const DrawerWithScrollableBackground = (): React.ReactElement => {
-//   return (
-//     <Sandbox padding="spacing.0" editorHeight="90vh">
-//       {DrawerWithScrollableBackgroundStory}
-//     </Sandbox>
-//   );
-// };
-
-// export const DrawerWithScrollableContent = (): React.ReactElement => {
-//   return (
-//     <Sandbox padding="spacing.0" editorHeight="90vh">
-//       {DrawerWithScrollableContentStory}
-//     </Sandbox>
-//   );
-// };
-
-// export const DrawerStacking = (): React.ReactElement => {
-//   return (
-//     <Sandbox padding="spacing.0" editorHeight="90vh">
-//       {DrawerStackingStory}
-//     </Sandbox>
-//   );
-// };
-
-// export const DrawerWithNoBodyPadding = (): React.ReactElement => {
-//   return (
-//     <Sandbox padding="spacing.0" editorHeight="90vh">
-//       {DrawerWithNoBodyPaddingStory}
-//     </Sandbox>
-//   );
-// };
+export const ScrollableContent = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="90vh">
+      {ScrollableContentStory}
+    </Sandbox>
+  );
+};
 
 export default DrawerMeta;
