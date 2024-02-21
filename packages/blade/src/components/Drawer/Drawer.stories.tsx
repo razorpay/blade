@@ -35,6 +35,17 @@ const DrawerTemplate: StoryFn<typeof Drawer> = () => {
   const [isSecondDrawerOpen, setIsSecondDrawerOpen] = React.useState(false);
   return (
     <Box>
+      <Drawer isOpen={isSecondDrawerOpen} onDismiss={() => setIsSecondDrawerOpen(false)}>
+        <DrawerHeader title="Announcements Two" subtitle="This is second drawer" />
+        <DrawerBody>
+          <Card>
+            <CardBody>
+              <Box>Second Drawer</Box>
+            </CardBody>
+          </Card>
+        </DrawerBody>
+      </Drawer>
+
       <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
       <Drawer isOpen={isDrawerOpen} onDismiss={() => setIsDrawerOpen(false)}>
         <DrawerHeader
@@ -60,17 +71,6 @@ const DrawerTemplate: StoryFn<typeof Drawer> = () => {
           <Button marginTop="spacing.4" onClick={() => setIsSecondDrawerOpen(!isSecondDrawerOpen)}>
             Open Next Drawer
           </Button>
-        </DrawerBody>
-      </Drawer>
-
-      <Drawer isOpen={isSecondDrawerOpen} onDismiss={() => setIsSecondDrawerOpen(false)}>
-        <DrawerHeader title="Announcements Two" subtitle="This is second drawer" />
-        <DrawerBody>
-          <Card>
-            <CardBody>
-              <Box>Second Drawer</Box>
-            </CardBody>
-          </Card>
         </DrawerBody>
       </Drawer>
     </Box>
