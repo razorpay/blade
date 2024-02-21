@@ -345,7 +345,11 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
           <BaseBox marginTop="spacing.2" marginRight="spacing.1">
-            <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
+            <CharacterCounter
+              currentCount={value?.length ?? 0}
+              maxCount={maxCharacters}
+              size={size}
+            />
           </BaseBox>
         ) : null;
       }}
