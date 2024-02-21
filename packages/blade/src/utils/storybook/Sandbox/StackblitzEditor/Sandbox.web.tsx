@@ -17,6 +17,8 @@ import {
 } from '../baseCode';
 import type { SandboxStackBlitzProps } from '../types';
 import BaseBox from '~components/Box/BaseBox';
+import { Text } from '~components/Typography';
+import { Box } from '~components/Box';
 
 const searchParams = new URLSearchParams(window.top?.location.search);
 const getVersionParam = (): string | null => {
@@ -25,7 +27,6 @@ const getVersionParam = (): string | null => {
 };
 
 if (getVersionParam()) {
-  // eslint-disable-next-line @typescript-eslint/no--promises
   getBladeVersionFromBranch(getVersionParam());
 }
 
@@ -37,8 +38,9 @@ const useStackblitzSetup = ({
   code: SandboxStackBlitzProps['children'];
   editorHeight: SandboxStackBlitzProps['editorHeight'];
   showConsole: SandboxStackBlitzProps['showConsole'];
-}): void => {
+}): string | undefined => {
   const docsContext = React.useContext(DocsContext);
+  const [versionOverride, setVersionOverride] = React.useState<string | undefined>(undefined);
 
   // @ts-expect-error docsContext.store exists
   const colorScheme = docsContext?.store?.globals?.globals?.colorScheme ?? 'light';
@@ -104,7 +106,7 @@ const useStackblitzSetup = ({
     if (getVersionParam()) {
       getBladeVersionFromBranch(getVersionParam())
         .then((bladeVersionOverride) => {
-          console.log({ bladeVersionOverride });
+          setVersionOverride(bladeVersionOverride);
           return loadStackblitzProject(bladeVersionOverride);
         })
         .catch(() => {
@@ -116,9 +118,10 @@ const useStackblitzSetup = ({
     }
 
     loadStackblitzProject();
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorScheme, brandColor]);
+
+  return versionOverride;
 };
 
 const StyledEmbed = styled(BaseBox)<{ editorHeight: SandboxStackBlitzProps['editorHeight'] }>(
@@ -137,7 +140,7 @@ export const Sandbox = ({
   showConsole = false,
   padding = ['spacing.5', 'spacing.0', 'spacing.8'],
 }: SandboxStackBlitzProps): JSX.Element => {
-  useStackblitzSetup({
+  const versionOverride = useStackblitzSetup({
     code: children,
     editorHeight,
     showConsole,
@@ -150,6 +153,14 @@ export const Sandbox = ({
       editorHeight={typeof editorHeight !== 'number' ? editorHeight : undefined}
     >
       <div id="sb-embed" />
+      {versionOverride ? (
+        <Box display="flex" marginY="spacing.3" gap="spacing.2">
+          <Text weight="semibold" size="small">
+            Blade Version:
+          </Text>
+          <Text size="small">{versionOverride}</Text>
+        </Box>
+      ) : null}
     </StyledEmbed>
   );
 };
