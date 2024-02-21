@@ -39,6 +39,7 @@ export * from './Table';
 export * from './Tabs';
 export * from './Tag';
 export * from './Tooltip';
+export * from './Toast';
 export * from './types';
 export * from './Typography';
 export * from './VisuallyHidden';
