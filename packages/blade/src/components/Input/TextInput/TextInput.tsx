@@ -49,6 +49,10 @@ type TextInputCommonProps = Pick<
   | 'autoCapitalize'
   | 'testID'
   | 'onClick'
+  | 'size'
+  | 'leadingIcon'
+  | 'trailingLinkButton'
+  | 'trailingIcon'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -67,9 +71,9 @@ type TextInputCommonProps = Pick<
 
   /**
    * Icon that will be rendered at the beginning of the input field
+   * @deprecated Use `leadingIcon` instead. This prop will be removed in the next major version.
    */
   icon?: IconComponent;
-
   /**
    * Type of Input Field to be rendered. Use `PasswordInput` for type `password`
    *
@@ -246,6 +250,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     autoCompleteSuggestionType,
     autoCapitalize,
     testID,
+    size = 'medium',
+    leadingIcon,
+    trailingIcon,
     ...styledProps
   },
   ref,
@@ -326,9 +333,10 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
-      leadingIcon={icon}
+      leadingIcon={leadingIcon ?? icon}
       prefix={prefix}
       interactionElement={renderInteractionElement()}
+      trailingIcon={trailingIcon}
       suffix={suffix}
       validationState={validationState}
       errorText={errorText}
@@ -350,6 +358,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         autoCompleteSuggestionType,
         autoCapitalize,
       })}
+      size={size}
       {...styledProps}
     />
   );

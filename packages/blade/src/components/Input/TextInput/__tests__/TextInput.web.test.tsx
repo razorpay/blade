@@ -8,6 +8,7 @@ import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
+import { Link } from '~components/Link';
 
 describe('<TextInput />', () => {
   it('should render', () => {
@@ -76,7 +77,7 @@ describe('<TextInput />', () => {
         label="Enter company website"
         type="url"
         placeholder="something"
-        icon={InfoIcon}
+        leadingIcon={InfoIcon}
         prefix="https://"
         suffix=".com"
       />,
@@ -86,6 +87,24 @@ describe('<TextInput />', () => {
 
     const suffix = getByText('.com');
     expect(suffix).toBeVisible();
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render large size', () => {
+    const { container } = renderWithTheme(
+      <TextInput
+        label="Enter company website"
+        type="url"
+        placeholder="something"
+        leadingIcon={InfoIcon}
+        trailingIcon={InfoIcon}
+        prefix="https://"
+        suffix=".com"
+        trailingLinkButton={<Link>Apply</Link>}
+        size="large"
+      />,
+    );
 
     expect(container).toMatchSnapshot();
   });
