@@ -162,6 +162,8 @@ const _Drawer = ({
                 backgroundColor="popup.background.subtle"
                 elevation="highRaised"
                 height="100%"
+                display="flex"
+                flexDirection="column"
                 ref={refs.setFloating}
                 onKeyDown={(event) => {
                   if (event?.key === 'Escape' || event?.code === 'Escape') {
