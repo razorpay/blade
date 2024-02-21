@@ -287,6 +287,7 @@ export const BaseInputVisuals = ({
             {React.cloneElement(TrailingLinkButton, {
               size,
               variant: 'button',
+              isDisabled,
             })}
           </BaseBox>
         ) : null}

@@ -290,7 +290,7 @@ type BaseInputCommonProps = FormInputLabelProps &
     size?: 'medium' | 'large';
     /**
      * Link button to be rendered at the end of the input field.
-     * **Note:** `size` of the Link will be set to the same size as the input field & `variant` will be set to `button`.
+     * **Note:** `size` of the Link will be set to the same size as the input field, `isDisabled` will follow Input's `isDisabled`, & `variant` will be set to `button`.
      * Example:
      * ```tsx
      * trailingLinkButton={<Link onClick={handleClick}>Apply</Link>}
