@@ -8,6 +8,8 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -50,6 +52,11 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     defaultValue: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    size: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -252,6 +259,22 @@ const TextAreaMaxCharactersTemplate: StoryFn<typeof TextAreaComponent> = () => {
   );
 };
 export const TextAreaMaxCharacters = TextAreaMaxCharactersTemplate.bind({});
+
+const TextAreaSizesTemplate: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <Text size="large" marginBottom="spacing.2">
+        Medium Size:
+      </Text>
+      <TextAreaComponent {...args} size="medium" />
+      <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
+        Large Size:
+      </Text>
+      <TextAreaComponent {...args} size="large" />
+    </Box>
+  );
+};
+export const TextAreaSizes = TextAreaSizesTemplate.bind({});
 
 const TextAreaUncontrolledTemplate: StoryFn<typeof TextAreaComponent> = () => {
   return (
