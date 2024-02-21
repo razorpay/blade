@@ -308,7 +308,10 @@ BaseInputSuccess.args = {
   successText: 'Name validated',
 };
 
-const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({ maxCharacters }) => {
+const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({
+  maxCharacters,
+  size,
+}) => {
   return (
     <BaseInput
       id="base-input"
@@ -316,9 +319,14 @@ const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({ ma
       defaultValue="John Ives"
       name="fullName"
       maxCharacters={maxCharacters}
+      size={size}
       trailingFooterSlot={(value) => (
         <BaseBox marginTop="spacing.2">
-          <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters ?? 0} />
+          <CharacterCounter
+            size={size}
+            currentCount={value?.length ?? 0}
+            maxCount={maxCharacters ?? 0}
+          />
         </BaseBox>
       )}
       onChange={({ name, value }): void => console.log({ name, value })}
