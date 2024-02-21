@@ -15,18 +15,15 @@ const colors: ColorsWithModes = {
     surface: {
       background: {
         gray: {
-          subtle: globalColors.neutral.blueGrayLight[100],
-          moderate: globalColors.neutral.blueGrayLight[50],
+          subtle: globalColors.chromatic.forest[200],
+          moderate: globalColors.chromatic.forest[400],
           intense: globalColors.neutral.blueGrayLight[0],
         },
         primary: {
           subtle: globalColors.chromatic.azure.a50,
           intense: globalColors.chromatic.azure[500],
         },
-        sea: {
-          subtle: globalColors.chromatic.sea[50],
-          intense: globalColors.chromatic.sea[800],
-        },
+        sea: { subtle: globalColors.chromatic.sea[50], intense: globalColors.chromatic.sea[800] },
         cloud: {
           subtle: globalColors.chromatic.cloud[50],
           intense: globalColors.chromatic.cloud[800],
@@ -50,9 +47,7 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.blueGrayLight[600],
           disabled: globalColors.neutral.blueGrayLight.a200,
         },
-        primary: {
-          normal: globalColors.chromatic.azure[500],
-        },
+        primary: { normal: globalColors.chromatic.azure[500] },
         onSea: {
           onSubtle: globalColors.chromatic.forest[800],
           onIntense: globalColors.chromatic.forest[200],
@@ -81,9 +76,7 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.blueGrayLight[600],
           disabled: globalColors.neutral.blueGrayLight.a200,
         },
-        primary: {
-          normal: globalColors.chromatic.azure[500],
-        },
+        primary: { normal: globalColors.chromatic.azure[500] },
         onSea: {
           onSubtle: globalColors.chromatic.forest[600],
           onIntense: globalColors.chromatic.forest[400],
@@ -234,11 +227,11 @@ const colors: ColorsWithModes = {
           fadedHighlighted: globalColors.neutral.blueGrayLight.a200,
         },
         gray: {
-          default: globalColors.neutral.blueGrayLight.a50,
+          default: globalColors.neutral.blueGrayLight.a75,
           highlighted: globalColors.neutral.blueGrayLight.a100,
           disabled: globalColors.neutral.blueGrayLight.a50,
-          faded: globalColors.neutral.blueGrayLight.a75,
-          fadedHighlighted: globalColors.neutral.blueGrayLight.a100,
+          faded: globalColors.neutral.blueGrayLight.a25,
+          fadedHighlighted: globalColors.neutral.blueGrayLight.a75,
         },
         primary: {
           default: globalColors.chromatic.azure[500],
@@ -442,6 +435,7 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.black[100],
         },
       },
+      hover: { subtle: globalColors.neutral.white[50], intense: globalColors.neutral.black[10] },
     },
     overlay: {
       background: {
@@ -473,10 +467,7 @@ const colors: ColorsWithModes = {
           subtle: globalColors.chromatic.azure.a200,
           intense: globalColors.chromatic.azure[500],
         },
-        sea: {
-          subtle: globalColors.chromatic.sea[900],
-          intense: globalColors.chromatic.sea[100],
-        },
+        sea: { subtle: globalColors.chromatic.sea[900], intense: globalColors.chromatic.sea[100] },
         cloud: {
           subtle: globalColors.chromatic.cloud[900],
           intense: globalColors.chromatic.cloud[100],
@@ -500,9 +491,7 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.blueGrayDark[600],
           disabled: globalColors.neutral.blueGrayDark.a200,
         },
-        primary: {
-          normal: globalColors.chromatic.azure[300],
-        },
+        primary: { normal: globalColors.chromatic.azure[300] },
         onSea: {
           onSubtle: globalColors.chromatic.forest[200],
           onIntense: globalColors.chromatic.forest[800],
@@ -531,9 +520,7 @@ const colors: ColorsWithModes = {
           muted: globalColors.neutral.blueGrayDark[600],
           disabled: globalColors.neutral.blueGrayDark.a200,
         },
-        primary: {
-          normal: globalColors.chromatic.azure[300],
-        },
+        primary: { normal: globalColors.chromatic.azure[300] },
         onSea: {
           onSubtle: globalColors.chromatic.forest[400],
           onIntense: globalColors.chromatic.forest[600],
@@ -575,8 +562,8 @@ const colors: ColorsWithModes = {
           intense: globalColors.chromatic.sapphire[700],
         },
         neutral: {
-          subtle: globalColors.neutral.blueGrayDark[900],
-          intense: globalColors.neutral.blueGrayDark[200],
+          subtle: globalColors.neutral.blueGrayDark.a100,
+          intense: globalColors.neutral.blueGrayDark[800],
         },
       },
       border: {
@@ -597,8 +584,8 @@ const colors: ColorsWithModes = {
           intense: globalColors.chromatic.sapphire[800],
         },
         neutral: {
-          subtle: globalColors.neutral.blueGrayLight[900],
-          intense: globalColors.neutral.blueGrayLight[300],
+          subtle: globalColors.neutral.blueGrayDark.a100,
+          intense: globalColors.neutral.blueGrayDark[900],
         },
       },
       text: {
@@ -684,11 +671,11 @@ const colors: ColorsWithModes = {
           fadedHighlighted: globalColors.neutral.blueGrayDark.a100,
         },
         gray: {
-          default: globalColors.neutral.blueGrayDark.a50,
+          default: globalColors.neutral.blueGrayDark.a75,
           highlighted: globalColors.neutral.blueGrayDark.a100,
           disabled: globalColors.neutral.blueGrayDark.a50,
-          faded: globalColors.neutral.blueGrayDark.a75,
-          fadedHighlighted: globalColors.neutral.blueGrayDark.a100,
+          faded: globalColors.neutral.blueGrayDark.a25,
+          fadedHighlighted: globalColors.neutral.blueGrayDark.a75,
         },
         primary: {
           default: globalColors.chromatic.azure[400],
@@ -892,6 +879,7 @@ const colors: ColorsWithModes = {
           disabled: globalColors.neutral.black[100],
         },
       },
+      hover: { subtle: globalColors.neutral.black[25], intense: globalColors.neutral.white[100] },
     },
     overlay: {
       background: {
