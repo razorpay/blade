@@ -107,10 +107,13 @@ const App = () => {
   return (
     <Box>
       <Breadcrumb showLastSeparator marginBottom="spacing.3">
-        <BreadcrumbItem href="/">Home</BreadcrumbItem>
-        <BreadcrumbItem href="/dashboard">Dashboard</BreadcrumbItem>
+        <BreadcrumbItem href="/help">Help</BreadcrumbItem>
+        <BreadcrumbItem href="/support-tickets">Support Tickets</BreadcrumbItem>
       </Breadcrumb>
-      <Heading>Settlements</Heading>
+      <Box display="flex" gap="spacing.3">
+        <Heading>Settlements related</Heading>
+        <Badge color="notice">OPEN</Badge>
+      </Box>
     </Box>
   )
 }
