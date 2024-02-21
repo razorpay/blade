@@ -10,7 +10,7 @@ import { castWebType, makeMotionTime } from '~utils';
 function getFocusRingStyles({
   theme,
   hasNegativeOffset = false,
-  hasNoOffset = true,
+  hasNoOffset = false,
 }: GetFocusRingArgs) {
   return {
     outline: `4px solid ${theme.colors.surface.border.primary.muted}`,
