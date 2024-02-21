@@ -8,6 +8,7 @@ import type { ToastProps } from '~components/Toast/types';
 import { useToast } from '~components/Toast/useToast';
 import { ToastContainer } from '~components/Toast/ToastContainer';
 import type { Toast } from '~components/Toast/Toast';
+import { FileUpload } from '~components/FileUpload';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 
@@ -35,26 +36,40 @@ const ToastExample = (props: ToastProps): React.ReactElement => {
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
-export const TestToastShow: StoryFn<typeof Toast> = (): React.ReactElement => {
-  return <ToastExample content="Payment successful" />;
+export const TestSingleFileUpload: StoryFn<typeof Toast> = (): React.ReactElement => {
+  return (
+    <FileUpload
+      selectionType="single"
+      label="Upload GST"
+      helpText="Upload .jpg, .jpeg, or .png file only"
+      ///accept=".jpg, .jpeg, .png"
+      isRequired
+      necessityIndicator="required"
+      name="single-file-upload-input"
+      testID="file-upload"
+    />
+  );
 };
 
-TestToastShow.play = async () => {
-  const { getByRole, queryByText } = within(document.body);
+TestSingleFileUpload.play = async () => {
+  const { getByRole, queryByText, getByTestId, getByLabelText, getByText, querySelector } = within(
+    document.body,
+  );
   await sleep(1000);
 
-  const toastContent = 'Payment successful';
-  await expect(queryByText(toastContent)).not.toBeInTheDocument();
-  const button = getByRole('button', { name: 'Show Toast' });
-  await userEvent.click(button);
-  await sleep(400);
-  await expect(queryByText(toastContent)).toBeVisible();
+  const str = JSON.stringify({ name: 'test.json' });
+  const blob = new Blob([str]);
+  const file = new File([blob], 'values.json', {
+    type: 'application/JSON',
+  });
+
+  const input = getByTestId('file-upload-input');
+  await userEvent.upload(input, file);
   await sleep(4000);
-  await expect(queryByText(toastContent)).not.toBeVisible();
 };
 
 export default {
-  title: 'Components/Interaction Tests/Toast',
+  title: 'Components/Interaction Tests/FileUpload',
   parameters: {
     controls: {
       disable: true,
