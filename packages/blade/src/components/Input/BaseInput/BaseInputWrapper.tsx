@@ -54,10 +54,6 @@ const _BaseInputWrapper: React.ForwardRefRenderFunction<
       {...props}
     >
       {children}
-      {/* <BaseInputAnimatedBorder
-        currentInteraction={currentInteraction}
-        validationState={validationState}
-      /> */}
     </AnimatedBaseInputWrapper>
   );
 };
