@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.3.1
+
+### Patch Changes
+
+- 85f229d0: refactor(blade): add meta attributes to Toast
+
 ## 11.3.0
 
 ### Minor Changes
