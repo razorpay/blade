@@ -35,6 +35,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { LinkProps } from '~components/Link';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -287,6 +288,15 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default medium
      */
     size?: 'medium' | 'large';
+    /**
+     * Link button to be rendered at the end of the input field.
+     * **Note:** `size` of the Link will be set to the same size as the input field & `variant` will be set to `button`.
+     * Example:
+     * ```tsx
+     * trailingLinkButton={<Link onClick={handleClick}>Apply</Link>}
+     * ```
+     */
+    trailingLinkButton?: React.ReactElement<LinkProps>;
   } & TestID &
   Platform.Select<{
     native: {
@@ -743,6 +753,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isDropdownTrigger,
     isLabelInsideInput,
     size = 'medium',
+    trailingLinkButton,
     ...styledProps
   },
   ref,
@@ -954,6 +965,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             trailingIcon={trailingIcon}
             isDisabled={isDisabled}
             validationState={validationState}
+            trailingLinkButton={trailingLinkButton}
             size={size}
           />
         </BaseInputWrapper>
