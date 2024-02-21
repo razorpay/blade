@@ -221,12 +221,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               style={
                 [
                   {
-                    "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-                    "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
+                    "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                    "borderColor": "hsla(211, 27%, 76%, 1)",
+                    "borderRadius": 4,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
                     "display": "flex",
                     "flexDirection": "row",
                     "height": "auto",
@@ -650,25 +649,6 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   </View>
                 </View>
               </View>
-              <View
-                style={
-                  [
-                    {
-                      "backgroundColor": "hsla(227, 100%, 59%, 1)",
-                      "bottom": 0,
-                      "height": 1,
-                      "left": 0,
-                      "opacity": 1,
-                      "position": "absolute",
-                      "right": 0,
-                    },
-                    {
-                      "opacity": undefined,
-                      "width": "undefined%",
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
           <View
