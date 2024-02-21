@@ -78,7 +78,7 @@ type BaseLinkCommonProps = {
    * The title of the link which is displayed as a tooltip. This is a web only prop and has no effect on react-native.
    */
   htmlTitle?: string;
-  opacity: number;
+  opacity?: number;
 } & TestID &
   StyledPropsBlade &
   Omit<BladeCommonEvents, 'onBlur' | 'onMouseLeave'>;
