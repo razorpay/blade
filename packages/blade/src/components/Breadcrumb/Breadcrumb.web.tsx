@@ -6,6 +6,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { makeAccessible } from '~utils/makeAccessible';
 import { getStyledProps } from '~components/Box/styledProps';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const Separator = ({
   size,
@@ -36,7 +37,11 @@ const Breadcrumb = ({
   const contextValue = React.useMemo(() => ({ size, color }), [size, color]);
 
   return (
-    <BaseBox as="nav" {...getStyledProps(styledProps)}>
+    <BaseBox
+      as="nav"
+      {...getStyledProps(styledProps)}
+      {...metaAttribute({ name: MetaConstants.Breadcrumb })}
+    >
       <BreadcrumbContext.Provider value={contextValue}>
         <BaseBox
           as="ol"
@@ -62,6 +67,7 @@ const Breadcrumb = ({
                 alignItems="center"
                 gap="spacing.3"
                 {...makeAccessible({ current: ariaCurrent })}
+                {...metaAttribute({ name: MetaConstants.BreadcrumbItem })}
               >
                 {child}
                 <BaseBox as="span" {...makeAccessible({ hidden: true })}>
