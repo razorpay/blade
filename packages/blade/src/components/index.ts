@@ -5,6 +5,7 @@ export * from './Amount';
 export * from './Badge';
 export * from './BladeProvider';
 export * from './BottomSheet';
+export * from './Breadcrumb';
 export * from './Box';
 export * from './Button';
 export * from './Button/IconButton';
