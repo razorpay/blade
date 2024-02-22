@@ -8,7 +8,12 @@ import { Divider } from '~components/Divider';
 import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
 
-const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): React.ReactElement => {
+const FileUploadItem = ({
+  file,
+  onPreview,
+  onRemove,
+  onCancel,
+}: FileUploadItemProps): React.ReactElement => {
   const { name, size, percent, errorText, status } = file;
   const isUploading = status === 'uploading';
   const sizeInKB = size / 1024;
@@ -65,7 +70,7 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
               <IconButton
                 accessibilityLabel="Remove File"
                 icon={CloseIcon}
-                onClick={() => onRemove?.({ removedFile: file })}
+                onClick={() => onCancel?.({ file })}
               />
             </BaseBox>
           ) : (
@@ -81,20 +86,20 @@ const FileUploadItem = ({ file, onPreview, onRemove }: FileUploadItemProps): Rea
                   <IconButton
                     accessibilityLabel="Preview File"
                     icon={EyeIcon}
-                    onClick={() => onPreview?.({ previewedFile: file })}
+                    onClick={() => onPreview?.({ file })}
                   />
                   <Divider orientation="vertical" thickness="thinner" variant="normal" />
                   <IconButton
                     accessibilityLabel="Remove File"
                     icon={TrashIcon}
-                    onClick={() => onRemove?.({ removedFile: file })}
+                    onClick={() => onRemove?.({ file })}
                   />
                 </BaseBox>
               ) : (
                 <IconButton
                   accessibilityLabel="Remove File"
                   icon={TrashIcon}
-                  onClick={() => onRemove?.({ removedFile: file })}
+                  onClick={() => onRemove?.({ file })}
                 />
               )}
             </BaseBox>

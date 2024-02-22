@@ -87,7 +87,7 @@ function App(): React.ReactElement {
                   necessityIndicator="required"
                 />
                 <FileUploadComponent
-                  selectionType="single"
+                  uploadType="single"
                   label="Upload GST"
                   helpText="Upload .jpg, .jpeg, or .png file only"
                   accept=".jpg, .jpeg, .png"
@@ -245,7 +245,7 @@ const MultiFileUploadStory = `
                   necessityIndicator="required"
                 />
                 <FileUpload
-                  selectionType="multiple"
+                  uploadType="multiple"
                   label="Upload Product Images"
                   helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
                   maxCount={5}
@@ -390,7 +390,7 @@ import {
               onChange={({ value }) => setProductName(value)}
             />
             <FileUploadComponent
-              selectionType="multiple"
+              uploadType="multiple"
               label="Upload Product Images"
               helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
               maxCount={5}
@@ -565,7 +565,7 @@ const AutoFileUploadWithProgressStory = `
                 onChange={({ value }) => setProductName(value)}
               />
               <FileUpload
-                selectionType="multiple"
+                uploadType="multiple"
                 label="Upload Product Images"
                 helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
                 maxCount={5}
@@ -756,7 +756,7 @@ import {
                 onChange={({ value }) => setProductName(value)}
               />
               <FileUpload
-                selectionType="multiple"
+                uploadType="multiple"
                 label="Upload Product Images"
                 helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
                 maxCount={5}
@@ -769,9 +769,9 @@ import {
                 onDrop={({ fileList }: { fileList: BladeFileList }) =>
                   handleFileChange({ fileList })
                 }
-                onPreview={({ previewedFile }: { previewedFile: BladeFile }) => {
+                onPreview={({ file }: { file: BladeFile }) => {
                   setIsOpen(true);
-                  setImageFileSource(URL.createObjectURL(previewedFile));
+                  setImageFileSource(URL.createObjectURL(file));
                 }}
                 isRequired
                 necessityIndicator="required"

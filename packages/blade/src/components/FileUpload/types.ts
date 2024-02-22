@@ -30,9 +30,9 @@ type FileUploadCommonProps = {
    */
   labelPosition?: 'top' | 'left';
   /**
-   * Defines the selection behavior of the FileUpload component
+   * Defines the upload behavior of the FileUpload component
    */
-  selectionType?: 'single' | 'multiple';
+  uploadType?: 'single' | 'multiple';
   /**
    * File types that can be accepted. See [input's accept attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept)
    *
@@ -58,10 +58,6 @@ type FileUploadCommonProps = {
    */
   name?: string;
   /**
-   * Default list of files that have been uploaded, useful when the component is uncontrolled
-   */
-  defaultFileList?: BladeFileList;
-  /**
    * List of files that have been selected/uploaded, useful when the component is controlled
    */
   fileList?: BladeFileList;
@@ -80,11 +76,15 @@ type FileUploadCommonProps = {
   /**
    * Callback function triggered when the preview icon is clicked
    */
-  onPreview?: ({ previewedFile }: { previewedFile: File }) => void;
+  onPreview?: ({ file }: { file: File }) => void;
   /**
    * Callback function triggered when a file is removed
    */
-  onRemove?: ({ removedFile }: { removedFile: File }) => void;
+  onRemove?: ({ file }: { file: File }) => void;
+  /**
+   * Callback function triggered when a file upload is cancelled
+   */
+  onCancel?: ({ file }: { file: File }) => void;
   /**
    * Callback function executed when files are dropped into the upload area
    */
@@ -138,7 +138,7 @@ type FileUploadPropsWithLabel = {
 type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
   FileUploadCommonProps;
 
-type FileUploadItemProps = Pick<FileUploadProps, 'onPreview' | 'onRemove'> & {
+type FileUploadItemProps = Pick<FileUploadProps, 'onPreview' | 'onRemove' | 'onCancel'> & {
   file: BladeFile;
 };
 

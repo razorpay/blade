@@ -25,15 +25,15 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   {
     name,
     accept,
-    selectionType = 'single',
+    uploadType = 'single',
     onChange,
     onPreview,
     onRemove,
+    onCancel,
     onDrop,
     isDisabled,
     isRequired,
     necessityIndicator,
-    defaultFileList,
     fileList,
     testID,
     label,
@@ -49,17 +49,17 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   ref,
 ): React.ReactElement => {
   const { platform } = useTheme();
-  const [selectedFiles, setSelectedFiles] = useState<BladeFileList>(
-    fileList ?? defaultFileList ?? [],
-  );
+  const [selectedFiles, setSelectedFiles] = useState<BladeFileList>(fileList ?? []);
   const [errorMessage, setErrorMessage] = useState(errorText);
   const [internalValidationState, setInternalValidationState] = useState('none');
   const [isActive, setIsActive] = useState(false);
 
-  const isMultiple = selectionType === 'multiple';
+  const isMultiple = uploadType === 'multiple';
   const inputLabelPosition = platform === 'onMobile' ? 'top' : labelPosition;
   const isLabelLeftPositioned = inputLabelPosition === 'left';
-  const willRenderHintText = Boolean(helpText) || Boolean(errorMessage);
+  const willRenderHintText =
+    !isMultiple && selectedFiles.length === 1 ? false : Boolean(helpText) || Boolean(errorMessage);
+
   const showError = validationState === 'error' || internalValidationState === 'error';
   const showHelpText = !showError && helpText;
   const accessibilityText =
@@ -94,7 +94,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   }, []);
 
   const validateFiles = (inputFiles: BladeFileList, allFiles: BladeFileList): boolean => {
-    if (selectionType === 'single' && inputFiles.length > 1) {
+    if (uploadType === 'single' && inputFiles.length > 1) {
       setErrorMessage('You can upload only one file.');
       setInternalValidationState('error');
       return true;
@@ -299,7 +299,12 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             onRemove={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
               setSelectedFiles(newFiles);
-              onRemove?.({ removedFile: file });
+              onRemove?.({ file });
+            }}
+            onCancel={() => {
+              const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
+              setSelectedFiles(newFiles);
+              onCancel?.({ file });
             }}
             onPreview={onPreview}
           />
