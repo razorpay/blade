@@ -1,27 +1,15 @@
-import styled from 'styled-components';
+import { Box } from '~components/Box';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
-import BaseBox from '~components/Box/BaseBox';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHeader,
+  TableHeaderCell,
+  TableHeaderRow,
+  TableRow,
+} from '~components/Table';
 import { Code, Text } from '~components/Typography';
-
-const StyledArgsTable = styled(BaseBox)(
-  (props) => `
-  font-family: ${props.theme.typography.fonts.family.text};
-  text-align: left;
-  min-width: 500px;
-
-  &,
-  & th,
-  & td {
-    border: 1px solid ${props.theme.colors.surface.border.gray.normal};
-    border-collapse: collapse;
-  }
-
-  & td,
-  & th {
-    padding: ${props.theme.spacing[3]}px;
-  }
-`,
-);
 
 const ArgsTable = ({
   data,
@@ -32,44 +20,60 @@ const ArgsTable = ({
   marginBottom?: BaseBoxProps['marginBottom'];
   marginTop?: BaseBoxProps['marginTop'];
 }): JSX.Element => {
+  const nodes = Object.entries(data).map(([prop, type], index) => {
+    return {
+      id: index,
+      prop,
+      type,
+    };
+  });
+
   return (
-    <StyledArgsTable as="table" marginBottom={marginBottom} marginTop={marginTop}>
-      <tr>
-        <th>
-          <Text weight="semibold">Prop</Text>
-        </th>
-        <th>
-          <Text weight="semibold">Type</Text>
-        </th>
-      </tr>
-      {Object.entries(data).map(([propName, propType]) => {
-        const isTypeObject = typeof propType === 'object' && 'note' in propType;
-        const propNote = isTypeObject ? `(${propType.note})` : undefined;
-        const propTypeJSX = (() => {
-          if (typeof propType === 'string') {
-            return <Text>{propType}</Text>;
-          }
+    <div className="sb-unstyled">
+      <Box marginBottom={marginBottom} marginTop={marginTop}>
+        <Table data={{ nodes }}>
+          {(tableData) => (
+            <>
+              <TableHeader>
+                <TableHeaderRow>
+                  <TableHeaderCell>Prop</TableHeaderCell>
+                  <TableHeaderCell>Type</TableHeaderCell>
+                </TableHeaderRow>
+              </TableHeader>
+              <TableBody>
+                {tableData.map((tableItem, index) => {
+                  const propType = tableItem.type;
+                  const isTypeObject = typeof propType === 'object' && 'note' in propType;
+                  const propNote = isTypeObject ? `(${propType.note})` : undefined;
+                  const propTypeJSX = (() => {
+                    if (typeof propType === 'string') {
+                      return <Text>{propType}</Text>;
+                    }
 
-          if (isTypeObject) {
-            return <Text>{propType.type}</Text>;
-          }
+                    if (isTypeObject) {
+                      return <Text>{propType.type}</Text>;
+                    }
 
-          return propType;
-        })();
+                    return propType;
+                  })();
 
-        return (
-          <tr key={propName}>
-            <td>
-              <Text size="medium" variant="body">
-                <Code size="medium">{propName}</Code> {propNote}
-              </Text>
-            </td>
-
-            <td>{propTypeJSX}</td>
-          </tr>
-        );
-      })}
-    </StyledArgsTable>
+                  return (
+                    <TableRow key={index} item={tableItem}>
+                      <TableCell>
+                        <Text size="medium" variant="body">
+                          <Code size="medium">{tableItem.prop}</Code> {propNote}
+                        </Text>
+                      </TableCell>
+                      <TableCell>{propTypeJSX}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </>
+          )}
+        </Table>
+      </Box>
+    </div>
   );
 };
 

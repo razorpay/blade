@@ -57,7 +57,7 @@ export const Default = (args: BoxProps): React.ReactElement => {
 
 Default.args = {
   padding: { base: 'spacing.2', m: 'spacing.10' },
-  backgroundColor: 'surface.background.level1.lowContrast',
+  backgroundColor: 'surface.background.gray.intense',
 } as BoxProps;
 
 export const Responsive = (args: BoxProps): React.ReactElement => {
@@ -107,7 +107,7 @@ export const Elevations = (args: BoxProps): React.ReactElement => {
 
 Elevations.args = {
   padding: 'spacing.8',
-  backgroundColor: 'surface.background.level2.lowContrast',
+  backgroundColor: 'surface.background.gray.moderate',
   borderRadius: 'large',
 } as BoxProps;
 

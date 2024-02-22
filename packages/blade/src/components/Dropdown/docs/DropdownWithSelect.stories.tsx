@@ -281,7 +281,7 @@ export const InternalSelect = (): React.ReactElement => {
   return (
     <Box
       padding="spacing.5"
-      backgroundColor="surface.background.level3.lowContrast"
+      backgroundColor="surface.background.gray.moderate"
       width="100%"
       minHeight="100px"
       overflow="scroll"
@@ -327,7 +327,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
     <Box>
       <Box
         padding="spacing.5"
-        backgroundColor="surface.background.level3.lowContrast"
+        backgroundColor="surface.background.gray.moderate"
         width="100%"
         minHeight="100px"
         overflow="scroll"
@@ -344,7 +344,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
       </Box>
       <Box
         padding="spacing.5"
-        backgroundColor="surface.background.level3.lowContrast"
+        backgroundColor="surface.background.gray.moderate"
         width="100%"
         position="fixed"
         bottom="spacing.0"
