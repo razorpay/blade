@@ -5,21 +5,11 @@ import { within, userEvent, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { Drawer, DrawerBody, DrawerHeader } from '../';
 import type { DrawerProps } from '../';
-import { SelectInput } from '~components/Input/DropdownInputTriggers';
-import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Badge } from '~components/Badge';
 import { DownloadIcon } from '~components/Icons';
 import { Heading } from '~components/Typography';
-
-const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
-
-const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
-  const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
-  const activeDescendantElement = document.querySelector(`#${activeDescendantId}`);
-  return activeDescendantElement?.textContent;
-};
 
 const BasicDrawer = (args: DrawerProps): React.ReactElement => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
@@ -43,8 +33,48 @@ const BasicDrawer = (args: DrawerProps): React.ReactElement => {
   );
 };
 
+const StackedDrawer = (args: DrawerProps): React.ReactElement => {
+  const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+  const [isSecondDrawerOpen, setIsSecondDrawerOpen] = React.useState(false);
+
+  return (
+    <Box>
+      <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
+      <Drawer {...args} isOpen={isDrawerOpen} onDismiss={() => setIsDrawerOpen(false)}>
+        <DrawerHeader
+          title="Vendor Payment Details"
+          titleSuffix={<Badge color="positive">New</Badge>}
+          subtitle="See your payment details here"
+          trailing={<Button icon={DownloadIcon} />}
+        />
+        <DrawerBody>
+          <Box display="flex" alignItems="center">
+            <Heading>Drawer Heading</Heading>
+            <Button
+              onClick={() => {
+                setIsSecondDrawerOpen(true);
+              }}
+            >
+              Open 2nd Drawer
+            </Button>
+          </Box>
+        </DrawerBody>
+      </Drawer>
+
+      <Drawer isOpen={isSecondDrawerOpen} onDismiss={() => setIsSecondDrawerOpen(false)}>
+        <DrawerHeader title="Stacked Drawer" trailing={<Button icon={DownloadIcon} />} />
+        <DrawerBody>
+          <Box display="flex" alignItems="center">
+            <Heading>Drawer 2 Heading</Heading>
+          </Box>
+        </DrawerBody>
+      </Drawer>
+    </Box>
+  );
+};
+
 export const DrawerOpen: StoryFn<typeof Drawer> = (props): React.ReactElement => {
-  return <BasicDrawer {...props} testID="drawer-boi" />;
+  return <BasicDrawer {...props} />;
 };
 
 DrawerOpen.play = async () => {
@@ -62,270 +92,91 @@ DrawerOpen.play = async () => {
   await expect(queryByTestId('drawer-overlay')).not.toBeInTheDocument();
 };
 
-// export const MultiSelectItem: StoryFn<typeof Dropdown> = (props): React.ReactElement => {
-//   return <BasicDropdown {...props} selectionType="multiple" />;
-// };
+export const NoOverlay: StoryFn<typeof Drawer> = (props): React.ReactElement => {
+  return <BasicDrawer {...props} showOverlay={false} />;
+};
 
-// MultiSelectItem.play = async ({ canvasElement }) => {
-//   const { getByRole, getByLabelText, queryByLabelText } = within(canvasElement);
-//   const selectInput = getByRole('combobox', { name: 'City' });
-//   await userEvent.click(selectInput);
-//   await expect(queryByLabelText('Close Bengaluru tag')).toBeFalsy();
-//   await userEvent.click(getByRole('option', { name: 'Bengaluru' }));
-//   await userEvent.click(getByRole('option', { name: 'Pune' }));
-//   await expect(getByLabelText('Close Bengaluru tag')).toBeInTheDocument();
-//   await expect(getByLabelText('Close Pune tag')).toBeInTheDocument();
-//   await expect(queryByLabelText('Close Mumbai tag')).toBeFalsy();
-// };
+NoOverlay.play = async () => {
+  const { getByRole, queryByRole, queryByTestId } = within(document.body);
 
-// export const Accessibility: StoryFn<typeof Dropdown> = (props): React.ReactElement => {
-//   return (
-//     <BasicDropdown
-//       {...props}
-//       items={[
-//         'Mumbai',
-//         'Bengaluru',
-//         'Pune',
-//         'Delhi',
-//         'Hyderabad',
-//         'Chennai',
-//         'Kolkata',
-//         'Ahmedabad',
-//         'Jaipur',
-//         'Lucknow',
-//         'Kanpur',
-//         'Nagpur',
-//         'Patna',
-//       ]}
-//     />
-//   );
-// };
+  await expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument();
+  const drawerToggleButton = getByRole('button', { name: 'Toggle Drawer' });
+  await userEvent.click(drawerToggleButton);
+  await waitFor(() => expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible());
+  await expect(queryByTestId('drawer-overlay')).not.toBeInTheDocument();
+  await userEvent.click(drawerToggleButton);
+  await waitFor(() =>
+    expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument(),
+  );
+};
 
-// Accessibility.play = async ({ canvasElement }) => {
-//   const { getByRole, getByTestId } = within(canvasElement);
-//   const selectInput = getByRole('combobox', { name: 'City' });
-//   selectInput.focus();
-//   await userEvent.keyboard('{ArrowDown}');
+export const StackingDrawerOpen: StoryFn<typeof Drawer> = (props): React.ReactElement => {
+  return <StackedDrawer {...props} />;
+};
 
-//   // move to 1st item
-//   await userEvent.keyboard('{ArrowDown}');
-//   await expect(getActiveDescendant(selectInput)).toBe('Mumbai');
+StackingDrawerOpen.play = async () => {
+  const { getByRole, queryByRole, getAllByLabelText, getByText, queryByText } = within(
+    document.body,
+  );
 
-//   // move to 2nd item
-//   await userEvent.keyboard('{ArrowDown}');
-//   await expect(getActiveDescendant(selectInput)).toBe('Bengaluru');
+  // first drawer open
+  await expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument();
+  const drawerToggleButton = getByRole('button', { name: 'Toggle Drawer' });
+  await userEvent.click(drawerToggleButton);
+  await waitFor(() => expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible());
 
-//   // move to 1st item
-//   await userEvent.keyboard('{Home}');
-//   await expect(getActiveDescendant(selectInput)).toBe('Mumbai');
+  // 2nd drawer open
+  await expect(queryByRole('heading', { name: 'Drawer 2 Heading' })).not.toBeInTheDocument();
+  await userEvent.click(getByRole('button', { name: 'Open 2nd Drawer' }));
+  await waitFor(() => expect(getByText('Drawer 2 Heading')).toBeVisible());
 
-//   // move 10 items down or to last item
-//   await userEvent.keyboard('{PageDown}');
-//   await expect(getActiveDescendant(selectInput)).toBe('Kanpur');
-//   await userEvent.keyboard('{PageDown}');
-//   await expect(getActiveDescendant(selectInput)).toBe('Patna');
+  const closeButtons = getAllByLabelText('Close');
 
-//   // move 10 items up
-//   await userEvent.keyboard('{PageUp}');
-//   await expect(getActiveDescendant(selectInput)).toBe('Pune');
+  // 2nd drawer close
+  await userEvent.click(closeButtons[1]);
+  await waitFor(() => expect(queryByText('Drawer 2 Heading')).not.toBeInTheDocument());
+  await expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible();
 
-//   // Move to last item
-//   await userEvent.keyboard('{End}');
-//   await expect(getActiveDescendant(selectInput)).toBe('Patna');
+  // 1st drawer close
+  await userEvent.click(closeButtons[0]);
+  await waitFor(() =>
+    expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument(),
+  );
+};
 
-//   // [TypeAhead tests] Move to item starting with "P"
-//   await userEvent.keyboard('p');
-//   await expect(getActiveDescendant(selectInput)).toBe('Pune');
-//   await userEvent.keyboard('a');
-//   await expect(getActiveDescendant(selectInput)).toBe('Patna');
+export const KeyboardNavigations: StoryFn<typeof Drawer> = (props): React.ReactElement => {
+  return <StackedDrawer {...props} />;
+};
 
-//   // select item
-//   await userEvent.keyboard('{Enter}');
-//   await expect(getByRole('combobox', { name: 'City' })).toHaveTextContent('Patna');
-//   await waitFor(() => expect(getByTestId('dropdown-overlay')).not.toBeVisible());
+KeyboardNavigations.play = async () => {
+  const { getByRole, queryByRole, getByText, queryByText } = within(document.body);
 
-//   // close dropdown
-//   await userEvent.keyboard('{ArrowDown}');
-//   await waitFor(() => expect(getByTestId('dropdown-overlay')).toBeVisible());
-//   await userEvent.keyboard('{Escape}');
-//   await waitFor(() => expect(getByTestId('dropdown-overlay')).not.toBeVisible());
+  // first drawer open
+  await expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument();
+  const drawerToggleButton = getByRole('button', { name: 'Toggle Drawer' });
+  drawerToggleButton.focus();
+  await userEvent.keyboard('{Enter}');
+  await waitFor(() => expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible());
+  await expect(getByRole('button', { name: 'Close' })).toHaveFocus();
 
-//   // Input focus test
-//   await expect(selectInput).toHaveFocus();
-//   await userEvent.keyboard('{TAB}');
-//   await expect(selectInput).not.toHaveFocus();
-// };
+  // 2nd drawer open
+  await expect(queryByRole('heading', { name: 'Drawer 2 Heading' })).not.toBeInTheDocument();
+  await userEvent.keyboard('{Tab}');
+  await userEvent.keyboard('{Enter}');
+  await waitFor(() => expect(getByText('Drawer 2 Heading')).toBeVisible());
 
-// export const FooterActions: StoryFn<typeof Dropdown> = (): React.ReactElement => {
-//   const [hasApplied, setHasApplied] = React.useState(false);
-//   return (
-//     <Dropdown>
-//       <SelectInput label="Fruits" />
-//       <DropdownOverlay testID="dropdown-overlay">
-//         <ActionList>
-//           <ActionListItem title="Apple" value="apple" />
-//           <ActionListItem title="Mango" value="mango" />
-//         </ActionList>
-//         <DropdownFooter>
-//           {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
-//           <Button onClick={() => setHasApplied(true)}>{hasApplied ? 'Applied' : 'Apply'}</Button>
-//           <Button marginLeft="spacing.4" variant="secondary" onClick={() => setHasApplied(false)}>
-//             Cancel
-//           </Button>
-//         </DropdownFooter>
-//       </DropdownOverlay>
-//     </Dropdown>
-//   );
-// };
+  // 2nd drawer close
+  await userEvent.keyboard('{Enter}');
+  await waitFor(() => expect(queryByText('Drawer 2 Heading')).not.toBeInTheDocument());
+  await expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible();
 
-// FooterActions.play = async ({ canvasElement }) => {
-//   const { getByRole, queryByRole, getByTestId } = within(canvasElement);
-//   const selectInput = getByRole('combobox', { name: 'Fruits' });
-//   await userEvent.click(selectInput);
-//   await waitFor(() => expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible());
-//   await userEvent.keyboard('{ArrowDown}');
-//   // virtual focus on first item, actual focus on select
-//   await expect(getActiveDescendant(selectInput)).toBe('Apple');
-//   await expect(selectInput).toHaveFocus();
-
-//   // move focus to next interactive item in footer without closing the dropdown
-//   await userEvent.keyboard('{TAB}');
-//   await expect(getByRole('button', { name: 'Apply' })).toHaveFocus();
-//   await expect(queryByRole('button', { name: 'Applied' })).toBeFalsy();
-//   await userEvent.keyboard('{Enter}');
-//   await waitFor(() => expect(getByRole('button', { name: 'Applied' })).toBeInTheDocument());
-
-//   await userEvent.keyboard('{TAB}');
-//   await expect(getByRole('button', { name: 'Cancel' })).toHaveFocus();
-//   await userEvent.keyboard('{Escape}');
-//   await waitFor(() => expect(getByTestId('dropdown-overlay')).not.toBeVisible());
-// };
-
-// export const ControlledDropdownSingleSelect: StoryFn<typeof Dropdown> = (): React.ReactElement => {
-//   const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
-//   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-
-//   return (
-//     <>
-//       <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
-//       <Button marginX="spacing.4" variant="secondary" onClick={() => setCurrentSelection('')}>
-//         Clear Selection
-//       </Button>
-//       <Button
-//         variant="tertiary"
-//         onClick={() => {
-//           setIsDropdownOpen(true);
-//         }}
-//       >
-//         Open Dropdown
-//       </Button>
-//       <Dropdown
-//         isOpen={isDropdownOpen}
-//         onOpenChange={(isOpen) => {
-//           setIsDropdownOpen(isOpen);
-//         }}
-//         selectionType="single"
-//       >
-//         <SelectInput
-//           label="Select City"
-//           value={currentSelection}
-//           onChange={(args) => {
-//             setCurrentSelection(args.values[0]);
-//           }}
-//         />
-//         <DropdownOverlay>
-//           <ActionList>
-//             <ActionListItem title="Bangalore" value="bangalore" />
-//             <ActionListItem title="Pune" value="pune" />
-//             <ActionListItem title="Chennai" value="chennai" />
-//           </ActionList>
-//         </DropdownOverlay>
-//       </Dropdown>
-//     </>
-//   );
-// };
-
-// ControlledDropdownSingleSelect.play = async ({ canvasElement }) => {
-//   const { getByRole } = within(canvasElement);
-//   const selectInput = getByRole('combobox', { name: 'Select City' });
-
-//   // external button control selection test
-//   await expect(selectInput).toHaveTextContent('Select Option');
-//   await userEvent.click(getByRole('button', { name: 'Select Bangalore' }));
-//   await waitFor(() => expect(selectInput).toHaveTextContent('Bangalore'));
-
-//   // select input's control test
-//   await userEvent.click(selectInput);
-//   await userEvent.click(getByRole('option', { name: 'Pune' }));
-//   await waitFor(() => expect(selectInput).toHaveTextContent('Pune'));
-
-//   // Clear button test
-//   await userEvent.click(getByRole('button', { name: 'Clear Selection' }));
-//   await waitFor(() => expect(selectInput).toHaveTextContent('Select Option'));
-
-//   // toggle dropdown test
-//   await userEvent.click(getByRole('button', { name: 'Open Dropdown' }));
-//   await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
-// };
-
-// export const ControlledDropdownMultiSelect: StoryFn<typeof Dropdown> = (): React.ReactElement => {
-//   const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
-//   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
-
-//   return (
-//     <>
-//       <Button
-//         onClick={() => {
-//           if (!currentSelection.includes('bangalore')) {
-//             setCurrentSelection([...currentSelection, 'bangalore']);
-//           }
-//         }}
-//       >
-//         Select Bangalore
-//       </Button>
-//       <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Open Dropdown</Button>
-
-//       <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen} selectionType="multiple">
-//         <SelectInput
-//           label="Select City"
-//           value={currentSelection}
-//           onChange={(args) => {
-//             if (args) {
-//               setCurrentSelection(args.values);
-//             }
-//           }}
-//         />
-//         <DropdownOverlay>
-//           <ActionList>
-//             <ActionListItem title="Bangalore" value="bangalore" />
-//             <ActionListItem title="Pune" value="pune" />
-//             <ActionListItem title="Chennai" value="chennai" />
-//           </ActionList>
-//         </DropdownOverlay>
-//       </Dropdown>
-//     </>
-//   );
-// };
-
-// ControlledDropdownMultiSelect.play = async ({ canvasElement }) => {
-//   const { getByRole, queryAllByLabelText } = within(canvasElement);
-//   const selectInput = getByRole('combobox', { name: 'Select City' });
-
-//   // Select 1 item programatically
-//   await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeFalsy();
-//   await userEvent.click(getByRole('button', { name: 'Select Bangalore' }));
-//   await waitFor(() => expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument());
-
-//   // select 2nd item from actionlist
-//   await userEvent.click(selectInput);
-//   await userEvent.click(getByRole('option', { name: 'Pune' }));
-//   await waitFor(() => expect(queryAllByLabelText('Close Pune tag')?.[0]).toBeInTheDocument());
-//   await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
-
-//   // dropdown open test
-//   await userEvent.click(getByRole('button', { name: 'Open Dropdown' }));
-//   await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
-// };
+  // 1st drawer close
+  await userEvent.keyboard('{Escape}');
+  await waitFor(() =>
+    expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument(),
+  );
+  await waitFor(() => expect(drawerToggleButton).toHaveFocus());
+};
 
 export default {
   title: 'Components/Interaction Tests/Drawer',
