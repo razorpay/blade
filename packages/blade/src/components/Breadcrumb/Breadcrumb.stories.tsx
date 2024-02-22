@@ -23,30 +23,24 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Breadcrumb"
-      componentDescription="Toast is a feedback element to display temporary short messages in the interface"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75839-1125191&mode=design&t=SLxhqgKm27oCjSYV-4"
+      componentDescription="Breadcrumbs are used for navigating through or to show user’s location in an application"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=81010%3A24682"
     >
       <Title>Usage</Title>
       <Sandbox>
         {`
-        import { ToastContainer, useToast } from '@razorpay/blade/components';
+        import { Box, Breadcrumb, BreadcrumbItem, HomeIcon } from '@razorpay/blade/components';
 
         function App(): React.ReactElement {
-          const toast = useToast();
-
-          // Integrating Blade Toast in your App
-          // 1. Render the ToastContainer component at the root of your app
-          // 2. Utilize the methods exposed via useToast hook to show/dismiss toasts
           return (
-            <Box>
-              <ToastContainer />
-              <Button 
-                onClick={() => {
-                  toast.show({ content: 'Payment successful', color: 'positive' })
-                }}
-              >
-                Show Toast
-              </Button>
+            <Box padding="spacing.4">
+              <Breadcrumb>
+                <BreadcrumbItem accessibilityLabel="Home" icon={HomeIcon} href="/home" />
+                <BreadcrumbItem href="/dashboard">Dashboard</BreadcrumbItem>
+                <BreadcrumbItem isCurrentPage href="/settlements">
+                  Settlements
+                </BreadcrumbItem>
+              </Breadcrumb>
             </Box>
           );
         }
@@ -64,7 +58,6 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
-    onDismiss: { action: 'Dismissed' },
   },
   args: {
     size: 'medium',
@@ -167,6 +160,28 @@ const BreadcrumbColors: StoryFn<BreadcrumbProps> = () => {
 
 BreadcrumbColors.storyName = 'Colors';
 export const Colors = BreadcrumbColors.bind({});
+
+const BreadcrumbWrapMultilineTemplate: StoryFn<BreadcrumbProps> = () => {
+  return (
+    <Box display="flex" gap="spacing.5" flexDirection="column">
+      <Box padding="spacing.6" width="350px" backgroundColor="surface.background.gray.intense">
+        <Breadcrumb size="medium" color="primary">
+          <BreadcrumbItem accessibilityLabel="Home" icon={HomeIcon} href="/home" />
+          <BreadcrumbItem href="/item1">Item 1</BreadcrumbItem>
+          <BreadcrumbItem href="/item2">Item 2</BreadcrumbItem>
+          <BreadcrumbItem href="/item3">Item 3</BreadcrumbItem>
+          <BreadcrumbItem href="/item4">Item 4</BreadcrumbItem>
+          <BreadcrumbItem href="/item5">Item 5</BreadcrumbItem>
+          <BreadcrumbItem href="/item6">Item 6</BreadcrumbItem>
+          <BreadcrumbItem href="/item7">Item 7</BreadcrumbItem>
+        </Breadcrumb>
+      </Box>
+    </Box>
+  );
+};
+
+BreadcrumbWrapMultilineTemplate.storyName = 'BreadcrumbWrapMultiline';
+export const BreadcrumbWrapMultiline = BreadcrumbWrapMultilineTemplate.bind({});
 
 const urls = {
   home: '/home',
