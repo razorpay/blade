@@ -145,6 +145,9 @@ const _Drawer = ({
                   }}
                   className={isVisible ? SHOW_DRAWER : ''}
                   lockScroll={true}
+                  {...metaAttribute({
+                    testID: 'drawer-overlay',
+                  })}
                 />
               ) : null}
               <AnimatedDrawerContainer

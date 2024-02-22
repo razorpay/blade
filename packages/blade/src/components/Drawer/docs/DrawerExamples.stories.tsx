@@ -28,7 +28,7 @@ const DrawerMeta: Meta = {
 
 export const BasicDrawer = (): React.ReactElement => {
   return (
-    <Sandbox padding="spacing.0" editorHeight="90vh">
+    <Sandbox padding="spacing.0" editorHeight="100vh">
       {BasicDrawerStory}
     </Sandbox>
   );
@@ -36,7 +36,7 @@ export const BasicDrawer = (): React.ReactElement => {
 
 export const DrawerStacking = (): React.ReactElement => {
   return (
-    <Sandbox padding="spacing.0" editorHeight="90vh">
+    <Sandbox padding="spacing.0" editorHeight="100vh">
       {DrawerStackingStory}
     </Sandbox>
   );
@@ -44,7 +44,7 @@ export const DrawerStacking = (): React.ReactElement => {
 
 export const DrawerWithTable = (): React.ReactElement => {
   return (
-    <Sandbox padding="spacing.0" editorHeight="90vh">
+    <Sandbox padding="spacing.0" editorHeight="100vh">
       {DrawerWithTableStory}
     </Sandbox>
   );
@@ -52,7 +52,7 @@ export const DrawerWithTable = (): React.ReactElement => {
 
 export const ScrollableContent = (): React.ReactElement => {
   return (
-    <Sandbox padding="spacing.0" editorHeight="90vh">
+    <Sandbox padding="spacing.0" editorHeight="100vh">
       {ScrollableContentStory}
     </Sandbox>
   );
