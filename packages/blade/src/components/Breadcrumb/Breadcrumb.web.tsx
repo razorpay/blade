@@ -49,7 +49,7 @@ const Breadcrumb = ({
           padding="spacing.0"
           display="flex"
           flexWrap="wrap"
-          gap="spacing.3"
+          gap="spacing.2"
           alignItems="center"
           style={listStyleNone}
           {...makeAccessible({ label: accessibilityLabel })}
@@ -65,7 +65,7 @@ const Breadcrumb = ({
                 as="li"
                 display="flex"
                 alignItems="center"
-                gap="spacing.3"
+                gap="spacing.2"
                 {...makeAccessible({ current: ariaCurrent })}
                 {...metaAttribute({ name: MetaConstants.BreadcrumbItem })}
               >

@@ -161,6 +161,28 @@ const BreadcrumbColors: StoryFn<BreadcrumbProps> = () => {
 BreadcrumbColors.storyName = 'Colors';
 export const Colors = BreadcrumbColors.bind({});
 
+const BreadcrumbWrapMultilineTemplate: StoryFn<BreadcrumbProps> = () => {
+  return (
+    <Box display="flex" gap="spacing.5" flexDirection="column">
+      <Box padding="spacing.6" width="350px" backgroundColor="surface.background.gray.intense">
+        <Breadcrumb size="medium" color="primary">
+          <BreadcrumbItem accessibilityLabel="Home" icon={HomeIcon} href="/home" />
+          <BreadcrumbItem href="/item1">Item 1</BreadcrumbItem>
+          <BreadcrumbItem href="/item2">Item 2</BreadcrumbItem>
+          <BreadcrumbItem href="/item3">Item 3</BreadcrumbItem>
+          <BreadcrumbItem href="/item4">Item 4</BreadcrumbItem>
+          <BreadcrumbItem href="/item5">Item 5</BreadcrumbItem>
+          <BreadcrumbItem href="/item6">Item 6</BreadcrumbItem>
+          <BreadcrumbItem href="/item7">Item 7</BreadcrumbItem>
+        </Breadcrumb>
+      </Box>
+    </Box>
+  );
+};
+
+BreadcrumbWrapMultilineTemplate.storyName = 'BreadcrumbWrapMultiline';
+export const BreadcrumbWrapMultiline = BreadcrumbWrapMultilineTemplate.bind({});
+
 const urls = {
   home: '/home',
   dashboard: '/dashboard',
