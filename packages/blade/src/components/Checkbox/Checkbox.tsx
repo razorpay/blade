@@ -101,7 +101,7 @@ type CheckboxProps = {
    *
    * @default "medium"
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Sets the tab-index property on checkbox element
    *
@@ -254,6 +254,7 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
         </BaseBox>
       </SelectorLabel>
       <FormHint
+        size={_size}
         errorText={errorText}
         errorTextId={ids?.errorTextId}
         type={validationState === 'error' ? 'error' : 'help'}

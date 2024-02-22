@@ -13,9 +13,10 @@ type HintTextProps = {
   children: string;
   id?: string;
   color: TextProps<{ variant: 'caption' }>['color'];
+  size: 'small' | 'medium' | 'large';
 };
 
-const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElement => {
+const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): ReactElement => {
   const isReactNative = getPlatformType() === 'react-native';
 
   return (
@@ -32,6 +33,7 @@ const HintText = ({ icon: Icon, children, id, color }: HintTextProps): ReactElem
 
 export type FormHintProps = {
   type: 'help' | 'error' | 'success';
+  size: 'small' | 'medium' | 'large';
   /**
    * Help text for the group
    */
@@ -88,6 +90,7 @@ const FormHint = ({
   helpTextId,
   errorTextId,
   successTextId,
+  size = 'medium',
 }: FormHintProps): React.ReactElement => {
   const colors: Record<string, TextProps<{ variant: 'caption' }>['color']> = {
     help: 'surface.text.gray.muted',
@@ -102,19 +105,19 @@ const FormHint = ({
   return (
     <>
       {showHelp && (
-        <HintText id={helpTextId} color={colors.help}>
+        <HintText size={size} id={helpTextId} color={colors.help}>
           {helpText}
         </HintText>
       )}
 
       {showError && (
-        <HintText id={errorTextId} icon={Icons.error} color={colors.error}>
+        <HintText size={size} id={errorTextId} icon={Icons.error} color={colors.error}>
           {errorText}
         </HintText>
       )}
 
       {showSuccess && (
-        <HintText id={successTextId} icon={Icons.success} color={colors.success}>
+        <HintText size={size} id={successTextId} icon={Icons.success} color={colors.success}>
           {successText}
         </HintText>
       )}

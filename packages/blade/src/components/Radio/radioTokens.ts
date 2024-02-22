@@ -14,6 +14,10 @@ const radioSizes = {
         mobile: 'spacing.3',
         desktop: 'spacing.2',
       },
+      large: {
+        mobile: 'spacing.4',
+        desktop: 'spacing.3',
+      },
     },
   },
   icon: {
@@ -26,6 +30,11 @@ const radioSizes = {
       width: size[16],
       height: size[16],
       dotRadius: size[3],
+    },
+    large: {
+      width: size[20],
+      height: size[20],
+      dotRadius: 3.75,
     },
   },
 } as const;

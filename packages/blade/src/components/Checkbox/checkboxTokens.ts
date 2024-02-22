@@ -14,6 +14,10 @@ const checkboxSizes = {
         mobile: 'spacing.3',
         desktop: 'spacing.2',
       },
+      large: {
+        mobile: 'spacing.4',
+        desktop: 'spacing.3',
+      },
     },
   },
   icon: {
@@ -24,6 +28,10 @@ const checkboxSizes = {
     medium: {
       width: size[16],
       height: size[16],
+    },
+    large: {
+      width: size[20],
+      height: size[20],
     },
   },
 } as const;

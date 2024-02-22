@@ -86,7 +86,7 @@ type RadioGroupProps = {
    *
    * @default "medium"
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & TestID &
   StyledPropsBlade;
 
@@ -167,6 +167,7 @@ const RadioGroup = ({
               type={validationState === 'error' ? 'error' : 'help'}
               errorText={errorText}
               helpText={helpText}
+              size={size}
             />
           </BaseBox>
         </SelectorGroupField>

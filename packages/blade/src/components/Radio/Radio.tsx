@@ -44,7 +44,7 @@ type RadioProps = {
    *
    * @default "medium"
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & TestID &
   StyledPropsBlade;
 
