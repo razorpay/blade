@@ -14,7 +14,7 @@ export const TestSingleFileUpload: StoryFn<typeof Toast> = (): React.ReactElemen
   return (
     <Box maxWidth="400px">
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -51,7 +51,7 @@ export const TestMultipleFileUpload: StoryFn<typeof Toast> = (): React.ReactElem
   return (
     <Box maxWidth="400px">
       <FileUpload
-        selectionType="multiple"
+        uploadType="multiple"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -89,7 +89,7 @@ export const TestOnRemove: StoryFn<typeof Toast> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -130,7 +130,7 @@ export const TestOnRemoveWithMultipleFiles: StoryFn<typeof Toast> = (): React.Re
   return (
     <Box maxWidth="400px">
       <FileUpload
-        selectionType="multiple"
+        uploadType="multiple"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -179,7 +179,7 @@ export const TestMaxCountFileUpload: StoryFn<typeof Toast> = (): React.ReactElem
   return (
     <Box maxWidth="400px">
       <FileUpload
-        selectionType="multiple"
+        uploadType="multiple"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -222,7 +222,7 @@ export const TestMaxSizeFileUpload: StoryFn<typeof Toast> = (): React.ReactEleme
   return (
     <Box maxWidth="400px">
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -259,7 +259,7 @@ export const TestAcceptProp: StoryFn<typeof Toast> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -360,7 +360,7 @@ export const TestFileUploadError: StoryFn<typeof Toast> = (): React.ReactElement
   return (
     <Box maxWidth="400px">
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -393,7 +393,7 @@ TestFileUploadError.play = async () => {
 
   await expect(getByRole('progressbar')).toBeInTheDocument();
 
-  await sleep(3000);
+  await sleep(4000);
   await expect(getByText(filename)).toBeInTheDocument();
   await expect(getByText('Oops! Something went wrong. Unknown API key')).toBeInTheDocument();
 };
@@ -404,7 +404,7 @@ export const TestRefProp: StoryFn<typeof Toast> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"

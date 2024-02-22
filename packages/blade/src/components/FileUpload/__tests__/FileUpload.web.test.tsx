@@ -7,7 +7,7 @@ describe('<FileUpload />', () => {
   it('should render FileUpload', () => {
     const { container, getByText } = renderWithTheme(
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -24,7 +24,7 @@ describe('<FileUpload />', () => {
   it('should set disabled state with isDisabled', () => {
     const { container, getByText } = renderWithTheme(
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -39,7 +39,7 @@ describe('<FileUpload />', () => {
   it('should set required state with isRequired', () => {
     const { getByText } = renderWithTheme(
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -56,7 +56,7 @@ describe('<FileUpload />', () => {
   it('should pas generals ally', async () => {
     const { container } = renderWithTheme(
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"
@@ -71,7 +71,7 @@ describe('<FileUpload />', () => {
   it('should accept testID', () => {
     const { getByTestId } = renderWithTheme(
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"

@@ -7,7 +7,7 @@ describe('<FileUpload />', () => {
   it('should render in SSR', () => {
     const { container, getByText } = renderWithSSR(
       <FileUpload
-        selectionType="single"
+        uploadType="single"
         label="Upload GST certificate"
         helpText=" .jpg, .jpeg, or .png file only"
         accept="image/*"

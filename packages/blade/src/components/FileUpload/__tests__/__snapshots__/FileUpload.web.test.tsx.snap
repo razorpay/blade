@@ -162,7 +162,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  height: 54px;
+  height: 56px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -707,7 +707,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   display: -ms-flexbox;
   display: flex;
   border-style: dashed;
-  height: 54px;
+  height: 56px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
