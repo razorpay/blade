@@ -43,7 +43,11 @@ const DrawerTemplate: StoryFn<typeof Drawer> = (args) => {
   return (
     <Box>
       <Button onClick={() => setIsDrawerOpen(!isDrawerOpen)}>Toggle Drawer</Button>
-      <Drawer {...args} isOpen={isDrawerOpen} onDismiss={() => setIsDrawerOpen(false)}>
+      <Drawer
+        {...args}
+        isOpen={args.isOpen ?? isDrawerOpen}
+        onDismiss={() => setIsDrawerOpen(false)}
+      >
         <DrawerHeader
           title="Vendor Payment Details"
           titleSuffix={<Badge color="positive">New</Badge>}
