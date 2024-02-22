@@ -3,6 +3,8 @@ import { SimpleDrawer } from './Drawer.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 
+// At once, only 1 Drawer is visible (or 2 with stacking) so no point of rendering all stories as they are anyway hidden visually
+
 export const Drawer = (): JSX.Element => {
   return (
     <Box display="flex" flexDirection="column" gap="spacing.4">
