@@ -11,6 +11,8 @@ import { Badge } from '~components/Badge';
 import { DownloadIcon } from '~components/Icons';
 import { Heading } from '~components/Typography';
 
+const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+
 const BasicDrawer = (args: DrawerProps): React.ReactElement => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   return (
@@ -171,6 +173,8 @@ KeyboardNavigations.play = async () => {
   await expect(getByRole('heading', { name: 'Drawer Heading' })).toBeVisible();
 
   // 1st drawer close
+  // the test gets flaky if we try to close drawer immediately after it opens so adding some delay here to let drawer open correctly
+  await sleep(300);
   await userEvent.keyboard('{Escape}');
   await waitFor(() =>
     expect(queryByRole('heading', { name: 'Drawer Heading' })).not.toBeInTheDocument(),
