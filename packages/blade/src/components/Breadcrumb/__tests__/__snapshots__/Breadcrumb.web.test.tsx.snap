@@ -15,7 +15,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
   align-items: center;
   padding: 0px;
   margin: 0px;
-  gap: 8px;
+  gap: 4px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -27,7 +27,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -43,18 +43,6 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
   -ms-flex-align: center;
   align-items: center;
   opacity: 1;
-}
-
-.c6.c6.c6.c6.c6 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 4px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -92,7 +80,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -150,7 +138,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
 <div>
   <nav
     class=""
-    data-blade-component="base-box"
+    data-blade-component="breadcrumb"
   >
     <ol
       aria-label="Breadcrumb"
@@ -160,7 +148,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
     >
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"
@@ -197,7 +185,7 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
       </li>
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"
@@ -235,14 +223,14 @@ exports[`<Breadcrumb /> current item should have aria-current 1`] = `
       <li
         aria-current="page"
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <div
-          class="c6"
+          class="c1"
           data-blade-component="base-box"
         >
           <p
-            class="c7"
+            class="c6"
             data-blade-component="text"
           >
             Contact
@@ -274,7 +262,7 @@ exports[`<Breadcrumb /> should render 1`] = `
   align-items: center;
   padding: 0px;
   margin: 0px;
-  gap: 8px;
+  gap: 4px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -286,7 +274,7 @@ exports[`<Breadcrumb /> should render 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -380,7 +368,7 @@ exports[`<Breadcrumb /> should render 1`] = `
 <div>
   <nav
     class=""
-    data-blade-component="base-box"
+    data-blade-component="breadcrumb"
   >
     <ol
       aria-label="Breadcrumb"
@@ -390,7 +378,7 @@ exports[`<Breadcrumb /> should render 1`] = `
     >
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"
@@ -427,7 +415,7 @@ exports[`<Breadcrumb /> should render 1`] = `
       </li>
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"
@@ -464,7 +452,7 @@ exports[`<Breadcrumb /> should render 1`] = `
       </li>
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"
@@ -512,7 +500,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
   align-items: center;
   padding: 0px;
   margin: 0px;
-  gap: 8px;
+  gap: 4px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -524,7 +512,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -618,7 +606,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
 <div>
   <nav
     class=""
-    data-blade-component="base-box"
+    data-blade-component="breadcrumb"
   >
     <ol
       aria-label="Breadcrumb"
@@ -628,7 +616,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
     >
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"
@@ -665,7 +653,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
       </li>
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"
@@ -702,7 +690,7 @@ exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
       </li>
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"

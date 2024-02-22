@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Breadcrumb /> should render breadcrumb 1`] = `"<div id="root"><nav data-blade-component="base-box" class="BaseBox-bmPWx"><ol style="list-style:none" aria-label="Breadcrumb" data-blade-component="base-box" class="BaseBox-bmPWx hpfAGB"><li data-blade-component="base-box" class="BaseBox-bmPWx fSmlBd"><a data-blade-component="link" href="/" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 eEDbkf" role="link" aria-disabled="false"><span class="BaseBox-bmPWx cnZviL content-container" opacity="1" data-blade-component="base-box"><span data-blade-component="base-box" class="BaseBox-bmPWx bexSez"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12.6139 1.21065C12.2528 0.929784 11.7472 0.929784 11.3861 1.21065L2.38606 8.21065C2.14247 8.4001 2 8.69141 2 9V20C2 21.6569 3.34315 23 5 23H19C20.6569 23 22 21.6569 22 20V9C22 8.69141 21.8575 8.4001 21.6139 8.21065L12.6139 1.21065ZM16 21H19C19.5523 21 20 20.5523 20 20V9.48908L12 3.26686L4 9.48908V20C4 20.5523 4.44772 21 5 21H8V12C8 11.4477 8.44772 11 9 11H15C15.5523 11 16 11.4477 16 12V21ZM10 21V13H14V21H10Z" clip-rule="evenodd" fill="hsla(227, 71%, 51%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></span><span class="StyledBaseText-dVBfTO gLFZLl" data-blade-component="base-text">Home</span></span></a><span aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx"><span class="StyledBaseText-dVBfTO dLXXIu" data-blade-component="text">/</span></span></li><li data-blade-component="base-box" class="BaseBox-bmPWx fSmlBd"><a data-blade-component="link" href="/about" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 eEDbkf" role="link" aria-disabled="false"><span class="BaseBox-bmPWx cnZviL content-container" opacity="1" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO gLFZLl" data-blade-component="base-text">About</span></span></a><span aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx"><span class="StyledBaseText-dVBfTO dLXXIu" data-blade-component="text">/</span></span></li><li aria-current="page" data-blade-component="base-box" class="BaseBox-bmPWx fSmlBd"><div data-blade-component="base-box" class="BaseBox-bmPWx grEjmJ"><p class="StyledBaseText-dVBfTO iRKsgj" data-blade-component="text">Contact</p></div><span aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx"><span class="StyledBaseText-dVBfTO dLXXIu" data-blade-component="text">/</span></span></li></ol></nav></div>"`;
+exports[`<Breadcrumb /> should render breadcrumb 1`] = `"<div id="root"><nav data-blade-component="breadcrumb" class="BaseBox-bmPWx"><ol style="list-style:none" aria-label="Breadcrumb" data-blade-component="base-box" class="BaseBox-bmPWx efNtXt"><li data-blade-component="breadcrumb-item" class="BaseBox-bmPWx grEjmJ"><a data-blade-component="link" href="/" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 eEDbkf" role="link" aria-disabled="false"><span class="BaseBox-bmPWx cnZviL content-container" opacity="1" data-blade-component="base-box"><span data-blade-component="base-box" class="BaseBox-bmPWx bexSez"><svg aria-hidden="true" data-blade-component="icon" height="20px" viewBox="0 0 24 24" width="20px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M12.6139 1.21065C12.2528 0.929784 11.7472 0.929784 11.3861 1.21065L2.38606 8.21065C2.14247 8.4001 2 8.69141 2 9V20C2 21.6569 3.34315 23 5 23H19C20.6569 23 22 21.6569 22 20V9C22 8.69141 21.8575 8.4001 21.6139 8.21065L12.6139 1.21065ZM16 21H19C19.5523 21 20 20.5523 20 20V9.48908L12 3.26686L4 9.48908V20C4 20.5523 4.44772 21 5 21H8V12C8 11.4477 8.44772 11 9 11H15C15.5523 11 16 11.4477 16 12V21ZM10 21V13H14V21H10Z" clip-rule="evenodd" fill="hsla(227, 71%, 51%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></span><span class="StyledBaseText-dVBfTO gLFZLl" data-blade-component="base-text">Home</span></span></a><span aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx"><span class="StyledBaseText-dVBfTO dLXXIu" data-blade-component="text">/</span></span></li><li data-blade-component="breadcrumb-item" class="BaseBox-bmPWx grEjmJ"><a data-blade-component="link" href="/about" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 eEDbkf" role="link" aria-disabled="false"><span class="BaseBox-bmPWx cnZviL content-container" opacity="1" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO gLFZLl" data-blade-component="base-text">About</span></span></a><span aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx"><span class="StyledBaseText-dVBfTO dLXXIu" data-blade-component="text">/</span></span></li><li aria-current="page" data-blade-component="breadcrumb-item" class="BaseBox-bmPWx grEjmJ"><div data-blade-component="base-box" class="BaseBox-bmPWx grEjmJ"><p class="StyledBaseText-dVBfTO iRKsgj" data-blade-component="text">Contact</p></div><span aria-hidden="true" data-blade-component="base-box" class="BaseBox-bmPWx"><span class="StyledBaseText-dVBfTO dLXXIu" data-blade-component="text">/</span></span></li></ol></nav></div>"`;
 
 exports[`<Breadcrumb /> should render breadcrumb 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -17,7 +17,7 @@ exports[`<Breadcrumb /> should render breadcrumb 2`] = `
   align-items: center;
   padding: 0px;
   margin: 0px;
-  gap: 8px;
+  gap: 4px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -29,7 +29,7 @@ exports[`<Breadcrumb /> should render breadcrumb 2`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -57,18 +57,6 @@ exports[`<Breadcrumb /> should render breadcrumb 2`] = `
   -ms-flex-align: center;
   align-items: center;
   padding-right: 4px;
-}
-
-.c7.c7.c7.c7.c7 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 4px;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -106,7 +94,7 @@ exports[`<Breadcrumb /> should render breadcrumb 2`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c7.c7.c7.c7.c7 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 1rem;
@@ -166,7 +154,7 @@ exports[`<Breadcrumb /> should render breadcrumb 2`] = `
 >
   <nav
     class=""
-    data-blade-component="base-box"
+    data-blade-component="breadcrumb"
   >
     <ol
       aria-label="Breadcrumb"
@@ -176,7 +164,7 @@ exports[`<Breadcrumb /> should render breadcrumb 2`] = `
     >
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"
@@ -235,7 +223,7 @@ exports[`<Breadcrumb /> should render breadcrumb 2`] = `
       </li>
       <li
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <a
           aria-disabled="false"
@@ -273,14 +261,14 @@ exports[`<Breadcrumb /> should render breadcrumb 2`] = `
       <li
         aria-current="page"
         class="c1"
-        data-blade-component="base-box"
+        data-blade-component="breadcrumb-item"
       >
         <div
-          class="c7"
+          class="c1"
           data-blade-component="base-box"
         >
           <p
-            class="c8"
+            class="c7"
             data-blade-component="text"
           >
             Contact
