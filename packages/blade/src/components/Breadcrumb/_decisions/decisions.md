@@ -88,7 +88,7 @@ type BreadcrumbItemProps = {
   /**
    * Content of the BreadcrumbItem
    */
-  children: string;
+  children?: string;
   /**
    * Icon to be shown before the BreadcrumbItem
    */
