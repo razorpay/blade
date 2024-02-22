@@ -58,7 +58,6 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
-    onDismiss: { action: 'Dismissed' },
   },
   args: {
     size: 'medium',
