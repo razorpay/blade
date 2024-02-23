@@ -44,7 +44,7 @@ const useSandpackSetup = ({
   };
 };
 
-const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
+const CodeLineHighlighterContainer = styled(BaseBox)((props) => ({
   '& .highlight': {
     backgroundColor: '#fffbdd',
     borderRadius: '2px',
@@ -55,6 +55,7 @@ const CodeLineHighlighterContainer = styled(BaseBox)((_props) => ({
   },
   borderRadius: '4px',
   overflow: 'auto',
+  fontFamily: props.theme.typography.fonts.family.code,
 }));
 
 const SandboxHighlighter = ({
@@ -63,7 +64,7 @@ const SandboxHighlighter = ({
   ...sandpackCodeViewerProps
 }: { children: string; theme?: 'light' | 'dark' } & CodeViewerProps): JSX.Element => {
   return (
-    <CodeLineHighlighterContainer>
+    <CodeLineHighlighterContainer className="sb-unstyled">
       <SandpackProvider
         template="vanilla-ts"
         theme={theme}
@@ -89,11 +90,17 @@ const SandboxProvider = ({
 }): JSX.Element => {
   const sandboxSetup = useSandpackSetup({ language, code });
   return (
-    <CodeLineHighlighterContainer border={castWebType(border)}>
+    <CodeLineHighlighterContainer className="sb-unstyled" border={castWebType(border)}>
       <SandpackProvider {...sandboxSetup}>{children}</SandpackProvider>
     </CodeLineHighlighterContainer>
   );
 };
+
+const StyledSandpack = styled(BaseBox)((props) => {
+  return {
+    fontFamily: props.theme.typography.fonts.family.code,
+  };
+});
 
 function Sandbox({
   children,
@@ -106,7 +113,7 @@ function Sandbox({
   const sandpackSetup = useSandpackSetup({ language, code: children });
 
   return (
-    <BaseBox padding={padding}>
+    <StyledSandpack className="sb-unstyled" padding={padding}>
       <Sandpack
         {...sandpackSetup}
         options={{
@@ -117,7 +124,7 @@ function Sandbox({
           editorWidthPercentage,
         }}
       />
-    </BaseBox>
+    </StyledSandpack>
   );
 }
 

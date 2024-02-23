@@ -21,10 +21,12 @@ const useStackblitzSetup = ({
   code,
   editorHeight,
   showConsole,
+  sandboxRef,
 }: {
   code: SandboxStackBlitzProps['children'];
   editorHeight: SandboxStackBlitzProps['editorHeight'];
   showConsole: SandboxStackBlitzProps['showConsole'];
+  sandboxRef: React.RefObject<HTMLDivElement>;
 }): Project => {
   const docsContext = React.useContext(DocsContext);
 
@@ -70,16 +72,23 @@ const useStackblitzSetup = ({
   }, [colorScheme, brandColor]);
 
   React.useEffect(() => {
-    void sdk.embedProject('sb-embed', stackblitzProject, {
-      height: editorHeight,
-      openFile: 'App.tsx',
-      terminalHeight: 0,
-      hideDevTools: true,
-      hideNavigation: true,
-      hideExplorer: true,
-      theme: 'light',
-      showSidebar: false,
-    });
+    if (sandboxRef.current) {
+      sdk
+        .embedProject(sandboxRef.current, stackblitzProject, {
+          height: editorHeight,
+          openFile: 'App.tsx',
+          terminalHeight: 0,
+          hideDevTools: true,
+          hideNavigation: true,
+          hideExplorer: true,
+          theme: 'light',
+          showSidebar: false,
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [colorScheme, brandColor]);
 
@@ -102,10 +111,13 @@ export const Sandbox = ({
   showConsole = false,
   padding = ['spacing.5', 'spacing.0', 'spacing.8'],
 }: SandboxStackBlitzProps): JSX.Element => {
+  const sandboxRef = React.useRef<HTMLDivElement>(null);
+
   useStackblitzSetup({
     code: children,
     editorHeight,
     showConsole,
+    sandboxRef,
   });
 
   return (
@@ -114,7 +126,10 @@ export const Sandbox = ({
       // Stackblitz is unable to handle string types of height correctly so we set them on styled-components
       editorHeight={typeof editorHeight !== 'number' ? editorHeight : undefined}
     >
-      <div id="sb-embed" />
+      <div ref={sandboxRef} />
+      {/* {previewURL ? (
+        <iframe title="Preview Iframe" src={previewURL} width="100%" height="300px" />
+      ) : null} */}
     </StyledEmbed>
   );
 };
