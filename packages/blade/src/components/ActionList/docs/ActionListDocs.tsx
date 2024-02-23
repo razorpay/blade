@@ -18,7 +18,7 @@ const ActionListDocs = (): React.ReactElement => {
       showStorybookControls={false}
       imports=""
       note="ActionList is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=30043-576428"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=72054%3A316375"
     >
       <Box as="section">
         <Heading size="xlarge">Playground</Heading>

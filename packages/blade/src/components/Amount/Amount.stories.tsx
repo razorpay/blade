@@ -24,7 +24,7 @@ const Page = (): React.ReactElement => {
       componentName="Amount"
       componentDescription="Amounts are used to show small amount of color coded metadata, which are ideal for getting user attention."
       note="This component only displays the provided value in the specified currency with the formatting capabilities enabled by @razorpay/i18nify-react, it does not perform any currency conversion."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73328-558626&mode=design&t=JkDSnlo8KJOBJimR-4"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=80635%3A69838"
       propsDescription="The Amount component automatically formats numbers based on the user's browser locale enabled by @razorpay/i18nify-react. To adjust the locale according to your page, utilise its hooks for updating the locale. For more details, please refer to
       the documentation of @razorpay/i18nify-react library."
     >

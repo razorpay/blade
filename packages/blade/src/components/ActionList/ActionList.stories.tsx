@@ -30,7 +30,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="ActionList"
       componentDescription="ActionList contains list of ActionList Items with or without in sections to perform particular actions."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76148-71527&mode=design&t=JkDSnlo8KJOBJimR-0"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=72054%3A316375"
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
