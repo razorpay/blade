@@ -98,7 +98,7 @@ const CustomTrigger = React.forwardRef<
       <BaseBox
         width="80px"
         height="80px"
-        backgroundColor="surface.background.level2.lowContrast"
+        backgroundColor="surface.background.gray.intense"
         textAlign="center"
         ref={ref}
         tabIndex={0}

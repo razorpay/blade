@@ -187,7 +187,7 @@ const MyCustomTriggerButton = React.forwardRef<
   return (
     // just spread the props
     <BaseBox
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       borderRadius="medium"
       role="button"

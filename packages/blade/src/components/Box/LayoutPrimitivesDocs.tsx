@@ -127,16 +127,16 @@ function LayoutPrimitivesDocs(): React.ReactElement {
                   padding={{ base: ['spacing.1', '9px'], m: 'spacing.3' }}
                 >
                   <Box 
-                    backgroundColor="surface.background.level3.highContrast" 
+                    backgroundColor="surface.background.cloud.intense" 
                     flex="1" 
                   >
-                    <Text margin="spacing.4" contrast="high">Box1</Text>
+                    <Text margin="spacing.4" color="surface.text.onCloud.onIntense">Box1</Text>
                   </Box>
                   <Box 
-                    backgroundColor="surface.background.level2.highContrast" 
+                    backgroundColor="surface.background.sea.intense" 
                     flex="1" 
                   >
-                    <Text margin="spacing.4" contrast="high">Box2</Text>
+                    <Text margin="spacing.4" color="surface.text.onSea.onIntense">Box2</Text>
                   </Box>
                 </Box>
               )
@@ -192,7 +192,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
                       // Uncomment next lines to see padding and margin in action
                       // padding="spacing.4"
                       // marginTop="32px"
-                      backgroundColor="surface.background.level2.lowContrast"
+                      backgroundColor="surface.background.gray.intense"
                     >
                       <Text>Some Text</Text>
                     </Box>
@@ -201,7 +201,7 @@ function LayoutPrimitivesDocs(): React.ReactElement {
                         // Uncomment this block to see padding shorthands in action
                         padding={["spacing.3", "35px"]} // We also support padding and margin shorthands similar to CSS
                         marginX="spacing.5" // adds horizontal margin
-                        backgroundColor='surface.background.level3.lowContrast'
+                        backgroundColor='surface.background.gray.moderate'
                       >
                         <Text>More Text</Text>
                       </Box>
@@ -252,17 +252,17 @@ function LayoutPrimitivesDocs(): React.ReactElement {
                   >
                     <Box
                       flex="1"
-                      backgroundColor="surface.background.level2.highContrast"
+                      backgroundColor="surface.background.cloud.intense"
                       padding="spacing.4" 
                     >
-                      <Text contrast="high">Box1</Text>
+                      <Text color="surface.text.onCloud.onIntense">Box1</Text>
                     </Box>
                     <Box 
                       flex="1" 
-                      backgroundColor="surface.background.level3.highContrast" 
+                      backgroundColor="surface.background.sea.intense" 
                       padding="spacing.4" 
                     >
-                      <Text contrast="high">Box2</Text>
+                      <Text color="surface.text.onSea.onIntense">Box2</Text>
                     </Box>
                   </Box>
                 </>

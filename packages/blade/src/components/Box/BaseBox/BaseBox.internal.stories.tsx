@@ -44,7 +44,7 @@ export const Responsive = (args: BaseBoxProps): React.ReactElement => {
 Responsive.args = {
   display: 'flex',
   padding: { base: ['spacing.10', 'spacing.3'], l: 'spacing.3' },
-  backgroundColor: 'surface.background.level2.lowContrast',
+  backgroundColor: 'surface.background.gray.moderate',
   flexDirection: { base: 'column', l: 'row' },
 } as BaseBoxProps;
 
