@@ -127,9 +127,6 @@ export const Sandbox = ({
       editorHeight={typeof editorHeight !== 'number' ? editorHeight : undefined}
     >
       <div ref={sandboxRef} />
-      {/* {previewURL ? (
-        <iframe title="Preview Iframe" src={previewURL} width="100%" height="300px" />
-      ) : null} */}
     </StyledEmbed>
   );
 };
