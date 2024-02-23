@@ -224,9 +224,7 @@ const BreadcrumbNavLink = (
 const Page1 = (): React.ReactElement => {
   return (
     <Breadcrumb size="medium" color="primary">
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.home}>
-        Home
-      </BreadcrumbNavLink>
+      <BreadcrumbNavLink icon={HomeIcon} to={urls.home} accessibilityLabel="Home" />
     </Breadcrumb>
   );
 };
@@ -234,12 +232,8 @@ const Page1 = (): React.ReactElement => {
 const Page2 = (): React.ReactElement => {
   return (
     <Breadcrumb size="medium" color="primary">
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.home}>
-        Home
-      </BreadcrumbNavLink>
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.dashboard}>
-        Dashboard
-      </BreadcrumbNavLink>
+      <BreadcrumbNavLink icon={HomeIcon} to={urls.home} accessibilityLabel="Home" />
+      <BreadcrumbNavLink to={urls.dashboard}>Dashboard</BreadcrumbNavLink>
     </Breadcrumb>
   );
 };
@@ -247,15 +241,9 @@ const Page2 = (): React.ReactElement => {
 const Page3 = (): React.ReactElement => {
   return (
     <Breadcrumb size="medium" color="primary">
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.home}>
-        Home
-      </BreadcrumbNavLink>
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.dashboard}>
-        Dashboard
-      </BreadcrumbNavLink>
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.settlements}>
-        Settlements
-      </BreadcrumbNavLink>
+      <BreadcrumbNavLink icon={HomeIcon} to={urls.home} accessibilityLabel="Home" />
+      <BreadcrumbNavLink to={urls.dashboard}>Dashboard</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.settlements}>Settlements</BreadcrumbNavLink>
     </Breadcrumb>
   );
 };
@@ -263,18 +251,10 @@ const Page3 = (): React.ReactElement => {
 const Page4 = (): React.ReactElement => {
   return (
     <Breadcrumb size="medium" color="primary">
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.home}>
-        Home
-      </BreadcrumbNavLink>
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.dashboard}>
-        Dashboard
-      </BreadcrumbNavLink>
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.settlements}>
-        Settlements
-      </BreadcrumbNavLink>
-      <BreadcrumbNavLink icon={HomeIcon} to={urls.payment}>
-        Payment Gateway
-      </BreadcrumbNavLink>
+      <BreadcrumbNavLink icon={HomeIcon} to={urls.home} accessibilityLabel="Home" />
+      <BreadcrumbNavLink to={urls.dashboard}>Dashboard</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.settlements}>Settlements</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.payment}>Payment Gateway</BreadcrumbNavLink>
     </Breadcrumb>
   );
 };
