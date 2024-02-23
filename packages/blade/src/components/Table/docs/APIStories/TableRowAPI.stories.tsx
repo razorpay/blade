@@ -82,7 +82,7 @@ const data: TableData<Item> = {
 const TableTemplate: StoryFn<typeof TableRow> = ({ ...args }) => {
   return (
     <Box
-      backgroundColor="surface.background.level2.lowContrast"
+      backgroundColor="surface.background.gray.intense"
       padding="spacing.5"
       overflow="auto"
       minHeight="400px"
