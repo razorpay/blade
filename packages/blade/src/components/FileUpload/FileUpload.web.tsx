@@ -3,6 +3,7 @@ import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import { fileUploadColorTokens, getFileUploadInputHoverTokens } from './fileUploadTokens';
 import { FileUploadItem } from './FileUploadItem';
+import { isFileAccepted } from './isFileAccepted';
 import BaseBox from '~components/Box/BaseBox';
 import { Box } from '~components/Box';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
@@ -18,7 +19,6 @@ import { Text } from '~components/Typography';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
-import { isFileAccepted } from './isFileAccepted';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
