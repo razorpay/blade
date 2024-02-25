@@ -24,11 +24,8 @@ jobs:
           node-version: 18.12.1
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
-      - name: Build Blade React Production
-        run: yarn run-s build:clean build:generate-types build:react-prod
-        working-directory: packages/blade
       - name: Update Bundle Size Data
-        run: yarn bundle-size
+        run: yarn generate-bundle-size-info
         working-directory: packages/blade
       - name: Danger
         run: yarn danger ci
@@ -54,7 +51,7 @@ jobs:
         run: yarn run-s build:clean build:generate-types build:react-prod
         working-directory: packages/blade
       - name: Update Bundle Size Data
-        run: yarn bundle-size
+        run: yarn generate-bundle-size-info
         working-directory: packages/blade
         env:
           BUNDLE_SIZE_STATS_FILENAME: 'baseBundleSizeStats.json'

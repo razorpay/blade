@@ -55,6 +55,7 @@ yarn-error.log
 # Bundle artifact
 *.jsbundle
 .size-limit.json
+PRBundleSizeStats.json
 
 # Ruby / CocoaPods
 /ios/Pods/

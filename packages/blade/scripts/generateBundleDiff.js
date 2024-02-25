@@ -34,26 +34,33 @@ const generateBundleDiff = async () => {
 
   // Calculate the size differences and create a formatted diff table
   bundleDiff.forEach((component) => {
+    if (component.name === 'Base') {
+      return;
+    }
+
     const currentComponent = currentBundleSizeStats.find((stat) => stat.name === component.name);
     const baseComponent = baseBundleSizeStats.find((stat) => stat.name === component.name);
+    const emptyProjectSize = currentBundleSizeStats.find((stat) => stat.name === 'Base').size;
+    const currentComponentSize = currentComponent ? currentComponent.size - emptyProjectSize : 0;
+    const baseComponentSize = baseComponent ? baseComponent.size - emptyProjectSize : 0;
 
     if (baseComponent && !currentComponent) {
       // Component removed in the PR
-      component.diffSize = -baseComponent.size / 1000;
-      component.baseSize = baseComponent.size / 1000;
+      component.diffSize = -baseComponentSize / 1024;
+      component.baseSize = baseComponentSize / 1024;
       component.prSize = 0;
       component.isSizeIncreased = false;
     } else if (!baseComponent && currentComponent) {
       // Component added in the PR
-      component.diffSize = currentComponent.size / 1000;
+      component.diffSize = currentComponentSize / 1024;
       component.baseSize = 0;
-      component.prSize = currentComponent.size / 1000;
+      component.prSize = currentComponentSize / 1024;
       component.isSizeIncreased = true;
     } else {
       // Component size changed in the PR
-      component.diffSize = (currentComponent.size - baseComponent.size) / 1000;
-      component.baseSize = baseComponent.size / 1000;
-      component.prSize = currentComponent.size / 1000;
+      component.diffSize = (currentComponentSize - baseComponentSize) / 1024;
+      component.baseSize = baseComponentSize / 1024;
+      component.prSize = currentComponentSize / 1024;
       component.isSizeIncreased = component.diffSize > 0;
     }
   });
@@ -65,7 +72,7 @@ const generateBundleDiff = async () => {
   ${bundleDiff
     .map(
       ({ name, baseSize, prSize, diffSize, isSizeIncreased }) =>
-        `| ${isSizeIncreased ? '🔴' : '🟢'} | ${name} | ${baseSize} | ${prSize} | ${
+        `| ${isSizeIncreased ? '⬆' : '⬇'} | ${name} | ${baseSize} | ${prSize} | ${
           isSizeIncreased ? `+${diffSize}` : diffSize
         } kb |`,
     )

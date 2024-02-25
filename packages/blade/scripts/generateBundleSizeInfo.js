@@ -23,7 +23,7 @@ const main = async () => {
     'screenReaderStyles',
     'useActionListContext',
     'ActionListItemAsset', // This is just an <img> tag
-    // These are same as Badge, Amount, Counter, Link, Text components
+    // These are same as Badge, Amount, Counter, Link, Text components excluding them to save total script runtime
     'CardHeaderAmount',
     'CardHeaderBadge',
     'CardHeaderCounter',
@@ -36,6 +36,47 @@ const main = async () => {
     'VisuallyHidden',
   ];
   const sizes = [];
+
+  const runSizeLimit = ({ name, importedComponents }) => {
+    // Write size-limit configuration to .size-limit.json for each component
+    fs.writeFileSync(
+      path.resolve(__dirname, '../.size-limit.json'),
+      JSON.stringify(
+        [
+          {
+            name,
+            path: './build/lib/web/production/components/index.js',
+            import: importedComponents,
+            // Set high limit for the component size so that it doesn't fail the size-limit check
+            limit: '2000 kb',
+            running: false,
+            gzip: true,
+          },
+        ],
+        null,
+        2,
+      ),
+    );
+
+    // Run size-limit command and capture the output to gather size information
+    const { stdout } = execa.commandSync('yarn size-limit --json');
+
+    // Process the size-limit output to extract relevant information
+    const jsonLikeString = stdout
+      .split('\n') // remove new line chars => []
+      .map((item) => item.trim()) // remove whitespace
+      .filter((item) => item !== '') // filter empty array items
+      .join('');
+
+    sizes.push(
+      JSON.parse(
+        jsonLikeString.substring(jsonLikeString.indexOf('[') + 1, jsonLikeString.indexOf(']')),
+      ),
+    );
+  };
+
+  // Run size-limit for the empty import to get the base project size
+  runSizeLimit({ name: 'Base', importedComponents: '{}' });
 
   // Get all the components name exported from the bundle and add them to the size-limit configuration
   indexPaths.forEach((indexPath) => {
@@ -69,41 +110,8 @@ const main = async () => {
 
     if (exportedComponents.length > 0) {
       const imports = exportedComponents.join(', ');
-      // Write size-limit configuration to .size-limit.json for each component
-      fs.writeFileSync(
-        path.resolve(__dirname, '../.size-limit.json'),
-        JSON.stringify(
-          [
-            {
-              name: imports,
-              path: './build/lib/web/production/components/index.js',
-              import: `{ ${exportedComponents.join(', ')} }`,
-              // Set high limit for the component size so that it doesn't fail the size-limit check
-              limit: '2000 kb',
-              running: false,
-              gzip: true,
-            },
-          ],
-          null,
-          2,
-        ),
-      );
 
-      // Run size-limit command and capture the output to gather size information
-      const { stdout } = execa.commandSync('yarn size-limit --json');
-
-      // Process the size-limit output to extract relevant information
-      const jsonLikeString = stdout
-        .split('\n') // remove new line chars => []
-        .map((item) => item.trim()) // remove whitespace
-        .filter((item) => item !== '') // filter empty array items
-        .join('');
-
-      sizes.push(
-        JSON.parse(
-          jsonLikeString.substring(jsonLikeString.indexOf('[') + 1, jsonLikeString.indexOf(']')),
-        ),
-      );
+      runSizeLimit({ name: imports, import: `{ ${imports} }` });
     }
   });
 
