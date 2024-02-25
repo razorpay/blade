@@ -129,11 +129,9 @@
     "publish-npm": "node ./scripts/publishToNpm.js",
     "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
     "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
-    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
-    "postinstall": "patch-package"
+    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js"
   },
   "dependencies": {
-    "patch-package": "7.0.0",
     "@babel/runtime": "7.20.0",
     "body-scroll-lock-upgrade": "1.1.0",
     "ts-deepmerge": "6.2.0",
@@ -224,11 +222,10 @@
     "babel-loader": "8.2.3",
     "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-styled-components": "1.12.0",
-    "bundlemon": "2.0.1",
     "chalk": "4.1.1",
     "copyfiles": "2.4.1",
     "cross-env": "7.0.3",
-    "danger": "^11.3.1",
+    "danger": "11.3.1",
     "dedent": "0.7.0",
     "eslint-plugin-mdx": "1.16.0",
     "execa": "5.0.0",

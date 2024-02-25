@@ -70,6 +70,7 @@ const generateBundleDiff = async () => {
   | Status | Component | Base Size (kb) | Current Size (kb) | Diff |
   | --- | --- | --- | --- | --- |
   ${bundleDiff
+    .filter(({ name }) => name !== 'Base')
     .map(
       ({ name, baseSize, prSize, diffSize, isSizeIncreased }) =>
         `| ${isSizeIncreased ? '⬆' : '⬇'} | ${name} | ${baseSize} | ${prSize} | ${
