@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, forwardRef, memo } from 'react';
+import { useState, useCallback, useMemo, forwardRef } from 'react';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import { fileUploadColorTokens, getFileUploadInputHoverTokens } from './fileUploadTokens';
@@ -18,8 +18,6 @@ import { Text } from '~components/Typography';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
-
-const MemoizedFileUploadItem = memo(FileUploadItem);
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -55,16 +53,18 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const [isActive, setIsActive] = useState(false);
 
   const isMultiple = uploadType === 'multiple';
+  const isOneFileSelectedWithSingleUpload = !isMultiple && selectedFiles.length === 1;
   const inputLabelPosition = platform === 'onMobile' ? 'top' : labelPosition;
   const isLabelLeftPositioned = inputLabelPosition === 'left';
-  const willRenderHintText =
-    !isMultiple && selectedFiles.length === 1 ? false : Boolean(helpText) || Boolean(errorMessage);
+  const willRenderHintText = isOneFileSelectedWithSingleUpload
+    ? false
+    : Boolean(helpText) || Boolean(errorMessage);
 
   const showError = validationState === 'error' || internalValidationState === 'error';
   const showHelpText = !showError && helpText;
   const accessibilityText =
     accessibilityLabel ?? `,${showError ? errorText : ''} ${showHelpText ? helpText : ''}`;
-  const { inputId, labelId, helpTextId, errorTextId } = useFormId('fileinput');
+  const { inputId, labelId, helpTextId, errorTextId } = useFormId('fileuploadinput');
 
   const accessibilityProps = makeAccessible({
     required: Boolean(isRequired),
@@ -180,13 +180,13 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           </FormLabel>
         ) : null}
 
-        <BaseBox display="flex" flexDirection="column" marginBottom="spacing.5">
+        <BaseBox display="flex" flexDirection="column">
           <SelectorLabel
             componentName={MetaConstants.FileUploadLabel}
             inputProps={{}}
             style={{
               cursor: isDisabled ? 'not-allowed' : 'pointer',
-              ...(!isMultiple && selectedFiles.length === 1 ? screenReaderStyles : {}),
+              ...(isOneFileSelectedWithSingleUpload ? screenReaderStyles : {}),
             }}
           >
             <BaseBox display="flex" flexDirection="column" width="100%">
@@ -293,7 +293,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
         </BaseBox>
 
         {selectedFiles.map((file) => (
-          <MemoizedFileUploadItem
+          <FileUploadItem
             key={file.id}
             file={file}
             onRemove={() => {

@@ -6,8 +6,8 @@ const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {
   return {
     default: {
       background: {
-        checked: 'transparent',
-        unchecked: 'transparent',
+        checked: 'colors.transparent',
+        unchecked: 'colors.transparent',
       },
       border: {
         checked: 'colors.interactive.border.gray.default',

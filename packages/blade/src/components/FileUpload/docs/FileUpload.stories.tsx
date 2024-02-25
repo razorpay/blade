@@ -239,6 +239,7 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
                 maxSize={2 * 1024 * 1024}
                 accept=".jpg, .jpeg, .png"
                 onChange={({ fileList }) => {
+                  console.log('🚀 ~ fileList:', fileList);
                   setSelectedFiles(fileList);
                 }}
                 onDrop={({ fileList }) => {

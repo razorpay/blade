@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { StyledFileUploadItemWrapper } from './StyledFileUploadItemWrapper';
 import type { FileUploadItemProps } from './types';
 import { FileUploadItemIcon } from './FileUploadItemIcon';
@@ -7,110 +8,109 @@ import { Text } from '~components/Typography';
 import { Divider } from '~components/Divider';
 import { IconButton } from '~components/Button/IconButton';
 import { ProgressBar } from '~components/ProgressBar';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
 
-const FileUploadItem = ({
-  file,
-  onPreview,
-  onRemove,
-  onCancel,
-}: FileUploadItemProps): React.ReactElement => {
-  const { name, size, percent, errorText, status } = file;
-  const isUploading = status === 'uploading';
-  const sizeInKB = size / 1024;
-  const sizeInMB = sizeInKB / 1024;
-  const showSizeInKB = sizeInKB < 1024;
+const FileUploadItem = memo(
+  ({ file, onPreview, onRemove, onCancel }: FileUploadItemProps): React.ReactElement => {
+    const { name, size, percent, errorText, status } = file;
+    const isUploading = status === 'uploading';
+    const sizeInKB = size / 1024;
+    const sizeInMB = sizeInKB / 1024;
+    const showSizeInKB = sizeInKB < 1024;
 
-  return (
-    <StyledFileUploadItemWrapper
-      status={status ?? 'success'}
-      borderRadius="medium"
-      borderWidth="thin"
-      borderColor="interactive.border.gray.default"
-      marginBottom="spacing.3"
-    >
-      <BaseBox width="100%">
-        <BaseBox
-          display="flex"
-          flexDirection="row"
-          margin="spacing.3"
-          marginBottom={isUploading ? 'spacing.2' : 'spacing.3'}
-        >
-          <FileUploadItemIcon fileName={name} uploadStatus={status} />
-          <BaseBox marginLeft="spacing.4" marginRight="spacing.4" flexGrow={1}>
-            <BaseBox display="flex" flexDirection="row" width="100%">
-              <BaseBox alignItems="center" maxWidth={name.length > 30 ? '90%' : '100%'}>
-                <Text
-                  size="medium"
-                  weight="medium"
-                  color="surface.text.gray.subtle"
-                  truncateAfterLines={1}
-                  marginRight="spacing.3"
-                >
-                  {name}
-                </Text>
+    return (
+      <StyledFileUploadItemWrapper
+        status={status ?? 'success'}
+        borderRadius="medium"
+        borderWidth="thin"
+        borderColor="interactive.border.gray.default"
+        marginBottom="spacing.3"
+      >
+        <BaseBox width="100%">
+          <BaseBox display="flex" flexDirection="row" margin="spacing.3">
+            <FileUploadItemIcon fileName={name} uploadStatus={status} />
+            <BaseBox marginLeft="spacing.4" marginRight="spacing.4" flexGrow={1}>
+              <BaseBox display="flex" flexDirection="row" width="100%">
+                <BaseBox alignItems="center" maxWidth={name.length > 30 ? '90%' : '100%'}>
+                  <Text
+                    size="medium"
+                    weight="medium"
+                    color="surface.text.gray.subtle"
+                    truncateAfterLines={1}
+                    marginRight="spacing.3"
+                  >
+                    {name}
+                  </Text>
+                </BaseBox>
+                {status === 'success' && (
+                  <CheckCircleIcon color="interactive.icon.positive.normal" />
+                )}
               </BaseBox>
-              {status === 'success' && <CheckCircleIcon color="interactive.icon.positive.normal" />}
-            </BaseBox>
 
-            <Text
-              size="small"
-              weight="regular"
-              color={
-                status === 'error' ? 'feedback.text.negative.intense' : 'surface.text.gray.muted'
-              }
-            >
-              {errorText ??
-                `${(showSizeInKB ? sizeInKB : sizeInMB).toFixed(2)} ${showSizeInKB ? 'KB' : 'MB'} ${
-                  isUploading && percent ? `${percent}%` : ''
-                }`}
-            </Text>
-          </BaseBox>
-          {status === 'error' || status === 'uploading' ? (
-            <BaseBox>
-              <IconButton
-                accessibilityLabel="Remove File"
-                icon={CloseIcon}
-                onClick={() => onCancel?.({ file })}
-              />
+              <Text
+                size="small"
+                weight="regular"
+                color={
+                  status === 'error' ? 'feedback.text.negative.intense' : 'surface.text.gray.muted'
+                }
+              >
+                {errorText ??
+                  `${(showSizeInKB ? sizeInKB : sizeInMB).toFixed(2)} ${
+                    showSizeInKB ? 'KB' : 'MB'
+                  } ${isUploading && percent ? `(${percent}%)` : ''}`}
+              </Text>
             </BaseBox>
-          ) : (
-            <BaseBox display="flex" flexDirection="row" alignItems="center">
-              {onPreview ? (
-                <BaseBox
-                  display="flex"
-                  flexDirection="row"
-                  alignItems="center"
-                  padding="spacing.0"
-                  gap="spacing.3"
-                >
-                  <IconButton
-                    accessibilityLabel="Preview File"
-                    icon={EyeIcon}
-                    onClick={() => onPreview?.({ file })}
-                  />
-                  <Divider orientation="vertical" thickness="thinner" variant="normal" />
+            {status === 'error' || status === 'uploading' ? (
+              <BaseBox>
+                <IconButton
+                  accessibilityLabel="Remove File"
+                  icon={CloseIcon}
+                  onClick={() => onCancel?.({ file })}
+                />
+              </BaseBox>
+            ) : (
+              <BaseBox display="flex" flexDirection="row" alignItems="center">
+                {onPreview ? (
+                  <BaseBox
+                    display="flex"
+                    flexDirection="row"
+                    alignItems="center"
+                    padding="spacing.0"
+                    gap="spacing.3"
+                  >
+                    <IconButton
+                      accessibilityLabel="Preview File"
+                      icon={EyeIcon}
+                      onClick={() => onPreview?.({ file })}
+                    />
+                    <Divider orientation="vertical" thickness="thinner" variant="normal" />
+                    <IconButton
+                      accessibilityLabel="Remove File"
+                      icon={TrashIcon}
+                      onClick={() => onRemove?.({ file })}
+                    />
+                  </BaseBox>
+                ) : (
                   <IconButton
                     accessibilityLabel="Remove File"
                     icon={TrashIcon}
                     onClick={() => onRemove?.({ file })}
                   />
-                </BaseBox>
-              ) : (
-                <IconButton
-                  accessibilityLabel="Remove File"
-                  icon={TrashIcon}
-                  onClick={() => onRemove?.({ file })}
-                />
-              )}
-            </BaseBox>
+                )}
+              </BaseBox>
+            )}
+          </BaseBox>
+          {isUploading && (
+            <ProgressBar
+              showPercentage={false}
+              value={percent ?? 0}
+              isIndeterminate={isUndefined(percent)}
+            />
           )}
         </BaseBox>
-        {isUploading && (
-          <ProgressBar showPercentage={false} value={percent} isIndeterminate={!Boolean(percent)} />
-        )}
-      </BaseBox>
-    </StyledFileUploadItemWrapper>
-  );
-};
+      </StyledFileUploadItemWrapper>
+    );
+  },
+);
 
 export { FileUploadItem };
