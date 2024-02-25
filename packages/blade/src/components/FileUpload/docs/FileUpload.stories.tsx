@@ -41,7 +41,7 @@ export default {
   },
 } as Meta<FileUploadProps>;
 
-const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
+const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
   const [selectedFile, setSelectedFile] = useState<BladeFile>();
   const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState<{
@@ -113,18 +113,13 @@ const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
                 necessityIndicator="required"
               />
               <FileUploadComponent
-                uploadType="single"
-                label="Upload GST"
-                helpText="Upload .jpg, .jpeg, or .png file only"
-                accept=".jpg, .jpeg, .png"
                 onChange={({ fileList }) => {
                   setSelectedFile(fileList[0]);
                 }}
                 onDrop={({ fileList }) => {
                   setSelectedFile(fileList[0]);
                 }}
-                isRequired
-                necessityIndicator="required"
+                {...args}
               />
               <Button type="submit" variant="primary">
                 Submit
@@ -142,8 +137,16 @@ const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
 
 export const SingleFileUpload = SingleFileUploadTemplate.bind({});
 SingleFileUpload.storyName = 'Single File Upload';
+SingleFileUpload.args = {
+  label: 'Upload GST Certificate',
+  helpText: 'Upload .jpg, .jpeg, or .png file only',
+  accept: '.jpg, .jpeg, .png',
+  uploadType: 'single',
+  isRequired: true,
+  necessityIndicator: 'required',
+};
 
-const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
+const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
   const [selectedFiles, setSelectedFiles] = useState<BladeFileList>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState<
@@ -232,20 +235,13 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
                 necessityIndicator="required"
               />
               <FileUploadComponent
-                uploadType="multiple"
-                label="Upload Product Images"
-                helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
-                maxCount={5}
-                maxSize={2 * 1024 * 1024}
-                accept=".jpg, .jpeg, .png"
                 onChange={({ fileList }) => {
                   setSelectedFiles(fileList);
                 }}
                 onDrop={({ fileList }) => {
                   setSelectedFiles(fileList);
                 }}
-                isRequired
-                necessityIndicator="required"
+                {...args}
               />
               <Button type="submit" variant="primary">
                 Submit
@@ -263,8 +259,19 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
 
 export const MultipleFilesUpload = MultipleFilesUploadTemplate.bind({});
 MultipleFilesUpload.storyName = 'Multiple Files Upload';
+MultipleFilesUpload.args = {
+  label: 'Upload Product Images',
+  helpText:
+    'Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each.',
+  accept: '.jpg, .jpeg, .png',
+  uploadType: 'multiple',
+  maxCount: 5,
+  maxSize: 2 * 1024 * 1024,
+  isRequired: true,
+  necessityIndicator: 'required',
+};
 
-const AutoFileUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
+const AutoFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
   const [productName, setProductName] = useState();
   const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>([]);
   const [responseData, setResponseData] = useState([]);
@@ -357,17 +364,10 @@ const AutoFileUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
               onChange={({ value }) => setProductName(value)}
             />
             <FileUploadComponent
-              uploadType="multiple"
-              label="Upload Product Images"
-              helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
-              maxCount={5}
-              maxSize={2 * 1024 * 1024}
-              accept=".jpg, .jpeg, .png"
               fileList={uploadedFiles}
               onChange={({ fileList }) => handleFileChange({ fileList })}
               onDrop={({ fileList }) => handleFileChange({ fileList })}
-              isRequired
-              necessityIndicator="required"
+              {...args}
             />
             <Button
               type="submit"
@@ -401,8 +401,19 @@ const AutoFileUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
 
 export const AutoFileUpload = AutoFileUploadTemplate.bind({});
 AutoFileUpload.storyName = 'Auto File Upload on Selection';
+AutoFileUpload.args = {
+  label: 'Upload Product Images',
+  helpText:
+    'Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each.',
+  accept: '.jpg, .jpeg, .png',
+  uploadType: 'multiple',
+  maxCount: 5,
+  maxSize: 2 * 1024 * 1024,
+  isRequired: true,
+  necessityIndicator: 'required',
+};
 
-const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = () => {
+const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
   const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>();
   const [productName, setProductName] = useState<string | undefined>();
   const [responseData, setResponseData] = useState([]);
@@ -501,17 +512,10 @@ const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = 
               onChange={({ value }) => setProductName(value)}
             />
             <FileUploadComponent
-              uploadType="multiple"
-              label="Upload Product Images"
-              helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
-              maxCount={5}
-              maxSize={2 * 1024 * 1024}
-              accept=".jpg, .jpeg, .png"
               fileList={uploadedFiles}
               onChange={handleFileChange}
               onDrop={handleFileChange}
-              isRequired
-              necessityIndicator="required"
+              {...args}
             />
             <Button
               type="submit"
@@ -547,8 +551,19 @@ const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = 
 
 export const AutoFileUploadWithProgress = AutoFileUploadWithProgressTemplate.bind({});
 AutoFileUploadWithProgress.storyName = 'Display File Upload Progress';
+AutoFileUploadWithProgress.args = {
+  label: 'Upload Product Images',
+  helpText:
+    'Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each.',
+  accept: '.jpg, .jpeg, .png',
+  uploadType: 'multiple',
+  maxCount: 5,
+  maxSize: 2 * 1024 * 1024,
+  isRequired: true,
+  necessityIndicator: 'required',
+};
 
-const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = () => {
+const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
   const [productName, setProductName] = useState();
   const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>([]);
   const [responseData, setResponseData] = useState([]);
@@ -643,12 +658,6 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = () => {
               onChange={({ value }) => setProductName(value)}
             />
             <FileUploadComponent
-              uploadType="multiple"
-              label="Upload Product Images"
-              helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
-              maxCount={5}
-              maxSize={2 * 1024 * 1024}
-              accept=".jpg, .jpeg, .png"
               fileList={uploadedFiles}
               onChange={({ fileList }) => handleFileChange({ fileList })}
               onDrop={({ fileList }) => handleFileChange({ fileList })}
@@ -656,8 +665,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = () => {
                 setIsOpen(true);
                 setImageFileSource(URL.createObjectURL(file));
               }}
-              isRequired
-              necessityIndicator="required"
+              {...args}
             />
             <Button
               type="submit"
@@ -699,3 +707,14 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = () => {
 
 export const CustomPreview = CustomPreviewTemplate.bind({});
 CustomPreview.storyName = 'Customize File Preview';
+CustomPreview.args = {
+  label: 'Upload Product Images',
+  helpText:
+    'Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each.',
+  accept: '.jpg, .jpeg, .png',
+  uploadType: 'multiple',
+  maxCount: 5,
+  maxSize: 2 * 1024 * 1024,
+  isRequired: true,
+  necessityIndicator: 'required',
+};

@@ -222,8 +222,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   alignItems="center"
                   flexDirection={{ xs: 'column', s: 'row' }}
                   gap={makeSize(6)}
-                  paddingBottom="spacing.3"
-                  paddingTop="spacing.3"
+                  padding="spacing.3"
                 >
                   <Text
                     color={
