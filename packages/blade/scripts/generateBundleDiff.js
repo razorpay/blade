@@ -22,8 +22,11 @@ const generateBundleDiff = async () => {
   // Filter the components that don't have the same size in the base and current bundle
   if (baseBundleSizeStats.length > 0) {
     bundleDiff = baseBundleSizeStats.filter(
-      ({ size: baseSize }) =>
-        !currentBundleSizeStats.some(({ size: currentSize }) => currentSize === baseSize),
+      ({ size: baseSize, name: baseName }) =>
+        !currentBundleSizeStats.some(
+          ({ size: currentSize, name: currentName }) =>
+            currentSize === baseSize && currentName === baseName,
+        ),
     );
   }
 
@@ -40,27 +43,30 @@ const generateBundleDiff = async () => {
 
     const currentComponent = currentBundleSizeStats.find((stat) => stat.name === component.name);
     const baseComponent = baseBundleSizeStats.find((stat) => stat.name === component.name);
-    const emptyProjectSize = currentBundleSizeStats.find((stat) => stat.name === 'Base').size;
-    const currentComponentSize = currentComponent ? currentComponent.size - emptyProjectSize : 0;
-    const baseComponentSize = baseComponent ? baseComponent.size - emptyProjectSize : 0;
+    const emptyProjectSize =
+      currentBundleSizeStats.find((stat) => stat.name === 'Base').size / 1000;
+    const currentComponentSize = currentComponent
+      ? currentComponent.size / 1000 - emptyProjectSize
+      : 0;
+    const baseComponentSize = baseComponent ? baseComponent.size / 1000 - emptyProjectSize : 0;
 
     if (baseComponent && !currentComponent) {
       // Component removed in the PR
-      component.diffSize = -baseComponentSize / 1024;
-      component.baseSize = baseComponentSize / 1024;
+      component.diffSize = -baseComponentSize;
+      component.baseSize = baseComponentSize;
       component.prSize = 0;
       component.isSizeIncreased = false;
     } else if (!baseComponent && currentComponent) {
       // Component added in the PR
-      component.diffSize = currentComponentSize / 1024;
+      component.diffSize = currentComponentSize;
       component.baseSize = 0;
-      component.prSize = currentComponentSize / 1024;
+      component.prSize = currentComponentSize;
       component.isSizeIncreased = true;
     } else {
       // Component size changed in the PR
-      component.diffSize = (currentComponentSize - baseComponentSize) / 1024;
-      component.baseSize = baseComponentSize / 1024;
-      component.prSize = currentComponentSize / 1024;
+      component.diffSize = currentComponentSize - baseComponentSize;
+      component.baseSize = baseComponentSize;
+      component.prSize = currentComponentSize;
       component.isSizeIncreased = component.diffSize > 0;
     }
   });
@@ -73,9 +79,9 @@ const generateBundleDiff = async () => {
     .filter(({ name }) => name !== 'Base')
     .map(
       ({ name, baseSize, prSize, diffSize, isSizeIncreased }) =>
-        `| ${isSizeIncreased ? '⬆' : '⬇'} | ${name} | ${baseSize} | ${prSize} | ${
-          isSizeIncreased ? `+${diffSize}` : diffSize
-        } kb |`,
+        `| ${isSizeIncreased ? '⬆' : '⬇'} | ${name} | ${baseSize.toFixed(2)} | ${prSize.toFixed(
+          2,
+        )} | ${isSizeIncreased ? `+${diffSize.toFixed(2)}` : diffSize.toFixed(2)} kb |`,
     )
     .join('\n')}
   `;

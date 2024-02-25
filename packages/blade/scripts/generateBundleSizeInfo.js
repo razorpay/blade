@@ -34,6 +34,9 @@ const main = async () => {
     'SkipNavContent',
     'SkipNavLink',
     'VisuallyHidden',
+    // Not exposed to the user
+    'NavigationButton',
+    'CheckboxIcon',
   ];
   const sizes = [];
 
@@ -111,7 +114,7 @@ const main = async () => {
     if (exportedComponents.length > 0) {
       const imports = exportedComponents.join(', ');
 
-      runSizeLimit({ name: imports, import: `{ ${imports} }` });
+      runSizeLimit({ name: imports, importedComponents: `{ ${imports} }` });
     }
   });
 
