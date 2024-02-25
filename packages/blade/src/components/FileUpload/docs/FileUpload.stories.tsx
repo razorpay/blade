@@ -78,8 +78,8 @@ const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
     <Box
       display="flex"
       flexDirection="column"
-      margin="spacing.4"
-      padding="spacing.10"
+      margin="spacing.2"
+      padding="spacing.8"
       backgroundColor="surface.background.gray.intense"
     >
       {responseData ? (
@@ -192,8 +192,8 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
     <Box
       display="flex"
       flexDirection="column"
-      margin="spacing.4"
-      padding="spacing.10"
+      margin="spacing.2"
+      padding="spacing.8"
       backgroundColor="surface.background.gray.intense"
     >
       {responseData ? (
@@ -239,7 +239,6 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = () => {
                 maxSize={2 * 1024 * 1024}
                 accept=".jpg, .jpeg, .png"
                 onChange={({ fileList }) => {
-                  console.log('🚀 ~ fileList:', fileList);
                   setSelectedFiles(fileList);
                 }}
                 onDrop={({ fileList }) => {

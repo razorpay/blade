@@ -28,25 +28,25 @@ const FileUploadItem = memo(
       >
         <BaseBox width="100%">
           <BaseBox display="flex" flexDirection="row" margin="spacing.3">
-            <FileUploadItemIcon fileName={name} uploadStatus={status} />
-            <BaseBox marginLeft="spacing.4" marginRight="spacing.4" flexGrow={1}>
-              <BaseBox display="flex" flexDirection="row" width="100%">
-                <BaseBox alignItems="center" maxWidth={name.length > 30 ? '90%' : '100%'}>
+            <BaseBox marginRight="spacing.3">
+              <FileUploadItemIcon fileName={name} uploadStatus={status} />
+            </BaseBox>
+            <BaseBox flexGrow={1}>
+              <BaseBox alignItems="center" display="flex">
+                <BaseBox alignItems="center" maxWidth="70%" display="flex" marginRight="spacing.3">
                   <Text
                     size="medium"
                     weight="medium"
                     color="surface.text.gray.subtle"
                     truncateAfterLines={1}
-                    marginRight="spacing.3"
                   >
                     {name}
                   </Text>
                 </BaseBox>
                 {status === 'success' && (
-                  <CheckCircleIcon color="interactive.icon.positive.normal" />
+                  <CheckCircleIcon size="medium" color="interactive.icon.positive.normal" />
                 )}
               </BaseBox>
-
               <Text
                 size="small"
                 weight="regular"

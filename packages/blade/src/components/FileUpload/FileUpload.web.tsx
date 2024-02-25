@@ -180,7 +180,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           </FormLabel>
         ) : null}
 
-        <BaseBox display="flex" flexDirection="column">
+        <BaseBox display="flex" flexDirection="column" marginBottom="spacing.5">
           <SelectorLabel
             componentName={MetaConstants.FileUploadLabel}
             inputProps={{}}
@@ -204,7 +204,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     ? fileUploadColorTokens.border.disabled
                     : fileUploadColorTokens.border.default
                 }
-                padding="spacing.5"
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
@@ -216,6 +215,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   alignItems="center"
                   flexDirection={{ xs: 'column', s: 'row' }}
                   gap={makeSize(6)}
+                  paddingBottom="spacing.3"
+                  paddingTop="spacing.3"
                 >
                   <Text
                     color={
