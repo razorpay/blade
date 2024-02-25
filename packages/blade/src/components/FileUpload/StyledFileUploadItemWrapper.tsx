@@ -4,7 +4,8 @@ import { fileUploadItemBackgroundColors, fileUploadMotionTokens } from './fileUp
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
-import { castWebType } from '~utils';
+import { castWebType, makeSize } from '~utils';
+import { size } from '~tokens/global';
 
 const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperProps>(
   ({ theme, status }) => {
@@ -17,7 +18,7 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       display: 'flex',
       justifyContent: 'space-between',
       borderStyle: 'solid',
-      minHeight: '56px',
+      minHeight: makeSize(size[56]),
       width: '100%',
       backgroundColor: getIn(theme.colors, fileUploadItemBackgroundColors[status].default),
       transitionProperty: 'background-color',

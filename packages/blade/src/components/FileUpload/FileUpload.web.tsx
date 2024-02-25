@@ -18,6 +18,7 @@ import { Text } from '~components/Typography';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
+import { isFileAccepted } from './isFileAccepted';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -94,6 +95,12 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   }, []);
 
   const validateFiles = (inputFiles: BladeFileList, allFiles: BladeFileList): boolean => {
+    if (accept && inputFiles.some((file) => !isFileAccepted(file, accept))) {
+      setErrorMessage(`You provided an unsupported file type. Supported file types are: ${accept}`);
+      setInternalValidationState('error');
+      return true;
+    }
+
     if (uploadType === 'single' && inputFiles.length > 1) {
       setErrorMessage('You can upload only one file.');
       setInternalValidationState('error');
