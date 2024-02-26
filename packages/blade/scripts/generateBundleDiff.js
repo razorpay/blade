@@ -79,9 +79,9 @@ const generateBundleDiff = async () => {
     .filter(({ name }) => name !== 'Base')
     .map(
       ({ name, baseSize, prSize, diffSize, isSizeIncreased }) =>
-        `| ${isSizeIncreased ? '⬆' : '⬇'} | ${name} | ${baseSize.toFixed(2)} | ${prSize.toFixed(
-          2,
-        )} | ${isSizeIncreased ? `+${diffSize.toFixed(2)}` : diffSize.toFixed(2)} kb |`,
+        `| ${isSizeIncreased ? '⬆' : '⬇'} | ${name} | ${baseSize.toFixed(3)} | ${prSize.toFixed(
+          3,
+        )} | ${isSizeIncreased ? `+${diffSize.toFixed(3)}` : diffSize.toFixed(3)} KB |`,
     )
     .join('\n')}
   `;

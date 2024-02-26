@@ -37,6 +37,7 @@ const main = async () => {
     // Not exposed to the user
     'NavigationButton',
     'CheckboxIcon',
+    'PopupArrow',
   ];
   const sizes = [];
 
