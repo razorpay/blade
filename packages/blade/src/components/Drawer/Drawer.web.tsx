@@ -11,7 +11,6 @@ import usePresence from 'use-presence';
 import { drawerComponentIds } from './drawerComponentIds';
 import { DrawerContext } from './DrawerContext';
 import type { DrawerProps } from './types';
-import { Box } from '~components/Box';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType, makeMotionTime, useTheme } from '~utils';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -120,7 +119,7 @@ const _Drawer = ({
   // new drawer that opens, always opens on top of previous one.
   React.useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
-    setZIndexState(componentZIndices.drawer + stackingLevel);
+    setZIndexState(zIndex + stackingLevel);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isMounted]);
 
@@ -129,13 +128,12 @@ const _Drawer = ({
       <FloatingPortal>
         {isMounted ? (
           <FloatingFocusManager context={context} initialFocus={initialFocusRef ?? closeButtonRef}>
-            <Box
+            <BaseBox
               position="fixed"
               {...metaAttribute({
                 name: MetaConstants.Drawer,
                 testID,
               })}
-              // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
               zIndex={zIndexState}
             >
               {showOverlay || stackingLevel === 2 ? (
@@ -145,6 +143,9 @@ const _Drawer = ({
                   }}
                   className={isVisible ? SHOW_DRAWER : ''}
                   lockScroll={true}
+                  {...metaAttribute({
+                    testID: 'drawer-overlay',
+                  })}
                 />
               ) : null}
               <AnimatedDrawerContainer
@@ -173,7 +174,7 @@ const _Drawer = ({
               >
                 {children}
               </AnimatedDrawerContainer>
-            </Box>
+            </BaseBox>
           </FloatingFocusManager>
         ) : null}
       </FloatingPortal>
