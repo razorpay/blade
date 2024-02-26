@@ -49,7 +49,7 @@ const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => 
     error?: Record<string, unknown>;
   }>();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e): void => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -175,7 +175,7 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
       });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e): void => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -204,15 +204,6 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
       {responseData ? (
         <Box display="flex" flexDirection="column" gap="spacing.5">
           {responseData.map((res, index) => {
-            if (res.url) {
-              return (
-                <Box key={index} display="flex" flexDirection="column" gap="spacing.5">
-                  {index === 0 && <Heading>Your product has been added successfully</Heading>}
-                  <img src={res.url} height="30%" width="30%" alt={`Your product ${index}`} />
-                  <Divider thickness="thicker" variant="normal" />
-                </Box>
-              );
-            }
             if (res.error) {
               return (
                 <Box key={index}>
@@ -223,6 +214,14 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
                 </Box>
               );
             }
+
+            return (
+              <Box key={index} display="flex" flexDirection="column" gap="spacing.5">
+                {index === 0 && <Heading>Your product has been added successfully</Heading>}
+                <img src={res.url} height="30%" width="30%" alt={`Your product ${index}`} />
+                <Divider thickness="thicker" variant="normal" />
+              </Box>
+            );
           })}
         </Box>
       ) : (

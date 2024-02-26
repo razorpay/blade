@@ -43,7 +43,11 @@ const FileUploadItem = memo(
                   </Text>
                 </BaseBox>
                 {status === 'success' && (
-                  <CheckCircleIcon size="medium" color="interactive.icon.positive.normal" />
+                  <CheckCircleIcon
+                    size="medium"
+                    marginRight="spacing.2"
+                    color="interactive.icon.positive.normal"
+                  />
                 )}
               </BaseBox>
               <Text

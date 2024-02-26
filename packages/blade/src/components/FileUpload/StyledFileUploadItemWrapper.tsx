@@ -24,6 +24,8 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       transitionProperty: 'background-color',
       transitionTimingFunction: easing,
       transitionDuration: duration,
+      overflow: 'auto',
+      wordBreak: 'break-all',
 
       ...(status !== 'uploading' && {
         '&:hover': {
