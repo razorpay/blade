@@ -5,8 +5,8 @@ import { throwBladeError } from '~utils/logger';
 
 const DrawerHeader = (_props: DrawerHeaderProps): React.ReactElement => {
   throwBladeError({
-    message: 'Drawer is not yet implemented for native',
-    moduleName: 'Drawer',
+    message: 'DrawerHeader is not yet implemented for native',
+    moduleName: 'DrawerHeader',
   });
 
   return <Text>Drawer Component is not available for Native mobile apps.</Text>;
