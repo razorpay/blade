@@ -111,15 +111,16 @@ const SingleFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => 
                 placeholder="12DWWPB9503H1Z3"
                 isRequired
                 necessityIndicator="required"
+                labelPosition={args.labelPosition}
               />
               <FileUploadComponent
+                {...args}
                 onChange={({ fileList }) => {
                   setSelectedFile(fileList[0]);
                 }}
                 onDrop={({ fileList }) => {
                   setSelectedFile(fileList[0]);
                 }}
-                {...args}
               />
               <Button type="submit" variant="primary">
                 Submit
@@ -233,15 +234,16 @@ const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) 
                 placeholder="Add product name"
                 isRequired
                 necessityIndicator="required"
+                labelPosition={args.labelPosition}
               />
               <FileUploadComponent
+                {...args}
                 onChange={({ fileList }) => {
                   setSelectedFiles(fileList);
                 }}
                 onDrop={({ fileList }) => {
                   setSelectedFiles(fileList);
                 }}
-                {...args}
               />
               <Button type="submit" variant="primary">
                 Submit
@@ -362,12 +364,13 @@ const AutoFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
               isRequired
               necessityIndicator="required"
               onChange={({ value }) => setProductName(value)}
+              labelPosition={args.labelPosition}
             />
             <FileUploadComponent
+              {...args}
               fileList={uploadedFiles}
               onChange={({ fileList }) => handleFileChange({ fileList })}
               onDrop={({ fileList }) => handleFileChange({ fileList })}
-              {...args}
             />
             <Button
               type="submit"
@@ -510,12 +513,13 @@ const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = 
               isRequired
               necessityIndicator="required"
               onChange={({ value }) => setProductName(value)}
+              labelPosition={args.labelPosition}
             />
             <FileUploadComponent
+              {...args}
               fileList={uploadedFiles}
               onChange={handleFileChange}
               onDrop={handleFileChange}
-              {...args}
             />
             <Button
               type="submit"
@@ -658,6 +662,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
               onChange={({ value }) => setProductName(value)}
             />
             <FileUploadComponent
+              {...args}
               fileList={uploadedFiles}
               onChange={({ fileList }) => handleFileChange({ fileList })}
               onDrop={({ fileList }) => handleFileChange({ fileList })}
@@ -665,7 +670,6 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
                 setIsOpen(true);
                 setImageFileSource(URL.createObjectURL(file));
               }}
-              {...args}
             />
             <Button
               type="submit"
