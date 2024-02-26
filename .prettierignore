@@ -10,8 +10,6 @@ coverage
 packages/blade/components.js
 packages/blade/tokens.js
 packages/blade/utils.js
-packages/blade/PRBundleSizeStats.json
-packages/blade/baseBundleSizeStats.json
 
 # misc
 .DS_Store

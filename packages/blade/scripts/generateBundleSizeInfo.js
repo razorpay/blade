@@ -3,6 +3,7 @@ const path = require('path');
 const babelParser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const execa = require('execa');
+const prettier = require('prettier');
 
 const main = async () => {
   const { globby } = await import('globby');
@@ -120,8 +121,14 @@ const main = async () => {
   });
 
   // Write the gathered size information to the specified file
-  const filename = process.env.BUNDLE_SIZE_STATS_FILENAME || 'PRBundleSizeStats.json';
-  fs.writeFileSync(path.resolve(__dirname, `../${filename}`), JSON.stringify(sizes));
+  const filename = process.env.BUNDLE_SIZE_STATS_FILENAME || 'prBundleSizeStats.json';
+  // Format the file content using prettier & write it to the file
+  fs.writeFileSync(
+    path.resolve(__dirname, `../${filename}`),
+    prettier.format(JSON.stringify(sizes), {
+      parser: 'json',
+    }),
+  );
 };
 
 main();

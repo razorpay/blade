@@ -55,8 +55,12 @@ jobs:
         working-directory: packages/blade
         env:
           BUNDLE_SIZE_STATS_FILENAME: 'baseBundleSizeStats.json'
+      - name: Check if file is modified
+        id: file-check
+        run: if [ -n "$(git status baseBundleSizeStats.json --porcelain)" ]; then echo "result=true" >> $GITHUB_OUTPUT; else echo "result=false" >> $GITHUB_OUTPUT; fi
+        working-directory: packages/blade
       - name: Commit Updated Bundle Size Data
-        if: ${{ github.event_name == 'pull_request' }}
+        if: ${{ steps.file-check.outputs.result == 'true' }}
         run: |
           git config user.email "tools+cibot@razorpay.com"
           git config user.name "rzpcibot"

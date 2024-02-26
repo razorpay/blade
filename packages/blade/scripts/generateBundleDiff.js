@@ -15,7 +15,7 @@ const generateBundleDiff = async () => {
 
   // Import the current bundle size statistics from the PR
   // eslint-disable-next-line import/extensions
-  const currentBundleSizeStats = require('../PRBundleSizeStats.json');
+  const currentBundleSizeStats = require('../prBundleSizeStats.json');
   // Initialize the bundle difference array with current bundle stats
   let bundleDiff = currentBundleSizeStats;
 
@@ -43,6 +43,8 @@ const generateBundleDiff = async () => {
 
     const currentComponent = currentBundleSizeStats.find((stat) => stat.name === component.name);
     const baseComponent = baseBundleSizeStats.find((stat) => stat.name === component.name);
+    // Calculate the empty project size, including all dependencies, and subtract it from the component bundle size
+    // This adjustment is crucial to obtain more accurate results, mitigating size differences due to additional dependencies in the project
     const emptyProjectSize =
       currentBundleSizeStats.find((stat) => stat.name === 'Base').size / 1000;
     const currentComponentSize = currentComponent
