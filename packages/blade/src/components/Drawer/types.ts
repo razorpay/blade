@@ -2,12 +2,12 @@ import type { TestID } from '~utils/types';
 
 type DrawerProps = {
   /**
-   * Controlled state of drawer open or not
+   * Controls the state of the drawer, indicating whether it is open or closed
    */
   isOpen: boolean;
 
   /**
-   * Dismiss handler
+   * Callback function triggered when the drawer is dismissed or closed
    */
   onDismiss: () => void;
 
@@ -30,11 +30,11 @@ type DrawerProps = {
    */
   zIndex?: number;
   /**
-   *  Accessibility label for the drawer
+   * Accessibility label for the drawer
    */
   accessibilityLabel?: string;
   /**
-   *  Ref to the element to be focused on opening the drawer.
+   * Ref to the element that should receive focus when opening the drawer.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialFocusRef?: React.MutableRefObject<any>;
