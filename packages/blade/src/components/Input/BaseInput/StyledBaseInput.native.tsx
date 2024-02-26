@@ -3,15 +3,16 @@ import styled from 'styled-components/native';
 import type { CSSObject, ThemeProps, DefaultTheme } from 'styled-components';
 import type {
   TextInputProps,
-  TextInput,
   TouchableHighlight,
   TouchableHighlightProps,
   GestureResponderEvent,
 } from 'react-native';
-import { Platform as RNPlatform } from 'react-native';
+import { TextInput, Platform as RNPlatform, TouchableOpacity } from 'react-native';
+import type { EasingFactoryFn } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
-import { getBaseInputStyles } from './baseInputStyles';
+import { getBaseInputStyles, getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import { baseInputHeight } from './baseInputConfig';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
@@ -148,7 +149,9 @@ const getRNInputStyles = (
     }),
   };
 };
-const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
+const StyledNativeBaseInput = styled(
+  Animated.createAnimatedComponent(TextInput),
+)<StyledComponentInputProps>(
   ({
     id,
     isFocused,
@@ -184,7 +187,9 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       $size,
     }),
 );
-const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
+const StyledNativeBaseButton = styled(
+  Animated.createAnimatedComponent(TouchableOpacity),
+)<StyledComponentInputProps>(
   ({
     id,
     isFocused,
@@ -267,6 +272,31 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     },
     isFocused: currentInteraction === 'focus',
   };
+
+  const backgroundAndBorderStyles = getInputBackgroundAndBorderStyles({
+    theme,
+    isDisabled: currentInteraction === 'disabled',
+    isFocused: currentInteraction === 'focus',
+    validationState: props.validationState,
+  });
+
+  const animatedBorderStyle = useAnimatedStyle(
+    () => ({
+      borderWidth: theme.border.width.thin,
+      borderRadius: theme.border.radius.medium,
+      borderStyle: 'solid',
+      borderColor: withTiming(
+        currentInteraction === 'default'
+          ? theme.colors.interactive.border.gray.default
+          : (backgroundAndBorderStyles.borderColor as string),
+        {
+          duration: theme.motion.duration.xgentle,
+          easing: theme.motion.easing.standard.revealing as EasingFactoryFn,
+        },
+      ),
+    }),
+    [backgroundAndBorderStyles.borderColor],
+  );
 
   return renderAs === 'button' ? (
     <StyledNativeBaseButton
@@ -352,6 +382,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       }
       autoCapitalize={autoCapitalize}
       $size={$size}
+      style={[animatedBorderStyle]}
       {...commonProps}
       {...props}
       {...accessibilityProps}
