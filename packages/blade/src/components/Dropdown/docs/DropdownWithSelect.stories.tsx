@@ -194,6 +194,8 @@ export const InternalMultiSelect = (): React.ReactElement => {
           <DropdownHeader title="Header Title" subtitle="Header subtitle" />
           <ActionList>
             <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Navi Mumbai" value="navi-mumbai" />
+            <ActionListItem title="Farrukhabad Fatehgarh" value="farrukhabad-fatehgarh" />
             <ActionListItem title="Bangalore" value="bangalore" />
             <ActionListItem title="Pune" value="pune" />
             <ActionListItem title="Chennai" value="chennai" />
@@ -281,7 +283,7 @@ export const InternalSelect = (): React.ReactElement => {
   return (
     <Box
       padding="spacing.5"
-      backgroundColor="surface.background.level3.lowContrast"
+      backgroundColor="surface.background.gray.moderate"
       width="100%"
       minHeight="100px"
       overflow="scroll"
@@ -327,7 +329,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
     <Box>
       <Box
         padding="spacing.5"
-        backgroundColor="surface.background.level3.lowContrast"
+        backgroundColor="surface.background.gray.moderate"
         width="100%"
         minHeight="100px"
         overflow="scroll"
@@ -344,7 +346,7 @@ export const InternalAutoPositioning = (): React.ReactElement => {
       </Box>
       <Box
         padding="spacing.5"
-        backgroundColor="surface.background.level3.lowContrast"
+        backgroundColor="surface.background.gray.moderate"
         width="100%"
         position="fixed"
         bottom="spacing.0"

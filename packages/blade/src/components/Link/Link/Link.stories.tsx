@@ -162,7 +162,7 @@ const LinkColorsTemplate: StoryFn<typeof LinkComponent> = ({ icon, children = ''
           {children}
         </LinkComponent>
       </BaseBox>
-      <BaseBox padding="spacing.2" backgroundColor="brand.gray.700.lowContrast">
+      <BaseBox padding="spacing.2" backgroundColor="surface.background.cloud.intense">
         <LinkComponent {...args} color="white">
           {children}
         </LinkComponent>

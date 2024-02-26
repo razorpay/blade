@@ -90,17 +90,14 @@ Let's see how you can spot a token name from figma and write it in your code
 Whenever you get a UI mockup handed over by your designer
 
 1. Select the component whose color token you want to use in code up
-2. Click on the inspect panel on the left and click on the token name `Surface/Background/Level3/lowContrast`.
+2. Click on the inspect panel on the left and click on the token name `surface.background.gray.moderate` to copy it and paste it into your code.
    > Remember, don't select the hardcoded `hsla` color value.
-3. Now in your code paste this token and replace slashes **`/`** with **`.`**
-   > `Surface/Background/Level3/lowContrast` ➡️ `surface.background.level3.lowContrast`
 
 ```jsx
 const StyledCard = styled.div(
   ({ theme }: { theme: Theme }) => `
     width: 368px;
-    /* Surface/Background/Level3/lowContrast */
-    background-color: ${theme.colors.surface.background.level3.lowContrast};
+    background-color: ${theme.colors.surface.background.gray.moderate};
 `,
 );
 ```

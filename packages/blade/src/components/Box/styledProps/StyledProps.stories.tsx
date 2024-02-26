@@ -52,7 +52,7 @@ const BoxStoryMeta = {
 
 export const StyledProps = (args: StyledPropsType): React.ReactElement => {
   return (
-    <Box backgroundColor="surface.background.level2.lowContrast">
+    <Box backgroundColor="surface.background.gray.moderate">
       <Button {...args}>Blade Button</Button>
     </Box>
   );
