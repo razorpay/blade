@@ -1,13 +1,13 @@
 import type { CSSObject } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
+import { getBaseInputBorderStyles } from './getBaseInputBorderStyles';
 import { baseInputHeight } from './baseInputConfig';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
-import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -63,7 +63,7 @@ export const getInputBackgroundAndBorderStyles = ({
   if (isFocused) {
     backgroundColor = theme.colors.surface.background.gray.moderate;
     borderColor = theme.colors.interactive.border.primary.default;
-    borderWidth = theme.border.width.thin; // TODO: Check with design on why this is thick
+    borderWidth = theme.border.width.thick;
   }
 
   // disabled state
@@ -76,18 +76,16 @@ export const getInputBackgroundAndBorderStyles = ({
   if (validationState === 'error') {
     backgroundColor = theme.colors.surface.background.gray.intense;
     borderColor = theme.colors.interactive.border.negative.default;
-    borderWidth = theme.border.width.thin; // TODO: Check with design on why this is thick
+    borderWidth = theme.border.width.thick;
   } else if (validationState === 'success') {
     backgroundColor = theme.colors.surface.background.gray.intense;
     borderColor = theme.colors.interactive.border.positive.default;
-    borderWidth = theme.border.width.thin; // TODO: Check with design on why this is thick
+    borderWidth = theme.border.width.thick;
   }
 
   return {
     backgroundColor,
     borderRadius: makeBorderSize(theme.border.radius.medium),
-    borderWidth: makeBorderSize(borderWidth),
-    borderColor,
     borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',
@@ -95,9 +93,8 @@ export const getInputBackgroundAndBorderStyles = ({
     alignItems: isTextArea ? 'flex-start' : undefined,
     position: 'relative',
     height: isDropdownTrigger ? 'auto' : undefined,
-    '&:has(input:focus-visible)': {
-      ...getFocusRingStyles({ theme, hasNoOffset: true }),
-    },
+    border: 'none',
+    ...getBaseInputBorderStyles({ theme, borderColor, borderWidth }),
   };
 };
 
