@@ -293,10 +293,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * **Note:** `size` of the Link will be set to the same size as the input field, `isDisabled` will follow Input's `isDisabled`, & `variant` will be set to `button`.
      * Example:
      * ```tsx
-     * trailingLinkButton={<Link onClick={handleClick}>Apply</Link>}
+     * trailingActionButton={<Link onClick={handleClick}>Apply</Link>}
      * ```
      */
-    trailingLinkButton?: React.ReactElement<LinkProps>;
+    trailingActionButton?: React.ReactElement<LinkProps>;
   } & TestID &
   Platform.Select<{
     native: {
@@ -753,7 +753,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isDropdownTrigger,
     isLabelInsideInput,
     size = 'medium',
-    trailingLinkButton,
+    trailingActionButton,
     ...styledProps
   },
   ref,
@@ -965,7 +965,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             trailingIcon={trailingIcon}
             isDisabled={isDisabled}
             validationState={validationState}
-            trailingLinkButton={trailingLinkButton}
+            trailingActionButton={trailingActionButton}
             size={size}
           />
         </BaseInputWrapper>

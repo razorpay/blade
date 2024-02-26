@@ -19,7 +19,7 @@ type InputVisuals = Pick<
   | 'isDisabled'
   | 'validationState'
   | 'size'
-  | 'trailingLinkButton'
+  | 'trailingActionButton'
 > & {
   size: NonNullable<BaseInputProps['size']>;
 };
@@ -78,20 +78,20 @@ const getInteractionElementStyles = ({
   hasTrailingIcon,
   hasInteractionElement,
   hasSuffix,
-  hasTrailingLinkButton,
+  hasTrailingActionButton,
 }: {
   hasTrailingIcon: boolean;
   hasInteractionElement: boolean;
   hasSuffix: boolean;
-  hasTrailingLinkButton: boolean;
+  hasTrailingActionButton: boolean;
 }): Pick<BaseBoxProps, 'paddingRight'> => {
-  if (hasInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingLinkButton)) {
+  if (hasInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingActionButton)) {
     return {
       paddingRight: 'spacing.2',
     };
   }
 
-  if (hasInteractionElement && !hasSuffix && !hasTrailingIcon && !hasTrailingLinkButton) {
+  if (hasInteractionElement && !hasSuffix && !hasTrailingIcon && !hasTrailingActionButton) {
     return {
       paddingRight: 'spacing.4',
     };
@@ -105,19 +105,19 @@ const getInteractionElementStyles = ({
 const getSuffixStyles = ({
   hasTrailingIcon,
   hasSuffix,
-  hasTrailingLinkButton,
+  hasTrailingActionButton,
 }: {
   hasTrailingIcon: boolean;
   hasSuffix: boolean;
-  hasTrailingLinkButton: boolean;
+  hasTrailingActionButton: boolean;
 }): Pick<BaseBoxProps, 'paddingRight'> => {
-  if (hasSuffix && (hasTrailingIcon || hasTrailingLinkButton)) {
+  if (hasSuffix && (hasTrailingIcon || hasTrailingActionButton)) {
     return {
       paddingRight: 'spacing.3',
     };
   }
 
-  if (hasSuffix && !hasTrailingIcon && !hasTrailingLinkButton) {
+  if (hasSuffix && !hasTrailingIcon && !hasTrailingActionButton) {
     return {
       paddingRight: 'spacing.4',
     };
@@ -130,18 +130,18 @@ const getSuffixStyles = ({
 
 const getTrailingIconStyles = ({
   hasTrailingIcon,
-  hasTrailingLinkButton,
+  hasTrailingActionButton,
 }: {
   hasTrailingIcon: boolean;
-  hasTrailingLinkButton: boolean;
+  hasTrailingActionButton: boolean;
 }): Pick<BaseBoxProps, 'paddingRight'> => {
-  if (hasTrailingIcon && hasTrailingLinkButton) {
+  if (hasTrailingIcon && hasTrailingActionButton) {
     return {
       paddingRight: 'spacing.3',
     };
   }
 
-  if (hasTrailingIcon && !hasTrailingLinkButton) {
+  if (hasTrailingIcon && !hasTrailingActionButton) {
     return {
       paddingRight: 'spacing.4',
     };
@@ -158,14 +158,14 @@ export const getInputVisualsToBeRendered = ({
   interactionElement,
   suffix,
   trailingIcon,
-  trailingLinkButton,
+  trailingActionButton,
 }: InputVisuals) => ({
   hasLeadingIcon: Boolean(leadingIcon),
   hasPrefix: Boolean(prefix),
   hasInteractionElement: Boolean(interactionElement),
   hasSuffix: Boolean(suffix),
   hasTrailingIcon: Boolean(trailingIcon),
-  hasTrailingLinkButton: Boolean(trailingLinkButton),
+  hasTrailingActionButton: Boolean(trailingActionButton),
 });
 
 export const BaseInputVisuals = ({
@@ -177,7 +177,7 @@ export const BaseInputVisuals = ({
   isDisabled,
   validationState = 'none',
   size,
-  trailingLinkButton: TrailingLinkButton,
+  trailingActionButton: TrailingActionButton,
 }: InputVisuals): ReactElement | null => {
   const {
     hasLeadingIcon,
@@ -185,25 +185,25 @@ export const BaseInputVisuals = ({
     hasInteractionElement,
     hasSuffix,
     hasTrailingIcon,
-    hasTrailingLinkButton,
+    hasTrailingActionButton,
   } = getInputVisualsToBeRendered({
     leadingIcon: LeadingIcon,
     prefix,
     interactionElement,
     suffix,
     trailingIcon: TrailingIcon,
-    trailingLinkButton: TrailingLinkButton,
+    trailingActionButton: TrailingActionButton,
     size,
   });
 
   const hasLeadingVisuals = hasLeadingIcon || hasPrefix;
   const hasTrailingVisuals =
-    hasInteractionElement || hasSuffix || hasTrailingIcon || hasTrailingLinkButton;
+    hasInteractionElement || hasSuffix || hasTrailingIcon || hasTrailingActionButton;
 
   if (__DEV__) {
-    if (hasTrailingLinkButton && !isValidAllowedChildren(TrailingLinkButton, 'Link')) {
+    if (hasTrailingActionButton && !isValidAllowedChildren(TrailingActionButton, 'Link')) {
       throwBladeError({
-        message: 'trailingLinkButton must be a valid Blade Link component',
+        message: 'trailingActionButton must be a valid Blade Link component',
         moduleName: 'BaseInput',
       });
     }
@@ -245,7 +245,7 @@ export const BaseInputVisuals = ({
               hasTrailingIcon,
               hasInteractionElement,
               hasSuffix,
-              hasTrailingLinkButton,
+              hasTrailingActionButton,
             })}
             display="flex"
             alignItems="stretch"
@@ -255,7 +255,7 @@ export const BaseInputVisuals = ({
           </BaseBox>
         ) : null}
         {hasSuffix ? (
-          <BaseBox {...getSuffixStyles({ hasTrailingIcon, hasSuffix, hasTrailingLinkButton })}>
+          <BaseBox {...getSuffixStyles({ hasTrailingIcon, hasSuffix, hasTrailingActionButton })}>
             <Text
               size={textSize[size]}
               variant="body"
@@ -269,7 +269,7 @@ export const BaseInputVisuals = ({
         {TrailingIcon ? (
           <BaseBox
             display="flex"
-            {...getTrailingIconStyles({ hasTrailingIcon, hasTrailingLinkButton })}
+            {...getTrailingIconStyles({ hasTrailingIcon, hasTrailingActionButton })}
           >
             {
               <TrailingIcon
@@ -281,9 +281,9 @@ export const BaseInputVisuals = ({
             }
           </BaseBox>
         ) : null}
-        {TrailingLinkButton ? (
+        {TrailingActionButton ? (
           <BaseBox paddingRight="spacing.4" display="flex">
-            {React.cloneElement(TrailingLinkButton, {
+            {React.cloneElement(TrailingActionButton, {
               size,
               variant: 'button',
               isDisabled,

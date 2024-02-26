@@ -52,11 +52,11 @@ exports[`<TextInput /> should render 1`] = `
   gap: 0px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   margin-left: 0px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -109,7 +109,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -141,7 +141,7 @@ exports[`<TextInput /> should render 1`] = `
   cursor: auto;
 }
 
-.c8.c8.c8.c8.c8::-webkit-input-placeholder {
+.c9.c9.c9.c9.c9::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -158,7 +158,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8::-moz-placeholder {
+.c9.c9.c9.c9.c9::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -175,7 +175,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8:-ms-input-placeholder {
+.c9.c9.c9.c9.c9:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -192,7 +192,7 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8::placeholder {
+.c9.c9.c9.c9.c9::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -209,15 +209,29 @@ exports[`<TextInput /> should render 1`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8:focus {
+.c9.c9.c9.c9.c9:focus {
   outline: none;
+}
+
+.c8.c8.c8.c8.c8 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c8.c8.c8.c8.c8:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -228,24 +242,20 @@ exports[`<TextInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
-}
-
-.c7.c7.c7.c7.c7:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 600ms;
+  transition-duration: 600ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c7.c7.c7.c7.c7:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -256,21 +266,15 @@ exports[`<TextInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7:hover:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -278,8 +282,6 @@ exports[`<TextInput /> should render 1`] = `
 .c7.c7.c7.c7.c7:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -290,17 +292,15 @@ exports[`<TextInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
-}
-
-.c7.c7.c7.c7.c7:focus-within:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 600ms;
+  transition-duration: 600ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -369,28 +369,33 @@ exports[`<TextInput /> should render 1`] = `
         class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
         data-blade-component="base-box"
       >
-        <input
-          aria-describedby=""
-          aria-disabled="false"
-          aria-invalid="false"
-          aria-required="false"
-          autocomplete="off"
-          class="c8"
-          data-blade-component="styled-base-input"
-          enterkeyhint="enter"
-          id="textinput-1-input-2"
-          inputmode="text"
-          type="text"
-          value=""
-        />
+        <div
+          class=" c8"
+          data-blade-component="base-box"
+        >
+          <input
+            aria-describedby=""
+            aria-disabled="false"
+            aria-invalid="false"
+            aria-required="false"
+            autocomplete="off"
+            class="c9"
+            data-blade-component="styled-base-input"
+            enterkeyhint="enter"
+            id="textinput-1-input-2"
+            inputmode="text"
+            type="text"
+            value=""
+          />
+        </div>
       </div>
     </div>
     <div
-      class="c9"
+      class="c10"
       data-blade-component="base-box"
     >
       <div
-        class="c10"
+        class="c11"
         data-blade-component="base-box"
       />
     </div>
@@ -479,15 +484,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding-left: 8px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   padding-right: 12px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   margin-left: 0px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -557,7 +562,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -589,7 +594,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   cursor: auto;
 }
 
-.c12.c12.c12.c12.c12::-webkit-input-placeholder {
+.c13.c13.c13.c13.c13::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -606,7 +611,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12::-moz-placeholder {
+.c13.c13.c13.c13.c13::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -623,7 +628,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12:-ms-input-placeholder {
+.c13.c13.c13.c13.c13:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -640,7 +645,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12::placeholder {
+.c13.c13.c13.c13.c13::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -657,15 +662,29 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12:focus {
+.c13.c13.c13.c13.c13:focus {
   outline: none;
+}
+
+.c12.c12.c12.c12.c12 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c12.c12.c12.c12.c12:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -676,24 +695,20 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
-}
-
-.c7.c7.c7.c7.c7:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 600ms;
+  transition-duration: 600ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c7.c7.c7.c7.c7:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -704,21 +719,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7:hover:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -726,8 +735,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 .c7.c7.c7.c7.c7:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -738,17 +745,15 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
-}
-
-.c7.c7.c7.c7.c7:focus-within:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 600ms;
+  transition-duration: 600ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -865,29 +870,34 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             </p>
           </div>
         </div>
-        <input
-          aria-describedby=""
-          aria-disabled="false"
-          aria-invalid="false"
-          aria-required="false"
-          autocapitalize="none"
-          autocomplete="off"
-          class="c12"
-          data-blade-component="styled-base-input"
-          enterkeyhint="go"
-          id="textinput-49-input-50"
-          inputmode="url"
-          placeholder="something"
-          prefix="https://"
-          type="url"
-          value=""
-        />
+        <div
+          class=" c12"
+          data-blade-component="base-box"
+        >
+          <input
+            aria-describedby=""
+            aria-disabled="false"
+            aria-invalid="false"
+            aria-required="false"
+            autocapitalize="none"
+            autocomplete="off"
+            class="c13"
+            data-blade-component="styled-base-input"
+            enterkeyhint="go"
+            id="textinput-49-input-50"
+            inputmode="url"
+            placeholder="something"
+            prefix="https://"
+            type="url"
+            value=""
+          />
+        </div>
         <div
           class="c8"
           data-blade-component="base-box"
         >
           <div
-            class="c13"
+            class="c14"
             data-blade-component="base-box"
           >
             <p
@@ -901,11 +911,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
       </div>
     </div>
     <div
-      class="c14"
+      class="c15"
       data-blade-component="base-box"
     >
       <div
-        class="c15"
+        class="c16"
         data-blade-component="base-box"
       />
     </div>
