@@ -1,6 +1,7 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { LinkProps } from '~components/Link';
+import type { StringChildrenType } from '~utils/types';
 
 type BreadcrumbProps = StyledPropsBlade & {
   /**
@@ -50,7 +51,7 @@ type BreadcrumbItemProps = {
   /**
    * Content of the BreadcrumbItem
    */
-  children?: string;
+  children?: StringChildrenType;
   /**
    * Icon to be shown before the BreadcrumbItem
    */
