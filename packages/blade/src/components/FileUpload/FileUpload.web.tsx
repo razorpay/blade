@@ -163,7 +163,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 
   return (
     <BaseBox
-      display="inline-flex"
+      display="flex"
+      flexDirection="column"
       {...metaAttribute({ name: MetaConstants.FileUpload, testID })}
       {...getStyledProps(styledProps)}
       width="100%"
@@ -187,7 +188,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           </FormLabel>
         ) : null}
 
-        <BaseBox display="flex" flexDirection="column" marginBottom="spacing.5">
+        <BaseBox display="flex" flexDirection="column" width="100%">
           <SelectorLabel
             componentName={MetaConstants.FileUploadLabel}
             inputProps={{}}
@@ -196,7 +197,12 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               ...(isOneFileSelectedWithSingleUpload ? screenReaderStyles : {}),
             }}
           >
-            <BaseBox display="flex" flexDirection="column" width="100%">
+            <BaseBox
+              display="flex"
+              flexDirection="column"
+              width="100%"
+              marginBottom={willRenderHintText ? 'spacing.0' : 'spacing.5'}
+            >
               <StyledFileUploadWrapper
                 isDisabled={isDisabled}
                 isActive={isActive}
@@ -285,7 +291,33 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               </StyledFileUploadWrapper>
             </BaseBox>
           </SelectorLabel>
-          {willRenderHintText && (
+          {isOneFileSelectedWithSingleUpload && (
+            <BaseBox key={selectedFiles[0].id} marginBottom="spacing.5">
+              <FileUploadItem
+                file={selectedFiles[0]}
+                onRemove={() => {
+                  const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
+                  setSelectedFiles(newFiles);
+                  onRemove?.({ file: selectedFiles[0] });
+                }}
+                onCancel={() => {
+                  const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
+                  setSelectedFiles(newFiles);
+                  onCancel?.({ file: selectedFiles[0] });
+                }}
+                onPreview={onPreview}
+              />
+            </BaseBox>
+          )}
+        </BaseBox>
+      </BaseBox>
+      {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
+      {willRenderHintText && (
+        <BaseBox
+          marginLeft={makeSize(label && isLabelLeftPositioned ? 136 : 0)}
+          marginBottom="spacing.5"
+        >
+          <BaseBox display="flex" flexDirection="row" justifyContent="'space-between">
             <FormHint
               type={getHintType({
                 validationState: showError ? 'error' : validationState,
@@ -296,27 +328,32 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
               helpTextId={helpTextId}
               errorTextId={errorTextId}
             />
-          )}
+          </BaseBox>
         </BaseBox>
-
-        {selectedFiles.map((file) => (
-          <FileUploadItem
+      )}
+      {!isOneFileSelectedWithSingleUpload &&
+        selectedFiles.map((file) => (
+          <BaseBox
             key={file.id}
-            file={file}
-            onRemove={() => {
-              const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
-              setSelectedFiles(newFiles);
-              onRemove?.({ file });
-            }}
-            onCancel={() => {
-              const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
-              setSelectedFiles(newFiles);
-              onCancel?.({ file });
-            }}
-            onPreview={onPreview}
-          />
+            marginLeft={makeSize(label && isLabelLeftPositioned ? 136 : 0)}
+            marginBottom="spacing.3"
+          >
+            <FileUploadItem
+              file={file}
+              onRemove={() => {
+                const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
+                setSelectedFiles(newFiles);
+                onRemove?.({ file });
+              }}
+              onCancel={() => {
+                const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
+                setSelectedFiles(newFiles);
+                onCancel?.({ file });
+              }}
+              onPreview={onPreview}
+            />
+          </BaseBox>
         ))}
-      </BaseBox>
     </BaseBox>
   );
 };

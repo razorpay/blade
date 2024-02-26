@@ -145,6 +145,7 @@ SingleFileUpload.args = {
   uploadType: 'single',
   isRequired: true,
   necessityIndicator: 'required',
+  onPreview: undefined,
 };
 
 const MultipleFilesUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
@@ -271,6 +272,7 @@ MultipleFilesUpload.args = {
   maxSize: 2 * 1024 * 1024,
   isRequired: true,
   necessityIndicator: 'required',
+  onPreview: undefined,
 };
 
 const AutoFileUploadTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
@@ -414,6 +416,7 @@ AutoFileUpload.args = {
   maxSize: 2 * 1024 * 1024,
   isRequired: true,
   necessityIndicator: 'required',
+  onPreview: undefined,
 };
 
 const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
@@ -565,6 +568,7 @@ AutoFileUploadWithProgress.args = {
   maxSize: 2 * 1024 * 1024,
   isRequired: true,
   necessityIndicator: 'required',
+  onPreview: undefined,
 };
 
 const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {

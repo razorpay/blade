@@ -24,7 +24,6 @@ const FileUploadItem = memo(
         borderRadius="medium"
         borderWidth="thin"
         borderColor="interactive.border.gray.default"
-        marginBottom="spacing.3"
       >
         <BaseBox width="100%">
           <BaseBox display="flex" flexDirection="row" margin="spacing.3">
