@@ -2,7 +2,7 @@ import { BaseHeader } from './BaseHeader';
 import { BaseFooter } from './BaseFooter';
 import { Amount } from '~components/Amount';
 import { Badge } from '~components/Badge';
-import { StarIcon } from '~components/Icons';
+import { AnnouncementIcon, DownloadIcon, StarIcon } from '~components/Icons';
 import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
@@ -27,7 +27,7 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
       <HeaderContainer>
         <BaseHeader
           leading={<StarIcon color="surface.icon.gray.normal" size="large" />}
-          title="When The Title is So Large That It Goes On Next Line"
+          title="When The Title small"
           subtitle="Header Subtitle"
           titleSuffix={<Badge color="positive">New</Badge>}
           trailing={<Amount value={1000} />}
@@ -73,6 +73,19 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
           trailing={<Amount value={1000} />}
           showCloseButton={true}
           showBackButton={true}
+        />
+      </HeaderContainer>
+      <HeaderContainer>
+        <BaseHeader
+          leading={<AnnouncementIcon color="surface.icon.gray.normal" size="medium" />}
+          title="Announcements"
+          subtitle="This is an announcement"
+          titleSuffix={
+            <Badge size="small" color="positive">
+              New
+            </Badge>
+          }
+          trailing={<Button icon={DownloadIcon} />}
         />
       </HeaderContainer>
     </Box>
