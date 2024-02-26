@@ -473,12 +473,12 @@ const AutoFileUploadWithProgressTemplate: StoryFn<typeof FileUploadComponent> = 
     );
 
     xhr.upload.onprogress = (event) => {
-      const percent = Math.round((event.loaded / event.total) * 100);
+      const uploadPercent = Math.round((event.loaded / event.total) * 100);
 
       setUploadedFiles(
         fileList.map((f) => {
           if (f.id === file.id) {
-            file.percent = percent;
+            file.uploadPercent = uploadPercent;
             file.status = 'uploading';
           }
           return file;

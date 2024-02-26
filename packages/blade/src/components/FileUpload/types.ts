@@ -13,7 +13,7 @@ interface BladeFile extends File {
   /**
    * The percentage of file upload completion.
    */
-  percent?: number;
+  uploadPercent?: number;
   /**
    * Text indicating an error state
    */

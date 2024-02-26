@@ -12,7 +12,7 @@ import isUndefined from '~utils/lodashButBetter/isUndefined';
 
 const FileUploadItem = memo(
   ({ file, onPreview, onRemove, onCancel }: FileUploadItemProps): React.ReactElement => {
-    const { name, size, percent, errorText, status } = file;
+    const { name, size, uploadPercent, errorText, status } = file;
     const isUploading = status === 'uploading';
     const sizeInKB = size / 1024;
     const sizeInMB = sizeInKB / 1024;
@@ -60,7 +60,7 @@ const FileUploadItem = memo(
                 {errorText ??
                   `${(showSizeInKB ? sizeInKB : sizeInMB).toFixed(2)} ${
                     showSizeInKB ? 'KB' : 'MB'
-                  } ${isUploading && percent ? `(${percent}%)` : ''}`}
+                  } ${isUploading && uploadPercent ? `(${uploadPercent}%)` : ''}`}
               </Text>
             </BaseBox>
             {status === 'error' || status === 'uploading' ? (
@@ -106,8 +106,8 @@ const FileUploadItem = memo(
           {isUploading && (
             <ProgressBar
               showPercentage={false}
-              value={percent ?? 0}
-              isIndeterminate={isUndefined(percent)}
+              value={uploadPercent ?? 0}
+              isIndeterminate={isUndefined(uploadPercent)}
             />
           )}
         </BaseBox>
