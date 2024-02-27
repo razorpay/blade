@@ -18,7 +18,7 @@ import {
 import React from 'react';
 import type { TooltipProps } from './types';
 import { TooltipContent } from './TooltipContent';
-import { ARROW_HEIGHT, ARROW_WIDTH, tooltipZIndex } from './constants';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { TooltipContext } from './TooltipContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -29,6 +29,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { mergeProps } from '~utils/mergeProps';
 import { PopupArrow } from '~components/PopupArrow';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const Tooltip = ({
   title,
@@ -36,7 +37,7 @@ const Tooltip = ({
   children,
   placement = 'top',
   onOpenChange,
-  zIndex = tooltipZIndex,
+  zIndex = componentZIndices.tooltip,
 }: TooltipProps): React.ReactElement => {
   const { theme } = useTheme();
   const id = useId();
