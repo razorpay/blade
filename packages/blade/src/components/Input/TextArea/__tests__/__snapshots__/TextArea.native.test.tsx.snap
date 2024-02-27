@@ -262,6 +262,7 @@ exports[`<TextArea /> should render 1`] = `
                 "width": "100%",
               },
               {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
                 "borderColor": "hsla(211, 27%, 76%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
