@@ -2,8 +2,7 @@ import type { Theme } from '~components/BladeProvider';
 
 type GetFocusRingArgs = {
   theme: Theme;
-  hasNegativeOffset?: boolean;
-  hasNoOffset?: boolean;
+  negativeOffset?: boolean;
 };
 
 export type { GetFocusRingArgs };

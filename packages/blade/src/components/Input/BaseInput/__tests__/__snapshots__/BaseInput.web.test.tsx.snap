@@ -1219,7 +1219,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 }
 
 .c7.c7.c7.c7.c7:hover {
-  background-color: hsla(0,0%,100%,1);
+  background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
