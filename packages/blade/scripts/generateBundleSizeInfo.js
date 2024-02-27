@@ -3,6 +3,7 @@ const path = require('path');
 const babelParser = require('@babel/parser');
 const traverse = require('@babel/traverse').default;
 const execa = require('execa');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const prettier = require('prettier');
 
 const main = async () => {
