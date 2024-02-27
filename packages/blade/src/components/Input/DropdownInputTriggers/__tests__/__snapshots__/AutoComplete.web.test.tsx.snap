@@ -2137,6 +2137,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  margin-top: 1px;
 }
 
 .c46.c46.c46.c46.c46 {

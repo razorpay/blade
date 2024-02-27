@@ -11,9 +11,10 @@ import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { isReactNative } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { logger, throwBladeError } from '~utils/logger';
+import { size } from '~tokens/global';
 
 type BaseHeaderProps = {
   title?: string;
@@ -45,6 +46,7 @@ type BaseHeaderProps = {
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
+  backButtonRef?: React.MutableRefObject<any>;
   metaComponentName?: string;
   /**
    * inner child of BottomSheetHeader. Meant to be used for AutoComplete only
@@ -152,6 +154,7 @@ const _BaseHeader = ({
   onBackButtonClick,
   onCloseButtonClick,
   closeButtonRef,
+  backButtonRef,
   testID,
   onClickCapture,
   onKeyDown,
@@ -193,6 +196,7 @@ const _BaseHeader = ({
             <BaseBox overflow="visible" marginRight="spacing.5">
               <Box {...centerBoxProps}>
                 <IconButton
+                  ref={backButtonRef}
                   size="large"
                   icon={ChevronLeftIcon}
                   onClick={() => onBackButtonClick?.()}
@@ -210,12 +214,7 @@ const _BaseHeader = ({
             alignItems="flex-start"
           >
             {leading ? (
-              <BaseBox
-                width="spacing.8"
-                height="spacing.8"
-                marginRight="spacing.3"
-                {...centerBoxProps}
-              >
+              <BaseBox marginRight="spacing.3" {...centerBoxProps}>
                 {leading}
               </BaseBox>
             ) : null}
@@ -230,7 +229,12 @@ const _BaseHeader = ({
                 flexDirection="row"
               >
                 {title ? (
-                  <Text size="large" weight="semibold" color="surface.text.gray.normal">
+                  <Text
+                    size="large"
+                    marginTop={makeSize(size['1'])}
+                    weight="semibold"
+                    color="surface.text.gray.normal"
+                  >
                     {title}
                   </Text>
                 ) : null}

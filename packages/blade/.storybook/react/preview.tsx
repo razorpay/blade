@@ -144,7 +144,8 @@ const StoryCanvas = styled.div<{ context }>(
         context.kind.includes('/Dropdown/With Select') ||
         context.kind.includes('/Dropdown/With Button') ||
         context.kind.includes('/Dropdown/With AutoComplete') ||
-        context.kind.includes('/Carousel')
+        context.kind.includes('/Carousel') ||
+        context.kind.includes('/Examples')
           ? '0rem'
           : '2rem'
       };

@@ -15,6 +15,7 @@ export * from './Chip';
 export * from './Collapsible';
 export * from './Counter';
 export * from './Divider';
+export * from './Drawer';
 export * from './Dropdown';
 export * from './Icons';
 export * from './Indicator';

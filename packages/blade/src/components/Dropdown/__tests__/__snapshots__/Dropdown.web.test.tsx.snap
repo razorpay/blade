@@ -464,6 +464,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  margin-top: 1px;
 }
 
 .c41.c41.c41.c41.c41 {
