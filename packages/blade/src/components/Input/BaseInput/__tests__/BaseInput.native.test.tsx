@@ -95,9 +95,9 @@ describe('<BaseInput />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should render with trailingLinkButton', () => {
+  it('should render with trailingActionButton', () => {
     const { toJSON } = renderWithTheme(
-      <BaseInput id="coupon" label="Coupon" trailingLinkButton={<Link>Apply</Link>} />,
+      <BaseInput id="coupon" label="Coupon" trailingActionButton={<Link>Apply</Link>} />,
     );
 
     expect(toJSON()).toMatchSnapshot();

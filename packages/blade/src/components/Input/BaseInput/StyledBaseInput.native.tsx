@@ -3,22 +3,30 @@ import styled from 'styled-components/native';
 import type { CSSObject, ThemeProps, DefaultTheme } from 'styled-components';
 import type {
   TextInputProps,
-  TextInput,
   TouchableHighlight,
   TouchableHighlightProps,
   GestureResponderEvent,
 } from 'react-native';
-import { Platform as RNPlatform } from 'react-native';
+import { TextInput, Platform as RNPlatform, TouchableOpacity } from 'react-native';
+import type { EasingFactoryFn } from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
-import { baseInputHeight } from './baseInputConfig';
+import {
+  baseInputBackgroundColor,
+  baseInputBorderBackgroundMotion,
+  baseInputBorderColor,
+  baseInputHeight,
+} from './baseInputConfig';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size as sizeToken } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
+import { castNativeType, makeMotionTime } from '~utils';
 import type { Platform } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -148,7 +156,9 @@ const getRNInputStyles = (
     }),
   };
 };
-const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
+const StyledNativeBaseInput = styled(
+  Animated.createAnimatedComponent(TextInput),
+)<StyledComponentInputProps>(
   ({
     id,
     isFocused,
@@ -184,7 +194,9 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       $size,
     }),
 );
-const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
+const StyledNativeBaseButton = styled(
+  Animated.createAnimatedComponent(TouchableOpacity),
+)<StyledComponentInputProps>(
   ({
     id,
     isFocused,
@@ -267,6 +279,45 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     },
     isFocused: currentInteraction === 'focus',
   };
+
+  const baseInputState =
+    currentInteraction === 'focus'
+      ? 'focused'
+      : currentInteraction === 'hover'
+      ? 'hovered'
+      : isDisabled
+      ? 'disabled'
+      : 'default';
+
+  let borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
+  const backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
+
+  if (props.validationState === 'error') {
+    borderColor = getIn(theme.colors, baseInputBorderColor.error);
+  } else if (props.validationState === 'success') {
+    borderColor = getIn(theme.colors, baseInputBorderColor.success);
+  }
+
+  const motionConfig: {
+    duration: number;
+    easing: EasingFactoryFn;
+  } = {
+    duration: castNativeType(
+      makeMotionTime(getIn(theme.motion.duration, baseInputBorderBackgroundMotion.duration)),
+    ),
+    easing: castNativeType(getIn(theme.motion.easing, baseInputBorderBackgroundMotion.easing)),
+  };
+
+  const animatedBorderStyle = useAnimatedStyle(
+    () => ({
+      borderWidth: theme.border.width.thin,
+      borderRadius: theme.border.radius.medium,
+      borderStyle: 'solid',
+      backgroundColor: withTiming(backgroundColor, motionConfig),
+      borderColor: withTiming(borderColor, motionConfig),
+    }),
+    [borderColor],
+  );
 
   return renderAs === 'button' ? (
     <StyledNativeBaseButton
@@ -352,6 +403,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       }
       autoCapitalize={autoCapitalize}
       $size={$size}
+      style={[animatedBorderStyle]}
       {...commonProps}
       {...props}
       {...accessibilityProps}
