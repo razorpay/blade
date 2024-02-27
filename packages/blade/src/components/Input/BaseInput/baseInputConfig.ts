@@ -40,3 +40,35 @@ export const baseInputWrapperMaxHeight = {
   medium: baseInputHeight.medium * BASEINPUT_MAX_ROWS + BASEINPUT_BOTTOM_LINE_HEIGHT,
   large: baseInputHeight.large * BASEINPUT_MAX_ROWS + BASEINPUT_BOTTOM_LINE_HEIGHT,
 } as const;
+
+export const baseInputBorderColor = {
+  default: 'interactive.border.gray.default',
+  hovered: 'interactive.border.gray.highlighted',
+  focused: 'interactive.border.primary.default',
+  disabled: 'interactive.border.gray.disabled',
+  error: 'interactive.border.negative.default',
+  success: 'interactive.border.positive.default',
+} as const;
+
+export const baseInputBackgroundColor = {
+  default: 'surface.background.gray.intense',
+  hovered: 'surface.background.gray.moderate',
+  focused: 'surface.background.gray.moderate',
+  disabled: 'surface.background.gray.intense',
+  error: 'surface.background.gray.intense',
+  success: 'surface.background.gray.intense',
+} as const;
+
+export const baseInputBorderWidth = {
+  default: 'thin',
+  hovered: 'thin',
+  disabled: 'thin',
+  focused: 'thick',
+  error: 'thick',
+  success: 'thick',
+} as const;
+
+export const baseInputBorderBackgroundMotion = {
+  duration: 'xgentle',
+  easing: 'standard.revealing',
+} as const;

@@ -2,12 +2,18 @@ import type { CSSObject } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import { getBaseInputBorderStyles } from './getBaseInputBorderStyles';
-import { baseInputHeight } from './baseInputConfig';
+import {
+  baseInputBackgroundColor,
+  baseInputBorderColor,
+  baseInputBorderWidth,
+  baseInputHeight,
+} from './baseInputConfig';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -48,39 +54,30 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isDropdownTrigger'
 >): CSSObject => {
   // normal state
-  let backgroundColor = theme.colors.surface.background.gray.intense;
-  let borderColor = theme.colors.interactive.border.gray.default;
-  let borderWidth: Theme['border']['width'][keyof Theme['border']['width']] =
-    theme.border.width.thin;
+  let backgroundColor = getIn(theme.colors, baseInputBackgroundColor.default);
+  let borderColor = getIn(theme.colors, baseInputBorderColor.default);
+  let borderWidth: Theme['border']['width'][keyof Theme['border']['width']] = getIn(
+    theme.border.width,
+    baseInputBorderWidth.default,
+  );
 
-  // hoverState
-  if (isHovered) {
-    backgroundColor = theme.colors.surface.background.gray.moderate;
-    borderColor = theme.colors.interactive.border.gray.highlighted;
-  }
+  const baseInputState = isHovered
+    ? 'hovered'
+    : isFocused
+    ? 'focused'
+    : isDisabled
+    ? 'disabled'
+    : 'default';
 
-  // focused state
-  if (isFocused) {
-    backgroundColor = theme.colors.surface.background.gray.moderate;
-    borderColor = theme.colors.interactive.border.primary.default;
-    borderWidth = theme.border.width.thick;
-  }
+  backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
+  borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
+  borderWidth = getIn(theme.border.width, baseInputBorderWidth[baseInputState]);
 
-  // disabled state
-  if (isDisabled) {
-    backgroundColor = theme.colors.surface.background.gray.intense;
-    borderColor = theme.colors.interactive.border.gray.disabled;
-  }
-
-  // validation state
   if (validationState === 'error') {
-    backgroundColor = theme.colors.surface.background.gray.intense;
-    borderColor = theme.colors.interactive.border.negative.default;
-    borderWidth = theme.border.width.thick;
+    borderColor = getIn(theme.colors, baseInputBorderColor.error);
   } else if (validationState === 'success') {
-    backgroundColor = theme.colors.surface.background.gray.intense;
-    borderColor = theme.colors.interactive.border.positive.default;
-    borderWidth = theme.border.width.thick;
+    borderColor = getIn(theme.colors, baseInputBorderColor.success);
+    borderWidth = getIn(theme.border.width, baseInputBorderWidth.success);
   }
 
   return {

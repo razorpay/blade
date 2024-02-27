@@ -12,14 +12,21 @@ import type { EasingFactoryFn } from 'react-native-reanimated';
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
-import { getBaseInputStyles, getInputBackgroundAndBorderStyles } from './baseInputStyles';
-import { baseInputHeight } from './baseInputConfig';
+import { getBaseInputStyles } from './baseInputStyles';
+import {
+  baseInputBackgroundColor,
+  baseInputBorderBackgroundMotion,
+  baseInputBorderColor,
+  baseInputHeight,
+} from './baseInputConfig';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { size as sizeToken } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
+import { castNativeType, makeMotionTime } from '~utils';
 import type { Platform } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
 
 type StyledComponentAutoCompleteAndroid =
   | 'off'
@@ -273,29 +280,43 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     isFocused: currentInteraction === 'focus',
   };
 
-  const backgroundAndBorderStyles = getInputBackgroundAndBorderStyles({
-    theme,
-    isDisabled: currentInteraction === 'disabled',
-    isFocused: currentInteraction === 'focus',
-    validationState: props.validationState,
-  });
+  const baseInputState =
+    currentInteraction === 'focus'
+      ? 'focused'
+      : currentInteraction === 'hover'
+      ? 'hovered'
+      : isDisabled
+      ? 'disabled'
+      : 'default';
+
+  let borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
+  const backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
+
+  if (props.validationState === 'error') {
+    borderColor = getIn(theme.colors, baseInputBorderColor.error);
+  } else if (props.validationState === 'success') {
+    borderColor = getIn(theme.colors, baseInputBorderColor.success);
+  }
+
+  const motionConfig: {
+    duration: number;
+    easing: EasingFactoryFn;
+  } = {
+    duration: castNativeType(
+      makeMotionTime(getIn(theme.motion.duration, baseInputBorderBackgroundMotion.duration)),
+    ),
+    easing: castNativeType(getIn(theme.motion.easing, baseInputBorderBackgroundMotion.easing)),
+  };
 
   const animatedBorderStyle = useAnimatedStyle(
     () => ({
       borderWidth: theme.border.width.thin,
       borderRadius: theme.border.radius.medium,
       borderStyle: 'solid',
-      borderColor: withTiming(
-        currentInteraction === 'default'
-          ? theme.colors.interactive.border.gray.default
-          : (backgroundAndBorderStyles.borderColor as string),
-        {
-          duration: theme.motion.duration.xgentle,
-          easing: theme.motion.easing.standard.revealing as EasingFactoryFn,
-        },
-      ),
+      backgroundColor: withTiming(backgroundColor, motionConfig),
+      borderColor: withTiming(borderColor, motionConfig),
     }),
-    [backgroundAndBorderStyles.borderColor],
+    [borderColor],
   );
 
   return renderAs === 'button' ? (
