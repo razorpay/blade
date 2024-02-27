@@ -223,7 +223,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
-                      "borderWidth": 1,
+                      "borderWidth": 0,
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
@@ -290,6 +290,13 @@ exports[`<OTPInput /> should render 1`] = `
                         "textDecorationLine": "none",
                         "width": "100%",
                       },
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
                     ]
                   }
                   textAlign="center"
@@ -348,7 +355,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
-                      "borderWidth": 1,
+                      "borderWidth": 0,
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
@@ -415,6 +422,13 @@ exports[`<OTPInput /> should render 1`] = `
                         "textDecorationLine": "none",
                         "width": "100%",
                       },
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
                     ]
                   }
                   textAlign="center"
@@ -473,7 +487,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
-                      "borderWidth": 1,
+                      "borderWidth": 0,
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
@@ -540,6 +554,13 @@ exports[`<OTPInput /> should render 1`] = `
                         "textDecorationLine": "none",
                         "width": "100%",
                       },
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
                     ]
                   }
                   textAlign="center"
@@ -598,7 +619,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
-                      "borderWidth": 1,
+                      "borderWidth": 0,
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
@@ -665,6 +686,13 @@ exports[`<OTPInput /> should render 1`] = `
                         "textDecorationLine": "none",
                         "width": "100%",
                       },
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
                     ]
                   }
                   textAlign="center"
@@ -723,7 +751,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
-                      "borderWidth": 1,
+                      "borderWidth": 0,
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
@@ -790,6 +818,13 @@ exports[`<OTPInput /> should render 1`] = `
                         "textDecorationLine": "none",
                         "width": "100%",
                       },
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
                     ]
                   }
                   textAlign="center"
@@ -848,7 +883,7 @@ exports[`<OTPInput /> should render 1`] = `
                       "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
-                      "borderWidth": 1,
+                      "borderWidth": 0,
                       "display": "flex",
                       "flexDirection": "row",
                       "position": "relative",
@@ -914,6 +949,13 @@ exports[`<OTPInput /> should render 1`] = `
                         "textAlignVertical": "top",
                         "textDecorationLine": "none",
                         "width": "100%",
+                      },
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
                       },
                     ]
                   }

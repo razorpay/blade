@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<TextArea /> should render TextArea on server and have autofocus on client 1`] = `"<div id="root"><div data-blade-component="textarea" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx WiWSl"><label for="textarea-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO itNENY" data-blade-component="text">Enter name</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  hGuEoS"><textarea type="text" rows="2" id="textarea-undefined-input-undefined" autofocus="" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gVFbOH"></textarea></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div>"`;
+exports[`<TextArea /> should render TextArea on server and have autofocus on client 1`] = `"<div id="root"><div data-blade-component="textarea" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx WiWSl"><label for="textarea-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO itNENY" data-blade-component="text">Enter name</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  SEWvH"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledBaseInputweb__FocusRingWrapper-hsusrk-2  gKVxjp"><textarea type="text" rows="2" id="textarea-undefined-input-undefined" autofocus="" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 gVFbOH"></textarea></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div>"`;
 
 exports[`<TextArea /> should render TextArea on server and have autofocus on client 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -57,11 +57,11 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   gap: 0px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   margin-left: 0px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -114,7 +114,7 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -145,7 +145,7 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   cursor: auto;
 }
 
-.c8.c8.c8.c8.c8::-webkit-input-placeholder {
+.c9.c9.c9.c9.c9::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -162,7 +162,7 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8::-moz-placeholder {
+.c9.c9.c9.c9.c9::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -179,7 +179,7 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8:-ms-input-placeholder {
+.c9.c9.c9.c9.c9:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -196,7 +196,7 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8::placeholder {
+.c9.c9.c9.c9.c9::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -213,15 +213,29 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8:focus {
+.c9.c9.c9.c9.c9:focus {
   outline: none;
+}
+
+.c8.c8.c8.c8.c8 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c8.c8.c8.c8.c8:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c7.c7.c7.c7.c7 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -236,24 +250,20 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   -ms-flex-align: flex-start;
   align-items: flex-start;
   position: relative;
-}
-
-.c7.c7.c7.c7.c7:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 600ms;
+  transition-duration: 600ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c7.c7.c7.c7.c7:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -264,21 +274,15 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   flex-direction: row;
   width: 100%;
   position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7:hover:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -286,8 +290,6 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
 .c7.c7.c7.c7.c7:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -298,17 +300,15 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
   flex-direction: row;
   width: 100%;
   position: relative;
-}
-
-.c7.c7.c7.c7.c7:focus-within:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 600ms;
+  transition-duration: 600ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -379,26 +379,31 @@ exports[`<TextArea /> should render TextArea on server and have autofocus on cli
         class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
         data-blade-component="base-box"
       >
-        <textarea
-          aria-describedby=""
-          aria-disabled="false"
-          aria-invalid="false"
-          aria-required="false"
-          autofocus=""
-          class="c8"
-          data-blade-component="styled-base-input"
-          id="textarea-1-input-2"
-          rows="2"
-          type="text"
-        />
+        <div
+          class=" c8"
+          data-blade-component="base-box"
+        >
+          <textarea
+            aria-describedby=""
+            aria-disabled="false"
+            aria-invalid="false"
+            aria-required="false"
+            autofocus=""
+            class="c9"
+            data-blade-component="styled-base-input"
+            id="textarea-1-input-2"
+            rows="2"
+            type="text"
+          />
+        </div>
       </div>
     </div>
     <div
-      class="c9"
+      class="c10"
       data-blade-component="base-box"
     >
       <div
-        class="c10"
+        class="c11"
         data-blade-component="base-box"
       />
     </div>

@@ -12,6 +12,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Tag } from '~components/Tag';
 import { Text } from '~components/Typography';
 import { Box } from '~components/Box';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'Base Input Props',
@@ -438,6 +439,7 @@ const BaseInputSizesTemplate: StoryFn<typeof BaseInputComponent> = ({
         leadingIcon={iconMap[(leadingIcon as unknown) as string]}
         trailingIcon={iconMap[(trailingIcon as unknown) as string]}
         size="medium"
+        trailingActionButton={<Link>Hello</Link>}
       />
       <Text size="large" marginBottom="spacing.1">
         Large Size:

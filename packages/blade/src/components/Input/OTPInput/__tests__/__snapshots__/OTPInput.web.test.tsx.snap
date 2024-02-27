@@ -64,14 +64,14 @@ exports[`<OTPInput /> should render 1`] = `
   width: 100%;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
   margin-left: 8px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   margin-left: 0px;
 }
 
@@ -114,7 +114,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -147,7 +147,7 @@ exports[`<OTPInput /> should render 1`] = `
   cursor: auto;
 }
 
-.c10.c10.c10.c10.c10::-webkit-input-placeholder {
+.c11.c11.c11.c11.c11::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -165,7 +165,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::-moz-placeholder {
+.c11.c11.c11.c11.c11::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -183,7 +183,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:-ms-input-placeholder {
+.c11.c11.c11.c11.c11:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -201,7 +201,7 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::placeholder {
+.c11.c11.c11.c11.c11::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
   font-size: 0.875rem;
@@ -219,15 +219,29 @@ exports[`<OTPInput /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:focus {
+.c11.c11.c11.c11.c11:focus {
   outline: none;
+}
+
+.c10.c10.c10.c10.c10 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c10.c10.c10.c10.c10:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c9.c9.c9.c9.c9 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -238,24 +252,20 @@ exports[`<OTPInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
-}
-
-.c9.c9.c9.c9.c9:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 600ms;
+  transition-duration: 600ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c9.c9.c9.c9.c9:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -266,21 +276,15 @@ exports[`<OTPInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9.c9.c9.c9.c9:hover:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -288,8 +292,6 @@ exports[`<OTPInput /> should render 1`] = `
 .c9.c9.c9.c9.c9:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
-  border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -300,17 +302,15 @@ exports[`<OTPInput /> should render 1`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
-}
-
-.c9.c9.c9.c9.c9:focus-within:has(input:focus-visible) {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 0px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 600ms;
+  transition-duration: 600ms;
+  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
+  transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -396,28 +396,33 @@ exports[`<OTPInput /> should render 1`] = `
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
                 data-blade-component="base-box"
               >
-                <input
-                  aria-describedby=""
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-label="Enter OTP character 1"
-                  aria-required="true"
-                  autocomplete="one-time-code"
-                  class="c10"
-                  data-blade-component="styled-base-input"
-                  id="otp-37-input-38-0-49-input-50"
-                  inputmode="decimal"
-                  placeholder=""
-                  required=""
-                  type="text"
-                  value=""
-                />
+                <div
+                  class=" c10"
+                  data-blade-component="base-box"
+                >
+                  <input
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-label="Enter OTP character 1"
+                    aria-required="true"
+                    autocomplete="one-time-code"
+                    class="c11"
+                    data-blade-component="styled-base-input"
+                    id="otp-37-input-38-0-49-input-50"
+                    inputmode="decimal"
+                    placeholder=""
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c11"
+          class="c12"
           data-blade-component="base-box"
         >
           <div
@@ -432,28 +437,33 @@ exports[`<OTPInput /> should render 1`] = `
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
                 data-blade-component="base-box"
               >
-                <input
-                  aria-describedby=""
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-label=" character 2"
-                  aria-required="true"
-                  autocomplete="one-time-code"
-                  class="c10"
-                  data-blade-component="styled-base-input"
-                  id="otp-37-input-38-1-55-input-56"
-                  inputmode="decimal"
-                  placeholder=""
-                  required=""
-                  type="text"
-                  value=""
-                />
+                <div
+                  class=" c10"
+                  data-blade-component="base-box"
+                >
+                  <input
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-label=" character 2"
+                    aria-required="true"
+                    autocomplete="one-time-code"
+                    class="c11"
+                    data-blade-component="styled-base-input"
+                    id="otp-37-input-38-1-55-input-56"
+                    inputmode="decimal"
+                    placeholder=""
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c11"
+          class="c12"
           data-blade-component="base-box"
         >
           <div
@@ -468,28 +478,33 @@ exports[`<OTPInput /> should render 1`] = `
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
                 data-blade-component="base-box"
               >
-                <input
-                  aria-describedby=""
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-label=" character 3"
-                  aria-required="true"
-                  autocomplete="one-time-code"
-                  class="c10"
-                  data-blade-component="styled-base-input"
-                  id="otp-37-input-38-2-61-input-62"
-                  inputmode="decimal"
-                  placeholder=""
-                  required=""
-                  type="text"
-                  value=""
-                />
+                <div
+                  class=" c10"
+                  data-blade-component="base-box"
+                >
+                  <input
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-label=" character 3"
+                    aria-required="true"
+                    autocomplete="one-time-code"
+                    class="c11"
+                    data-blade-component="styled-base-input"
+                    id="otp-37-input-38-2-61-input-62"
+                    inputmode="decimal"
+                    placeholder=""
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c11"
+          class="c12"
           data-blade-component="base-box"
         >
           <div
@@ -504,28 +519,33 @@ exports[`<OTPInput /> should render 1`] = `
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
                 data-blade-component="base-box"
               >
-                <input
-                  aria-describedby=""
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-label=" character 4"
-                  aria-required="true"
-                  autocomplete="one-time-code"
-                  class="c10"
-                  data-blade-component="styled-base-input"
-                  id="otp-37-input-38-3-67-input-68"
-                  inputmode="decimal"
-                  placeholder=""
-                  required=""
-                  type="text"
-                  value=""
-                />
+                <div
+                  class=" c10"
+                  data-blade-component="base-box"
+                >
+                  <input
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-label=" character 4"
+                    aria-required="true"
+                    autocomplete="one-time-code"
+                    class="c11"
+                    data-blade-component="styled-base-input"
+                    id="otp-37-input-38-3-67-input-68"
+                    inputmode="decimal"
+                    placeholder=""
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c11"
+          class="c12"
           data-blade-component="base-box"
         >
           <div
@@ -540,28 +560,33 @@ exports[`<OTPInput /> should render 1`] = `
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
                 data-blade-component="base-box"
               >
-                <input
-                  aria-describedby=""
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-label=" character 5"
-                  aria-required="true"
-                  autocomplete="one-time-code"
-                  class="c10"
-                  data-blade-component="styled-base-input"
-                  id="otp-37-input-38-4-73-input-74"
-                  inputmode="decimal"
-                  placeholder=""
-                  required=""
-                  type="text"
-                  value=""
-                />
+                <div
+                  class=" c10"
+                  data-blade-component="base-box"
+                >
+                  <input
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-label=" character 5"
+                    aria-required="true"
+                    autocomplete="one-time-code"
+                    class="c11"
+                    data-blade-component="styled-base-input"
+                    id="otp-37-input-38-4-73-input-74"
+                    inputmode="decimal"
+                    placeholder=""
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div
-          class="c11"
+          class="c12"
           data-blade-component="base-box"
         >
           <div
@@ -576,22 +601,27 @@ exports[`<OTPInput /> should render 1`] = `
                 class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c9"
                 data-blade-component="base-box"
               >
-                <input
-                  aria-describedby=""
-                  aria-disabled="false"
-                  aria-invalid="false"
-                  aria-label=" character 6"
-                  aria-required="true"
-                  autocomplete="one-time-code"
-                  class="c10"
-                  data-blade-component="styled-base-input"
-                  id="otp-37-input-38-5-79-input-80"
-                  inputmode="decimal"
-                  placeholder=""
-                  required=""
-                  type="text"
-                  value=""
-                />
+                <div
+                  class=" c10"
+                  data-blade-component="base-box"
+                >
+                  <input
+                    aria-describedby=""
+                    aria-disabled="false"
+                    aria-invalid="false"
+                    aria-label=" character 6"
+                    aria-required="true"
+                    autocomplete="one-time-code"
+                    class="c11"
+                    data-blade-component="styled-base-input"
+                    id="otp-37-input-38-5-79-input-80"
+                    inputmode="decimal"
+                    placeholder=""
+                    required=""
+                    type="text"
+                    value=""
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -599,7 +629,7 @@ exports[`<OTPInput /> should render 1`] = `
       </div>
     </div>
     <div
-      class="c12"
+      class="c13"
       data-blade-component="base-box"
     />
   </div>

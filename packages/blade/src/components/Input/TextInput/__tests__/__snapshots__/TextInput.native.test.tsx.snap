@@ -192,7 +192,7 @@ exports[`<TextInput /> should render 1`] = `
               "borderColor": "hsla(211, 27%, 76%, 1)",
               "borderRadius": 4,
               "borderStyle": "solid",
-              "borderWidth": 1,
+              "borderWidth": 0,
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
@@ -258,6 +258,13 @@ exports[`<TextInput /> should render 1`] = `
                 "textAlignVertical": "top",
                 "textDecorationLine": "none",
                 "width": "100%",
+              },
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(211, 27%, 76%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
               },
             ]
           }
@@ -487,7 +494,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
               "borderColor": "hsla(211, 27%, 76%, 1)",
               "borderRadius": 4,
               "borderStyle": "solid",
-              "borderWidth": 1,
+              "borderWidth": 0,
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
@@ -706,6 +713,13 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
                 "textAlignVertical": "top",
                 "textDecorationLine": "none",
                 "width": "100%",
+              },
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(211, 27%, 76%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
               },
             ]
           }

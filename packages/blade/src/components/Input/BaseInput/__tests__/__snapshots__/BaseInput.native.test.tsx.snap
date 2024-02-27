@@ -192,7 +192,7 @@ exports[`<BaseInput /> should render 1`] = `
               "borderColor": "hsla(211, 27%, 76%, 1)",
               "borderRadius": 4,
               "borderStyle": "solid",
-              "borderWidth": 1,
+              "borderWidth": 0,
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
@@ -255,6 +255,13 @@ exports[`<BaseInput /> should render 1`] = `
                 "textAlignVertical": "top",
                 "textDecorationLine": "none",
                 "width": "100%",
+              },
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(211, 27%, 76%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
               },
             ]
           }
@@ -483,7 +490,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               "borderColor": "hsla(211, 27%, 76%, 1)",
               "borderRadius": 4,
               "borderStyle": "solid",
-              "borderWidth": 1,
+              "borderWidth": 0,
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
@@ -646,6 +653,13 @@ exports[`<BaseInput /> should render with icons 1`] = `
                 "textAlignVertical": "top",
                 "textDecorationLine": "none",
                 "width": "100%",
+              },
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(211, 27%, 76%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
               },
             ]
           }
@@ -958,7 +972,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
               "borderColor": "hsla(150, 100%, 32%, 1)",
               "borderRadius": 4,
               "borderStyle": "solid",
-              "borderWidth": 1,
+              "borderWidth": 0,
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
@@ -1122,6 +1136,13 @@ exports[`<BaseInput /> should render with large size input 1`] = `
                 "textAlignVertical": "top",
                 "textDecorationLine": "none",
                 "width": "100%",
+              },
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(150, 100%, 32%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
               },
             ]
           }
@@ -1371,7 +1392,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 </View>
 `;
 
-exports[`<BaseInput /> should render with trailingLinkButton 1`] = `
+exports[`<BaseInput /> should render with trailingActionButton 1`] = `
 <View
   style={
     {
@@ -1563,7 +1584,7 @@ exports[`<BaseInput /> should render with trailingLinkButton 1`] = `
               "borderColor": "hsla(211, 27%, 76%, 1)",
               "borderRadius": 4,
               "borderStyle": "solid",
-              "borderWidth": 1,
+              "borderWidth": 0,
               "display": "flex",
               "flexDirection": "row",
               "position": "relative",
@@ -1626,6 +1647,13 @@ exports[`<BaseInput /> should render with trailingLinkButton 1`] = `
                 "textAlignVertical": "top",
                 "textDecorationLine": "none",
                 "width": "100%",
+              },
+              {
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(211, 27%, 76%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
               },
             ]
           }
