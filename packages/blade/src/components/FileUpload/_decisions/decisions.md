@@ -47,7 +47,7 @@ interface BladeFile extends File {
   /**
    * The percentage of file upload completion.
    */
-  percent?: number;
+  uploadPercent?: number;
   /**
    * Text indicating an error state
    */
@@ -345,7 +345,7 @@ const ControlledCustomProgressFileUploadForm = () => {
 
               return {
                 ...previousState,
-                percent: percentCompleted,
+                uploadPercent: percentCompleted,
                 status: percentCompleted === 100 ? 'success' : 'uploading',
               };
             });
