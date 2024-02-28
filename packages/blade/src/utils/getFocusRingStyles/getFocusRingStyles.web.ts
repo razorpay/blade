@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { GetFocusRingArgs } from './focusRingTypes';
+import type { GetFocusRingArgs } from './types';
 import { castWebType, makeMotionTime } from '~utils';
 
 /**

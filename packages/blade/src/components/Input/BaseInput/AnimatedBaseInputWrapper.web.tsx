@@ -3,7 +3,7 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
 import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
-import { BASEINPUT_WRAPPER_MIN_HEIGHT, BASEINPUT_WRAPPER_MAX_HEIGHT } from './baseInputConfig';
+import { BASEINPUT_WRAPPER_MIN_HEIGHT, BASEINPUT_WRAPPER_MAX_HEIGHT } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { motion } from '~tokens/global';
 import { castWebType, makeMotionTime, makeSize } from '~utils';

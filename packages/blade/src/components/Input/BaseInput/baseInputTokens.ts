@@ -16,7 +16,7 @@ export const baseInputHeight: Record<
 > = {
   medium: size['36'],
   large: size['48'],
-} as const;
+};
 
 /**
  * 37px (36px height + 1px bottom line height)
@@ -69,6 +69,6 @@ export const baseInputBorderWidth = {
 } as const;
 
 export const baseInputBorderBackgroundMotion = {
-  duration: 'xgentle',
-  easing: 'standard.revealing',
+  enter: { duration: 'xgentle', easing: 'standard.revealing' },
+  exit: { duration: 'gentle', easing: 'standard.effective' },
 } as const;

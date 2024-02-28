@@ -237,10 +237,10 @@ exports[`<TextArea /> should render 1`] = `
   box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8.c8.c8.c8.c8:hover {
@@ -263,8 +263,8 @@ exports[`<TextArea /> should render 1`] = `
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -287,10 +287,10 @@ exports[`<TextArea /> should render 1`] = `
   box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -643,10 +643,10 @@ exports[`<TextArea /> should set number of lines 1`] = `
   box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c8.c8.c8.c8.c8:hover {
@@ -669,8 +669,8 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
@@ -693,10 +693,10 @@ exports[`<TextArea /> should set number of lines 1`] = `
   box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5 {

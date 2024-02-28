@@ -429,6 +429,9 @@ const BaseInputSizesTemplate: StoryFn<typeof BaseInputComponent> = ({
   trailingIcon,
   ...args
 }) => {
+  const LeadingIcon = iconMap[(leadingIcon as unknown) as string];
+  const TrailingIcon = iconMap[(trailingIcon as unknown) as string];
+
   return (
     <Box display="flex" flexDirection="column" gap="spacing.5">
       <Text size="large" marginBottom="spacing.1">
@@ -436,8 +439,8 @@ const BaseInputSizesTemplate: StoryFn<typeof BaseInputComponent> = ({
       </Text>
       <BaseInputComponent
         {...args}
-        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
-        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        leadingIcon={LeadingIcon}
+        trailingIcon={TrailingIcon}
         size="medium"
         trailingActionButton={<Link onClick={() => console.log('Clicked Apply')}>Apply</Link>}
       />

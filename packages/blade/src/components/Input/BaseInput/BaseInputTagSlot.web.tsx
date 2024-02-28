@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
-import { baseInputHeight } from './baseInputConfig';
+import { baseInputHeight } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { castWebType, makeSize } from '~utils';
