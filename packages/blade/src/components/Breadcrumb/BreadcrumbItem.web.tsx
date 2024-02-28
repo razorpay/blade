@@ -4,6 +4,7 @@ import { BreadcrumbContext } from './BreadcrumbContext';
 import { BaseLink } from '~components/Link/BaseLink';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+import { opacity } from '~tokens/global';
 
 const BreadcrumbItem = ({
   children,
@@ -40,7 +41,7 @@ const BreadcrumbItem = ({
     <BaseLink
       size={size}
       color={color}
-      opacity={color !== 'primary' ? 0.5 : 1}
+      opacity={color !== 'primary' ? opacity[7] : 1}
       icon={Icon}
       href={href}
       onClick={onClick}
