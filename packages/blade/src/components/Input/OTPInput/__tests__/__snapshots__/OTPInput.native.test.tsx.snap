@@ -214,83 +214,36 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                currentInteraction="default"
-                isTextArea={false}
+                data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
                       "width": "100%",
                     },
-                    {},
                   ]
                 }
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel="Enter OTP character 1"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  accessible={true}
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  hasTags={false}
-                  id="otp-37-input-38-0-49-input-50"
-                  isFocused={false}
+                <View
+                  currentInteraction="default"
                   isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
-                  secureTextEntry={false}
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(211, 26%, 34%, 1)",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Inter",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
-                        "letterSpacing": 0,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "minHeight": 36,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
                         "width": "100%",
                       },
+                      {},
                       {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(211, 27%, 76%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
@@ -298,10 +251,71 @@ exports[`<OTPInput /> should render 1`] = `
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel="Enter OTP character 1"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-0-49-input-50"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -345,83 +359,36 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                currentInteraction="default"
-                isTextArea={false}
+                data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
                       "width": "100%",
                     },
-                    {},
                   ]
                 }
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 2"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  accessible={true}
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  hasTags={false}
-                  id="otp-37-input-38-1-55-input-56"
-                  isFocused={false}
+                <View
+                  currentInteraction="default"
                   isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
-                  secureTextEntry={false}
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(211, 26%, 34%, 1)",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Inter",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
-                        "letterSpacing": 0,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "minHeight": 36,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
                         "width": "100%",
                       },
+                      {},
                       {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(211, 27%, 76%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
@@ -429,10 +396,71 @@ exports[`<OTPInput /> should render 1`] = `
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 2"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-1-55-input-56"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -476,83 +504,36 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                currentInteraction="default"
-                isTextArea={false}
+                data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
                       "width": "100%",
                     },
-                    {},
                   ]
                 }
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 3"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  accessible={true}
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  hasTags={false}
-                  id="otp-37-input-38-2-61-input-62"
-                  isFocused={false}
+                <View
+                  currentInteraction="default"
                   isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
-                  secureTextEntry={false}
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(211, 26%, 34%, 1)",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Inter",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
-                        "letterSpacing": 0,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "minHeight": 36,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
                         "width": "100%",
                       },
+                      {},
                       {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(211, 27%, 76%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
@@ -560,10 +541,71 @@ exports[`<OTPInput /> should render 1`] = `
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 3"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-2-61-input-62"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -607,83 +649,36 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                currentInteraction="default"
-                isTextArea={false}
+                data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
                       "width": "100%",
                     },
-                    {},
                   ]
                 }
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 4"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  accessible={true}
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  hasTags={false}
-                  id="otp-37-input-38-3-67-input-68"
-                  isFocused={false}
+                <View
+                  currentInteraction="default"
                   isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
-                  secureTextEntry={false}
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(211, 26%, 34%, 1)",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Inter",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
-                        "letterSpacing": 0,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "minHeight": 36,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
                         "width": "100%",
                       },
+                      {},
                       {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(211, 27%, 76%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
@@ -691,10 +686,71 @@ exports[`<OTPInput /> should render 1`] = `
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 4"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-3-67-input-68"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -738,83 +794,36 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                currentInteraction="default"
-                isTextArea={false}
+                data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
                       "width": "100%",
                     },
-                    {},
                   ]
                 }
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 5"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  accessible={true}
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  hasTags={false}
-                  id="otp-37-input-38-4-73-input-74"
-                  isFocused={false}
+                <View
+                  currentInteraction="default"
                   isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
-                  secureTextEntry={false}
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(211, 26%, 34%, 1)",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Inter",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
-                        "letterSpacing": 0,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "minHeight": 36,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
                         "width": "100%",
                       },
+                      {},
                       {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(211, 27%, 76%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
@@ -822,10 +831,71 @@ exports[`<OTPInput /> should render 1`] = `
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 5"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-4-73-input-74"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -869,83 +939,36 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                currentInteraction="default"
-                isTextArea={false}
+                data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                      "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
-                      "borderStyle": "solid",
-                      "borderWidth": 0,
-                      "display": "flex",
-                      "flexDirection": "row",
-                      "position": "relative",
                       "width": "100%",
                     },
-                    {},
                   ]
                 }
               >
-                <TextInput
-                  accessibilityDescribedBy=""
-                  accessibilityInvalid={false}
-                  accessibilityLabel=" character 6"
-                  accessibilityRequired={true}
-                  accessibilityState={
-                    {
-                      "disabled": false,
-                      "expanded": undefined,
-                    }
-                  }
-                  accessible={true}
-                  autoCompleteType="sms-otp"
-                  data-blade-component="styled-base-input"
-                  editable={true}
-                  hasTags={false}
-                  id="otp-37-input-38-5-79-input-80"
-                  isFocused={false}
+                <View
+                  currentInteraction="default"
                   isTextArea={false}
-                  keyboardType="decimal-pad"
-                  multiline={false}
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onEndEditing={[Function]}
-                  onFocus={[Function]}
-                  onKeyPress={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder=""
-                  placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
-                  secureTextEntry={false}
                   style={
                     [
                       {
-                        "backgroundColor": "transparent",
-                        "color": "hsla(211, 26%, 34%, 1)",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Inter",
-                        "fontSize": 14,
-                        "fontStyle": "normal",
-                        "fontWeight": "400",
-                        "height": 36,
-                        "letterSpacing": 0,
-                        "marginBottom": 0,
-                        "marginLeft": 0,
-                        "marginRight": 0,
-                        "marginTop": 0,
-                        "minHeight": 36,
-                        "paddingBottom": 8,
-                        "paddingLeft": 12,
-                        "paddingRight": 12,
-                        "paddingTop": 8,
-                        "textAlignVertical": "top",
-                        "textDecorationLine": "none",
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
                         "width": "100%",
                       },
+                      {},
                       {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
                         "borderColor": "hsla(211, 27%, 76%, 1)",
                         "borderRadius": 4,
                         "borderStyle": "solid",
@@ -953,10 +976,71 @@ exports[`<OTPInput /> should render 1`] = `
                       },
                     ]
                   }
-                  textAlign="center"
-                  textContentType="oneTimeCode"
-                  value=""
-                />
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 6"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-5-79-input-80"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                  />
+                </View>
               </View>
             </View>
           </View>
