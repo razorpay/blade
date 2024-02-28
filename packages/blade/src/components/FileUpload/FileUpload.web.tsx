@@ -28,7 +28,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     onChange,
     onPreview,
     onRemove,
-    onCancel,
+    onDismiss,
     onDrop,
     isDisabled,
     isRequired,
@@ -296,10 +296,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   setSelectedFiles(newFiles);
                   onRemove?.({ file: selectedFiles[0] });
                 }}
-                onCancel={() => {
+                onDismiss={() => {
                   const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
                   setSelectedFiles(newFiles);
-                  onCancel?.({ file: selectedFiles[0] });
+                  onDismiss?.({ file: selectedFiles[0] });
                 }}
                 onPreview={onPreview}
               />
@@ -341,10 +341,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 setSelectedFiles(newFiles);
                 onRemove?.({ file });
               }}
-              onCancel={() => {
+              onDismiss={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(newFiles);
-                onCancel?.({ file });
+                onDismiss?.({ file });
               }}
               onPreview={onPreview}
             />

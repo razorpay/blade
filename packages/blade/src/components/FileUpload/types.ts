@@ -84,7 +84,7 @@ type FileUploadCommonProps = {
   /**
    * Callback function triggered when a file upload is cancelled
    */
-  onCancel?: ({ file }: { file: File }) => void;
+  onDismiss?: ({ file }: { file: File }) => void;
   /**
    * Callback function executed when files are dropped into the upload area
    */
@@ -138,7 +138,7 @@ type FileUploadPropsWithLabel = {
 type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
   FileUploadCommonProps;
 
-type FileUploadItemProps = Pick<FileUploadProps, 'onPreview' | 'onRemove' | 'onCancel'> & {
+type FileUploadItemProps = Pick<FileUploadProps, 'onPreview' | 'onRemove' | 'onDismiss'> & {
   file: BladeFile;
 };
 

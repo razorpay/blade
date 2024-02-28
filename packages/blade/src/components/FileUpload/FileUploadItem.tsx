@@ -11,7 +11,7 @@ import { ProgressBar } from '~components/ProgressBar';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 
 const FileUploadItem = memo(
-  ({ file, onPreview, onRemove, onCancel }: FileUploadItemProps): React.ReactElement => {
+  ({ file, onPreview, onRemove, onDismiss }: FileUploadItemProps): React.ReactElement => {
     const { name, size, uploadPercent, errorText, status } = file;
     const isUploading = status === 'uploading';
     const sizeInKB = size / 1024;
@@ -67,7 +67,7 @@ const FileUploadItem = memo(
                 <IconButton
                   accessibilityLabel="Remove File"
                   icon={CloseIcon}
-                  onClick={() => onCancel?.({ file })}
+                  onClick={() => onDismiss?.({ file })}
                 />
               </BaseBox>
             ) : (
