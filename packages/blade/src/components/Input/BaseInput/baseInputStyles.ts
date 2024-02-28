@@ -7,7 +7,7 @@ import {
   baseInputBorderColor,
   baseInputBorderWidth,
   baseInputHeight,
-} from './baseInputConfig';
+} from './baseInputTokens';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';
@@ -56,10 +56,7 @@ export const getInputBackgroundAndBorderStyles = ({
   // normal state
   let backgroundColor = getIn(theme.colors, baseInputBackgroundColor.default);
   let borderColor = getIn(theme.colors, baseInputBorderColor.default);
-  let borderWidth: Theme['border']['width'][keyof Theme['border']['width']] = getIn(
-    theme.border.width,
-    baseInputBorderWidth.default,
-  );
+  let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
 
   const baseInputState = isHovered
     ? 'hovered'

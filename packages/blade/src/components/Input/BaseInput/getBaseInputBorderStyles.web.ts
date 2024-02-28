@@ -1,5 +1,5 @@
 import type { CSSObject } from 'styled-components';
-import { baseInputBorderBackgroundMotion } from './baseInputConfig';
+import { baseInputBorderBackgroundMotion } from './baseInputTokens';
 import type { Theme } from '~components/BladeProvider';
 import { castWebType, makeBorderSize, makeMotionTime } from '~utils';
 import getIn from '~utils/lodashButBetter/get';

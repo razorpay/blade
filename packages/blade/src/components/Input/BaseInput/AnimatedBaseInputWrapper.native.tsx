@@ -14,7 +14,7 @@ import {
   baseInputBackgroundColor,
   baseInputBorderBackgroundMotion,
   baseInputBorderColor,
-} from './baseInputConfig';
+} from './baseInputTokens';
 import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
