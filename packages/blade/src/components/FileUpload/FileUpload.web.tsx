@@ -368,96 +368,33 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const GSTForm = () => {
    const [selectedFile, setSelectedFile] = useState<BladeFile>();
    const [isLoading, setIsLoading] = useState(false);
-   const [responseData, setResponseData] = useState();
- 
-   const handleSubmit = (e) => {
-     e.preventDefault();
-     setIsLoading(true);
- 
-     const data = new FormData();
- 
-     if (selectedFile) {
-       data.append('file', selectedFile);
-       data.append('upload_preset', 'blade-file-upload-demo');
-       data.append('cloud_name', 'snitin315');
- 
-       fetch('https://api.cloudinary.com/v1_1/snitin315/image/upload', {
-         method: 'POST',
-         body: data,
-       })
-         .then((res) => res.json())
-         .then((data) => setResponseData(data))
-         .catch((err) => {
-           console.error(err);
-           setResponseData(err);
-           setIsLoading(false);
-         });
-     }
-   };
  
    return (
-     <Box
-       display="flex"
-       flexDirection="column"
-       margin="spacing.4"
-       padding="spacing.10"
-       backgroundColor="surface.background.gray.intense"
-     >
-       {responseData ? (
-         <Box display="flex" flexDirection="column" gap="spacing.5">
-           {responseData.url && (
-             <Box>
-               <Heading marginBottom="spacing.4">
-                 Your GST Certificate has been uploaded successfully
-               </Heading>
-               <img src={responseData.url} height="50%" width="50%" alt="Your GST certificate" />
-             </Box>
-           )}
-           {responseData.error && (
-             <Box>
-               <Heading color="feedback.text.negative.intense" marginBottom="spacing.4">
-                 Failed to upload your GST Certificate
-               </Heading>
-               <Text color="feedback.text.negative.intense">{responseData.error.message}</Text>
-             </Box>
-           )}
-         </Box>
-       ) : (
-         <Box>
-           <Heading marginBottom="spacing.4">Add GST Details</Heading>
-           <form encType="multipart/form-data" onSubmit={handleSubmit}>
-             <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.5">
-               <TextInput
-                 label="GSTIN"
-                 placeholder="12DWWPB9503H1Z3"
-                 isRequired
-                 necessityIndicator="required"
-               />
-               <FileUpload
-                 uploadType="single"
-                 label="Upload GST"
-                 helpText="Upload .jpg, .jpeg, or .png file only"
-                 accept=".jpg, .jpeg, .png"
-                 onChange={({ fileList }) => {
-                   setSelectedFile(fileList[0]);
-                 }}
-                 onDrop={({ fileList }) => {
-                   setSelectedFile(fileList[0]);
-                 }}
-                 isRequired
-                 necessityIndicator="required"
-               />
-               <Button type="submit" variant="primary">
-                 Submit
-               </Button>
-               {isLoading && (
-                 <ProgressBar isIndeterminate label="Uploading your GST Certificate..." />
-               )}
-             </Box>
-           </form>
-         </Box>
-       )}
-     </Box>
+    <Box>
+      <Heading marginBottom="spacing.4">Add GST Details</Heading>
+      <form encType="multipart/form-data" onSubmit={handleSubmit}>
+          <FileUpload
+            uploadType="single"
+            label="Upload GST"
+            helpText="Upload .jpg, .jpeg, or .png file only"
+            accept=".jpg, .jpeg, .png"
+            onChange={({ fileList }) => {
+              setSelectedFile(fileList[0]);
+            }}
+            onDrop={({ fileList }) => {
+              setSelectedFile(fileList[0]);
+            }}
+            isRequired
+            necessityIndicator="required"
+          />
+          <Button type="submit" variant="primary">
+            Submit
+          </Button>
+          {isLoading && (
+            <ProgressBar isIndeterminate label="Uploading your GST Certificate..." />
+          )}
+      </form>
+    </Box>
    );
   }
  * ```
