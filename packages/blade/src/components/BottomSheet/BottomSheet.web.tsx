@@ -31,6 +31,7 @@ import { makeSize } from '~utils/makeSize';
 import { makeAccessible } from '~utils/makeAccessible';
 import { size } from '~tokens/global';
 import { makeMotionTime } from '~utils/makeMotionTime';
+import { componentZIndices } from '~utils/componentZIndices';
 
 export const BOTTOM_SHEET_EASING = 'cubic-bezier(.15,0,.24,.97)';
 const AUTOCOMPLETE_DEFAULT_SNAPPOINT = 0.85;
@@ -73,7 +74,7 @@ const _BottomSheet = ({
   children,
   initialFocusRef,
   snapPoints = [0.35, 0.5, 0.85],
-  zIndex = 100,
+  zIndex = componentZIndices.bottomSheet,
 }: BottomSheetProps): React.ReactElement => {
   const { theme } = useTheme();
   const dimensions = useWindowSize();

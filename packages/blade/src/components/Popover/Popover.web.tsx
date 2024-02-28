@@ -17,7 +17,7 @@ import {
 import React from 'react';
 import type { PopoverProps } from './types';
 import { PopoverContent } from './PopoverContent';
-import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from './constants';
+import { ARROW_HEIGHT, ARROW_WIDTH } from './constants';
 import { PopoverContext } from './PopoverContext';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
@@ -30,6 +30,7 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const Popover = ({
   content,
@@ -39,7 +40,7 @@ const Popover = ({
   children,
   placement = 'top',
   onOpenChange,
-  zIndex = popoverZIndex,
+  zIndex = componentZIndices.popover,
   isOpen,
   defaultIsOpen,
   initialFocusRef,

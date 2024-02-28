@@ -8,7 +8,7 @@ import type { Platform } from '~utils';
 
 /**
  * @template TokenType token type generic
- * @description Tokenises objects to dot notation strings, eg: `surface.text.normal.lowContrast`
+ * @description Tokenises objects to dot notation strings, eg: `surface.text.gray.normal`
  */
 type DotNotationColorStringToken<TokenType> = {
   [K in keyof TokenType]: `${Extract<K, number | string>}.${TokenType[K] extends Record<
@@ -86,6 +86,11 @@ type StringChildrenType = React.ReactText | React.ReactText[];
 type StringWithAutocomplete = string & Record<never, never>;
 
 type TestID = {
+  /**
+   * Test id that can be used to select element in testing environments
+   *
+   * Checkout https://testing-library.com/docs/queries/bytestid/
+   */
   testID?: string;
 };
 

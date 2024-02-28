@@ -371,8 +371,11 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'Drawer',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '11.4.0',
+    storybookLink: 'Components/Drawer',
     description: 'The Drawer component is a panel that slides out from the edge of the screen.',
+    platform: 'web',
   },
   {
     name: 'Slot',

@@ -44,6 +44,7 @@ const AnimatedTagContainer = styled(BaseBox)<{
     display: inline-block;
     opacity: ${props.isVisible ? TAG_OPACITY_START : TAG_OPACITY_END};
     max-width: ${makeSize(props.isVisible ? TAG_MAX_WIDTH_START : TAG_MAX_WIDTH_END)};
+    flex-shrink: 0;
   `,
 );
 

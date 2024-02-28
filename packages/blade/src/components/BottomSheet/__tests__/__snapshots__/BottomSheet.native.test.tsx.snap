@@ -583,6 +583,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           fontStyle="normal"
                           fontWeight="semibold"
                           lineHeight={200}
+                          marginTop="1px"
                           style={
                             [
                               {
@@ -596,7 +597,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                                 "marginBottom": 0,
                                 "marginLeft": 0,
                                 "marginRight": 0,
-                                "marginTop": 0,
+                                "marginTop": 1,
                                 "paddingBottom": 0,
                                 "paddingLeft": 0,
                                 "paddingRight": 0,

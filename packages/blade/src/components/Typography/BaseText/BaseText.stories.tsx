@@ -10,7 +10,7 @@ export default {
   title: 'Components/Typography/BaseText (Internal)',
   component: BaseTextComponent,
   args: {
-    color: 'surface.text.normal.lowContrast',
+    color: 'surface.text.gray.normal',
     fontFamily: 'text',
     fontSize: 200,
     fontWeight: 'regular',

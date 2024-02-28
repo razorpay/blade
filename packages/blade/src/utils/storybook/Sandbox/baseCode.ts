@@ -187,8 +187,8 @@ export const Logger = () => {
           margin="spacing.4"
           elevation="midRaised"
           borderRadius="round"
-          backgroundColor="surface.background.level3.lowContrast"
-          borderColor="surface.border.normal.lowContrast"
+          backgroundColor="surface.background.gray.moderate"
+          borderColor="surface.border.gray.normal"
           display={showLogger ? 'inline-block' : 'none'}
         >
           <IconButton
@@ -207,13 +207,13 @@ export const Logger = () => {
           overflow="auto"
           height="30vh"
           elevation="highRaised"
-          backgroundColor="surface.background.level2.lowContrast"
+          backgroundColor="surface.background.gray.intense"
           id="log-console"
           ref={consoleRef}
           display={showLogger ? 'block' : 'none'}
           textAlign="left"
           borderTopWidth="thin"
-          borderTopColor="surface.border.normal.lowContrast"
+          borderTopColor="surface.border.gray.normal"
         />
       </Box>
     </>
@@ -277,7 +277,7 @@ root.render(
     <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
       <GlobalStyles />
       <Box 
-        backgroundColor="surface.background.level1.lowContrast"
+        backgroundColor="surface.background.gray.subtle"
         minHeight="100vh"
         padding={['spacing.4', 'spacing.7']}
         display="flex"

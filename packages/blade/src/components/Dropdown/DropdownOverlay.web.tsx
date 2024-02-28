@@ -19,10 +19,10 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const OVERLAY_OFFSET: number = size['8'];
 const OVERLAY_PADDING: number = size['12']; // doesn't have to be exact. Just rough padding for floating ui to decide to show overlay on top or bottom
-const OVERLAY_ZINDEX = 1001;
 
 /**
  * Overlay of dropdown
@@ -32,7 +32,7 @@ const OVERLAY_ZINDEX = 1001;
 const _DropdownOverlay = ({
   children,
   testID,
-  zIndex = OVERLAY_ZINDEX,
+  zIndex = componentZIndices.dropdownOverlay,
   width,
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
