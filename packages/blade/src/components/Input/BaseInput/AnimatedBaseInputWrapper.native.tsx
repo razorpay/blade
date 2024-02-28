@@ -122,7 +122,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     easing: castNativeType(getIn(theme.motion.easing, baseInputBorderBackgroundMotion.easing)),
   };
 
-  const animatedBorderStyle = useAnimatedStyle(
+  const animatedBorderAndBackgroundStyle = useAnimatedStyle(
     () => ({
       borderWidth: theme.border.width.thin,
       borderRadius: theme.border.radius.medium,
@@ -130,7 +130,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       backgroundColor: withTiming(backgroundColor, motionConfig),
       borderColor: withTiming(borderColor, motionConfig),
     }),
-    [borderColor],
+    [borderColor, backgroundColor],
   );
 
   return (
@@ -144,7 +144,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
               ...animatedStyleObject,
             }
           : {},
-        animatedBorderStyle,
+        animatedBorderAndBackgroundStyle,
       ]}
       isDropdownTrigger={isDropdownTrigger}
       {...rest}
