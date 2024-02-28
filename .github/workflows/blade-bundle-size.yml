@@ -41,6 +41,8 @@ jobs:
     steps:
       - name: Checkout Codebase
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CI_BOT_TOKEN }}
       - name: Use Node v18
         uses: actions/setup-node@v4
         with:
@@ -62,9 +64,9 @@ jobs:
       - name: Commit Updated Bundle Size Data
         if: ${{ steps.file-check.outputs.result == 'true' }}
         run: |
-          git config --global user.email "tools+cibot@razorpay.com"
-          git config --global user.name "rzpcibot"
+          git config user.email "tools+cibot@razorpay.com"
+          git config user.name "rzpcibot"
           git add baseBundleSizeStats.json
           git commit -m "chore: update bundle size data [skip ci]"
-          git push origin HEAD
+          git push
         working-directory: packages/blade
