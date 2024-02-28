@@ -14,7 +14,7 @@ import {
   baseInputBackgroundColor,
   baseInputBorderBackgroundMotion,
   baseInputBorderColor,
-} from './baseInputConfig';
+} from './baseInputTokens';
 import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
@@ -117,9 +117,21 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     easing: EasingFactoryFn;
   } = {
     duration: castNativeType(
-      makeMotionTime(getIn(theme.motion.duration, baseInputBorderBackgroundMotion.duration)),
+      makeMotionTime(
+        getIn(
+          theme.motion.duration,
+          baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
+            .duration,
+        ),
+      ),
     ),
-    easing: castNativeType(getIn(theme.motion.easing, baseInputBorderBackgroundMotion.easing)),
+    easing: castNativeType(
+      getIn(
+        theme.motion.easing,
+        baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
+          .easing,
+      ),
+    ),
   };
 
   const animatedBorderAndBackgroundStyle = useAnimatedStyle(
@@ -130,7 +142,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       backgroundColor: withTiming(backgroundColor, motionConfig),
       borderColor: withTiming(borderColor, motionConfig),
     }),
-    [borderColor, backgroundColor],
+    [borderColor, backgroundColor, motionConfig],
   );
 
   return (

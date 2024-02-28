@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, TouchableWithoutFeedback } from 'react-native';
 import type { BaseInputTagSlotProps } from './types';
-import { baseInputHeight } from './baseInputConfig';
+import { baseInputHeight } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
 import { size as sizeToken } from '~tokens/global';

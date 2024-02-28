@@ -12,7 +12,7 @@ import { Platform as RNPlatform } from 'react-native';
 import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
-import { baseInputHeight } from './baseInputConfig';
+import { baseInputHeight } from './baseInputTokens';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
