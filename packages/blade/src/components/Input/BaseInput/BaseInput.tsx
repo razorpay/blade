@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import type { ReactNode } from 'react';
+import styled from 'styled-components';
 import { StyledBaseInput } from './StyledBaseInput';
 import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
@@ -18,7 +19,7 @@ import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, isReactNative, useBreakpoint } from '~utils';
+import { getPlatformType, isReactNative, makeBorderSize, useBreakpoint } from '~utils';
 import type { Platform } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useFormId } from '~components/Form/useFormId';
@@ -36,6 +37,7 @@ import { throwBladeError } from '~utils/logger';
 import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -692,6 +694,16 @@ const getDescribedByElementId = ({
   return '';
 };
 
+const FocusRingWrapper = styled(BaseBox)(({ theme }) => ({
+  borderRadius: makeBorderSize(theme.border.radius.medium),
+  width: '100%',
+  '&:focus-within': {
+    ...getFocusRingStyles({
+      theme,
+    }),
+  },
+}));
+
 const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
   {
     as = 'input',
@@ -870,105 +882,107 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             {trailingHeaderSlot?.(value ?? inputValue)}
           </BaseBox>
         )}
-        <BaseInputWrapper
-          isDropdownTrigger={isDropdownTrigger}
-          isTextArea={isTextArea}
-          isDisabled={isDisabled}
-          validationState={validationState}
-          currentInteraction={currentInteraction}
-          isLabelLeftPositioned={isLabelLeftPositioned}
-          showAllTags={showAllTags}
-          setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
-          ref={(refNode) => {
-            if (refNode) {
-              setInputWrapperRef?.(refNode);
-              inputWrapperRef.current = refNode;
-            }
-          }}
-          maxTagRows={maxTagRows}
-        >
-          <BaseInputVisuals
-            size={size}
-            leadingIcon={leadingIcon}
-            prefix={prefix}
+        <FocusRingWrapper>
+          <BaseInputWrapper
+            isDropdownTrigger={isDropdownTrigger}
+            isTextArea={isTextArea}
             isDisabled={isDisabled}
-          />
-          <BaseInputTagSlot
-            renderAs={as}
-            tags={tags}
-            isDisabled={isDisabled}
-            showAllTags={showAllTagsWithAnimation}
-            setFocusOnInput={() => {
-              if (ref && !isReactNative && 'current' in ref) {
-                ref.current?.focus();
+            validationState={validationState}
+            currentInteraction={currentInteraction}
+            isLabelLeftPositioned={isLabelLeftPositioned}
+            showAllTags={showAllTags}
+            setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
+            ref={(refNode) => {
+              if (refNode) {
+                setInputWrapperRef?.(refNode);
+                inputWrapperRef.current = refNode;
               }
             }}
-            labelPrefix={isLabelInsideInput ? label : undefined}
-            isDropdownTrigger={isDropdownTrigger}
-            visibleTagsCountRef={visibleTagsCountRef}
-            handleOnInputClick={(e) => {
-              handleOnClick({ name, value: isReactNative ? value : e });
-            }}
-            setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
             maxTagRows={maxTagRows}
-            inputWrapperRef={inputWrapperRef}
-            size={size}
           >
-            <StyledBaseInput
-              as={as}
-              id={inputId}
-              ref={ref as any}
-              name={name}
-              type={type}
-              defaultValue={defaultValue}
-              value={value}
-              placeholder={placeholder}
-              isDisabled={isDisabled}
-              validationState={validationState}
-              isRequired={_isRequired}
-              handleOnFocus={handleOnFocus}
-              handleOnChange={handleOnChange}
-              handleOnBlur={handleOnBlur}
-              handleOnSubmit={handleOnSubmit}
-              handleOnInput={handleOnInput}
-              handleOnKeyDown={handleOnKeyDown}
-              handleOnClick={handleOnClick}
+            <BaseInputVisuals
+              size={size}
               leadingIcon={leadingIcon}
               prefix={prefix}
+              isDisabled={isDisabled}
+            />
+            <BaseInputTagSlot
+              renderAs={as}
+              tags={tags}
+              isDisabled={isDisabled}
+              showAllTags={showAllTagsWithAnimation}
+              setFocusOnInput={() => {
+                if (ref && !isReactNative && 'current' in ref) {
+                  ref.current?.focus();
+                }
+              }}
+              labelPrefix={isLabelInsideInput ? label : undefined}
+              isDropdownTrigger={isDropdownTrigger}
+              visibleTagsCountRef={visibleTagsCountRef}
+              handleOnInputClick={(e) => {
+                handleOnClick({ name, value: isReactNative ? value : e });
+              }}
+              setShouldIgnoreBlurAnimation={setShouldIgnoreBlurAnimation}
+              maxTagRows={maxTagRows}
+              inputWrapperRef={inputWrapperRef}
+              size={size}
+            >
+              <StyledBaseInput
+                as={as}
+                id={inputId}
+                ref={ref as any}
+                name={name}
+                type={type}
+                defaultValue={defaultValue}
+                value={value}
+                placeholder={placeholder}
+                isDisabled={isDisabled}
+                validationState={validationState}
+                isRequired={_isRequired}
+                handleOnFocus={handleOnFocus}
+                handleOnChange={handleOnChange}
+                handleOnBlur={handleOnBlur}
+                handleOnSubmit={handleOnSubmit}
+                handleOnInput={handleOnInput}
+                handleOnKeyDown={handleOnKeyDown}
+                handleOnClick={handleOnClick}
+                leadingIcon={leadingIcon}
+                prefix={prefix}
+                interactionElement={interactionElement}
+                suffix={suffix}
+                trailingIcon={trailingIcon}
+                maxCharacters={maxCharacters}
+                textAlign={textAlign}
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus={autoFocus}
+                keyboardReturnKeyType={keyboardReturnKeyType}
+                keyboardType={keyboardType}
+                autoCompleteSuggestionType={autoCompleteSuggestionType}
+                accessibilityProps={accessibilityProps}
+                currentInteraction={currentInteraction}
+                setCurrentInteraction={setCurrentInteraction}
+                numberOfLines={numberOfLines}
+                isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
+                hasPopup={hasPopup}
+                hasTags={!!(tags && tags.length > 0)}
+                shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
+                autoCapitalize={autoCapitalize}
+                isDropdownTrigger={isDropdownTrigger}
+                $size={size}
+                {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
+              />
+            </BaseInputTagSlot>
+            <BaseInputVisuals
               interactionElement={interactionElement}
               suffix={suffix}
               trailingIcon={trailingIcon}
-              maxCharacters={maxCharacters}
-              textAlign={textAlign}
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus={autoFocus}
-              keyboardReturnKeyType={keyboardReturnKeyType}
-              keyboardType={keyboardType}
-              autoCompleteSuggestionType={autoCompleteSuggestionType}
-              accessibilityProps={accessibilityProps}
-              currentInteraction={currentInteraction}
-              setCurrentInteraction={setCurrentInteraction}
-              numberOfLines={numberOfLines}
-              isTextArea={isTextArea || maxTagRows === 'multiple' || maxTagRows === 'expandable'}
-              hasPopup={hasPopup}
-              hasTags={!!(tags && tags.length > 0)}
-              shouldIgnoreBlurAnimation={shouldIgnoreBlurAnimation}
-              autoCapitalize={autoCapitalize}
-              isDropdownTrigger={isDropdownTrigger}
-              $size={size}
-              {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
+              isDisabled={isDisabled}
+              validationState={validationState}
+              trailingActionButton={trailingActionButton}
+              size={size}
             />
-          </BaseInputTagSlot>
-          <BaseInputVisuals
-            interactionElement={interactionElement}
-            suffix={suffix}
-            trailingIcon={trailingIcon}
-            isDisabled={isDisabled}
-            validationState={validationState}
-            trailingActionButton={trailingActionButton}
-            size={size}
-          />
-        </BaseInputWrapper>
+          </BaseInputWrapper>
+        </FocusRingWrapper>
       </BaseBox>
       {/* the magic number 192 is basically max-width of label i.e 176 and then right margin i.e 16 which is the spacing between label and input field */}
       {!hideFormHint && (
