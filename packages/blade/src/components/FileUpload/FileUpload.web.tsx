@@ -1,4 +1,4 @@
-import { useState, useCallback, useMemo, forwardRef } from 'react';
+import React, { useState, useCallback, useMemo, forwardRef } from 'react';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
 import { fileUploadColorTokens, getFileUploadInputHoverTokens } from './fileUploadTokens';
