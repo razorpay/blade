@@ -57,9 +57,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const isOneFileSelectedWithSingleUpload = !isMultiple && selectedFiles.length === 1;
   const inputLabelPosition = platform === 'onMobile' ? 'top' : labelPosition;
   const isLabelLeftPositioned = inputLabelPosition === 'left';
-  const willRenderHintText = isOneFileSelectedWithSingleUpload
-    ? false
-    : Boolean(helpText) || Boolean(errorMessage);
+  const willRenderHintText = Boolean(helpText) || Boolean(errorMessage);
 
   const showError = validationState === 'error' || internalValidationState === 'error';
   const showHelpText = !showError && helpText;
@@ -71,7 +69,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     required: Boolean(isRequired),
     invalid: Boolean(showError),
     disabled: Boolean(isDisabled),
-    describedBy: helpTextId,
+    describedBy: labelId,
   });
 
   // In control mode attach a unique id to each file if not provided
@@ -212,11 +210,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                 alignItems="center"
                 borderRadius="medium"
                 borderWidth="thin"
-                borderColor={
-                  isDisabled
-                    ? fileUploadColorTokens.border.disabled
-                    : fileUploadColorTokens.border.default
-                }
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
@@ -226,7 +219,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
-                  flexDirection={{ xs: 'column', s: 'row' }}
+                  flexDirection={{ base: 'column', s: 'row' }}
                   gap={makeSize(6)}
                   padding="spacing.3"
                 >
@@ -262,7 +255,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     display="flex"
                     justifyContent="center"
                     alignItems="center"
-                    flexDirection={{ xs: 'column', s: 'row' }}
+                    flexDirection={{ base: 'column', s: 'row' }}
                     borderRadius="small"
                   >
                     <Box
@@ -292,7 +285,10 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             </BaseBox>
           </SelectorLabel>
           {isOneFileSelectedWithSingleUpload && (
-            <BaseBox key={selectedFiles[0].id} marginBottom="spacing.5">
+            <BaseBox
+              key={selectedFiles[0].id}
+              marginBottom={willRenderHintText ? 'spacing.0' : 'spacing.5'}
+            >
               <FileUploadItem
                 file={selectedFiles[0]}
                 onRemove={() => {
@@ -359,8 +355,8 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
 };
 
 const FileUpload = assignWithoutSideEffects(forwardRef(_FileUpload), {
-  displayName: MetaConstants.FileUpload,
-  componentId: MetaConstants.FileUpload,
+  displayName: 'FileUpload',
+  componentId: 'FileUpload',
 });
 
 export { FileUpload };

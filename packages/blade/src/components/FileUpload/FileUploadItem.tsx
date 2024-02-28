@@ -23,7 +23,6 @@ const FileUploadItem = memo(
         status={status ?? 'success'}
         borderRadius="medium"
         borderWidth="thin"
-        borderColor="interactive.border.gray.default"
       >
         <BaseBox width="100%">
           <BaseBox display="flex" flexDirection="row" margin="spacing.3">

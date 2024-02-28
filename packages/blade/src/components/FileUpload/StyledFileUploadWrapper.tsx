@@ -22,6 +22,10 @@ const StyledFileUploadWrapper = styled(BaseBox)<StyledFileUploadWrapperProps>(
       transitionProperty: 'background-color',
       transitionTimingFunction: easing,
       transitionDuration: duration,
+      borderColor: getIn(
+        theme.colors,
+        fileUploadColorTokens.border[isDisabled ? 'disabled' : 'default'],
+      ),
 
       ...(isActive && {
         backgroundColor: getIn(theme.colors, fileUploadColorTokens.background.active),
