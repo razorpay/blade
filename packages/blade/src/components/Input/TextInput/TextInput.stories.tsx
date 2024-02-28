@@ -200,7 +200,7 @@ export default {
         category: propsCategory.LEADING_VISUAL_PROPS,
       },
     },
-    trailingLinkButton: {
+    trailingActionButton: {
       table: {
         category: propsCategory.LEADING_VISUAL_PROPS,
       },
