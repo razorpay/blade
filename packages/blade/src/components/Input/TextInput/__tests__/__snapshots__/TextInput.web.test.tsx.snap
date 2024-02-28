@@ -493,14 +493,36 @@ exports[`<TextInput /> should render large size 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  padding-right: 12px;
+  padding-right: 8px;
 }
 
 .c16.c16.c16.c16.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding-right: 12px;
+}
+
+.c18.c18.c18.c18.c18 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c20.c20.c20.c20.c20 {
   margin-left: 0px;
 }
 
-.c17.c17.c17.c17.c17 {
+.c21.c21.c21.c21.c21 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -566,6 +588,24 @@ exports[`<TextInput /> should render large size 1`] = `
   -moz-letter-spacing: 0px;
   -ms-letter-spacing: 0px;
   letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c19.c19.c19.c19.c19 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
   margin: 0;
   padding: 0;
 }
@@ -781,6 +821,44 @@ exports[`<TextInput /> should render large size 1`] = `
   word-wrap: normal;
 }
 
+.c17.c17.c17.c17.c17 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c17.c17.c17.c17.c17 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c17.c17.c17.c17.c17:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+}
+
+.c17.c17.c17.c17.c17 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
 <div>
   <div
     class=""
@@ -947,15 +1025,39 @@ exports[`<TextInput /> should render large size 1`] = `
               />
             </svg>
           </div>
+          <div
+            class="c16"
+            data-blade-component="base-box"
+          >
+            <button
+              aria-disabled="false"
+              class="c17"
+              data-blade-component="link"
+              role="button"
+              type="button"
+            >
+              <span
+                class="c18 content-container"
+                data-blade-component="base-box"
+              >
+                <span
+                  class="c19"
+                  data-blade-component="base-text"
+                >
+                  Apply
+                </span>
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
     <div
-      class="c16"
+      class="c20"
       data-blade-component="base-box"
     >
       <div
-        class="c17"
+        class="c21"
         data-blade-component="base-box"
       />
     </div>
