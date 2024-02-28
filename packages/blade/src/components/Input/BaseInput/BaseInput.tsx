@@ -7,6 +7,7 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { BaseInputTagSlot } from './BaseInputTagSlot';
 import type { InputWrapperRef } from './types';
+import { baseInputBorderBackgroundMotion } from './baseInputTokens';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -19,12 +20,20 @@ import type { IconComponent } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, isReactNative, makeBorderSize, useBreakpoint } from '~utils';
+import {
+  castWebType,
+  getPlatformType,
+  isReactNative,
+  makeBorderSize,
+  makeMotionTime,
+  useBreakpoint,
+} from '~utils';
 import type { Platform } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { useFormId } from '~components/Form/useFormId';
 import { useTheme } from '~components/BladeProvider';
 import useInteraction from '~utils/useInteraction';
+import type { ActionStates } from '~utils/useInteraction';
 import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
@@ -38,6 +47,7 @@ import { announce } from '~components/LiveAnnouncer/LiveAnnouncer';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import getIn from '~utils/lodashButBetter/get';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -694,15 +704,32 @@ const getDescribedByElementId = ({
   return '';
 };
 
-const FocusRingWrapper = styled(BaseBox)(({ theme }) => ({
-  borderRadius: makeBorderSize(theme.border.radius.medium),
-  width: '100%',
-  '&:focus-within': {
-    ...getFocusRingStyles({
-      theme,
-    }),
-  },
-}));
+const FocusRingWrapper = styled(BaseBox)<{ currentInteraction: ActionStates }>(
+  ({ theme, currentInteraction }) => ({
+    borderRadius: makeBorderSize(theme.border.radius.medium),
+    width: '100%',
+    '&:focus-within': {
+      ...getFocusRingStyles({
+        theme,
+      }),
+      transitionDuration: castWebType(
+        makeMotionTime(
+          getIn(
+            theme.motion.duration,
+            baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+              .duration,
+          ),
+        ),
+      ),
+      transitionTimingFunction: castWebType(
+        getIn(
+          theme.motion.easing,
+          baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit'].easing,
+        ),
+      ),
+    },
+  }),
+);
 
 const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
   {
@@ -882,7 +909,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             {trailingHeaderSlot?.(value ?? inputValue)}
           </BaseBox>
         )}
-        <FocusRingWrapper>
+        <FocusRingWrapper currentInteraction={currentInteraction}>
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}
