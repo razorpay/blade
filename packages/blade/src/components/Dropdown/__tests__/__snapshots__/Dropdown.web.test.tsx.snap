@@ -61,7 +61,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   gap: 0px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
   min-width: 30px;
@@ -297,7 +297,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   z-index: 1;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -641,23 +641,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   outline: none;
 }
 
-.c14.c14.c14.c14.c14 {
-  border-radius: 4px;
-  width: 100%;
-}
-
-.c14.c14.c14.c14.c14:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -682,7 +666,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c10.c10.c10.c10.c10:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -709,7 +693,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c10.c10.c10.c10.c10:focus-within {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -734,13 +718,13 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   -webkit-animation: none;
   animation: none;
   max-height: 37px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -ms-overflow-style: none;
   -webkit-scrollbar-width: none;
   -moz-scrollbar-width: none;
@@ -748,7 +732,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   scrollbar-width: none;
 }
 
-.c12.c12.c12.c12.c12::-webkit-scrollbar {
+.c13.c13.c13.c13.c13::-webkit-scrollbar {
   display: none;
 }
 
@@ -767,6 +751,22 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
+}
+
+.c9.c9.c9.c9.c9 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c9.c9.c9.c9.c9:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c36.c36.c36.c36.c36 {
@@ -920,19 +920,19 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
               </label>
             </div>
             <div
-              class=" c9 c10"
+              class=" c9"
               data-blade-component="base-box"
             >
               <div
-                class="c11 c12 tags-slot"
+                class=" c10 c11"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13"
+                  class="c12 c13 tags-slot"
                   data-blade-component="base-box"
                 >
                   <div
-                    class=" c14"
+                    class="c14"
                     data-blade-component="base-box"
                   >
                     <button
@@ -961,53 +961,53 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                     </button>
                   </div>
                 </div>
-              </div>
-              <div
-                class="c17"
-                data-blade-component="base-box"
-              >
                 <div
-                  class="c18"
+                  class="c17"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c19"
+                    class="c18"
                     data-blade-component="base-box"
                   >
-                    <svg
-                      aria-hidden="true"
-                      class="c20"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="16px"
-                      viewBox="0 0 24 24"
-                      width="16px"
+                    <div
+                      class="c19"
+                      data-blade-component="base-box"
                     >
-                      <path
-                        clip-rule="evenodd"
-                        d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                        data-blade-component="svg-path"
-                        fill="hsla(211, 22%, 56%, 1)"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
-                    <svg
-                      aria-hidden="true"
-                      class="c21"
-                      data-blade-component="icon"
-                      fill="none"
-                      height="16px"
-                      viewBox="0 0 24 24"
-                      width="16px"
-                    >
-                      <path
-                        clip-rule="evenodd"
-                        d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                        data-blade-component="svg-path"
-                        fill="hsla(211, 22%, 56%, 1)"
-                        fill-rule="evenodd"
-                      />
-                    </svg>
+                      <svg
+                        aria-hidden="true"
+                        class="c20"
+                        data-blade-component="icon"
+                        fill="none"
+                        height="16px"
+                        viewBox="0 0 24 24"
+                        width="16px"
+                      >
+                        <path
+                          clip-rule="evenodd"
+                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                          data-blade-component="svg-path"
+                          fill="hsla(211, 22%, 56%, 1)"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                      <svg
+                        aria-hidden="true"
+                        class="c21"
+                        data-blade-component="icon"
+                        fill="none"
+                        height="16px"
+                        viewBox="0 0 24 24"
+                        width="16px"
+                      >
+                        <path
+                          clip-rule="evenodd"
+                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                          data-blade-component="svg-path"
+                          fill="hsla(211, 22%, 56%, 1)"
+                          fill-rule="evenodd"
+                        />
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -216,22 +216,6 @@ exports[`<TextArea /> should render 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  border-radius: 4px;
-  width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -259,7 +243,7 @@ exports[`<TextArea /> should render 1`] = `
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c7.c7.c7.c7.c7:hover {
+.c8.c8.c8.c8.c8:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -285,7 +269,7 @@ exports[`<TextArea /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7.c7.c7.c7.c7:focus-within {
+.c8.c8.c8.c8.c8:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -324,6 +308,22 @@ exports[`<TextArea /> should render 1`] = `
   left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
+}
+
+.c7.c7.c7.c7.c7 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c7.c7.c7.c7.c7:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 <div>
@@ -372,11 +372,11 @@ exports[`<TextArea /> should render 1`] = `
         </label>
       </div>
       <div
-        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
+        class=" c7"
         data-blade-component="base-box"
       >
         <div
-          class=" c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
           data-blade-component="base-box"
         >
           <textarea
@@ -622,22 +622,6 @@ exports[`<TextArea /> should set number of lines 1`] = `
 }
 
 .c8.c8.c8.c8.c8 {
-  border-radius: 4px;
-  width: 100%;
-}
-
-.c8.c8.c8.c8.c8:focus-within {
-  outline: 4px solid hsla(227,100%,59%,0.18);
-  outline-offset: 1px;
-  -webkit-transition-property: outline-width;
-  transition-property: outline-width;
-  -webkit-transition-duration: 70ms;
-  transition-duration: 70ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c7.c7.c7.c7.c7 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -665,7 +649,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-easing: cubic-bezier(0.5,0,0,1);
 }
 
-.c7.c7.c7.c7.c7:hover {
+.c8.c8.c8.c8.c8:hover {
   background-color: hsla(210,40%,98%,1);
   border-radius: 4px;
   border-style: solid;
@@ -691,7 +675,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7.c7.c7.c7.c7:focus-within {
+.c8.c8.c8.c8.c8:focus-within {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
@@ -730,6 +714,22 @@ exports[`<TextArea /> should set number of lines 1`] = `
   left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
+}
+
+.c7.c7.c7.c7.c7 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c7.c7.c7.c7.c7:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 <div>
@@ -778,11 +778,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
         </label>
       </div>
       <div
-        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
+        class=" c7"
         data-blade-component="base-box"
       >
         <div
-          class=" c8"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
           data-blade-component="base-box"
         >
           <textarea

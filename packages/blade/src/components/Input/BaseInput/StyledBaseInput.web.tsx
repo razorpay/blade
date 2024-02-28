@@ -6,9 +6,6 @@ import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { Text } from '~components/Typography';
-import BaseBox from '~components/Box/BaseBox';
-import { getFocusRingStyles } from '~utils/getFocusRingStyles';
-import { makeBorderSize } from '~utils';
 
 const getWebInputStyles = (
   props: Omit<StyledBaseInputProps, 'accessibilityProps' | 'setCurrentInteraction' | 'type'> &
@@ -79,16 +76,6 @@ const autoCompleteSuggestionTypeMap = {
   creditCardExpiryYear: 'cc-exp-year',
 };
 
-const FocusRingWrapper = styled(BaseBox)(({ theme }) => ({
-  borderRadius: makeBorderSize(theme.border.radius.medium),
-  width: '100%',
-  '&:focus-within': {
-    ...getFocusRingStyles({
-      theme,
-    }),
-  },
-}));
-
 const _StyledBaseInput: React.ForwardRefRenderFunction<
   HTMLInputElement | HTMLButtonElement,
   StyledBaseInputProps
@@ -142,73 +129,69 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       : undefined,
   };
 
-  return (
-    <FocusRingWrapper>
-      {props.as === 'button' ? (
-        <StyledBaseNativeButton
-          // @ts-expect-error: TS doesnt understand that this will always be `button`
-          ref={ref}
-          name={name}
-          type="button"
-          onClick={(event: React.MouseEvent<HTMLInputElement>): void => {
-            if (props.isDropdownTrigger) {
-              // dropdown triggers have click event on outer container as well on web to handle outer padding clicks of input
-              // we don't want the clicks to be called twice in such cases so we stop propogation if this click has happened
-              event.stopPropagation();
-            }
+  return props.as === 'button' ? (
+    <StyledBaseNativeButton
+      // @ts-expect-error: TS doesnt understand that this will always be `button`
+      ref={ref}
+      name={name}
+      type="button"
+      onClick={(event: React.MouseEvent<HTMLInputElement>): void => {
+        if (props.isDropdownTrigger) {
+          // dropdown triggers have click event on outer container as well on web to handle outer padding clicks of input
+          // we don't want the clicks to be called twice in such cases so we stop propogation if this click has happened
+          event.stopPropagation();
+        }
 
-            handleOnClick?.({ name, value: event });
-          }}
-          $size={$size}
-          {...commonProps}
-          {...props}
-          {...accessibilityProps}
-          value={props.value}
-        >
-          <Text
-            color={
-              props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
-            }
-            truncateAfterLines={1}
-            textAlign={props.textAlign}
-            size={$size}
-          >
-            {props.value ? props.value : props.placeholder}
-          </Text>
-        </StyledBaseNativeButton>
-      ) : (
-        <StyledBaseNativeInput
-          // @ts-expect-error: TS doesnt understand that this will always be `input`
-          ref={ref}
-          name={name}
-          type={type === 'telephone' ? 'tel' : type}
-          required={isRequired}
-          maxLength={maxCharacters}
-          rows={numberOfLines}
-          inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
-          onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
-            handleOnChange?.({ name, value: event })
-          }
-          onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
-            handleOnInput?.({ name, value: event });
-          }}
-          onClick={(event) => {
-            if (props.isDropdownTrigger) {
-              // dropdown triggers have click event on outer container as well on web to handle outer padding clicks of input
-              // we don't want the clicks to be called twice in such cases so we stop propogation if this click has happened
-              event.stopPropagation();
-            }
+        handleOnClick?.({ name, value: event });
+      }}
+      $size={$size}
+      {...commonProps}
+      {...props}
+      {...accessibilityProps}
+      value={props.value}
+    >
+      <Text
+        color={
+          props.value && !isDisabled ? 'surface.text.gray.subtle' : 'surface.text.gray.disabled'
+        }
+        truncateAfterLines={1}
+        textAlign={props.textAlign}
+        size={$size}
+      >
+        {props.value ? props.value : props.placeholder}
+      </Text>
+    </StyledBaseNativeButton>
+  ) : (
+    <StyledBaseNativeInput
+      // @ts-expect-error: TS doesnt understand that this will always be `input`
+      ref={ref}
+      name={name}
+      type={type === 'telephone' ? 'tel' : type}
+      required={isRequired}
+      maxLength={maxCharacters}
+      rows={numberOfLines}
+      inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
+      onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
+        handleOnChange?.({ name, value: event })
+      }
+      onInput={(event: React.ChangeEvent<HTMLInputElement>) => {
+        handleOnInput?.({ name, value: event });
+      }}
+      onClick={(event) => {
+        if (props.isDropdownTrigger) {
+          // dropdown triggers have click event on outer container as well on web to handle outer padding clicks of input
+          // we don't want the clicks to be called twice in such cases so we stop propogation if this click has happened
+          event.stopPropagation();
+        }
 
-            handleOnClick?.({ name, value: event });
-          }}
-          autoCapitalize={autoCapitalize}
-          $size={$size}
-          {...commonProps}
-          {...props}
-          {...accessibilityProps}
-        />
-      )}
-    </FocusRingWrapper>
+        handleOnClick?.({ name, value: event });
+      }}
+      autoCapitalize={autoCapitalize}
+      $size={$size}
+      {...commonProps}
+      {...props}
+      {...accessibilityProps}
+    />
   );
 };
 
