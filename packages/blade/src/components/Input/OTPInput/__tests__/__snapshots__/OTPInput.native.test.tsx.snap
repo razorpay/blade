@@ -214,6 +214,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
@@ -359,6 +360,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
@@ -504,6 +506,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
@@ -649,6 +652,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
@@ -794,6 +798,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
@@ -939,6 +944,7 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
