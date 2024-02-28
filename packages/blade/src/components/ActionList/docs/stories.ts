@@ -19,7 +19,7 @@ const Playground = `
 
   function App(): React.ReactElement {
     return (
-    <Box backgroundColor="surface.background.level2.lowContrast">
+    <Box backgroundColor="surface.background.gray.intense">
       <ActionList>
         <ActionListItem
           leading={<ActionListItemIcon icon={UserIcon} />}
@@ -64,7 +64,7 @@ const ActionList = `
 
   function App(): React.ReactElement {
     return (
-    <Box backgroundColor="surface.background.level2.lowContrast">
+    <Box backgroundColor="surface.background.gray.intense">
       <ActionList>
         <ActionListItem title="Mumbai" value="mumbai" />
         <ActionListItem title="Bangalore" value="bangalore" />
@@ -90,7 +90,7 @@ const ActionListItem = `
 
   function App(): React.ReactElement {
     return (
-    <Box backgroundColor="surface.background.level2.lowContrast">
+    <Box backgroundColor="surface.background.gray.intense">
       <ActionList>
         <ActionListItem 
           title="Title"
@@ -123,7 +123,7 @@ const ActionListSection = `
 
   function App(): React.ReactElement {
     return (
-    <Box backgroundColor="surface.background.level2.lowContrast">
+    <Box backgroundColor="surface.background.gray.intense">
       <ActionList>
         {/* You can multiple sections like this 👇🏼 */}
         <ActionListSection title="Account @blade">

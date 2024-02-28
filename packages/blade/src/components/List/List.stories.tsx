@@ -299,7 +299,7 @@ const ListWithListItemTextTemplate: StoryFn<typeof List> = () => {
             <ListItem>
               <ListItemText>
                 You will receive an invoice after a
-                <ListItemText as="span" weight="bold" color="feedback.text.positive.lowContrast">
+                <ListItemText as="span" weight="semibold" color="feedback.text.positive.intense">
                   {' successful '}
                 </ListItemText>
                 payment
@@ -307,7 +307,7 @@ const ListWithListItemTextTemplate: StoryFn<typeof List> = () => {
             </ListItem>
             <ListItem>
               You will receive a mail with further instruction after a
-              <ListItemText as="span" weight="bold" color="feedback.text.negative.lowContrast">
+              <ListItemText as="span" weight="semibold" color="feedback.text.negative.intense">
                 {' failed '}
               </ListItemText>{' '}
               payment

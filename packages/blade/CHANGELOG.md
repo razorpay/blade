@@ -1,5 +1,23 @@
 # @razorpay/blade
 
+## 11.4.0
+
+### Minor Changes
+
+- 51208914: feat(Drawer): add Drawer component
+
+  Checkout https://blade.razorpay.com/?path=/docs/components-drawer--docs
+
+### Patch Changes
+
+- ab028b6c: fix(Tag): tag truncation in Select and AutoComplete
+
+## 11.3.1
+
+### Patch Changes
+
+- 85f229d0: refactor(blade): add meta attributes to Toast
+
 ## 11.3.0
 
 ### Minor Changes

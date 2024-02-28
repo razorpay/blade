@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import { useModalContext } from './ModalContext';
-import { modalHighestZIndex } from './modalTokens';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { makeSize } from '~utils';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
@@ -10,6 +9,7 @@ import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import { MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { componentZIndices } from '~utils/componentZIndices';
 
 type ModalHeaderProps = Pick<
   BaseHeaderProps,
@@ -39,7 +39,7 @@ const _ModalHeader = ({
       flexShrink={0}
       backgroundColor="popup.background.subtle"
       borderRadius="max"
-      zIndex={modalHighestZIndex}
+      zIndex={componentZIndices.modal}
     >
       <IconButton
         ref={defaultInitialFocusRef}

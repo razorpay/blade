@@ -1006,6 +1006,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  margin-top: 1px;
 }
 
 .c18.c18.c18.c18.c18 {

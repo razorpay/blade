@@ -210,6 +210,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  margin-top: 1px;
 }
 
 .c16.c16.c16.c16.c16 {

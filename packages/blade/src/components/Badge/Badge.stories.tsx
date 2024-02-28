@@ -24,7 +24,7 @@ const Page = (): React.ReactElement => {
         
         function App(): React.ReactElement {
           return (
-            <Badge variant="neutral" icon={InfoIcon}>
+            <Badge color="neutral" icon={InfoIcon}>
               Boop
             </Badge>
           )
