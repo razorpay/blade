@@ -366,8 +366,11 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'FileUpload',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '11.5.0',
+    storybookLink: 'Components/FileUpload',
     description: 'FileUpload component allow users to select one or more files to upload.',
+    platform: 'web',
   },
   {
     name: 'Drawer',
