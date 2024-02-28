@@ -13,7 +13,6 @@ import { ModalContext } from './ModalContext';
 import { ModalBackdrop } from './ModalBackdrop';
 import {
   modalBorderRadius,
-  modalHighestZIndex,
   modalMaxHeight,
   modalMaxWidth,
   modalMinWidth,
@@ -28,6 +27,7 @@ import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
 import { logger, throwBladeError } from '~utils/logger';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const entry = keyframes`
   from {
@@ -72,7 +72,7 @@ const Modal = ({
   initialFocusRef,
   size = 'small',
   accessibilityLabel,
-  zIndex = modalHighestZIndex,
+  zIndex = componentZIndices.modal,
 }: ModalProps): React.ReactElement => {
   const { theme, platform } = useTheme();
   const { isMounted, isVisible } = usePresence(isOpen, {

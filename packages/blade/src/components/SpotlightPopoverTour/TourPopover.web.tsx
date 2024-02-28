@@ -16,7 +16,7 @@ import {
 } from '@floating-ui/react';
 import React from 'react';
 import { PopoverContent } from '../Popover/PopoverContent';
-import { ARROW_HEIGHT, ARROW_WIDTH, popoverZIndex } from '../Popover/constants';
+import { ARROW_HEIGHT, ARROW_WIDTH } from '../Popover/constants';
 import { PopoverContext } from '../Popover/PopoverContext';
 import { transitionDelay } from './tourTokens';
 import { useTheme } from '~components/BladeProvider';
@@ -29,6 +29,7 @@ import { makeAccessible } from '~utils/makeAccessible';
 import { useId } from '~utils/useId';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 import type { PopoverProps } from '~components/Popover';
+import { componentZIndices } from '~utils/componentZIndices';
 
 type TourPopoverProps = Omit<PopoverProps, 'children' | 'initialFocusRef'> & {
   attachTo: React.RefObject<HTMLElement> | undefined;
@@ -44,7 +45,7 @@ const TourPopover = ({
   footer,
   placement = 'top',
   onOpenChange,
-  zIndex = popoverZIndex,
+  zIndex = componentZIndices.popover,
   isOpen,
   defaultIsOpen,
   isTransitioning,
