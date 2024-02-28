@@ -1,8 +1,13 @@
 import React from 'react';
-import { labelMarginBottom, labelOptionalIndicatorTextSize, labelTextSize } from './formTokens';
+import {
+  labelMarginBottom,
+  labelOptionalIndicatorTextSize,
+  labelTextSize,
+  labelWidth,
+} from './formTokens';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
-import { getPlatformType, useBreakpoint } from '~utils';
+import { getPlatformType, makeSize, useBreakpoint } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
@@ -137,7 +142,7 @@ const FormLabel = ({
   const Component = as;
   // only set 120px label when device is desktop
   // const width = isLabelLeftPositioned && isDesktop ? makeSize(sizeToken[120]) : 'auto';
-  const width = isLabelLeftPositioned && isDesktop ? '176px' : 'auto'; // TODO: use size token
+  const width = isLabelLeftPositioned && isDesktop ? makeSize(labelWidth[size]) : 'auto'; // TODO: use size token
 
   return (
     <Component

@@ -183,6 +183,7 @@ exports[`<BaseInput /> should render 1`] = `
         </View>
       </View>
       <View
+        currentInteraction="default"
         data-blade-component="base-box"
         style={
           [
@@ -494,6 +495,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         </View>
       </View>
       <View
+        currentInteraction="default"
         data-blade-component="base-box"
         style={
           [
@@ -989,6 +991,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         </View>
       </View>
       <View
+        currentInteraction="default"
         data-blade-component="base-box"
         style={
           [
@@ -1614,6 +1617,7 @@ exports[`<BaseInput /> should render with trailingActionButton 1`] = `
         </View>
       </View>
       <View
+        currentInteraction="default"
         data-blade-component="base-box"
         style={
           [

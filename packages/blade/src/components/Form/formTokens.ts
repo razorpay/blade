@@ -1,3 +1,5 @@
+import { size } from '~tokens/global';
+
 const labelTextSize = {
   top: {
     medium: 'small',
@@ -34,6 +36,11 @@ const labelMarginBottom = {
   large: 'spacing.3',
 } as const;
 
+const labelWidth = {
+  medium: size[120],
+  large: size[176],
+} as const;
+
 export {
   labelTextSize,
   labelOptionalIndicatorTextSize,
@@ -41,4 +48,5 @@ export {
   hintIconSize,
   hintMarginTop,
   labelMarginBottom,
+  labelWidth,
 };

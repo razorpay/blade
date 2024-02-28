@@ -215,6 +215,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               </View>
             </View>
             <View
+              currentInteraction="default"
               data-blade-component="base-box"
               style={
                 [
