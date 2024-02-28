@@ -12,6 +12,7 @@ import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -332,6 +333,15 @@ TextInputWithoutLabel.args = {
   defaultValue: 'John Ives',
   label: undefined,
   accessibilityLabel: 'Enter your name',
+};
+
+export const TextInputWithTrailingActionButton = TextInputTemplate.bind({});
+TextInputWithTrailingActionButton.storyName = 'TextInput with trailing action button';
+TextInputWithTrailingActionButton.args = {
+  defaultValue: 'John Ives',
+  label: 'Discount Code',
+  trailingActionButton: <Link>Apply</Link>,
+  showClearButton: false,
 };
 
 const TextInputMaxCharactersTemplate: StoryFn<typeof TextInputComponent> = () => {
