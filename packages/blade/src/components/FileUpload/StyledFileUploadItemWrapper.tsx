@@ -24,7 +24,7 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       transitionProperty: 'background-color',
       transitionTimingFunction: easing,
       transitionDuration: duration,
-      borderColor: getIn(theme.colors, 'interactive.border.neutral.faded'),
+      borderColor: theme.colors.interactive.border.neutral.faded,
       overflow: 'auto',
       wordBreak: 'break-all',
 
