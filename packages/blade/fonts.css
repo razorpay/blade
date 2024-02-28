@@ -86,18 +86,18 @@
   font-family: 'Inter Fallback Arial';
   src: local(Arial);
   size-adjust: 105%;
-  ascent-override: 91%;
-  descent-override: 20%;
-  line-gap-override: 4%;
+  ascent-override: normal;
+  descent-override: normal;
+  line-gap-override: 5%;
 }
 
 @font-face {
   font-family: 'TASA Orbiter Fallback Arial';
-  src: local('Arial Bold');
-  size-adjust: 93%;
-  ascent-override: 95%;
-  descent-override: 20%;
-  line-gap-override: 10%;
+  src: local(Arial);
+  size-adjust: 98%;
+  ascent-override: normal;
+  descent-override: normal;
+  line-gap-override: 7%;
 }
 
 :root {
