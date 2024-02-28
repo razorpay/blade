@@ -5,13 +5,11 @@ const SingleFileUploadStory = `
     FileUpload,
     TextInput,
     Heading,
-    Divider,
     ProgressBar
   } from '@razorpay/blade/components';
   import type {
     FileUploadProps,
-    BladeFile,
-    BladeFileList,
+    BladeFile
   } from '@razorpay/blade/components';
   import React, { useState } from 'react';
 
@@ -86,15 +84,15 @@ function App(): React.ReactElement {
                   isRequired
                   necessityIndicator="required"
                 />
-                <FileUploadComponent
+                <FileUpload
                   uploadType="single"
                   label="Upload GST"
                   helpText="Upload .jpg, .jpeg, or .png file only"
                   accept=".jpg, .jpeg, .png"
-                  onChange={({ fileList }) => {
+                  onChange={({ fileList }: FileUploadProps['onChange']) => {
                     setSelectedFile(fileList[0]);
                   }}
-                  onDrop={({ fileList }) => {
+                  onDrop={({ fileList }: FileUploadProps['onDrop']) => {
                     setSelectedFile(fileList[0]);
                   }}
                   isRequired
@@ -166,7 +164,7 @@ const MultiFileUploadStory = `
       setIsLoading(true);
   
       if (selectedFiles.length > 0) {
-        Promise.all(selectedFiles.map((file) => uploadFile(file)))
+        Promise.all(selectedFiles.map((file: BladeFile) => uploadFile(file)))
           .then((res) => {
             setResponseData(res);
             setIsLoading(false);
@@ -251,10 +249,10 @@ const MultiFileUploadStory = `
                   maxCount={5}
                   maxSize={2 * 1024 * 1024}
                   accept=".jpg, .jpeg, .png"
-                  onChange={({ fileList }) => {
+                  onChange={({ fileList }: FileUploadProps['onChange']) => {
                     setSelectedFiles(fileList);
                   }}
-                  onDrop={({ fileList }) => {
+                  onDrop={({ fileList }: FileUploadProps['onDrop']) => {
                     setSelectedFiles(fileList);
                   }}
                   isRequired
@@ -298,138 +296,142 @@ import {
   import React, { useState } from 'react';
 
   function App(): React.ReactElement {
-    const [productName, setProductName] = useState();
-  const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>([]);
-  const [responseData, setResponseData] = useState([]);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+    const [productName, setProductName] = useState<string>();
+    const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>([]);
+    const [responseData, setResponseData] = useState([]);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const uploadFile = (file: BladeFile, fileList: BladeFileList): Promise<Response> => {
-    setUploadedFiles(
-      fileList.map((f) => {
-        if (f.id === file.id) {
-          f.status = 'uploading';
-        }
-        return file;
-      }),
-    );
-    const data = new FormData();
-    data.append('file', file);
-    data.append('upload_preset', 'blade-file-upload-demo');
-    data.append('cloud_name', 'snitin315');
+    const uploadFile = (file: BladeFile, fileList: BladeFileList): Promise<Response> => {
+      setUploadedFiles(
+        fileList.map((f: BladeFile) => {
+          if (f.id === file.id) {
+            f.status = 'uploading';
+          }
+          return file;
+        }),
+      );
+      const data = new FormData();
+      data.append('file', file);
+      data.append('upload_preset', 'blade-file-upload-demo');
+      data.append('cloud_name', 'snitin315');
 
-    return fetch('https://api.cloudinary.com/v1_1/snitin315/image/upload', {
-      method: 'POST',
-      body: data,
-    })
-      .then((res) => {
-        setUploadedFiles(
-          fileList.map((f) => {
-            if (f.id === file.id) {
-              f.status = 'success';
-            }
-            return file;
-          }),
-        );
-
-        return res.json();
+      return fetch('https://api.cloudinary.com/v1_1/snitin315/image/upload', {
+        method: 'POST',
+        body: data,
       })
-      .then((data) => {
-        if (data.error) {
+        .then((res) => {
           setUploadedFiles(
-            fileList.map((f) => {
+            fileList.map((f: BladeFile) => {
               if (f.id === file.id) {
-                f.status = 'error';
-                f.errorText = \`Oops! Something went wrong. \${data.error.message}\`;
+                f.status = 'success';
               }
               return file;
             }),
           );
-        }
-        return data;
-      })
-      .catch((error) => {
-        setUploadedFiles(
-          fileList.map((f) => {
-            if (f.id === file.id) {
-              f.status = 'error';
-              f.errorText = \`Oops! Something went wrong. \${error.message}\`;
-            }
-            return file;
-          }),
-        );
-      });
-  };
 
-  const handleFileChange: FileUploadProps['onChange'] = ({ fileList }) => {
-    const unUploadedFiles = fileList.filter((file) => !file.status);
-    Promise.all(unUploadedFiles.map((file) => uploadFile(file, fileList)))
-      .then((resData) => {
-        setResponseData((prevResponseData) => [...prevResponseData, ...resData]);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+          return res.json();
+        })
+        .then((data) => {
+          if (data.error) {
+            setUploadedFiles(
+              fileList.map((f: BladeFile) => {
+                if (f.id === file.id) {
+                  f.status = 'error';
+                  f.errorText = \`Oops! Something went wrong. \${data.error.message}\`;
+                }
+                return file;
+              }),
+            );
+          }
+          return data;
+        })
+        .catch((error) => {
+          setUploadedFiles(
+            fileList.map((f: BladeFile) => {
+              if (f.id === file.id) {
+                f.status = 'error';
+                f.errorText = \`Oops! Something went wrong. \${error.message}\`;
+              }
+              return file;
+            }),
+          );
+        });
+    };
 
-  return (
-    <Box
-      display="flex"
-      flexDirection="column"
-      padding="spacing.10"
-      backgroundColor="surface.background.gray.intense"
-    >
-      <Box>
-        {!isSubmitted ? (
-          <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.5">
-            <Heading marginBottom="spacing.4">Add New Product</Heading>
-            <TextInput
-              label="Product Name"
-              placeholder="Add product name"
-              isRequired
-              necessityIndicator="required"
-              onChange={({ value }) => setProductName(value)}
-            />
-            <FileUploadComponent
-              uploadType="multiple"
-              label="Upload Product Images"
-              helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
-              maxCount={5}
-              maxSize={2 * 1024 * 1024}
-              accept=".jpg, .jpeg, .png"
-              fileList={uploadedFiles}
-              onChange={({ fileList }) => handleFileChange({ fileList })}
-              onDrop={({ fileList }) => handleFileChange({ fileList })}
-              isRequired
-              necessityIndicator="required"
-            />
-            <Button
-              type="submit"
-              variant="primary"
-              onClick={() => {
-                setIsSubmitted(true);
-              }}
-            >
-              Submit
-            </Button>
-          </Box>
-        ) : (
-          <Box>
-            <Heading marginBottom="spacing.4">Product: {productName}</Heading>
+    const handleFileChange: FileUploadProps['onChange'] = ({
+      fileList,
+    }: {
+      fileList: BladeFileList;
+    }) => {
+      const unUploadedFiles = fileList.filter((file) => !file.status);
+      Promise.all(unUploadedFiles.map((file) => uploadFile(file, fileList)))
+        .then((resData) => {
+          setResponseData((prevResponseData) => [...prevResponseData, ...resData]);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
 
-            <Heading>Images:</Heading>
-            {responseData.map((res, index) => {
-              return (
-                <Box key={index} display="flex" flexDirection="column" gap="spacing.5">
-                  <img src={res.url} height="30%" width="30%" alt={\`Your product \${index}\`} />
-                  <Divider thickness="thicker" variant="normal" />
-                </Box>
-              );
-            })}
-          </Box>
-        )}
+    return (
+      <Box
+        display="flex"
+        flexDirection="column"
+        padding="spacing.10"
+        backgroundColor="surface.background.gray.intense"
+      >
+        <Box>
+          {!isSubmitted ? (
+            <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.5">
+              <Heading marginBottom="spacing.4">Add New Product</Heading>
+              <TextInput
+                label="Product Name"
+                placeholder="Add product name"
+                isRequired
+                necessityIndicator="required"
+                onChange={({ value }) => setProductName(value)}
+              />
+              <FileUpload
+                uploadType="multiple"
+                label="Upload Product Images"
+                helpText="Upload .jpg, .jpeg, or .png file only. You can upload upto 5 files with a maximum size of 2MB each."
+                maxCount={5}
+                maxSize={2 * 1024 * 1024}
+                accept=".jpg, .jpeg, .png"
+                fileList={uploadedFiles}
+                onChange={({ fileList }: FileUploadProps['onChange']) => handleFileChange({ fileList })}
+                onDrop={({ fileList }: FileUploadProps['onDrop']) => handleFileChange({ fileList })}
+                isRequired
+                necessityIndicator="required"
+              />
+              <Button
+                type="submit"
+                variant="primary"
+                onClick={() => {
+                  setIsSubmitted(true);
+                }}
+              >
+                Submit
+              </Button>
+            </Box>
+          ) : (
+            <Box>
+              <Heading marginBottom="spacing.4">Product: {productName}</Heading>
+
+              <Heading>Images:</Heading>
+              {responseData.map((res, index) => {
+                return (
+                  <Box key={index} display="flex" flexDirection="column" gap="spacing.5">
+                    <img src={res.url} height="30%" width="30%" alt={\`Your product \${index}\`} />
+                    <Divider thickness="thicker" variant="normal" />
+                  </Box>
+                );
+              })}
+            </Box>
+          )}
+        </Box>
       </Box>
-    </Box>
-  );
+    );
   }
 
   export default App;
@@ -533,7 +535,11 @@ const AutoFileUploadWithProgressStory = `
   
     const handleFileChange:
       | FileUploadProps['onChange']
-      | FileUploadProps['onDrop'] = ({ fileList }) => {
+      | FileUploadProps['onDrop'] = ({
+      fileList,
+    }: {
+      fileList: BladeFileList;
+    }) => {
       const unUploadedFiles = fileList.filter((file: BladeFile) => !file.status);
       void Promise.all(
         unUploadedFiles.map((file: BladeFile) => uploadFile(file, fileList))
@@ -688,7 +694,7 @@ import {
         .then((data) => {
           if (data.error) {
             setUploadedFiles(
-              fileList.map((f) => {
+              fileList.map((f: BladeFile) => {
                 if (f.id === file.id) {
                   f.status = 'error';
                   f.errorText = \`Oops! Something went wrong. \${data.error.message}\`;
@@ -701,7 +707,7 @@ import {
         })
         .catch((error) => {
           setUploadedFiles(
-            fileList.map((f) => {
+            fileList.map((f: BladeFile) => {
               if (f.id === file.id) {
                 f.status = 'error';
                 f.errorText = \`Oops! Something went wrong. \${error.message}\`;
