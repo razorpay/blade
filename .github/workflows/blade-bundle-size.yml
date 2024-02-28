@@ -66,5 +66,5 @@ jobs:
           git config user.name "rzpcibot"
           git add baseBundleSizeStats.json
           git commit -m "chore: update bundle size data [skip ci]"
-          git push
+          git push origin HEAD
         working-directory: packages/blade
