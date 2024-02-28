@@ -1,7 +1,7 @@
 import React from 'react';
 import { FileUpload } from '../FileUpload';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
-import assertAccessible from '~utils/testing/assertAccessible.native';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<FileUpload />', () => {
   it('should render FileUpload', () => {

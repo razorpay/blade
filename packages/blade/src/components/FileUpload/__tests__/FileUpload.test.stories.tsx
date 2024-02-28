@@ -9,6 +9,10 @@ import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+const imageBlob =
+  'data:image/png;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==';
+const pdfBlob =
+  'data:application/pdf;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==';
 
 export const TestSingleFileUpload: StoryFn<typeof Toast> = (): React.ReactElement => {
   return (
@@ -26,13 +30,11 @@ export const TestSingleFileUpload: StoryFn<typeof Toast> = (): React.ReactElemen
   );
 };
 
-TestSingleFileUpload.play = async () => {
-  const { getByText } = within(document.body);
+TestSingleFileUpload.play = async ({ canvasElement }) => {
+  const { getByText } = within(canvasElement);
 
   // Create a file
-  const blob = new Blob([
-    'data:image/png;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==',
-  ]);
+  const blob = new Blob(['']);
   const filename = 'my-image.png';
   const file = new File([blob], filename, {
     type: 'image/png',
@@ -44,7 +46,7 @@ TestSingleFileUpload.play = async () => {
   await expect(input).toHaveAttribute('name', 'single-file-upload-input');
 
   await userEvent.upload(input as HTMLElement, file);
-  await expect(getByText(filename)).toBeInTheDocument();
+  await expect(getByText(filename)).toBeVisible();
 };
 
 export const TestMultipleFileUpload: StoryFn<typeof Toast> = (): React.ReactElement => {
@@ -63,13 +65,11 @@ export const TestMultipleFileUpload: StoryFn<typeof Toast> = (): React.ReactElem
   );
 };
 
-TestMultipleFileUpload.play = async () => {
-  const { getByText } = within(document.body);
+TestMultipleFileUpload.play = async ({ canvasElement }) => {
+  const { getByText } = within(canvasElement);
 
   // Create files
-  const blob = new Blob([
-    'data:image/png;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==',
-  ]);
+  const blob = new Blob([imageBlob]);
   const file1 = new File([blob], 'my-image.png', {
     type: 'image/png',
   });
@@ -101,13 +101,11 @@ export const TestOnRemove: StoryFn<typeof Toast> = (): React.ReactElement => {
   );
 };
 
-TestOnRemove.play = async () => {
-  const { getByText, getByRole, queryByText } = within(document.body);
+TestOnRemove.play = async ({ canvasElement }) => {
+  const { getByText, getByRole, queryByText } = within(canvasElement);
 
   // Create a file
-  const blob = new Blob([
-    'data:image/png;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==',
-  ]);
+  const blob = new Blob([imageBlob]);
   const filename = 'my-image.png';
   const file = new File([blob], filename, {
     type: 'image/png',
@@ -119,7 +117,7 @@ TestOnRemove.play = async () => {
   await expect(input).toHaveAttribute('name', 'single-file-upload-input');
 
   await userEvent.upload(input as HTMLElement, file);
-  await expect(getByText(filename)).toBeInTheDocument();
+  await expect(getByText(filename)).toBeVisible();
 
   const removeButton = getByRole('button', { name: 'Remove File' });
   await userEvent.click(removeButton);
@@ -142,13 +140,11 @@ export const TestOnRemoveWithMultipleFiles: StoryFn<typeof Toast> = (): React.Re
   );
 };
 
-TestOnRemoveWithMultipleFiles.play = async () => {
-  const { getByText, getAllByRole, queryByText } = within(document.body);
+TestOnRemoveWithMultipleFiles.play = async ({ canvasElement }) => {
+  const { getByText, getAllByRole, queryByText } = within(canvasElement);
 
   // Create files
-  const blob = new Blob([
-    'data:image/png;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==',
-  ]);
+  const blob = new Blob([imageBlob]);
   const file1 = new File([blob], 'my-image.png', {
     type: 'image/png',
   });
@@ -191,13 +187,11 @@ export const TestMaxCountFileUpload: StoryFn<typeof Toast> = (): React.ReactElem
   );
 };
 
-TestMaxCountFileUpload.play = async () => {
-  const { getByText, queryByText } = within(document.body);
+TestMaxCountFileUpload.play = async ({ canvasElement }) => {
+  const { getByText, queryByText } = within(canvasElement);
 
   // Create files
-  const blob = new Blob([
-    'data:image/png;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==',
-  ]);
+  const blob = new Blob([imageBlob]);
   const file1 = new File([blob], 'my-image.png', {
     type: 'image/png',
   });
@@ -235,13 +229,11 @@ export const TestMaxSizeFileUpload: StoryFn<typeof Toast> = (): React.ReactEleme
   );
 };
 
-TestMaxSizeFileUpload.play = async () => {
-  const { getByText } = within(document.body);
+TestMaxSizeFileUpload.play = async ({ canvasElement }) => {
+  const { getByText } = within(canvasElement);
 
   // Create a file
-  const blob = new Blob([
-    'data:image/png;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==',
-  ]);
+  const blob = new Blob([imageBlob]);
   const filename = 'my-image.png';
   const file = new File([blob], filename, {
     type: 'image/png',
@@ -270,13 +262,11 @@ export const TestAcceptProp: StoryFn<typeof Toast> = (): React.ReactElement => {
   );
 };
 
-TestAcceptProp.play = async () => {
-  const { getByText, queryByText } = within(document.body);
+TestAcceptProp.play = async ({ canvasElement }) => {
+  const { getByText, queryByText } = within(canvasElement);
 
   // Create a file
-  const blob = new Blob([
-    'data:application/pdf;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==',
-  ]);
+  const blob = new Blob([pdfBlob]);
   const filename = 'my-pdf.pdf';
   const file = new File([blob], filename, {
     type: 'application/pdf',
@@ -373,13 +363,11 @@ export const TestFileUploadError: StoryFn<typeof Toast> = (): React.ReactElement
   );
 };
 
-TestFileUploadError.play = async () => {
-  const { getByText, getByRole } = within(document.body);
+TestFileUploadError.play = async ({ canvasElement }) => {
+  const { getByText, getByRole } = within(canvasElement);
 
   // Create a file
-  const blob = new Blob([
-    'data:image/png;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==',
-  ]);
+  const blob = new Blob([imageBlob]);
   const filename = 'my-image.png';
   const file = new File([blob], filename, {
     type: 'image/png',
@@ -394,7 +382,7 @@ TestFileUploadError.play = async () => {
   await expect(getByRole('progressbar')).toBeInTheDocument();
 
   await sleep(4000);
-  await expect(getByText(filename)).toBeInTheDocument();
+  await expect(getByText(filename)).toBeVisible();
   await expect(getByText('Oops! Something went wrong. Unknown API key')).toBeInTheDocument();
 };
 
@@ -423,8 +411,8 @@ export const TestRefProp: StoryFn<typeof Toast> = (): React.ReactElement => {
   );
 };
 
-TestRefProp.play = async () => {
-  const { getByText, getByRole } = within(document.body);
+TestRefProp.play = async ({ canvasElement }) => {
+  const { getByText, getByRole } = within(canvasElement);
 
   const input = getByText('Drag files here or').closest('div')?.querySelector('input');
   const button = getByRole('button', { name: 'Focus' });

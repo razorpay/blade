@@ -77,7 +77,6 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   justify-content: center;
   border-radius: 4px;
   border-width: 1px;
-  border-color: hsla(211,27%,76%,1);
   border-style: solid;
 }
 
@@ -86,6 +85,9 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -103,6 +105,9 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -180,6 +185,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
   transition-duration: 70ms;
+  border-color: hsla(211,27%,76%,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -369,27 +375,11 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   }
 }
 
-@media screen and (min-width:320px) {
-  .c11.c11.c11.c11.c11 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
 @media screen and (min-width:480px) {
   .c11.c11.c11.c11.c11 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-  }
-}
-
-@media screen and (min-width:320px) {
-  .c14.c14.c14.c14.c14 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
   }
 }
 
@@ -503,7 +493,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
                 </p>
                 <input
                   accept="image/*"
-                  aria-describedby="fileuploadinput-1-helptext-4"
+                  aria-describedby="fileuploadinput-1-label-6"
                   aria-disabled="false"
                   aria-invalid="false"
                   aria-required="false"
@@ -643,7 +633,6 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   justify-content: center;
   border-radius: 4px;
   border-width: 1px;
-  border-color: hsla(214,40%,92%,1);
   border-style: solid;
 }
 
@@ -652,6 +641,9 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -669,6 +661,9 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -746,6 +741,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
   transition-duration: 70ms;
+  border-color: hsla(214,40%,92%,1);
 }
 
 .c4.c4.c4.c4.c4 {
@@ -922,27 +918,11 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   }
 }
 
-@media screen and (min-width:320px) {
-  .c11.c11.c11.c11.c11 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-  }
-}
-
 @media screen and (min-width:480px) {
   .c11.c11.c11.c11.c11 {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-  }
-}
-
-@media screen and (min-width:320px) {
-  .c14.c14.c14.c14.c14 {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
   }
 }
 
@@ -1056,7 +1036,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
                 </p>
                 <input
                   accept="image/*"
-                  aria-describedby="fileuploadinput-13-helptext-16"
+                  aria-describedby="fileuploadinput-13-label-18"
                   aria-disabled="true"
                   aria-invalid="false"
                   aria-required="false"
