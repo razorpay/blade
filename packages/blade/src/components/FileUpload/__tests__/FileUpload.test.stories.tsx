@@ -2,7 +2,6 @@ import type { StoryFn } from '@storybook/react';
 import { within, userEvent } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import React, { useState } from 'react';
-import type { Toast } from '~components/Toast/Toast';
 import type { BladeFileList, BladeFile, FileUploadProps } from '~components/FileUpload';
 import { FileUpload } from '~components/FileUpload';
 import { Button } from '~components/Button';
@@ -14,7 +13,7 @@ const imageBlob =
 const pdfBlob =
   'data:application/pdf;base64,R0lGODlhDwAPAKECAAAAzMzM/////wAAACwAAAAADwAPAAACIISPeQHsrZ5ModrLlN48CXF8m2iQ3YmmKqVlRtW4MLwWACH+H09wdGltaXplZCBieSBVbGVhZCBTbWFydFNhdmVyIQAAOw==';
 
-export const TestSingleFileUpload: StoryFn<typeof Toast> = (): React.ReactElement => {
+export const TestSingleFileUpload: StoryFn<typeof FileUpload> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
@@ -49,7 +48,7 @@ TestSingleFileUpload.play = async ({ canvasElement }) => {
   await expect(getByText(filename)).toBeVisible();
 };
 
-export const TestMultipleFileUpload: StoryFn<typeof Toast> = (): React.ReactElement => {
+export const TestMultipleFileUpload: StoryFn<typeof FileUpload> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
@@ -85,7 +84,7 @@ TestMultipleFileUpload.play = async ({ canvasElement }) => {
   await expect(getByText('my-image2.png')).toBeInTheDocument();
 };
 
-export const TestOnRemove: StoryFn<typeof Toast> = (): React.ReactElement => {
+export const TestOnRemove: StoryFn<typeof FileUpload> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
@@ -124,7 +123,7 @@ TestOnRemove.play = async ({ canvasElement }) => {
   await expect(queryByText(filename)).not.toBeInTheDocument();
 };
 
-export const TestOnRemoveWithMultipleFiles: StoryFn<typeof Toast> = (): React.ReactElement => {
+export const TestOnRemoveWithMultipleFiles: StoryFn<typeof FileUpload> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
@@ -171,7 +170,7 @@ TestOnRemoveWithMultipleFiles.play = async ({ canvasElement }) => {
   await expect(queryByText('my-image.png')).not.toBeInTheDocument();
 };
 
-export const TestMaxCountFileUpload: StoryFn<typeof Toast> = (): React.ReactElement => {
+export const TestMaxCountFileUpload: StoryFn<typeof FileUpload> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
@@ -212,7 +211,7 @@ TestMaxCountFileUpload.play = async ({ canvasElement }) => {
   await expect(queryByText('my-image2.png')).not.toBeInTheDocument();
 };
 
-export const TestMaxSizeFileUpload: StoryFn<typeof Toast> = (): React.ReactElement => {
+export const TestMaxSizeFileUpload: StoryFn<typeof FileUpload> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
@@ -247,7 +246,7 @@ TestMaxSizeFileUpload.play = async ({ canvasElement }) => {
   await expect(getByText('File size exceeded.')).toBeInTheDocument();
 };
 
-export const TestAcceptProp: StoryFn<typeof Toast> = (): React.ReactElement => {
+export const TestAcceptProp: StoryFn<typeof FileUpload> = (): React.ReactElement => {
   return (
     <Box maxWidth="400px">
       <FileUpload
@@ -280,7 +279,7 @@ TestAcceptProp.play = async ({ canvasElement }) => {
   await expect(queryByText(filename)).not.toBeInTheDocument();
 };
 
-export const TestFileUploadError: StoryFn<typeof Toast> = (): React.ReactElement => {
+export const TestFileUploadError: StoryFn<typeof FileUpload> = (): React.ReactElement => {
   const [uploadedFiles, setUploadedFiles] = useState<BladeFileList>([]);
 
   const uploadFile = async (file: BladeFile, fileList: BladeFileList): Promise<Response> => {
@@ -386,7 +385,7 @@ TestFileUploadError.play = async ({ canvasElement }) => {
   await expect(getByText('Oops! Something went wrong. Unknown API key')).toBeInTheDocument();
 };
 
-export const TestRefProp: StoryFn<typeof Toast> = (): React.ReactElement => {
+export const TestRefProp: StoryFn<typeof FileUpload> = (): React.ReactElement => {
   const ref = React.useRef<HTMLInputElement>(null);
 
   return (
