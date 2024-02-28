@@ -88,7 +88,7 @@ export const getInputBackgroundAndBorderStyles = ({
     position: 'relative',
     height: isDropdownTrigger ? 'auto' : undefined,
     border: 'none',
-    ...getBaseInputBorderStyles({ theme, borderColor, borderWidth }),
+    ...getBaseInputBorderStyles({ theme, borderColor, borderWidth, isFocused }),
   };
 };
 

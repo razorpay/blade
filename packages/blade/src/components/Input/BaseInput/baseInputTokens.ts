@@ -69,6 +69,6 @@ export const baseInputBorderWidth = {
 } as const;
 
 export const baseInputBorderBackgroundMotion = {
-  duration: 'xgentle',
-  easing: 'standard.revealing',
+  enter: { duration: 'xgentle', easing: 'standard.revealing' },
+  exit: { duration: 'gentle', easing: 'standard.effective' },
 } as const;
