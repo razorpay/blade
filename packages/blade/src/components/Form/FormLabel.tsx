@@ -12,7 +12,6 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
-// import { makeSize } from '~utils/makeSize';
 import { size as sizeToken } from '~tokens/global';
 
 type CommonProps = {
@@ -141,7 +140,6 @@ const FormLabel = ({
 
   const Component = as;
   // only set 120px label when device is desktop
-  // const width = isLabelLeftPositioned && isDesktop ? makeSize(sizeToken[120]) : 'auto';
   const width = isLabelLeftPositioned && isDesktop ? makeSize(labelWidth[size]) : 'auto'; // TODO: use size token
 
   return (
