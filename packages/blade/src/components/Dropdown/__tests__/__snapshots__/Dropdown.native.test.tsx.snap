@@ -215,6 +215,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
               </View>
             </View>
             <View
+              currentInteraction="default"
               data-blade-component="base-box"
               style={
                 [
