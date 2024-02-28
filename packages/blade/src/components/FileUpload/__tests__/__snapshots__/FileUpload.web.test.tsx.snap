@@ -457,7 +457,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
                 class="c6"
                 data-blade-component="text"
               >
-                ,  .jpg, .jpeg, or .png file only
+                , Upload .jpg, .jpeg, or .png file only
               </p>
             </div>
           </div>
@@ -546,7 +546,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
               class="c21"
               data-blade-component="text"
             >
-               .jpg, .jpeg, or .png file only
+              Upload .jpg, .jpeg, or .png file only
             </span>
           </span>
         </div>
@@ -1000,7 +1000,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
                 class="c6"
                 data-blade-component="text"
               >
-                ,  .jpg, .jpeg, or .png file only
+                , Upload .jpg, .jpeg, or .png file only
               </p>
             </div>
           </div>
@@ -1090,7 +1090,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
               class="c21"
               data-blade-component="text"
             >
-               .jpg, .jpeg, or .png file only
+              Upload .jpg, .jpeg, or .png file only
             </span>
           </span>
         </div>

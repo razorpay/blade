@@ -9,7 +9,7 @@ describe('<FileUpload />', () => {
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
-        helpText=" .jpg, .jpeg, or .png file only"
+        helpText="Upload .jpg, .jpeg, or .png file only"
         accept="image/*"
         name="single-file-upload-input"
       />,
@@ -26,7 +26,7 @@ describe('<FileUpload />', () => {
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
-        helpText=" .jpg, .jpeg, or .png file only"
+        helpText="Upload .jpg, .jpeg, or .png file only"
         accept="image/*"
         name="single-file-upload-input"
         isDisabled
@@ -41,7 +41,7 @@ describe('<FileUpload />', () => {
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
-        helpText=" .jpg, .jpeg, or .png file only"
+        helpText="Upload .jpg, .jpeg, or .png file only"
         accept="image/*"
         name="single-file-upload-input"
         isRequired
@@ -58,7 +58,7 @@ describe('<FileUpload />', () => {
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
-        helpText=" .jpg, .jpeg, or .png file only"
+        helpText="Upload .jpg, .jpeg, or .png file only"
         accept="image/*"
         name="single-file-upload-input"
         isDisabled
@@ -73,7 +73,7 @@ describe('<FileUpload />', () => {
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
-        helpText=" .jpg, .jpeg, or .png file only"
+        helpText="Upload .jpg, .jpeg, or .png file only"
         accept="image/*"
         name="single-file-upload-input"
         isDisabled

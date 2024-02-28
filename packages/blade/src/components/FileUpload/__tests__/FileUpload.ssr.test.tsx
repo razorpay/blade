@@ -1,6 +1,5 @@
 import React from 'react';
 import { FileUpload } from '../FileUpload';
-
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<FileUpload />', () => {
@@ -9,7 +8,7 @@ describe('<FileUpload />', () => {
       <FileUpload
         uploadType="single"
         label="Upload GST certificate"
-        helpText=" .jpg, .jpeg, or .png file only"
+        helpText="Upload .jpg, .jpeg, or .png file only"
         accept="image/*"
         name="single-file-upload-input"
       />,
