@@ -1,9 +1,8 @@
 import type { FontFamily } from './types';
 
+// Fallbacks here are defined in `packages/blade/fonts.css`
 export const fontFamily: FontFamily = {
-  text:
-    '"Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif',
-  heading:
-    '"TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif',
+  text: '"Inter", var(--inter-fallback), Arial',
+  heading: '"TASA Orbiter", var(--tasa-orbiter-fallback), Arial',
   code: '"Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace',
 };

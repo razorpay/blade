@@ -80,3 +80,27 @@
     U+0303-0304, U+0308-0309, U+0323, U+0329, U+2000-206F, U+2074, U+20A0-20AF, U+20B0-20BF, U+20C0,
     U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+/* Fallback Fonts */
+@font-face {
+  font-family: 'Inter Fallback Arial';
+  src: local(Arial);
+  size-adjust: 105%;
+  ascent-override: 91%;
+  descent-override: 20%;
+  line-gap-override: 4%;
+}
+
+@font-face {
+  font-family: 'TASA Orbiter Fallback Arial';
+  src: local('Arial Bold');
+  size-adjust: 93%;
+  ascent-override: 95%;
+  descent-override: 20%;
+  line-gap-override: 10%;
+}
+
+:root {
+  --inter-fallback: 'Inter Fallback Arial';
+  --tasa-orbiter-fallback: 'TASA Orbiter Fallback Arial';
+}
