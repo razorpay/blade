@@ -62,9 +62,9 @@ jobs:
       - name: Commit Updated Bundle Size Data
         if: ${{ steps.file-check.outputs.result == 'true' }}
         run: |
-          git config user.email "tools+cibot@razorpay.com"
-          git config user.name "rzpcibot"
+          git config --global user.email "tools+cibot@razorpay.com"
+          git config --global user.name "rzpcibot"
           git add baseBundleSizeStats.json
           git commit -m "chore: update bundle size data [skip ci]"
-          git push
+          git push origin HEAD
         working-directory: packages/blade
