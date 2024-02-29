@@ -186,126 +186,120 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           </FormLabel>
         ) : null}
 
-        <BaseBox display="flex" flexDirection="column" width="100%">
-          <SelectorLabel
-            componentName={MetaConstants.FileUploadLabel}
-            inputProps={{}}
-            style={{
-              cursor: isDisabled ? 'not-allowed' : 'pointer',
-              ...(isOneFileSelectedWithSingleUpload ? screenReaderStyles : {}),
-            }}
+        <SelectorLabel
+          componentName={MetaConstants.FileUploadLabel}
+          inputProps={{}}
+          style={{
+            cursor: isDisabled ? 'not-allowed' : 'pointer',
+          }}
+        >
+          <BaseBox
+            display="flex"
+            flexDirection="column"
+            width="100%"
+            marginBottom={willRenderHintText ? 'spacing.0' : 'spacing.5'}
           >
-            <BaseBox
+            <StyledFileUploadWrapper
+              isDisabled={isDisabled}
+              isActive={isActive}
               display="flex"
-              flexDirection="column"
-              width="100%"
-              marginBottom={willRenderHintText ? 'spacing.0' : 'spacing.5'}
+              flexDirection="row"
+              justifyContent="center"
+              alignItems="center"
+              borderRadius="medium"
+              borderWidth="thin"
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              onClick={() => setIsActive(true)}
+              data-comp="f"
+              style={{
+                ...(isOneFileSelectedWithSingleUpload ? screenReaderStyles : {}),
+              }}
             >
-              <StyledFileUploadWrapper
-                isDisabled={isDisabled}
-                isActive={isActive}
+              <Box
                 display="flex"
-                flexDirection="row"
                 justifyContent="center"
                 alignItems="center"
-                borderRadius="medium"
-                borderWidth="thin"
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-                onDrop={handleDrop}
-                onClick={() => setIsActive(true)}
+                flexDirection={{ base: 'column', s: 'row' }}
+                gap={makeSize(6)}
+                padding="spacing.3"
               >
+                <Text
+                  color={
+                    isDisabled
+                      ? fileUploadColorTokens.text.disabled
+                      : fileUploadColorTokens.text.default
+                  }
+                >
+                  Drag files here or{' '}
+                </Text>
+                <SelectorInput
+                  id={inputId}
+                  hoverTokens={getFileUploadInputHoverTokens()}
+                  isChecked={false}
+                  isDisabled={isDisabled}
+                  inputProps={{
+                    name,
+                    type: 'file',
+                    onChange: handleInputChange,
+                    multiple: isMultiple,
+                    required: isRequired,
+                    disabled: isDisabled,
+                    accept,
+                    onBlur: () => setIsActive(false),
+                    ...accessibilityProps,
+                  }}
+                  ref={ref}
+                />
+
                 <Box
                   display="flex"
                   justifyContent="center"
                   alignItems="center"
                   flexDirection={{ base: 'column', s: 'row' }}
-                  gap={makeSize(6)}
-                  padding="spacing.3"
+                  borderRadius="small"
                 >
-                  <Text
-                    color={
-                      isDisabled
-                        ? fileUploadColorTokens.text.disabled
-                        : fileUploadColorTokens.text.default
-                    }
-                  >
-                    Drag files here or{' '}
-                  </Text>
-                  <SelectorInput
-                    id={inputId}
-                    hoverTokens={getFileUploadInputHoverTokens()}
-                    isChecked={false}
-                    isDisabled={isDisabled}
-                    inputProps={{
-                      name,
-                      type: 'file',
-                      onChange: handleInputChange,
-                      multiple: isMultiple,
-                      required: isRequired,
-                      disabled: isDisabled,
-                      accept,
-                      onBlur: () => setIsActive(false),
-                      ...accessibilityProps,
-                    }}
-                    ref={ref}
-                  />
-
                   <Box
                     display="flex"
-                    justifyContent="center"
+                    flexDirection="row"
                     alignItems="center"
-                    flexDirection={{ base: 'column', s: 'row' }}
-                    borderRadius="small"
+                    borderBottomColor={
+                      isDisabled ? 'surface.border.primary.muted' : 'surface.border.primary.normal'
+                    }
+                    borderBottomWidth="thin"
                   >
-                    <Box
-                      display="flex"
-                      flexDirection="row"
-                      alignItems="center"
-                      borderBottomColor={
+                    <Text
+                      color={
                         isDisabled
-                          ? 'surface.border.primary.muted'
-                          : 'surface.border.primary.normal'
+                          ? fileUploadColorTokens.link.disabled
+                          : fileUploadColorTokens.link.default
                       }
-                      borderBottomWidth="thin"
                     >
-                      <Text
-                        color={
-                          isDisabled
-                            ? fileUploadColorTokens.link.disabled
-                            : fileUploadColorTokens.link.default
-                        }
-                      >
-                        Upload
-                      </Text>
-                    </Box>
+                      Upload
+                    </Text>
                   </Box>
                 </Box>
-              </StyledFileUploadWrapper>
-            </BaseBox>
-          </SelectorLabel>
-          {isOneFileSelectedWithSingleUpload && (
-            <BaseBox
-              key={selectedFiles[0].id}
-              marginBottom={willRenderHintText ? 'spacing.0' : 'spacing.5'}
-            >
-              <FileUploadItem
-                file={selectedFiles[0]}
-                onRemove={() => {
-                  const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
-                  setSelectedFiles(newFiles);
-                  onRemove?.({ file: selectedFiles[0] });
-                }}
-                onDismiss={() => {
-                  const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
-                  setSelectedFiles(newFiles);
-                  onDismiss?.({ file: selectedFiles[0] });
-                }}
-                onPreview={onPreview}
-              />
-            </BaseBox>
-          )}
-        </BaseBox>
+              </Box>
+            </StyledFileUploadWrapper>
+          </BaseBox>
+        </SelectorLabel>
+        {isOneFileSelectedWithSingleUpload && (
+          <FileUploadItem
+            file={selectedFiles[0]}
+            onRemove={() => {
+              const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
+              setSelectedFiles(newFiles);
+              onRemove?.({ file: selectedFiles[0] });
+            }}
+            onDismiss={() => {
+              const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
+              setSelectedFiles(newFiles);
+              onDismiss?.({ file: selectedFiles[0] });
+            }}
+            onPreview={onPreview}
+          />
+        )}
       </BaseBox>
       {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
       {willRenderHintText && (
