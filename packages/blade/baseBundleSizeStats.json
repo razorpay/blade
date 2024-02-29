@@ -23,9 +23,9 @@
   {
     "name": "Alert",
     "passed": true,
-    "size": 33262,
+    "size": 33288,
     "sizeLimit": 2000000,
-    "loading": 0.6496484375
+    "loading": 0.65015625
   },
   {
     "name": "Amount",
@@ -63,6 +63,13 @@
     "loading": 0.4474609375
   },
   {
+    "name": "Breadcrumb, BreadcrumbItem",
+    "passed": true,
+    "size": 24702,
+    "sizeLimit": 2000000,
+    "loading": 0.4824609375
+  },
+  {
     "name": "Card, CardBody, CardHeader, CardHeaderIcon, CardHeaderIconButton, CardHeaderLeading, CardHeaderTrailing, CardFooter, CardFooterLeading, CardFooterTrailing",
     "passed": true,
     "size": 30987,
@@ -93,9 +100,9 @@
   {
     "name": "Collapsible, CollapsibleLink, CollapsibleButton, CollapsibleBody",
     "passed": true,
-    "size": 31430,
+    "size": 31436,
     "sizeLimit": 2000000,
-    "loading": 0.6138671875
+    "loading": 0.613984375
   },
   {
     "name": "Counter",
@@ -121,9 +128,9 @@
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
     "passed": true,
-    "size": 44624,
+    "size": 44635,
     "sizeLimit": 2000000,
-    "loading": 0.8715625
+    "loading": 0.87177734375
   },
   {
     "name": "Indicator",
@@ -135,9 +142,9 @@
   {
     "name": "List, ListItem, ListItemLink, ListItemCode, ListItemText",
     "passed": true,
-    "size": 27221,
+    "size": 27237,
     "sizeLimit": 2000000,
-    "loading": 0.53166015625
+    "loading": 0.53197265625
   },
   {
     "name": "Modal",
@@ -191,9 +198,9 @@
   {
     "name": "Table, TableHeader, TableHeaderCell, TableHeaderRow, TableBody, TableCell, TableRow, TableFooter, TableFooterCell, TableFooterRow, TablePagination, TableToolbar, TableToolbarActions",
     "passed": true,
-    "size": 72391,
+    "size": 72410,
     "sizeLimit": 2000000,
-    "loading": 1.41388671875
+    "loading": 1.4142578125
   },
   {
     "name": "Tabs, TabItem, TabList, TabPanel",
@@ -282,9 +289,9 @@
   {
     "name": "Link",
     "passed": true,
-    "size": 24239,
+    "size": 24261,
     "sizeLimit": 2000000,
-    "loading": 0.47341796875
+    "loading": 0.47384765625
   },
   {
     "name": "RadioGroup",
