@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArgsTable, Primary, PRIMARY_STORY, Stories } from '@storybook/addon-docs';
 import styled from 'styled-components';
-import FigmaEmbed from './FigmaEmbed';
 import { SandboxHighlighter } from './Sandbox/SandpackEditor';
 import { componentData } from './componentStatusData';
 import BaseBox from '~components/Box/BaseBox';
@@ -9,11 +8,10 @@ import { Alert } from '~components/Alert';
 import { BladeProvider } from '~components/BladeProvider';
 import { bladeTheme } from '~tokens/theme';
 import { Box } from '~components/Box';
-import { Link } from '~components/Link';
 import type { HeadingProps } from '~components/Typography';
-import { Display, Text, Heading } from '~components/Typography';
-import { Badge } from '~components/Badge';
-import { AnnouncementIcon } from '~components/Icons';
+import { Display, Heading } from '~components/Typography';
+import { AnnouncementIcon, ExternalLinkIcon, FileTextIcon } from '~components/Icons';
+import { Button } from '~components/Button';
 
 const Subtitle = (props: HeadingProps): React.ReactElement => {
   return (
@@ -94,19 +92,36 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
         <Box marginBottom="spacing.4" paddingLeft="spacing.1">
           <Subtitle>{props.componentDescription}</Subtitle>
         </Box>
-        {componentMetaInfo?.releasedIn ? (
-          <Box paddingBottom="spacing.6" paddingLeft="spacing.1">
-            <a
+        <Box paddingBottom="spacing.4" display="flex" gap="spacing.4" marginBottom="spacing.6">
+          {componentMetaInfo?.releasedIn ? (
+            <Button
               href={`https://github.com/razorpay/blade/releases/tag/%40razorpay%2Fblade%40${componentMetaInfo.releasedIn}`}
+              variant="tertiary"
+              icon={AnnouncementIcon}
               target="_blank"
-              rel="noreferrer"
             >
-              <Badge color="primary" size="large" icon={AnnouncementIcon}>
-                Release: v{componentMetaInfo.releasedIn}
-              </Badge>
-            </a>
-          </Box>
-        ) : null}
+              Release: v{componentMetaInfo.releasedIn}
+            </Button>
+          ) : null}
+          <Button href={props.figmaURL} variant="tertiary" icon={ExternalLinkIcon} target="_blank">
+            View on Figma
+          </Button>
+          {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (
+            <Button
+              href={
+                props.apiDecisionLink ??
+                `https://github.com/razorpay/blade/blob/master/packages/blade/src/components/${
+                  props.apiDecisionComponentName ?? props.componentName
+                }/_decisions/decisions.md`
+              }
+              variant="tertiary"
+              icon={FileTextIcon}
+              target="_blank"
+            >
+              API Decisions
+            </Button>
+          )}
+        </Box>
         {props.note ? (
           <Alert
             description={props.note}
@@ -115,9 +130,6 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
             color="notice"
             marginBottom="spacing.5"
           />
-        ) : null}
-        {props.figmaURL && props.figmaURL !== '#' ? (
-          <FigmaEmbed src={props.figmaURL} title={`${props.componentName} Figma Designs`} />
         ) : null}
         {props.children}
         {props.imports === '' ? null : (
@@ -147,20 +159,6 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
               <>
                 <BaseBox id="properties-ref">
                   <Heading size="xlarge">Properties</Heading>
-                  {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (
-                    <Text marginY="spacing.5">
-                      Check out{' '}
-                      <Link
-                        target="_blank"
-                        href={
-                          props.apiDecisionLink ??
-                          `https://github.com/razorpay/blade/blob/master/packages/blade/src/components/${props.componentName}/_decisions/decisions.md`
-                        }
-                      >
-                        API Decisions for {props.apiDecisionComponentName ?? props.componentName}
-                      </Link>
-                    </Text>
-                  )}
                   {props.propsDescription ? (
                     // adding box with surface background so that when theme of storybook is changed, the alert doesn't become invisible
                     <Box backgroundColor="surface.background.gray.subtle">
