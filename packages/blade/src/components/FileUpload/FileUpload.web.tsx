@@ -272,7 +272,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     borderBottomColor={
                       fileUploadLinkBorderTokens.color[isDisabled ? 'disabled' : 'default']
                     }
-                    borderBottomWidth={fileUploadLinkBorderTokens.width}
+                    borderBottomWidth={fileUploadLinkBorderTokens.width.default}
                   >
                     <Text
                       color={
