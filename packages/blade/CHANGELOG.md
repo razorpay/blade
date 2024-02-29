@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- bb7466e7: feat(blade): breadcrumb web implementation
+- bb7466e7: feat(blade): add `Breadcrumb` component
 
 ## 11.4.0
 
