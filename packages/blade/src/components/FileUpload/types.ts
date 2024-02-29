@@ -82,7 +82,7 @@ type FileUploadCommonProps = {
    */
   onRemove?: ({ file }: { file: File }) => void;
   /**
-   * Callback function triggered when a file upload is cancelled
+   * Callback function triggered when a file upload is dismissed
    */
   onDismiss?: ({ file }: { file: File }) => void;
   /**
