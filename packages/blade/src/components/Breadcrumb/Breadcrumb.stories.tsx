@@ -185,9 +185,10 @@ export const BreadcrumbWrapMultiline = BreadcrumbWrapMultilineTemplate.bind({});
 
 const urls = {
   home: '/home',
-  dashboard: '/dashboard',
-  settlements: '/settlements',
-  payment: '/payment-gateway',
+  products: '/products',
+  payments: '/payments',
+  intPayments: '/international-payments',
+  acceptIntPayments: '/accepts-international-payments',
 };
 
 type BreadcrumbLinkProps = Omit<LinkProps, 'children'> &
@@ -233,7 +234,7 @@ const Page2 = (): React.ReactElement => {
   return (
     <Breadcrumb size="medium" color="primary">
       <BreadcrumbNavLink icon={HomeIcon} to={urls.home} accessibilityLabel="Home" />
-      <BreadcrumbNavLink to={urls.dashboard}>Dashboard</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.products}>Products</BreadcrumbNavLink>
     </Breadcrumb>
   );
 };
@@ -242,8 +243,8 @@ const Page3 = (): React.ReactElement => {
   return (
     <Breadcrumb size="medium" color="primary">
       <BreadcrumbNavLink icon={HomeIcon} to={urls.home} accessibilityLabel="Home" />
-      <BreadcrumbNavLink to={urls.dashboard}>Dashboard</BreadcrumbNavLink>
-      <BreadcrumbNavLink to={urls.settlements}>Settlements</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.products}>Products</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.payments}>Payments</BreadcrumbNavLink>
     </Breadcrumb>
   );
 };
@@ -252,9 +253,23 @@ const Page4 = (): React.ReactElement => {
   return (
     <Breadcrumb size="medium" color="primary">
       <BreadcrumbNavLink icon={HomeIcon} to={urls.home} accessibilityLabel="Home" />
-      <BreadcrumbNavLink to={urls.dashboard}>Dashboard</BreadcrumbNavLink>
-      <BreadcrumbNavLink to={urls.settlements}>Settlements</BreadcrumbNavLink>
-      <BreadcrumbNavLink to={urls.payment}>Payment Gateway</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.products}>Products</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.payments}>Payments</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.intPayments}>International Payments</BreadcrumbNavLink>
+    </Breadcrumb>
+  );
+};
+
+const Page5 = (): React.ReactElement => {
+  return (
+    <Breadcrumb size="medium" color="primary">
+      <BreadcrumbNavLink icon={HomeIcon} to={urls.home} accessibilityLabel="Home" />
+      <BreadcrumbNavLink to={urls.products}>Products</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.payments}>Payments</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.intPayments}>International Payments</BreadcrumbNavLink>
+      <BreadcrumbNavLink to={urls.acceptIntPayments}>
+        Accept International Payments
+      </BreadcrumbNavLink>
     </Breadcrumb>
   );
 };
@@ -279,10 +294,13 @@ const CommonPage = (): React.ReactElement => {
 
         <Text marginBottom="spacing.3">Trigger URL Change:</Text>
         <Box display="flex" flexDirection="column" gap="spacing.2">
-          <RouterLink to={urls.home}>Home</RouterLink>
-          <RouterLink to={urls.dashboard}>Dashboard</RouterLink>
-          <RouterLink to={urls.settlements}>Settlements</RouterLink>
-          <RouterLink to={urls.payment}>Payment Gateway</RouterLink>
+          <BreadcrumbNavLink to={urls.home}>Home</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.products}>Products</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.payments}>Payments</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.intPayments}>International Payments</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.acceptIntPayments}>
+            Accept International Payments
+          </BreadcrumbNavLink>
         </Box>
       </CardBody>
     </Card>
@@ -293,9 +311,10 @@ const RouterExample = (): React.ReactElement => {
   return (
     <Box>
       <Route path={urls.home} component={Page1} />
-      <Route path={urls.dashboard} component={Page2} />
-      <Route path={urls.settlements} component={Page3} />
-      <Route path={urls.payment} component={Page4} />
+      <Route path={urls.products} component={Page2} />
+      <Route path={urls.payments} component={Page3} />
+      <Route path={urls.intPayments} component={Page4} />
+      <Route path={urls.acceptIntPayments} component={Page5} />
       <Route path="/" component={CommonPage} />
     </Box>
   );
