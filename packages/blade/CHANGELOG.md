@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.5.0
+
+### Minor Changes
+
+- bb7466e7: feat(blade): add `Breadcrumb` component
+
 ## 11.4.0
 
 ### Minor Changes
