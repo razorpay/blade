@@ -15,6 +15,8 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
     );
 
     return {
+      position: 'relative',
+      overflow: 'hidden',
       display: 'flex',
       justifyContent: 'space-between',
       borderStyle: 'solid',
@@ -25,7 +27,6 @@ const StyledFileUploadItemWrapper = styled(BaseBox)<StyledFileUploadItemWrapperP
       transitionTimingFunction: easing,
       transitionDuration: duration,
       borderColor: theme.colors.interactive.border.neutral.faded,
-      overflow: 'auto',
       wordBreak: 'break-all',
 
       ...(status !== 'uploading' && {

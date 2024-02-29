@@ -63,9 +63,20 @@ const fileUploadItemBackgroundColors: Record<
   },
 };
 
+const fileUploadLinkBorderTokens = {
+  color: {
+    default: 'surface.border.primary.normal',
+    disabled: 'surface.border.primary.muted',
+  },
+  width: {
+    default: 'thin',
+  },
+} as const;
+
 export {
   getFileUploadInputHoverTokens,
   fileUploadMotionTokens,
   fileUploadItemBackgroundColors,
   fileUploadColorTokens,
+  fileUploadLinkBorderTokens,
 };

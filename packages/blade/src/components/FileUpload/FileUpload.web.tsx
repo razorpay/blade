@@ -1,7 +1,11 @@
 import { useState, useCallback, useMemo, forwardRef } from 'react';
 import type { FileUploadProps, BladeFile, BladeFileList } from './types';
 import { StyledFileUploadWrapper } from './StyledFileUploadWrapper';
-import { fileUploadColorTokens, getFileUploadInputHoverTokens } from './fileUploadTokens';
+import {
+  fileUploadColorTokens,
+  fileUploadLinkBorderTokens,
+  getFileUploadInputHoverTokens,
+} from './fileUploadTokens';
 import { FileUploadItem } from './FileUploadItem';
 import { isFileAccepted } from './isFileAccepted';
 import BaseBox from '~components/Box/BaseBox';
@@ -50,6 +54,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const { platform } = useTheme();
   const [selectedFiles, setSelectedFiles] = useState<BladeFileList>(fileList ?? []);
   const [errorMessage, setErrorMessage] = useState(errorText);
+  console.log('🚀 ~ errorMessage:', errorMessage);
   const [internalValidationState, setInternalValidationState] = useState('none');
   const [isActive, setIsActive] = useState(false);
 
@@ -163,9 +168,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     <BaseBox
       display="flex"
       flexDirection="column"
+      width="100%"
       {...metaAttribute({ name: MetaConstants.FileUpload, testID })}
       {...getStyledProps(styledProps)}
-      width="100%"
     >
       <BaseBox
         display="flex"
@@ -265,9 +270,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
                     flexDirection="row"
                     alignItems="center"
                     borderBottomColor={
-                      isDisabled ? 'surface.border.primary.muted' : 'surface.border.primary.normal'
+                      fileUploadLinkBorderTokens.color[isDisabled ? 'disabled' : 'default']
                     }
-                    borderBottomWidth="thin"
+                    borderBottomWidth={fileUploadLinkBorderTokens.width}
                   >
                     <Text
                       color={

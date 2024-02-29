@@ -24,7 +24,7 @@ const FileUploadItem = memo(
         borderRadius="medium"
         borderWidth="thin"
       >
-        <BaseBox width="100%">
+        <BaseBox width="100%" display="flex" flexDirection="column">
           <BaseBox display="flex" flexDirection="row" margin="spacing.3">
             <BaseBox marginRight="spacing.3">
               <FileUploadItemIcon fileName={name} uploadStatus={status} />
@@ -103,11 +103,14 @@ const FileUploadItem = memo(
             )}
           </BaseBox>
           {isUploading && (
-            <ProgressBar
-              showPercentage={false}
-              value={uploadPercent ?? 0}
-              isIndeterminate={isUndefined(uploadPercent)}
-            />
+            <BaseBox width="100%" position="absolute" bottom="spacing.0">
+              <ProgressBar
+                left="spacing.0"
+                showPercentage={false}
+                value={uploadPercent ?? 0}
+                isIndeterminate={isUndefined(uploadPercent)}
+              />
+            </BaseBox>
           )}
         </BaseBox>
       </StyledFileUploadItemWrapper>
