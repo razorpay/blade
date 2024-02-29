@@ -288,7 +288,9 @@ const CommonPage = (): React.ReactElement => {
             <Code size="medium">react-router</Code> to create a breadcrumb trail for your app.
           </Text>
           <Text weight="semibold" as="span" marginTop="spacing.4">
-            Open this <Link href="#">Codesandbox link</Link> to see the source code.
+            Open this{' '}
+            <Link href="https://stackblitz.com/edit/rmuj5e?file=App.tsx">Stackblitz link</Link> to
+            see the source code.
           </Text>
         </Box>
 
