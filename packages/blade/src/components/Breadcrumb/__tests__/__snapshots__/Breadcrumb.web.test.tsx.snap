@@ -1,0 +1,731 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcrumb /> current item should have aria-current 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  gap: 4px;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c2.c2.c2.c2.c2 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c2.c2.c2.c2.c2 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c2.c2.c2.c2.c2:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+}
+
+.c2.c2.c2.c2.c2 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+<div>
+  <nav
+    class=""
+    data-blade-component="breadcrumb"
+  >
+    <ol
+      aria-label="Breadcrumb"
+      class="c0"
+      data-blade-component="base-box"
+      style="list-style: none;"
+    >
+      <li
+        class="c1"
+        data-blade-component="breadcrumb-item"
+      >
+        <a
+          aria-disabled="false"
+          class="c2"
+          data-blade-component="link"
+          href="/"
+          role="link"
+        >
+          <span
+            class="c3 content-container"
+            data-blade-component="base-box"
+            opacity="1"
+          >
+            <span
+              class="c4"
+              data-blade-component="base-text"
+            >
+              Home
+            </span>
+          </span>
+        </a>
+        <span
+          aria-hidden="true"
+          class=""
+          data-blade-component="base-box"
+        >
+          <span
+            class="c5"
+            data-blade-component="text"
+          >
+            /
+          </span>
+        </span>
+      </li>
+      <li
+        class="c1"
+        data-blade-component="breadcrumb-item"
+      >
+        <a
+          aria-disabled="false"
+          class="c2"
+          data-blade-component="link"
+          href="/about"
+          role="link"
+        >
+          <span
+            class="c3 content-container"
+            data-blade-component="base-box"
+            opacity="1"
+          >
+            <span
+              class="c4"
+              data-blade-component="base-text"
+            >
+              About
+            </span>
+          </span>
+        </a>
+        <span
+          aria-hidden="true"
+          class=""
+          data-blade-component="base-box"
+        >
+          <span
+            class="c5"
+            data-blade-component="text"
+          >
+            /
+          </span>
+        </span>
+      </li>
+      <li
+        aria-current="page"
+        class="c1"
+        data-blade-component="breadcrumb-item"
+      >
+        <div
+          class="c1"
+          data-blade-component="base-box"
+        >
+          <p
+            class="c6"
+            data-blade-component="text"
+          >
+            Contact
+          </p>
+        </div>
+        <span
+          aria-hidden="true"
+          class=""
+          data-blade-component="base-box"
+        />
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`<Breadcrumb /> should render 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  gap: 4px;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c2.c2.c2.c2.c2 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c2.c2.c2.c2.c2 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c2.c2.c2.c2.c2:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+}
+
+.c2.c2.c2.c2.c2 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+<div>
+  <nav
+    class=""
+    data-blade-component="breadcrumb"
+  >
+    <ol
+      aria-label="Breadcrumb"
+      class="c0"
+      data-blade-component="base-box"
+      style="list-style: none;"
+    >
+      <li
+        class="c1"
+        data-blade-component="breadcrumb-item"
+      >
+        <a
+          aria-disabled="false"
+          class="c2"
+          data-blade-component="link"
+          href="/"
+          role="link"
+        >
+          <span
+            class="c3 content-container"
+            data-blade-component="base-box"
+            opacity="1"
+          >
+            <span
+              class="c4"
+              data-blade-component="base-text"
+            >
+              Home
+            </span>
+          </span>
+        </a>
+        <span
+          aria-hidden="true"
+          class=""
+          data-blade-component="base-box"
+        >
+          <span
+            class="c5"
+            data-blade-component="text"
+          >
+            /
+          </span>
+        </span>
+      </li>
+      <li
+        class="c1"
+        data-blade-component="breadcrumb-item"
+      >
+        <a
+          aria-disabled="false"
+          class="c2"
+          data-blade-component="link"
+          href="/about"
+          role="link"
+        >
+          <span
+            class="c3 content-container"
+            data-blade-component="base-box"
+            opacity="1"
+          >
+            <span
+              class="c4"
+              data-blade-component="base-text"
+            >
+              About
+            </span>
+          </span>
+        </a>
+        <span
+          aria-hidden="true"
+          class=""
+          data-blade-component="base-box"
+        >
+          <span
+            class="c5"
+            data-blade-component="text"
+          >
+            /
+          </span>
+        </span>
+      </li>
+      <li
+        class="c1"
+        data-blade-component="breadcrumb-item"
+      >
+        <a
+          aria-disabled="false"
+          class="c2"
+          data-blade-component="link"
+          href="/contact"
+          role="link"
+        >
+          <span
+            class="c3 content-container"
+            data-blade-component="base-box"
+            opacity="1"
+          >
+            <span
+              class="c4"
+              data-blade-component="base-text"
+            >
+              Contact
+            </span>
+          </span>
+        </a>
+        <span
+          aria-hidden="true"
+          class=""
+          data-blade-component="base-box"
+        />
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
+
+exports[`<Breadcrumb /> should work with showLastSeparator 1`] = `
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  gap: 4px;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c2.c2.c2.c2.c2 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c2.c2.c2.c2.c2 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c2.c2.c2.c2.c2:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+}
+
+.c2.c2.c2.c2.c2 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+<div>
+  <nav
+    class=""
+    data-blade-component="breadcrumb"
+  >
+    <ol
+      aria-label="Breadcrumb"
+      class="c0"
+      data-blade-component="base-box"
+      style="list-style: none;"
+    >
+      <li
+        class="c1"
+        data-blade-component="breadcrumb-item"
+      >
+        <a
+          aria-disabled="false"
+          class="c2"
+          data-blade-component="link"
+          href="/"
+          role="link"
+        >
+          <span
+            class="c3 content-container"
+            data-blade-component="base-box"
+            opacity="1"
+          >
+            <span
+              class="c4"
+              data-blade-component="base-text"
+            >
+              Home
+            </span>
+          </span>
+        </a>
+        <span
+          aria-hidden="true"
+          class=""
+          data-blade-component="base-box"
+        >
+          <span
+            class="c5"
+            data-blade-component="text"
+          >
+            /
+          </span>
+        </span>
+      </li>
+      <li
+        class="c1"
+        data-blade-component="breadcrumb-item"
+      >
+        <a
+          aria-disabled="false"
+          class="c2"
+          data-blade-component="link"
+          href="/about"
+          role="link"
+        >
+          <span
+            class="c3 content-container"
+            data-blade-component="base-box"
+            opacity="1"
+          >
+            <span
+              class="c4"
+              data-blade-component="base-text"
+            >
+              About
+            </span>
+          </span>
+        </a>
+        <span
+          aria-hidden="true"
+          class=""
+          data-blade-component="base-box"
+        >
+          <span
+            class="c5"
+            data-blade-component="text"
+          >
+            /
+          </span>
+        </span>
+      </li>
+      <li
+        class="c1"
+        data-blade-component="breadcrumb-item"
+      >
+        <a
+          aria-disabled="false"
+          class="c2"
+          data-blade-component="link"
+          href="/contact"
+          role="link"
+        >
+          <span
+            class="c3 content-container"
+            data-blade-component="base-box"
+            opacity="1"
+          >
+            <span
+              class="c4"
+              data-blade-component="base-text"
+            >
+              Contact
+            </span>
+          </span>
+        </a>
+        <span
+          aria-hidden="true"
+          class=""
+          data-blade-component="base-box"
+        >
+          <span
+            class="c5"
+            data-blade-component="text"
+          >
+            /
+          </span>
+        </span>
+      </li>
+    </ol>
+  </nav>
+</div>
+`;
