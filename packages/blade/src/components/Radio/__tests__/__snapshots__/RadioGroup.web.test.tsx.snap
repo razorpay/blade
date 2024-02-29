@@ -99,7 +99,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -121,7 +121,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -138,7 +138,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -155,7 +155,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 
 .c14.c14.c14.c14.c14 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.6875rem;
   font-weight: 400;
   font-style: italic;
@@ -548,7 +548,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -570,7 +570,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -587,7 +587,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

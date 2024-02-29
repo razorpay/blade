@@ -389,7 +389,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c7.c7.c7.c7.c7 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -411,7 +411,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c8.c8.c8.c8.c8 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -428,7 +428,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c15.c15.c15.c15.c15 {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -451,7 +451,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c33.c33.c33.c33.c33 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -469,7 +469,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c41.c41.c41.c41.c41 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -491,7 +491,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c47.c47.c47.c47.c47 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -534,7 +534,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c14.c14.c14.c14.c14 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -567,7 +567,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c14.c14.c14.c14.c14::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -585,7 +585,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c14.c14.c14.c14.c14::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -603,7 +603,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c14.c14.c14.c14.c14:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -621,7 +621,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c14.c14.c14.c14.c14::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

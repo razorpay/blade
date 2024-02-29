@@ -115,7 +115,7 @@ exports[`<Accordion /> should render 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -132,7 +132,7 @@ exports[`<Accordion /> should render 1`] = `
 
 .c10.c10.c10.c10.c10 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

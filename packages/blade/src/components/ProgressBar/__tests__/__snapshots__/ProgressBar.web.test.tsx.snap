@@ -76,7 +76,7 @@ exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -342,7 +342,7 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -488,7 +488,7 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -634,7 +634,7 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -780,7 +780,7 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -926,7 +926,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -1072,7 +1072,7 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -1327,7 +1327,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -1502,7 +1502,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1520,7 +1520,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -1780,7 +1780,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1798,7 +1798,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter",var(--inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
