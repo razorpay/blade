@@ -101,6 +101,6 @@
 }
 
 :root {
-  --inter-fallback: 'Inter Fallback Arial';
-  --tasa-orbiter-fallback: 'TASA Orbiter Fallback Arial';
+  --blade-inter-fallback: 'Inter Fallback Arial';
+  --blade-tasa-orbiter-fallback: 'TASA Orbiter Fallback Arial';
 }

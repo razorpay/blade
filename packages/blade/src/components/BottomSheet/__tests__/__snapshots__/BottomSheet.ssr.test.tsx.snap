@@ -274,7 +274,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -292,7 +292,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 
 .c18.c18.c18.c18.c18 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -315,7 +315,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 
 .c19.c19.c19.c19.c19 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -332,7 +332,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 
 .c29.c29.c29.c29.c29 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -349,7 +349,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 
 .c35.c35.c35.c35.c35 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -367,7 +367,7 @@ exports[`<BottomSheet /> should render a BottomSheet ssr 2`] = `
 
 .c23.c23.c23.c23.c23 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;

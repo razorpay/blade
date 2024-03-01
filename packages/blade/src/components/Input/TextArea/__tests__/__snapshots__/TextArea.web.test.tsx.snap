@@ -75,7 +75,7 @@ exports[`<TextArea /> should render 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -97,7 +97,7 @@ exports[`<TextArea /> should render 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -114,7 +114,7 @@ exports[`<TextArea /> should render 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -145,7 +145,7 @@ exports[`<TextArea /> should render 1`] = `
 
 .c8.c8.c8.c8.c8::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -162,7 +162,7 @@ exports[`<TextArea /> should render 1`] = `
 
 .c8.c8.c8.c8.c8::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -179,7 +179,7 @@ exports[`<TextArea /> should render 1`] = `
 
 .c8.c8.c8.c8.c8:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -196,7 +196,7 @@ exports[`<TextArea /> should render 1`] = `
 
 .c8.c8.c8.c8.c8::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -461,7 +461,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -483,7 +483,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -500,7 +500,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -531,7 +531,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 
 .c8.c8.c8.c8.c8::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -548,7 +548,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 
 .c8.c8.c8.c8.c8::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -565,7 +565,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 
 .c8.c8.c8.c8.c8:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -582,7 +582,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
 
 .c8.c8.c8.c8.c8::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

@@ -260,7 +260,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 
 .c10.c10.c10.c10.c10 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -277,7 +277,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 
 .c16.c16.c16.c16.c16 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -300,7 +300,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 
 .c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -318,7 +318,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 
 .c21.c21.c21.c21.c21 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -340,7 +340,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 
 .c24.c24.c24.c24.c24 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -357,7 +357,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 
 .c28.c28.c28.c28.c28 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -374,7 +374,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 
 .c29.c29.c29.c29.c29 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -391,7 +391,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 
 .c35.c35.c35.c35.c35 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -409,7 +409,7 @@ exports[`<Card /> should render a Card with Header & Footer 2`] = `
 
 .c38.c38.c38.c38.c38 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -927,7 +927,7 @@ exports[`<Card /> should render a Interactive Card with href 2`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1052,7 +1052,7 @@ exports[`<Card /> should render a Interactive Card with onClick 2`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--inter-fallback),Arial;
+  font-family: "Inter",var(--blade-inter-fallback),Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
