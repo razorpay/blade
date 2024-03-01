@@ -86,6 +86,11 @@ type StringChildrenType = React.ReactText | React.ReactText[];
 type StringWithAutocomplete = string & Record<never, never>;
 
 type TestID = {
+  /**
+   * Test id that can be used to select element in testing environments
+   *
+   * Checkout https://testing-library.com/docs/queries/bytestid/
+   */
   testID?: string;
 };
 

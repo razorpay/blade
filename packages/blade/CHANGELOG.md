@@ -1,5 +1,29 @@
 # @razorpay/blade
 
+## 11.6.0
+
+### Minor Changes
+
+- 9ebaf986: feat: add `FileUpload` component
+
+## 11.5.0
+
+### Minor Changes
+
+- bb7466e7: feat(blade): add `Breadcrumb` component
+
+## 11.4.0
+
+### Minor Changes
+
+- 51208914: feat(Drawer): add Drawer component
+
+  Checkout https://blade.razorpay.com/?path=/docs/components-drawer--docs
+
+### Patch Changes
+
+- ab028b6c: fix(Tag): tag truncation in Select and AutoComplete
+
 ## 11.3.1
 
 ### Patch Changes
