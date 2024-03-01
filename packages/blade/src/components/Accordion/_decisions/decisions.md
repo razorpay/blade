@@ -31,6 +31,39 @@ Annotated component with props:
 Sample usage, composes `Accordion` and `AccordionItem`:
 
 ```jsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemTrigger,
+  AccordionItemBody,
+} from '@razorpay/blade/components';
+
+<Accordion showNumberPrefix defaultExpandedIndex={0}>
+  <AccordionItem>
+    {/* With title and description defined */}
+    <AccordionItemTrigger title="Can I create linked accounts using Route?" />
+    <AccordionItemBody>
+      <Text>
+        You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers.
+      </Text>
+    </AccordionItemBody>
+  </AccordionItem>
+  {/* With custom slot for trigger */}
+  <AccordionItem>
+    <AccordionItemTrigger>
+      <div>Trigger Slot</div>
+    </AccordionItemTrigger>
+    <AccordionItemBody>
+      <div>Slot</div>
+    </AccordionItemBody>
+  </AccordionItem>
+</Accordion>;
+```
+
+<details>
+<summary>Deprecated Accordion API</summary>
+
+```jsx
 import { Accordion, AccordionItem } from '@razorpay/blade';
 
 <Accordion showNumberPrefix defaultExpandedIndex={0}>
@@ -44,17 +77,33 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 </Accordion>;
 ```
 
-### WIP Custom Accordion Header
+</details>
 
-```jsx
-import { Accordion, AccordionItem } from '@razorpay/blade';
+#### Diff between deprecated version and new version
 
-<Accordion showNumberPrefix defaultExpandedIndex={0}>
-  <AccordionItem header={<div>header slot</div>}>
-    <div>Slot</div>
+1. AccordionItem accepts AccordionItemTrigger and AccordionItemBody components now
+2. `title`, `icon` props from AccordionItem will be available on AccordionTrigger
+3. `description` prop is removed from AccordionItem. Consumers can use slot of AccordionBody as replacement
+4. The JSX for body content goes inside AccordionItemBody
+
+```diff
+  <AccordionItem
+-   title="Accordion Title"
+-   icon={QRIcon}
+-   description="Information inside Accordion"
+  />
+
+  ⬇️
+
+  <AccordionItem>
+    <AccordionItemTrigger
++     title="Accordion Title"
++     icon={QRIcon}
+    />
+    <AccordionItemBody>
++     <Text>Information inside Accordion</Text>
+    </AccordionItemBody>
   </AccordionItem>
-  <AccordionItem title="How can I transfer money to customers?" description="Just use Razorpay" />
-</Accordion>;
 ```
 
 ### Accordion
@@ -76,15 +125,30 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 
 ### AccordionItem
 
-| Key            | Type                            | Default     | Description                                                                | Required |
-| -------------- | ------------------------------- | ----------- | -------------------------------------------------------------------------- | -------- |
-| title          | `string`                        | `undefined` | Title text content                                                         | ✅       |
-| description    | `string`                        | `undefined` | Body text content                                                          |          |
-| header         | `JSX`                           | `undefined` | Header JSX content                                                         |          |
-| icon           | `IconComponent`                 | `undefined` | Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`) |          |
-| children       | `JSX`                           | `undefined` | Slot, renders any custom content                                           |          |
-| isExpanded     | `boolean`                       | `undefined` | Expanded state control when individual item is used                        |          |
-| onExpandChange | (isExpanded: `boolean`) => void | `undefined` | Callback for handling change in expand state when individual item is used  |          |
+| Key                         | Type                            | Default      | Description                                                                                                                                       | Required |
+| --------------------------- | ------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| title (⚠️ deprecated)       | `string`                        | `undefined`  | Title text content                                                                                                                                |          |
+| description (⚠️ deprecated) | `string`                        | `undefined`  | Body text content                                                                                                                                 |          |
+| icon (⚠️ deprecated)        | `IconComponent`                 | `undefined`  | Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`)                                                                        |          |
+| variant                     | `bordered`, `borderless`        | `borderless` | Visual variant of AccordionItem                                                                                                                   |          |
+| children                    | `JSX`                           | `undefined`  | Accepts [`AccordionItemTrigger`](#accordionitemtrigger) and [`AccordionItemBody`](#accordionitembody). Accepting other JSX elements is deprecated | ✅       |
+| isExpanded                  | `boolean`                       | `undefined`  | Expanded state control when individual item is used                                                                                               |          |
+| onExpandChange              | (isExpanded: `boolean`) => void | `undefined`  | Callback for handling change in expand state when individual item is used                                                                         |          |
+
+#### AccordionItemTrigger
+
+| Key         | Type            | Default     | Description                                                                | Required |
+| ----------- | --------------- | ----------- | -------------------------------------------------------------------------- | -------- |
+| title       | `string`        | `undefined` | Title text content                                                         |          |
+| description | `string`        | `undefined` | Body text content                                                          |          |
+| icon        | `IconComponent` | `undefined` | Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`) |          |
+| children    | `JSX`           | `undefined` | Slot                                                                       |          |
+
+#### AccordionItemBody
+
+| Key      | Type  | Default     | Description | Required |
+| -------- | ----- | ----------- | ----------- | -------- |
+| children | `JSX` | `undefined` | Slot        | ✅       |
 
 ## a11y
 
@@ -111,16 +175,20 @@ Native:
 
 ```tsx
 <Accordion defaultExpandedIndex={0}>
-  <AccordionItem
-    title="How can I setup Route?"
-    description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers."
-    icon={SomeIcon}
-  />
-  <AccordionItem
-    title="How can I setup QR Codes?"
-    description="Just use Razorpay"
-    icon={QRCodeIcon}
-  />
+  <AccordionItem>
+    <AccordionItemTrigger title="How can I setup Route?" icon={SomeIcon} />
+    <AccordionItemBody>
+      <Text>
+        You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers.
+      </Text>
+    </AccordionItemBody>
+  </AccordionItem>
+  <AccordionItem>
+    <AccordionItemTrigger title="How can I setup QR Codes?" icon={QRCodeIcon} />
+    <AccordionItemBody>
+      <Text>Just use Razorpay</Text>
+    </AccordionItemBody>
+  </AccordionItem>
 </Accordion>
 ```
 
@@ -133,12 +201,48 @@ const App = () => {
 
   return (
     <Accordion expandedIndex={index} onExpandChange={onExpandChange}>
-      <AccordionItem title="Can I use a payment gateway?" description="Just use Razorpay" />
-      <AccordionItem
-        title="How can I transfer money to customers?"
-        description="Just use Razorpay"
-      />
+      <AccordionItem>
+        <AccordionItemTrigger title="How can I setup Route?" />
+        <AccordionItemBody>
+          <Text>
+            You can use Razorpay Route from the Dashboard or using APIs to transfer money to
+            customers.
+          </Text>
+        </AccordionItemBody>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionItemTrigger title="How can I setup QR Codes?" />
+        <AccordionItemBody>
+          <Text>Just use Razorpay</Text>
+        </AccordionItemBody>
+      </AccordionItem>
     </Accordion>
+  );
+};
+```
+
+#### With Individual Item
+
+```tsx
+const App = () => {
+  const [isOpen, setIsOpen] = useState(0);
+
+  return (
+    <AccordionItem
+      variant="bordered"
+      isExpanded={isOpen}
+      onExpandChange={(isExpanded) => {
+        setIsOpen(isExpanded);
+      }}
+    >
+      <AccordionItemTrigger title="How can I setup Route?" />
+      <AccordionItemBody>
+        <Text>
+          You can use Razorpay Route from the Dashboard or using APIs to transfer money to
+          customers.
+        </Text>
+      </AccordionItemBody>
+    </AccordionItem>
   );
 };
 ```
@@ -166,9 +270,10 @@ Find in page (automatically expanding the accordion if someone does <kbd>Cmd</kb
 
 ## Open questions
 
-**Q1.** Is the deviation in props and using index for controlled state a fine tradeoff? Please post alternatives with usecase and rationale otherwise.
-
-**A1.** Yes.
+- **Q1.** Is the deviation in props and using index for controlled state a fine tradeoff? Please post alternatives with usecase and rationale otherwise.
+  - **Ans:** Yes.
+- **Q2.** `AccordionItemTrigger` vs `AccordionItemHeader` vs `AccordionItemControl`
+  - **Ans:** ⚠️ Yet to be decided. Currently leaning towards AccordionItemTrigger because its not exactly a Header and Trigger is a terminology we have used in other components as well
 
 ## References
 
