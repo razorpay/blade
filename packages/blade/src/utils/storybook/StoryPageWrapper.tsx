@@ -100,7 +100,7 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
               icon={AnnouncementIcon}
               target="_blank"
             >
-              Release: v{componentMetaInfo.releasedIn}
+              Released In: v{componentMetaInfo.releasedIn}
             </Button>
           ) : null}
           {props.figmaURL ? (
