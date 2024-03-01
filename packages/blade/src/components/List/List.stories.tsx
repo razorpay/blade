@@ -23,7 +23,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="List displays a set of related items that are composed of text/links."
       componentName="List"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=23205-446933&mode=design&t=jyVG8aXFc1Dlw2Se-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74881-74522&t=8BTDBesZFpcSIj8v-1&scaling=min-zoom&page-id=22049%3A455845&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
