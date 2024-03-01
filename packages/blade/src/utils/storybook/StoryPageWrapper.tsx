@@ -103,9 +103,16 @@ const StoryPageWrapper = (props: StoryPageWrapperTypes): React.ReactElement => {
               Release: v{componentMetaInfo.releasedIn}
             </Button>
           ) : null}
-          <Button href={props.figmaURL} variant="tertiary" icon={ExternalLinkIcon} target="_blank">
-            View on Figma
-          </Button>
+          {props.figmaURL ? (
+            <Button
+              href={props.figmaURL}
+              variant="tertiary"
+              icon={ExternalLinkIcon}
+              target="_blank"
+            >
+              View on Figma
+            </Button>
+          ) : null}
           {props.apiDecisionLink === '' || props.apiDecisionLink === null ? null : (
             <Button
               href={
