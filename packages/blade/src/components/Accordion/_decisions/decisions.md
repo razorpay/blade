@@ -255,6 +255,23 @@ const App = () => {
   - if we put this `onExpandChange` on individual `AccordionItem` components, either a user would need to pass different callback handlers to each or we would need to pass an `index` or some value (same dilemma)
   - it's slightly inconvenient to have callback handlers and the expanded index value at different places (one at root and one at child)
 
+### Alternate API for Custom Trigger
+
+```jsx
+<Accordion>
+  <AccordionItem trigger={<div>Trigger SLOT</div>}>
+    <div>Content SLOT</div>
+  </AccordionItem>
+</Accordion>
+```
+
+- Pros
+  - Not breaking (similar to current API with additional prop `trigger`)
+  - Does not require us to introduce AccordionItemTrigger and AccordionItemBody
+- Cons
+  - Inconsistent with other API decisions of Blade
+  - Inconsistent with implementations from other design systems
+
 ## Implementation notes
 
 For SEO purposes the collapsed content can be hidden with CSS.
@@ -274,6 +291,8 @@ Find in page (automatically expanding the accordion if someone does <kbd>Cmd</kb
   - **Ans:** Yes.
 - **Q2.** `AccordionItemTrigger` vs `AccordionItemHeader` vs `AccordionItemControl`
   - **Ans:** ⚠️ Yet to be decided. Currently leaning towards AccordionItemTrigger because its not exactly a Header and Trigger is a terminology we have used in other components as well
+- **Q3.** [Proposed API](#api) vs [Alternate API](#alternate-api-for-custom-trigger)
+  - **Ans:** ⚠️ Yet to be decided
 
 ## References
 
