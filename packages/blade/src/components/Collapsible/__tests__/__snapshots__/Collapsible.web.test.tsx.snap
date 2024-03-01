@@ -157,7 +157,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -175,7 +175,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -192,7 +192,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -211,7 +211,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 
 .c12.c12.c12.c12.c12 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -228,7 +228,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
 
 .c13.c13.c13.c13.c13 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -457,7 +457,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -475,7 +475,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 
 .c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -492,7 +492,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 
 .c12.c12.c12.c12.c12 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -511,7 +511,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 
 .c13.c13.c13.c13.c13 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -528,7 +528,7 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
 
 .c14.c14.c14.c14.c14 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
