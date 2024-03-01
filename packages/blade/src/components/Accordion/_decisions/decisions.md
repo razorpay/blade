@@ -44,6 +44,19 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 </Accordion>;
 ```
 
+### WIP Custom Accordion Header
+
+```jsx
+import { Accordion, AccordionItem } from '@razorpay/blade';
+
+<Accordion showNumberPrefix defaultExpandedIndex={0}>
+  <AccordionItem header={<div>header slot</div>}>
+    <div>Slot</div>
+  </AccordionItem>
+  <AccordionItem title="How can I transfer money to customers?" description="Just use Razorpay" />
+</Accordion>;
+```
+
 ### Accordion
 
 | Prop                 | Type       | Default     | Description                                                    | Required |
@@ -63,12 +76,15 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 
 ### AccordionItem
 
-| Key         | Type            | Default     | Description                                                                | Required |
-| ----------- | --------------- | ----------- | -------------------------------------------------------------------------- | -------- |
-| title       | `string`        | `undefined` | Title text content                                                         | ✅       |
-| description | `string`        | `undefined` | Body text content                                                          |          |
-| icon        | `IconComponent` | `undefined` | Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`) |          |
-| children    | `JSX`           | `undefined` | Slot, renders any custom content                                           |          |
+| Key            | Type                            | Default     | Description                                                                | Required |
+| -------------- | ------------------------------- | ----------- | -------------------------------------------------------------------------- | -------- |
+| title          | `string`                        | `undefined` | Title text content                                                         | ✅       |
+| description    | `string`                        | `undefined` | Body text content                                                          |          |
+| header         | `JSX`                           | `undefined` | Header JSX content                                                         |          |
+| icon           | `IconComponent`                 | `undefined` | Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`) |          |
+| children       | `JSX`                           | `undefined` | Slot, renders any custom content                                           |          |
+| isExpanded     | `boolean`                       | `undefined` | Expanded state control when individual item is used                        |          |
+| onExpandChange | (isExpanded: `boolean`) => void | `undefined` | Callback for handling change in expand state when individual item is used  |          |
 
 ## a11y
 
