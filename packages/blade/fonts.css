@@ -99,8 +99,3 @@
   descent-override: normal;
   line-gap-override: 7%;
 }
-
-:root {
-  --blade-inter-fallback: 'Inter Fallback Arial';
-  --blade-tasa-orbiter-fallback: 'TASA Orbiter Fallback Arial';
-}
