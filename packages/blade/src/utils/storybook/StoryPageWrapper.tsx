@@ -15,7 +15,7 @@ import { Button } from '~components/Button';
 
 const Subtitle = (props: HeadingProps): React.ReactElement => {
   return (
-    <Heading color="surface.text.gray.subtle" size="large" weight="regular" as="span" {...props} />
+    <Heading color="surface.text.gray.subtle" size="medium" weight="regular" as="span" {...props} />
   );
 };
 

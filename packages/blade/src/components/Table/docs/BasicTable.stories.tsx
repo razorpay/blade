@@ -51,7 +51,7 @@ export default {
         <StoryPageWrapper
           componentDescription="A table component helps in displaying data in a grid format, through rows and columns of cells. Table facilitates data organisation and allow users to: scan, sort, compare, and take action on large amounts of data."
           componentName="Table"
-          figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=76359%3A131223"
+          figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76359-131223&t=pHgtavW20B3SIqfo-1&scaling=min-zoom&page-id=64177%3A996&mode=design"
         />
       ),
     },

@@ -25,7 +25,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="This is the Button component which can be used for various CTAs. It is available in 3 different variants."
       componentName="Button"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=80954%3A17020"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74881-74603&t=2pKzbmnd3phWhn1M-1&scaling=min-zoom&page-id=614%3A1&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox showConsole>

@@ -14,7 +14,7 @@ const Page = (): ReactElement => {
       componentDescription="Code component can be used for displaying token, variable names, or inlined code snippets."
       componentName="Code"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=71123%3A52803"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71123-52803&t=DaKuYvkYnno4qVsq-1&scaling=min-zoom&page-id=3%3A0&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>

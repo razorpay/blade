@@ -19,7 +19,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentName="Collapsible"
       componentDescription="Collapsible is used to allow users to toggle the visibility of hidden content within a container."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73237-255926&mode=design&t=jyVG8aXFc1Dlw2Se-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74858-52005&t=A9ZHVM0ITdF8gCYw-1&scaling=min-zoom&page-id=37282%3A578130&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>

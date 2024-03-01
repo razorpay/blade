@@ -17,7 +17,7 @@ const Page = (): ReactElement => {
       componentDescription="The Display component adds a strong visual touch. Utilize it to create eye-catching sections on your landing pages."
       componentName="Display"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=71114%3A259648"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71114-259648&t=DaKuYvkYnno4qVsq-1&scaling=min-zoom&page-id=3%3A0&mode=design"
     >
       <StorybookTitle>Usage</StorybookTitle>
       <Sandbox>

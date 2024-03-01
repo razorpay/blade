@@ -13,7 +13,7 @@ const Page = (): ReactElement => {
       <Subtitle>This is the BaseSpinner Internal component.</Subtitle>
       <Link
         withArrow={true}
-        href="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=14825%3A203592"
+        href="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85575&t=493DSapGGbdA42Lb-1&scaling=min-zoom&page-id=14825%3A203537&mode=design"
         target="_blank"
         rel="noreferrer noopener"
       >

@@ -18,7 +18,7 @@ const Page = (): ReactElement => {
       componentDescription="The Heading Component is usually used for headings of each major section of a page."
       componentName="Heading"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=71123%3A52743"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71123-52743&t=DaKuYvkYnno4qVsq-1&scaling=min-zoom&page-id=3%3A0&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
