@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.6.0
+
+### Minor Changes
+
+- 9ebaf986: feat: add `FileUpload` component
+
 ## 11.5.0
 
 ### Minor Changes
