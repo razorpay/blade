@@ -296,12 +296,14 @@ const CommonPage = (): React.ReactElement => {
 
         <Text marginBottom="spacing.3">Trigger URL Change:</Text>
         <Box display="flex" flexDirection="column" gap="spacing.2">
-          <BreadcrumbNavLink to={urls.home}>Home</BreadcrumbNavLink>
-          <BreadcrumbNavLink to={urls.products}>Products</BreadcrumbNavLink>
-          <BreadcrumbNavLink to={urls.payments}>Payments</BreadcrumbNavLink>
-          <BreadcrumbNavLink to={urls.intPayments}>International Payments</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.home}>{'1.1'} Home</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.products}>{'1.1'} Products</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.payments}>{'1.1'} Payments</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.intPayments}>
+            {'1.1.2'} International Payments
+          </BreadcrumbNavLink>
           <BreadcrumbNavLink to={urls.acceptIntPayments}>
-            Accept International Payments
+            {'1.1.3'} Accept International Payments
           </BreadcrumbNavLink>
         </Box>
       </CardBody>
