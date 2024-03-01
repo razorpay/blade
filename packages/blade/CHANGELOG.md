@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.6.1
+
+### Patch Changes
+
+- af39cab2: fix: add FileUpload exports
+- 26317e0e: feat: add adjusted font fallbacks for Inter and TASA
+
 ## 11.6.0
 
 ### Minor Changes
