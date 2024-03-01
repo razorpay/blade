@@ -296,9 +296,9 @@
   {
     "name": "Link",
     "passed": true,
-    "size": 24222,
+    "size": 24219,
     "sizeLimit": 2000000,
-    "loading": 0.4730859375
+    "loading": 0.47302734375
   },
   {
     "name": "RadioGroup",
