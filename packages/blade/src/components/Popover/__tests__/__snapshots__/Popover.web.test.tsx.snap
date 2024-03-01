@@ -114,7 +114,7 @@ exports[`<Popover /> should render 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -132,7 +132,7 @@ exports[`<Popover /> should render 1`] = `
 
 .c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -468,7 +468,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -486,7 +486,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
 
 .c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -839,7 +839,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -857,7 +857,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
 
 .c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -874,7 +874,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
 
 .c12.c12.c12.c12.c12 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

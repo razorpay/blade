@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProgressBar /> should render ProgressBar with default properties 1`] = `"<div id="root"><div data-blade-component="progress-bar" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><p class="StyledBaseText-dVBfTO iyWupb" data-blade-component="text">20%</p></div></div><div id="progress-undefined" role="progressbar" aria-valuenow="20" aria-valuetext="20%" aria-valuemin="0" aria-valuemax="100" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx ArQWZ"><div data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 LpXTJ ddQlxd lGSZY"><div data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  fHMPZy yGOYl"></div></div></div></div></div></div></div>"`;
+exports[`<ProgressBar /> should render ProgressBar with default properties 1`] = `"<div id="root"><div data-blade-component="progress-bar" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><p class="StyledBaseText-dVBfTO eETJTC" data-blade-component="text">20%</p></div></div><div id="progress-undefined" role="progressbar" aria-valuenow="20" aria-valuetext="20%" aria-valuemin="0" aria-valuemax="100" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx ArQWZ"><div data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminateFilledContainer-sc-15oi5xk-4 LpXTJ ddQlxd lGSZY"><div data-blade-component="base-box" class="BaseBox-bmPWx ProgressBarFilledweb__BoxWithProgressFillTransition-sc-15oi5xk-3 ProgressBarFilledweb__DeterminatePulseAnimation-sc-15oi5xk-5  fHMPZy yGOYl"></div></div></div></div></div></div></div>"`;
 
 exports[`<ProgressBar /> should render ProgressBar with default properties 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -78,7 +78,7 @@ exports[`<ProgressBar /> should render ProgressBar with default properties 2`] =
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;

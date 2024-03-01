@@ -28,7 +28,7 @@ exports[`<Indicator /> should render 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -114,7 +114,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -132,7 +132,7 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;

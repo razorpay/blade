@@ -73,7 +73,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 
 .c7.c7.c7.c7.c7 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -90,7 +90,7 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
 
 .c10.c10.c10.c10.c10 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -347,7 +347,7 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
 
 .c7.c7.c7.c7.c7 {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -560,7 +560,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 
 .c7.c7.c7.c7.c7 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -577,7 +577,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
   font-style: italic;
@@ -822,7 +822,7 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

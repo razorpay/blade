@@ -226,7 +226,7 @@ exports[`Drawer renders a Drawer 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -244,7 +244,7 @@ exports[`Drawer renders a Drawer 1`] = `
 
 .c15.c15.c15.c15.c15 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -266,7 +266,7 @@ exports[`Drawer renders a Drawer 1`] = `
 
 .c16.c16.c16.c16.c16 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -283,7 +283,7 @@ exports[`Drawer renders a Drawer 1`] = `
 
 .c26.c26.c26.c26.c26 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

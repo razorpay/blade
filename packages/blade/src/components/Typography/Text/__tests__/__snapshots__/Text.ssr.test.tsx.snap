@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Text /> should render Text on server 1`] = `"<div id="root"><p class="StyledBaseText-dVBfTO NmaZn" data-blade-component="text">Displaying some text</p></div>"`;
+exports[`<Text /> should render Text on server 1`] = `"<div id="root"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Displaying some text</p></div>"`;
 
 exports[`<Text /> should render Text on server 2`] = `
 .c0.c0.c0.c0.c0 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

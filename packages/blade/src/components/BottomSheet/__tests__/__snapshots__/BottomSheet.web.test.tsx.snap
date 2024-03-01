@@ -211,7 +211,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -229,7 +229,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 
 .c21.c21.c21.c21.c21 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -251,7 +251,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 
 .c24.c24.c24.c24.c24 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -993,7 +993,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 
 .c11.c11.c11.c11.c11 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -1011,7 +1011,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 
 .c18.c18.c18.c18.c18 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1034,7 +1034,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 
 .c19.c19.c19.c19.c19 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -1051,7 +1051,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 
 .c29.c29.c29.c29.c29 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1068,7 +1068,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 
 .c35.c35.c35.c35.c35 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1086,7 +1086,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 
 .c23.c23.c23.c23.c23 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1682,7 +1682,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

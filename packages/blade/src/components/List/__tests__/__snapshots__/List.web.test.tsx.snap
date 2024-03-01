@@ -36,7 +36,7 @@ exports[`<List /> should render List with default properties 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -248,7 +248,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -433,7 +433,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -450,7 +450,7 @@ exports[`<List /> should render List with inline ListItemText 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -595,7 +595,7 @@ exports[`<List /> should render large ordered List 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -612,7 +612,7 @@ exports[`<List /> should render large ordered List 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -827,7 +827,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -844,7 +844,7 @@ exports[`<List /> should render large ordered-filled List 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -1007,7 +1007,7 @@ exports[`<List /> should render large unordered List with icon 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -1245,7 +1245,7 @@ exports[`<List /> should render medium ordered List 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1262,7 +1262,7 @@ exports[`<List /> should render medium ordered List 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1477,7 +1477,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -1494,7 +1494,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1657,7 +1657,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1895,7 +1895,7 @@ exports[`<List /> should render small ordered List 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -1912,7 +1912,7 @@ exports[`<List /> should render small ordered List 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -2127,7 +2127,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -2144,7 +2144,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -2307,7 +2307,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -2514,7 +2514,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;

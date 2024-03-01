@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FileUpload /> should render in SSR 1`] = `"<div id="root"><div data-blade-component="file-upload" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><span style="width:auto;flex-shrink:0;margin-right:16px" id="fileuploadinput-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO gwiDXS" data-blade-component="text">Upload GST certificate</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO NmaZn" data-blade-component="text">, Upload .jpg, .jpeg, or .png file only</p></div></div></div></span><label style="cursor:pointer" data-blade-component="file-upload-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx bVySqA"><div data-comp="f" data-blade-component="base-box" class="BaseBox-bmPWx StyledFileUploadWrapper-sc-1wln1sx-0 guVuJK vjymx"><div data-blade-component="box" class="BaseBox-bmPWx cSvwKg"><p class="StyledBaseText-dVBfTO etNSLa" data-blade-component="text">Drag files here or<!-- --> </p><input id="fileuploadinput-undefined-input-undefined" name="single-file-upload-input" type="file" accept="image/*" aria-required="false" aria-invalid="false" aria-disabled="false" aria-describedby="fileuploadinput-undefined-label-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 Frznr"/><div data-blade-component="box" class="BaseBox-bmPWx gTlwBH"><div data-blade-component="box" class="BaseBox-bmPWx jTWYOz"><p class="StyledBaseText-dVBfTO eociSV" data-blade-component="text">Upload</p></div></div></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx eSTmVF"><div data-blade-component="base-box" class="BaseBox-bmPWx xgVLl"><div id="fileuploadinput-undefined-helptext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span style="word-break:break-all" data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><span class="StyledBaseText-dVBfTO hMRKHE" data-blade-component="text">Upload .jpg, .jpeg, or .png file only</span></span></div></div></div></div></div>"`;
+exports[`<FileUpload /> should render in SSR 1`] = `"<div id="root"><div data-blade-component="file-upload" class="BaseBox-bmPWx iAvyvB"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><span style="width:auto;flex-shrink:0;margin-right:16px" id="fileuploadinput-undefined-label-undefined" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO bDCeGT" data-blade-component="text">Upload GST certificate</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">, Upload .jpg, .jpeg, or .png file only</p></div></div></div></span><label style="cursor:pointer" data-blade-component="file-upload-label" class="SelectorLabelweb__StyledSelectorLabel-sc-1yoi09a-0 ehaOvX"><div data-blade-component="base-box" class="BaseBox-bmPWx bVySqA"><div data-comp="f" data-blade-component="base-box" class="BaseBox-bmPWx StyledFileUploadWrapper-sc-1wln1sx-0 guVuJK vjymx"><div data-blade-component="box" class="BaseBox-bmPWx cSvwKg"><p class="StyledBaseText-dVBfTO cYIHIH" data-blade-component="text">Drag files here or<!-- --> </p><input id="fileuploadinput-undefined-input-undefined" name="single-file-upload-input" type="file" accept="image/*" aria-required="false" aria-invalid="false" aria-disabled="false" aria-describedby="fileuploadinput-undefined-label-undefined" class="SelectorInputweb__StyledInput-sc-1bnkrae-0 Frznr"/><div data-blade-component="box" class="BaseBox-bmPWx gTlwBH"><div data-blade-component="box" class="BaseBox-bmPWx jTWYOz"><p class="StyledBaseText-dVBfTO eRPBEA" data-blade-component="text">Upload</p></div></div></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx eSTmVF"><div data-blade-component="base-box" class="BaseBox-bmPWx xgVLl"><div id="fileuploadinput-undefined-helptext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span style="word-break:break-all" data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><span class="StyledBaseText-dVBfTO csXxAx" data-blade-component="text">Upload .jpg, .jpeg, or .png file only</span></span></div></div></div></div></div>"`;
 
 exports[`<FileUpload /> should render in SSR 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -196,7 +196,7 @@ exports[`<FileUpload /> should render in SSR 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -218,7 +218,7 @@ exports[`<FileUpload /> should render in SSR 2`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -235,7 +235,7 @@ exports[`<FileUpload /> should render in SSR 2`] = `
 
 .c12.c12.c12.c12.c12 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -252,7 +252,7 @@ exports[`<FileUpload /> should render in SSR 2`] = `
 
 .c16.c16.c16.c16.c16 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -269,7 +269,7 @@ exports[`<FileUpload /> should render in SSR 2`] = `
 
 .c21.c21.c21.c21.c21 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
   font-style: italic;

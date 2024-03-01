@@ -211,7 +211,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -228,7 +228,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 
 .c14.c14.c14.c14.c14 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -712,7 +712,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -729,7 +729,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 
 .c14.c14.c14.c14.c14 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx eBHIXa"><div data-blade-component="base-box" class="BaseBox-bmPWx boSJQS"><span opacity="0.64" class="StyledBaseText-dVBfTO dsPVPk" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO NmaZn" data-blade-component="base-text">10,000</span><span opacity="0.64" class="StyledBaseText-dVBfTO bfhqw" data-blade-component="base-text">.<!-- -->00</span></div></div></div>"`;
+exports[`<Amount /> should render Amount on server 1`] = `"<div id="root"><div data-blade-component="amount" class="BaseBox-bmPWx eBHIXa"><div data-blade-component="base-box" class="BaseBox-bmPWx boSJQS"><span opacity="0.64" class="StyledBaseText-dVBfTO eiFYBx" data-blade-component="base-text">₹</span><span class="StyledBaseText-dVBfTO fAQkza" data-blade-component="base-text">10,000</span><span opacity="0.64" class="StyledBaseText-dVBfTO eZlGgd" data-blade-component="base-text">.<!-- -->00</span></div></div></div>"`;
 
 exports[`<Amount /> should render Amount on server 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -30,7 +30,7 @@ exports[`<Amount /> should render Amount on server 2`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -49,7 +49,7 @@ exports[`<Amount /> should render Amount on server 2`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -66,7 +66,7 @@ exports[`<Amount /> should render Amount on server 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;

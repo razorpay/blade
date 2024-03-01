@@ -96,7 +96,7 @@ exports[`<Alert /> should render 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -293,7 +293,7 @@ exports[`<Alert /> should render positive color and full width 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -503,7 +503,7 @@ exports[`<Alert /> should render positive color and full width 2`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",var(--blade-inter-fallback),Arial;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
