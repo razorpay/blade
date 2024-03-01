@@ -133,6 +133,13 @@
     "loading": 0.87111328125
   },
   {
+    "name": "FileUpload",
+    "passed": true,
+    "size": 35534,
+    "sizeLimit": 2000000,
+    "loading": 0.6940234375
+  },
+  {
     "name": "Indicator",
     "passed": true,
     "size": 23054,
@@ -163,9 +170,9 @@
   {
     "name": "ProgressBar",
     "passed": true,
-    "size": 23818,
+    "size": 23825,
     "sizeLimit": 2000000,
-    "loading": 0.4651953125
+    "loading": 0.46533203125
   },
   {
     "name": "Radio",
