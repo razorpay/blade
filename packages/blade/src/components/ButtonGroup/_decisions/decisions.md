@@ -7,7 +7,7 @@ This document outlines the API details of the `ButtonGroup` component, encompass
 <img width="100%" src="./button-group-variants.png" alt="Button Group Variants">
 
 - [Design](#design)
-- [`ButtonGroup` Props](#buttongroup-props)
+- [`ButtonGroup` API](#buttongroup-api)
 - [Usage](#usage)
 - [Accessibility](#accessibility)
 
@@ -15,7 +15,7 @@ This document outlines the API details of the `ButtonGroup` component, encompass
 
 [Figma Link](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=80700%3A197616&mode=design&t=7DAMvXAfVzPVN7Kl-1) to all variants of the `ButtonGroup` component.
 
-## `ButtonGroup` Props
+## `ButtonGroup` API
 
 ```ts
 type ButtonGroupProps = {
