@@ -48,7 +48,7 @@ type ButtonGroupProps = {
 
 - Use button groups to visually associate multiple buttons that share a common purpose or functionality.
 
-  <img width="100%"  src="./button-group-usage.png" alt="Button Group Usage" />
+  <img width="50%"  src="./button-group-usage.png" alt="Button Group Usage" />
 
   ```tsx
   import {
