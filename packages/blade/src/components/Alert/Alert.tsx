@@ -1,4 +1,4 @@
-import type { ReactChild, ReactElement } from 'react';
+import type { ComponentType, ReactChild, ReactElement } from 'react';
 import { Fragment, useState } from 'react';
 
 import { StyledAlert } from './StyledAlert';
@@ -70,6 +70,12 @@ type AlertProps = {
   onDismiss?: () => void;
 
   /**
+   * Can be used to render an icon
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  leading?: ComponentType<any>;
+
+  /**
    * Can be set to `high` for a more prominent look. Not to be confused with a11y emphasis.
    *
    * @default subtle
@@ -128,6 +134,7 @@ const Alert = ({
   color = 'neutral',
   actions,
   testID,
+  leading,
   ...styledProps
 }: AlertProps): ReactElement | null => {
   const { theme } = useTheme();
@@ -137,7 +144,7 @@ const Alert = ({
   const isDesktop = matchedDeviceType === 'desktop';
   const isMobile = !isDesktop;
 
-  const Icon = intentIconMap[color];
+  const Icon = leading || intentIconMap[color];
   let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
 
   // certain special cases below needs special care for near perfect alignment
