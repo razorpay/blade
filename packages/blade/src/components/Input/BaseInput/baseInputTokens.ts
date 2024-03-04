@@ -95,4 +95,7 @@ export const baseInputPaddingTokens = {
 /* the magic number 192 is basically max-width of label 
 i.e 176 and then right margin 
 i.e 16 which is the spacing between label and input field */
-export const FORM_HINT_LEFT_LABEL_MARGIN_LEFT = 192;
+export const formHintLeftLabelMarginLeft = {
+  medium: 136,
+  large: 192,
+} as const;
