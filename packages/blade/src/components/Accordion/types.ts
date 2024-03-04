@@ -9,7 +9,7 @@ type StyledAccordionButtonProps = {
 type AccordionButtonProps = {
   index?: number;
   icon?: IconComponent;
-  children: string;
+  title: string;
 };
 
 export type { StyledAccordionButtonProps, AccordionButtonProps, AccordionVariantType };

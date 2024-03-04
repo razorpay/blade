@@ -43,6 +43,8 @@ type BaseHeaderProps = {
    * @default true
    */
   showCloseButton?: boolean;
+  paddingX?: BoxProps['paddingX'];
+  marginY?: BoxProps['marginY'];
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
@@ -165,6 +167,8 @@ const _BaseHeader = ({
   onPointerMove,
   onPointerUp,
   metaComponentName,
+  paddingX,
+  marginY,
   children,
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction(trailing);
@@ -186,8 +190,8 @@ const _BaseHeader = ({
   return (
     <BaseBox {...metaAttribute({ name: metaComponentName, testID })}>
       <BaseBox
-        marginY={{ base: 'spacing.5', m: 'spacing.6' }}
-        paddingX={{ base: 'spacing.5', m: 'spacing.6' }}
+        marginY={marginY ?? { base: 'spacing.5', m: 'spacing.6' }}
+        paddingX={paddingX ?? { base: 'spacing.5', m: 'spacing.6' }}
         touchAction="none"
         {...webOnlyEventHandlers}
       >

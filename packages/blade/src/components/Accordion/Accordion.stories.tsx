@@ -9,7 +9,7 @@ import { AccordionItem } from './AccordionItem';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { QRCodeIcon, RoutesIcon, SubscriptionsIcon } from '~components/Icons';
+import { QRCodeIcon, RoutesIcon, StarIcon, SubscriptionsIcon } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Alert } from '~components/Alert';
@@ -250,6 +250,7 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
   return (
     <AccordionComponent {...args}>
       <AccordionItem
+        icon={StarIcon}
         title="How can I setup Subscriptions?"
         description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
       />

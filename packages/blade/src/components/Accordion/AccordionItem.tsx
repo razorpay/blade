@@ -56,28 +56,16 @@ const reactNativeMultilineTextOverflowFix = (
   </BaseBox>
 );
 
-const AccordionItem = ({
-  title,
-  description,
-  icon,
+const AccordionBody = ({
   children,
-  _index,
-  testID,
-}: AccordionItemProps): ReactElement => {
-  const { expandedIndex, onExpandChange, defaultExpandedIndex, variant } = useAccordion();
-  const isExpanded = expandedIndex === _index;
-  const isDefaultExpanded = defaultExpandedIndex === _index;
-
+  description,
+}: {
+  children: React.ReactNode;
+  description?: string;
+}): React.ReactElement => {
   const _description = description && (
     <Text color="interactive.text.gray.subtle">{description}</Text>
   );
-  const handleExpandChange = ({ isExpanded }: { isExpanded: boolean }): void => {
-    if (isExpanded && typeof _index !== 'undefined') {
-      onExpandChange(_index);
-    } else {
-      onExpandChange(-1);
-    }
-  };
 
   const collapsibleBodyContent = isReactNative() ? (
     <BaseBox marginX="spacing.5">
@@ -98,6 +86,29 @@ const AccordionItem = ({
     </BaseBox>
   );
 
+  return <BaseBox>{collapsibleBodyContent}</BaseBox>;
+};
+
+const AccordionItem = ({
+  title,
+  description,
+  icon,
+  children,
+  _index,
+  testID,
+}: AccordionItemProps): ReactElement => {
+  const { expandedIndex, onExpandChange, defaultExpandedIndex, variant } = useAccordion();
+  const isExpanded = expandedIndex === _index;
+  const isDefaultExpanded = defaultExpandedIndex === _index;
+
+  const handleExpandChange = ({ isExpanded }: { isExpanded: boolean }): void => {
+    if (isExpanded && typeof _index !== 'undefined') {
+      onExpandChange(_index);
+    } else {
+      onExpandChange(-1);
+    }
+  };
+
   return (
     <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}>
       <Collapsible
@@ -107,9 +118,7 @@ const AccordionItem = ({
         // Accordion has its own width restrictions
         _shouldApplyWidthRestrictions={false}
       >
-        <AccordionButton index={_index} icon={icon}>
-          {title}
-        </AccordionButton>
+        <AccordionButton index={_index} icon={icon} title={title} />
         <CollapsibleBody
           // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
           width={isReactNative() ? '100%' : undefined}
@@ -117,7 +126,7 @@ const AccordionItem = ({
           _borderTopColor={variant === 'bordered' ? 'surface.border.gray.subtle' : undefined}
           _borderTopWidth={variant === 'bordered' ? 'thinner' : 'none'}
         >
-          {collapsibleBodyContent}
+          <AccordionBody description={description}>{children}</AccordionBody>
         </CollapsibleBody>
       </Collapsible>
       {variant === 'borderless' ? <Divider /> : null}

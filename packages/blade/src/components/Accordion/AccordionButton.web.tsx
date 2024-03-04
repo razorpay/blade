@@ -10,8 +10,39 @@ import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevr
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
+import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
+import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
-const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
+const AccordionHeader = ({
+  title,
+  subtitle,
+  leading,
+  children,
+  trailing,
+  titleSuffix,
+}: Pick<
+  BaseHeaderProps,
+  'title' | 'subtitle' | 'leading' | 'children' | 'trailing' | 'titleSuffix'
+>): React.ReactElement => {
+  return (
+    <BaseHeader
+      leading={leading}
+      title={title}
+      subtitle={subtitle}
+      trailing={trailing}
+      titleSuffix={titleSuffix}
+      showBackButton={false}
+      showCloseButton={false}
+      showDivider={false}
+      paddingX="spacing.5"
+      marginY="spacing.5"
+    >
+      {children}
+    </BaseHeader>
+  );
+};
+
+const _AccordionButton = ({ index, icon: Icon, title }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex } = useAccordion();
 
@@ -20,19 +51,12 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
 
   const _index =
     typeof index === 'number' && showNumberPrefix ? (
-      <Text size="large" weight="semibold" marginRight="spacing.2" as="span">
+      <Text size="large" weight="semibold" marginTop="-2px" as="span">
         {index + 1}.
       </Text>
     ) : null;
 
-  const _icon = Icon && (
-    <Icon
-      size="medium"
-      color="surface.icon.gray.muted"
-      marginRight="spacing.3"
-      marginY="spacing.2"
-    />
-  );
+  const _icon = Icon && <Icon size="large" color="surface.icon.gray.normal" marginY="spacing.2" />;
 
   if (__DEV__) {
     if (_index && _icon) {
@@ -57,13 +81,7 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
         {...makeAccessible({ expanded: isItemExpanded, controls: collapsibleBodyId })}
         {...metaAttribute({ name: MetaConstants.AccordionButton })}
       >
-        <BaseBox display="flex" flexDirection="row" alignItems="flex-start" marginRight="spacing.4">
-          {_index}
-          {_icon}
-          <Text size="large" weight="semibold" as="span">
-            {children}
-          </Text>
-        </BaseBox>
+        <AccordionHeader title={title} leading={_icon ?? _index} />
         <CollapsibleChevronIcon color="currentColor" size="large" />
       </StyledAccordionButton>
     </BaseBox>
