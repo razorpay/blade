@@ -98,6 +98,19 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    testID: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onSubmit: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     onChange: {
       table: {
         category: propsCategory.BASE_PROPS,
