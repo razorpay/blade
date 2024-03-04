@@ -246,4 +246,21 @@ CustomSlot.parameters = {
   },
 };
 
+const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
+  return (
+    <AccordionComponent {...args}>
+      <AccordionItem
+        title="How can I setup Subscriptions?"
+        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
+      />
+    </AccordionComponent>
+  );
+};
+
+export const IndividualAccordionItem = IndividualAccordionItemTemplate.bind({});
+
+IndividualAccordionItem.args = {
+  variant: 'bordered',
+};
+
 export default meta;

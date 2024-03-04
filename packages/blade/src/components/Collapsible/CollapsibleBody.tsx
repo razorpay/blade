@@ -11,14 +11,34 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 type CollapsibleBodyProps = {
   children: ReactNode;
   width?: BaseBoxProps['width'];
+  /**
+   * @internal
+   *
+   * Used inside Accordion to set top border on content
+   */
+  _borderTopWidth?: BaseBoxProps['borderTopWidth'];
+  /**
+   * @internal
+   *
+   * Used inside Accordion to set top border on content
+   */
+  _borderTopColor?: BaseBoxProps['borderTopColor'];
 } & TestID;
 
-const _CollapsibleBody = ({ children, testID, width }: CollapsibleBodyProps): ReactElement => {
+const _CollapsibleBody = ({
+  children,
+  testID,
+  width,
+  _borderTopColor,
+  _borderTopWidth,
+}: CollapsibleBodyProps): ReactElement => {
   const { collapsibleBodyId, isExpanded } = useCollapsible();
   return (
     <BaseBox
       id={collapsibleBodyId}
       width={width}
+      borderTopWidth={_borderTopWidth}
+      borderTopColor={_borderTopColor}
       {...makeAccessible({ role: 'region', hidden: !isExpanded })}
       {...metaAttribute({ name: MetaConstants.CollapsibleBody, testID })}
     >

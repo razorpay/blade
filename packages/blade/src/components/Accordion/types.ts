@@ -1,5 +1,7 @@
 import type { IconComponent } from '~components/Icons';
 
+type AccordionVariantType = 'bordered' | 'borderless';
+
 type StyledAccordionButtonProps = {
   isExpanded: boolean;
 };
@@ -10,4 +12,4 @@ type AccordionButtonProps = {
   children: string;
 };
 
-export type { StyledAccordionButtonProps, AccordionButtonProps };
+export type { StyledAccordionButtonProps, AccordionButtonProps, AccordionVariantType };

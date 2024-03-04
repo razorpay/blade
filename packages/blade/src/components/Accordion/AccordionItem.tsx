@@ -64,7 +64,7 @@ const AccordionItem = ({
   _index,
   testID,
 }: AccordionItemProps): ReactElement => {
-  const { expandedIndex, onExpandChange, defaultExpandedIndex } = useAccordion();
+  const { expandedIndex, onExpandChange, defaultExpandedIndex, variant } = useAccordion();
   const isExpanded = expandedIndex === _index;
   const isDefaultExpanded = defaultExpandedIndex === _index;
 
@@ -113,11 +113,14 @@ const AccordionItem = ({
         <CollapsibleBody
           // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
           width={isReactNative() ? '100%' : undefined}
+          // Adding top border on content instead of bottom border on AccordionButton so that border of Accordion doesn't overlap with border of AccordionButton
+          _borderTopColor={variant === 'bordered' ? 'surface.border.gray.subtle' : undefined}
+          _borderTopWidth={variant === 'bordered' ? 'thinner' : 'none'}
         >
           {collapsibleBodyContent}
         </CollapsibleBody>
       </Collapsible>
-      <Divider />
+      {variant === 'borderless' ? <Divider /> : null}
     </BaseBox>
   );
 };

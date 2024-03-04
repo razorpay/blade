@@ -37,6 +37,13 @@ type AccordionProps = {
   showNumberPrefix?: boolean;
 
   /**
+   * Visual variant of AccordionItem
+   *
+   * @default borderless
+   */
+  variant?: 'bordered' | 'borderless';
+
+  /**
    * Accepts `AccordionItem` child nodes
    */
   children: ReactElement | ReactElement[];
@@ -49,12 +56,26 @@ const MIN_WIDTH: BoxProps['minWidth'] = {
   l: makeSize(size[360]),
 };
 
+const getVariantStyles = (variant: AccordionProps['variant']): BoxProps => {
+  if (variant === 'borderless') {
+    return {};
+  }
+
+  return {
+    backgroundColor: 'surface.background.gray.intense',
+    borderRadius: 'medium',
+    borderWidth: 'thinner',
+    borderColor: 'surface.border.gray.subtle',
+  };
+};
+
 const Accordion = ({
   defaultExpandedIndex,
   expandedIndex,
   onExpandChange,
   showNumberPrefix = false,
   children,
+  variant = 'borderless',
   testID,
   ...styledProps
 }: AccordionProps): ReactElement => {
@@ -82,6 +103,7 @@ const Accordion = ({
       defaultExpandedIndex,
       onExpandChange: handleExpandChange,
       showNumberPrefix,
+      variant,
     }),
     [
       expandedAccordionItemIndex,
@@ -89,6 +111,7 @@ const Accordion = ({
       expandedIndex,
       showNumberPrefix,
       defaultExpandedIndex,
+      variant,
     ],
   );
 
@@ -98,7 +121,12 @@ const Accordion = ({
         {...metaAttribute({ name: MetaConstants.Accordion, testID })}
         {...getStyledProps(styledProps)}
       >
-        <BaseBox minWidth={MIN_WIDTH} maxWidth={MAX_WIDTH} width="100%">
+        <BaseBox
+          {...getVariantStyles(variant)}
+          minWidth={MIN_WIDTH}
+          maxWidth={MAX_WIDTH}
+          width="100%"
+        >
           {Children.map(children, (child, index) =>
             cloneElement(child, { _index: index, key: index }),
           )}
