@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.6.2
+
+### Patch Changes
+
+- a6a59686: fix: cover more cases with codemod
+- 902e28b4: fix: i18nify-js dependency updated
+
 ## 11.6.1
 
 ### Patch Changes
