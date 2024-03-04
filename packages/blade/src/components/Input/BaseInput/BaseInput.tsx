@@ -7,10 +7,7 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { BaseInputTagSlot } from './BaseInputTagSlot';
 import type { InputWrapperRef } from './types';
-import {
-  FORM_HINT_LEFT_LABEL_MARGIN_LEFT,
-  baseInputBorderBackgroundMotion,
-} from './baseInputTokens';
+import { baseInputBorderBackgroundMotion, formHintLeftLabelMarginLeft } from './baseInputTokens';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -1018,7 +1015,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
       {!hideFormHint && (
         <BaseBox
           marginLeft={makeSize(
-            isLabelLeftPositioned && !hideLabelText ? FORM_HINT_LEFT_LABEL_MARGIN_LEFT : 0,
+            isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,
           )}
         >
           <BaseBox
