@@ -292,6 +292,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
             textInputRef?.current?.focus();
             setShouldShowClearButton(false);
           }}
+          isDisabled={isDisabled}
           accessibilityLabel="Clear Input Content"
         />
       );
