@@ -72,3 +72,27 @@ export const baseInputBorderBackgroundMotion = {
   enter: { duration: 'xgentle', easing: 'standard.revealing' },
   exit: { duration: 'gentle', easing: 'standard.effective' },
 } as const;
+
+export const baseInputPaddingTokens = {
+  top: {
+    medium: 3,
+    large: 4,
+  },
+  bottom: {
+    medium: 3,
+    large: 4,
+  },
+  left: {
+    medium: 4,
+    large: 4,
+  },
+  right: {
+    medium: 4,
+    large: 4,
+  },
+} as const;
+
+/* the magic number 192 is basically max-width of label 
+i.e 176 and then right margin 
+i.e 16 which is the spacing between label and input field */
+export const FORM_HINT_LEFT_LABEL_MARGIN_LEFT = 192;
