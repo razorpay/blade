@@ -37,6 +37,8 @@ it('should remove the "variant" prop from Heading', async () => {
   const result = await applyTransform(
     transformer,
     `
+        import { Heading } from '@razorpay/blade/components';
+
         const App = () => (
           <>
             <Heading type="subtle" weight="bold" variant="subheading" marginTop="spacing.2"> Lorem ipsum </Heading>  
@@ -47,7 +49,9 @@ it('should remove the "variant" prop from Heading', async () => {
   );
 
   expect(result).toMatchInlineSnapshot(`
-    "const App = () => (
+    "import { Heading, Text } from '@razorpay/blade/components';
+
+            const App = () => (
               <>
                 <Text weight="semibold" marginTop="spacing.2" size="small" color="surface.text.gray.subtle"> Lorem ipsum </Text>  
               </>
