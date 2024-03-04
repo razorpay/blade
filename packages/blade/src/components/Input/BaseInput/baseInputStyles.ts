@@ -45,12 +45,12 @@ export const getBaseInputState = ({
   isHovered?: boolean;
   isDisabled?: boolean;
 }): 'focused' | 'hovered' | 'disabled' | 'default' => {
-  if (isFocused) {
+  if (isDisabled) {
+    return 'disabled';
+  } else if (isFocused) {
     return 'focused';
   } else if (isHovered) {
     return 'hovered';
-  } else if (isDisabled) {
-    return 'disabled';
   } else {
     return 'default';
   }
