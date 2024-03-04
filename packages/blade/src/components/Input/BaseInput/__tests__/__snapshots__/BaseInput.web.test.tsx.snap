@@ -1465,7 +1465,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 </div>
 `;
 
-exports[`<BaseInput /> should render with trailingActionButton 1`] = `
+exports[`<BaseInput /> should render with trailingButton 1`] = `
 .c0.c0.c0.c0.c0 {
   display: -webkit-box;
   display: -webkit-flex;

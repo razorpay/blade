@@ -102,9 +102,9 @@ describe('<BaseInput />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render with trailingActionButton', () => {
+  it('should render with trailingButton', () => {
     const { container } = renderWithTheme(
-      <BaseInput id="coupon" label="Coupon" trailingActionButton={<Link>Apply</Link>} />,
+      <BaseInput id="coupon" label="Coupon" trailingButton={<Link>Apply</Link>} />,
     );
 
     expect(container).toMatchSnapshot();

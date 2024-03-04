@@ -7,7 +7,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import styled from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
-import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
+import { getBaseInputState, getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import {
   BASEINPUT_WRAPPER_MAX_HEIGHT,
   BASEINPUT_WRAPPER_MIN_HEIGHT,
@@ -19,6 +19,7 @@ import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
 import getIn from '~utils/lodashButBetter/get';
 import type { EasingFactoryFn } from '~tokens/global';
+import type { ActionStates } from '~utils/useInteraction';
 
 const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -94,14 +95,11 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     }),
   };
 
-  const baseInputState =
-    rest.currentInteraction === 'focus'
-      ? 'focused'
-      : rest.currentInteraction === 'hover'
-      ? 'hovered'
-      : rest.isDisabled
-      ? 'disabled'
-      : 'default';
+  const baseInputState = getBaseInputState({
+    isFocused: rest.currentInteraction === 'focus',
+    isHovered: rest.currentInteraction === 'hover',
+    isDisabled: Boolean(rest.isDisabled),
+  });
 
   let borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
   const backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
