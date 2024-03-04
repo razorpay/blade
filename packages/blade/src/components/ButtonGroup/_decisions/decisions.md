@@ -27,6 +27,8 @@ type ButtonGroupProps = {
   variant?: 'primary' | 'secondary' | 'tertiary';
   /**
    * Specifies the size of the ButtonGroup.
+   *
+   * @default 'medium'
    */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /**
@@ -35,6 +37,8 @@ type ButtonGroupProps = {
   isFullWidth?: boolean;
   /**
    * Disables or enables the ButtonGroup component
+   *
+   * @default false
    */
   isDisabled?: boolean;
   /**
