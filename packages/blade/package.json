@@ -274,7 +274,7 @@
     "typescript-transform-paths": "3.4.6",
     "@types/body-scroll-lock": "3.1.0",
     "ramda": "0.29.1",
-    "@razorpay/i18nify-js": "1.4.0",
+    "@razorpay/i18nify-js": "1.4.4",
     "@razorpay/i18nify-react": "4.0.0"
   },
   "peerDependencies": {
@@ -291,7 +291,7 @@
     "react-hot-toast": "2.4.1",
     "@gorhom/bottom-sheet": "^4.4.6",
     "@gorhom/portal": "^1.0.14",
-    "@razorpay/i18nify-js": "^1.4.0"
+    "@razorpay/i18nify-js": "^1.4.4"
   },
   "peerDependenciesMeta": {
     "react-native": {
