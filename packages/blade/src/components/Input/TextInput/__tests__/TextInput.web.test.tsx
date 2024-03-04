@@ -101,7 +101,7 @@ describe('<TextInput />', () => {
         trailingIcon={InfoIcon}
         prefix="https://"
         suffix=".com"
-        trailingActionButton={<Link>Apply</Link>}
+        trailingButton={<Link>Apply</Link>}
         size="large"
       />,
     );

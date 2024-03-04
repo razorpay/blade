@@ -52,7 +52,7 @@ type TextInputCommonProps = Pick<
   | 'onClick'
   | 'size'
   | 'leadingIcon'
-  | 'trailingActionButton'
+  | 'trailingButton'
   | 'trailingIcon'
 > & {
   /**

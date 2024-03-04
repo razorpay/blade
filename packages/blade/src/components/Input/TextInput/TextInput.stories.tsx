@@ -69,6 +69,11 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    testID: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     size: {
       table: {
         category: propsCategory.BASE_PROPS,
@@ -115,17 +120,39 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    onSubmit: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onClick: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     onChange: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
     },
     onFocus: {
+      control: {
+        disable: true,
+      },
       table: {
         category: propsCategory.BASE_PROPS,
       },
     },
     onBlur: {
+      control: {
+        disable: true,
+      },
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -175,6 +202,14 @@ export default {
         category: propsCategory.VALIDATION_PROPS,
       },
     },
+    icon: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.LEADING_VISUAL_PROPS,
+      },
+    },
     leadingIcon: {
       name: 'leadingIcon',
       type: 'select',
@@ -198,12 +233,12 @@ export default {
       type: 'select',
       options: Object.keys(iconMap),
       table: {
-        category: propsCategory.LEADING_VISUAL_PROPS,
+        category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
-    trailingActionButton: {
+    trailingButton: {
       table: {
-        category: propsCategory.LEADING_VISUAL_PROPS,
+        category: propsCategory.TRAILING_VISUAL_PROPS,
       },
     },
     showClearButton: {
@@ -335,12 +370,12 @@ TextInputWithoutLabel.args = {
   accessibilityLabel: 'Enter your name',
 };
 
-export const TextInputWithTrailingActionButton = TextInputTemplate.bind({});
-TextInputWithTrailingActionButton.storyName = 'TextInput with trailing action button';
-TextInputWithTrailingActionButton.args = {
+export const TextInputWithTrailingButton = TextInputTemplate.bind({});
+TextInputWithTrailingButton.storyName = 'TextInput with trailing action button';
+TextInputWithTrailingButton.args = {
   defaultValue: 'John Ives',
   label: 'Discount Code',
-  trailingActionButton: <Link>Apply</Link>,
+  trailingButton: <Link>Apply</Link>,
   showClearButton: false,
 };
 
