@@ -1,0 +1,84 @@
+import type { StoryFn, Meta } from '@storybook/react';
+import type { ButtonGroupProps } from '../ButtonGroup';
+import { ButtonGroup as ButtonGroupComponent } from '../ButtonGroup';
+import { Heading } from '~components/Typography/Heading';
+import { Box } from '~components/Box';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Button } from '~components/Button';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { RefreshIcon, ShareIcon, DownloadIcon, ChevronDownIcon, PlusIcon } from '~components/Icons';
+import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem } from '~components/ActionList';
+
+const Page = (): React.ReactElement => {
+  return (
+    <StoryPageWrapper
+      componentName="ButtonGroup"
+      componentDescription="The ButtonGroup component is used to handle file attachments, including the drag-and-drop interaction. It can be used in both controlled and uncontrolled forms. Primarily, it is used to upload files to a server or to display a list of uploaded files."
+      apiDecisionLink={null}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=78670-22400&t=iCPjenOx6kthCZaE-1&scaling=min-zoom&page-id=74796%3A315549&mode=design"
+    >
+      <Heading size="large">Usage</Heading>
+      <Sandbox>`hell`</Sandbox>
+    </StoryPageWrapper>
+  );
+};
+
+export default {
+  title: 'Components/ButtonGroup',
+  component: ButtonGroupComponent,
+  tags: ['autodocs'],
+  argTypes: getStyledPropsArgTypes(),
+  parameters: {
+    docs: {
+      page: Page,
+    },
+  },
+} as Meta<ButtonGroupProps>;
+
+const ButtonGroupTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
+  return (
+    <ButtonGroupComponent>
+      <Button icon={RefreshIcon} />
+      <Button icon={ShareIcon}>Share</Button>
+      <Button icon={DownloadIcon}>Download</Button>
+    </ButtonGroupComponent>
+  );
+};
+
+export const CustomPreview = ButtonGroupTemplate.bind({});
+CustomPreview.storyName = 'Basic ButtonGroup';
+
+const ButtonGroupDropdownTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
+  return (
+    <ButtonGroupComponent>
+      <Dropdown>
+        <DropdownButton icon={ChevronDownIcon} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Bulk Payout" value="bulk-payout" />
+            <ActionListItem title="Upload Invoice" value="upload-invoice" />
+            <ActionListItem title="Add Contact" value="add-contact" />
+            <ActionListItem title="Team Member" value="team-member" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Button icon={PlusIcon}>Payout</Button>
+      <Dropdown>
+        <DropdownButton icon={ChevronDownIcon} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Bulk Payout" value="bulk-payout" />
+            <ActionListItem title="Upload Invoice" value="upload-invoice" />
+            <ActionListItem title="Add Contact" value="add-contact" />
+            <ActionListItem title="Team Member" value="team-member" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </ButtonGroupComponent>
+  );
+};
+
+export const WithDropdown = ButtonGroupDropdownTemplate.bind({});
+WithDropdown.storyName = 'With Dropdown';
