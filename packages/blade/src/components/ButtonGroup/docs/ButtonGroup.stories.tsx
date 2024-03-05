@@ -52,31 +52,22 @@ CustomPreview.storyName = 'Basic ButtonGroup';
 
 const ButtonGroupDropdownTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   return (
-    <ButtonGroupComponent>
-      <Dropdown>
-        <DropdownButton icon={ChevronDownIcon} />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Bulk Payout" value="bulk-payout" />
-            <ActionListItem title="Upload Invoice" value="upload-invoice" />
-            <ActionListItem title="Add Contact" value="add-contact" />
-            <ActionListItem title="Team Member" value="team-member" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-      <Button icon={PlusIcon}>Payout</Button>
-      <Dropdown>
-        <DropdownButton icon={ChevronDownIcon} />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Bulk Payout" value="bulk-payout" />
-            <ActionListItem title="Upload Invoice" value="upload-invoice" />
-            <ActionListItem title="Add Contact" value="add-contact" />
-            <ActionListItem title="Team Member" value="team-member" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-    </ButtonGroupComponent>
+    <Box margin="200px">
+      <ButtonGroupComponent>
+        <Button icon={PlusIcon}>Payout</Button>
+        <Dropdown>
+          <DropdownButton icon={ChevronDownIcon} />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Bulk Payout" value="bulk-payout" />
+              <ActionListItem title="Upload Invoice" value="upload-invoice" />
+              <ActionListItem title="Add Contact" value="add-contact" />
+              <ActionListItem title="Team Member" value="team-member" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </ButtonGroupComponent>
+    </Box>
   );
 };
 

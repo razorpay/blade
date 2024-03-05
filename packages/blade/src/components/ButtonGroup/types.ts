@@ -1,3 +1,5 @@
+import type { ButtonProps } from '~components/Button/Button';
+
 type ButtonGroupProps = {
   /**
    * Accepts multiple Button components as children
@@ -8,13 +10,19 @@ type ButtonGroupProps = {
    *
    * @default 'primary'
    */
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: ButtonProps['variant'];
   /**
    * Specifies the size of the ButtonGroup.
    *
    * @default 'medium'
    */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: ButtonProps['size'];
+  /**
+   * Specifies the color of the ButtonGroup.
+   *
+   * @default 'primary'
+   */
+  color?: ButtonProps['color'];
   /**
    * Specifies whether the ButtonGroup should take up the full width of its container.
    */

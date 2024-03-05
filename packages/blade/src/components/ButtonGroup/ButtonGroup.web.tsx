@@ -5,6 +5,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { Divider } from '~components/Divider';
 
 const _ButtonGroup = ({
   children,
@@ -21,13 +22,18 @@ const _ButtonGroup = ({
       {...getStyledProps(styledProps)}
       role="group"
     >
-      {React.Children.map(children, (child, index) => {
-        return (
-          <BaseBox key={index} display="flex" flexDirection="row">
-            {child}
-          </BaseBox>
-        );
-      })}
+      <BaseBox display="flex" flexDirection="row">
+        {React.Children.map(children, (child, index) => {
+          return (
+            <>
+              {child}
+              {React.Children.count(children) - 1 !== index && (
+                <Divider variant="subtle" orientation="vertical" />
+              )}
+            </>
+          );
+        })}
+      </BaseBox>
     </StyledButtonGroup>
   );
 };
