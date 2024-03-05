@@ -97,9 +97,17 @@ const AccordionItem = ({
   _index,
   testID,
 }: AccordionItemProps): ReactElement => {
-  const { expandedIndex, onExpandChange, defaultExpandedIndex, variant } = useAccordion();
+  const {
+    expandedIndex,
+    onExpandChange,
+    defaultExpandedIndex,
+    variant,
+    numberOfItems,
+  } = useAccordion();
   const isExpanded = expandedIndex === _index;
   const isDefaultExpanded = defaultExpandedIndex === _index;
+
+  const isLastItem = _index !== undefined && _index < numberOfItems - 1;
 
   const handleExpandChange = ({ isExpanded }: { isExpanded: boolean }): void => {
     if (isExpanded && typeof _index !== 'undefined') {
@@ -129,7 +137,7 @@ const AccordionItem = ({
           <AccordionBody description={description}>{children}</AccordionBody>
         </CollapsibleBody>
       </Collapsible>
-      {variant === 'borderless' ? <Divider /> : null}
+      {isLastItem || variant === 'borderless' ? <Divider /> : null}
     </BaseBox>
   );
 };

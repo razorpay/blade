@@ -83,6 +83,8 @@ const Accordion = ({
     defaultExpandedIndex,
   );
 
+  const numberOfItems = Children.count(children);
+
   const handleExpandChange = useCallback(
     (nextExpandedIndex: number) => {
       if (typeof expandedIndex !== 'undefined') {
@@ -104,6 +106,7 @@ const Accordion = ({
       onExpandChange: handleExpandChange,
       showNumberPrefix,
       variant,
+      numberOfItems,
     }),
     [
       expandedAccordionItemIndex,
@@ -112,6 +115,7 @@ const Accordion = ({
       showNumberPrefix,
       defaultExpandedIndex,
       variant,
+      numberOfItems,
     ],
   );
 

@@ -8,6 +8,7 @@ type AccordionContextState = {
   onExpandChange: (expandedIndex: number) => void;
   showNumberPrefix: boolean;
   variant?: AccordionVariantType;
+  numberOfItems: number;
 };
 
 const AccordionContext = createContext<AccordionContextState | null>(null);
