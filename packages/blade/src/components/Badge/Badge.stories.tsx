@@ -15,7 +15,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Badge"
       componentDescription="Badges are used to show small amount of color coded metadata, which are ideal for getting user attention."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73237-214550&mode=design&t=JkDSnlo8KJOBJimR-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73941-78445&t=pjKzaOWOoMI2J9jb-1&scaling=min-zoom&page-id=8110%3A0&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>

@@ -16,7 +16,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Checkbox"
       componentDescription="Checkbox can be used in forms when a user needs to select multiple values from several options."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71951-34708&mode=design&t=jyVG8aXFc1Dlw2Se-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75857-44078&t=ASvqFmFRXILEzPFG-1&scaling=min-zoom&page-id=13227%3A162974&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox showConsole>

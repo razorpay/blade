@@ -72,7 +72,7 @@ exports[`<BaseInput /> should render 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -94,7 +94,7 @@ exports[`<BaseInput /> should render 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -111,7 +111,7 @@ exports[`<BaseInput /> should render 1`] = `
 
 .c9.c9.c9.c9.c9 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -143,7 +143,7 @@ exports[`<BaseInput /> should render 1`] = `
 
 .c9.c9.c9.c9.c9::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -160,7 +160,7 @@ exports[`<BaseInput /> should render 1`] = `
 
 .c9.c9.c9.c9.c9::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -177,7 +177,7 @@ exports[`<BaseInput /> should render 1`] = `
 
 .c9.c9.c9.c9.c9:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -194,7 +194,7 @@ exports[`<BaseInput /> should render 1`] = `
 
 .c9.c9.c9.c9.c9::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -505,7 +505,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -527,7 +527,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -544,7 +544,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -576,7 +576,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 
 .c11.c11.c11.c11.c11::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -593,7 +593,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 
 .c11.c11.c11.c11.c11::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -610,7 +610,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 
 .c11.c11.c11.c11.c11:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -627,7 +627,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
 
 .c11.c11.c11.c11.c11::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1020,7 +1020,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -1042,7 +1042,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1059,7 +1059,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c18.c18.c18.c18.c18 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: italic;
@@ -1076,7 +1076,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -1108,7 +1108,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c11.c11.c11.c11.c11::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -1125,7 +1125,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c11.c11.c11.c11.c11::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -1142,7 +1142,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c11.c11.c11.c11.c11:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -1159,7 +1159,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c11.c11.c11.c11.c11::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -1576,7 +1576,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -1598,7 +1598,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1615,7 +1615,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c14.c14.c14.c14.c14 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1633,7 +1633,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c9.c9.c9.c9.c9 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1665,7 +1665,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c9.c9.c9.c9.c9::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1682,7 +1682,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c9.c9.c9.c9.c9::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1699,7 +1699,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c9.c9.c9.c9.c9:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1716,7 +1716,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c9.c9.c9.c9.c9::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

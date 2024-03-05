@@ -39,7 +39,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Tabs"
       componentDescription="A tab is a navigation component used in the interface to switch between different views in the same context. Tabs are contextual to the section or the page and are triggered by user interaction."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73282-389156&mode=design&t=Qm80tBqhFBFB5BvZ-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75154-84398&t=QK3OC85vjD0Yt67V-1&scaling=min-zoom&page-id=60438%3A44047&mode=design"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox editorHeight={500}>

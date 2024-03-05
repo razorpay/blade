@@ -46,7 +46,9 @@ const transformer: Transform = (file, api, options) => {
           return 'UPDATE_THIS_VALUE_WITH_A_NEW_COLOR_TOKEN';
         }
 
-        const replacement = colorTokensMapping[originalString];
+        // Get the token from the original string, e.g. "brand.primary[500]" -> "brand.primary.500"
+        const token = originalString.replace('[', '.').replace(/\]|'|"/g, '');
+        const replacement = colorTokensMapping[token];
 
         if (!replacement) {
           return originalString;

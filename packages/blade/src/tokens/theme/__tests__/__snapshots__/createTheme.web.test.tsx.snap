@@ -1003,8 +1003,8 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
       "fonts": {
         "family": {
           "code": ""Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace",
-          "heading": ""TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
-          "text": ""Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+          "heading": ""TASA Orbiter", "TASA Orbiter Fallback Arial", Arial",
+          "text": ""Inter", "Inter Fallback Arial", Arial",
         },
         "size": {
           "100": 14,
@@ -1055,8 +1055,8 @@ exports[`createTheme should create a theme with the correct brand colors 1`] = `
       "fonts": {
         "family": {
           "code": ""Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace",
-          "heading": ""TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
-          "text": ""Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+          "heading": ""TASA Orbiter", "TASA Orbiter Fallback Arial", Arial",
+          "text": ""Inter", "Inter Fallback Arial", Arial",
         },
         "size": {
           "100": 14,
@@ -1173,7 +1173,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsl(0,0%,100%);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -2238,8 +2238,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
       "fonts": {
         "family": {
           "code": ""Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace",
-          "heading": ""TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
-          "text": ""Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+          "heading": ""TASA Orbiter", "TASA Orbiter Fallback Arial", Arial",
+          "text": ""Inter", "Inter Fallback Arial", Arial",
         },
         "size": {
           "100": 14,
@@ -2290,8 +2290,8 @@ exports[`createTheme should create a theme with the correct brand colors 3`] = `
       "fonts": {
         "family": {
           "code": ""Menlo", San Francisco Mono, Courier New, Roboto Mono, monospace",
-          "heading": ""TASA Orbiter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
-          "text": ""Inter", -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif",
+          "heading": ""TASA Orbiter", "TASA Orbiter Fallback Arial", Arial",
+          "text": ""Inter", "Inter Fallback Arial", Arial",
         },
         "size": {
           "100": 14,
@@ -2408,7 +2408,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsl(0,0%,0%);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;

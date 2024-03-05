@@ -366,8 +366,11 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'FileUpload',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '11.6.0',
+    storybookLink: 'Components/FileUpload',
     description: 'FileUpload component allow users to select one or more files to upload.',
+    platform: 'web',
   },
   {
     name: 'Drawer',
@@ -443,13 +446,33 @@ const componentData: ComponentStatusDataType = [
     platform: 'web',
   },
   {
-    name: 'Button Group',
+    name: 'SearchInput',
     status: 'in-design',
+    description:
+      'A search input is an input field that allow users to input search queries with a keyboard.',
+  },
+  {
+    name: 'Stepper',
+    status: 'in-design',
+    description: 'A stepper component is used to indicate progress through a multi-step process.',
+  },
+  {
+    name: 'Button Group',
+    status: 'in-development',
     description: 'ButtonGroup component can be used to group related buttons.',
   },
   {
+    name: 'MobileNumberInput',
+    status: 'in-development',
+    description:
+      'A phone number input is an input field that allow users to input phone numbers with a keyboard. It supports entering phone numbers from different geographic locations.',
+  },
+  {
     name: 'Breadcrumbs',
-    status: 'in-design',
+    status: 'released',
+    releasedIn: '11.5.0',
+    platform: 'web',
+    storybookLink: 'Components/Breadcrumbs',
     description:
       'Breadcrumbs is a navigation pattern that helps users understand the hierarchy of a website.',
   },

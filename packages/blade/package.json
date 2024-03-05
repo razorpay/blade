@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "11.4.0",
+  "version": "11.6.2",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -127,11 +127,11 @@
     "watch:test:react-native": "yarn test:react-native --watch --onlyChanged",
     "chromatic": "npx chromatic",
     "publish-npm": "node ./scripts/publishToNpm.js",
-    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
-    "postinstall": "patch-package"
+    "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
+    "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
+    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js"
   },
   "dependencies": {
-    "patch-package": "7.0.0",
     "@babel/runtime": "7.20.0",
     "body-scroll-lock-upgrade": "1.1.0",
     "ts-deepmerge": "6.2.0",
@@ -154,6 +154,8 @@
     "chromatic": "6.22.0",
     "@babel/cli": "7.23.0",
     "@babel/core": "7.20.2",
+    "@babel/parser": "7.23.6",
+    "@babel/traverse": "7.23.7",
     "@babel/plugin-transform-react-jsx": "7.16.5",
     "@babel/plugin-transform-runtime": "7.16.5",
     "@babel/preset-env": "7.20.2",
@@ -220,15 +222,16 @@
     "babel-loader": "8.2.3",
     "babel-plugin-module-resolver": "4.1.0",
     "babel-plugin-styled-components": "1.12.0",
-    "bundlemon": "2.0.1",
     "chalk": "4.1.1",
     "copyfiles": "2.4.1",
     "cross-env": "7.0.3",
+    "danger": "11.3.1",
     "dedent": "0.7.0",
     "eslint-plugin-mdx": "1.16.0",
     "execa": "5.0.0",
     "figures": "3.2.0",
     "flat": "5.0.2",
+    "globby": "14.0.1",
     "ismobilejs": "1.1.1",
     "jest": "29.6.1",
     "jest-axe": "8.0.0",
@@ -271,7 +274,7 @@
     "typescript-transform-paths": "3.4.6",
     "@types/body-scroll-lock": "3.1.0",
     "ramda": "0.29.1",
-    "@razorpay/i18nify-js": "1.4.0",
+    "@razorpay/i18nify-js": "1.4.4",
     "@razorpay/i18nify-react": "4.0.0"
   },
   "peerDependencies": {
@@ -288,7 +291,7 @@
     "react-hot-toast": "2.4.1",
     "@gorhom/bottom-sheet": "^4.4.6",
     "@gorhom/portal": "^1.0.14",
-    "@razorpay/i18nify-js": "^1.4.0"
+    "@razorpay/i18nify-js": "^1.4.4"
   },
   "peerDependenciesMeta": {
     "react-native": {
@@ -304,56 +307,5 @@
     "react-dom": "18.2.0",
     "react": "18.2.0",
     "styled-components": "^5"
-  },
-  "bundlemon": {
-    "files": [
-      {
-        "friendlyName": "Web Components",
-        "path": "./build/components/index.production.web.js"
-      },
-      {
-        "friendlyName": "React Native Components",
-        "path": "./build/components/index.native.js"
-      },
-      {
-        "friendlyName": "Web Tokens",
-        "path": "./build/tokens/index.production.web.js"
-      },
-      {
-        "friendlyName": "React Native Tokens",
-        "path": "./build/tokens/index.native.js"
-      },
-      {
-        "friendlyName": "CSS Theme Tokens",
-        "path": "./build/css/*.css"
-      },
-      {
-        "friendlyName": "Web Utils",
-        "path": "./build/utils/index.production.web.js"
-      },
-      {
-        "friendlyName": "React Native Utils",
-        "path": "./build/utils/index.native.js"
-      }
-    ],
-    "reportOutput": [
-      "github"
-    ]
-  },
-  "size-limit": [
-    {
-      "name": "Import Button only",
-      "path": "./build/lib/web/production/components/index.js",
-      "import": "{ Button }",
-      "limit": "31 kb",
-      "running": false
-    },
-    {
-      "name": "Import Text only",
-      "path": "./build/lib/web/production/components/index.js",
-      "import": "{ Text }",
-      "limit": "25 kb",
-      "running": false
-    }
-  ]
+  }
 }
