@@ -70,6 +70,7 @@ type PasswordInputCommonProps = Pick<
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
   | 'testID'
+  | 'size'
 > &
   PasswordInputExtraProps &
   StyledPropsBlade;
@@ -131,6 +132,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
     keyboardReturnKeyType = 'done',
     autoCompleteSuggestionType,
     testID,
+    size = 'medium',
     ...styledProps
   },
   ref,
@@ -197,6 +199,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       keyboardReturnKeyType={keyboardReturnKeyType}
       autoCapitalize="none"
       testID={testID}
+      size={size}
       {...styledProps}
     />
   );
