@@ -28,13 +28,19 @@ type ButtonGroupProps = {
    *
    * @default 'primary'
    */
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: ButtonProps['variant'];
   /**
    * Specifies the size of the ButtonGroup.
    *
    * @default 'medium'
    */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: ButtonProps['size'];
+  /**
+   * Specifies the color of the ButtonGroup.
+   *
+   * @default 'primary'
+   */
+  color?: ButtonProps['color'];
   /**
    * Specifies whether the ButtonGroup should take up the full width of its container.
    */
@@ -80,6 +86,10 @@ type ButtonGroupProps = {
 
 - Buttons inside a `ButtonGroup` can be used to trigger a dropdown.
 
+  > [!IMPORTANT]
+  >
+  > We will introduce a new `placement?:| "bottom-end" | "bottom-start" | "left-end" | "left-start" | "right-end" | "right-start" | "top-end" | "top-start"` prop in the `DropdownOverlay` component to control the placement of the dropdown.
+
   <img width="100%" src="./button-group-dropdown-usage.png" alt="Button Group Usage with Dropdown" />
 
   ```tsx
@@ -100,7 +110,7 @@ type ButtonGroupProps = {
         <Button icon={PlusIcon}>Payout</Button>
         <Dropdown>
           <DropdownButton icon={ChevronDownIcon} />
-          <DropdownOverlay>
+          <DropdownOverlay placement="bottom-end">
             <ActionList>
               <ActionListItem title="Bulk Payout" value="bulk-payout" />
               <ActionListItem title="Upload Invoice" value="upload-invoice" />
