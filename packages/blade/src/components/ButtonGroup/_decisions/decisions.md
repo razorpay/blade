@@ -20,6 +20,10 @@ This document outlines the API details of the `ButtonGroup` component, encompass
 ```ts
 type ButtonGroupProps = {
   /**
+   * Accepts multiple Button components as children
+   */
+  children: React.ReactNode;
+  /**
    * Specifies the visual style variant of the ButtonGroup.
    *
    * @default 'primary'
@@ -98,10 +102,10 @@ type ButtonGroupProps = {
           <DropdownButton icon={ChevronDownIcon} />
           <DropdownOverlay>
             <ActionList>
-              <ActionListItem>Bulk Payout</ActionListItem>
-              <ActionListItem>Upload Invoice</ActionListItem>
-              <ActionListItem>Add Contact</ActionListItem>
-              <ActionListItem>Team Member</ActionListItem>
+              <ActionListItem title="Bulk Payout" value="bulk-payout" />
+              <ActionListItem title="Upload Invoice" value="upload-invoice" />
+              <ActionListItem title="Add Contact" value="add-contact" />
+              <ActionListItem title="Team Member" value="team-member" />
             </ActionList>
           </DropdownOverlay>
         </Dropdown>
@@ -112,4 +116,13 @@ type ButtonGroupProps = {
 
 ## Accessibility
 
-- A button group does not behave like a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/toolbar_role), so assistive technologies still interpret the buttons as unrelated. The grouping is purely visual.
+### Role
+
+- In order for assistive technologies (such as screen readers) to convey that a series of buttons is grouped, an appropriate ` role` attribute needs to be provided. For ButtonGroup, this would be [ `role="group"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/group_role).
+- The `ButtonGroup` does not behave like a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/toolbar_role).
+
+### Keyboard Interaction
+
+- When focus moves into the button group, focus is on the first button. Pressing `Tab` moves focus to the next button in the group, and so on, until the last button is reached. At that point, the next tab moves focus to the next focusable element after the button group.
+- Pressing `Shift + Tab` moves focus to the previous button in the group, and so on, until the first button is reached. At that point, the next `Shift + Tab` moves focus to the previous focusable element before the button group.
+- When a button has focus, pressing `Space` or `Enter` triggers the button's action.
