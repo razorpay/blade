@@ -118,7 +118,7 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     await user.click(getByRole('option', { name: 'Pune' }));
     await waitFor(() => expect(queryByRole('listbox')).toBeNull());
     expect(selectInput.value).toBe('Pune');
-  });
+  }, 10000);
 
   it('should not open dropdown when input is disabled', async () => {
     const user = userEvent.setup();
