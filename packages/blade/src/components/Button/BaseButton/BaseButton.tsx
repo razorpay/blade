@@ -27,6 +27,7 @@ import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~toke
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
 import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
@@ -122,7 +123,7 @@ const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
   return 'button';
 };
 
-const getBackgroundColorToken = ({
+export const getBackgroundColorToken = ({
   property,
   variant,
   state,
@@ -225,7 +226,7 @@ const getProps = ({
   if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
+      message: `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
     });
   }
 
@@ -383,6 +384,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     if (!isLoading && prevLoading) announce('Stopped loading');
   }, [isLoading, prevLoading]);
 
+  const buttonGroupProps = useButtonGroupContext();
   const {
     defaultBorderColor,
     defaultBackgroundColor,
@@ -411,11 +413,11 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   } = getProps({
     buttonTypographyTokens: buttonTypography,
     children: childrenString,
-    isDisabled: disabled,
-    size,
-    variant,
+    isDisabled: buttonGroupProps.isDisabled ?? disabled,
+    size: buttonGroupProps.size ?? size,
+    variant: buttonGroupProps.variant ?? variant,
     theme,
-    color,
+    color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
   });
 
@@ -439,7 +441,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       }}
       variant={variant}
       isLoading={isLoading}
-      disabled={disabled}
+      disabled={buttonGroupProps.isDisabled ?? disabled}
       defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
       buttonPaddingTop={buttonPaddingTop}
@@ -452,7 +454,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       focusRingColor={focusRingColor}
       hoverBorderColor={hoverBorderColor}
       hoverBackgroundColor={hoverBackgroundColor}
-      isFullWidth={isFullWidth}
+      isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
       onClick={onClick}
       onBlur={onBlur}
       onFocus={onFocus}

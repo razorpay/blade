@@ -20,7 +20,29 @@ const Page = (): React.ReactElement => {
       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=78670-22400&t=iCPjenOx6kthCZaE-1&scaling=min-zoom&page-id=74796%3A315549&mode=design"
     >
       <Heading size="large">Usage</Heading>
-      <Sandbox>`hell`</Sandbox>
+      <Sandbox showConsole>
+        {`
+        import {
+          Button,
+          ButtonGroup,
+          RefreshIcon,
+          ShareIcon,
+          DownloadIcon,
+        } from '@razorpay/blade/components';
+        
+        function App(): React.ReactElement {
+          return (
+            <ButtonGroup>
+              <Button icon={RefreshIcon}>Sync</Button>
+              <Button icon={ShareIcon}>Share</Button>
+              <Button icon={DownloadIcon}>Download</Button>
+            </ButtonGroup>
+          )
+        }
+
+        export default App;
+      `}
+      </Sandbox>
     </StoryPageWrapper>
   );
 };
@@ -40,7 +62,7 @@ export default {
 const ButtonGroupTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   return (
     <ButtonGroupComponent>
-      <Button icon={RefreshIcon} />
+      <Button icon={RefreshIcon}>Sync</Button>
       <Button icon={ShareIcon}>Share</Button>
       <Button icon={DownloadIcon}>Download</Button>
     </ButtonGroupComponent>
@@ -48,7 +70,7 @@ const ButtonGroupTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
 };
 
 export const CustomPreview = ButtonGroupTemplate.bind({});
-CustomPreview.storyName = 'Basic ButtonGroup';
+CustomPreview.storyName = 'Default';
 
 const ButtonGroupDropdownTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   return (
@@ -79,14 +101,10 @@ const ButtonGroupVariantsTemplate: StoryFn<typeof ButtonGroupComponent> = (args)
       {variants.map((variant) => (
         <Box marginBottom="spacing.8">
           <Heading marginBottom="spacing.3">{variant}</Heading>
-          <ButtonGroupComponent variant={variant} {...args}>
-            <Button variant={variant} icon={RefreshIcon} />
-            <Button variant={variant} icon={ShareIcon}>
-              Share
-            </Button>
-            <Button variant={variant} icon={DownloadIcon}>
-              Download
-            </Button>
+          <ButtonGroupComponent {...args} variant={variant}>
+            <Button icon={RefreshIcon}>Sync</Button>
+            <Button icon={ShareIcon}>Share</Button>
+            <Button icon={DownloadIcon}>Download</Button>
           </ButtonGroupComponent>
         </Box>
       ))}
@@ -105,7 +123,7 @@ const ButtonGroupSizesTemplate: StoryFn<typeof ButtonGroupComponent> = (args) =>
         <Box marginBottom="spacing.8">
           <Heading marginBottom="spacing.3">{size}</Heading>
           <ButtonGroupComponent size={size} {...args}>
-            <Button icon={RefreshIcon} />
+            <Button icon={RefreshIcon}>Sync</Button>
             <Button icon={ShareIcon}>Share</Button>
             <Button icon={DownloadIcon}>Download</Button>
           </ButtonGroupComponent>

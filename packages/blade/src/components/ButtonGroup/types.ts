@@ -39,8 +39,13 @@ type ButtonGroupProps = {
   testID?: string;
 };
 
-type StyledButtonGroupProps = {
-  isDisabled?: boolean;
-};
+type StyledButtonGroupProps = NonNullable<
+  Pick<ButtonGroupProps, 'isDisabled' | 'color' | 'variant' | 'isFullWidth'>
+>;
 
-export type { ButtonGroupProps, StyledButtonGroupProps };
+type ButtonGroupContextType = Pick<
+  ButtonGroupProps,
+  'isDisabled' | 'isFullWidth' | 'size' | 'color' | 'variant'
+>;
+
+export type { ButtonGroupProps, StyledButtonGroupProps, ButtonGroupContextType };
