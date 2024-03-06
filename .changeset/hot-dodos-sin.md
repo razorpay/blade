@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": patch
+'@razorpay/blade': patch
 ---
 
-feat: support `placement` prop on `DropdownOverlay`
+feat: support `defaultPlacement` prop on `DropdownOverlay`
