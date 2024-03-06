@@ -127,30 +127,30 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 
 ### AccordionItem
 
-| Key                         | Type            | Default     | Description                                                                                                                                     | Required |
-| --------------------------- | --------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| title (⚠️ deprecated)       | `string`        | `undefined` | Title text content                                                                                                                              |          |
-| description (⚠️ deprecated) | `string`        | `undefined` | Body text content                                                                                                                               |          |
-| icon (⚠️ deprecated)        | `IconComponent` | `undefined` | Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`)                                                                      |          |
-| children                    | `JSX`           | `undefined` | Accepts [`AccordionItemHeader`](#AccordionItemHeader) and [`AccordionItemBody`](#accordionitembody). Accepting other JSX elements is deprecated | ✅       |
+| Key                         | Type              | Default     | Description                                                                                                                                     | Required |
+| --------------------------- | ----------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| title (⚠️ deprecated)       | `string`          | `undefined` | Title text content                                                                                                                              |          |
+| description (⚠️ deprecated) | `string`          | `undefined` | Body text content                                                                                                                               |          |
+| icon (⚠️ deprecated)        | `IconComponent`   | `undefined` | Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`)                                                                      |          |
+| children                    | `React.ReactNode` | `undefined` | Accepts [`AccordionItemHeader`](#AccordionItemHeader) and [`AccordionItemBody`](#accordionitembody). Accepting other JSX elements is deprecated | ✅       |
 
 #### AccordionItemHeader
 
-| Key         | Type     | Default     | Description                                              | Required |
-| ----------- | -------- | ----------- | -------------------------------------------------------- | -------- |
-| title       | `string` | `undefined` | Title text content                                       |          |
-| subtitle    | `string` | `undefined` | Subtitle text content                                    |          |
-| titleSuffix | `JSX`    | `undefined` | Suffix part of title. Mostly for Badge                   |          |
-| description | `string` | `undefined` | Body text content                                        |          |
-| leading     | `JSX`    | `undefined` | Leading Part of Header. Mostly for icon or prefix text   |          |
-| trailing    | `JSX`    | `undefined` | Trailing Part of Header. Mostly for action link / button |          |
-| children    | `JSX`    | `undefined` | Slot                                                     |          |
+| Key         | Type              | Default     | Description                                              | Required |
+| ----------- | ----------------- | ----------- | -------------------------------------------------------- | -------- |
+| title       | `string`          | `undefined` | Title text content                                       |          |
+| subtitle    | `string`          | `undefined` | Subtitle text content                                    |          |
+| titleSuffix | `React.ReactNode` | `undefined` | Suffix part of title. Mostly for Badge                   |          |
+| description | `string`          | `undefined` | Body text content                                        |          |
+| leading     | `React.ReactNode` | `undefined` | Leading Part of Header. Mostly for icon or prefix text   |          |
+| trailing    | `React.ReactNode` | `undefined` | Trailing Part of Header. Mostly for action link / button |          |
+| children    | `React.ReactNode` | `undefined` | Slot                                                     |          |
 
 #### AccordionItemBody
 
-| Key      | Type            | Default     | Description | Required |
-| -------- | --------------- | ----------- | ----------- | -------- |
-| children | `JSX`, `string` | `undefined` | Slot        | ✅       |
+| Key      | Type                        | Default     | Description | Required |
+| -------- | --------------------------- | ----------- | ----------- | -------- |
+| children | `React.ReactNode`, `string` | `undefined` | Slot        | ✅       |
 
 ## a11y
 
