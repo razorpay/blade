@@ -52,24 +52,68 @@ CustomPreview.storyName = 'Basic ButtonGroup';
 
 const ButtonGroupDropdownTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   return (
-    <Box margin="200px">
-      <ButtonGroupComponent>
-        <Button icon={PlusIcon}>Payout</Button>
-        <Dropdown>
-          <DropdownButton icon={ChevronDownIcon} />
-          <DropdownOverlay>
-            <ActionList>
-              <ActionListItem title="Bulk Payout" value="bulk-payout" />
-              <ActionListItem title="Upload Invoice" value="upload-invoice" />
-              <ActionListItem title="Add Contact" value="add-contact" />
-              <ActionListItem title="Team Member" value="team-member" />
-            </ActionList>
-          </DropdownOverlay>
-        </Dropdown>
-      </ButtonGroupComponent>
-    </Box>
+    <ButtonGroupComponent {...args}>
+      <Button icon={PlusIcon}>Payout</Button>
+      <Dropdown>
+        <DropdownButton icon={ChevronDownIcon} />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Bulk Payout" value="bulk-payout" />
+            <ActionListItem title="Upload Invoice" value="upload-invoice" />
+            <ActionListItem title="Add Contact" value="add-contact" />
+            <ActionListItem title="Team Member" value="team-member" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </ButtonGroupComponent>
   );
 };
 
 export const WithDropdown = ButtonGroupDropdownTemplate.bind({});
 WithDropdown.storyName = 'With Dropdown';
+
+const ButtonGroupVariantsTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
+  const variants: ButtonGroupProps['variant'][] = ['primary', 'secondary', 'tertiary'];
+  return (
+    <>
+      {variants.map((variant) => (
+        <Box marginBottom="spacing.8">
+          <Heading marginBottom="spacing.3">{variant}</Heading>
+          <ButtonGroupComponent variant={variant} {...args}>
+            <Button variant={variant} icon={RefreshIcon} />
+            <Button variant={variant} icon={ShareIcon}>
+              Share
+            </Button>
+            <Button variant={variant} icon={DownloadIcon}>
+              Download
+            </Button>
+          </ButtonGroupComponent>
+        </Box>
+      ))}
+    </>
+  );
+};
+
+export const AllVariants = ButtonGroupVariantsTemplate.bind({});
+AllVariants.storyName = 'All Variants';
+
+const ButtonGroupSizesTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
+  const sizes: ButtonGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
+  return (
+    <>
+      {sizes.map((size) => (
+        <Box marginBottom="spacing.8">
+          <Heading marginBottom="spacing.3">{size}</Heading>
+          <ButtonGroupComponent size={size} {...args}>
+            <Button icon={RefreshIcon} />
+            <Button icon={ShareIcon}>Share</Button>
+            <Button icon={DownloadIcon}>Download</Button>
+          </ButtonGroupComponent>
+        </Box>
+      ))}
+    </>
+  );
+};
+
+export const AllSizes = ButtonGroupSizesTemplate.bind({});
+AllSizes.storyName = 'All Sizes';

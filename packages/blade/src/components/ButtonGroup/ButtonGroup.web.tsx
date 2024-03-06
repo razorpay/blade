@@ -12,11 +12,14 @@ const _ButtonGroup = ({
   isDisabled = false,
   size = 'medium',
   color = 'primary',
+  variant = 'primary',
   testID,
   ...styledProps
 }: ButtonGroupProps): React.ReactElement => {
   return (
     <StyledButtonGroup
+      variant={variant}
+      isDisabled={isDisabled}
       {...metaAttribute({ name: MetaConstants.ButtonGroup, testID })}
       {...getStyledProps(styledProps)}
       {...getStyledProps(styledProps)}
@@ -27,7 +30,7 @@ const _ButtonGroup = ({
           return (
             <>
               {child}
-              {React.Children.count(children) - 1 !== index && (
+              {variant !== 'secondary' && React.Children.count(children) - 1 !== index && (
                 <Divider variant="subtle" orientation="vertical" />
               )}
             </>
