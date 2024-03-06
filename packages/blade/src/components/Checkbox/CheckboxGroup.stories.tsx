@@ -141,6 +141,12 @@ Small.args = {
   size: 'small',
 };
 
+export const Large = CheckboxGroupTemplate.bind({});
+Large.storyName = 'Large';
+Large.args = {
+  size: 'large',
+};
+
 export const LabelPositionLeft = CheckboxGroupTemplate.bind({});
 LabelPositionLeft.storyName = 'LabelPositionLeft';
 LabelPositionLeft.args = {

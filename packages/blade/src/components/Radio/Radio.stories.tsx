@@ -146,6 +146,12 @@ Small.args = {
   size: 'small',
 };
 
+export const Large = RadioTemplate.bind({});
+Large.storyName = 'Large';
+Large.args = {
+  size: 'large',
+};
+
 export const LabelPositionLeft = RadioTemplate.bind({});
 LabelPositionLeft.storyName = 'LabelPositionLeft';
 LabelPositionLeft.args = {
