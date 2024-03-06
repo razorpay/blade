@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import { StyledAccordionButton } from './StyledAccordionButton';
 import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
+import { AccordionItemHeader } from './AccordionItemHeader';
 import { BaseBox } from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { Text } from '~components/Typography';
@@ -10,39 +11,14 @@ import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevr
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
-import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
-import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
-const AccordionHeader = ({
+const _AccordionButton = ({
+  index,
+  icon: Icon,
   title,
-  subtitle,
-  leading,
-  children,
-  trailing,
-  titleSuffix,
-}: Pick<
-  BaseHeaderProps,
-  'title' | 'subtitle' | 'leading' | 'children' | 'trailing' | 'titleSuffix'
->): React.ReactElement => {
-  return (
-    <BaseHeader
-      leading={leading}
-      title={title}
-      subtitle={subtitle}
-      trailing={trailing}
-      titleSuffix={titleSuffix}
-      showBackButton={false}
-      showCloseButton={false}
-      showDivider={false}
-      paddingX="spacing.5"
-      marginY="spacing.5"
-    >
-      {children}
-    </BaseHeader>
-  );
-};
-
-const _AccordionButton = ({ index, icon: Icon, title }: AccordionButtonProps): ReactElement => {
+  isDeprecatedAPI,
+  header,
+}: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex } = useAccordion();
 
@@ -81,7 +57,7 @@ const _AccordionButton = ({ index, icon: Icon, title }: AccordionButtonProps): R
         {...makeAccessible({ expanded: isItemExpanded, controls: collapsibleBodyId })}
         {...metaAttribute({ name: MetaConstants.AccordionButton })}
       >
-        <AccordionHeader title={title} leading={_icon ?? _index} />
+        {isDeprecatedAPI ? <AccordionItemHeader title={title} leading={_icon ?? _index} /> : header}
         <CollapsibleChevronIcon color="currentColor" size="large" />
       </StyledAccordionButton>
     </BaseBox>

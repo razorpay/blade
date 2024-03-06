@@ -53,7 +53,7 @@ type BaseHeaderProps = {
   /**
    * inner child of BottomSheetHeader. Meant to be used for AutoComplete only
    */
-  children?: React.ReactElement;
+  children?: React.ReactElement | React.ReactElement[];
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'

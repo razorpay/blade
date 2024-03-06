@@ -3,9 +3,11 @@ import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 
-import type { AccordionProps } from './Accordion';
 import { Accordion as AccordionComponent } from './Accordion';
 import { AccordionItem } from './AccordionItem';
+import { AccordionItemHeader } from './AccordionItemHeader';
+import { AccordionItemBody } from './AccordionItemBody';
+import type { AccordionProps } from '.';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
@@ -249,6 +251,36 @@ CustomSlot.parameters = {
 const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
   return (
     <AccordionComponent {...args}>
+      <AccordionItem>
+        <AccordionItemHeader title="How can I setup Subscriptions?" />
+        <AccordionItemBody description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries." />
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionItemHeader>
+          <>
+            <div>SLOT HEADER</div>
+            <div>SLOT HEADER</div>
+          </>
+        </AccordionItemHeader>
+        <AccordionItemBody description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.">
+          <div>SLOT</div>
+        </AccordionItemBody>
+      </AccordionItem>
+    </AccordionComponent>
+  );
+};
+
+export const IndividualAccordionItem = IndividualAccordionItemTemplate.bind({});
+
+IndividualAccordionItem.args = {
+  variant: 'bordered',
+};
+
+const IndividualAccordionItemTemplateDeprecated: StoryFn<typeof AccordionComponent> = ({
+  ...args
+}) => {
+  return (
+    <AccordionComponent {...args}>
       <AccordionItem
         icon={StarIcon}
         title="How can I setup Subscriptions?"
@@ -258,9 +290,9 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
   );
 };
 
-export const IndividualAccordionItem = IndividualAccordionItemTemplate.bind({});
+export const IndividualAccordionItemDeprecated = IndividualAccordionItemTemplateDeprecated.bind({});
 
-IndividualAccordionItem.args = {
+IndividualAccordionItemDeprecated.args = {
   variant: 'bordered',
 };
 

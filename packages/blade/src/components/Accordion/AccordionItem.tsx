@@ -1,25 +1,29 @@
 import type { ReactElement, ReactNode } from 'react';
+import React from 'react';
 import { AccordionButton } from './AccordionButton';
 import { useAccordion } from './AccordionContext';
+import { AccordionItemBody } from './AccordionItemBody';
 import { Divider } from '~components/Divider';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
-import { Text } from '~components/Typography';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { isReactNative } from '~utils';
 import { Collapsible } from '~components/Collapsible/Collapsible';
 import { CollapsibleBody } from '~components/Collapsible';
 import type { TestID } from '~utils/types';
-import { makeAccessible } from '~utils/makeAccessible';
 
 type AccordionItemProps = {
   /**
    * Title text content
+   *
+   * @deprecated
    */
-  title: string;
+  title?: string;
 
   /**
    * Body text content
+   *
+   *  @deprecated
    */
   description?: string;
 
@@ -31,7 +35,7 @@ type AccordionItemProps = {
   /**
    * Slot, renders any custom content
    */
-  children?: ReactNode;
+  children?: ReactNode | ReactNode[];
 
   /**
    * **Internal:** used for determining numbering, you don't need to pass this,
@@ -39,55 +43,6 @@ type AccordionItemProps = {
    */
   _index?: number;
 } & TestID;
-
-const BLANK_SPACE = ' ';
-
-/**
- * On React Native if the `AccordionItem` has a lengthy description which renders a `Text` spanning multiple lines,
- * it sometimes messes up the layout calculation (it thinks of multiline as a single line before flowing in the UI).
- * And during the expanding / collapsing animation, text reflows causing words to jump around across lines.
- *
- * Rendering a blank `Text` at the end seems to fix all this 🤯
- */
-const reactNativeMultilineTextOverflowFix = (
-  // make this hidden from screen readers
-  <BaseBox {...makeAccessible({ hidden: true })}>
-    <Text>{BLANK_SPACE}</Text>
-  </BaseBox>
-);
-
-const AccordionBody = ({
-  children,
-  description,
-}: {
-  children: React.ReactNode;
-  description?: string;
-}): React.ReactElement => {
-  const _description = description && (
-    <Text color="interactive.text.gray.subtle">{description}</Text>
-  );
-
-  const collapsibleBodyContent = isReactNative() ? (
-    <BaseBox marginX="spacing.5">
-      {_description}
-      <BaseBox marginTop={description && children ? 'spacing.5' : 'spacing.0'}>{children}</BaseBox>
-      {reactNativeMultilineTextOverflowFix}
-    </BaseBox>
-  ) : (
-    <BaseBox
-      display="flex"
-      flexDirection="column"
-      gap="spacing.5"
-      marginBottom="spacing.5"
-      marginX="spacing.5"
-    >
-      {_description}
-      {children}
-    </BaseBox>
-  );
-
-  return <BaseBox>{collapsibleBodyContent}</BaseBox>;
-};
 
 const AccordionItem = ({
   title,
@@ -106,6 +61,8 @@ const AccordionItem = ({
   } = useAccordion();
   const isExpanded = expandedIndex === _index;
   const isDefaultExpanded = defaultExpandedIndex === _index;
+  const isDeprecatedAPI = Boolean(title) || Boolean(description);
+  const [header, body] = React.Children.toArray(children);
 
   const isLastItem = _index !== undefined && _index < numberOfItems - 1;
 
@@ -126,14 +83,24 @@ const AccordionItem = ({
         // Accordion has its own width restrictions
         _shouldApplyWidthRestrictions={false}
       >
-        <AccordionButton index={_index} icon={icon} title={title} />
+        <AccordionButton
+          index={_index}
+          icon={icon}
+          title={title}
+          header={header}
+          isDeprecatedAPI={isDeprecatedAPI}
+        />
         <CollapsibleBody
           // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
           width={isReactNative() ? '100%' : undefined}
           // Adding top border on content instead of bottom border on AccordionButton so that border of Accordion doesn't overlap with border of AccordionButton
           _borderTopWidth={variant === 'bordered' ? 'thinner' : 'none'}
         >
-          <AccordionBody description={description}>{children}</AccordionBody>
+          {isDeprecatedAPI ? (
+            <AccordionItemBody description={description}>{children}</AccordionItemBody>
+          ) : (
+            body
+          )}
         </CollapsibleBody>
       </Collapsible>
       {isLastItem || variant === 'borderless' ? <Divider /> : null}

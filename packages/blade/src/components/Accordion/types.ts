@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { TestID } from '~utils/types';
@@ -11,7 +12,9 @@ type StyledAccordionButtonProps = {
 type AccordionButtonProps = {
   index?: number;
   icon?: IconComponent;
-  title: string;
+  title?: string;
+  isDeprecatedAPI: boolean;
+  header: React.ReactNode;
 };
 
 type AccordionProps = {
