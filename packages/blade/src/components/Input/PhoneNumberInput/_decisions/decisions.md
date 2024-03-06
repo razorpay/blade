@@ -21,7 +21,7 @@ This document outlines the API of `PhoneNumberInput` component.
 import { PhoneNumberInput } from '@razorpay/blade';
 
 <PhoneNumberInput
-  defaultCountryCode="IN"
+  countryCode="IN"
   defaultValue="123456789"
   onChange={({ phoneNumber, dialCode, countryCode, value }) => {
     phoneNumber; // "+91 123456789"
@@ -37,6 +37,8 @@ import { PhoneNumberInput } from '@razorpay/blade';
 ### PhoneNumberInput
 
 PhoneNumberInput will extend the `BaseInput` and will have overlapping props such as: 
+
+And for handling internationalization of phone numbers, we will use `@razorpay/i18nify-js`.
 
 ```ts
 type CommonProps = Pick<
@@ -68,9 +70,9 @@ type PhoneNumberInputProps = CommonProps & {
   /**
    * The default country code to be used in the input.
    * 
-   * @default "IN"
+   * @default "IN" or autodetect based on the user's locale
    */
-  defaultCountryCode?: string;
+  countryCode?: CountryCodeType;
   /**
    * Callback that is called when the value of the input changes.
    */
