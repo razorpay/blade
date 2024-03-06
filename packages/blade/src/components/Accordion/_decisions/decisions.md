@@ -148,9 +148,9 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 
 #### AccordionItemBody
 
-| Key      | Type  | Default     | Description | Required |
-| -------- | ----- | ----------- | ----------- | -------- |
-| children | `JSX` | `undefined` | Slot        | ✅       |
+| Key      | Type            | Default     | Description | Required |
+| -------- | --------------- | ----------- | ----------- | -------- |
+| children | `JSX`, `string` | `undefined` | Slot        | ✅       |
 
 ## a11y
 
@@ -285,6 +285,8 @@ Find in page (automatically expanding the accordion if someone does <kbd>Cmd</kb
   - **Ans:** `AccordionItemHeader`
 - **Q3.** [Proposed API](#api) vs [Alternate API](#alternate-api-for-custom-trigger)
   - **Ans:** Proposed API with deprecations for earlier API
+- **Q4.** `variant="bordered | borderless"` vs `variant="filled | transparent"`
+  - **Ans:** ⚠️ TBD
 
 ## References
 
