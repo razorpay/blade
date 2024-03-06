@@ -39,8 +39,9 @@ type ButtonGroupProps = {
   testID?: string;
 };
 
-type StyledButtonGroupProps = NonNullable<
-  Pick<ButtonGroupProps, 'isDisabled' | 'color' | 'variant' | 'isFullWidth'>
+type StyledButtonGroupProps = Pick<
+  ButtonGroupProps,
+  'isDisabled' | 'color' | 'variant' | 'isFullWidth'
 >;
 
 type ButtonGroupContextType = Pick<
