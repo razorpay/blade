@@ -3,57 +3,18 @@ import { useCallback, useMemo, useState, cloneElement, Children } from 'react';
 import type { AccordionContextState } from './AccordionContext';
 import { AccordionContext } from './AccordionContext';
 import { MAX_WIDTH } from './styles';
+import type { AccordionProps } from './types';
 import { BaseBox } from '~components/Box/BaseBox';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { BoxProps } from '~components/Box';
-import { size } from '~tokens/global';
-import type { TestID } from '~utils/types';
+import { size as sizeTokens } from '~tokens/global';
 import { makeSize } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
-type AccordionProps = {
-  /**
-   * Makes the passed item index expanded by default (uncontrolled)
-   */
-  defaultExpandedIndex?: number;
-
-  /**
-   * Expands the passed index (controlled), `-1` implies no expanded items
-   */
-  expandedIndex?: number;
-
-  /**
-   * Callback for change in any item's expanded state,
-   * `-1` implies no expanded items
-   */
-  onExpandChange?: ({ expandedIndex }: { expandedIndex: number }) => void;
-
-  /**
-   * Adds numeric index at the beginning of items
-   *
-   * @default false
-   */
-  showNumberPrefix?: boolean;
-
-  /**
-   * Visual variant of AccordionItem
-   *
-   * @default borderless
-   */
-  variant?: 'bordered' | 'borderless';
-
-  /**
-   * Accepts `AccordionItem` child nodes
-   */
-  children: ReactElement | ReactElement[];
-} & TestID &
-  StyledPropsBlade;
-
 const MIN_WIDTH: BoxProps['minWidth'] = {
-  s: makeSize(size[200]),
-  m: makeSize(size[360]),
-  l: makeSize(size[360]),
+  s: makeSize(sizeTokens[200]),
+  m: makeSize(sizeTokens[360]),
+  l: makeSize(sizeTokens[360]),
 };
 
 const getVariantStyles = (variant: AccordionProps['variant']): BoxProps => {
@@ -76,6 +37,7 @@ const Accordion = ({
   showNumberPrefix = false,
   children,
   variant = 'borderless',
+  size = 'large',
   testID,
   ...styledProps
 }: AccordionProps): ReactElement => {
@@ -107,6 +69,7 @@ const Accordion = ({
       showNumberPrefix,
       variant,
       numberOfItems,
+      size,
     }),
     [
       expandedAccordionItemIndex,
@@ -116,6 +79,7 @@ const Accordion = ({
       defaultExpandedIndex,
       variant,
       numberOfItems,
+      size,
     ],
   );
 
@@ -140,5 +104,4 @@ const Accordion = ({
   );
 };
 
-export type { AccordionProps };
 export { Accordion };

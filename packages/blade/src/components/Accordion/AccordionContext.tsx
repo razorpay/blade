@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import type { AccordionVariantType } from './types';
+import type { AccordionProps } from './types';
 import { throwBladeError } from '~utils/logger';
 
 type AccordionContextState = {
@@ -7,8 +7,9 @@ type AccordionContextState = {
   defaultExpandedIndex?: number;
   onExpandChange: (expandedIndex: number) => void;
   showNumberPrefix: boolean;
-  variant?: AccordionVariantType;
+  variant: AccordionProps['variant'];
   numberOfItems: number;
+  size: AccordionProps['size'];
 };
 
 const AccordionContext = createContext<AccordionContextState | null>(null);
