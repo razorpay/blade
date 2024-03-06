@@ -27,6 +27,20 @@ type DropdownOverlayProps = {
    */
   zIndex?: number;
   width?: BoxProps['width'];
+  /**
+   * Sets the placement of the DropdownOverlay
+   *
+   * @default 'bottom-start'
+   */
+  placement?:
+    | 'bottom-end'
+    | 'bottom-start'
+    | 'left-end'
+    | 'left-start'
+    | 'right-end'
+    | 'right-start'
+    | 'top-end'
+    | 'top-start';
 } & TestID;
 
 export type { DropdownProps, DropdownOverlayProps };

@@ -34,6 +34,7 @@ const _DropdownOverlay = ({
   testID,
   zIndex = componentZIndices.dropdownOverlay,
   width,
+  placement = 'bottom-start',
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
@@ -47,7 +48,7 @@ const _DropdownOverlay = ({
     open: isOpen,
     onOpenChange: setIsOpen,
     strategy: 'fixed',
-    placement: 'bottom-start',
+    placement,
     elements: {
       // Input triggers have their ref on internal input element but we want width height of overall visible input hence wrapperRef is needed
       // We fallback to use `triggererRef` for triggers like button and link where wrapper is not needed
