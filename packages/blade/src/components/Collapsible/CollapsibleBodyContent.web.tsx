@@ -12,10 +12,12 @@ import {
 import { castWebType, makeSize } from '~utils';
 import { Box } from '~components/Box';
 import { useDidUpdate } from '~utils/useDidUpdate';
+import BaseBox from '~components/Box/BaseBox';
 
 type StyledCollapsibleBodyContentProps = {
   defaultIsExpanded: boolean;
   isExpanded: boolean;
+  borderTopWidth: CollapsibleBodyContentProps['borderTopWidth'];
 };
 
 /**
@@ -25,7 +27,7 @@ type StyledCollapsibleBodyContentProps = {
 const HEIGHT_EXPANDED = 'auto';
 const HEIGHT_COLLAPSED = '0px';
 
-const StyledCollapsibleBodyContent = styled.div<StyledCollapsibleBodyContentProps>((props) => {
+const StyledCollapsibleBodyContent = styled(BaseBox)<StyledCollapsibleBodyContentProps>((props) => {
   const { theme, defaultIsExpanded, isExpanded } = props;
   const transitionDuration = castWebType(getTransitionDuration(theme));
   const transitionTimingFunction = castWebType(getTransitionEasing(theme));
@@ -48,7 +50,10 @@ const StyledCollapsibleBodyContent = styled.div<StyledCollapsibleBodyContentProp
   };
 });
 
-const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): ReactElement => {
+const CollapsibleBodyContent = ({
+  children,
+  borderTopWidth,
+}: CollapsibleBodyContentProps): ReactElement => {
   const { isExpanded, defaultIsExpanded, direction } = useCollapsible();
   const collapsibleBodyContentRef = useRef<HTMLDivElement>(null);
 
@@ -124,6 +129,8 @@ const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): Reac
       isExpanded={isExpanded}
       defaultIsExpanded={defaultIsExpanded}
       onTransitionEnd={onTransitionEnd}
+      borderTopWidth={borderTopWidth}
+      borderTopColor={borderTopWidth ? 'surface.border.gray.subtle' : undefined}
     >
       <Box {...getCollapsibleBodyContentBoxProps({ direction })}>{children}</Box>
     </StyledCollapsibleBodyContent>

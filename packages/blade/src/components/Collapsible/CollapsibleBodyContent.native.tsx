@@ -7,7 +7,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import type { LayoutChangeEvent } from 'react-native';
+import type { LayoutChangeEvent, ViewStyle } from 'react-native';
 import { View } from 'react-native';
 import type { CollapsibleBodyContentProps } from './types';
 import { useCollapsible } from './CollapsibleContext';
@@ -20,7 +20,8 @@ import {
 import { nativeStyles } from './styles.native';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
-import { castNativeType } from '~utils';
+import { castNativeType, makeBorderSize } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
 
 type AnimatedStyledCollapsibleBodyContentProps = {
   isExpanded: boolean;
@@ -34,7 +35,10 @@ const AnimatedStyledCollapsibleBodyContent = styled(
   };
 });
 
-const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): ReactElement => {
+const CollapsibleBodyContent = ({
+  children,
+  borderTopWidth,
+}: CollapsibleBodyContentProps): ReactElement => {
   const { isExpanded, direction } = useCollapsible();
   const { theme } = useTheme();
 
@@ -72,12 +76,18 @@ const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): Reac
     );
   }, [isExpanded, opacity, duration, easing, height, layoutHeight, onAnimationComplete]);
 
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      opacity: opacity.value,
-      height: height.value,
-    };
-  });
+  const animatedStyles = useAnimatedStyle(
+    (): ViewStyle => {
+      return {
+        opacity: opacity.value,
+        height: height.value,
+        borderTopWidth: borderTopWidth
+          ? getIn(theme, `border.width.${borderTopWidth as 'none' | 'thinner'}`)
+          : undefined,
+        borderTopColor: borderTopWidth ? theme.colors.surface.border.gray.subtle : undefined,
+      };
+    },
+  );
 
   /**
    * Tracks the height of content so we can animate height to and from 0 to the content's height.
