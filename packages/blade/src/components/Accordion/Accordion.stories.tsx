@@ -253,7 +253,10 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
     <AccordionComponent {...args}>
       <AccordionItem>
         <AccordionItemHeader title="How can I setup Subscriptions?" />
-        <AccordionItemBody description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries." />
+        <AccordionItemBody>
+          Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+          search functionality to ask your queries.
+        </AccordionItemBody>
       </AccordionItem>
       <AccordionItem>
         <AccordionItemHeader>
@@ -262,8 +265,9 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
             <div>SLOT HEADER</div>
           </>
         </AccordionItemHeader>
-        <AccordionItemBody description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.">
-          <div>SLOT</div>
+        <AccordionItemBody>
+          Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+          search functionality to ask your queries.
         </AccordionItemBody>
       </AccordionItem>
     </AccordionComponent>

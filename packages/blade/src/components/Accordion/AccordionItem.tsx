@@ -97,7 +97,7 @@ const AccordionItem = ({
           _borderTopWidth={variant === 'bordered' ? 'thinner' : 'none'}
         >
           {isDeprecatedAPI ? (
-            <AccordionItemBody description={description}>{children}</AccordionItemBody>
+            <AccordionItemBody _description={description}>{children}</AccordionItemBody>
           ) : (
             body
           )}

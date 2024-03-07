@@ -1,3 +1,4 @@
+import { useAccordion } from './AccordionContext';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 
@@ -12,6 +13,8 @@ const AccordionItemHeader = ({
   BaseHeaderProps,
   'title' | 'subtitle' | 'leading' | 'children' | 'trailing' | 'titleSuffix'
 >): React.ReactElement => {
+  const { size } = useAccordion();
+
   return (
     <BaseHeader
       leading={leading}
@@ -24,6 +27,7 @@ const AccordionItemHeader = ({
       showDivider={false}
       paddingX="spacing.5"
       marginY="spacing.5"
+      size={size}
     >
       {children}
     </BaseHeader>

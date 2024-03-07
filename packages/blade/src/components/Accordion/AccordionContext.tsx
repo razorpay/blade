@@ -9,7 +9,7 @@ type AccordionContextState = {
   showNumberPrefix: boolean;
   variant: AccordionProps['variant'];
   numberOfItems: number;
-  size: AccordionProps['size'];
+  size: NonNullable<AccordionProps['size']>;
 };
 
 const AccordionContext = createContext<AccordionContextState | null>(null);

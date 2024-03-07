@@ -1,7 +1,9 @@
+import { useAccordion } from './AccordionContext';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
+import type { StringChildrenType } from '~utils/types';
 
 const BLANK_SPACE = ' ';
 
@@ -19,21 +21,41 @@ const reactNativeMultilineTextOverflowFix = (
   </BaseBox>
 );
 
+const descriptionSizeToken = {
+  large: 'medium',
+  medium: 'small',
+} as const;
+
 const AccordionItemBody = ({
   children,
-  description,
+  _description,
 }: {
-  children?: React.ReactNode;
-  description?: string;
+  children?: React.ReactNode | StringChildrenType;
+  _description?: string;
 }): React.ReactElement => {
-  const _description = description && (
-    <Text color="interactive.text.gray.subtle">{description}</Text>
+  const { size } = useAccordion();
+
+  const childrenElement =
+    typeof children === 'string' || typeof children === 'number' ? (
+      <Text size={descriptionSizeToken[size]} color="surface.text.gray.subtle">
+        {children}
+      </Text>
+    ) : (
+      children
+    );
+
+  const descriptionElement = _description && (
+    <Text size={descriptionSizeToken[size]} color="surface.text.gray.subtle">
+      {_description}
+    </Text>
   );
 
   const collapsibleBodyContent = isReactNative() ? (
     <BaseBox marginX="spacing.5">
-      {_description}
-      <BaseBox marginTop={description && children ? 'spacing.5' : 'spacing.0'}>{children}</BaseBox>
+      {descriptionElement}
+      <BaseBox marginTop={_description && children ? 'spacing.5' : 'spacing.0'}>
+        {childrenElement}
+      </BaseBox>
       {reactNativeMultilineTextOverflowFix}
     </BaseBox>
   ) : (
@@ -44,8 +66,8 @@ const AccordionItemBody = ({
       marginBottom="spacing.5"
       marginX="spacing.5"
     >
-      {_description}
-      {children}
+      {descriptionElement}
+      {childrenElement}
     </BaseBox>
   );
 
