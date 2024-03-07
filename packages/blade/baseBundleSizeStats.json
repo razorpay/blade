@@ -135,9 +135,9 @@
   {
     "name": "FileUpload",
     "passed": true,
-    "size": 35534,
+    "size": 35494,
     "sizeLimit": 2000000,
-    "loading": 0.6940234375
+    "loading": 0.6932421875
   },
   {
     "name": "Indicator",
