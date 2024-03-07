@@ -18,7 +18,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Drawer"
       componentDescription="A drawer is a panel that slides in mostly from right side of the screen over the existing content in the viewport."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=78667%3A66659&mode=design"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=78667-66659&t=YFTWKtgOioAyOKwG-1&scaling=min-zoom&page-id=77229%3A6461&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>{DrawerStackingStory}</Sandbox>

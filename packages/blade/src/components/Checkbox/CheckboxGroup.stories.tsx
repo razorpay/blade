@@ -16,7 +16,7 @@ const Page = (): React.ReactElement => {
       componentName="CheckboxGroup"
       componentDescription="CheckboxGroup can be used to group together multiple checkboxes in a forms which provides out of the box state management for the multi-checkboxes and other features."
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Checkbox/_decisions/decisions.md"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=72092-40150&mode=design&t=jyVG8aXFc1Dlw2Se-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75857-44078&t=PxSB8TobkLzOQOjQ-1&scaling=min-zoom&page-id=13227%3A162974&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox showConsole editorHeight={400}>

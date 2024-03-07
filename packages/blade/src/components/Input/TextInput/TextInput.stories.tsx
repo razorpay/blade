@@ -223,7 +223,7 @@ export default {
           componentDescription="The TextInput component is a component that can be used to input name, email, telephone, url, search or plain text."
           componentName="TextInput"
           apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/TextInput/_decisions/_decisions.md"
-          figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=10953-210737&mode=design&t=jyVG8aXFc1Dlw2Se-4"
+          figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76077-57130&t=icthxu77bIRPBob9-1&scaling=min-zoom&page-id=10953%3A191554&mode=design"
         >
           <Title>Usage</Title>
           <Sandbox>

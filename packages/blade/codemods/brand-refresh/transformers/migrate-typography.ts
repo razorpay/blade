@@ -89,6 +89,28 @@ function migrateTypographyComponents({ root, j, file }): void {
         ) {
           node.openingElement.name.name = 'Text';
           node.closingElement.name.name = 'Text';
+
+          // Add 'Text' import if not present
+          // Note that we don't remove the 'Heading' import as it might be used elsewhere
+          root
+            .find(j.ImportDeclaration, {
+              source: {
+                value: '@razorpay/blade/components',
+              },
+            })
+            .replaceWith((path) => {
+              // Check if Heading import is already present
+              const isTextImportPresent = path.node.specifiers.some(
+                (node) => node.imported.name === 'Text',
+              );
+
+              // If Heading import is not present, update the "Title" import to use "Heading"
+              if (!isTextImportPresent) {
+                path.node.specifiers.push(j.importSpecifier(j.identifier('Text')));
+              }
+
+              return path.node;
+            });
         }
 
         if (

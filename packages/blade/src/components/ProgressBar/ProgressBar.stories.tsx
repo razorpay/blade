@@ -14,7 +14,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="A Progress bar is generally a branded element that indicates progress of process or task"
       componentName="ProgressBar"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74922-198459&mode=design&t=Qm80tBqhFBFB5BvZ-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85253&t=MTEDDZK78jmAqDmQ-1&scaling=min-zoom&page-id=16430%3A256331&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>

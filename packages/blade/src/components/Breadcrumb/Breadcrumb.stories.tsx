@@ -24,7 +24,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Breadcrumb"
       componentDescription="Breadcrumbs are used for navigating through or to show user’s location in an application"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=81010%3A24682"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=81379-63155&t=WMj82CNLXHQp4D1C-1&scaling=min-zoom&page-id=81010%3A24682&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -296,12 +296,14 @@ const CommonPage = (): React.ReactElement => {
 
         <Text marginBottom="spacing.3">Trigger URL Change:</Text>
         <Box display="flex" flexDirection="column" gap="spacing.2">
-          <BreadcrumbNavLink to={urls.home}>Home</BreadcrumbNavLink>
-          <BreadcrumbNavLink to={urls.products}>Products</BreadcrumbNavLink>
-          <BreadcrumbNavLink to={urls.payments}>Payments</BreadcrumbNavLink>
-          <BreadcrumbNavLink to={urls.intPayments}>International Payments</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.home}>{'1.1'} Home</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.products}>{'1.1'} Products</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.payments}>{'1.1'} Payments</BreadcrumbNavLink>
+          <BreadcrumbNavLink to={urls.intPayments}>
+            {'1.1.2'} International Payments
+          </BreadcrumbNavLink>
           <BreadcrumbNavLink to={urls.acceptIntPayments}>
-            Accept International Payments
+            {'1.1.3'} Accept International Payments
           </BreadcrumbNavLink>
         </Box>
       </CardBody>
