@@ -74,15 +74,25 @@ type BaseHeaderProps = {
 
 type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text' | 'Amount';
 
-const centerBoxProps: BoxProps = {
+const commonCenterBoxProps: BoxProps = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  // We want to align title, icon, titleSuffix, trailing, closeButton to baseline
-  // But we also want to keep them center aligned to each other
-  // So we add a virtual Box around these slots with 28px and center align them to that box
-  // We have done similar thing in figma as well (which is where this 28px comes from)
-  height: '28px',
+};
+
+const centerBoxProps: { large: BoxProps; medium: BoxProps } = {
+  large: {
+    ...commonCenterBoxProps,
+    // We want to align title, icon, titleSuffix, trailing, closeButton to baseline
+    // But we also want to keep them center aligned to each other
+    // So we add a virtual Box around these slots with 28px and center align them to that box
+    // We have done similar thing in figma as well (which is where this 28px comes from)
+    height: '28px',
+  },
+  medium: {
+    ...commonCenterBoxProps,
+    height: '20px',
+  },
 };
 
 const sizeTokensMapping = {
@@ -241,7 +251,7 @@ const _BaseHeader = ({
         <BaseBox display="flex" flexDirection="row" userSelect="none">
           {showBackButton ? (
             <BaseBox overflow="visible" marginRight="spacing.5">
-              <Box {...centerBoxProps}>
+              <Box {...centerBoxProps[size]}>
                 <IconButton
                   ref={backButtonRef}
                   size="large"
@@ -261,7 +271,7 @@ const _BaseHeader = ({
             alignItems="flex-start"
           >
             {leading ? (
-              <BaseBox marginRight="spacing.3" {...centerBoxProps}>
+              <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
                 {leading}
               </BaseBox>
             ) : null}
@@ -287,7 +297,7 @@ const _BaseHeader = ({
                 ) : null}
                 {titleSuffix && (
                   <BaseBox marginLeft="spacing.3">
-                    <Box {...centerBoxProps}>{titleSuffix}</Box>
+                    <Box {...centerBoxProps[size]}>{titleSuffix}</Box>
                   </BaseBox>
                 )}
               </BaseBox>
@@ -300,11 +310,11 @@ const _BaseHeader = ({
           </BaseBox>
           {validatedTrailingComponent ? (
             <BaseBox marginRight="spacing.5">
-              <Box {...centerBoxProps}>{validatedTrailingComponent}</Box>
+              <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
             </BaseBox>
           ) : null}
           {showCloseButton ? (
-            <Box {...centerBoxProps}>
+            <Box {...centerBoxProps[size]}>
               <IconButton
                 ref={closeButtonRef}
                 size="large"
