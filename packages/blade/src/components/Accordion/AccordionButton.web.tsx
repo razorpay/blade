@@ -20,19 +20,19 @@ const _AccordionButton = ({
   header,
 }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
-  const { showNumberPrefix, expandedIndex } = useAccordion();
+  const { showNumberPrefix, expandedIndex, size } = useAccordion();
 
   const toggleCollapse = (): void => onExpandChange(!isExpanded);
   const onClick = (): void => toggleCollapse();
 
   const _index =
     typeof index === 'number' && showNumberPrefix ? (
-      <Text size="large" weight="semibold" marginTop="-2px" as="span">
+      <Text size={size} weight="semibold" marginTop="-2px" as="span">
         {index + 1}.
       </Text>
     ) : null;
 
-  const _icon = Icon && <Icon size="large" color="surface.icon.gray.normal" marginY="spacing.2" />;
+  const _icon = Icon && <Icon size={size} color="surface.icon.gray.normal" marginY="spacing.2" />;
 
   if (__DEV__) {
     if (_index && _icon) {
