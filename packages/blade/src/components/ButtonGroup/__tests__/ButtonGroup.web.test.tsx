@@ -4,6 +4,10 @@ import type { ButtonGroupProps } from '../ButtonGroup';
 import { ButtonGroup } from '../ButtonGroup';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { Button } from '~components/Button/Button';
+import { ChevronDownIcon, PlusIcon } from '~components/Icons';
+import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -14,7 +18,7 @@ const sizes: ButtonGroupProps['size'][] = ['xsmall', 'small', 'medium', 'large']
 
 describe('<ButtonGroup />', () => {
   it('should render ButtonGroup with default properties', () => {
-    const { container, getByText, getByRole, getAllByRole } = renderWithTheme(
+    const { container, getByRole, getAllByRole } = renderWithTheme(
       <ButtonGroup>
         <Button>One</Button>
         <Button>Two</Button>
@@ -28,6 +32,31 @@ describe('<ButtonGroup />', () => {
     expect(button1).toHaveTextContent('One');
     expect(button2).toHaveTextContent('Two');
     expect(button3).toHaveTextContent('Three');
+  });
+
+  it('should render ButtonGroup with dropdown', () => {
+    const { container, getByRole, getAllByRole } = renderWithTheme(
+      <ButtonGroup>
+        <Button icon={PlusIcon}>Payout</Button>
+        <Dropdown>
+          <DropdownButton icon={ChevronDownIcon}> More</DropdownButton>
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="Bulk Payout" value="bulk-payout" />
+              <ActionListItem title="Upload Invoice" value="upload-invoice" />
+              <ActionListItem title="Add Contact" value="add-contact" />
+              <ActionListItem title="Team Member" value="team-member" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </ButtonGroup>,
+    );
+    expect(container).toMatchSnapshot();
+    expect(getByRole('group')).toBeInTheDocument();
+
+    const [button1, button2] = getAllByRole('button');
+    expect(button1).toHaveTextContent('Payout');
+    expect(button2).toHaveTextContent('More');
   });
 
   sizes.forEach((size) => {
@@ -116,5 +145,52 @@ describe('<ButtonGroup />', () => {
       </ButtonGroup>,
     );
     expect(getByTestId('button-group-test')).toBeInTheDocument();
+  });
+
+  it('should throw error for invalid children', () => {
+    expect(() =>
+      renderWithTheme(
+        <ButtonGroup>
+          <Button>One</Button>
+          <Button>Two</Button>
+          <p>Three</p>
+        </ButtonGroup>,
+      ),
+    ).toThrowError(
+      '[Blade: ButtonGroup]: Only "Button" or "Dropdown" component with Button trigger are allowed as children.',
+    );
+  });
+
+  it('should throw error with invalid dropdown children', () => {
+    expect(() =>
+      renderWithTheme(
+        <ButtonGroup>
+          <Button icon={PlusIcon}>Payout</Button>
+          <Dropdown selectionType="single">
+            <AutoComplete
+              label="City"
+              placeholder="Select your City"
+              name="action"
+              onChange={({ name, values }) => {
+                console.log({ name, values });
+              }}
+              onInputValueChange={({ name, value }) => {
+                console.log({ name, value });
+              }}
+            />
+            <DropdownOverlay>
+              <ActionList>
+                <ActionListItem title="Mumbai" value="mumbai" />
+                <ActionListItem title="Pune" value="pune" />
+                <ActionListItem title="Bangalore" value="bangalore" />
+                <ActionListItem title="Mysore" value="mysore" />
+              </ActionList>
+            </DropdownOverlay>
+          </Dropdown>
+        </ButtonGroup>,
+      ),
+    ).toThrowError(
+      '[Blade: ButtonGroup]: Only "Button" or "Dropdown" component with Button trigger are allowed as children.',
+    );
   });
 });

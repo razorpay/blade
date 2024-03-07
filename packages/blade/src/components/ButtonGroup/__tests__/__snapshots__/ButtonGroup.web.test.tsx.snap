@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -86,7 +86,17 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -104,7 +114,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -116,9 +126,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(227,100%,59%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -132,7 +143,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -155,19 +166,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -177,19 +193,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -199,14 +220,19 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -214,8 +240,610 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
 </div>
 `;
 
-exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
+exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.c5.c5.c5.c5.c5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 4px;
+}
+
+.c8.c8.c8.c8.c8 {
+  text-align: left;
+  position: relative;
+}
+
+.c9.c9.c9.c9.c9 {
+  display: none;
+  z-index: 1002;
+}
+
+.c10.c10.c10.c10.c10 {
+  width: 100%;
+  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
+}
+
+.c14.c14.c14.c14.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  max-height: 20px;
+}
+
+.c15.c15.c15.c15.c15 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.c16.c16.c16.c16.c16 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding-right: 8px;
+  padding-left: 0px;
+}
+
+.c18.c18.c18.c18.c18 {
+  margin-left: auto;
+}
+
+.c1.c1.c1.c1.c1 {
+  min-height: 36px;
+  width: auto;
+  cursor: pointer;
+  background-color: hsla(227,100%,59%,1);
+  border-color: hsla(227,100%,59%,1);
+  border-width: 0px;
+  border-radius: 4px;
+  border-style: solid;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  overflow: hidden;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition-property: background-color,border-color,box-shadow;
+  transition-property: background-color,border-color,box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  position: relative;
+}
+
+.c1.c1.c1.c1.c1:hover {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:active {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+}
+
+.c1.c1.c1.c1.c1:focus-visible {
+  background-color: hsla(227,71%,51%,1);
+  border-color: hsla(227,100%,59%,1);
+  outline: 1px solid hsla(227,100%,59%,0.09);
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
+}
+
+.c1.c1.c1.c1.c1 * {
+  -webkit-transition-property: color,fill,opacity;
+  transition-property: color,fill,opacity;
+  -webkit-transition-duration: 150ms;
+  transition-duration: 150ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
 .c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c6.c6.c6.c6.c6 {
+  color: hsla(0,0%,100%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.c17.c17.c17.c17.c17 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: -webkit-box;
+  line-clamp: 1;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.c4.c4.c4.c4.c4 {
+  opacity: 1;
+}
+
+.c0.c0.c0.c0.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(227,100%,59%,1);
+  border-style: solid;
+}
+
+.c0.c0.c0.c0.c0 button[role="button"] {
+  border-radius: 0;
+  border: none;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+}
+
+.c7.c7.c7.c7.c7 {
+  border-width: 0;
+  border-left-style: solid;
+  border-left-width: 1px;
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+  color: hsla(214,28%,84%,1);
+}
+
+.c11.c11.c11.c11.c11 {
+  background-color: hsla(0,0%,100%,1);
+  border-width: 1px;
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
+  border-radius: 4px;
+}
+
+.c12.c12.c12.c12.c12 {
+  overflow-y: auto;
+  max-height: 300px;
+  padding: 8px;
+}
+
+.c12.c12.c12.c12.c12 [role=group]:last-child > [role=separator]:last-child {
+  display: none;
+}
+
+.c13.c13.c13.c13.c13 {
+  border-width: 4px;
+  border-style: solid;
+  border-color: transparent;
+  text-align: left;
+  background-color: transparent;
+  padding: 4px;
+  border-radius: 4px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  display: block;
+}
+
+.c13.c13.c13.c13.c13:hover:not([aria-disabled=true]) {
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c13.c13.c13.c13.c13[aria-selected=true] {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c13.c13.c13.c13.c13[aria-selected=true]:hover {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+<div>
+  <div
+    class=" c0"
+    data-blade-component="button-group"
+    role="group"
+  >
+    <button
+      class="c1"
+      data-blade-component="button"
+      role="button"
+      type="button"
+    >
+      <div
+        class=" c2"
+        data-blade-component="base-box"
+      >
+        <div
+          class="c3 c4"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c5"
+            data-blade-component="base-box"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="16px"
+              viewBox="0 0 24 24"
+              width="16px"
+            >
+              <path
+                d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z"
+                data-blade-component="svg-path"
+                fill="hsla(0, 0%, 100%, 1)"
+              />
+            </svg>
+          </div>
+          <div
+            class="c6"
+            data-blade-component="base-text"
+          >
+            Payout
+          </div>
+        </div>
+      </div>
+    </button>
+    <div
+      class=" c7"
+      data-blade-component="base-box"
+    />
+    <div
+      class=""
+      data-blade-component="dropdown"
+    >
+      <div
+        class="c8"
+        data-blade-component="base-box"
+      >
+        <button
+          aria-controls="dropdown-1-actionlist"
+          aria-expanded="false"
+          aria-haspopup="menu"
+          class="c1"
+          data-blade-component="button"
+          role="button"
+          type="button"
+        >
+          <div
+            class=" c2"
+            data-blade-component="base-box"
+          >
+            <div
+              class="c3 c4"
+              data-blade-component="base-box"
+            >
+              <div
+                class="c5"
+                data-blade-component="base-box"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="Svgweb__StyledSvg-vcmjs8-0"
+                  data-blade-component="icon"
+                  fill="none"
+                  height="16px"
+                  viewBox="0 0 24 24"
+                  width="16px"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                    data-blade-component="svg-path"
+                    fill="hsla(0, 0%, 100%, 1)"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+              </div>
+              <div
+                class="c6"
+                data-blade-component="base-text"
+              >
+                More
+              </div>
+            </div>
+          </div>
+        </button>
+        <div
+          class="c9"
+          data-blade-component="base-box"
+          style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 0px);"
+        >
+          <div
+            class="c10 c11"
+            data-blade-component="dropdown-overlay"
+            elevation="midRaised"
+            style="transform: translateY(-8px); opacity: 0; transition-property: transform,opacity; transition-duration: 200ms;"
+          >
+            <div
+              aria-labelledby="dropdown-1-label"
+              class=""
+              data-blade-component="action-list"
+              id="dropdown-1-actionlist"
+              role="menu"
+            >
+              <div
+                class=" c12"
+                data-blade-component="base-box"
+              >
+                <button
+                  class=" c13"
+                  data-blade-component="action-list-item"
+                  data-index="0"
+                  data-value="bulk-payout"
+                  id="dropdown-1-0"
+                  role="menuitem"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <div
+                    class="c14"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c15"
+                      data-blade-component="base-box"
+                    />
+                    <div
+                      class="c16"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c17"
+                        data-blade-component="text"
+                      >
+                        Bulk Payout
+                      </p>
+                    </div>
+                    <div
+                      class="c18"
+                      data-blade-component="base-box"
+                    />
+                  </div>
+                  <div
+                    class=""
+                    data-blade-component="base-box"
+                  />
+                </button>
+                <button
+                  class=" c13"
+                  data-blade-component="action-list-item"
+                  data-index="1"
+                  data-value="upload-invoice"
+                  id="dropdown-1-1"
+                  role="menuitem"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <div
+                    class="c14"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c15"
+                      data-blade-component="base-box"
+                    />
+                    <div
+                      class="c16"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c17"
+                        data-blade-component="text"
+                      >
+                        Upload Invoice
+                      </p>
+                    </div>
+                    <div
+                      class="c18"
+                      data-blade-component="base-box"
+                    />
+                  </div>
+                  <div
+                    class=""
+                    data-blade-component="base-box"
+                  />
+                </button>
+                <button
+                  class=" c13"
+                  data-blade-component="action-list-item"
+                  data-index="2"
+                  data-value="add-contact"
+                  id="dropdown-1-2"
+                  role="menuitem"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <div
+                    class="c14"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c15"
+                      data-blade-component="base-box"
+                    />
+                    <div
+                      class="c16"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c17"
+                        data-blade-component="text"
+                      >
+                        Add Contact
+                      </p>
+                    </div>
+                    <div
+                      class="c18"
+                      data-blade-component="base-box"
+                    />
+                  </div>
+                  <div
+                    class=""
+                    data-blade-component="base-box"
+                  />
+                </button>
+                <button
+                  class=" c13"
+                  data-blade-component="action-list-item"
+                  data-index="3"
+                  data-value="team-member"
+                  id="dropdown-1-3"
+                  role="menuitem"
+                  tabindex="-1"
+                  type="button"
+                >
+                  <div
+                    class="c14"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c15"
+                      data-blade-component="base-box"
+                    />
+                    <div
+                      class="c16"
+                      data-blade-component="base-box"
+                    >
+                      <p
+                        class="c17"
+                        data-blade-component="text"
+                      >
+                        Team Member
+                      </p>
+                    </div>
+                    <div
+                      class="c18"
+                      data-blade-component="base-box"
+                    />
+                  </div>
+                  <div
+                    class=""
+                    data-blade-component="base-box"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -300,7 +928,17 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -318,7 +956,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -328,9 +966,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(227,100%,59%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -344,7 +983,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   flex: 1;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -367,19 +1006,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -389,19 +1033,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -411,14 +1060,19 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -427,7 +1081,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -512,7 +1166,17 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -530,7 +1194,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -542,9 +1206,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(227,100%,59%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -558,7 +1223,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -581,19 +1246,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -603,19 +1273,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -625,14 +1300,19 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -641,7 +1321,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -726,7 +1406,17 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -744,7 +1434,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -756,9 +1446,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(227,100%,59%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -772,7 +1463,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -795,19 +1486,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -817,19 +1513,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -839,14 +1540,19 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -855,7 +1561,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -940,7 +1646,17 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -958,7 +1674,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -970,9 +1686,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(227,100%,59%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -986,7 +1703,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -1009,19 +1726,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -1031,19 +1753,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -1053,14 +1780,19 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -1069,7 +1801,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1154,7 +1886,17 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -1172,7 +1914,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -1184,9 +1926,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(227,100%,59%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -1200,7 +1943,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -1223,19 +1966,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          ONE
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            ONE
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -1245,19 +1993,24 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          TWO
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            TWO
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -1267,14 +2020,19 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          THREE
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            THREE
+          </div>
         </div>
       </div>
     </button>
@@ -1283,7 +2041,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1368,7 +2126,17 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(227,100%,59%,0.18);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1386,7 +2154,7 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -1398,9 +2166,10 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: not-allowed;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(227,100%,59%,0.18);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -1414,7 +2183,7 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -1438,19 +2207,24 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -1461,19 +2235,24 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -1484,14 +2263,19 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -1500,7 +2284,7 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render disabled negative color primary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1585,7 +2369,17 @@ exports[`<ButtonGroup /> should render disabled negative color primary button 1`
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(4,74%,49%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1603,7 +2397,7 @@ exports[`<ButtonGroup /> should render disabled negative color primary button 1`
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -1616,14 +2410,19 @@ exports[`<ButtonGroup /> should render disabled negative color primary button 1`
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -1631,7 +2430,7 @@ exports[`<ButtonGroup /> should render disabled negative color primary button 1`
 `;
 
 exports[`<ButtonGroup /> should render disabled negative color secondary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1716,7 +2515,17 @@ exports[`<ButtonGroup /> should render disabled negative color secondary button 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(4,74%,49%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1734,7 +2543,7 @@ exports[`<ButtonGroup /> should render disabled negative color secondary button 
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -1747,14 +2556,19 @@ exports[`<ButtonGroup /> should render disabled negative color secondary button 
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -1762,7 +2576,7 @@ exports[`<ButtonGroup /> should render disabled negative color secondary button 
 `;
 
 exports[`<ButtonGroup /> should render disabled positive color primary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1847,7 +2661,17 @@ exports[`<ButtonGroup /> should render disabled positive color primary button 1`
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(150,100%,32%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1865,7 +2689,7 @@ exports[`<ButtonGroup /> should render disabled positive color primary button 1`
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -1878,14 +2702,19 @@ exports[`<ButtonGroup /> should render disabled positive color primary button 1`
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -1893,7 +2722,7 @@ exports[`<ButtonGroup /> should render disabled positive color primary button 1`
 `;
 
 exports[`<ButtonGroup /> should render disabled positive color secondary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1978,7 +2807,17 @@ exports[`<ButtonGroup /> should render disabled positive color secondary button 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(150,100%,32%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1996,7 +2835,7 @@ exports[`<ButtonGroup /> should render disabled positive color secondary button 
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2009,14 +2848,19 @@ exports[`<ButtonGroup /> should render disabled positive color secondary button 
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -2024,7 +2868,7 @@ exports[`<ButtonGroup /> should render disabled positive color secondary button 
 `;
 
 exports[`<ButtonGroup /> should render disabled primary color primary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2109,7 +2953,17 @@ exports[`<ButtonGroup /> should render disabled primary color primary button 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(227,100%,59%,0.18);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2127,7 +2981,7 @@ exports[`<ButtonGroup /> should render disabled primary color primary button 1`]
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2140,14 +2994,19 @@ exports[`<ButtonGroup /> should render disabled primary color primary button 1`]
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -2155,7 +3014,7 @@ exports[`<ButtonGroup /> should render disabled primary color primary button 1`]
 `;
 
 exports[`<ButtonGroup /> should render disabled primary color secondary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2240,7 +3099,17 @@ exports[`<ButtonGroup /> should render disabled primary color secondary button 1
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(227,100%,59%,0.18);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2258,7 +3127,7 @@ exports[`<ButtonGroup /> should render disabled primary color secondary button 1
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2271,14 +3140,19 @@ exports[`<ButtonGroup /> should render disabled primary color secondary button 1
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -2286,7 +3160,7 @@ exports[`<ButtonGroup /> should render disabled primary color secondary button 1
 `;
 
 exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2368,7 +3242,17 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2386,7 +3270,7 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2399,14 +3283,19 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -2414,7 +3303,7 @@ exports[`<ButtonGroup /> should render disabled primary color tertiary button 1`
 `;
 
 exports[`<ButtonGroup /> should render disabled white color primary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2499,7 +3388,17 @@ exports[`<ButtonGroup /> should render disabled white color primary button 1`] =
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,0%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2517,7 +3416,7 @@ exports[`<ButtonGroup /> should render disabled white color primary button 1`] =
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2530,14 +3429,19 @@ exports[`<ButtonGroup /> should render disabled white color primary button 1`] =
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -2545,7 +3449,7 @@ exports[`<ButtonGroup /> should render disabled white color primary button 1`] =
 `;
 
 exports[`<ButtonGroup /> should render disabled white color secondary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2630,7 +3534,17 @@ exports[`<ButtonGroup /> should render disabled white color secondary button 1`]
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2648,7 +3562,7 @@ exports[`<ButtonGroup /> should render disabled white color secondary button 1`]
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2661,14 +3575,19 @@ exports[`<ButtonGroup /> should render disabled white color secondary button 1`]
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -2676,7 +3595,7 @@ exports[`<ButtonGroup /> should render disabled white color secondary button 1`]
 `;
 
 exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2758,7 +3677,17 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2776,7 +3705,7 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
   padding: 0;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -2789,14 +3718,19 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Pay Now
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Pay Now
+        </div>
       </div>
     </div>
   </button>
@@ -2804,7 +3738,7 @@ exports[`<ButtonGroup /> should render disabled white color tertiary button 1`] 
 `;
 
 exports[`<ButtonGroup /> should render negative color primary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2889,7 +3823,17 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2907,7 +3851,7 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -2919,9 +3863,10 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(4,74%,49%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -2935,7 +3880,7 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -2958,19 +3903,24 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -2980,19 +3930,24 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -3002,14 +3957,19 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -3018,7 +3978,7 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3103,7 +4063,17 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(4,74%,49%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3121,7 +4091,7 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -3133,8 +4103,6 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
   border-width: 1px;
   border-color: hsla(4,74%,49%,1);
@@ -3152,7 +4120,7 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -3175,19 +4143,24 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -3197,19 +4170,24 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -3219,14 +4197,19 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -3235,7 +4218,7 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render positive color primary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3320,7 +4303,17 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3338,7 +4331,7 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -3350,9 +4343,10 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(150,100%,32%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -3366,7 +4360,7 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -3389,19 +4383,24 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -3411,19 +4410,24 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -3433,14 +4437,19 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -3449,7 +4458,7 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3534,7 +4543,17 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3552,7 +4571,7 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -3564,8 +4583,6 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
   border-width: 1px;
   border-color: hsla(150,100%,32%,1);
@@ -3583,7 +4600,7 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -3606,19 +4623,24 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -3628,19 +4650,24 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -3650,14 +4677,19 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -3666,7 +4698,7 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render primary color primary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3751,7 +4783,17 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3769,7 +4811,7 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -3781,9 +4823,10 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(227,100%,59%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -3797,7 +4840,7 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -3820,19 +4863,24 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -3842,19 +4890,24 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -3864,14 +4917,19 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -3880,7 +4938,7 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3965,7 +5023,17 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -3983,7 +5051,7 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -3995,8 +5063,6 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
   border-width: 1px;
   border-color: hsla(227,100%,59%,1);
@@ -4014,7 +5080,7 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -4037,19 +5103,24 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4059,19 +5130,24 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4081,14 +5157,19 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -4097,7 +5178,7 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4182,7 +5263,17 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -4200,7 +5291,7 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -4212,9 +5303,10 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(211,20%,52%,0.09);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -4228,7 +5320,7 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -4251,19 +5343,24 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4273,19 +5370,24 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4295,14 +5397,19 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -4311,7 +5418,7 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render white color primary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4396,7 +5503,17 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,0%,0.72);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -4414,7 +5531,7 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -4426,9 +5543,10 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(0,0%,100%,1);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -4442,7 +5560,7 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -4465,19 +5583,24 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4487,19 +5610,24 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4509,14 +5637,19 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -4525,7 +5658,7 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render white color secondary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4610,7 +5743,17 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -4628,7 +5771,7 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -4640,8 +5783,6 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
   border-width: 1px;
   border-color: hsla(0,0%,100%,0.8);
@@ -4659,7 +5800,7 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -4682,19 +5823,24 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4704,19 +5850,24 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4726,14 +5877,19 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
@@ -4742,7 +5898,7 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
 `;
 
 exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -4827,7 +5983,17 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -4845,7 +6011,7 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   padding: 0;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -4857,9 +6023,10 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  cursor: auto;
   border-radius: 4px;
+  border-width: 1px;
+  border-color: hsla(0,0%,100%,0.18);
+  border-style: solid;
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -4873,7 +6040,7 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   flex: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   border-width: 0;
   border-left-style: solid;
   border-left-width: 1px;
@@ -4896,19 +6063,24 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          One
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            One
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4918,19 +6090,24 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Two
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Two
+          </div>
         </div>
       </div>
     </button>
     <div
-      class=" c5"
+      class=" c6"
       data-blade-component="base-box"
     />
     <button
@@ -4940,14 +6117,19 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
       type="button"
     >
       <div
-        class="c2 c3"
+        class=" c2"
         data-blade-component="base-box"
       >
         <div
-          class="c4"
-          data-blade-component="base-text"
+          class="c3 c4"
+          data-blade-component="base-box"
         >
-          Three
+          <div
+            class="c5"
+            data-blade-component="base-text"
+          >
+            Three
+          </div>
         </div>
       </div>
     </button>
