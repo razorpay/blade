@@ -1,7 +1,9 @@
 import type React from 'react';
+import type { Placement } from '@floating-ui/react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { TestID } from '~utils/types';
 import type { BoxProps } from '~components/Box';
+
 type DropdownProps = {
   /**
    * Control open / close state of the Dropdown component
@@ -27,6 +29,12 @@ type DropdownOverlayProps = {
    */
   zIndex?: number;
   width?: BoxProps['width'];
+  /**
+   * Sets the placement of the DropdownOverlay
+   *
+   * @default 'bottom-start'
+   */
+  defaultPlacement?: Placement;
 } & TestID;
 
 export type { DropdownProps, DropdownOverlayProps };
