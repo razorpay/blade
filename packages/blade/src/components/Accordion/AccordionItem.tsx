@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
 import { AccordionButton } from './AccordionButton';
-import { useAccordion } from './AccordionContext';
+import { AccordionItemContext, useAccordion } from './AccordionContext';
 import { AccordionItemBody } from './AccordionItemBody';
 import { Divider } from '~components/Divider';
 import { BaseBox } from '~components/Box/BaseBox';
@@ -83,36 +83,42 @@ const AccordionItem = ({
   };
 
   return (
-    <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}>
-      <Collapsible
-        isExpanded={isExpanded}
-        defaultIsExpanded={isDefaultExpanded}
-        onExpandChange={handleExpandChange}
-        // Accordion has its own width restrictions
-        _shouldApplyWidthRestrictions={false}
-      >
-        <AccordionButton
-          index={_index}
-          icon={icon}
-          title={title}
-          header={header}
-          isDeprecatedAPI={isDeprecatedAPI}
-        />
-        <CollapsibleBody
-          // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
-          width={isReactNative() ? '100%' : undefined}
-          // Adding top border on content instead of bottom border on AccordionButton so that border of Accordion doesn't overlap with border of AccordionButton
-          _borderTopWidth={variant === 'bordered' ? 'thinner' : 'none'}
+    <AccordionItemContext.Provider
+      value={{
+        index: _index,
+      }}
+    >
+      <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}>
+        <Collapsible
+          isExpanded={isExpanded}
+          defaultIsExpanded={isDefaultExpanded}
+          onExpandChange={handleExpandChange}
+          // Accordion has its own width restrictions
+          _shouldApplyWidthRestrictions={false}
         >
-          {isDeprecatedAPI ? (
-            <AccordionItemBody _description={description}>{children}</AccordionItemBody>
-          ) : (
-            body
-          )}
-        </CollapsibleBody>
-      </Collapsible>
-      {isLastItem || variant === 'borderless' ? <Divider /> : null}
-    </BaseBox>
+          <AccordionButton
+            index={_index}
+            icon={icon}
+            title={title}
+            header={header}
+            isDeprecatedAPI={isDeprecatedAPI}
+          />
+          <CollapsibleBody
+            // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
+            width={isReactNative() ? '100%' : undefined}
+            // Adding top border on content instead of bottom border on AccordionButton so that border of Accordion doesn't overlap with border of AccordionButton
+            _borderTopWidth={variant === 'bordered' ? 'thinner' : 'none'}
+          >
+            {isDeprecatedAPI ? (
+              <AccordionItemBody _description={description}>{children}</AccordionItemBody>
+            ) : (
+              body
+            )}
+          </CollapsibleBody>
+        </Collapsible>
+        {isLastItem || variant === 'borderless' ? <Divider /> : null}
+      </BaseBox>
+    </AccordionItemContext.Provider>
   );
 };
 

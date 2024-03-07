@@ -16,6 +16,9 @@ import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Alert } from '~components/Alert';
 import { isReactNative } from '~utils';
+import { Text } from '~components/Typography';
+import { Badge } from '~components/Badge';
+import { Link } from '~components/Link';
 
 const Page = (): ReactElement => {
   return (
@@ -73,18 +76,27 @@ const meta: Meta<AccordionProps> = {
 const AccordionTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
   return (
     <AccordionComponent {...args}>
-      <AccordionItem
-        title="How can I setup Route?"
-        description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
-      />
-      <AccordionItem
-        title="How can I setup QR Codes?"
-        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
-      />
-      <AccordionItem
-        title="How can I setup Subscriptions?"
-        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
-      />
+      <AccordionItem>
+        <AccordionItemHeader title="How can I setup Route?" />
+        <AccordionItemBody>
+          You can use Razorpay Route from the Dashboard or using APIs to transfer money to
+          customers. You may also check our docs for detailed instructions.
+        </AccordionItemBody>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionItemHeader title="How can I setup QR Codes?" />
+        <AccordionItemBody>
+          Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+          search functionality to ask your queries.
+        </AccordionItemBody>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionItemHeader title="How can I setup Subscriptions?" />
+        <AccordionItemBody>
+          Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+          search functionality to ask your queries.
+        </AccordionItemBody>
+      </AccordionItem>
     </AccordionComponent>
   );
 };
@@ -92,21 +104,39 @@ const AccordionTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
 const AccordionWithIconsTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
   return (
     <AccordionComponent {...args}>
-      <AccordionItem
-        title="How can I setup Route?"
-        description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
-        icon={RoutesIcon}
-      />
-      <AccordionItem
-        title="How can I setup QR Codes?"
-        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
-        icon={QRCodeIcon}
-      />
-      <AccordionItem
-        title="How can I setup Subscriptions?"
-        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
-        icon={SubscriptionsIcon}
-      />
+      <AccordionItem>
+        <AccordionItemHeader
+          leading={<RoutesIcon size="large" />}
+          title="How can I setup Route?"
+          subtitle="Subtitle of how to setup route"
+          titleSuffix={<Badge>New</Badge>}
+          trailing={<Link>Apply</Link>}
+        />
+        <AccordionItemBody>
+          You can use Razorpay Route from the Dashboard or using APIs to transfer money to
+          customers. You may also check our docs for detailed instructions.
+        </AccordionItemBody>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionItemHeader
+          leading={<QRCodeIcon size="large" />}
+          title="How can I setup QR Codes?"
+        />
+        <AccordionItemBody>
+          Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+          search functionality to ask your queries.
+        </AccordionItemBody>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionItemHeader
+          leading={<SubscriptionsIcon size="large" />}
+          title="How can I setup Subscriptions?"
+        />
+        <AccordionItemBody>
+          Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+          search functionality to ask your queries.
+        </AccordionItemBody>
+      </AccordionItem>
     </AccordionComponent>
   );
 };
@@ -175,18 +205,27 @@ const AccordionControlledTemplate: StoryFn<typeof AccordionComponent> = ({
         expandedIndex={expandedIndex}
         onExpandChange={({ expandedIndex }) => setExpandedIndex(expandedIndex)}
       >
-        <AccordionItem
-          title="How can I setup Route?"
-          description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
-        />
-        <AccordionItem
-          title="How can I setup QR Codes?"
-          description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
-        />
-        <AccordionItem
-          title="How can I setup Subscriptions?"
-          description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
-        />
+        <AccordionItem>
+          <AccordionItemHeader title="How can I setup Route?" />
+          <AccordionItemBody>
+            You can use Razorpay Route from the Dashboard or using APIs to transfer money to
+            customers. You may also check our docs for detailed instructions.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader title="How can I setup QR Codes?" />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader title="How can I setup Subscriptions?" />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
       </AccordionComponent>
     </>
   );
@@ -210,30 +249,42 @@ const AccordionWithSlotTemplate: StoryFn<typeof AccordionComponent> = ({ ...args
   const [isVisible, setIsVisible] = useState(true);
   return (
     <AccordionComponent {...args}>
-      <AccordionItem
-        title="How can I setup Route?"
-        description="You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions."
-      >
-        {isVisible && (
+      <AccordionItem>
+        <AccordionItemHeader title="How can I setup Route?" />
+        <AccordionItemBody>
+          <Text color="surface.text.gray.subtle" marginBottom="spacing.10">
+            You can use Razorpay Route from the Dashboard or using APIs to transfer money to
+            customers. You may also check our docs for detailed instructions.
+          </Text>
+          {isVisible && (
+            <Alert
+              title="Custom slot"
+              description="You can render anything here along with description"
+              onDismiss={() => setIsVisible(false)}
+            />
+          )}
+        </AccordionItemBody>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionItemHeader>
+          <Text color="surface.text.primary.normal">CUSTOM SLOT HEADER</Text>
+        </AccordionItemHeader>
+        <AccordionItemBody>
           <Alert
             title="Custom slot"
-            description="You can render anything here along with description"
-            onDismiss={() => setIsVisible(false)}
+            description="Or you can skip description altogether and just render a custom component here"
+            isDismissible={false}
+            isFullWidth
           />
-        )}
+        </AccordionItemBody>
       </AccordionItem>
-      <AccordionItem title="How can I setup QR Codes?">
-        <Alert
-          title="Custom slot"
-          description="Or you can skip description altogether and just render a custom component here"
-          isDismissible={false}
-          isFullWidth
-        />
+      <AccordionItem>
+        <AccordionItemHeader title="How can I setup Subscriptions?" />
+        <AccordionItemBody>
+          Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+          search functionality to ask your queries.
+        </AccordionItemBody>
       </AccordionItem>
-      <AccordionItem
-        title="How can I setup Subscriptions?"
-        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
-      />
     </AccordionComponent>
   );
 };

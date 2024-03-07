@@ -13,6 +13,9 @@ type AccordionContextState = {
 };
 
 const AccordionContext = createContext<AccordionContextState | null>(null);
+const AccordionItemContext = createContext<{ index?: number }>({
+  index: undefined,
+});
 
 const useAccordion = (): AccordionContextState => {
   const accordionContext = useContext(AccordionContext);
@@ -27,5 +30,18 @@ const useAccordion = (): AccordionContextState => {
   return accordionContext!;
 };
 
+const useAccordionItemIndex = (): { index?: number } => {
+  const accordionItemContext = useContext(AccordionItemContext);
+  if (__DEV__) {
+    if (!accordionItemContext) {
+      throwBladeError({
+        message: 'AccordionItem* components should be only used within AccordionItem',
+        moduleName: 'AccordionContext',
+      });
+    }
+  }
+  return accordionItemContext;
+};
+
 export type { AccordionContextState };
-export { AccordionContext, useAccordion };
+export { AccordionContext, useAccordion, AccordionItemContext, useAccordionItemIndex };
