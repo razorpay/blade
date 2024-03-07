@@ -98,7 +98,7 @@ type PhoneNumberInputProps = CommonProps & {
     /**
      * raw value of the input
      */
-    value: string; 
+    value: string;
   }): void;
   /**
    * If true, the dial code text will be shown in the leading text.
@@ -136,4 +136,24 @@ type PhoneNumberInputProps = CommonProps & {
 
 ## Open questions
 
-- How can we get the flag icons of all the countries?
+### MoM with i18n team
+
+**Participants:** RK, Anurag, Tarun
+
+**Concerns raised:**
+
+1. How to get the flag icons of all the countries?
+2. Should we format the phone number while typing?
+
+**Discussion points:**
+
+1. i18n team has exposed a function called [`getFlagOfCountry`](https://github.com/razorpay/i18nify/tree/master/packages/i18nify-js#getflagofcountrycountrycode-) which will return the flag svg via the [flagpedia CDN](https://flagpedia.net/download/api)
+2. Discussed about the legitimacy and security of flagpedia CDN.
+3. Formatting the phone number while typing will be a bit complicated on dev side and could cause edge cases. Thus as phase 1, we won't be formatting, Instead we will show the format in placeholder.
+4. For validation of phone number we will do it on client side and add `validationState` prop based on the result.
+
+**Action Items:**
+1. RK will change the design to use the flags from the flagpedia CDN.
+2. RK will update the design to show the format in placeholder and have non-formatted basic input field value.
+3. Anurag will use the `getFlagOfCountry` function from i18n library.
+4. Tarun to get security approval on the flagpedia CDN.
