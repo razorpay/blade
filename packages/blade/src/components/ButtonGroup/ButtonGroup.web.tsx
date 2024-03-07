@@ -1,21 +1,26 @@
 import React from 'react';
+import styled from 'styled-components';
 import type { ButtonGroupProps } from './types';
 import { StyledButtonGroup } from './StyledButtonGroup';
+import { ButtonGroupProvider } from './ButtonGroupContext';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import styled from 'styled-components';
 import { makeBorderSize } from '~utils';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
-import { ButtonGroupProvider } from './ButtonGroupContext';
+import type { Theme } from '~components/BladeProvider';
+import { throwBladeError } from '~utils/logger';
 
 const getDividerColorToken = ({
   color,
   variant,
   isDisabled,
-}: Pick<ButtonGroupProps, 'color' | 'isDisabled' | 'variant'>) => {
+}: Pick<ButtonGroupProps, 'color' | 'isDisabled' | 'variant'>): DotNotationToken<
+  Theme['colors']
+> => {
   if (variant === 'primary') {
     return 'surface.border.gray.subtle';
   }
@@ -74,6 +79,24 @@ const _ButtonGroup = ({
         role="group"
       >
         {React.Children.map(children, (child, index) => {
+          if (__DEV__) {
+            // throw error if child is not a button or dropdown with button trigger
+            /* eslint-disable no-restricted-properties */
+            if (
+              child?.type?.componentId !== 'Button' &&
+              !(
+                child?.type?.componentId === 'Dropdown' &&
+                child.props.children.some((c) => c.type.componentId === 'DropdownButton')
+              )
+            ) {
+              throwBladeError({
+                moduleName: 'ButtonGroup',
+                message: `ButtonGroup only accepts button or dropdown elements as children.`,
+              });
+            }
+            /* eslint-enable no-restricted-properties */
+          }
+
           return (
             <>
               {child}

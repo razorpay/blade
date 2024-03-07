@@ -61,7 +61,7 @@ export default {
 
 const ButtonGroupTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   return (
-    <ButtonGroupComponent>
+    <ButtonGroupComponent {...args}>
       <Button icon={RefreshIcon}>Sync</Button>
       <Button icon={ShareIcon}>Share</Button>
       <Button icon={DownloadIcon}>Download</Button>
@@ -69,8 +69,8 @@ const ButtonGroupTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   );
 };
 
-export const CustomPreview = ButtonGroupTemplate.bind({});
-CustomPreview.storyName = 'Default';
+export const Default = ButtonGroupTemplate.bind({});
+Default.storyName = 'Default';
 
 const ButtonGroupDropdownTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   return (
@@ -99,7 +99,7 @@ const ButtonGroupVariantsTemplate: StoryFn<typeof ButtonGroupComponent> = (args)
   return (
     <>
       {variants.map((variant) => (
-        <Box marginBottom="spacing.8">
+        <Box key={variant} marginBottom="spacing.8">
           <Heading marginBottom="spacing.3">{variant}</Heading>
           <ButtonGroupComponent {...args} variant={variant}>
             <Button icon={RefreshIcon}>Sync</Button>
@@ -120,9 +120,9 @@ const ButtonGroupSizesTemplate: StoryFn<typeof ButtonGroupComponent> = (args) =>
   return (
     <>
       {sizes.map((size) => (
-        <Box marginBottom="spacing.8">
+        <Box key={size} marginBottom="spacing.8">
           <Heading marginBottom="spacing.3">{size}</Heading>
-          <ButtonGroupComponent size={size} {...args}>
+          <ButtonGroupComponent {...args} size={size}>
             <Button icon={RefreshIcon}>Sync</Button>
             <Button icon={ShareIcon}>Share</Button>
             <Button icon={DownloadIcon}>Download</Button>
@@ -135,3 +135,16 @@ const ButtonGroupSizesTemplate: StoryFn<typeof ButtonGroupComponent> = (args) =>
 
 export const AllSizes = ButtonGroupSizesTemplate.bind({});
 AllSizes.storyName = 'All Sizes';
+
+const ButtonGroupIconOnlyTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
+  return (
+    <ButtonGroupComponent {...args}>
+      <Button icon={RefreshIcon} />
+      <Button icon={ShareIcon} />
+      <Button icon={DownloadIcon} />
+    </ButtonGroupComponent>
+  );
+};
+
+export const IconsOnly = ButtonGroupIconOnlyTemplate.bind({});
+IconsOnly.storyName = 'Icons Only';
