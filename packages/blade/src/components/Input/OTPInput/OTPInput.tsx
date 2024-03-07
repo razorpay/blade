@@ -414,6 +414,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
             helpText={helpText}
             hideFormHint={true}
             type={currentInputType}
+            valueComponentType="heading"
             {...getBaseInputBorderRadius({ index, length: otpLength })}
           />
         </BaseBox>,

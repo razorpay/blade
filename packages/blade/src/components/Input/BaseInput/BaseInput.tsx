@@ -48,7 +48,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
-import { Border } from '~tokens/global';
+import type { Border } from '~tokens/global';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -330,6 +330,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * @default medium
      */
     borderTopRightRadius?: keyof Pick<Border['radius'], 'medium' | 'none'>;
+    /**
+     * Whether to use Text or Heading component for Input text
+     * @default text
+     **/
+    valueComponentType?: 'text' | 'heading';
   } & TestID &
   Platform.Select<{
     native: {
@@ -818,6 +823,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     borderBottomRightRadius = 'medium',
     borderTopLeftRadius = 'medium',
     borderTopRightRadius = 'medium',
+    valueComponentType = 'text',
     ...styledProps
   },
   ref,
@@ -1025,6 +1031,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 autoCapitalize={autoCapitalize}
                 isDropdownTrigger={isDropdownTrigger}
                 $size={size}
+                valueComponentType={valueComponentType}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
               />
             </BaseInputTagSlot>
