@@ -147,7 +147,7 @@ type PhoneNumberInputProps = CommonProps & {
 
 **Discussion points:**
 
-1. i18n team has exposed a function called [`getFlagOfCountry`](https://github.com/razorpay/i18nify/tree/master/packages/i18nify-js#getflagofcountrycountrycode-) which will return the flag svg via the [flagpedia CDN](https://flagpedia.net/download/api)
+1. i18n team has exposed a function called [`getFlagOfCountry`](https://github.com/razorpay/i18nify/tree/master/packages/i18nify-js#getflagofcountrycountrycode-) which will return the flag svg via the [flagpedia CDN](https://flagpedia.net/download/api), we will have to render it as an image.
 2. Discussed about the legitimacy and security of flagpedia CDN.
 3. Formatting the phone number while typing will be a bit complicated on dev side and could cause edge cases. Thus as phase 1, we won't be formatting, Instead we will show the format in placeholder.
 4. For validation of phone number we will do it on client side and add `validationState` prop based on the result.
