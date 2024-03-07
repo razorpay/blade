@@ -252,18 +252,8 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
   return (
     <AccordionComponent {...args}>
       <AccordionItem>
-        <AccordionItemHeader title="How can I setup Subscriptions?" />
-        <AccordionItemBody>
-          Just use Razorpay. You may also check our docs for detailed instructions. Please use the
-          search functionality to ask your queries.
-        </AccordionItemBody>
-      </AccordionItem>
-      <AccordionItem>
         <AccordionItemHeader>
-          <>
-            <div>SLOT HEADER</div>
-            <div>SLOT HEADER</div>
-          </>
+          <div>CUSTOM SLOT</div>
         </AccordionItemHeader>
         <AccordionItemBody>
           Just use Razorpay. You may also check our docs for detailed instructions. Please use the

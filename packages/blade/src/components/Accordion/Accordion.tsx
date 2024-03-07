@@ -30,6 +30,37 @@ const getVariantStyles = (variant: AccordionProps['variant']): BoxProps => {
   };
 };
 
+/**
+ * # Accordion
+ *
+ * An accordion is used to allow users to toggle between different content sections in a compact vertical stack.
+ *
+ * ## Usage
+ *
+ * ```jsx
+ * <Accordion>
+ *  <AccordionItem>
+ *    <AccordionItemHeader title="Title" />
+ *    <AccordionItemBody>
+ *      <Text color="surface.text.gray.subtle">
+ *        Hello this is accordion body content
+ *        </Text>
+ *     </AccordionItemBody>
+ *  </AccordionItem>
+ *  <AccordionItem>
+ *    <AccordionItemHeader title="Title" />
+ *    <AccordionItemBody>
+ *      <Text color="surface.text.gray.subtle">
+ *         Hello this is accordion body content
+ *      </Text>
+ *    </AccordionItemBody>
+ *  </AccordionItem>
+ * </Accordion>
+ * ```
+ *
+ * Checkout https://blade.razorpay.com/?path=/docs/components-accordion--docs
+ *
+ */
 const Accordion = ({
   defaultExpandedIndex,
   expandedIndex,

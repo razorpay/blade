@@ -16,19 +16,27 @@ type AccordionItemProps = {
   /**
    * Title text content
    *
-   * @deprecated
+   * @deprecated Use AccordionItemHeader and AccordionItemBody
+   *
+   * Checkout https://blade.razorpay.com/?path=/docs/components-accordion--docs for new API
    */
   title?: string;
 
   /**
    * Body text content
    *
-   *  @deprecated
+   *  @deprecated Use AccordionItemHeader and AccordionItemBody
+   *
+   * Checkout https://blade.razorpay.com/?path=/docs/components-accordion--docs for new API
    */
   description?: string;
 
   /**
    * Renders a Blade icon as title prefix (requires `showNumberPrefix={false}`)
+   *
+   * @deprecated Use `leading={<StarIcon size="large" />}` on AccordionItemHeader instead
+   *
+   * Checkout https://blade.razorpay.com/?path=/docs/components-accordion--docs for new API
    */
   icon?: IconComponent;
 
