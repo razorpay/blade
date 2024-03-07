@@ -17,6 +17,7 @@ import {
   buttonIconPadding,
   buttonPadding,
 } from './buttonTokens';
+import AnimatedButtonContent from './AnimatedButtonContent';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
@@ -25,7 +26,7 @@ import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
-import { isReactNative } from '~utils';
+import { castWebType, isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -362,10 +363,12 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   ref,
 ) => {
   const { theme } = useTheme();
+  const buttonGroupProps = useButtonGroupContext();
+  const [isPressed, setIsPressed] = React.useState(false);
   const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
   // Button cannot be disabled when its rendered as Link
-  const disabled = isLoading || (isDisabled && !isLink);
+  const disabled = buttonGroupProps.isDisabled ?? (isLoading || (isDisabled && !isLink));
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
@@ -384,7 +387,6 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     if (!isLoading && prevLoading) announce('Stopped loading');
   }, [isLoading, prevLoading]);
 
-  const buttonGroupProps = useButtonGroupContext();
   const {
     defaultBorderColor,
     defaultBackgroundColor,
@@ -413,7 +415,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   } = getProps({
     buttonTypographyTokens: buttonTypography,
     children: childrenString,
-    isDisabled: buttonGroupProps.isDisabled ?? disabled,
+    isDisabled: disabled,
     size: buttonGroupProps.size ?? size,
     variant: buttonGroupProps.variant ?? variant,
     theme,
@@ -423,6 +425,36 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
+
+  const handlePointerPressedIn = React.useCallback(() => {
+    if (disabled) return;
+    setIsPressed(true);
+  }, [disabled]);
+
+  const handlePointerPressedOut = React.useCallback(() => {
+    if (disabled) return;
+    setIsPressed(false);
+  }, [disabled]);
+
+  const handleKeyboardPressedIn = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (disabled) return;
+      if (e.key === ' ' || e.key === 'Enter') {
+        setIsPressed(true);
+      }
+    },
+    [disabled],
+  );
+
+  const handleKeyboardPressedOut = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (disabled) return;
+      if (e.key === ' ' || e.key === 'Enter') {
+        setIsPressed(false);
+      }
+    },
+    [disabled],
+  );
 
   return (
     <StyledBaseButton
@@ -441,7 +473,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       }}
       variant={variant}
       isLoading={isLoading}
-      disabled={buttonGroupProps.isDisabled ?? disabled}
+      disabled={disabled}
       defaultBorderColor={defaultBorderColor}
       minHeight={minHeight}
       buttonPaddingTop={buttonPaddingTop}
@@ -462,77 +494,97 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onMouseMove={onMouseMove}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
-      onKeyDown={onKeyDown}
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
+      onKeyDown={(event: React.KeyboardEvent) => {
+        handleKeyboardPressedIn(event);
+        if (onKeyDown) onKeyDown(castWebType(event));
+      }}
+      onTouchStart={(event: React.TouchEvent) => {
+        handlePointerPressedIn();
+        if (onTouchStart) onTouchStart(event);
+      }}
+      onTouchEnd={(event: React.TouchEvent) => {
+        handlePointerPressedOut();
+        if (onTouchEnd) onTouchEnd(event);
+      }}
       type={type}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      isPressed={isPressed}
+      onMouseDown={handlePointerPressedIn}
+      onMouseUp={handlePointerPressedOut}
+      onMouseOut={handlePointerPressedOut}
+      onKeyUp={handleKeyboardPressedOut}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
     >
-      {isLoading ? (
-        <BaseBox
+      <AnimatedButtonContent
+        motionDuration={motionDuration}
+        motionEasing={motionEasing}
+        isPressed={isPressed}
+      >
+        {isLoading ? (
+          <BaseBox
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            position="absolute"
+            top="0px"
+            left="0px"
+            bottom="0px"
+            right="0px"
+            zIndex={1}
+          >
+            <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
+          </BaseBox>
+        ) : null}
+        <ButtonContent
           display="flex"
-          justifyContent="center"
+          flexDirection="row"
           alignItems="center"
-          position="absolute"
-          top="0px"
-          left="0px"
-          bottom="0px"
-          right="0px"
+          justifyContent="center"
+          flex={1}
+          isHidden={isLoading}
           zIndex={1}
         >
-          <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
-        </BaseBox>
-      ) : null}
-      <ButtonContent
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        flex={1}
-        isHidden={isLoading}
-        zIndex={1}
-      >
-        {Icon && iconPosition == 'left' ? (
-          <BaseBox
-            paddingRight={iconPadding}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Icon size={iconSize} color={iconColor} />
-          </BaseBox>
-        ) : null}
-        {text ? (
-          <BaseText
-            lineHeight={lineHeight}
-            fontSize={fontSize}
-            // figma and web have different font-smoothing properties
-            // which causes web version of button text to look much bolder
-            // than figma version. To fix this we are changing font-weight from 600 to 500
-            // https://forum.figma.com/t/why-does-a-font-weight-in-figma-seem-lighter-than-the-same-weight-in-the-browser/2207
-            fontWeight="medium"
-            textAlign="center"
-            color={textColor}
-          >
-            {text}
-          </BaseText>
-        ) : null}
-        {Icon && iconPosition == 'right' ? (
-          <BaseBox
-            paddingLeft={iconPadding}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Icon size={iconSize} color={iconColor} />
-          </BaseBox>
-        ) : null}
-      </ButtonContent>
+          {Icon && iconPosition == 'left' ? (
+            <BaseBox
+              paddingRight={iconPadding}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon size={iconSize} color={iconColor} />
+            </BaseBox>
+          ) : null}
+          {text ? (
+            <BaseText
+              lineHeight={lineHeight}
+              fontSize={fontSize}
+              // figma and web have different font-smoothing properties
+              // which causes web version of button text to look much bolder
+              // than figma version. To fix this we are changing font-weight from 600 to 500
+              // https://forum.figma.com/t/why-does-a-font-weight-in-figma-seem-lighter-than-the-same-weight-in-the-browser/2207
+              fontWeight="medium"
+              textAlign="center"
+              color={textColor}
+            >
+              {text}
+            </BaseText>
+          ) : null}
+          {Icon && iconPosition == 'right' ? (
+            <BaseBox
+              paddingLeft={iconPadding}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon size={iconSize} color={iconColor} />
+            </BaseBox>
+          ) : null}
+        </ButtonContent>
+      </AnimatedButtonContent>
     </StyledBaseButton>
   );
 };
