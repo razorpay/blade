@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import type { ButtonGroupProps } from './types';
@@ -12,7 +13,8 @@ import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import type { Theme } from '~components/BladeProvider';
-// import { throwBladeError } from '~utils/logger';
+import { throwBladeError } from '~utils/logger';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 
 const getDividerColorToken = ({
   color,
@@ -79,23 +81,25 @@ const _ButtonGroup = ({
         role="group"
       >
         {React.Children.map(children, (child, index) => {
-          // if (__DEV__) {
-          //   // throw error if child is not a button or dropdown with button trigger
-          //   /* eslint-disable no-restricted-properties */
-          //   if (
-          //     (child as ReactElement<ButtonGroupProps>)?.type?.componentId !== 'Button' &&
-          //     !(
-          //       child?.type?.componentId === 'Dropdown' &&
-          //       child.props.children.some((c) => c.type.componentId === 'DropdownButton')
-          //     )
-          //   ) {
-          //     throwBladeError({
-          //       moduleName: 'ButtonGroup',
-          //       message: `ButtonGroup only accepts button or dropdown elements as children.`,
-          //     });
-          //   }
-          //   /* eslint-enable no-restricted-properties */
-          // }
+          if (__DEV__) {
+            // throw error if child is not a button or dropdown with button trigger
+            /* eslint-disable no-restricted-properties */
+            if (
+              !isValidAllowedChildren(child, 'Button') &&
+              !(
+                isValidAllowedChildren(child, 'Dropdown') &&
+                (child as ReactElement).props.children.some(
+                  (c: ReactElement) => !isValidAllowedChildren(c, 'DropdownButton'),
+                )
+              )
+            ) {
+              throwBladeError({
+                moduleName: 'ButtonGroup',
+                message: `ButtonGroup only accepts Button or Dropdown elements as children.`,
+              });
+            }
+            /* eslint-enable no-restricted-properties */
+          }
 
           return (
             <>
