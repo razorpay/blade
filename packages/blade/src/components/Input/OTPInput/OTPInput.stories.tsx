@@ -11,6 +11,7 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
+import { Text } from '~components/Typography';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -85,12 +86,32 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    onBlur: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onFocus: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     onOTPFilled: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
     },
     label: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    size: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    testID: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -228,6 +249,25 @@ OTPInputSuccess.storyName = 'OTPInput with success';
 OTPInputSuccess.args = {
   validationState: 'success',
   successText: 'Validated',
+};
+
+const OTPInputSizesTemplate: StoryFn<typeof OTPInputComponent> = ({ ...args }) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <Text size="large" marginBottom="spacing.2">
+        Medium Size:
+      </Text>
+      <OTPInputComponent {...args} size="medium" />
+      <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
+        Large Size:
+      </Text>
+      <OTPInputComponent {...args} size="large" />
+    </Box>
+  );
+};
+export const OTPInputSizes = OTPInputSizesTemplate.bind({});
+OTPInputSizes.args = {
+  helpText: 'Help Text',
 };
 
 const OTPInputUncontrolledTemplate: StoryFn<typeof OTPInputComponent> = () => {
