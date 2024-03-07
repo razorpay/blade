@@ -14,7 +14,7 @@ import { getComponentId } from '~utils/isValidAllowedChildren';
 import { isReactNative, makeSize } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { logger, throwBladeError } from '~utils/logger';
-import { size } from '~tokens/global';
+import { size as sizeToken } from '~tokens/global';
 
 type BaseHeaderProps = {
   title?: string;
@@ -39,6 +39,11 @@ type BaseHeaderProps = {
    * @default false
    */
   showBackButton?: boolean;
+
+  /**
+   * Decides size of the Header
+   */
+  size?: 'large' | 'medium';
   /**
    * @default true
    */
@@ -80,29 +85,66 @@ const centerBoxProps: BoxProps = {
   height: '28px',
 };
 
-// prop restriction map for corresponding sub components
-const propRestrictionMap = {
-  Button: {
-    size: 'xsmall',
-    variant: 'tertiary',
+const sizeTokensMapping = {
+  large: {
+    title: 'large',
   },
-  Badge: {
-    size: 'medium',
-  },
-  Link: {
-    size: 'medium',
-  },
-  Text: {
-    size: 'medium',
-    variant: 'body',
-  },
-  Amount: {
-    type: 'body',
-    size: 'medium',
+  medium: {
+    title: 'medium',
   },
 } as const;
 
-const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
+// prop restriction map for corresponding sub components
+const propRestrictionMap = {
+  large: {
+    Button: {
+      size: 'xsmall',
+      variant: 'tertiary',
+    },
+    Badge: {
+      size: 'medium',
+    },
+    Link: {
+      size: 'medium',
+    },
+    Text: {
+      size: 'medium',
+      variant: 'body',
+    },
+    Amount: {
+      type: 'body',
+      size: 'medium',
+    },
+  },
+  medium: {
+    Button: {
+      size: 'xsmall',
+      variant: 'tertiary',
+    },
+    Badge: {
+      size: 'small',
+    },
+    Link: {
+      size: 'small',
+    },
+    Text: {
+      size: 'small',
+      variant: 'body',
+    },
+    Amount: {
+      type: 'body',
+      size: 'small',
+    },
+  },
+} as const;
+
+const useTrailingRestriction = ({
+  trailing,
+  size,
+}: {
+  size: NonNullable<BaseHeaderProps['size']>;
+  trailing: BaseHeaderProps['trailing'];
+}): React.ReactNode => {
   const [
     validatedTrailingComponent,
     setValidatedTrailingComponent,
@@ -112,7 +154,7 @@ const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
   React.useEffect(() => {
     if (React.isValidElement(trailing)) {
       const trailingComponentType = getComponentId(trailing) as TrailingComponents;
-      const restrictedProps = propRestrictionMap[trailingComponentType];
+      const restrictedProps = propRestrictionMap[size][trailingComponentType];
       const allowedComponents = Object.keys(propRestrictionMap);
       if (__DEV__) {
         if (!restrictedProps) {
@@ -125,7 +167,7 @@ const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
         }
       }
 
-      const restrictedPropKeys = Object.keys(propRestrictionMap[trailingComponentType]);
+      const restrictedPropKeys = Object.keys(propRestrictionMap[size][trailingComponentType]);
       for (const prop of restrictedPropKeys) {
         if (trailing?.props?.hasOwnProperty(prop)) {
           logger({
@@ -139,7 +181,7 @@ const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
         React.cloneElement(trailing as React.ReactElement, restrictedProps),
       );
     }
-  }, [trailing]);
+  }, [trailing, size]);
 
   return validatedTrailingComponent;
 };
@@ -169,9 +211,10 @@ const _BaseHeader = ({
   metaComponentName,
   paddingX,
   marginY,
+  size = 'large',
   children,
 }: BaseHeaderProps): React.ReactElement => {
-  const validatedTrailingComponent = useTrailingRestriction(trailing);
+  const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
 
   const webOnlyEventHandlers: Record<string, any> = isReactNative()
@@ -234,8 +277,8 @@ const _BaseHeader = ({
               >
                 {title ? (
                   <Text
-                    size="large"
-                    marginTop={makeSize(size['1'])}
+                    size={sizeTokensMapping[size].title}
+                    marginTop={makeSize(sizeToken['1'])}
                     weight="semibold"
                     color="surface.text.gray.normal"
                   >
