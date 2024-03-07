@@ -48,6 +48,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
+import { Border } from '~tokens/global';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -309,6 +310,26 @@ type BaseInputCommonProps = FormInputLabelProps &
      * ```
      */
     trailingButton?: React.ReactElement<LinkProps>;
+    /**
+     * Border Bottom Left Radius of the input field
+     * @default medium
+     */
+    borderBottomLeftRadius?: keyof Pick<Border['radius'], 'medium' | 'none'>;
+    /**
+     * Border Bottom Right Radius of the input field
+     * @default medium
+     */
+    borderBottomRightRadius?: keyof Pick<Border['radius'], 'medium' | 'none'>;
+    /**
+     * Border Top Left Radius of the input field
+     * @default medium
+     */
+    borderTopLeftRadius?: keyof Pick<Border['radius'], 'medium' | 'none'>;
+    /**
+     * Border Top Right Radius of the input field
+     * @default medium
+     */
+    borderTopRightRadius?: keyof Pick<Border['radius'], 'medium' | 'none'>;
   } & TestID &
   Platform.Select<{
     native: {
@@ -793,6 +814,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isLabelInsideInput,
     size = 'medium',
     trailingButton,
+    borderBottomLeftRadius = 'medium',
+    borderBottomRightRadius = 'medium',
+    borderTopLeftRadius = 'medium',
+    borderTopRightRadius = 'medium',
     ...styledProps
   },
   ref,
@@ -909,7 +934,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             {trailingHeaderSlot?.(value ?? inputValue)}
           </BaseBox>
         )}
-        <FocusRingWrapper currentInteraction={currentInteraction}>
+        <FocusRingWrapper currentInteraction={currentInteraction} marginRight="4px">
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}
@@ -926,6 +951,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               }
             }}
             maxTagRows={maxTagRows}
+            borderBottomLeftRadius={borderBottomLeftRadius}
+            borderBottomRightRadius={borderBottomRightRadius}
+            borderTopLeftRadius={borderTopLeftRadius}
+            borderTopRightRadius={borderTopRightRadius}
           >
             <BaseInputVisuals
               size={size}
