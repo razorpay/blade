@@ -67,7 +67,7 @@ const Page = (): React.ReactElement => {
         BottomSheetHeaderProps
       } from '@razorpay/blade/components';
       `}
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=25045-554566&mode=design&t=JkDSnlo8KJOBJimR-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76140-1564627&t=eMQWVawMPyhCdtgv-1&scaling=min-zoom&page-id=25042%3A498654&mode=design"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole editorHeight={600}>
@@ -987,7 +987,7 @@ const SnapPointsTemplate: StoryFn<typeof BottomSheetComponent> = () => {
 
         <Text>
           Checkout the{' '}
-          <Link href="https://www.figma.com/file/LSG77hEeVYDk7j7WV7OMJE/Blade-DSL---Components-Guideline?type=design&node-id=1-583405&t=1Fde8E8CnBaRPGsV-0">
+          <Link href="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76785-1455819&t=eMQWVawMPyhCdtgv-1&scaling=min-zoom&page-id=25042%3A498654&mode=design">
             design guideline
           </Link>{' '}
           here for more details

@@ -22,7 +22,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentName="Accordion"
       componentDescription="An accordion is used to allow users to toggle between different content sections in a compact vertical stack."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73183-42793&mode=design&t=JkDSnlo8KJOBJimR-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74858-50167&t=Kp8hYSNEvkkPXfFF-1&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>

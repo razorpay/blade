@@ -18,6 +18,7 @@ export * from './Counter';
 export * from './Divider';
 export * from './Drawer';
 export * from './Dropdown';
+export * from './FileUpload';
 export * from './Icons';
 export * from './Indicator';
 export * from './Input/DropdownInputTriggers';

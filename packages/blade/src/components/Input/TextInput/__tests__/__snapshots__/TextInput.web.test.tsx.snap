@@ -72,7 +72,7 @@ exports[`<TextInput /> should render 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -94,7 +94,7 @@ exports[`<TextInput /> should render 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -111,7 +111,7 @@ exports[`<TextInput /> should render 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -143,7 +143,7 @@ exports[`<TextInput /> should render 1`] = `
 
 .c8.c8.c8.c8.c8::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -160,7 +160,7 @@ exports[`<TextInput /> should render 1`] = `
 
 .c8.c8.c8.c8.c8::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -177,7 +177,7 @@ exports[`<TextInput /> should render 1`] = `
 
 .c8.c8.c8.c8.c8:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -194,7 +194,7 @@ exports[`<TextInput /> should render 1`] = `
 
 .c8.c8.c8.c8.c8::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -488,7 +488,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -510,7 +510,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -527,7 +527,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -544,7 +544,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 
 .c12.c12.c12.c12.c12 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -576,7 +576,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 
 .c12.c12.c12.c12.c12::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -593,7 +593,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 
 .c12.c12.c12.c12.c12::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -610,7 +610,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 
 .c12.c12.c12.c12.c12:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -627,7 +627,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 
 .c12.c12.c12.c12.c12::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
