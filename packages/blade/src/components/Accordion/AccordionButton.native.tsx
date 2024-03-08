@@ -6,6 +6,7 @@ import { StyledAccordionButton } from './StyledAccordionButton.native';
 import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
 import { getBackgroundColor, getTransitionDuration, getTransitionEasing } from './commonStyles';
+import { AccordionItemHeader } from './AccordionItemHeader';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
@@ -18,7 +19,13 @@ import type { IconProps } from '~components/Icons';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 
-const _AccordionButton = ({ index, icon: Icon, title }: AccordionButtonProps): ReactElement => {
+const _AccordionButton = ({
+  index,
+  icon: Icon,
+  title,
+  isDeprecatedAPI,
+  header,
+}: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex } = useAccordion();
   const { theme } = useTheme();
@@ -101,24 +108,7 @@ const _AccordionButton = ({ index, icon: Icon, title }: AccordionButtonProps): R
         justifyContent="space-between"
         alignItems="center"
       >
-        <BaseBox
-          display="flex"
-          flexDirection="row"
-          alignItems="flex-start"
-          /**
-           * The `marginRight` is slightly larger here than web and the design spec (`spacing.4`),
-           * because otherwise lengthy text sometimes comes too close to the rotating chevron icon
-           * which doesn't look perfect
-           */
-          marginRight="spacing.5"
-          flexShrink={1}
-        >
-          {_index}
-          {_icon}
-          <Text size="large" weight="semibold">
-            {title}
-          </Text>
-        </BaseBox>
+        {isDeprecatedAPI ? <AccordionItemHeader title={title} leading={_icon ?? _index} /> : header}
         <BaseBox>
           <CollapsibleChevronIcon color={iconColor} size="large" />
         </BaseBox>

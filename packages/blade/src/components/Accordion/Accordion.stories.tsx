@@ -304,7 +304,7 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
     <AccordionComponent {...args}>
       <AccordionItem>
         <AccordionItemHeader>
-          <div>CUSTOM SLOT</div>
+          <Text>CUSTOM SLOT</Text>
         </AccordionItemHeader>
         <AccordionItemBody>
           Just use Razorpay. You may also check our docs for detailed instructions. Please use the
