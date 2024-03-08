@@ -106,8 +106,6 @@ const AccordionItem = ({
           <CollapsibleBody
             // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
             width={isReactNative() ? '100%' : undefined}
-            // Adding top border on content instead of bottom border on AccordionButton so that border of Accordion doesn't overlap with border of AccordionButton
-            _borderTopWidth={variant === 'bordered' ? 'thinner' : 'none'}
           >
             {isDeprecatedAPI ? (
               <AccordionItemBody _description={description}>{children}</AccordionItemBody>

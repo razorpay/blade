@@ -17,7 +17,6 @@ import BaseBox from '~components/Box/BaseBox';
 type StyledCollapsibleBodyContentProps = {
   defaultIsExpanded: boolean;
   isExpanded: boolean;
-  borderTopWidth: CollapsibleBodyContentProps['borderTopWidth'];
 };
 
 /**
@@ -50,10 +49,7 @@ const StyledCollapsibleBodyContent = styled(BaseBox)<StyledCollapsibleBodyConten
   };
 });
 
-const CollapsibleBodyContent = ({
-  children,
-  borderTopWidth,
-}: CollapsibleBodyContentProps): ReactElement => {
+const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): ReactElement => {
   const { isExpanded, defaultIsExpanded, direction } = useCollapsible();
   const collapsibleBodyContentRef = useRef<HTMLDivElement>(null);
 
@@ -129,8 +125,6 @@ const CollapsibleBodyContent = ({
       isExpanded={isExpanded}
       defaultIsExpanded={defaultIsExpanded}
       onTransitionEnd={onTransitionEnd}
-      borderTopWidth={borderTopWidth}
-      borderTopColor={borderTopWidth ? 'surface.border.gray.subtle' : undefined}
     >
       <Box {...getCollapsibleBodyContentBoxProps({ direction })}>{children}</Box>
     </StyledCollapsibleBodyContent>
