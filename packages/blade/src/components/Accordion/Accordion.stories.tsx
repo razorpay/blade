@@ -119,7 +119,15 @@ const AccordionWithIconsTemplate: StoryFn<typeof AccordionComponent> = ({ ...arg
           title="How can I setup Route?"
           subtitle="Subtitle of how to setup route"
           titleSuffix={<Badge>New</Badge>}
-          trailing={<Link>Apply</Link>}
+          trailing={
+            <Link
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              Apply
+            </Link>
+          }
         />
         <AccordionItemBody>
           You can use Razorpay Route from the Dashboard or using APIs to transfer money to
