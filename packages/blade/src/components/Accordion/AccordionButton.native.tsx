@@ -18,7 +18,7 @@ import type { IconProps } from '~components/Icons';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 
-const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
+const _AccordionButton = ({ index, icon: Icon, title }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex } = useAccordion();
   const { theme } = useTheme();
@@ -67,7 +67,7 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
     </Text>
   ) : null;
 
-  const a11yLabel = _showNumberPrefix ? `${index + 1}. ${children}` : children;
+  const a11yLabel = _showNumberPrefix ? `${index + 1}. ${title}` : title;
 
   const renderChildren: PressableProps['children'] = ({ pressed }) => {
     isPressed.value = pressed;
@@ -116,7 +116,7 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
           {_index}
           {_icon}
           <Text size="large" weight="semibold">
-            {children}
+            {title}
           </Text>
         </BaseBox>
         <BaseBox>

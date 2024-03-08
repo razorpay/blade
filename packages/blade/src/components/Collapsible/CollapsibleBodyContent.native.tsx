@@ -20,18 +20,25 @@ import {
 import { nativeStyles } from './styles.native';
 import { Box } from '~components/Box';
 import { useTheme } from '~components/BladeProvider';
-import { castNativeType, makeBorderSize } from '~utils';
+import { castNativeType } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
 
 type AnimatedStyledCollapsibleBodyContentProps = {
   isExpanded: boolean;
+  borderTopWidth?: CollapsibleBodyContentProps['borderTopWidth'];
 };
 
 const AnimatedStyledCollapsibleBodyContent = styled(
   Animated.View,
-)<AnimatedStyledCollapsibleBodyContentProps>(() => {
+)<AnimatedStyledCollapsibleBodyContentProps>((props) => {
   return {
     overflow: 'hidden',
+    borderTopWidth: props.borderTopWidth
+      ? getIn(props.theme, `border.width.${props.borderTopWidth as 'none' | 'thinner'}`)
+      : undefined,
+    borderTopColor: props.borderTopWidth
+      ? props.theme.colors.surface.border.gray.subtle
+      : undefined,
   };
 });
 
@@ -81,10 +88,6 @@ const CollapsibleBodyContent = ({
       return {
         opacity: opacity.value,
         height: height.value,
-        borderTopWidth: borderTopWidth
-          ? getIn(theme, `border.width.${borderTopWidth as 'none' | 'thinner'}`)
-          : undefined,
-        borderTopColor: borderTopWidth ? theme.colors.surface.border.gray.subtle : undefined,
       };
     },
   );
@@ -120,7 +123,11 @@ const CollapsibleBodyContent = ({
   );
 
   return (
-    <AnimatedStyledCollapsibleBodyContent isExpanded={isExpanded} style={animatedStyles}>
+    <AnimatedStyledCollapsibleBodyContent
+      borderTopWidth={borderTopWidth}
+      isExpanded={isExpanded}
+      style={animatedStyles}
+    >
       <View
         onLayout={onLayout}
         /**
