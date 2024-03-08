@@ -165,7 +165,7 @@ const useTrailingRestriction = ({
     if (React.isValidElement(trailing)) {
       const trailingComponentType = getComponentId(trailing) as TrailingComponents;
       const restrictedProps = propRestrictionMap[size][trailingComponentType];
-      const allowedComponents = Object.keys(propRestrictionMap);
+      const allowedComponents = Object.keys(propRestrictionMap[size]);
       if (__DEV__) {
         if (!restrictedProps) {
           throwBladeError({
