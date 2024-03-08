@@ -330,9 +330,7 @@ IndividualAccordionItem.args = {
   variant: 'bordered',
 };
 
-const IndividualAccordionItemTemplateDeprecated: StoryFn<typeof AccordionComponent> = ({
-  ...args
-}) => {
+const AccordionDeprecatedAPITemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
   return (
     <AccordionComponent {...args}>
       <AccordionItem
@@ -340,14 +338,25 @@ const IndividualAccordionItemTemplateDeprecated: StoryFn<typeof AccordionCompone
         title="How can I setup Subscriptions?"
         description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
       />
+      <AccordionItem
+        icon={QRCodeIcon}
+        title="How can I setup QR Codes?"
+        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
+      />
+      <AccordionItem
+        icon={RoutesIcon}
+        title="How can I setup Routes?"
+        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
+      />
     </AccordionComponent>
   );
 };
 
-export const IndividualAccordionItemDeprecated = IndividualAccordionItemTemplateDeprecated.bind({});
+export const AccordionDeprecatedAPI = AccordionDeprecatedAPITemplate.bind({});
 
-IndividualAccordionItemDeprecated.args = {
-  variant: 'bordered',
+AccordionDeprecatedAPI.args = {
+  variant: 'borderless',
+  size: 'large',
 };
 
 export default meta;
