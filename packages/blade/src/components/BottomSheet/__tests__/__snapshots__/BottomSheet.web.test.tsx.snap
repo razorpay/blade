@@ -854,11 +854,30 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 .c25.c25.c25.c25.c25 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c26.c26.c26.c26.c26 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -868,7 +887,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   flex-shrink: 1;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   overflow: auto;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -876,7 +895,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding-left: 16px;
 }
 
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   -webkit-flex-shrink: 0;
   -ms-flex-negative: 0;
   flex-shrink: 0;
@@ -887,11 +906,11 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   touch-action: none;
 }
 
-.c31.c31.c31.c31.c31 {
+.c32.c32.c32.c32.c32 {
   padding: 16px;
 }
 
-.c33.c33.c33.c33.c33 {
+.c34.c34.c34.c34.c34 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -981,7 +1000,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   color: hsla(211,26%,34%,1);
 }
 
-.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -1049,7 +1068,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c29.c29.c29.c29.c29 {
+.c30.c30.c30.c30.c30 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1066,7 +1085,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c35.c35.c35.c35.c35 {
+.c36.c36.c36.c36.c36 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1202,7 +1221,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   width: fit-content;
 }
 
-.c32.c32.c32.c32.c32 {
+.c33.c33.c33.c33.c33 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -1239,24 +1258,24 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   position: relative;
 }
 
-.c32.c32.c32.c32.c32:hover {
+.c33.c33.c33.c33.c33:hover {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c32.c32.c32.c32.c32:active {
+.c33.c33.c33.c33.c33:active {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c32.c32.c32.c32.c32:focus-visible {
+.c33.c33.c33.c33.c33:focus-visible {
   background-color: hsla(227,100%,59%,0.09);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c32.c32.c32.c32.c32 * {
+.c33.c33.c33.c33.c33 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
@@ -1265,7 +1284,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c34.c34.c34.c34.c34 {
+.c35.c35.c35.c35.c35 {
   opacity: 1;
 }
 
@@ -1294,37 +1313,37 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
 }
 
 @media screen and (min-width:320px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c25.c25.c25.c25.c25 {
+  .c26.c26.c26.c26.c26 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c31.c31.c31.c31.c31 {
+  .c32.c32.c32.c32.c32 {
     padding: 20px;
   }
 }
@@ -1486,26 +1505,35 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
                   </button>
                 </div>
               </div>
+              <div
+                class="c25"
+                data-blade-component="base-box"
+              >
+                <div
+                  class=""
+                  data-blade-component="box"
+                />
+              </div>
             </div>
             <div
-              class="c25 c26"
+              class="c26 c27"
               data-blade-component="divider"
               role="separator"
             />
           </div>
         </div>
         <div
-          class="c27"
+          class="c28"
           data-blade-component="bottom-sheet-body"
           data-testid="bottomsheet-body"
           style="user-select: auto; overflow: auto;"
         >
           <div
-            class="c28"
+            class="c29"
             data-blade-component="base-box"
           >
             <p
-              class="c29"
+              class="c30"
               data-blade-component="text"
             >
               BottomSheet body
@@ -1513,30 +1541,30 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
           </div>
         </div>
         <div
-          class="c30"
+          class="c31"
           data-blade-component="bottom-sheet-footer"
         >
           <div
-            class="c25 c26"
+            class="c26 c27"
             data-blade-component="divider"
             role="separator"
           />
           <div
-            class="c31"
+            class="c32"
             data-blade-component="base-box"
           >
             <button
-              class="c32"
+              class="c33"
               data-blade-component="button"
               role="button"
               type="button"
             >
               <div
-                class="c33 c34"
+                class="c34 c35"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c35"
+                  class="c36"
                   data-blade-component="base-text"
                 >
                   Remove address

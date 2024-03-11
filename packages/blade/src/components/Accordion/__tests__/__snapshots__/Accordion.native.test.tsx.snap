@@ -119,7 +119,7 @@ exports[`<Accordion /> should render 1`] = `
                     "justifyContent": "space-between",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
-                    "paddingRight": 16,
+                    "paddingRight": 0,
                     "paddingTop": 0,
                   },
                   {
@@ -283,86 +283,123 @@ exports[`<Accordion /> should render 1`] = `
                             </View>
                           </View>
                         </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={4285959847}
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {},
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no-hide-descendants"
-                    style={
-                      {
-                        "transform": [
-                          {
-                            "rotateZ": "0deg",
-                          },
-                        ],
-                      }
-                    }
-                  >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
                           [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
                           ]
                         }
+                        width="100%"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
+                        <View
+                          data-blade-component="box"
+                          style={
                             [
-                              "fill",
-                              "fillRule",
+                              {},
                             ]
                           }
                         />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -631,7 +668,7 @@ exports[`<Accordion /> should render 1`] = `
                     "justifyContent": "space-between",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
-                    "paddingRight": 16,
+                    "paddingRight": 0,
                     "paddingTop": 0,
                   },
                   {
@@ -795,86 +832,123 @@ exports[`<Accordion /> should render 1`] = `
                             </View>
                           </View>
                         </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={4285959847}
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {},
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no-hide-descendants"
-                    style={
-                      {
-                        "transform": [
-                          {
-                            "rotateZ": "0deg",
-                          },
-                        ],
-                      }
-                    }
-                  >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
                           [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
                           ]
                         }
+                        width="100%"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
+                        <View
+                          data-blade-component="box"
+                          style={
                             [
-                              "fill",
-                              "fillRule",
+                              {},
                             ]
                           }
                         />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1143,7 +1217,7 @@ exports[`<Accordion /> should render 1`] = `
                     "justifyContent": "space-between",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
-                    "paddingRight": 16,
+                    "paddingRight": 0,
                     "paddingTop": 0,
                   },
                   {
@@ -1307,86 +1381,123 @@ exports[`<Accordion /> should render 1`] = `
                             </View>
                           </View>
                         </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={4285959847}
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {},
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no-hide-descendants"
-                    style={
-                      {
-                        "transform": [
-                          {
-                            "rotateZ": "0deg",
-                          },
-                        ],
-                      }
-                    }
-                  >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
                           [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
                           ]
                         }
+                        width="100%"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
+                        <View
+                          data-blade-component="box"
+                          style={
                             [
-                              "fill",
-                              "fillRule",
+                              {},
                             ]
                           }
                         />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1704,7 +1815,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     "justifyContent": "space-between",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
-                    "paddingRight": 16,
+                    "paddingRight": 0,
                     "paddingTop": 0,
                   },
                   {
@@ -1868,86 +1979,123 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                             </View>
                           </View>
                         </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={4285959847}
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {},
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no-hide-descendants"
-                    style={
-                      {
-                        "transform": [
-                          {
-                            "rotateZ": "0deg",
-                          },
-                        ],
-                      }
-                    }
-                  >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
                           [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
                           ]
                         }
+                        width="100%"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
+                        <View
+                          data-blade-component="box"
+                          style={
                             [
-                              "fill",
-                              "fillRule",
+                              {},
                             ]
                           }
                         />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -2216,7 +2364,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     "justifyContent": "space-between",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
-                    "paddingRight": 16,
+                    "paddingRight": 0,
                     "paddingTop": 0,
                   },
                   {
@@ -2380,86 +2528,123 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                             </View>
                           </View>
                         </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={4285959847}
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {},
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no-hide-descendants"
-                    style={
-                      {
-                        "transform": [
-                          {
-                            "rotateZ": "0deg",
-                          },
-                        ],
-                      }
-                    }
-                  >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
                           [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
                           ]
                         }
+                        width="100%"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
+                        <View
+                          data-blade-component="box"
+                          style={
                             [
-                              "fill",
-                              "fillRule",
+                              {},
                             ]
                           }
                         />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -2728,7 +2913,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     "justifyContent": "space-between",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
-                    "paddingRight": 16,
+                    "paddingRight": 0,
                     "paddingTop": 0,
                   },
                   {
@@ -2892,86 +3077,123 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                             </View>
                           </View>
                         </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={4285959847}
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {},
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no-hide-descendants"
-                    style={
-                      {
-                        "transform": [
-                          {
-                            "rotateZ": "0deg",
-                          },
-                        ],
-                      }
-                    }
-                  >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
                           [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
                           ]
                         }
+                        width="100%"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
+                        <View
+                          data-blade-component="box"
+                          style={
                             [
-                              "fill",
-                              "fillRule",
+                              {},
                             ]
                           }
                         />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -3288,7 +3510,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                     "justifyContent": "space-between",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
-                    "paddingRight": 16,
+                    "paddingRight": 0,
                     "paddingTop": 0,
                   },
                   {
@@ -3452,86 +3674,123 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                             </View>
                           </View>
                         </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={4285959847}
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {},
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no-hide-descendants"
-                    style={
-                      {
-                        "transform": [
-                          {
-                            "rotateZ": "0deg",
-                          },
-                        ],
-                      }
-                    }
-                  >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
                           [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
                           ]
                         }
+                        width="100%"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
+                        <View
+                          data-blade-component="box"
+                          style={
                             [
-                              "fill",
-                              "fillRule",
+                              {},
                             ]
                           }
                         />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -3800,7 +4059,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                     "justifyContent": "space-between",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
-                    "paddingRight": 16,
+                    "paddingRight": 0,
                     "paddingTop": 0,
                   },
                   {
@@ -3964,86 +4223,123 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                             </View>
                           </View>
                         </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={4285959847}
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {},
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no-hide-descendants"
-                    style={
-                      {
-                        "transform": [
-                          {
-                            "rotateZ": "0deg",
-                          },
-                        ],
-                      }
-                    }
-                  >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
                           [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
                           ]
                         }
+                        width="100%"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
+                        <View
+                          data-blade-component="box"
+                          style={
                             [
-                              "fill",
-                              "fillRule",
+                              {},
                             ]
                           }
                         />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -4312,7 +4608,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                     "justifyContent": "space-between",
                     "paddingBottom": 0,
                     "paddingLeft": 0,
-                    "paddingRight": 16,
+                    "paddingRight": 0,
                     "paddingTop": 0,
                   },
                   {
@@ -4476,86 +4772,123 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                             </View>
                           </View>
                         </View>
+                        <View
+                          alignItems="center"
+                          data-blade-component="box"
+                          display="flex"
+                          height="28px"
+                          justifyContent="center"
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "display": "flex",
+                                "height": 28,
+                                "justifyContent": "center",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            accessibilityElementsHidden={true}
+                            importantForAccessibility="no-hide-descendants"
+                            style={
+                              {
+                                "transform": [
+                                  {
+                                    "rotateZ": "0deg",
+                                  },
+                                ],
+                              }
+                            }
+                          >
+                            <RNSVGSvgView
+                              accessibilityElementsHidden={true}
+                              align="xMidYMid"
+                              bbHeight="20px"
+                              bbWidth="20px"
+                              data-blade-component="icon"
+                              fill="none"
+                              focusable={false}
+                              height="20px"
+                              importantForAccessibility="no-hide-descendants"
+                              meetOrSlice={0}
+                              minX={0}
+                              minY={0}
+                              style={
+                                [
+                                  {
+                                    "backgroundColor": "transparent",
+                                    "borderWidth": 0,
+                                  },
+                                  [
+                                    {},
+                                  ],
+                                  {
+                                    "flex": 0,
+                                    "height": 20,
+                                    "width": 20,
+                                  },
+                                ]
+                              }
+                              vbHeight={24}
+                              vbWidth={24}
+                              width="20px"
+                            >
+                              <RNSVGGroup
+                                fill={null}
+                                propList={
+                                  [
+                                    "fill",
+                                  ]
+                                }
+                              >
+                                <RNSVGPath
+                                  clipRule={0}
+                                  d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                  fill={4285959847}
+                                  fillRule={0}
+                                  propList={
+                                    [
+                                      "fill",
+                                      "fillRule",
+                                    ]
+                                  }
+                                />
+                              </RNSVGGroup>
+                            </RNSVGSvgView>
+                          </View>
+                        </View>
                       </View>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  data-blade-component="base-box"
-                  style={
-                    [
-                      {},
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityElementsHidden={true}
-                    importantForAccessibility="no-hide-descendants"
-                    style={
-                      {
-                        "transform": [
-                          {
-                            "rotateZ": "0deg",
-                          },
-                        ],
-                      }
-                    }
-                  >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="20px"
-                      bbWidth="20px"
-                      data-blade-component="icon"
-                      fill="none"
-                      focusable={false}
-                      height="20px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        justifyContent="space-between"
+                        style={
                           [
-                            {},
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 20,
-                            "width": 20,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="20px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexDirection": "row",
+                              "justifyContent": "space-between",
+                              "width": "100%",
+                            },
                           ]
                         }
+                        width="100%"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
+                        <View
+                          data-blade-component="box"
+                          style={
                             [
-                              "fill",
-                              "fillRule",
+                              {},
                             ]
                           }
                         />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                      </View>
+                    </View>
                   </View>
                 </View>
               </View>

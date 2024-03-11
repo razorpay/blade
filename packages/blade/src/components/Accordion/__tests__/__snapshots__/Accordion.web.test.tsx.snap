@@ -91,12 +91,47 @@ exports[`<Accordion /> should render 1`] = `
   flex-shrink: 0;
 }
 
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 28px;
+}
+
 .c13.c13.c13.c13.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c15.c15.c15.c15.c15 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -110,12 +145,12 @@ exports[`<Accordion /> should render 1`] = `
   gap: 16px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c18.c18.c18.c18.c18 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c17.c17.c17.c17.c17 {
+.c19.c19.c19.c19.c19 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -143,7 +178,7 @@ exports[`<Accordion /> should render 1`] = `
   margin-top: 1px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -160,9 +195,32 @@ exports[`<Accordion /> should render 1`] = `
   padding: 0;
 }
 
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
 .c3.c3.c3.c3.c3 {
   padding: 0;
-  padding-right: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -210,31 +268,7 @@ exports[`<Accordion /> should render 1`] = `
   border-radius: 2px;
 }
 
-.c11.c11.c11.c11.c11 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
-  transform-origin: center center;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-
-.c12.c12.c12.c12.c12 {
+.c14.c14.c14.c14.c14 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -269,31 +303,31 @@ exports[`<Accordion /> should render 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
@@ -368,33 +402,47 @@ exports[`<Accordion /> should render 1`] = `
                             </div>
                           </div>
                         </div>
+                        <div
+                          class="c11"
+                          data-blade-component="box"
+                        >
+                          <div
+                            aria-hidden="true"
+                            class=" c12"
+                            data-blade-component="base-box"
+                            direction="bottom"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="Svgweb__StyledSvg-vcmjs8-0"
+                              data-blade-component="icon"
+                              fill="none"
+                              height="20px"
+                              viewBox="0 0 24 24"
+                              width="20px"
+                            >
+                              <path
+                                clip-rule="evenodd"
+                                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                data-blade-component="svg-path"
+                                fill="hsla(211, 22%, 56%, 1)"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="c13"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class=""
+                          data-blade-component="box"
+                        />
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  aria-hidden="true"
-                  class=" c11"
-                  data-blade-component="base-box"
-                  direction="bottom"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="Svgweb__StyledSvg-vcmjs8-0"
-                    data-blade-component="icon"
-                    fill="none"
-                    height="20px"
-                    viewBox="0 0 24 24"
-                    width="20px"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                      data-blade-component="svg-path"
-                      fill="currentColor"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
                 </div>
               </button>
             </div>
@@ -406,11 +454,11 @@ exports[`<Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c12"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -418,11 +466,11 @@ exports[`<Accordion /> should render 1`] = `
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c15"
+                        class="c17"
                         data-blade-component="text"
                       >
                         You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
@@ -435,7 +483,7 @@ exports[`<Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c16 c17"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -501,33 +549,47 @@ exports[`<Accordion /> should render 1`] = `
                             </div>
                           </div>
                         </div>
+                        <div
+                          class="c11"
+                          data-blade-component="box"
+                        >
+                          <div
+                            aria-hidden="true"
+                            class=" c12"
+                            data-blade-component="base-box"
+                            direction="bottom"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="Svgweb__StyledSvg-vcmjs8-0"
+                              data-blade-component="icon"
+                              fill="none"
+                              height="20px"
+                              viewBox="0 0 24 24"
+                              width="20px"
+                            >
+                              <path
+                                clip-rule="evenodd"
+                                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                data-blade-component="svg-path"
+                                fill="hsla(211, 22%, 56%, 1)"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="c13"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class=""
+                          data-blade-component="box"
+                        />
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  aria-hidden="true"
-                  class=" c11"
-                  data-blade-component="base-box"
-                  direction="bottom"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="Svgweb__StyledSvg-vcmjs8-0"
-                    data-blade-component="icon"
-                    fill="none"
-                    height="20px"
-                    viewBox="0 0 24 24"
-                    width="20px"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                      data-blade-component="svg-path"
-                      fill="currentColor"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
                 </div>
               </button>
             </div>
@@ -539,11 +601,11 @@ exports[`<Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c12"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -551,11 +613,11 @@ exports[`<Accordion /> should render 1`] = `
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c15"
+                        class="c17"
                         data-blade-component="text"
                       >
                         Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
@@ -568,7 +630,7 @@ exports[`<Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c16 c17"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -634,33 +696,47 @@ exports[`<Accordion /> should render 1`] = `
                             </div>
                           </div>
                         </div>
+                        <div
+                          class="c11"
+                          data-blade-component="box"
+                        >
+                          <div
+                            aria-hidden="true"
+                            class=" c12"
+                            data-blade-component="base-box"
+                            direction="bottom"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="Svgweb__StyledSvg-vcmjs8-0"
+                              data-blade-component="icon"
+                              fill="none"
+                              height="20px"
+                              viewBox="0 0 24 24"
+                              width="20px"
+                            >
+                              <path
+                                clip-rule="evenodd"
+                                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                data-blade-component="svg-path"
+                                fill="hsla(211, 22%, 56%, 1)"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="c13"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class=""
+                          data-blade-component="box"
+                        />
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  aria-hidden="true"
-                  class=" c11"
-                  data-blade-component="base-box"
-                  direction="bottom"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="Svgweb__StyledSvg-vcmjs8-0"
-                    data-blade-component="icon"
-                    fill="none"
-                    height="20px"
-                    viewBox="0 0 24 24"
-                    width="20px"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                      data-blade-component="svg-path"
-                      fill="currentColor"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
                 </div>
               </button>
             </div>
@@ -672,11 +748,11 @@ exports[`<Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c12"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -684,11 +760,11 @@ exports[`<Accordion /> should render 1`] = `
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c15"
+                        class="c17"
                         data-blade-component="text"
                       >
                         Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
@@ -701,7 +777,7 @@ exports[`<Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c16 c17"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -802,12 +878,47 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   flex-shrink: 0;
 }
 
+.c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 28px;
+}
+
 .c13.c13.c13.c13.c13 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c15.c15.c15.c15.c15 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c14.c14.c14.c14.c14 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -821,12 +932,12 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   gap: 16px;
 }
 
-.c16.c16.c16.c16.c16 {
+.c18.c18.c18.c18.c18 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c17.c17.c17.c17.c17 {
+.c19.c19.c19.c19.c19 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -854,7 +965,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   margin-top: 1px;
 }
 
-.c15.c15.c15.c15.c15 {
+.c17.c17.c17.c17.c17 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -871,9 +982,32 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   padding: 0;
 }
 
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transform-origin: center center;
+  -ms-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-transition-duration: 300ms;
+  transition-duration: 300ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+
 .c3.c3.c3.c3.c3 {
   padding: 0;
-  padding-right: 16px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -921,31 +1055,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
   border-radius: 2px;
 }
 
-.c11.c11.c11.c11.c11 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transform-origin: center center;
-  -ms-transform-origin: center center;
-  transform-origin: center center;
-  -webkit-transition-duration: 300ms;
-  transition-duration: 300ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-property: transform;
-  transition-property: transform;
-}
-
-.c12.c12.c12.c12.c12 {
+.c14.c14.c14.c14.c14 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -980,31 +1090,31 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c16.c16.c16.c16.c16 {
+  .c18.c18.c18.c18.c18 {
     border-bottom-style: solid;
   }
 }
@@ -1079,33 +1189,47 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                             </div>
                           </div>
                         </div>
+                        <div
+                          class="c11"
+                          data-blade-component="box"
+                        >
+                          <div
+                            aria-hidden="true"
+                            class=" c12"
+                            data-blade-component="base-box"
+                            direction="bottom"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="Svgweb__StyledSvg-vcmjs8-0"
+                              data-blade-component="icon"
+                              fill="none"
+                              height="20px"
+                              viewBox="0 0 24 24"
+                              width="20px"
+                            >
+                              <path
+                                clip-rule="evenodd"
+                                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                data-blade-component="svg-path"
+                                fill="hsla(211, 22%, 56%, 1)"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="c13"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class=""
+                          data-blade-component="box"
+                        />
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  aria-hidden="true"
-                  class=" c11"
-                  data-blade-component="base-box"
-                  direction="bottom"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="Svgweb__StyledSvg-vcmjs8-0"
-                    data-blade-component="icon"
-                    fill="none"
-                    height="20px"
-                    viewBox="0 0 24 24"
-                    width="20px"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                      data-blade-component="svg-path"
-                      fill="currentColor"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
                 </div>
               </button>
             </div>
@@ -1117,11 +1241,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c12"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -1129,11 +1253,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c15"
+                        class="c17"
                         data-blade-component="text"
                       >
                         You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers. You may also check our docs for detailed instructions.
@@ -1146,7 +1270,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c16 c17"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -1212,33 +1336,47 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                             </div>
                           </div>
                         </div>
+                        <div
+                          class="c11"
+                          data-blade-component="box"
+                        >
+                          <div
+                            aria-hidden="true"
+                            class=" c12"
+                            data-blade-component="base-box"
+                            direction="bottom"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="Svgweb__StyledSvg-vcmjs8-0"
+                              data-blade-component="icon"
+                              fill="none"
+                              height="20px"
+                              viewBox="0 0 24 24"
+                              width="20px"
+                            >
+                              <path
+                                clip-rule="evenodd"
+                                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                data-blade-component="svg-path"
+                                fill="hsla(211, 22%, 56%, 1)"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="c13"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class=""
+                          data-blade-component="box"
+                        />
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  aria-hidden="true"
-                  class=" c11"
-                  data-blade-component="base-box"
-                  direction="bottom"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="Svgweb__StyledSvg-vcmjs8-0"
-                    data-blade-component="icon"
-                    fill="none"
-                    height="20px"
-                    viewBox="0 0 24 24"
-                    width="20px"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                      data-blade-component="svg-path"
-                      fill="currentColor"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
                 </div>
               </button>
             </div>
@@ -1250,11 +1388,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c12"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -1262,11 +1400,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c15"
+                        class="c17"
                         data-blade-component="text"
                       >
                         Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries.
@@ -1279,7 +1417,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c16 c17"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
@@ -1345,33 +1483,47 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                             </div>
                           </div>
                         </div>
+                        <div
+                          class="c11"
+                          data-blade-component="box"
+                        >
+                          <div
+                            aria-hidden="true"
+                            class=" c12"
+                            data-blade-component="base-box"
+                            direction="bottom"
+                          >
+                            <svg
+                              aria-hidden="true"
+                              class="Svgweb__StyledSvg-vcmjs8-0"
+                              data-blade-component="icon"
+                              fill="none"
+                              height="20px"
+                              viewBox="0 0 24 24"
+                              width="20px"
+                            >
+                              <path
+                                clip-rule="evenodd"
+                                d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                                data-blade-component="svg-path"
+                                fill="hsla(211, 22%, 56%, 1)"
+                                fill-rule="evenodd"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="c13"
+                        data-blade-component="base-box"
+                      >
+                        <div
+                          class=""
+                          data-blade-component="box"
+                        />
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  aria-hidden="true"
-                  class=" c11"
-                  data-blade-component="base-box"
-                  direction="bottom"
-                >
-                  <svg
-                    aria-hidden="true"
-                    class="Svgweb__StyledSvg-vcmjs8-0"
-                    data-blade-component="icon"
-                    fill="none"
-                    height="20px"
-                    viewBox="0 0 24 24"
-                    width="20px"
-                  >
-                    <path
-                      clip-rule="evenodd"
-                      d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                      data-blade-component="svg-path"
-                      fill="currentColor"
-                      fill-rule="evenodd"
-                    />
-                  </svg>
                 </div>
               </button>
             </div>
@@ -1383,11 +1535,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               role="region"
             >
               <div
-                class=" c12"
+                class=" c14"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c13"
+                  class="c15"
                   data-blade-component="box"
                 >
                   <div
@@ -1395,11 +1547,11 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c14"
+                      class="c16"
                       data-blade-component="base-box"
                     >
                       <p
-                        class="c15"
+                        class="c17"
                         data-blade-component="text"
                       >
                         Just use Razorpay.
@@ -1412,7 +1564,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
           </div>
         </div>
         <div
-          class="c16 c17"
+          class="c18 c19"
           data-blade-component="divider"
           role="separator"
         />
