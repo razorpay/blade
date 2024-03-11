@@ -42,7 +42,6 @@ const getCommonAccordionButtonStyles = (
 
   return {
     padding: theme.spacing[0],
-    paddingRight: theme.spacing[5],
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

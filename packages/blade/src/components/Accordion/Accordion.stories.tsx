@@ -11,12 +11,18 @@ import type { AccordionProps } from '.';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { QRCodeIcon, RoutesIcon, StarIcon, SubscriptionsIcon } from '~components/Icons';
+import {
+  AnnouncementIcon,
+  QRCodeIcon,
+  RoutesIcon,
+  StarIcon,
+  SubscriptionsIcon,
+} from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Alert } from '~components/Alert';
 import { isReactNative } from '~utils';
-import { Text } from '~components/Typography';
+import { Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
 
@@ -121,6 +127,7 @@ const AccordionWithIconsTemplate: StoryFn<typeof AccordionComponent> = ({ ...arg
           titleSuffix={<Badge>New</Badge>}
           trailing={
             <Link
+              variant="button"
               onClick={(e) => {
                 e.stopPropagation();
               }}
@@ -269,7 +276,7 @@ const AccordionWithSlotTemplate: StoryFn<typeof AccordionComponent> = ({ ...args
       <AccordionItem>
         <AccordionItemHeader title="How can I setup Route?" />
         <AccordionItemBody>
-          <Text color="surface.text.gray.subtle" marginBottom="spacing.10">
+          <Text color="surface.text.gray.subtle" marginBottom="spacing.0">
             You can use Razorpay Route from the Dashboard or using APIs to transfer money to
             customers. You may also check our docs for detailed instructions.
           </Text>
@@ -320,9 +327,7 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
   return (
     <AccordionComponent {...args}>
       <AccordionItem>
-        <AccordionItemHeader>
-          <Text>CUSTOM SLOT</Text>
-        </AccordionItemHeader>
+        <AccordionItemHeader title="How can I setup Subscriptions?" />
         <AccordionItemBody>
           Just use Razorpay. You may also check our docs for detailed instructions. Please use the
           search functionality to ask your queries.
@@ -333,6 +338,94 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
 };
 
 export const IndividualAccordionItem = IndividualAccordionItemTemplate.bind({});
+
+IndividualAccordionItem.args = {
+  variant: 'bordered',
+};
+
+const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
+  return (
+    <>
+      <Heading size="xlarge" marginBottom="spacing.4">
+        Accordion Header Types
+      </Heading>
+      <AccordionComponent {...args}>
+        <AccordionItem>
+          <AccordionItemHeader title="Simple Title & Text Item" />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader title="Title Text of Accordion" subtitle="Subtitle Text" />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader
+            leading={<AnnouncementIcon size="large" />}
+            title="Item with Icon and subtitle"
+            subtitle="Subtitle Text"
+          />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader
+            leading={<AnnouncementIcon size="large" />}
+            title="Item with Trailing"
+            subtitle="Subtitle Text"
+            trailing={
+              <Link
+                variant="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                }}
+              >
+                Apply
+              </Link>
+            }
+          />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader
+            leading={<AnnouncementIcon size="large" />}
+            title="Item with Badge"
+            subtitle="Subtitle Text"
+            titleSuffix={<Badge>New</Badge>}
+          />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
+        <AccordionItem>
+          <AccordionItemHeader>
+            <Box>
+              <Text>Custom Slot Header</Text>
+            </Box>
+          </AccordionItemHeader>
+          <AccordionItemBody>
+            <Box>
+              <Text>Custom Slot BODY</Text>
+            </Box>
+          </AccordionItemBody>
+        </AccordionItem>
+      </AccordionComponent>
+    </>
+  );
+};
+
+export const AccordionItemHeaderVariants = AccordionItemHeaderVariantsTemplate.bind({});
 
 IndividualAccordionItem.args = {
   variant: 'bordered',

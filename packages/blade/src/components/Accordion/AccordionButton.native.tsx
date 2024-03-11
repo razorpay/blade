@@ -109,9 +109,6 @@ const _AccordionButton = ({
         alignItems="center"
       >
         {isDeprecatedAPI ? <AccordionItemHeader title={title} leading={_icon ?? _index} /> : header}
-        <BaseBox>
-          <CollapsibleChevronIcon color={iconColor} size="large" />
-        </BaseBox>
       </BaseBox>
     );
   };

@@ -3,6 +3,7 @@ import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
+import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 
 const AccordionItemHeader = ({
   title,
@@ -40,6 +41,7 @@ const AccordionItemHeader = ({
         paddingX="spacing.5"
         marginY="spacing.5"
         size={size}
+        interactionElement={<CollapsibleChevronIcon color="currentColor" size="large" />}
       >
         {children}
       </BaseHeader>

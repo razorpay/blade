@@ -41,6 +41,13 @@ type BaseHeaderProps = {
   showBackButton?: boolean;
 
   /**
+   * Slot for rendering any trailing interaction element into BaseHeader.
+   *
+   * E.g. Used in accordion to render CollapsibleChevronIcon
+   */
+  interactionElement?: React.ReactNode;
+
+  /**
    * Decides size of the Header
    */
   size?: 'large' | 'medium';
@@ -223,6 +230,7 @@ const _BaseHeader = ({
   marginY,
   size = 'large',
   children,
+  interactionElement,
 }: BaseHeaderProps): React.ReactElement => {
   const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
@@ -324,8 +332,18 @@ const _BaseHeader = ({
               />
             </Box>
           ) : null}
+          {interactionElement && !children ? (
+            <Box {...centerBoxProps[size]}>{interactionElement}</Box>
+          ) : null}
         </BaseBox>
-        {children}
+        <BaseBox display="flex" width="100%" alignItems="center" justifyContent="space-between">
+          <Box>{children}</Box>
+          {interactionElement && children ? (
+            <Box alignSelf="start" {...centerBoxProps[size]}>
+              {interactionElement}
+            </Box>
+          ) : null}
+        </BaseBox>
       </BaseBox>
       {showDivider ? <Divider /> : null}
     </BaseBox>

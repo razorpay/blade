@@ -7,7 +7,6 @@ import { BaseBox } from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { Text } from '~components/Typography';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
-import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import { makeAccessible } from '~utils/makeAccessible';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
@@ -58,7 +57,6 @@ const _AccordionButton = ({
         {...metaAttribute({ name: MetaConstants.AccordionButton })}
       >
         {isDeprecatedAPI ? <AccordionItemHeader title={title} leading={_icon ?? _index} /> : header}
-        <CollapsibleChevronIcon color="currentColor" size="large" />
       </StyledAccordionButton>
     </BaseBox>
   );
