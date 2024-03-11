@@ -427,7 +427,7 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
 
 export const AccordionItemHeaderVariants = AccordionItemHeaderVariantsTemplate.bind({});
 
-IndividualAccordionItem.args = {
+AccordionItemHeaderVariants.args = {
   variant: 'bordered',
 };
 

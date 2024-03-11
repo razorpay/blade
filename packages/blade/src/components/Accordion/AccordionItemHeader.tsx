@@ -16,8 +16,9 @@ const AccordionItemHeader = ({
   BaseHeaderProps,
   'title' | 'subtitle' | 'leading' | 'children' | 'trailing' | 'titleSuffix'
 >): React.ReactElement => {
-  const { size, showNumberPrefix } = useAccordion();
+  const { size, showNumberPrefix, expandedIndex } = useAccordion();
   const { index } = useAccordionItemIndex();
+  const isExpanded = index === expandedIndex;
 
   return (
     <BaseBox flex="1">
@@ -41,7 +42,12 @@ const AccordionItemHeader = ({
         paddingX="spacing.5"
         marginY="spacing.5"
         size={size}
-        interactionElement={<CollapsibleChevronIcon color="currentColor" size="large" />}
+        interactionElement={
+          <CollapsibleChevronIcon
+            color={isExpanded ? 'surface.icon.gray.subtle' : 'surface.icon.gray.muted'}
+            size="large"
+          />
+        }
       >
         {children}
       </BaseHeader>

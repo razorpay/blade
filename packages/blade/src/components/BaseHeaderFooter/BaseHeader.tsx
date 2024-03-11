@@ -336,7 +336,13 @@ const _BaseHeader = ({
             <Box {...centerBoxProps[size]}>{interactionElement}</Box>
           ) : null}
         </BaseBox>
-        <BaseBox display="flex" width="100%" alignItems="center" justifyContent="space-between">
+        <BaseBox
+          display="flex"
+          width="100%"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
           <Box>{children}</Box>
           {interactionElement && children ? (
             <Box alignSelf="start" {...centerBoxProps[size]}>
