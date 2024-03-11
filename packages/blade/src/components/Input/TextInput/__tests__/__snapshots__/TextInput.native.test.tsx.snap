@@ -196,15 +196,22 @@ exports[`<TextInput /> should render 1`] = `
         }
       >
         <View
+          borderBottomLeftRadius="medium"
+          borderBottomRightRadius="medium"
+          borderTopLeftRadius="medium"
+          borderTopRightRadius="medium"
           currentInteraction="default"
           isTextArea={false}
           style={
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderBottomLeftRadius": 4,
+                "borderBottomRightRadius": 4,
                 "borderColor": "hsla(211, 27%, 76%, 1)",
-                "borderRadius": 4,
                 "borderStyle": "solid",
+                "borderTopLeftRadius": 4,
+                "borderTopRightRadius": 4,
                 "borderWidth": 0,
                 "display": "flex",
                 "flexDirection": "row",
@@ -282,6 +289,7 @@ exports[`<TextInput /> should render 1`] = `
               ]
             }
             textContentType="none"
+            valueComponentType="text"
           />
         </View>
       </View>
@@ -512,15 +520,22 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         }
       >
         <View
+          borderBottomLeftRadius="medium"
+          borderBottomRightRadius="medium"
+          borderTopLeftRadius="medium"
+          borderTopRightRadius="medium"
           currentInteraction="default"
           isTextArea={false}
           style={
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderBottomLeftRadius": 4,
+                "borderBottomRightRadius": 4,
                 "borderColor": "hsla(211, 27%, 76%, 1)",
-                "borderRadius": 4,
                 "borderStyle": "solid",
+                "borderTopLeftRadius": 4,
+                "borderTopRightRadius": 4,
                 "borderWidth": 0,
                 "display": "flex",
                 "flexDirection": "row",
@@ -752,6 +767,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             }
             suffix=".com"
             textContentType="none"
+            valueComponentType="text"
           />
           <View
             alignItems="center"

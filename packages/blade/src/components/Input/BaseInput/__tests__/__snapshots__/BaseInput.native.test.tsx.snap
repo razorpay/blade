@@ -196,15 +196,22 @@ exports[`<BaseInput /> should render 1`] = `
         }
       >
         <View
+          borderBottomLeftRadius="medium"
+          borderBottomRightRadius="medium"
+          borderTopLeftRadius="medium"
+          borderTopRightRadius="medium"
           currentInteraction="default"
           isTextArea={false}
           style={
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderBottomLeftRadius": 4,
+                "borderBottomRightRadius": 4,
                 "borderColor": "hsla(211, 27%, 76%, 1)",
-                "borderRadius": 4,
                 "borderStyle": "solid",
+                "borderTopLeftRadius": 4,
+                "borderTopRightRadius": 4,
                 "borderWidth": 0,
                 "display": "flex",
                 "flexDirection": "row",
@@ -278,6 +285,7 @@ exports[`<BaseInput /> should render 1`] = `
                 },
               ]
             }
+            valueComponentType="text"
           />
         </View>
       </View>
@@ -508,15 +516,22 @@ exports[`<BaseInput /> should render with icons 1`] = `
         }
       >
         <View
+          borderBottomLeftRadius="medium"
+          borderBottomRightRadius="medium"
+          borderTopLeftRadius="medium"
+          borderTopRightRadius="medium"
           currentInteraction="default"
           isTextArea={false}
           style={
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderBottomLeftRadius": 4,
+                "borderBottomRightRadius": 4,
                 "borderColor": "hsla(211, 27%, 76%, 1)",
-                "borderRadius": 4,
                 "borderStyle": "solid",
+                "borderTopLeftRadius": 4,
+                "borderTopRightRadius": 4,
                 "borderWidth": 0,
                 "display": "flex",
                 "flexDirection": "row",
@@ -691,6 +706,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               ]
             }
             trailingIcon={[Function]}
+            valueComponentType="text"
           />
           <View
             alignItems="center"
@@ -1004,15 +1020,22 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         }
       >
         <View
+          borderBottomLeftRadius="medium"
+          borderBottomRightRadius="medium"
+          borderTopLeftRadius="medium"
+          borderTopRightRadius="medium"
           currentInteraction="default"
           isTextArea={false}
           style={
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderBottomLeftRadius": 4,
+                "borderBottomRightRadius": 4,
                 "borderColor": "hsla(150, 100%, 32%, 1)",
-                "borderRadius": 4,
                 "borderStyle": "solid",
+                "borderTopLeftRadius": 4,
+                "borderTopRightRadius": 4,
                 "borderWidth": 0,
                 "display": "flex",
                 "flexDirection": "row",
@@ -1189,6 +1212,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
             }
             trailingIcon={[Function]}
             validationState="success"
+            valueComponentType="text"
           />
           <View
             alignItems="center"
@@ -1630,15 +1654,22 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         }
       >
         <View
+          borderBottomLeftRadius="medium"
+          borderBottomRightRadius="medium"
+          borderTopLeftRadius="medium"
+          borderTopRightRadius="medium"
           currentInteraction="default"
           isTextArea={false}
           style={
             [
               {
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderBottomLeftRadius": 4,
+                "borderBottomRightRadius": 4,
                 "borderColor": "hsla(211, 27%, 76%, 1)",
-                "borderRadius": 4,
                 "borderStyle": "solid",
+                "borderTopLeftRadius": 4,
+                "borderTopRightRadius": 4,
                 "borderWidth": 0,
                 "display": "flex",
                 "flexDirection": "row",
@@ -1712,6 +1743,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
                 },
               ]
             }
+            valueComponentType="text"
           />
           <View
             alignItems="center"

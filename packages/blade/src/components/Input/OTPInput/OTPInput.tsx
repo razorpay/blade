@@ -10,9 +10,11 @@ import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType } from '~utils';
+import { getPlatformType, makeBorderSize, useTheme } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
+import { baseInputBorderWidth } from '../BaseInput/baseInputTokens';
+import getIn from '~utils/lodashButBetter/get';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -212,6 +214,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
   const [currentFocusedInput, setCurrentFocusedInput] = useState<number | null>(null);
+  const { theme } = useTheme();
 
   useImperativeHandle(
     incomingRef,
@@ -379,6 +382,12 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
           flex={1}
           key={`${inputId}-${index}`}
           zIndex={currentFocusedInput === index ? 1 : undefined}
+          // use negative margin to overlap the border of the input fields for React Native to avoid double border. On Web we use box shadow, so the negative margin is not needed.
+          marginRight={
+            isReactNative && index !== otpLength - 1
+              ? `-${makeBorderSize(getIn(theme.border.width, baseInputBorderWidth.default))}`
+              : undefined
+          }
         >
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus

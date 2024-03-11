@@ -940,7 +940,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             {trailingHeaderSlot?.(value ?? inputValue)}
           </BaseBox>
         )}
-        <FocusRingWrapper currentInteraction={currentInteraction} marginRight="4px">
+        <FocusRingWrapper currentInteraction={currentInteraction}>
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}

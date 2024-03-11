@@ -228,6 +228,10 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               }
             >
               <View
+                borderBottomLeftRadius="medium"
+                borderBottomRightRadius="medium"
+                borderTopLeftRadius="medium"
+                borderTopRightRadius="medium"
                 currentInteraction="default"
                 isDropdownTrigger={true}
                 isTextArea={false}
@@ -235,9 +239,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   [
                     {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 4,
                       "borderColor": "hsla(211, 27%, 76%, 1)",
-                      "borderRadius": 4,
                       "borderStyle": "solid",
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 4,
                       "borderWidth": 0,
                       "display": "flex",
                       "flexDirection": "row",
@@ -417,6 +424,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           textAlign="left"
                           textContentType="none"
                           value=""
+                          valueComponentType="text"
                         />
                       </View>
                     </View>

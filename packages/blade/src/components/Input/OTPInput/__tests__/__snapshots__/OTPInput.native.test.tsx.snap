@@ -183,7 +183,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginLeft": 0,
+                "marginRight": -1,
               },
             ]
           }
@@ -227,15 +227,22 @@ exports[`<OTPInput /> should render 1`] = `
                 }
               >
                 <View
+                  borderBottomLeftRadius="medium"
+                  borderBottomRightRadius="none"
+                  borderTopLeftRadius="medium"
+                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderBottomLeftRadius": 4,
+                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
-                        "borderRadius": 4,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 4,
+                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -291,8 +298,8 @@ exports[`<OTPInput /> should render 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
                           "fontStyle": "normal",
                           "fontWeight": "400",
                           "height": 36,
@@ -315,6 +322,7 @@ exports[`<OTPInput /> should render 1`] = `
                     textAlign="center"
                     textContentType="oneTimeCode"
                     value=""
+                    valueComponentType="heading"
                   />
                 </View>
               </View>
@@ -329,7 +337,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginLeft": 8,
+                "marginRight": -1,
               },
             ]
           }
@@ -373,15 +381,22 @@ exports[`<OTPInput /> should render 1`] = `
                 }
               >
                 <View
+                  borderBottomLeftRadius="none"
+                  borderBottomRightRadius="none"
+                  borderTopLeftRadius="none"
+                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderBottomLeftRadius": 0,
+                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
-                        "borderRadius": 4,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -437,8 +452,8 @@ exports[`<OTPInput /> should render 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
                           "fontStyle": "normal",
                           "fontWeight": "400",
                           "height": 36,
@@ -461,6 +476,7 @@ exports[`<OTPInput /> should render 1`] = `
                     textAlign="center"
                     textContentType="oneTimeCode"
                     value=""
+                    valueComponentType="heading"
                   />
                 </View>
               </View>
@@ -475,7 +491,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginLeft": 8,
+                "marginRight": -1,
               },
             ]
           }
@@ -519,15 +535,22 @@ exports[`<OTPInput /> should render 1`] = `
                 }
               >
                 <View
+                  borderBottomLeftRadius="none"
+                  borderBottomRightRadius="none"
+                  borderTopLeftRadius="none"
+                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderBottomLeftRadius": 0,
+                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
-                        "borderRadius": 4,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -583,8 +606,8 @@ exports[`<OTPInput /> should render 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
                           "fontStyle": "normal",
                           "fontWeight": "400",
                           "height": 36,
@@ -607,6 +630,7 @@ exports[`<OTPInput /> should render 1`] = `
                     textAlign="center"
                     textContentType="oneTimeCode"
                     value=""
+                    valueComponentType="heading"
                   />
                 </View>
               </View>
@@ -621,7 +645,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginLeft": 8,
+                "marginRight": -1,
               },
             ]
           }
@@ -665,15 +689,22 @@ exports[`<OTPInput /> should render 1`] = `
                 }
               >
                 <View
+                  borderBottomLeftRadius="none"
+                  borderBottomRightRadius="none"
+                  borderTopLeftRadius="none"
+                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderBottomLeftRadius": 0,
+                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
-                        "borderRadius": 4,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -729,8 +760,8 @@ exports[`<OTPInput /> should render 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
                           "fontStyle": "normal",
                           "fontWeight": "400",
                           "height": 36,
@@ -753,6 +784,7 @@ exports[`<OTPInput /> should render 1`] = `
                     textAlign="center"
                     textContentType="oneTimeCode"
                     value=""
+                    valueComponentType="heading"
                   />
                 </View>
               </View>
@@ -767,7 +799,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginLeft": 8,
+                "marginRight": -1,
               },
             ]
           }
@@ -811,15 +843,22 @@ exports[`<OTPInput /> should render 1`] = `
                 }
               >
                 <View
+                  borderBottomLeftRadius="none"
+                  borderBottomRightRadius="none"
+                  borderTopLeftRadius="none"
+                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderBottomLeftRadius": 0,
+                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
-                        "borderRadius": 4,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -875,8 +914,8 @@ exports[`<OTPInput /> should render 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
                           "fontStyle": "normal",
                           "fontWeight": "400",
                           "height": 36,
@@ -899,6 +938,7 @@ exports[`<OTPInput /> should render 1`] = `
                     textAlign="center"
                     textContentType="oneTimeCode"
                     value=""
+                    valueComponentType="heading"
                   />
                 </View>
               </View>
@@ -913,7 +953,6 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginLeft": 8,
               },
             ]
           }
@@ -957,15 +996,22 @@ exports[`<OTPInput /> should render 1`] = `
                 }
               >
                 <View
+                  borderBottomLeftRadius="none"
+                  borderBottomRightRadius="medium"
+                  borderTopLeftRadius="none"
+                  borderTopRightRadius="medium"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderBottomLeftRadius": 0,
+                        "borderBottomRightRadius": 4,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
-                        "borderRadius": 4,
                         "borderStyle": "solid",
+                        "borderTopLeftRadius": 0,
+                        "borderTopRightRadius": 4,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -1021,8 +1067,8 @@ exports[`<OTPInput /> should render 1`] = `
                           "flexBasis": 0,
                           "flexGrow": 1,
                           "flexShrink": 1,
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
                           "fontStyle": "normal",
                           "fontWeight": "400",
                           "height": 36,
@@ -1045,6 +1091,7 @@ exports[`<OTPInput /> should render 1`] = `
                     textAlign="center"
                     textContentType="oneTimeCode"
                     value=""
+                    valueComponentType="heading"
                   />
                 </View>
               </View>
