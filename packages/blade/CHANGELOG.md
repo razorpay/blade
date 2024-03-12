@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.6.3
+
+### Patch Changes
+
+- 2c64f181: feat: support `defaultPlacement` prop on `DropdownOverlay`
+- ef68789a: fix(DropdownButton): scroll handling issues on keyboard navigations
+
 ## 11.6.2
 
 ### Patch Changes
