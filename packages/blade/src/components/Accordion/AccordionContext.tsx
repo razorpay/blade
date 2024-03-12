@@ -12,8 +12,13 @@ type AccordionContextState = {
   size: NonNullable<AccordionProps['size']>;
 };
 
+type AccordionItemContextState = {
+  index?: number;
+  isDisabled?: boolean;
+};
+
 const AccordionContext = createContext<AccordionContextState | null>(null);
-const AccordionItemContext = createContext<{ index?: number }>({
+const AccordionItemContext = createContext<AccordionItemContextState>({
   index: undefined,
 });
 
@@ -30,7 +35,7 @@ const useAccordion = (): AccordionContextState => {
   return accordionContext!;
 };
 
-const useAccordionItemIndex = (): { index?: number } => {
+const useAccordionItemIndex = (): AccordionItemContextState => {
   const accordionItemContext = useContext(AccordionItemContext);
   if (__DEV__) {
     if (!accordionItemContext) {

@@ -64,6 +64,7 @@ const AccordionItem = ({
   description,
   icon,
   children,
+  isDisabled,
   _index,
   testID,
 }: AccordionItemProps): ReactElement => {
@@ -93,6 +94,7 @@ const AccordionItem = ({
     <AccordionItemContext.Provider
       value={{
         index: _index,
+        isDisabled,
       }}
     >
       <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItem, testID })}>

@@ -420,6 +420,18 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
             </Box>
           </AccordionItemBody>
         </AccordionItem>
+        <AccordionItem isDisabled={true}>
+          <AccordionItemHeader
+            leading={<AnnouncementIcon size="large" color="surface.icon.gray.disabled" />}
+            title="Item with Badge"
+            subtitle="Subtitle Text"
+            titleSuffix={<Badge>New</Badge>}
+          />
+          <AccordionItemBody>
+            Just use Razorpay. You may also check our docs for detailed instructions. Please use the
+            search functionality to ask your queries.
+          </AccordionItemBody>
+        </AccordionItem>
       </AccordionComponent>
     </>
   );
