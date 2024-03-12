@@ -14,18 +14,18 @@
     "loading": 0.52373046875
   },
   {
+    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
+    "passed": true,
+    "size": 34608,
+    "sizeLimit": 2000000,
+    "loading": 0.6759375
+  },
+  {
     "name": "Alert",
     "passed": true,
     "size": 33249,
     "sizeLimit": 2000000,
     "loading": 0.64939453125
-  },
-  {
-    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
-    "passed": true,
-    "size": 34582,
-    "sizeLimit": 2000000,
-    "loading": 0.6754296875
   },
   {
     "name": "Amount",
@@ -128,9 +128,9 @@
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
     "passed": true,
-    "size": 44610,
+    "size": 44634,
     "sizeLimit": 2000000,
-    "loading": 0.8712890625
+    "loading": 0.8717578125
   },
   {
     "name": "FileUpload",
@@ -205,9 +205,9 @@
   {
     "name": "Table, TableHeader, TableHeaderCell, TableHeaderRow, TableBody, TableCell, TableRow, TableFooter, TableFooterCell, TableFooterRow, TablePagination, TableToolbar, TableToolbarActions",
     "passed": true,
-    "size": 72382,
+    "size": 72417,
     "sizeLimit": 2000000,
-    "loading": 1.4137109375
+    "loading": 1.41439453125
   },
   {
     "name": "Tabs, TabItem, TabList, TabPanel",
@@ -261,9 +261,9 @@
   {
     "name": "SelectInput, AutoComplete",
     "passed": true,
-    "size": 39360,
+    "size": 39398,
     "sizeLimit": 2000000,
-    "loading": 0.76875
+    "loading": 0.7694921875
   },
   {
     "name": "OTPInput",
