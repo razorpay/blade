@@ -55,6 +55,14 @@ type BaseHeaderProps = {
    * @default true
    */
   showCloseButton?: boolean;
+
+  /**
+   * Disabled state of BaseHeader
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
+
   paddingX?: BoxProps['paddingX'];
   marginY?: BoxProps['marginY'];
   onCloseButtonClick?: () => void;
@@ -229,6 +237,7 @@ const _BaseHeader = ({
   paddingX,
   marginY,
   size = 'large',
+  isDisabled,
   children,
   interactionElement,
 }: BaseHeaderProps): React.ReactElement => {
@@ -298,7 +307,7 @@ const _BaseHeader = ({
                     size={sizeTokensMapping[size].title}
                     marginTop={makeSize(sizeToken['1'])}
                     weight="semibold"
-                    color="surface.text.gray.normal"
+                    color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'}
                   >
                     {title}
                   </Text>
@@ -310,7 +319,12 @@ const _BaseHeader = ({
                 )}
               </BaseBox>
               {subtitle ? (
-                <Text variant="body" size="small" weight="regular" color="surface.text.gray.muted">
+                <Text
+                  variant="body"
+                  size="small"
+                  weight="regular"
+                  color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
+                >
                   {subtitle}
                 </Text>
               ) : null}
