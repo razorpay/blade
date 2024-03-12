@@ -12,10 +12,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { castNativeType } from '~utils';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
-import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import type { IconProps } from '~components/Icons';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 
@@ -79,13 +77,10 @@ const _AccordionButton = ({
   const renderChildren: PressableProps['children'] = ({ pressed }) => {
     isPressed.value = pressed;
 
-    const iconColor: IconProps['color'] =
-      pressed || isExpanded ? 'interactive.icon.gray.subtle' : 'interactive.icon.gray.muted';
-
     const _icon = Icon && (
       <Icon
         size="medium"
-        color="surface.icon.gray.muted"
+        color="surface.icon.gray.normal"
         marginRight="spacing.3"
         marginY="spacing.2"
       />
