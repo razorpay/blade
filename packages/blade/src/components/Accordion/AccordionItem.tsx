@@ -46,6 +46,13 @@ type AccordionItemProps = {
   children?: ReactNode | ReactNode[];
 
   /**
+   * Disabled state of the item
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
+
+  /**
    * **Internal:** used for determining numbering, you don't need to pass this,
    * instead pass `showNumberPrefix` to root `Accordion`
    */
