@@ -1,4 +1,5 @@
 import React from 'react';
+import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
 import type { BaseDropdownInputTriggerProps } from './types';
@@ -10,6 +11,7 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import type { BladeElementRef } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
+import { mergeRefs } from '~utils/useMergeRefs';
 
 const useControlledDropdownInput = (
   props: Pick<
@@ -21,7 +23,8 @@ const useControlledDropdownInput = (
     | 'onInputValueChange'
     | 'syncInputValueWithSelection'
     | 'isSelectInput'
-  >,
+  > &
+    BaseInputProps,
 ): void => {
   const isFirstRender = useFirstRender();
   const {
@@ -221,16 +224,7 @@ const _BaseDropdownInputTrigger = (
       ref={
         (!isReactNative()
           ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (node: any) => {
-              triggererRef.current = node;
-              if (ref) {
-                if (typeof ref === 'function') {
-                  ref(node);
-                } else {
-                  ref.current = node;
-                }
-              }
-            }
+            mergeRefs(ref, triggererRef)
           : null) as never
       }
       isDropdownTrigger={true}
@@ -293,7 +287,7 @@ const _BaseDropdownInputTrigger = (
       // Special Props for Unique behaviour between Select and AutoComplete
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}
-      interactionElement={
+      trailingInteractionElement={
         isAutoCompleteInHeader ? null : (
           <InputChevronIcon
             onClick={() => {
@@ -310,6 +304,8 @@ const _BaseDropdownInputTrigger = (
           />
         )
       }
+      // TODO: filter only whats needed
+      {...props}
     />
   );
 };

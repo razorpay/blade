@@ -1,6 +1,5 @@
 import type { CSSObject } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
-import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import { getBaseInputBorderStyles } from './getBaseInputBorderStyles';
 import {
   baseInputBackgroundColor,
@@ -9,6 +8,7 @@ import {
   baseInputHeight,
   baseInputPaddingTokens,
 } from './baseInputTokens';
+import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';
@@ -22,7 +22,8 @@ type GetInputStyles = Pick<
   | 'validationState'
   | 'leadingIcon'
   | 'prefix'
-  | 'interactionElement'
+  | 'trailingInteractionElement'
+  | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'
   | 'textAlign'
@@ -156,7 +157,8 @@ export const getBaseInputStyles = ({
   isDisabled,
   leadingIcon,
   prefix,
-  interactionElement,
+  trailingInteractionElement,
+  leadingInteractionElement,
   suffix,
   trailingIcon,
   textAlign,
@@ -168,13 +170,15 @@ export const getBaseInputStyles = ({
   const {
     hasLeadingIcon,
     hasPrefix,
-    hasInteractionElement,
+    hasTrailingInteractionElement,
+    hasLeadingInteractionElement,
     hasSuffix,
     hasTrailingIcon,
   } = getInputVisualsToBeRendered({
     leadingIcon,
     prefix,
-    interactionElement,
+    trailingInteractionElement,
+    leadingInteractionElement,
     suffix,
     trailingIcon,
     size,
@@ -198,11 +202,12 @@ export const getBaseInputStyles = ({
     paddingTop: makeSpace(theme.spacing[baseInputPaddingTokens.top[size]]),
     paddingBottom: makeSpace(theme.spacing[baseInputPaddingTokens.bottom[size]]),
     paddingLeft: makeSpace(
+      // TODO: hasInteractionElement: hasTrailingInteractionElement,
       getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix, size }),
     ),
     paddingRight: getRightPadding({
       theme,
-      hasInteractionElement,
+      hasInteractionElement: hasTrailingInteractionElement,
       hasSuffix,
       hasTrailingIcon,
       size,

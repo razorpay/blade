@@ -157,7 +157,13 @@ type BaseInputCommonProps = FormInputLabelProps &
      *
      * eg: consumers can render a loader or they could render a clear button
      */
-    interactionElement?: ReactNode;
+    trailingInteractionElement?: ReactNode;
+    /**
+     * Element to be rendered before prefix. This is decided by the component which is extending BaseInput
+     *
+     * eg: consumers can render a loader or they could render a clear button
+     */
+    leadingInteractionElement?: ReactNode;
     /**
      * Suffix symbol to be displayed at the end of the input field. If trailingIcon is provided it'll be placed before it
      */
@@ -761,7 +767,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isRequired,
     leadingIcon,
     prefix,
-    interactionElement,
+    trailingInteractionElement,
+    leadingInteractionElement,
     suffix,
     trailingIcon,
     maxCharacters,
@@ -932,6 +939,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               leadingIcon={leadingIcon}
               prefix={prefix}
               isDisabled={isDisabled}
+              leadingInteractionElement={leadingInteractionElement}
             />
             <BaseInputTagSlot
               renderAs={as}
@@ -975,7 +983,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 handleOnClick={handleOnClick}
                 leadingIcon={leadingIcon}
                 prefix={prefix}
-                interactionElement={interactionElement}
+                trailingInteractionElement={trailingInteractionElement}
+                leadingInteractionElement={leadingInteractionElement}
                 suffix={suffix}
                 trailingIcon={trailingIcon}
                 maxCharacters={maxCharacters}
@@ -1000,7 +1009,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               />
             </BaseInputTagSlot>
             <BaseInputVisuals
-              interactionElement={interactionElement}
+              trailingInteractionElement={trailingInteractionElement}
               suffix={suffix}
               trailingIcon={trailingIcon}
               isDisabled={isDisabled}

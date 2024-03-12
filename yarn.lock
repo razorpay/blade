@@ -6849,22 +6849,17 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@razorpay/i18nify-js@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@razorpay/i18nify-js/-/i18nify-js-1.4.4.tgz#799f766bd3c87fc014e0f64c9462042e5a10c760"
-  integrity sha512-s0XzUuNxPO9LzcJgExWeDIGCbtPwgVmJju6vTuEaXrCvvAIQIrlRb4eatLPtS95iQDatNXLvy0gf1tBejwEnAg==
+"@razorpay/i18nify-js@1.5.0", "@razorpay/i18nify-js@^1.5.0":
+  version "1.5.0"
+  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.5.0/368ff35e5ff26a58018817ad6271d400e0f43a74#368ff35e5ff26a58018817ad6271d400e0f43a74"
+  integrity sha512-v1dYgeBg7W1ScVwvvb6Uhj4MbwuK4alLMXTpv5BVrQXafucuR9AM/6OC4d4WIQWbYJP1+eQ11Sg0WVI4uRB2BQ==
 
-"@razorpay/i18nify-js@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@razorpay/i18nify-js/-/i18nify-js-1.4.0.tgz#4988e9a10b55c6fbe1b045afa7f0f240eea01845"
-  integrity sha512-JY1g3Kn4e8ktsMbrDHOh8TEtPvJOT/A6FKGfNcaEVZ7uJM5Ew9fwP5j6orSF7FaGEZ8PVEIoCsycKhwm9fLfrA==
-
-"@razorpay/i18nify-react@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@razorpay/i18nify-react/-/i18nify-react-4.0.0.tgz#f7cd2a019cb5b201c9086398486e492971d16ca5"
-  integrity sha512-dOLilNaWS9397R/1hZM4ffFJDmqLUPkqZBp+Bmra3wo8tdhbk43fTAMrZhk1o9EU+WqxiP9Wup8mnZQ33qP0/g==
+"@razorpay/i18nify-react@4.0.3":
+  version "4.0.3"
+  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-react/4.0.3/aee5b3f6db37ac014d960dd91fb34b24614f5e78#aee5b3f6db37ac014d960dd91fb34b24614f5e78"
+  integrity sha512-uJtmCqJ6yH2I6GKolf/sXy1Lraa7EOPRB1Dmb+XpfiN5+KpQ4aI4VZFzory1Okxc3xJ5dxwE39iYrft7VOBXug==
   dependencies:
-    "@razorpay/i18nify-js" "^1.4.0"
+    "@razorpay/i18nify-js" "^1.5.0"
 
 "@react-hook/intersection-observer@^3.1.1":
   version "3.1.1"

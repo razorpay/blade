@@ -1,6 +1,6 @@
 import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~utils/types';
+import type { ContainerElementType, TestID } from '~utils/types';
 import type { BoxProps } from '~components/Box';
 type DropdownProps = {
   /**
@@ -27,6 +27,7 @@ type DropdownOverlayProps = {
    */
   zIndex?: number;
   width?: BoxProps['width'];
+  referenceRef?: React.MutableRefObject<ContainerElementType | null>;
 } & TestID;
 
 export type { DropdownProps, DropdownOverlayProps };

@@ -34,6 +34,7 @@ const _DropdownOverlay = ({
   testID,
   zIndex = componentZIndices.dropdownOverlay,
   width,
+  referenceRef,
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
@@ -41,7 +42,8 @@ const _DropdownOverlay = ({
 
   const isMenu =
     dropdownTriggerer !== dropdownComponentIds.triggers.SelectInput &&
-    dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete;
+    dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete &&
+    referenceRef == undefined;
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -52,7 +54,9 @@ const _DropdownOverlay = ({
       // Input triggers have their ref on internal input element but we want width height of overall visible input hence wrapperRef is needed
       // We fallback to use `triggererRef` for triggers like button and link where wrapper is not needed
       // Checkout: https://github.com/razorpay/blade/pull/1559#discussion_r1305438920
-      reference: triggererWrapperRef.current ?? triggererRef.current,
+      reference: (referenceRef?.current ??
+        triggererWrapperRef.current ??
+        triggererRef.current) as Element,
     },
     middleware: [
       offset({

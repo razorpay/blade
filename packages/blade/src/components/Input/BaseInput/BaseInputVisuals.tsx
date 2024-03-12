@@ -13,7 +13,8 @@ type InputVisuals = Pick<
   BaseInputProps,
   | 'leadingIcon'
   | 'prefix'
-  | 'interactionElement'
+  | 'trailingInteractionElement'
+  | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'
   | 'isDisabled'
@@ -76,30 +77,34 @@ const getPrefixStyles = ({
 
 const getInteractionElementStyles = ({
   hasTrailingIcon,
-  hasInteractionElement,
+  hasLeadingInteractionElement,
+  hasTrailingInteractionElement,
   hasSuffix,
   hasTrailingButton,
 }: {
   hasTrailingIcon: boolean;
-  hasInteractionElement: boolean;
+  hasLeadingInteractionElement?: boolean;
+  hasTrailingInteractionElement?: boolean;
   hasSuffix: boolean;
   hasTrailingButton: boolean;
-}): Pick<BaseBoxProps, 'paddingRight'> => {
-  if (hasInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingButton)) {
-    return {
-      paddingRight: 'spacing.2',
-    };
+}) => {
+  if (hasTrailingInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingButton)) {
+    return 'spacing.2';
   }
 
-  if (hasInteractionElement && !hasSuffix && !hasTrailingIcon && !hasTrailingButton) {
-    return {
-      paddingRight: 'spacing.4',
-    };
+  if (hasTrailingInteractionElement && !hasSuffix && !hasTrailingIcon && !hasTrailingButton) {
+    return 'spacing.4';
   }
 
-  return {
-    paddingRight: 'spacing.0',
-  };
+  if (hasLeadingInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingButton)) {
+    return 'spacing.2';
+  }
+
+  if (hasLeadingInteractionElement && !hasSuffix && !hasTrailingIcon && !hasTrailingButton) {
+    return 'spacing.4';
+  }
+
+  return 'spacing.0';
 };
 
 const getSuffixStyles = ({
@@ -155,14 +160,16 @@ const getTrailingIconStyles = ({
 export const getInputVisualsToBeRendered = ({
   leadingIcon,
   prefix,
-  interactionElement,
+  trailingInteractionElement,
+  leadingInteractionElement,
   suffix,
   trailingIcon,
   trailingButton,
 }: InputVisuals) => ({
   hasLeadingIcon: Boolean(leadingIcon),
   hasPrefix: Boolean(prefix),
-  hasInteractionElement: Boolean(interactionElement),
+  hasTrailingInteractionElement: Boolean(trailingInteractionElement),
+  hasLeadingInteractionElement: Boolean(leadingInteractionElement),
   hasSuffix: Boolean(suffix),
   hasTrailingIcon: Boolean(trailingIcon),
   hasTrailingButton: Boolean(trailingButton),
@@ -171,7 +178,8 @@ export const getInputVisualsToBeRendered = ({
 export const BaseInputVisuals = ({
   leadingIcon: LeadingIcon,
   prefix,
-  interactionElement,
+  trailingInteractionElement,
+  leadingInteractionElement,
   suffix,
   trailingIcon: TrailingIcon,
   isDisabled,
@@ -182,23 +190,25 @@ export const BaseInputVisuals = ({
   const {
     hasLeadingIcon,
     hasPrefix,
-    hasInteractionElement,
     hasSuffix,
+    hasTrailingInteractionElement,
+    hasLeadingInteractionElement,
     hasTrailingIcon,
     hasTrailingButton,
   } = getInputVisualsToBeRendered({
     leadingIcon: LeadingIcon,
     prefix,
-    interactionElement,
+    leadingInteractionElement,
+    trailingInteractionElement,
     suffix,
     trailingIcon: TrailingIcon,
     trailingButton: TrailingButton,
     size,
   });
 
-  const hasLeadingVisuals = hasLeadingIcon || hasPrefix;
+  const hasLeadingVisuals = hasLeadingInteractionElement || hasLeadingIcon || hasPrefix;
   const hasTrailingVisuals =
-    hasInteractionElement || hasSuffix || hasTrailingIcon || hasTrailingButton;
+    hasTrailingInteractionElement || hasSuffix || hasTrailingIcon || hasTrailingButton;
 
   if (__DEV__) {
     if (hasTrailingButton && !isValidAllowedChildren(TrailingButton, 'Link')) {
@@ -212,6 +222,21 @@ export const BaseInputVisuals = ({
   if (hasLeadingVisuals) {
     return (
       <BaseBox {...getVisualContainerStyles()}>
+        {hasLeadingInteractionElement ? (
+          <BaseBox
+            marginLeft={getInteractionElementStyles({
+              hasTrailingIcon,
+              hasLeadingInteractionElement,
+              hasSuffix,
+              hasTrailingButton,
+            })}
+            display="flex"
+            alignItems="stretch"
+            alignSelf="stretch"
+          >
+            {leadingInteractionElement}
+          </BaseBox>
+        ) : null}
         {LeadingIcon ? (
           <BaseBox paddingLeft="spacing.4" display="flex">
             <LeadingIcon
@@ -239,11 +264,11 @@ export const BaseInputVisuals = ({
   if (hasTrailingVisuals) {
     return (
       <BaseBox alignSelf="stretch" alignItems="stretch" {...getVisualContainerStyles()}>
-        {hasInteractionElement ? (
+        {hasTrailingInteractionElement ? (
           <BaseBox
-            {...getInteractionElementStyles({
+            marginRight={getInteractionElementStyles({
               hasTrailingIcon,
-              hasInteractionElement,
+              hasLeadingInteractionElement,
               hasSuffix,
               hasTrailingButton,
             })}
@@ -251,7 +276,7 @@ export const BaseInputVisuals = ({
             alignItems="stretch"
             alignSelf="stretch"
           >
-            {interactionElement}
+            {trailingInteractionElement}
           </BaseBox>
         ) : null}
         {hasSuffix ? (
