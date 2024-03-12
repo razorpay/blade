@@ -18,7 +18,7 @@ const MIN_WIDTH: BoxProps['minWidth'] = {
 };
 
 const getVariantStyles = (variant: AccordionProps['variant']): BoxProps => {
-  if (variant === 'borderless') {
+  if (variant === 'transparent') {
     return {};
   }
 
@@ -67,7 +67,7 @@ const Accordion = ({
   onExpandChange,
   showNumberPrefix = false,
   children,
-  variant = 'borderless',
+  variant = 'transparent',
   size = 'large',
   testID,
   ...styledProps

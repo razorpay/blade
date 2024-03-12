@@ -114,7 +114,7 @@ const AccordionItem = ({
             )}
           </CollapsibleBody>
         </Collapsible>
-        {isLastItem || variant === 'borderless' ? <Divider /> : null}
+        {isLastItem || variant === 'transparent' ? <Divider /> : null}
       </BaseBox>
     </AccordionItemContext.Provider>
   );

@@ -340,7 +340,7 @@ const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ .
 export const IndividualAccordionItem = IndividualAccordionItemTemplate.bind({});
 
 IndividualAccordionItem.args = {
-  variant: 'bordered',
+  variant: 'solid',
 };
 
 const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
@@ -428,7 +428,7 @@ const AccordionItemHeaderVariantsTemplate: StoryFn<typeof AccordionComponent> = 
 export const AccordionItemHeaderVariants = AccordionItemHeaderVariantsTemplate.bind({});
 
 AccordionItemHeaderVariants.args = {
-  variant: 'bordered',
+  variant: 'solid',
 };
 
 const AccordionDeprecatedAPITemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
@@ -456,7 +456,7 @@ const AccordionDeprecatedAPITemplate: StoryFn<typeof AccordionComponent> = ({ ..
 export const AccordionDeprecatedAPI = AccordionDeprecatedAPITemplate.bind({});
 
 AccordionDeprecatedAPI.args = {
-  variant: 'borderless',
+  variant: 'transparent',
   size: 'large',
 };
 
