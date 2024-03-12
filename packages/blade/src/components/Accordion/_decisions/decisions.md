@@ -108,14 +108,14 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 
 ### Accordion
 
-| Prop                 | Type                     | Default      | Description                                                    | Required |
-| -------------------- | ------------------------ | ------------ | -------------------------------------------------------------- | -------- |
-| defaultExpandedIndex | `number`                 | `undefined`  | Makes the passed item index expanded by default (uncontrolled) |          |
-| expandedIndex        | `number`                 | `undefined`  | Expands the passed index (controlled)                          |          |
-| size                 | `large`, `medium`        | `large`      | Size of the Accordion                                          |          |
-| variant              | `bordered`, `borderless` | `borderless` | Visual variant of Accordion                                    |          |
-| onExpandChange       | `function`               | `undefined`  | Callback for change in any item's expanded state               |          |
-| showNumberPrefix     | `boolean`                | `false`      | Adds numeric index at the beginning of items                   |          |
+| Prop                 | Type                   | Default       | Description                                                    | Required |
+| -------------------- | ---------------------- | ------------- | -------------------------------------------------------------- | -------- |
+| defaultExpandedIndex | `number`               | `undefined`   | Makes the passed item index expanded by default (uncontrolled) |          |
+| expandedIndex        | `number`               | `undefined`   | Expands the passed index (controlled)                          |          |
+| size                 | `large`, `medium`      | `large`       | Size of the Accordion                                          |          |
+| variant              | `solid`, `transparent` | `transparent` | Visual variant of Accordion                                    |          |
+| onExpandChange       | `function`             | `undefined`   | Callback for change in any item's expanded state               |          |
+| showNumberPrefix     | `boolean`              | `false`       | Adds numeric index at the beginning of items                   |          |
 
 > **Note**
 >
@@ -226,7 +226,7 @@ Individual Item Accordion is same as normal accordion but with one item only
 ```tsx
 const App = () => {
   return (
-    <Accordion variant="bordered">
+    <Accordion variant="solid">
       <AccordionItem>
         <AccordionItemHeader title="How can I setup Route?" />
         <AccordionItemBody>
@@ -286,7 +286,7 @@ Find in page (automatically expanding the accordion if someone does <kbd>Cmd</kb
 - **Q3.** [Proposed API](#api) vs [Alternate API](#alternate-api-for-custom-trigger)
   - **Ans:** Proposed API with deprecations for earlier API
 - **Q4.** `variant="bordered | borderless"` vs `variant="filled | transparent"`
-  - **Ans:** ⚠️ TBD
+  - **Ans:** We're going with `solid | transparent`
 
 ## References
 
