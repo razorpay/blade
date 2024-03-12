@@ -110,6 +110,7 @@ const AccordionItem = ({
             icon={icon}
             title={title}
             header={header}
+            isDisabled={isDisabled}
             isDeprecatedAPI={isDeprecatedAPI}
           />
           <CollapsibleBody

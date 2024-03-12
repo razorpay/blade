@@ -17,6 +17,7 @@ const _AccordionButton = ({
   title,
   isDeprecatedAPI,
   header,
+  isDisabled,
 }: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex, size } = useAccordion();
@@ -52,6 +53,7 @@ const _AccordionButton = ({
     >
       <StyledAccordionButton
         isExpanded={isItemExpanded}
+        disabled={isDisabled}
         onClick={onClick}
         {...makeAccessible({ expanded: isItemExpanded, controls: collapsibleBodyId })}
         {...metaAttribute({ name: MetaConstants.AccordionButton })}

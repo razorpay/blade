@@ -15,6 +15,7 @@ type AccordionButtonProps = {
   title?: string;
   isDeprecatedAPI: boolean;
   header: React.ReactNode;
+  isDisabled?: boolean;
 };
 
 type AccordionProps = {
