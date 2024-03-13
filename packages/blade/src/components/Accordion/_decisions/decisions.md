@@ -5,7 +5,7 @@ An accordion is used to allow users to toggle between different content sections
 This document outlines the API of `Accordion` component.
 
 <div align="center">
-  <img src="./accordion-thumbnail.png" width="380" alt="" />
+  <img src="./accordion-thumbnail.png" width="500px" alt="" />
 </div>
 
 ## Design
@@ -82,7 +82,7 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 #### Diff between deprecated version and new version
 
 1. AccordionItem accepts AccordionItemHeader and AccordionItemBody components now
-2. `title`, `icon` props from AccordionItem will be available on AccordionTrigger
+2. `title`, `icon` props from AccordionItem will now be available on AccordionItemHeader
 3. `description` prop is removed from AccordionItem. Consumers can use slot of AccordionBody as replacement
 4. The JSX for body content goes inside AccordionItemBody
 
