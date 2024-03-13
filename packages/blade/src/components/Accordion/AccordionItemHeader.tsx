@@ -24,6 +24,7 @@ const AccordionItemHeader = ({
       <BaseHeader
         leading={
           showNumberPrefix && typeof index === 'number' ? (
+            // we have to add -2px margin to align the number with title of BaseHeader
             <Text size={size} weight="semibold" marginTop="-2px" as="span">
               {index + 1}.
             </Text>
@@ -42,7 +43,7 @@ const AccordionItemHeader = ({
         paddingX="spacing.5"
         marginY="spacing.5"
         size={size}
-        interactionElement={
+        trailingInteractionElement={
           <CollapsibleChevronIcon
             color={isDisabled ? 'interactive.icon.gray.disabled' : 'interactive.icon.gray.muted'}
             size="large"

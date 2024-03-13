@@ -27,6 +27,7 @@ const _AccordionButton = ({
 
   const _index =
     typeof index === 'number' && showNumberPrefix ? (
+      // we have to add -2px margin to align the number with title of BaseHeader
       <Text size={size} weight="semibold" marginTop="-2px" as="span">
         {index + 1}.
       </Text>
