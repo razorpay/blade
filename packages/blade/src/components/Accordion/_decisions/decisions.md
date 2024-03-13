@@ -4,9 +4,7 @@ An accordion is used to allow users to toggle between different content sections
 
 This document outlines the API of `Accordion` component.
 
-<div align="center">
-  <img src="./accordion-thumbnail.png" width="380" alt="" />
-</div>
+<img src="./accordion-thumbnail.png" width="500px" alt="" />
 
 ## Design
 
@@ -24,11 +22,42 @@ https://github.com/razorpay/blade/assets/6682655/b54eaeb9-7257-4da4-bf3b-89e1078
 
 ## API
 
-Annotated component with props:
+<img src="./accordion-annotations.png" width="500px" alt="" />
 
-![Accordion breakdown](./accordion-breakdown.png)
+Sample usage, composes `Accordion` `AccordionItem`, `AccordionItemHeader`, and `AccordionItemBody`
 
-Sample usage, composes `Accordion` and `AccordionItem`:
+```jsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeader,
+  AccordionItemBody,
+} from '@razorpay/blade/components';
+
+<Accordion showNumberPrefix defaultExpandedIndex={0}>
+  <AccordionItem>
+    {/* With title and description defined */}
+    <AccordionItemHeader title="Can I create linked accounts using Route?" />
+    <AccordionItemBody>
+      <Text>
+        You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers.
+      </Text>
+    </AccordionItemBody>
+  </AccordionItem>
+  {/* With custom slot for trigger */}
+  <AccordionItem>
+    <AccordionItemHeader>
+      <div>Trigger Slot</div>
+    </AccordionItemHeader>
+    <AccordionItemBody>
+      <div>Slot</div>
+    </AccordionItemBody>
+  </AccordionItem>
+</Accordion>;
+```
+
+<details>
+<summary>Deprecated Accordion API</summary>
 
 ```jsx
 import {
@@ -82,7 +111,7 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 #### Diff between deprecated version and new version
 
 1. AccordionItem accepts AccordionItemHeader and AccordionItemBody components now
-2. `title`, `icon` props from AccordionItem will be available on AccordionTrigger
+2. `title`, `icon` props from AccordionItem will now be available on AccordionItemHeader
 3. `description` prop is removed from AccordionItem. Consumers can use slot of AccordionBody as replacement
 4. The JSX for body content goes inside AccordionItemBody
 
@@ -108,14 +137,14 @@ import { Accordion, AccordionItem } from '@razorpay/blade';
 
 ### Accordion
 
-| Prop                 | Type                   | Default       | Description                                                    | Required |
-| -------------------- | ---------------------- | ------------- | -------------------------------------------------------------- | -------- |
-| defaultExpandedIndex | `number`               | `undefined`   | Makes the passed item index expanded by default (uncontrolled) |          |
-| expandedIndex        | `number`               | `undefined`   | Expands the passed index (controlled)                          |          |
-| size                 | `large`, `medium`      | `large`       | Size of the Accordion                                          |          |
-| variant              | `solid`, `transparent` | `transparent` | Visual variant of Accordion                                    |          |
-| onExpandChange       | `function`             | `undefined`   | Callback for change in any item's expanded state               |          |
-| showNumberPrefix     | `boolean`              | `false`       | Adds numeric index at the beginning of items                   |          |
+| Prop                 | Type                    | Default       | Description                                                    | Required |
+| -------------------- | ----------------------- | ------------- | -------------------------------------------------------------- | -------- |
+| defaultExpandedIndex | `number`                | `undefined`   | Makes the passed item index expanded by default (uncontrolled) |          |
+| expandedIndex        | `number`                | `undefined`   | Expands the passed index (controlled)                          |          |
+| size                 | `large`, `medium`       | `large`       | Size of the Accordion                                          |          |
+| variant              | `filled`, `transparent` | `transparent` | Visual variant of Accordion                                    |          |
+| onExpandChange       | `function`              | `undefined`   | Callback for change in any item's expanded state               |          |
+| showNumberPrefix     | `boolean`               | `false`       | Adds numeric index at the beginning of items                   |          |
 
 > **Note**
 >
@@ -226,7 +255,7 @@ Individual Item Accordion is same as normal accordion but with one item only
 ```tsx
 const App = () => {
   return (
-    <Accordion variant="solid">
+    <Accordion variant="filled">
       <AccordionItem>
         <AccordionItemHeader title="How can I setup Route?" />
         <AccordionItemBody>
@@ -286,7 +315,7 @@ Find in page (automatically expanding the accordion if someone does <kbd>Cmd</kb
 - **Q3.** [Proposed API](#api) vs [Alternate API](#alternate-api-for-custom-trigger)
   - **Ans:** Proposed API with deprecations for earlier API
 - **Q4.** `variant="bordered | borderless"` vs `variant="filled | transparent"`
-  - **Ans:** We're going with `solid | transparent`
+  - **Ans:** We're going with `filled | transparent`
 
 ## References
 
