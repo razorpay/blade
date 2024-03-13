@@ -22,11 +22,7 @@ https://github.com/razorpay/blade/assets/6682655/b54eaeb9-7257-4da4-bf3b-89e1078
 
 ## API
 
-Annotated component with props:
-
-![Accordion breakdown](./accordion-breakdown.png)
-
-Sample usage, composes `Accordion` and `AccordionItem`:
+Sample usage, composes `Accordion` `AccordionItem`, `AccordionItemHeader`, and `AccordionItemBody`
 
 ```jsx
 import {
