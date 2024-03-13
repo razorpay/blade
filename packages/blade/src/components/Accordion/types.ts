@@ -3,7 +3,7 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import type { TestID } from '~utils/types';
 
-type AccordionVariantType = 'solid' | 'transparent';
+type AccordionVariantType = 'filled' | 'transparent';
 
 type StyledAccordionButtonProps = {
   isExpanded: boolean;
@@ -47,7 +47,7 @@ type AccordionProps = {
    *
    * @default transparent
    */
-  variant?: 'solid' | 'transparent';
+  variant?: AccordionVariantType;
 
   /**
    * Size of the Accordion

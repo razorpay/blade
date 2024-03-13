@@ -121,7 +121,7 @@ describe('<Accordion />', () => {
           <Button onClick={() => setExpandedIndex(2)}>Expand Third</Button>
           <Button onClick={() => setExpandedIndex(-1)}>{externalButtonCollapse}</Button>
           <Accordion
-            variant="solid"
+            variant="filled"
             expandedIndex={expandedIndex}
             onExpandChange={({ expandedIndex }) => setExpandedIndex(expandedIndex)}
           >

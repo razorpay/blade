@@ -367,7 +367,7 @@ exports[`<Accordion /> should render 1`] = `
               >
                 <div
                   class="c4"
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                 >
                   <div
                     class=""
@@ -463,7 +463,7 @@ exports[`<Accordion /> should render 1`] = `
                 >
                   <div
                     class=""
-                    data-blade-component="base-box"
+                    data-blade-component="accordion-item-body"
                   >
                     <div
                       class="c16"
@@ -514,7 +514,7 @@ exports[`<Accordion /> should render 1`] = `
               >
                 <div
                   class="c4"
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                 >
                   <div
                     class=""
@@ -610,7 +610,7 @@ exports[`<Accordion /> should render 1`] = `
                 >
                   <div
                     class=""
-                    data-blade-component="base-box"
+                    data-blade-component="accordion-item-body"
                   >
                     <div
                       class="c16"
@@ -661,7 +661,7 @@ exports[`<Accordion /> should render 1`] = `
               >
                 <div
                   class="c4"
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                 >
                   <div
                     class=""
@@ -757,7 +757,7 @@ exports[`<Accordion /> should render 1`] = `
                 >
                   <div
                     class=""
-                    data-blade-component="base-box"
+                    data-blade-component="accordion-item-body"
                   >
                     <div
                       class="c16"
@@ -1154,7 +1154,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               >
                 <div
                   class="c4"
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                 >
                   <div
                     class=""
@@ -1250,7 +1250,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 >
                   <div
                     class=""
-                    data-blade-component="base-box"
+                    data-blade-component="accordion-item-body"
                   >
                     <div
                       class="c16"
@@ -1301,7 +1301,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               >
                 <div
                   class="c4"
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                 >
                   <div
                     class=""
@@ -1397,7 +1397,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 >
                   <div
                     class=""
-                    data-blade-component="base-box"
+                    data-blade-component="accordion-item-body"
                   >
                     <div
                       class="c16"
@@ -1448,7 +1448,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
               >
                 <div
                   class="c4"
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                 >
                   <div
                     class=""
@@ -1544,7 +1544,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 >
                   <div
                     class=""
-                    data-blade-component="base-box"
+                    data-blade-component="accordion-item-body"
                   >
                     <div
                       class="c16"

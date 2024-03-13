@@ -149,7 +149,7 @@ exports[`<Accordion /> should render 1`] = `
                 }
               >
                 <View
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                   style={
                     [
                       {
@@ -453,7 +453,7 @@ exports[`<Accordion /> should render 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      data-blade-component="accordion-item-body"
                       style={
                         [
                           {},
@@ -698,7 +698,7 @@ exports[`<Accordion /> should render 1`] = `
                 }
               >
                 <View
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                   style={
                     [
                       {
@@ -1002,7 +1002,7 @@ exports[`<Accordion /> should render 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      data-blade-component="accordion-item-body"
                       style={
                         [
                           {},
@@ -1247,7 +1247,7 @@ exports[`<Accordion /> should render 1`] = `
                 }
               >
                 <View
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                   style={
                     [
                       {
@@ -1551,7 +1551,7 @@ exports[`<Accordion /> should render 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      data-blade-component="accordion-item-body"
                       style={
                         [
                           {},
@@ -1845,7 +1845,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 }
               >
                 <View
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                   style={
                     [
                       {
@@ -2149,7 +2149,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      data-blade-component="accordion-item-body"
                       style={
                         [
                           {},
@@ -2394,7 +2394,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 }
               >
                 <View
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                   style={
                     [
                       {
@@ -2698,7 +2698,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      data-blade-component="accordion-item-body"
                       style={
                         [
                           {},
@@ -2943,7 +2943,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                 }
               >
                 <View
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                   style={
                     [
                       {
@@ -3247,7 +3247,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      data-blade-component="accordion-item-body"
                       style={
                         [
                           {},
@@ -3540,7 +3540,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                 }
               >
                 <View
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                   style={
                     [
                       {
@@ -3844,7 +3844,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      data-blade-component="accordion-item-body"
                       style={
                         [
                           {},
@@ -4089,7 +4089,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                 }
               >
                 <View
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                   style={
                     [
                       {
@@ -4393,7 +4393,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      data-blade-component="accordion-item-body"
                       style={
                         [
                           {},
@@ -4638,7 +4638,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                 }
               >
                 <View
-                  data-blade-component="base-box"
+                  data-blade-component="accordion-item-header"
                   style={
                     [
                       {
@@ -4942,7 +4942,7 @@ exports[`Deprecated <Accordion /> should render deprecated API 1`] = `
                     }
                   >
                     <View
-                      data-blade-component="base-box"
+                      data-blade-component="accordion-item-body"
                       style={
                         [
                           {},
