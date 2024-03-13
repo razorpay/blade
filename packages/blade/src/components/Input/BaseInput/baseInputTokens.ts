@@ -19,23 +19,19 @@ export const baseInputHeight: Record<
 };
 
 /**
- * 37px (36px height + 1px bottom line height)
+ * medium - 37px (36px height + 1px bottom line height)
+ * large - 49px (48px height + 1px bottom line height)
  */
 export const baseInputWrapperMinHeight = {
   medium: (baseInputHeight.medium as number) + BASEINPUT_BOTTOM_LINE_HEIGHT,
   large: (baseInputHeight.large as number) + BASEINPUT_BOTTOM_LINE_HEIGHT,
 };
 
-// TODO: Replace the usage of this with `baseInputWrapperMinHeight[size]` when working on SelectInput
-export const BASEINPUT_WRAPPER_MIN_HEIGHT =
-  (baseInputHeight.medium as number) + BASEINPUT_BOTTOM_LINE_HEIGHT;
-
 /**
- * 145px (36px height * 4 rows + 1px bottom line height)
+ * medium - 145px (36px height * 4 rows + 1px bottom line height)
+ * large - 193px (48px height * 4 rows + 1px bottom line height)
  */
-export const BASEINPUT_WRAPPER_MAX_HEIGHT =
-  size['36'] * BASEINPUT_MAX_ROWS + BASEINPUT_BOTTOM_LINE_HEIGHT; // we don't want exact number but rough number to be able to animate correctly in height.
-
+// we don't want exact number but rough number to be able to animate correctly in height.
 export const baseInputWrapperMaxHeight = {
   medium: baseInputHeight.medium * BASEINPUT_MAX_ROWS + BASEINPUT_BOTTOM_LINE_HEIGHT,
   large: baseInputHeight.large * BASEINPUT_MAX_ROWS + BASEINPUT_BOTTOM_LINE_HEIGHT,

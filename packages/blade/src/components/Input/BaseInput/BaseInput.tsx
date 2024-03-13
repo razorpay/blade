@@ -926,6 +926,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               }
             }}
             maxTagRows={maxTagRows}
+            size={size}
           >
             <BaseInputVisuals
               size={size}

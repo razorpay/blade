@@ -293,6 +293,7 @@ const _BaseDropdownInputTrigger = (
       // Special Props for Unique behaviour between Select and AutoComplete
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}
+      size={props.size}
       interactionElement={
         isAutoCompleteInHeader ? null : (
           <InputChevronIcon

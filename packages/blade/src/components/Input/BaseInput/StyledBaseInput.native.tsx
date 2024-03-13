@@ -201,8 +201,8 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     isDropdownTrigger,
     hasTags,
     $size,
-  }) =>
-    getRNInputStyles({
+  }) => ({
+    ...getRNInputStyles({
       id,
       isFocused,
       theme,
@@ -219,6 +219,7 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       hasTags,
       $size,
     }),
+  }),
 );
 
 const _StyledBaseInput: React.ForwardRefRenderFunction<
