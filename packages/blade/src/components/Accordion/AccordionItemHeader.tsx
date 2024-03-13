@@ -1,11 +1,13 @@
 import { useAccordion, useAccordionItemIndex } from './AccordionContext';
+import { componentIds } from './componentIds';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const AccordionItemHeader = ({
+const _AccordionItemHeader = ({
   title,
   subtitle,
   leading,
@@ -55,5 +57,9 @@ const AccordionItemHeader = ({
     </BaseBox>
   );
 };
+
+const AccordionItemHeader = assignWithoutSideEffects(_AccordionItemHeader, {
+  componentId: componentIds.AccordionItemHeader,
+});
 
 export { AccordionItemHeader };

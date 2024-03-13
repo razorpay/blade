@@ -1,9 +1,11 @@
 import { useAccordion } from './AccordionContext';
+import { componentIds } from './componentIds';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { isReactNative } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { StringChildrenType } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 const BLANK_SPACE = ' ';
 
@@ -26,7 +28,7 @@ const descriptionSizeToken = {
   medium: 'small',
 } as const;
 
-const AccordionItemBody = ({
+const _AccordionItemBody = ({
   children,
   _description,
 }: {
@@ -73,5 +75,9 @@ const AccordionItemBody = ({
 
   return <BaseBox>{collapsibleBodyContent}</BaseBox>;
 };
+
+const AccordionItemBody = assignWithoutSideEffects(_AccordionItemBody, {
+  componentId: componentIds.AccordionItemBody,
+});
 
 export { AccordionItemBody };

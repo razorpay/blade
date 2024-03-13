@@ -3,6 +3,7 @@ import React from 'react';
 import { AccordionButton } from './AccordionButton';
 import { AccordionItemContext, useAccordion } from './AccordionContext';
 import { AccordionItemBody } from './AccordionItemBody';
+import { componentIds } from './componentIds';
 import { Divider } from '~components/Divider';
 import { BaseBox } from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
@@ -11,6 +12,8 @@ import { isReactNative } from '~utils';
 import { Collapsible } from '~components/Collapsible/Collapsible';
 import { CollapsibleBody } from '~components/Collapsible';
 import type { TestID } from '~utils/types';
+import { getComponentId } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 type AccordionItemProps = {
   /**
@@ -77,8 +80,25 @@ const AccordionItem = ({
   } = useAccordion();
   const isExpanded = expandedIndex === _index;
   const isDefaultExpanded = defaultExpandedIndex === _index;
-  const isDeprecatedAPI = Boolean(title) || Boolean(description);
+  const isDeprecatedAPI = Boolean(title) || Boolean(description) || Boolean(icon);
   const [header, body] = React.Children.toArray(children);
+
+  if (!isDeprecatedAPI) {
+    // Only doing validation in new API. Deprecated API allows everything as AccordionItem children
+    const headerComponentId = getComponentId(header);
+    const bodyComponentId = getComponentId(body);
+
+    if (
+      headerComponentId !== componentIds.AccordionItemHeader &&
+      bodyComponentId !== componentIds.AccordionItemBody
+    ) {
+      throwBladeError({
+        message:
+          'AccordionItem only allows AccordionItemHeader as first component and AccordionItemBody as second. Check Accordion documentation',
+        moduleName: 'AccordionItem',
+      });
+    }
+  }
 
   const isLastItem = _index !== undefined && _index < numberOfItems - 1;
 

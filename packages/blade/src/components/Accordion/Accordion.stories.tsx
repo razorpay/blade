@@ -532,11 +532,12 @@ const AccordionDeprecatedAPITemplate: StoryFn<typeof AccordionComponent> = ({ ..
         title="How can I setup QR Codes?"
         description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
       />
-      <AccordionItem
-        icon={RoutesIcon}
-        title="How can I setup Routes?"
-        description="Just use Razorpay. You may also check our docs for detailed instructions. Please use the search functionality to ask your queries."
-      />
+      <AccordionItem icon={RoutesIcon} title="How can I setup Routes?">
+        <Box>
+          <Text>Deprecated slot</Text>
+          <Text>Deprecated slot</Text>
+        </Box>
+      </AccordionItem>
     </AccordionComponent>
   );
 };
