@@ -25,6 +25,7 @@ const ScrollableTagSlotContainer = ({
         position: 'relative',
         flexDirection: 'row',
         flexGrow: 1,
+        alignItems: 'center',
       }}
       onScrollBeginDrag={() => {
         setIsScrolling(true);
