@@ -356,15 +356,20 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                       />
                     </div>
                     <div
-                      class="c11"
+                      class=""
                       data-blade-component="base-box"
-                    />
-                    <p
-                      class="c12"
-                      data-blade-component="text"
                     >
-                      Apple
-                    </p>
+                      <div
+                        class="c11"
+                        data-blade-component="base-box"
+                      />
+                      <p
+                        class="c12"
+                        data-blade-component="text"
+                      >
+                        Apple
+                      </p>
+                    </div>
                   </div>
                 </div>
               </label>
@@ -436,15 +441,20 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                       />
                     </div>
                     <div
-                      class="c11"
+                      class=""
                       data-blade-component="base-box"
-                    />
-                    <p
-                      class="c12"
-                      data-blade-component="text"
                     >
-                      Mango
-                    </p>
+                      <div
+                        class="c11"
+                        data-blade-component="base-box"
+                      />
+                      <p
+                        class="c12"
+                        data-blade-component="text"
+                      >
+                        Mango
+                      </p>
+                    </div>
                   </div>
                 </div>
               </label>
@@ -516,15 +526,20 @@ exports[`<CheckboxGroup /> should render with help text 1`] = `
                       />
                     </div>
                     <div
-                      class="c11"
+                      class=""
                       data-blade-component="base-box"
-                    />
-                    <p
-                      class="c12"
-                      data-blade-component="text"
                     >
-                      Orange
-                    </p>
+                      <div
+                        class="c11"
+                        data-blade-component="base-box"
+                      />
+                      <p
+                        class="c12"
+                        data-blade-component="text"
+                      >
+                        Orange
+                      </p>
+                    </div>
                   </div>
                 </div>
               </label>
@@ -875,15 +890,20 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       />
                     </div>
                     <div
-                      class="c11"
+                      class=""
                       data-blade-component="base-box"
-                    />
-                    <p
-                      class="c12"
-                      data-blade-component="text"
                     >
-                      Apple
-                    </p>
+                      <div
+                        class="c11"
+                        data-blade-component="base-box"
+                      />
+                      <p
+                        class="c12"
+                        data-blade-component="text"
+                      >
+                        Apple
+                      </p>
+                    </div>
                   </div>
                 </div>
               </label>
@@ -955,15 +975,20 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       />
                     </div>
                     <div
-                      class="c11"
+                      class=""
                       data-blade-component="base-box"
-                    />
-                    <p
-                      class="c12"
-                      data-blade-component="text"
                     >
-                      Mango
-                    </p>
+                      <div
+                        class="c11"
+                        data-blade-component="base-box"
+                      />
+                      <p
+                        class="c12"
+                        data-blade-component="text"
+                      >
+                        Mango
+                      </p>
+                    </div>
                   </div>
                 </div>
               </label>
@@ -1035,15 +1060,20 @@ exports[`<CheckboxGroup /> should render with label 1`] = `
                       />
                     </div>
                     <div
-                      class="c11"
+                      class=""
                       data-blade-component="base-box"
-                    />
-                    <p
-                      class="c12"
-                      data-blade-component="text"
                     >
-                      Orange
-                    </p>
+                      <div
+                        class="c11"
+                        data-blade-component="base-box"
+                      />
+                      <p
+                        class="c12"
+                        data-blade-component="text"
+                      >
+                        Orange
+                      </p>
+                    </div>
                   </div>
                 </div>
               </label>
