@@ -11,7 +11,7 @@ const meta: Meta<PhoneNumberInputProps> = {
 };
 
 const PhoneNumberInputTemplate: StoryFn<typeof PhoneNumberInput> = ({ ...args }) => {
-  return <PhoneNumberInput {...args} />;
+  return <PhoneNumberInput {...args} onChange={p => console.log(p)} />;
 };
 
 export const Default = PhoneNumberInputTemplate.bind({});

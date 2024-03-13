@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { CountryCodeType } from '@razorpay/i18nify-js';
 import {
   formatPhoneNumber,
@@ -11,8 +12,15 @@ import { BaseInput } from '~components/Input/BaseInput';
 import { IconButton } from '~components/Button/IconButton';
 import { CloseIcon } from '~components/Icons';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
-import { ActionList, ActionListItem, ActionListItemAsset } from '~components/ActionList';
+import {
+  ActionList,
+  ActionListItem,
+  ActionListItemAsset,
+  ActionListItemText,
+} from '~components/ActionList';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
+
+const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
 const PhoneNumberInput = ({
   defaultCountryCode = 'IN',
@@ -26,6 +34,7 @@ const PhoneNumberInput = ({
   isRequired,
   isDisabled,
   leadingIcon,
+  trailingIcon,
   validationState,
   errorText,
   helpText,
@@ -36,6 +45,10 @@ const PhoneNumberInput = ({
   showDialCode = true,
   onBlur,
   onFocus,
+  accessibilityLabel,
+  autoFocus,
+  testID,
+  ...styledProps
 }: PhoneNumberInputProps): React.ReactElement => {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
   const inputWrapperRef = React.useRef<HTMLDivElement | null>(null);
@@ -46,35 +59,61 @@ const PhoneNumberInput = ({
     setShouldShowClearButton(Boolean(defaultValue ?? value));
   }, [defaultValue, value]);
 
-  const renderInteractionElement = (): React.ReactNode => {
-    if (shouldShowClearButton) {
-      return (
-        <IconButton
-          size="medium"
-          icon={CloseIcon}
-          onClick={() => {
-            if (isEmpty(value) && inputRef.current) {
-              // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
-              if (inputRef.current instanceof HTMLInputElement) {
-                inputRef.current.value = '';
-                inputRef.current.focus();
-              }
+  const renderTrailingInteractionElement = (): React.ReactNode => {
+    if (!shouldShowClearButton) return null;
+    return (
+      <IconButton
+        size="medium"
+        icon={CloseIcon}
+        onClick={() => {
+          if (isEmpty(value) && inputRef.current) {
+            // when the input field is uncontrolled take the ref and clear the input and then call the onClearButtonClick function
+            if (inputRef.current instanceof HTMLInputElement) {
+              inputRef.current.value = '';
+              inputRef.current.focus();
             }
-            // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
-            onClearButtonClick?.();
-            inputRef?.current?.focus();
-            setShouldShowClearButton(false);
-          }}
-          isDisabled={isDisabled}
-          accessibilityLabel="Clear Input Content"
-        />
-      );
-    }
-
-    return null;
+          }
+          // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
+          onClearButtonClick?.();
+          inputRef?.current?.focus();
+          setShouldShowClearButton(false);
+        }}
+        isDisabled={isDisabled}
+        accessibilityLabel="Clear Input Content"
+      />
+    );
   };
 
-  const flags = getFlagsForAllCountries();
+  const flags = React.useMemo(() => getFlagsForAllCountries(), []);
+  const countryData = React.useMemo(() => {
+    return (Object.keys(flags) as CountryCodeType[])
+      .map((countryCode) => {
+        return {
+          code: countryCode,
+          name: countryNameFormatter.of(countryCode)!,
+        };
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }, [flags]);
+
+  const handleOnChange = ({
+    name,
+    value,
+    selectedCountry,
+  }: {
+    name?: string;
+    value?: string;
+    selectedCountry: CountryCodeType;
+  }): void => {
+    onChange?.({
+      name: name!,
+      value: value!,
+      phoneNumber: value ? formatPhoneNumber(value, selectedCountry) : undefined!,
+      dialCode: getDialCodeByCountryCode(selectedCountry),
+      countryCode: selectedCountry,
+    });
+  };
+
   return (
     <BaseInput
       setInputWrapperRef={(node) => {
@@ -89,8 +128,8 @@ const PhoneNumberInput = ({
       defaultValue={defaultValue}
       value={value}
       name={name}
-      type="text"
-      trailingInteractionElement={renderInteractionElement()}
+      type="number"
+      trailingInteractionElement={renderTrailingInteractionElement()}
       prefix={showDialCode ? getDialCodeByCountryCode(selectedCountry) : undefined}
       leadingInteractionElement={
         showCountrySelector ? (
@@ -102,23 +141,28 @@ const PhoneNumberInput = ({
             />
             <DropdownOverlay referenceRef={inputWrapperRef}>
               <ActionList>
-                {(Object.keys(flags) as CountryCodeType[]).sort().map((countryCode) => {
-                  const countryName = new Intl.DisplayNames(['en'], { type: 'region' }).of(
-                    countryCode,
-                  )!;
+                {countryData.map((country) => {
                   return (
                     <ActionListItem
-                      key={countryCode}
+                      key={country.code}
                       onClick={({ name }) => {
-                        setSelectedCountry(name as CountryCodeType);
+                        const selectedCountry = name as CountryCodeType;
+                        setSelectedCountry(selectedCountry);
+                        handleOnChange({
+                          selectedCountry,
+                          name: inputRef.current?.name,
+                          value: inputRef.current?.value,
+                        });
                         inputRef.current?.focus();
                       }}
-                      leading={<ActionListItemAsset src={flags[countryCode]} alt={countryName} />}
-                      title={countryName}
-                      value={countryCode}
-                      // trailing={
-                      //   <ActionListItemText>{getDialCodeByCountryCode('AQ')}</ActionListItemText>
-                      // }
+                      leading={<ActionListItemAsset src={flags[country.code]} alt={country.name} />}
+                      title={country.name}
+                      value={country.code}
+                      trailing={
+                        <ActionListItemText>
+                          {getDialCodeByCountryCode(country.code)}
+                        </ActionListItemText>
+                      }
                     />
                   );
                 })}
@@ -128,24 +172,22 @@ const PhoneNumberInput = ({
         ) : null
       }
       onChange={({ name, value }) => {
-        // if (showClearButton && value?.length) {
-        //   // show the clear button when the user starts typing in
-        //   setShouldShowClearButton(true);
-        // }
-
-        // if (shouldShowClearButton && !value?.length) {
-        //   // hide the clear button when the input field is empty
-        //   setShouldShowClearButton(false);
-        // }
-
-        onChange?.({ name, value });
+        if (value?.length) {
+          // show the clear button when the user starts typing in
+          setShouldShowClearButton(true);
+        }
+        if (shouldShowClearButton && !value?.length) {
+          // hide the clear button when the input field is empty
+          setShouldShowClearButton(false);
+        }
+        handleOnChange({ name, value, selectedCountry });
       }}
       onFocus={onFocus}
       onBlur={onBlur}
       // onSubmit={onSubmit}
-      // isDisabled={isDisabled}
-      // trailingIcon={InfoIcon}
-      // accessibilityLabel={accessibilityLabel}
+      isDisabled={isDisabled}
+      trailingIcon={trailingIcon}
+      accessibilityLabel={accessibilityLabel}
       placeholder={formatPhoneNumber('1234567890', selectedCountry)}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
@@ -155,8 +197,8 @@ const PhoneNumberInput = ({
       helpText={helpText}
       successText={successText}
       // eslint-disable-next-line jsx-a11y/no-autofocus
-      // autoFocus={autoFocus}
-      // testID={testID}
+      autoFocus={autoFocus}
+      testID={testID}
       // {...getKeyboardAndAutocompleteProps({
       //   type,
       //   keyboardReturnKeyType,
@@ -164,7 +206,7 @@ const PhoneNumberInput = ({
       //   autoCapitalize,
       // })}
       size={size}
-      // {...styledProps}
+      {...styledProps}
     />
   );
 };

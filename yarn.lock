@@ -4978,6 +4978,13 @@
     gud "^1.0.0"
     warning "^4.0.3"
 
+"@internationalized/date@^3.5.2":
+  version "3.5.2"
+  resolved "https://registry.yarnpkg.com/@internationalized/date/-/date-3.5.2.tgz#d760ace32bb47e869b8c607a4a786c8b208aacc2"
+  integrity sha512-vo1yOMUt2hzp63IutEaTUxROdvQg1qlMRsbCvbay2AK2Gai7wIgCyK5weEX3nHkiLgo4qCXHijFNC/ILhlRpOQ==
+  dependencies:
+    "@swc/helpers" "^0.5.0"
+
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/@isaacs/cliui/-/cliui-8.0.2.tgz#b37667b7bc181c168782259bab42474fbf52b550"
@@ -6849,7 +6856,14 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@razorpay/i18nify-js@1.5.0", "@razorpay/i18nify-js@^1.5.0":
+"@razorpay/i18nify-js@1.6.1":
+  version "1.6.1"
+  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.6.1/41ee93e035388ab7757223605fd7935c7071f2cf#41ee93e035388ab7757223605fd7935c7071f2cf"
+  integrity sha512-vjdZwz66wl10muswJZw3PyhDTRmiRQYXCtLlGR9mqngFzwztAAKmygSFqbeekM7KbVNJODgix/pBxPTaAqptNw==
+  dependencies:
+    "@internationalized/date" "^3.5.2"
+
+"@razorpay/i18nify-js@^1.5.0":
   version "1.5.0"
   resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.5.0/368ff35e5ff26a58018817ad6271d400e0f43a74#368ff35e5ff26a58018817ad6271d400e0f43a74"
   integrity sha512-v1dYgeBg7W1ScVwvvb6Uhj4MbwuK4alLMXTpv5BVrQXafucuR9AM/6OC4d4WIQWbYJP1+eQ11Sg0WVI4uRB2BQ==
@@ -9364,6 +9378,13 @@
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@swc/counter/-/counter-0.1.2.tgz#bf06d0770e47c6f1102270b744e17b934586985e"
   integrity sha512-9F4ys4C74eSTEUNndnER3VJ15oru2NumfQxS8geE+f3eB5xvfxpWyqE5XlVnxb/R14uoXi6SLbBwwiDSkv+XEw==
+
+"@swc/helpers@^0.5.0":
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/@swc/helpers/-/helpers-0.5.6.tgz#d16d8566b7aea2bef90d059757e2d77f48224160"
+  integrity sha512-aYX01Ke9hunpoCexYAgQucEpARGQ5w/cqHFrIR+e9gdKb1QWTsVJuTJ2ozQzIAxLyRQe/m+2RqzkyOOGiMKRQA==
+  dependencies:
+    tslib "^2.4.0"
 
 "@swc/jest@^0.2.23":
   version "0.2.29"

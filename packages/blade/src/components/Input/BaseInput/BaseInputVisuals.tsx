@@ -96,12 +96,8 @@ const getInteractionElementStyles = ({
     return 'spacing.4';
   }
 
-  if (hasLeadingInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingButton)) {
-    return 'spacing.2';
-  }
-
-  if (hasLeadingInteractionElement && !hasSuffix && !hasTrailingIcon && !hasTrailingButton) {
-    return 'spacing.4';
+  if (hasLeadingInteractionElement) {
+    return 'spacing.3';
   }
 
   return 'spacing.0';

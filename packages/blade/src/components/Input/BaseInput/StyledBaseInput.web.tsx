@@ -12,6 +12,10 @@ const getWebInputStyles = (
     ThemeProps<DefaultTheme> &
     (React.InputHTMLAttributes<HTMLInputElement> | React.ButtonHTMLAttributes<HTMLButtonElement>),
 ): CSSObject => {
+  const appearanceNone = {
+    '-webkit-appearance': 'none',
+    margin: 0,
+  };
   return {
     ...getBaseInputStyles({
       isDisabled: props.disabled,
@@ -44,6 +48,10 @@ const getWebInputStyles = (
     ':focus': {
       outline: 'none',
     },
+    // Hide the number input spinner
+    '-moz-appearance': 'textfield',
+    '::-webkit-inner-spin-button': appearanceNone,
+    '::-webkit-outer-spin-button': appearanceNone,
     cursor: props.disabled ? 'not-allowed' : 'auto',
   };
 };

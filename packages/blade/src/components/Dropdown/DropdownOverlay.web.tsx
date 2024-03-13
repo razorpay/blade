@@ -34,11 +34,8 @@ const _DropdownOverlay = ({
   testID,
   zIndex = componentZIndices.dropdownOverlay,
   width,
-<<<<<<< HEAD
   referenceRef,
-=======
   defaultPlacement = 'bottom-start',
->>>>>>> origin
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
