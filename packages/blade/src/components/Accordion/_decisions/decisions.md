@@ -4,9 +4,7 @@ An accordion is used to allow users to toggle between different content sections
 
 This document outlines the API of `Accordion` component.
 
-<div align="center">
-  <img src="./accordion-thumbnail.png" width="500px" alt="" />
-</div>
+<img src="./accordion-thumbnail.png" width="500px" alt="" />
 
 ## Design
 
