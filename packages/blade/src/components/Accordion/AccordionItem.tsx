@@ -115,7 +115,8 @@ const AccordionItem = ({
           />
           <CollapsibleBody
             // Just React Native things, need this 100% so collapsed content flows correctly inside Accordion
-            width={isReactNative() ? '100%' : undefined}
+            // In new API, AccordionItemBody takes 100% width to avoid issues like this - https://github.com/razorpay/blade/pull/1814
+            width={isReactNative() || !isDeprecatedAPI ? '100%' : undefined}
           >
             {isDeprecatedAPI ? (
               <AccordionItemBody _description={description}>{children}</AccordionItemBody>

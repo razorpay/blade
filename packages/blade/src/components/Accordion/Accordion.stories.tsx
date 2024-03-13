@@ -17,14 +17,18 @@ import {
   RoutesIcon,
   StarIcon,
   SubscriptionsIcon,
+  UserIcon,
 } from '~components/Icons';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
 import { Alert } from '~components/Alert';
 import { isReactNative } from '~utils';
-import { Heading, Text } from '~components/Typography';
+import { Code, Heading, Text } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { Link } from '~components/Link';
+import { TextInput } from '~components/Input/TextInput';
+import { Indicator } from '~components/Indicator';
+import { Amount } from '~components/Amount';
 
 const Page = (): ReactElement => {
   return (
@@ -269,7 +273,7 @@ ControlledExample.args = {
   showNumberPrefix: true,
 };
 
-const AccordionWithSlotTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
+const AccordionWithCustomHeaderBodyTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
   const [isVisible, setIsVisible] = useState(true);
   return (
     <AccordionComponent {...args}>
@@ -295,7 +299,7 @@ const AccordionWithSlotTemplate: StoryFn<typeof AccordionComponent> = ({ ...args
         </AccordionItemHeader>
         <AccordionItemBody>
           <Alert
-            title="Custom slot"
+            title="Custom Slot Body"
             description="Or you can skip description altogether and just render a custom component here"
             isDismissible={false}
             isFullWidth
@@ -313,27 +317,99 @@ const AccordionWithSlotTemplate: StoryFn<typeof AccordionComponent> = ({ ...args
   );
 };
 
-export const CustomSlot = AccordionWithSlotTemplate.bind({});
+export const CustomHeaderBody = AccordionWithCustomHeaderBodyTemplate.bind({});
 
-CustomSlot.parameters = {
+CustomHeaderBody.parameters = {
   docs: {
     description: {
-      story: 'Pass a custom slot component / JSX as `children` in `AccordionItem`.',
+      story:
+        'Pass a custom slot component / JSX as `children` in `AccordionItemHeader` and `AccordionItemBody`.',
     },
   },
 };
 
+const MultiAccordionCompositionTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
+  return (
+    <Box maxWidth={{ base: '100%', s: '480px' }}>
+      <AccordionComponent {...args}>
+        <AccordionItem>
+          <AccordionItemHeader title="PhonePe Wallet" subtitle="+ ₹50 Extra Charge" />
+          <AccordionItemBody>
+            <TextInput label="Phone Number" type="telephone" placeholder="Enter Phone Number" />
+            <Button>Continue</Button>
+          </AccordionItemBody>
+        </AccordionItem>
+      </AccordionComponent>
+      <AccordionComponent marginTop="spacing.5" {...args}>
+        <AccordionItem>
+          <AccordionItemHeader
+            title="HDFC Credit Card"
+            subtitle="No EMI Cost Avaliable"
+            titleSuffix={<Badge color="positive">Upto ₹500 off</Badge>}
+          />
+          <AccordionItemBody>
+            <TextInput label="Card Number" type="number" placeholder="Enter Card Number" />
+            <Button>Continue</Button>
+          </AccordionItemBody>
+        </AccordionItem>
+      </AccordionComponent>
+      <AccordionComponent marginTop="spacing.5" {...args}>
+        <AccordionItem>
+          <AccordionItemHeader
+            title="Google Pay"
+            titleSuffix={<Badge color="positive">5% Cashback</Badge>}
+          />
+          <AccordionItemBody>
+            <TextInput label="Google Pay UPI ID" type="number" placeholder="xyz@okhdfcbank" />
+            <Button isFullWidth>Continue</Button>
+          </AccordionItemBody>
+        </AccordionItem>
+      </AccordionComponent>
+    </Box>
+  );
+};
+
+export const MultipleAccordionComposition = MultiAccordionCompositionTemplate.bind({});
+
+MultipleAccordionComposition.args = {
+  variant: 'solid',
+};
+
 const IndividualAccordionItemTemplate: StoryFn<typeof AccordionComponent> = ({ ...args }) => {
   return (
-    <AccordionComponent {...args}>
-      <AccordionItem>
-        <AccordionItemHeader title="How can I setup Subscriptions?" />
-        <AccordionItemBody>
-          Just use Razorpay. You may also check our docs for detailed instructions. Please use the
-          search functionality to ask your queries.
-        </AccordionItemBody>
-      </AccordionItem>
-    </AccordionComponent>
+    <Box maxWidth={{ base: '100%', s: '480px' }}>
+      <AccordionComponent {...args}>
+        <AccordionItem>
+          <AccordionItemHeader>
+            <Text size="medium" color="surface.text.gray.muted">
+              #8218851
+            </Text>
+            <Text marginY="spacing.2" size="large" weight="semibold">
+              Transactions and settlement related
+            </Text>
+            <Box display="flex" flexDirection="row" gap="spacing.3">
+              <Indicator size="medium" color="information">
+                In Progress
+              </Indicator>
+              <Box display="flex" alignItems="center" flexDirection="row" gap="spacing.2">
+                <UserIcon size="medium" color="surface.icon.gray.subtle" />
+                <Text size="medium" color="surface.text.gray.subtle">
+                  Merchant Risk
+                </Text>
+              </Box>
+            </Box>
+          </AccordionItemHeader>
+          <AccordionItemBody>
+            <Text color="surface.text.gray.subtle">
+              Razorpay please verify a payment of{' '}
+              <Amount color="surface.text.gray.subtle" value={5000} /> done by me to Razer for
+              reloading gold as it seem they haven't received it. Payment Id :{' '}
+              <Code>pay_LlI3slkdirf234</Code>
+            </Text>
+          </AccordionItemBody>
+        </AccordionItem>
+      </AccordionComponent>
+    </Box>
   );
 };
 
