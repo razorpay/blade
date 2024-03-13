@@ -196,36 +196,6 @@ const buttonIconOnlyHeightWidth = {
   large: makeSize(size['48']),
 } as const;
 
-const buttonIconOnlyPadding: Record<
-  NonNullable<BaseButtonProps['size']>,
-  Record<'top' | 'bottom' | 'left' | 'right', keyof Theme['spacing']>
-> = {
-  xsmall: {
-    top: 0,
-    bottom: 0,
-    left: 3,
-    right: 3,
-  },
-  small: {
-    top: 0,
-    bottom: 0,
-    left: 4, // should be `10px` as per design but we're making it `12px` since `10px` is not available as a spacing token
-    right: 4, // should be `10px` as per design but we're making it `12px` since `10px` is not available as a spacing token
-  },
-  medium: {
-    top: 0,
-    bottom: 0,
-    left: 4,
-    right: 4,
-  },
-  large: {
-    top: 0,
-    bottom: 0,
-    left: 5,
-    right: 5,
-  },
-};
-
 const buttonSizeToIconSizeMap: Record<NonNullable<BaseButtonProps['size']>, IconSize> = {
   xsmall: 'small',
   small: 'small',
@@ -267,6 +237,5 @@ export {
   buttonSizeToSpinnerSizeMap,
   buttonIconPadding,
   buttonPadding,
-  buttonIconOnlyPadding,
   buttonIconOnlyHeightWidth,
 };
