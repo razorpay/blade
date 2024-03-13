@@ -16,7 +16,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   min-width: 200px;
 }
 
-.c2.c2.c2.c2.c2 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -38,12 +38,12 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   z-index: 1;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   margin-bottom: 0px;
   margin-top: 16px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -54,7 +54,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   min-width: 200px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -64,7 +64,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   flex-direction: row;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-inline-box;
   display: -webkit-inline-flex;
   display: -ms-inline-flexbox;
@@ -79,7 +79,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   position: relative;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-transition-duration: 300ms;
   transition-duration: 300ms;
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -155,7 +155,17 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c4.c4.c4.c4.c4 {
+.c2.c2.c2.c2.c2 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -173,7 +183,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -190,7 +200,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -209,7 +219,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   margin-right: 2px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -226,7 +236,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   padding: 0;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   color: hsla(150,100%,27%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
@@ -244,7 +254,7 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
   opacity: 0.64;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   opacity: 1;
 }
 
@@ -284,14 +294,19 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         type="button"
       >
         <div
-          class="c2 c3"
+          class=" c2"
           data-blade-component="base-box"
         >
           <div
-            class="c4"
-            data-blade-component="base-text"
+            class="c3 c4"
+            data-blade-component="base-box"
           >
-            View Price Breakdown
+            <div
+              class="c5"
+              data-blade-component="base-text"
+            >
+              View Price Breakdown
+            </div>
           </div>
         </div>
       </button>
@@ -303,46 +318,50 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         role="region"
       >
         <div
+<<<<<<< HEAD
           class=" c5"
           data-blade-component="base-box"
+=======
+          class="c6"
+>>>>>>> 9e6363e2 (chore: update snaps)
         >
           <div
-            class="c6"
+            class="c7"
             data-blade-component="box"
           >
             <div
-              class="c7"
+              class="c8"
               data-blade-component="box"
             >
               <p
-                class="c8"
+                class="c9"
                 data-blade-component="text"
               >
                 Actual amount
               </p>
               <div
-                class="c9"
+                class="c10"
                 data-blade-component="amount"
               >
                 <div
-                  class="c10"
+                  class="c11"
                   data-blade-component="base-box"
                 >
                   <span
-                    class="c11"
+                    class="c12"
                     data-blade-component="base-text"
                     opacity="0.64"
                   >
                     ₹
                   </span>
                   <span
-                    class="c12"
+                    class="c13"
                     data-blade-component="base-text"
                   >
                     1,000
                   </span>
                   <span
-                    class="c13"
+                    class="c14"
                     data-blade-component="base-text"
                     opacity="0.64"
                   >

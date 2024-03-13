@@ -406,6 +406,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c45.c45.c45.c45.c45 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
 .c7.c7.c7.c7.c7 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -1211,14 +1221,28 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                   type="button"
                 >
                   <div
+<<<<<<< HEAD
                     class="c46 c47"
                     data-blade-component="base-box"
                   >
                     <div
                       class="c48"
                       data-blade-component="base-text"
+=======
+                    class=" c45"
+                    data-blade-component="base-box"
+                  >
+                    <div
+                      class="c46 c47"
+                      data-blade-component="base-box"
+>>>>>>> 9e6363e2 (chore: update snaps)
                     >
-                      Apply
+                      <div
+                        class="c48"
+                        data-blade-component="base-text"
+                      >
+                        Apply
+                      </div>
                     </div>
                   </div>
                 </button>
