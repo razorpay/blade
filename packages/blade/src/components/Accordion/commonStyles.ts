@@ -46,7 +46,6 @@ const getCommonAccordionButtonStyles = (
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    cursor: 'not-allowed',
   };
 };
 
