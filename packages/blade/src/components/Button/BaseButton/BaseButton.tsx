@@ -26,7 +26,7 @@ import type { IconComponent, IconProps, IconSize } from '~components/Icons';
 import type { DurationString, EasingString } from '~tokens/global';
 import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
 import type { Platform } from '~utils';
-import { castWebType, isReactNative } from '~utils';
+import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
 import { getStyledProps } from '~components/Box/styledProps';
@@ -494,9 +494,10 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onMouseMove={onMouseMove}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
-      onKeyDown={(event: React.KeyboardEvent) => {
+      // Setting type for web fails it on native typecheck and vice versa
+      onKeyDown={(event: any) => {
         handleKeyboardPressedIn(event);
-        if (onKeyDown) onKeyDown(castWebType(event));
+        if (onKeyDown) onKeyDown(event);
       }}
       onTouchStart={(event: React.TouchEvent) => {
         handlePointerPressedIn();
