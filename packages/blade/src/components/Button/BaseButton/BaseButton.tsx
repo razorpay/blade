@@ -4,11 +4,10 @@ import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseButton from './StyledBaseButton';
-import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
+import type { ButtonTypography } from './buttonTokens';
 import {
   textColor,
   backgroundColor,
-  buttonIconOnlyPadding,
   buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
@@ -16,14 +15,14 @@ import {
   buttonSizeToSpinnerSizeMap,
   buttonIconPadding,
   buttonPadding,
+  buttonIconOnlyHeightWidth,
 } from './buttonTokens';
+import type { BaseButtonStyleProps, IconColor } from './types';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
-import type { IconComponent, IconProps, IconSize } from '~components/Icons';
-import type { DurationString, EasingString } from '~tokens/global';
-import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
+import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
@@ -31,15 +30,9 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
-import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type {
-  BladeElementRef,
-  DotNotationSpacingStringToken,
-  StringChildrenType,
-  TestID,
-} from '~utils/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { usePrevious } from '~utils/usePrevious';
@@ -104,11 +97,6 @@ type BaseButtonColorTokenModifiers = {
   state: 'default' | 'hover' | 'focus' | 'disabled';
   color: BaseButtonProps['color'];
 };
-
-/**
- * All possible icon colors, derived from `IconProps` minus `currentColor` because possible values should only be from tokens
- */
-type IconColor = Exclude<IconProps['color'], 'currentColor'>;
 
 const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
   if (isReactNative()) {
@@ -176,33 +164,6 @@ const getTextColorToken = ({
   return tokens.base[variant][_state];
 };
 
-type BaseButtonStyleProps = {
-  iconSize: IconSize;
-  spinnerSize: BaseSpinnerProps['size'];
-  fontSize: keyof Theme['typography']['fonts']['size'];
-  lineHeight: keyof Theme['typography']['lineHeights'];
-  minHeight: `${ButtonMinHeight}px`;
-  iconPadding?: DotNotationSpacingStringToken;
-  iconColor: IconColor;
-  textColor: BaseTextProps['color'];
-  buttonPaddingTop: SpacingValues;
-  buttonPaddingBottom: SpacingValues;
-  buttonPaddingLeft: SpacingValues;
-  buttonPaddingRight: SpacingValues;
-  text?: string;
-  defaultBackgroundColor: string;
-  defaultBorderColor: string;
-  hoverBackgroundColor: string;
-  hoverBorderColor: string;
-  focusBackgroundColor: string;
-  focusBorderColor: string;
-  focusRingColor: string;
-  motionDuration: DurationString;
-  motionEasing: EasingString;
-  borderWidth: BorderWidthValues;
-  borderRadius: BorderRadiusValues;
-};
-
 const getProps = ({
   buttonTypographyTokens,
   children,
@@ -236,6 +197,8 @@ const getProps = ({
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
+    height: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
+    width: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
     iconPadding: hasIcon && children?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
     iconColor: getTextColorToken({
       property: 'icon',
@@ -249,17 +212,15 @@ const getProps = ({
       color,
       state: 'default',
     }) as BaseTextProps['color'],
-    buttonPaddingTop: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].top])
-      : makeSpace(theme.spacing[buttonPadding[size].top]),
+    buttonPaddingTop: isIconOnly ? makeSpace(0) : makeSpace(theme.spacing[buttonPadding[size].top]),
     buttonPaddingBottom: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].bottom])
+      ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].bottom]),
     buttonPaddingLeft: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].left])
+      ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].left]),
     buttonPaddingRight: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].right])
+      ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].right]),
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
@@ -387,6 +348,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     defaultBorderColor,
     defaultBackgroundColor,
     minHeight,
+    height,
+    width,
     buttonPaddingTop,
     buttonPaddingBottom,
     buttonPaddingLeft,
@@ -468,6 +431,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      height={height}
+      width={width}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
     >
