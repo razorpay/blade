@@ -6,6 +6,7 @@ import { isReactNative } from '~utils';
 import { makeAccessible } from '~utils/makeAccessible';
 import type { StringChildrenType } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 
 const BLANK_SPACE = ' ';
 
@@ -73,7 +74,11 @@ const _AccordionItemBody = ({
     </BaseBox>
   );
 
-  return <BaseBox>{collapsibleBodyContent}</BaseBox>;
+  return (
+    <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItemBody })}>
+      {collapsibleBodyContent}
+    </BaseBox>
+  );
 };
 
 const AccordionItemBody = assignWithoutSideEffects(_AccordionItemBody, {

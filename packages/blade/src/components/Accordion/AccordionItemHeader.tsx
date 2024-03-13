@@ -6,6 +6,7 @@ import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const _AccordionItemHeader = ({
   title,
@@ -22,7 +23,7 @@ const _AccordionItemHeader = ({
   const { index, isDisabled } = useAccordionItemIndex();
 
   return (
-    <BaseBox flex="1">
+    <BaseBox {...metaAttribute({ name: MetaConstants.AccordionItemHeader })} flex="1">
       <BaseHeader
         leading={
           showNumberPrefix && typeof index === 'number' ? (
