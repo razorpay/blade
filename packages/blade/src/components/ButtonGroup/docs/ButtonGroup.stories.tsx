@@ -74,20 +74,22 @@ Default.storyName = 'Default';
 
 const ButtonGroupDropdownTemplate: StoryFn<typeof ButtonGroupComponent> = (args) => {
   return (
-    <ButtonGroupComponent {...args}>
-      <Button icon={PlusIcon}>Payout</Button>
-      <Dropdown>
-        <DropdownButton icon={ChevronDownIcon} />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Bulk Payout" value="bulk-payout" />
-            <ActionListItem title="Upload Invoice" value="upload-invoice" />
-            <ActionListItem title="Add Contact" value="add-contact" />
-            <ActionListItem title="Team Member" value="team-member" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-    </ButtonGroupComponent>
+    <Box display="flex" alignItems="center" justifyContent="center">
+      <ButtonGroupComponent {...args}>
+        <Button icon={PlusIcon}>Payout</Button>
+        <Dropdown>
+          <DropdownButton icon={ChevronDownIcon} />
+          <DropdownOverlay defaultPlacement="bottom-end">
+            <ActionList>
+              <ActionListItem title="Bulk Payout" value="bulk-payout" />
+              <ActionListItem title="Upload Invoice" value="upload-invoice" />
+              <ActionListItem title="Add Contact" value="add-contact" />
+              <ActionListItem title="Team Member" value="team-member" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+      </ButtonGroupComponent>
+    </Box>
   );
 };
 
