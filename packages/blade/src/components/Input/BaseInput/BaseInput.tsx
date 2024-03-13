@@ -48,7 +48,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
-import type { Border } from '~tokens/global';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -730,9 +729,25 @@ const getDescribedByElementId = ({
   return '';
 };
 
-const FocusRingWrapper = styled(BaseBox)<{ currentInteraction: ActionStates }>(
-  ({ theme, currentInteraction }) => ({
-    borderRadius: makeBorderSize(theme.border.radius.medium),
+const FocusRingWrapper = styled(BaseBox)<{
+  currentInteraction: ActionStates;
+  borderBottomLeftRadius: NonNullable<BaseInputProps['borderBottomLeftRadius']>;
+  borderBottomRightRadius: NonNullable<BaseInputProps['borderBottomRightRadius']>;
+  borderTopLeftRadius: NonNullable<BaseInputProps['borderTopLeftRadius']>;
+  borderTopRightRadius: NonNullable<BaseInputProps['borderTopRightRadius']>;
+}>(
+  ({
+    theme,
+    currentInteraction,
+    borderBottomLeftRadius,
+    borderBottomRightRadius,
+    borderTopLeftRadius,
+    borderTopRightRadius,
+  }) => ({
+    borderBottomLeftRadius: makeBorderSize(getIn(theme.border.radius, borderBottomLeftRadius)),
+    borderBottomRightRadius: makeBorderSize(getIn(theme.border.radius, borderBottomRightRadius)),
+    borderTopLeftRadius: makeBorderSize(getIn(theme.border.radius, borderTopLeftRadius)),
+    borderTopRightRadius: makeBorderSize(getIn(theme.border.radius, borderTopRightRadius)),
     width: '100%',
     '&:focus-within': {
       ...getFocusRingStyles({
@@ -940,7 +955,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             {trailingHeaderSlot?.(value ?? inputValue)}
           </BaseBox>
         )}
-        <FocusRingWrapper currentInteraction={currentInteraction}>
+        <FocusRingWrapper
+          currentInteraction={currentInteraction}
+          borderBottomLeftRadius={borderBottomLeftRadius}
+          borderBottomRightRadius={borderBottomRightRadius}
+          borderTopLeftRadius={borderTopLeftRadius}
+          borderTopRightRadius={borderTopRightRadius}
+        >
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}

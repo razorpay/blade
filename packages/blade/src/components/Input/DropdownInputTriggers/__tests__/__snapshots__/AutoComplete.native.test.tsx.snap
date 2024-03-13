@@ -215,13 +215,25 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
               </View>
             </View>
             <View
+              borderBottomLeftRadius="medium"
+              borderBottomRightRadius="medium"
+              borderTopLeftRadius="medium"
+              borderTopRightRadius="medium"
               currentInteraction="default"
               data-blade-component="base-box"
               style={
                 [
-                  {},
                   {
-                    "borderRadius": 4,
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
+                  },
+                  {
+                    "borderBottomLeftRadius": 4,
+                    "borderBottomRightRadius": 4,
+                    "borderTopLeftRadius": 4,
+                    "borderTopRightRadius": 4,
                     "width": "100%",
                   },
                 ]

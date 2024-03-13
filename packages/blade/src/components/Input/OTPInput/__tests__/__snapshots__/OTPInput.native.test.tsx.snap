@@ -214,13 +214,25 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                borderBottomLeftRadius="medium"
+                borderBottomRightRadius="none"
+                borderTopLeftRadius="medium"
+                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
-                    {},
                     {
-                      "borderRadius": 4,
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 0,
+                    },
+                    {
+                      "borderBottomLeftRadius": 4,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 4,
+                      "borderTopRightRadius": 0,
                       "width": "100%",
                     },
                   ]
@@ -368,13 +380,25 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                borderBottomLeftRadius="none"
+                borderBottomRightRadius="none"
+                borderTopLeftRadius="none"
+                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
-                    {},
                     {
-                      "borderRadius": 4,
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
+                    },
+                    {
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
                       "width": "100%",
                     },
                   ]
@@ -522,13 +546,25 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                borderBottomLeftRadius="none"
+                borderBottomRightRadius="none"
+                borderTopLeftRadius="none"
+                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
-                    {},
                     {
-                      "borderRadius": 4,
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
+                    },
+                    {
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
                       "width": "100%",
                     },
                   ]
@@ -676,13 +712,25 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                borderBottomLeftRadius="none"
+                borderBottomRightRadius="none"
+                borderTopLeftRadius="none"
+                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
-                    {},
                     {
-                      "borderRadius": 4,
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
+                    },
+                    {
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
                       "width": "100%",
                     },
                   ]
@@ -830,13 +878,25 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                borderBottomLeftRadius="none"
+                borderBottomRightRadius="none"
+                borderTopLeftRadius="none"
+                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
-                    {},
                     {
-                      "borderRadius": 4,
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
+                    },
+                    {
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 0,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 0,
                       "width": "100%",
                     },
                   ]
@@ -983,13 +1043,25 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
+                borderBottomLeftRadius="none"
+                borderBottomRightRadius="medium"
+                borderTopLeftRadius="none"
+                borderTopRightRadius="medium"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
-                    {},
                     {
-                      "borderRadius": 4,
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 4,
+                    },
+                    {
+                      "borderBottomLeftRadius": 0,
+                      "borderBottomRightRadius": 4,
+                      "borderTopLeftRadius": 0,
+                      "borderTopRightRadius": 4,
                       "width": "100%",
                     },
                   ]

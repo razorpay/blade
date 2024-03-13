@@ -183,13 +183,25 @@ exports[`<TextInput /> should render 1`] = `
         </View>
       </View>
       <View
+        borderBottomLeftRadius="medium"
+        borderBottomRightRadius="medium"
+        borderTopLeftRadius="medium"
+        borderTopRightRadius="medium"
         currentInteraction="default"
         data-blade-component="base-box"
         style={
           [
-            {},
             {
-              "borderRadius": 4,
+              "borderBottomLeftRadius": 4,
+              "borderBottomRightRadius": 4,
+              "borderTopLeftRadius": 4,
+              "borderTopRightRadius": 4,
+            },
+            {
+              "borderBottomLeftRadius": 4,
+              "borderBottomRightRadius": 4,
+              "borderTopLeftRadius": 4,
+              "borderTopRightRadius": 4,
               "width": "100%",
             },
           ]
@@ -507,13 +519,25 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         </View>
       </View>
       <View
+        borderBottomLeftRadius="medium"
+        borderBottomRightRadius="medium"
+        borderTopLeftRadius="medium"
+        borderTopRightRadius="medium"
         currentInteraction="default"
         data-blade-component="base-box"
         style={
           [
-            {},
             {
-              "borderRadius": 4,
+              "borderBottomLeftRadius": 4,
+              "borderBottomRightRadius": 4,
+              "borderTopLeftRadius": 4,
+              "borderTopRightRadius": 4,
+            },
+            {
+              "borderBottomLeftRadius": 4,
+              "borderBottomRightRadius": 4,
+              "borderTopLeftRadius": 4,
+              "borderTopRightRadius": 4,
               "width": "100%",
             },
           ]
