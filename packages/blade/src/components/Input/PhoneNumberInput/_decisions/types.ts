@@ -17,11 +17,15 @@ type CommonProps = Pick<
   | 'isDisabled'
   | 'onFocus'
   | 'onBlur'
+  | 'onClick'
   | 'leadingIcon'
   | 'trailingIcon'
   | 'accessibilityLabel'
   | 'autoFocus'
   | 'testID'
+  | 'keyboardReturnKeyType'
+  | 'autoCompleteSuggestionType'
+  | 'autoCapitalize'
 >;
 
 type PhoneNumberInputProps = StyledPropsBlade &

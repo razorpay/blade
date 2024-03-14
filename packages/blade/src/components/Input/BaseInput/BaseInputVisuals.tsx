@@ -264,7 +264,7 @@ export const BaseInputVisuals = ({
           <BaseBox
             marginRight={getInteractionElementStyles({
               hasTrailingIcon,
-              hasLeadingInteractionElement,
+              hasTrailingInteractionElement,
               hasSuffix,
               hasTrailingButton,
             })}

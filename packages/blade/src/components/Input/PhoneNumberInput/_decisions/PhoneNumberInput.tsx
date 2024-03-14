@@ -2,55 +2,59 @@
 import type { CountryCodeType } from '@razorpay/i18nify-js';
 import {
   formatPhoneNumber,
-  getFlagOfCountry,
   getDialCodeByCountryCode,
   getFlagsForAllCountries,
 } from '@razorpay/i18nify-js';
 import React from 'react';
 import type { PhoneNumberInputProps } from './types';
+import { countryNameFormatter, CountrySelector } from './CountrySelector';
 import { BaseInput } from '~components/Input/BaseInput';
 import { IconButton } from '~components/Button/IconButton';
-import { CloseIcon } from '~components/Icons';
-import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
-import {
-  ActionList,
-  ActionListItem,
-  ActionListItemAsset,
-  ActionListItemText,
-} from '~components/ActionList';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
+import { getKeyboardAndAutocompleteProps } from '~components/Input/BaseInput/utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useMergeRefs } from '~utils/useMergeRefs';
+import type { BladeElementRef } from '~utils/types';
+import { CloseIcon } from '~components/Icons';
 
-const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
-
-const PhoneNumberInput = ({
-  defaultCountryCode = 'IN',
-  label,
-  labelPosition,
-  defaultValue,
-  value,
-  name,
-  onChange,
-  necessityIndicator,
-  isRequired,
-  isDisabled,
-  leadingIcon,
-  trailingIcon,
-  validationState,
-  errorText,
-  helpText,
-  successText,
-  size = 'medium',
-  onClearButtonClick,
-  showCountrySelector = true,
-  showDialCode = true,
-  onBlur,
-  onFocus,
-  accessibilityLabel,
-  autoFocus,
-  testID,
-  ...styledProps
-}: PhoneNumberInputProps): React.ReactElement => {
+const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNumberInputProps> = (
+  {
+    defaultCountryCode = 'IN',
+    label,
+    labelPosition,
+    defaultValue,
+    value,
+    name,
+    onChange,
+    necessityIndicator,
+    isRequired,
+    isDisabled,
+    leadingIcon,
+    trailingIcon,
+    validationState,
+    errorText,
+    helpText,
+    successText,
+    size = 'medium',
+    onClearButtonClick,
+    showCountrySelector = true,
+    showDialCode = true,
+    onClick,
+    onBlur,
+    onFocus,
+    accessibilityLabel,
+    autoFocus,
+    testID,
+    keyboardReturnKeyType = 'done',
+    autoCompleteSuggestionType,
+    autoCapitalize,
+    ...styledProps
+  },
+  ref,
+): React.ReactElement => {
   const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const mergedRef = useMergeRefs(ref, inputRef);
+
   const inputWrapperRef = React.useRef<HTMLDivElement | null>(null);
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
   const [selectedCountry, setSelectedCountry] = React.useState<CountryCodeType>(defaultCountryCode);
@@ -114,12 +118,23 @@ const PhoneNumberInput = ({
     });
   };
 
+  const onItemClick = ({ name }: { name: string }): void => {
+    const selectedCountry = name as CountryCodeType;
+    setSelectedCountry(selectedCountry);
+    handleOnChange({
+      selectedCountry,
+      name: inputRef.current?.name,
+      value: inputRef.current?.value,
+    });
+    inputRef.current?.focus();
+  };
+
   return (
     <BaseInput
       setInputWrapperRef={(node) => {
         inputWrapperRef.current = node as HTMLInputElement;
       }}
-      ref={inputRef}
+      ref={mergedRef}
       id="textinput"
       componentName="PhoneNumberInput"
       label={label as string}
@@ -128,47 +143,21 @@ const PhoneNumberInput = ({
       defaultValue={defaultValue}
       value={value}
       name={name}
-      type="number"
-      trailingInteractionElement={renderTrailingInteractionElement()}
+      placeholder={formatPhoneNumber('1234567890', selectedCountry)}
+      trailingIcon={trailingIcon}
+      leadingIcon={leadingIcon}
       prefix={showDialCode ? getDialCodeByCountryCode(selectedCountry) : undefined}
+      trailingInteractionElement={renderTrailingInteractionElement()}
       leadingInteractionElement={
         showCountrySelector ? (
-          <Dropdown>
-            <DropdownButton
-              size="xsmall"
-              variant="tertiary"
-              icon={() => <img width="24px" src={getFlagOfCountry(selectedCountry)} alt="" />}
-            />
-            <DropdownOverlay referenceRef={inputWrapperRef}>
-              <ActionList>
-                {countryData.map((country) => {
-                  return (
-                    <ActionListItem
-                      key={country.code}
-                      onClick={({ name }) => {
-                        const selectedCountry = name as CountryCodeType;
-                        setSelectedCountry(selectedCountry);
-                        handleOnChange({
-                          selectedCountry,
-                          name: inputRef.current?.name,
-                          value: inputRef.current?.value,
-                        });
-                        inputRef.current?.focus();
-                      }}
-                      leading={<ActionListItemAsset src={flags[country.code]} alt={country.name} />}
-                      title={country.name}
-                      value={country.code}
-                      trailing={
-                        <ActionListItemText>
-                          {getDialCodeByCountryCode(country.code)}
-                        </ActionListItemText>
-                      }
-                    />
-                  );
-                })}
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
+          <CountrySelector
+            countryData={countryData}
+            flags={flags}
+            inputWrapperRef={inputWrapperRef}
+            isDisabled={isDisabled}
+            selectedCountry={selectedCountry}
+            onItemClick={onItemClick}
+          />
         ) : null
       }
       onChange={({ name, value }) => {
@@ -182,16 +171,13 @@ const PhoneNumberInput = ({
         }
         handleOnChange({ name, value, selectedCountry });
       }}
+      onClick={onClick}
       onFocus={onFocus}
       onBlur={onBlur}
-      // onSubmit={onSubmit}
       isDisabled={isDisabled}
-      trailingIcon={trailingIcon}
       accessibilityLabel={accessibilityLabel}
-      placeholder={formatPhoneNumber('1234567890', selectedCountry)}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
-      leadingIcon={leadingIcon}
       validationState={validationState}
       errorText={errorText}
       helpText={helpText}
@@ -199,16 +185,20 @@ const PhoneNumberInput = ({
       // eslint-disable-next-line jsx-a11y/no-autofocus
       autoFocus={autoFocus}
       testID={testID}
-      // {...getKeyboardAndAutocompleteProps({
-      //   type,
-      //   keyboardReturnKeyType,
-      //   autoCompleteSuggestionType,
-      //   autoCapitalize,
-      // })}
       size={size}
+      {...getKeyboardAndAutocompleteProps({
+        type: 'number',
+        keyboardReturnKeyType,
+        autoCompleteSuggestionType,
+        autoCapitalize,
+      })}
       {...styledProps}
     />
   );
 };
+
+const PhoneNumberInput = assignWithoutSideEffects(React.forwardRef(_PhoneNumberInput), {
+  displayName: 'PhoneNumberInput',
+});
 
 export { PhoneNumberInput };
