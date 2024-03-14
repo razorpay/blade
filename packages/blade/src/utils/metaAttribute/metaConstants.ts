@@ -2,6 +2,8 @@ export const MetaConstants = {
   Accordion: 'accordion',
   AccordionButton: 'accordion-button',
   AccordionItem: 'accordion-item',
+  AccordionItemHeader: 'accordion-item-header',
+  AccordionItemBody: 'accordion-item-body',
   ActionList: 'action-list',
   ActionListItem: 'action-list-item',
   ActionListSection: 'action-list-section',

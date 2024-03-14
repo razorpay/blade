@@ -815,7 +815,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 getItemCount={[Function]}
                 isInBottomSheet={false}
                 keyExtractor={[Function]}
-                marginBottom="0px"
+                marginBottom={0}
                 onContentSizeChange={[Function]}
                 onLayout={[Function]}
                 onMomentumScrollBegin={[Function]}
@@ -829,7 +829,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 style={
                   [
                     {
-                      "marginBottom": "0pxpx",
+                      "marginBottom": 0,
                       "maxHeight": 300,
                       "paddingBottom": 8,
                       "paddingLeft": 8,
