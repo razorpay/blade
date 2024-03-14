@@ -1,5 +1,5 @@
 ---
-"@razorpay/blade": minor
+'@razorpay/blade': minor
 ---
 
 feat(Accordion): add new `filled` variant
@@ -14,9 +14,15 @@ New variant can be used to build individual filled Accordions like these
 
 #### Migration from existing API
 
-We have added `AccordionItemHeader` and `AccordionItemBody` components. 
+We have added `AccordionItemHeader` and `AccordionItemBody` components.
 
-Props like `icon` and `title` move from AccordionItem to AccordionItemHeader and `description` moves to AccordionItemBody.
+Props like `icon`, `title`, `description` from AccordionItem are deprecated.
+
+- `icon` on AccordionItem can be replicated with `leading` on AccordionItemHeader
+- `title` moves from AccordionItem to AccordionItemHeader
+- `description` from AccordionItem can be passed to `AccordionItemBody` as children
+
+##### Diff
 
 ```diff
 <Accordion>
