@@ -26,6 +26,7 @@ export * from './Input/OTPInput';
 export * from './Input/PasswordInput';
 export * from './Input/TextArea';
 export * from './Input/TextInput';
+export * from './Input/PhoneNumberInput';
 export * from './Link';
 export * from './List';
 export * from './LiveAnnouncer';
