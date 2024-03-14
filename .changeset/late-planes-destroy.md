@@ -20,7 +20,7 @@ Props like `icon`, `title`, `description` from AccordionItem are deprecated.
 
 - `icon` on AccordionItem can be replicated with `leading` on AccordionItemHeader
 - `title` moves from AccordionItem to AccordionItemHeader
-- `description` from AccordionItem can be passed to `AccordionItemBody` as children
+- `description` from AccordionItem can be passed to AccordionItemBody as children
 
 ##### Diff
 
