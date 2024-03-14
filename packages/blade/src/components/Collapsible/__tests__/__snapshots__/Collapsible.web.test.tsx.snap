@@ -303,7 +303,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         role="region"
       >
         <div
-          class="c5"
+          class=" c5"
+          data-blade-component="base-box"
         >
           <div
             class="c6"
@@ -691,7 +692,8 @@ exports[`<Collapsible /> should render with CollapsibleLink 1`] = `
         role="region"
       >
         <div
-          class="c6"
+          class=" c6"
+          data-blade-component="base-box"
         >
           <div
             class="c7"

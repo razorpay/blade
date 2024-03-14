@@ -1005,6 +1005,34 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     </View>
                   </View>
                 </View>
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="space-between"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width="100%"
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  />
+                </View>
               </View>
               <View
                 borderBottomColor="surface.border.gray.muted"
