@@ -1,6 +1,7 @@
 import React, { useEffect, useImperativeHandle, useState } from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
+import { baseInputBorderWidth } from '../BaseInput/baseInputTokens';
 import { getHintType } from '../BaseInput/BaseInput';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { FormInputOnEvent } from '~components/Form';
@@ -13,7 +14,6 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { getPlatformType, makeBorderSize, useTheme } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
-import { baseInputBorderWidth } from '../BaseInput/baseInputTokens';
 import getIn from '~utils/lodashButBetter/get';
 
 type FormInputOnEventWithIndex = ({
