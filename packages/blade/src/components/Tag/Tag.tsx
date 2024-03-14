@@ -12,6 +12,7 @@ import { size as globalSizeTokens } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { useIsMobile } from '~utils/useIsMobile';
+import { BaseText } from '~components/Typography/BaseText';
 
 const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtuallyFocused'] }>(
   (props) => {
@@ -117,13 +118,14 @@ const Tag = ({
         ) : null}
 
         {/* Tag Text */}
-        <Box
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          maxWidth={makeSize(globalSizeTokens['100'])}
-        >
-          <Text truncateAfterLines={1} marginRight="spacing.2" color={textColor} size={assetSize}>
+        <Box display="flex" flexDirection="row" maxWidth={makeSize(globalSizeTokens['100'])}>
+          <Text
+            textAlign="center"
+            truncateAfterLines={1}
+            marginRight="spacing.2"
+            color={textColor}
+            size={'small'}
+          >
             {children}
           </Text>
         </Box>

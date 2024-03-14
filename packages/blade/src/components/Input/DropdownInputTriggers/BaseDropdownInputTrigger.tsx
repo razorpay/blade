@@ -1,5 +1,5 @@
 import React from 'react';
-import { BaseInput } from '../BaseInput';
+import { BaseInput, BaseInputProps } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
 import type { BaseDropdownInputTriggerProps } from './types';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
@@ -188,12 +188,13 @@ const _BaseDropdownInputTrigger = (
   };
 
   const getTags = React.useMemo(
-    () => () => {
+    () => ({ size }: { size: NonNullable<BaseInputProps['size']> }) => {
       if (selectionType === 'single') {
         return undefined;
       }
 
       return getTagsGroup({
+        size,
         tags: selectedIndices.map((selectedIndex) => options[selectedIndex]?.title),
         activeTagIndex,
         isDisabled: props.isDisabled,
@@ -238,7 +239,7 @@ const _BaseDropdownInputTrigger = (
         triggererWrapperRef.current = wrapperNode;
       }}
       maxTagRows={props.maxRows ?? 'single'}
-      tags={getTags()}
+      tags={getTags({ size: props.size })}
       showAllTags={getShowAllTags()}
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
