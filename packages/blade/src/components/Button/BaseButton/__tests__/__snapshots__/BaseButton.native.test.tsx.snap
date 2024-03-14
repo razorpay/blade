@@ -440,7 +440,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
-              "paddingRight": 4,
+              "paddingRight": 8,
             },
           ]
         }
@@ -668,7 +668,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
-              "paddingRight": 4,
+              "paddingRight": 8,
             },
           ]
         }
@@ -930,7 +930,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
               "alignItems": "center",
               "display": "flex",
               "justifyContent": "center",
-              "paddingLeft": 4,
+              "paddingLeft": 8,
             },
           ]
         }
@@ -1027,8 +1027,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     borderRadius="4px"
     borderWidth="0px"
     buttonPaddingBottom="0px"
-    buttonPaddingLeft="8px"
-    buttonPaddingRight="8px"
+    buttonPaddingLeft="0px"
+    buttonPaddingRight="0px"
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
@@ -1038,6 +1038,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
     focusBorderColor="hsla(227, 100%, 59%, 1)"
     focusRingColor="hsla(227, 100%, 59%, 0.18)"
     focusable={true}
+    height="36px"
     hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
@@ -1067,17 +1068,18 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "height": 36,
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
           "paddingBottom": 0,
-          "paddingLeft": 8,
-          "paddingRight": 8,
+          "paddingLeft": 0,
+          "paddingRight": 0,
           "paddingTop": 0,
           "textDecorationColor": "black",
           "textDecorationLine": "none",
           "textDecorationStyle": "solid",
-          "width": "auto",
+          "width": 36,
         },
         {
           "backgroundColor": "hsla(227, 100%, 59%, 1)",
@@ -1086,6 +1088,7 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
       ]
     }
     type="button"
+    width="36px"
   >
     <View
       alignItems="center"

@@ -377,7 +377,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 4px;
+  padding-right: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -545,7 +545,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-left: 4px;
+  padding-left: 8px;
 }
 
 .c2.c2.c2.c2.c2 {
