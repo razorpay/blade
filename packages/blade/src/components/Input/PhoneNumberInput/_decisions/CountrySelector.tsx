@@ -27,6 +27,7 @@ type CounterSelectorProps = {
   onItemClick: (props: { name: string }) => void;
   flags: ReturnType<typeof getFlagsForAllCountries>;
   isDisabled?: boolean;
+  size: 'medium' | 'large';
 };
 
 const CountrySelector = ({
@@ -36,6 +37,7 @@ const CountrySelector = ({
   countryData,
   onItemClick,
   flags,
+  size,
 }: CounterSelectorProps): React.ReactElement => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
   const isMobile = useIsMobile();
@@ -63,12 +65,18 @@ const CountrySelector = ({
     <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
       <DropdownButton
         isDisabled={isDisabled}
-        size="medium"
+        size={size === 'medium' ? 'xsmall' : 'medium'}
         variant="tertiary"
         accessibilityLabel={countryNameFormatter.of(selectedCountry)}
         icon={() => (
           <Box display="flex" flexDirection="row" gap="spacing.2">
-            <img role="presentation" width="24px" src={getFlagOfCountry(selectedCountry)} alt="" />
+            <img
+              loading="lazy"
+              role="presentation"
+              width="24px"
+              src={getFlagOfCountry(selectedCountry)}
+              alt=""
+            />
             {isDropdownOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
           </Box>
         )}

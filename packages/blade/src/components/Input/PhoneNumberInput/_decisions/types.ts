@@ -65,7 +65,7 @@ type PhoneNumberInputProps = StyledPropsBlade &
        *
        * @example: "IN" for India
        */
-      countryCode: string;
+      countryCode: CountryCodeType;
       /**
        * raw value of the input
        */

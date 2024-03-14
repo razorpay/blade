@@ -151,6 +151,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
       leadingInteractionElement={
         showCountrySelector ? (
           <CountrySelector
+            size={size}
             countryData={countryData}
             flags={flags}
             inputWrapperRef={inputWrapperRef}
