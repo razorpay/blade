@@ -12,7 +12,6 @@ import { size as globalSizeTokens } from '~tokens/global';
 import BaseBox from '~components/Box/BaseBox';
 import type { PaddingProps } from '~components/Box/BaseBox/types/spacingTypes';
 import { useIsMobile } from '~utils/useIsMobile';
-import { BaseText } from '~components/Typography/BaseText';
 
 const FocussableTag = styled(BaseBox)<{ _isVirtuallyFocused: TagProps['_isVirtuallyFocused'] }>(
   (props) => {
