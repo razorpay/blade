@@ -240,7 +240,7 @@ const _BaseDropdownInputTrigger = (
         triggererWrapperRef.current = wrapperNode;
       }}
       maxTagRows={props.maxRows ?? 'single'}
-      tags={getTags({ size: props.size })}
+      tags={getTags({ size: props.size || 'medium' })}
       showAllTags={getShowAllTags()}
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
