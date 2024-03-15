@@ -198,10 +198,11 @@ exports[`<BaseInput /> should render 1`] = `
         <View
           currentInteraction="default"
           isTextArea={false}
+          size="medium"
           style={
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "backgroundColor": "yellow",
                 "borderColor": "hsla(211, 27%, 76%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
@@ -510,10 +511,11 @@ exports[`<BaseInput /> should render with icons 1`] = `
         <View
           currentInteraction="default"
           isTextArea={false}
+          size="medium"
           style={
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "backgroundColor": "yellow",
                 "borderColor": "hsla(211, 27%, 76%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
@@ -1006,10 +1008,11 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         <View
           currentInteraction="default"
           isTextArea={false}
+          size="large"
           style={
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "backgroundColor": "yellow",
                 "borderColor": "hsla(150, 100%, 32%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
@@ -1632,10 +1635,11 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         <View
           currentInteraction="default"
           isTextArea={false}
+          size="medium"
           style={
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "backgroundColor": "yellow",
                 "borderColor": "hsla(211, 27%, 76%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",

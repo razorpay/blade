@@ -1794,7 +1794,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c14.c14.c14.c14.c14 {
-  margin-top: -4px;
   width: 100%;
   min-width: 30px;
 }
@@ -2439,6 +2438,14 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   -moz-scrollbar-width: none;
   -ms-scrollbar-width: none;
   scrollbar-width: none;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .c13.c13.c13.c13.c13::-webkit-scrollbar {

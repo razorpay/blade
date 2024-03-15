@@ -231,10 +231,11 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                 currentInteraction="default"
                 isDropdownTrigger={true}
                 isTextArea={false}
+                size="medium"
                 style={
                   [
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "backgroundColor": "yellow",
                       "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
@@ -288,6 +289,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                   <RCTScrollView
                     contentContainerStyle={
                       {
+                        "alignItems": "center",
                         "flexDirection": "row",
                         "flexGrow": 1,
                         "flexWrap": "nowrap",
