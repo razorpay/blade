@@ -1,5 +1,6 @@
 import React from 'react';
-import { BaseInput, BaseInputProps } from '../BaseInput';
+import { BaseInput } from '../BaseInput';
+import type { BaseInputProps } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
 import type { BaseDropdownInputTriggerProps } from './types';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
