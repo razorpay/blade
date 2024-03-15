@@ -223,7 +223,6 @@ const BaseInputTagSlot = ({
         </Text>
       ) : null}
       <BaseBox
-        // marginTop="-4px"
         minWidth={hasTags && renderAs === 'button' ? undefined : makeSize(MINUMUM_INPUT_SPACE)}
         width={hasTags && renderAs === 'button' ? makeSize(sizeToken['1']) : '100%'}
       >
