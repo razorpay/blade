@@ -5,10 +5,11 @@ import { within, userEvent, waitFor } from '@storybook/testing-library';
 import { expect } from '@storybook/jest';
 import { Dropdown, DropdownOverlay, DropdownFooter, DropdownHeader } from '../../../Dropdown';
 import type { DropdownProps } from '../../../Dropdown';
-import { AutoComplete, SelectInput } from '~components/Input/DropdownInputTriggers';
+import { AutoComplete } from '~components/Input/DropdownInputTriggers';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import { Button } from '~components/Button';
 import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
 
 const getActiveDescendant = (selectInput: HTMLElement): string | null | undefined => {
   const activeDescendantId = selectInput.getAttribute('aria-activedescendant');
@@ -22,13 +23,14 @@ const BasicDropdown = ({
 }: DropdownProps & {
   items?: string[];
 }): React.ReactElement => (
-  <Dropdown>
-    <AutoComplete label="Fruits" />
-    <DropdownOverlay zIndex={1002}>
+  <Dropdown {...props}>
+    <AutoComplete label="City" />
+    <DropdownOverlay zIndex={1002} testID="dropdown-overlay">
       <DropdownHeader title="Recent Searches" />
       <ActionList>
-        <ActionListItem title="Apple" value="apple" />
-        <ActionListItem title="Mango" value="mango" />
+        {items.map((item) => (
+          <ActionListItem key={item} title={item} value={item.toLowerCase()} />
+        ))}
       </ActionList>
       <DropdownFooter>
         <Box>
@@ -39,33 +41,53 @@ const BasicDropdown = ({
   </Dropdown>
 );
 
-export const BasicSelectItem: StoryFn<typeof Dropdown> = (props): React.ReactElement => {
+export const ItemSelect: StoryFn<typeof Dropdown> = (props): React.ReactElement => {
   return <BasicDropdown {...props} />;
 };
 
-BasicSelectItem.play = async ({ canvasElement }) => {
+ItemSelect.play = async ({ canvasElement }) => {
   const { getByRole } = within(canvasElement);
   const selectInput = getByRole('combobox', { name: 'City' });
   await userEvent.click(selectInput);
   const option = getByRole('option', { name: 'Bengaluru' });
   await userEvent.click(option);
-  await expect(getByRole('combobox', { name: 'City' })).toHaveTextContent('Bengaluru');
+  await expect(getByRole('combobox', { name: 'City' })).toHaveValue('Bengaluru');
 };
 
-export const MultiSelectItem: StoryFn<typeof Dropdown> = (props): React.ReactElement => {
+export const ItemSort: StoryFn<typeof Dropdown> = (props): React.ReactElement => {
+  return <BasicDropdown {...props} />;
+};
+
+ItemSort.play = async ({ canvasElement }) => {
+  const { getByRole, queryByRole } = within(canvasElement);
+  const autoComplete = getByRole('combobox', { name: 'City' });
+  await userEvent.type(autoComplete, 'p');
+  const bengaluruOption = queryByRole('option', { name: 'Bengaluru' });
+  await waitFor(() => expect(bengaluruOption).not.toBeInTheDocument());
+  const puneOption = getByRole('option', { name: 'Pune' });
+  await waitFor(() => expect(puneOption).toBeVisible());
+  await userEvent.click(puneOption);
+  await expect(getByRole('combobox', { name: 'City' })).toHaveValue('Pune');
+};
+
+export const ItemMultiSelect: StoryFn<typeof Dropdown> = (props): React.ReactElement => {
   return <BasicDropdown {...props} selectionType="multiple" />;
 };
 
-MultiSelectItem.play = async ({ canvasElement }) => {
+ItemMultiSelect.play = async ({ canvasElement }) => {
   const { getByRole, getByLabelText, queryByLabelText } = within(canvasElement);
-  const selectInput = getByRole('combobox', { name: 'City' });
-  await userEvent.click(selectInput);
+  const autoComplete = getByRole('combobox', { name: 'City' });
+  await userEvent.type(autoComplete, 'b');
   await expect(queryByLabelText('Close Bengaluru tag')).toBeFalsy();
   await userEvent.click(getByRole('option', { name: 'Bengaluru' }));
+  await userEvent.type(autoComplete, 'p');
   await userEvent.click(getByRole('option', { name: 'Pune' }));
   await expect(getByLabelText('Close Bengaluru tag')).toBeInTheDocument();
   await expect(getByLabelText('Close Pune tag')).toBeInTheDocument();
   await expect(queryByLabelText('Close Mumbai tag')).toBeFalsy();
+  await userEvent.keyboard('{Backspace}');
+  await expect(queryByLabelText('Close Pune tag')).toBeFalsy();
+  await expect(getByLabelText('Close Bengaluru tag')).toBeInTheDocument();
 };
 
 export const Accessibility: StoryFn<typeof Dropdown> = (props): React.ReactElement => {
@@ -93,45 +115,23 @@ export const Accessibility: StoryFn<typeof Dropdown> = (props): React.ReactEleme
 
 Accessibility.play = async ({ canvasElement }) => {
   const { getByRole, getByTestId } = within(canvasElement);
-  const selectInput = getByRole('combobox', { name: 'City' });
-  selectInput.focus();
-  await userEvent.keyboard('{ArrowDown}');
+  const autoComplete = getByRole('combobox', { name: 'City' });
+  await userEvent.type(autoComplete, 'i');
 
-  // move to 1st item
-  await userEvent.keyboard('{ArrowDown}');
-  await expect(getActiveDescendant(selectInput)).toBe('Mumbai');
+  // keep 1st item as active
+  await expect(getActiveDescendant(autoComplete)).toBe('Mumbai');
 
   // move to 2nd item
   await userEvent.keyboard('{ArrowDown}');
-  await expect(getActiveDescendant(selectInput)).toBe('Bengaluru');
+  await expect(getActiveDescendant(autoComplete)).toBe('Delhi');
 
-  // move to 1st item
-  await userEvent.keyboard('{Home}');
-  await expect(getActiveDescendant(selectInput)).toBe('Mumbai');
-
-  // move 10 items down or to last item
-  await userEvent.keyboard('{PageDown}');
-  await expect(getActiveDescendant(selectInput)).toBe('Kanpur');
-  await userEvent.keyboard('{PageDown}');
-  await expect(getActiveDescendant(selectInput)).toBe('Patna');
-
-  // move 10 items up
-  await userEvent.keyboard('{PageUp}');
-  await expect(getActiveDescendant(selectInput)).toBe('Pune');
-
-  // Move to last item
-  await userEvent.keyboard('{End}');
-  await expect(getActiveDescendant(selectInput)).toBe('Patna');
-
-  // [TypeAhead tests] Move to item starting with "P"
-  await userEvent.keyboard('p');
-  await expect(getActiveDescendant(selectInput)).toBe('Pune');
-  await userEvent.keyboard('a');
-  await expect(getActiveDescendant(selectInput)).toBe('Patna');
+  // move to 3rd item
+  await userEvent.keyboard('{ArrowDown}');
+  await expect(getActiveDescendant(autoComplete)).toBe('Chennai');
 
   // select item
   await userEvent.keyboard('{Enter}');
-  await expect(getByRole('combobox', { name: 'City' })).toHaveTextContent('Patna');
+  await expect(getByRole('combobox', { name: 'City' })).toHaveValue('Chennai');
   await waitFor(() => expect(getByTestId('dropdown-overlay')).not.toBeVisible());
 
   // close dropdown
@@ -141,64 +141,25 @@ Accessibility.play = async ({ canvasElement }) => {
   await waitFor(() => expect(getByTestId('dropdown-overlay')).not.toBeVisible());
 
   // Input focus test
-  await expect(selectInput).toHaveFocus();
+  await expect(autoComplete).toHaveFocus();
   await userEvent.keyboard('{TAB}');
-  await expect(selectInput).not.toHaveFocus();
-};
-
-export const FooterActions: StoryFn<typeof Dropdown> = (): React.ReactElement => {
-  const [hasApplied, setHasApplied] = React.useState(false);
-  return (
-    <Dropdown>
-      <SelectInput label="Fruits" />
-      <DropdownOverlay testID="dropdown-overlay">
-        <ActionList>
-          <ActionListItem title="Apple" value="apple" />
-          <ActionListItem title="Mango" value="mango" />
-        </ActionList>
-        <DropdownFooter>
-          {/* eslint-disable-next-line @typescript-eslint/no-empty-function */}
-          <Button onClick={() => setHasApplied(true)}>{hasApplied ? 'Applied' : 'Apply'}</Button>
-          <Button marginLeft="spacing.4" variant="secondary" onClick={() => setHasApplied(false)}>
-            Cancel
-          </Button>
-        </DropdownFooter>
-      </DropdownOverlay>
-    </Dropdown>
-  );
-};
-
-FooterActions.play = async ({ canvasElement }) => {
-  const { getByRole, queryByRole, getByTestId } = within(canvasElement);
-  const selectInput = getByRole('combobox', { name: 'Fruits' });
-  await userEvent.click(selectInput);
-  await waitFor(() => expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible());
-  await userEvent.keyboard('{ArrowDown}');
-  // virtual focus on first item, actual focus on select
-  await expect(getActiveDescendant(selectInput)).toBe('Apple');
-  await expect(selectInput).toHaveFocus();
-
-  // move focus to next interactive item in footer without closing the dropdown
-  await userEvent.keyboard('{TAB}');
-  await expect(getByRole('button', { name: 'Apply' })).toHaveFocus();
-  await expect(queryByRole('button', { name: 'Applied' })).toBeFalsy();
-  await userEvent.keyboard('{Enter}');
-  await waitFor(() => expect(getByRole('button', { name: 'Applied' })).toBeInTheDocument());
-
-  await userEvent.keyboard('{TAB}');
-  await expect(getByRole('button', { name: 'Cancel' })).toHaveFocus();
-  await userEvent.keyboard('{Escape}');
-  await waitFor(() => expect(getByTestId('dropdown-overlay')).not.toBeVisible());
+  await expect(autoComplete).not.toHaveFocus();
 };
 
 export const ControlledDropdownSingleSelect: StoryFn<typeof Dropdown> = (): React.ReactElement => {
   const [currentSelection, setCurrentSelection] = React.useState<undefined | string>();
+  const [inputValue, setInputValue] = React.useState('');
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+
+  const setSelection = (value: string): void => {
+    setCurrentSelection(value.toLowerCase());
+    setInputValue(value);
+  };
 
   return (
     <>
-      <Button onClick={() => setCurrentSelection('bangalore')}>Select Bangalore</Button>
-      <Button marginX="spacing.4" variant="secondary" onClick={() => setCurrentSelection('')}>
+      <Button onClick={() => setSelection('Bangalore')}>Select Bangalore</Button>
+      <Button marginX="spacing.4" variant="secondary" onClick={() => setSelection('')}>
         Clear Selection
       </Button>
       <Button
@@ -216,12 +177,14 @@ export const ControlledDropdownSingleSelect: StoryFn<typeof Dropdown> = (): Reac
         }}
         selectionType="single"
       >
-        <SelectInput
+        <AutoComplete
           label="Select City"
           value={currentSelection}
           onChange={(args) => {
             setCurrentSelection(args.values[0]);
           }}
+          inputValue={inputValue}
+          onInputValueChange={({ value }) => setInputValue(value ?? '')}
         />
         <DropdownOverlay>
           <ActionList>
@@ -231,27 +194,32 @@ export const ControlledDropdownSingleSelect: StoryFn<typeof Dropdown> = (): Reac
           </ActionList>
         </DropdownOverlay>
       </Dropdown>
+      <Text testID="input-value">{inputValue}</Text>
     </>
   );
 };
 
 ControlledDropdownSingleSelect.play = async ({ canvasElement }) => {
-  const { getByRole } = within(canvasElement);
+  const { getByRole, getByTestId } = within(canvasElement);
   const selectInput = getByRole('combobox', { name: 'Select City' });
 
   // external button control selection test
-  await expect(selectInput).toHaveTextContent('Select Option');
   await userEvent.click(getByRole('button', { name: 'Select Bangalore' }));
-  await waitFor(() => expect(selectInput).toHaveTextContent('Bangalore'));
+  await waitFor(() => expect(selectInput).toHaveValue('Bangalore'));
 
   // select input's control test
   await userEvent.click(selectInput);
   await userEvent.click(getByRole('option', { name: 'Pune' }));
-  await waitFor(() => expect(selectInput).toHaveTextContent('Pune'));
+  await waitFor(() => expect(selectInput).toHaveValue('Pune'));
+
+  // input value change test
+  await expect(getByTestId('input-value')).toHaveTextContent('Pune');
+  await userEvent.type(selectInput, 'XYZ');
+  await expect(getByTestId('input-value')).toHaveTextContent('PuneXYZ');
 
   // Clear button test
   await userEvent.click(getByRole('button', { name: 'Clear Selection' }));
-  await waitFor(() => expect(selectInput).toHaveTextContent('Select Option'));
+  await waitFor(() => expect(selectInput).toHaveValue(''));
 
   // toggle dropdown test
   await userEvent.click(getByRole('button', { name: 'Open Dropdown' }));
@@ -273,10 +241,16 @@ export const ControlledDropdownMultiSelect: StoryFn<typeof Dropdown> = (): React
       >
         Select Bangalore
       </Button>
-      <Button onClick={() => setIsDropdownOpen(!isDropdownOpen)}>Open Dropdown</Button>
+      <Button
+        variant="secondary"
+        marginLeft="spacing.4"
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+      >
+        Open Dropdown
+      </Button>
 
       <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen} selectionType="multiple">
-        <SelectInput
+        <AutoComplete
           label="Select City"
           value={currentSelection}
           onChange={(args) => {
@@ -301,7 +275,7 @@ ControlledDropdownMultiSelect.play = async ({ canvasElement }) => {
   const { getByRole, queryAllByLabelText } = within(canvasElement);
   const selectInput = getByRole('combobox', { name: 'Select City' });
 
-  // Select 1 item programatically
+  // Select 1 item controlled
   await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeFalsy();
   await userEvent.click(getByRole('button', { name: 'Select Bangalore' }));
   await waitFor(() => expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument());
@@ -312,14 +286,104 @@ ControlledDropdownMultiSelect.play = async ({ canvasElement }) => {
   await waitFor(() => expect(queryAllByLabelText('Close Pune tag')?.[0]).toBeInTheDocument());
   await expect(queryAllByLabelText('Close Bangalore tag')?.[0]).toBeInTheDocument();
 
+  await userEvent.type(selectInput, 'c');
+  await waitFor(() => expect(getActiveDescendant(selectInput)).toBe('Chennai'));
+  await userEvent.click(getByRole('option', { name: 'Chennai' }));
+  await waitFor(() => expect(queryAllByLabelText('Close Chennai tag')?.[0]).toBeInTheDocument());
+
   // dropdown open test
   await userEvent.click(getByRole('button', { name: 'Open Dropdown' }));
   await waitFor(() => expect(getByRole('listbox', { name: 'Select City' })).toBeVisible());
 };
 
+const filteredMap = [
+  {
+    title: 'Mumbai',
+    value: 'mumbai',
+    keywords: ['maharashtra'],
+  },
+  {
+    title: 'Pune',
+    value: 'pune',
+    keywords: ['maharashtra'],
+  },
+  {
+    title: 'Bengaluru',
+    value: 'bengaluru',
+    keywords: ['karnataka', 'bangalore'],
+  },
+];
+
+export const ControlledFiltering: StoryFn<typeof Dropdown> = (): React.ReactElement => {
+  const cityValues = filteredMap.map((city) => city.value);
+  const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
+
+  return (
+    <Dropdown selectionType="multiple">
+      <AutoComplete
+        label="Cities"
+        onInputValueChange={({ value }) => {
+          if (value) {
+            const filteredItems = filteredMap
+              .filter(
+                (city) =>
+                  city.title.toLowerCase().startsWith(value.toLowerCase()) ||
+                  city.keywords.find((keyword) =>
+                    keyword.toLowerCase().includes(value.toLowerCase()),
+                  ),
+              )
+              .map((city) => city.value);
+
+            if (filteredItems.length > 0) {
+              setFilteredValues(filteredItems);
+            } else {
+              setFilteredValues([]);
+            }
+          } else {
+            setFilteredValues(cityValues);
+          }
+        }}
+        filteredValues={filteredValues}
+        helpText="Try typing 'maharashtra' in input"
+      />
+      {filteredValues.length > 0 ? (
+        <DropdownOverlay>
+          <ActionList>
+            {filteredMap.map((city) => (
+              <ActionListItem key={city.value} title={city.title} value={city.value} />
+            ))}
+          </ActionList>
+        </DropdownOverlay>
+      ) : null}
+    </Dropdown>
+  );
+};
+
+ControlledFiltering.play = async ({ canvasElement }) => {
+  const { getByRole, queryByRole } = within(canvasElement);
+  const selectInput = getByRole('combobox', { name: 'Cities' });
+
+  await userEvent.click(selectInput);
+  await waitFor(() => expect(getByRole('listbox', { name: 'Cities' })).toBeVisible());
+  await expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
+  await expect(getByRole('option', { name: 'Pune' })).toBeVisible();
+  await expect(getByRole('option', { name: 'Bengaluru' })).toBeVisible();
+
+  // typing maharashtra should filter mumbai and pune and remove other options
+  await userEvent.keyboard('maha');
+
+  await expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
+  await expect(getByRole('option', { name: 'Pune' })).toBeVisible();
+  await expect(queryByRole('option', { name: 'Bengaluru' })).not.toBeInTheDocument();
+
+  await expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'false');
+  await userEvent.click(getByRole('option', { name: 'Pune' }));
+  await expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'true');
+};
+
 export default {
-  title: 'Components/Interaction Tests/Dropdown',
-  component: Dropdown,
+  title: 'Components/Interaction Tests/AutoComplete',
+  component: AutoComplete,
   parameters: {
     controls: {
       disable: true,
