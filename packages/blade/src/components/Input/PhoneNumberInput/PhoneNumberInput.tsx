@@ -42,7 +42,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
     onClick,
     onBlur,
     onFocus,
-    accessibilityLabel,
+    accessibilityLabel = 'Enter phone number',
     autoFocus,
     testID,
     keyboardReturnKeyType = 'done',

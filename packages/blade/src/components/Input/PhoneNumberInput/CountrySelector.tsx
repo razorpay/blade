@@ -74,7 +74,7 @@ const CountrySelector = ({
         isDisabled={isDisabled}
         size={size === 'medium' ? 'xsmall' : 'medium'}
         variant="tertiary"
-        accessibilityLabel={countryNameFormatter.of(selectedCountry)}
+        accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
         icon={() => (
           <Box display="flex" flexDirection="row" gap="spacing.2">
             <img
