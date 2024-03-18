@@ -5,6 +5,7 @@ import type { PhoneNumberInputProps } from './types';
 import { PhoneNumberInput } from './PhoneNumberInput';
 import { Box } from '~components/Box';
 import { Code, Text } from '~components/Typography';
+import { PhoneIcon } from '~components/Icons';
 
 const meta: Meta<PhoneNumberInputProps> = {
   title: 'Components/Input/PhoneNumberInput',
@@ -17,6 +18,12 @@ const PhoneNumberInputTemplate: StoryFn<typeof PhoneNumberInput> = ({ ...args })
 };
 
 export const Default = PhoneNumberInputTemplate.bind({});
+
+export const SizeLarge = PhoneNumberInputTemplate.bind({});
+SizeLarge.storyName = 'Size: Large';
+SizeLarge.args = {
+  size: 'large',
+};
 
 export const WithoutCountrySelector = PhoneNumberInputTemplate.bind({});
 WithoutCountrySelector.args = {
@@ -54,6 +61,12 @@ export const WithoutLabel = PhoneNumberInputTemplate.bind({});
 WithoutLabel.args = {
   label: undefined,
   accessibilityLabel: 'Enter your phone number',
+};
+
+export const WithLeadingIcon = PhoneNumberInputTemplate.bind({});
+WithLeadingIcon.args = {
+  showCountrySelector: false,
+  leadingIcon: PhoneIcon,
 };
 
 const ControlledTemplate: StoryFn<typeof PhoneNumberInput> = () => {

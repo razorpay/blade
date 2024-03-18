@@ -13,6 +13,8 @@ import type { DropdownOverlayProps } from '~components/Dropdown';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
+import { size as sizes } from '~tokens/global';
+import { makeSize } from '~utils';
 
 const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
@@ -61,6 +63,11 @@ const CountrySelector = ({
     </ActionList>
   );
 
+  const flagSize = {
+    medium: makeSize(sizes[20]),
+    large: makeSize(sizes[24]),
+  } as const;
+
   return (
     <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
       <DropdownButton
@@ -73,7 +80,7 @@ const CountrySelector = ({
             <img
               loading="lazy"
               role="presentation"
-              width="24px"
+              width={flagSize[size]}
               src={getFlagOfCountry(selectedCountry)}
               alt=""
             />
