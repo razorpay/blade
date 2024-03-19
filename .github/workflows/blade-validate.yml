@@ -16,7 +16,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.12.1
+          registry-url: "https://npm.pkg.github.com"
       - name: Setup Cache & Install Dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: ./.github/actions/install-dependencies
       - name: Build Blade
         run: yarn build
