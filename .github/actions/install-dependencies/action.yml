@@ -1,5 +1,6 @@
 name: install npm packages
 description: Installs npm packages and manages it's cache
+
 runs:
   using: composite
   steps:
@@ -21,10 +22,14 @@ runs:
     # cache hit - download packages from the cache and explicitly run postinstall script
     - name: install packages if cache miss
       run: yarn --frozen-lockfile
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       shell: bash
       if: steps.cache.outputs.cache-hit != 'true'
 
     - name: Run postinstall script
       run: yarn postinstall
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       shell: bash
       if: steps.cache.outputs.cache-hit == 'true'

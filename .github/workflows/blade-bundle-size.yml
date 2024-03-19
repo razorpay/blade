@@ -22,6 +22,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18.12.1
+          # https://stackoverflow.com/a/73824182
+          registry-url: "https://npm.pkg.github.com"
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Update Bundle Size Data
@@ -47,6 +49,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18.12.1
+          # https://stackoverflow.com/a/73824182
+          registry-url: "https://npm.pkg.github.com"
       - name: Setup Cache & Install Dependencies
         uses: ./.github/actions/install-dependencies
       - name: Build Blade React Production
