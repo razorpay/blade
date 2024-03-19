@@ -115,6 +115,32 @@ const _ButtonGroup = ({
   );
 };
 
+/**
+ * ### ButtonGroup Component
+ * 
+ * The ButtonGroup component is used to group related buttons together.
+ * 
+ * ---
+ * 
+ * #### Usage
+ * 
+ * ```jsx
+  const App = () => {
+    return (
+      <ButtonGroup>
+        <Button icon={RefreshIcon}>Sync</Button>
+        <Button icon={ShareIcon}>Share</Button>
+        <Button icon={DownloadIcon}>Download</Button>
+      </ButtonGroup>
+    );
+  }
+ * ```
+ *
+ *  ---
+ *
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-buttongroup FileUpload Documentation}
+ * 
+ */
 const ButtonGroup = assignWithoutSideEffects(_ButtonGroup, {
   displayName: 'ButtonGroup',
   componentId: 'ButtonGroup',

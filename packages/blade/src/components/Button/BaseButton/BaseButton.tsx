@@ -497,15 +497,15 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       // Setting type for web fails it on native typecheck and vice versa
       onKeyDown={(event: any) => {
         handleKeyboardPressedIn(event);
-        if (onKeyDown) onKeyDown(event);
+        onKeyDown?.(event);
       }}
       onTouchStart={(event: React.TouchEvent) => {
         handlePointerPressedIn();
-        if (onTouchStart) onTouchStart(event);
+        onTouchStart?.(event);
       }}
       onTouchEnd={(event: React.TouchEvent) => {
         handlePointerPressedOut();
-        if (onTouchEnd) onTouchEnd(event);
+        onTouchEnd?.(event);
       }}
       type={type}
       borderWidth={borderWidth}

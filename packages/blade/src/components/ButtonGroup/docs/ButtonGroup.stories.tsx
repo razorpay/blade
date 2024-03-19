@@ -15,9 +15,9 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="ButtonGroup"
-      componentDescription="The ButtonGroup component is used to handle file attachments, including the drag-and-drop interaction. It can be used in both controlled and uncontrolled forms. Primarily, it is used to upload files to a server or to display a list of uploaded files."
+      componentDescription="The ButtonGroup component is used to group related buttons together."
       apiDecisionLink={null}
-      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=78670-22400&t=iCPjenOx6kthCZaE-1&scaling=min-zoom&page-id=74796%3A315549&mode=design"
+      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=80753%3A108070&mode=design&t=iGYw4ygZL8cErFIL-1"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
