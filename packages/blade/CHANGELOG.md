@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.8.0
+
+### Minor Changes
+
+- fd304e47: feat: add the `ButtonGroup` component
+
 ## 11.7.0
 
 ### Minor Changes
