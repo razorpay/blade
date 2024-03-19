@@ -15,6 +15,7 @@ export const MetaConstants = {
   BaseBox: 'base-box',
   BaseText: 'base-text',
   Button: 'button',
+  ButtonGroup: 'button-group',
   Breadcrumb: 'breadcrumb',
   BreadcrumbItem: 'breadcrumb-item',
   Carousel: 'carousel',

@@ -242,7 +242,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   z-index: 1002;
 }
 
-.c45.c45.c45.c45.c45 {
+.c46.c46.c46.c46.c46 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -408,6 +408,16 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
+.c45.c45.c45.c45.c45 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
 .c6.c6.c6.c6.c6 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -465,7 +475,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   margin-top: 1px;
 }
 
-.c47.c47.c47.c47.c47 {
+.c48.c48.c48.c48.c48 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -516,7 +526,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   display: none;
 }
 
-.c46.c46.c46.c46.c46 {
+.c47.c47.c47.c47.c47 {
   opacity: 1;
 }
 
@@ -1174,14 +1184,19 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   type="button"
                 >
                   <div
-                    class="c45 c46"
+                    class=" c45"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c47"
-                      data-blade-component="base-text"
+                      class="c46 c47"
+                      data-blade-component="base-box"
                     >
-                      Apply
+                      <div
+                        class="c48"
+                        data-blade-component="base-text"
+                      >
+                        Apply
+                      </div>
                     </div>
                   </div>
                 </button>
