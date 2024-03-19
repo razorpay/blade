@@ -27,6 +27,8 @@ jobs:
           # https://stackoverflow.com/a/73824182
           registry-url: "https://npm.pkg.github.com"
       - name: Setup Cache & Install Dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         uses: ./.github/actions/install-dependencies
       - name: Upload Tokens
         working-directory: packages/blade
