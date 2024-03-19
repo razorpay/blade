@@ -21,6 +21,7 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
     ...getStyledBaseButtonStyles(props),
     alignSelf: 'center',
     display: 'flex',
+    flexDirection: 'row',
     ...styledPropsCSSObject,
   };
 });

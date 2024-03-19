@@ -172,7 +172,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 16px;
 }
 
-.c30.c30.c30.c30.c30 {
+.c31.c31.c31.c31.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -289,7 +289,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c32.c32.c32.c32.c32 {
+.c33.c33.c33.c33.c33 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -492,7 +492,17 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c31.c31.c31.c31.c31 {
+.c30.c30.c30.c30.c30 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c32.c32.c32.c32.c32 {
   opacity: 1;
 }
 
@@ -738,14 +748,19 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
           type="button"
         >
           <div
-            class="c30 c31"
+            class=" c30"
             data-blade-component="base-box"
           >
             <div
-              class="c32"
-              data-blade-component="base-text"
+              class="c31 c32"
+              data-blade-component="base-box"
             >
-              Save
+              <div
+                class="c33"
+                data-blade-component="base-text"
+              >
+                Save
+              </div>
             </div>
           </div>
         </button>

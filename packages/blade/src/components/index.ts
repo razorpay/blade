@@ -9,6 +9,7 @@ export * from './Breadcrumb';
 export * from './Box';
 export * from './Button';
 export * from './Button/IconButton';
+export * from './ButtonGroup';
 export * from './Card';
 export * from './Carousel';
 export * from './Checkbox';
