@@ -88,14 +88,14 @@ const _ButtonGroup = ({
               !isValidAllowedChildren(child, 'Button') &&
               !(
                 isValidAllowedChildren(child, 'Dropdown') &&
-                (child as ReactElement).props.children.some(
-                  (c: ReactElement) => !isValidAllowedChildren(c, 'DropdownButton'),
+                (child as ReactElement).props.children.some((c: ReactElement) =>
+                  isValidAllowedChildren(c, 'DropdownButton'),
                 )
               )
             ) {
               throwBladeError({
                 moduleName: 'ButtonGroup',
-                message: `ButtonGroup only accepts Button or Dropdown elements as children.`,
+                message: `Only "Button" or "Dropdown" component with Button trigger are allowed as children.`,
               });
             }
             /* eslint-enable no-restricted-properties */
