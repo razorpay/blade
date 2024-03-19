@@ -457,8 +457,11 @@ const componentData: ComponentStatusDataType = [
     description: 'A stepper component is used to indicate progress through a multi-step process.',
   },
   {
-    name: 'Button Group',
-    status: 'in-development',
+    name: 'ButtonGroup',
+    status: 'released',
+    releasedIn: '11.8.0',
+    storybookLink: 'Components/ButtonGroup',
+    platform: 'web',
     description: 'ButtonGroup component can be used to group related buttons.',
   },
   {
