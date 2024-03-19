@@ -10,18 +10,22 @@ const StyledButtonGroup = styled(BaseBox)<StyledButtonGroupProps>(
     return {
       display: 'flex',
       width: isFullWidth ? '100%' : 'fit-content',
+      overflow: 'hidden',
       borderRadius: makeBorderSize(theme.border.radius.medium),
-      borderWidth: makeBorderSize(theme.border.width.thin),
-      borderColor: getIn(
-        theme.colors,
-        getBackgroundColorToken({
-          property: variant === 'tertiary' ? 'background' : 'border',
-          variant,
-          color,
-          state: isDisabled ? 'disabled' : 'default',
-        }),
-      ),
-      borderStyle: 'solid',
+
+      ...(variant === 'secondary' && {
+        borderColor: getIn(
+          theme.colors,
+          getBackgroundColorToken({
+            property: 'border',
+            variant,
+            color,
+            state: isDisabled ? 'disabled' : 'default',
+          }),
+        ),
+        borderStyle: 'solid',
+        borderWidth: makeBorderSize(theme.border.width.thin),
+      }),
 
       'button[role="button"]': {
         borderRadius: 0,
