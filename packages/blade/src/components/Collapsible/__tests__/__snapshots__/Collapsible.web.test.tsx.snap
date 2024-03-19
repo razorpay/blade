@@ -318,12 +318,8 @@ exports[`<Collapsible /> should render with CollapsibleButton 1`] = `
         role="region"
       >
         <div
-<<<<<<< HEAD
-          class=" c5"
+          class=" c6"
           data-blade-component="base-box"
-=======
-          class="c6"
->>>>>>> 9e6363e2 (chore: update snaps)
         >
           <div
             class="c7"

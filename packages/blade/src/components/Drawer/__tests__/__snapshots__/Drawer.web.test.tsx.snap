@@ -149,8 +149,7 @@ exports[`Drawer renders a Drawer 1`] = `
   padding-left: 8px;
 }
 
-<<<<<<< HEAD
-.c23.c23.c23.c23.c23 {
+.c24.c24.c24.c24.c24 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -169,14 +168,12 @@ exports[`Drawer renders a Drawer 1`] = `
   width: 100%;
 }
 
-=======
->>>>>>> 9e6363e2 (chore: update snaps)
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27 {
   overflow: auto;
   -webkit-flex: 1;
   -ms-flex: 1;
@@ -236,7 +233,7 @@ exports[`Drawer renders a Drawer 1`] = `
   animation-fill-mode: initial;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -303,7 +300,7 @@ exports[`Drawer renders a Drawer 1`] = `
   padding: 0;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -478,31 +475,31 @@ exports[`Drawer renders a Drawer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c24.c24.c24.c24.c24 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c24.c24.c24.c24.c24 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c24.c24.c24.c24.c24 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c24.c24.c24.c24.c24 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c24.c24.c24.c24.c24 {
+  .c25.c25.c25.c25.c25 {
     border-bottom-style: solid;
   }
 }
@@ -689,7 +686,7 @@ exports[`Drawer renders a Drawer 1`] = `
         </div>
       </div>
       <div
-        class="c23"
+        class="c24"
         data-blade-component="base-box"
       >
         <div
@@ -699,17 +696,17 @@ exports[`Drawer renders a Drawer 1`] = `
       </div>
     </div>
     <div
-      class="c24 c25"
+      class="c25 c26"
       data-blade-component="divider"
       role="separator"
     />
   </div>
   <div
-    class="c26"
+    class="c27"
     data-blade-component="box"
   >
     <p
-      class="c27"
+      class="c28"
       data-blade-component="text"
     >
       Test Content

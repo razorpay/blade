@@ -925,7 +925,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 16px;
 }
 
-.c34.c34.c34.c34.c34 {
+.c35.c35.c35.c35.c35 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1100,7 +1100,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   padding: 0;
 }
 
-.c36.c36.c36.c36.c36 {
+.c37.c37.c37.c37.c37 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1299,9 +1299,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-<<<<<<< HEAD
-=======
-.c33.c33.c33.c33.c33 {
+.c34.c34.c34.c34.c34 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -1311,8 +1309,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   transition-timing-function: 150px;
 }
 
->>>>>>> 9e6363e2 (chore: update snaps)
-.c35.c35.c35.c35.c35 {
+.c36.c36.c36.c36.c36 {
   opacity: 1;
 }
 
@@ -1588,24 +1585,15 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
               type="button"
             >
               <div
-<<<<<<< HEAD
-                class="c34 c35"
+                class=" c34"
                 data-blade-component="base-box"
               >
                 <div
-                  class="c36"
-                  data-blade-component="base-text"
-=======
-                class=" c33"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c34 c35"
+                  class="c35 c36"
                   data-blade-component="base-box"
->>>>>>> 9e6363e2 (chore: update snaps)
                 >
                   <div
-                    class="c36"
+                    class="c37"
                     data-blade-component="base-text"
                   >
                     Remove address

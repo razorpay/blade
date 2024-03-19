@@ -242,7 +242,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   z-index: 1002;
 }
 
-.c45.c45.c45.c45.c45 {
+.c46.c46.c46.c46.c46 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -408,7 +408,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c44.c44.c44.c44.c44 {
+.c45.c45.c45.c45.c45 {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1);
@@ -475,7 +475,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   margin-top: 1px;
 }
 
-.c47.c47.c47.c47.c47 {
+.c48.c48.c48.c48.c48 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -526,7 +526,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   display: none;
 }
 
-.c46.c46.c46.c46.c46 {
+.c47.c47.c47.c47.c47 {
   opacity: 1;
 }
 
@@ -1184,24 +1184,15 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                   type="button"
                 >
                   <div
-<<<<<<< HEAD
-                    class="c45 c46"
+                    class=" c45"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c47"
-                      data-blade-component="base-text"
-=======
-                    class=" c44"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c45 c46"
+                      class="c46 c47"
                       data-blade-component="base-box"
->>>>>>> 9e6363e2 (chore: update snaps)
                     >
                       <div
-                        class="c47"
+                        class="c48"
                         data-blade-component="base-text"
                       >
                         Apply
