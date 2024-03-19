@@ -171,7 +171,6 @@ export const getBaseInputStyles = ({
     hasLeadingIcon,
     hasPrefix,
     hasTrailingInteractionElement,
-    hasLeadingInteractionElement,
     hasSuffix,
     hasTrailingIcon,
   } = getInputVisualsToBeRendered({
