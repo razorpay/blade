@@ -133,9 +133,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -478,9 +475,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -969,9 +963,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: 1;
   -ms-flex: 1;
   flex: 1;
@@ -1207,9 +1198,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -1445,9 +1433,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -1683,9 +1668,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -1921,9 +1903,6 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -2159,9 +2138,6 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -3854,9 +3830,6 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -4095,9 +4068,6 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -4333,9 +4303,6 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -4574,9 +4541,6 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -4812,9 +4776,6 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -5053,9 +5014,6 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -5291,9 +5249,6 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -5529,9 +5484,6 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -5770,9 +5722,6 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
@@ -6008,9 +5957,6 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
 .c0.c0.c0.c0.c0 button[role="button"] {
   border-radius: 0;
   border: none;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
   -webkit-flex: auto;
   -ms-flex: auto;
   flex: auto;
