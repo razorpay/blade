@@ -7,16 +7,16 @@ const radioSizes = {
   group: {
     gap: {
       small: {
-        mobile: 'spacing.3',
-        desktop: 'spacing.2',
+        mobile: 'spacing.2',
+        desktop: 'spacing.3',
       },
       medium: {
         mobile: 'spacing.3',
         desktop: 'spacing.4',
       },
       large: {
-        mobile: 'spacing.4',
-        desktop: 'spacing.3',
+        mobile: 'spacing.3',
+        desktop: 'spacing.4',
       },
     },
   },
