@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.8.1
+
+### Patch Changes
+
+- 9dcc2914: fix(Button): use height and width to fix sizes in Icon Only Button
+
 ## 11.8.0
 
 ### Minor Changes
