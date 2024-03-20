@@ -51,7 +51,7 @@ const CountrySelector = ({
           <ActionListItem
             key={country.code}
             onClick={onItemClick}
-            leading={<ActionListItemAsset src={flags[country.code]} alt={country.name} />}
+            leading={<ActionListItemAsset src={flags[country.code]['4X3']} alt={country.name} />}
             title={country.name}
             value={country.code}
             trailing={
@@ -81,7 +81,7 @@ const CountrySelector = ({
               loading="lazy"
               role="presentation"
               width={flagSize[size]}
-              src={getFlagOfCountry(selectedCountry)}
+              src={getFlagOfCountry(selectedCountry)['4X3']}
               alt=""
             />
             {isDropdownOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
