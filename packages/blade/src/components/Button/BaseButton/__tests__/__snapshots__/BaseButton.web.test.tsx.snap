@@ -739,7 +739,7 @@ exports[`<BaseButton /> should render button with icon with default iconPosition
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 4px;
+  padding-right: 8px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -922,7 +922,7 @@ exports[`<BaseButton /> should render button with icon with left iconPosition 1`
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-right: 4px;
+  padding-right: 8px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1105,7 +1105,7 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding-left: 4px;
+  padding-left: 8px;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1192,7 +1192,8 @@ exports[`<BaseButton /> should render button with icon with right iconPosition 1
 exports[`<BaseButton /> should render button with icon without text 1`] = `
 .c0.c0.c0.c0.c0 {
   min-height: 36px;
-  width: auto;
+  height: 36px;
+  width: 36px;
   cursor: pointer;
   background-color: hsla(227,100%,59%,1);
   border-color: hsla(227,100%,59%,1);
@@ -1201,8 +1202,8 @@ exports[`<BaseButton /> should render button with icon without text 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 0px;
+  padding-right: 0px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;

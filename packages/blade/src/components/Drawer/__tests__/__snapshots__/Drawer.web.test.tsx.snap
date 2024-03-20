@@ -381,7 +381,8 @@ exports[`Drawer renders a Drawer 1`] = `
 
 .c18.c18.c18.c18.c18 {
   min-height: 28px;
-  width: auto;
+  height: 28px;
+  width: 28px;
   cursor: pointer;
   background-color: hsla(211,20%,52%,0.09);
   border-color: hsla(211,27%,76%,1);
@@ -390,8 +391,8 @@ exports[`Drawer renders a Drawer 1`] = `
   border-style: solid;
   padding-top: 0px;
   padding-bottom: 0px;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding-left: 0px;
+  padding-right: 0px;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;

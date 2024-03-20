@@ -499,7 +499,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
                 "alignItems": "center",
                 "display": "flex",
                 "justifyContent": "center",
-                "paddingRight": 4,
+                "paddingRight": 8,
               },
             ]
           }
@@ -781,7 +781,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
                 "alignItems": "center",
                 "display": "flex",
                 "justifyContent": "center",
-                "paddingLeft": 4,
+                "paddingLeft": 8,
               },
             ]
           }
