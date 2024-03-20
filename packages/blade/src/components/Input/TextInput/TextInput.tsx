@@ -16,6 +16,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import type { BladeElementRef } from '~utils/types';
+import { hintMarginTop } from '~components/Form/formTokens';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -49,6 +50,10 @@ type TextInputCommonProps = Pick<
   | 'autoCapitalize'
   | 'testID'
   | 'onClick'
+  | 'size'
+  | 'leadingIcon'
+  | 'trailingButton'
+  | 'trailingIcon'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -67,9 +72,9 @@ type TextInputCommonProps = Pick<
 
   /**
    * Icon that will be rendered at the beginning of the input field
+   * @deprecated Use `leadingIcon` instead. This prop will be removed in the next major version.
    */
   icon?: IconComponent;
-
   /**
    * Type of Input Field to be rendered. Use `PasswordInput` for type `password`
    *
@@ -246,6 +251,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     autoCompleteSuggestionType,
     autoCapitalize,
     testID,
+    size = 'medium',
+    leadingIcon,
+    trailingIcon,
     ...styledProps
   },
   ref,
@@ -284,6 +292,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
             textInputRef?.current?.focus();
             setShouldShowClearButton(false);
           }}
+          isDisabled={isDisabled}
           accessibilityLabel="Clear Input Content"
         />
       );
@@ -326,9 +335,10 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
-      leadingIcon={icon}
+      leadingIcon={leadingIcon ?? icon}
       prefix={prefix}
       interactionElement={renderInteractionElement()}
+      trailingIcon={trailingIcon}
       suffix={suffix}
       validationState={validationState}
       errorText={errorText}
@@ -336,8 +346,12 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       successText={successText}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <BaseBox marginTop="spacing.2" marginRight="spacing.1">
-            <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
+          <BaseBox marginTop={hintMarginTop[size]} marginRight="spacing.1">
+            <CharacterCounter
+              currentCount={value?.length ?? 0}
+              maxCount={maxCharacters}
+              size={size}
+            />
           </BaseBox>
         ) : null;
       }}
@@ -350,6 +364,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         autoCompleteSuggestionType,
         autoCapitalize,
       })}
+      size={size}
       {...styledProps}
     />
   );

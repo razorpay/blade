@@ -140,7 +140,7 @@ const FormLabel = ({
 
   const Component = as;
   // only set 120px label when device is desktop
-  const width = isLabelLeftPositioned && isDesktop ? makeSize(labelWidth[size]) : 'auto'; // TODO: use size token
+  const width = isLabelLeftPositioned && isDesktop ? makeSize(labelWidth[size]) : 'auto';
 
   return (
     <Component

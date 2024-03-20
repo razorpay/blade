@@ -7,6 +7,7 @@ import {
   baseInputBorderColor,
   baseInputBorderWidth,
   baseInputHeight,
+  baseInputPaddingTokens,
 } from './baseInputTokens';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
@@ -35,6 +36,26 @@ type GetInputStyles = Pick<
   size: NonNullable<BaseInputProps['size']>;
 };
 
+export const getBaseInputState = ({
+  isFocused,
+  isHovered,
+  isDisabled,
+}: {
+  isFocused?: boolean;
+  isHovered?: boolean;
+  isDisabled?: boolean;
+}): 'focused' | 'hovered' | 'disabled' | 'default' => {
+  if (isDisabled) {
+    return 'disabled';
+  } else if (isFocused) {
+    return 'focused';
+  } else if (isHovered) {
+    return 'hovered';
+  } else {
+    return 'default';
+  }
+};
+
 export const getInputBackgroundAndBorderStyles = ({
   theme,
   isHovered,
@@ -58,13 +79,7 @@ export const getInputBackgroundAndBorderStyles = ({
   let borderColor = getIn(theme.colors, baseInputBorderColor.default);
   let borderWidth = getIn(theme.border.width, baseInputBorderWidth.default);
 
-  const baseInputState = isHovered
-    ? 'hovered'
-    : isFocused
-    ? 'focused'
-    : isDisabled
-    ? 'disabled'
-    : 'default';
+  const baseInputState = getBaseInputState({ isFocused, isHovered, isDisabled });
 
   backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
   borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
@@ -72,6 +87,7 @@ export const getInputBackgroundAndBorderStyles = ({
 
   if (validationState === 'error') {
     borderColor = getIn(theme.colors, baseInputBorderColor.error);
+    borderWidth = getIn(theme.border.width, baseInputBorderWidth.error);
   } else if (validationState === 'success') {
     borderColor = getIn(theme.colors, baseInputBorderColor.success);
     borderWidth = getIn(theme.border.width, baseInputBorderWidth.success);
@@ -91,25 +107,6 @@ export const getInputBackgroundAndBorderStyles = ({
     ...getBaseInputBorderStyles({ theme, borderColor, borderWidth, isFocused }),
   };
 };
-
-const inputPadding = {
-  top: {
-    medium: 3,
-    large: 4,
-  },
-  bottom: {
-    medium: 3,
-    large: 4,
-  },
-  left: {
-    medium: 4,
-    large: 4,
-  },
-  right: {
-    medium: 4,
-    large: 4,
-  },
-} as const;
 
 const getLeftPadding = ({
   theme,
@@ -132,7 +129,7 @@ const getLeftPadding = ({
     return theme.spacing[3];
   }
 
-  return theme.spacing[inputPadding.left[size]];
+  return theme.spacing[baseInputPaddingTokens.left[size]];
 };
 
 const getRightPadding = ({
@@ -151,7 +148,7 @@ const getRightPadding = ({
   if (hasInteractionElement || hasSuffix || hasTrailingIcon) {
     return theme.spacing[3];
   }
-  return theme.spacing[inputPadding.right[size]];
+  return theme.spacing[baseInputPaddingTokens.right[size]];
 };
 
 export const getBaseInputStyles = ({
@@ -198,8 +195,8 @@ export const getBaseInputStyles = ({
     flex: 1,
     backgroundColor: 'transparent',
 
-    paddingTop: makeSpace(theme.spacing[inputPadding.top[size]]),
-    paddingBottom: makeSpace(theme.spacing[inputPadding.bottom[size]]),
+    paddingTop: makeSpace(theme.spacing[baseInputPaddingTokens.top[size]]),
+    paddingBottom: makeSpace(theme.spacing[baseInputPaddingTokens.bottom[size]]),
     paddingLeft: makeSpace(
       getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix, size }),
     ),

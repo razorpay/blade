@@ -7,7 +7,7 @@ import { BaseInputVisuals } from './BaseInputVisuals';
 import { BaseInputWrapper } from './BaseInputWrapper';
 import { BaseInputTagSlot } from './BaseInputTagSlot';
 import type { InputWrapperRef } from './types';
-import { baseInputBorderBackgroundMotion } from './baseInputTokens';
+import { baseInputBorderBackgroundMotion, formHintLeftLabelMarginLeft } from './baseInputTokens';
 import type {
   FormInputLabelProps,
   FormInputValidationProps,
@@ -305,10 +305,10 @@ type BaseInputCommonProps = FormInputLabelProps &
      * **Note:** `size` of the Link will be set to the same size as the input field, `isDisabled` will follow Input's `isDisabled`, & `variant` will be set to `button`.
      * Example:
      * ```tsx
-     * trailingActionButton={<Link onClick={handleClick}>Apply</Link>}
+     * trailingButton={<Link onClick={handleClick}>Apply</Link>}
      * ```
      */
-    trailingActionButton?: React.ReactElement<LinkProps>;
+    trailingButton?: React.ReactElement<LinkProps>;
   } & TestID &
   Platform.Select<{
     native: {
@@ -792,7 +792,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isDropdownTrigger,
     isLabelInsideInput,
     size = 'medium',
-    trailingActionButton,
+    trailingButton,
     ...styledProps
   },
   ref,
@@ -1005,15 +1005,19 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               trailingIcon={trailingIcon}
               isDisabled={isDisabled}
               validationState={validationState}
-              trailingActionButton={trailingActionButton}
+              trailingButton={trailingButton}
               size={size}
             />
           </BaseInputWrapper>
         </FocusRingWrapper>
       </BaseBox>
-      {/* the magic number 192 is basically max-width of label i.e 176 and then right margin i.e 16 which is the spacing between label and input field */}
+
       {!hideFormHint && (
-        <BaseBox marginLeft={makeSize(isLabelLeftPositioned && !hideLabelText ? 192 : 0)}>
+        <BaseBox
+          marginLeft={makeSize(
+            isLabelLeftPositioned && !hideLabelText ? formHintLeftLabelMarginLeft[size] : 0,
+          )}
+        >
           <BaseBox
             display="flex"
             flexDirection="row"

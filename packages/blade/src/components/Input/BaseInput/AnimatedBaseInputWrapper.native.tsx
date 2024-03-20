@@ -7,7 +7,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import styled from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
-import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
+import { getBaseInputState, getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import {
   BASEINPUT_WRAPPER_MAX_HEIGHT,
   BASEINPUT_WRAPPER_MIN_HEIGHT,
@@ -94,14 +94,11 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     }),
   };
 
-  const baseInputState =
-    rest.currentInteraction === 'focus'
-      ? 'focused'
-      : rest.currentInteraction === 'hover'
-      ? 'hovered'
-      : rest.isDisabled
-      ? 'disabled'
-      : 'default';
+  const baseInputState = getBaseInputState({
+    isFocused: rest.currentInteraction === 'focus',
+    isHovered: rest.currentInteraction === 'hover',
+    isDisabled: Boolean(rest.isDisabled),
+  });
 
   let borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
   const backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
