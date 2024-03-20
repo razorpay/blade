@@ -16,9 +16,9 @@
   {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
     "passed": true,
-    "size": 34661,
+    "size": 34667,
     "sizeLimit": 2000000,
-    "loading": 0.67697265625
+    "loading": 0.67708984375
   },
   {
     "name": "Alert",
@@ -135,9 +135,9 @@
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
     "passed": true,
-    "size": 44853,
+    "size": 44858,
     "sizeLimit": 2000000,
-    "loading": 0.87603515625
+    "loading": 0.8761328125
   },
   {
     "name": "FileUpload",
@@ -212,9 +212,9 @@
   {
     "name": "Table, TableHeader, TableHeaderCell, TableHeaderRow, TableBody, TableCell, TableRow, TableFooter, TableFooterCell, TableFooterRow, TablePagination, TableToolbar, TableToolbarActions",
     "passed": true,
-    "size": 72491,
+    "size": 72498,
     "sizeLimit": 2000000,
-    "loading": 1.41583984375
+    "loading": 1.4159765625
   },
   {
     "name": "Tabs, TabItem, TabList, TabPanel",
@@ -268,9 +268,9 @@
   {
     "name": "SelectInput, AutoComplete",
     "passed": true,
-    "size": 39598,
+    "size": 39604,
     "sizeLimit": 2000000,
-    "loading": 0.7733984375
+    "loading": 0.773515625
   },
   {
     "name": "OTPInput",
