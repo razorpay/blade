@@ -77,7 +77,7 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -99,7 +99,7 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -116,7 +116,7 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -149,7 +149,7 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c11.c11.c11.c11.c11::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -167,7 +167,7 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c11.c11.c11.c11.c11::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -185,7 +185,7 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c11.c11.c11.c11.c11:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -203,7 +203,7 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c11.c11.c11.c11.c11::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

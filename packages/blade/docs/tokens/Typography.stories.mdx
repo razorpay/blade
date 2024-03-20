@@ -1,8 +1,7 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
-import { useTheme, BladeProvider, Box } from '../../src//components';
+import { useTheme, BladeProvider, Box, Button, ExternalLinkIcon } from '../../src//components';
 import { bladeTheme } from '../../src/tokens';
 import { makeTypographySize } from '../../src/utils';
-import FigmaEmbed from '../../src/utils/storybook/FigmaEmbed';
 
 <Meta
   title="Tokens/Typography"
@@ -12,11 +11,7 @@ import FigmaEmbed from '../../src/utils/storybook/FigmaEmbed';
         const colorScheme = context.store.globals.globals.colorScheme;
         return (
           <DocsContainer context={context}>
-            <BladeProvider
-              key={colorScheme}
-              themeTokens={bladeTheme}
-              colorScheme={colorScheme}
-            >
+            <BladeProvider key={colorScheme} themeTokens={bladeTheme} colorScheme={colorScheme}>
               {children}
             </BladeProvider>
           </DocsContainer>
@@ -30,8 +25,15 @@ import FigmaEmbed from '../../src/utils/storybook/FigmaEmbed';
 
 > These tokens should be used along with the [makeTypographySize util](?path=/story/utils-maketypographysize--page).
 
-<Box paddingY="spacing.6">
-  <FigmaEmbed src="https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=101-99618&mode=design&t=KdVVWtntizpKmsBt-0" />
+<Box paddingBottom="spacing.6">
+  <Button
+    variant="tertiary"
+    href="https://www.figma.com/file/5BZsOpNjbUHqgVh850yPBW/%5BResearch%5D-Typography-%26-Spacing-Refresh?type=design&node-id=101-99618&mode=design&t=KdVVWtntizpKmsBt-0"
+    icon={ExternalLinkIcon}
+    target="_blank"
+  >
+    {'View on Figma'}
+  </Button>
 </Box>
 
 export const Typography = () => {

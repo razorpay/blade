@@ -1,5 +1,38 @@
 # @razorpay/blade
 
+## 11.6.3
+
+### Patch Changes
+
+- 2c64f181: feat: support `defaultPlacement` prop on `DropdownOverlay`
+- ef68789a: fix(DropdownButton): scroll handling issues on keyboard navigations
+
+## 11.6.2
+
+### Patch Changes
+
+- a6a59686: fix: cover more cases with codemod
+- 902e28b4: fix: i18nify-js dependency updated
+
+## 11.6.1
+
+### Patch Changes
+
+- af39cab2: fix: add FileUpload exports
+- 26317e0e: feat: add adjusted font fallbacks for Inter and TASA
+
+## 11.6.0
+
+### Minor Changes
+
+- 9ebaf986: feat: add `FileUpload` component
+
+## 11.5.0
+
+### Minor Changes
+
+- bb7466e7: feat(blade): add `Breadcrumb` component
+
 ## 11.4.0
 
 ### Minor Changes

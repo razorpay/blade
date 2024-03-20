@@ -55,7 +55,7 @@ exports[`<BaseLink /> should change the link to a visited state after click 1`] 
 
 .c2.c2.c2.c2.c2 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -151,7 +151,7 @@ exports[`<BaseLink /> should not change the button to a visited state after clic
 
 .c2.c2.c2.c2.c2 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -245,7 +245,7 @@ exports[`<BaseLink /> should render button variant of link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -339,7 +339,7 @@ exports[`<BaseLink /> should render disabled button variant of link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(227,100%,59%,0.18);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -434,7 +434,7 @@ exports[`<BaseLink /> should render disabled information color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(200,84%,37%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -527,7 +527,7 @@ exports[`<BaseLink /> should render disabled negative color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -620,7 +620,7 @@ exports[`<BaseLink /> should render disabled neutral color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -713,7 +713,7 @@ exports[`<BaseLink /> should render disabled notice color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(25,85%,42%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -806,7 +806,7 @@ exports[`<BaseLink /> should render disabled positive color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -899,7 +899,7 @@ exports[`<BaseLink /> should render disabled primary color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -992,7 +992,7 @@ exports[`<BaseLink /> should render disabled white color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1097,7 +1097,7 @@ exports[`<BaseLink /> should render icon only link 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1220,7 +1220,7 @@ exports[`<BaseLink /> should render information color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(200,84%,37%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1313,7 +1313,7 @@ exports[`<BaseLink /> should render link with default properties 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1418,7 +1418,7 @@ exports[`<BaseLink /> should render link with icon with default iconPosition 1`]
 
 .c3.c3.c3.c3.c3 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1555,7 +1555,7 @@ exports[`<BaseLink /> should render link with icon with left iconPosition 1`] = 
 
 .c3.c3.c3.c3.c3 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1692,7 +1692,7 @@ exports[`<BaseLink /> should render link with icon with right iconPosition 1`] =
 
 .c2.c2.c2.c2.c2 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1817,7 +1817,7 @@ exports[`<BaseLink /> should render negative color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1910,7 +1910,7 @@ exports[`<BaseLink /> should render neutral color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -2003,7 +2003,7 @@ exports[`<BaseLink /> should render notice color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(25,85%,42%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -2096,7 +2096,7 @@ exports[`<BaseLink /> should render positive color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -2189,7 +2189,7 @@ exports[`<BaseLink /> should render primary color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(227,71%,51%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -2282,7 +2282,7 @@ exports[`<BaseLink /> should render white color link 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;

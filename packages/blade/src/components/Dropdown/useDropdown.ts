@@ -349,7 +349,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setActiveIndex(updatedIndex);
 
     const optionValues = options.map((option) => option.value);
-    ensureScrollVisiblity(newIndex, rest.actionListItemRef.current, optionValues);
+    ensureScrollVisiblity(updatedIndex, rest.actionListItemRef.current, optionValues);
   };
 
   /**

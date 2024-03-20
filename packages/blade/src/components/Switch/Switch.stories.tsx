@@ -23,7 +23,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Switch"
       componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73282-409938&mode=design&t=Qm80tBqhFBFB5BvZ-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85736&t=k8yrOO74u7fLzkIE-1&scaling=min-zoom&page-id=30100%3A565839&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -100,7 +100,7 @@ const WithLabelTemplate: StoryFn<typeof SwitchComponent> = () => {
       <Alert
         marginBottom="spacing.6"
         isFullWidth
-        intent="notice"
+        color="notice"
         title="Note"
         description={
           <>
