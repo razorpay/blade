@@ -30,7 +30,6 @@ const StyledButtonGroup = styled(BaseBox)<StyledButtonGroupProps>(
       'button[role="button"]': {
         borderRadius: 0,
         border: 'none',
-        width: 'max-content',
         flex: isFullWidth ? 1 : 'auto',
       },
     };
