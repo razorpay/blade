@@ -649,7 +649,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
           <input
             aria-checked="false"
             aria-disabled="false"
-            aria-errormessage="checkbox-19-errortext-21"
+            aria-errormessage="checkbox-25-errortext-27"
             aria-invalid="true"
             aria-required="false"
             class="c3"
@@ -708,7 +708,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     <div
       class="c8"
       data-blade-component="base-box"
-      id="checkbox-19-errortext-21"
+      id="checkbox-25-errortext-27"
     >
       <span
         class="c9"
