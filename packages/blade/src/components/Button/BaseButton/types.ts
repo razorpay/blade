@@ -71,5 +71,11 @@ export type StyledBaseButtonProps = Omit<
   borderWidth: BorderWidthValues;
   borderRadius: BorderRadiusValues;
   accessibilityProps: Record<string, unknown>;
+  isPressed: boolean;
 } & StyledPropsBlade &
   BladeCommonEvents;
+
+export type AnimatedButtonContentProps = Pick<
+  StyledBaseButtonProps,
+  'motionDuration' | 'motionEasing' | 'isPressed'
+>;

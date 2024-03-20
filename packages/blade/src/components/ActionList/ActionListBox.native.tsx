@@ -10,7 +10,6 @@ import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContex
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { Divider } from '~components/Divider';
-import { makeSize } from '~utils';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -50,9 +49,7 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
         isInBottomSheet={Boolean(isInBottomSheet)}
         // Setting footerHeight as bottom margin for ActionListBox
         // otherwise the footer hides few list items under it, this will offset it
-        // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
-        // @ts-ignore: This is fixed in https://github.com/razorpay/blade/pull/2065/files
-        marginBottom={makeSize(footerHeight)}
+        marginBottom={footerHeight}
         sections={sectionData}
         windowSize={5}
         keyExtractor={(item: any) => {

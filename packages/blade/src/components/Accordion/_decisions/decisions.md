@@ -60,6 +60,39 @@ import {
 <summary>Deprecated Accordion API</summary>
 
 ```jsx
+import {
+  Accordion,
+  AccordionItem,
+  AccordionItemHeader,
+  AccordionItemBody,
+} from '@razorpay/blade/components';
+
+<Accordion showNumberPrefix defaultExpandedIndex={0}>
+  <AccordionItem>
+    {/* With title and description defined */}
+    <AccordionItemHeader title="Can I create linked accounts using Route?" />
+    <AccordionItemBody>
+      <Text>
+        You can use Razorpay Route from the Dashboard or using APIs to transfer money to customers.
+      </Text>
+    </AccordionItemBody>
+  </AccordionItem>
+  {/* With custom slot for trigger */}
+  <AccordionItem>
+    <AccordionItemHeader>
+      <div>Trigger Slot</div>
+    </AccordionItemHeader>
+    <AccordionItemBody>
+      <div>Slot</div>
+    </AccordionItemBody>
+  </AccordionItem>
+</Accordion>;
+```
+
+<details>
+<summary>Deprecated Accordion API</summary>
+
+```jsx
 import { Accordion, AccordionItem } from '@razorpay/blade';
 
 <Accordion showNumberPrefix defaultExpandedIndex={0}>

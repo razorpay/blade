@@ -8,6 +8,7 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Checkbox } from '~components/Checkbox';
 import { isReactNative } from '~utils';
+import { Link } from '~components/Link';
 
 const HeaderContainer = ({ children }: { children: BoxProps['children'] }): React.ReactElement => {
   return <Box padding={{ base: 'spacing.0', m: 'spacing.2' }}>{children}</Box>;
@@ -50,7 +51,7 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
           title="When The Title is So Large That It Goes On Next Line"
           subtitle="When The Subtitle of this BaseHeader is So Largeeeee That It Goes On Next Line"
           titleSuffix={<Badge color="positive">New</Badge>}
-          trailing={<Amount value={1000} />}
+          trailing={<Link>Apply</Link>}
           showCloseButton={true}
           showBackButton={true}
         />
@@ -77,7 +78,7 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
       </HeaderContainer>
       <HeaderContainer>
         <BaseHeader
-          leading={<AnnouncementIcon color="surface.icon.gray.normal" size="medium" />}
+          leading={<AnnouncementIcon color="surface.icon.gray.normal" size="large" />}
           title="Announcements"
           subtitle="This is an announcement"
           titleSuffix={
@@ -86,6 +87,36 @@ export const BaseHeaderKitchenSink = (): React.ReactElement => {
             </Badge>
           }
           trailing={<Button icon={DownloadIcon} />}
+        />
+      </HeaderContainer>
+      <HeaderContainer>
+        <BaseHeader
+          leading={<AnnouncementIcon color="surface.icon.gray.normal" size="medium" />}
+          title="Announcements"
+          subtitle="This is an announcement"
+          size="medium"
+          titleSuffix={
+            <Badge size="small" color="positive">
+              New
+            </Badge>
+          }
+          trailing={<Button icon={DownloadIcon} />}
+        />
+      </HeaderContainer>
+      <HeaderContainer>
+        <BaseHeader
+          leading={<StarIcon color="surface.icon.gray.normal" size="medium" />}
+          title="When The Title is So Large That It Goes On Next Line"
+          subtitle="When The Subtitle of this BaseHeader is So Largeeeee That It Goes On Next Line"
+          titleSuffix={
+            <Badge size="small" color="positive">
+              New
+            </Badge>
+          }
+          trailing={<Link>Apply</Link>}
+          showCloseButton={true}
+          showBackButton={false}
+          size="medium"
         />
       </HeaderContainer>
     </Box>

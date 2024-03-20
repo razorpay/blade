@@ -280,18 +280,25 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     hoverBorderColor="hsla(227, 100%, 59%, 1)"
                     isFullWidth={true}
                     isLoading={false}
+                    isPressed={false}
                     minHeight="36px"
                     motionDuration="duration.xquick"
                     motionEasing="easing.standard.effective"
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseUp={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
                     onResponderRelease={[Function]}
                     onResponderTerminate={[Function]}
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchStart={[Function]}
                     role="button"
                     style={
                       [
@@ -305,6 +312,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                           "borderWidth": 1,
                           "cursor": "pointer",
                           "display": "flex",
+                          "flexDirection": "row",
                           "justifyContent": "center",
                           "minHeight": 36,
                           "overflow": "hidden",
@@ -326,65 +334,77 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     type="button"
                   >
                     <View
-                      alignItems="center"
-                      data-blade-component="base-box"
-                      display="flex"
-                      flexDirection="row"
-                      isHidden={false}
-                      justifyContent="center"
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexBasis": 0,
-                            "flexDirection": "row",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "zIndex": 1,
-                          },
-                          {
-                            "opacity": 1,
-                          },
-                        ]
+                        {
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        }
                       }
-                      zIndex={1}
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.primary.subtle"
-                        data-blade-component="base-text"
-                        fontSize={100}
-                        fontWeight="medium"
-                        lineHeight={100}
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        isHidden={false}
+                        justifyContent="center"
                         style={
                           [
                             {
-                              "color": "hsla(227, 100%, 59%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "500",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textAlign": "center",
-                              "textDecorationLine": "none",
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": 0,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "justifyContent": "center",
+                              "zIndex": 1,
+                            },
+                            {
+                              "opacity": 1,
                             },
                           ]
                         }
-                        textAlign="center"
+                        zIndex={1}
                       >
-                        Remove address
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.primary.subtle"
+                          data-blade-component="base-text"
+                          fontSize={100}
+                          fontWeight="medium"
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(227, 100%, 59%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textAlign": "center",
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                        >
+                          Remove address
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
@@ -1005,6 +1025,34 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                     </View>
                   </View>
                 </View>
+                <View
+                  alignItems="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="space-between"
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  width="100%"
+                >
+                  <View
+                    data-blade-component="box"
+                    style={
+                      [
+                        {},
+                      ]
+                    }
+                  />
+                </View>
               </View>
               <View
                 borderBottomColor="surface.border.gray.muted"
@@ -1317,18 +1365,25 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     hoverBorderColor="hsla(227, 100%, 59%, 1)"
                     isFullWidth={true}
                     isLoading={false}
+                    isPressed={false}
                     minHeight="36px"
                     motionDuration="duration.xquick"
                     motionEasing="easing.standard.effective"
                     onBlur={[Function]}
                     onClick={[Function]}
                     onFocus={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseUp={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
                     onResponderRelease={[Function]}
                     onResponderTerminate={[Function]}
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchStart={[Function]}
                     role="button"
                     style={
                       [
@@ -1342,6 +1397,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                           "borderWidth": 1,
                           "cursor": "pointer",
                           "display": "flex",
+                          "flexDirection": "row",
                           "justifyContent": "center",
                           "minHeight": 36,
                           "overflow": "hidden",
@@ -1363,65 +1419,77 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                     type="button"
                   >
                     <View
-                      alignItems="center"
-                      data-blade-component="base-box"
-                      display="flex"
-                      flexDirection="row"
-                      isHidden={false}
-                      justifyContent="center"
                       style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "display": "flex",
-                            "flexBasis": 0,
-                            "flexDirection": "row",
-                            "flexGrow": 1,
-                            "flexShrink": 1,
-                            "justifyContent": "center",
-                            "zIndex": 1,
-                          },
-                          {
-                            "opacity": 1,
-                          },
-                        ]
+                        {
+                          "transform": [
+                            {
+                              "scale": 1,
+                            },
+                          ],
+                        }
                       }
-                      zIndex={1}
                     >
-                      <Text
-                        accessible={true}
-                        color="interactive.text.primary.subtle"
-                        data-blade-component="base-text"
-                        fontSize={100}
-                        fontWeight="medium"
-                        lineHeight={100}
+                      <View
+                        alignItems="center"
+                        data-blade-component="base-box"
+                        display="flex"
+                        flexDirection="row"
+                        isHidden={false}
+                        justifyContent="center"
                         style={
                           [
                             {
-                              "color": "hsla(227, 100%, 59%, 1)",
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "500",
-                              "letterSpacing": 0,
-                              "lineHeight": 20,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "paddingBottom": 0,
-                              "paddingLeft": 0,
-                              "paddingRight": 0,
-                              "paddingTop": 0,
-                              "textAlign": "center",
-                              "textDecorationLine": "none",
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": 0,
+                              "flexDirection": "row",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "justifyContent": "center",
+                              "zIndex": 1,
+                            },
+                            {
+                              "opacity": 1,
                             },
                           ]
                         }
-                        textAlign="center"
+                        zIndex={1}
                       >
-                        Remove address
-                      </Text>
+                        <Text
+                          accessible={true}
+                          color="interactive.text.primary.subtle"
+                          data-blade-component="base-text"
+                          fontSize={100}
+                          fontWeight="medium"
+                          lineHeight={100}
+                          style={
+                            [
+                              {
+                                "color": "hsla(227, 100%, 59%, 1)",
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "500",
+                                "letterSpacing": 0,
+                                "lineHeight": 20,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "paddingBottom": 0,
+                                "paddingLeft": 0,
+                                "paddingRight": 0,
+                                "paddingTop": 0,
+                                "textAlign": "center",
+                                "textDecorationLine": "none",
+                              },
+                            ]
+                          }
+                          textAlign="center"
+                        >
+                          Remove address
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>

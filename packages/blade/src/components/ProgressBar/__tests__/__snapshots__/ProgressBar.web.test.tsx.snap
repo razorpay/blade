@@ -1405,7 +1405,7 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1427,7 +1427,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   z-index: 1;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1438,7 +1438,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   width: 100%;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1452,29 +1452,29 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   justify-content: space-between;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   margin-bottom: 4px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(227,100%,59%,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1483,13 +1483,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 0%;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1500,7 +1500,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   animation-delay: 3000ms;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1518,7 +1518,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -1598,7 +1598,17 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -1610,14 +1620,19 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Update Progress
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Update Progress
+        </div>
       </div>
     </div>
   </button>
@@ -1626,25 +1641,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
     data-blade-component="progress-bar"
   >
     <div
-      class="c4"
+      class="c5"
       data-blade-component="base-box"
     >
       <div
-        class="c5"
+        class="c6"
         data-blade-component="base-box"
       >
         <label
-          class="c6"
+          class="c7"
           data-blade-component="text"
         >
           Label
         </label>
         <div
-          class="c7"
+          class="c8"
           data-blade-component="base-box"
         >
           <p
-            class="c6"
+            class="c7"
             data-blade-component="text"
           >
             0%
@@ -1663,15 +1678,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         role="progressbar"
       >
         <div
-          class="c8"
+          class="c9"
           data-blade-component="base-box"
         >
           <div
-            class="c9 c10 c11"
+            class="c10 c11 c12"
             data-blade-component="base-box"
           >
             <div
-              class=" c12 c13"
+              class=" c13 c14"
               data-blade-component="base-box"
             />
           </div>
@@ -1683,7 +1698,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
 `;
 
 exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1705,7 +1720,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   z-index: 1;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1716,7 +1731,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   width: 100%;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1730,29 +1745,29 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   justify-content: space-between;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   margin-bottom: 4px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   overflow: hidden;
   position: relative;
   height: 2px;
   background-color: hsla(211,20%,52%,0.09);
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(227,100%,59%,1);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
   transition-duration: 900ms;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   -webkit-transition-property: width;
   transition-property: width;
   -webkit-transition-duration: 900ms;
@@ -1761,13 +1776,13 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-timing-function: cubic-bezier(0.5,0,0,1);
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   background-color: hsla(227,100%,59%,1);
   height: 100%;
   width: 0%;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   height: 100%;
   width: 100%;
   opacity: 0;
@@ -1778,7 +1793,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   animation-delay: 3000ms;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1796,7 +1811,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   padding: 0;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -1876,7 +1891,17 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -1888,14 +1913,19 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     type="button"
   >
     <div
-      class="c1 c2"
+      class=" c1"
       data-blade-component="base-box"
     >
       <div
-        class="c3"
-        data-blade-component="base-text"
+        class="c2 c3"
+        data-blade-component="base-box"
       >
-        Update Progress
+        <div
+          class="c4"
+          data-blade-component="base-text"
+        >
+          Update Progress
+        </div>
       </div>
     </div>
   </button>
@@ -1904,25 +1934,25 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
     data-blade-component="progress-bar"
   >
     <div
-      class="c4"
+      class="c5"
       data-blade-component="base-box"
     >
       <div
-        class="c5"
+        class="c6"
         data-blade-component="base-box"
       >
         <label
-          class="c6"
+          class="c7"
           data-blade-component="text"
         >
           Label
         </label>
         <div
-          class="c7"
+          class="c8"
           data-blade-component="base-box"
         >
           <p
-            class="c6"
+            class="c7"
             data-blade-component="text"
           >
             0%
@@ -1941,15 +1971,15 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         role="progressbar"
       >
         <div
-          class="c8"
+          class="c9"
           data-blade-component="base-box"
         >
           <div
-            class="c9 c10 c11"
+            class="c10 c11 c12"
             data-blade-component="base-box"
           >
             <div
-              class=" c12 c13"
+              class=" c13 c14"
               data-blade-component="base-box"
             />
           </div>

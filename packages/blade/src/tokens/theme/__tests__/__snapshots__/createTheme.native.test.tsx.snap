@@ -1225,18 +1225,25 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
     hoverBorderColor="hsl(332, 100%, 23%)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -1250,6 +1257,7 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -1271,65 +1279,77 @@ exports[`createTheme should create a theme with the correct brand colors 2`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsl(0, 0%, 100%)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsl(0, 0%, 100%)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2560,18 +2580,25 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
     hoverBorderColor="hsl(57, 100%, 47%)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -2585,6 +2612,7 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -2606,65 +2634,77 @@ exports[`createTheme should create a theme with the correct brand colors 4`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsl(0, 0%, 0%)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsl(0, 0%, 0%)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
