@@ -14,7 +14,7 @@ export const SelectACountry: StoryFn<typeof PhoneNumberInput> = (): React.ReactE
 };
 
 SelectACountry.play = async () => {
-  const { queryByRole, getByRole, getByTestId } = within(document.body);
+  const { queryByRole, getByRole } = within(document.body);
 
   await sleep(100);
   // Ensure the country selector is closed
@@ -40,11 +40,10 @@ SelectACountry.play = async () => {
 
   await sleep(300);
   // Ensure that input is in focus
-  await expect(getByTestId('spinbutton')).toHaveFocus();
+  await expect(getByRole('spinbutton')).toHaveFocus();
 };
 
 export const UncontrolledState: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
-  onChangeFn.mockClear();
   return (
     <PhoneNumberInput
       defaultValue="9876543210"
@@ -56,6 +55,7 @@ export const UncontrolledState: StoryFn<typeof PhoneNumberInput> = (): React.Rea
 };
 
 UncontrolledState.play = async () => {
+  onChangeFn.mockClear();
   const { getByRole } = within(document.body);
 
   await sleep(100);
@@ -84,7 +84,6 @@ UncontrolledState.play = async () => {
 };
 
 export const ControlledState: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
-  onChangeFn.mockClear();
   const [value, setValue] = React.useState('9876543210');
   return (
     <PhoneNumberInput
@@ -98,6 +97,7 @@ export const ControlledState: StoryFn<typeof PhoneNumberInput> = (): React.React
 };
 
 ControlledState.play = async () => {
+  onChangeFn.mockClear();
   const { getByRole } = within(document.body);
 
   await sleep(100);
@@ -126,7 +126,6 @@ ControlledState.play = async () => {
 };
 
 export const Disabled: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
-  onChangeFn.mockClear();
   return <PhoneNumberInput isDisabled />;
 };
 
@@ -147,7 +146,6 @@ Disabled.play = async () => {
 };
 
 export const AutoFocus: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
-  onChangeFn.mockClear();
   // eslint-disable-next-line jsx-a11y/no-autofocus
   return <PhoneNumberInput autoFocus />;
 };
