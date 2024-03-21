@@ -130,10 +130,7 @@ to {
       maxTagRows={maxTagRows}
       onAnimationEnd={(e) => {
         if (!showAllTags && e.animationName === collapseAnimation.getName()) {
-          setShowAllTagsWithAnimation?.(false);
-        }
-
-        if (maxTagRows !== 'expandable' && !showAllTags) {
+          // Triggered for the collapse animation
           setShowAllTagsWithAnimation?.(false);
         }
       }}

@@ -810,8 +810,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   React.useEffect(() => {
     if (showAllTags) {
       setShowAllTagsWithAnimation(true);
+    } else if (maxTagRows !== 'expandable') {
+      setShowAllTagsWithAnimation(false);
     }
-  }, [showAllTags]);
+  }, [showAllTags, maxTagRows]);
 
   const {
     handleOnFocus,
