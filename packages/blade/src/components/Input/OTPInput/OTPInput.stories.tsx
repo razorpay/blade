@@ -202,7 +202,12 @@ export default {
 } as Meta<OTPInputProps>;
 
 const OTPInputTemplate: StoryFn<typeof OTPInputComponent> = ({ ...args }) => {
-  return <OTPInputComponent {...args} />;
+  const maxWidth = args.otpLength === 4 ? '376px' : '568px';
+  return (
+    <Box maxWidth={maxWidth}>
+      <OTPInputComponent {...args} />
+    </Box>
+  );
 };
 
 export const OTPInput = OTPInputTemplate.bind({});
@@ -252,8 +257,10 @@ OTPInputSuccess.args = {
 };
 
 const OTPInputSizesTemplate: StoryFn<typeof OTPInputComponent> = ({ ...args }) => {
+  const maxWidth = args.otpLength === 4 ? '376px' : '568px';
+
   return (
-    <Box display="flex" flexDirection="column">
+    <Box display="flex" flexDirection="column" maxWidth={maxWidth}>
       <Text size="large" marginBottom="spacing.2">
         Medium Size:
       </Text>
@@ -293,13 +300,15 @@ export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
 
   return (
     <Box gap="spacing.3" display="flex" alignItems="end">
-      <OTPInputComponent
-        ref={inputRef}
-        label="Enter OTP"
-        name="otp"
-        otpLength={4}
-        onChange={({ name, value }): void => console.log({ name, value })}
-      />
+      <Box maxWidth="376px">
+        <OTPInputComponent
+          ref={inputRef}
+          label="Enter OTP"
+          name="otp"
+          otpLength={4}
+          onChange={({ name, value }): void => console.log({ name, value })}
+        />
+      </Box>
       <Dropdown selectionType="single">
         <SelectInput
           label="Item to focus"
