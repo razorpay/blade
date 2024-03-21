@@ -329,7 +329,7 @@ const useDropdown = (): UseDropdownReturnValue => {
 
       const filteredIndexes = filteredValues
         .map((filteredValue) => options.findIndex((option) => option.value === filteredValue))
-        .sort();
+        .sort((a, b) => a - b);
 
       updatedIndex =
         filteredIndexes[
@@ -349,7 +349,7 @@ const useDropdown = (): UseDropdownReturnValue => {
     setActiveIndex(updatedIndex);
 
     const optionValues = options.map((option) => option.value);
-    ensureScrollVisiblity(newIndex, rest.actionListItemRef.current, optionValues);
+    ensureScrollVisiblity(updatedIndex, rest.actionListItemRef.current, optionValues);
   };
 
   /**
