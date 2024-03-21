@@ -4,11 +4,10 @@ import React from 'react';
 import styled from 'styled-components';
 import type { GestureResponderEvent } from 'react-native';
 import StyledBaseButton from './StyledBaseButton';
-import type { ButtonTypography, ButtonMinHeight } from './buttonTokens';
+import type { ButtonTypography } from './buttonTokens';
 import {
   textColor,
   backgroundColor,
-  buttonIconOnlyPadding,
   buttonIconOnlySizeToIconSizeMap,
   typography as buttonTypography,
   minHeight as buttonMinHeight,
@@ -16,30 +15,26 @@ import {
   buttonSizeToSpinnerSizeMap,
   buttonIconPadding,
   buttonPadding,
+  buttonIconOnlyHeightWidth,
 } from './buttonTokens';
+import type { BaseButtonStyleProps, IconColor } from './types';
+import AnimatedButtonContent from './AnimatedButtonContent';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 import getIn from '~utils/lodashButBetter/get';
 import type { BaseLinkProps } from '~components/Link/BaseLink';
 import type { Theme } from '~components/BladeProvider';
-import type { IconComponent, IconProps, IconSize } from '~components/Icons';
-import type { DurationString, EasingString } from '~tokens/global';
-import type { BorderRadiusValues, BorderWidthValues, SpacingValues } from '~tokens/theme/theme';
+import type { IconComponent } from '~components/Icons';
 import type { Platform } from '~utils';
 import { isReactNative } from '~utils';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { useButtonGroupContext } from '~components/ButtonGroup/ButtonGroupContext';
 import { getStyledProps } from '~components/Box/styledProps';
 import { BaseText } from '~components/Typography/BaseText';
 import { useTheme } from '~components/BladeProvider';
 import { announce } from '~components/LiveAnnouncer';
-import type { BaseSpinnerProps } from '~components/Spinner/BaseSpinner';
 import { BaseSpinner } from '~components/Spinner/BaseSpinner';
 import BaseBox from '~components/Box/BaseBox';
-import type {
-  BladeElementRef,
-  DotNotationSpacingStringToken,
-  StringChildrenType,
-  TestID,
-} from '~utils/types';
+import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { usePrevious } from '~utils/usePrevious';
@@ -105,11 +100,6 @@ type BaseButtonColorTokenModifiers = {
   color: BaseButtonProps['color'];
 };
 
-/**
- * All possible icon colors, derived from `IconProps` minus `currentColor` because possible values should only be from tokens
- */
-type IconColor = Exclude<IconProps['color'], 'currentColor'>;
-
 const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
   if (isReactNative()) {
     return undefined; // as property doesn't work with react native
@@ -122,7 +112,7 @@ const getRenderElement = (href?: string): 'a' | 'button' | undefined => {
   return 'button';
 };
 
-const getBackgroundColorToken = ({
+export const getBackgroundColorToken = ({
   property,
   variant,
   state,
@@ -176,33 +166,6 @@ const getTextColorToken = ({
   return tokens.base[variant][_state];
 };
 
-type BaseButtonStyleProps = {
-  iconSize: IconSize;
-  spinnerSize: BaseSpinnerProps['size'];
-  fontSize: keyof Theme['typography']['fonts']['size'];
-  lineHeight: keyof Theme['typography']['lineHeights'];
-  minHeight: `${ButtonMinHeight}px`;
-  iconPadding?: DotNotationSpacingStringToken;
-  iconColor: IconColor;
-  textColor: BaseTextProps['color'];
-  buttonPaddingTop: SpacingValues;
-  buttonPaddingBottom: SpacingValues;
-  buttonPaddingLeft: SpacingValues;
-  buttonPaddingRight: SpacingValues;
-  text?: string;
-  defaultBackgroundColor: string;
-  defaultBorderColor: string;
-  hoverBackgroundColor: string;
-  hoverBorderColor: string;
-  focusBackgroundColor: string;
-  focusBorderColor: string;
-  focusRingColor: string;
-  motionDuration: DurationString;
-  motionEasing: EasingString;
-  borderWidth: BorderWidthValues;
-  borderRadius: BorderRadiusValues;
-};
-
 const getProps = ({
   buttonTypographyTokens,
   children,
@@ -225,7 +188,7 @@ const getProps = ({
   if (variant === 'tertiary' && color !== 'primary' && color !== 'white') {
     throwBladeError({
       moduleName: 'BaseButton',
-      message: `Tertiary variant can only be used with color: "default" or "white" but received "${color}"`,
+      message: `Tertiary variant can only be used with color: "primary" or "white" but received "${color}"`,
     });
   }
 
@@ -236,6 +199,8 @@ const getProps = ({
     fontSize: buttonTypographyTokens.fonts.size[size],
     lineHeight: buttonTypographyTokens.lineHeights[size],
     minHeight: makeSize(buttonMinHeight[size]),
+    height: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
+    width: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
     iconPadding: hasIcon && children?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
     iconColor: getTextColorToken({
       property: 'icon',
@@ -249,17 +214,15 @@ const getProps = ({
       color,
       state: 'default',
     }) as BaseTextProps['color'],
-    buttonPaddingTop: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].top])
-      : makeSpace(theme.spacing[buttonPadding[size].top]),
+    buttonPaddingTop: isIconOnly ? makeSpace(0) : makeSpace(theme.spacing[buttonPadding[size].top]),
     buttonPaddingBottom: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].bottom])
+      ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].bottom]),
     buttonPaddingLeft: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].left])
+      ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].left]),
     buttonPaddingRight: isIconOnly
-      ? makeSpace(theme.spacing[buttonIconOnlyPadding[size].right])
+      ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].right]),
     text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
     defaultBackgroundColor: getIn(
@@ -361,10 +324,12 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   ref,
 ) => {
   const { theme } = useTheme();
+  const buttonGroupProps = useButtonGroupContext();
+  const [isPressed, setIsPressed] = React.useState(false);
   const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
   // Button cannot be disabled when its rendered as Link
-  const disabled = isLoading || (isDisabled && !isLink);
+  const disabled = buttonGroupProps.isDisabled ?? (isLoading || (isDisabled && !isLink));
 
   if (__DEV__) {
     if (!Icon && !childrenString?.trim()) {
@@ -387,6 +352,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     defaultBorderColor,
     defaultBackgroundColor,
     minHeight,
+    height,
+    width,
     buttonPaddingTop,
     buttonPaddingBottom,
     buttonPaddingLeft,
@@ -412,15 +379,45 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     buttonTypographyTokens: buttonTypography,
     children: childrenString,
     isDisabled: disabled,
-    size,
-    variant,
+    size: buttonGroupProps.size ?? size,
+    variant: buttonGroupProps.variant ?? variant,
     theme,
-    color,
+    color: buttonGroupProps.color ?? color,
     hasIcon: Boolean(Icon),
   });
 
   const renderElement = React.useMemo(() => getRenderElement(href), [href]);
   const defaultRel = target === '_blank' ? 'noreferrer noopener' : undefined;
+
+  const handlePointerPressedIn = React.useCallback(() => {
+    if (disabled) return;
+    setIsPressed(true);
+  }, [disabled]);
+
+  const handlePointerPressedOut = React.useCallback(() => {
+    if (disabled) return;
+    setIsPressed(false);
+  }, [disabled]);
+
+  const handleKeyboardPressedIn = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (disabled) return;
+      if (e.key === ' ' || e.key === 'Enter') {
+        setIsPressed(true);
+      }
+    },
+    [disabled],
+  );
+
+  const handleKeyboardPressedOut = React.useCallback(
+    (e: React.KeyboardEvent) => {
+      if (disabled) return;
+      if (e.key === ' ' || e.key === 'Enter') {
+        setIsPressed(false);
+      }
+    },
+    [disabled],
+  );
 
   return (
     <StyledBaseButton
@@ -452,7 +449,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       focusRingColor={focusRingColor}
       hoverBorderColor={hoverBorderColor}
       hoverBackgroundColor={hoverBackgroundColor}
-      isFullWidth={isFullWidth}
+      isFullWidth={buttonGroupProps.isFullWidth ?? isFullWidth}
       onClick={onClick}
       onBlur={onBlur}
       onFocus={onFocus}
@@ -460,77 +457,100 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
       onMouseMove={onMouseMove}
       onPointerDown={onPointerDown}
       onPointerEnter={onPointerEnter}
-      onKeyDown={onKeyDown}
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
+      // Setting type for web fails it on native typecheck and vice versa
+      onKeyDown={(event: any) => {
+        handleKeyboardPressedIn(event);
+        onKeyDown?.(event);
+      }}
+      onTouchStart={(event: React.TouchEvent) => {
+        handlePointerPressedIn();
+        onTouchStart?.(event);
+      }}
+      onTouchEnd={(event: React.TouchEvent) => {
+        handlePointerPressedOut();
+        onTouchEnd?.(event);
+      }}
       type={type}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
       motionDuration={motionDuration}
       motionEasing={motionEasing}
+      height={height}
+      width={width}
+      isPressed={isPressed}
+      onMouseDown={handlePointerPressedIn}
+      onMouseUp={handlePointerPressedOut}
+      onMouseOut={handlePointerPressedOut}
+      onKeyUp={handleKeyboardPressedOut}
       {...metaAttribute({ name: MetaConstants.Button, testID })}
       {...getStyledProps(rest)}
     >
-      {isLoading ? (
-        <BaseBox
+      <AnimatedButtonContent
+        motionDuration={motionDuration}
+        motionEasing={motionEasing}
+        isPressed={isPressed}
+      >
+        {isLoading ? (
+          <BaseBox
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            position="absolute"
+            top="0px"
+            left="0px"
+            bottom="0px"
+            right="0px"
+            zIndex={1}
+          >
+            <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
+          </BaseBox>
+        ) : null}
+        <ButtonContent
           display="flex"
-          justifyContent="center"
+          flexDirection="row"
           alignItems="center"
-          position="absolute"
-          top="0px"
-          left="0px"
-          bottom="0px"
-          right="0px"
+          justifyContent="center"
+          flex={1}
+          isHidden={isLoading}
           zIndex={1}
         >
-          <BaseSpinner accessibilityLabel="Loading" size={spinnerSize} color={color} />
-        </BaseBox>
-      ) : null}
-      <ButtonContent
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        flex={1}
-        isHidden={isLoading}
-        zIndex={1}
-      >
-        {Icon && iconPosition == 'left' ? (
-          <BaseBox
-            paddingRight={iconPadding}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Icon size={iconSize} color={iconColor} />
-          </BaseBox>
-        ) : null}
-        {text ? (
-          <BaseText
-            lineHeight={lineHeight}
-            fontSize={fontSize}
-            // figma and web have different font-smoothing properties
-            // which causes web version of button text to look much bolder
-            // than figma version. To fix this we are changing font-weight from 600 to 500
-            // https://forum.figma.com/t/why-does-a-font-weight-in-figma-seem-lighter-than-the-same-weight-in-the-browser/2207
-            fontWeight="medium"
-            textAlign="center"
-            color={textColor}
-          >
-            {text}
-          </BaseText>
-        ) : null}
-        {Icon && iconPosition == 'right' ? (
-          <BaseBox
-            paddingLeft={iconPadding}
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Icon size={iconSize} color={iconColor} />
-          </BaseBox>
-        ) : null}
-      </ButtonContent>
+          {Icon && iconPosition == 'left' ? (
+            <BaseBox
+              paddingRight={iconPadding}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon size={iconSize} color={iconColor} />
+            </BaseBox>
+          ) : null}
+          {text ? (
+            <BaseText
+              lineHeight={lineHeight}
+              fontSize={fontSize}
+              // figma and web have different font-smoothing properties
+              // which causes web version of button text to look much bolder
+              // than figma version. To fix this we are changing font-weight from 600 to 500
+              // https://forum.figma.com/t/why-does-a-font-weight-in-figma-seem-lighter-than-the-same-weight-in-the-browser/2207
+              fontWeight="medium"
+              textAlign="center"
+              color={textColor}
+            >
+              {text}
+            </BaseText>
+          ) : null}
+          {Icon && iconPosition == 'right' ? (
+            <BaseBox
+              paddingLeft={iconPadding}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon size={iconSize} color={iconColor} />
+            </BaseBox>
+          ) : null}
+        </ButtonContent>
+      </AnimatedButtonContent>
     </StyledBaseButton>
   );
 };

@@ -816,7 +816,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 getItemCount={[Function]}
                 isInBottomSheet={false}
                 keyExtractor={[Function]}
-                marginBottom="0px"
+                marginBottom={0}
                 onContentSizeChange={[Function]}
                 onLayout={[Function]}
                 onMomentumScrollBegin={[Function]}
@@ -830,7 +830,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 style={
                   [
                     {
-                      "marginBottom": "0pxpx",
+                      "marginBottom": 0,
                       "maxHeight": 300,
                       "paddingBottom": 8,
                       "paddingLeft": 8,
@@ -1801,18 +1801,25 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   hoverBorderColor="hsla(227, 100%, 59%, 1)"
                   isFullWidth={false}
                   isLoading={false}
+                  isPressed={false}
                   minHeight="36px"
                   motionDuration="duration.xquick"
                   motionEasing="easing.standard.effective"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}
                   onResponderTerminate={[Function]}
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchStart={[Function]}
                   role="button"
                   style={
                     [
@@ -1826,6 +1833,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         "borderWidth": 0,
                         "cursor": "pointer",
                         "display": "flex",
+                        "flexDirection": "row",
                         "justifyContent": "center",
                         "minHeight": 36,
                         "overflow": "hidden",
@@ -1847,65 +1855,77 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   type="button"
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
-                    isHidden={false}
-                    justifyContent="center"
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "zIndex": 1,
-                        },
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "transform": [
+                          {
+                            "scale": 1,
+                          },
+                        ],
+                      }
                     }
-                    zIndex={1}
                   >
-                    <Text
-                      accessible={true}
-                      color="interactive.text.onPrimary.normal"
-                      data-blade-component="base-text"
-                      fontSize={100}
-                      fontWeight="medium"
-                      lineHeight={100}
+                    <View
+                      alignItems="center"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      isHidden={false}
+                      justifyContent="center"
                       style={
                         [
                           {
-                            "color": "hsla(0, 0%, 100%, 1)",
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "500",
-                            "letterSpacing": 0,
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textAlign": "center",
-                            "textDecorationLine": "none",
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "zIndex": 1,
+                          },
+                          {
+                            "opacity": 1,
                           },
                         ]
                       }
-                      textAlign="center"
+                      zIndex={1}
                     >
-                      Apply
-                    </Text>
+                      <Text
+                        accessible={true}
+                        color="interactive.text.onPrimary.normal"
+                        data-blade-component="base-text"
+                        fontSize={100}
+                        fontWeight="medium"
+                        lineHeight={100}
+                        style={
+                          [
+                            {
+                              "color": "hsla(0, 0%, 100%, 1)",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "500",
+                              "letterSpacing": 0,
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textAlign": "center",
+                              "textDecorationLine": "none",
+                            },
+                          ]
+                        }
+                        textAlign="center"
+                      >
+                        Apply
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>

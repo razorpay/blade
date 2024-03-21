@@ -68,7 +68,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   flex-grow: 1;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -90,7 +90,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   z-index: 1;
 }
 
-.c18.c18.c18.c18.c18 {
+.c19.c19.c19.c19.c19 {
   margin-left: 16px;
 }
 
@@ -179,7 +179,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c17.c17.c17.c17.c17 {
+.c18.c18.c18.c18.c18 {
   color: hsla(227,100%,59%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -197,7 +197,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   padding: 0;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -278,7 +278,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c19.c19.c19.c19.c19 {
+.c20.c20.c20.c20.c20 {
   min-height: 36px;
   width: 100%;
   cursor: pointer;
@@ -315,24 +315,24 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   position: relative;
 }
 
-.c19.c19.c19.c19.c19:hover {
+.c20.c20.c20.c20.c20:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c19.c19.c19.c19.c19:active {
+.c20.c20.c20.c20.c20:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c19.c19.c19.c19.c19:focus-visible {
+.c20.c20.c20.c20.c20:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c19.c19.c19.c19.c19 * {
+.c20.c20.c20.c20.c20 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
@@ -341,7 +341,17 @@ exports[`<Card /> should render a Card with Footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c16.c16.c16.c16.c16 {
+.c15.c15.c15.c15.c15 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c17.c17.c17.c17.c17 {
   opacity: 1;
 }
 
@@ -451,20 +461,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 type="button"
               >
                 <div
-                  class="c15 c16"
+                  class=" c15"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c17"
-                    data-blade-component="base-text"
+                    class="c16 c17"
+                    data-blade-component="base-box"
                   >
-                    Delete
+                    <div
+                      class="c18"
+                      data-blade-component="base-text"
+                    >
+                      Delete
+                    </div>
                   </div>
                 </div>
               </button>
             </div>
             <div
-              class="c18"
+              class="c19"
               data-blade-component="base-box"
             />
             <div
@@ -472,20 +487,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
               data-blade-component="base-box"
             >
               <button
-                class="c19"
+                class="c20"
                 data-blade-component="button"
                 role="button"
                 type="button"
               >
                 <div
-                  class="c15 c16"
+                  class=" c15"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c20"
-                    data-blade-component="base-text"
+                    class="c16 c17"
+                    data-blade-component="base-box"
                   >
-                    Save
+                    <div
+                      class="c21"
+                      data-blade-component="base-text"
+                    >
+                      Save
+                    </div>
                   </div>
                 </div>
               </button>
