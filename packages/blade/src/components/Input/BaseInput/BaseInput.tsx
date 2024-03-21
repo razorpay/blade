@@ -48,7 +48,6 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
-import type { Border } from '~tokens/global';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'

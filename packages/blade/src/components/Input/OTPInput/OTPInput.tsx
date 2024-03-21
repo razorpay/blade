@@ -10,7 +10,7 @@ import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, useTheme } from '~utils';
+import { getPlatformType } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
 
@@ -169,8 +169,6 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
   const [inputType, setInputType] = useState<('password' | undefined)[]>([]);
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
-  const [currentFocusedInput, setCurrentFocusedInput] = useState<number | null>(null);
-  const { theme } = useTheme();
 
   useImperativeHandle(
     incomingRef,
