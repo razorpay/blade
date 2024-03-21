@@ -45,6 +45,10 @@ type PhoneNumberInputProps = StyledPropsBlade &
      */
     defaultCountryCode?: CountryCodeType;
     /**
+     * List of countries to be shown in the country selector.
+     */
+    countries?: CountryCodeType[];
+    /**
      * Callback that is called when the value of the input changes.
      */
     onChange?: (event: {
