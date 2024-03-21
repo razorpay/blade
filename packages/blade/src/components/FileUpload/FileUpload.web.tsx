@@ -54,7 +54,6 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
   const { platform } = useTheme();
   const [selectedFiles, setSelectedFiles] = useState<BladeFileList>(fileList ?? []);
   const [errorMessage, setErrorMessage] = useState(errorText);
-  console.log('🚀 ~ errorMessage:', errorMessage);
   const [internalValidationState, setInternalValidationState] = useState('none');
   const [isActive, setIsActive] = useState(false);
 

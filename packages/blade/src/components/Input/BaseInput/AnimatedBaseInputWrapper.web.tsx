@@ -52,10 +52,6 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     | 'isDropdownTrigger'
     | 'maxTagRows'
     | 'showAllTags'
-    | 'borderBottomLeftRadius'
-    | 'borderBottomRightRadius'
-    | 'borderTopLeftRadius'
-    | 'borderTopRightRadius'
   >
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -65,10 +61,6 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     validationState: props.validationState,
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
-    borderBottomLeftRadius: props.borderBottomLeftRadius,
-    borderBottomRightRadius: props.borderBottomRightRadius,
-    borderTopLeftRadius: props.borderTopLeftRadius,
-    borderTopRightRadius: props.borderTopRightRadius,
   }),
   '&:hover': {
     ...getInputBackgroundAndBorderStyles({
@@ -78,10 +70,6 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDisabled: props.isDisabled,
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
-      borderBottomLeftRadius: props.borderBottomLeftRadius,
-      borderBottomRightRadius: props.borderBottomRightRadius,
-      borderTopLeftRadius: props.borderTopLeftRadius,
-      borderTopRightRadius: props.borderTopRightRadius,
     }),
     transitionProperty: 'background-color',
     transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
@@ -94,10 +82,6 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDisabled: props.isDisabled,
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
-      borderBottomLeftRadius: props.borderBottomLeftRadius,
-      borderBottomRightRadius: props.borderBottomRightRadius,
-      borderTopLeftRadius: props.borderTopLeftRadius,
-      borderTopRightRadius: props.borderTopRightRadius,
     }),
   },
 }));
@@ -141,17 +125,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     showAllTags?: boolean;
   }
 > = (
-  {
-    showAllTags,
-    setShowAllTagsWithAnimation,
-    maxTagRows,
-    isDropdownTrigger,
-    borderBottomLeftRadius,
-    borderBottomRightRadius,
-    borderTopLeftRadius,
-    borderTopRightRadius,
-    ...rest
-  },
+  { showAllTags, setShowAllTagsWithAnimation, maxTagRows, isDropdownTrigger, ...rest },
   ref,
 ): React.ReactElement => {
   return (
@@ -169,10 +143,6 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       isDropdownTrigger={isDropdownTrigger}
       showAllTags={showAllTags}
       maxTagRows={maxTagRows}
-      borderBottomLeftRadius={borderBottomLeftRadius}
-      borderBottomRightRadius={borderBottomRightRadius}
-      borderTopLeftRadius={borderTopLeftRadius}
-      borderTopRightRadius={borderTopRightRadius}
       onAnimationEnd={(e) => {
         if (!showAllTags && e.animationName === collapseAnimation.getName()) {
           setShowAllTagsWithAnimation?.(false);

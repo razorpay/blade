@@ -183,7 +183,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginRight": -1,
+                "marginLeft": 0,
               },
             ]
           }
@@ -214,47 +214,28 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                borderBottomLeftRadius="medium"
-                borderBottomRightRadius="none"
-                borderTopLeftRadius="medium"
-                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 0,
-                    },
-                    {
-                      "borderBottomLeftRadius": 4,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 4,
-                      "borderTopRightRadius": 0,
+                      "borderRadius": 4,
                       "width": "100%",
                     },
                   ]
                 }
               >
                 <View
-                  borderBottomLeftRadius="medium"
-                  borderBottomRightRadius="none"
-                  borderTopLeftRadius="medium"
-                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderBottomLeftRadius": 4,
-                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 4,
-                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -349,7 +330,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginRight": -1,
+                "marginLeft": 8,
               },
             ]
           }
@@ -380,47 +361,28 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                borderBottomLeftRadius="none"
-                borderBottomRightRadius="none"
-                borderTopLeftRadius="none"
-                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
-                    },
-                    {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
+                      "borderRadius": 4,
                       "width": "100%",
                     },
                   ]
                 }
               >
                 <View
-                  borderBottomLeftRadius="none"
-                  borderBottomRightRadius="none"
-                  borderTopLeftRadius="none"
-                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderBottomLeftRadius": 0,
-                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 0,
-                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -515,7 +477,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginRight": -1,
+                "marginLeft": 8,
               },
             ]
           }
@@ -546,47 +508,28 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                borderBottomLeftRadius="none"
-                borderBottomRightRadius="none"
-                borderTopLeftRadius="none"
-                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
-                    },
-                    {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
+                      "borderRadius": 4,
                       "width": "100%",
                     },
                   ]
                 }
               >
                 <View
-                  borderBottomLeftRadius="none"
-                  borderBottomRightRadius="none"
-                  borderTopLeftRadius="none"
-                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderBottomLeftRadius": 0,
-                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 0,
-                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -681,7 +624,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginRight": -1,
+                "marginLeft": 8,
               },
             ]
           }
@@ -712,47 +655,28 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                borderBottomLeftRadius="none"
-                borderBottomRightRadius="none"
-                borderTopLeftRadius="none"
-                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
-                    },
-                    {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
+                      "borderRadius": 4,
                       "width": "100%",
                     },
                   ]
                 }
               >
                 <View
-                  borderBottomLeftRadius="none"
-                  borderBottomRightRadius="none"
-                  borderTopLeftRadius="none"
-                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderBottomLeftRadius": 0,
-                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 0,
-                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -847,7 +771,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
-                "marginRight": -1,
+                "marginLeft": 8,
               },
             ]
           }
@@ -878,47 +802,28 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                borderBottomLeftRadius="none"
-                borderBottomRightRadius="none"
-                borderTopLeftRadius="none"
-                borderTopRightRadius="none"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
-                    },
-                    {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 0,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 0,
+                      "borderRadius": 4,
                       "width": "100%",
                     },
                   ]
                 }
               >
                 <View
-                  borderBottomLeftRadius="none"
-                  borderBottomRightRadius="none"
-                  borderTopLeftRadius="none"
-                  borderTopRightRadius="none"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderBottomLeftRadius": 0,
-                        "borderBottomRightRadius": 0,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 0,
-                        "borderTopRightRadius": 0,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",
@@ -1013,6 +918,7 @@ exports[`<OTPInput /> should render 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
+                "marginLeft": 8,
               },
             ]
           }
@@ -1043,47 +949,28 @@ exports[`<OTPInput /> should render 1`] = `
               width="100%"
             >
               <View
-                borderBottomLeftRadius="none"
-                borderBottomRightRadius="medium"
-                borderTopLeftRadius="none"
-                borderTopRightRadius="medium"
                 currentInteraction="default"
                 data-blade-component="base-box"
                 style={
                   [
+                    {},
                     {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 4,
-                    },
-                    {
-                      "borderBottomLeftRadius": 0,
-                      "borderBottomRightRadius": 4,
-                      "borderTopLeftRadius": 0,
-                      "borderTopRightRadius": 4,
+                      "borderRadius": 4,
                       "width": "100%",
                     },
                   ]
                 }
               >
                 <View
-                  borderBottomLeftRadius="none"
-                  borderBottomRightRadius="medium"
-                  borderTopLeftRadius="none"
-                  borderTopRightRadius="medium"
                   currentInteraction="default"
                   isTextArea={false}
                   style={
                     [
                       {
                         "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                        "borderBottomLeftRadius": 0,
-                        "borderBottomRightRadius": 4,
                         "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
                         "borderStyle": "solid",
-                        "borderTopLeftRadius": 0,
-                        "borderTopRightRadius": 4,
                         "borderWidth": 0,
                         "display": "flex",
                         "flexDirection": "row",

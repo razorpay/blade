@@ -28,10 +28,6 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     validationState: props.validationState,
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
-    borderBottomLeftRadius: props.borderBottomLeftRadius,
-    borderBottomRightRadius: props.borderBottomRightRadius,
-    borderTopLeftRadius: props.borderTopLeftRadius,
-    borderTopRightRadius: props.borderTopRightRadius,
   }),
 }));
 

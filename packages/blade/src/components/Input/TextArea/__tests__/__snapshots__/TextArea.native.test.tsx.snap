@@ -185,35 +185,19 @@ exports[`<TextArea /> should render 1`] = `
         </View>
       </View>
       <View
-        borderBottomLeftRadius="medium"
-        borderBottomRightRadius="medium"
-        borderTopLeftRadius="medium"
-        borderTopRightRadius="medium"
         currentInteraction="default"
         data-blade-component="base-box"
         style={
           [
+            {},
             {
-              "borderBottomLeftRadius": 4,
-              "borderBottomRightRadius": 4,
-              "borderTopLeftRadius": 4,
-              "borderTopRightRadius": 4,
-            },
-            {
-              "borderBottomLeftRadius": 4,
-              "borderBottomRightRadius": 4,
-              "borderTopLeftRadius": 4,
-              "borderTopRightRadius": 4,
+              "borderRadius": 4,
               "width": "100%",
             },
           ]
         }
       >
         <View
-          borderBottomLeftRadius="medium"
-          borderBottomRightRadius="medium"
-          borderTopLeftRadius="medium"
-          borderTopRightRadius="medium"
           currentInteraction="default"
           isTextArea={true}
           style={
@@ -221,12 +205,9 @@ exports[`<TextArea /> should render 1`] = `
               {
                 "alignItems": "flex-start",
                 "backgroundColor": "hsla(0, 0%, 100%, 1)",
-                "borderBottomLeftRadius": 4,
-                "borderBottomRightRadius": 4,
                 "borderColor": "hsla(211, 27%, 76%, 1)",
+                "borderRadius": 4,
                 "borderStyle": "solid",
-                "borderTopLeftRadius": 4,
-                "borderTopRightRadius": 4,
                 "borderWidth": 0,
                 "display": "flex",
                 "flexDirection": "row",

@@ -66,10 +66,6 @@ export const getInputBackgroundAndBorderStyles = ({
   validationState,
   isTextArea,
   isDropdownTrigger,
-  borderBottomLeftRadius,
-  borderBottomRightRadius,
-  borderTopLeftRadius,
-  borderTopRightRadius,
 }: Pick<
   GetInputStyles,
   | 'theme'
@@ -79,12 +75,7 @@ export const getInputBackgroundAndBorderStyles = ({
   | 'isHovered'
   | 'isTextArea'
   | 'isDropdownTrigger'
-> & {
-  borderBottomLeftRadius: NonNullable<BaseInputProps['borderBottomLeftRadius']>;
-  borderBottomRightRadius: NonNullable<BaseInputProps['borderBottomRightRadius']>;
-  borderTopLeftRadius: NonNullable<BaseInputProps['borderTopLeftRadius']>;
-  borderTopRightRadius: NonNullable<BaseInputProps['borderTopRightRadius']>;
-}): CSSObject => {
+>): CSSObject => {
   // normal state
   let backgroundColor = getIn(theme.colors, baseInputBackgroundColor.default);
   let borderColor = getIn(theme.colors, baseInputBorderColor.default);
@@ -106,10 +97,7 @@ export const getInputBackgroundAndBorderStyles = ({
 
   return {
     backgroundColor,
-    borderBottomLeftRadius: makeBorderSize(getIn(theme.border.radius, borderBottomLeftRadius)),
-    borderBottomRightRadius: makeBorderSize(getIn(theme.border.radius, borderBottomRightRadius)),
-    borderTopLeftRadius: makeBorderSize(getIn(theme.border.radius, borderTopLeftRadius)),
-    borderTopRightRadius: makeBorderSize(getIn(theme.border.radius, borderTopRightRadius)),
+    borderRadius: makeBorderSize(theme.border.radius.medium),
     borderStyle: 'solid',
     display: 'flex',
     flexDirection: 'row',

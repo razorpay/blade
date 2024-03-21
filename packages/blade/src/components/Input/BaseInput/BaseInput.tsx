@@ -311,26 +311,6 @@ type BaseInputCommonProps = FormInputLabelProps &
      */
     trailingButton?: React.ReactElement<LinkProps>;
     /**
-     * Border Bottom Left Radius of the input field
-     * @default medium
-     */
-    borderBottomLeftRadius?: keyof Pick<Border['radius'], 'medium' | 'none'>;
-    /**
-     * Border Bottom Right Radius of the input field
-     * @default medium
-     */
-    borderBottomRightRadius?: keyof Pick<Border['radius'], 'medium' | 'none'>;
-    /**
-     * Border Top Left Radius of the input field
-     * @default medium
-     */
-    borderTopLeftRadius?: keyof Pick<Border['radius'], 'medium' | 'none'>;
-    /**
-     * Border Top Right Radius of the input field
-     * @default medium
-     */
-    borderTopRightRadius?: keyof Pick<Border['radius'], 'medium' | 'none'>;
-    /**
      * Whether to use Text or Heading component for Input text
      * @default text
      **/
@@ -732,46 +712,30 @@ const getDescribedByElementId = ({
 
 const FocusRingWrapper = styled(BaseBox)<{
   currentInteraction: ActionStates;
-  borderBottomLeftRadius: NonNullable<BaseInputProps['borderBottomLeftRadius']>;
-  borderBottomRightRadius: NonNullable<BaseInputProps['borderBottomRightRadius']>;
-  borderTopLeftRadius: NonNullable<BaseInputProps['borderTopLeftRadius']>;
-  borderTopRightRadius: NonNullable<BaseInputProps['borderTopRightRadius']>;
-}>(
-  ({
-    theme,
-    currentInteraction,
-    borderBottomLeftRadius,
-    borderBottomRightRadius,
-    borderTopLeftRadius,
-    borderTopRightRadius,
-  }) => ({
-    borderBottomLeftRadius: makeBorderSize(getIn(theme.border.radius, borderBottomLeftRadius)),
-    borderBottomRightRadius: makeBorderSize(getIn(theme.border.radius, borderBottomRightRadius)),
-    borderTopLeftRadius: makeBorderSize(getIn(theme.border.radius, borderTopLeftRadius)),
-    borderTopRightRadius: makeBorderSize(getIn(theme.border.radius, borderTopRightRadius)),
-    width: '100%',
-    '&:focus-within': {
-      ...getFocusRingStyles({
-        theme,
-      }),
-      transitionDuration: castWebType(
-        makeMotionTime(
-          getIn(
-            theme.motion.duration,
-            baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-              .duration,
-          ),
-        ),
-      ),
-      transitionTimingFunction: castWebType(
+}>(({ theme, currentInteraction }) => ({
+  borderRadius: makeBorderSize(theme.border.radius.medium),
+  width: '100%',
+  '&:focus-within': {
+    ...getFocusRingStyles({
+      theme,
+    }),
+    transitionDuration: castWebType(
+      makeMotionTime(
         getIn(
-          theme.motion.easing,
-          baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit'].easing,
+          theme.motion.duration,
+          baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+            .duration,
         ),
       ),
-    },
-  }),
-);
+    ),
+    transitionTimingFunction: castWebType(
+      getIn(
+        theme.motion.easing,
+        baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit'].easing,
+      ),
+    ),
+  },
+}));
 
 const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
   {
@@ -835,10 +799,6 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isLabelInsideInput,
     size = 'medium',
     trailingButton,
-    borderBottomLeftRadius = 'medium',
-    borderBottomRightRadius = 'medium',
-    borderTopLeftRadius = 'medium',
-    borderTopRightRadius = 'medium',
     valueComponentType = 'text',
     ...styledProps
   },
@@ -956,13 +916,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             {trailingHeaderSlot?.(value ?? inputValue)}
           </BaseBox>
         )}
-        <FocusRingWrapper
-          currentInteraction={currentInteraction}
-          borderBottomLeftRadius={borderBottomLeftRadius}
-          borderBottomRightRadius={borderBottomRightRadius}
-          borderTopLeftRadius={borderTopLeftRadius}
-          borderTopRightRadius={borderTopRightRadius}
-        >
+        <FocusRingWrapper currentInteraction={currentInteraction}>
           <BaseInputWrapper
             isDropdownTrigger={isDropdownTrigger}
             isTextArea={isTextArea}
@@ -979,10 +933,6 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               }
             }}
             maxTagRows={maxTagRows}
-            borderBottomLeftRadius={borderBottomLeftRadius}
-            borderBottomRightRadius={borderBottomRightRadius}
-            borderTopLeftRadius={borderTopLeftRadius}
-            borderTopRightRadius={borderTopRightRadius}
           >
             <BaseInputVisuals
               size={size}

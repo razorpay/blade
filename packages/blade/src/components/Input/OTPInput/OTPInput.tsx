@@ -1,7 +1,6 @@
 import React, { useEffect, useImperativeHandle, useState } from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
-import { baseInputBorderWidth } from '../BaseInput/baseInputTokens';
 import { getHintType } from '../BaseInput/BaseInput';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { FormInputOnEvent } from '~components/Form';
@@ -11,10 +10,9 @@ import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { getPlatformType, makeBorderSize, useTheme } from '~utils';
+import { getPlatformType, useTheme } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { makeSize } from '~utils/makeSize';
-import getIn from '~utils/lodashButBetter/get';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -122,48 +120,6 @@ const isReactNative = getPlatformType() === 'react-native';
  *  Converts a string value of otp to array if passed otherwise returns an array of 6 empty strings
  */
 const otpToArray = (code?: string): string[] => code?.split('') ?? Array(6).fill('');
-
-/**
- * Returns the border radius for the input field based on the index and length of the OTPInput
- * @param {number} index the index of the input field
- * @param {number} length the length of the OTPInput
- * @returns {object} the border radius for the input field
- **/
-const getBaseInputBorderRadius = ({
-  index,
-  length,
-}: {
-  index: number;
-  length: number;
-}): {
-  borderBottomLeftRadius: NonNullable<BaseInputProps['borderBottomLeftRadius']>;
-  borderBottomRightRadius: NonNullable<BaseInputProps['borderBottomRightRadius']>;
-  borderTopLeftRadius: NonNullable<BaseInputProps['borderTopLeftRadius']>;
-  borderTopRightRadius: NonNullable<BaseInputProps['borderTopRightRadius']>;
-} => {
-  if (index === 0) {
-    return {
-      borderBottomLeftRadius: 'medium',
-      borderBottomRightRadius: 'none',
-      borderTopLeftRadius: 'medium',
-      borderTopRightRadius: 'none',
-    };
-  }
-  if (index === length - 1) {
-    return {
-      borderBottomLeftRadius: 'none',
-      borderBottomRightRadius: 'medium',
-      borderTopLeftRadius: 'none',
-      borderTopRightRadius: 'medium',
-    };
-  }
-  return {
-    borderBottomLeftRadius: 'none',
-    borderBottomRightRadius: 'none',
-    borderTopLeftRadius: 'none',
-    borderTopRightRadius: 'none',
-  };
-};
 
 /**
  * OTPInput component can be used for accepting OTPs sent to users for authentication/verification purposes.
@@ -380,14 +336,8 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
       inputs.push(
         <BaseBox
           flex={1}
+          marginLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
           key={`${inputId}-${index}`}
-          zIndex={currentFocusedInput === index ? 1 : undefined}
-          // use negative margin to overlap the border of the input fields for React Native to avoid double border. On Web we use box shadow, so the negative margin is not needed.
-          marginRight={
-            isReactNative && index !== otpLength - 1
-              ? `-${makeBorderSize(getIn(theme.border.width, baseInputBorderWidth.default))}`
-              : undefined
-          }
         >
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus
@@ -404,10 +354,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
             value={currentValue}
             maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
             onChange={(formEvent) => handleOnChange({ ...formEvent, currentOtpIndex: index })}
-            onFocus={(formEvent) => {
-              setCurrentFocusedInput(index);
-              onFocus?.({ ...formEvent, inputIndex: index });
-            }}
+            onFocus={(formEvent) => onFocus?.({ ...formEvent, inputIndex: index })}
             onBlur={(formEvent) => onBlur?.({ ...formEvent, inputIndex: index })}
             onInput={(formEvent) => handleOnInput({ ...formEvent, currentOtpIndex: index })}
             onKeyDown={(keyboardEvent) =>
@@ -427,7 +374,6 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
             type={currentInputType}
             size={size}
             valueComponentType="heading"
-            {...getBaseInputBorderRadius({ index, length: otpLength })}
           />
         </BaseBox>,
       );

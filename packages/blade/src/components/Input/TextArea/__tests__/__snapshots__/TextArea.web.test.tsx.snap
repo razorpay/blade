@@ -55,18 +55,11 @@ exports[`<TextArea /> should render 1`] = `
   gap: 0px;
 }
 
-.c7.c7.c7.c7.c7 {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   margin-left: 0px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -119,7 +112,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -150,7 +143,7 @@ exports[`<TextArea /> should render 1`] = `
   cursor: auto;
 }
 
-.c10.c10.c10.c10.c10::-webkit-input-placeholder {
+.c9.c9.c9.c9.c9::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -167,7 +160,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::-moz-placeholder {
+.c9.c9.c9.c9.c9::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -184,7 +177,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:-ms-input-placeholder {
+.c9.c9.c9.c9.c9:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -201,7 +194,7 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::placeholder {
+.c9.c9.c9.c9.c9::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -218,16 +211,13 @@ exports[`<TextArea /> should render 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:focus {
+.c9.c9.c9.c9.c9:focus {
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   background-color: hsla(0,0%,100%,1);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -253,12 +243,9 @@ exports[`<TextArea /> should render 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c8.c8.c8.c8.c8:hover {
   background-color: hsla(210,40%,98%,1);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -282,12 +269,9 @@ exports[`<TextArea /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c8.c8.c8.c8.c8:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -326,15 +310,12 @@ exports[`<TextArea /> should render 1`] = `
   word-wrap: normal;
 }
 
-.c8.c8.c8.c8.c8 {
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+.c7.c7.c7.c7.c7 {
+  border-radius: 4px;
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8:focus-within {
+.c7.c7.c7.c7.c7:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -391,11 +372,11 @@ exports[`<TextArea /> should render 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8"
+        class=" c7"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c7 c9"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
           data-blade-component="base-box"
         >
           <textarea
@@ -403,7 +384,7 @@ exports[`<TextArea /> should render 1`] = `
             aria-disabled="false"
             aria-invalid="false"
             aria-required="false"
-            class="c10"
+            class="c9"
             data-blade-component="styled-base-input"
             id="textarea-1-input-2"
             rows="2"
@@ -413,11 +394,11 @@ exports[`<TextArea /> should render 1`] = `
       </div>
     </div>
     <div
-      class="c11"
+      class="c10"
       data-blade-component="base-box"
     >
       <div
-        class="c12"
+        class="c11"
         data-blade-component="base-box"
       />
     </div>
@@ -480,18 +461,11 @@ exports[`<TextArea /> should render large size 1`] = `
   gap: 0px;
 }
 
-.c7.c7.c7.c7.c7 {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   margin-left: 0px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -505,7 +479,7 @@ exports[`<TextArea /> should render large size 1`] = `
   justify-content: flex-end;
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   margin-top: 8px;
   margin-right: 2px;
 }
@@ -549,7 +523,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   color: hsla(211,22%,56%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
@@ -566,7 +540,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -597,7 +571,7 @@ exports[`<TextArea /> should render large size 1`] = `
   cursor: auto;
 }
 
-.c10.c10.c10.c10.c10::-webkit-input-placeholder {
+.c9.c9.c9.c9.c9::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -614,7 +588,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::-moz-placeholder {
+.c9.c9.c9.c9.c9::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -631,7 +605,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:-ms-input-placeholder {
+.c9.c9.c9.c9.c9:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -648,7 +622,7 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::placeholder {
+.c9.c9.c9.c9.c9::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
@@ -665,16 +639,13 @@ exports[`<TextArea /> should render large size 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:focus {
+.c9.c9.c9.c9.c9:focus {
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   background-color: hsla(0,0%,100%,1);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -700,12 +671,9 @@ exports[`<TextArea /> should render large size 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c8.c8.c8.c8.c8:hover {
   background-color: hsla(210,40%,98%,1);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -729,12 +697,9 @@ exports[`<TextArea /> should render large size 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c8.c8.c8.c8.c8:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -773,15 +738,12 @@ exports[`<TextArea /> should render large size 1`] = `
   word-wrap: normal;
 }
 
-.c8.c8.c8.c8.c8 {
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+.c7.c7.c7.c7.c7 {
+  border-radius: 4px;
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8:focus-within {
+.c7.c7.c7.c7.c7:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -838,11 +800,11 @@ exports[`<TextArea /> should render large size 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8"
+        class=" c7"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c7 c9"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
           data-blade-component="base-box"
         >
           <textarea
@@ -850,7 +812,7 @@ exports[`<TextArea /> should render large size 1`] = `
             aria-disabled="false"
             aria-invalid="false"
             aria-required="false"
-            class="c10"
+            class="c9"
             data-blade-component="styled-base-input"
             id="textarea-13-input-14"
             maxlength="100"
@@ -861,19 +823,19 @@ exports[`<TextArea /> should render large size 1`] = `
       </div>
     </div>
     <div
-      class="c11"
+      class="c10"
       data-blade-component="base-box"
     >
       <div
-        class="c12"
+        class="c11"
         data-blade-component="base-box"
       >
         <div
-          class="c13"
+          class="c12"
           data-blade-component="base-box"
         >
           <p
-            class="c14"
+            class="c13"
             data-blade-component="text"
           >
             0
@@ -942,18 +904,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
   gap: 0px;
 }
 
-.c7.c7.c7.c7.c7 {
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
-
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   margin-left: 0px;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1006,7 +961,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1037,7 +992,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   cursor: auto;
 }
 
-.c10.c10.c10.c10.c10::-webkit-input-placeholder {
+.c9.c9.c9.c9.c9::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1054,7 +1009,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::-moz-placeholder {
+.c9.c9.c9.c9.c9::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1071,7 +1026,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:-ms-input-placeholder {
+.c9.c9.c9.c9.c9:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1088,7 +1043,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10::placeholder {
+.c9.c9.c9.c9.c9::placeholder {
   color: hsla(211,20%,52%,0.32);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -1105,16 +1060,13 @@ exports[`<TextArea /> should set number of lines 1`] = `
   padding: 0;
 }
 
-.c10.c10.c10.c10.c10:focus {
+.c9.c9.c9.c9.c9:focus {
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   background-color: hsla(0,0%,100%,1);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1140,12 +1092,9 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover {
+.c8.c8.c8.c8.c8:hover {
   background-color: hsla(210,40%,98%,1);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1169,12 +1118,9 @@ exports[`<TextArea /> should set number of lines 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:focus-within {
+.c8.c8.c8.c8.c8:focus-within {
   background-color: hsla(0,0%,100%,1);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
@@ -1213,15 +1159,12 @@ exports[`<TextArea /> should set number of lines 1`] = `
   word-wrap: normal;
 }
 
-.c8.c8.c8.c8.c8 {
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+.c7.c7.c7.c7.c7 {
+  border-radius: 4px;
   width: 100%;
 }
 
-.c8.c8.c8.c8.c8:focus-within {
+.c7.c7.c7.c7.c7:focus-within {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1278,11 +1221,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
         </label>
       </div>
       <div
-        class="c7 c8"
+        class=" c7"
         data-blade-component="base-box"
       >
         <div
-          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1 c7 c9"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
           data-blade-component="base-box"
         >
           <textarea
@@ -1290,7 +1233,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
             aria-disabled="false"
             aria-invalid="false"
             aria-required="false"
-            class="c10"
+            class="c9"
             data-blade-component="styled-base-input"
             id="textarea-121-input-122"
             rows="3"
@@ -1300,11 +1243,11 @@ exports[`<TextArea /> should set number of lines 1`] = `
       </div>
     </div>
     <div
-      class="c11"
+      class="c10"
       data-blade-component="base-box"
     >
       <div
-        class="c12"
+        class="c11"
         data-blade-component="base-box"
       />
     </div>

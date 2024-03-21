@@ -39,10 +39,6 @@ export type BaseInputWrapperProps = Pick<
   isTextArea?: boolean;
   setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;
-  borderBottomLeftRadius: NonNullable<BaseInputProps['borderBottomLeftRadius']>;
-  borderBottomRightRadius: NonNullable<BaseInputProps['borderBottomRightRadius']>;
-  borderTopLeftRadius: NonNullable<BaseInputProps['borderTopLeftRadius']>;
-  borderTopRightRadius: NonNullable<BaseInputProps['borderTopRightRadius']>;
 };
 
 export type StyledBaseInputProps = {
