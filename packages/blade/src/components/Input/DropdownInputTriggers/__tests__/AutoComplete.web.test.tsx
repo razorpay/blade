@@ -66,6 +66,28 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render autocomplete with large size', () => {
+    const { container } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Fruits" size="large" />
+        <DropdownOverlay zIndex={1002}>
+          <DropdownHeader title="Recent Searches" />
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+          <DropdownFooter>
+            <Box>
+              <Button isFullWidth>Apply</Button>
+            </Box>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   // MOUSE CLICK TESTS
   it('should handle AutoComplete behaviour in single select', async () => {
     const user = userEvent.setup();
