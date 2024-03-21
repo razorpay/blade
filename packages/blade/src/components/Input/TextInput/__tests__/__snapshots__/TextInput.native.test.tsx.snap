@@ -282,6 +282,7 @@ exports[`<TextInput /> should render 1`] = `
               ]
             }
             textContentType="none"
+            valueComponentType="text"
           />
         </View>
       </View>
@@ -752,6 +753,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             }
             suffix=".com"
             textContentType="none"
+            valueComponentType="text"
           />
           <View
             alignItems="center"

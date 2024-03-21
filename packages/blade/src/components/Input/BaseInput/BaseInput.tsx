@@ -309,6 +309,11 @@ type BaseInputCommonProps = FormInputLabelProps &
      * ```
      */
     trailingButton?: React.ReactElement<LinkProps>;
+    /**
+     * Whether to use Text or Heading component for Input text
+     * @default text
+     **/
+    valueComponentType?: 'text' | 'heading';
   } & TestID &
   Platform.Select<{
     native: {
@@ -704,32 +709,32 @@ const getDescribedByElementId = ({
   return '';
 };
 
-const FocusRingWrapper = styled(BaseBox)<{ currentInteraction: ActionStates }>(
-  ({ theme, currentInteraction }) => ({
-    borderRadius: makeBorderSize(theme.border.radius.medium),
-    width: '100%',
-    '&:focus-within': {
-      ...getFocusRingStyles({
-        theme,
-      }),
-      transitionDuration: castWebType(
-        makeMotionTime(
-          getIn(
-            theme.motion.duration,
-            baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
-              .duration,
-          ),
-        ),
-      ),
-      transitionTimingFunction: castWebType(
+const FocusRingWrapper = styled(BaseBox)<{
+  currentInteraction: ActionStates;
+}>(({ theme, currentInteraction }) => ({
+  borderRadius: makeBorderSize(theme.border.radius.medium),
+  width: '100%',
+  '&:focus-within': {
+    ...getFocusRingStyles({
+      theme,
+    }),
+    transitionDuration: castWebType(
+      makeMotionTime(
         getIn(
-          theme.motion.easing,
-          baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit'].easing,
+          theme.motion.duration,
+          baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit']
+            .duration,
         ),
       ),
-    },
-  }),
-);
+    ),
+    transitionTimingFunction: castWebType(
+      getIn(
+        theme.motion.easing,
+        baseInputBorderBackgroundMotion[currentInteraction === 'focus' ? 'enter' : 'exit'].easing,
+      ),
+    ),
+  },
+}));
 
 const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps> = (
   {
@@ -793,6 +798,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
     isLabelInsideInput,
     size = 'medium',
     trailingButton,
+    valueComponentType = 'text',
     ...styledProps
   },
   ref,
@@ -996,6 +1002,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
                 autoCapitalize={autoCapitalize}
                 isDropdownTrigger={isDropdownTrigger}
                 $size={size}
+                valueComponentType={valueComponentType}
                 {...metaAttribute({ name: MetaConstants.StyledBaseInput })}
               />
             </BaseInputTagSlot>

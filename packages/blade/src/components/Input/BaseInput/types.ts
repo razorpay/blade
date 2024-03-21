@@ -57,6 +57,7 @@ export type StyledBaseInputProps = {
   isTextArea?: boolean;
   hasTags?: boolean;
   $size: NonNullable<BaseInputProps['size']>;
+  valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
 } & Pick<
   BaseInputProps,
   | 'as'

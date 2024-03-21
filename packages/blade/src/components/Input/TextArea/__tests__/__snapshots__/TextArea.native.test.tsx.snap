@@ -283,6 +283,7 @@ exports[`<TextArea /> should render 1`] = `
                 },
               ]
             }
+            valueComponentType="text"
           />
         </View>
       </View>

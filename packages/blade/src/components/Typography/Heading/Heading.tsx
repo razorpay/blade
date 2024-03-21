@@ -25,7 +25,7 @@ export type HeadingProps = {
 } & TestID &
   StyledPropsBlade;
 
-const getProps = ({
+export const getHeadingProps = ({
   as,
   size,
   weight,
@@ -87,7 +87,7 @@ export const Heading = ({
 }: HeadingProps): ReactElement => {
   useValidateAsProp({ componentName: 'Heading', as, validAsValues });
 
-  const props = getProps({ as, size, weight, color, testID });
+  const props = getHeadingProps({ as, size, weight, color, testID });
 
   return (
     <BaseText

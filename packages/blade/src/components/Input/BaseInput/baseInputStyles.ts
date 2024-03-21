@@ -15,6 +15,7 @@ import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
+import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -27,6 +28,7 @@ type GetInputStyles = Pick<
   | 'trailingIcon'
   | 'textAlign'
   | 'isDropdownTrigger'
+  | 'valueComponentType'
 > & {
   isHovered?: boolean;
   isFocused?: boolean;
@@ -164,6 +166,7 @@ export const getBaseInputStyles = ({
   hasTags,
   isDropdownTrigger,
   size,
+  valueComponentType,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -184,13 +187,21 @@ export const getBaseInputStyles = ({
   const isReactNative = getPlatformType() === 'react-native';
 
   return {
-    ...getTextStyles({
-      size,
-      variant: 'body',
-      weight: 'regular',
-      color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
-      theme,
-    }),
+    ...(valueComponentType === 'heading'
+      ? getHeadingStyles({
+          size,
+          weight: 'regular',
+          color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
+          theme,
+        })
+      : getTextStyles({
+          size,
+          variant: 'body',
+          weight: 'regular',
+          color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
+          theme,
+        })),
+
     // take the full available width of parent container for input field
     flex: 1,
     backgroundColor: 'transparent',
