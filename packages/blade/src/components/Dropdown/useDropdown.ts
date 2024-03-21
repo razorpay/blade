@@ -329,7 +329,7 @@ const useDropdown = (): UseDropdownReturnValue => {
 
       const filteredIndexes = filteredValues
         .map((filteredValue) => options.findIndex((option) => option.value === filteredValue))
-        .sort();
+        .sort((a, b) => a - b);
 
       updatedIndex =
         filteredIndexes[

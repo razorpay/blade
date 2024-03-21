@@ -1,5 +1,4 @@
 import React from 'react';
-import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { InputChevronIcon } from './InputChevronIcon';
 import type { BaseDropdownInputTriggerProps } from './types';
@@ -11,7 +10,6 @@ import { MetaConstants } from '~utils/metaAttribute';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import type { BladeElementRef } from '~utils/types';
 import { useFirstRender } from '~utils/useFirstRender';
-import { mergeRefs } from '~utils/useMergeRefs';
 
 const useControlledDropdownInput = (
   props: Pick<
@@ -23,8 +21,7 @@ const useControlledDropdownInput = (
     | 'onInputValueChange'
     | 'syncInputValueWithSelection'
     | 'isSelectInput'
-  > &
-    BaseInputProps,
+  >,
 ): void => {
   const isFirstRender = useFirstRender();
   const {
@@ -224,7 +221,16 @@ const _BaseDropdownInputTrigger = (
       ref={
         (!isReactNative()
           ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            mergeRefs(ref, triggererRef)
+            (node: any) => {
+              triggererRef.current = node;
+              if (ref) {
+                if (typeof ref === 'function') {
+                  ref(node);
+                } else {
+                  ref.current = node;
+                }
+              }
+            }
           : null) as never
       }
       isDropdownTrigger={true}
@@ -304,8 +310,6 @@ const _BaseDropdownInputTrigger = (
           />
         )
       }
-      // TODO: filter only whats needed
-      {...props}
     />
   );
 };

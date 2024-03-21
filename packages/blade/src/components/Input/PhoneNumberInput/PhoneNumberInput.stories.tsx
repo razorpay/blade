@@ -19,6 +19,22 @@ const PhoneNumberInputTemplate: StoryFn<typeof PhoneNumberInput> = ({ ...args })
 
 export const Default = PhoneNumberInputTemplate.bind({});
 
+const CountriesToShowTemplate: StoryFn<typeof PhoneNumberInput> = ({ ...args }) => {
+  return (
+    <Box>
+      <Text marginBottom="spacing.5">
+        By setting the <Code size="medium">{`countries={['IN', 'MY']}`}</Code> prop, We can only
+        show two countries in the Country Selector
+      </Text>
+      <PhoneNumberInput {...args} />
+    </Box>
+  );
+};
+export const CountriesToShow = CountriesToShowTemplate.bind({});
+CountriesToShow.args = {
+  countries: ['IN', 'MY'],
+};
+
 export const SizeLarge = PhoneNumberInputTemplate.bind({});
 SizeLarge.storyName = 'Size: Large';
 SizeLarge.args = {

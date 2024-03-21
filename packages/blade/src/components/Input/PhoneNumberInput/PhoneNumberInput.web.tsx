@@ -48,6 +48,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
     keyboardReturnKeyType = 'done',
     autoCompleteSuggestionType,
     autoCapitalize,
+    countries,
     ...styledProps
   },
   ref,
@@ -90,6 +91,15 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
 
   const flags = React.useMemo(() => getFlagsForAllCountries(), []);
   const countryData = React.useMemo(() => {
+    if (countries) {
+      return countries.map((countryCode) => {
+        return {
+          code: countryCode,
+          name: countryNameFormatter.of(countryCode)!,
+        };
+      });
+    }
+
     return (Object.keys(flags) as CountryCodeType[])
       .map((countryCode) => {
         return {
@@ -98,7 +108,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
         };
       })
       .sort((a, b) => a.name.localeCompare(b.name));
-  }, [flags]);
+  }, [countries, flags]);
 
   const handleOnChange = ({
     name,

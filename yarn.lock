@@ -6856,24 +6856,19 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@razorpay/i18nify-js@1.6.1":
-  version "1.6.1"
-  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.6.1/41ee93e035388ab7757223605fd7935c7071f2cf#41ee93e035388ab7757223605fd7935c7071f2cf"
-  integrity sha512-vjdZwz66wl10muswJZw3PyhDTRmiRQYXCtLlGR9mqngFzwztAAKmygSFqbeekM7KbVNJODgix/pBxPTaAqptNw==
+"@razorpay/i18nify-js@1.8.0", "@razorpay/i18nify-js@^1.8.0":
+  version "1.8.0"
+  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.8.0/d3c19c6902307c1858b4f5ed30b6495cb24f3f8e#d3c19c6902307c1858b4f5ed30b6495cb24f3f8e"
+  integrity sha512-9QKO6X8NajQKf67nUjVG6/gjR8wPl5X9lyVcfTt4zkdguCD31rxF1D1VHJo1Vd8Dx+qmsI62kgUxsflDfYWOOw==
   dependencies:
     "@internationalized/date" "^3.5.2"
 
-"@razorpay/i18nify-js@^1.5.0":
-  version "1.5.0"
-  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-js/1.5.0/368ff35e5ff26a58018817ad6271d400e0f43a74#368ff35e5ff26a58018817ad6271d400e0f43a74"
-  integrity sha512-v1dYgeBg7W1ScVwvvb6Uhj4MbwuK4alLMXTpv5BVrQXafucuR9AM/6OC4d4WIQWbYJP1+eQ11Sg0WVI4uRB2BQ==
-
-"@razorpay/i18nify-react@4.0.3":
-  version "4.0.3"
-  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-react/4.0.3/aee5b3f6db37ac014d960dd91fb34b24614f5e78#aee5b3f6db37ac014d960dd91fb34b24614f5e78"
-  integrity sha512-uJtmCqJ6yH2I6GKolf/sXy1Lraa7EOPRB1Dmb+XpfiN5+KpQ4aI4VZFzory1Okxc3xJ5dxwE39iYrft7VOBXug==
+"@razorpay/i18nify-react@4.0.6":
+  version "4.0.6"
+  resolved "https://npm.pkg.github.com/download/@razorpay/i18nify-react/4.0.6/382291846d1b654dc45d0f628ae66e5e0054b635#382291846d1b654dc45d0f628ae66e5e0054b635"
+  integrity sha512-QzZV6Yv0ZbuVF0DCx2EX33ZoYeGFcv/AjEQOp43/kQqpanRuRsYlsTYvB4+5vd8klPnETJ7tbsjHXipekTjfZg==
   dependencies:
-    "@razorpay/i18nify-js" "^1.5.0"
+    "@razorpay/i18nify-js" "^1.8.0"
 
 "@react-hook/intersection-observer@^3.1.1":
   version "3.1.1"
@@ -27490,10 +27485,10 @@ react-native-pager-view@6.2.1:
   resolved "https://registry.yarnpkg.com/react-native-pager-view/-/react-native-pager-view-6.2.1.tgz#985d21bbb7d7bc012f4c142dedbb98ce4bdea104"
   integrity sha512-fZ8chez5J+w831nSnbtK8hwlCiMy1DgpFv8xG6ajXLsAI8uMkGvP554QDIDNlUoCuVwMf7OFyd32Y2Nm2Iaj9Q==
 
-react-native-reanimated@3.4.1:
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.4.1.tgz#3518f4fbe716423a4361dfd4a2276c9f9c832a05"
-  integrity sha512-UjEBbWloCoUB/fkehj9GWAhuvfUx2BLYkQ3rP7+nVMJ5K5Ck1K6XFEBGfYdz4ttCBoyTSuzrPxe2XxJl3yRSdA==
+react-native-reanimated@3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-3.4.2.tgz#744154fead6d8d31d5bd9ac617d8c84d74a6f697"
+  integrity sha512-FbtG+f1PB005vDTJSv4zAnTK7nNXi+FjFgbAM5gOzIZDajfph2BFMSUstzIsN8T77+OKuugUBmcTqLnQ24EBVg==
   dependencies:
     "@babel/plugin-transform-object-assign" "^7.16.7"
     "@babel/preset-typescript" "^7.16.7"

@@ -175,7 +175,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
       type={type}
-      interactionElement={revealButton}
+      trailingInteractionElement={revealButton}
       trailingFooterSlot={trailingFooterSlot}
       maxCharacters={maxCharacters}
       validationState={validationState}
