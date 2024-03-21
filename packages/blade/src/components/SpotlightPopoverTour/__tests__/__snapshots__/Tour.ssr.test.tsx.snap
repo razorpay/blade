@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gWxRWW"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Open Tour</div></div></button><div data-blade-component="box" class="BaseBox-bmPWx">Some other content inside</div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 2</p></div></div></div>"`;
+exports[`<Tour /> should render Tour ssr 1`] = `"<div id="root"><div data-blade-component="box" class="BaseBox-bmPWx"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 gWxRWW"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eGcQGV" data-blade-component="base-text">Open Tour</div></div></div></button><div data-blade-component="box" class="BaseBox-bmPWx">Some other content inside</div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 1</p></div><div data-blade-component="box" class="BaseBox-bmPWx"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text">Trigger 2</p></div></div></div>"`;
 
 exports[`<Tour /> should render Tour ssr 2`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -25,7 +25,7 @@ exports[`<Tour /> should render Tour ssr 2`] = `
   z-index: 1;
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -43,7 +43,7 @@ exports[`<Tour /> should render Tour ssr 2`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -124,7 +124,17 @@ exports[`<Tour /> should render Tour ssr 2`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -142,14 +152,19 @@ exports[`<Tour /> should render Tour ssr 2`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <div
-          class="c3"
-          data-blade-component="base-text"
+          class="c2 c3"
+          data-blade-component="base-box"
         >
-          Open Tour
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            Open Tour
+          </div>
         </div>
       </div>
     </button>
@@ -164,7 +179,7 @@ exports[`<Tour /> should render Tour ssr 2`] = `
       data-blade-component="box"
     >
       <p
-        class="c4"
+        class="c5"
         data-blade-component="text"
       >
         Trigger 1
@@ -175,7 +190,7 @@ exports[`<Tour /> should render Tour ssr 2`] = `
       data-blade-component="box"
     >
       <p
-        class="c4"
+        class="c5"
         data-blade-component="text"
       >
         Trigger 2
