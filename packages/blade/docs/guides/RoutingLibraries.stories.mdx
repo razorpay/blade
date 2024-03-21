@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs';
+import { RecipeSandbox } from '~utils/storybook/Sandbox/SandpackEditor';
+
+<Meta title="Guides/Integrations/Routing Libraries" />
+
+## Routing Libraries
+
+This guide will help you integrate blade navigation components like `Link`, `Button`, `Tabs`, `Breadcrumbs`, etc with routing libraries like `react-router`, `@reach/router`, etc.
+
+<div style={{ marginTop: 40 }} />
+
+## Link
+
+### Example with `react-router v5`
+
+In this example, we enhanced our `Link` component to work with react-router v5 by using the `onClick` prop to handle the navigation.
+
+<div style={{ height: 500, marginTop: 30 }}>
+  <RecipeSandbox
+    title="react-router with Blade Link"
+    codesandboxId="blade-link-react-router-v5-rcrdn8"
+    activeFile="/src/BladeRouterLink.tsx"
+    view="editor"
+  />
+</div>
+
+
+### Example with `react-router v6`
+
+In v6 it's significantly easier to integrate with the help of `useHref` and `useLinkClickHandler` hooks provided by `react-router`.
+
+<div style={{ height: 500, marginTop: 30 }}>
+  <RecipeSandbox
+    title="react-router with Blade Link"
+    codesandboxId="blade-link-react-router-v6-2w5f9k"
+    activeFile="/src/BladeRouterLink.tsx"
+    view="editor"
+  />
+</div>
+
+<div style={{ marginTop: 40 }} />
+
+## Tabs
+
+### Example with `react-router v6`
+
+In this example, we enhanced our `TabItem` component to work with react-router v6 by using the `useHref` hook to get the href and `useLinkClickHandler` hook to handle the navigation.
+
+<div style={{ height: 500, marginTop: 30 }}>
+  <RecipeSandbox
+    title="react-router with Blade Tab"
+    codesandboxId="blade-tab-react-router-v6-7g8nwc"
+    activeFile="/src/TabItemLink.tsx"
+    view="editor"
+  />
+</div>
+
