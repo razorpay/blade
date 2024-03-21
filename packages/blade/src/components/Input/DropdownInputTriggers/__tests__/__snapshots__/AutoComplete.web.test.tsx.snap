@@ -1031,7 +1031,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 .c11.c11.c11.c11.c11 {
   -webkit-animation: none;
   animation: none;
-  max-height: 37px;
+  max-height: 36px;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -2362,7 +2362,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 .c11.c11.c11.c11.c11 {
   -webkit-animation: none;
   animation: none;
-  max-height: 49px;
+  max-height: 48px;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -3460,7 +3460,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 .c11.c11.c11.c11.c11 {
   -webkit-animation: none;
   animation: none;
-  max-height: 37px;
+  max-height: 36px;
 }
 
 .c13.c13.c13.c13.c13 {

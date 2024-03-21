@@ -16,8 +16,8 @@ import {
   baseInputBackgroundColor,
   baseInputBorderBackgroundMotion,
   baseInputBorderColor,
+  baseInputHeight,
   baseInputWrapperMaxHeight,
-  baseInputWrapperMinHeight,
 } from './baseInputTokens';
 import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -47,7 +47,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   ref,
 ): React.ReactElement => {
   const { theme } = useTheme();
-  const sharedHeight = useSharedValue(baseInputWrapperMinHeight[rest.size]); // Initial max-width value
+  const sharedHeight = useSharedValue<number>(baseInputHeight[rest.size]); // Initial max-width value
 
   React.useEffect(() => {
     if (!isDropdownTrigger) {
@@ -55,7 +55,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     }
 
     sharedHeight.value = withTiming(
-      showAllTags ? baseInputWrapperMaxHeight[rest.size] : baseInputWrapperMinHeight[rest.size],
+      showAllTags ? baseInputWrapperMaxHeight[rest.size] : baseInputHeight[rest.size],
       {
         duration: theme.motion.duration.xquick,
         easing: castNativeType(theme.motion.easing.exit.effective),

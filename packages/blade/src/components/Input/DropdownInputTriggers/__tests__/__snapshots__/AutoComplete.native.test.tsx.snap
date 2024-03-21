@@ -247,7 +247,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       "width": "100%",
                     },
                     {
-                      "maxHeight": 37,
+                      "maxHeight": 36,
                     },
                     {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",

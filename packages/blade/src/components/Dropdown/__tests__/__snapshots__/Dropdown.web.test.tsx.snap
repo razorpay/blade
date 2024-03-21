@@ -750,7 +750,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c11.c11.c11.c11.c11 {
   -webkit-animation: none;
   animation: none;
-  max-height: 37px;
+  max-height: 36px;
 }
 
 .c13.c13.c13.c13.c13 {
@@ -1895,7 +1895,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 .c11.c11.c11.c11.c11 {
   -webkit-animation: none;
   animation: none;
-  max-height: 49px;
+  max-height: 48px;
 }
 
 .c13.c13.c13.c13.c13 {

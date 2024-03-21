@@ -9,7 +9,6 @@ import {
   baseInputHeight,
   baseInputPaddingTokens,
   baseInputWrapperMaxHeight,
-  baseInputWrapperMinHeight,
 } from './baseInputTokens';
 import type { BaseInputWrapperProps } from './types';
 import type { Theme } from '~components/BladeProvider';
@@ -236,7 +235,7 @@ export const getAnimatedBaseInputWrapperMaxHeight = ({
   size,
 }: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags' | 'size'>): number => {
   if (maxTagRows === 'single') {
-    return baseInputWrapperMinHeight[size];
+    return baseInputHeight[size];
   }
 
   if (maxTagRows === 'multiple') {
@@ -244,5 +243,5 @@ export const getAnimatedBaseInputWrapperMaxHeight = ({
   }
 
   // In expandable, max-height depends on the state
-  return showAllTags ? baseInputWrapperMaxHeight[size] : baseInputWrapperMinHeight[size];
+  return showAllTags ? baseInputWrapperMaxHeight[size] : baseInputHeight[size];
 };

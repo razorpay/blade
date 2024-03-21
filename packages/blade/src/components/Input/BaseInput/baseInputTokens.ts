@@ -1,7 +1,6 @@
 import type { BaseInputProps } from './BaseInput';
 import { size, spacing } from '~tokens/global';
 
-const BASEINPUT_BOTTOM_LINE_HEIGHT: number = size['1'];
 export const BASEINPUT_MAX_ROWS = 4;
 
 export const TAG_HEIGHT = size['20'];
@@ -19,22 +18,13 @@ export const baseInputHeight: Record<
 };
 
 /**
- * medium - 37px (36px height + 1px bottom line height)
- * large - 49px (48px height + 1px bottom line height)
- */
-export const baseInputWrapperMinHeight = {
-  medium: (baseInputHeight.medium as number) + BASEINPUT_BOTTOM_LINE_HEIGHT,
-  large: (baseInputHeight.large as number) + BASEINPUT_BOTTOM_LINE_HEIGHT,
-};
-
-/**
- * medium - 145px (36px height * 4 rows + 1px bottom line height)
- * large - 193px (48px height * 4 rows + 1px bottom line height)
+ * medium - 144px (36px height * 4 rows)
+ * large - 192px (48px height * 4 rows)
  */
 // we don't want exact number but rough number to be able to animate correctly in height.
 export const baseInputWrapperMaxHeight = {
-  medium: baseInputHeight.medium * BASEINPUT_MAX_ROWS + BASEINPUT_BOTTOM_LINE_HEIGHT,
-  large: baseInputHeight.large * BASEINPUT_MAX_ROWS + BASEINPUT_BOTTOM_LINE_HEIGHT,
+  medium: baseInputHeight.medium * BASEINPUT_MAX_ROWS,
+  large: baseInputHeight.large * BASEINPUT_MAX_ROWS,
 } as const;
 
 export const baseInputBorderColor = {

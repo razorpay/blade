@@ -6,7 +6,7 @@ import {
   getAnimatedBaseInputWrapperMaxHeight,
   getInputBackgroundAndBorderStyles,
 } from './baseInputStyles';
-import { baseInputWrapperMaxHeight, baseInputWrapperMinHeight } from './baseInputTokens';
+import { baseInputHeight, baseInputWrapperMaxHeight } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { motion } from '~tokens/global';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
@@ -89,7 +89,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   // Define the animation keyframes
   const expandAnimation = keyframes`
 from {
-  max-height: ${makeSize(baseInputWrapperMinHeight[rest.size])};
+  max-height: ${makeSize(baseInputHeight[rest.size])};
 }
 to {
   max-height: ${makeSize(baseInputWrapperMaxHeight[rest.size])};
@@ -101,7 +101,7 @@ from {
   max-height: ${makeSize(baseInputWrapperMaxHeight[rest.size])};
 }
 to {
-  max-height: ${makeSize(baseInputWrapperMinHeight[rest.size])};
+  max-height: ${makeSize(baseInputHeight[rest.size])};
 }
 `;
 
