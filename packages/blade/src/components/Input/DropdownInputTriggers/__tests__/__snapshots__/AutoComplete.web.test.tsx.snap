@@ -2005,11 +2005,30 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 .c33.c33.c33.c33.c33 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c34.c34.c34.c34.c34 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c35.c35.c35.c35.c35 {
+.c36.c36.c36.c36.c36 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2028,7 +2047,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   padding: 16px;
 }
 
-.c38.c38.c38.c38.c38 {
+.c39.c39.c39.c39.c39 {
   padding: 16px;
 }
 
@@ -2097,7 +2116,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   margin-top: 1px;
 }
 
-.c36.c36.c36.c36.c36 {
+.c37.c37.c37.c37.c37 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
@@ -2115,7 +2134,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   margin-top: 16px;
 }
 
-.c37.c37.c37.c37.c37 {
+.c38.c38.c38.c38.c38 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -2144,7 +2163,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   display: none;
 }
 
-.c34.c34.c34.c34.c34 {
+.c35.c35.c35.c35.c35 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -2401,37 +2420,37 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 }
 
 @media screen and (min-width:320px) {
-  .c33.c33.c33.c33.c33 {
+  .c34.c34.c34.c34.c34 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c33.c33.c33.c33.c33 {
+  .c34.c34.c34.c34.c34 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c33.c33.c33.c33.c33 {
+  .c34.c34.c34.c34.c34 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c33.c33.c33.c33.c33 {
+  .c34.c34.c34.c34.c34 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c33.c33.c33.c33.c33 {
+  .c34.c34.c34.c34.c34 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c38.c38.c38.c38.c38 {
+  .c39.c39.c39.c39.c39 {
     padding: 20px;
   }
 }
@@ -2641,16 +2660,25 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                     </div>
                   </div>
                 </div>
+                <div
+                  class="c33"
+                  data-blade-component="base-box"
+                >
+                  <div
+                    class=""
+                    data-blade-component="box"
+                  />
+                </div>
               </div>
               <div
-                class="c33 c34"
+                class="c34 c35"
                 data-blade-component="divider"
                 role="separator"
               />
             </div>
           </div>
           <div
-            class="c35"
+            class="c36"
             data-blade-component="box"
           >
             <svg
@@ -2671,13 +2699,13 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
               />
             </svg>
             <p
-              class="c36"
+              class="c37"
               data-blade-component="text"
             >
               No Search Result Found
             </p>
             <p
-              class="c37"
+              class="c38"
               data-blade-component="text"
             >
               Try searching for a different value
@@ -2689,12 +2717,12 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
             role="group"
           >
             <div
-              class="c33 c34"
+              class="c34 c35"
               data-blade-component="divider"
               role="separator"
             />
             <div
-              class="c38"
+              class="c39"
               data-blade-component="dropdown-footer"
             />
           </div>
