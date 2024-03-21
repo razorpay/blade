@@ -8,7 +8,6 @@ import {
   ActionListItemText,
 } from '~components/ActionList';
 import { BottomSheet, BottomSheetBody, BottomSheetHeader } from '~components/BottomSheet';
-import { Box } from '~components/Box';
 import type { DropdownOverlayProps } from '~components/Dropdown';
 import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
@@ -75,19 +74,18 @@ const CountrySelector = ({
         size={size === 'medium' ? 'xsmall' : 'medium'}
         variant="tertiary"
         accessibilityLabel={countryNameFormatter.of(selectedCountry)}
-        icon={() => (
-          <Box display="flex" flexDirection="row" gap="spacing.2">
-            <img
-              loading="lazy"
-              role="presentation"
-              width={flagSize[size]}
-              src={getFlagOfCountry(selectedCountry)['4X3']}
-              alt=""
-            />
-            {isDropdownOpen ? <ChevronUpIcon /> : <ChevronDownIcon />}
-          </Box>
-        )}
-      />
+        icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
+        iconPosition="right"
+      >
+        {/* @ts-expect-error */}
+        <img
+          loading="lazy"
+          role="presentation"
+          width={flagSize[size]}
+          src={getFlagOfCountry(selectedCountry)['4X3']}
+          alt=""
+        />
+      </DropdownButton>
       {isMobile ? (
         <BottomSheet>
           <BottomSheetHeader title="Sort By" />
