@@ -11,6 +11,7 @@ import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
+import { Text } from '~components/Typography';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -85,12 +86,32 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    onBlur: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onFocus: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     onOTPFilled: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
     },
     label: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    size: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    testID: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -181,7 +202,12 @@ export default {
 } as Meta<OTPInputProps>;
 
 const OTPInputTemplate: StoryFn<typeof OTPInputComponent> = ({ ...args }) => {
-  return <OTPInputComponent {...args} />;
+  const maxWidth = args.otpLength === 4 ? '376px' : '568px';
+  return (
+    <Box maxWidth={maxWidth}>
+      <OTPInputComponent {...args} />
+    </Box>
+  );
 };
 
 export const OTPInput = OTPInputTemplate.bind({});
@@ -230,6 +256,27 @@ OTPInputSuccess.args = {
   successText: 'Validated',
 };
 
+const OTPInputSizesTemplate: StoryFn<typeof OTPInputComponent> = ({ ...args }) => {
+  const maxWidth = args.otpLength === 4 ? '376px' : '568px';
+
+  return (
+    <Box display="flex" flexDirection="column" maxWidth={maxWidth}>
+      <Text size="large" marginBottom="spacing.2">
+        Medium Size:
+      </Text>
+      <OTPInputComponent {...args} size="medium" />
+      <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
+        Large Size:
+      </Text>
+      <OTPInputComponent {...args} size="large" />
+    </Box>
+  );
+};
+export const OTPInputSizes = OTPInputSizesTemplate.bind({});
+OTPInputSizes.args = {
+  helpText: 'Help Text',
+};
+
 const OTPInputUncontrolledTemplate: StoryFn<typeof OTPInputComponent> = () => {
   return (
     <OTPInput
@@ -252,41 +299,53 @@ export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
   const inputRef = React.useRef<HTMLInputElement[]>([]);
 
   return (
-    <Box gap="spacing.3" display="flex" alignItems="end">
-      <OTPInputComponent
-        ref={inputRef}
-        label="Enter OTP"
-        name="otp"
-        otpLength={4}
-        onChange={({ name, value }): void => console.log({ name, value })}
-      />
-      <Dropdown selectionType="single">
-        <SelectInput
-          label="Item to focus"
-          placeholder="Select Item To Focus"
-          name="action"
-          value={`${focusOn}`}
-          onChange={({ values }) => {
-            setFocusOn(Number(values[0]));
-          }}
-        />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="0" value="0" />
-            <ActionListItem title="1" value="1" />
-            <ActionListItem title="2" value="2" />
-            <ActionListItem title="3" value="3" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-      <Button
-        onClick={() => {
-          console.log(inputRef);
-          inputRef?.current[focusOn].focus();
-        }}
+    <Box gap="spacing.3" display="flex" flexDirection="column">
+      <Box
+        maxWidth="200px"
+        display="flex"
+        flexDirection="row"
+        alignItems="flex-end"
+        gap="spacing.3"
       >
-        Focus
-      </Button>
+        <Dropdown selectionType="single">
+          <SelectInput
+            label="Item to focus"
+            placeholder="Select Item To Focus"
+            name="action"
+            value={`${focusOn}`}
+            onChange={({ values }) => {
+              setFocusOn(Number(values[0]));
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="0" value="0" />
+              <ActionListItem title="1" value="1" />
+              <ActionListItem title="2" value="2" />
+              <ActionListItem title="3" value="3" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+        <Box>
+          <Button
+            onClick={() => {
+              console.log(inputRef);
+              inputRef?.current[focusOn].focus();
+            }}
+          >
+            Focus
+          </Button>
+        </Box>
+      </Box>
+      <Box maxWidth="376px">
+        <OTPInputComponent
+          ref={inputRef}
+          label="Enter OTP"
+          name="otp"
+          otpLength={4}
+          onChange={({ name, value }): void => console.log({ name, value })}
+        />
+      </Box>
     </Box>
   );
 };

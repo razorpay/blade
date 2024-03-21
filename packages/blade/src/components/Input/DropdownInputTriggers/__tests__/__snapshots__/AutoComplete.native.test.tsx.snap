@@ -419,6 +419,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                           textAlign="left"
                           textContentType="none"
                           value=""
+                          valueComponentType="text"
                         />
                       </View>
                     </View>

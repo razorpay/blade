@@ -27,6 +27,7 @@ const getWebInputStyles = (
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
       size: props.$size,
+      valueComponentType: props.valueComponentType,
     }),
     outline: 'none',
     border: 'none',
@@ -102,6 +103,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     shouldIgnoreBlurAnimation,
     autoCapitalize,
     $size,
+    valueComponentType,
     ...props
   },
   ref,
@@ -145,6 +147,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         handleOnClick?.({ name, value: event });
       }}
       $size={$size}
+      valueComponentType={valueComponentType}
       {...commonProps}
       {...props}
       {...accessibilityProps}
@@ -188,6 +191,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       }}
       autoCapitalize={autoCapitalize}
       $size={$size}
+      valueComponentType={valueComponentType}
       {...commonProps}
       {...props}
       {...accessibilityProps}

@@ -15,7 +15,12 @@ import type { BladeElementRef } from '~utils/types';
 const StyledBaseInputWrapper = styled(BaseBox)<
   Pick<
     BaseInputWrapperProps,
-    'currentInteraction' | 'isDisabled' | 'validationState' | 'isTextArea' | 'isDropdownTrigger'
+    | 'currentInteraction'
+    | 'isDisabled'
+    | 'validationState'
+    | 'isTextArea'
+    | 'isDropdownTrigger'
+    | 'maxTagRows'
   >
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({

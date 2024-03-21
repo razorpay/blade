@@ -279,6 +279,7 @@ exports[`<BaseInput /> should render 1`] = `
                 },
               ]
             }
+            valueComponentType="text"
           />
         </View>
       </View>
@@ -693,6 +694,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
               ]
             }
             trailingIcon={[Function]}
+            valueComponentType="text"
           />
           <View
             alignItems="center"
@@ -1192,6 +1194,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
             }
             trailingIcon={[Function]}
             validationState="success"
+            valueComponentType="text"
           />
           <View
             alignItems="center"
@@ -1716,6 +1719,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
                 },
               ]
             }
+            valueComponentType="text"
           />
           <View
             alignItems="center"
