@@ -51,7 +51,6 @@ const StyledBaseInputWrapper = styled(BaseBox)<
     | 'isTextArea'
     | 'isDropdownTrigger'
     | 'maxTagRows'
-    | 'showAllTags'
   >
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({
