@@ -299,7 +299,44 @@ export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
   const inputRef = React.useRef<HTMLInputElement[]>([]);
 
   return (
-    <Box gap="spacing.3" display="flex" alignItems="end">
+    <Box gap="spacing.3" display="flex" flexDirection="column">
+      <Box
+        maxWidth="200px"
+        display="flex"
+        flexDirection="row"
+        alignItems="flex-end"
+        gap="spacing.3"
+      >
+        <Dropdown selectionType="single">
+          <SelectInput
+            label="Item to focus"
+            placeholder="Select Item To Focus"
+            name="action"
+            value={`${focusOn}`}
+            onChange={({ values }) => {
+              setFocusOn(Number(values[0]));
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="0" value="0" />
+              <ActionListItem title="1" value="1" />
+              <ActionListItem title="2" value="2" />
+              <ActionListItem title="3" value="3" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+        <Box>
+          <Button
+            onClick={() => {
+              console.log(inputRef);
+              inputRef?.current[focusOn].focus();
+            }}
+          >
+            Focus
+          </Button>
+        </Box>
+      </Box>
       <Box maxWidth="376px">
         <OTPInputComponent
           ref={inputRef}
@@ -309,33 +346,6 @@ export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
           onChange={({ name, value }): void => console.log({ name, value })}
         />
       </Box>
-      <Dropdown selectionType="single">
-        <SelectInput
-          label="Item to focus"
-          placeholder="Select Item To Focus"
-          name="action"
-          value={`${focusOn}`}
-          onChange={({ values }) => {
-            setFocusOn(Number(values[0]));
-          }}
-        />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="0" value="0" />
-            <ActionListItem title="1" value="1" />
-            <ActionListItem title="2" value="2" />
-            <ActionListItem title="3" value="3" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>
-      <Button
-        onClick={() => {
-          console.log(inputRef);
-          inputRef?.current[focusOn].focus();
-        }}
-      >
-        Focus
-      </Button>
     </Box>
   );
 };
