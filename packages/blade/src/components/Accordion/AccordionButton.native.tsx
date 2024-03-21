@@ -6,19 +6,25 @@ import { StyledAccordionButton } from './StyledAccordionButton.native';
 import type { AccordionButtonProps } from './types';
 import { useAccordion } from './AccordionContext';
 import { getBackgroundColor, getTransitionDuration, getTransitionEasing } from './commonStyles';
+import { AccordionItemHeader } from './AccordionItemHeader';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { castNativeType } from '~utils';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
-import { CollapsibleChevronIcon } from '~components/Collapsible/CollapsibleChevronIcon';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
-import type { IconProps } from '~components/Icons';
 import { makeAccessible } from '~utils/makeAccessible';
 import { throwBladeError } from '~utils/logger';
 
-const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps): ReactElement => {
+const _AccordionButton = ({
+  index,
+  icon: Icon,
+  title,
+  isDeprecatedAPI,
+  isDisabled,
+  header,
+}: AccordionButtonProps): ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
   const { showNumberPrefix, expandedIndex } = useAccordion();
   const { theme } = useTheme();
@@ -67,18 +73,15 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
     </Text>
   ) : null;
 
-  const a11yLabel = _showNumberPrefix ? `${index + 1}. ${children}` : children;
+  const a11yLabel = _showNumberPrefix ? `${index + 1}. ${title}` : title;
 
   const renderChildren: PressableProps['children'] = ({ pressed }) => {
     isPressed.value = pressed;
 
-    const iconColor: IconProps['color'] =
-      pressed || isExpanded ? 'interactive.icon.gray.subtle' : 'interactive.icon.gray.muted';
-
     const _icon = Icon && (
       <Icon
         size="medium"
-        color="surface.icon.gray.muted"
+        color="surface.icon.gray.normal"
         marginRight="spacing.3"
         marginY="spacing.2"
       />
@@ -101,27 +104,7 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
         justifyContent="space-between"
         alignItems="center"
       >
-        <BaseBox
-          display="flex"
-          flexDirection="row"
-          alignItems="flex-start"
-          /**
-           * The `marginRight` is slightly larger here than web and the design spec (`spacing.4`),
-           * because otherwise lengthy text sometimes comes too close to the rotating chevron icon
-           * which doesn't look perfect
-           */
-          marginRight="spacing.5"
-          flexShrink={1}
-        >
-          {_index}
-          {_icon}
-          <Text size="large" weight="semibold">
-            {children}
-          </Text>
-        </BaseBox>
-        <BaseBox>
-          <CollapsibleChevronIcon color={iconColor} size="large" />
-        </BaseBox>
+        {isDeprecatedAPI ? <AccordionItemHeader title={title} leading={_icon ?? _index} /> : header}
       </BaseBox>
     );
   };
@@ -131,6 +114,7 @@ const _AccordionButton = ({ index, icon: Icon, children }: AccordionButtonProps)
       isExpanded={isExpanded}
       onPress={toggleCollapse}
       style={animatedStyles}
+      disabled={isDisabled}
       {...makeAccessible({
         role: 'button',
         expanded: isItemExpanded,
