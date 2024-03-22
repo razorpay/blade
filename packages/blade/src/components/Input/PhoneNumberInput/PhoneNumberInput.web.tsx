@@ -204,7 +204,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
         autoCompleteSuggestionType,
         autoCapitalize,
       })}
-      type="number"
+      type="telephone"
       {...styledProps}
     />
   );
