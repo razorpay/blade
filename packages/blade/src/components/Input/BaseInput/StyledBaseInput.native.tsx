@@ -134,6 +134,7 @@ const getRNInputStyles = (
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
       size: props.$size,
+      valueComponentType: props.valueComponentType,
     }),
     lineHeight: RNPlatform.select({
       android: makeSize(props.theme.typography.lineHeights[100]),
@@ -167,6 +168,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
     isDropdownTrigger,
     hasTags,
     $size,
+    valueComponentType,
   }) =>
     getRNInputStyles({
       id,
@@ -185,6 +187,7 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       hasTags,
       isDropdownTrigger,
       $size,
+      valueComponentType,
     }),
 );
 const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
@@ -205,8 +208,9 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     isDropdownTrigger,
     hasTags,
     $size,
-  }) =>
-    getRNInputStyles({
+    valueComponentType,
+  }) => ({
+    ...getRNInputStyles({
       id,
       isFocused,
       theme,
@@ -223,7 +227,9 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       isDropdownTrigger,
       hasTags,
       $size,
+      valueComponentType,
     }),
+  }),
 );
 
 const _StyledBaseInput: React.ForwardRefRenderFunction<

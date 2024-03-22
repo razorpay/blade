@@ -7,13 +7,17 @@ import Animated, {
 } from 'react-native-reanimated';
 import styled from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
-import { getBaseInputState, getInputBackgroundAndBorderStyles } from './baseInputStyles';
 import {
-  BASEINPUT_WRAPPER_MAX_HEIGHT,
-  BASEINPUT_WRAPPER_MIN_HEIGHT,
+  getAnimatedBaseInputWrapperMaxHeight,
+  getBaseInputState,
+  getInputBackgroundAndBorderStyles,
+} from './baseInputStyles';
+import {
   baseInputBackgroundColor,
   baseInputBorderBackgroundMotion,
   baseInputBorderColor,
+  baseInputHeight,
+  baseInputWrapperMaxHeight,
 } from './baseInputTokens';
 import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
@@ -29,23 +33,8 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
   }),
+  backgroundColor: 'yellow',
 }));
-
-const getMaxHeight = ({
-  maxTagRows,
-  showAllTags,
-}: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags'>): number => {
-  if (maxTagRows === 'single') {
-    return BASEINPUT_WRAPPER_MIN_HEIGHT;
-  }
-
-  if (maxTagRows === 'multiple') {
-    return BASEINPUT_WRAPPER_MAX_HEIGHT;
-  }
-
-  // In expandable, max-height depends on the state
-  return showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT;
-};
 
 const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -58,7 +47,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   ref,
 ): React.ReactElement => {
   const { theme } = useTheme();
-  const sharedHeight = useSharedValue(BASEINPUT_WRAPPER_MIN_HEIGHT); // Initial max-width value
+  const sharedHeight = useSharedValue<number>(baseInputHeight[rest.size]); // Initial max-width value
 
   React.useEffect(() => {
     if (!isDropdownTrigger) {
@@ -66,7 +55,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     }
 
     sharedHeight.value = withTiming(
-      showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT,
+      showAllTags ? baseInputWrapperMaxHeight[rest.size] : baseInputHeight[rest.size],
       {
         duration: theme.motion.duration.xquick,
         easing: castNativeType(theme.motion.easing.exit.effective),
@@ -88,9 +77,10 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   const animatedStyleObject = maxTagRows === 'expandable' ? animatedStyle : {};
   const maxHeightStyleObject = {
-    maxHeight: getMaxHeight({
-      showAllTags,
+    maxHeight: getAnimatedBaseInputWrapperMaxHeight({
       maxTagRows,
+      showAllTags,
+      size: rest.size,
     }),
   };
 

@@ -39,6 +39,7 @@ export type BaseInputWrapperProps = Pick<
   isTextArea?: boolean;
   setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;
+  size: NonNullable<BaseInputProps['size']>;
 };
 
 export type StyledBaseInputProps = {
@@ -57,6 +58,7 @@ export type StyledBaseInputProps = {
   isTextArea?: boolean;
   hasTags?: boolean;
   $size: NonNullable<BaseInputProps['size']>;
+  valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
 } & Pick<
   BaseInputProps,
   | 'as'

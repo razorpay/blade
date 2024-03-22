@@ -7,14 +7,17 @@ import {
   baseInputBorderWidth,
   baseInputHeight,
   baseInputPaddingTokens,
+  baseInputWrapperMaxHeight,
 } from './baseInputTokens';
 import { getInputVisualsToBeRendered } from './BaseInputVisuals';
+import type { BaseInputWrapperProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';
 import { makeBorderSize } from '~utils/makeBorderSize';
 import { getPlatformType } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
+import getHeadingStyles from '~components/Typography/Heading/getHeadingStyles';
 
 type GetInputStyles = Pick<
   BaseInputProps,
@@ -28,6 +31,7 @@ type GetInputStyles = Pick<
   | 'trailingIcon'
   | 'textAlign'
   | 'isDropdownTrigger'
+  | 'valueComponentType'
 > & {
   isHovered?: boolean;
   isFocused?: boolean;
@@ -166,6 +170,7 @@ export const getBaseInputStyles = ({
   hasTags,
   isDropdownTrigger,
   size,
+  valueComponentType,
 }: GetInputStyles): CSSObject => {
   const {
     hasLeadingIcon,
@@ -187,13 +192,21 @@ export const getBaseInputStyles = ({
   const isReactNative = getPlatformType() === 'react-native';
 
   return {
-    ...getTextStyles({
-      size,
-      variant: 'body',
-      weight: 'regular',
-      color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
-      theme,
-    }),
+    ...(valueComponentType === 'heading'
+      ? getHeadingStyles({
+          size,
+          weight: 'regular',
+          color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
+          theme,
+        })
+      : getTextStyles({
+          size,
+          variant: 'body',
+          weight: 'regular',
+          color: isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.subtle',
+          theme,
+        })),
+
     // take the full available width of parent container for input field
     flex: 1,
     backgroundColor: 'transparent',
@@ -218,4 +231,21 @@ export const getBaseInputStyles = ({
     minHeight: isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
+};
+
+export const getAnimatedBaseInputWrapperMaxHeight = ({
+  maxTagRows,
+  showAllTags,
+  size,
+}: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags' | 'size'>): number => {
+  if (maxTagRows === 'single') {
+    return baseInputHeight[size];
+  }
+
+  if (maxTagRows === 'multiple') {
+    return baseInputWrapperMaxHeight[size];
+  }
+
+  // In expandable, max-height depends on the state
+  return showAllTags ? baseInputWrapperMaxHeight[size] : baseInputHeight[size];
 };

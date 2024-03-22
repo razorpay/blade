@@ -769,7 +769,7 @@ exports[`<TextArea /> should render large size 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="textarea-13-input-14"
+          for="textarea-19-input-20"
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
@@ -814,7 +814,7 @@ exports[`<TextArea /> should render large size 1`] = `
             aria-required="false"
             class="c9"
             data-blade-component="styled-base-input"
-            id="textarea-13-input-14"
+            id="textarea-19-input-20"
             maxlength="100"
             rows="2"
             type="text"
@@ -1190,7 +1190,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
       >
         <label
           data-blade-component="form-label"
-          for="textarea-121-input-122"
+          for="textarea-139-input-140"
           style="width: auto; flex-shrink: 0; margin-right: 16px;"
         >
           <div
@@ -1235,7 +1235,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
             aria-required="false"
             class="c9"
             data-blade-component="styled-base-input"
-            id="textarea-121-input-122"
+            id="textarea-139-input-140"
             rows="3"
             type="text"
           />
