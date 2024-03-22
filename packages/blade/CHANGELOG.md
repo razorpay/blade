@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.8.2
+
+### Patch Changes
+
+- 5be1dedb: fix: update ButtonGroup focus ring styles
+
 ## 11.8.1
 
 ### Patch Changes
