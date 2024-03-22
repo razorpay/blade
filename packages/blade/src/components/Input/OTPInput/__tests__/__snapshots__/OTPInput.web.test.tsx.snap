@@ -977,7 +977,7 @@ exports[`<OTPInput /> should render large size 1`] = `
     >
       <label
         data-blade-component="form-label"
-        for="otp-121-input-122"
+        for="otp-157-input-158"
         style="width: auto; flex-shrink: 0; margin-right: 16px;"
       >
         <div
@@ -1012,7 +1012,7 @@ exports[`<OTPInput /> should render large size 1`] = `
       >
         <input
           hidden=""
-          id="otp-121-input-122"
+          id="otp-157-input-158"
           readonly=""
           value="1234"
         />
@@ -1045,7 +1045,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autocomplete="one-time-code"
                     class="c11"
                     data-blade-component="styled-base-input"
-                    id="otp-121-input-122-0-127-input-128"
+                    id="otp-157-input-158-0-163-input-164"
                     inputmode="decimal"
                     maxlength="1"
                     placeholder=""
@@ -1087,7 +1087,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autocomplete="one-time-code"
                     class="c11"
                     data-blade-component="styled-base-input"
-                    id="otp-121-input-122-1-133-input-134"
+                    id="otp-157-input-158-1-169-input-170"
                     inputmode="decimal"
                     maxlength="1"
                     placeholder=""
@@ -1129,7 +1129,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autocomplete="one-time-code"
                     class="c11"
                     data-blade-component="styled-base-input"
-                    id="otp-121-input-122-2-139-input-140"
+                    id="otp-157-input-158-2-175-input-176"
                     inputmode="decimal"
                     maxlength="1"
                     placeholder=""
@@ -1171,7 +1171,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autocomplete="one-time-code"
                     class="c11"
                     data-blade-component="styled-base-input"
-                    id="otp-121-input-122-3-145-input-146"
+                    id="otp-157-input-158-3-181-input-182"
                     inputmode="decimal"
                     maxlength="1"
                     placeholder=""
@@ -1213,7 +1213,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autocomplete="one-time-code"
                     class="c11"
                     data-blade-component="styled-base-input"
-                    id="otp-121-input-122-4-151-input-152"
+                    id="otp-157-input-158-4-187-input-188"
                     inputmode="decimal"
                     placeholder=""
                     required=""
@@ -1254,7 +1254,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                     autocomplete="one-time-code"
                     class="c11"
                     data-blade-component="styled-base-input"
-                    id="otp-121-input-122-5-157-input-158"
+                    id="otp-157-input-158-5-193-input-194"
                     inputmode="decimal"
                     placeholder=""
                     required=""

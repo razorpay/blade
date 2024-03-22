@@ -378,7 +378,7 @@ const BaseInputControlledWithTagsTemplate: StoryFn<typeof BaseInputComponent> = 
     return currentTags.map((currentTag, tagIndex) => {
       return (
         <Tag
-          _isVirtuallyFocussed={tagIndex === activeTagIndex}
+          _isVirtuallyFocused={tagIndex === activeTagIndex}
           _isTagInsideInput={true}
           key={tagIndex}
           marginRight="spacing.3"

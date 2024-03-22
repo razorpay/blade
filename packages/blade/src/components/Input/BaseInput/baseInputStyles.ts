@@ -8,7 +8,9 @@ import {
   baseInputBorderWidth,
   baseInputHeight,
   baseInputPaddingTokens,
+  baseInputWrapperMaxHeight,
 } from './baseInputTokens';
+import type { BaseInputWrapperProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { makeSpace } from '~utils/makeSpace';
@@ -225,4 +227,21 @@ export const getBaseInputStyles = ({
     minHeight: isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
+};
+
+export const getAnimatedBaseInputWrapperMaxHeight = ({
+  maxTagRows,
+  showAllTags,
+  size,
+}: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags' | 'size'>): number => {
+  if (maxTagRows === 'single') {
+    return baseInputHeight[size];
+  }
+
+  if (maxTagRows === 'multiple') {
+    return baseInputWrapperMaxHeight[size];
+  }
+
+  // In expandable, max-height depends on the state
+  return showAllTags ? baseInputWrapperMaxHeight[size] : baseInputHeight[size];
 };

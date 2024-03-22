@@ -52,6 +52,11 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
+    size: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     defaultValue: {
       table: {
         category: propsCategory.BASE_PROPS,

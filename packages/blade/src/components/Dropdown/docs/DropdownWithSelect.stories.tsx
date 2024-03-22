@@ -12,6 +12,7 @@ import {
   WithRefUsageStory,
   WithValidationStateStory,
   WithValueDisplayStory,
+  WithSizesStory,
 } from './stories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -134,6 +135,14 @@ export const WithControlledMultiSelect = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {WithControlledMultiSelectStory}
+    </Sandbox>
+  );
+};
+
+export const WithSizes = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {WithSizesStory}
     </Sandbox>
   );
 };

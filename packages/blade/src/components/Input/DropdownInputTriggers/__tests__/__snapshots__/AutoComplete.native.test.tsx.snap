@@ -231,10 +231,11 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 currentInteraction="default"
                 isDropdownTrigger={true}
                 isTextArea={false}
+                size="medium"
                 style={
                   [
                     {
-                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "backgroundColor": "yellow",
                       "borderColor": "hsla(211, 27%, 76%, 1)",
                       "borderRadius": 4,
                       "borderStyle": "solid",
@@ -246,7 +247,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                       "width": "100%",
                     },
                     {
-                      "maxHeight": 37,
+                      "maxHeight": 36,
                     },
                     {
                       "backgroundColor": "hsla(0, 0%, 100%, 1)",
@@ -288,6 +289,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   <RCTScrollView
                     contentContainerStyle={
                       {
+                        "alignItems": "center",
                         "flexDirection": "row",
                         "flexGrow": 1,
                         "flexWrap": "nowrap",

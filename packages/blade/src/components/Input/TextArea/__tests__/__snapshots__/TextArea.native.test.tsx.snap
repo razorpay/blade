@@ -200,11 +200,12 @@ exports[`<TextArea /> should render 1`] = `
         <View
           currentInteraction="default"
           isTextArea={true}
+          size="medium"
           style={
             [
               {
                 "alignItems": "flex-start",
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "backgroundColor": "yellow",
                 "borderColor": "hsla(211, 27%, 76%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",

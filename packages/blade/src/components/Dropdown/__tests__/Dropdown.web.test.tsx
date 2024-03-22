@@ -53,6 +53,28 @@ describe('<Dropdown />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render dropdown with large size select input', () => {
+    const { container } = renderWithTheme(
+      <Dropdown>
+        <SelectInput label="Fruits" size="large" />
+        <DropdownOverlay zIndex={1002}>
+          <DropdownHeader title="Recent Searches" />
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+          <DropdownFooter>
+            <Box>
+              <Button isFullWidth>Apply</Button>
+            </Box>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should not open dropdown when input is disabled', async () => {
     const user = userEvent.setup();
 
