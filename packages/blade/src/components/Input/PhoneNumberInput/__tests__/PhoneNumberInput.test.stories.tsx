@@ -8,13 +8,14 @@ import { PhoneNumberInput } from '../PhoneNumberInput';
 
 const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
 
+const label = 'Phone Number';
 const onChangeFn = jest.fn();
 export const SelectACountry: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
-  return <PhoneNumberInput />;
+  return <PhoneNumberInput label={label} />;
 };
 
 SelectACountry.play = async () => {
-  const { queryByRole, getByRole } = within(document.body);
+  const { getByLabelText, queryByRole, getByRole } = within(document.body);
 
   await sleep(100);
   // Ensure the country selector is closed
@@ -39,13 +40,14 @@ SelectACountry.play = async () => {
   await expect(getByRole('button', { name: /select country/i })).toHaveAccessibleName(/Albania/i);
 
   await sleep(300);
-  // Ensure that input is in focus
-  await expect(getByRole('spinbutton')).toHaveFocus();
+  // Ensure that input is in focus, input is tel type;
+  await expect(getByLabelText(label)).toHaveFocus();
 };
 
 export const UncontrolledState: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
   return (
     <PhoneNumberInput
+      label={label}
       defaultValue="9876543210"
       onChange={(e) => {
         onChangeFn(e);
@@ -56,21 +58,23 @@ export const UncontrolledState: StoryFn<typeof PhoneNumberInput> = (): React.Rea
 
 UncontrolledState.play = async () => {
   onChangeFn.mockClear();
-  const { getByRole } = within(document.body);
+  const { getByLabelText } = within(document.body);
 
   await sleep(100);
+  const input = getByLabelText(label);
+
   // Focus on input
-  await userEvent.click(getByRole('spinbutton'));
+  await userEvent.click(input);
 
   // Ensure default value is set
-  await expect(getByRole('spinbutton')).toHaveValue(9876543210);
+  await expect(input).toHaveValue('9876543210');
 
   // Type inside input
-  await userEvent.clear(getByRole('spinbutton'));
-  await userEvent.type(getByRole('spinbutton'), '1234567890');
+  await userEvent.clear(input);
+  await userEvent.type(input, '1234567890');
 
   // Ensure the value of the input updates
-  await expect(getByRole('spinbutton')).toHaveValue(1234567890);
+  await expect(input).toHaveValue('1234567890');
 
   await expect(onChangeFn).toHaveBeenLastCalledWith(
     expect.objectContaining({
@@ -87,6 +91,7 @@ export const ControlledState: StoryFn<typeof PhoneNumberInput> = (): React.React
   const [value, setValue] = React.useState('9876543210');
   return (
     <PhoneNumberInput
+      label={label}
       value={value}
       onChange={(e) => {
         onChangeFn(e);
@@ -98,21 +103,23 @@ export const ControlledState: StoryFn<typeof PhoneNumberInput> = (): React.React
 
 ControlledState.play = async () => {
   onChangeFn.mockClear();
-  const { getByRole } = within(document.body);
+  const { getByLabelText } = within(document.body);
 
   await sleep(100);
+  const input = getByLabelText(label);
+
   // Focus on input
-  await userEvent.click(getByRole('spinbutton'));
+  await userEvent.click(input);
 
   // Ensure default value is set
-  await expect(getByRole('spinbutton')).toHaveValue(9876543210);
+  await expect(input).toHaveValue('9876543210');
 
   // Type inside input
-  await userEvent.clear(getByRole('spinbutton'));
-  await userEvent.type(getByRole('spinbutton'), '1234567890');
+  await userEvent.clear(input);
+  await userEvent.type(input, '1234567890');
 
   // Ensure the value of the input updates
-  await expect(getByRole('spinbutton')).toHaveValue(1234567890);
+  await expect(input).toHaveValue('1234567890');
 
   await expect(onChangeFn).toHaveBeenLastCalledWith(
     expect.objectContaining({
@@ -126,36 +133,38 @@ ControlledState.play = async () => {
 };
 
 export const Disabled: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
-  return <PhoneNumberInput isDisabled />;
+  return <PhoneNumberInput isDisabled label={label} />;
 };
 
 Disabled.play = async () => {
-  const { getByRole } = within(document.body);
+  const { getByLabelText, getByRole } = within(document.body);
 
   await sleep(100);
+  const input = getByLabelText(label);
+
   // Ensure the input is disabled
-  await expect(getByRole('spinbutton')).toBeDisabled();
+  await expect(input).toBeDisabled();
   // Ensure dropdown is disabled
   await expect(getByRole('button', { name: /select country/i })).toBeDisabled();
 
   // pressing tab should skip focus
   await userEvent.tab();
-  await expect(getByRole('spinbutton')).not.toHaveFocus();
+  await expect(input).not.toHaveFocus();
   await userEvent.tab();
   await expect(getByRole('button', { name: /select country/i })).not.toHaveFocus();
 };
 
 export const AutoFocus: StoryFn<typeof PhoneNumberInput> = (): React.ReactElement => {
   // eslint-disable-next-line jsx-a11y/no-autofocus
-  return <PhoneNumberInput autoFocus />;
+  return <PhoneNumberInput autoFocus label={label} />;
 };
 
 AutoFocus.play = async () => {
-  const { getByRole } = within(document.body);
+  const { getByLabelText } = within(document.body);
 
   await sleep(100);
   // Ensure the input is focused
-  await expect(getByRole('spinbutton')).toHaveFocus();
+  await expect(getByLabelText(label)).toHaveFocus();
 };
 
 export default {
