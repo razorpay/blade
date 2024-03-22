@@ -34,7 +34,7 @@ const radioSizes = {
     large: {
       width: size[20],
       height: size[20],
-      dotRadius: size['3.75'],
+      dotRadius: size[4],
     },
   },
 } as const;
