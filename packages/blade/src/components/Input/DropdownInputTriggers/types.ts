@@ -27,6 +27,7 @@ type DropdownInputTriggersCommonProps = Pick<
   | 'onBlur'
   | 'placeholder'
   | 'testID'
+  | 'size'
 > & {
   icon?: IconComponent;
   /**

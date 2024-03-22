@@ -88,7 +88,7 @@ const CountrySelector = ({
       </DropdownButton>
       {isMobile ? (
         <BottomSheet>
-          <BottomSheetHeader title="Sort By" />
+          <BottomSheetHeader title="Select A Country" />
           <BottomSheetBody>{actionList}</BottomSheetBody>
         </BottomSheet>
       ) : (

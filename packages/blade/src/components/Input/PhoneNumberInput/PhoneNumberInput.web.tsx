@@ -16,6 +16,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import type { BladeElementRef } from '~utils/types';
 import { CloseIcon } from '~components/Icons';
+import { MetaConstants } from '~utils/metaAttribute';
 
 const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNumberInputProps> = (
   {
@@ -145,8 +146,8 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
         inputWrapperRef.current = node as HTMLInputElement;
       }}
       ref={mergedRef}
-      id="textinput"
-      componentName="PhoneNumberInput"
+      id="phone-number-input"
+      componentName={MetaConstants.PhoneNumberInput}
       label={label as string}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
@@ -203,12 +204,22 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
         autoCompleteSuggestionType,
         autoCapitalize,
       })}
-      type="number"
+      type="telephone"
       {...styledProps}
     />
   );
 };
 
+/**
+ * PhoneNumberInput is a component that allows users to input phone numbers.
+ * It provides a country selector dropdown to select the country code.
+ *
+ * @example
+ *
+ * ```ts
+ * <PhoneNumberInput />
+ * ```
+ */
 const PhoneNumberInput = assignWithoutSideEffects(React.forwardRef(_PhoneNumberInput), {
   displayName: 'PhoneNumberInput',
 });

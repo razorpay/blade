@@ -198,10 +198,11 @@ exports[`<TextInput /> should render 1`] = `
         <View
           currentInteraction="default"
           isTextArea={false}
+          size="medium"
           style={
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "backgroundColor": "yellow",
                 "borderColor": "hsla(211, 27%, 76%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
@@ -282,6 +283,7 @@ exports[`<TextInput /> should render 1`] = `
               ]
             }
             textContentType="none"
+            valueComponentType="text"
           />
         </View>
       </View>
@@ -514,10 +516,11 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         <View
           currentInteraction="default"
           isTextArea={false}
+          size="medium"
           style={
             [
               {
-                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "backgroundColor": "yellow",
                 "borderColor": "hsla(211, 27%, 76%, 1)",
                 "borderRadius": 4,
                 "borderStyle": "solid",
@@ -752,6 +755,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
             }
             suffix=".com"
             textContentType="none"
+            valueComponentType="text"
           />
           <View
             alignItems="center"

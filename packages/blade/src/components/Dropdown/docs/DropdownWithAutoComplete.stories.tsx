@@ -11,6 +11,7 @@ import {
   maxRowsStates,
   controlledFilteringWithBottomSheet,
   withErrorState,
+  withSizes,
 } from './autoCompleteStories';
 
 import { Sandbox } from '~utils/storybook/Sandbox';
@@ -122,6 +123,14 @@ export const WithErrorState = (): React.ReactElement => {
   return (
     <Sandbox padding="spacing.0" editorHeight="100vh">
       {withErrorState}
+    </Sandbox>
+  );
+};
+
+export const WithSizes = (): React.ReactElement => {
+  return (
+    <Sandbox padding="spacing.0" editorHeight="100vh">
+      {withSizes}
     </Sandbox>
   );
 };
