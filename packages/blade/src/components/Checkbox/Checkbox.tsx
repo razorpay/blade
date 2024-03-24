@@ -241,13 +241,18 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               isNegative={_hasError}
             />
             {children ? (
-              <SelectorTitle size={_size} isDisabled={_isDisabled}>
-                {children}
-              </SelectorTitle>
+              <BaseBox onClick={(e) => e.stopPropagation()}>
+                <SelectorTitle size={_size} isDisabled={_isDisabled}>
+                  {children}
+                </SelectorTitle>
+              </BaseBox>
             ) : null}
           </BaseBox>
           {showSupportingText ? (
-            <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
+            <BaseBox
+              marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}
+              onClick={(e) => e.stopPropagation()}
+            >
               <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
             </BaseBox>
           ) : null}

@@ -86,6 +86,7 @@ const CheckboxIcon = ({
       isDisabled={isDisabled}
       isNegative={isNegative}
       isChecked={!!(isChecked || isIndeterminate)}
+      onClick={(e) => e.stopPropagation()}
       {...metaAttribute({ name: 'checkbox-icon-wrapper' })}
     >
       <Fade show={isIndeterminate} styles={{ position: 'absolute', display: 'flex' }}>

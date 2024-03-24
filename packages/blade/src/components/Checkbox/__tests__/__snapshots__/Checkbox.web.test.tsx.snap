@@ -253,34 +253,39 @@ exports[`<Checkbox /> should render checkbox with label 1`] = `
             />
           </div>
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
-          />
-          <p
-            class="c7"
-            data-blade-component="text"
           >
-            I accept 
-            <a
-              aria-disabled="false"
-              class="c8"
-              data-blade-component="link"
-              href="#"
-              role="link"
+            <div
+              class="c6"
+              data-blade-component="base-box"
+            />
+            <p
+              class="c7"
+              data-blade-component="text"
             >
-              <span
-                class="c9 content-container"
-                data-blade-component="base-box"
+              I accept 
+              <a
+                aria-disabled="false"
+                class="c8"
+                data-blade-component="link"
+                href="#"
+                role="link"
               >
                 <span
-                  class="c10"
-                  data-blade-component="base-text"
+                  class="c9 content-container"
+                  data-blade-component="base-box"
                 >
-                  Terms and Conditions
+                  <span
+                    class="c10"
+                    data-blade-component="base-text"
+                  >
+                    Terms and Conditions
+                  </span>
                 </span>
-              </span>
-            </a>
-          </p>
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </label>
@@ -463,15 +468,20 @@ exports[`<Checkbox /> should set disabled state with isDisabled 1`] = `
             />
           </div>
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
-          />
-          <p
-            class="c7"
-            data-blade-component="text"
           >
-            Remember password
-          </p>
+            <div
+              class="c6"
+              data-blade-component="base-box"
+            />
+            <p
+              class="c7"
+              data-blade-component="text"
+            >
+              Remember password
+            </p>
+          </div>
         </div>
       </div>
     </label>
@@ -693,15 +703,20 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
             />
           </div>
           <div
-            class="c6"
+            class=""
             data-blade-component="base-box"
-          />
-          <p
-            class="c7"
-            data-blade-component="text"
           >
-            Remember password
-          </p>
+            <div
+              class="c6"
+              data-blade-component="base-box"
+            />
+            <p
+              class="c7"
+              data-blade-component="text"
+            >
+              Remember password
+            </p>
+          </div>
         </div>
       </div>
     </label>
@@ -969,15 +984,20 @@ exports[`<Checkbox /> should set to indeterminate state of checkbox 1`] = `
             </div>
           </div>
           <div
-            class="c7"
+            class=""
             data-blade-component="base-box"
-          />
-          <p
-            class="c8"
-            data-blade-component="text"
           >
-            Remember password
-          </p>
+            <div
+              class="c7"
+              data-blade-component="base-box"
+            />
+            <p
+              class="c8"
+              data-blade-component="text"
+            >
+              Remember password
+            </p>
+          </div>
         </div>
       </div>
     </label>
