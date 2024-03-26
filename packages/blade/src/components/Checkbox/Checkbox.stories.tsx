@@ -105,6 +105,13 @@ Small.args = {
   size: 'small',
 };
 
+export const Large = CheckboxTemplate.bind({});
+Large.storyName = 'Large';
+Large.args = {
+  size: 'large',
+  helpText: 'Checkbox help text',
+};
+
 export const Indeterminate = CheckboxTemplate.bind({});
 Indeterminate.storyName = 'Indeterminate';
 Indeterminate.args = {
