@@ -72,7 +72,7 @@ exports[`<RadioGroup /> should render with help text 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -529,7 +529,7 @@ exports[`<RadioGroup /> should render with label 1`] = `
 }
 
 .c6.c6.c6.c6.c6 {
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .c8.c8.c8.c8.c8 {
