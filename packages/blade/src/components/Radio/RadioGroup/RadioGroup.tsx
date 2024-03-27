@@ -86,7 +86,7 @@ type RadioGroupProps = {
    *
    * @default "medium"
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & TestID &
   StyledPropsBlade;
 
@@ -146,6 +146,7 @@ const RadioGroup = ({
               position={labelPosition}
               id={ids.labelId}
               accessibilityText={accessibilityText && `,${accessibilityText}`}
+              size={size}
             >
               {label}
             </FormLabel>
@@ -164,6 +165,7 @@ const RadioGroup = ({
               })}
             </BaseBox>
             <FormHint
+              size={size}
               type={validationState === 'error' ? 'error' : 'help'}
               errorText={errorText}
               helpText={helpText}

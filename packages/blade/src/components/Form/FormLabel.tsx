@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  labelLeftMarginRight,
   labelMarginBottom,
   labelOptionalIndicatorTextSize,
   labelTextSize,
@@ -13,6 +14,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
 import { size as sizeToken } from '~tokens/global';
+import getIn from '~utils/lodashButBetter/get';
 
 type CommonProps = {
   as: 'span' | 'label';
@@ -25,7 +27,7 @@ type CommonProps = {
    * Sets the size of the label
    * @default medium
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 };
 
 type LabelProps = CommonProps & {
@@ -148,7 +150,9 @@ const FormLabel = ({
       style={{
         width,
         flexShrink: 0,
-        marginRight: makeSpace(theme.spacing[5]),
+        marginRight: isLabelLeftPositioned
+          ? makeSpace(getIn(theme, labelLeftMarginRight[size]))
+          : makeSpace(getIn(theme, 'spacing.0')),
       }}
       id={id}
       {...metaAttribute({ name: MetaConstants.FormLabel })}

@@ -353,7 +353,7 @@ exports[`<OTPInput /> should render 1`] = `
       <label
         data-blade-component="form-label"
         for="otp-37-input-38"
-        style="width: auto; flex-shrink: 0; margin-right: 16px;"
+        style="width: auto; flex-shrink: 0; margin-right: 0px;"
       >
         <div
           class="c1"
@@ -1000,7 +1000,7 @@ exports[`<OTPInput /> should render large size 1`] = `
       <label
         data-blade-component="form-label"
         for="otp-157-input-158"
-        style="width: auto; flex-shrink: 0; margin-right: 16px;"
+        style="width: auto; flex-shrink: 0; margin-right: 0px;"
       >
         <div
           class="c1"

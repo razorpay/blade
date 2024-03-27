@@ -217,7 +217,7 @@ exports[`<Radio /> should render radio with label 1`] = `
       <span
         data-blade-component="form-label"
         id="radio-group-3-label"
-        style="width: auto; flex-shrink: 0; margin-right: 16px;"
+        style="width: auto; flex-shrink: 0; margin-right: 0px;"
       >
         <div
           class="c1"
@@ -519,7 +519,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
       <span
         data-blade-component="form-label"
         id="radio-group-13-label"
-        style="width: auto; flex-shrink: 0; margin-right: 16px;"
+        style="width: auto; flex-shrink: 0; margin-right: 0px;"
       >
         <div
           class="c1"
