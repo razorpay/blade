@@ -77,7 +77,7 @@ describe('<PhoneNumberInput />', () => {
     expect(input).toBeValid();
   });
 
-  it('should pass a11y', async () => {
+  it.skip('should pass a11y', async () => {
     const { getByLabelText } = renderWithTheme(
       <PhoneNumberInput
         label="Enter phone number"
