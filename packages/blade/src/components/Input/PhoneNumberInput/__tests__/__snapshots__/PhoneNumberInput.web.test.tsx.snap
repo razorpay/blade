@@ -669,7 +669,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
         <label
           data-blade-component="form-label"
           for="phone-number-input-2-input-3"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -13493,7 +13493,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
         <label
           data-blade-component="form-label"
           for="phone-number-input-22-input-23"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
