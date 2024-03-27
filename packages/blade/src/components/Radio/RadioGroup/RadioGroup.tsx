@@ -128,11 +128,6 @@ const RadioGroup = ({
   const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
   const gap = radioSizes.group.gap[size][matchedDeviceType];
   const childCount = React.Children.count(children);
-  const formHintSize = {
-    small: 'medium',
-    medium: 'medium',
-    large: 'large',
-  } as const;
 
   return (
     <RadioGroupProvider value={contextValue}>
@@ -151,7 +146,7 @@ const RadioGroup = ({
               position={labelPosition}
               id={ids.labelId}
               accessibilityText={accessibilityText && `,${accessibilityText}`}
-              size={formHintSize[size]}
+              size={size}
             >
               {label}
             </FormLabel>
@@ -170,7 +165,7 @@ const RadioGroup = ({
               })}
             </BaseBox>
             <FormHint
-              size={formHintSize[size]}
+              size={size}
               type={validationState === 'error' ? 'error' : 'help'}
               errorText={errorText}
               helpText={helpText}

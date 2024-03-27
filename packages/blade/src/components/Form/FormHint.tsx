@@ -14,7 +14,7 @@ type HintTextProps = {
   children: string;
   id?: string;
   color: TextProps<{ variant: 'caption' }>['color'];
-  size: 'medium' | 'large';
+  size: 'small' | 'medium' | 'large';
 };
 
 const HintText = ({ icon: Icon, children, id, color, size }: HintTextProps): ReactElement => {
@@ -74,17 +74,17 @@ export type FormHintProps = {
    * Sets the size of the hint
    * @default medium
    */
-  size?: 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 };
 
 const Icons = {
-  error: ({ size }: { size: 'medium' | 'large' }): ReactElement => (
+  error: ({ size }: { size: 'small' | 'medium' | 'large' }): ReactElement => (
     <>
       <InfoIcon color="feedback.icon.negative.intense" size={hintIconSize[size]} />
       <BaseBox marginRight="spacing.2" />
     </>
   ),
-  success: ({ size }: { size: 'medium' | 'large' }): ReactElement => (
+  success: ({ size }: { size: 'small' | 'medium' | 'large' }): ReactElement => (
     <>
       <CheckIcon color="feedback.icon.positive.intense" size={hintIconSize[size]} />
       <BaseBox marginRight="spacing.2" />

@@ -336,7 +336,7 @@ exports[`<BaseInput /> should render 1`] = `
         <label
           data-blade-component="form-label"
           for="name-1-input-2"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -769,7 +769,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         <label
           data-blade-component="form-label"
           for="name-73-input-74"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -1301,7 +1301,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         <label
           data-blade-component="form-label"
           for="name-91-input-92"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -1896,7 +1896,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         <label
           data-blade-component="form-label"
           for="coupon-109-input-110"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"

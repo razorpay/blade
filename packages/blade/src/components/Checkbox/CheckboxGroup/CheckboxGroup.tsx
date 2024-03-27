@@ -130,12 +130,6 @@ const CheckboxGroup = ({
   const gap = checkboxSizes.group.gap[size][matchedDeviceType];
   const childCount = React.Children.count(children);
 
-  const formHintSize = {
-    small: 'medium',
-    medium: 'medium',
-    large: 'large',
-  } as const;
-
   return (
     <CheckboxGroupProvider value={contextValue}>
       <BaseBox {...getStyledProps(styledProps)}>
@@ -152,7 +146,7 @@ const CheckboxGroup = ({
               position={labelPosition}
               id={ids.labelId}
               accessibilityText={accessibilityText}
-              size={formHintSize[size]}
+              size={size}
             >
               {label}
             </FormLabel>
@@ -171,7 +165,7 @@ const CheckboxGroup = ({
               })}
             </BaseBox>
             <FormHint
-              size={formHintSize[size]}
+              size={size}
               errorText={errorText}
               helpText={helpText}
               type={validationState === 'error' ? 'error' : 'help'}

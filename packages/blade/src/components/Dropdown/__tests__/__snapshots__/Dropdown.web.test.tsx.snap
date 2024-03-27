@@ -919,7 +919,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
                 data-blade-component="form-label"
                 for="dropdown-7-trigger-1-input-2"
                 id="dropdown-7-label"
-                style="width: auto; flex-shrink: 0; margin-right: 16px;"
+                style="width: auto; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
                   class="c5"
@@ -2064,7 +2064,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
                 data-blade-component="form-label"
                 for="dropdown-55-trigger-56-input-57"
                 id="dropdown-55-label"
-                style="width: auto; flex-shrink: 0; margin-right: 16px;"
+                style="width: auto; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
                   class="c5"
