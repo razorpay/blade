@@ -73,7 +73,7 @@ const CountrySelector = ({
         isDisabled={isDisabled}
         size={size === 'medium' ? 'xsmall' : 'medium'}
         variant="tertiary"
-        accessibilityLabel={countryNameFormatter.of(selectedCountry)}
+        accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
         icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
         iconPosition="right"
       >

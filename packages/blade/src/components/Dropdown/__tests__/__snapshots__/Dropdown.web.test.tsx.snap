@@ -96,7 +96,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  padding-right: 12px;
+  margin-right: 12px;
 }
 
 .c19.c19.c19.c19.c19 {
@@ -591,6 +591,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   resize: none;
   outline: none;
   border: none;
+  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -668,6 +669,16 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 
 .c15.c15.c15.c15.c15:focus {
   outline: none;
+}
+
+.c15.c15.c15.c15.c15::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.c15.c15.c15.c15.c15::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -1380,7 +1391,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   -webkit-align-self: stretch;
   -ms-flex-item-align: stretch;
   align-self: stretch;
-  padding-right: 12px;
+  margin-right: 12px;
 }
 
 .c19.c19.c19.c19.c19 {
@@ -1736,6 +1747,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   resize: none;
   outline: none;
   border: none;
+  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -1813,6 +1825,16 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 
 .c15.c15.c15.c15.c15:focus {
   outline: none;
+}
+
+.c15.c15.c15.c15.c15::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.c15.c15.c15.c15.c15::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .c10.c10.c10.c10.c10 {
