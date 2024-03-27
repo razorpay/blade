@@ -342,7 +342,7 @@ exports[`<TextArea /> should render 1`] = `
         <label
           data-blade-component="form-label"
           for="textarea-1-input-2"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -770,7 +770,7 @@ exports[`<TextArea /> should render large size 1`] = `
         <label
           data-blade-component="form-label"
           for="textarea-19-input-20"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -1191,7 +1191,7 @@ exports[`<TextArea /> should set number of lines 1`] = `
         <label
           data-blade-component="form-label"
           for="textarea-139-input-140"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"

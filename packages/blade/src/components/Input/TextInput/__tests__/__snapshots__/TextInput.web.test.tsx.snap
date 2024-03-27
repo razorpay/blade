@@ -336,7 +336,7 @@ exports[`<TextInput /> should render 1`] = `
         <label
           data-blade-component="form-label"
           for="textinput-1-input-2"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -875,7 +875,7 @@ exports[`<TextInput /> should render large size 1`] = `
         <label
           data-blade-component="form-label"
           for="textinput-91-input-92"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"
@@ -1451,7 +1451,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         <label
           data-blade-component="form-label"
           for="textinput-73-input-74"
-          style="width: auto; flex-shrink: 0; margin-right: 16px;"
+          style="width: auto; flex-shrink: 0; margin-right: 0px;"
         >
           <div
             class="c2"

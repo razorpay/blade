@@ -348,7 +348,7 @@ exports[`<Checkbox /> should set error state with validationState 1`] = `
     }
   >
     <View
-      accessibilityErrorMessage="checkbox-19-errortext-21"
+      accessibilityErrorMessage="checkbox-25-errortext-27"
       accessibilityInvalid={true}
       accessibilityRequired={false}
       accessibilityRole="checkbox"

@@ -1295,7 +1295,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                 data-blade-component="form-label"
                 for="dropdown-123"
                 id="dropdown-123-label"
-                style="width: auto; flex-shrink: 0; margin-right: 16px;"
+                style="width: auto; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
                   class="c5"
@@ -1539,7 +1539,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
                               data-blade-component="form-label"
                               for="dropdown-123"
                               id="dropdown-123-label"
-                              style="width: auto; flex-shrink: 0; margin-right: 16px;"
+                              style="width: auto; flex-shrink: 0; margin-right: 0px;"
                             >
                               <div
                                 class="c5"
@@ -2484,7 +2484,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
                 data-blade-component="form-label"
                 for="dropdown-123"
                 id="dropdown-123-label"
-                style="width: auto; flex-shrink: 0; margin-right: 16px;"
+                style="width: auto; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
                   class="c4"
@@ -3619,7 +3619,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
                 data-blade-component="form-label"
                 for="dropdown-123"
                 id="dropdown-123-label"
-                style="width: auto; flex-shrink: 0; margin-right: 16px;"
+                style="width: auto; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
                   class="c4"

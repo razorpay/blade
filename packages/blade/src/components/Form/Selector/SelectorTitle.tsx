@@ -8,7 +8,7 @@ const SelectorTitle = ({
 }: {
   children: React.ReactNode;
   isDisabled?: boolean;
-  size: 'small' | 'medium';
+  size: 'small' | 'medium' | 'large';
 }): React.ReactElement => {
   return (
     <>

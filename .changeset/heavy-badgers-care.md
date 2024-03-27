@@ -19,6 +19,24 @@ feat: Redesign all `Input` components
 - Redesigned UI
 - Add `size` prop
 
-### PasswordInput (https://github.com/razorpay/blade/pull/2050)
+### PasswordInput
 - Redesigned UI
 - Adds `size` prop
+
+### OTPInput
+- Redesigned UI
+- Add `size` prop
+
+### SelectInput
+- Redesigned UI
+- Add `size` prop
+
+### Autocomplete
+- Redesigned UI
+- Add `size` prop
+
+### Radio
+- Add `size` prop
+
+### Checkbox
+- Add `size` prop
