@@ -16,9 +16,9 @@
   {
     "name": "Alert",
     "passed": true,
-    "size": 33648,
+    "size": 33646,
     "sizeLimit": 2000000,
-    "loading": 0.6571875
+    "loading": 0.6571484375
   },
   {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
