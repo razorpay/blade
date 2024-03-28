@@ -16,6 +16,14 @@ describe('<TextArea />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render large size', () => {
+    const { container } = renderWithTheme(
+      <TextArea label="Enter name" size="large" maxCharacters={100} />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should limit with maxCharacters', async () => {
     const user = userEvent.setup();
     const label = 'Enter name';

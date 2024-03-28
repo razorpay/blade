@@ -87,7 +87,7 @@ type CheckboxGroupProps = {
    *
    * @default "medium"
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & TestID &
   StyledPropsBlade;
 
@@ -146,6 +146,7 @@ const CheckboxGroup = ({
               position={labelPosition}
               id={ids.labelId}
               accessibilityText={accessibilityText}
+              size={size}
             >
               {label}
             </FormLabel>
@@ -164,6 +165,7 @@ const CheckboxGroup = ({
               })}
             </BaseBox>
             <FormHint
+              size={size}
               errorText={errorText}
               helpText={helpText}
               type={validationState === 'error' ? 'error' : 'help'}

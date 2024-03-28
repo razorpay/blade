@@ -433,7 +433,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
       <span
         data-blade-component="form-label"
         id="fileuploadinput-1-label-6"
-        style="width: auto; flex-shrink: 0; margin-right: 16px;"
+        style="width: auto; flex-shrink: 0; margin-right: 0px;"
       >
         <div
           class="c2"
@@ -972,7 +972,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
       <span
         data-blade-component="form-label"
         id="fileuploadinput-13-label-18"
-        style="width: auto; flex-shrink: 0; margin-right: 16px;"
+        style="width: auto; flex-shrink: 0; margin-right: 0px;"
       >
         <div
           class="c2"

@@ -20,9 +20,13 @@ const svgSize = {
     width: size[12],
     height: size[12],
   },
+  large: {
+    width: size[16],
+    height: size[16],
+  },
 };
 
-const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' }) => {
+const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' | 'large' }) => {
   const width = makeSpace(svgSize[size].width);
   const height = makeSpace(svgSize[size].height);
 
@@ -42,7 +46,13 @@ const CheckedIcon = ({ color, size }: { color: string; size: 'small' | 'medium' 
   );
 };
 
-const IndeterminateIcon = ({ color, size }: { color: string; size: 'small' | 'medium' }) => {
+const IndeterminateIcon = ({
+  color,
+  size,
+}: {
+  color: string;
+  size: 'small' | 'medium' | 'large';
+}) => {
   const width = makeSpace(svgSize[size].width);
   const height = makeSpace(svgSize[size].height);
 
@@ -67,7 +77,7 @@ export type CheckboxIconProps = {
   isNegative?: boolean;
   isChecked?: boolean;
   isIndeterminate?: boolean;
-  size: 'small' | 'medium';
+  size: 'small' | 'medium' | 'large';
 };
 
 const CheckboxIcon = ({

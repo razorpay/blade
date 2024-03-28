@@ -54,6 +54,7 @@ const AnimatedTag = ({
   isDisabled,
   activeTagIndex,
   onDismiss,
+  size = 'medium',
 }: AnimatedTagProps): React.ReactElement => {
   const [isTagVisible, setIsTagVisible] = React.useState(true);
   const { theme } = useTheme();
@@ -87,6 +88,7 @@ const AnimatedTag = ({
         marginRight="spacing.3"
         marginY="spacing.2"
         isDisabled={isDisabled}
+        size={size}
       >
         {children}
       </Tag>

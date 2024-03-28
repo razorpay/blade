@@ -6,6 +6,7 @@ import { BaseInput } from '..';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
 import { CloseIcon, EyeIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 
 describe('<BaseInput />', () => {
   it('should render', () => {
@@ -79,6 +80,31 @@ describe('<BaseInput />', () => {
         leadingIcon={EyeIcon}
         trailingIcon={CloseIcon}
       />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with large size input', () => {
+    const { container } = renderWithTheme(
+      <BaseInput
+        label="Enter name"
+        placeholder="First Last"
+        id="name"
+        leadingIcon={EyeIcon}
+        trailingIcon={CloseIcon}
+        successText="Success"
+        validationState="success"
+        size="large"
+      />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with trailingButton', () => {
+    const { container } = renderWithTheme(
+      <BaseInput id="coupon" label="Coupon" trailingButton={<Link>Apply</Link>} />,
     );
 
     expect(container).toMatchSnapshot();

@@ -1,18 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
-import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
+import { baseInputHeight } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { castWebType, makeSize } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useIsMobile } from '~utils/useIsMobile';
 import { MetaConstants } from '~utils/metaAttribute';
-import { size } from '~tokens/global';
+import { size as sizeToken } from '~tokens/global';
 
 const MINUMUM_INPUT_SPACE = 30;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
-const TAG_MAX_WIDTH: number = size['140'];
+const TAG_MAX_WIDTH: number = sizeToken['140'];
 
 const useVisibleTagsCount = ({
   slotRef,
@@ -121,6 +121,7 @@ const BaseInputTagSlot = ({
   visibleTagsCountRef,
   labelPrefix,
   isDisabled,
+  size,
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
   const slotRef = React.useRef<HTMLDivElement>(null);
@@ -187,7 +188,7 @@ const BaseInputTagSlot = ({
       flexWrap={maxTagRows === 'single' ? 'nowrap' : 'wrap'}
       overflowX="auto"
       overflowY={showAllTags || maxTagRows === 'multiple' ? 'auto' : 'hidden'}
-      minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
+      minHeight={makeSize(baseInputHeight[size])}
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
       }}
@@ -222,7 +223,7 @@ const BaseInputTagSlot = ({
       <BaseBox
         marginTop="-4px"
         minWidth={hasTags && renderAs === 'button' ? undefined : makeSize(MINUMUM_INPUT_SPACE)}
-        width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}
+        width={hasTags && renderAs === 'button' ? makeSize(sizeToken['1']) : '100%'}
       >
         {children}
       </BaseBox>
