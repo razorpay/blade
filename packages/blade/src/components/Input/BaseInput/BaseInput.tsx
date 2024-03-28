@@ -161,7 +161,7 @@ type BaseInputCommonProps = FormInputLabelProps &
     /**
      * Element to be rendered before prefix. This is decided by the component which is extending BaseInput
      *
-     * eg: consumers can render a loader or they could render a clear button
+     * eg: consumers can render a country selector or button
      */
     leadingInteractionElement?: ReactNode;
     /**

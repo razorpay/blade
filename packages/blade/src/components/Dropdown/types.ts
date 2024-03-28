@@ -29,6 +29,12 @@ type DropdownOverlayProps = {
    */
   zIndex?: number;
   width?: BoxProps['width'];
+  /**
+   * Reference to the element which triggers the DropdownOverlay
+   *
+   * This is used to position the DropdownOverlay relative to a specific element,
+   * for example in PhoneNumberInput the DropdownOverlay is positioned relative to the input element
+   */
   referenceRef?: React.MutableRefObject<ContainerElementType | null>;
   /**
    * Sets the placement of the DropdownOverlay

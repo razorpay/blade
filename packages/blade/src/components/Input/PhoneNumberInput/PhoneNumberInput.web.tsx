@@ -17,10 +17,13 @@ import { useMergeRefs } from '~utils/useMergeRefs';
 import type { BladeElementRef } from '~utils/types';
 import { CloseIcon } from '~components/Icons';
 import { MetaConstants } from '~utils/metaAttribute';
+import { useControllableState } from '~utils/useControllable';
 
 const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNumberInputProps> = (
   {
     defaultCountryCode = 'IN',
+    countryCode,
+    onCountrySelection,
     label,
     labelPosition,
     defaultValue,
@@ -58,7 +61,11 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
 
   const inputWrapperRef = React.useRef<HTMLDivElement | null>(null);
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
-  const [selectedCountry, setSelectedCountry] = React.useState<CountryCodeType>(defaultCountryCode);
+  const [selectedCountry, setSelectedCountry] = useControllableState<CountryCodeType>({
+    defaultValue: defaultCountryCode as CountryCodeType,
+    value: countryCode,
+    onChange: (countryCode) => onCountrySelection?.({ countryCode }),
+  });
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));
@@ -130,7 +137,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
 
   const onItemClick = ({ name }: { name: string }): void => {
     const selectedCountry = name as CountryCodeType;
-    setSelectedCountry(selectedCountry);
+    setSelectedCountry(() => selectedCountry);
     handleOnChange({
       selectedCountry,
       name: inputRef.current?.name,

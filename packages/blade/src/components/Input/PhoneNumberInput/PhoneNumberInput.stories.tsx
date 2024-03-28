@@ -1,5 +1,6 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
+import type { CountryCodeType } from '@razorpay/i18nify-js';
 import { isValidPhoneNumber } from '@razorpay/i18nify-js';
 import { Title } from '@storybook/addon-docs';
 import type { PhoneNumberInputProps } from './types';
@@ -11,6 +12,7 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import iconMap from '~components/Icons/iconMap';
+import { Button } from '~components/Button';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -317,6 +319,35 @@ WithLeadingIcon.args = {
   showCountrySelector: false,
   leadingIcon: PhoneIcon,
 };
+
+const ControlledCountrySelectorTemplate: StoryFn<typeof PhoneNumberInput> = () => {
+  const [selectedCountry, setSelectedCountry] = React.useState<CountryCodeType>('IN');
+
+  return (
+    <Box>
+      <Button
+        size="small"
+        variant="tertiary"
+        marginBottom="spacing.4"
+        onClick={() => setSelectedCountry('US')}
+      >
+        Change Country
+      </Button>
+      <Text marginBottom="spacing.4">Selected country: {selectedCountry}</Text>
+
+      <PhoneNumberInput
+        label="Enter phone number"
+        name="phonenumber"
+        countryCode={selectedCountry}
+        onCountrySelection={({ countryCode }): void => {
+          console.log(countryCode);
+          setSelectedCountry(countryCode);
+        }}
+      />
+    </Box>
+  );
+};
+export const ControlledCountrySelector = ControlledCountrySelectorTemplate.bind({});
 
 const ControlledTemplate: StoryFn<typeof PhoneNumberInput> = () => {
   const [inputValue, setInputValue] = React.useState('');

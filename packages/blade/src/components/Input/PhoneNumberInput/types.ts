@@ -4,6 +4,7 @@ import type { BaseInputProps } from '~components/Input/BaseInput';
 
 type CommonProps = Pick<
   BaseInputProps,
+  | 'size'
   | 'label'
   | 'labelPosition'
   | 'name'
@@ -39,10 +40,19 @@ type PhoneNumberInputProps = StyledPropsBlade &
     value?: string;
     /**
      * The default country code to be used in the input.
+     * Uncontrolled state of the country code.
      *
      * @default "IN" or autodetect based on the user's locale
      */
     defaultCountryCode?: CountryCodeType;
+    /**
+     * Controlled state of the country code to be used in the input.
+     */
+    countryCode?: CountryCodeType;
+    /**
+     * Callback that is called when the country is selected from the country selector.
+     */
+    onCountrySelection?: ({ countryCode }: { countryCode: CountryCodeType }) => void;
     /**
      * List of countries to be shown in the country selector.
      */
@@ -94,12 +104,6 @@ type PhoneNumberInputProps = StyledPropsBlade &
      * Callback that is called when the clear button is clicked.
      */
     onClearButtonClick?: () => void;
-    /**
-     * The size of the input field.
-     *
-     * @default medium
-     */
-    size?: 'medium' | 'large';
   };
 
 export type { PhoneNumberInputProps };

@@ -139,18 +139,18 @@ const getLeftPadding = ({
 
 const getRightPadding = ({
   theme,
-  hasInteractionElement,
+  hasTrailingInteractionElement,
   hasSuffix,
   hasTrailingIcon,
   size,
 }: {
   theme: Theme;
-  hasInteractionElement: boolean;
+  hasTrailingInteractionElement: boolean;
   hasSuffix: boolean;
   hasTrailingIcon: boolean;
   size: GetInputStyles['size'];
 }): number => {
-  if (hasInteractionElement || hasSuffix || hasTrailingIcon) {
+  if (hasTrailingInteractionElement || hasSuffix || hasTrailingIcon) {
     return theme.spacing[3];
   }
   return theme.spacing[baseInputPaddingTokens.right[size]];
@@ -214,12 +214,11 @@ export const getBaseInputStyles = ({
     paddingTop: makeSpace(theme.spacing[baseInputPaddingTokens.top[size]]),
     paddingBottom: makeSpace(theme.spacing[baseInputPaddingTokens.bottom[size]]),
     paddingLeft: makeSpace(
-      // TODO: hasInteractionElement: hasTrailingInteractionElement,
       getLeftPadding({ theme, isDropdownTrigger, hasLeadingIcon, hasPrefix, size }),
     ),
     paddingRight: getRightPadding({
       theme,
-      hasInteractionElement: hasTrailingInteractionElement,
+      hasTrailingInteractionElement,
       hasSuffix,
       hasTrailingIcon,
       size,

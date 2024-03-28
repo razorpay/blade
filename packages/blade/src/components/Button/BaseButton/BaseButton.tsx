@@ -329,7 +329,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const [isPressed, setIsPressed] = React.useState(false);
   const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
-  const isChildrenComponent = childrenString === '[object Object]';
+  const isChildrenComponent = React.isValidElement(children);
 
   // Button cannot be disabled when its rendered as Link
   const disabled = buttonGroupProps.isDisabled ?? (isLoading || (isDisabled && !isLink));
