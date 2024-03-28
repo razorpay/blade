@@ -14,6 +14,7 @@ import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
 import { size as sizes } from '~tokens/global';
 import { makeSize } from '~utils';
+import { Box } from '~components/Box';
 
 const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
@@ -69,23 +70,26 @@ const CountrySelector = ({
 
   return (
     <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-      <DropdownButton
-        isDisabled={isDisabled}
-        size={size === 'medium' ? 'xsmall' : 'medium'}
-        variant="tertiary"
-        accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
-        icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
-        iconPosition="right"
-      >
-        {/* @ts-expect-error */}
-        <img
-          loading="lazy"
-          role="presentation"
-          width={flagSize[size]}
-          src={getFlagOfCountry(selectedCountry)['4X3']}
-          alt=""
-        />
-      </DropdownButton>
+      {/* TODO: Remove once CountrySelector's button sizing is fixed in figma */}
+      <Box width={size === 'medium' ? '50px' : '65px'}>
+        <DropdownButton
+          isDisabled={isDisabled}
+          size={size === 'medium' ? 'xsmall' : 'medium'}
+          variant="tertiary"
+          accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
+          icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
+          iconPosition="right"
+        >
+          {/* @ts-expect-error */}
+          <img
+            loading="lazy"
+            role="presentation"
+            width={flagSize[size]}
+            src={getFlagOfCountry(selectedCountry)['4X3']}
+            alt=""
+          />
+        </DropdownButton>
+      </Box>
       {isMobile ? (
         <BottomSheet>
           <BottomSheetHeader title="Select A Country" />
