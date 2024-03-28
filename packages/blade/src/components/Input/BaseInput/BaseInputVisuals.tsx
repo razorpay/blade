@@ -202,7 +202,7 @@ export const BaseInputVisuals = ({
     size,
   });
 
-  const hasLeadingVisuals = hasLeadingIcon || hasPrefix;
+  const hasLeadingVisuals = hasLeadingInteractionElement || hasLeadingIcon || hasPrefix;
   const hasTrailingVisuals =
     hasTrailingInteractionElement || hasSuffix || hasTrailingIcon || hasTrailingButton;
 
