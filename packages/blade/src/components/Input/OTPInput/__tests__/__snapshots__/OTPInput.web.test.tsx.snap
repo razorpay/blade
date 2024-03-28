@@ -144,7 +144,6 @@ exports[`<OTPInput /> should render 1`] = `
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -222,16 +221,6 @@ exports[`<OTPInput /> should render 1`] = `
 
 .c11.c11.c11.c11.c11:focus {
   outline: none;
-}
-
-.c11.c11.c11.c11.c11::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c11.c11.c11.c11.c11::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -791,7 +780,6 @@ exports[`<OTPInput /> should render large size 1`] = `
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -869,16 +857,6 @@ exports[`<OTPInput /> should render large size 1`] = `
 
 .c11.c11.c11.c11.c11:focus {
   outline: none;
-}
-
-.c11.c11.c11.c11.c11::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c11.c11.c11.c11.c11::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c10.c10.c10.c10.c10 {

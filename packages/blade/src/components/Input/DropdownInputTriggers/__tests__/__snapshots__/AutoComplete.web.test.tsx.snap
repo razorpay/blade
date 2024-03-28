@@ -686,7 +686,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -766,16 +765,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   outline: none;
 }
 
-.c41.c41.c41.c41.c41::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c41.c41.c41.c41.c41::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .c15.c15.c15.c15.c15 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -806,7 +795,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -884,16 +872,6 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 
 .c15.c15.c15.c15.c15:focus {
   outline: none;
-}
-
-.c15.c15.c15.c15.c15::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c15.c15.c15.c15.c15::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -2225,7 +2203,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -2303,16 +2280,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 
 .c15.c15.c15.c15.c15:focus {
   outline: none;
-}
-
-.c15.c15.c15.c15.c15::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c15.c15.c15.c15.c15::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c10.c10.c10.c10.c10 {
@@ -3334,7 +3301,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -3412,16 +3378,6 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 
 .c15.c15.c15.c15.c15:focus {
   outline: none;
-}
-
-.c15.c15.c15.c15.c15::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c15.c15.c15.c15.c15::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c10.c10.c10.c10.c10 {

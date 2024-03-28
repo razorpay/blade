@@ -138,7 +138,6 @@ exports[`<TextInput /> should render 1`] = `
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -212,16 +211,6 @@ exports[`<TextInput /> should render 1`] = `
 
 .c9.c9.c9.c9.c9:focus {
   outline: none;
-}
-
-.c9.c9.c9.c9.c9::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c9.c9.c9.c9.c9::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -650,7 +639,6 @@ exports[`<TextInput /> should render large size 1`] = `
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -724,16 +712,6 @@ exports[`<TextInput /> should render large size 1`] = `
 
 .c13.c13.c13.c13.c13:focus {
   outline: none;
-}
-
-.c13.c13.c13.c13.c13::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c13.c13.c13.c13.c13::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1275,7 +1253,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -1349,16 +1326,6 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
 
 .c13.c13.c13.c13.c13:focus {
   outline: none;
-}
-
-.c13.c13.c13.c13.c13::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c13.c13.c13.c13.c13::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c8.c8.c8.c8.c8 {

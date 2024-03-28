@@ -481,7 +481,6 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -555,16 +554,6 @@ exports[`<PhoneNumberInput /> should render 1`] = `
 
 .c32.c32.c32.c32.c32:focus {
   outline: none;
-}
-
-.c32.c32.c32.c32.c32::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c32.c32.c32.c32.c32::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -13314,7 +13303,6 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -13388,16 +13376,6 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
 
 .c32.c32.c32.c32.c32:focus {
   outline: none;
-}
-
-.c32.c32.c32.c32.c32::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c32.c32.c32.c32.c32::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c8.c8.c8.c8.c8 {
