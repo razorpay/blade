@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.9.1
+
+### Patch Changes
+
+- 38d97633: fix(Table): selection toggle for multiselect table
+
 ## 11.9.0
 
 ### Minor Changes
