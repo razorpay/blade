@@ -14,18 +14,18 @@
     "loading": 0.5761328125
   },
   {
-    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
-    "passed": true,
-    "size": 34731,
-    "sizeLimit": 2000000,
-    "loading": 0.67833984375
-  },
-  {
     "name": "Alert",
     "passed": true,
     "size": 33648,
     "sizeLimit": 2000000,
     "loading": 0.6571875
+  },
+  {
+    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
+    "passed": true,
+    "size": 34731,
+    "sizeLimit": 2000000,
+    "loading": 0.67833984375
   },
   {
     "name": "Amount",
@@ -212,9 +212,9 @@
   {
     "name": "Table, TableHeader, TableHeaderCell, TableHeaderRow, TableBody, TableCell, TableRow, TableFooter, TableFooterCell, TableFooterRow, TablePagination, TableToolbar, TableToolbarActions",
     "passed": true,
-    "size": 73681,
+    "size": 73697,
     "sizeLimit": 2000000,
-    "loading": 1.43908203125
+    "loading": 1.43939453125
   },
   {
     "name": "Tabs, TabItem, TabList, TabPanel",
