@@ -66,6 +66,82 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render autocomplete with large size', () => {
+    const { container } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Fruits" size="large" />
+        <DropdownOverlay zIndex={1002}>
+          <DropdownHeader title="Recent Searches" />
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+          <DropdownFooter>
+            <Box>
+              <Button isFullWidth>Apply</Button>
+            </Box>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  // MOUSE CLICK TESTS
+  it('should handle AutoComplete behaviour in single select', async () => {
+    const user = userEvent.setup();
+
+    const { getByRole, queryByRole } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Cities" placeholder="Select Cities" />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Ooty" value="ooty" />
+            <ActionListItem title="Pune" value="pune" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    const selectInput = getByRole('combobox', { name: 'Cities' }) as HTMLInputElement;
+
+    expect(selectInput).toBeInTheDocument();
+    expect(queryByRole('listbox')).toBeNull();
+
+    await user.click(selectInput);
+    await waitFor(() => expect(getByRole('listbox', { name: 'Cities' })).toBeVisible());
+
+    // All elements should be visible
+    expect(getByRole('option', { name: 'Pune' })).toBeVisible();
+    expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
+
+    // Start typing to filter, only filtered elements should be visible
+    await user.keyboard('m');
+    expect(queryByRole('option', { name: 'Pune' })).toBeFalsy();
+    expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
+
+    await user.keyboard('{Enter}');
+
+    await waitFor(() => expect(queryByRole('listbox')).toBeNull());
+    expect(selectInput.value).toBe('Mumbai');
+
+    await user.click(selectInput);
+    await waitFor(() => expect(getByRole('listbox', { name: 'Cities' })).toBeVisible());
+    // clear input
+    await user.keyboard('{BackSpace}'.repeat(selectInput.value.length));
+    await user.keyboard('p');
+    expect(queryByRole('option', { name: 'Mumbai' })).toBeFalsy();
+    expect(getByRole('option', { name: 'Pune' })).toBeVisible();
+
+    // Test for mouse click selection
+    await user.click(getByRole('option', { name: 'Pune' }));
+    await waitFor(() => expect(queryByRole('listbox')).toBeNull());
+    expect(selectInput.value).toBe('Pune');
+  }, 10000);
+
   it('should not open dropdown when input is disabled', async () => {
     const user = userEvent.setup();
 

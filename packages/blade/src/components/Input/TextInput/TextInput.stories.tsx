@@ -10,6 +10,9 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'Text Input Props',
@@ -33,6 +36,7 @@ export default {
     maxCharacters: undefined,
     textAlign: 'left',
     autoFocus: false,
+    size: 'medium',
     onChange: ({ name, value }): void => {
       console.log(`input field ${name} content changed to ${value}`);
     },
@@ -61,6 +65,16 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     defaultValue: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    testID: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    size: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -106,17 +120,39 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    onSubmit: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onClick: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     onChange: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
     },
     onFocus: {
+      control: {
+        disable: true,
+      },
       table: {
         category: propsCategory.BASE_PROPS,
       },
     },
     onBlur: {
+      control: {
+        disable: true,
+      },
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -167,7 +203,15 @@ export default {
       },
     },
     icon: {
-      name: 'icon',
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.LEADING_VISUAL_PROPS,
+      },
+    },
+    leadingIcon: {
+      name: 'leadingIcon',
       type: 'select',
       options: Object.keys(iconMap),
       table: {
@@ -180,6 +224,19 @@ export default {
       },
     },
     suffix: {
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
+    trailingIcon: {
+      name: 'trailingIcon',
+      type: 'select',
+      options: Object.keys(iconMap),
+      table: {
+        category: propsCategory.TRAILING_VISUAL_PROPS,
+      },
+    },
+    trailingButton: {
       table: {
         category: propsCategory.TRAILING_VISUAL_PROPS,
       },
@@ -249,8 +306,18 @@ export default {
   },
 } as Meta<TextInputProps>;
 
-const TextInputTemplate: StoryFn<typeof TextInputComponent> = ({ icon, ...args }) => {
-  return <TextInputComponent {...args} icon={iconMap[(icon as unknown) as string]} />;
+const TextInputTemplate: StoryFn<typeof TextInputComponent> = ({
+  leadingIcon,
+  trailingIcon,
+  ...args
+}) => {
+  return (
+    <TextInputComponent
+      {...args}
+      leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+      trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+    />
+  );
 };
 
 export const TextInput = TextInputTemplate.bind({});
@@ -303,6 +370,15 @@ TextInputWithoutLabel.args = {
   accessibilityLabel: 'Enter your name',
 };
 
+export const TextInputWithTrailingButton = TextInputTemplate.bind({});
+TextInputWithTrailingButton.storyName = 'TextInput with trailing action button';
+TextInputWithTrailingButton.args = {
+  defaultValue: 'John Ives',
+  label: 'Discount Code',
+  trailingButton: <Link>Apply</Link>,
+  showClearButton: false,
+};
+
 const TextInputMaxCharactersTemplate: StoryFn<typeof TextInputComponent> = () => {
   return (
     <TextInput
@@ -315,6 +391,36 @@ const TextInputMaxCharactersTemplate: StoryFn<typeof TextInputComponent> = () =>
   );
 };
 export const TextInputMaxCharacters = TextInputMaxCharactersTemplate.bind({});
+
+const TextInputSizesTemplate: StoryFn<typeof TextInputComponent> = ({
+  leadingIcon,
+  trailingIcon,
+  ...args
+}) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <Text size="large" marginBottom="spacing.2">
+        Medium Size:
+      </Text>
+      <TextInputComponent
+        {...args}
+        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        size="medium"
+      />
+      <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
+        Large Size:
+      </Text>
+      <TextInputComponent
+        {...args}
+        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        size="large"
+      />
+    </Box>
+  );
+};
+export const TextInputSizes = TextInputSizesTemplate.bind({});
 
 const TextInputUncontrolledTemplate: StoryFn<typeof TextInputComponent> = () => {
   return (

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
-import { checkboxHoverTokens } from './checkboxTokens';
+import { checkboxHoverTokens, checkboxSizes } from './checkboxTokens';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
@@ -18,6 +19,7 @@ import { SelectorInput } from '~components/Form/Selector/SelectorInput';
 import type { BladeElementRef, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
+import { makeSize, useTheme } from '~utils';
 
 type OnChange = ({
   isChecked,
@@ -101,7 +103,7 @@ type CheckboxProps = {
    *
    * @default "medium"
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Sets the tab-index property on checkbox element
    *
@@ -184,7 +186,12 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
   const _size = groupProps.size ?? size;
-  const isSmall = _size === 'small';
+  const { theme } = useTheme();
+  const formHintSize = {
+    small: 'medium',
+    medium: 'medium',
+    large: 'large',
+  } as const;
 
   // only show error when the self validation is set to error
   // Since we don't want to show errorText inside the group
@@ -212,6 +219,9 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     value,
     onChange: handleChange,
   });
+
+  // Checkbox icon's size & margin + margin-left of SelectorTitle which is 2
+  const helpTextLeftSpacing = makeSize(checkboxSizes.icon[size].width + theme.spacing[3]);
 
   return (
     <BaseBox
@@ -247,13 +257,16 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
             ) : null}
           </BaseBox>
           {showSupportingText ? (
-            <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-              <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
+            <BaseBox marginLeft={helpTextLeftSpacing}>
+              <SelectorSupportText size={_size} id={ids?.helpTextId}>
+                {helpText}
+              </SelectorSupportText>
             </BaseBox>
           ) : null}
         </BaseBox>
       </SelectorLabel>
       <FormHint
+        size={formHintSize[_size]}
         errorText={errorText}
         errorTextId={ids?.errorTextId}
         type={validationState === 'error' ? 'error' : 'help'}

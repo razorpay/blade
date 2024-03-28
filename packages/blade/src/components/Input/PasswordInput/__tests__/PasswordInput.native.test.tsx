@@ -13,6 +13,12 @@ describe('<PasswordInput />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render large size', () => {
+    const { toJSON } = renderWithTheme(<PasswordInput label="Enter password" size="large" />);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should display success validation state', () => {
     const { getByText } = renderWithTheme(
       <PasswordInput

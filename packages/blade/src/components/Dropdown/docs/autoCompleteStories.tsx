@@ -643,3 +643,73 @@ export const withErrorState = `
 
   export default App;
 `;
+
+export const withSizes = `
+import {
+  Dropdown,
+  DropdownOverlay,
+  AutoComplete,
+  ActionList,
+  ActionListItem,
+  Heading,
+  Box,
+} from '@razorpay/blade/components';
+
+function App(): React.ReactElement {
+  return (
+    <Box>
+      <Heading size="medium" marginBottom="spacing.3">
+        Medium:
+      </Heading>
+      <Dropdown selectionType="multiple">
+        <AutoComplete
+          label="City"
+          placeholder="Select your City"
+          name="action"
+          onChange={({ name, values }) => {
+            console.log({ name, values });
+          }}
+          onInputValueChange={({ name, value }) => {
+            console.log({ name, value });
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Mysore" value="mysore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Heading size="medium" marginTop="spacing.5" marginBottom="spacing.3">
+        Large:
+      </Heading>
+      <Dropdown selectionType="multiple">
+        <AutoComplete
+          label="City"
+          placeholder="Select your City"
+          name="action"
+          onChange={({ name, values }) => {
+            console.log({ name, values });
+          }}
+          onInputValueChange={({ name, value }) => {
+            console.log({ name, value });
+          }}
+          size="large"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Mysore" value="mysore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+}
+
+export default App;
+`;

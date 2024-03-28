@@ -48,7 +48,6 @@ exports[`<Tag /> should render tag 1`] = `
       }
     >
       <View
-        alignItems="center"
         data-blade-component="box"
         display="flex"
         flexDirection="row"
@@ -56,7 +55,6 @@ exports[`<Tag /> should render tag 1`] = `
         style={
           [
             {
-              "alignItems": "center",
               "display": "flex",
               "flexDirection": "row",
               "maxWidth": 100,
@@ -93,10 +91,12 @@ exports[`<Tag /> should render tag 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
+                "textAlign": "center",
                 "textDecorationLine": "none",
               },
             ]
           }
+          textAlign="center"
         >
           in:User
         </Text>
