@@ -25,7 +25,6 @@ type CommonProps = Pick<
   | 'testID'
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
-  | 'autoCapitalize'
 >;
 
 type PhoneNumberInputProps = StyledPropsBlade &

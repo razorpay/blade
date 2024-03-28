@@ -48,7 +48,6 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
     testID,
     keyboardReturnKeyType = 'done',
     autoCompleteSuggestionType,
-    autoCapitalize,
     countries,
     ...styledProps
   },
@@ -202,7 +201,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
         type: 'number',
         keyboardReturnKeyType,
         autoCompleteSuggestionType,
-        autoCapitalize,
+        autoCapitalize: 'none',
       })}
       type="telephone"
       {...styledProps}

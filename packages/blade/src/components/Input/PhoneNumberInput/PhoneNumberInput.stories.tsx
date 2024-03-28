@@ -1,16 +1,249 @@
 import React from 'react';
 import type { StoryFn, Meta } from '@storybook/react';
 import { isValidPhoneNumber } from '@razorpay/i18nify-js';
+import { Title } from '@storybook/addon-docs';
 import type { PhoneNumberInputProps } from './types';
 import { PhoneNumberInput } from './PhoneNumberInput';
 import { Box } from '~components/Box';
 import { Code, Text } from '~components/Typography';
 import { PhoneIcon } from '~components/Icons';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import iconMap from '~components/Icons/iconMap';
+
+const propsCategory = {
+  BASE_PROPS: 'Text Input Props',
+  LABEL_PROPS: 'Label Props',
+  VALIDATION_PROPS: 'Validation Props',
+  VISUAL_PROPS: 'Visual Props',
+  KEYBOARD_PROPS: 'Keyboard Props',
+};
 
 const meta: Meta<PhoneNumberInputProps> = {
   title: 'Components/Input/PhoneNumberInput',
   component: PhoneNumberInput,
   tags: ['autodocs'],
+  args: {
+    defaultCountryCode: 'IN',
+    size: 'medium',
+    showDialCode: true,
+    showCountrySelector: true,
+    countries: undefined,
+    defaultValue: undefined,
+    trailingIcon: undefined,
+    leadingIcon: undefined,
+    accessibilityLabel: undefined,
+  },
+  argTypes: {
+    defaultCountryCode: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    countries: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    showDialCode: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    showCountrySelector: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    defaultValue: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    testID: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    size: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    name: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    isDisabled: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    value: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    textAlign: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    autoFocus: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onSubmit: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onClick: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onChange: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onFocus: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onBlur: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    label: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    accessibilityLabel: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    labelPosition: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    necessityIndicator: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    isRequired: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    validationState: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    helpText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    errorText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    successText: {
+      table: {
+        category: propsCategory.VALIDATION_PROPS,
+      },
+    },
+    leadingIcon: {
+      name: 'leadingIcon',
+      type: 'select',
+      options: Object.keys(iconMap),
+      table: {
+        category: propsCategory.VISUAL_PROPS,
+      },
+    },
+    trailingIcon: {
+      name: 'trailingIcon',
+      type: 'select',
+      options: Object.keys(iconMap),
+      table: {
+        category: propsCategory.VISUAL_PROPS,
+      },
+    },
+    onClearButtonClick: {
+      table: {
+        category: propsCategory.VISUAL_PROPS,
+      },
+    },
+    keyboardReturnKeyType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    autoCompleteSuggestionType: {
+      table: {
+        category: propsCategory.KEYBOARD_PROPS,
+      },
+    },
+    ...getStyledPropsArgTypes(),
+  },
+  parameters: {
+    docs: {
+      page: () => (
+        <StoryPageWrapper
+          componentDescription="A phone number input is an input field that allow users to input phone numbers with a keyboard. It supports entering phone numbers from different geographic locations."
+          componentName="PhoneNumberInput"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/PhoneNumberInput/_decisions/_decisions.md"
+          figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=83906-15584&scaling=scale-down-width&page-id=82637%3A73097&mode=design&t=A1SUVWxe1R52aq58-1"
+        >
+          <Title>Usage</Title>
+          <Sandbox>
+            {`
+              import { PhoneNumberInput } from '@razorpay/blade/components';
+
+              function App(): React.ReactElement {
+                return (
+                  <PhoneNumberInput 
+                    label="Enter phone number" 
+                    onChange={(e) => console.log(e)} 
+                  />
+                )
+              }
+
+              export default App;
+            `}
+          </Sandbox>
+        </StoryPageWrapper>
+      ),
+    },
+  },
 };
 
 const PhoneNumberInputTemplate: StoryFn<typeof PhoneNumberInput> = ({ ...args }) => {
