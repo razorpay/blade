@@ -214,16 +214,6 @@ exports[`<BaseInput /> should render 1`] = `
   outline: none;
 }
 
-.c9.c9.c9.c9.c9::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c9.c9.c9.c9.c9::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .c8.c8.c8.c8.c8 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
@@ -656,16 +646,6 @@ exports[`<BaseInput /> should render with icons 1`] = `
 
 .c11.c11.c11.c11.c11:focus {
   outline: none;
-}
-
-.c11.c11.c11.c11.c11::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c11.c11.c11.c11.c11::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1125,7 +1105,6 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -1199,16 +1178,6 @@ exports[`<BaseInput /> should render with large size input 1`] = `
 
 .c11.c11.c11.c11.c11:focus {
   outline: none;
-}
-
-.c11.c11.c11.c11.c11::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c11.c11.c11.c11.c11::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1693,7 +1662,6 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
   resize: none;
   outline: none;
   border: none;
-  -moz-appearance: textfield;
   cursor: auto;
 }
 
@@ -1767,16 +1735,6 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
 
 .c9.c9.c9.c9.c9:focus {
   outline: none;
-}
-
-.c9.c9.c9.c9.c9::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-.c9.c9.c9.c9.c9::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 
 .c8.c8.c8.c8.c8 {

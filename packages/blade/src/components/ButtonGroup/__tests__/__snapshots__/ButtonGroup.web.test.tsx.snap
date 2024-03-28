@@ -126,8 +126,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with default properties 1`] =
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -468,8 +470,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -956,8 +960,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with full width 1`] = `
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -1191,8 +1197,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with large size 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -1426,8 +1434,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with medium size 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -1661,8 +1671,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with small size 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -1896,8 +1908,10 @@ exports[`<ButtonGroup /> should render ButtonGroup with xsmall size 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -2131,8 +2145,10 @@ exports[`<ButtonGroup /> should render disabled ButtonGroup 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,0.09);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -3823,8 +3839,10 @@ exports[`<ButtonGroup /> should render negative color primary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(4,74%,49%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -4058,11 +4076,10 @@ exports[`<ButtonGroup /> should render negative color secondary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  border-radius: 4px;
-  border-color: hsla(4,74%,49%,1);
-  border-style: solid;
   border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(4,74%,49%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -4296,8 +4313,10 @@ exports[`<ButtonGroup /> should render positive color primary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(150,100%,32%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -4531,11 +4550,10 @@ exports[`<ButtonGroup /> should render positive color secondary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  border-radius: 4px;
-  border-color: hsla(150,100%,32%,1);
-  border-style: solid;
   border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(150,100%,32%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -4769,8 +4787,10 @@ exports[`<ButtonGroup /> should render primary color primary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -5004,11 +5024,10 @@ exports[`<ButtonGroup /> should render primary color secondary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  border-radius: 4px;
-  border-color: hsla(227,100%,59%,1);
-  border-style: solid;
   border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(227,100%,59%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -5242,8 +5261,10 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(211,20%,52%,0.09);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -5477,8 +5498,10 @@ exports[`<ButtonGroup /> should render white color primary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(0,0%,100%,1);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -5712,11 +5735,10 @@ exports[`<ButtonGroup /> should render white color secondary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
-  border-radius: 4px;
-  border-color: hsla(0,0%,100%,0.8);
-  border-style: solid;
   border-width: 1px;
+  border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(0,0%,100%,0.8);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {
@@ -5950,8 +5972,10 @@ exports[`<ButtonGroup /> should render white color tertiary button 1`] = `
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  overflow: hidden;
+  border-width: 1px;
   border-radius: 4px;
+  border-style: solid;
+  border-color: hsla(0,0%,100%,0.18);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {

@@ -505,7 +505,7 @@ exports[`<Dropdown /> should render dropdown 1`] = `
                           "alignItems": "stretch",
                           "alignSelf": "stretch",
                           "display": "flex",
-                          "marginRight": 12,
+                          "paddingRight": 12,
                         },
                       ]
                     }

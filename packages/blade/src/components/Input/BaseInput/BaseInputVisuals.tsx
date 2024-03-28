@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { BaseBoxProps } from '~components/Box/BaseBox';
+import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
 import type { IconColors } from '~components/Icons';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -87,7 +87,7 @@ const getInteractionElementStyles = ({
   hasTrailingInteractionElement?: boolean;
   hasSuffix: boolean;
   hasTrailingButton: boolean;
-}) => {
+}): SpacingValueType => {
   if (hasTrailingInteractionElement && (hasSuffix || hasTrailingIcon || hasTrailingButton)) {
     return 'spacing.2';
   }
@@ -202,7 +202,7 @@ export const BaseInputVisuals = ({
     size,
   });
 
-  const hasLeadingVisuals = hasLeadingInteractionElement || hasLeadingIcon || hasPrefix;
+  const hasLeadingVisuals = hasLeadingIcon || hasPrefix;
   const hasTrailingVisuals =
     hasTrailingInteractionElement || hasSuffix || hasTrailingIcon || hasTrailingButton;
 
@@ -220,7 +220,7 @@ export const BaseInputVisuals = ({
       <BaseBox {...getVisualContainerStyles()}>
         {hasLeadingInteractionElement ? (
           <BaseBox
-            marginLeft={getInteractionElementStyles({
+            paddingLeft={getInteractionElementStyles({
               hasTrailingIcon,
               hasLeadingInteractionElement,
               hasSuffix,
@@ -262,7 +262,7 @@ export const BaseInputVisuals = ({
       <BaseBox alignSelf="stretch" alignItems="stretch" {...getVisualContainerStyles()}>
         {hasTrailingInteractionElement ? (
           <BaseBox
-            marginRight={getInteractionElementStyles({
+            paddingRight={getInteractionElementStyles({
               hasTrailingIcon,
               hasTrailingInteractionElement,
               hasSuffix,
@@ -292,14 +292,12 @@ export const BaseInputVisuals = ({
             display="flex"
             {...getTrailingIconStyles({ hasTrailingIcon, hasTrailingButton })}
           >
-            {
-              <TrailingIcon
-                size={iconSize[size]}
-                color={
-                  isDisabled ? 'interactive.icon.gray.disabled' : trailingIconColor[validationState]
-                }
-              />
-            }
+            <TrailingIcon
+              size={iconSize[size]}
+              color={
+                isDisabled ? 'interactive.icon.gray.disabled' : trailingIconColor[validationState]
+              }
+            />
           </BaseBox>
         ) : null}
         {TrailingButton ? (

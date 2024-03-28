@@ -7,7 +7,7 @@ const labelTextSize = {
     large: 'medium',
   },
   left: {
-    small: 'medium',
+    small: 'small',
     medium: 'medium',
     large: 'large',
   },
