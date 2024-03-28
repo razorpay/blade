@@ -1,6 +1,5 @@
 import type { CSSObject } from 'styled-components';
 import type { BaseInputProps } from './BaseInput';
-import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import { getBaseInputBorderStyles } from './getBaseInputBorderStyles';
 import {
   baseInputBackgroundColor,
@@ -10,6 +9,7 @@ import {
   baseInputPaddingTokens,
   baseInputWrapperMaxHeight,
 } from './baseInputTokens';
+import { getInputVisualsToBeRendered } from './BaseInputVisuals';
 import type { BaseInputWrapperProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
@@ -25,7 +25,8 @@ type GetInputStyles = Pick<
   | 'validationState'
   | 'leadingIcon'
   | 'prefix'
-  | 'interactionElement'
+  | 'trailingInteractionElement'
+  | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'
   | 'textAlign'
@@ -138,18 +139,18 @@ const getLeftPadding = ({
 
 const getRightPadding = ({
   theme,
-  hasInteractionElement,
+  hasTrailingInteractionElement,
   hasSuffix,
   hasTrailingIcon,
   size,
 }: {
   theme: Theme;
-  hasInteractionElement: boolean;
+  hasTrailingInteractionElement: boolean;
   hasSuffix: boolean;
   hasTrailingIcon: boolean;
   size: GetInputStyles['size'];
 }): number => {
-  if (hasInteractionElement || hasSuffix || hasTrailingIcon) {
+  if (hasTrailingInteractionElement || hasSuffix || hasTrailingIcon) {
     return theme.spacing[3];
   }
   return theme.spacing[baseInputPaddingTokens.right[size]];
@@ -160,7 +161,8 @@ export const getBaseInputStyles = ({
   isDisabled,
   leadingIcon,
   prefix,
-  interactionElement,
+  trailingInteractionElement,
+  leadingInteractionElement,
   suffix,
   trailingIcon,
   textAlign,
@@ -173,13 +175,14 @@ export const getBaseInputStyles = ({
   const {
     hasLeadingIcon,
     hasPrefix,
-    hasInteractionElement,
+    hasTrailingInteractionElement,
     hasSuffix,
     hasTrailingIcon,
   } = getInputVisualsToBeRendered({
     leadingIcon,
     prefix,
-    interactionElement,
+    trailingInteractionElement,
+    leadingInteractionElement,
     suffix,
     trailingIcon,
     size,
@@ -215,7 +218,7 @@ export const getBaseInputStyles = ({
     ),
     paddingRight: getRightPadding({
       theme,
-      hasInteractionElement,
+      hasTrailingInteractionElement,
       hasSuffix,
       hasTrailingIcon,
       size,

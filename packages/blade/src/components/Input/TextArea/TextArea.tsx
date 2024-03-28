@@ -180,7 +180,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       name={name}
       maxCharacters={maxCharacters}
       placeholder={placeholder}
-      interactionElement={renderInteractionElement()}
+      trailingInteractionElement={renderInteractionElement()}
       defaultValue={defaultValue}
       value={value}
       numberOfLines={numberOfLines}

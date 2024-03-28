@@ -296,7 +296,7 @@ const _BaseDropdownInputTrigger = (
       onChange={props.isSelectInput ? undefined : props.onInputValueChange}
       onKeyDown={props.onTriggerKeydown}
       size={props.size}
-      interactionElement={
+      trailingInteractionElement={
         isAutoCompleteInHeader ? null : (
           <InputChevronIcon
             onClick={() => {

@@ -168,7 +168,7 @@ const getTextColorToken = ({
 
 const getProps = ({
   buttonTypographyTokens,
-  children,
+  childrenString,
   isDisabled,
   size,
   theme,
@@ -177,7 +177,7 @@ const getProps = ({
   hasIcon,
 }: {
   buttonTypographyTokens: ButtonTypography;
-  children?: string;
+  childrenString?: string;
   isDisabled: boolean;
   hasIcon: boolean;
   theme: Theme;
@@ -192,7 +192,7 @@ const getProps = ({
     });
   }
 
-  const isIconOnly = hasIcon && (!children || children?.trim().length === 0);
+  const isIconOnly = hasIcon && (!childrenString || childrenString?.trim().length === 0);
   const props: BaseButtonStyleProps = {
     iconSize: isIconOnly ? buttonIconOnlySizeToIconSizeMap[size] : buttonSizeToIconSizeMap[size],
     spinnerSize: buttonSizeToSpinnerSizeMap[size],
@@ -201,7 +201,8 @@ const getProps = ({
     minHeight: makeSize(buttonMinHeight[size]),
     height: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
     width: isIconOnly ? buttonIconOnlyHeightWidth[size] : undefined,
-    iconPadding: hasIcon && children?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
+    iconPadding:
+      hasIcon && childrenString?.trim() ? `spacing.${buttonIconPadding[size]}` : undefined,
     iconColor: getTextColorToken({
       property: 'icon',
       variant,
@@ -224,7 +225,7 @@ const getProps = ({
     buttonPaddingRight: isIconOnly
       ? makeSpace(0)
       : makeSpace(theme.spacing[buttonPadding[size].right]),
-    text: size === 'xsmall' ? children?.trim().toUpperCase() : children?.trim(),
+    text: size === 'xsmall' ? childrenString?.trim().toUpperCase() : childrenString?.trim(),
     defaultBackgroundColor: getIn(
       theme.colors,
       getBackgroundColorToken({ property: 'background', variant, color, state: 'default' }),
@@ -328,6 +329,8 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
   const [isPressed, setIsPressed] = React.useState(false);
   const isLink = Boolean(href);
   const childrenString = getStringFromReactText(children);
+  const isChildrenComponent = React.isValidElement(children);
+
   // Button cannot be disabled when its rendered as Link
   const disabled = buttonGroupProps.isDisabled ?? (isLoading || (isDisabled && !isLink));
 
@@ -377,7 +380,7 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
     motionEasing,
   } = getProps({
     buttonTypographyTokens: buttonTypography,
-    children: childrenString,
+    childrenString,
     isDisabled: disabled,
     size: buttonGroupProps.size ?? size,
     variant: buttonGroupProps.variant ?? variant,
@@ -525,19 +528,23 @@ const _BaseButton: React.ForwardRefRenderFunction<BladeElementRef, BaseButtonPro
             </BaseBox>
           ) : null}
           {text ? (
-            <BaseText
-              lineHeight={lineHeight}
-              fontSize={fontSize}
-              // figma and web have different font-smoothing properties
-              // which causes web version of button text to look much bolder
-              // than figma version. To fix this we are changing font-weight from 600 to 500
-              // https://forum.figma.com/t/why-does-a-font-weight-in-figma-seem-lighter-than-the-same-weight-in-the-browser/2207
-              fontWeight="medium"
-              textAlign="center"
-              color={textColor}
-            >
-              {text}
-            </BaseText>
+            isChildrenComponent ? (
+              children
+            ) : (
+              <BaseText
+                lineHeight={lineHeight}
+                fontSize={fontSize}
+                // figma and web have different font-smoothing properties
+                // which causes web version of button text to look much bolder
+                // than figma version. To fix this we are changing font-weight from 600 to 500
+                // https://forum.figma.com/t/why-does-a-font-weight-in-figma-seem-lighter-than-the-same-weight-in-the-browser/2207
+                fontWeight="medium"
+                textAlign="center"
+                color={textColor}
+              >
+                {text}
+              </BaseText>
+            )
           ) : null}
           {Icon && iconPosition == 'right' ? (
             <BaseBox

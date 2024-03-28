@@ -256,6 +256,7 @@ const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) 
 
 const Box = assignWithoutSideEffects(React.forwardRef(_Box), {
   displayName: 'Box',
+  componentId: 'Box',
 });
 
 export { Box, makeBoxProps };

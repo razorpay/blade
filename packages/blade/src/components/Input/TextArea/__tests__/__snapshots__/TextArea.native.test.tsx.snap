@@ -241,7 +241,6 @@ exports[`<TextArea /> should render 1`] = `
             editable={true}
             hasTags={false}
             id="textarea-1-input-2"
-            interactionElement={null}
             isFocused={false}
             isTextArea={true}
             keyboardType="default"
@@ -284,6 +283,7 @@ exports[`<TextArea /> should render 1`] = `
                 },
               ]
             }
+            trailingInteractionElement={null}
             valueComponentType="text"
           />
         </View>
