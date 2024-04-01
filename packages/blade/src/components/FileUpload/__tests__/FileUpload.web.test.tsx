@@ -21,6 +21,24 @@ describe('<FileUpload />', () => {
     expect(input).toHaveAttribute('name', 'single-file-upload-input');
   });
 
+  it('should render FileUpload with size="large"', () => {
+    const { container, getByText } = renderWithTheme(
+      <FileUpload
+        uploadType="single"
+        size="large"
+        label="Upload GST certificate"
+        helpText="Upload .jpg, .jpeg, or .png file only"
+        accept="image/*"
+        name="single-file-upload-input"
+      />,
+    );
+    expect(container).toMatchSnapshot();
+    const input = getByText('Drag files here or').closest('div')?.querySelector('input');
+    expect(input).toHaveAttribute('type', 'file');
+    expect(input).toHaveAttribute('accept', 'image/*');
+    expect(input).toHaveAttribute('name', 'single-file-upload-input');
+  });
+
   it('should set disabled state with isDisabled', () => {
     const { container, getByText } = renderWithTheme(
       <FileUpload
@@ -36,6 +54,7 @@ describe('<FileUpload />', () => {
     const input = getByText('Drag files here or').closest('div')?.querySelector('input');
     expect(input).toBeDisabled();
   });
+
   it('should set required state with isRequired', () => {
     const { getByText } = renderWithTheme(
       <FileUpload

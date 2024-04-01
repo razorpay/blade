@@ -198,6 +198,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           inputProps={{}}
           style={{
             cursor: isDisabled ? 'not-allowed' : 'pointer',
+            width: '100%',
           }}
         >
           <BaseBox
@@ -336,7 +337,9 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
         selectedFiles.map((file) => (
           <BaseBox
             key={file.id}
-            marginLeft={makeSize(label && isLabelLeftPositioned ? 136 : 0)}
+            marginLeft={makeSize(
+              label && isLabelLeftPositioned ? formHintLeftLabelMarginLeft[size] : 0,
+            )}
             marginBottom="spacing.3"
           >
             <FileUploadItem
