@@ -27,11 +27,26 @@ buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${
 # Platforms object contains all the browser / device combinations you want to test on.
 # Entire list available here -> (https://www.browserstack.com/list-of-browsers-and-platforms/automate)
 platforms:
+  # Chrome
   - os: OS X
     osVersion: Ventura
     browserName: playwright-chromium
     browserVersion: latest
+  # Firefox
+  - os: OS X
+    osVersion: Ventura
+    browserName: playwright-firefox
+    browserVersion: latest
+  # Safari
+  - os: OS X
+    osVersion: Ventura
+    browserName: playwright-webkit
+    browserVersion: latest
   # Mobile devices
+  - device: iPhone 13
+    osVersion: 15
+    realMobile: true
+    browserName: safari
 
 # =======================
 # Parallels per Platform
