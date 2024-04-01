@@ -43,11 +43,9 @@ platforms:
     browserName: playwright-webkit
     browserVersion: latest
   # Mobile devices - Android
-  - device: Google Pixel 5
-    osVersion: 11.0
-    realMobile: true
+  - deviceName: Samsung Galaxy S23 Ultra
     browserName: chrome
-    browserVersion: latest
+    osVersion: 13.0
 
 # =======================
 # Parallels per Platform
