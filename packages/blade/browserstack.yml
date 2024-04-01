@@ -42,11 +42,12 @@ platforms:
     osVersion: Ventura
     browserName: playwright-webkit
     browserVersion: latest
-  # Mobile devices
-  - device: iPhone 13
-    osVersion: 15
+  # Mobile devices - Android
+  - device: Google Pixel 5
+    osVersion: 11.0
     realMobile: true
-    browserName: safari
+    browserName: chrome
+    browserVersion: latest
 
 # =======================
 # Parallels per Platform
