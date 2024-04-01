@@ -127,6 +127,7 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
           <Box maxWidth="400px" display="flex" flexDirection="column" gap="spacing.5">
             <Heading marginBottom="spacing.4">Add New Product</Heading>
             <TextInput
+              {...args}
               label="Product Name"
               placeholder="Add product name"
               isRequired

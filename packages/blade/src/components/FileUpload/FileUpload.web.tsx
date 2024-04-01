@@ -23,6 +23,7 @@ import { Text } from '~components/Typography';
 import type { BladeElementRef } from '~utils/types';
 import { getHintType } from '~components/Input/BaseInput/BaseInput';
 import { makeAccessible } from '~utils/makeAccessible';
+import { formHintLeftLabelMarginLeft } from '~components/Input/BaseInput/baseInputTokens';
 
 const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadProps> = (
   {
@@ -47,6 +48,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
     errorText,
     maxCount,
     maxSize,
+    size = 'medium',
     ...styledProps
   },
   ref,
@@ -180,6 +182,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
       >
         {label ? (
           <FormLabel
+            size={size}
             as="span"
             necessityIndicator={necessityIndicator}
             position={labelPosition}
@@ -204,6 +207,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
             marginBottom={willRenderHintText ? 'spacing.0' : 'spacing.5'}
           >
             <StyledFileUploadWrapper
+              size={size}
               isDisabled={isDisabled}
               isActive={isActive}
               display="flex"
@@ -291,6 +295,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
         {isOneFileSelectedWithSingleUpload && (
           <FileUploadItem
             file={selectedFiles[0]}
+            size={size}
             onRemove={() => {
               const newFiles = selectedFiles.filter(({ id }) => id !== selectedFiles[0].id);
               setSelectedFiles(newFiles);
@@ -305,14 +310,16 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           />
         )}
       </BaseBox>
-      {/* the magic number 136 is basically max-width of label i.e 120 and then right margin i.e 16 which is the spacing between label and input field */}
       {willRenderHintText && (
         <BaseBox
-          marginLeft={makeSize(label && isLabelLeftPositioned ? 136 : 0)}
+          marginLeft={makeSize(
+            label && isLabelLeftPositioned ? formHintLeftLabelMarginLeft[size] : 0,
+          )}
           marginBottom="spacing.5"
         >
           <BaseBox display="flex" flexDirection="row" justifyContent="'space-between">
             <FormHint
+              size={size}
               type={getHintType({
                 validationState: showError ? 'error' : validationState,
                 hasHelpText: Boolean(helpText),
@@ -334,6 +341,7 @@ const _FileUpload: React.ForwardRefRenderFunction<BladeElementRef, FileUploadPro
           >
             <FileUploadItem
               file={file}
+              size={size}
               onRemove={() => {
                 const newFiles = selectedFiles.filter(({ id }) => id !== file.id);
                 setSelectedFiles(newFiles);
