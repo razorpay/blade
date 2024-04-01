@@ -7,6 +7,15 @@ name: Blade BrowserStack E2E Tests
 
 on:
   workflow_dispatch:
+    inputs:
+      bstack_username:
+        description: 'username'
+        required: true
+        type: string
+      bstack_access_key:
+        description: 'access key'
+        required: true
+        type: string
   pull_request:
     types: [labeled]
   push:
@@ -25,8 +34,8 @@ jobs:
       - name: 'BrowserStack Env Setup'  # Invokes the setup-env action
         uses: browserstack/github-actions/setup-env@master
         with:
-          username:  ${{ secrets.BROWSERSTACK_USERNAME }}
-          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+          username:  ${{ github.event.inputs.bstack_username }}
+          access-key: ${{ github.event.inputs.bstack_access_key }}
 
       - name: 'BrowserStack Local Tunnel Setup'  # Invokes the setup-local action
         uses: browserstack/github-actions/setup-local@master
