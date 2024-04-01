@@ -131,7 +131,7 @@
     "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
     "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
     "playwright-test": "playwright test --config=./playwright.dev.config.ts",
-    "bstack-test": "cross-env PLAYWRIGHT_BASE_URL=http://bs-local.com:9000/iframe.html browserstack-node-sdk playwright test --config=./playwright.config.ts",
+    "bstack-test": "cross-env PLAYWRIGHT_BASE_URL=http://bs-local.com:9009/iframe.html browserstack-node-sdk playwright test --config=./playwright.config.ts",
     "postinstall": "patch-package"
   },
   "dependencies": {
