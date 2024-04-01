@@ -1,3 +1,11 @@
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+log/
+local.log
+
 # OSX
 #
 .DS_Store

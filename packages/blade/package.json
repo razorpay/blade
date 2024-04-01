@@ -129,7 +129,10 @@
     "publish-npm": "node ./scripts/publishToNpm.js",
     "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
     "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
-    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js"
+    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
+    "playwright-test": "playwright test --config=./playwright.dev.config.ts",
+    "bstack-test": "cross-env PLAYWRIGHT_BASE_URL=http://bs-local.com:9000/iframe.html browserstack-node-sdk playwright test --config=./playwright.config.ts",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "@babel/runtime": "7.20.0",
@@ -150,7 +153,6 @@
     "@storybook/testing-library": "0.2.2",
     "@storybook/test-runner": "0.16.0",
     "@storybook/jest": "0.2.3",
-    "playwright": "1.40.1",
     "chromatic": "6.22.0",
     "@babel/cli": "7.23.0",
     "@babel/core": "7.20.2",
@@ -263,6 +265,7 @@
     "tsconfig-paths-webpack-plugin": "3.5.2",
     "jsdom-testing-mocks": "1.9.0",
     "postinstall-postinstall": "2.1.0",
+    "patch-package": "8.0.0",
     "react-refresh": "0.11.0",
     "react-docgen-typescript-plugin": "1.0.5",
     "react-json-tree": "0.18.0",
@@ -275,7 +278,9 @@
     "@types/body-scroll-lock": "3.1.0",
     "ramda": "0.29.1",
     "@razorpay/i18nify-js": "1.4.4",
-    "@razorpay/i18nify-react": "4.0.0"
+    "@razorpay/i18nify-react": "4.0.0",
+    "@playwright/test": "1.42.1",
+    "browserstack-node-sdk": "1.32.2"
   },
   "peerDependencies": {
     "react": ">=18",
