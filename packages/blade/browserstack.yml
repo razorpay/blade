@@ -3,8 +3,10 @@
 # =============================
 # Add your BrowserStack userName and accessKey here or set BROWSERSTACK_USERNAME and
 # BROWSERSTACK_ACCESS_KEY as env variables
-# userName: 
-# accessKey: 
+userName: 
+accessKey: 
+
+playwrightVersion: 1.38.1
 
 # ======================
 # BrowserStack Reporting
@@ -28,20 +30,20 @@ buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${
 # Entire list available here -> (https://www.browserstack.com/list-of-browsers-and-platforms/automate)
 platforms:
   # Chrome
-  - os: OS X
-    osVersion: Ventura
-    browserName: playwright-chromium
-    browserVersion: latest
-  # Firefox
-  - os: OS X
-    osVersion: Ventura
-    browserName: playwright-firefox
-    browserVersion: latest
-  # Safari
-  - os: OS X
-    osVersion: Ventura
-    browserName: playwright-webkit
-    browserVersion: latest
+  # - os: OS X
+  #   osVersion: Ventura
+  #   browserName: playwright-chromium
+  #   browserVersion: latest
+  # # Firefox
+  # - os: OS X
+  #   osVersion: Ventura
+  #   browserName: playwright-firefox
+  #   browserVersion: latest
+  # # Safari
+  # - os: OS X
+  #   osVersion: Ventura
+  #   browserName: playwright-webkit
+  #   browserVersion: latest
   # Mobile devices - Android
   - deviceName: Samsung Galaxy S23 Ultra
     browserName: chrome
@@ -77,9 +79,9 @@ source: node-js-playwright-sample-sdk:v1
 # ===================
 # Debugging features
 # ===================
-debug: false # <boolean> # Set to true if you need screenshots for every selenium command ran
+debug: true # <boolean> # Set to true if you need screenshots for every selenium command ran
 networkLogs: false # <boolean> Set to true to enable HAR logs capturing
-consoleLogs: errors # <string> Remote browser's console debug levels to be printed (Default: errors)
+consoleLogs: verbose # <string> Remote browser's console debug levels to be printed (Default: errors)
 # Available options are `disable`, `errors`, `warnings`, `info`, `verbose` (Default: errors)
 # CUSTOM_TAG_<INT>: # <string> (Default: parent folder name of the test file) Custom tag for your test suite
 
