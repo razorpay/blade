@@ -30,20 +30,20 @@ buildIdentifier: '#${BUILD_NUMBER}' # Supports strings along with either/both ${
 # Entire list available here -> (https://www.browserstack.com/list-of-browsers-and-platforms/automate)
 platforms:
   # Chrome
-  # - os: OS X
-  #   osVersion: Ventura
-  #   browserName: playwright-chromium
-  #   browserVersion: latest
-  # # Firefox
-  # - os: OS X
-  #   osVersion: Ventura
-  #   browserName: playwright-firefox
-  #   browserVersion: latest
-  # # Safari
-  # - os: OS X
-  #   osVersion: Ventura
-  #   browserName: playwright-webkit
-  #   browserVersion: latest
+  - os: OS X
+    osVersion: Ventura
+    browserName: playwright-chromium
+    browserVersion: latest
+  # Firefox
+  - os: OS X
+    osVersion: Ventura
+    browserName: playwright-firefox
+    browserVersion: latest
+  # Safari
+  - os: OS X
+    osVersion: Ventura
+    browserName: playwright-webkit
+    browserVersion: latest
   # Mobile devices - Android
   - deviceName: Samsung Galaxy S23 Ultra
     browserName: chrome
@@ -87,4 +87,4 @@ consoleLogs: verbose # <string> Remote browser's console debug levels to be prin
 
 # Test Observability is an intelligent test reporting & debugging product. It collects data using the SDK. Read more about what data is collected at https://www.browserstack.com/docs/test-observability/references/terms-and-conditions
 # Visit observability.browserstack.com to see your test reports and insights. To disable test observability, specify `testObservability: false` in the key below.
-testObservability: true
+testObservability: false

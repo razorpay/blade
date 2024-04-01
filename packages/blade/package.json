@@ -279,7 +279,7 @@
     "ramda": "0.29.1",
     "@razorpay/i18nify-js": "1.4.4",
     "@razorpay/i18nify-react": "4.0.0",
-    "@playwright/test": "1.42.1",
+    "@playwright/test": "1.38.1",
     "browserstack-node-sdk": "1.32.2"
   },
   "peerDependencies": {
