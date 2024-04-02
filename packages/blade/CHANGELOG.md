@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.10.0
+
+### Minor Changes
+
+- a75d2e3c: feat(blade): add PhoneNumber input
+
 ## 11.9.1
 
 ### Patch Changes
