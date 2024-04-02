@@ -3,8 +3,9 @@ import type { BaseBoxProps } from './types';
 import { useMemoizedStyles } from './useMemoizedStyles';
 import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
-const BaseBox = styled.div
+const _BaseBox = styled.div
   .attrs<BaseBoxProps>((props) => {
     return {
       ...metaAttribute({
@@ -20,5 +21,7 @@ const BaseBox = styled.div
   const cssObject = useMemoizedStyles(props);
   return cssObject;
 });
+
+const BaseBox = assignWithoutSideEffects(_BaseBox, { componentId: 'BaseBox' });
 
 export { BaseBox };
