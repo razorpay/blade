@@ -78,7 +78,7 @@ UncontrolledState.play = async () => {
 
   await expect(onChangeFn).toHaveBeenLastCalledWith(
     expect.objectContaining({
-      countryCode: 'IN',
+      country: 'IN',
       dialCode: '+91',
       name: undefined,
       phoneNumber: '1234 567890',
@@ -123,7 +123,7 @@ ControlledState.play = async () => {
 
   await expect(onChangeFn).toHaveBeenLastCalledWith(
     expect.objectContaining({
-      countryCode: 'IN',
+      country: 'IN',
       dialCode: '+91',
       name: undefined,
       phoneNumber: '1234 567890',

@@ -27,26 +27,29 @@ const meta: Meta<PhoneNumberInputProps> = {
   component: PhoneNumberInput,
   tags: ['autodocs'],
   args: {
-    defaultCountryCode: 'IN',
+    country: undefined,
+    defaultCountry: 'IN',
     size: 'medium',
     showDialCode: true,
     showCountrySelector: true,
-    countries: undefined,
+    allowedCountries: undefined,
     defaultValue: undefined,
     trailingIcon: undefined,
     leadingIcon: undefined,
     accessibilityLabel: undefined,
   },
   argTypes: {
-    defaultCountryCode: {
+    country: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
     },
-    countries: {
-      control: {
-        disable: true,
+    defaultCountry: {
+      table: {
+        category: propsCategory.BASE_PROPS,
       },
+    },
+    allowedCountries: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -113,6 +116,11 @@ const meta: Meta<PhoneNumberInputProps> = {
       control: {
         disable: true,
       },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onCountryChange: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -258,8 +266,8 @@ const CountriesToShowTemplate: StoryFn<typeof PhoneNumberInput> = ({ ...args }) 
   return (
     <Box>
       <Text marginBottom="spacing.5">
-        By setting the <Code size="medium">{`countries={['IN', 'MY']}`}</Code> prop, We can only
-        show two countries in the Country Selector
+        By setting the <Code size="medium">{`allowedCountries={['IN', 'MY']}`}</Code> prop, We can
+        only show two countries in the Country Selector
       </Text>
       <PhoneNumberInput {...args} />
     </Box>
@@ -267,7 +275,7 @@ const CountriesToShowTemplate: StoryFn<typeof PhoneNumberInput> = ({ ...args }) 
 };
 export const CountriesToShow = CountriesToShowTemplate.bind({});
 CountriesToShow.args = {
-  countries: ['IN', 'MY'],
+  allowedCountries: ['IN', 'MY'],
 };
 
 export const SizeLarge = PhoneNumberInputTemplate.bind({});
@@ -286,9 +294,9 @@ WithoutDialCode.args = {
   showDialCode: false,
 };
 
-export const DefaultCountryCode = PhoneNumberInputTemplate.bind({});
-DefaultCountryCode.args = {
-  defaultCountryCode: 'MY',
+export const DefaultCountry = PhoneNumberInputTemplate.bind({});
+DefaultCountry.args = {
+  defaultCountry: 'MY',
 };
 
 export const WithHelpText = PhoneNumberInputTemplate.bind({});
@@ -338,10 +346,10 @@ const ControlledCountrySelectorTemplate: StoryFn<typeof PhoneNumberInput> = () =
       <PhoneNumberInput
         label="Enter phone number"
         name="phonenumber"
-        countryCode={selectedCountry}
-        onCountrySelection={({ countryCode }): void => {
-          console.log(countryCode);
-          setSelectedCountry(countryCode);
+        country={selectedCountry}
+        onCountryChange={({ country }): void => {
+          console.log(country);
+          setSelectedCountry(country);
         }}
       />
     </Box>
@@ -354,7 +362,7 @@ const ControlledTemplate: StoryFn<typeof PhoneNumberInput> = () => {
   const [data, setData] = React.useState<{
     phoneNumber: string;
     dialCode: string;
-    countryCode: string;
+    country: string;
     value: string;
     name: string;
   } | null>(null);
@@ -365,13 +373,13 @@ const ControlledTemplate: StoryFn<typeof PhoneNumberInput> = () => {
         label="Enter phone number"
         value={inputValue}
         name="phonenumber"
-        onChange={({ name, value, countryCode, dialCode, phoneNumber }): void => {
+        onChange={({ name, value, country, dialCode, phoneNumber }): void => {
           console.log(`sending ${name}:${value} to analytics service`);
           setInputValue(value ?? '');
           setData({
             name,
             value,
-            countryCode,
+            country,
             dialCode,
             phoneNumber,
           });
@@ -394,9 +402,9 @@ const ControlledTemplate: StoryFn<typeof PhoneNumberInput> = () => {
           </Text>
           <Text>
             <Text as="span" weight="semibold">
-              countryCode:
+              country:
             </Text>{' '}
-            {data.countryCode}
+            {data.country}
           </Text>
           <Text>
             <Text as="span" weight="semibold">
@@ -432,9 +440,9 @@ const ValidationTemplate: StoryFn<typeof PhoneNumberInput> = () => {
         name="phonenumber"
         errorText="Invlaid phone number"
         validationState={isValid ? 'none' : 'error'}
-        onChange={({ value, countryCode }): void => {
+        onChange={({ value, country }): void => {
           setInputValue(value ?? '');
-          setIsValid(isValidPhoneNumber(value, countryCode));
+          setIsValid(isValidPhoneNumber(value, country));
         }}
       />
     </Box>

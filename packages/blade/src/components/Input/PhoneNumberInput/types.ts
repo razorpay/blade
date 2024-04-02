@@ -44,19 +44,19 @@ type PhoneNumberInputProps = StyledPropsBlade &
      *
      * @default "IN" or autodetect based on the user's locale
      */
-    defaultCountryCode?: CountryCodeType;
+    defaultCountry?: CountryCodeType;
     /**
      * Controlled state of the country code to be used in the input.
      */
-    countryCode?: CountryCodeType;
+    country?: CountryCodeType;
     /**
      * Callback that is called when the country is selected from the country selector.
      */
-    onCountrySelection?: ({ countryCode }: { countryCode: CountryCodeType }) => void;
+    onCountryChange?: ({ country }: { country: CountryCodeType }) => void;
     /**
      * List of countries to be shown in the country selector.
      */
-    countries?: CountryCodeType[];
+    allowedCountries?: CountryCodeType[];
     /**
      * Callback that is called when the value of the input changes.
      */
@@ -78,7 +78,7 @@ type PhoneNumberInputProps = StyledPropsBlade &
        *
        * @example: "IN" for India
        */
-      countryCode: CountryCodeType;
+      country: CountryCodeType;
       /**
        * raw value of the input
        */

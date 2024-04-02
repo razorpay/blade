@@ -21,9 +21,9 @@ import { useControllableState } from '~utils/useControllable';
 
 const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNumberInputProps> = (
   {
-    defaultCountryCode = 'IN',
-    countryCode,
-    onCountrySelection,
+    defaultCountry = 'IN',
+    country,
+    onCountryChange,
     label,
     labelPosition,
     defaultValue,
@@ -51,7 +51,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
     testID,
     keyboardReturnKeyType = 'done',
     autoCompleteSuggestionType,
-    countries,
+    allowedCountries,
     ...styledProps
   },
   ref,
@@ -62,9 +62,9 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
   const inputWrapperRef = React.useRef<HTMLDivElement | null>(null);
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
   const [selectedCountry, setSelectedCountry] = useControllableState<CountryCodeType>({
-    defaultValue: defaultCountryCode as CountryCodeType,
-    value: countryCode,
-    onChange: (countryCode) => onCountrySelection?.({ countryCode }),
+    defaultValue: defaultCountry as CountryCodeType,
+    value: country,
+    onChange: (country) => onCountryChange?.({ country }),
   });
 
   React.useEffect(() => {
@@ -98,8 +98,8 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
 
   const flags = React.useMemo(() => getFlagsForAllCountries(), []);
   const countryData = React.useMemo(() => {
-    if (countries) {
-      return countries.map((countryCode) => {
+    if (allowedCountries) {
+      return allowedCountries.map((countryCode) => {
         return {
           code: countryCode,
           name: countryNameFormatter.of(countryCode)!,
@@ -115,7 +115,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
         };
       })
       .sort((a, b) => a.name.localeCompare(b.name));
-  }, [countries, flags]);
+  }, [allowedCountries, flags]);
 
   const handleOnChange = ({
     name,
@@ -131,7 +131,7 @@ const _PhoneNumberInput: React.ForwardRefRenderFunction<BladeElementRef, PhoneNu
       value: value!,
       phoneNumber: value ? formatPhoneNumber(value, selectedCountry) : undefined!,
       dialCode: getDialCodeByCountryCode(selectedCountry),
-      countryCode: selectedCountry,
+      country: selectedCountry,
     });
   };
 
