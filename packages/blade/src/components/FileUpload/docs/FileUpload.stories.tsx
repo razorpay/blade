@@ -132,12 +132,13 @@ const CustomPreviewTemplate: StoryFn<typeof FileUploadComponent> = (args) => {
           >
             <Heading marginBottom="spacing.4">Add New Product</Heading>
             <TextInput
-              {...args}
               label="Product Name"
               placeholder="Add product name"
               isRequired
               necessityIndicator="required"
               onChange={({ value }) => setProductName(value)}
+              size={args.size}
+              labelPosition={args.labelPosition}
             />
             <FileUploadComponent
               {...args}
