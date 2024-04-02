@@ -1,6 +1,7 @@
 import type { CountryCodeType, getFlagsForAllCountries } from '@razorpay/i18nify-js';
 import { getDialCodeByCountryCode, getFlagOfCountry } from '@razorpay/i18nify-js';
 import React from 'react';
+import styled from 'styled-components';
 import {
   ActionList,
   ActionListItem,
@@ -14,7 +15,7 @@ import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
 import { useIsMobile } from '~utils/useIsMobile';
 import { size as sizes } from '~tokens/global';
 import { makeSize } from '~utils';
-import { Box } from '~components/Box';
+import BaseBox from '~components/Box/BaseBox';
 
 const countryNameFormatter = new Intl.DisplayNames(['en'], { type: 'region' });
 
@@ -31,6 +32,15 @@ type CounterSelectorProps = {
   isDisabled?: boolean;
   size: 'medium' | 'large';
 };
+
+const CountryDropdownButtonWrapper = styled(BaseBox)(() => {
+  return {
+    '& > button': {
+      padding: '0',
+      width: '100%',
+    },
+  };
+});
 
 const CountrySelector = ({
   isDisabled,
@@ -71,7 +81,10 @@ const CountrySelector = ({
   return (
     <Dropdown isOpen={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
       {/* TODO: Remove once CountrySelector's button sizing is fixed in figma */}
-      <Box width={size === 'medium' ? '50px' : '65px'}>
+      <CountryDropdownButtonWrapper
+        width={size === 'medium' ? '45px' : '60px'}
+        marginLeft={size === 'medium' ? '-3px' : '-2px'}
+      >
         <DropdownButton
           isDisabled={isDisabled}
           size={size === 'medium' ? 'xsmall' : 'medium'}
@@ -89,7 +102,7 @@ const CountrySelector = ({
             alt=""
           />
         </DropdownButton>
-      </Box>
+      </CountryDropdownButtonWrapper>
       {isMobile ? (
         <BottomSheet>
           <BottomSheetHeader title="Select A Country" />

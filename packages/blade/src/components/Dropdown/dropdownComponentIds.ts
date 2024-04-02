@@ -1,7 +1,7 @@
 export const dropdownComponentIds = {
   DropdownOverlay: 'DropdownOverlay',
   Dropdown: 'Dropdown',
-  Box: 'Box',
+  BaseBox: 'BaseBox',
   triggers: {
     SelectInput: 'SelectInput',
     DropdownButton: 'DropdownButton',
