@@ -443,3 +443,20 @@ inputRef.parameters = {
     },
   },
 };
+
+export const TextAreaWithTags: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        isTaggedInput={true}
+        tags={tags}
+        onTagChange={({ tags }) => {
+          console.log({ tags });
+          setTags(tags);
+        }}
+      />
+    </Box>
+  );
+};

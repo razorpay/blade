@@ -15,6 +15,7 @@ import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import type { BladeElementRef } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
+import { getTagsGroup } from '~components/Tag/getTagsGroup';
 
 type TextAreaCommonProps = Pick<
   BaseInputProps,
@@ -50,6 +51,10 @@ type TextAreaCommonProps = Pick<
    * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
+
+  isTaggedInput?: boolean;
+  tags?: string[];
+  onTagChange?: ({ tags }: { tags: string[] }) => void;
 } & StyledPropsBlade;
 
 /*
@@ -115,12 +120,16 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     numberOfLines = 2,
     testID,
     size = 'medium',
+    isTaggedInput,
+    tags,
+    onTagChange,
     ...styledProps
   },
   ref,
 ) => {
   const inputRef = React.useRef<BladeElementRef>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
+  const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
 
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
 
@@ -159,6 +168,49 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     return null;
   };
 
+  const getNewTagsArray = (indexToRemove: number): string[] => {
+    if (!tags) {
+      return [];
+    }
+
+    // Check if the index is valid
+    if (indexToRemove < 0 || indexToRemove >= tags.length) {
+      return tags; // Return the original array
+    }
+
+    // Create a new array without the element at the specified index
+    const newArray = tags.slice(0, indexToRemove).concat(tags.slice(indexToRemove + 1));
+
+    return newArray;
+  };
+
+  const getTags = React.useMemo(
+    () => ({ size }: { size: NonNullable<BaseInputProps['size']> }) => {
+      return getTagsGroup({
+        size,
+        tags: tags ?? [],
+        activeTagIndex,
+        isDisabled,
+        onDismiss: ({ tagIndex }) => {
+          // if (isTagDismissedRef.current) {
+          //   isTagDismissedRef.current.value = true;
+          // }
+
+          if (!isReactNative(0)) {
+            inputRef.current?.focus();
+          }
+
+          onTagChange?.({ tags: getNewTagsArray(tagIndex) });
+
+          // removeOption(selectedIndices[tagIndex]);
+          // setChangeCallbackTriggerer(Number(changeCallbackTriggerer) + 1);
+        },
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [activeTagIndex, tags, isDisabled],
+  );
+
   return (
     <BaseInput
       as="textarea"
@@ -167,6 +219,11 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       autoFocus={autoFocus}
       ref={mergedRef}
       label={label as string}
+      tags={isTaggedInput ? getTags({ size }) : undefined}
+      activeTagIndex={activeTagIndex}
+      setActiveTagIndex={setActiveTagIndex}
+      isDropdownTrigger={isTaggedInput}
+      showAllTags={true}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
@@ -198,6 +255,34 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
         onChange?.({ name, value });
       }}
       onFocus={onFocus}
+      onKeyDown={(e) => {
+        if (!isTaggedInput) {
+          return;
+        }
+
+        const currentTags = tags ?? [];
+        const isControlledValue = Boolean(value);
+        const inputElement = inputRef.current as HTMLTextAreaElement;
+        const inputValue = isControlledValue ? value?.trim() : inputElement.value.trim();
+        if (e.key === 'Enter') {
+          e.event.preventDefault(); // we don't want textarea to treat enter as line break in tagged inputs
+
+          if (inputValue) {
+            onTagChange?.({ tags: [...currentTags, inputValue] });
+            if (isControlledValue) {
+              onChange?.({ name, value: '' });
+            } else {
+              inputElement.value = '';
+            }
+
+            setActiveTagIndex(-1);
+          }
+        }
+
+        if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0) {
+          onTagChange?.({ tags: currentTags.slice(0, -1) });
+        }
+      }}
       onBlur={onBlur}
       onSubmit={onSubmit}
       trailingFooterSlot={(value) => {
