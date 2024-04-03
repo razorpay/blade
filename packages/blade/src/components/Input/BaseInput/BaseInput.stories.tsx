@@ -397,10 +397,14 @@ const BaseInputControlledWithTagsTemplate: StoryFn<typeof BaseInputComponent> = 
     <BaseInput
       id="base-input"
       label="First Name"
+      as="textarea"
+      maxTagRows="multiple"
       value={inputValue}
       autoCompleteSuggestionType="none"
       tags={getTags()}
       activeTagIndex={activeTagIndex}
+      showAllTags={true}
+      isDropdownTrigger={true}
       setActiveTagIndex={setActiveTagIndex}
       name="fullName"
       onChange={({ name, value }): void => {
