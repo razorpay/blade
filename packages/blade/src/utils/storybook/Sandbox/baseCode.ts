@@ -57,9 +57,7 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
       'react-scripts': '4.0.3',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
-      '@emotion/react': '11.11.1',
-      '@table-library/react-table-library': '4.1.7',
-      '@razorpay/i18nify-js': '1.4.4',
+      '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
     },
   };
 };
@@ -73,9 +71,7 @@ const getViteReactTSDependencies = (): Dependencies => {
       '@types/react-dom': '^18',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
-      '@emotion/react': '11.11.1',
-      '@table-library/react-table-library': '4.1.7',
-      '@razorpay/i18nify-js': '1.4.4',
+      '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
     },
     devDependencies: {
       vite: '4.5.0',
