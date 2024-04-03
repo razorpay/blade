@@ -208,7 +208,7 @@
     "@types/jest-axe": "3.5.5",
     "@types/jscodeshift": "0.11.6",
     "@types/jsdom": "20.0.1",
-    "@types/react": "17.0.38",
+    "@types/react": "18.2.74",
     "@types/react-native": "0.72.2",
     "@types/react-test-renderer": "17.0.1",
     "@types/styled-components": "5.1.25",
@@ -250,7 +250,7 @@
     "react-native": "0.72.3",
     "react-native-gesture-handler": "2.9.0",
     "react-native-reanimated": "3.4.2",
-    "react-native-svg": "12.3.0",
+    "react-native-svg": "15.1.0",
     "react-scripts": "5.0.1",
     "react-test-renderer": "18.2.0",
     "rollup": "3.28.1",
@@ -306,7 +306,7 @@
     "@storybook/**/react": "18.2.0",
     "react-dom": "18.2.0",
     "react": "18.2.0",
-    "@types/react": "17.0.38",
+    "@types/react": "18.2.74",
     "styled-components": "^5"
   }
 }
