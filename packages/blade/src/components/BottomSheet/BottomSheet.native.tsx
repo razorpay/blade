@@ -152,7 +152,7 @@ const _BottomSheet = ({
   }, [children]);
 
   const renderFooter = React.useCallback(
-    (props): React.ReactElement => {
+    (props: any): React.ReactElement => {
       return (
         <GorhomBottomSheetFooter {...props}>
           <View
@@ -171,7 +171,7 @@ const _BottomSheet = ({
   );
 
   const renderBackdrop = React.useCallback(
-    (props): React.ReactElement => {
+    (props: any): React.ReactElement => {
       return <BottomSheetBackdrop {...props} zIndex={bottomSheetZIndex} />;
     },
     [bottomSheetZIndex],
@@ -285,6 +285,7 @@ const _BottomSheet = ({
             containerStyle={{ zIndex: bottomSheetZIndex }}
             animateOnMount={true}
             handleComponent={renderHandle}
+            // @ts-expect-error - GorhomBottomSheet types are not updated
             backgroundComponent={BottomSheetSurface}
             footerComponent={renderFooter}
             backdropComponent={renderBackdrop}
