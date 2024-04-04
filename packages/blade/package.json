@@ -306,7 +306,7 @@
     "@storybook/**/react": "18.2.0",
     "react-dom": "18.2.0",
     "react": "18.2.0",
-    "@types/react": "^18.0.21",
+    "@types/react": "18.2.24",
     "@types/styled-components": "5.1.34",
     "styled-components": "^5"
   }
