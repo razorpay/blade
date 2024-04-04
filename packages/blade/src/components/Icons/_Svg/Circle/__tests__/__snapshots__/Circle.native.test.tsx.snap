@@ -40,10 +40,23 @@ exports[`<Circle /> should render react-native-svg Circle component 1`] = `
     vbWidth={100}
     width="400"
   >
-    <RNSVGGroup>
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+    >
       <RNSVGCircle
         cx="200"
         cy="100"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
         matrix={
           [
             1,
