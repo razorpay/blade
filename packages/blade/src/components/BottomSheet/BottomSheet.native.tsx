@@ -285,7 +285,6 @@ const _BottomSheet = ({
             containerStyle={{ zIndex: bottomSheetZIndex }}
             animateOnMount={true}
             handleComponent={renderHandle}
-            // @ts-expect-error - GorhomBottomSheet types are not updated
             backgroundComponent={BottomSheetSurface}
             footerComponent={renderFooter}
             backdropComponent={renderBackdrop}
