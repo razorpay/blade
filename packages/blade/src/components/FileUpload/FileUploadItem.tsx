@@ -11,7 +11,13 @@ import { ProgressBar } from '~components/ProgressBar';
 import isUndefined from '~utils/lodashButBetter/isUndefined';
 
 const FileUploadItem = memo(
-  ({ file, onPreview, onRemove, onDismiss }: FileUploadItemProps): React.ReactElement => {
+  ({
+    file,
+    onPreview,
+    onRemove,
+    onDismiss,
+    size: containerSize,
+  }: FileUploadItemProps): React.ReactElement => {
     const { name, size, uploadPercent, errorText, status } = file;
     const isUploading = status === 'uploading';
     const sizeInKB = size / 1024;
@@ -20,12 +26,17 @@ const FileUploadItem = memo(
 
     return (
       <StyledFileUploadItemWrapper
+        size={containerSize ?? 'medium'}
         status={status ?? 'success'}
         borderRadius="medium"
         borderWidth="thin"
       >
         <BaseBox width="100%" display="flex" flexDirection="column">
-          <BaseBox display="flex" flexDirection="row" margin="spacing.3">
+          <BaseBox
+            display="flex"
+            flexDirection="row"
+            margin={containerSize === 'large' ? 'spacing.4' : 'spacing.3'}
+          >
             <BaseBox marginRight="spacing.3">
               <FileUploadItemIcon fileName={name} uploadStatus={status} />
             </BaseBox>
