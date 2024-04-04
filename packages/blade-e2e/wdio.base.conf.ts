@@ -14,6 +14,9 @@ export const config: Options.Testrunner = {
     // TODO: How should we organize the e2e stories? Like _KitchenSin?
     '../blade/src/**/*.stories.tsx',
   ],
+  before: async () => {
+    await browser.maximizeWindow();
+  },
   framework: 'mocha',
   mochaOpts: {
     ui: 'bdd',

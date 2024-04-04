@@ -9,9 +9,6 @@ const localConfig: Options.Testrunner = {
   capabilities: [
     {
       browserName: 'chrome',
-      // 'wdio:devtoolsOptions': {
-      //   headless: true,
-      // },
     },
     {
       browserName: 'firefox',

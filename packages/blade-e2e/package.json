@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "ts-node": "10.9.2",
+    "@testing-library/webdriverio": "3.2.1",
     "@wdio/browserstack-service": "8.35.1",
     "@wdio/local-runner": "8.35.1",
     "@wdio/mocha-framework": "8.35.0",
