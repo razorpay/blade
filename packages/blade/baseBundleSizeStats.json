@@ -14,18 +14,18 @@
     "loading": 0.577109375
   },
   {
-    "name": "Alert",
-    "passed": true,
-    "size": 33726,
-    "sizeLimit": 2000000,
-    "loading": 0.6587109375
-  },
-  {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
     "passed": true,
     "size": 34780,
     "sizeLimit": 2000000,
     "loading": 0.679296875
+  },
+  {
+    "name": "Alert",
+    "passed": true,
+    "size": 33726,
+    "sizeLimit": 2000000,
+    "loading": 0.6587109375
   },
   {
     "name": "Amount",
@@ -142,9 +142,9 @@
   {
     "name": "FileUpload",
     "passed": true,
-    "size": 35600,
+    "size": 35688,
     "sizeLimit": 2000000,
-    "loading": 0.6953125
+    "loading": 0.69703125
   },
   {
     "name": "Indicator",
