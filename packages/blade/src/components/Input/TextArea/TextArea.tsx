@@ -130,6 +130,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   const inputRef = React.useRef<BladeElementRef>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
+  const [isInputFocussed, setIsInputFocussed] = React.useState(false);
 
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
 
@@ -215,6 +216,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     <BaseInput
       as="textarea"
       id="textarea"
+      maxTagRows="multiple"
       componentName={MetaConstants.TextArea}
       autoFocus={autoFocus}
       ref={mergedRef}
@@ -223,7 +225,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       activeTagIndex={activeTagIndex}
       setActiveTagIndex={setActiveTagIndex}
       isDropdownTrigger={isTaggedInput}
-      showAllTags={true}
+      showAllTags={isInputFocussed}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
@@ -254,7 +256,14 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
 
         onChange?.({ name, value });
       }}
-      onFocus={onFocus}
+      onFocus={(e) => {
+        setIsInputFocussed(true);
+        onFocus?.(e);
+      }}
+      onBlur={(e) => {
+        setIsInputFocussed(false);
+        onBlur?.(e);
+      }}
       onKeyDown={(e) => {
         if (!isTaggedInput) {
           return;
@@ -283,7 +292,6 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
           onTagChange?.({ tags: currentTags.slice(0, -1) });
         }
       }}
-      onBlur={onBlur}
       onSubmit={onSubmit}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
