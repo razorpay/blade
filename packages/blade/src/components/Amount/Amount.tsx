@@ -189,6 +189,8 @@ export const formatAmountWithSuffix = ({
         const formatted = formatNumber(value, {
           intlOptions: {
             notation: 'compact',
+            minimumFractionDigits: 1,
+            trailingZeroDisplay: 'stripIfInteger',
           },
         });
         return {
