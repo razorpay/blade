@@ -20,7 +20,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "4.2.1",
     "serve": "^14.2.1",
-    "vite": "4.5.2",
+    "vite": "4.5.3",
     "vite-bundle-visualizer": "^0.11.0"
   }
 }
