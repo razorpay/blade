@@ -465,8 +465,11 @@ const componentData: ComponentStatusDataType = [
     description: 'ButtonGroup component can be used to group related buttons.',
   },
   {
-    name: 'MobileNumberInput',
-    status: 'in-development',
+    name: 'PhoneNumberInput',
+    status: 'released',
+    platform: 'web',
+    releasedIn: '11.10.0',
+    storybookLink: 'Components/Input/PhoneNumberInput',
     description:
       'A phone number input is an input field that allow users to input phone numbers with a keyboard. It supports entering phone numbers from different geographic locations.',
   },

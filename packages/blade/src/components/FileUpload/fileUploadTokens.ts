@@ -1,6 +1,7 @@
 import type { BladeFile, FileUploadItemBackgroundColors } from './types';
 import type { SelectorInputHoverTokens } from '~components/Form/Selector/types';
 import type { DurationString, EasingString } from '~tokens/global';
+import { size } from '~tokens/global';
 
 const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {
   return {
@@ -20,6 +21,11 @@ const getFileUploadInputHoverTokens = (): SelectorInputHoverTokens => {
 const fileUploadMotionTokens: Record<'duration' | 'easing', DurationString | EasingString> = {
   duration: 'duration.2xquick',
   easing: 'easing.standard.effective',
+};
+
+const fileUploadHeightTokens = {
+  medium: size['56'],
+  large: size['64'],
 };
 
 const fileUploadColorTokens = {
@@ -79,4 +85,5 @@ export {
   fileUploadItemBackgroundColors,
   fileUploadColorTokens,
   fileUploadLinkBorderTokens,
+  fileUploadHeightTokens,
 };
