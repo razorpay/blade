@@ -445,3 +445,14 @@ ButtonRef.parameters = {
     },
   },
 };
+
+export const ButtonTest: StoryFn<typeof ButtonComponent> = () => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <BaseBox gap="spacing.3" display="flex">
+      <ButtonComponent onClick={() => setCount((prev) => prev + 1)}>Increase</ButtonComponent>
+      <Text testID="counter">Clicked: {count}</Text>
+    </BaseBox>
+  );
+};

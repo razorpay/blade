@@ -9,6 +9,7 @@
   "workspaces": {
     "packages": [
       "packages/blade",
+      "packages/blade-e2e",
       "packages/eslint-plugin-blade"
     ],
     "nohoist": [
