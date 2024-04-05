@@ -51,9 +51,21 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
     >
       <RNSVGGroup
         clipPath="clip0_59_170"
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
       >
         <RNSVGPath
           d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
           propList={
             [
               "stroke",
@@ -62,7 +74,12 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
               "strokeLinejoin",
             ]
           }
-          stroke={4280563015}
+          stroke={
+            {
+              "payload": 4280563015,
+              "type": 0,
+            }
+          }
           strokeLinecap={1}
           strokeLinejoin={1}
           strokeWidth="2"
@@ -70,10 +87,21 @@ exports[`<BluetoothIcon /> should render BluetoothIcon 1`] = `
       </RNSVGGroup>
       <RNSVGDefs>
         <RNSVGClipPath
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
           name="clip0_59_170"
         >
           <RNSVGRect
-            fill={4280563015}
+            fill={
+              {
+                "payload": 4280563015,
+                "type": 0,
+              }
+            }
             height="24"
             propList={
               [

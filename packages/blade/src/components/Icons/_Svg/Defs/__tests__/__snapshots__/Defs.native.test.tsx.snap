@@ -52,7 +52,12 @@ exports[`<Defs /> should render react-native-svg Defs component 1`] = `
       <RNSVGDefs>
         <RNSVGPath
           d="M2 2h2v2H2V2"
-          fill={4278190080}
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
           propList={
             [
               "fill",

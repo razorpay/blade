@@ -145,6 +145,7 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       motionEasing={motionEasing}
       testID={testID}
     >
+      {/* @ts-expect-error */}
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;
         return children;
