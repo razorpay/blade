@@ -48,6 +48,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import type { LinkProps } from '~components/Link';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
+import { useMergeRefs } from '~utils/useMergeRefs';
 
 type CommonAutoCompleteSuggestionTypes =
   | 'none'
@@ -811,6 +812,8 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   ref,
 ) => {
   const { theme } = useTheme();
+  const inputRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
+  const mergedInputRef = useMergeRefs(ref, inputRef);
   const inputWrapperRef: InputWrapperRef = React.useRef(null);
   const { onInputKeydownTagHandler, visibleTagsCountRef } = useTags(
     tags,
@@ -942,6 +945,10 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             }}
             maxTagRows={maxTagRows}
             size={size}
+            numberOfLines={numberOfLines}
+            onClick={() => {
+              inputRef.current?.focus();
+            }}
           >
             <BaseInputVisuals
               size={size}
@@ -970,11 +977,13 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
               maxTagRows={maxTagRows}
               inputWrapperRef={inputWrapperRef}
               size={size}
+              numberOfLines={numberOfLines}
+              isTextArea={isTextArea}
             >
               <StyledBaseInput
                 as={as}
                 id={inputId}
-                ref={ref as any}
+                ref={mergedInputRef as any}
                 name={name}
                 type={type}
                 defaultValue={defaultValue}

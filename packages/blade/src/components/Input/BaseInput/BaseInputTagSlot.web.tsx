@@ -121,6 +121,7 @@ const BaseInputTagSlot = ({
   visibleTagsCountRef,
   labelPrefix,
   isDisabled,
+  numberOfLines,
   size,
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
@@ -189,6 +190,7 @@ const BaseInputTagSlot = ({
       overflowX="auto"
       overflowY={showAllTags || maxTagRows === 'multiple' ? 'auto' : 'hidden'}
       minHeight={makeSize(baseInputHeight[size])}
+      maxHeight={makeSize(baseInputHeight[size] * (numberOfLines ?? 1))}
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
       }}

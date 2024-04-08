@@ -27,6 +27,8 @@ export type BaseInputTagSlotProps = {
   inputWrapperRef: InputWrapperRef;
   labelPrefix?: string;
   size: NonNullable<BaseInputProps['size']>;
+  isTextArea?: boolean;
+  numberOfLines: BaseInputProps['numberOfLines'];
 };
 
 export type BaseInputWrapperProps = Pick<
@@ -40,6 +42,8 @@ export type BaseInputWrapperProps = Pick<
   setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;
   size: NonNullable<BaseInputProps['size']>;
+  numberOfLines: BaseInputProps['numberOfLines'];
+  onClick?: () => void;
 };
 
 export type StyledBaseInputProps = {
