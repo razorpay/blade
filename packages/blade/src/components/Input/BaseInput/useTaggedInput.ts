@@ -2,7 +2,7 @@ import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { BladeElementRefWithValue } from '~utils/types';
 import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
-import { isReactNative } from '~utils';
+// import { isReactNative } from '~utils';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 
 type TaggedInputProps = {
@@ -57,9 +57,6 @@ const useTaggedInput = ({
         activeTagIndex,
         isDisabled,
         onDismiss: ({ tagIndex }) => {
-          if (!isReactNative()) {
-            inputRef.current?.focus();
-          }
           onTagChange?.({ tags: getNewTagsArray(tagIndex) });
         },
       });

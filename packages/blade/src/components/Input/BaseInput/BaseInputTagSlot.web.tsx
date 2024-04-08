@@ -10,7 +10,7 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { MetaConstants } from '~utils/metaAttribute';
 import { size as sizeToken } from '~tokens/global';
 
-const MINUMUM_INPUT_SPACE = 30;
+const MINUMUM_INPUT_SPACE = 80;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
 const TAG_MAX_WIDTH: number = sizeToken['140'];
 
@@ -149,6 +149,13 @@ const BaseInputTagSlot = ({
       slotRef.current?.scrollTo?.({
         top: 0,
         left: 0,
+        behavior: 'smooth',
+      });
+    } else if (maxTagRows === 'single') {
+      // when its single line input and showAllTags is true, we scroll till item on focus
+      slotRef.current?.scrollTo?.({
+        top: 0,
+        left: maxTagRows === 'single' ? slotRef.current.scrollWidth : 0,
         behavior: 'smooth',
       });
     }
