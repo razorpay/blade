@@ -8,6 +8,7 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Heading } from '~components/Typography';
 
 const Page = (): ReactElement => {
   return (
@@ -63,6 +64,15 @@ Default.args = {
   value: 20,
 };
 
+export const CircularProgress = ProgressBarTemplate.bind({});
+CircularProgress.storyName = 'Circular Progress';
+CircularProgress.args = {
+  label: 'Label',
+  value: 25,
+  type: 'circular',
+  size: 'large',
+};
+
 const ProgressBarWithUpdatingValuesTemplate: StoryFn<typeof ProgressBarComponent> = ({
   ...args
 }) => {
@@ -81,7 +91,23 @@ const ProgressBarWithUpdatingValuesTemplate: StoryFn<typeof ProgressBarComponent
     };
   }, [value]);
 
-  return <ProgressBarComponent {...args} value={value} />;
+  return (
+    <BaseBox display="flex" flexDirection="column" marginTop="spacing.3" marginBottom="spacing.5">
+      {/** large size is not available in linear progressbar */}
+      {args.size !== 'large' && (
+        <BaseBox marginBottom="spacing.5">
+          <Heading size="medium" marginBottom="spacing.3">
+            Linear
+          </Heading>
+          <ProgressBarComponent {...args} value={value} />
+        </BaseBox>
+      )}
+      <Heading size="medium" marginBottom="spacing.3">
+        Circular
+      </Heading>
+      <ProgressBarComponent {...args} value={value} type="circular" />
+    </BaseBox>
+  );
 };
 
 const ProgressBarWithColorsTemplate: StoryFn<typeof ProgressBarComponent> = ({ ...args }) => {
@@ -99,7 +125,7 @@ const ProgressBarWithColorsTemplate: StoryFn<typeof ProgressBarComponent> = ({ .
       clearInterval(interval);
     };
   }, [value]);
-  const intents = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+  const colors = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
 
   return (
     <BaseBox
@@ -109,11 +135,30 @@ const ProgressBarWithColorsTemplate: StoryFn<typeof ProgressBarComponent> = ({ .
       marginBottom="spacing.5"
       width="100%"
     >
-      {intents.map((intent) => (
-        <BaseBox key={intent} paddingTop="spacing.4">
-          <ProgressBarComponent {...args} color={intent} value={value} />
+      <Heading size="medium" marginBottom="spacing.3">
+        Linear
+      </Heading>
+      {colors.map((color) => (
+        <BaseBox key={color} paddingTop="spacing.4">
+          <ProgressBarComponent label={color} {...args} color={color} value={value} type="linear" />
         </BaseBox>
       ))}
+      <Heading size="medium" marginBottom="spacing.3" marginTop="spacing.5">
+        Circular
+      </Heading>
+      <BaseBox display="flex" flexDirection={{ base: 'column', m: 'row' }} gap="spacing.6">
+        {colors.map((color) => (
+          <BaseBox key={color} paddingTop="spacing.4">
+            <ProgressBarComponent
+              label={color}
+              {...args}
+              color={color}
+              value={value}
+              type="circular"
+            />
+          </BaseBox>
+        ))}
+      </BaseBox>
     </BaseBox>
   );
 };
@@ -138,11 +183,18 @@ ProgressBarMediumSize.args = {
   size: 'medium',
 };
 
+export const ProgressBarLargeSize = ProgressBarWithUpdatingValuesTemplate.bind({});
+ProgressBarLargeSize.storyName = 'Large Size';
+ProgressBarLargeSize.args = {
+  label: 'Label',
+  size: 'large',
+  type: 'circular',
+};
+
 export const ProgressBarWithColor = ProgressBarWithColorsTemplate.bind({});
-ProgressBarWithColor.storyName = 'Intents';
+ProgressBarWithColor.storyName = 'Colors';
 ProgressBarWithColor.args = {
   size: 'medium',
-  label: 'Label',
 };
 
 export const ProgressBarMeterVariant = ProgressBarTemplate.bind({});

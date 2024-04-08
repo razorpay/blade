@@ -1,4 +1,4 @@
-import type { ProgressBarVariant } from './ProgressBar';
+import type { ProgressBarVariant, ProgressBarProps } from './ProgressBar';
 import type { DelayString, DurationString, EasingString } from '~tokens/global';
 
 type ProgressBarFilledProps = {
@@ -13,4 +13,17 @@ type ProgressBarFilledProps = {
   isIndeterminate: boolean;
 };
 
-export type { ProgressBarFilledProps };
+type CircularProgressBarFilledProps = Pick<
+  ProgressBarProps,
+  'size' | 'label' | 'showPercentage'
+> & {
+  isMeter: boolean;
+  backgroundColor: string;
+  fillColor: string;
+  progressPercent: number;
+  pulseMotionDuration: DurationString;
+  pulseMotionDelay: DelayString;
+  motionEasing: EasingString;
+};
+
+export type { ProgressBarFilledProps, CircularProgressBarFilledProps };

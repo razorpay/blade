@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import { ProgressBarFilled } from './ProgressBarFilled';
+import { CircularProgressBarFilled } from './CircularProgressBar';
 import clamp from '~utils/lodashButBetter/clamp';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Text } from '~components/Typography/Text';
@@ -27,6 +28,11 @@ type ProgressBarCommonProps = {
    */
   color?: FeedbackColors;
   /**
+   * Sets the type of the progress bar.
+   * @default 'linear'
+   */
+  type?: 'linear' | 'circular';
+  /**
    * Sets the label to be rendered for the progress bar. This value will also be used as default for `accessibilityLabel`.
    */
   label?: string;
@@ -34,7 +40,7 @@ type ProgressBarCommonProps = {
    * Sets the size of the progress bar.
    * @default 'small'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Sets the progress value of the progress bar.
    * @default 'small'
@@ -101,6 +107,7 @@ const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 |
 const ProgressBar = ({
   accessibilityLabel,
   color,
+  type = 'linear',
   isIndeterminate = false,
   label,
   showPercentage = true,
@@ -131,6 +138,7 @@ const ProgressBar = ({
     : theme.colors.surface.background.primary.intense;
   const hasLabel = label && label.trim()?.length > 0;
   const isMeter = variant === 'meter';
+  const isCircular = type === 'circular';
   const progressValue = clamp(value, min, max);
   const percentageProgressValue = Math.floor(((progressValue - min) * 100) / (max - min));
   const shouldShowPercentage = showPercentage && !isMeter && !isIndeterminate;
@@ -165,26 +173,29 @@ const ProgressBar = ({
       {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
     >
       <BaseBox display="flex" flexDirection="column" width="100%">
-        <BaseBox
-          display="flex"
-          flexDirection="row"
-          justifyContent={hasLabel ? 'space-between' : 'flex-end'}
-        >
-          {hasLabel ? (
-            <Text as="label" variant="body" size="small" color="surface.text.gray.subtle">
-              {label}
-            </Text>
-          ) : null}
-          {shouldShowPercentage ? (
-            <BaseBox marginBottom="spacing.2">
-              <Text
-                variant="body"
-                size="small"
-                color="surface.text.gray.subtle"
-              >{`${percentageProgressValue}%`}</Text>
-            </BaseBox>
-          ) : null}
-        </BaseBox>
+        {!isCircular && (
+          <BaseBox
+            display="flex"
+            flexDirection="row"
+            justifyContent={hasLabel ? 'space-between' : 'flex-end'}
+          >
+            {hasLabel ? (
+              <Text as="label" variant="body" size="small" color="surface.text.gray.subtle">
+                {label}
+              </Text>
+            ) : null}
+            {shouldShowPercentage ? (
+              <BaseBox marginBottom="spacing.2">
+                <Text
+                  variant="body"
+                  size="small"
+                  color="surface.text.gray.subtle"
+                >{`${percentageProgressValue}%`}</Text>
+              </BaseBox>
+            ) : null}
+          </BaseBox>
+        )}
+
         <BaseBox
           id={id}
           {...makeAccessible({
@@ -196,24 +207,41 @@ const ProgressBar = ({
             valueMax: accessibilityProps.valueMax,
           })}
         >
-          <BaseBox
-            backgroundColor={unfilledBackgroundColor}
-            height={makeSize(progressBarHeight[size])}
-            overflow="hidden"
-            position="relative"
-          >
-            <ProgressBarFilled
-              backgroundColor={filledBackgroundColor}
-              progress={percentageProgressValue}
+          {isCircular ? (
+            <CircularProgressBarFilled
+              size={size}
+              label={label}
+              progressPercent={percentageProgressValue}
+              isMeter={isMeter}
+              showPercentage={shouldShowPercentage}
+              backgroundColor={unfilledBackgroundColor}
+              fillColor={filledBackgroundColor}
               fillMotionDuration="duration.2xgentle"
               pulseMotionDuration="duration.2xgentle"
               indeterminateMotionDuration="duration.2xgentle"
               pulseMotionDelay="delay.long"
               motionEasing="easing.standard.revealing"
-              variant={variant}
-              isIndeterminate={isIndeterminate}
             />
-          </BaseBox>
+          ) : (
+            <BaseBox
+              backgroundColor={unfilledBackgroundColor}
+              height={makeSize(progressBarHeight[size])}
+              overflow="hidden"
+              position="relative"
+            >
+              <ProgressBarFilled
+                backgroundColor={filledBackgroundColor}
+                progress={percentageProgressValue}
+                fillMotionDuration="duration.2xgentle"
+                pulseMotionDuration="duration.2xgentle"
+                indeterminateMotionDuration="duration.2xgentle"
+                pulseMotionDelay="delay.long"
+                motionEasing="easing.standard.revealing"
+                variant={variant}
+                isIndeterminate={isIndeterminate}
+              />
+            </BaseBox>
+          )}
         </BaseBox>
       </BaseBox>
     </BaseBox>

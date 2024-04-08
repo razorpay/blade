@@ -15,4 +15,22 @@ const pulseAnimation = {
   backgroundColor: 'white',
 };
 
-export { indeterminateAnimation, pulseAnimation };
+const circularProgressSizeTokens = {
+  small: {
+    size: 24,
+    strokeWidth: 3,
+    percentTextSize: 'small',
+  },
+  medium: {
+    size: 48,
+    strokeWidth: 5,
+    percentTextSize: 'small',
+  },
+  large: {
+    size: 72,
+    strokeWidth: 7,
+    percentTextSize: 'medium',
+  },
+} as const;
+
+export { indeterminateAnimation, pulseAnimation, circularProgressSizeTokens };
