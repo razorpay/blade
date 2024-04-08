@@ -4,6 +4,8 @@ import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
+import type { TaggedInputProps } from '../BaseInput/useTaggedInput';
+import { useTaggedInput } from '../BaseInput/useTaggedInput';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
@@ -16,7 +18,7 @@ import { Spinner } from '~components/Spinner';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
-import type { BladeElementRef } from '~utils/types';
+import type { BladeElementRef, BladeElementRefWithValue } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
 
 // Users should use PasswordInput for input type password
@@ -90,7 +92,8 @@ type TextInputCommonProps = Pick<
    * @default text
    */
   type?: Type;
-} & StyledPropsBlade;
+} & TaggedInputProps &
+  StyledPropsBlade;
 
 /*
   Mandatory accessibilityLabel prop when label is not provided
@@ -166,6 +169,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     size = 'medium',
     leadingIcon,
     trailingIcon,
+    isTaggedInput,
+    tags,
+    onTagChange,
     ...styledProps
   },
   ref,
@@ -173,6 +179,17 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   const textInputRef = React.useRef<BladeElementRef>(null);
   const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
+  const [isInputFocussed, setIsInputFocussed] = useState(autoFocus ?? false);
+  const { activeTagIndex, setActiveTagIndex, getTags, handleTaggedInputKeydown } = useTaggedInput({
+    isTaggedInput,
+    tags,
+    onTagChange,
+    isDisabled,
+    onChange,
+    name,
+    value,
+    inputRef: textInputRef as React.RefObject<BladeElementRefWithValue>,
+  });
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(showClearButton && (defaultValue ?? value)));
@@ -227,6 +244,12 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       value={value}
       name={name}
       maxCharacters={maxCharacters}
+      isDropdownTrigger={isTaggedInput}
+      tags={isTaggedInput ? getTags({ size }) : undefined}
+      showAllTags={isInputFocussed}
+      maxTagRows="single"
+      activeTagIndex={activeTagIndex}
+      setActiveTagIndex={setActiveTagIndex}
       onChange={({ name, value }) => {
         if (showClearButton && value?.length) {
           // show the clear button when the user starts typing in
@@ -241,8 +264,17 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         onChange?.({ name, value });
       }}
       onClick={onClick}
-      onFocus={onFocus}
-      onBlur={onBlur}
+      onFocus={(e) => {
+        setIsInputFocussed(true);
+        onFocus?.(e);
+      }}
+      onBlur={(e) => {
+        setIsInputFocussed(false);
+        onBlur?.(e);
+      }}
+      onKeyDown={(e) => {
+        handleTaggedInputKeydown(e);
+      }}
       onSubmit={onSubmit}
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}

@@ -581,3 +581,20 @@ inputRef.parameters = {
     },
   },
 };
+
+export const TextInputWithTags: StoryFn<typeof TextInputComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextInputComponent
+        {...args}
+        isTaggedInput={true}
+        tags={tags}
+        showClearButton={false}
+        onTagChange={({ tags }) => {
+          setTags(tags);
+        }}
+      />
+    </Box>
+  );
+};
