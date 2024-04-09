@@ -15,7 +15,8 @@
       "@wdio/globals/types",
       "expect-webdriverio",
       "@wdio/mocha-framework",
-      "@wdio/browserstack-service"
+      "@wdio/browserstack-service",
+      "@types/styled-components-react-native"
     ],
     // In Blade side we are targeting `.web` types
     // We can't add both `.native` & `.web` at once.
