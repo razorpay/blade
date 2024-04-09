@@ -5,6 +5,7 @@ import { config as baseConfig } from './wdio.base.conf.js';
 
 const commonCapabilities = {
   buildName: 'blade browserstack build',
+  buildIdentifier: '#${BUILD_NUMBER}',
 };
 
 const bstackConfig: Options.Testrunner = {
