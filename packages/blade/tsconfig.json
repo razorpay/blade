@@ -10,6 +10,13 @@
       "~tokens/*": ["src/tokens/*"],
       "~src/*": ["src/*"]
     },
+    "types": [
+      "node",
+      "@wdio/globals/types",
+      "expect-webdriverio",
+      "@wdio/mocha-framework",
+      "@wdio/browserstack-service"
+    ],
     // In Blade side we are targeting `.web` types
     // We can't add both `.native` & `.web` at once.
     "moduleSuffixes": [".all", ".web", ""],

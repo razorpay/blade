@@ -1,4 +1,5 @@
-import { browser } from '@wdio/globals';
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import { expect, browser } from '@wdio/globals';
 import { setupBrowser } from '@testing-library/webdriverio';
 
 before(async () => {

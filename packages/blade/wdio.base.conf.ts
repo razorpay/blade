@@ -2,7 +2,7 @@
 import type { Options } from '@wdio/types';
 
 export const config: Options.Testrunner = {
-  specs: ['./tests/*.test.@(ts|tsx)'],
+  specs: ['./src/**/*.e2e.test.ts'],
   exclude: [],
   logLevel: 'warn',
   baseUrl: process.env.E2E_BASE_URL || 'http://localhost:9009/iframe.html',
@@ -12,9 +12,9 @@ export const config: Options.Testrunner = {
   capabilities: [],
   filesToWatch: [
     // TODO: How should we organize the e2e stories? Like _KitchenSin?
-    '../blade/src/**/*.stories.tsx',
+    './src/**/*.stories.tsx',
   ],
-  before: async () => {
+  before: async (_, __, browser) => {
     await browser.maximizeWindow();
   },
   framework: 'mocha',
