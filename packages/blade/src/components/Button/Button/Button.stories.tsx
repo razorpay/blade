@@ -19,6 +19,7 @@ import {
   getStyledPropsArgTypes,
 } from '~components/Box/BaseBox/storybookArgTypes';
 import { castWebType } from '~utils';
+import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -444,4 +445,15 @@ ButtonRef.parameters = {
         'Button component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
+};
+
+export const ButtonTest = (): React.ReactElement => {
+  const [count, setCount] = useState(0);
+
+  return (
+    <Box>
+      <ButtonComponent onClick={() => setCount((prev) => prev + 1)}>Increase</ButtonComponent>
+      <Text testID="counter">Clicked: {count}</Text>
+    </Box>
+  );
 };

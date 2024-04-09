@@ -129,7 +129,9 @@
     "publish-npm": "node ./scripts/publishToNpm.js",
     "pregenerate-bundle-size-info": "yarn run-s build:clean build:generate-types build:react-prod",
     "generate-bundle-size-info": "node ./scripts/generateBundleSizeInfo.js",
-    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js"
+    "generate-github-npmrc": "node ./scripts/generateGitHubRegistryNpmrc.js",
+    "e2e:bstack": "./scripts/run-e2e-bstack.sh",
+    "e2e:local": "./scripts/run-e2e-local.sh"
   },
   "dependencies": {
     "@babel/runtime": "7.20.0",
@@ -275,7 +277,16 @@
     "@types/body-scroll-lock": "3.1.0",
     "ramda": "0.29.1",
     "@razorpay/i18nify-js": "1.8.0",
-    "@razorpay/i18nify-react": "4.0.6"
+    "@razorpay/i18nify-react": "4.0.6",
+    "ts-node": "10.9.2",
+    "@testing-library/webdriverio": "3.2.1",
+    "@wdio/browserstack-service": "8.35.1",
+    "@wdio/local-runner": "8.35.1",
+    "@wdio/mocha-framework": "8.35.0",
+    "@wdio/globals": "8.35.1",
+    "@wdio/cli": "8.35.1",
+    "webdriverio": "8.35.1",
+    "chai": "5.1.0"
   },
   "peerDependencies": {
     "react": ">=18",
