@@ -8,7 +8,7 @@ wait-on http://bs-local.com:9009 --timeout 50000
 
 # if there is timeout exit
 if [ $? -ne 0 ]; then
-  echo "Timeout waiting for http://localhost:9009"
+  echo "Timeout waiting for bs-local.com:9009"
   exit 1
 fi
 

@@ -45,7 +45,8 @@ jobs:
         uses: ./.github/actions/install-dependencies
       - name: Run Storybook
         run: |
-          yarn react:storybook &
+          yarn react:storybook:build
+          yarn react:storybook:serve &
         working-directory: packages/blade
 
       - name: 'Run E2E Tests'
