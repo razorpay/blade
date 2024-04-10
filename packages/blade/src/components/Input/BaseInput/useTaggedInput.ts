@@ -68,6 +68,7 @@ const useTaggedInput = ({
         activeTagIndex,
         isDisabled,
         onDismiss: ({ tagIndex }) => {
+          console.log('dismiss', { tagIndex });
           if (!isTagsControlled) {
             setTagsUncontrolled(getNewTagsArray(tagIndex));
           }
@@ -117,7 +118,7 @@ const useTaggedInput = ({
       setTimeout(() => {
         // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
         // @ts-ignore: clear does exist in react native
-        inputRef.current.clear();
+        inputRef.current?.clear();
       }, 10);
       return;
     }
@@ -134,7 +135,7 @@ const useTaggedInput = ({
     const isControlledValue = value !== undefined;
     const inputValue = isControlledValue ? value?.trim() : inputValueUncontrolled.trim();
     if (e.key === 'Enter' || e.key === ',') {
-      e.event.preventDefault(); // we don't want textarea to treat enter as line break in tagged inputs
+      e.event.preventDefault?.(); // we don't want textarea to treat enter as line break in tagged inputs
       if (inputValue) {
         if (!isTagsControlled) {
           setTagsUncontrolled([...currentTags, inputValue]);

@@ -199,12 +199,11 @@ exports[`<TextArea /> should render 1`] = `
       >
         <View
           currentInteraction="default"
-          isTextArea={true}
+          onClick={[Function]}
           size="medium"
           style={
             [
               {
-                "alignItems": "flex-start",
                 "backgroundColor": "yellow",
                 "borderColor": "hsla(211, 27%, 76%, 1)",
                 "borderRadius": 4,
@@ -266,13 +265,12 @@ exports[`<TextArea /> should render 1`] = `
                   "fontSize": 14,
                   "fontStyle": "normal",
                   "fontWeight": "400",
-                  "height": 44,
+                  "height": 72,
                   "letterSpacing": 0,
                   "marginBottom": 0,
                   "marginLeft": 0,
                   "marginRight": 0,
                   "marginTop": 0,
-                  "minHeight": 36,
                   "paddingBottom": 8,
                   "paddingLeft": 12,
                   "paddingRight": 12,

@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import type { ReactElement } from 'react';
+import { waitFor, screen } from '@testing-library/react';
 import { TextArea } from '../TextArea';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -8,6 +9,10 @@ import { Button } from '~components/Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
+
+const getTag = (tagName: string): HTMLElement => {
+  return screen.queryAllByLabelText(`Close ${tagName} tag`)?.[0];
+};
 
 describe('<TextArea />', () => {
   it('should render', () => {
@@ -354,6 +359,84 @@ describe('<TextArea />', () => {
 
     await userEvent.click(button);
     expect(input).toHaveFocus();
+  });
+
+  it(`should add tags in uncontrolled API`, async () => {
+    const label = 'Enter Name';
+    const tagChangeCallback = jest.fn();
+
+    const { getByLabelText } = renderWithTheme(
+      <TextArea label={label} isTaggedInput={true} onTagChange={tagChangeCallback} />,
+    );
+
+    const input = getByLabelText(label);
+
+    expect(getTag('blade@gmail.com')).toBeUndefined();
+    await userEvent.type(input, 'blade@gmail.com');
+    await userEvent.type(input, ',');
+    expect(getTag('blade@gmail.com')).toBeVisible();
+    expect(tagChangeCallback).toBeCalledWith({ tags: ['blade@gmail.com'] });
+
+    expect(getTag('tag@gmail.com')).toBeUndefined();
+    await userEvent.type(input, 'tag@gmail.com');
+    await userEvent.keyboard('{ENTER}');
+    expect(getTag('tag@gmail.com')).toBeVisible();
+    expect(tagChangeCallback).toBeCalledWith({ tags: ['blade@gmail.com', 'tag@gmail.com'] });
+
+    await userEvent.keyboard('{Backspace}');
+    expect(getTag('tag@gmail.com')).toBeUndefined();
+    expect(tagChangeCallback).toBeCalledWith({ tags: ['blade@gmail.com'] });
+
+    await userEvent.click(getTag('blade@gmail.com'));
+    await waitFor(() => expect(getTag('blade@gmail.com')).not.toBeVisible());
+  });
+
+  it(`should add tags in controlled API`, async () => {
+    const label = 'Enter Name';
+
+    const Example = (): React.ReactElement => {
+      const [tags, setTags] = React.useState<string[]>([]);
+      return (
+        <>
+          <TextArea
+            label={label}
+            isTaggedInput={true}
+            tags={tags}
+            onTagChange={({ tags }) => setTags(tags)}
+          />
+          <Button
+            onClick={() => {
+              setTags([...tags, 'saurabh@razorpay.com', 'chaitanya@razorpay.com']);
+            }}
+          >
+            Add More
+          </Button>
+        </>
+      );
+    };
+
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(label);
+
+    expect(getTag('blade@gmail.com')).toBeUndefined();
+    await userEvent.type(input, 'blade@gmail.com');
+    await userEvent.type(input, ',');
+    expect(getTag('blade@gmail.com')).toBeVisible();
+
+    expect(getTag('tag@gmail.com')).toBeUndefined();
+    await userEvent.type(input, 'tag@gmail.com');
+    await userEvent.keyboard('{ENTER}');
+    expect(getTag('tag@gmail.com')).toBeVisible();
+
+    await userEvent.keyboard('{Backspace}');
+    expect(getTag('tag@gmail.com')).toBeUndefined();
+
+    await userEvent.click(getByRole('button', { name: 'Add More' }));
+
+    expect(getTag('blade@gmail.com')).toBeVisible();
+    expect(getTag('saurabh@razorpay.com')).toBeVisible();
+    expect(getTag('chaitanya@razorpay.com')).toBeVisible();
   });
 
   it('should accept testID', () => {
