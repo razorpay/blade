@@ -40,8 +40,21 @@ exports[`<Rect /> should render react-native-svg Rect component 1`] = `
     vbWidth={100}
     width="400"
   >
-    <RNSVGGroup>
+    <RNSVGGroup
+      fill={
+        {
+          "payload": 4278190080,
+          "type": 0,
+        }
+      }
+    >
       <RNSVGRect
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
         height="100"
         rx="4"
         ry="4"

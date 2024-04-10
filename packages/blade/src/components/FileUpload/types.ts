@@ -102,6 +102,12 @@ type FileUploadCommonProps = {
    */
   errorText?: string;
   /**
+   * Size of the FileUpload component
+   *
+   * @default 'medium'
+   */
+  size?: 'medium' | 'large';
+  /**
    * Test ID for automation
    */
   testID?: string;
@@ -138,19 +144,24 @@ type FileUploadPropsWithLabel = {
 type FileUploadProps = (FileUploadPropsWithA11yLabel | FileUploadPropsWithLabel) &
   FileUploadCommonProps;
 
-type FileUploadItemProps = Pick<FileUploadProps, 'onPreview' | 'onRemove' | 'onDismiss'> & {
+type FileUploadItemProps = Pick<
+  FileUploadProps,
+  'onPreview' | 'onRemove' | 'onDismiss' | 'size'
+> & {
   file: BladeFile;
 };
 
 type StyledFileUploadWrapperProps = {
   isDisabled?: boolean;
   isActive: boolean;
+  size: NonNullable<FileUploadProps['size']>;
   theme: Theme;
   children: React.ReactNode;
 };
 
 type StyledFileUploadItemWrapperProps = {
   status: NonNullable<BladeFile['status']>;
+  size: NonNullable<FileUploadProps['size']>;
   theme: Theme;
   children: React.ReactNode;
 };

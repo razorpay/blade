@@ -1,5 +1,23 @@
 # @razorpay/blade
 
+## 11.11.0
+
+### Minor Changes
+
+- 8c5231d4: feat: add large size in FileUpload component
+
+  #### Usage
+
+  ```js
+  <FileUpload
+    size="large"
+    uploadType="single"
+    label="Upload GST certificate"
+    helpText="Upload .jpg, .jpeg, or .png file only"
+    accept="image/*"
+  />
+  ```
+
 ## 11.10.0
 
 ### Minor Changes
