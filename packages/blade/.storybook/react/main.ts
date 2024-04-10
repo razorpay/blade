@@ -22,6 +22,7 @@ const config: StorybookConfig = {
     '../../src/**/*.stories.@(ts|tsx|js|jsx)',
     '../../src/**/*.internal.stories.mdx',
     '../../src/**/*.internal.stories.@(ts|tsx|js|jsx)',
+    '../../src/**/*.e2e.stories.@(ts|tsx|js|jsx)',
   ],
   addons: [
     '@storybook/addon-links',
