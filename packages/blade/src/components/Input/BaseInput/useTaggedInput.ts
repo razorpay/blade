@@ -33,6 +33,7 @@ const useTaggedInput = ({
   getTags: ({ size }: { size: NonNullable<BaseInputProps['size']> }) => React.ReactElement[];
   handleTaggedInputKeydown: (e: FormInputOnKeyDownEvent) => void;
   handleTaggedInputChange: FormInputOnEvent;
+  handleTagsClear: () => void;
 } => {
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [inputValueUncontrolled, setInputValueUncontrolled] = React.useState(defaultValue ?? '');
@@ -79,7 +80,22 @@ const useTaggedInput = ({
   );
 
   const handleTaggedInputChange: FormInputOnEvent = ({ value }) => {
+    if (!isTaggedInput) {
+      return;
+    }
     setInputValueUncontrolled(value ?? '');
+  };
+
+  const handleTagsClear = (): void => {
+    if (!isTaggedInput) {
+      return;
+    }
+
+    if (!isTagsControlled) {
+      setTagsUncontrolled([]);
+    }
+
+    onTagChange?.({ tags: [] });
   };
 
   const clearInput = (): void => {
@@ -143,6 +159,7 @@ const useTaggedInput = ({
     getTags,
     handleTaggedInputKeydown,
     handleTaggedInputChange,
+    handleTagsClear,
   };
 };
 

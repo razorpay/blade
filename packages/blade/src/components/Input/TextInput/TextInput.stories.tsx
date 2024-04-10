@@ -590,7 +590,7 @@ export const TextInputWithControlledTags: StoryFn<typeof TextInputComponent> = (
         {...args}
         isTaggedInput={true}
         tags={tags}
-        showClearButton={true}
+        showClearButton={false}
         onTagChange={({ tags }) => {
           setTags(tags);
         }}

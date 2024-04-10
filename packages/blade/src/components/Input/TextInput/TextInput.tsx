@@ -186,6 +186,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     getTags,
     handleTaggedInputKeydown,
     handleTaggedInputChange,
+    handleTagsClear,
   } = useTaggedInput({
     isTaggedInput,
     tags,
@@ -222,6 +223,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
                 textInputRef.current.focus();
               }
             }
+            handleTagsClear();
             // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
             onClearButtonClick?.();
             textInputRef?.current?.focus();
