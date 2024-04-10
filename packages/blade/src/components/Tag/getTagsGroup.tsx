@@ -11,7 +11,7 @@ const getTagsGroup = ({
 }: TagsGroupProps): React.ReactElement[] => {
   return tags.map((tagName, tagIndex) => (
     <AnimatedTag
-      key={tagName}
+      key={`${tagName}-${tagIndex}`}
       activeTagIndex={activeTagIndex}
       onDismiss={onDismiss}
       currentTagIndex={tagIndex}

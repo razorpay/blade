@@ -1,9 +1,10 @@
 import React from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { BladeElementRefWithValue } from '~utils/types';
-import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
+import type { FormInputOnEvent, FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 // import { isReactNative } from '~utils';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
+import { isReactNative } from '~utils';
 
 type TaggedInputProps = {
   isTaggedInput?: boolean;
@@ -12,7 +13,7 @@ type TaggedInputProps = {
 };
 
 type UseTaggedInputProps = TaggedInputProps &
-  Pick<BaseInputProps, 'isDisabled' | 'onChange' | 'name' | 'value'> & {
+  Pick<BaseInputProps, 'isDisabled' | 'onChange' | 'name' | 'value' | 'defaultValue'> & {
     inputRef: React.RefObject<BladeElementRefWithValue | null>;
   };
 
@@ -25,13 +26,16 @@ const useTaggedInput = ({
   onChange,
   name,
   value,
+  defaultValue,
 }: UseTaggedInputProps): {
   activeTagIndex: number;
   setActiveTagIndex: (activeTagIndex: number) => void;
   getTags: ({ size }: { size: NonNullable<BaseInputProps['size']> }) => React.ReactElement[];
   handleTaggedInputKeydown: (e: FormInputOnKeyDownEvent) => void;
+  handleTaggedInputChange: FormInputOnEvent;
 } => {
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
+  const [inputValueUncontrolled, setInputValueUncontrolled] = React.useState(defaultValue ?? '');
 
   const getNewTagsArray = (indexToRemove: number): string[] => {
     if (!tags) {
@@ -65,31 +69,53 @@ const useTaggedInput = ({
     [activeTagIndex, tags, isDisabled],
   );
 
-  const handleTaggedInputKeydown = (e: FormInputOnKeyDownEvent): void => {
-    if (!isTaggedInput || !inputRef.current) {
+  const handleTaggedInputChange: FormInputOnEvent = ({ value }) => {
+    setInputValueUncontrolled(value ?? '');
+  };
+
+  const clearInput = (): void => {
+    const isControlledValue = Boolean(value);
+
+    if (isControlledValue) {
+      // In Controlled component, we don't clear input ourselves. We just call onChange with empty value
+      onChange?.({ name, value: '' });
       return;
     }
 
-    const inputElement = inputRef.current;
+    if (!inputRef.current) {
+      return;
+    }
+
+    setInputValueUncontrolled('');
+
+    if (isReactNative()) {
+      setTimeout(() => {
+        // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+        // @ts-ignore: clear does exist in react native
+        inputRef.current.clear();
+      }, 10);
+      return;
+    }
+
+    inputRef.current.value = '';
+  };
+
+  const handleTaggedInputKeydown = (e: FormInputOnKeyDownEvent): void => {
+    if (!isTaggedInput || !inputValueUncontrolled) {
+      return;
+    }
 
     const currentTags = tags ?? [];
     const isControlledValue = Boolean(value);
-    const inputValue = isControlledValue ? value?.trim() : inputElement.value.trim();
-    if (e.key === 'Enter') {
+    const inputValue = isControlledValue ? value?.trim() : inputValueUncontrolled.trim();
+    if (e.key === 'Enter' || e.key === ',') {
       e.event.preventDefault(); // we don't want textarea to treat enter as line break in tagged inputs
       if (inputValue) {
         onTagChange?.({ tags: [...currentTags, inputValue] });
-        if (isControlledValue) {
-          onChange?.({ name, value: '' });
-        } else {
-          inputElement.value = '';
-        }
-
+        clearInput();
         setActiveTagIndex(-1);
       }
     }
-
-    console.log({ activeTagIndex });
 
     if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0) {
       onTagChange?.({ tags: currentTags.slice(0, -1) });
@@ -101,6 +127,7 @@ const useTaggedInput = ({
     setActiveTagIndex,
     getTags,
     handleTaggedInputKeydown,
+    handleTaggedInputChange,
   };
 };
 

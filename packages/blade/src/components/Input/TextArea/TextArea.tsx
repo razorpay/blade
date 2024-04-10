@@ -128,7 +128,13 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   const inputRef = React.useRef<BladeElementRef>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
   const [isInputFocussed, setIsInputFocussed] = React.useState(autoFocus ?? false);
-  const { activeTagIndex, setActiveTagIndex, getTags, handleTaggedInputKeydown } = useTaggedInput({
+  const {
+    activeTagIndex,
+    setActiveTagIndex,
+    getTags,
+    handleTaggedInputKeydown,
+    handleTaggedInputChange,
+  } = useTaggedInput({
     tags,
     onTagChange,
     isDisabled,
@@ -218,6 +224,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
           setShouldShowClearButton(false);
         }
 
+        handleTaggedInputChange({ name, value });
         onChange?.({ name, value });
       }}
       onFocus={(e) => {

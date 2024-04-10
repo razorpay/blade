@@ -582,7 +582,7 @@ inputRef.parameters = {
   },
 };
 
-export const TextInputWithTags: StoryFn<typeof TextInputComponent> = ({ ...args }) => {
+export const TextInputWithControlledTags: StoryFn<typeof TextInputComponent> = ({ ...args }) => {
   const [tags, setTags] = React.useState<string[]>([]);
   return (
     <Box display="flex" flexDirection="column">
@@ -590,11 +590,19 @@ export const TextInputWithTags: StoryFn<typeof TextInputComponent> = ({ ...args 
         {...args}
         isTaggedInput={true}
         tags={tags}
-        showClearButton={false}
+        showClearButton={true}
         onTagChange={({ tags }) => {
           setTags(tags);
         }}
       />
+    </Box>
+  );
+};
+
+export const TextInputWithUncontrolledTags: StoryFn<typeof TextInputComponent> = ({ ...args }) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextInputComponent {...args} isTaggedInput={true} showClearButton={true} />
     </Box>
   );
 };

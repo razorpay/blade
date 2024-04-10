@@ -450,6 +450,7 @@ export const TextAreaWithTags: StoryFn<typeof TextAreaComponent> = ({ ...args })
     <Box display="flex" flexDirection="column">
       <TextAreaComponent
         {...args}
+        numberOfLines={3}
         isTaggedInput={true}
         tags={tags}
         onTagChange={({ tags }) => {

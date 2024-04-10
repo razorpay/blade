@@ -43,7 +43,16 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   }
 > = (
-  { showAllTags, setShowAllTagsWithAnimation, children, maxTagRows, isDropdownTrigger, ...rest },
+  {
+    showAllTags,
+    isTextArea,
+    numberOfLines,
+    setShowAllTagsWithAnimation,
+    children,
+    maxTagRows,
+    isDropdownTrigger,
+    ...rest
+  },
   ref,
 ): React.ReactElement => {
   const { theme } = useTheme();
@@ -137,7 +146,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
       style={[
-        isDropdownTrigger
+        isDropdownTrigger && !isTextArea
           ? {
               ...maxHeightStyleObject,
               ...animatedStyleObject,
