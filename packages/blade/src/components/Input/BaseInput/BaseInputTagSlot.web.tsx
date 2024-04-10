@@ -10,7 +10,7 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { MetaConstants } from '~utils/metaAttribute';
 import { size as sizeToken } from '~tokens/global';
 
-const MINUMUM_INPUT_SPACE = 80;
+const MINUMUM_INPUT_SPACE = 60;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
 const TAG_MAX_WIDTH: number = sizeToken['140'];
 
@@ -122,6 +122,7 @@ const BaseInputTagSlot = ({
   labelPrefix,
   isDisabled,
   numberOfLines,
+  isTextArea,
   size,
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
@@ -197,7 +198,11 @@ const BaseInputTagSlot = ({
       overflowX="auto"
       overflowY={showAllTags || maxTagRows === 'multiple' ? 'auto' : 'hidden'}
       minHeight={makeSize(baseInputHeight[size])}
-      maxHeight={makeSize(baseInputHeight[size] * (numberOfLines ?? 1))}
+      maxHeight={
+        isDropdownTrigger && isTextArea
+          ? makeSize(baseInputHeight[size] * (numberOfLines ?? 1))
+          : undefined
+      }
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
       }}

@@ -947,7 +947,9 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
             size={size}
             numberOfLines={numberOfLines}
             onClick={() => {
-              inputRef.current?.focus();
+              if (!isReactNative) {
+                inputRef.current?.focus();
+              }
             }}
           >
             <BaseInputVisuals

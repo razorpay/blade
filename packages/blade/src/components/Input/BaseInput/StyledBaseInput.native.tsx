@@ -99,7 +99,6 @@ const getInputHeight = ({
   isDropdownTrigger,
   size,
 }: Pick<StyledBaseInputProps, 'hasTags' | 'isTextArea' | 'numberOfLines' | 'isDropdownTrigger'> & {
-  // lineHeight: number;
   size: NonNullable<BaseInputProps['size']>;
 }): string | undefined => {
   if (isTextArea) {
