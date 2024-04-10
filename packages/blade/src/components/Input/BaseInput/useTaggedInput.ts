@@ -36,19 +36,25 @@ const useTaggedInput = ({
 } => {
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [inputValueUncontrolled, setInputValueUncontrolled] = React.useState(defaultValue ?? '');
+  const [tagsUncontrolled, setTagsUncontrolled] = React.useState<string[]>([]);
+  const isTagsControlled = Boolean(tags);
 
   const getNewTagsArray = (indexToRemove: number): string[] => {
-    if (!tags) {
+    const currentTags = tags ?? tagsUncontrolled;
+
+    if (!currentTags) {
       return [];
     }
 
     // Check if the index is valid
-    if (indexToRemove < 0 || indexToRemove >= tags.length) {
-      return tags; // Return the original array
+    if (indexToRemove < 0 || indexToRemove >= currentTags.length) {
+      return currentTags; // Return the original array
     }
 
     // Create a new array without the element at the specified index
-    const newArray = tags.slice(0, indexToRemove).concat(tags.slice(indexToRemove + 1));
+    const newArray = currentTags
+      .slice(0, indexToRemove)
+      .concat(currentTags.slice(indexToRemove + 1));
 
     return newArray;
   };
@@ -57,16 +63,19 @@ const useTaggedInput = ({
     () => ({ size }: { size: NonNullable<BaseInputProps['size']> }): React.ReactElement[] => {
       return getTagsGroup({
         size,
-        tags: tags ?? [],
+        tags: tags ?? tagsUncontrolled,
         activeTagIndex,
         isDisabled,
         onDismiss: ({ tagIndex }) => {
+          if (!isTagsControlled) {
+            setTagsUncontrolled(getNewTagsArray(tagIndex));
+          }
           onTagChange?.({ tags: getNewTagsArray(tagIndex) });
         },
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [activeTagIndex, tags, isDisabled],
+    [activeTagIndex, tags, tagsUncontrolled, isDisabled],
   );
 
   const handleTaggedInputChange: FormInputOnEvent = ({ value }) => {
@@ -101,16 +110,19 @@ const useTaggedInput = ({
   };
 
   const handleTaggedInputKeydown = (e: FormInputOnKeyDownEvent): void => {
-    if (!isTaggedInput || !inputValueUncontrolled) {
+    if (!isTaggedInput) {
       return;
     }
 
-    const currentTags = tags ?? [];
+    const currentTags = tags ?? tagsUncontrolled;
     const isControlledValue = Boolean(value);
     const inputValue = isControlledValue ? value?.trim() : inputValueUncontrolled.trim();
     if (e.key === 'Enter' || e.key === ',') {
       e.event.preventDefault(); // we don't want textarea to treat enter as line break in tagged inputs
       if (inputValue) {
+        if (!isTagsControlled) {
+          setTagsUncontrolled([...currentTags, inputValue]);
+        }
         onTagChange?.({ tags: [...currentTags, inputValue] });
         clearInput();
         setActiveTagIndex(-1);
@@ -118,6 +130,9 @@ const useTaggedInput = ({
     }
 
     if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0) {
+      if (!isTagsControlled) {
+        setTagsUncontrolled(currentTags.slice(0, -1));
+      }
       onTagChange?.({ tags: currentTags.slice(0, -1) });
     }
   };
