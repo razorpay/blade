@@ -99,7 +99,7 @@ const useTaggedInput = ({
   };
 
   const clearInput = (): void => {
-    const isControlledValue = Boolean(value);
+    const isControlledValue = value !== undefined;
 
     if (isControlledValue) {
       // In Controlled component, we don't clear input ourselves. We just call onChange with empty value
@@ -131,7 +131,7 @@ const useTaggedInput = ({
     }
 
     const currentTags = tags ?? tagsUncontrolled;
-    const isControlledValue = Boolean(value);
+    const isControlledValue = value !== undefined;
     const inputValue = isControlledValue ? value?.trim() : inputValueUncontrolled.trim();
     if (e.key === 'Enter' || e.key === ',') {
       e.event.preventDefault(); // we don't want textarea to treat enter as line break in tagged inputs
@@ -144,8 +144,7 @@ const useTaggedInput = ({
         setActiveTagIndex(-1);
       }
     }
-
-    if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0) {
+    if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0 && currentTags.length > 0) {
       if (!isTagsControlled) {
         setTagsUncontrolled(currentTags.slice(0, -1));
       }

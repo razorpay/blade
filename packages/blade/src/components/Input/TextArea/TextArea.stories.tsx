@@ -461,3 +461,58 @@ export const TextAreaWithTags: StoryFn<typeof TextAreaComponent> = ({ ...args })
     </Box>
   );
 };
+
+// Don't copy email regex from here. This is just an example regex for basic emails. Make sure to use email validation as per usecase
+const isValidEmail = (email: string): boolean => {
+  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(email);
+};
+
+export const TextAreaWithTagsValidation: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+  const [inputValue, setInputValue] = React.useState('');
+  const [errorText, setErrorText] = React.useState('');
+  // we use ref because onTagChange and onChange is called in same render
+  // So if we want to set error in onTagChange, and use its value in onChange, its not possible with useState
+  const isErrorRef = React.useRef(false);
+
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        value={inputValue}
+        onChange={({ value }) => {
+          if (!isErrorRef.current) {
+            setInputValue(value ?? '');
+            setErrorText('');
+          }
+
+          isErrorRef.current = false;
+        }}
+        tags={tags}
+        onTagChange={({ tags: newTags }) => {
+          const isTagRemoved = newTags.length < tags.length;
+          if (isTagRemoved) {
+            // we don't validate while removing tags
+            setTags(newTags);
+            return;
+          }
+
+          if (isValidEmail(inputValue)) {
+            setTags(newTags);
+          } else {
+            isErrorRef.current = true;
+            setErrorText(`Invalid email ${inputValue}. Try with different email`);
+          }
+        }}
+        errorText={errorText}
+        validationState={errorText ? 'error' : undefined}
+      />
+    </Box>
+  );
+};
+
+TextAreaWithTagsValidation.args = {
+  isTaggedInput: true,
+  showClearButton: false,
+};
