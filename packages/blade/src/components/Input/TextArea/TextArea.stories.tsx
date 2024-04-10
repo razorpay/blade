@@ -462,6 +462,50 @@ export const TextAreaWithTags: StoryFn<typeof TextAreaComponent> = ({ ...args })
   );
 };
 
+export const TextAreaWithControlledTags: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        tags={tags}
+        onTagChange={({ tags }) => {
+          setTags(tags);
+        }}
+      />
+    </Box>
+  );
+};
+
+TextAreaWithControlledTags.args = {
+  isTaggedInput: true,
+  showClearButton: false,
+};
+
+export const TextAreaWithUncontrolledTags: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tagValues, setTagValues] = React.useState<string[]>([]);
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        onTagChange={({ tags }) => {
+          console.log('new tags', tags);
+          setTagValues(tags);
+        }}
+      />
+      <Box>
+        <Text>{tagValues.join(', ')}</Text>
+      </Box>
+    </Box>
+  );
+};
+
+TextAreaWithUncontrolledTags.args = {
+  isTaggedInput: true,
+  showClearButton: true,
+};
+
 // Don't copy email regex from here. This is just an example regex for basic emails. Make sure to use email validation as per usecase
 const isValidEmail = (email: string): boolean => {
   const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
