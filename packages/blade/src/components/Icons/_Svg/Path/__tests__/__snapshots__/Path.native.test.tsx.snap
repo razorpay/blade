@@ -10,6 +10,12 @@ exports[`<Path /> should not accept dashed props 1`] = `
 >
   <RNSVGPath
     d=""
+    fill={
+      {
+        "payload": 4278190080,
+        "type": 0,
+      }
+    }
   />
 </View>
 `;
@@ -67,7 +73,12 @@ exports[`<Path /> should render react-native-svg Path component 1`] = `
         clipPath="id1"
         clipRule={0}
         d="M2 2h2v2H2V2"
-        fill={4278190080}
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
+        }
         fillOpacity={0.5}
         fillRule={1}
         propList={
@@ -81,7 +92,12 @@ exports[`<Path /> should render react-native-svg Path component 1`] = `
             "strokeLinejoin",
           ]
         }
-        stroke={554770961}
+        stroke={
+          {
+            "payload": 571548177,
+            "type": 0,
+          }
+        }
         strokeLinecap={2}
         strokeLinejoin={2}
         strokeWidth="2px"

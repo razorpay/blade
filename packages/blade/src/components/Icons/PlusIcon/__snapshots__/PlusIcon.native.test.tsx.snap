@@ -51,7 +51,12 @@ exports[`<PlusIcon /> should render PlusIcon 1`] = `
     >
       <RNSVGPath
         d="M13 5a1 1 0 1 0-2 0v6H5a1 1 0 1 0 0 2h6v6a1 1 0 1 0 2 0v-6h6a1 1 0 1 0 0-2h-6V5Z"
-        fill={4280563015}
+        fill={
+          {
+            "payload": 4280563015,
+            "type": 0,
+          }
+        }
         propList={
           [
             "fill",
