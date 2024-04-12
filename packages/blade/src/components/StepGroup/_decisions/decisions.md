@@ -12,99 +12,37 @@ Step Group visualises sequential processes with a consistent structure. It can b
 
 ### StepGroup
 
-```ts
-type StepGroupProps = {
-  /**
-   * Size of StepGroup
-   */
-  size: 'medium' | 'large';
-
-  /**
-   * Orientation of StepGroup
-   */
-  orientation: 'horizontal' | 'vertical';
-};
-```
+| **Props**   | **Description**          | **Type**                   | **Default Value** |
+| ----------- | ------------------------ | -------------------------- | ----------------- |
+| size        | Size of StepGroup        | 'medium' \| 'large'        | 'medium'          |
+| orientation | Orientation of StepGroup | 'horizontal' \| 'vertical' | 'vertical'        |
 
 ### StepItem
 
-```ts
-type StepItemProps = {
-  /**
-   * Title of StepItem
-   */
-  title: string;
-
-  /**
-   * A string that renders in italic font. Made for adding timestamp values
-   */
-  timestamp?: string;
-
-  /**
-   * Description of StepItem
-   */
-  description?: string;
-
-  /**
-   * Progress line of step
-   *
-   * @default none
-   */
-  stepProgress?: 'start' | 'end' | 'full' | 'none';
-
-  /**
-   * Leading element
-   *
-   * StepItemIcon or StepItemIndicator components as JSX
-   *
-   * @default <StepItemIndicator color="neutral" />
-   */
-  leading?: React.ReactElement;
-
-  /**
-   * Trailing element
-   *
-   * Badge components as JSX
-   */
-  trailing?: React.ReactElement;
-
-  /**
-   * Selected state of item.
-   */
-  isSelected?: boolean;
-
-  /**
-   * Href value
-   *
-   * Turns StepItem into interactive item and render it as anchor tag
-   */
-  href?: string;
-
-  /**
-   * Click handler
-   *
-   * Turns StepItem into interactive item and render it as button tag
-   */
-  onClick?: () => void;
-};
-```
+| **Props**    | **Description**                                                                                   | **Type**                                                           | **Default Value**                     |
+| ------------ | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------- |
+| title        | Title of StepItem                                                                                 | string                                                             |                                       |
+| timestamp    | A string that renders in italic font. Made for adding timestamp values                            | string                                                             |                                       |
+| description  | Description of StepItem                                                                           | string                                                             |                                       |
+| stepProgress | Progress line of step. When its `start` only starting part is highlighted and rest is kept dotted | 'start' \| 'end' \| 'full' \| 'none'                               | 'none'                                |
+| leading      | Leading element                                                                                   | ReactElement (StepItemIcon or StepItemIndicator components as JSX) | <StepItemIndicator color="neutral" /> |
+| trailing     | Trailing element                                                                                  | ReactElement (Badge components as JSX)                             | undefined                             |
+| isSelected   | Selected state of item                                                                            | boolean                                                            | undefined                             |
+| href         | Anchor tag's href value. Turns StepItem into interactive item and render it as anchor             | string                                                             | undefined                             |
+| onClick      | StepItem's click handler. Turns StepItem into interactive item and render it as button tag        | () => void                                                         | undefined                             |
 
 ### StepItemIcon
 
-```ts
-type StepItemIconProps = {
-  icon: IconComponent;
-  color: 'positive' | 'negative' | 'neutral' | 'notice' | 'information' | 'primary';
-};
-```
+| **Props** | **Description** | **Type**                                                                        | **Default Value** |
+| --------- | --------------- | ------------------------------------------------------------------------------- | ----------------- |
+| icon      | icon component  | IconComponent                                                                   |                   |
+| color     | color of icon   | 'positive' \| 'negative' \| 'neutral' \| 'notice' \| 'information' \| 'primary' | 'neutral'         |
 
 ### StepItemIndicator
 
-```ts
-type StepItemIndicatorProps = {
-  color: 'positive' | 'negative' | 'neutral' | 'notice' | 'information' | 'primary';
-};
-```
+| **Props** | **Description**    | **Type**                                                                        | **Default Value** |
+| --------- | ------------------ | ------------------------------------------------------------------------------- | ----------------- |
+| color     | color of indicator | 'positive' \| 'negative' \| 'neutral' \| 'notice' \| 'information' \| 'primary' | 'neutral'         |
 
 ## Usage
 
