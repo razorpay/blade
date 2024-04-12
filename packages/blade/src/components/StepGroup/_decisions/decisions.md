@@ -10,6 +10,8 @@ Step Group visualises sequential processes with a consistent structure. It can b
 
 ## Props
 
+### StepGroup
+
 ```ts
 type StepGroupProps = {
   /**
@@ -22,7 +24,11 @@ type StepGroupProps = {
    */
   orientation: 'horizontal' | 'vertical';
 };
+```
 
+### StepItem
+
+```ts
 type StepItemProps = {
   /**
    * Title of StepItem
@@ -81,12 +87,20 @@ type StepItemProps = {
    */
   onClick?: () => void;
 };
+```
 
+### StepItemIcon
+
+```ts
 type StepItemIconProps = {
   icon: IconComponent;
   color: 'positive' | 'negative' | 'neutral' | 'notice' | 'information' | 'primary';
 };
+```
 
+### StepItemIndicator
+
+```ts
 type StepItemIndicatorProps = {
   color: 'positive' | 'negative' | 'neutral' | 'notice' | 'information' | 'primary';
 };
