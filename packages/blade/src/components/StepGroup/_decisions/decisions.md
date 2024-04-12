@@ -30,6 +30,7 @@ Step Group visualises sequential processes with a consistent structure. It can b
 | isSelected   | Selected state of item                                                                            | boolean                                                            | undefined                             |
 | href         | Anchor tag's href value. Turns StepItem into interactive item and render it as anchor             | string                                                             | undefined                             |
 | onClick      | StepItem's click handler. Turns StepItem into interactive item and render it as button tag        | () => void                                                         | undefined                             |
+| children     | Children slot for StepItem                                                                        | ReactNode                                                          | undefined                             |
 
 ### StepItemIcon
 
