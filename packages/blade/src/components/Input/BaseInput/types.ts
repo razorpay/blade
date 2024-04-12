@@ -39,7 +39,7 @@ export type BaseInputWrapperProps = Pick<
   isLabelLeftPositioned?: boolean;
   currentInteraction: ActionStates;
   isTextArea?: boolean;
-  setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
+  setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;
   size: NonNullable<BaseInputProps['size']>;
   numberOfLines: BaseInputProps['numberOfLines'];

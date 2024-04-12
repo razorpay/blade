@@ -155,6 +155,8 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
         animatedBorderAndBackgroundStyle,
       ]}
       isDropdownTrigger={isDropdownTrigger}
+      numberOfLines={numberOfLines}
+      setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
       {...rest}
     >
       {children}

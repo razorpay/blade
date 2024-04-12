@@ -812,7 +812,7 @@ const _BaseInput: React.ForwardRefRenderFunction<BladeElementRef, BaseInputProps
   ref,
 ) => {
   const { theme } = useTheme();
-  const inputRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
+  const inputRef = React.useRef<BladeElementRef>(null);
   const mergedInputRef = useMergeRefs(ref, inputRef);
   const inputWrapperRef: InputWrapperRef = React.useRef(null);
   const { onInputKeydownTagHandler, visibleTagsCountRef } = useTags(
