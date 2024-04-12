@@ -198,6 +198,7 @@ exports[`<BaseInput /> should render 1`] = `
         <View
           currentInteraction="default"
           onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
           size="medium"
           style={
             [
@@ -512,6 +513,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
         <View
           currentInteraction="default"
           onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
           size="medium"
           style={
             [
@@ -1010,6 +1012,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
         <View
           currentInteraction="default"
           onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
           size="large"
           style={
             [
@@ -1638,6 +1641,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
         <View
           currentInteraction="default"
           onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
           size="medium"
           style={
             [

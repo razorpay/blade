@@ -198,6 +198,7 @@ exports[`<TextInput /> should render 1`] = `
         <View
           currentInteraction="default"
           onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
           size="medium"
           style={
             [
@@ -516,6 +517,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
         <View
           currentInteraction="default"
           onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
           size="medium"
           style={
             [

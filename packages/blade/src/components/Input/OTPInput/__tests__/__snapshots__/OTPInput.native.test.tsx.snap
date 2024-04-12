@@ -229,6 +229,7 @@ exports[`<OTPInput /> should render 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="medium"
                   style={
                     [
@@ -377,6 +378,7 @@ exports[`<OTPInput /> should render 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="medium"
                   style={
                     [
@@ -525,6 +527,7 @@ exports[`<OTPInput /> should render 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="medium"
                   style={
                     [
@@ -673,6 +676,7 @@ exports[`<OTPInput /> should render 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="medium"
                   style={
                     [
@@ -821,6 +825,7 @@ exports[`<OTPInput /> should render 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="medium"
                   style={
                     [
@@ -969,6 +974,7 @@ exports[`<OTPInput /> should render 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="medium"
                   style={
                     [
@@ -1308,6 +1314,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="large"
                   style={
                     [
@@ -1457,6 +1464,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="large"
                   style={
                     [
@@ -1606,6 +1614,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="large"
                   style={
                     [
@@ -1755,6 +1764,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="large"
                   style={
                     [
@@ -1904,6 +1914,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="large"
                   style={
                     [
@@ -2052,6 +2063,7 @@ exports[`<OTPInput /> should render large size 1`] = `
                 <View
                   currentInteraction="default"
                   onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
                   size="large"
                   style={
                     [

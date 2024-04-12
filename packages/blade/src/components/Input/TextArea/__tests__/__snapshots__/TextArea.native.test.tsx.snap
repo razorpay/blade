@@ -199,7 +199,9 @@ exports[`<TextArea /> should render 1`] = `
       >
         <View
           currentInteraction="default"
+          numberOfLines={2}
           onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
           size="medium"
           style={
             [

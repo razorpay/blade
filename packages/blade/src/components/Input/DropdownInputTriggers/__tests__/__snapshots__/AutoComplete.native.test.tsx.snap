@@ -231,6 +231,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 currentInteraction="default"
                 isDropdownTrigger={true}
                 onClick={[Function]}
+                setShowAllTagsWithAnimation={[Function]}
                 size="medium"
                 style={
                   [
