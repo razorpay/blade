@@ -213,16 +213,55 @@ const InteractiveStepGroup = () => {
   - Render StepItem as `button` tag when `onClick` is used without `href`
 - StepGroup does not need any separate role to be defined or special tag to be used.
 
+## References
+
+- [ProgressSteps - Baseweb](https://baseweb.design/components/progress-steps/)
+- [React Stepper - MUI](https://mui.com/material-ui/react-stepper/)
+- [Stepper - ZenDesk](https://garden.zendesk.com/components/stepper)
+
+All follow a similar compound API.
+
 ## Open Questions
 
-- **Should we add `isInteractive` prop?**
+- ### Should we add `isInteractive` prop?
 
   In the proposed API, I have proposed that we can turn item into interactive or static based on whether it has `onClick` or `href` or nothing. Is it intuitive enough? or should we add more explict prop called `isInteractive` like we have in design
 
-- **Alternative to `leading`**
+- ### Alternative to `leading`
 
   Currently I have proposed `leading` prop where we can add Icon or indicator. Although in horizontal orientation, its not exactly "leading". It comes on top. Its also not very equivalent to leading we have in other components.
 
   Alternatives
 
   - `marker={<StepItemIndicator color="positive" />}`
+
+- ### onClick and isSelected on StepItem vs selected and onItemClick on StepGroup
+
+  This is what I proposed primarily in this doc. To handle selections and clicks on Item alone
+
+  ```jsx
+  <StepItem
+    isSelected={selectedIndex === 0}
+    onClick={() => setSelectedIndex(0)}
+  >
+  ```
+
+  Another approach to this would be -
+
+  ```jsx
+  <StepGroup selected={selectedIndex} onItemClick={({ clickedItemIndex }) => {}}>
+    <StepItem />
+    <StepItem />
+  </StepGroup>
+  ```
+
+  An approach that MUI takes is mix of above 2 approaches -
+
+  ```jsx
+  <StepGroup selected={selectedIndex}>
+    <StepItem onClick={() => setSelecteIndex(0)} />
+    <StepItem onClick={() => setSelecteIndex(1)} />
+  </StepGroup>
+  ```
+
+  Q. Should we go with 1st, 2nd, or 3rd approach?
