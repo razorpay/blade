@@ -95,6 +95,7 @@ exports[`<OTPInput /> should render 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -731,6 +732,7 @@ exports[`<OTPInput /> should render large size 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5 {

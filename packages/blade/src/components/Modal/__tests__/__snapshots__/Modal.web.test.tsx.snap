@@ -253,6 +253,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -327,6 +328,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c22.c22.c22.c22.c22 {

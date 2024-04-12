@@ -78,6 +78,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -207,6 +208,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -304,6 +306,7 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -401,6 +404,7 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -498,6 +502,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -595,6 +600,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -692,6 +698,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -789,6 +796,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -886,6 +894,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -983,6 +992,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1080,6 +1090,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1177,6 +1188,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1274,6 +1286,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1371,6 +1384,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1468,6 +1482,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1565,6 +1580,7 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1662,6 +1678,7 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1759,6 +1776,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1856,6 +1874,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1953,6 +1972,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2050,6 +2070,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2147,6 +2168,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2244,6 +2266,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2341,6 +2364,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2438,6 +2462,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2535,6 +2560,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2632,6 +2658,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2729,6 +2756,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2826,6 +2854,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>

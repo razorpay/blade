@@ -281,6 +281,7 @@ exports[`Drawer renders a Drawer 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c16.c16.c16.c16.c16 {

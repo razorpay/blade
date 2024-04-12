@@ -252,6 +252,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -291,6 +292,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c29.c29.c29.c29.c29 {
@@ -13080,6 +13082,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -13119,6 +13122,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c29.c29.c29.c29.c29 {

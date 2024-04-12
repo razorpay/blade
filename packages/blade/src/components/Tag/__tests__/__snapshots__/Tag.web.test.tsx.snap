@@ -124,6 +124,7 @@ exports[`<Tag /> should render tag 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
   margin-right: 4px;
 }
 

@@ -358,14 +358,7 @@ exports[`<Tooltip /> should render 1`] = `
               vbWidth={14}
               width="14px"
             >
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
-                }
-              >
+              <RNSVGGroup>
                 <RNSVGPath
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
                   fill={null}
@@ -376,22 +369,12 @@ exports[`<Tooltip /> should render 1`] = `
                       "strokeWidth",
                     ]
                   }
-                  stroke={
-                    {
-                      "payload": 4282406509,
-                      "type": 0,
-                    }
-                  }
+                  stroke={4282406509}
                   strokeWidth="2px"
                 />
                 <RNSVGPath
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={
-                    {
-                      "payload": 4281287254,
-                      "type": 0,
-                    }
-                  }
+                  fill={4281287254}
                   propList={
                     [
                       "fill",
@@ -768,14 +751,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
               vbWidth={14}
               width="14px"
             >
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
-                }
-              >
+              <RNSVGGroup>
                 <RNSVGPath
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
                   fill={null}
@@ -786,22 +762,12 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
                       "strokeWidth",
                     ]
                   }
-                  stroke={
-                    {
-                      "payload": 4282406509,
-                      "type": 0,
-                    }
-                  }
+                  stroke={4282406509}
                   strokeWidth="2px"
                 />
                 <RNSVGPath
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={
-                    {
-                      "payload": 4281287254,
-                      "type": 0,
-                    }
-                  }
+                  fill={4281287254}
                   propList={
                     [
                       "fill",
@@ -1212,14 +1178,7 @@ exports[`<Tooltip /> should render with title 1`] = `
               vbWidth={14}
               width="14px"
             >
-              <RNSVGGroup
-                fill={
-                  {
-                    "payload": 4278190080,
-                    "type": 0,
-                  }
-                }
-              >
+              <RNSVGGroup>
                 <RNSVGPath
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
                   fill={null}
@@ -1230,22 +1189,12 @@ exports[`<Tooltip /> should render with title 1`] = `
                       "strokeWidth",
                     ]
                   }
-                  stroke={
-                    {
-                      "payload": 4282406509,
-                      "type": 0,
-                    }
-                  }
+                  stroke={4282406509}
                   strokeWidth="2px"
                 />
                 <RNSVGPath
                   d="M0,0 H14 L7,7 Q7,7 7,7 Z"
-                  fill={
-                    {
-                      "payload": 4281287254,
-                      "type": 0,
-                    }
-                  }
+                  fill={4281287254}
                   propList={
                     [
                       "fill",
