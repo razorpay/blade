@@ -1,6 +1,6 @@
 module.exports = {
   stories: [
-    '../../src/**/!(_KitchenSink|*.test)*.stories.?(ts|tsx|js|jsx)',
+    '../../src/components/ProgressBar/!(_KitchenSink|*.test)*.stories.?(ts|tsx|js|jsx)',
     '../../src/**/*.stories.internal.?(ts|tsx|js|jsx)',
   ],
   addons: [

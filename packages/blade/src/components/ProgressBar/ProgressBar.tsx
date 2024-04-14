@@ -99,7 +99,7 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
-const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 | 4> = {
+const progressBarHeight: Record<NonNullable<'small' | 'medium'>, 2 | 4> = {
   small: size[2],
   medium: size[4],
 };
@@ -127,6 +127,13 @@ const ProgressBar = ({
       throwBladeError({
         moduleName: 'ProgressBar',
         message: `Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
+      });
+    }
+
+    if (type === 'linear' && size === 'large') {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `Large size isn't available when 'type' is 'linear'.`,
       });
     }
   }
@@ -173,7 +180,7 @@ const ProgressBar = ({
       {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
     >
       <BaseBox display="flex" flexDirection="column" width="100%">
-        {!isCircular && (
+        {!isCircular ? (
           <BaseBox
             display="flex"
             flexDirection="row"
@@ -194,7 +201,7 @@ const ProgressBar = ({
               </BaseBox>
             ) : null}
           </BaseBox>
-        )}
+        ) : null}
 
         <BaseBox
           id={id}

@@ -113,7 +113,6 @@ const CircularProgressBarFilled = ({
       <Svg width={String(sqSize)} height={String(sqSize)} viewBox={viewBox}>
         <Circle
           fill="none"
-          // Token
           stroke={backgroundColor}
           cx={String(sqSize / 2)}
           cy={String(sqSize / 2)}
@@ -157,7 +156,7 @@ const CircularProgressBarFilled = ({
         </Text>
       )}
 
-      {size === 'small' && (
+      {showPercentage && size === 'small' && (
         <Text
           marginTop={hasLabel ? 'spacing.0' : 'spacing.3'}
           variant="body"

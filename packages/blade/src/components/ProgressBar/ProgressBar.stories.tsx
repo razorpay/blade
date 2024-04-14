@@ -93,15 +93,14 @@ const ProgressBarWithUpdatingValuesTemplate: StoryFn<typeof ProgressBarComponent
 
   return (
     <BaseBox display="flex" flexDirection="column" marginTop="spacing.3" marginBottom="spacing.5">
-      {/** large size is not available in linear progressbar */}
-      {args.size !== 'large' && (
+      {args.size !== 'large' ? (
         <BaseBox marginBottom="spacing.5">
           <Heading size="medium" marginBottom="spacing.3">
             Linear
           </Heading>
           <ProgressBarComponent {...args} value={value} />
         </BaseBox>
-      )}
+      ) : null}
       <Heading size="medium" marginBottom="spacing.3">
         Circular
       </Heading>
