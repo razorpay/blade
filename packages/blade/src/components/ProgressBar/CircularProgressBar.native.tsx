@@ -132,7 +132,6 @@ const CircularProgressBarFilled = ({
         />
 
         <AnimatedCircle
-          isMeter={isMeter}
           fill="none"
           stroke={fillColor}
           cx={sqSize / 2}
@@ -143,9 +142,6 @@ const CircularProgressBarFilled = ({
           transform={`rotate(-90 ${sqSize / 2} ${sqSize / 2})`}
           strokeDasharray={`${circumference} ${circumference}`}
           strokeDashoffset={radius * Math.PI * 2 * (svgProgress / 100)}
-          pulseMotionDuration="duration.2xgentle"
-          pulseMotionDelay="delay.long"
-          motionEasing="easing.standard.revealing"
           style={firstIndicatorStyles}
         />
 
