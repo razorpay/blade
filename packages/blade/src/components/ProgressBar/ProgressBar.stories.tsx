@@ -27,7 +27,7 @@ const Page = (): ReactElement => {
               <ProgressBar 
                 label="Label" 
                 value={30} 
-                variant="progress" 
+                type="progress" 
                 size="medium" 
               />
             )
@@ -69,7 +69,7 @@ CircularProgress.storyName = 'Circular Progress';
 CircularProgress.args = {
   label: 'Label',
   value: 25,
-  type: 'circular',
+  variant: 'circular',
   size: 'large',
 };
 
@@ -104,7 +104,7 @@ const ProgressBarWithUpdatingValuesTemplate: StoryFn<typeof ProgressBarComponent
       <Heading size="medium" marginBottom="spacing.3">
         Circular
       </Heading>
-      <ProgressBarComponent {...args} value={value} type="circular" />
+      <ProgressBarComponent {...args} value={value} variant="circular" />
     </BaseBox>
   );
 };
@@ -139,13 +139,24 @@ const ProgressBarWithColorsTemplate: StoryFn<typeof ProgressBarComponent> = ({ .
       </Heading>
       {colors.map((color) => (
         <BaseBox key={color} paddingTop="spacing.4">
-          <ProgressBarComponent label={color} {...args} color={color} value={value} type="linear" />
+          <ProgressBarComponent
+            label={color}
+            {...args}
+            color={color}
+            value={value}
+            variant="linear"
+          />
         </BaseBox>
       ))}
       <Heading size="medium" marginBottom="spacing.3" marginTop="spacing.5">
         Circular
       </Heading>
-      <BaseBox display="flex" flexDirection={{ base: 'column', m: 'row' }} gap="spacing.6">
+      <BaseBox
+        display="flex"
+        flexDirection={{ base: 'column', m: 'row' }}
+        alignItems="center"
+        gap="spacing.6"
+      >
         {colors.map((color) => (
           <BaseBox key={color} paddingTop="spacing.4">
             <ProgressBarComponent
@@ -153,7 +164,7 @@ const ProgressBarWithColorsTemplate: StoryFn<typeof ProgressBarComponent> = ({ .
               {...args}
               color={color}
               value={value}
-              type="circular"
+              variant="circular"
             />
           </BaseBox>
         ))}
@@ -187,7 +198,7 @@ ProgressBarLargeSize.storyName = 'Large Size';
 ProgressBarLargeSize.args = {
   label: 'Label',
   size: 'large',
-  type: 'circular',
+  variant: 'circular',
 };
 
 export const ProgressBarWithColor = ProgressBarWithColorsTemplate.bind({});
@@ -197,9 +208,10 @@ ProgressBarWithColor.args = {
 };
 
 export const ProgressBarMeterVariant = ProgressBarTemplate.bind({});
-ProgressBarMeterVariant.storyName = 'Meter Variant';
+ProgressBarMeterVariant.storyName = 'Meter Type';
 ProgressBarMeterVariant.args = {
-  variant: 'meter',
+  type: 'meter',
+  variant: 'linear',
   size: 'medium',
   value: 10,
   label: 'Balance: ₹10,000',

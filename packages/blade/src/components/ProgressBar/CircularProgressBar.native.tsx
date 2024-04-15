@@ -31,7 +31,7 @@ const pulseAnimation = {
 const StyledText = styled(SVGText)<Pick<TextProps<{ variant: 'body' }>, 'size' | 'weight'>>(
   ({ theme, size, weight }) => {
     const textProps = getTextProps({ variant: 'body', size, weight });
-    console.log('🚀 ~ textProps:', textProps);
+
     return {
       ...getBaseTextStyles({ theme, ...textProps }),
       strokeWidth: 0,
@@ -48,7 +48,6 @@ const CircularProgressBarFilled = ({
   label,
   showPercentage = true,
   isMeter,
-  variant = 'progress',
   motionEasing,
   pulseMotionDuration,
   pulseMotionDelay,
@@ -95,7 +94,7 @@ const CircularProgressBarFilled = ({
       duration: pulseDuration,
       easing: fillAndPulseEasing,
     };
-    if (variant === 'progress') {
+    if (!isMeter) {
       animatedOpacity.value = withDelay(
         castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDelay))),
         withRepeat(
@@ -111,12 +110,12 @@ const CircularProgressBarFilled = ({
     return () => {
       cancelAnimation(animatedOpacity);
     };
-  }, [animatedOpacity, fillAndPulseEasing, pulseDuration, pulseMotionDelay, theme, variant]);
+  }, [animatedOpacity, fillAndPulseEasing, pulseDuration, pulseMotionDelay, theme, isMeter]);
 
   const firstIndicatorStyles = useAnimatedStyle(() => {
     return {
       strokeDashoffset: animatedStrokeDashoffset.value,
-      opacity: animatedOpacity.value,
+      opacity: progressPercent < 100 ? animatedOpacity.value : 1,
     };
   });
 
