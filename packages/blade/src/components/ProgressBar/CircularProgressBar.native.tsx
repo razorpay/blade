@@ -8,21 +8,19 @@ import Animated, {
   withRepeat,
   withSequence,
   withTiming,
-  interpolate,
-  Extrapolation,
 } from 'react-native-reanimated';
+import { Text as SVGText, Circle } from 'react-native-svg';
 import type { CircularProgressBarFilledProps } from './types';
 import { circularProgressSizeTokens } from './progressBarTokens';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
-import { Text } from '~components/Typography';
+import type { TextProps } from '~components/Typography';
+import { Text, getTextProps } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
-
-// The actual transparent color is '#00000000', but it is not working in android so using '#00000001' as a workaround
-// Related Issue - https://github.com/facebook/react-native/issues/34722
-const TRANSPARENT = '#00000001';
+import { Svg } from '~components/Icons/_Svg';
+import getBaseTextStyles from '~components/Typography/BaseText/getBaseTextStyles';
 
 const pulseAnimation = {
   opacityInitial: 1,
@@ -30,30 +28,17 @@ const pulseAnimation = {
   opacityFinal: 1,
 };
 
-const BaseCircle = styled(Animated.View)<{ size: number; borderWidth?: number }>(
-  ({ size, borderWidth }) => ({
-    height: size,
-    width: size,
-    borderRadius: size / 2,
-    borderWidth,
-  }),
+const StyledText = styled(SVGText)<Pick<TextProps<{ variant: 'body' }>, 'size' | 'weight'>>(
+  ({ theme, size, weight }) => {
+    const textProps = getTextProps({ variant: 'body', size, weight });
+    console.log('🚀 ~ textProps:', textProps);
+    return {
+      ...getBaseTextStyles({ theme, ...textProps }),
+      strokeWidth: 0,
+      fill: getIn(theme.colors, textProps.color!),
+    };
+  },
 );
-
-const EmptyCircle = styled(BaseCircle)<{ color: string }>(({ color }) => ({
-  borderColor: color,
-  justifyContent: 'center',
-  alignItems: 'center',
-  transform: 'rotate(-45deg)',
-}));
-
-const Indicator = styled(BaseCircle)<{ color: string }>(({ color }) => ({
-  position: 'absolute',
-  borderLeftColor: color,
-  borderTopColor: color,
-  borderRightColor: TRANSPARENT,
-  borderBottomColor: TRANSPARENT,
-  borderImage: 'linear-gradient(to right, #000 50%, transparent 50%) 100% 1',
-}));
 
 const CircularProgressBarFilled = ({
   progressPercent,
@@ -69,14 +54,24 @@ const CircularProgressBarFilled = ({
   pulseMotionDelay,
   fillMotionDuration,
 }: CircularProgressBarFilledProps): React.ReactElement => {
-  console.log('🚀 ~ backgroundColor:', backgroundColor);
   const hasLabel = label && label.trim()?.length > 0;
   const strokeWidth = circularProgressSizeTokens[size].strokeWidth;
   // Size of the enclosing square
   const sqSize = circularProgressSizeTokens[size].size;
+  // SVG centers the stroke width on the radius, subtract out so circle fits in square
+  const radius = (sqSize - strokeWidth) / 2;
+  // Enclose circle in a circumscribing square
+  const viewBox = `0 0 ${sqSize} ${sqSize}`;
+  // Arc length at 100% coverage is the circle circumference
+  const circumference = 2 * Math.PI * radius;
+  const dashArray = radius * Math.PI * 2;
+  // Scale 100% coverage overlay with the actual percent
+  const svgProgress = 100 - progressPercent;
+  const dashOffset = dashArray - (dashArray * progressPercent) / 100;
 
+  const AnimatedCircle = Animated.createAnimatedComponent(Circle);
   const animatedOpacity = useSharedValue(pulseAnimation.opacityInitial);
-  const animatedProgressPercent = useSharedValue(progressPercent);
+  const animatedStrokeDashoffset = useSharedValue(dashOffset);
   const { theme } = useTheme();
   const fillAndPulseEasing = getIn(theme.motion, motionEasing);
   const pulseDuration =
@@ -85,14 +80,14 @@ const CircularProgressBarFilled = ({
   // Trigger animation for progress fill
   useEffect(() => {
     const fillDuration = castNativeType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
-    animatedProgressPercent.value = withTiming(progressPercent, {
+    animatedStrokeDashoffset.value = withTiming(dashOffset, {
       duration: fillDuration,
       easing: fillAndPulseEasing,
     });
     return () => {
-      cancelAnimation(animatedProgressPercent);
+      cancelAnimation(animatedStrokeDashoffset);
     };
-  }, [progressPercent, animatedProgressPercent, fillMotionDuration, theme, fillAndPulseEasing]);
+  }, [dashOffset, animatedStrokeDashoffset, fillMotionDuration, theme, fillAndPulseEasing]);
 
   // Trigger pulsating animation
   useEffect(() => {
@@ -120,66 +115,54 @@ const CircularProgressBarFilled = ({
 
   const firstIndicatorStyles = useAnimatedStyle(() => {
     return {
-      transform: [
-        {
-          rotate: `${interpolate(
-            animatedProgressPercent.value,
-            [0, 50],
-            [0, 180],
-            Extrapolation.CLAMP,
-          )}deg`,
-        },
-      ],
+      strokeDashoffset: animatedStrokeDashoffset.value,
       opacity: animatedOpacity.value,
-    };
-  });
-
-  const secondIndicatorStyles = useAnimatedStyle(() => {
-    return {
-      transform: [
-        {
-          rotate: `${interpolate(
-            animatedProgressPercent.value,
-            [0, 100],
-            [0, 360],
-            Extrapolation.CLAMP,
-          )}deg`,
-        },
-      ],
-      opacity: interpolate(
-        animatedProgressPercent.value,
-        [0, 49, 50, 100],
-        [0, 0, animatedOpacity.value, animatedOpacity.value],
-        Extrapolation.CLAMP,
-      ),
     };
   });
 
   return (
     <BaseBox display="flex" width="fit-content" alignItems="center">
-      <EmptyCircle size={sqSize} borderWidth={strokeWidth} color={backgroundColor}>
-        <Indicator
-          style={firstIndicatorStyles}
-          size={sqSize}
-          borderWidth={strokeWidth}
-          color={fillColor}
+      <Svg width={String(sqSize)} height={String(sqSize)} viewBox={viewBox}>
+        <Circle
+          fill="none"
+          stroke={backgroundColor}
+          cx={String(sqSize / 2)}
+          cy={String(sqSize / 2)}
+          r={String(radius)}
+          strokeWidth={`${strokeWidth}px`}
         />
-        <Indicator size={sqSize} borderWidth={strokeWidth} color={backgroundColor} />
-        <Indicator
-          size={sqSize}
-          borderWidth={strokeWidth}
-          color={fillColor}
-          style={secondIndicatorStyles}
+
+        <AnimatedCircle
+          isMeter={isMeter}
+          fill="none"
+          stroke={fillColor}
+          cx={sqSize / 2}
+          cy={sqSize / 2}
+          r={radius}
+          strokeWidth={`${strokeWidth}px`}
+          // Start progress marker at 12 O'Clock
+          transform={`rotate(-90 ${sqSize / 2} ${sqSize / 2})`}
+          strokeDasharray={`${circumference} ${circumference}`}
+          strokeDashoffset={radius * Math.PI * 2 * (svgProgress / 100)}
+          pulseMotionDuration="duration.2xgentle"
+          pulseMotionDelay="delay.long"
+          motionEasing="easing.standard.revealing"
+          style={firstIndicatorStyles}
         />
 
         {showPercentage && size !== 'small' && (
-          <BaseBox transform="rotate(45deg)">
-            <Text variant="body" weight="regular" size="small">
-              {progressPercent}%
-            </Text>
-          </BaseBox>
+          <StyledText
+            size={circularProgressSizeTokens[size].percentTextSize}
+            weight="semibold"
+            x="50%"
+            y="50%"
+            textAnchor="middle"
+            dy=".5em"
+          >
+            {`${progressPercent}%`}
+          </StyledText>
         )}
-      </EmptyCircle>
+      </Svg>
 
       {hasLabel && (
         <Text marginTop="spacing.3" variant="body" weight="regular" size="small">
@@ -190,10 +173,10 @@ const CircularProgressBarFilled = ({
         <Text
           marginTop={hasLabel ? 'spacing.0' : 'spacing.3'}
           variant="body"
-          weight="semibold"
           size="small"
+          weight="semibold"
         >
-          {progressPercent}%
+          {`${progressPercent}%`}
         </Text>
       )}
     </BaseBox>
