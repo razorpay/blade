@@ -1,207 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProgressBar /> should render ProgressBar with default props 1`] = `
-<View
-  style={
-    {
-      "flex": 1,
-    }
-  }
->
-  <View
-    data-blade-component="progress-bar"
-    style={
-      [
-        {},
-      ]
-    }
-  >
-    <View
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="column"
-      style={
-        [
-          {
-            "display": "flex",
-            "flexDirection": "column",
-            "width": "100%",
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="surface.text.gray.subtle"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={75}
-          style={
-            [
-              {
-                "color": "hsla(211, 26%, 34%, 1)",
-                "fontFamily": "Inter",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "letterSpacing": 0,
-                "lineHeight": 18,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-        >
-          Label
-        </Text>
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.gray.subtle"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            style={
-              [
-                {
-                  "color": "hsla(211, 26%, 34%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityLabel="Label"
-        accessibilityRole="progressbar"
-        accessibilityValue={
-          {
-            "max": 100,
-            "min": 0,
-            "now": 20,
-            "text": "20%",
-          }
-        }
-        accessible={true}
-        data-blade-component="base-box"
-        id="progress-1"
-        style={
-          [
-            {},
-          ]
-        }
-      >
-        <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
-          data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
-          style={
-            [
-              {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="hsla(227, 100%, 59%, 1)"
-            progress={20}
-            style={
-              [
-                {
-                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
-                  "height": "100%",
-                  "width": "20%",
-                },
-                {
-                  "width": "20%",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-</View>
-`;
-
 exports[`<ProgressBar /> should render ProgressBar without label and percentage 1`] = `
 <View
   style={
@@ -260,7 +58,7 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-10"
+        id="undefined-linear-11"
         style={
           [
             {},
@@ -316,6 +114,1208 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
               }
             />
           </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render ProgressBar without label and percentage 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 50,
+            "text": "50%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="undefined-circular-40"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "width": "fit-content",
+              },
+            ]
+          }
+          width="fit-content"
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="24"
+            bbWidth="24"
+            data-blade-component="icon"
+            focusable={false}
+            height="24"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+            vbHeight={24}
+            vbWidth={24}
+            width="24"
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGCircle
+                cx="12"
+                cy="12"
+                fill={null}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                  ]
+                }
+                r="10.5"
+                stroke={
+                  {
+                    "payload": 392987805,
+                    "type": 0,
+                  }
+                }
+                strokeWidth="3px"
+              />
+              <RNSVGCircle
+                cx={12}
+                cy={12}
+                fill={null}
+                matrix={
+                  [
+                    6.123233995736766e-17,
+                    -1,
+                    1,
+                    6.123233995736766e-17,
+                    0,
+                    24,
+                  ]
+                }
+                opacity={1}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                    "strokeDasharray",
+                    "strokeDashoffset",
+                  ]
+                }
+                r={10.5}
+                stroke={
+                  {
+                    "payload": 4281228287,
+                    "type": 0,
+                  }
+                }
+                strokeDasharray={
+                  [
+                    "65.97344572538566",
+                    "65.97344572538566",
+                  ]
+                }
+                strokeDashoffset={32.98672286269283}
+                strokeWidth="3px"
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render circular variant ProgressBar with default props 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        accessibilityLabel="Label"
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="undefined-circular-29"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "width": "fit-content",
+              },
+            ]
+          }
+          width="fit-content"
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="24"
+            bbWidth="24"
+            data-blade-component="icon"
+            focusable={false}
+            height="24"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+            vbHeight={24}
+            vbWidth={24}
+            width="24"
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGCircle
+                cx="12"
+                cy="12"
+                fill={null}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                  ]
+                }
+                r="10.5"
+                stroke={
+                  {
+                    "payload": 392987805,
+                    "type": 0,
+                  }
+                }
+                strokeWidth="3px"
+              />
+              <RNSVGCircle
+                cx={12}
+                cy={12}
+                fill={null}
+                matrix={
+                  [
+                    6.123233995736766e-17,
+                    -1,
+                    1,
+                    6.123233995736766e-17,
+                    0,
+                    24,
+                  ]
+                }
+                opacity={1}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                    "strokeDasharray",
+                    "strokeDashoffset",
+                  ]
+                }
+                r={10.5}
+                stroke={
+                  {
+                    "payload": 4281228287,
+                    "type": 0,
+                  }
+                }
+                strokeDasharray={
+                  [
+                    "65.97344572538566",
+                    "65.97344572538566",
+                  ]
+                }
+                strokeDashoffset={52.77875658030853}
+                strokeWidth="3px"
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            marginTop="spacing.3"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 8,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Label
+          </Text>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="semibold"
+            lineHeight={75}
+            marginTop="spacing.0"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render circular variant ProgressBar with large size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        accessibilityLabel="Label"
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="undefined-circular-38"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "width": "fit-content",
+              },
+            ]
+          }
+          width="fit-content"
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="72"
+            bbWidth="72"
+            data-blade-component="icon"
+            focusable={false}
+            height="72"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 72,
+                  "width": 72,
+                },
+              ]
+            }
+            vbHeight={72}
+            vbWidth={72}
+            width="72"
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGCircle
+                cx="36"
+                cy="36"
+                fill={null}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                  ]
+                }
+                r="32.5"
+                stroke={
+                  {
+                    "payload": 392987805,
+                    "type": 0,
+                  }
+                }
+                strokeWidth="7px"
+              />
+              <RNSVGCircle
+                cx={36}
+                cy={36}
+                fill={null}
+                matrix={
+                  [
+                    6.123233995736766e-17,
+                    -1,
+                    1,
+                    6.123233995736766e-17,
+                    0,
+                    72,
+                  ]
+                }
+                opacity={1}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                    "strokeDasharray",
+                    "strokeDashoffset",
+                  ]
+                }
+                r={32.5}
+                stroke={
+                  {
+                    "payload": 4281228287,
+                    "type": 0,
+                  }
+                }
+                strokeDasharray={
+                  [
+                    "204.20352248333654",
+                    "204.20352248333654",
+                  ]
+                }
+                strokeDashoffset={163.36281798666926}
+                strokeWidth="7px"
+              />
+              <RNSVGText
+                content={null}
+                dx={[]}
+                dy={
+                  [
+                    ".5em",
+                  ]
+                }
+                fill={
+                  {
+                    "payload": 4279838777,
+                    "type": 0,
+                  }
+                }
+                font={
+                  {
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "textAnchor": "middle",
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "strokeWidth",
+                  ]
+                }
+                rotate={[]}
+                strokeWidth={0}
+                x={
+                  [
+                    "50%",
+                  ]
+                }
+                y={
+                  [
+                    "50%",
+                  ]
+                }
+              >
+                <RNSVGTSpan
+                  content="20%"
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={{}}
+                  rotate={[]}
+                  x={[]}
+                  y={[]}
+                />
+              </RNSVGText>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            marginTop="spacing.3"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 8,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Label
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render circular variant ProgressBar with medium size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        accessibilityLabel="Label"
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="undefined-circular-36"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "width": "fit-content",
+              },
+            ]
+          }
+          width="fit-content"
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="48"
+            bbWidth="48"
+            data-blade-component="icon"
+            focusable={false}
+            height="48"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 48,
+                  "width": 48,
+                },
+              ]
+            }
+            vbHeight={48}
+            vbWidth={48}
+            width="48"
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGCircle
+                cx="24"
+                cy="24"
+                fill={null}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                  ]
+                }
+                r="21.5"
+                stroke={
+                  {
+                    "payload": 392987805,
+                    "type": 0,
+                  }
+                }
+                strokeWidth="5px"
+              />
+              <RNSVGCircle
+                cx={24}
+                cy={24}
+                fill={null}
+                matrix={
+                  [
+                    6.123233995736766e-17,
+                    -1,
+                    1,
+                    6.123233995736766e-17,
+                    0,
+                    48,
+                  ]
+                }
+                opacity={1}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                    "strokeDasharray",
+                    "strokeDashoffset",
+                  ]
+                }
+                r={21.5}
+                stroke={
+                  {
+                    "payload": 4281228287,
+                    "type": 0,
+                  }
+                }
+                strokeDasharray={
+                  [
+                    "135.0884841043611",
+                    "135.0884841043611",
+                  ]
+                }
+                strokeDashoffset={108.07078728348888}
+                strokeWidth="5px"
+              />
+              <RNSVGText
+                content={null}
+                dx={[]}
+                dy={
+                  [
+                    ".5em",
+                  ]
+                }
+                fill={
+                  {
+                    "payload": 4279838777,
+                    "type": 0,
+                  }
+                }
+                font={
+                  {
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "textAnchor": "middle",
+                  }
+                }
+                propList={
+                  [
+                    "fill",
+                    "strokeWidth",
+                  ]
+                }
+                rotate={[]}
+                strokeWidth={0}
+                x={
+                  [
+                    "50%",
+                  ]
+                }
+                y={
+                  [
+                    "50%",
+                  ]
+                }
+              >
+                <RNSVGTSpan
+                  content="20%"
+                  dx={[]}
+                  dy={[]}
+                  fill={
+                    {
+                      "payload": 4278190080,
+                      "type": 0,
+                    }
+                  }
+                  font={{}}
+                  rotate={[]}
+                  x={[]}
+                  y={[]}
+                />
+              </RNSVGText>
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            marginTop="spacing.3"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 8,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Label
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render circular variant ProgressBar with small size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        accessibilityLabel="Label"
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="undefined-circular-34"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "width": "fit-content",
+              },
+            ]
+          }
+          width="fit-content"
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="24"
+            bbWidth="24"
+            data-blade-component="icon"
+            focusable={false}
+            height="24"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+            vbHeight={24}
+            vbWidth={24}
+            width="24"
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGCircle
+                cx="12"
+                cy="12"
+                fill={null}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                  ]
+                }
+                r="10.5"
+                stroke={
+                  {
+                    "payload": 392987805,
+                    "type": 0,
+                  }
+                }
+                strokeWidth="3px"
+              />
+              <RNSVGCircle
+                cx={12}
+                cy={12}
+                fill={null}
+                matrix={
+                  [
+                    6.123233995736766e-17,
+                    -1,
+                    1,
+                    6.123233995736766e-17,
+                    0,
+                    24,
+                  ]
+                }
+                opacity={1}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                    "strokeDasharray",
+                    "strokeDashoffset",
+                  ]
+                }
+                r={10.5}
+                stroke={
+                  {
+                    "payload": 4281228287,
+                    "type": 0,
+                  }
+                }
+                strokeDasharray={
+                  [
+                    "65.97344572538566",
+                    "65.97344572538566",
+                  ]
+                }
+                strokeDashoffset={52.77875658030853}
+                strokeWidth="3px"
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            marginTop="spacing.3"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 8,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Label
+          </Text>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="semibold"
+            lineHeight={75}
+            marginTop="spacing.0"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
         </View>
       </View>
     </View>
@@ -427,7 +1427,174 @@ exports[`<ProgressBar /> should render color=information ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-14"
+        id="progress-linear-15"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(200, 84%, 44%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(200, 84%, 44%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render color=information ProgressBar 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="progress-linear-44"
         style={
           [
             {},
@@ -594,7 +1761,174 @@ exports[`<ProgressBar /> should render color=negative ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-16"
+        id="progress-linear-17"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(4, 74%, 49%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(4, 74%, 49%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render color=negative ProgressBar 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="progress-linear-46"
         style={
           [
             {},
@@ -761,7 +2095,174 @@ exports[`<ProgressBar /> should render color=neutral ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-18"
+        id="progress-linear-19"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(211, 29%, 26%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(211, 29%, 26%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render color=neutral ProgressBar 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="progress-linear-48"
         style={
           [
             {},
@@ -928,7 +2429,174 @@ exports[`<ProgressBar /> should render color=notice ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-20"
+        id="progress-linear-21"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(25, 90%, 48%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(25, 90%, 48%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render color=notice ProgressBar 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="progress-linear-50"
         style={
           [
             {},
@@ -1095,7 +2763,7 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-22"
+        id="progress-linear-23"
         style={
           [
             {},
@@ -1158,7 +2826,174 @@ exports[`<ProgressBar /> should render color=positive ProgressBar 1`] = `
 </View>
 `;
 
-exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
+exports[`<ProgressBar /> should render color=positive ProgressBar 2`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="flex-end"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="progress-linear-52"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(150, 100%, 32%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(150, 100%, 32%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render linear variant ProgressBar with default props 1`] = `
 <View
   style={
     {
@@ -1297,7 +3132,209 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-8"
+        id="undefined-linear-1"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(227, 100%, 59%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render linear variant ProgressBar with medium size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
+          style={
+            [
+              {
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityLabel="Label"
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="undefined-linear-8"
         style={
           [
             {},
@@ -1315,6 +3352,208 @@ exports[`<ProgressBar /> should render medium size ProgressBar 1`] = `
               {
                 "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
                 "height": 4,
+                "overflow": "hidden",
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <View
+            backgroundColor="hsla(227, 100%, 59%, 1)"
+            progress={20}
+            style={
+              [
+                {
+                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
+                  "height": "100%",
+                  "width": "20%",
+                },
+                {
+                  "width": "20%",
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "white",
+                    "height": "100%",
+                    "opacity": 0,
+                    "width": "100%",
+                  },
+                  {
+                    "opacity": 0,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should render linear variant ProgressBar with small size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            },
+          ]
+        }
+      >
+        <Text
+          accessible={true}
+          color="surface.text.gray.subtle"
+          data-blade-component="text"
+          fontFamily="text"
+          fontSize={75}
+          fontStyle="normal"
+          fontWeight="regular"
+          lineHeight={75}
+          style={
+            [
+              {
+                "color": "hsla(211, 26%, 34%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 12,
+                "fontStyle": "normal",
+                "fontWeight": "400",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+        >
+          Label
+        </Text>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 4,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            20%
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityLabel="Label"
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 20,
+            "text": "20%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="undefined-linear-6"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          data-blade-component="base-box"
+          height="2px"
+          overflow="hidden"
+          position="relative"
+          style={
+            [
+              {
+                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+                "height": 2,
                 "overflow": "hidden",
                 "position": "relative",
               },
@@ -1418,7 +3657,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="meter-12"
+        id="meter-linear-13"
         style={
           [
             {},
@@ -1481,7 +3720,7 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  1`] = `
 </View>
 `;
 
-exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
+exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
 <View
   style={
     {
@@ -1513,114 +3752,18 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
       width="100%"
     >
       <View
-        data-blade-component="base-box"
-        display="flex"
-        flexDirection="row"
-        justifyContent="space-between"
-        style={
-          [
-            {
-              "display": "flex",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-            },
-          ]
-        }
-      >
-        <Text
-          accessible={true}
-          color="surface.text.gray.subtle"
-          data-blade-component="text"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="regular"
-          lineHeight={75}
-          style={
-            [
-              {
-                "color": "hsla(211, 26%, 34%, 1)",
-                "fontFamily": "Inter",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "letterSpacing": 0,
-                "lineHeight": 18,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-            ]
-          }
-        >
-          Label
-        </Text>
-        <View
-          data-blade-component="base-box"
-          style={
-            [
-              {
-                "marginBottom": 4,
-              },
-            ]
-          }
-        >
-          <Text
-            accessible={true}
-            color="surface.text.gray.subtle"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            style={
-              [
-                {
-                  "color": "hsla(211, 26%, 34%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
-        </View>
-      </View>
-      <View
-        accessibilityLabel="Label"
         accessibilityRole="progressbar"
         accessibilityValue={
           {
             "max": 100,
             "min": 0,
-            "now": 20,
-            "text": "20%",
+            "now": 70,
+            "text": "70",
           }
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-6"
+        id="meter-circular-42"
         style={
           [
             {},
@@ -1628,54 +3771,122 @@ exports[`<ProgressBar /> should render small size ProgressBar 1`] = `
         }
       >
         <View
-          backgroundColor="hsla(211, 20%, 52%, 0.09)"
+          alignItems="center"
           data-blade-component="base-box"
-          height="2px"
-          overflow="hidden"
-          position="relative"
+          display="flex"
           style={
             [
               {
-                "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-                "height": 2,
-                "overflow": "hidden",
-                "position": "relative",
+                "alignItems": "center",
+                "display": "flex",
+                "width": "fit-content",
               },
             ]
           }
+          width="fit-content"
         >
-          <View
-            backgroundColor="hsla(227, 100%, 59%, 1)"
-            progress={20}
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="24"
+            bbWidth="24"
+            data-blade-component="icon"
+            focusable={false}
+            height="24"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
             style={
               [
                 {
-                  "backgroundColor": "hsla(227, 100%, 59%, 1)",
-                  "height": "100%",
-                  "width": "20%",
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
                 },
+                [
+                  {},
+                ],
                 {
-                  "width": "20%",
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
                 },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="24"
           >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "white",
-                    "height": "100%",
-                    "opacity": 0,
-                    "width": "100%",
-                  },
-                  {
-                    "opacity": 0,
-                  },
-                ]
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
               }
-            />
-          </View>
+            >
+              <RNSVGCircle
+                cx="12"
+                cy="12"
+                fill={null}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                  ]
+                }
+                r="10.5"
+                stroke={
+                  {
+                    "payload": 392987805,
+                    "type": 0,
+                  }
+                }
+                strokeWidth="3px"
+              />
+              <RNSVGCircle
+                cx={12}
+                cy={12}
+                fill={null}
+                matrix={
+                  [
+                    6.123233995736766e-17,
+                    -1,
+                    1,
+                    6.123233995736766e-17,
+                    0,
+                    24,
+                  ]
+                }
+                opacity={1}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                    "strokeDasharray",
+                    "strokeDashoffset",
+                  ]
+                }
+                r={10.5}
+                stroke={
+                  {
+                    "payload": 4281228287,
+                    "type": 0,
+                  }
+                }
+                strokeDasharray={
+                  [
+                    "65.97344572538566",
+                    "65.97344572538566",
+                  ]
+                }
+                strokeDashoffset={19.7920337176157}
+                strokeWidth="3px"
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
         </View>
       </View>
     </View>
@@ -1987,7 +4198,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 1`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-3"
+        id="undefined-linear-3"
         style={
           [
             {},
@@ -2354,7 +4565,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
         }
         accessible={true}
         data-blade-component="base-box"
-        id="progress-3"
+        id="undefined-linear-3"
         style={
           [
             {},
@@ -2410,6 +4621,826 @@ exports[`<ProgressBar /> should update the progress value appropriately 2`] = `
               }
             />
           </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="4px"
+    borderWidth="0px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
+    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
+    focusBorderColor="hsla(227, 100%, 59%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
+    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    isPressed={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "cursor": "pointer",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      style={
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        zIndex={1}
+      >
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Update Progress
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        accessibilityLabel="Label"
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 0,
+            "text": "0%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="undefined-circular-31"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "width": "fit-content",
+              },
+            ]
+          }
+          width="fit-content"
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="24"
+            bbWidth="24"
+            data-blade-component="icon"
+            focusable={false}
+            height="24"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+            vbHeight={24}
+            vbWidth={24}
+            width="24"
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGCircle
+                cx="12"
+                cy="12"
+                fill={null}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                  ]
+                }
+                r="10.5"
+                stroke={
+                  {
+                    "payload": 392987805,
+                    "type": 0,
+                  }
+                }
+                strokeWidth="3px"
+              />
+              <RNSVGCircle
+                cx={12}
+                cy={12}
+                fill={null}
+                matrix={
+                  [
+                    6.123233995736766e-17,
+                    -1,
+                    1,
+                    6.123233995736766e-17,
+                    0,
+                    24,
+                  ]
+                }
+                opacity={1}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                    "strokeDasharray",
+                    "strokeDashoffset",
+                  ]
+                }
+                r={10.5}
+                stroke={
+                  {
+                    "payload": 4281228287,
+                    "type": 0,
+                  }
+                }
+                strokeDasharray={
+                  [
+                    "65.97344572538566",
+                    "65.97344572538566",
+                  ]
+                }
+                strokeDashoffset={65.97344572538566}
+                strokeWidth="3px"
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            marginTop="spacing.3"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 8,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Label
+          </Text>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="semibold"
+            lineHeight={75}
+            marginTop="spacing.0"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            0%
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    accessibilityRole="button"
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": false,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    borderRadius="4px"
+    borderWidth="0px"
+    buttonPaddingBottom="0px"
+    buttonPaddingLeft="20px"
+    buttonPaddingRight="20px"
+    buttonPaddingTop="0px"
+    collapsable={false}
+    data-blade-component="button"
+    defaultBackgroundColor="hsla(227, 100%, 59%, 1)"
+    defaultBorderColor="hsla(227, 100%, 59%, 1)"
+    focusBackgroundColor="hsla(227, 71%, 51%, 1)"
+    focusBorderColor="hsla(227, 100%, 59%, 1)"
+    focusRingColor="hsla(227, 100%, 59%, 0.18)"
+    focusable={true}
+    hoverBackgroundColor="hsla(227, 71%, 51%, 1)"
+    hoverBorderColor="hsla(227, 100%, 59%, 1)"
+    isFullWidth={false}
+    isLoading={false}
+    isPressed={false}
+    minHeight="36px"
+    motionDuration="duration.xquick"
+    motionEasing="easing.standard.effective"
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
+    role="button"
+    style={
+      [
+        {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+          "borderRadius": 4,
+          "borderStyle": "solid",
+          "borderWidth": 0,
+          "cursor": "pointer",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "minHeight": 36,
+          "overflow": "hidden",
+          "paddingBottom": 0,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 0,
+          "textDecorationColor": "black",
+          "textDecorationLine": "none",
+          "textDecorationStyle": "solid",
+          "width": "auto",
+        },
+        {
+          "backgroundColor": "hsla(227, 100%, 59%, 1)",
+          "borderColor": "hsla(227, 100%, 59%, 1)",
+        },
+      ]
+    }
+    type="button"
+  >
+    <View
+      style={
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
+      }
+    >
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        zIndex={1}
+      >
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Update Progress
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    data-blade-component="progress-bar"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+          },
+        ]
+      }
+      width="100%"
+    >
+      <View
+        accessibilityLabel="Label"
+        accessibilityRole="progressbar"
+        accessibilityValue={
+          {
+            "max": 100,
+            "min": 0,
+            "now": 60,
+            "text": "60%",
+          }
+        }
+        accessible={true}
+        data-blade-component="base-box"
+        id="undefined-circular-31"
+        style={
+          [
+            {},
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "width": "fit-content",
+              },
+            ]
+          }
+          width="fit-content"
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="24"
+            bbWidth="24"
+            data-blade-component="icon"
+            focusable={false}
+            height="24"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+            vbHeight={24}
+            vbWidth={24}
+            width="24"
+          >
+            <RNSVGGroup
+              fill={
+                {
+                  "payload": 4278190080,
+                  "type": 0,
+                }
+              }
+            >
+              <RNSVGCircle
+                cx="12"
+                cy="12"
+                fill={null}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                  ]
+                }
+                r="10.5"
+                stroke={
+                  {
+                    "payload": 392987805,
+                    "type": 0,
+                  }
+                }
+                strokeWidth="3px"
+              />
+              <RNSVGCircle
+                cx={12}
+                cy={12}
+                fill={null}
+                matrix={
+                  [
+                    6.123233995736766e-17,
+                    -1,
+                    1,
+                    6.123233995736766e-17,
+                    0,
+                    24,
+                  ]
+                }
+                opacity={1}
+                propList={
+                  [
+                    "fill",
+                    "stroke",
+                    "strokeWidth",
+                    "strokeDasharray",
+                    "strokeDashoffset",
+                  ]
+                }
+                r={10.5}
+                stroke={
+                  {
+                    "payload": 4281228287,
+                    "type": 0,
+                  }
+                }
+                strokeDasharray={
+                  [
+                    "65.97344572538566",
+                    "65.97344572538566",
+                  ]
+                }
+                strokeDashoffset={26.389378290154266}
+                strokeWidth="3px"
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="regular"
+            lineHeight={75}
+            marginTop="spacing.3"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 8,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Label
+          </Text>
+          <Text
+            accessible={true}
+            color="surface.text.gray.normal"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="semibold"
+            lineHeight={75}
+            marginTop="spacing.0"
+            style={
+              [
+                {
+                  "color": "hsla(212, 39%, 16%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            60%
+          </Text>
         </View>
       </View>
     </View>

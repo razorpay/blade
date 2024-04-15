@@ -40,7 +40,9 @@ describe('<ProgressBar />', () => {
         it(`should throw error for ${variant} variant ProgressBar with ${size} size`, () => {
           expect(() =>
             renderWithTheme(<ProgressBar label="Label" size={size} value={20} variant={variant} />),
-          ).toThrowErrorMatchingInlineSnapshot(``);
+          ).toThrowErrorMatchingInlineSnapshot(
+            `"[Blade: ProgressBar]: Large size isn't available when 'variant' is 'linear'."`,
+          );
         });
       } else {
         it(`should render ${variant} variant ProgressBar with ${size} size`, () => {
@@ -75,7 +77,7 @@ describe('<ProgressBar />', () => {
     });
 
     types.forEach((type) => {
-      it(`should have the right accessibility attributes for "${type}" type ProgressBar`, () => {
+      it(`should have the right accessibility attributes for "${type}" type for ${variant} ProgressBar`, () => {
         const { getByRole } = renderWithTheme(
           <ProgressBar
             label="Label"
@@ -87,12 +89,13 @@ describe('<ProgressBar />', () => {
         );
 
         const role = type === 'progress' ? 'progressbar' : 'meter';
+        const valueText = type === 'progress' ? '70%' : '70';
 
         expect(getByRole(role)).toHaveAccessibleName('Downloading');
         expect(getByRole(role)).toHaveAttribute('aria-valuenow', '70');
         expect(getByRole(role)).toHaveAttribute('aria-valuemin', '0');
         expect(getByRole(role)).toHaveAttribute('aria-valuemax', '100');
-        expect(getByRole(role)).toHaveAttribute('aria-valuetext', '70%');
+        expect(getByRole(role)).toHaveAttribute('aria-valuetext', valueText);
       });
     });
   });
@@ -104,6 +107,7 @@ describe('<ProgressBar />', () => {
         accessibilityLabel="Checking"
         isIndeterminate={true}
         type="progress"
+        variant="linear"
       />,
     );
 
@@ -124,7 +128,7 @@ describe('<ProgressBar />', () => {
   it('should throw an error when type="meter" and isIndeterminate is set', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     expect(() => renderWithTheme(<ProgressBar type="meter" isIndeterminate={true} />)).toThrow(
-      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when ''type' or 'variant' is 'meter'.`,
+      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'type' or 'variant' is 'meter'.`,
     );
     mockConsoleError.mockRestore();
   });
@@ -133,7 +137,7 @@ describe('<ProgressBar />', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     // @ts-expect-error testing failure case when the variant is meter and isIndeterminate is set
     expect(() => renderWithTheme(<ProgressBar variant="meter" isIndeterminate={true} />)).toThrow(
-      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when ''type' or 'variant' is 'meter'.`,
+      `[Blade: ProgressBar]: Cannot set 'isIndeterminate' when 'type' or 'variant' is 'meter'.`,
     );
     mockConsoleError.mockRestore();
   });
@@ -147,7 +151,7 @@ describe('<ProgressBar />', () => {
   });
 
   types.forEach((type) => {
-    variants.forEach((variant) => {
+    (['meter', 'progress'] as const).forEach((variant) => {
       it(`should throw an error when the type is ${type} and variant is ${variant}`, () => {
         const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
         expect(() => renderWithTheme(<ProgressBar type={type} variant={variant} />)).toThrow(

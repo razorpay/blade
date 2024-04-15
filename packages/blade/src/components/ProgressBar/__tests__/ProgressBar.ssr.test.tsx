@@ -7,12 +7,16 @@ afterAll(() => jest.restoreAllMocks());
 
 describe('<ProgressBar />', () => {
   it('should render linear ProgressBar with default properties', () => {
-    const { container } = renderWithSSR(<ProgressBar variant="linear" value={20} />);
+    const { container } = renderWithSSR(
+      <ProgressBar variant="linear" type="progress" value={20} />,
+    );
     expect(container).toMatchSnapshot();
   });
 
   it('should render circular ProgressBar with default properties', () => {
-    const { container } = renderWithSSR(<ProgressBar variant="circular" value={20} />);
+    const { container } = renderWithSSR(
+      <ProgressBar variant="circular" type="progress" value={20} />,
+    );
     expect(container).toMatchSnapshot();
   });
 });
