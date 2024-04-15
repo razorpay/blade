@@ -5,6 +5,7 @@ import type { FormInputOnEvent, FormInputOnKeyDownEvent } from '~components/Form
 // import { isReactNative } from '~utils';
 import { getTagsGroup } from '~components/Tag/getTagsGroup';
 import { isReactNative } from '~utils';
+import { useControllableState } from '~utils/useControllable';
 
 type TaggedInputProps = {
   isTaggedInput?: boolean;
@@ -17,6 +18,15 @@ type UseTaggedInputProps = TaggedInputProps &
     inputRef: React.RefObject<BladeElementRefWithValue | null>;
   };
 
+type UseTaggedInputReturn = {
+  activeTagIndex: number;
+  setActiveTagIndex: (activeTagIndex: number) => void;
+  getTags: ({ size }: { size: NonNullable<BaseInputProps['size']> }) => React.ReactElement[];
+  handleTaggedInputKeydown: (e: FormInputOnKeyDownEvent) => void;
+  handleTaggedInputChange: FormInputOnEvent;
+  handleTagsClear: () => void;
+};
+
 const useTaggedInput = ({
   tags,
   isDisabled,
@@ -27,21 +37,21 @@ const useTaggedInput = ({
   name,
   value,
   defaultValue,
-}: UseTaggedInputProps): {
-  activeTagIndex: number;
-  setActiveTagIndex: (activeTagIndex: number) => void;
-  getTags: ({ size }: { size: NonNullable<BaseInputProps['size']> }) => React.ReactElement[];
-  handleTaggedInputKeydown: (e: FormInputOnKeyDownEvent) => void;
-  handleTaggedInputChange: FormInputOnEvent;
-  handleTagsClear: () => void;
-} => {
+}: UseTaggedInputProps): UseTaggedInputReturn => {
   const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
   const [inputValueUncontrolled, setInputValueUncontrolled] = React.useState(defaultValue ?? '');
-  const [tagsUncontrolled, setTagsUncontrolled] = React.useState<string[]>([]);
+  const [tagsValue, setTagsValue] = useControllableState({
+    value: tags,
+    defaultValue: [],
+    onChange: (tags) => {
+      onTagChange?.({ tags });
+    },
+  });
+
   const isTagsControlled = Boolean(tags);
 
   const getNewTagsArray = (indexToRemove: number): string[] => {
-    const currentTags = tags ?? tagsUncontrolled;
+    const currentTags = tagsValue;
 
     if (!currentTags) {
       return [];
@@ -64,20 +74,20 @@ const useTaggedInput = ({
     () => ({ size }: { size: NonNullable<BaseInputProps['size']> }): React.ReactElement[] => {
       return getTagsGroup({
         size,
-        tags: tags ?? tagsUncontrolled,
+        tags: tagsValue,
         activeTagIndex,
         isDisabled,
         onDismiss: ({ tagIndex }) => {
           console.log('dismiss', { tagIndex });
           if (!isTagsControlled) {
-            setTagsUncontrolled(getNewTagsArray(tagIndex));
+            setTagsValue(() => getNewTagsArray(tagIndex));
           }
           onTagChange?.({ tags: getNewTagsArray(tagIndex) });
         },
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [activeTagIndex, tags, tagsUncontrolled, isDisabled],
+    [activeTagIndex, tags, tagsValue, isDisabled],
   );
 
   const handleTaggedInputChange: FormInputOnEvent = ({ value }) => {
@@ -93,7 +103,7 @@ const useTaggedInput = ({
     }
 
     if (!isTagsControlled) {
-      setTagsUncontrolled([]);
+      setTagsValue(() => []);
     }
 
     onTagChange?.({ tags: [] });
@@ -131,14 +141,14 @@ const useTaggedInput = ({
       return;
     }
 
-    const currentTags = tags ?? tagsUncontrolled;
+    const currentTags = tagsValue;
     const isControlledValue = value !== undefined;
     const inputValue = isControlledValue ? value?.trim() : inputValueUncontrolled.trim();
     if (e.key === 'Enter' || e.key === ',') {
       e.event.preventDefault?.(); // we don't want textarea to treat enter as line break in tagged inputs
       if (inputValue) {
         if (!isTagsControlled) {
-          setTagsUncontrolled([...currentTags, inputValue]);
+          setTagsValue(() => [...currentTags, inputValue]);
         }
         onTagChange?.({ tags: [...currentTags, inputValue] });
         clearInput();
@@ -147,7 +157,7 @@ const useTaggedInput = ({
     }
     if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0 && currentTags.length > 0) {
       if (!isTagsControlled) {
-        setTagsUncontrolled(currentTags.slice(0, -1));
+        setTagsValue(() => currentTags.slice(0, -1));
       }
       onTagChange?.({ tags: currentTags.slice(0, -1) });
     }

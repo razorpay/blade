@@ -199,6 +199,7 @@ const BaseInputTagSlot = ({
       overflowY={showAllTags || maxTagRows === 'multiple' ? 'auto' : 'hidden'}
       minHeight={makeSize(baseInputHeight[size])}
       maxHeight={
+        // In TextArea with tagged input, we explicitly define maxHeight based on maxHeight so that tags dont overflow out of textarea
         isDropdownTrigger && isTextArea
           ? makeSize(baseInputHeight[size] * (numberOfLines ?? 1))
           : undefined

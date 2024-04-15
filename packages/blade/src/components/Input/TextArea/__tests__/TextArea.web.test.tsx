@@ -14,6 +14,9 @@ const getTag = (tagName: string): HTMLElement => {
   return screen.queryAllByLabelText(`Close ${tagName} tag`)?.[0];
 };
 
+const bladeEmail = 'blade@gmail.com';
+const tagEmail = 'tag@gmail.com';
+
 describe('<TextArea />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(<TextArea label="Enter name" />);
@@ -371,24 +374,24 @@ describe('<TextArea />', () => {
 
     const input = getByLabelText(label);
 
-    expect(getTag('blade@gmail.com')).toBeUndefined();
-    await userEvent.type(input, 'blade@gmail.com');
+    expect(getTag(bladeEmail)).toBeUndefined();
+    await userEvent.type(input, bladeEmail);
     await userEvent.type(input, ',');
-    expect(getTag('blade@gmail.com')).toBeVisible();
-    expect(tagChangeCallback).toBeCalledWith({ tags: ['blade@gmail.com'] });
+    expect(getTag(bladeEmail)).toBeVisible();
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail] });
 
-    expect(getTag('tag@gmail.com')).toBeUndefined();
-    await userEvent.type(input, 'tag@gmail.com');
+    expect(getTag(tagEmail)).toBeUndefined();
+    await userEvent.type(input, tagEmail);
     await userEvent.keyboard('{ENTER}');
-    expect(getTag('tag@gmail.com')).toBeVisible();
-    expect(tagChangeCallback).toBeCalledWith({ tags: ['blade@gmail.com', 'tag@gmail.com'] });
+    expect(getTag(tagEmail)).toBeVisible();
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail, tagEmail] });
 
     await userEvent.keyboard('{Backspace}');
-    expect(getTag('tag@gmail.com')).toBeUndefined();
-    expect(tagChangeCallback).toBeCalledWith({ tags: ['blade@gmail.com'] });
+    expect(getTag(tagEmail)).toBeUndefined();
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail] });
 
-    await userEvent.click(getTag('blade@gmail.com'));
-    await waitFor(() => expect(getTag('blade@gmail.com')).not.toBeVisible());
+    await userEvent.click(getTag(bladeEmail));
+    await waitFor(() => expect(getTag(bladeEmail)).not.toBeVisible());
   });
 
   it(`should add tags in controlled API`, async () => {
@@ -419,22 +422,22 @@ describe('<TextArea />', () => {
 
     const input = getByLabelText(label);
 
-    expect(getTag('blade@gmail.com')).toBeUndefined();
-    await userEvent.type(input, 'blade@gmail.com');
+    expect(getTag(bladeEmail)).toBeUndefined();
+    await userEvent.type(input, bladeEmail);
     await userEvent.type(input, ',');
-    expect(getTag('blade@gmail.com')).toBeVisible();
+    expect(getTag(bladeEmail)).toBeVisible();
 
-    expect(getTag('tag@gmail.com')).toBeUndefined();
-    await userEvent.type(input, 'tag@gmail.com');
+    expect(getTag(tagEmail)).toBeUndefined();
+    await userEvent.type(input, tagEmail);
     await userEvent.keyboard('{ENTER}');
-    expect(getTag('tag@gmail.com')).toBeVisible();
+    expect(getTag(tagEmail)).toBeVisible();
 
     await userEvent.keyboard('{Backspace}');
-    expect(getTag('tag@gmail.com')).toBeUndefined();
+    expect(getTag(tagEmail)).toBeUndefined();
 
     await userEvent.click(getByRole('button', { name: 'Add More' }));
 
-    expect(getTag('blade@gmail.com')).toBeVisible();
+    expect(getTag(bladeEmail)).toBeVisible();
     expect(getTag('saurabh@razorpay.com')).toBeVisible();
     expect(getTag('chaitanya@razorpay.com')).toBeVisible();
   });

@@ -176,7 +176,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
   },
   ref,
 ): ReactElement => {
-  const textInputRef = React.useRef<BladeElementRef>(null);
+  const textInputRef = React.useRef<BladeElementRefWithValue>(null);
   const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
   const [isInputFocussed, setIsInputFocussed] = useState(autoFocus ?? false);
@@ -195,7 +195,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     onChange,
     name,
     value,
-    inputRef: textInputRef as React.RefObject<BladeElementRefWithValue>,
+    inputRef: textInputRef,
   });
 
   React.useEffect(() => {

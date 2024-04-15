@@ -125,7 +125,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
   },
   ref,
 ) => {
-  const inputRef = React.useRef<BladeElementRef>(null);
+  const inputRef = React.useRef<BladeElementRefWithValue>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
   const [isInputFocussed, setIsInputFocussed] = React.useState(autoFocus ?? false);
   const {
@@ -139,7 +139,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     tags,
     onTagChange,
     isDisabled,
-    inputRef: inputRef as React.RefObject<BladeElementRefWithValue>,
+    inputRef,
     isTaggedInput,
     name,
     value,

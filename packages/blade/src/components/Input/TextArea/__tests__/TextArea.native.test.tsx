@@ -12,6 +12,9 @@ const getTag = (tagName: string): ReactTestInstance => {
   return screen.queryAllByLabelText(`Close ${tagName} tag`)?.[0];
 };
 
+const bladeEmail = 'blade@gmail.com';
+const tagEmail = 'tag@gmail.com';
+
 describe('<TextArea />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<TextArea label="Enter name" />);
@@ -306,16 +309,16 @@ describe('<TextArea />', () => {
 
     const input = getByPlaceholderText(placeholder);
 
-    expect(getTag('blade@gmail.com')).toBeUndefined();
-    fireEvent.changeText(input, 'blade@gmail.com');
+    expect(getTag(bladeEmail)).toBeUndefined();
+    fireEvent.changeText(input, bladeEmail);
     fireEvent(input, 'onKeyPress', { nativeEvent: { key: ',' } });
-    expect(getTag('blade@gmail.com')).toBeOnTheScreen();
-    expect(tagChangeCallback).toBeCalledWith({ tags: ['blade@gmail.com'] });
+    expect(getTag(bladeEmail)).toBeOnTheScreen();
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail] });
 
-    expect(getTag('tag@gmail.com')).toBeUndefined();
-    fireEvent.changeText(input, 'tag@gmail.com');
+    expect(getTag(tagEmail)).toBeUndefined();
+    fireEvent.changeText(input, tagEmail);
     fireEvent(input, 'onKeyPress', { nativeEvent: { key: ',' } });
-    expect(tagChangeCallback).toBeCalledWith({ tags: ['blade@gmail.com', 'tag@gmail.com'] });
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail, tagEmail] });
   });
 
   it(`should add tags in controlled API`, () => {
@@ -348,14 +351,14 @@ describe('<TextArea />', () => {
 
     const input = getByPlaceholderText(placeholder);
 
-    expect(getTag('blade@gmail.com')).toBeUndefined();
-    fireEvent.changeText(input, 'blade@gmail.com');
+    expect(getTag(bladeEmail)).toBeUndefined();
+    fireEvent.changeText(input, bladeEmail);
     fireEvent(input, 'onKeyPress', { nativeEvent: { key: ',' } });
-    expect(getTag('blade@gmail.com')).toBeOnTheScreen();
+    expect(getTag(bladeEmail)).toBeOnTheScreen();
 
     fireEvent.press(getByRole('button', { name: 'Add More' }));
 
-    expect(getTag('blade@gmail.com')).toBeOnTheScreen();
+    expect(getTag(bladeEmail)).toBeOnTheScreen();
     expect(getTag('saurabh@razorpay.com')).toBeOnTheScreen();
     expect(getTag('chaitanya@razorpay.com')).toBeOnTheScreen();
   });
