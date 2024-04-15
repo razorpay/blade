@@ -221,11 +221,10 @@ const ProgressBar = ({
               progressPercent={percentageProgressValue}
               isMeter={isMeter}
               showPercentage={shouldShowPercentage}
-              backgroundColor={unfilledBackgroundColor}
+              backgroundColor={unfilledBackgroundColor as string}
               fillColor={filledBackgroundColor}
-              fillMotionDuration="duration.2xgentle"
               pulseMotionDuration="duration.2xgentle"
-              indeterminateMotionDuration="duration.2xgentle"
+              fillMotionDuration="duration.2xgentle"
               pulseMotionDelay="delay.long"
               motionEasing="easing.standard.revealing"
             />

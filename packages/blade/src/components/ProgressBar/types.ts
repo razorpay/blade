@@ -15,13 +15,14 @@ type ProgressBarFilledProps = {
 
 type CircularProgressBarFilledProps = Pick<
   ProgressBarProps,
-  'size' | 'label' | 'showPercentage'
+  'size' | 'label' | 'showPercentage' | 'variant'
 > & {
   isMeter: boolean;
   backgroundColor: string;
   fillColor: string;
   progressPercent: number;
   pulseMotionDuration: DurationString;
+  fillMotionDuration: DurationString;
   pulseMotionDelay: DelayString;
   motionEasing: EasingString;
 };

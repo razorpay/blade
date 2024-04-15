@@ -1,19 +1,18 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components/native';
-import { Animated as RNAnimated } from 'react-native';
 import Animated, {
   cancelAnimation,
-  Easing,
   useAnimatedStyle,
   useSharedValue,
   withDelay,
   withRepeat,
   withSequence,
   withTiming,
+  interpolate,
+  Extrapolation,
 } from 'react-native-reanimated';
-
 import type { CircularProgressBarFilledProps } from './types';
-import { pulseAnimation, circularProgressSizeTokens } from './progressBarTokens';
+import { circularProgressSizeTokens } from './progressBarTokens';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
@@ -25,7 +24,13 @@ import { castNativeType } from '~utils';
 // Related Issue - https://github.com/facebook/react-native/issues/34722
 const TRANSPARENT = '#00000001';
 
-const BaseCircle = styled(RNAnimated.View)<{ size: number; borderWidth?: number }>(
+const pulseAnimation = {
+  opacityInitial: 1,
+  opacityMid: 0.65,
+  opacityFinal: 1,
+};
+
+const BaseCircle = styled(Animated.View)<{ size: number; borderWidth?: number }>(
   ({ size, borderWidth }) => ({
     height: size,
     width: size,
@@ -47,14 +52,7 @@ const Indicator = styled(BaseCircle)<{ color: string }>(({ color }) => ({
   borderTopColor: color,
   borderRightColor: TRANSPARENT,
   borderBottomColor: TRANSPARENT,
-}));
-
-const CoverIndicator = styled(BaseCircle)<{ color: string }>(({ color }) => ({
-  position: 'absolute',
-  borderLeftColor: color,
-  borderTopColor: color,
-  borderRightColor: TRANSPARENT,
-  borderBottomColor: TRANSPARENT,
+  borderImage: 'linear-gradient(to right, #000 50%, transparent 50%) 100% 1',
 }));
 
 const CircularProgressBarFilled = ({
@@ -69,31 +67,34 @@ const CircularProgressBarFilled = ({
   motionEasing,
   pulseMotionDuration,
   pulseMotionDelay,
+  fillMotionDuration,
 }: CircularProgressBarFilledProps): React.ReactElement => {
+  console.log('🚀 ~ backgroundColor:', backgroundColor);
   const hasLabel = label && label.trim()?.length > 0;
-  const animatedProgress = useRef(new RNAnimated.Value(0)).current;
   const strokeWidth = circularProgressSizeTokens[size].strokeWidth;
   // Size of the enclosing square
   const sqSize = circularProgressSizeTokens[size].size;
 
-  const animateProgress = useRef((toValue) => {
-    RNAnimated.spring(animatedProgress, {
-      toValue,
-      useNativeDriver: true,
-    }).start();
-  }).current;
-
-  useEffect(() => {
-    animateProgress(progressPercent);
-  }, [animateProgress, progressPercent]);
-
   const animatedOpacity = useSharedValue(pulseAnimation.opacityInitial);
+  const animatedProgressPercent = useSharedValue(progressPercent);
   const { theme } = useTheme();
   const fillAndPulseEasing = getIn(theme.motion, motionEasing);
   const pulseDuration =
     castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDuration))) / 2;
 
-  //Trigger pulsating animation
+  // Trigger animation for progress fill
+  useEffect(() => {
+    const fillDuration = castNativeType(makeMotionTime(getIn(theme.motion, fillMotionDuration)));
+    animatedProgressPercent.value = withTiming(progressPercent, {
+      duration: fillDuration,
+      easing: fillAndPulseEasing,
+    });
+    return () => {
+      cancelAnimation(animatedProgressPercent);
+    };
+  }, [progressPercent, animatedProgressPercent, fillMotionDuration, theme, fillAndPulseEasing]);
+
+  // Trigger pulsating animation
   useEffect(() => {
     const pulsatingAnimationTimingConfig = {
       duration: pulseDuration,
@@ -117,49 +118,58 @@ const CircularProgressBarFilled = ({
     };
   }, [animatedOpacity, fillAndPulseEasing, pulseDuration, pulseMotionDelay, theme, variant]);
 
-  // Animated styles for pulse animation
-  const pulseAnimatedStyle = useAnimatedStyle(() => {
+  const firstIndicatorStyles = useAnimatedStyle(() => {
     return {
+      transform: [
+        {
+          rotate: `${interpolate(
+            animatedProgressPercent.value,
+            [0, 50],
+            [0, 180],
+            Extrapolation.CLAMP,
+          )}deg`,
+        },
+      ],
       opacity: animatedOpacity.value,
     };
   });
 
-  const firstIndicatorRotate = animatedProgress.interpolate({
-    inputRange: [0, 50],
-    outputRange: ['0deg', '180deg'],
-    extrapolate: 'clamp',
-  });
-
-  const secondIndicatorRotate = animatedProgress.interpolate({
-    inputRange: [0, 100],
-    outputRange: ['0deg', '360deg'],
-    extrapolate: 'clamp',
-  });
-
-  const secondIndictorVisibility = animatedProgress.interpolate({
-    inputRange: [0, 49, 50, 100],
-    outputRange: [0, 0, 1, 1],
-    extrapolate: 'clamp',
+  const secondIndicatorStyles = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          rotate: `${interpolate(
+            animatedProgressPercent.value,
+            [0, 100],
+            [0, 360],
+            Extrapolation.CLAMP,
+          )}deg`,
+        },
+      ],
+      opacity: interpolate(
+        animatedProgressPercent.value,
+        [0, 49, 50, 100],
+        [0, 0, animatedOpacity.value, animatedOpacity.value],
+        Extrapolation.CLAMP,
+      ),
+    };
   });
 
   return (
     <BaseBox display="flex" width="fit-content" alignItems="center">
       <EmptyCircle size={sqSize} borderWidth={strokeWidth} color={backgroundColor}>
         <Indicator
-          style={{ transform: [{ rotate: firstIndicatorRotate }] }}
+          style={firstIndicatorStyles}
           size={sqSize}
           borderWidth={strokeWidth}
           color={fillColor}
         />
-        <Indicator size={sqSize} borderWidth={strokeWidth} color="aqua" />
+        <Indicator size={sqSize} borderWidth={strokeWidth} color={backgroundColor} />
         <Indicator
           size={sqSize}
           borderWidth={strokeWidth}
           color={fillColor}
-          style={{
-            transform: [{ rotate: secondIndicatorRotate }],
-            opacity: secondIndictorVisibility,
-          }}
+          style={secondIndicatorStyles}
         />
 
         {showPercentage && size !== 'small' && (
