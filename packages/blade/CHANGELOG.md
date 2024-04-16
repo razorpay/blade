@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.11.1
+
+### Patch Changes
+
+- cc69004a: fix: additional parameters added to retain fraction digits in humanize Amount figure
+
 ## 11.11.0
 
 ### Minor Changes
