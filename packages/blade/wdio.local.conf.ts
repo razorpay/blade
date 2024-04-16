@@ -9,7 +9,7 @@ const localConfig: Options.Testrunner = {
   capabilities: [
     {
       browserName: 'chrome',
-      browserVersion: '121',
+      browserVersion: 'latest',
     },
     {
       browserName: 'firefox',

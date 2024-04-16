@@ -6,6 +6,7 @@ import { config as baseConfig } from './wdio.base.conf.js';
 const commonCapabilities = {
   buildName: 'blade browserstack build',
   buildIdentifier: '#${BUILD_NUMBER}',
+  appiumVersion: '2.4.1',
 };
 
 const bstackConfig: Options.Testrunner = {
@@ -19,6 +20,8 @@ const bstackConfig: Options.Testrunner = {
       {
         buildIdentifier: '#${BUILD_NUMBER}',
         browserstackLocal: true,
+        // set appium version
+        appiumVersion: '2.4.1',
       },
     ],
   ],
@@ -82,11 +85,5 @@ const bstackConfig: Options.Testrunner = {
 };
 
 const config = { ...baseConfig, ...bstackConfig };
-
-// Code to support common capabilities
-// config.capabilities.forEach(function (caps) {
-//   for (const i in exports.config.commonCapabilities)
-//     caps[i] = { ...caps[i], ...exports.config.commonCapabilities[i] };
-// });
 
 export { config };
