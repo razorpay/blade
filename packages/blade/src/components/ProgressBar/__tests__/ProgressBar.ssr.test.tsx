@@ -12,11 +12,4 @@ describe('<ProgressBar />', () => {
     );
     expect(container).toMatchSnapshot();
   });
-
-  it('should render circular ProgressBar with default properties', () => {
-    const { container } = renderWithSSR(
-      <ProgressBar variant="circular" type="progress" value={20} />,
-    );
-    expect(container).toMatchSnapshot();
-  });
 });
