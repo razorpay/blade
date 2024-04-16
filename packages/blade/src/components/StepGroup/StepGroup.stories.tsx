@@ -77,37 +77,44 @@ export default {
 // export const Default = SwitchTemplate.bind({});
 // Default.storyName = 'Default';
 
-export const StepLineStory = (): React.ReactElement => {
-  return (
-    <Box display="flex" flexDirection="column">
-      <StepLine orientation="vertical" />
-      <StepLine orientation="vertical" curveEnd="top" />
-      <Box
-        height="24px"
-        width="24px"
-        backgroundColor="surface.background.sea.intense"
-        borderRadius="round"
-        marginLeft="21px"
-        marginTop="-12px"
-      />
-      <StepLine marginLeft="33px" marginTop="2px" orientation="vertical" />
-      <StepLine orientation="vertical" curveEnd="bottom" />
-      <Box
-        height="24px"
-        width="24px"
-        backgroundColor="surface.background.sea.intense"
-        borderRadius="round"
-        marginLeft="-12px"
-      />
-      <StepLine orientation="vertical" />
-    </Box>
-  );
-};
+// export const StepLineStory = (): React.ReactElement => {
+//   return (
+//     <Box display="flex" flexDirection="column">
+//       <StepLine orientation="vertical" />
+//       <StepLine orientation="vertical" curveEnd="top" />
+//       <Box
+//         height="24px"
+//         width="24px"
+//         backgroundColor="surface.background.sea.intense"
+//         borderRadius="round"
+//         marginLeft="21px"
+//         marginTop="-12px"
+//       />
+//       <StepLine marginLeft="33px" marginTop="2px" orientation="vertical" />
+//       <StepLine orientation="vertical" curveEnd="bottom" />
+//       <Box
+//         height="24px"
+//         width="24px"
+//         backgroundColor="surface.background.sea.intense"
+//         borderRadius="round"
+//         marginLeft="-12px"
+//       />
+//       <StepLine orientation="vertical" />
+//     </Box>
+//   );
+// };
 
 export const StepItemStory = (): React.ReactElement => {
   return (
     <Box display="flex" flexDirection="column">
       <StepItem />
+      <StepItem />
+      <StepItem stepType="start" />
+      <StepItem stepType="middle" />
+      <StepItem stepType="middle" />
+      <StepItem stepType="end" />
+      <StepItem />
+      <StepItem stepType="single-item" />
       <StepItem />
     </Box>
   );
