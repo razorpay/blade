@@ -7,8 +7,9 @@ it('should migrate the ProgressBar component', async () => {
     `
     const App = () => (
         <>
-          <ProgressBar variant="meter" />
-          <ProgressBar variant="progress" />
+          <ProgressBar value={20} label="Label" />
+          <ProgressBar variant="meter" value={20} label="Label" />
+          <ProgressBar variant="progress" value={20} label="Label" />
         </>
       );
     `,
@@ -18,8 +19,9 @@ it('should migrate the ProgressBar component', async () => {
   expect(result).toMatchInlineSnapshot(`
     "const App = () => (
             <>
-              <ProgressBar type="meter" />
-              <ProgressBar type="progress" />
+              <ProgressBar value={20} label="Label" type="progress" />
+              <ProgressBar type="meter" value={20} label="Label" />
+              <ProgressBar type="progress" value={20} label="Label" />
             </>
           );"
   `);
