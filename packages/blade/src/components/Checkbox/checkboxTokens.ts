@@ -7,12 +7,16 @@ const checkboxSizes = {
   group: {
     gap: {
       small: {
-        mobile: 'spacing.2',
-        desktop: 'spacing.0',
-      },
-      medium: {
         mobile: 'spacing.3',
         desktop: 'spacing.2',
+      },
+      medium: {
+        mobile: 'spacing.4',
+        desktop: 'spacing.3',
+      },
+      large: {
+        mobile: 'spacing.5',
+        desktop: 'spacing.4',
       },
     },
   },
@@ -24,6 +28,10 @@ const checkboxSizes = {
     medium: {
       width: size[16],
       height: size[16],
+    },
+    large: {
+      width: size[20],
+      height: size[20],
     },
   },
 } as const;

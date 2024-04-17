@@ -1,13 +1,20 @@
 import React from 'react';
+import {
+  labelLeftMarginRight,
+  labelMarginBottom,
+  labelOptionalIndicatorTextSize,
+  labelTextSize,
+  labelWidth,
+} from './formTokens';
 import { VisuallyHidden } from '~components/VisuallyHidden';
 import { Text } from '~components/Typography';
-import { getPlatformType, useBreakpoint } from '~utils';
+import { getPlatformType, makeSize, useBreakpoint } from '~utils';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { makeSpace } from '~utils/makeSpace';
-import { makeSize } from '~utils/makeSize';
-import { size } from '~tokens/global';
+import { size as sizeToken } from '~tokens/global';
+import getIn from '~utils/lodashButBetter/get';
 
 type CommonProps = {
   as: 'span' | 'label';
@@ -16,6 +23,11 @@ type CommonProps = {
   accessibilityText?: string;
   children: string | undefined;
   id?: string;
+  /**
+   * Sets the size of the label
+   * @default medium
+   */
+  size?: 'small' | 'medium' | 'large';
 };
 
 type LabelProps = CommonProps & {
@@ -53,6 +65,7 @@ const FormLabel = ({
   children,
   id,
   htmlFor,
+  size = 'medium',
 }: FormLabelProps): React.ReactElement => {
   const { theme } = useTheme();
   const { matchedDeviceType } = useBreakpoint({ breakpoints: theme.breakpoints });
@@ -65,7 +78,11 @@ const FormLabel = ({
 
   if (necessityIndicator === 'optional') {
     necessityLabel = (
-      <Text variant="caption" size="small" color="surface.text.gray.muted">
+      <Text
+        variant="caption"
+        size={labelOptionalIndicatorTextSize[size]}
+        color="surface.text.gray.muted"
+      >
         (optional)
       </Text>
     );
@@ -96,11 +113,11 @@ const FormLabel = ({
       flexDirection="row"
       alignItems="center"
       flexWrap="wrap"
-      maxHeight={makeSpace(size[36])}
+      maxHeight={makeSpace(sizeToken[36])}
     >
       <Text
         variant="body"
-        size={isLabelLeftPositioned ? 'medium' : 'small'}
+        size={labelTextSize[isLabelLeftPositioned ? 'left' : 'top'][size]}
         color="surface.text.gray.subtle"
         truncateAfterLines={2}
         weight="semibold"
@@ -125,7 +142,7 @@ const FormLabel = ({
 
   const Component = as;
   // only set 120px label when device is desktop
-  const width = isLabelLeftPositioned && isDesktop ? makeSize(size[120]) : 'auto';
+  const width = isLabelLeftPositioned && isDesktop ? makeSize(labelWidth[size]) : 'auto';
 
   return (
     <Component
@@ -133,12 +150,16 @@ const FormLabel = ({
       style={{
         width,
         flexShrink: 0,
-        marginRight: makeSpace(theme.spacing[5]),
+        marginRight: isLabelLeftPositioned
+          ? makeSpace(getIn(theme, labelLeftMarginRight[size]))
+          : makeSpace(getIn(theme, 'spacing.0')),
       }}
       id={id}
       {...metaAttribute({ name: MetaConstants.FormLabel })}
     >
-      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : 'spacing.2'}>{textNode}</BaseBox>
+      <BaseBox marginBottom={isLabelLeftPositioned ? 'spacing.0' : labelMarginBottom[size]}>
+        {textNode}
+      </BaseBox>
     </Component>
   );
 };

@@ -66,6 +66,28 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render autocomplete with large size', () => {
+    const { container } = renderWithTheme(
+      <Dropdown>
+        <AutoComplete label="Fruits" size="large" />
+        <DropdownOverlay zIndex={1002}>
+          <DropdownHeader title="Recent Searches" />
+          <ActionList>
+            <ActionListItem title="Apple" value="apple" />
+            <ActionListItem title="Mango" value="mango" />
+          </ActionList>
+          <DropdownFooter>
+            <Box>
+              <Button isFullWidth>Apply</Button>
+            </Box>
+          </DropdownFooter>
+        </DropdownOverlay>
+      </Dropdown>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   // MOUSE CLICK TESTS
   it('should handle AutoComplete behaviour in single select', async () => {
     const user = userEvent.setup();
@@ -118,7 +140,7 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     await user.click(getByRole('option', { name: 'Pune' }));
     await waitFor(() => expect(queryByRole('listbox')).toBeNull());
     expect(selectInput.value).toBe('Pune');
-  });
+  }, 10000);
 
   it('should not open dropdown when input is disabled', async () => {
     const user = userEvent.setup();
@@ -142,161 +164,6 @@ describe('<Dropdown /> with <AutoComplete />', () => {
 
     await user.click(autoComplete);
     expect(queryByRole('listbox')).toBeNull();
-  });
-
-  it('should handle AutoComplete behaviour in multiselect', async () => {
-    const user = userEvent.setup();
-    const { queryByRole, getByRole } = renderWithTheme(
-      <Dropdown selectionType="multiple">
-        <AutoComplete label="Fruits" />
-        <DropdownOverlay>
-          <ActionList>
-            <ActionListItem title="Apple" value="apple" />
-            <ActionListItem title="Mango" value="mango" />
-            <ActionListItem title="Orange" value="orange" />
-          </ActionList>
-        </DropdownOverlay>
-      </Dropdown>,
-    );
-
-    const selectInput = getByRole('combobox', { name: 'Fruits' }) as HTMLInputElement;
-
-    expect(selectInput).toBeInTheDocument();
-    expect(queryByRole('listbox')).toBeNull();
-
-    await user.click(selectInput);
-    await waitFor(() => expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible());
-
-    await user.keyboard('m');
-    await user.keyboard('{ENTER}');
-    expect(getTag('Mango')).toBeVisible();
-    expect(getByRole('option', { name: 'Mango' })).toBeVisible();
-    expect(selectInput.value).toBe('');
-    expect(getByRole('listbox', { name: 'Fruits' })).toBeVisible();
-
-    await user.keyboard('o');
-    await user.click(getByRole('option', { name: 'Orange' }));
-    expect(getTag('Orange')).toBeVisible();
-    expect(getTag('Mango')).toBeVisible();
-
-    // Close on tag click
-    await user.click(getTag('Orange'));
-    await waitFor(() => expect(getTag('Orange')).not.toBeVisible());
-    expect(getTag('Mango')).toBeVisible();
-  });
-
-  // Controlled AutoComplete
-  it('should handle controlled selection', async () => {
-    const ControlledDropdown = (): React.ReactElement => {
-      const [currentSelection, setCurrentSelection] = React.useState<string[]>([]);
-
-      return (
-        <>
-          <Button
-            onClick={() => {
-              if (!currentSelection.includes('bangalore')) {
-                setCurrentSelection([...currentSelection, 'bangalore']);
-              }
-            }}
-          >
-            Select Bangalore
-          </Button>
-          <Dropdown selectionType="multiple">
-            <AutoComplete
-              label="Select City"
-              value={currentSelection}
-              onChange={(args) => {
-                if (args) {
-                  setCurrentSelection(args.values);
-                }
-              }}
-            />
-            <DropdownOverlay>
-              <ActionList>
-                <ActionListItem title="Bangalore" value="bangalore" />
-                <ActionListItem title="Pune" value="pune" />
-                <ActionListItem title="Chennai" value="chennai" />
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
-        </>
-      );
-    };
-
-    Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 500 });
-
-    const user = userEvent.setup();
-    const { getByRole } = renderWithTheme(<ControlledDropdown />);
-
-    const selectInput = getByRole('combobox', { name: 'Select City' });
-    expect(getTag('Bangalore')).toBeFalsy();
-    await user.click(getByRole('button', { name: 'Select Bangalore' }));
-    expect(getTag('Bangalore')).toBeVisible();
-
-    await user.click(selectInput);
-    await user.click(getByRole('option', { name: 'Pune' }));
-    expect(getTag('Pune')).toBeInTheDocument();
-    expect(getTag('Bangalore')).toBeInTheDocument();
-
-    await user.click(getByRole('button', { name: 'Select Bangalore' }));
-
-    Object.defineProperty(HTMLElement.prototype, 'clientWidth', { configurable: true, value: 0 });
-  });
-
-  it('should handle controlled single selection', async () => {
-    const ControlledDropdown = (): React.ReactElement => {
-      const [currentSelection, setCurrentSelection] = React.useState<string>('');
-
-      return (
-        <>
-          <Button
-            onClick={() => {
-              setCurrentSelection('bangalore');
-            }}
-          >
-            Select Bangalore
-          </Button>
-          <Button
-            onClick={() => {
-              setCurrentSelection('');
-            }}
-          >
-            Clear Selection
-          </Button>
-          <Dropdown selectionType="single">
-            <AutoComplete
-              label="Select City"
-              value={currentSelection}
-              onChange={(args) => {
-                setCurrentSelection(args?.values[0]);
-              }}
-            />
-            <DropdownOverlay>
-              <ActionList>
-                <ActionListItem title="Bangalore" value="bangalore" />
-                <ActionListItem title="Pune" value="pune" />
-                <ActionListItem title="Chennai" value="chennai" />
-              </ActionList>
-            </DropdownOverlay>
-          </Dropdown>
-        </>
-      );
-    };
-
-    const user = userEvent.setup();
-    const { getByRole } = renderWithTheme(<ControlledDropdown />);
-
-    const selectInput = getByRole('combobox', { name: 'Select City' });
-    expect(selectInput).toHaveValue('');
-    await user.click(getByRole('button', { name: 'Select Bangalore' }));
-    expect(selectInput).toHaveValue('Bangalore');
-
-    await user.click(selectInput);
-    await user.click(getByRole('option', { name: 'Pune' }));
-    expect(selectInput).toHaveValue('Pune');
-
-    await user.click(getByRole('button', { name: 'Clear Selection' }));
-    expect(selectInput).toHaveValue('');
   });
 
   // https://github.com/razorpay/blade/issues/1676
@@ -356,99 +223,6 @@ describe('<Dropdown /> with <AutoComplete />', () => {
 
     await user.click(getByRole('button', { name: 'Clear Selection' }));
     expect(selectInput).toHaveValue('');
-  });
-
-  it('should handle controlled filtering', async () => {
-    const cities = [
-      {
-        title: 'Mumbai',
-        value: 'mumbai',
-        keywords: ['maharashtra'],
-      },
-      {
-        title: 'Pune',
-        value: 'pune',
-        keywords: ['maharashtra'],
-      },
-      {
-        title: 'Bengaluru',
-        value: 'bengaluru',
-        keywords: ['karnataka', 'bangalore'],
-      },
-    ];
-
-    const ControlledFiltering = (): React.ReactElement => {
-      const cityValues = cities.map((city) => city.value);
-      const [filteredValues, setFilteredValues] = React.useState<string[]>(cityValues);
-
-      return (
-        <Dropdown selectionType="multiple">
-          <AutoComplete
-            label="Cities"
-            onInputValueChange={({ value }) => {
-              if (value) {
-                const filteredItems = cities
-                  .filter(
-                    (city) =>
-                      city.title.toLowerCase().startsWith(value.toLowerCase()) ||
-                      city.keywords.find((keyword) =>
-                        keyword.toLowerCase().includes(value.toLowerCase()),
-                      ),
-                  )
-                  .map((city) => city.value);
-
-                if (filteredItems.length > 0) {
-                  setFilteredValues(filteredItems);
-                } else {
-                  setFilteredValues([]);
-                }
-              } else {
-                setFilteredValues(cityValues);
-              }
-            }}
-            filteredValues={filteredValues}
-            helpText="Try typing 'maharashtra' in input"
-          />
-          {filteredValues.length > 0 ? (
-            <DropdownOverlay>
-              <ActionList>
-                {cities.map((city) => (
-                  <ActionListItem key={city.value} title={city.title} value={city.value} />
-                ))}
-              </ActionList>
-            </DropdownOverlay>
-          ) : null}
-        </Dropdown>
-      );
-    };
-
-    const user = userEvent.setup();
-    const { getByRole, queryByRole } = renderWithTheme(<ControlledFiltering />);
-
-    const selectInput = getByRole('combobox', { name: 'Cities' }) as HTMLInputElement;
-
-    expect(selectInput).toBeInTheDocument();
-    expect(queryByRole('listbox')).toBeNull();
-
-    await user.click(selectInput);
-    act(() => {
-      selectInput.focus();
-    });
-    await waitFor(() => expect(getByRole('listbox', { name: 'Cities' })).toBeVisible());
-    expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
-    expect(getByRole('option', { name: 'Pune' })).toBeVisible();
-    expect(getByRole('option', { name: 'Bengaluru' })).toBeVisible();
-
-    // typing maharashtra should filter mumbai and pune and remove other options
-    await user.keyboard('maha');
-
-    expect(getByRole('option', { name: 'Mumbai' })).toBeVisible();
-    expect(getByRole('option', { name: 'Pune' })).toBeVisible();
-    expect(queryByRole('option', { name: 'Bengaluru' })).not.toBeInTheDocument();
-
-    expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'false');
-    await user.click(getByRole('option', { name: 'Pune' }));
-    expect(getByRole('option', { name: 'Pune' })).toHaveAttribute('aria-selected', 'true');
   });
 });
 

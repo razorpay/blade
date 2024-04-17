@@ -366,8 +366,11 @@ const componentData: ComponentStatusDataType = [
   },
   {
     name: 'FileUpload',
-    status: 'in-development',
+    status: 'released',
+    releasedIn: '11.6.0',
+    storybookLink: 'Components/FileUpload',
     description: 'FileUpload component allow users to select one or more files to upload.',
+    platform: 'web',
   },
   {
     name: 'Drawer',
@@ -454,13 +457,19 @@ const componentData: ComponentStatusDataType = [
     description: 'A stepper component is used to indicate progress through a multi-step process.',
   },
   {
-    name: 'Button Group',
-    status: 'in-development',
+    name: 'ButtonGroup',
+    status: 'released',
+    releasedIn: '11.8.0',
+    storybookLink: 'Components/ButtonGroup',
+    platform: 'web',
     description: 'ButtonGroup component can be used to group related buttons.',
   },
   {
-    name: 'MobileNumberInput',
-    status: 'in-development',
+    name: 'PhoneNumberInput',
+    status: 'released',
+    platform: 'web',
+    releasedIn: '11.10.0',
+    storybookLink: 'Components/Input/PhoneNumberInput',
     description:
       'A phone number input is an input field that allow users to input phone numbers with a keyboard. It supports entering phone numbers from different geographic locations.',
   },

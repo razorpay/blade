@@ -37,7 +37,7 @@ type TextBodyVariant = TextCommonProps & {
 
 type TextCaptionVariant = TextCommonProps & {
   variant?: Extract<TextVariant, 'caption'>;
-  size?: Extract<BaseTextSizes, 'small'>;
+  size?: Extract<BaseTextSizes, 'small' | 'medium'>;
 };
 
 /**
@@ -84,16 +84,16 @@ const getTextProps = <T extends { variant: TextVariant }>({
 
   if (variant === 'caption') {
     // variant of caption can only have size of small
-    if (size && size !== 'small') {
+    if (size && size !== 'small' && size !== 'medium') {
       if (__DEV__) {
         throwBladeError({
           moduleName: 'Text',
           message: `size cannot be '${size}' when variant is 'caption'`,
         });
       }
+      // Set size as small in case of invalid size
+      size = 'small';
     }
-    // Force size to be small if variant is caption
-    size = 'small';
   } else if (variant !== 'caption' && !size) {
     size = 'medium';
   }
@@ -119,6 +119,11 @@ const getTextProps = <T extends { variant: TextVariant }>({
   if (variant === 'caption') {
     if (size === 'small') {
       props.fontSize = 50;
+      props.lineHeight = 50;
+      props.fontWeight = 'regular';
+    }
+    if (size === 'medium') {
+      props.fontSize = 100;
       props.lineHeight = 50;
       props.fontWeight = 'regular';
     }

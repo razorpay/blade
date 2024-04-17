@@ -3,19 +3,20 @@ import styled from 'styled-components/native';
 import type { CSSObject, ThemeProps, DefaultTheme } from 'styled-components';
 import type {
   TextInputProps,
-  TextInput,
   TouchableHighlight,
   TouchableHighlightProps,
   GestureResponderEvent,
+  TextInput,
 } from 'react-native';
 import { Platform as RNPlatform } from 'react-native';
 import type { BaseInputProps } from './BaseInput';
 import type { StyledBaseInputProps } from './types';
 import { getBaseInputStyles } from './baseInputStyles';
+import { baseInputHeight } from './baseInputTokens';
 import { Text } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { size } from '~tokens/global';
+import { size as sizeToken } from '~tokens/global';
 import { makeSize } from '~utils/makeSize';
 import type { Platform } from '~utils';
 
@@ -88,6 +89,7 @@ type StyledComponentInputProps = Omit<
   autoCompleteType?: typeof autoCompleteSuggestionTypeAndroid[keyof typeof autoCompleteSuggestionTypeAndroid];
   editable?: boolean;
   onPress?: (event: GestureResponderEvent) => void;
+  $size: NonNullable<BaseInputProps['size']>;
 };
 
 const getInputHeight = ({
@@ -95,8 +97,10 @@ const getInputHeight = ({
   hasTags,
   numberOfLines,
   lineHeight,
+  size,
 }: Pick<StyledBaseInputProps, 'hasTags' | 'isTextArea' | 'numberOfLines'> & {
   lineHeight: number;
+  size: NonNullable<BaseInputProps['size']>;
 }): string | undefined => {
   if (isTextArea) {
     return `${lineHeight * (numberOfLines ?? 0)}px`;
@@ -106,7 +110,7 @@ const getInputHeight = ({
     return undefined; // we don't set height on input. We set it on wrapper to properly include tags in overall height
   }
 
-  return makeSize(size[36]);
+  return makeSize(sizeToken[baseInputHeight[size]]);
 };
 
 const getRNInputStyles = (
@@ -122,12 +126,15 @@ const getRNInputStyles = (
       validationState: props.validationState,
       leadingIcon: props.leadingIcon,
       prefix: props.prefix,
-      interactionElement: props.interactionElement,
+      trailingInteractionElement: props.trailingInteractionElement,
+      leadingInteractionElement: props.leadingInteractionElement,
       suffix: props.suffix,
       trailingIcon: props.trailingIcon,
       isTextArea: props.isTextArea,
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
+      size: props.$size,
+      valueComponentType: props.valueComponentType,
     }),
     lineHeight: RNPlatform.select({
       android: makeSize(props.theme.typography.lineHeights[100]),
@@ -139,6 +146,7 @@ const getRNInputStyles = (
       hasTags: props.hasTags,
       numberOfLines: props.numberOfLines,
       lineHeight: props.theme.typography.lineHeights[300],
+      size: props.$size,
     }),
   };
 };
@@ -151,13 +159,16 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
     validationState,
     leadingIcon,
     prefix,
-    interactionElement,
+    trailingInteractionElement,
+    leadingInteractionElement,
     suffix,
     trailingIcon,
     isTextArea,
     numberOfLines,
     isDropdownTrigger,
     hasTags,
+    $size,
+    valueComponentType,
   }) =>
     getRNInputStyles({
       id,
@@ -167,13 +178,16 @@ const StyledNativeBaseInput = styled.TextInput<StyledComponentInputProps>(
       validationState,
       leadingIcon,
       prefix,
-      interactionElement,
+      trailingInteractionElement,
+      leadingInteractionElement,
       suffix,
       trailingIcon,
       isTextArea,
       numberOfLines,
       hasTags,
       isDropdownTrigger,
+      $size,
+      valueComponentType,
     }),
 );
 const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps>(
@@ -185,15 +199,18 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
     validationState,
     leadingIcon,
     prefix,
-    interactionElement,
+    trailingInteractionElement,
+    leadingInteractionElement,
     suffix,
     trailingIcon,
     isTextArea,
     numberOfLines,
     isDropdownTrigger,
     hasTags,
-  }) =>
-    getRNInputStyles({
+    $size,
+    valueComponentType,
+  }) => ({
+    ...getRNInputStyles({
       id,
       isFocused,
       theme,
@@ -201,14 +218,18 @@ const StyledNativeBaseButton = styled.TouchableOpacity<StyledComponentInputProps
       validationState,
       leadingIcon,
       prefix,
-      interactionElement,
+      trailingInteractionElement,
+      leadingInteractionElement,
       suffix,
       trailingIcon,
       isTextArea,
       numberOfLines,
       isDropdownTrigger,
       hasTags,
+      $size,
+      valueComponentType,
     }),
+  }),
 );
 
 const _StyledBaseInput: React.ForwardRefRenderFunction<
@@ -240,6 +261,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     shouldIgnoreBlurAnimation,
     autoCapitalize,
     as: renderAs,
+    $size,
     ...props
   },
   ref,
@@ -270,6 +292,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         setCurrentInteraction('focus');
       }}
       as={undefined}
+      $size={$size}
       {...commonProps}
       {...props}
       {...accessibilityProps}
@@ -280,6 +303,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         }
         truncateAfterLines={1}
         textAlign={props.textAlign}
+        size={$size}
       >
         {buttonValue}
       </Text>
@@ -338,6 +362,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
           : undefined
       }
       autoCapitalize={autoCapitalize}
+      $size={$size}
       {...commonProps}
       {...props}
       {...accessibilityProps}

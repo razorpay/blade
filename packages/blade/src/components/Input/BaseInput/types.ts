@@ -26,6 +26,7 @@ export type BaseInputTagSlotProps = {
   isDropdownTrigger: BaseInputProps['isDropdownTrigger'];
   inputWrapperRef: InputWrapperRef;
   labelPrefix?: string;
+  size: NonNullable<BaseInputProps['size']>;
 };
 
 export type BaseInputWrapperProps = Pick<
@@ -38,6 +39,7 @@ export type BaseInputWrapperProps = Pick<
   isTextArea?: boolean;
   setShowAllTagsWithAnimation?: (showAllTagsWithAnimation: boolean) => void;
   children: React.ReactNode;
+  size: NonNullable<BaseInputProps['size']>;
 };
 
 export type StyledBaseInputProps = {
@@ -55,6 +57,8 @@ export type StyledBaseInputProps = {
   setCurrentInteraction: Dispatch<SetStateAction<ActionStates>>;
   isTextArea?: boolean;
   hasTags?: boolean;
+  $size: NonNullable<BaseInputProps['size']>;
+  valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
 } & Pick<
   BaseInputProps,
   | 'as'
@@ -70,7 +74,8 @@ export type StyledBaseInputProps = {
   | 'validationState'
   | 'leadingIcon'
   | 'prefix'
-  | 'interactionElement'
+  | 'trailingInteractionElement'
+  | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'
   | 'maxCharacters'

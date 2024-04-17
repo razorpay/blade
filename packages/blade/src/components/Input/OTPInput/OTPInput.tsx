@@ -42,6 +42,7 @@ export type OTPInputCommonProps = Pick<
   | 'keyboardType'
   | 'placeholder'
   | 'testID'
+  | 'size'
 > & {
   /**
    * Determines the number of input fields to show for the OTP
@@ -158,6 +159,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
     isMasked,
     autoCompleteSuggestionType = 'oneTimeCode',
     testID,
+    size = 'medium',
     ...styledProps
   },
   incomingRef,
@@ -368,6 +370,8 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
             helpText={helpText}
             hideFormHint={true}
             type={currentInputType}
+            size={size}
+            valueComponentType="heading"
           />
         </BaseBox>,
       );
@@ -387,7 +391,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
         position="relative"
       >
         {Boolean(label) && (
-          <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
+          <FormLabel as="label" position={labelPosition} htmlFor={inputId} size={size}>
             {label}
           </FormLabel>
         )}
@@ -407,6 +411,7 @@ const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProp
           helpTextId={helpTextId}
           errorTextId={errorTextId}
           successTextId={successTextId}
+          size={size}
         />
       </BaseBox>
     </BaseBox>

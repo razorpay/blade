@@ -304,18 +304,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 hoverBorderColor="hsla(227, 100%, 59%, 1)"
                 isFullWidth={true}
                 isLoading={false}
+                isPressed={false}
                 minHeight="36px"
                 motionDuration="duration.xquick"
                 motionEasing="easing.standard.effective"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseOut={[Function]}
+                onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
                 onResponderRelease={[Function]}
                 onResponderTerminate={[Function]}
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
                 role="button"
                 style={
                   [
@@ -329,6 +336,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "borderWidth": 1,
                       "cursor": "pointer",
                       "display": "flex",
+                      "flexDirection": "row",
                       "justifyContent": "center",
                       "minHeight": 36,
                       "overflow": "hidden",
@@ -350,65 +358,77 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 type="button"
               >
                 <View
-                  alignItems="center"
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  isHidden={false}
-                  justifyContent="center"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flexBasis": 0,
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "justifyContent": "center",
-                        "zIndex": 1,
-                      },
-                      {
-                        "opacity": 1,
-                      },
-                    ]
+                    {
+                      "transform": [
+                        {
+                          "scale": 1,
+                        },
+                      ],
+                    }
                   }
-                  zIndex={1}
                 >
-                  <Text
-                    accessible={true}
-                    color="interactive.text.primary.subtle"
-                    data-blade-component="base-text"
-                    fontSize={100}
-                    fontWeight="medium"
-                    lineHeight={100}
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    isHidden={false}
+                    justifyContent="center"
                     style={
                       [
                         {
-                          "color": "hsla(227, 100%, 59%, 1)",
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
-                          "fontStyle": "normal",
-                          "fontWeight": "500",
-                          "letterSpacing": 0,
-                          "lineHeight": 20,
-                          "marginBottom": 0,
-                          "marginLeft": 0,
-                          "marginRight": 0,
-                          "marginTop": 0,
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                          "textAlign": "center",
-                          "textDecorationLine": "none",
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "zIndex": 1,
+                        },
+                        {
+                          "opacity": 1,
                         },
                       ]
                     }
-                    textAlign="center"
+                    zIndex={1}
                   >
-                    Delete
-                  </Text>
+                    <Text
+                      accessible={true}
+                      color="interactive.text.primary.subtle"
+                      data-blade-component="base-text"
+                      fontSize={100}
+                      fontWeight="medium"
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(227, 100%, 59%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "500",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    >
+                      Delete
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -471,18 +491,25 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 hoverBorderColor="hsla(227, 100%, 59%, 1)"
                 isFullWidth={true}
                 isLoading={false}
+                isPressed={false}
                 minHeight="36px"
                 motionDuration="duration.xquick"
                 motionEasing="easing.standard.effective"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onFocus={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseOut={[Function]}
+                onMouseUp={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
                 onResponderRelease={[Function]}
                 onResponderTerminate={[Function]}
                 onResponderTerminationRequest={[Function]}
                 onStartShouldSetResponder={[Function]}
+                onTouchEnd={[Function]}
+                onTouchStart={[Function]}
                 role="button"
                 style={
                   [
@@ -496,6 +523,7 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                       "borderWidth": 0,
                       "cursor": "pointer",
                       "display": "flex",
+                      "flexDirection": "row",
                       "justifyContent": "center",
                       "minHeight": 36,
                       "overflow": "hidden",
@@ -517,65 +545,77 @@ exports[`<Card /> should render a Card with Footer 1`] = `
                 type="button"
               >
                 <View
-                  alignItems="center"
-                  data-blade-component="base-box"
-                  display="flex"
-                  flexDirection="row"
-                  isHidden={false}
-                  justifyContent="center"
                   style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "display": "flex",
-                        "flexBasis": 0,
-                        "flexDirection": "row",
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "justifyContent": "center",
-                        "zIndex": 1,
-                      },
-                      {
-                        "opacity": 1,
-                      },
-                    ]
+                    {
+                      "transform": [
+                        {
+                          "scale": 1,
+                        },
+                      ],
+                    }
                   }
-                  zIndex={1}
                 >
-                  <Text
-                    accessible={true}
-                    color="interactive.text.onPrimary.normal"
-                    data-blade-component="base-text"
-                    fontSize={100}
-                    fontWeight="medium"
-                    lineHeight={100}
+                  <View
+                    alignItems="center"
+                    data-blade-component="base-box"
+                    display="flex"
+                    flexDirection="row"
+                    isHidden={false}
+                    justifyContent="center"
                     style={
                       [
                         {
-                          "color": "hsla(0, 0%, 100%, 1)",
-                          "fontFamily": "Inter",
-                          "fontSize": 14,
-                          "fontStyle": "normal",
-                          "fontWeight": "500",
-                          "letterSpacing": 0,
-                          "lineHeight": 20,
-                          "marginBottom": 0,
-                          "marginLeft": 0,
-                          "marginRight": 0,
-                          "marginTop": 0,
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                          "textAlign": "center",
-                          "textDecorationLine": "none",
+                          "alignItems": "center",
+                          "display": "flex",
+                          "flexBasis": 0,
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "justifyContent": "center",
+                          "zIndex": 1,
+                        },
+                        {
+                          "opacity": 1,
                         },
                       ]
                     }
-                    textAlign="center"
+                    zIndex={1}
                   >
-                    Save
-                  </Text>
+                    <Text
+                      accessible={true}
+                      color="interactive.text.onPrimary.normal"
+                      data-blade-component="base-text"
+                      fontSize={100}
+                      fontWeight="medium"
+                      lineHeight={100}
+                      style={
+                        [
+                          {
+                            "color": "hsla(0, 0%, 100%, 1)",
+                            "fontFamily": "Inter",
+                            "fontSize": 14,
+                            "fontStyle": "normal",
+                            "fontWeight": "500",
+                            "letterSpacing": 0,
+                            "lineHeight": 20,
+                            "marginBottom": 0,
+                            "marginLeft": 0,
+                            "marginRight": 0,
+                            "marginTop": 0,
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                            "textAlign": "center",
+                            "textDecorationLine": "none",
+                          },
+                        ]
+                      }
+                      textAlign="center"
+                    >
+                      Save
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -751,7 +791,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
                 >
                   <RNSVGPath
                     d="M12 11C12.5523 11 13 11.4477 13 12V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V12C11 11.4477 11.4477 11 12 11Z"
-                    fill={4279838777}
+                    fill={
+                      {
+                        "payload": 4279838777,
+                        "type": 0,
+                      }
+                    }
                     propList={
                       [
                         "fill",
@@ -760,7 +805,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   />
                   <RNSVGPath
                     d="M12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9H12.01C12.5623 9 13.01 8.55228 13.01 8C13.01 7.44772 12.5623 7 12.01 7H12Z"
-                    fill={4279838777}
+                    fill={
+                      {
+                        "payload": 4279838777,
+                        "type": 0,
+                      }
+                    }
                     propList={
                       [
                         "fill",
@@ -770,7 +820,12 @@ exports[`<Card /> should render a Card with Header 1`] = `
                   <RNSVGPath
                     clipRule={0}
                     d="M1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23C5.92487 23 1 18.0751 1 12ZM12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3Z"
-                    fill={4279838777}
+                    fill={
+                      {
+                        "payload": 4279838777,
+                        "type": 0,
+                      }
+                    }
                     fillRule={0}
                     propList={
                       [

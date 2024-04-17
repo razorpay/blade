@@ -117,13 +117,14 @@ const Tag = ({
         ) : null}
 
         {/* Tag Text */}
-        <Box
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          maxWidth={makeSize(globalSizeTokens['100'])}
-        >
-          <Text truncateAfterLines={1} marginRight="spacing.2" color={textColor} size={assetSize}>
+        <Box display="flex" flexDirection="row" maxWidth={makeSize(globalSizeTokens['100'])}>
+          <Text
+            textAlign="center"
+            truncateAfterLines={1}
+            marginRight="spacing.2"
+            color={textColor}
+            size={'small'}
+          >
             {children}
           </Text>
         </Box>

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import type { CSSObject, DefaultTheme, ThemeProps } from 'styled-components';
 import { getBaseInputStyles } from './baseInputStyles';
-
 import type { StyledBaseInputProps } from './types';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -20,19 +19,22 @@ const getWebInputStyles = (
       validationState: props.validationState,
       leadingIcon: props.leadingIcon,
       prefix: props.prefix,
-      interactionElement: props.interactionElement,
+      trailingInteractionElement: props.trailingInteractionElement,
+      leadingInteractionElement: props.leadingInteractionElement,
       suffix: props.suffix,
       trailingIcon: props.trailingIcon,
       textAlign: props.textAlign,
       isTextArea: props.isTextArea,
       hasTags: props.hasTags,
       isDropdownTrigger: props.isDropdownTrigger,
+      size: props.$size,
+      valueComponentType: props.valueComponentType,
     }),
     outline: 'none',
     border: 'none',
     '::placeholder': {
       ...getTextStyles({
-        size: 'medium',
+        size: props.$size,
         variant: 'body',
         weight: 'regular',
         color: 'surface.text.gray.disabled',
@@ -101,6 +103,8 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
     hasPopup,
     shouldIgnoreBlurAnimation,
     autoCapitalize,
+    $size,
+    valueComponentType,
     ...props
   },
   ref,
@@ -143,6 +147,8 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
 
         handleOnClick?.({ name, value: event });
       }}
+      $size={$size}
+      valueComponentType={valueComponentType}
       {...commonProps}
       {...props}
       {...accessibilityProps}
@@ -154,6 +160,7 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         }
         truncateAfterLines={1}
         textAlign={props.textAlign}
+        size={$size}
       >
         {props.value ? props.value : props.placeholder}
       </Text>
@@ -184,6 +191,8 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
         handleOnClick?.({ name, value: event });
       }}
       autoCapitalize={autoCapitalize}
+      $size={$size}
+      valueComponentType={valueComponentType}
       {...commonProps}
       {...props}
       {...accessibilityProps}

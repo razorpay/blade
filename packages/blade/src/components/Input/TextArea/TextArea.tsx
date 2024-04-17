@@ -14,6 +14,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import type { BladeElementRef } from '~utils/types';
+import { hintMarginTop } from '~components/Form/formTokens';
 
 type TextAreaCommonProps = Pick<
   BaseInputProps,
@@ -39,6 +40,7 @@ type TextAreaCommonProps = Pick<
   | 'autoFocus'
   | 'numberOfLines'
   | 'testID'
+  | 'size'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -112,6 +114,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     autoFocus,
     numberOfLines = 2,
     testID,
+    size = 'medium',
     ...styledProps
   },
   ref,
@@ -177,7 +180,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       name={name}
       maxCharacters={maxCharacters}
       placeholder={placeholder}
-      interactionElement={renderInteractionElement()}
+      trailingInteractionElement={renderInteractionElement()}
       defaultValue={defaultValue}
       value={value}
       numberOfLines={numberOfLines}
@@ -199,12 +202,13 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
       onSubmit={onSubmit}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <BaseBox marginTop="spacing.2" marginRight="spacing.1">
+          <BaseBox marginTop={hintMarginTop[size]} marginRight="spacing.1">
             <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
           </BaseBox>
         ) : null;
       }}
       testID={testID}
+      size={size}
       {...styledProps}
     />
   );

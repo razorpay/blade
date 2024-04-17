@@ -16,6 +16,12 @@ describe('<PasswordInput />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render large size', () => {
+    const { container } = renderWithTheme(<PasswordInput label="Enter password" size="large" />);
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should display success validation state', () => {
     const label = 'Enter password';
     const { getByText, getByLabelText } = renderWithTheme(
@@ -79,6 +85,13 @@ describe('<PasswordInput />', () => {
     expect(input).toHaveFocus();
   });
 
+  it('should be disabled when isDisabled flag is passed', () => {
+    const label = 'Enter password';
+    const { getByLabelText } = renderWithTheme(<PasswordInput label={label} isDisabled />);
+
+    const input = getByLabelText(label);
+    expect(input).toBeDisabled();
+  });
   it('should be disabled when isDisabled flag is passed', () => {
     const label = 'Enter password';
     const { getByLabelText } = renderWithTheme(<PasswordInput label={label} isDisabled />);

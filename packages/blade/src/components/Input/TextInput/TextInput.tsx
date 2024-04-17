@@ -3,6 +3,7 @@ import type { ReactElement, ReactNode } from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
+import { getKeyboardAndAutocompleteProps } from '../BaseInput/utils';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import type { IconComponent } from '~components/Icons';
 import { CloseIcon } from '~components/Icons';
@@ -16,6 +17,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
 import type { BladeElementRef } from '~utils/types';
+import { hintMarginTop } from '~components/Form/formTokens';
 
 // Users should use PasswordInput for input type password
 type Type = Exclude<BaseInputProps['type'], 'password'>;
@@ -49,6 +51,10 @@ type TextInputCommonProps = Pick<
   | 'autoCapitalize'
   | 'testID'
   | 'onClick'
+  | 'size'
+  | 'leadingIcon'
+  | 'trailingButton'
+  | 'trailingIcon'
 > & {
   /**
    * Decides whether to render a clear icon button
@@ -67,9 +73,9 @@ type TextInputCommonProps = Pick<
 
   /**
    * Icon that will be rendered at the beginning of the input field
+   * @deprecated Use `leadingIcon` instead. This prop will be removed in the next major version.
    */
   icon?: IconComponent;
-
   /**
    * Type of Input Field to be rendered. Use `PasswordInput` for type `password`
    *
@@ -85,13 +91,6 @@ type TextInputCommonProps = Pick<
    */
   type?: Type;
 } & StyledPropsBlade;
-
-type TextInputKeyboardAndAutoComplete = Pick<
-  BaseInputProps,
-  'keyboardType' | 'keyboardReturnKeyType' | 'autoCompleteSuggestionType' | 'autoCapitalize'
-> & {
-  type: Type;
-};
 
 /*
   Mandatory accessibilityLabel prop when label is not provided
@@ -123,88 +122,6 @@ type TextInputPropsWithLabel = {
 
 type TextInputProps = (TextInputPropsWithA11yLabel | TextInputPropsWithLabel) &
   TextInputCommonProps;
-
-const getKeyboardAndAutocompleteProps = ({
-  type = 'text',
-  keyboardReturnKeyType,
-  autoCompleteSuggestionType,
-  autoCapitalize,
-}: TextInputKeyboardAndAutoComplete): TextInputKeyboardAndAutoComplete => {
-  const keyboardAndAutocompleteProps: TextInputKeyboardAndAutoComplete = {
-    type,
-    keyboardType: 'text',
-    keyboardReturnKeyType: 'default',
-    autoCompleteSuggestionType: 'none',
-    autoCapitalize,
-  };
-
-  const keyboardConfigMap = {
-    text: {
-      keyboardType: 'text',
-      keyboardReturnKeyType: 'default',
-      autoCompleteSuggestionType: 'none',
-      autoCapitalize: undefined,
-    },
-    telephone: {
-      keyboardType: 'telephone',
-      keyboardReturnKeyType: 'done',
-      autoCompleteSuggestionType: 'telephone',
-      autoCapitalize: undefined,
-    },
-    email: {
-      keyboardType: 'email',
-      keyboardReturnKeyType: 'done',
-      autoCompleteSuggestionType: 'email',
-      autoCapitalize: 'none',
-    },
-    url: {
-      keyboardType: 'url',
-      keyboardReturnKeyType: 'go',
-      autoCompleteSuggestionType: 'none',
-      autoCapitalize: 'none',
-    },
-    number: {
-      keyboardType: 'decimal',
-      keyboardReturnKeyType: 'done',
-      autoCompleteSuggestionType: 'none',
-      autoCapitalize: undefined,
-    },
-    search: {
-      keyboardType: 'search',
-      keyboardReturnKeyType: 'search',
-      autoCompleteSuggestionType: 'none',
-      autoCapitalize: undefined,
-    },
-  } as const;
-
-  const keyboardConfig = keyboardConfigMap[type];
-
-  keyboardAndAutocompleteProps.keyboardType = keyboardConfig.keyboardType;
-
-  keyboardAndAutocompleteProps.keyboardReturnKeyType =
-    keyboardReturnKeyType ?? keyboardConfig.keyboardReturnKeyType;
-
-  keyboardAndAutocompleteProps.autoCompleteSuggestionType =
-    autoCompleteSuggestionType ?? keyboardConfig.autoCompleteSuggestionType;
-
-  keyboardAndAutocompleteProps.autoCapitalize = keyboardConfig.autoCapitalize;
-
-  if (type === 'number') {
-    /* the default keyboardType:numeric shows alphanumeric keyboard on iOS but number pad on android. making it type:text and keyboardType:decimal fixes this on all platforms.
-     * source: https://css-tricks.com/everything-you-ever-wanted-to-know-about-keyboardType/#aa-decimal
-     */
-    keyboardAndAutocompleteProps.type = 'text';
-  }
-
-  if (type === 'search') {
-    /* when input type:search is provided at that time browser adds a weird close button which collides with our clear button and then we have 2 clear buttons
-     * source: https://github.com/razorpay/blade/issues/857#issue-1457367160
-     */
-    keyboardAndAutocompleteProps.type = 'text';
-  }
-
-  return keyboardAndAutocompleteProps;
-};
 
 // need to do this to tell TS to infer type as TextInput of React Native and make it believe that `ref.current.clear()` exists
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -246,6 +163,9 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
     autoCompleteSuggestionType,
     autoCapitalize,
     testID,
+    size = 'medium',
+    leadingIcon,
+    trailingIcon,
     ...styledProps
   },
   ref,
@@ -260,7 +180,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
 
   const renderInteractionElement = (): ReactNode => {
     if (isLoading) {
-      return <Spinner accessibilityLabel="Loading Content" />;
+      return <Spinner accessibilityLabel="Loading Content" color="primary" />;
     }
 
     if (shouldShowClearButton) {
@@ -284,6 +204,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
             textInputRef?.current?.focus();
             setShouldShowClearButton(false);
           }}
+          isDisabled={isDisabled}
           accessibilityLabel="Clear Input Content"
         />
       );
@@ -326,9 +247,10 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       isDisabled={isDisabled}
       necessityIndicator={necessityIndicator}
       isRequired={isRequired}
-      leadingIcon={icon}
+      leadingIcon={leadingIcon ?? icon}
       prefix={prefix}
-      interactionElement={renderInteractionElement()}
+      trailingInteractionElement={renderInteractionElement()}
+      trailingIcon={trailingIcon}
       suffix={suffix}
       validationState={validationState}
       errorText={errorText}
@@ -336,8 +258,12 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
       successText={successText}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (
-          <BaseBox marginTop="spacing.2" marginRight="spacing.1">
-            <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters} />
+          <BaseBox marginTop={hintMarginTop[size]} marginRight="spacing.1">
+            <CharacterCounter
+              currentCount={value?.length ?? 0}
+              maxCount={maxCharacters}
+              size={size}
+            />
           </BaseBox>
         ) : null;
       }}
@@ -350,6 +276,7 @@ const _TextInput: React.ForwardRefRenderFunction<BladeElementRef, TextInputProps
         autoCompleteSuggestionType,
         autoCapitalize,
       })}
+      size={size}
       {...styledProps}
     />
   );

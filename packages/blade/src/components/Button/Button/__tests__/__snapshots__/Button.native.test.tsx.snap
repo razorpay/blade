@@ -46,18 +46,25 @@ exports[`<Button /> should render button with default properties 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -71,6 +78,7 @@ exports[`<Button /> should render button with default properties 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -92,65 +100,77 @@ exports[`<Button /> should render button with default properties 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -202,18 +222,25 @@ exports[`<Button /> should render button with full width 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={true}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -227,6 +254,7 @@ exports[`<Button /> should render button with full width 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -248,65 +276,77 @@ exports[`<Button /> should render button with full width 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -358,18 +398,25 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -383,6 +430,7 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -404,137 +452,154 @@ exports[`<Button /> should render button with icon with default iconPosition 1`]
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
       <View
         alignItems="center"
         data-blade-component="base-box"
         display="flex"
+        flexDirection="row"
+        isHidden={false}
         justifyContent="center"
         style={
           [
             {
               "alignItems": "center",
               "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
               "justifyContent": "center",
-              "paddingRight": 4,
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
+        zIndex={1}
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          data-blade-component="icon"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          justifyContent="center"
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              [
-                {},
-              ],
-              {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
+                "alignItems": "center",
+                "display": "flex",
+                "justifyContent": "center",
+                "paddingRight": 8,
               },
             ]
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            data-blade-component="icon"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               [
-                "fill",
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              clipRule={0}
-              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-              fill={4294967295}
-              fillRule={0}
+            <RNSVGGroup
+              fill={null}
               propList={
                 [
                   "fill",
-                  "fillRule",
                 ]
               }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
       </View>
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
-        style={
-          [
-            {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
-            },
-          ]
-        }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
     </View>
   </View>
 </View>
@@ -586,18 +651,25 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -611,6 +683,7 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -632,136 +705,153 @@ exports[`<Button /> should render button with icon with right iconPosition 1`] =
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      zIndex={1}
-    >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
-        style={
-          [
+        {
+          "transform": [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "scale": 1,
             },
-          ]
+          ],
         }
-        textAlign="center"
-      >
-        Pay Now
-      </Text>
+      }
+    >
       <View
         alignItems="center"
         data-blade-component="base-box"
         display="flex"
+        flexDirection="row"
+        isHidden={false}
         justifyContent="center"
         style={
           [
             {
               "alignItems": "center",
               "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
               "justifyContent": "center",
-              "paddingLeft": 4,
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
+        zIndex={1}
       >
-        <RNSVGSvgView
-          accessibilityElementsHidden={true}
-          align="xMidYMid"
-          bbHeight="16px"
-          bbWidth="16px"
-          data-blade-component="icon"
-          fill="none"
-          focusable={false}
-          height="16px"
-          importantForAccessibility="no-hide-descendants"
-          meetOrSlice={0}
-          minX={0}
-          minY={0}
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "borderWidth": 0,
-              },
-              [
-                {},
-              ],
-              {
-                "flex": 0,
-                "height": 16,
-                "width": 16,
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
               },
             ]
           }
-          vbHeight={24}
-          vbWidth={24}
-          width="16px"
+          textAlign="center"
         >
-          <RNSVGGroup
-            fill={null}
-            propList={
+          Pay Now
+        </Text>
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          justifyContent="center"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "justifyContent": "center",
+                "paddingLeft": 8,
+              },
+            ]
+          }
+        >
+          <RNSVGSvgView
+            accessibilityElementsHidden={true}
+            align="xMidYMid"
+            bbHeight="16px"
+            bbWidth="16px"
+            data-blade-component="icon"
+            fill="none"
+            focusable={false}
+            height="16px"
+            importantForAccessibility="no-hide-descendants"
+            meetOrSlice={0}
+            minX={0}
+            minY={0}
+            style={
               [
-                "fill",
+                {
+                  "backgroundColor": "transparent",
+                  "borderWidth": 0,
+                },
+                [
+                  {},
+                ],
+                {
+                  "flex": 0,
+                  "height": 16,
+                  "width": 16,
+                },
               ]
             }
+            vbHeight={24}
+            vbWidth={24}
+            width="16px"
           >
-            <RNSVGPath
-              clipRule={0}
-              d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
-              fill={4294967295}
-              fillRule={0}
+            <RNSVGGroup
+              fill={null}
               propList={
                 [
                   "fill",
-                  "fillRule",
                 ]
               }
-            />
-          </RNSVGGroup>
-        </RNSVGSvgView>
+            >
+              <RNSVGPath
+                clipRule={0}
+                d="M3 3C1.34315 3 0 4.34315 0 6V18C0 19.6569 1.34314 21 3 21H21C22.6569 21 24 19.6569 24 18V6C24 4.34315 22.6569 3 21 3H3ZM22 9V6C22 5.44771 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V9H22ZM2 11H22V18C22 18.5523 21.5523 19 21 19H3C2.44772 19 2 18.5523 2 18V11Z"
+                fill={
+                  {
+                    "payload": 4294967295,
+                    "type": 0,
+                  }
+                }
+                fillRule={0}
+                propList={
+                  [
+                    "fill",
+                    "fillRule",
+                  ]
+                }
+              />
+            </RNSVGGroup>
+          </RNSVGSvgView>
+        </View>
       </View>
     </View>
   </View>
@@ -814,18 +904,25 @@ exports[`<Button /> should render disabled button 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -839,6 +936,7 @@ exports[`<Button /> should render disabled button 1`] = `
           "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -860,65 +958,77 @@ exports[`<Button /> should render disabled button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.primary.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(227, 100%, 59%, 0.18)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.primary.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(227, 100%, 59%, 0.18)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -970,18 +1080,25 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
     hoverBorderColor="hsla(4, 74%, 49%, 0.18)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -995,6 +1112,7 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
           "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -1016,65 +1134,77 @@ exports[`<Button /> should render disabled negative color primary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.negative.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(4, 74%, 49%, 0.32)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.negative.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(4, 74%, 49%, 0.32)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -1126,18 +1256,25 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
     hoverBorderColor="hsla(4, 74%, 49%, 0.18)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -1151,6 +1288,7 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
           "borderWidth": 1,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -1172,65 +1310,77 @@ exports[`<Button /> should render disabled negative color secondary button 1`] =
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.negative.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(4, 74%, 49%, 0.32)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.negative.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(4, 74%, 49%, 0.32)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -1282,18 +1432,25 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
     hoverBorderColor="hsla(150, 100%, 32%, 0.18)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -1307,6 +1464,7 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
           "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -1328,65 +1486,77 @@ exports[`<Button /> should render disabled positive color primary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.positive.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(150, 100%, 32%, 0.32)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.positive.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(150, 100%, 32%, 0.32)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -1438,18 +1608,25 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
     hoverBorderColor="hsla(150, 100%, 32%, 0.18)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -1463,6 +1640,7 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
           "borderWidth": 1,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -1484,65 +1662,77 @@ exports[`<Button /> should render disabled positive color secondary button 1`] =
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.positive.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(150, 100%, 32%, 0.32)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.positive.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(150, 100%, 32%, 0.32)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -1594,18 +1784,25 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -1619,6 +1816,7 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
           "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -1640,65 +1838,77 @@ exports[`<Button /> should render disabled primary color primary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.primary.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(227, 100%, 59%, 0.18)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.primary.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(227, 100%, 59%, 0.18)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -1750,18 +1960,25 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
     hoverBorderColor="hsla(227, 100%, 59%, 0.18)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -1775,6 +1992,7 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
           "borderWidth": 1,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -1796,65 +2014,77 @@ exports[`<Button /> should render disabled primary color secondary button 1`] = 
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.primary.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(227, 100%, 59%, 0.18)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.primary.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(227, 100%, 59%, 0.18)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -1906,18 +2136,25 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
     hoverBorderColor="hsla(214, 40%, 92%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -1931,6 +2168,7 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
           "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -1951,65 +2189,77 @@ exports[`<Button /> should render disabled primary color tertiary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.gray.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(211, 20%, 52%, 0.32)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.gray.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(211, 20%, 52%, 0.32)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2061,18 +2311,25 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
     hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -2086,6 +2343,7 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
           "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -2107,65 +2365,77 @@ exports[`<Button /> should render disabled white color primary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.staticBlack.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 0%, 0.32)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.staticBlack.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 0%, 0.32)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2217,18 +2487,25 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
     hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -2242,6 +2519,7 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
           "borderWidth": 1,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -2263,65 +2541,77 @@ exports[`<Button /> should render disabled white color secondary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.staticWhite.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 0.32)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.staticWhite.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 0.32)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2373,18 +2663,25 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
     hoverBorderColor="hsla(0, 0%, 100%, 0.18)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -2398,6 +2695,7 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
           "borderWidth": 0,
           "cursor": "not-allowed",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -2418,65 +2716,77 @@ exports[`<Button /> should render disabled white color tertiary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.staticWhite.disabled"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 0.32)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.staticWhite.disabled"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 0.32)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2528,18 +2838,25 @@ exports[`<Button /> should render large size button 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="48px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -2553,6 +2870,7 @@ exports[`<Button /> should render large size button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 48,
           "overflow": "hidden",
@@ -2574,65 +2892,77 @@ exports[`<Button /> should render large size button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={200}
-        fontWeight="medium"
-        lineHeight={200}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 16,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 24,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={200}
+          fontWeight="medium"
+          lineHeight={200}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 16,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2684,18 +3014,25 @@ exports[`<Button /> should render medium size button 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -2709,6 +3046,7 @@ exports[`<Button /> should render medium size button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -2730,65 +3068,77 @@ exports[`<Button /> should render medium size button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2840,18 +3190,25 @@ exports[`<Button /> should render negative color primary button 1`] = `
     hoverBorderColor="hsla(4, 77%, 40%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -2865,6 +3222,7 @@ exports[`<Button /> should render negative color primary button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -2886,65 +3244,77 @@ exports[`<Button /> should render negative color primary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.staticWhite.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.staticWhite.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -2996,18 +3366,25 @@ exports[`<Button /> should render negative color secondary button 1`] = `
     hoverBorderColor="hsla(4, 74%, 49%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -3021,6 +3398,7 @@ exports[`<Button /> should render negative color secondary button 1`] = `
           "borderWidth": 1,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -3042,65 +3420,77 @@ exports[`<Button /> should render negative color secondary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.negative.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(4, 74%, 49%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.negative.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(4, 74%, 49%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -3152,18 +3542,25 @@ exports[`<Button /> should render positive color primary button 1`] = `
     hoverBorderColor="hsla(150, 100%, 27%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -3177,6 +3574,7 @@ exports[`<Button /> should render positive color primary button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -3198,65 +3596,77 @@ exports[`<Button /> should render positive color primary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.staticWhite.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.staticWhite.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -3308,18 +3718,25 @@ exports[`<Button /> should render positive color secondary button 1`] = `
     hoverBorderColor="hsla(150, 100%, 32%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -3333,6 +3750,7 @@ exports[`<Button /> should render positive color secondary button 1`] = `
           "borderWidth": 1,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -3354,65 +3772,77 @@ exports[`<Button /> should render positive color secondary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.positive.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(150, 100%, 27%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.positive.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(150, 100%, 27%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -3464,18 +3894,25 @@ exports[`<Button /> should render primary color primary button 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -3489,6 +3926,7 @@ exports[`<Button /> should render primary color primary button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -3510,65 +3948,77 @@ exports[`<Button /> should render primary color primary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -3620,18 +4070,25 @@ exports[`<Button /> should render primary color secondary button 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -3645,6 +4102,7 @@ exports[`<Button /> should render primary color secondary button 1`] = `
           "borderWidth": 1,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -3666,65 +4124,77 @@ exports[`<Button /> should render primary color secondary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.primary.subtle"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(227, 100%, 59%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.primary.subtle"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(227, 100%, 59%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -3776,18 +4246,25 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
     hoverBorderColor="hsla(211, 27%, 76%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -3801,6 +4278,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -3821,65 +4299,77 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.gray.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(212, 39%, 16%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.gray.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(212, 39%, 16%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -3931,18 +4421,25 @@ exports[`<Button /> should render small size button 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="32px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -3956,6 +4453,7 @@ exports[`<Button /> should render small size button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 32,
           "overflow": "hidden",
@@ -3977,65 +4475,77 @@ exports[`<Button /> should render small size button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={50}
-        fontWeight="medium"
-        lineHeight={75}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 11,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 18,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={50}
+          fontWeight="medium"
+          lineHeight={75}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -4087,18 +4597,25 @@ exports[`<Button /> should render white color primary button 1`] = `
     hoverBorderColor="hsla(0, 0%, 100%, 0.8)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -4112,6 +4629,7 @@ exports[`<Button /> should render white color primary button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -4133,65 +4651,77 @@ exports[`<Button /> should render white color primary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.staticBlack.muted"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 0%, 0.72)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.staticBlack.muted"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 0%, 0.72)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -4243,18 +4773,25 @@ exports[`<Button /> should render white color secondary button 1`] = `
     hoverBorderColor="hsla(0, 0%, 100%, 0.8)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -4268,6 +4805,7 @@ exports[`<Button /> should render white color secondary button 1`] = `
           "borderWidth": 1,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -4289,65 +4827,77 @@ exports[`<Button /> should render white color secondary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.staticWhite.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.staticWhite.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -4399,18 +4949,25 @@ exports[`<Button /> should render white color tertiary button 1`] = `
     hoverBorderColor="hsla(0, 0%, 100%, 0.32)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="36px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -4424,6 +4981,7 @@ exports[`<Button /> should render white color tertiary button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 36,
           "overflow": "hidden",
@@ -4444,65 +5002,77 @@ exports[`<Button /> should render white color tertiary button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.staticWhite.normal"
-        data-blade-component="base-text"
-        fontSize={100}
-        fontWeight="medium"
-        lineHeight={100}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 14,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 20,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        Pay Now
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.staticWhite.normal"
+          data-blade-component="base-text"
+          fontSize={100}
+          fontWeight="medium"
+          lineHeight={100}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 14,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 20,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          Pay Now
+        </Text>
+      </View>
     </View>
   </View>
 </View>
@@ -4554,18 +5124,25 @@ exports[`<Button /> should render xsmall size button 1`] = `
     hoverBorderColor="hsla(227, 100%, 59%, 1)"
     isFullWidth={false}
     isLoading={false}
+    isPressed={false}
     minHeight="28px"
     motionDuration="duration.xquick"
     motionEasing="easing.standard.effective"
     onBlur={[Function]}
     onClick={[Function]}
     onFocus={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseOut={[Function]}
+    onMouseUp={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
     onResponderRelease={[Function]}
     onResponderTerminate={[Function]}
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
+    onTouchEnd={[Function]}
+    onTouchStart={[Function]}
     role="button"
     style={
       [
@@ -4579,6 +5156,7 @@ exports[`<Button /> should render xsmall size button 1`] = `
           "borderWidth": 0,
           "cursor": "pointer",
           "display": "flex",
+          "flexDirection": "row",
           "justifyContent": "center",
           "minHeight": 28,
           "overflow": "hidden",
@@ -4600,65 +5178,77 @@ exports[`<Button /> should render xsmall size button 1`] = `
     type="button"
   >
     <View
-      alignItems="center"
-      data-blade-component="base-box"
-      display="flex"
-      flexDirection="row"
-      isHidden={false}
-      justifyContent="center"
       style={
-        [
-          {
-            "alignItems": "center",
-            "display": "flex",
-            "flexBasis": 0,
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "justifyContent": "center",
-            "zIndex": 1,
-          },
-          {
-            "opacity": 1,
-          },
-        ]
+        {
+          "transform": [
+            {
+              "scale": 1,
+            },
+          ],
+        }
       }
-      zIndex={1}
     >
-      <Text
-        accessible={true}
-        color="interactive.text.onPrimary.normal"
-        data-blade-component="base-text"
-        fontSize={50}
-        fontWeight="medium"
-        lineHeight={75}
+      <View
+        alignItems="center"
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        isHidden={false}
+        justifyContent="center"
         style={
           [
             {
-              "color": "hsla(0, 0%, 100%, 1)",
-              "fontFamily": "Inter",
-              "fontSize": 11,
-              "fontStyle": "normal",
-              "fontWeight": "500",
-              "letterSpacing": 0,
-              "lineHeight": 18,
-              "marginBottom": 0,
-              "marginLeft": 0,
-              "marginRight": 0,
-              "marginTop": 0,
-              "paddingBottom": 0,
-              "paddingLeft": 0,
-              "paddingRight": 0,
-              "paddingTop": 0,
-              "textAlign": "center",
-              "textDecorationLine": "none",
+              "alignItems": "center",
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "zIndex": 1,
+            },
+            {
+              "opacity": 1,
             },
           ]
         }
-        textAlign="center"
+        zIndex={1}
       >
-        PAY NOW
-      </Text>
+        <Text
+          accessible={true}
+          color="interactive.text.onPrimary.normal"
+          data-blade-component="base-text"
+          fontSize={50}
+          fontWeight="medium"
+          lineHeight={75}
+          style={
+            [
+              {
+                "color": "hsla(0, 0%, 100%, 1)",
+                "fontFamily": "Inter",
+                "fontSize": 11,
+                "fontStyle": "normal",
+                "fontWeight": "500",
+                "letterSpacing": 0,
+                "lineHeight": 18,
+                "marginBottom": 0,
+                "marginLeft": 0,
+                "marginRight": 0,
+                "marginTop": 0,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "textAlign": "center",
+                "textDecorationLine": "none",
+              },
+            ]
+          }
+          textAlign="center"
+        >
+          PAY NOW
+        </Text>
+      </View>
     </View>
   </View>
 </View>
