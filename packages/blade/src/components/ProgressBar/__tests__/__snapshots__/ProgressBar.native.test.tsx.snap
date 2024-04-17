@@ -279,8 +279,8 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
                 }
                 strokeDasharray={
                   [
-                    "65.97344572538566",
-                    "65.97344572538566",
+                    65.97344572538566,
+                    65.97344572538566,
                   ]
                 }
                 strokeDashoffset={32.98672286269283}
@@ -288,6 +288,21 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
               />
             </RNSVGGroup>
           </RNSVGSvgView>
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
+                },
+              ]
+            }
+          />
         </View>
       </View>
     </View>
@@ -454,85 +469,102 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
                 }
                 strokeDasharray={
                   [
-                    "65.97344572538566",
-                    "65.97344572538566",
+                    65.97344572538566,
+                    65.97344572538566,
                   ]
                 }
-                strokeDashoffset={52.77875658030853}
+                strokeDashoffset={52.778756580308524}
                 strokeWidth="3px"
               />
             </RNSVGGroup>
           </RNSVGSvgView>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            marginTop="spacing.3"
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
             style={
               [
                 {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 8,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
                 },
               ]
             }
           >
-            Label
-          </Text>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="semibold"
-            lineHeight={75}
-            marginTop="spacing.0"
-            style={
-              [
-                {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "600",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={75}
+              marginTop="spacing.3"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 8,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Label
+            </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="semibold"
+              lineHeight={75}
+              marginTop="spacing.0"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              20
+              %
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -699,11 +731,11 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
                 }
                 strokeDasharray={
                   [
-                    "204.20352248333654",
-                    "204.20352248333654",
+                    204.20352248333654,
+                    204.20352248333654,
                   ]
                 }
-                strokeDashoffset={163.36281798666926}
+                strokeDashoffset={163.36281798666923}
                 strokeWidth="7px"
               />
               <RNSVGText
@@ -767,41 +799,57 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
               </RNSVGText>
             </RNSVGGroup>
           </RNSVGSvgView>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            marginTop="spacing.3"
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
             style={
               [
                 {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 8,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
                 },
               ]
             }
           >
-            Label
-          </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={75}
+              marginTop="spacing.3"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 8,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Label
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -968,8 +1016,8 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
                 }
                 strokeDasharray={
                   [
-                    "135.0884841043611",
-                    "135.0884841043611",
+                    135.0884841043611,
+                    135.0884841043611,
                   ]
                 }
                 strokeDashoffset={108.07078728348888}
@@ -1036,41 +1084,57 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
               </RNSVGText>
             </RNSVGGroup>
           </RNSVGSvgView>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            marginTop="spacing.3"
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
             style={
               [
                 {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 8,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
                 },
               ]
             }
           >
-            Label
-          </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={75}
+              marginTop="spacing.3"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 8,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Label
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -1237,85 +1301,102 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
                 }
                 strokeDasharray={
                   [
-                    "65.97344572538566",
-                    "65.97344572538566",
+                    65.97344572538566,
+                    65.97344572538566,
                   ]
                 }
-                strokeDashoffset={52.77875658030853}
+                strokeDashoffset={52.778756580308524}
                 strokeWidth="3px"
               />
             </RNSVGGroup>
           </RNSVGSvgView>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            marginTop="spacing.3"
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
             style={
               [
                 {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 8,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
                 },
               ]
             }
           >
-            Label
-          </Text>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="semibold"
-            lineHeight={75}
-            marginTop="spacing.0"
-            style={
-              [
-                {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "600",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            20%
-          </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={75}
+              marginTop="spacing.3"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 8,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Label
+            </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="semibold"
+              lineHeight={75}
+              marginTop="spacing.0"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              20
+              %
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -3878,15 +3959,30 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
                 }
                 strokeDasharray={
                   [
-                    "65.97344572538566",
-                    "65.97344572538566",
+                    65.97344572538566,
+                    65.97344572538566,
                   ]
                 }
-                strokeDashoffset={19.7920337176157}
+                strokeDashoffset={19.792033717615702}
                 strokeWidth="3px"
               />
             </RNSVGGroup>
           </RNSVGSvgView>
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
+                },
+              ]
+            }
+          />
         </View>
       </View>
     </View>
@@ -4952,8 +5048,8 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
                 }
                 strokeDasharray={
                   [
-                    "65.97344572538566",
-                    "65.97344572538566",
+                    65.97344572538566,
+                    65.97344572538566,
                   ]
                 }
                 strokeDashoffset={65.97344572538566}
@@ -4961,76 +5057,93 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
               />
             </RNSVGGroup>
           </RNSVGSvgView>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            marginTop="spacing.3"
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
             style={
               [
                 {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 8,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
                 },
               ]
             }
           >
-            Label
-          </Text>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="semibold"
-            lineHeight={75}
-            marginTop="spacing.0"
-            style={
-              [
-                {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "600",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            0%
-          </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={75}
+              marginTop="spacing.3"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 8,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Label
+            </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="semibold"
+              lineHeight={75}
+              marginTop="spacing.0"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              0
+              %
+            </Text>
+          </View>
         </View>
       </View>
     </View>
@@ -5362,85 +5475,102 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
                 }
                 strokeDasharray={
                   [
-                    "65.97344572538566",
-                    "65.97344572538566",
+                    65.97344572538566,
+                    65.97344572538566,
                   ]
                 }
-                strokeDashoffset={26.389378290154266}
+                strokeDashoffset={26.389378290154262}
                 strokeWidth="3px"
               />
             </RNSVGGroup>
           </RNSVGSvgView>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="regular"
-            lineHeight={75}
-            marginTop="spacing.3"
+          <View
+            alignItems="center"
+            data-blade-component="base-box"
+            display="flex"
+            flexDirection="column"
             style={
               [
                 {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "400",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 8,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
+                  "alignItems": "center",
+                  "display": "flex",
+                  "flexDirection": "column",
                 },
               ]
             }
           >
-            Label
-          </Text>
-          <Text
-            accessible={true}
-            color="surface.text.gray.normal"
-            data-blade-component="text"
-            fontFamily="text"
-            fontSize={75}
-            fontStyle="normal"
-            fontWeight="semibold"
-            lineHeight={75}
-            marginTop="spacing.0"
-            style={
-              [
-                {
-                  "color": "hsla(212, 39%, 16%, 1)",
-                  "fontFamily": "Inter",
-                  "fontSize": 12,
-                  "fontStyle": "normal",
-                  "fontWeight": "600",
-                  "letterSpacing": 0,
-                  "lineHeight": 18,
-                  "marginBottom": 0,
-                  "marginLeft": 0,
-                  "marginRight": 0,
-                  "marginTop": 0,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "textDecorationLine": "none",
-                },
-              ]
-            }
-          >
-            60%
-          </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={75}
+              marginTop="spacing.3"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 8,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              Label
+            </Text>
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={75}
+              fontStyle="normal"
+              fontWeight="semibold"
+              lineHeight={75}
+              marginTop="spacing.0"
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 12,
+                    "fontStyle": "normal",
+                    "fontWeight": "600",
+                    "letterSpacing": 0,
+                    "lineHeight": 18,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            >
+              60
+              %
+            </Text>
+          </View>
         </View>
       </View>
     </View>

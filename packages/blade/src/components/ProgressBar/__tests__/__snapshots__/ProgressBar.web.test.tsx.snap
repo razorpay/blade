@@ -132,6 +132,20 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
   width: fit-content;
 }
 
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c2.c2.c2.c2.c2 {
   height: 100%;
   width: 100%;
@@ -196,6 +210,10 @@ exports[`<ProgressBar /> should render ProgressBar without label and percentage 
               transform="rotate(-90 12 12)"
             />
           </svg>
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          />
         </div>
       </div>
     </div>
@@ -234,6 +252,20 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
 }
 
 .c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -251,7 +283,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
   margin-top: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -334,19 +366,24 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with default
               transform="rotate(-90 12 12)"
             />
           </svg>
-          <p
+          <div
             class="c3"
-            data-blade-component="text"
+            data-blade-component="base-box"
           >
-            Label
-          </p>
-          <p
-            class="c4"
-            data-blade-component="text"
-          >
-            20
-            %
-          </p>
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              20
+              %
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -385,6 +422,20 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
 }
 
 .c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -494,12 +545,17 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with large s
               %
             </text>
           </svg>
-          <p
+          <div
             class="c4"
-            data-blade-component="text"
+            data-blade-component="base-box"
           >
-            Label
-          </p>
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -538,6 +594,20 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
 }
 
 .c4.c4.c4.c4.c4 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -647,12 +717,17 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with medium 
               %
             </text>
           </svg>
-          <p
+          <div
             class="c4"
-            data-blade-component="text"
+            data-blade-component="base-box"
           >
-            Label
-          </p>
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -691,6 +766,20 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
 }
 
 .c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -708,7 +797,7 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
   margin-top: 8px;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -791,19 +880,24 @@ exports[`<ProgressBar /> should render circular variant ProgressBar with small s
               transform="rotate(-90 12 12)"
             />
           </svg>
-          <p
+          <div
             class="c3"
-            data-blade-component="text"
+            data-blade-component="base-box"
           >
-            Label
-          </p>
-          <p
-            class="c4"
-            data-blade-component="text"
-          >
-            20
-            %
-          </p>
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+            <p
+              class="c5"
+              data-blade-component="text"
+            >
+              20
+              %
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -2840,6 +2934,20 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
   width: fit-content;
 }
 
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c2.c2.c2.c2.c2 {
   height: 100%;
   width: 100%;
@@ -2900,6 +3008,10 @@ exports[`<ProgressBar /> should render meter variant of ProgressBar  2`] = `
               transform="rotate(-90 12 12)"
             />
           </svg>
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          />
         </div>
       </div>
     </div>
@@ -3523,6 +3635,20 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   width: fit-content;
 }
 
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -3541,7 +3667,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -3559,7 +3685,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
   margin-top: 8px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -3742,19 +3868,24 @@ exports[`<ProgressBar /> should update the progress value appropriately 3`] = `
               transform="rotate(-90 12 12)"
             />
           </svg>
-          <p
+          <div
             class="c8"
-            data-blade-component="text"
+            data-blade-component="base-box"
           >
-            Label
-          </p>
-          <p
-            class="c9"
-            data-blade-component="text"
-          >
-            0
-            %
-          </p>
+            <p
+              class="c9"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+            <p
+              class="c10"
+              data-blade-component="text"
+            >
+              0
+              %
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -3814,6 +3945,20 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   width: fit-content;
 }
 
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -3832,7 +3977,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -3850,7 +3995,7 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
   margin-top: 8px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   color: hsla(212,39%,16%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
@@ -4033,19 +4178,24 @@ exports[`<ProgressBar /> should update the progress value appropriately 4`] = `
               transform="rotate(-90 12 12)"
             />
           </svg>
-          <p
+          <div
             class="c8"
-            data-blade-component="text"
+            data-blade-component="base-box"
           >
-            Label
-          </p>
-          <p
-            class="c9"
-            data-blade-component="text"
-          >
-            0
-            %
-          </p>
+            <p
+              class="c9"
+              data-blade-component="text"
+            >
+              Label
+            </p>
+            <p
+              class="c10"
+              data-blade-component="text"
+            >
+              0
+              %
+            </p>
+          </div>
         </div>
       </div>
     </div>
