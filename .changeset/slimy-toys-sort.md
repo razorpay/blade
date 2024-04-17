@@ -2,4 +2,4 @@
 '@razorpay/blade': minor
 ---
 
-Alert Custom icon added
+feat(blade): add leading prop in Alert
