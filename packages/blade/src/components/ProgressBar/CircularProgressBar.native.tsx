@@ -17,7 +17,7 @@ import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import type { TextProps } from '~components/Typography';
-import { Text, getTextProps } from '~components/Typography';
+import { getTextProps } from '~components/Typography';
 import { useTheme } from '~components/BladeProvider';
 import { castNativeType } from '~utils';
 import { Svg } from '~components/Icons/_Svg';
@@ -54,20 +54,6 @@ const CircularProgressBarFilled = ({
   pulseMotionDelay,
   fillMotionDuration,
 }: CircularProgressBarFilledProps): React.ReactElement => {
-  const hasLabel = label && label.trim()?.length > 0;
-  // const strokeWidth = circularProgressSizeTokens[size].strokeWidth;
-  // // Size of the enclosing square
-  // const sqSize = circularProgressSizeTokens[size].size;
-  // // SVG centers the stroke width on the radius, subtract out so circle fits in square
-  // const radius = (sqSize - strokeWidth) / 2;
-  // // Enclose circle in a circumscribing square
-  // const viewBox = `0 0 ${sqSize} ${sqSize}`;
-  // // Arc length at 100% coverage is the circle circumference
-  // const circumference = 2 * Math.PI * radius;
-  // const dashArray = radius * Math.PI * 2;
-  // // Scale 100% coverage overlay with the actual percent
-  // const svgProgress = 100 - progressPercent;
-  // const dashOffset = dashArray - (dashArray * progressPercent) / 100;
   const {
     sqSize,
     strokeWidth,
