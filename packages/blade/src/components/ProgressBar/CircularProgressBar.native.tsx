@@ -11,7 +11,8 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Text as SVGText, Circle } from 'react-native-svg';
 import type { CircularProgressBarFilledProps } from './types';
-import { circularProgressSizeTokens } from './progressBarTokens';
+import { circularProgressSizeTokens, getCircularProgressSVGTokens } from './progressBarTokens';
+import { CircularProgressLabel } from './CircularProgressLabel';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { makeMotionTime } from '~utils/makeMotionTime';
@@ -28,7 +29,7 @@ const pulseAnimation = {
   opacityFinal: 1,
 };
 
-const StyledText = styled(SVGText)<Pick<TextProps<{ variant: 'body' }>, 'size' | 'weight'>>(
+const StyledSVGText = styled(SVGText)<Pick<TextProps<{ variant: 'body' }>, 'size' | 'weight'>>(
   ({ theme, size, weight }) => {
     const textProps = getTextProps({ variant: 'body', size, weight });
 
@@ -54,19 +55,27 @@ const CircularProgressBarFilled = ({
   fillMotionDuration,
 }: CircularProgressBarFilledProps): React.ReactElement => {
   const hasLabel = label && label.trim()?.length > 0;
-  const strokeWidth = circularProgressSizeTokens[size].strokeWidth;
-  // Size of the enclosing square
-  const sqSize = circularProgressSizeTokens[size].size;
-  // SVG centers the stroke width on the radius, subtract out so circle fits in square
-  const radius = (sqSize - strokeWidth) / 2;
-  // Enclose circle in a circumscribing square
-  const viewBox = `0 0 ${sqSize} ${sqSize}`;
-  // Arc length at 100% coverage is the circle circumference
-  const circumference = 2 * Math.PI * radius;
-  const dashArray = radius * Math.PI * 2;
-  // Scale 100% coverage overlay with the actual percent
-  const svgProgress = 100 - progressPercent;
-  const dashOffset = dashArray - (dashArray * progressPercent) / 100;
+  // const strokeWidth = circularProgressSizeTokens[size].strokeWidth;
+  // // Size of the enclosing square
+  // const sqSize = circularProgressSizeTokens[size].size;
+  // // SVG centers the stroke width on the radius, subtract out so circle fits in square
+  // const radius = (sqSize - strokeWidth) / 2;
+  // // Enclose circle in a circumscribing square
+  // const viewBox = `0 0 ${sqSize} ${sqSize}`;
+  // // Arc length at 100% coverage is the circle circumference
+  // const circumference = 2 * Math.PI * radius;
+  // const dashArray = radius * Math.PI * 2;
+  // // Scale 100% coverage overlay with the actual percent
+  // const svgProgress = 100 - progressPercent;
+  // const dashOffset = dashArray - (dashArray * progressPercent) / 100;
+  const {
+    sqSize,
+    strokeWidth,
+    radius,
+    viewBox,
+    dashArray,
+    dashOffset,
+  } = getCircularProgressSVGTokens({ size, progressPercent });
 
   const AnimatedCircle = Animated.createAnimatedComponent(Circle);
   const animatedOpacity = useSharedValue(pulseAnimation.opacityInitial);
@@ -140,13 +149,13 @@ const CircularProgressBarFilled = ({
           strokeWidth={`${strokeWidth}px`}
           // Start progress marker at 12 O'Clock
           transform={`rotate(-90 ${sqSize / 2} ${sqSize / 2})`}
-          strokeDasharray={`${circumference} ${circumference}`}
-          strokeDashoffset={radius * Math.PI * 2 * (svgProgress / 100)}
+          strokeDasharray={dashArray}
+          strokeDashoffset={dashOffset}
           style={firstIndicatorStyles}
         />
 
         {showPercentage && size !== 'small' && (
-          <StyledText
+          <StyledSVGText
             size={circularProgressSizeTokens[size].percentTextSize}
             weight="semibold"
             x="50%"
@@ -155,25 +164,16 @@ const CircularProgressBarFilled = ({
             dy=".5em"
           >
             {`${progressPercent}%`}
-          </StyledText>
+          </StyledSVGText>
         )}
       </Svg>
 
-      {hasLabel && (
-        <Text marginTop="spacing.3" variant="body" weight="regular" size="small">
-          {label}
-        </Text>
-      )}
-      {showPercentage && size === 'small' && (
-        <Text
-          marginTop={hasLabel ? 'spacing.0' : 'spacing.3'}
-          variant="body"
-          size="small"
-          weight="semibold"
-        >
-          {`${progressPercent}%`}
-        </Text>
-      )}
+      <CircularProgressLabel
+        progressPercent={progressPercent}
+        size={size}
+        label={label}
+        showPercentage={showPercentage}
+      />
     </BaseBox>
   );
 };

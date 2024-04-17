@@ -38,6 +38,7 @@ type ProgressBarCommonProps = {
   label?: string;
   /**
    * Sets the size of the progress bar.
+   * Note: 'large' size isn't available when the variant is 'linear'.
    * @default 'small'
    */
   size?: 'small' | 'medium' | 'large';
@@ -148,7 +149,7 @@ const ProgressBar = ({
       });
     }
 
-    if (type && variant && (variant === 'progress' || variant === 'meter')) {
+    if (type && (variant === 'progress' || variant === 'meter')) {
       throwBladeError({
         moduleName: 'ProgressBar',
         message: `variant can only be 'linear' or 'circular' when 'type=${type}'.`,

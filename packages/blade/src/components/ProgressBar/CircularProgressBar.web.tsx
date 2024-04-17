@@ -2,13 +2,18 @@ import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import React from 'react';
 import type { CircularProgressBarFilledProps } from './types';
-import { pulseAnimation, circularProgressSizeTokens } from './progressBarTokens';
+import {
+  pulseAnimation,
+  circularProgressSizeTokens,
+  getCircularProgressSVGTokens,
+} from './progressBarTokens';
+import { CircularProgressLabel } from './CircularProgressLabel';
 import getIn from '~utils/lodashButBetter/get';
 import BaseBox from '~components/Box/BaseBox';
 import { castWebType } from '~utils';
 import { makeMotionTime } from '~utils/makeMotionTime';
 import type { TextProps } from '~components/Typography';
-import { Text, getTextProps } from '~components/Typography';
+import { getTextProps } from '~components/Typography';
 import { Svg, Circle } from '~components/Icons/_Svg';
 import getBaseTextStyles from '~components/Typography/BaseText/getBaseTextStyles';
 
@@ -53,7 +58,7 @@ const getPulseAnimationStyles = ({
   `;
 };
 
-const StyledText = styled.text<Pick<TextProps<{ variant: 'body' }>, 'size' | 'weight'>>(
+const StyledSVGText = styled.text<Pick<TextProps<{ variant: 'body' }>, 'size' | 'weight'>>(
   ({ theme, size, weight }) => {
     return getBaseTextStyles({
       theme,
@@ -88,19 +93,14 @@ const CircularProgressBarFilled = ({
   showPercentage = true,
   isMeter,
 }: CircularProgressBarFilledProps): React.ReactElement => {
-  const hasLabel = label && label.trim()?.length > 0;
-  const strokeWidth = circularProgressSizeTokens[size].strokeWidth;
-  // Size of the enclosing square
-  const sqSize = circularProgressSizeTokens[size].size;
-
-  // SVG centers the stroke width on the radius, subtract out so circle fits in square
-  const radius = (sqSize - strokeWidth) / 2;
-  // Enclose circle in a circumscribing square
-  const viewBox = `0 0 ${sqSize} ${sqSize}`;
-  // Arc length at 100% coverage is the circle circumference
-  const dashArray = radius * Math.PI * 2;
-  // Scale 100% coverage overlay with the actual percent
-  const dashOffset = dashArray - (dashArray * progressPercent) / 100;
+  const {
+    sqSize,
+    strokeWidth,
+    radius,
+    viewBox,
+    dashArray,
+    dashOffset,
+  } = getCircularProgressSVGTokens({ size, progressPercent });
 
   return (
     <BaseBox
@@ -138,7 +138,7 @@ const CircularProgressBarFilled = ({
           motionEasing="easing.standard.revealing"
         />
         {showPercentage && size !== 'small' && (
-          <StyledText
+          <StyledSVGText
             size={circularProgressSizeTokens[size].percentTextSize}
             weight="semibold"
             x="50%"
@@ -147,25 +147,16 @@ const CircularProgressBarFilled = ({
             dy=".4em"
           >
             {progressPercent}%
-          </StyledText>
+          </StyledSVGText>
         )}
       </Svg>
-      {hasLabel && (
-        <Text marginTop="spacing.3" variant="body" weight="regular" size="small">
-          {label}
-        </Text>
-      )}
 
-      {showPercentage && size === 'small' && (
-        <Text
-          marginTop={hasLabel ? 'spacing.0' : 'spacing.3'}
-          variant="body"
-          weight="semibold"
-          size="small"
-        >
-          {progressPercent}%
-        </Text>
-      )}
+      <CircularProgressLabel
+        progressPercent={progressPercent}
+        size={size}
+        label={label}
+        showPercentage={showPercentage}
+      />
     </BaseBox>
   );
 };
