@@ -35,7 +35,6 @@ exports[`<Tag /> should render tag 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  max-width: 100px;
 }
 
 .c4.c4.c4.c4.c4 {

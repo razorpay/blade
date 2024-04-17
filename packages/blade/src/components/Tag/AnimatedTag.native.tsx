@@ -26,7 +26,7 @@ const useAnimatedTag = (
   entering: ReanimatedKeyframe;
   animate: () => void;
   animatedStyle: {
-    maxWidth: number;
+    maxWidth: `${number}%`;
     opacity: number;
   };
 } => {
