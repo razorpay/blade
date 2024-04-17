@@ -4,7 +4,7 @@ import { Title } from '@storybook/addon-docs';
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import type { SwitchProps } from './';
-import { StepItem, StepLine } from './StepGroup';
+import { StepItem, StepGroup } from './';
 // import { Text } from '~components/Typography';
 // import { BaseBox } from '~components/Box/BaseBox';
 // import { Button } from '~components/Button';
@@ -50,7 +50,7 @@ import { Box } from '~components/Box';
 
 export default {
   title: 'Components/StepGroup',
-  component: StepLine,
+  component: StepGroup,
   // args: {
   //   defaultChecked: undefined,
   //   isChecked: undefined,
@@ -106,16 +106,19 @@ export default {
 
 export const StepItemStory = (): React.ReactElement => {
   return (
-    <Box display="flex" flexDirection="column">
+    <StepGroup>
+      {/* <StepItem />
+      <StepItem /> */}
+      <StepGroup>
+        <StepItem />
+        <StepItem />
+        <StepItem />
+      </StepGroup>
       <StepItem />
-      <StepItem />
-      <StepItem stepType="start" />
-      <StepItem stepType="middle" />
-      <StepItem stepType="middle" />
-      <StepItem stepType="end" />
-      <StepItem />
-      <StepItem stepType="single-item" />
-      <StepItem />
-    </Box>
+      <StepGroup>
+        <StepItem />
+      </StepGroup>
+      {/* <StepItem /> */}
+    </StepGroup>
   );
 };
