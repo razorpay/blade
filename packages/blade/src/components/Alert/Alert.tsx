@@ -7,6 +7,7 @@ import {
   AlertTriangleIcon,
   CheckCircleIcon,
   CloseIcon,
+  IconComponent,
   InfoIcon,
 } from '~components/Icons';
 import { castNativeType, castWebType, useBreakpoint, getPlatformType } from '~utils';
@@ -73,7 +74,7 @@ type AlertProps = {
    * Can be used to render an icon
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  leading?: ComponentType<any>;
+  icon?: IconComponent;
 
   /**
    * Can be set to `high` for a more prominent look. Not to be confused with a11y emphasis.
@@ -134,7 +135,7 @@ const Alert = ({
   color = 'neutral',
   actions,
   testID,
-  leading,
+  icon,
   ...styledProps
 }: AlertProps): ReactElement | null => {
   const { theme } = useTheme();
@@ -144,7 +145,7 @@ const Alert = ({
   const isDesktop = matchedDeviceType === 'desktop';
   const isMobile = !isDesktop;
 
-  const Icon = leading || intentIconMap[color];
+  const Icon = icon || intentIconMap[color];
   let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
 
   // certain special cases below needs special care for near perfect alignment
@@ -171,7 +172,7 @@ const Alert = ({
   if (!isFullWidth) alignment = 'flex-start';
   if (shouldCenterAlign) alignment = 'center';
 
-  const icon = (
+  const leadingIcon = (
     <BaseBox display="flex" alignSelf={alignment} marginTop={iconOffset}>
       <Icon
         color={
@@ -309,7 +310,7 @@ const Alert = ({
         isDesktop={isDesktop}
         textAlign={'left' as never}
       >
-        {icon}
+        {leadingIcon}
         <BaseBox
           flex={1}
           paddingLeft={isFullWidth ? 'spacing.4' : 'spacing.3'}
