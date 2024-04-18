@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.12.0
+
+### Minor Changes
+
+- c5f24eae: feat(TextArea, TextInput): Support Tagged Inputs with `tags` and `isTaggedInput` prop
+  feat(Tag): max-width is removed from Tag component
+
 ## 11.11.1
 
 ### Patch Changes
