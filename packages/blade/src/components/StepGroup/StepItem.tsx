@@ -5,11 +5,11 @@ import type { StepLineProps } from './StepLine';
 import { useStepGroup } from './StepGroupContext';
 import type { StepGroupContextType, StepGroupProps, StepItemProps } from './types';
 import { componentIds } from './componentIds';
-import { Box, BoxProps } from '~components/Box';
+import { Box } from '~components/Box';
 import { CheckIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import BaseBox, { SpacingValueType } from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
 import { makeSize, makeSpace } from '~utils';
 import { size as sizeTokens } from '~tokens/global';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
@@ -42,6 +42,7 @@ const InteractiveItemBox = styled.button<{
       : props.theme.colors.transparent,
     borderRadius: props.theme.border.radius.medium,
     minWidth: props.minWidth,
+    transition: `background-color ${props.theme.motion.duration.xquick} ${props.theme.motion.easing.standard.effective}`,
     ':hover': {
       backgroundColor: props.isSelected
         ? props.theme.colors.interactive.background.primary.fadedHighlighted
@@ -128,6 +129,7 @@ const _StepItem = ({
       gap="spacing.4"
       className={`step-item step-index-${_index} step-nesting-level-${_nestingLevel}`}
       textAlign={orientation === 'vertical' ? 'left' : 'center'}
+      alignItems={orientation === 'vertical' ? undefined : 'center'}
     >
       <StepLine
         shouldShowStartBranch={!isFirstItem}
@@ -135,6 +137,8 @@ const _StepItem = ({
         stepType={stepType}
         color="neutral"
         icon={CheckIcon}
+        leading={leading}
+        stepProgress={stepProgress}
       />
       <Box marginTop="spacing.3">
         {isInteractive ? (

@@ -4,8 +4,12 @@ import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { IconComponent } from '~components/Icons';
 import { CheckIcon } from '~components/Icons';
 import Svg from '~components/Icons/_Svg';
+import { Indicator, IndicatorProps } from '~components/Indicator';
 import { Text } from '~components/Typography';
 import { makeSize, useTheme } from '~utils';
+import { useStepGroup } from './StepGroupContext';
+import { StepItemIndicator } from './StepItemLeading';
+import { StepItemProps } from './types';
 
 type StepLineSvgProps = {
   height?: number;
@@ -30,6 +34,47 @@ const useDottedLineStyles = (): BaseBoxProps => {
     backgroundSize: '2px 4px',
     backgroundRepeat: 'repeat-y',
   };
+};
+
+const StepStraightLineHorizontal = ({
+  height,
+  ...styledProps
+}: StepLineSvgProps): React.ReactElement => {
+  // const dottedStyles = useDottedLineStyles();
+
+  return (
+    <BaseBox
+      height="2px"
+      flex={height ? undefined : '1'}
+      // width="2px"
+      // {...dottedStyles}
+      borderTopWidth="thicker"
+      borderTopColor="surface.border.gray.subtle"
+      // borderLeftStyle="dotted"
+      {...styledProps}
+    />
+
+    // <BaseBox
+    //   height={height ? makeSize(height) : '100%'}
+    //   // backgroundColor="surface.background.sea.intense"
+    //   flex={height ? undefined : 1}
+    //   // flexShrink="0"
+    //   // flexGrow="0"
+    //   overflow="hidden"
+    // >
+    //   <Svg width="2" height="100%" viewBox="0 0 2 120" fill="none" {...styledProps}>
+    //     <line
+    //       x1="1"
+    //       y1="1"
+    //       x2="0.999995"
+    //       y2="119"
+    //       stroke="#CBD5E2"
+    //       strokeWidth="2"
+    //       strokeLinecap="square"
+    //     />
+    //   </Svg>
+    // </BaseBox>
+  );
 };
 
 const StepStraightLineVertical = ({
@@ -109,33 +154,11 @@ const StepBottomCurveVertical = (styledProps: StyledPropsBlade): React.ReactElem
   );
 };
 
-// const StepLine = ({
-//   orientation = 'vertical',
-//   curveEnd,
-//   ...styledProps
-// }: {
-//   orientation: 'horizontal' | 'vertical';
-//   curveEnd?: 'top' | 'bottom';
-// } & StyledPropsBlade): React.ReactElement => {
-//   if (orientation === 'vertical') {
-//     if (curveEnd === 'top') {
-//       return <StepTopCurveVertical {...styledProps} />;
-//     }
-
-//     if (curveEnd === 'bottom') {
-//       return <StepBottomCurveVertical {...styledProps} />;
-//     }
-//     return <StepStraightLineVertical {...styledProps} />;
-//   }
-
-//   return <StepStraightLineVertical {...styledProps} />;
-// };
-
 type IconColorType = {
   icon: IconComponent;
   color: 'positive' | 'negative' | 'neutral';
 };
-type StepItemIconProps = IconColorType & BoxProps;
+type StepItemIconProps = IconColorType;
 
 const StepItemIcon = ({
   icon: Icon,
@@ -154,9 +177,6 @@ const StepItemIcon = ({
       zIndex={1}
       margin="2px"
       {...boxProps}
-      // position="absolute"
-      // top="spacing.0"
-      // left="-12px"
     >
       <Icon color={`feedback.icon.${color}.intense`} />
     </BaseBox>
@@ -167,24 +187,28 @@ type StepLineProps = {
   stepType: 'single-item' | 'start' | 'middle' | 'end' | 'default';
   shouldShowStartBranch: boolean;
   shouldShowEndBranch: boolean;
-} & StepItemIconProps;
+} & Pick<StepItemProps, 'stepProgress' | 'leading'> &
+  StepItemIconProps;
 
-type StepLineVisualProps = Pick<StepLineProps, 'shouldShowStartBranch' | 'shouldShowEndBranch'> &
-  IconColorType & {
-    isIndented?: boolean;
-  };
-
+type StepLineVisualProps = Pick<
+  StepLineProps,
+  'shouldShowStartBranch' | 'shouldShowEndBranch' | 'leading' | 'stepProgress'
+>;
 // const INDENTATION_WIDTH = 33;
 // const ICON_WIDTH = 24;
 // const ICON_NEGATIVE_MARGIN = 12;
 
+const defaultLeading = <StepItemIndicator color="neutral" />;
+
 const StepLineVertical = ({
-  icon,
-  color,
+  leading = defaultLeading,
+  stepProgress,
   isIndented,
   shouldShowStartBranch,
   shouldShowEndBranch,
-}: StepLineVisualProps): React.ReactElement => {
+}: StepLineVisualProps & {
+  isIndented?: boolean;
+}): React.ReactElement => {
   return (
     <Box
       position="relative"
@@ -196,15 +220,15 @@ const StepLineVertical = ({
         height={16}
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
       />
-      <StepItemIcon icon={icon} color={color} marginLeft="-12px" /> {/* -12 + 33 */}
+      <Box marginLeft="-12px">{leading}</Box>
       <StepStraightLineVertical visibility={shouldShowEndBranch ? 'visible' : 'hidden'} />
     </Box>
   );
 };
 
 const StepLineStart = ({
-  icon,
-  color,
+  leading = defaultLeading,
+  stepProgress,
   shouldShowStartBranch,
   shouldShowEndBranch,
 }: StepLineVisualProps): React.ReactElement => {
@@ -215,7 +239,9 @@ const StepLineStart = ({
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
       />
       <StepTopCurveVertical visibility={shouldShowStartBranch ? 'visible' : 'hidden'} />
-      <StepItemIcon icon={icon} color={color} marginLeft="22px" marginTop="-12px" />
+      <Box marginLeft="22px" marginTop="-12px">
+        {leading}
+      </Box>
       <StepStraightLineVertical
         visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
         marginLeft="33px"
@@ -225,8 +251,8 @@ const StepLineStart = ({
 };
 
 const StepLineEnd = ({
-  icon,
-  color,
+  leading = defaultLeading,
+  stepProgress,
   shouldShowStartBranch,
   shouldShowEndBranch,
 }: StepLineVisualProps): React.ReactElement => {
@@ -237,7 +263,7 @@ const StepLineEnd = ({
         marginLeft="33px"
         height={16}
       />
-      <StepItemIcon icon={icon} color={color} marginLeft="21px" /> {/* -12 + 33 */}
+      <Box marginLeft="21px">{leading}</Box>
       <StepStraightLineVertical
         marginLeft="33px"
         visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
@@ -247,9 +273,31 @@ const StepLineEnd = ({
   );
 };
 
+const StepLineHorizontal = ({
+  leading = defaultLeading,
+  stepProgress,
+  shouldShowStartBranch,
+  shouldShowEndBranch,
+}: StepLineVisualProps): React.ReactElement => {
+  return (
+    <Box
+      position="relative"
+      display="flex"
+      flexDirection="row"
+      width="100%"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <StepStraightLineHorizontal visibility={shouldShowStartBranch ? 'visible' : 'hidden'} />
+      <Box>{leading}</Box>
+      <StepStraightLineHorizontal visibility={shouldShowEndBranch ? 'visible' : 'hidden'} />
+    </Box>
+  );
+};
+
 const StepLineSingleItem = ({
-  icon,
-  color,
+  leading = defaultLeading,
+  stepProgress,
   shouldShowEndBranch,
   shouldShowStartBranch,
 }: StepLineVisualProps): React.ReactElement => {
@@ -261,7 +309,9 @@ const StepLineSingleItem = ({
       />
       <StepTopCurveVertical visibility={shouldShowStartBranch ? 'visible' : 'hidden'} />
       {/* -12 + 33 */}
-      <StepItemIcon icon={icon} color={color} marginLeft="21px" marginTop="-12px" />{' '}
+      <Box marginLeft="21px" marginTop="-12px">
+        {leading}
+      </Box>
       <StepStraightLineVertical
         marginLeft="33px"
         visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
@@ -277,13 +327,23 @@ const StepLine = ({
   color,
   shouldShowStartBranch,
   shouldShowEndBranch,
+  leading,
+  stepProgress,
 }: StepLineProps): React.ReactElement => {
   const commonProps = {
     icon,
     color,
     shouldShowStartBranch,
     shouldShowEndBranch,
+    leading,
+    stepProgress,
   };
+
+  const { orientation } = useStepGroup();
+
+  if (orientation === 'horizontal') {
+    return <StepLineHorizontal {...commonProps} />;
+  }
 
   if (stepType === 'start') {
     return <StepLineStart {...commonProps} />;
@@ -305,4 +365,4 @@ const StepLine = ({
 };
 
 export type { StepLineProps };
-export { StepLine };
+export { StepLine, StepItemIndicator };

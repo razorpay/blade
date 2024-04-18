@@ -4,7 +4,7 @@ import { Title } from '@storybook/addon-docs';
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import type { SwitchProps } from './';
-import { StepItem, StepGroup } from './';
+import { StepItem, StepGroup, StepItemIndicator } from './';
 // import { Text } from '~components/Typography';
 // import { BaseBox } from '~components/Box/BaseBox';
 // import { Button } from '~components/Button';
@@ -182,7 +182,7 @@ export const StepGroupHorizontal = (): React.ReactElement => {
         isSelected={true}
         href="#"
       />
-      <StepItem title="Header Title" />
+      <StepItem leading={<StepItemIndicator color="positive" />} title="Header Title" />
     </StepGroup>
   );
 };
