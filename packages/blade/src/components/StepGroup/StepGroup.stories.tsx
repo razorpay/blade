@@ -18,6 +18,7 @@ import { StepItem, StepGroup } from './';
 // import type { BladeElementRef } from '~utils/types';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
+import { Button } from '~components/Button';
 
 // const Page = (): React.ReactElement => {
 //   return (
@@ -107,18 +108,36 @@ export default {
 export const StepItemStory = (): React.ReactElement => {
   return (
     <StepGroup>
-      <StepItem />
-      <StepItem />
+      <StepItem title="Header Title" />
+      <StepItem
+        title="Header Title"
+        timestamp="Mon, 15th Oct’23 | 12:00pm"
+        description="Header Description"
+        isSelected={true}
+        href="#"
+      />
       <StepGroup>
-        <StepItem />
-        <StepItem />
-        <StepItem />
+        <StepItem title="Header Title" description="Header Description" />
+        <StepItem
+          href="#"
+          title="Header Title"
+          timestamp="Mon, 15th Oct’23 | 12:00pm"
+          description="Header Description"
+        />
+        <StepItem title="Header Title" description="Header Description" />
       </StepGroup>
-      <StepItem />
+      <StepItem
+        title="Header Title"
+        onClick={({ itemIndex, groupItemIndex, nestingLevel }) => {
+          console.log({ itemIndex, groupItemIndex, nestingLevel });
+        }}
+      >
+        <Button>Click Clack</Button>
+      </StepItem>
       <StepGroup>
-        <StepItem />
+        <StepItem title="Header Title" />
       </StepGroup>
-      <StepItem />
+      <StepItem title="Header Title" />
     </StepGroup>
   );
 };
