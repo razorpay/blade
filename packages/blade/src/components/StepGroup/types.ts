@@ -21,20 +21,19 @@ type StepGroupProps = {
    */
   children: React.ReactElement | React.ReactElement[];
 
-  _isFirstGroup?: boolean;
-  _isLastGroup?: boolean;
+  _nestingLevel?: number;
 } & StyledPropsBlade &
   TestID;
 
 type StepGroupContextType = Pick<StepGroupProps, 'size' | 'orientation'> & {
-  nestingLevel: number;
-  itemsCount: number;
+  itemsInGroupCount: number;
+  totalItemsInParentGroupCount: number;
 };
 
 type StepItemProps = {
   _index?: number;
-  _isFirstItem?: boolean;
-  _isLastItem?: boolean;
+  _nestingLevel?: StepGroupProps['_nestingLevel'];
+  _totalIndex?: number;
 };
 
 export type { StepGroupProps, StepGroupContextType, StepItemProps };

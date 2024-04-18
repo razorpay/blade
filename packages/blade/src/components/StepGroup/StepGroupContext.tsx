@@ -2,8 +2,8 @@ import React from 'react';
 import type { StepGroupContextType } from './types';
 
 const StepGroupContext = React.createContext<StepGroupContextType>({
-  nestingLevel: -1,
-  itemsCount: 0,
+  itemsInGroupCount: 0,
+  totalItemsInParentGroupCount: 0,
 });
 
 const useStepGroup = (): StepGroupContextType => {

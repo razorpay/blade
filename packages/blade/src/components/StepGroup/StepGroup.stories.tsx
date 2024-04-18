@@ -107,8 +107,8 @@ export default {
 export const StepItemStory = (): React.ReactElement => {
   return (
     <StepGroup>
-      {/* <StepItem />
-      <StepItem /> */}
+      <StepItem />
+      <StepItem />
       <StepGroup>
         <StepItem />
         <StepItem />
@@ -118,7 +118,7 @@ export const StepItemStory = (): React.ReactElement => {
       <StepGroup>
         <StepItem />
       </StepGroup>
-      {/* <StepItem /> */}
+      <StepItem />
     </StepGroup>
   );
 };
