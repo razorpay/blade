@@ -1,5 +1,5 @@
 import { useStepGroup } from './StepGroupContext';
-import { getLineSpacings, iconSizeTokens } from './getLineSpacings';
+import { getLineSpacings, iconSizeTokens } from './tokens';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';

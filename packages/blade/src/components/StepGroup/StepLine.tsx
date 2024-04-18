@@ -1,7 +1,7 @@
 import type { StepItemProps } from './types';
 import { StepItemIndicator } from './StepItemLeading';
 import { useStepGroup } from './StepGroupContext';
-import { getLineSpacings } from './getLineSpacings';
+import { getLineSpacings } from './tokens';
 import { Box } from '~components/Box';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
@@ -48,7 +48,7 @@ const StepStraightLineHorizontal = ({
         borderTopWidth: 'thicker',
         borderTopColor: 'surface.border.gray.subtle',
       };
-  // TODO: implement dotted
+
   return <BaseBox height="2px" flex="1" {...borderStyles} {...styledProps} />;
 };
 

@@ -5,7 +5,7 @@ import type { StepLineProps } from './StepLine';
 import { useStepGroup } from './StepGroupContext';
 import type { StepGroupContextType, StepGroupProps, StepItemProps } from './types';
 import { componentIds } from './componentIds';
-import { stepItemHeaderTokens } from './getLineSpacings';
+import { stepItemHeaderTokens } from './tokens';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
