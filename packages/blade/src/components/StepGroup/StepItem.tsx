@@ -6,7 +6,6 @@ import { useStepGroup } from './StepGroupContext';
 import type { StepGroupContextType, StepGroupProps, StepItemProps } from './types';
 import { componentIds } from './componentIds';
 import { Box } from '~components/Box';
-import { CheckIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
@@ -135,8 +134,6 @@ const _StepItem = ({
         shouldShowStartBranch={!isFirstItem}
         shouldShowEndBranch={!isLastItem}
         stepType={stepType}
-        color="neutral"
-        icon={CheckIcon}
         leading={leading}
         stepProgress={stepProgress}
       />

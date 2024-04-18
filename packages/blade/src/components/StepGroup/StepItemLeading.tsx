@@ -1,4 +1,5 @@
 import BaseBox from '~components/Box/BaseBox';
+import type { IconComponent } from '~components/Icons';
 import type { IndicatorProps } from '~components/Indicator';
 import { Indicator } from '~components/Indicator';
 
@@ -26,4 +27,28 @@ const StepItemIndicator = ({ color }: { color: IndicatorProps['color'] }): React
   );
 };
 
-export { StepItemIndicator };
+type IconColorType = {
+  icon: IconComponent;
+  color: 'positive' | 'negative' | 'neutral';
+};
+type StepItemIconProps = IconColorType;
+
+const StepItemIcon = ({ icon: Icon, color }: StepItemIconProps): React.ReactElement => {
+  return (
+    <BaseBox
+      backgroundColor={`feedback.background.${color}.subtle`}
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+      height="24px"
+      width="24px"
+      borderRadius="round"
+      zIndex={1}
+      margin="2px"
+    >
+      <Icon color={`feedback.icon.${color}.intense`} />
+    </BaseBox>
+  );
+};
+
+export { StepItemIndicator, StepItemIcon };
