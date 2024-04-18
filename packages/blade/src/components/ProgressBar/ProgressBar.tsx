@@ -131,7 +131,7 @@ const ProgressBar = ({
     if (progressType === 'meter' && isIndeterminate) {
       throwBladeError({
         moduleName: 'ProgressBar',
-        message: `Cannot set 'isIndeterminate' when 'type' is 'meter'.`,
+        message: `Cannot set 'isIndeterminate' when 'type' or 'variant' is 'meter'.`,
       });
     }
 
