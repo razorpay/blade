@@ -1,53 +1,89 @@
+import { useStepGroup } from './StepGroupContext';
+import { getLineSpacings, iconSizeTokens } from './getLineSpacings';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
 import type { IndicatorProps } from '~components/Indicator';
 import { Indicator } from '~components/Indicator';
+import { makeSize } from '~utils';
 
-const StepItemIndicator = ({ color }: { color: IndicatorProps['color'] }): React.ReactElement => {
+type LeadingBackgroundCircleProps = {
+  color: IndicatorProps['color'];
+  size: BaseBoxProps['width'];
+  margin: BaseBoxProps['margin'];
+  children: BaseBoxProps['children'];
+};
+
+const LeadingBackgroundCircle = ({
+  color,
+  size,
+  margin,
+  children,
+}: LeadingBackgroundCircleProps): React.ReactElement => {
   return (
     <BaseBox
-      backgroundColor={`feedback.background.${color}.subtle`}
+      backgroundColor={
+        color === 'primary'
+          ? 'surface.background.primary.subtle'
+          : `feedback.background.${color}.subtle`
+      }
       display="flex"
       alignItems="center"
       justifyContent="center"
-      height="24px"
-      width="24px"
+      height={size}
+      width={size}
       borderRadius="round"
       zIndex={1}
-      margin="2px"
+      margin={margin}
+    >
+      {children}
+    </BaseBox>
+  );
+};
+
+const StepItemIndicator = ({ color }: { color: IndicatorProps['color'] }): React.ReactElement => {
+  const { size } = useStepGroup();
+  const spacingTokens = getLineSpacings(size);
+
+  return (
+    <LeadingBackgroundCircle
+      color={color}
+      size={makeSize(spacingTokens.markerBackgroundSize)}
+      margin={makeSize(spacingTokens.markerMargin)}
     >
       <Indicator
         position="relative"
         marginLeft="4px"
         color={color}
-        size="large"
+        size={size}
         accessibilityLabel={`${color} indicator`}
       />
-    </BaseBox>
+    </LeadingBackgroundCircle>
   );
 };
 
-type IconColorType = {
+type StepItemIconProps = {
   icon: IconComponent;
-  color: 'positive' | 'negative' | 'neutral';
+  color: IndicatorProps['color'];
 };
-type StepItemIconProps = IconColorType;
 
-const StepItemIcon = ({ icon: Icon, color }: StepItemIconProps): React.ReactElement => {
+const StepItemIcon = ({ icon: Icon, color = 'neutral' }: StepItemIconProps): React.ReactElement => {
+  const { size } = useStepGroup();
+  const spacingTokens = getLineSpacings(size);
+
   return (
-    <BaseBox
-      backgroundColor={`feedback.background.${color}.subtle`}
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      height="24px"
-      width="24px"
-      borderRadius="round"
-      zIndex={1}
-      margin="2px"
+    <LeadingBackgroundCircle
+      color={color}
+      size={makeSize(spacingTokens.markerBackgroundSize)}
+      margin={makeSize(spacingTokens.markerMargin)}
     >
-      <Icon color={`feedback.icon.${color}.intense`} />
-    </BaseBox>
+      <Icon
+        size={iconSizeTokens[size]}
+        color={
+          color === 'primary' ? 'surface.icon.primary.normal' : `feedback.icon.${color}.intense`
+        }
+      />
+    </LeadingBackgroundCircle>
   );
 };
 

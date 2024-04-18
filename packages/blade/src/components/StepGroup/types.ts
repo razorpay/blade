@@ -27,7 +27,7 @@ type StepGroupProps = {
 } & StyledPropsBlade &
   TestID;
 
-type StepGroupContextType = Pick<StepGroupProps, 'size' | 'orientation'> & {
+type StepGroupContextType = Required<Pick<StepGroupProps, 'size' | 'orientation'>> & {
   itemsInGroupCount: number;
   totalItemsInParentGroupCount: number;
 };

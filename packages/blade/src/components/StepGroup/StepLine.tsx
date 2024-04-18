@@ -1,21 +1,19 @@
-import { Box, BoxProps } from '~components/Box';
-import BaseBox, { BaseBoxProps } from '~components/Box/BaseBox';
-import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { IconComponent } from '~components/Icons';
-import { CheckIcon } from '~components/Icons';
-import Svg from '~components/Icons/_Svg';
-import { Indicator, IndicatorProps } from '~components/Indicator';
-import { Text } from '~components/Typography';
-import { makeSize, useTheme } from '~utils';
-import { useStepGroup } from './StepGroupContext';
+import type { StepItemProps } from './types';
 import { StepItemIndicator } from './StepItemLeading';
-import { StepItemProps } from './types';
+import { useStepGroup } from './StepGroupContext';
+import { getLineSpacings } from './getLineSpacings';
+import { Box } from '~components/Box';
+import type { BaseBoxProps } from '~components/Box/BaseBox';
+import BaseBox from '~components/Box/BaseBox';
+import type { StyledPropsBlade } from '~components/Box/styledProps';
+import Svg from '~components/Icons/_Svg';
+import { makeSize, useTheme } from '~utils';
 
 type StepLineSvgProps = {
   isDotted?: boolean;
 } & StyledPropsBlade;
 
-const useDottedLineStyles = (): BaseBoxProps => {
+const useDottedLineStyles = ({ isHorizontal }: { isHorizontal?: boolean } = {}): BaseBoxProps => {
   const { theme } = useTheme();
 
   const svgString = `<svg width="2" height="2" viewBox="0 0 2 2" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,9 +28,9 @@ const useDottedLineStyles = (): BaseBoxProps => {
 
   return {
     backgroundImage: backgroundURL,
-    backgroundPosition: 'right',
-    backgroundSize: '2px 5px',
-    backgroundRepeat: 'repeat-y',
+    backgroundPosition: isHorizontal ? 'top' : 'right',
+    backgroundSize: isHorizontal ? '6px 2px' : '2px 6px',
+    backgroundRepeat: isHorizontal ? 'repeat-x' : 'repeat-y',
   };
 };
 
@@ -43,20 +41,15 @@ const StepStraightLineHorizontal = ({
 }: StepLineSvgProps & {
   width?: number;
 }): React.ReactElement => {
-  // const dottedStyles = useDottedLineStyles();
-
-  // implement dotted
-  return (
-    <BaseBox
-      height="2px"
-      flex="1"
-      // {...dottedStyles}
-      borderTopWidth="thicker"
-      borderTopColor="surface.border.gray.subtle"
-      // borderLeftStyle="dotted"
-      {...styledProps}
-    />
-  );
+  const dottedStyles = useDottedLineStyles({ isHorizontal: true });
+  const borderStyles: BaseBoxProps = isDotted
+    ? dottedStyles
+    : {
+        borderTopWidth: 'thicker',
+        borderTopColor: 'surface.border.gray.subtle',
+      };
+  // TODO: implement dotted
+  return <BaseBox height="2px" flex="1" {...borderStyles} {...styledProps} />;
 };
 
 const StepStraightLineVertical = ({
@@ -90,19 +83,13 @@ const StepTopCurveVertical = ({
 }: StepLineSvgProps): React.ReactElement => {
   const { theme } = useTheme();
   return isDotted ? (
-    <Svg
-      width="22"
-      height="16"
-      viewBox="0 0 22 16"
-      fill={theme.colors.surface.border.gray.subtle}
-      {...styledProps}
-    >
-      <path d="M1.90332 2.3916C2.45557 2.3916 2.90332 1.94434 2.90332 1.3916C2.90332 1.28125 2.88525 1.1748 2.85205 1.0752C2.79639 0.908203 2.69873 0.761719 2.57129 0.647461L2.51514 0.600586C2.48828 0.580078 2.46094 0.560547 2.43213 0.542969C2.35791 0.49707 2.27783 0.459961 2.19287 0.43457C2.10156 0.407227 2.00439 0.391602 1.90332 0.391602C1.35107 0.391602 0.90332 0.838867 0.90332 1.3916C0.90332 1.80957 1.15918 2.16699 1.52295 2.31641C1.64014 2.36523 1.76855 2.3916 1.90332 2.3916Z" />
-      <path d="M1.90332 7.26953C2.45557 7.26953 2.90332 6.82227 2.90332 6.26953C2.90332 5.7168 2.45557 5.26953 1.90332 5.26953C1.35107 5.26953 0.90332 5.7168 0.90332 6.26953C0.90332 6.37695 0.92041 6.48047 0.951172 6.57715C0.997559 6.7207 1.07568 6.85059 1.17725 6.95703C1.35938 7.14941 1.61719 7.26953 1.90332 7.26953Z" />
-      <path d="M4.98145 12.7373C4.79785 12.9512 4.52539 13.0869 4.22119 13.0869C3.66895 13.0869 3.22119 12.6396 3.22119 12.0869C3.22119 11.5342 3.66895 11.0869 4.22119 11.0869C4.77344 11.0869 5.22119 11.5342 5.22119 12.0869C5.22119 12.335 5.13086 12.5625 4.98145 12.7373Z" />
-      <path d="M9.95068 15.3916C10.5029 15.3916 10.9507 14.9443 10.9507 14.3916C10.9507 13.8389 10.5029 13.3916 9.95068 13.3916C9.39844 13.3916 8.95068 13.8389 8.95068 14.3916C8.95068 14.9443 9.39844 15.3916 9.95068 15.3916Z" />
-      <path d="M16.4614 14.3916C16.4614 14.9443 16.0137 15.3916 15.4614 15.3916C15.1821 15.3916 14.9297 15.2773 14.748 15.0928C14.5708 14.9121 14.4614 14.665 14.4614 14.3916C14.4614 13.8389 14.9092 13.3916 15.4614 13.3916C16.0137 13.3916 16.4614 13.8389 16.4614 14.3916Z" />
-      <path d="M20.9033 15.3916C21.4556 15.3916 21.9033 14.9443 21.9033 14.3916C21.9033 13.8389 21.4556 13.3916 20.9033 13.3916C20.3511 13.3916 19.9033 13.8389 19.9033 14.3916C19.9033 14.9443 20.3511 15.3916 20.9033 15.3916Z" />
+    <Svg width="21" height="16" viewBox="0 0 21 16" fill={theme.colors.surface.border.gray.subtle}>
+      <path d="M1 2.3916C1.55225 2.3916 2 1.94434 2 1.3916C2 1.28125 1.98193 1.1748 1.94873 1.0752C1.89307 0.908203 1.79541 0.761719 1.66797 0.647461L1.61182 0.600586C1.58496 0.580078 1.55762 0.560547 1.52881 0.542969C1.45459 0.49707 1.37451 0.459961 1.28955 0.43457C1.19824 0.407227 1.10107 0.391602 1 0.391602C0.447754 0.391602 0 0.838867 0 1.3916C0 1.80957 0.255859 2.16699 0.619629 2.31641C0.736816 2.36523 0.865234 2.3916 1 2.3916Z" />
+      <path d="M1 7.26953C1.55225 7.26953 2 6.82227 2 6.26953C2 5.7168 1.55225 5.26953 1 5.26953C0.447754 5.26953 0 5.7168 0 6.26953C0 6.37695 0.0170898 6.48047 0.0478516 6.57715C0.0942383 6.7207 0.172363 6.85059 0.273926 6.95703C0.456055 7.14941 0.713867 7.26953 1 7.26953Z" />
+      <path d="M4.07812 12.7373C3.89453 12.9512 3.62207 13.0869 3.31787 13.0869C2.76562 13.0869 2.31787 12.6396 2.31787 12.0869C2.31787 11.5342 2.76562 11.0869 3.31787 11.0869C3.87012 11.0869 4.31787 11.5342 4.31787 12.0869C4.31787 12.335 4.22754 12.5625 4.07812 12.7373Z" />
+      <path d="M9.04736 15.3916C9.59961 15.3916 10.0474 14.9443 10.0474 14.3916C10.0474 13.8389 9.59961 13.3916 9.04736 13.3916C8.49512 13.3916 8.04736 13.8389 8.04736 14.3916C8.04736 14.9443 8.49512 15.3916 9.04736 15.3916Z" />
+      <path d="M15.5581 14.3916C15.5581 14.9443 15.1104 15.3916 14.5581 15.3916C14.2788 15.3916 14.0264 15.2773 13.8447 15.0928C13.6675 14.9121 13.5581 14.665 13.5581 14.3916C13.5581 13.8389 14.0059 13.3916 14.5581 13.3916C15.1104 13.3916 15.5581 13.8389 15.5581 14.3916Z" />
+      <path d="M20 15.3916C20.5522 15.3916 21 14.9443 21 14.3916C21 13.8389 20.5522 13.3916 20 13.3916C19.4478 13.3916 19 13.8389 19 14.3916C19 14.9443 19.4478 15.3916 20 15.3916Z" />
     </Svg>
   ) : (
     <Svg width="20" height="14" viewBox="0 0 20 14" fill="none" {...styledProps}>
@@ -154,9 +141,6 @@ type StepLineSubComponentProps = Pick<
   StepLineProps,
   'shouldShowStartBranch' | 'shouldShowEndBranch' | 'leading' | 'stepProgress'
 >;
-// const INDENTATION_WIDTH = 33;
-// const ICON_WIDTH = 24;
-// const ICON_NEGATIVE_MARGIN = 12;
 
 const defaultLeading = <StepItemIndicator color="neutral" />;
 
@@ -169,19 +153,26 @@ const StepLineVertical = ({
 }: StepLineSubComponentProps & {
   isIndented?: boolean;
 }): React.ReactElement => {
+  const { size } = useStepGroup();
+  const spacingTokens = getLineSpacings(size);
+
   return (
     <Box
       position="relative"
-      marginLeft={isIndented ? '33px' : undefined}
+      marginLeft={isIndented ? makeSize(spacingTokens.indentationWidth) : undefined}
       display="flex"
       flexDirection="column"
     >
       <StepStraightLineVertical
-        height={16}
+        height={spacingTokens.itemTopMargin}
+        isDotted={stepProgress === 'none' || stepProgress === 'end'}
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
       />
-      <Box marginLeft="-12px">{leading}</Box>
-      <StepStraightLineVertical visibility={shouldShowEndBranch ? 'visible' : 'hidden'} />
+      <Box marginLeft={makeSize(-spacingTokens.markerLeftAlignment)}>{leading}</Box>
+      <StepStraightLineVertical
+        isDotted={stepProgress === 'none' || stepProgress === 'start'}
+        visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
+      />
     </Box>
   );
 };
@@ -192,19 +183,30 @@ const StepLineStart = ({
   shouldShowStartBranch,
   shouldShowEndBranch,
 }: StepLineSubComponentProps): React.ReactElement => {
+  const { size } = useStepGroup();
+  const spacingTokens = getLineSpacings(size);
+
   return (
     <Box position="relative" display="flex" flexDirection="column">
       <StepStraightLineVertical
-        height={16}
+        height={spacingTokens.itemTopMargin}
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
+        isDotted={stepProgress === 'none' || stepProgress === 'end'}
       />
-      <StepTopCurveVertical visibility={shouldShowStartBranch ? 'visible' : 'hidden'} />
-      <Box marginLeft="22px" marginTop="-12px">
+      <StepTopCurveVertical
+        visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
+        isDotted={stepProgress === 'none' || stepProgress === 'end'}
+      />
+      <Box
+        marginLeft={makeSize(-spacingTokens.markerLeftAlignment + spacingTokens.indentationWidth)}
+        marginTop={makeSize(spacingTokens.markerTopAlignment)}
+      >
         {leading}
       </Box>
       <StepStraightLineVertical
         visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
-        marginLeft="33px"
+        marginLeft={makeSize(spacingTokens.indentationWidth)}
+        isDotted={stepProgress === 'none' || stepProgress === 'start'}
       />
     </Box>
   );
@@ -216,19 +218,30 @@ const StepLineEnd = ({
   shouldShowStartBranch,
   shouldShowEndBranch,
 }: StepLineSubComponentProps): React.ReactElement => {
+  const { size } = useStepGroup();
+  const spacingTokens = getLineSpacings(size);
   return (
     <Box position="relative" display="flex" flexDirection="column">
       <StepStraightLineVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
-        marginLeft="33px"
-        height={16}
+        marginLeft={makeSize(spacingTokens.indentationWidth)}
+        height={spacingTokens.itemTopMargin}
+        isDotted={stepProgress === 'none' || stepProgress === 'end'}
       />
-      <Box marginLeft="21px">{leading}</Box>
+      <Box
+        marginLeft={makeSize(-spacingTokens.markerLeftAlignment + spacingTokens.indentationWidth)}
+      >
+        {leading}
+      </Box>
       <StepStraightLineVertical
-        marginLeft="33px"
+        marginLeft={makeSize(spacingTokens.indentationWidth)}
+        visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
+        isDotted={stepProgress === 'none' || stepProgress === 'start'}
+      />
+      <StepBottomCurveVertical
+        isDotted={stepProgress === 'none' || stepProgress === 'start'}
         visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
       />
-      <StepBottomCurveVertical visibility={shouldShowEndBranch ? 'visible' : 'hidden'} />
     </Box>
   );
 };
@@ -248,9 +261,15 @@ const StepLineHorizontal = ({
       justifyContent="center"
       alignItems="center"
     >
-      <StepStraightLineHorizontal visibility={shouldShowStartBranch ? 'visible' : 'hidden'} />
+      <StepStraightLineHorizontal
+        isDotted={stepProgress === 'none' || stepProgress === 'end'}
+        visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
+      />
       <Box>{leading}</Box>
-      <StepStraightLineHorizontal visibility={shouldShowEndBranch ? 'visible' : 'hidden'} />
+      <StepStraightLineHorizontal
+        isDotted={stepProgress === 'none' || stepProgress === 'start'}
+        visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
+      />
     </Box>
   );
 };
@@ -261,22 +280,36 @@ const StepLineSingleItem = ({
   shouldShowEndBranch,
   shouldShowStartBranch,
 }: StepLineSubComponentProps): React.ReactElement => {
+  const { size } = useStepGroup();
+  const spacingTokens = getLineSpacings(size);
   return (
     <Box position="relative" display="flex" flexDirection="column">
       <StepStraightLineVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
-        height={16}
+        height={spacingTokens.itemTopMargin}
+        isDotted={stepProgress === 'none' || stepProgress === 'end'}
       />
-      <StepTopCurveVertical visibility={shouldShowStartBranch ? 'visible' : 'hidden'} />
-      {/* -12 + 33 */}
-      <Box marginLeft="21px" marginTop="-12px">
+      <StepTopCurveVertical
+        visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
+        isDotted={stepProgress === 'none' || stepProgress === 'end'}
+      />
+      <Box
+        // -12 (markerLeftAlginment) + 33 (indentationWidth)
+        // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+        marginLeft={makeSize(-spacingTokens.markerLeftAlignment + spacingTokens.indentationWidth)}
+        marginTop={makeSize(spacingTokens.markerTopAlignment)}
+      >
         {leading}
       </Box>
       <StepStraightLineVertical
-        marginLeft="33px"
+        marginLeft={makeSize(spacingTokens.indentationWidth)}
         visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
+        isDotted={stepProgress === 'none' || stepProgress === 'start'}
       />
-      <StepBottomCurveVertical visibility={shouldShowEndBranch ? 'visible' : 'hidden'} />
+      <StepBottomCurveVertical
+        visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
+        isDotted={stepProgress === 'none' || stepProgress === 'start'}
+      />
     </Box>
   );
 };
@@ -288,14 +321,13 @@ const StepLine = ({
   leading,
   stepProgress,
 }: StepLineProps): React.ReactElement => {
+  const { orientation } = useStepGroup();
   const commonProps = {
     shouldShowStartBranch,
     shouldShowEndBranch,
     leading,
     stepProgress,
   };
-
-  const { orientation } = useStepGroup();
 
   if (orientation === 'horizontal') {
     return <StepLineHorizontal {...commonProps} />;

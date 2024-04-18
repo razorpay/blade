@@ -5,6 +5,7 @@ import type { StepLineProps } from './StepLine';
 import { useStepGroup } from './StepGroupContext';
 import type { StepGroupContextType, StepGroupProps, StepItemProps } from './types';
 import { componentIds } from './componentIds';
+import { stepItemHeaderTokens } from './getLineSpacings';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -81,7 +82,7 @@ const _StepItem = ({
   title,
   timestamp,
   description,
-  stepProgress = 'full',
+  stepProgress = 'none',
   leading,
   trailing,
   isSelected,
@@ -97,6 +98,7 @@ const _StepItem = ({
     itemsInGroupCount: itemsCount,
     totalItemsInParentGroupCount,
     orientation,
+    size,
   } = useStepGroup();
   const stepType = React.useMemo(
     () => getStepTypeFromIndex({ _index, _nestingLevel, itemsCount }),
@@ -107,18 +109,30 @@ const _StepItem = ({
   const isLastItem = _totalIndex === totalItemsInParentGroupCount - 1;
   const isInteractive = Boolean(href) || Boolean(onClick);
 
-  const titleTimestampDescription = (
-    <>
-      <Text size="large" color="surface.text.gray.subtle" weight="semibold">
-        {title}
-      </Text>
-      <Text marginY="spacing.2" size="medium" color="surface.text.gray.muted" variant="caption">
-        {timestamp}
-      </Text>
-      <Text size="medium" color="surface.text.gray.muted">
-        {description}
-      </Text>
-    </>
+  const stepItemHeaderJSX = (
+    <Box display="flex" flexDirection="row" justifyContent="space-between">
+      <Box>
+        <Text
+          size={stepItemHeaderTokens[size].title}
+          color="surface.text.gray.subtle"
+          weight="semibold"
+        >
+          {title}
+        </Text>
+        <Text
+          size={stepItemHeaderTokens[size].timestamp}
+          marginY="spacing.2"
+          color="surface.text.gray.muted"
+          variant="caption"
+        >
+          {timestamp}
+        </Text>
+        <Text size={stepItemHeaderTokens[size].description} color="surface.text.gray.muted">
+          {description}
+        </Text>
+      </Box>
+      <Box>{trailing}</Box>
+    </Box>
   );
 
   return (
@@ -155,7 +169,7 @@ const _StepItem = ({
               })
             }
           >
-            {titleTimestampDescription}
+            {stepItemHeaderJSX}
           </InteractiveItemBox>
         ) : (
           <Box
@@ -163,7 +177,7 @@ const _StepItem = ({
             paddingX="spacing.4"
             minWidth={orientation === 'vertical' ? makeSize(sizeTokens['314']) : undefined}
           >
-            {titleTimestampDescription}
+            {stepItemHeaderJSX}
           </Box>
         )}
         {children ? (

@@ -19,6 +19,9 @@ import { StepItem, StepGroup, StepItemIndicator } from './';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
+import { Badge } from '~components/Badge';
+import { StepItemIcon } from './StepItemLeading';
+import { BankIcon, CheckIcon } from '~components/Icons';
 
 // const Page = (): React.ReactElement => {
 //   return (
@@ -137,21 +140,25 @@ export const StepGroupStatic = (): React.ReactElement => {
 export const StepItemInteractive = (): React.ReactElement => {
   return (
     <StepGroup>
-      <StepItem title="Header Title" />
+      <StepItem title="Header Title" stepProgress="full" />
       <StepItem
         title="Header Title"
         timestamp="Mon, 15th Oct’23 | 12:00pm"
         description="Header Description"
         isSelected={true}
         href="#"
+        stepProgress="full"
       />
       <StepGroup>
-        <StepItem title="Header Title" description="Header Description" />
+        <StepItem stepProgress="full" title="Header Title" description="Header Description" />
         <StepItem
           href="#"
           title="Header Title"
           timestamp="Mon, 15th Oct’23 | 12:00pm"
           description="Header Description"
+          trailing={<Badge>Badge</Badge>}
+          leading={<StepItemIcon icon={CheckIcon} color="primary" />}
+          stepProgress="start"
         />
         <StepItem title="Header Title" description="Header Description" />
       </StepGroup>
@@ -174,15 +181,17 @@ export const StepItemInteractive = (): React.ReactElement => {
 export const StepGroupHorizontal = (): React.ReactElement => {
   return (
     <StepGroup orientation="horizontal">
-      <StepItem title="Header Title" />
+      <StepItem title="Header Title" stepProgress="full" />
       <StepItem
         title="Header Title"
         timestamp="Mon, 15th Oct’23 | 12:00pm"
         description="Header Description"
+        leading={<StepItemIndicator color="primary" />}
         isSelected={true}
         href="#"
+        stepProgress="start"
       />
-      <StepItem leading={<StepItemIndicator color="positive" />} title="Header Title" />
+      <StepItem title="Header Title" />
     </StepGroup>
   );
 };
