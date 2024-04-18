@@ -105,7 +105,36 @@ export default {
 //   );
 // };
 
-export const StepItemStory = (): React.ReactElement => {
+export const StepGroupStatic = (): React.ReactElement => {
+  return (
+    <StepGroup>
+      <StepItem title="Header Title" />
+      <StepItem
+        title="Header Title"
+        timestamp="Mon, 15th Oct’23 | 12:00pm"
+        description="Header Description"
+      />
+      <StepGroup>
+        <StepItem title="Header Title" description="Header Description" />
+        <StepItem
+          title="Header Title"
+          timestamp="Mon, 15th Oct’23 | 12:00pm"
+          description="Header Description"
+        />
+        <StepItem title="Header Title" description="Header Description" />
+      </StepGroup>
+      <StepItem title="Header Title">
+        <Button>Click Clack</Button>
+      </StepItem>
+      <StepGroup>
+        <StepItem title="Header Title" />
+      </StepGroup>
+      <StepItem title="Header Title" />
+    </StepGroup>
+  );
+};
+
+export const StepItemInteractive = (): React.ReactElement => {
   return (
     <StepGroup>
       <StepItem title="Header Title" />
@@ -137,6 +166,22 @@ export const StepItemStory = (): React.ReactElement => {
       <StepGroup>
         <StepItem title="Header Title" />
       </StepGroup>
+      <StepItem title="Header Title" />
+    </StepGroup>
+  );
+};
+
+export const StepGroupHorizontal = (): React.ReactElement => {
+  return (
+    <StepGroup orientation="horizontal">
+      <StepItem title="Header Title" />
+      <StepItem
+        title="Header Title"
+        timestamp="Mon, 15th Oct’23 | 12:00pm"
+        description="Header Description"
+        isSelected={true}
+        href="#"
+      />
       <StepItem title="Header Title" />
     </StepGroup>
   );

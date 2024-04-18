@@ -10,7 +10,8 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 const useChildrenWithIndexes = ({
   _nestingLevel,
   children,
-}: Pick<StepGroupProps, 'children' | '_nestingLevel'>): {
+  ...parentStepGroupProps
+}: Pick<StepGroupProps, 'children' | '_nestingLevel' | 'size' | 'orientation'>): {
   childrenWithIndex: React.ReactNode;
   totalItemsInParentGroupCount: number;
 } => {
@@ -35,6 +36,7 @@ const useChildrenWithIndexes = ({
 
       if (componentId === componentIds.StepGroup && nestingLevelOfGroup < 3) {
         return React.cloneElement(child, {
+          ...parentStepGroupProps,
           children: traverseGroupAndAddIndex(child.props.children, nestingLevelOfGroup + 1),
           _nestingLevel: nestingLevelOfGroup + 1,
         });
@@ -67,6 +69,8 @@ const _StepGroup = ({
   const itemsInGroupCount = React.Children.count(children);
   const { childrenWithIndex, totalItemsInParentGroupCount } = useChildrenWithIndexes({
     children,
+    size,
+    orientation,
     _nestingLevel,
   });
   const contextValue = React.useMemo<StepGroupContextType>(

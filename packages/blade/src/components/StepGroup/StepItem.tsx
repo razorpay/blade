@@ -5,14 +5,16 @@ import type { StepLineProps } from './StepLine';
 import { useStepGroup } from './StepGroupContext';
 import type { StepGroupContextType, StepGroupProps, StepItemProps } from './types';
 import { componentIds } from './componentIds';
-import { Box } from '~components/Box';
+import { Box, BoxProps } from '~components/Box';
 import { CheckIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import BaseBox from '~components/Box/BaseBox';
+import BaseBox, { SpacingValueType } from '~components/Box/BaseBox';
 import { makeSize, makeSpace } from '~utils';
 import { size as sizeTokens } from '~tokens/global';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import getIn from '~utils/lodashButBetter/get';
+import type { DotNotationSpacingStringToken } from '~utils/types';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
@@ -20,20 +22,26 @@ type GetStepTypeFromIndexProps = {
   itemsCount: StepGroupContextType['itemsInGroupCount'];
 };
 
-const InteractiveItemBox = styled.button<{ isSelected: StepItemProps['isSelected'] }>((props) => {
-  const spacing = props.theme.spacing;
+const InteractiveItemBox = styled.button<{
+  isSelected: StepItemProps['isSelected'];
+  paddingY: DotNotationSpacingStringToken;
+  paddingX: DotNotationSpacingStringToken;
+  minWidth?: `${string}px`;
+}>((props) => {
   return {
-    padding: `${makeSpace(spacing[3])} ${makeSpace(spacing[4])}`,
+    padding: `${makeSpace(getIn(props.theme, props.paddingY))} ${makeSpace(
+      getIn(props.theme, props.paddingX),
+    )}`,
     cursor: 'pointer',
     display: 'inline-block',
     textDecoration: 'none',
     border: 'none',
-    textAlign: 'left',
+    textAlign: 'inherit',
     backgroundColor: props.isSelected
       ? props.theme.colors.interactive.background.primary.faded
       : props.theme.colors.transparent,
     borderRadius: props.theme.border.radius.medium,
-    minWidth: makeSize(sizeTokens['314']),
+    minWidth: props.minWidth,
     ':hover': {
       backgroundColor: props.isSelected
         ? props.theme.colors.interactive.background.primary.fadedHighlighted
@@ -85,7 +93,11 @@ const _StepItem = ({
   _totalIndex = 0,
   _nestingLevel = 0,
 }: StepItemProps): React.ReactElement => {
-  const { itemsInGroupCount: itemsCount, totalItemsInParentGroupCount } = useStepGroup();
+  const {
+    itemsInGroupCount: itemsCount,
+    totalItemsInParentGroupCount,
+    orientation,
+  } = useStepGroup();
   const stepType = React.useMemo(
     () => getStepTypeFromIndex({ _index, _nestingLevel, itemsCount }),
     [_index, _nestingLevel, itemsCount],
@@ -112,9 +124,10 @@ const _StepItem = ({
   return (
     <BaseBox
       display="flex"
-      flexDirection="row"
+      flexDirection={orientation === 'vertical' ? 'row' : 'column'}
       gap="spacing.4"
       className={`step-item step-index-${_index} step-nesting-level-${_nestingLevel}`}
+      textAlign={orientation === 'vertical' ? 'left' : 'center'}
     >
       <StepLine
         shouldShowStartBranch={!isFirstItem}
@@ -126,6 +139,9 @@ const _StepItem = ({
       <Box marginTop="spacing.3">
         {isInteractive ? (
           <InteractiveItemBox
+            paddingY="spacing.3"
+            paddingX="spacing.4"
+            minWidth={orientation === 'vertical' ? makeSize(sizeTokens['314']) : undefined}
             as={href ? 'a' : 'button'}
             href={href}
             target={target}
@@ -141,7 +157,11 @@ const _StepItem = ({
             {titleTimestampDescription}
           </InteractiveItemBox>
         ) : (
-          <Box paddingY="spacing.3" paddingX="spacing.4">
+          <Box
+            paddingY="spacing.3"
+            paddingX="spacing.4"
+            minWidth={orientation === 'vertical' ? makeSize(sizeTokens['314']) : undefined}
+          >
             {titleTimestampDescription}
           </Box>
         )}
