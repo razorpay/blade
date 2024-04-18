@@ -71,9 +71,8 @@ type AlertProps = {
   onDismiss?: () => void;
 
   /**
-   * Can be used to render an icon
+   * Can be used to render custom icon
    */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon?: IconComponent;
 
   /**
