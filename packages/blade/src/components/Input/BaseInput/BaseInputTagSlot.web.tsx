@@ -10,7 +10,7 @@ import { useIsMobile } from '~utils/useIsMobile';
 import { MetaConstants } from '~utils/metaAttribute';
 import { size as sizeToken } from '~tokens/global';
 
-const MINUMUM_INPUT_SPACE = 30;
+const MINUMUM_INPUT_SPACE = 60;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
 const TAG_MAX_WIDTH: number = sizeToken['140'];
 
@@ -121,6 +121,8 @@ const BaseInputTagSlot = ({
   visibleTagsCountRef,
   labelPrefix,
   isDisabled,
+  numberOfLines,
+  isTextArea,
   size,
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
@@ -148,6 +150,13 @@ const BaseInputTagSlot = ({
       slotRef.current?.scrollTo?.({
         top: 0,
         left: 0,
+        behavior: 'smooth',
+      });
+    } else if (maxTagRows === 'single') {
+      // when its single line input and showAllTags is true, we scroll till item on focus
+      slotRef.current?.scrollTo?.({
+        top: 0,
+        left: maxTagRows === 'single' ? slotRef.current.scrollWidth : 0,
         behavior: 'smooth',
       });
     }
@@ -189,6 +198,12 @@ const BaseInputTagSlot = ({
       overflowX="auto"
       overflowY={showAllTags || maxTagRows === 'multiple' ? 'auto' : 'hidden'}
       minHeight={makeSize(baseInputHeight[size])}
+      maxHeight={
+        // In TextArea with tagged input, we explicitly define maxHeight based on maxHeight so that tags dont overflow out of textarea
+        isDropdownTrigger && isTextArea
+          ? makeSize(baseInputHeight[size] * (numberOfLines ?? 1))
+          : undefined
+      }
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
       }}

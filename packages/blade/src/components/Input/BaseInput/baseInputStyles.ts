@@ -107,7 +107,7 @@ export const getInputBackgroundAndBorderStyles = ({
     width: '100%',
     alignItems: isTextArea ? 'flex-start' : undefined,
     position: 'relative',
-    height: isDropdownTrigger ? 'auto' : undefined,
+    height: isDropdownTrigger && !isTextArea ? 'auto' : undefined,
     border: 'none',
     ...getBaseInputBorderStyles({ theme, borderColor, borderWidth, isFocused }),
   };
@@ -227,7 +227,7 @@ export const getBaseInputStyles = ({
     textAlign,
     width: '100%',
     height: isTextArea || isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
-    minHeight: isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
+    minHeight: isTextArea || isDropdownWithTags ? undefined : makeSpace(baseInputHeight[size]),
     ...(isReactNative ? {} : { resize: 'none' }),
   };
 };

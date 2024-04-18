@@ -71,6 +71,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -169,6 +170,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 1`
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -267,6 +269,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 2`
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -365,6 +368,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 1`] =
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -463,6 +467,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 2`] =
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -561,6 +566,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -659,6 +665,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -757,6 +764,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -855,6 +863,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -953,6 +962,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 1`] =
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1051,6 +1061,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 2`] =
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1149,6 +1160,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1247,6 +1259,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 2`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1345,6 +1358,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1443,6 +1457,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1541,6 +1556,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1639,6 +1655,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 1`]
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1737,6 +1754,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 2`]
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1835,6 +1853,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1933,6 +1952,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2031,6 +2051,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2129,6 +2150,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2227,6 +2249,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2325,6 +2348,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2423,6 +2447,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2521,6 +2546,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2619,6 +2645,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2717,6 +2744,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>

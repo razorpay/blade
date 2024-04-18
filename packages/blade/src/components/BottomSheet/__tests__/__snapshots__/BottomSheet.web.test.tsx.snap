@@ -247,6 +247,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c25.c25.c25.c25.c25 {
@@ -269,6 +270,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c7.c7.c7.c7.c7 {
@@ -1064,6 +1066,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c19.c19.c19.c19.c19 {
@@ -1138,6 +1141,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c1.c1.c1.c1.c1 {

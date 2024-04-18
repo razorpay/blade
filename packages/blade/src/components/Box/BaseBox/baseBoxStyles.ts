@@ -221,6 +221,7 @@ const getAllProps = (
       breakpoint,
     ),
     borderStyle: hasBorder ? 'solid' : undefined,
+    cursor: getResponsiveValue(props.cursor, breakpoint),
     // Since we only allow 'solid', we can use the same value for all borders if hasBorder is true
     // If hasBorder is false, we need to check each border individually
     ...(!hasBorder && {

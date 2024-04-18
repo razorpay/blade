@@ -113,6 +113,7 @@ exports[`<Radio /> should render radio with label 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5 {
@@ -424,6 +425,7 @@ exports[`<Radio /> should set disabled state with isDisabled 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c5.c5.c5.c5.c5 {

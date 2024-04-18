@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Counter /> should limit value with max prop 1`] = `"<div id="root"><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO fhBkjL" data-blade-component="text">10+</p></div></div></div></div>"`;
+exports[`<Counter /> should limit value with max prop 1`] = `"<div id="root"><div data-blade-component="counter" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledCounterweb__StyledCounter-sc-1itt9w6-0 cTQuSp dbfGbJ"><div data-blade-component="base-box" class="BaseBox-bmPWx iUxudu"><p class="StyledBaseText-dVBfTO dTGEcz" data-blade-component="text">10+</p></div></div></div></div>"`;
