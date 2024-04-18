@@ -14,18 +14,18 @@
     "loading": 0.57197265625
   },
   {
-    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
-    "passed": true,
-    "size": 34561,
-    "sizeLimit": 2000000,
-    "loading": 0.67501953125
-  },
-  {
     "name": "Alert",
     "passed": true,
     "size": 33535,
     "sizeLimit": 2000000,
     "loading": 0.65498046875
+  },
+  {
+    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
+    "passed": true,
+    "size": 34561,
+    "sizeLimit": 2000000,
+    "loading": 0.67501953125
   },
   {
     "name": "Amount",
@@ -142,9 +142,9 @@
   {
     "name": "FileUpload",
     "passed": true,
-    "size": 35470,
+    "size": 36555,
     "sizeLimit": 2000000,
-    "loading": 0.6927734375
+    "loading": 0.71396484375
   },
   {
     "name": "Indicator",
@@ -177,9 +177,9 @@
   {
     "name": "ProgressBar",
     "passed": true,
-    "size": 23695,
+    "size": 25088,
     "sizeLimit": 2000000,
-    "loading": 0.46279296875
+    "loading": 0.49
   },
   {
     "name": "Radio",
