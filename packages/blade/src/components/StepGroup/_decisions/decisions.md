@@ -187,9 +187,7 @@ All follow a similar compound API.
 
   Currently I have proposed `leading` prop where we can add Icon or indicator. Although in horizontal orientation, its not exactly "leading". It comes on top. Its also not very equivalent to leading we have in other components.
 
-  Alternatives
-
-  - `marker={<StepItemIndicator color="positive" />}`
+  - Alternative: `marker={<StepItemIndicator color="positive" />}`
   - **Ans:** We decided to go with `marker` since `leading` represents something that is leading the title. Marker is more intuitive as this is what it is.
 
 - ### onClick and isSelected on StepItem vs selected and onItemClick on StepGroup
