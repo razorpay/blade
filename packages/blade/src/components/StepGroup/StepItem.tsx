@@ -41,7 +41,7 @@ const InteractiveItemHeaderBox = styled.button<InteractiveItemHeaderProps>((prop
       ? props.theme.colors.interactive.background.primary.faded
       : props.theme.colors.transparent,
     borderRadius: props.theme.border.radius.medium,
-    minWidth: props.minWidth,
+    width: '100%',
     transition: `background-color ${props.theme.motion.duration.xquick} ${props.theme.motion.easing.standard.effective}`,
     ':hover': {
       backgroundColor: props.isSelected
@@ -145,9 +145,6 @@ const _StepItem = ({
   const stepItemHeaderPaddings: Omit<InteractiveItemHeaderProps, 'isSelected'> = {
     paddingY: 'spacing.3',
     paddingX: 'spacing.4',
-    minWidth: `min(${makeSize(
-      orientation === 'horizontal' ? sizeTokens['176'] : sizeTokens['314'],
-    )}, 100%)`,
   } as const;
 
   return (
@@ -158,6 +155,13 @@ const _StepItem = ({
       className={`step-item step-index-${_index} step-nesting-level-${_nestingLevel}`}
       textAlign={orientation === 'vertical' ? 'left' : 'center'}
       alignItems={orientation === 'vertical' ? undefined : 'center'}
+      // minWidth={`min(${makeSize(
+      //   orientation === 'horizontal' ? sizeTokens['176'] : sizeTokens['314'],
+      // )}, 100%)`}
+      minWidth={
+        orientation === 'horizontal' ? `min(${makeSize(sizeTokens['176'])}, 100%)` : undefined
+      }
+      width={orientation === 'vertical' ? '100%' : undefined}
     >
       <StepLine
         shouldShowStartBranch={!isFirstItem}
@@ -191,6 +195,28 @@ const _StepItem = ({
   );
 };
 
+/**
+ * ## StepItem
+ *
+ * Component meant to be used inside the StepGroup parent component
+ *
+ * ### Usage
+ *
+ * ```jsx
+ * <StepGroup orientation="vertical" size="medium">
+ *   <StepItem
+ *      title="Personal Details"
+ *      timestamp="Thu 15th Oct'23 | 12:00pm"
+ *      description="Fill your personal details here"
+ *      marker={<StepItemIndicator color="negative" />}
+ *    />
+ * </StepGroup>
+ * ```
+ *
+ * ---
+ *
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-stepgroup--docs StepGroup Documentation}
+ */
 const StepItem = assignWithoutSideEffects(_StepItem, {
   componentId: componentIds.StepItem,
   displayName: componentIds.StepItem,

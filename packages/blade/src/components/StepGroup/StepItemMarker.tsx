@@ -33,7 +33,6 @@ const MarkerBackgroundCircle = ({
       height={size}
       width={size}
       borderRadius="round"
-      zIndex={1}
       margin={margin}
     >
       {children}

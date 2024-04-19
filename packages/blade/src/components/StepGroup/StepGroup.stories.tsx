@@ -103,7 +103,14 @@ export default {
   title: 'Components/StepGroup',
   component: StepGroup,
   tags: ['autodocs'],
-  argTypes: getStyledPropsArgTypes(),
+  argTypes: {
+    ...getStyledPropsArgTypes(),
+    _nestingLevel: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   // eslint-disable-next-line babel/new-cap
   decorators: [StoryRouter(undefined, { initialEntries: ['/onboarding/introduction'] })] as unknown,
   parameters: {
@@ -412,7 +419,7 @@ const ReactRouterExample = (args: StepGroupProps): React.ReactElement => {
         left="spacing.0"
         top="spacing.0"
         height="100%"
-        minWidth="300px"
+        minWidth="400px"
         elevation="midRaised"
       >
         <StepGroup {...args}>
@@ -454,5 +461,4 @@ const ProductUseCase3Template: StoryFn<(props: StepGroupProps) => React.ReactEle
   return <ReactRouterExample {...props} />;
 };
 
-export const ProductUseCase3 = ProductUseCase3Template.bind({});
-ProductUseCase3.storyName = 'Product Usecase: React Router';
+export const StepGroupWithReactRouter = ProductUseCase3Template.bind({});

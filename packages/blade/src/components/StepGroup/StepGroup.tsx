@@ -98,6 +98,24 @@ const _StepGroup = ({
   );
 };
 
+/**
+ * ## StepGroup
+ *
+ * Step Group visualises sequential processes with a consistent structure. It can be interactive, guiding users through steps, or function as a timeline for reference.
+ *
+ * ### Usage
+ *
+ * ```jsx
+ * <StepGroup orientation="vertical" size="medium">
+ *   <StepItem title="Personal Details" />
+ *   <StepItem title="Business Details" />
+ * </StepGroup>
+ * ```
+ *
+ * ---
+ *
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-stepgroup--docs StepGroup Documentation}
+ */
 const StepGroup = assignWithoutSideEffects(_StepGroup, {
   componentId: componentIds.StepGroup,
   displayName: componentIds.StepGroup,
