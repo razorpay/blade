@@ -155,9 +155,6 @@ const _StepItem = ({
       className={`step-item step-index-${_index} step-nesting-level-${_nestingLevel}`}
       textAlign={orientation === 'vertical' ? 'left' : 'center'}
       alignItems={orientation === 'vertical' ? undefined : 'center'}
-      // minWidth={`min(${makeSize(
-      //   orientation === 'horizontal' ? sizeTokens['176'] : sizeTokens['314'],
-      // )}, 100%)`}
       minWidth={
         orientation === 'horizontal' ? `min(${makeSize(sizeTokens['176'])}, 100%)` : undefined
       }

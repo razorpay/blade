@@ -353,4 +353,4 @@ const StepLine = ({
 };
 
 export type { StepLineProps };
-export { StepLine, StepItemIndicator };
+export { StepLine };
