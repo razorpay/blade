@@ -1,18 +1,23 @@
 import type { StepGroupProps } from './types';
 import { size as sizeTokens } from '~tokens/global';
 
-const getLineSpacings = (
+const markerLineDotWidth = sizeTokens['2'];
+const markerLineDotSpacing = sizeTokens['4'];
+const markerLineWidth = sizeTokens['2'];
+
+/**
+ * Returns the tokens that are related to marker line alignment and spacing
+ */
+const getMarkerLineSpacings = (
   size: NonNullable<StepGroupProps['size']>,
 ): {
   markerLeftAlignment: number;
   markerTopAlignment: number;
-  markerLineWidth: number;
   markerBackgroundSize: number;
   markerMargin: number;
   indentationWidth: number;
   itemTopMargin: number;
 } => {
-  const markerLineWidth = sizeTokens['2'];
   const indentationWidth = sizeTokens['33'];
   const itemTopMargin = sizeTokens['16'];
 
@@ -43,7 +48,6 @@ const getLineSpacings = (
     ...LINE_SPACINGS[size],
     markerLeftAlignment,
     markerTopAlignment,
-    markerLineWidth,
     indentationWidth,
     itemTopMargin,
   };
@@ -72,4 +76,12 @@ const itemLineGap = {
   large: 'spacing.3',
 } as const;
 
-export { getLineSpacings, stepItemHeaderTokens, iconSizeTokens, itemLineGap };
+export {
+  getMarkerLineSpacings,
+  stepItemHeaderTokens,
+  iconSizeTokens,
+  itemLineGap,
+  markerLineDotWidth,
+  markerLineDotSpacing,
+  markerLineWidth,
+};
