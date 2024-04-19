@@ -1,5 +1,5 @@
 import { useStepGroup } from './StepGroupContext';
-import { getLineSpacings, iconSizeTokens } from './tokens';
+import { getMarkerLineSpacings, iconSizeTokens } from './tokens';
 import type { BaseBoxProps } from '~components/Box/BaseBox';
 import BaseBox from '~components/Box/BaseBox';
 import type { IconComponent } from '~components/Icons';
@@ -42,7 +42,7 @@ const MarkerBackgroundCircle = ({
 
 const StepItemIndicator = ({ color }: { color: IndicatorProps['color'] }): React.ReactElement => {
   const { size } = useStepGroup();
-  const spacingTokens = getLineSpacings(size);
+  const spacingTokens = getMarkerLineSpacings(size);
 
   return (
     <MarkerBackgroundCircle
@@ -68,7 +68,7 @@ type StepItemIconProps = {
 
 const StepItemIcon = ({ icon: Icon, color = 'neutral' }: StepItemIconProps): React.ReactElement => {
   const { size } = useStepGroup();
-  const spacingTokens = getLineSpacings(size);
+  const spacingTokens = getMarkerLineSpacings(size);
 
   return (
     <MarkerBackgroundCircle

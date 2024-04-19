@@ -108,12 +108,15 @@ const _StepItem = ({
   const isFirstItem = _totalIndex === 0;
   const isLastItem = _totalIndex === totalItemsInParentGroupCount - 1;
   const isInteractive = Boolean(href) || Boolean(onClick);
+  const isVertical = orientation === 'vertical';
 
-  if (trailing && orientation === 'horizontal') {
-    throwBladeError({
-      message: 'trailing is not allowed in horizontal StepGroup',
-      moduleName: 'StepItem',
-    });
+  if (__DEV__) {
+    if (trailing && orientation === 'horizontal') {
+      throwBladeError({
+        message: 'trailing is not allowed in horizontal StepGroup',
+        moduleName: 'StepItem',
+      });
+    }
   }
 
   const stepItemHeaderJSX = (
@@ -150,15 +153,13 @@ const _StepItem = ({
   return (
     <BaseBox
       display="flex"
-      flexDirection={orientation === 'vertical' ? 'row' : 'column'}
+      flexDirection={isVertical ? 'row' : 'column'}
       gap={itemLineGap[size]}
       className={`step-item step-index-${_index} step-nesting-level-${_nestingLevel}`}
-      textAlign={orientation === 'vertical' ? 'left' : 'center'}
-      alignItems={orientation === 'vertical' ? undefined : 'center'}
-      minWidth={
-        orientation === 'horizontal' ? `min(${makeSize(sizeTokens['176'])}, 100%)` : undefined
-      }
-      width={orientation === 'vertical' ? '100%' : undefined}
+      textAlign={isVertical ? 'left' : 'center'}
+      alignItems={isVertical ? undefined : 'center'}
+      minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['176'])}, 100%)`}
+      width={isVertical ? '100%' : undefined}
     >
       <StepLine
         shouldShowStartBranch={!isFirstItem}
