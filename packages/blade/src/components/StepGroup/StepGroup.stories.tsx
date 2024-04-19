@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
+import React from 'react';
 import { Title } from '@storybook/addon-docs';
 import type { StoryFn, Meta } from '@storybook/react';
-import React from 'react';
+import StoryRouter from 'storybook-react-router';
+import { Route, useHistory, useLocation, matchPath } from 'react-router-dom';
 import type { StepGroupProps, StepItemProps } from './types';
 import { StepItem, StepGroup, StepItemIndicator, StepItemIcon } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
@@ -20,6 +22,8 @@ import {
   UserIcon,
 } from '~components/Icons';
 import { Alert } from '~components/Alert';
+import { isReactNative } from '~utils';
+import { Text } from '~components/Typography';
 
 const Page = (): React.ReactElement => {
   return (
@@ -55,6 +59,8 @@ export default {
   component: StepGroup,
   tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
+  // eslint-disable-next-line babel/new-cap
+  decorators: [StoryRouter(undefined, { initialEntries: ['/onboarding/introduction'] })] as unknown,
   parameters: {
     docs: {
       page: Page,
@@ -318,3 +324,90 @@ export const StepGroupWithIcons = (args: StepGroupProps) => {
     </StepGroup>
   );
 };
+
+const OnboardingRoute = ({
+  match,
+}: {
+  match: {
+    params: {
+      id: string;
+    };
+  };
+}) => (
+  <Text weight="semibold" marginY="spacing.4">
+    React Router param: {match.params.id}
+  </Text>
+);
+
+const ReactRouterExample = (args: StepGroupProps): React.ReactElement => {
+  const history = useHistory();
+  const navigateTo = (e: React.MouseEvent, url: string) => {
+    e.preventDefault();
+    history.push(url);
+  };
+
+  const location = useLocation();
+
+  const getPathnameFromTitle = (title: string): string => {
+    return `/onboarding/${title.toLowerCase().replace(/ /g, '-')}`;
+  };
+
+  const getSelectedItemIndex = (pathname: string) => {
+    return stepsSampleData.findIndex((stepInfo) =>
+      matchPath(pathname, getPathnameFromTitle(stepInfo.title)),
+    );
+  };
+
+  return (
+    <Box display="flex" flexDirection="row">
+      <Box
+        backgroundColor="surface.background.gray.intense"
+        padding="spacing.7"
+        position="fixed"
+        left="spacing.0"
+        top="spacing.0"
+        height="100%"
+        minWidth="300px"
+        elevation="midRaised"
+      >
+        <StepGroup {...args}>
+          {stepsSampleData.map((stepInfo, index) => {
+            const stepPathname = getPathnameFromTitle(stepInfo.title);
+            const selectedIndex = getSelectedItemIndex(location.pathname);
+
+            const isBeforeSelectedItem = index < selectedIndex;
+            const isSelectedItem = index === selectedIndex;
+
+            return (
+              <StepItem
+                key={`${stepInfo.title}-${index}`}
+                isSelected={isSelectedItem}
+                marker={
+                  <StepItemIndicator
+                    color={
+                      isSelectedItem ? 'primary' : isBeforeSelectedItem ? 'positive' : 'neutral'
+                    }
+                  />
+                }
+                onClick={(e) => navigateTo(e, stepPathname)}
+                stepProgress={isSelectedItem ? 'start' : isBeforeSelectedItem ? 'full' : 'none'}
+                {...stepInfo}
+              />
+            );
+          })}
+        </StepGroup>
+      </Box>
+
+      <Box marginLeft="300px" paddingX="spacing.6" paddingBottom="spacing.6">
+        <Route path="/onboarding/:id" component={OnboardingRoute} />
+      </Box>
+    </Box>
+  );
+};
+
+const ProductUseCase3Template: StoryFn<(props: StepGroupProps) => React.ReactElement> = (props) => {
+  return <ReactRouterExample {...props} />;
+};
+
+export const ProductUseCase3 = ProductUseCase3Template.bind({});
+ProductUseCase3.storyName = 'Product Usecase: React Router';

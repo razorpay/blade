@@ -174,13 +174,7 @@ const _StepItem = ({
             href={href}
             target={target}
             isSelected={isSelected}
-            onClick={() =>
-              onClick?.({
-                itemIndex: _index,
-                nestingLevel: _nestingLevel,
-                groupItemIndex: _totalIndex,
-              })
-            }
+            onClick={onClick}
           >
             {stepItemHeaderJSX}
           </InteractiveItemHeaderBox>

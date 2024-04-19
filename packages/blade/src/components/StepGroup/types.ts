@@ -52,15 +52,7 @@ type StepItemProps = {
   isSelected?: boolean;
   href?: LinkProps['href'];
   target?: LinkProps['target'];
-  onClick?: ({
-    itemIndex,
-    nestingLevel,
-    groupItemIndex,
-  }: {
-    itemIndex: number;
-    nestingLevel: number;
-    groupItemIndex: number;
-  }) => void;
+  onClick?: (event: React.MouseEvent) => void;
   children?: React.ReactNode;
 };
 
