@@ -22,7 +22,6 @@ import {
   UserIcon,
 } from '~components/Icons';
 import { Alert } from '~components/Alert';
-import { isReactNative } from '~utils';
 import { Text } from '~components/Typography';
 
 const Page = (): React.ReactElement => {
@@ -35,15 +34,61 @@ const Page = (): React.ReactElement => {
       <Title>Usage</Title>
       <Sandbox>
         {`
-        import { StepGroup, StepItem } from '@razorpay/blade/components';
+        import { 
+          StepGroup, 
+          StepItem, 
+          StepItemIcon,
+          Badge,
+          FileIcon, 
+          UserIcon,
+          BriefcaseIcon,
+          ClockIcon,
+          HeartIcon,
+        } from '@razorpay/blade/components';
 
         function App(): React.ReactElement {
           return (
             // Check console
-            <Switch
-              onChange={(e) => console.log(e.isChecked)}
-              accessibilityLabel="Toggle DarkMode"
-            />
+            <StepGroup orientation="vertical" size="medium">
+              <StepItem
+                title="Introduction"
+                timestamp="Thu, 11th Oct'23 | 12:00pm"
+                stepProgress="full"
+                marker={<StepItemIcon icon={FileIcon} color="positive" />}
+              />
+              <StepItem
+                title="Personal Details"
+                timestamp="Mon, 15th Oct'23 | 12:00pm"
+                description="Your Personal Details for onboarding"
+                stepProgress="full"
+                marker={<StepItemIcon icon={UserIcon} color="positive" />}
+              />
+              <StepItem
+                title="Business Details"
+                trailing={
+                  <Badge color="positive" size="medium">
+                    Received by our team
+                  </Badge>
+                }
+                stepProgress="full"
+                marker={<StepItemIcon icon={BriefcaseIcon} color="positive" />}
+              />
+              <StepItem
+                title="Needs Response"
+                timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
+                stepProgress="start"
+                marker={<StepItemIcon icon={ClockIcon} color="notice" />}
+              />
+              <StepItem
+                title="Complete Onboarding"
+                marker={<StepItemIcon icon={HeartIcon} color="neutral" />}
+                trailing={
+                  <Badge color="neutral" size="medium">
+                    Pending
+                  </Badge>
+                }
+              />
+            </StepGroup>
           );
         }
 
