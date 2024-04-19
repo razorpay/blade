@@ -1,3 +1,4 @@
+import { encode } from 'universal-base64';
 import type { StepItemProps } from './types';
 import { StepItemIndicator } from './StepItemMarker';
 import { useStepGroup } from './StepGroupContext';
@@ -24,7 +25,7 @@ const useDottedLineStyles = ({ isHorizontal }: { isHorizontal?: boolean } = {}):
   </svg>
   `;
 
-  const backgroundURL = `url(data:image/svg+xml;base64,${window.btoa(svgString)})`;
+  const backgroundURL = `url(data:image/svg+xml;base64,${encode(svgString)})`;
 
   return {
     backgroundImage: backgroundURL,
