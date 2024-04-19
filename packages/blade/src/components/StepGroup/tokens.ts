@@ -67,4 +67,9 @@ const iconSizeTokens = {
   large: 'medium',
 } as const;
 
-export { getLineSpacings, stepItemHeaderTokens, iconSizeTokens };
+const itemLineGap = {
+  medium: 'spacing.2',
+  large: 'spacing.3',
+} as const;
+
+export { getLineSpacings, stepItemHeaderTokens, iconSizeTokens, itemLineGap };

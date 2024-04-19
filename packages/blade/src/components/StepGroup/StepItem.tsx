@@ -10,7 +10,7 @@ import type {
   StepItemProps,
 } from './types';
 import { componentIds } from './componentIds';
-import { stepItemHeaderTokens } from './tokens';
+import { itemLineGap, stepItemHeaderTokens } from './tokens';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -19,6 +19,7 @@ import { makeSize, makeSpace } from '~utils';
 import { size as sizeTokens } from '~tokens/global';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
+import { throwBladeError } from '~utils/logger';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
@@ -108,6 +109,13 @@ const _StepItem = ({
   const isLastItem = _totalIndex === totalItemsInParentGroupCount - 1;
   const isInteractive = Boolean(href) || Boolean(onClick);
 
+  if (trailing && orientation === 'horizontal') {
+    throwBladeError({
+      message: 'trailing is not allowed in horizontal StepGroup',
+      moduleName: 'StepItem',
+    });
+  }
+
   const stepItemHeaderJSX = (
     <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.4">
       <Box>
@@ -137,14 +145,16 @@ const _StepItem = ({
   const stepItemHeaderPaddings: Omit<InteractiveItemHeaderProps, 'isSelected'> = {
     paddingY: 'spacing.3',
     paddingX: 'spacing.4',
-    minWidth: orientation === 'vertical' ? `min(${makeSize(sizeTokens['314'])}, 100%)` : undefined,
+    minWidth: `min(${makeSize(
+      orientation === 'horizontal' ? sizeTokens['176'] : sizeTokens['314'],
+    )}, 100%)`,
   } as const;
 
   return (
     <BaseBox
       display="flex"
       flexDirection={orientation === 'vertical' ? 'row' : 'column'}
-      gap="spacing.4"
+      gap={itemLineGap[size]}
       className={`step-item step-index-${_index} step-nesting-level-${_nestingLevel}`}
       textAlign={orientation === 'vertical' ? 'left' : 'center'}
       alignItems={orientation === 'vertical' ? undefined : 'center'}

@@ -3,25 +3,30 @@
 import { Title } from '@storybook/addon-docs';
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import { StepItem, StepGroup, StepItemIndicator } from './';
+import type { StepGroupProps, StepItemProps } from './types';
+import { StepItem, StepGroup, StepItemIndicator, StepItemIcon } from './';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
-import { StepItemIcon } from './StepItemLeading';
-import { BankIcon, CheckIcon } from '~components/Icons';
-import { StepGroupProps, StepItemProps } from './types';
-import { Text } from '~components/Typography';
+import {
+  BriefcaseIcon,
+  ClockIcon,
+  FileIcon,
+  HeartIcon,
+  RazorpayIcon,
+  UserIcon,
+} from '~components/Icons';
 import { Alert } from '~components/Alert';
 
 const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
-      componentName="Switch"
-      componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
-      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85736&t=k8yrOO74u7fLzkIE-1&scaling=min-zoom&page-id=30100%3A565839&mode=design"
+      componentName="StepGroup"
+      componentDescription="Step Group visualises sequential processes with a consistent structure. It can be interactive, guiding users through steps, or function as a timeline for reference."
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=85892-80483&scaling=min-zoom&page-id=83575%3A87543&mode=design&t=QJnz2culisyKAoNz-1"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -48,17 +53,7 @@ const Page = (): React.ReactElement => {
 export default {
   title: 'Components/StepGroup',
   component: StepGroup,
-  // args: {
-  //   defaultChecked: undefined,
-  //   isChecked: undefined,
-  //   isDisabled: undefined,
-  //   name: undefined,
-  //   onChange: undefined,
-  //   value: undefined,
-  //   size: 'medium',
-  //   accessibilityLabel: 'Toggle DarkMode',
-  // },
-  // tags: ['autodocs'],
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
@@ -188,24 +183,63 @@ const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
         stepProgress="full"
         leading={<StepItemIndicator color="positive" />}
       />
+      <StepItem
+        title="Disputes Under Review"
+        trailing={
+          <Badge color="positive" size={args.size}>
+            Received by our team
+          </Badge>
+        }
+        stepProgress="full"
+        leading={<StepItemIndicator color="positive" />}
+      />
       <StepGroup>
-        <StepItem title="Header Title" stepProgress="full" description="Header Description" />
         <StepItem
-          title="Header Title"
-          timestamp="Mon, 15th Oct’23 | 12:00pm"
-          description="Header Description"
-          stepProgress="start"
+          title="Review from Razorpay Team"
+          timestamp="Fri, 12th Oct'23 | 12:00pm"
+          description="The dispute is reviewed by Razorpay team"
+          stepProgress="full"
+          leading={<StepItemIcon icon={RazorpayIcon} color="positive" />}
+        />
+      </StepGroup>
+      <StepItem
+        title="Needs Response"
+        timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
+        stepProgress="full"
+        leading={<StepItemIndicator color="positive" />}
+      />
+      <StepGroup>
+        <StepItem
+          title="Personal Documents Submission"
+          stepProgress="full"
           leading={<StepItemIndicator color="positive" />}
         />
-        <StepItem title="Header Title" description="Header Description" />
+        <StepItem
+          title="Company Documents Submission"
+          stepProgress="start"
+          leading={<StepItemIndicator color="notice" />}
+        >
+          <Button size="medium" variant="secondary">
+            Submit Documents
+          </Button>
+        </StepItem>
+        <StepItem
+          title="Documents Approval"
+          trailing={
+            <Badge color="neutral" size={args.size}>
+              Pending
+            </Badge>
+          }
+        />
       </StepGroup>
-      <StepItem title="Header Title">
-        <Button>Click Clack</Button>
-      </StepItem>
-      <StepGroup>
-        <StepItem title="Header Title" />
-      </StepGroup>
-      <StepItem title="Header Title" />
+      <StepItem
+        title="Decision from the Bank"
+        trailing={
+          <Badge color="neutral" size={args.size}>
+            Pending
+          </Badge>
+        }
+      />
     </StepGroup>
   );
 };
@@ -214,6 +248,12 @@ export const StepGroupDefault = StepGroupStaticTemplate.bind({});
 StepGroupDefault.args = {
   orientation: 'vertical',
   size: 'medium',
+};
+
+export const StepGroupLarge = StepGroupStaticTemplate.bind({});
+StepGroupLarge.args = {
+  orientation: 'vertical',
+  size: 'large',
 };
 
 export const StepGroupInteractive = StepGroupInteractiveTemplate.bind({});
@@ -228,10 +268,53 @@ StepGroupInteractiveHorizontal.args = {
   size: 'medium',
 };
 
-export const StepGroupLarge = StepGroupStaticTemplate.bind({});
-StepGroupLarge.args = {
+export const StepGroupNested = StepGroupNestedTemplate.bind({});
+StepGroupNested.args = {
   orientation: 'vertical',
-  size: 'large',
+  size: 'medium',
 };
 
-export const StepGroupWithIcons = (args: StepGroupProps) => {};
+export const StepGroupWithIcons = (args: StepGroupProps) => {
+  return (
+    <StepGroup {...args}>
+      <StepItem
+        title="Introduction"
+        timestamp="Thu, 11th Oct'23 | 12:00pm"
+        stepProgress="full"
+        leading={<StepItemIcon icon={FileIcon} color="positive" />}
+      />
+      <StepItem
+        title="Personal Details"
+        timestamp="Mon, 15th Oct'23 | 12:00pm"
+        description="Your Personal Details for onboarding"
+        stepProgress="full"
+        leading={<StepItemIcon icon={UserIcon} color="positive" />}
+      />
+      <StepItem
+        title="Business Details"
+        trailing={
+          <Badge color="positive" size={args.size}>
+            Received by our team
+          </Badge>
+        }
+        stepProgress="full"
+        leading={<StepItemIcon icon={BriefcaseIcon} color="positive" />}
+      />
+      <StepItem
+        title="Needs Response"
+        timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
+        stepProgress="start"
+        leading={<StepItemIcon icon={ClockIcon} color="notice" />}
+      />
+      <StepItem
+        title="Complete Onboarding"
+        leading={<StepItemIcon icon={HeartIcon} color="neutral" />}
+        trailing={
+          <Badge color="neutral" size={args.size}>
+            Pending
+          </Badge>
+        }
+      />
+    </StepGroup>
+  );
+};
