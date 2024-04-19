@@ -1,5 +1,5 @@
 import type { StepItemProps } from './types';
-import { StepItemIndicator } from './StepItemLeading';
+import { StepItemIndicator } from './StepItemMarker';
 import { useStepGroup } from './StepGroupContext';
 import { getLineSpacings } from './tokens';
 import { Box } from '~components/Box';
@@ -135,17 +135,17 @@ type StepLineProps = {
   stepType: 'single-item' | 'start' | 'middle' | 'end' | 'default';
   shouldShowStartBranch: boolean;
   shouldShowEndBranch: boolean;
-} & Pick<StepItemProps, 'stepProgress' | 'leading'>;
+} & Pick<StepItemProps, 'stepProgress' | 'marker'>;
 
 type StepLineSubComponentProps = Pick<
   StepLineProps,
-  'shouldShowStartBranch' | 'shouldShowEndBranch' | 'leading' | 'stepProgress'
+  'shouldShowStartBranch' | 'shouldShowEndBranch' | 'marker' | 'stepProgress'
 >;
 
-const defaultLeading = <StepItemIndicator color="neutral" />;
+const defaultMarker = <StepItemIndicator color="neutral" />;
 
 const StepLineVertical = ({
-  leading = defaultLeading,
+  marker = defaultMarker,
   stepProgress,
   isIndented,
   shouldShowStartBranch,
@@ -168,7 +168,7 @@ const StepLineVertical = ({
         isDotted={stepProgress === 'none' || stepProgress === 'end'}
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
       />
-      <Box marginLeft={makeSize(-spacingTokens.markerLeftAlignment)}>{leading}</Box>
+      <Box marginLeft={makeSize(-spacingTokens.markerLeftAlignment)}>{marker}</Box>
       <StepStraightLineVertical
         isDotted={stepProgress === 'none' || stepProgress === 'start'}
         visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
@@ -178,7 +178,7 @@ const StepLineVertical = ({
 };
 
 const StepLineStart = ({
-  leading = defaultLeading,
+  marker = defaultMarker,
   stepProgress,
   shouldShowStartBranch,
   shouldShowEndBranch,
@@ -201,7 +201,7 @@ const StepLineStart = ({
         marginLeft={makeSize(-spacingTokens.markerLeftAlignment + spacingTokens.indentationWidth)}
         marginTop={makeSize(spacingTokens.markerTopAlignment)}
       >
-        {leading}
+        {marker}
       </Box>
       <StepStraightLineVertical
         visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
@@ -213,7 +213,7 @@ const StepLineStart = ({
 };
 
 const StepLineEnd = ({
-  leading = defaultLeading,
+  marker = defaultMarker,
   stepProgress,
   shouldShowStartBranch,
   shouldShowEndBranch,
@@ -231,7 +231,7 @@ const StepLineEnd = ({
       <Box
         marginLeft={makeSize(-spacingTokens.markerLeftAlignment + spacingTokens.indentationWidth)}
       >
-        {leading}
+        {marker}
       </Box>
       <StepStraightLineVertical
         marginLeft={makeSize(spacingTokens.indentationWidth)}
@@ -247,7 +247,7 @@ const StepLineEnd = ({
 };
 
 const StepLineHorizontal = ({
-  leading = defaultLeading,
+  marker = defaultMarker,
   stepProgress,
   shouldShowStartBranch,
   shouldShowEndBranch,
@@ -265,7 +265,7 @@ const StepLineHorizontal = ({
         isDotted={stepProgress === 'none' || stepProgress === 'end'}
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
       />
-      <Box>{leading}</Box>
+      <Box>{marker}</Box>
       <StepStraightLineHorizontal
         isDotted={stepProgress === 'none' || stepProgress === 'start'}
         visibility={shouldShowEndBranch ? 'visible' : 'hidden'}
@@ -275,7 +275,7 @@ const StepLineHorizontal = ({
 };
 
 const StepLineSingleItem = ({
-  leading = defaultLeading,
+  marker = defaultMarker,
   stepProgress,
   shouldShowEndBranch,
   shouldShowStartBranch,
@@ -299,7 +299,7 @@ const StepLineSingleItem = ({
         marginLeft={makeSize(-spacingTokens.markerLeftAlignment + spacingTokens.indentationWidth)}
         marginTop={makeSize(spacingTokens.markerTopAlignment)}
       >
-        {leading}
+        {marker}
       </Box>
       <StepStraightLineVertical
         marginLeft={makeSize(spacingTokens.indentationWidth)}
@@ -318,14 +318,14 @@ const StepLine = ({
   stepType = 'default',
   shouldShowStartBranch,
   shouldShowEndBranch,
-  leading,
+  marker,
   stepProgress,
 }: StepLineProps): React.ReactElement => {
   const { orientation } = useStepGroup();
   const commonProps = {
     shouldShowStartBranch,
     shouldShowEndBranch,
-    leading,
+    marker,
     stepProgress,
   };
 

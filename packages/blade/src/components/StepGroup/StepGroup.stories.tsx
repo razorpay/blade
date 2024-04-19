@@ -105,7 +105,7 @@ const StepGroupInteractiveTemplate: StoryFn<typeof StepGroup> = (args) => {
           <StepItem
             key={`${stepInfo.title}-${index}`}
             isSelected={selectedIndex === index}
-            leading={<StepItemIndicator color={selectedIndex === index ? 'primary' : 'neutral'} />}
+            marker={<StepItemIndicator color={selectedIndex === index ? 'primary' : 'neutral'} />}
             onClick={() => setSelectedIndex(index)}
             stepProgress={
               index === selectedIndex ? 'start' : index < selectedIndex ? 'full' : 'none'
@@ -125,14 +125,14 @@ const StepGroupStaticTemplate: StoryFn<typeof StepGroup> = (args) => {
         title="Disputes Raised"
         timestamp="Thu, 11th Oct'23 | 12:00pm"
         stepProgress="full"
-        leading={<StepItemIndicator color="positive" />}
+        marker={<StepItemIndicator color="positive" />}
       />
       <StepItem
         title="Disputes Contested"
         timestamp="Mon, 15th Oct'23 | 12:00pm"
         description="Disputes contested for Rs 5000"
         stepProgress="full"
-        leading={<StepItemIndicator color="positive" />}
+        marker={<StepItemIndicator color="positive" />}
       />
       <StepItem
         title="Disputes Under Review"
@@ -142,13 +142,13 @@ const StepGroupStaticTemplate: StoryFn<typeof StepGroup> = (args) => {
           </Badge>
         }
         stepProgress="full"
-        leading={<StepItemIndicator color="positive" />}
+        marker={<StepItemIndicator color="positive" />}
       />
       <StepItem
         title="Needs Response"
         timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
         stepProgress="start"
-        leading={<StepItemIndicator color="notice" />}
+        marker={<StepItemIndicator color="notice" />}
       >
         <Button size="medium" variant="secondary">
           Submit Documents
@@ -181,7 +181,7 @@ const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
         title="Disputes Raised"
         timestamp="Thu, 11th Oct'23 | 12:00pm"
         stepProgress="full"
-        leading={<StepItemIndicator color="positive" />}
+        marker={<StepItemIndicator color="positive" />}
       />
       <StepItem
         title="Disputes Under Review"
@@ -191,7 +191,7 @@ const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
           </Badge>
         }
         stepProgress="full"
-        leading={<StepItemIndicator color="positive" />}
+        marker={<StepItemIndicator color="positive" />}
       />
       <StepGroup>
         <StepItem
@@ -199,25 +199,25 @@ const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
           timestamp="Fri, 12th Oct'23 | 12:00pm"
           description="The dispute is reviewed by Razorpay team"
           stepProgress="full"
-          leading={<StepItemIcon icon={RazorpayIcon} color="positive" />}
+          marker={<StepItemIcon icon={RazorpayIcon} color="positive" />}
         />
       </StepGroup>
       <StepItem
         title="Needs Response"
         timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
         stepProgress="full"
-        leading={<StepItemIndicator color="positive" />}
+        marker={<StepItemIndicator color="positive" />}
       />
       <StepGroup>
         <StepItem
           title="Personal Documents Submission"
           stepProgress="full"
-          leading={<StepItemIndicator color="positive" />}
+          marker={<StepItemIndicator color="positive" />}
         />
         <StepItem
           title="Company Documents Submission"
           stepProgress="start"
-          leading={<StepItemIndicator color="notice" />}
+          marker={<StepItemIndicator color="notice" />}
         >
           <Button size="medium" variant="secondary">
             Submit Documents
@@ -281,14 +281,14 @@ export const StepGroupWithIcons = (args: StepGroupProps) => {
         title="Introduction"
         timestamp="Thu, 11th Oct'23 | 12:00pm"
         stepProgress="full"
-        leading={<StepItemIcon icon={FileIcon} color="positive" />}
+        marker={<StepItemIcon icon={FileIcon} color="positive" />}
       />
       <StepItem
         title="Personal Details"
         timestamp="Mon, 15th Oct'23 | 12:00pm"
         description="Your Personal Details for onboarding"
         stepProgress="full"
-        leading={<StepItemIcon icon={UserIcon} color="positive" />}
+        marker={<StepItemIcon icon={UserIcon} color="positive" />}
       />
       <StepItem
         title="Business Details"
@@ -298,17 +298,17 @@ export const StepGroupWithIcons = (args: StepGroupProps) => {
           </Badge>
         }
         stepProgress="full"
-        leading={<StepItemIcon icon={BriefcaseIcon} color="positive" />}
+        marker={<StepItemIcon icon={BriefcaseIcon} color="positive" />}
       />
       <StepItem
         title="Needs Response"
         timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
         stepProgress="start"
-        leading={<StepItemIcon icon={ClockIcon} color="notice" />}
+        marker={<StepItemIcon icon={ClockIcon} color="notice" />}
       />
       <StepItem
         title="Complete Onboarding"
-        leading={<StepItemIcon icon={HeartIcon} color="neutral" />}
+        marker={<StepItemIcon icon={HeartIcon} color="neutral" />}
         trailing={
           <Badge color="neutral" size={args.size}>
             Pending

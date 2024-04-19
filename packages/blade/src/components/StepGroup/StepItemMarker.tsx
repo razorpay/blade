@@ -7,19 +7,19 @@ import type { IndicatorProps } from '~components/Indicator';
 import { Indicator } from '~components/Indicator';
 import { makeSize } from '~utils';
 
-type LeadingBackgroundCircleProps = {
+type MarkerBackgroundCircleProps = {
   color: IndicatorProps['color'];
   size: BaseBoxProps['width'];
   margin: BaseBoxProps['margin'];
   children: BaseBoxProps['children'];
 };
 
-const LeadingBackgroundCircle = ({
+const MarkerBackgroundCircle = ({
   color,
   size,
   margin,
   children,
-}: LeadingBackgroundCircleProps): React.ReactElement => {
+}: MarkerBackgroundCircleProps): React.ReactElement => {
   return (
     <BaseBox
       backgroundColor={
@@ -46,7 +46,7 @@ const StepItemIndicator = ({ color }: { color: IndicatorProps['color'] }): React
   const spacingTokens = getLineSpacings(size);
 
   return (
-    <LeadingBackgroundCircle
+    <MarkerBackgroundCircle
       color={color}
       size={makeSize(spacingTokens.markerBackgroundSize)}
       margin={makeSize(spacingTokens.markerMargin)}
@@ -58,7 +58,7 @@ const StepItemIndicator = ({ color }: { color: IndicatorProps['color'] }): React
         size={size}
         accessibilityLabel={`${color} indicator`}
       />
-    </LeadingBackgroundCircle>
+    </MarkerBackgroundCircle>
   );
 };
 
@@ -72,7 +72,7 @@ const StepItemIcon = ({ icon: Icon, color = 'neutral' }: StepItemIconProps): Rea
   const spacingTokens = getLineSpacings(size);
 
   return (
-    <LeadingBackgroundCircle
+    <MarkerBackgroundCircle
       color={color}
       size={makeSize(spacingTokens.markerBackgroundSize)}
       margin={makeSize(spacingTokens.markerMargin)}
@@ -83,7 +83,7 @@ const StepItemIcon = ({ icon: Icon, color = 'neutral' }: StepItemIconProps): Rea
           color === 'primary' ? 'surface.icon.primary.normal' : `feedback.icon.${color}.intense`
         }
       />
-    </LeadingBackgroundCircle>
+    </MarkerBackgroundCircle>
   );
 };
 

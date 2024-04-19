@@ -83,7 +83,7 @@ const _StepItem = ({
   timestamp,
   description,
   stepProgress = 'none',
-  leading,
+  marker,
   trailing,
   isSelected,
   href,
@@ -163,7 +163,7 @@ const _StepItem = ({
         shouldShowStartBranch={!isFirstItem}
         shouldShowEndBranch={!isLastItem}
         stepType={stepType}
-        leading={leading}
+        marker={marker}
         stepProgress={stepProgress}
       />
       <Box marginTop="spacing.3" flex="1">

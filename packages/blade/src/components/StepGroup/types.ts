@@ -47,7 +47,7 @@ type StepItemProps = {
    */
   stepProgress?: 'start' | 'end' | 'full' | 'none';
 
-  leading?: React.ReactElement;
+  marker?: React.ReactElement;
   trailing?: React.ReactElement;
   isSelected?: boolean;
   href?: LinkProps['href'];
