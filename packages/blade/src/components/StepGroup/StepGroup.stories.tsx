@@ -3,54 +3,47 @@
 import { Title } from '@storybook/addon-docs';
 import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
-import type { SwitchProps } from './';
 import { StepItem, StepGroup, StepItemIndicator } from './';
-// import { Text } from '~components/Typography';
-// import { BaseBox } from '~components/Box/BaseBox';
-// import { Button } from '~components/Button';
-// import { Box } from '~components/Box';
-// import { GlobeIcon, MapPinIcon, WifiIcon } from '~components/Icons';
-// import { Card, CardBody } from '~components/Card';
-// import { Alert } from '~components/Alert';
-// import { Link } from '~components/Link';
-// import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-// import { Sandbox } from '~utils/storybook/Sandbox';
-// import type { BladeElementRef } from '~utils/types';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Badge } from '~components/Badge';
 import { StepItemIcon } from './StepItemLeading';
 import { BankIcon, CheckIcon } from '~components/Icons';
+import { StepGroupProps, StepItemProps } from './types';
+import { Text } from '~components/Typography';
+import { Alert } from '~components/Alert';
 
-// const Page = (): React.ReactElement => {
-//   return (
-//     <StoryPageWrapper
-//       componentName="Switch"
-//       componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
-//       figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85736&t=k8yrOO74u7fLzkIE-1&scaling=min-zoom&page-id=30100%3A565839&mode=design"
-//     >
-//       <Title>Usage</Title>
-//       <Sandbox>
-//         {`
-//         import { Switch } from '@razorpay/blade/components';
+const Page = (): React.ReactElement => {
+  return (
+    <StoryPageWrapper
+      componentName="Switch"
+      componentDescription="A switch component is used to quickly switch between two possible states. These are only used for binary actions that occur immediately after the user turn the switch on/off."
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85736&t=k8yrOO74u7fLzkIE-1&scaling=min-zoom&page-id=30100%3A565839&mode=design"
+    >
+      <Title>Usage</Title>
+      <Sandbox>
+        {`
+        import { StepGroup, StepItem } from '@razorpay/blade/components';
 
-//         function App(): React.ReactElement {
-//           return (
-//             // Check console
-//             <Switch
-//               onChange={(e) => console.log(e.isChecked)}
-//               accessibilityLabel="Toggle DarkMode"
-//             />
-//           );
-//         }
+        function App(): React.ReactElement {
+          return (
+            // Check console
+            <Switch
+              onChange={(e) => console.log(e.isChecked)}
+              accessibilityLabel="Toggle DarkMode"
+            />
+          );
+        }
 
-//         export default App;
-//       `}
-//       </Sandbox>
-//     </StoryPageWrapper>
-//   );
-// };
+        export default App;
+      `}
+      </Sandbox>
+    </StoryPageWrapper>
+  );
+};
 
 export default {
   title: 'Components/StepGroup',
@@ -67,62 +60,142 @@ export default {
   // },
   // tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
-  // parameters: {
-  //   docs: {
-  //     page: Page,
-  //   },
-  // },
-} as Meta<SwitchProps>;
+  parameters: {
+    docs: {
+      page: Page,
+    },
+  },
+} as Meta<StepGroupProps>;
 
-// const SwitchTemplate: StoryFn<typeof SwitchComponent> = ({ ...args }) => {
-//   return <SwitchComponent {...args} />;
-// };
+const stepsSampleData: StepItemProps[] = [
+  {
+    title: 'Introduction',
+    timestamp: 'Mon, 15th Oct’23 | 12:00pm',
+    description: 'Introduction to Payment Gateway',
+  },
+  {
+    title: 'Personal Details',
+    timestamp: 'Mon, 16th Oct’23 | 12:00pm',
+    description: 'Fill your Personal Details for onboarding',
+  },
+  {
+    title: 'Business Details',
+    timestamp: 'Mon, 17th Oct’23 | 12:00pm',
+    description: 'Fill your Business Details for onboarding',
+  },
+  {
+    title: 'Compliance Details',
+    timestamp: 'Mon, 19th Oct’23 | 12:00pm',
+    description: 'Provide documentation or reports',
+  },
+  {
+    title: 'Complete Onboarding',
+  },
+];
 
-// export const Default = SwitchTemplate.bind({});
-// Default.storyName = 'Default';
+const StepGroupInteractiveTemplate: StoryFn<typeof StepGroup> = (args) => {
+  const [selectedIndex, setSelectedIndex] = React.useState(-1);
 
-// export const StepLineStory = (): React.ReactElement => {
-//   return (
-//     <Box display="flex" flexDirection="column">
-//       <StepLine orientation="vertical" />
-//       <StepLine orientation="vertical" curveEnd="top" />
-//       <Box
-//         height="24px"
-//         width="24px"
-//         backgroundColor="surface.background.sea.intense"
-//         borderRadius="round"
-//         marginLeft="21px"
-//         marginTop="-12px"
-//       />
-//       <StepLine marginLeft="33px" marginTop="2px" orientation="vertical" />
-//       <StepLine orientation="vertical" curveEnd="bottom" />
-//       <Box
-//         height="24px"
-//         width="24px"
-//         backgroundColor="surface.background.sea.intense"
-//         borderRadius="round"
-//         marginLeft="-12px"
-//       />
-//       <StepLine orientation="vertical" />
-//     </Box>
-//   );
-// };
-
-export const StepGroupStatic = (): React.ReactElement => {
   return (
-    <StepGroup>
-      <StepItem title="Header Title" />
+    <Box>
+      <Alert
+        color="information"
+        isDismissible={false}
+        isFullWidth={true}
+        description="Click Items to interact with the StepGroup"
+        marginBottom="spacing.8"
+      />
+      <StepGroup {...args}>
+        {stepsSampleData.map((stepInfo, index) => (
+          <StepItem
+            key={`${stepInfo.title}-${index}`}
+            isSelected={selectedIndex === index}
+            leading={<StepItemIndicator color={selectedIndex === index ? 'primary' : 'neutral'} />}
+            onClick={() => setSelectedIndex(index)}
+            stepProgress={
+              index === selectedIndex ? 'start' : index < selectedIndex ? 'full' : 'none'
+            }
+            {...stepInfo}
+          />
+        ))}
+      </StepGroup>
+    </Box>
+  );
+};
+
+const StepGroupStaticTemplate: StoryFn<typeof StepGroup> = (args) => {
+  return (
+    <StepGroup {...args}>
       <StepItem
-        title="Header Title"
-        timestamp="Mon, 15th Oct’23 | 12:00pm"
-        description="Header Description"
+        title="Disputes Raised"
+        timestamp="Thu, 11th Oct'23 | 12:00pm"
+        stepProgress="full"
+        leading={<StepItemIndicator color="positive" />}
+      />
+      <StepItem
+        title="Disputes Contested"
+        timestamp="Mon, 15th Oct'23 | 12:00pm"
+        description="Disputes contested for Rs 5000"
+        stepProgress="full"
+        leading={<StepItemIndicator color="positive" />}
+      />
+      <StepItem
+        title="Disputes Under Review"
+        trailing={
+          <Badge color="positive" size={args.size}>
+            Received by our team
+          </Badge>
+        }
+        stepProgress="full"
+        leading={<StepItemIndicator color="positive" />}
+      />
+      <StepItem
+        title="Needs Response"
+        timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
+        stepProgress="start"
+        leading={<StepItemIndicator color="notice" />}
+      >
+        <Button size="medium" variant="secondary">
+          Submit Documents
+        </Button>
+      </StepItem>
+      <StepItem
+        title="Documents Sent to the Bank"
+        description="Bank might take up to 3 months to review"
+        trailing={
+          <Badge color="neutral" size={args.size}>
+            Pending
+          </Badge>
+        }
+      />
+      <StepItem
+        title="Decision from the Bank"
+        trailing={
+          <Badge color="neutral" size={args.size}>
+            Pending
+          </Badge>
+        }
+      />
+    </StepGroup>
+  );
+};
+const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
+  return (
+    <StepGroup {...args}>
+      <StepItem
+        title="Disputes Raised"
+        timestamp="Thu, 11th Oct'23 | 12:00pm"
+        stepProgress="full"
+        leading={<StepItemIndicator color="positive" />}
       />
       <StepGroup>
-        <StepItem title="Header Title" description="Header Description" />
+        <StepItem title="Header Title" stepProgress="full" description="Header Description" />
         <StepItem
           title="Header Title"
           timestamp="Mon, 15th Oct’23 | 12:00pm"
           description="Header Description"
+          stepProgress="start"
+          leading={<StepItemIndicator color="positive" />}
         />
         <StepItem title="Header Title" description="Header Description" />
       </StepGroup>
@@ -137,61 +210,28 @@ export const StepGroupStatic = (): React.ReactElement => {
   );
 };
 
-export const StepItemInteractive = (): React.ReactElement => {
-  return (
-    <StepGroup>
-      <StepItem title="Header Title" stepProgress="full" />
-      <StepItem
-        title="Header Title"
-        timestamp="Mon, 15th Oct’23 | 12:00pm"
-        description="Header Description"
-        isSelected={true}
-        href="#"
-        stepProgress="full"
-      />
-      <StepGroup>
-        <StepItem stepProgress="full" title="Header Title" description="Header Description" />
-        <StepItem
-          href="#"
-          title="Header Title"
-          timestamp="Mon, 15th Oct’23 | 12:00pm"
-          description="Header Description"
-          trailing={<Badge>Badge</Badge>}
-          leading={<StepItemIcon icon={CheckIcon} color="primary" />}
-          stepProgress="start"
-        />
-        <StepItem title="Header Title" description="Header Description" />
-      </StepGroup>
-      <StepItem
-        title="Header Title"
-        onClick={({ itemIndex, groupItemIndex, nestingLevel }) => {
-          console.log({ itemIndex, groupItemIndex, nestingLevel });
-        }}
-      >
-        <Button>Click Clack</Button>
-      </StepItem>
-      <StepGroup>
-        <StepItem title="Header Title" />
-      </StepGroup>
-      <StepItem title="Header Title" />
-    </StepGroup>
-  );
+export const StepGroupDefault = StepGroupStaticTemplate.bind({});
+StepGroupDefault.args = {
+  orientation: 'vertical',
+  size: 'medium',
 };
 
-export const StepGroupHorizontal = (): React.ReactElement => {
-  return (
-    <StepGroup orientation="horizontal">
-      <StepItem title="Header Title" stepProgress="full" />
-      <StepItem
-        title="Header Title"
-        timestamp="Mon, 15th Oct’23 | 12:00pm"
-        description="Header Description"
-        leading={<StepItemIndicator color="primary" />}
-        isSelected={true}
-        href="#"
-        stepProgress="start"
-      />
-      <StepItem title="Header Title" />
-    </StepGroup>
-  );
+export const StepGroupInteractive = StepGroupInteractiveTemplate.bind({});
+StepGroupInteractive.args = {
+  orientation: 'vertical',
+  size: 'medium',
 };
+
+export const StepGroupInteractiveHorizontal = StepGroupInteractiveTemplate.bind({});
+StepGroupInteractiveHorizontal.args = {
+  orientation: 'horizontal',
+  size: 'medium',
+};
+
+export const StepGroupLarge = StepGroupStaticTemplate.bind({});
+StepGroupLarge.args = {
+  orientation: 'vertical',
+  size: 'large',
+};
+
+export const StepGroupWithIcons = (args: StepGroupProps) => {};

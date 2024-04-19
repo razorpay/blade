@@ -1,7 +1,7 @@
 import type React from 'react';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { LinkProps } from '~components/Link';
-import type { TestID } from '~utils/types';
+import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 
 type StepGroupProps = {
   /**
@@ -64,4 +64,11 @@ type StepItemProps = {
   children?: React.ReactNode;
 };
 
-export type { StepGroupProps, StepGroupContextType, StepItemProps };
+type InteractiveItemHeaderProps = {
+  isSelected: StepItemProps['isSelected'];
+  paddingY: DotNotationSpacingStringToken;
+  paddingX: DotNotationSpacingStringToken;
+  minWidth?: `min(${string})`;
+};
+
+export type { StepGroupProps, StepGroupContextType, StepItemProps, InteractiveItemHeaderProps };

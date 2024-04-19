@@ -3,7 +3,12 @@ import styled from 'styled-components';
 import { StepLine } from './StepLine';
 import type { StepLineProps } from './StepLine';
 import { useStepGroup } from './StepGroupContext';
-import type { StepGroupContextType, StepGroupProps, StepItemProps } from './types';
+import type {
+  InteractiveItemHeaderProps,
+  StepGroupContextType,
+  StepGroupProps,
+  StepItemProps,
+} from './types';
 import { componentIds } from './componentIds';
 import { stepItemHeaderTokens } from './tokens';
 import { Box } from '~components/Box';
@@ -14,7 +19,6 @@ import { makeSize, makeSpace } from '~utils';
 import { size as sizeTokens } from '~tokens/global';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
-import type { DotNotationSpacingStringToken } from '~utils/types';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
@@ -22,12 +26,7 @@ type GetStepTypeFromIndexProps = {
   itemsCount: StepGroupContextType['itemsInGroupCount'];
 };
 
-const InteractiveItemBox = styled.button<{
-  isSelected: StepItemProps['isSelected'];
-  paddingY: DotNotationSpacingStringToken;
-  paddingX: DotNotationSpacingStringToken;
-  minWidth?: `${string}px`;
-}>((props) => {
+const InteractiveItemHeaderBox = styled.button<InteractiveItemHeaderProps>((props) => {
   return {
     padding: `${makeSpace(getIn(props.theme, props.paddingY))} ${makeSpace(
       getIn(props.theme, props.paddingX),
@@ -110,7 +109,7 @@ const _StepItem = ({
   const isInteractive = Boolean(href) || Boolean(onClick);
 
   const stepItemHeaderJSX = (
-    <Box display="flex" flexDirection="row" justifyContent="space-between">
+    <Box display="flex" flexDirection="row" justifyContent="space-between" gap="spacing.4">
       <Box>
         <Text
           size={stepItemHeaderTokens[size].title}
@@ -135,6 +134,12 @@ const _StepItem = ({
     </Box>
   );
 
+  const stepItemHeaderPaddings: Omit<InteractiveItemHeaderProps, 'isSelected'> = {
+    paddingY: 'spacing.3',
+    paddingX: 'spacing.4',
+    minWidth: orientation === 'vertical' ? `min(${makeSize(sizeTokens['314'])}, 100%)` : undefined,
+  } as const;
+
   return (
     <BaseBox
       display="flex"
@@ -151,12 +156,10 @@ const _StepItem = ({
         leading={leading}
         stepProgress={stepProgress}
       />
-      <Box marginTop="spacing.3">
+      <Box marginTop="spacing.3" flex="1">
         {isInteractive ? (
-          <InteractiveItemBox
-            paddingY="spacing.3"
-            paddingX="spacing.4"
-            minWidth={orientation === 'vertical' ? makeSize(sizeTokens['314']) : undefined}
+          <InteractiveItemHeaderBox
+            {...stepItemHeaderPaddings}
             as={href ? 'a' : 'button'}
             href={href}
             target={target}
@@ -170,15 +173,9 @@ const _StepItem = ({
             }
           >
             {stepItemHeaderJSX}
-          </InteractiveItemBox>
+          </InteractiveItemHeaderBox>
         ) : (
-          <Box
-            paddingY="spacing.3"
-            paddingX="spacing.4"
-            minWidth={orientation === 'vertical' ? makeSize(sizeTokens['314']) : undefined}
-          >
-            {stepItemHeaderJSX}
-          </Box>
+          <Box {...stepItemHeaderPaddings}>{stepItemHeaderJSX}</Box>
         )}
         {children ? (
           <Box paddingX="spacing.4" paddingY="spacing.3">

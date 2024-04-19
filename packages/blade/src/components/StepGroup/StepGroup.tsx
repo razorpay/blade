@@ -87,7 +87,9 @@ const _StepGroup = ({
     <StepGroupContext.Provider value={contextValue}>
       <BaseBox
         {...getStyledProps(styledProps)}
-        display="flex"
+        display="inline-flex"
+        maxWidth="100%"
+        overflowX={orientation === 'horizontal' ? 'auto' : undefined}
         flexDirection={orientation === 'vertical' ? 'column' : 'row'}
       >
         {childrenWithIndex}
