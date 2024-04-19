@@ -422,7 +422,7 @@ const ReactRouterExample = (args: StepGroupProps): React.ReactElement => {
         minWidth="400px"
         elevation="midRaised"
       >
-        <StepGroup {...args}>
+        <StepGroup {...args} width="100%">
           {stepsSampleData.map((stepInfo, index) => {
             const stepPathname = getPathnameFromTitle(stepInfo.title);
             const selectedIndex = getSelectedItemIndex(location.pathname);

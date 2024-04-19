@@ -64,6 +64,9 @@ const _StepGroup = ({
   children,
   testID,
   _nestingLevel = 0,
+  width,
+  minWidth,
+  maxWidth,
   ...styledProps
 }: StepGroupProps): React.ReactElement => {
   const itemsInGroupCount = React.Children.count(children);
@@ -88,7 +91,9 @@ const _StepGroup = ({
       <BaseBox
         {...getStyledProps(styledProps)}
         display="inline-flex"
-        maxWidth="100%"
+        maxWidth={maxWidth ?? '100%'}
+        minWidth={minWidth}
+        width={width}
         overflowX={orientation === 'horizontal' ? 'auto' : undefined}
         flexDirection={orientation === 'vertical' ? 'column' : 'row'}
       >
