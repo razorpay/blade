@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.13.1
+
+### Patch Changes
+
+- 2f0d96fb: fix(blade): phone number input dropdown not opening
+
 ## 11.13.0
 
 ### Minor Changes
