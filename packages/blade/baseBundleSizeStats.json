@@ -289,9 +289,9 @@
   {
     "name": "PhoneNumberInput",
     "passed": true,
-    "size": 70682,
+    "size": 70691,
     "sizeLimit": 2000000,
-    "loading": 1.3805078125
+    "loading": 1.38068359375
   },
   {
     "name": "TextArea",
