@@ -5,6 +5,7 @@ import { StepItemIndicator } from './StepItemMarker';
 import { useStepGroup } from './StepGroupContext';
 import {
   getMarkerLineSpacings,
+  itemTopMargin,
   markerLineDotSpacing,
   markerLineDotWidth,
   markerLineWidth,
@@ -35,7 +36,7 @@ const useDottedLineStyles = ({ isHorizontal }: { isHorizontal?: boolean } = {}):
 
   return {
     backgroundImage: backgroundURL,
-    backgroundPosition: isHorizontal ? 'top' : 'right',
+    backgroundPosition: isHorizontal ? 'top' : 'top',
     backgroundSize: isHorizontal
       ? `${makeSize(markerLineDotWidth + markerLineDotSpacing)} ${makeSize(markerLineDotWidth)}`
       : `${makeSize(markerLineDotWidth)} ${makeSize(markerLineDotWidth + markerLineDotSpacing)} `,
@@ -173,7 +174,7 @@ const StepLineVertical = ({
       flexDirection="column"
     >
       <StepStraightLineVertical
-        height={spacingTokens.itemTopMargin}
+        height={itemTopMargin}
         isDotted={stepProgress === 'none' || stepProgress === 'end'}
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
       />
@@ -198,7 +199,7 @@ const StepLineStart = ({
   return (
     <Box position="relative" display="flex" flexDirection="column">
       <StepStraightLineVertical
-        height={spacingTokens.itemTopMargin}
+        height={itemTopMargin}
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
         isDotted={stepProgress === 'none' || stepProgress === 'end'}
       />
@@ -234,7 +235,7 @@ const StepLineEnd = ({
       <StepStraightLineVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
         marginLeft={makeSize(spacingTokens.indentationWidth)}
-        height={spacingTokens.itemTopMargin}
+        height={itemTopMargin}
         isDotted={stepProgress === 'none' || stepProgress === 'end'}
       />
       <Box
@@ -295,7 +296,7 @@ const StepLineSingleItem = ({
     <Box position="relative" display="flex" flexDirection="column">
       <StepStraightLineVertical
         visibility={shouldShowStartBranch ? 'visible' : 'hidden'}
-        height={spacingTokens.itemTopMargin}
+        height={itemTopMargin}
         isDotted={stepProgress === 'none' || stepProgress === 'end'}
       />
       <StepTopCurveVertical

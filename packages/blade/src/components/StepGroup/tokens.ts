@@ -4,6 +4,7 @@ import { size as sizeTokens } from '~tokens/global';
 const markerLineDotWidth = sizeTokens['2'];
 const markerLineDotSpacing = sizeTokens['4'];
 const markerLineWidth = sizeTokens['2'];
+const itemTopMargin = sizeTokens['16'];
 
 /**
  * Returns the tokens that are related to marker line alignment and spacing
@@ -16,10 +17,8 @@ const getMarkerLineSpacings = (
   markerBackgroundSize: number;
   markerMargin: number;
   indentationWidth: number;
-  itemTopMargin: number;
 } => {
   const indentationWidth = sizeTokens['33'];
-  const itemTopMargin = sizeTokens['16'];
 
   const LINE_SPACINGS = {
     large: {
@@ -49,7 +48,6 @@ const getMarkerLineSpacings = (
     markerLeftAlignment,
     markerTopAlignment,
     indentationWidth,
-    itemTopMargin,
   };
 };
 
@@ -84,4 +82,5 @@ export {
   markerLineDotWidth,
   markerLineDotSpacing,
   markerLineWidth,
+  itemTopMargin,
 };
