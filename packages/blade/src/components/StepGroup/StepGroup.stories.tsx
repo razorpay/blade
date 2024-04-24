@@ -177,6 +177,7 @@ const StepGroupInteractiveTemplate: StoryFn<typeof StepGroup> = (args) => {
 };
 
 const StepGroupStaticTemplate: StoryFn<typeof StepGroup> = (args) => {
+  const isVertical = args.orientation === 'vertical';
   return (
     <StepGroup {...args}>
       <StepItem
@@ -195,9 +196,11 @@ const StepGroupStaticTemplate: StoryFn<typeof StepGroup> = (args) => {
       <StepItem
         title="Disputes Under Review"
         trailing={
-          <Badge color="positive" size={args.size}>
-            Received by our team
-          </Badge>
+          isVertical ? (
+            <Badge color="positive" size={args.size}>
+              Received by our team
+            </Badge>
+          ) : undefined
         }
         stepProgress="full"
         marker={<StepItemIndicator color="positive" />}
@@ -216,23 +219,29 @@ const StepGroupStaticTemplate: StoryFn<typeof StepGroup> = (args) => {
         title="Documents Sent to the Bank"
         description="Bank might take up to 3 months to review"
         trailing={
-          <Badge color="neutral" size={args.size}>
-            Pending
-          </Badge>
+          isVertical ? (
+            <Badge color="neutral" size={args.size}>
+              Pending
+            </Badge>
+          ) : undefined
         }
       />
       <StepItem
         title="Decision from the Bank"
         trailing={
-          <Badge color="neutral" size={args.size}>
-            Pending
-          </Badge>
+          isVertical ? (
+            <Badge color="neutral" size={args.size}>
+              Pending
+            </Badge>
+          ) : undefined
         }
       />
     </StepGroup>
   );
 };
 const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
+  const isVertical = args.orientation === 'vertical';
+
   return (
     <StepGroup {...args}>
       <StepItem
@@ -244,9 +253,11 @@ const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
       <StepItem
         title="Disputes Under Review"
         trailing={
-          <Badge color="positive" size={args.size}>
-            Received by our team
-          </Badge>
+          isVertical ? (
+            <Badge color="positive" size={args.size}>
+              Received by our team
+            </Badge>
+          ) : undefined
         }
         stepProgress="full"
         marker={<StepItemIndicator color="positive" />}
@@ -284,18 +295,22 @@ const StepGroupNestedTemplate: StoryFn<typeof StepGroup> = (args) => {
         <StepItem
           title="Documents Approval"
           trailing={
-            <Badge color="neutral" size={args.size}>
-              Pending
-            </Badge>
+            isVertical ? (
+              <Badge color="neutral" size={args.size}>
+                Pending
+              </Badge>
+            ) : undefined
           }
         />
       </StepGroup>
       <StepItem
         title="Decision from the Bank"
         trailing={
-          <Badge color="neutral" size={args.size}>
-            Pending
-          </Badge>
+          isVertical ? (
+            <Badge color="neutral" size={args.size}>
+              Pending
+            </Badge>
+          ) : undefined
         }
       />
     </StepGroup>
@@ -333,6 +348,8 @@ StepGroupNested.args = {
 };
 
 export const StepGroupWithIcons = (args: StepGroupProps) => {
+  const isVertical = args.orientation === 'vertical';
+
   return (
     <StepGroup {...args}>
       <StepItem
@@ -351,9 +368,11 @@ export const StepGroupWithIcons = (args: StepGroupProps) => {
       <StepItem
         title="Business Details"
         trailing={
-          <Badge color="positive" size={args.size}>
-            Received by our team
-          </Badge>
+          isVertical ? (
+            <Badge color="positive" size={args.size}>
+              Received by our team
+            </Badge>
+          ) : undefined
         }
         stepProgress="full"
         marker={<StepItemIcon icon={BriefcaseIcon} color="positive" />}
@@ -368,9 +387,11 @@ export const StepGroupWithIcons = (args: StepGroupProps) => {
         title="Complete Onboarding"
         marker={<StepItemIcon icon={HeartIcon} color="neutral" />}
         trailing={
-          <Badge color="neutral" size={args.size}>
-            Pending
-          </Badge>
+          isVertical ? (
+            <Badge color="neutral" size={args.size}>
+              Pending
+            </Badge>
+          ) : undefined
         }
       />
     </StepGroup>
