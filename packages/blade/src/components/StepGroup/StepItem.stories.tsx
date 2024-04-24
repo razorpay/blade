@@ -16,16 +16,26 @@ const stepItemColors = [
   'negative',
 ] as const;
 
-const markerMapping = stepItemColors.reduce<Record<string, React.ReactElement>>(
+const indicatorMappings = stepItemColors.reduce<Record<string, React.ReactElement>>(
   (prevObj, itemColor) => {
     prevObj[`<StepItemIndicator color="${itemColor}" />`] = <StepItemIndicator color={itemColor} />;
-    prevObj[`<StepItemIcon icon={CheckIcon} color="${itemColor}" />`] = (
+
+    return prevObj;
+  },
+  {},
+);
+
+const iconMappings = stepItemColors.reduce<Record<string, React.ReactElement>>(
+  (prevObj, itemColor) => {
+    prevObj[`<StepItemIcon color="${itemColor}" icon={CheckIcon} />`] = (
       <StepItemIcon icon={CheckIcon} color={itemColor} />
     );
     return prevObj;
   },
   {},
 );
+
+const markerMapping = { ...indicatorMappings, ...iconMappings };
 
 export default {
   title: 'Components/StepGroup/Step Item Playground',
