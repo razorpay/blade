@@ -450,7 +450,7 @@ const ReactRouterExample = (args: StepGroupProps): React.ReactElement => {
         </StepGroup>
       </Box>
 
-      <Box marginLeft="300px" paddingX="spacing.6" paddingBottom="spacing.6">
+      <Box marginLeft="400px" paddingX="spacing.6" paddingBottom="spacing.6">
         <Route path="/onboarding/:id" component={OnboardingRoute} />
       </Box>
     </Box>
