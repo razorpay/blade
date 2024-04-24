@@ -36,11 +36,11 @@ const useDottedLineStyles = ({ isHorizontal }: { isHorizontal?: boolean } = {}):
 
   return {
     backgroundImage: backgroundURL,
-    backgroundPosition: isHorizontal ? 'top' : 'top',
+    backgroundPosition: isHorizontal ? 'left' : 'top',
     backgroundSize: isHorizontal
       ? `${makeSize(markerLineDotWidth + markerLineDotSpacing)} ${makeSize(markerLineDotWidth)}`
       : `${makeSize(markerLineDotWidth)} ${makeSize(markerLineDotWidth + markerLineDotSpacing)} `,
-    backgroundRepeat: isHorizontal ? 'repeat-x' : 'repeat-y',
+    backgroundRepeat: isHorizontal ? 'round no-repeat' : 'no-repeat round',
   };
 };
 
