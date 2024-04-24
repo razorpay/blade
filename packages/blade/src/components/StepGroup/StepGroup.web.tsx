@@ -6,6 +6,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import { getComponentId } from '~utils/isValidAllowedChildren';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 const useChildrenWithIndexes = ({
   _nestingLevel,
@@ -99,6 +100,7 @@ const _StepGroup = ({
         width={width ?? defaultWidth}
         overflowX={orientation === 'horizontal' ? 'auto' : undefined}
         flexDirection={orientation === 'vertical' ? 'column' : 'row'}
+        {...metaAttribute({ name: MetaConstants.StepGroup, testID })}
       >
         {childrenWithIndex}
       </BaseBox>

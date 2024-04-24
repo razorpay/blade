@@ -20,6 +20,7 @@ import { size as sizeTokens } from '~tokens/global';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
@@ -161,6 +162,7 @@ const _StepItem = ({
       minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['176'])}, 100%)`}
       width={isVertical ? '100%' : undefined}
       flex={isVertical ? undefined : '1'}
+      {...metaAttribute({ name: MetaConstants.StepItem })}
     >
       <StepLine
         shouldShowStartBranch={!isFirstItem}
