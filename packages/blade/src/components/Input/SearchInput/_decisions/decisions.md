@@ -1,8 +1,8 @@
 # SearchInput
 
-The Search Input lets you type and find what you need in a wide range of data or choices.
+The Search Input component enables users to input text and find relevant information within a diverse range of data or choices.
 
-This document outlines the API of `SearchInput` component.
+This document serves as an overview of the API for the `SearchInput` component.
 
 <img src="./searchinput-thumbnail.png" width="50%" alt="Thumbnail" />
 
@@ -10,7 +10,7 @@ This document outlines the API of `SearchInput` component.
 
 ## Design
 
-- [Figma - SearchInput](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=85072%3A160345&mode=design&t=Pv93G8LK6OtL4wwk-1)
+- [Explore the design in Figma: SearchInput](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=85072%3A160345&mode=design&t=Pv93G8LK6OtL4wwk-1)
 
 ## Anatomy
 
@@ -18,7 +18,7 @@ This document outlines the API of `SearchInput` component.
 
 ## API
 
-SearchInput will extend the `BaseInput` and will have overlapping props such as:
+The `SearchInput` component extends the `BaseInput` and shares common props:
 
 ```ts
 type CommonProps = Pick<
@@ -57,33 +57,11 @@ type SearchInputProps = CommonProps & {
 
 ## Usage
 
-- Table search
-- Dropdown nav search
-- Async state
-
-### Without Dropdown
-
-```jsx
-import React from 'react';
-import { Box, SearchInput } from '@razorpay/blade/components';
-
-const App = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const menuItems = ['Settings', 'Profile', 'Transactions', 'Help', 'Refunds', 'Settlements', 'Payouts'];
-
-  return (
-    <Box>
-      <SearchInput
-        label="Search"
-        onChange={({ value }): void => setSearchTerm(value)})}
-        placeholder="Search here"
-      />
-    </Box>
-  );
-};
-```
-
 ### With Dropdown
+
+> **Note**
+>
+> The `event` parameter in the ActionListItem's `onClick` prop needs to be exposed to work with `react-router` for navigation handling.
 
 ```jsx
 import React from 'react';
@@ -98,28 +76,33 @@ import {
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const menuItems = ['Settings', 'Profile', 'Transactions', 'Help', 'Refunds', 'Settlements', 'Payouts'];
+  const menuItems = [
+    'Settings',
+    'Profile',
+    'Transactions',
+    'Help',
+    'Refunds',
+    'Settlements',
+    'Payouts',
+  ];
   const popularItems = ['Transactions', 'Settlements'];
 
   return (
     <Dropdown>
       <SearchInput
         label="Search"
-        onChange={({ value }): void => setSearchTerm(value)})}
+        onChange={({ value }) => setSearchTerm(value)}
         placeholder="Search here"
-
       />
       <DropdownOverlay>
         <ActionList>
-          {searchTerm.length === 0 ? (
-            popularItems.map((item, index) => (
-              <ActionListItem key={index} title={item} value={item} />
-            ))
-          ) : (
-            menuItems.filter(item => item.includes(searchTerm)).map((item, index) => (
-              <ActionListItem key={index} title={item} value={item} />
-            )
-          )}
+          {searchTerm.length === 0
+            ? popularItems.map((item, index) => (
+                <ActionListItem key={index} title={item} value={item} />
+              ))
+            : menuItems
+                .filter((item) => item.includes(searchTerm))
+                .map((item, index) => <ActionListItem key={index} title={item} value={item} />)}
         </ActionList>
       </DropdownOverlay>
     </Dropdown>
@@ -127,10 +110,74 @@ const App = () => {
 };
 ```
 
+### With Table
+
+```jsx
+import React from 'react';
+import { Box, SearchInput } from '@razorpay/blade/components';
+
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  return (
+    <Table
+      data={data}
+      toolbar={
+        <TableToolbar>
+          <TableToolbarActions>
+            <SearchInput
+              label="Search bank transactions"
+              onChange={({ value }) => setSearchTerm(value)}
+              placeholder="SBI, HDFC, ICICI, etc."
+            />
+          </TableToolbarActions>
+        </TableToolbar>
+      }
+    >
+      {(tableData) => (
+        <>
+          <TableHeader>
+            <TableHeaderRow>
+              <TableHeaderCell>Bank Name</TableHeaderCell>
+              <TableHeaderCell>Amount</TableHeaderCell>
+              <TableHeaderCell>Date</TableHeaderCell>
+              <TableHeaderCell>Method</TableHeaderCell>
+            </TableHeaderRow>
+          </TableHeader>
+          <TableBody>
+            {tableData
+              // Filter item based on the search input value
+              .filter((tableItem) => tableItem.bankName.includes(searchTerm))
+              .map((tableItem, index) => (
+                <TableRow key={index} item={tableItem}>
+                  <TableCell>
+                    <Code size="medium">{tableItem.paymentId}</Code>
+                  </TableCell>
+                  <TableCell>
+                    <Amount value={tableItem.amount} />
+                  </TableCell>
+                  <TableCell>
+                    {tableItem.date?.toLocaleDateString('en-IN', {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    })}
+                  </TableCell>
+                  <TableCell>{tableItem.status}</TableCell>
+                </TableRow>
+              ))}
+          </TableBody>
+        </>
+      )}
+    </Table>
+  );
+};
+```
+
 ## Accessibility
 
-- The country selector will be accessible via keyboard navigation and be composed with blade's Dropdown component.
-- The input field will have a `aria-label` attribute to describe the input field.
+- The `SearchInput` component adheres to accessibility standards similar to `TextInput`.
+- When used inside a dropdown, it will continue to follow the same [keyboard navigation as SelectInput](https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md#accessibility), ensuring a consistent and intuitive user experience.
 
 ## Open questions
 
