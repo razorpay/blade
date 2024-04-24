@@ -10,7 +10,7 @@ import type {
   StepItemProps,
 } from './types';
 import { componentIds } from './componentIds';
-import { itemLineGap, stepItemHeaderTokens } from './tokens';
+import { getMarkerLineSpacings, itemLineGap, itemTopMargin, stepItemHeaderTokens } from './tokens';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
@@ -20,6 +20,7 @@ import { size as sizeTokens } from '~tokens/global';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
+import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
@@ -78,6 +79,10 @@ const getStepTypeFromIndex = ({
   return 'middle';
 };
 
+const closestFactorOf6 = (number: number): number => {
+  return Math.ceil(number / 6) * 6;
+};
+
 const _StepItem = ({
   title,
   timestamp,
@@ -105,10 +110,36 @@ const _StepItem = ({
     [_index, _nestingLevel, itemsCount],
   );
 
+  const [additionalSpace, setAdditionalSpace] = React.useState(0);
+  const itemRef = React.useRef<HTMLDivElement>(null);
+
   const isFirstItem = _totalIndex === 0;
   const isLastItem = _totalIndex === totalItemsInParentGroupCount - 1;
   const isInteractive = Boolean(href) || Boolean(onClick);
   const isVertical = orientation === 'vertical';
+
+  useIsomorphicLayoutEffect(() => {
+    // So this code... where do I even start...
+    // Check this thread on why this is needed - https://razorpay.slack.com/archives/G01B3LQ9H0W/p1713954331815769?thread_ts=1713953393.676459&cid=G01B3LQ9H0W
+    // We add some additional space at the end of the item to bring it into factor of 6 so that the last dot of first item ends and first dot of next item starts at correct space
+    // Why factor of 6?? because 2px is height of one dot and they are spaced 4px apart
+    const heightOfLine = itemRef.current?.offsetHeight;
+    if (!heightOfLine) {
+      return;
+    }
+
+    const markerSpacings = getMarkerLineSpacings(size);
+
+    const spaceOfIconAndTopLine =
+      (itemTopMargin as number) +
+      markerSpacings.markerBackgroundSize +
+      markerSpacings.markerMargin * 2;
+
+    const heightOfBottomLine = heightOfLine - spaceOfIconAndTopLine;
+    const closest6FactorHeight = closestFactorOf6(heightOfBottomLine);
+    const additionalSpace = closest6FactorHeight - heightOfBottomLine;
+    setAdditionalSpace(additionalSpace);
+  }, [size]);
 
   if (__DEV__) {
     if (trailing && orientation === 'horizontal') {
@@ -161,6 +192,7 @@ const _StepItem = ({
       minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['176'])}, 100%)`}
       width={isVertical ? '100%' : undefined}
       flex={isVertical ? undefined : '1'}
+      ref={itemRef}
     >
       <StepLine
         shouldShowStartBranch={!isFirstItem}
@@ -189,6 +221,7 @@ const _StepItem = ({
             {children}
           </Box>
         ) : null}
+        <Box height={makeSize(additionalSpace)} />
       </Box>
     </BaseBox>
   );
