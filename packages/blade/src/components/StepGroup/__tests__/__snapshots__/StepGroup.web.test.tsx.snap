@@ -379,11 +379,11 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
 <div>
   <div
     class="c0"
-    data-blade-component="base-box"
+    data-blade-component="step-group"
   >
     <div
       class="c1 step-item step-index-0 step-nesting-level-0"
-      data-blade-component="base-box"
+      data-blade-component="step-item"
     >
       <div
         class="c2"
@@ -491,7 +491,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
     </div>
     <div
       class="c1 step-item step-index-1 step-nesting-level-0"
-      data-blade-component="base-box"
+      data-blade-component="step-item"
     >
       <div
         class="c2"
@@ -599,11 +599,11 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
     </div>
     <div
       class="c0"
-      data-blade-component="base-box"
+      data-blade-component="step-group"
     >
       <div
         class="c1 step-item step-index-0 step-nesting-level-1"
-        data-blade-component="base-box"
+        data-blade-component="step-item"
       >
         <div
           class="c2"
@@ -726,7 +726,7 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
       </div>
       <div
         class="c1 step-item step-index-1 step-nesting-level-1"
-        data-blade-component="base-box"
+        data-blade-component="step-item"
       >
         <div
           class="c2"
