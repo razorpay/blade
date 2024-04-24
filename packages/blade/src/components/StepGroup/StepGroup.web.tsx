@@ -86,6 +86,9 @@ const _StepGroup = ({
     [size, orientation, itemsInGroupCount, totalItemsInParentGroupCount],
   );
 
+  const isHorizontal = orientation === 'horizontal';
+  const defaultWidth = isHorizontal ? '100%' : undefined;
+
   return (
     <StepGroupContext.Provider value={contextValue}>
       <BaseBox
@@ -93,7 +96,7 @@ const _StepGroup = ({
         display="inline-flex"
         maxWidth={maxWidth ?? '100%'}
         minWidth={minWidth}
-        width={width}
+        width={width ?? defaultWidth}
         overflowX={orientation === 'horizontal' ? 'auto' : undefined}
         flexDirection={orientation === 'vertical' ? 'column' : 'row'}
       >

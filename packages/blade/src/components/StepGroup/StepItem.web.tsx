@@ -160,6 +160,7 @@ const _StepItem = ({
       alignItems={isVertical ? undefined : 'center'}
       minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['176'])}, 100%)`}
       width={isVertical ? '100%' : undefined}
+      flex={isVertical ? undefined : '1'}
     >
       <StepLine
         shouldShowStartBranch={!isFirstItem}
@@ -168,7 +169,7 @@ const _StepItem = ({
         marker={marker}
         stepProgress={stepProgress}
       />
-      <Box marginTop="spacing.3" flex="1">
+      <Box marginTop="spacing.3" flex="1" marginRight={isVertical ? undefined : 'spacing.4'}>
         {isInteractive ? (
           <InteractiveItemHeaderBox
             {...stepItemHeaderPaddings}
