@@ -120,6 +120,13 @@ const _StepItem = ({
         moduleName: 'StepItem',
       });
     }
+
+    if (_nestingLevel >= 1 && orientation === 'horizontal') {
+      throwBladeError({
+        message: 'Nested StepGroup components are not allowed in horizontal orientation',
+        moduleName: 'StepItem',
+      });
+    }
   }
 
   const stepItemHeaderJSX = (

@@ -85,4 +85,27 @@ describe('<StepGroup />', () => {
     }
     console.error = tempConsoleError;
   });
+
+  it('should throw an error when nested StepGroup is defined', () => {
+    // hiding error from terminal
+    const tempConsoleError = console.error;
+    console.error = jest.fn();
+    try {
+      renderWithTheme(
+        <StepGroup orientation="horizontal">
+          <StepItem title="Introduction" />
+          <StepGroup orientation="horizontal">
+            <StepItem title="Introduction" />
+          </StepGroup>
+        </StepGroup>,
+      );
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        expect(error.message).toEqual(
+          '[Blade: StepItem]: Nested StepGroup components are not allowed in horizontal orientation',
+        );
+      }
+    }
+    console.error = tempConsoleError;
+  });
 });

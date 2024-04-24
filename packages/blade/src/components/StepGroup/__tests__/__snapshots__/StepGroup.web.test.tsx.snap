@@ -178,8 +178,8 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   width: 2px;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
   background-size: 2px 6px;
-  background-position: right;
-  background-repeat: repeat-y;
+  background-position: top;
+  background-repeat: no-repeat round;
   visibility: visible;
 }
 
@@ -189,8 +189,8 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   width: 2px;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
   background-size: 2px 6px;
-  background-position: right;
-  background-repeat: repeat-y;
+  background-position: top;
+  background-repeat: no-repeat round;
   visibility: visible;
 }
 
@@ -206,8 +206,8 @@ exports[`<StepGroup /> should render nested StepGroup 1`] = `
   width: 2px;
   background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMiIgaGVpZ2h0PSIyIiB2aWV3Qm94PSIwIDAgMiAyIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHBhdGgKICAgICAgZD0iTTAgMUMwIDAuNDQ3NzE1IDAuNDQ3NzE1IDAgMSAwQzEuNTUyMjggMCAyIDAuNDQ3NzE1IDIgMUMyIDEuNTUyMjggMS41NTIyOCAyIDEgMkMwLjQ0NzcxNSAyIDAgMS41NTIyOCAwIDFaIgogICAgICBmaWxsPSJoc2xhKDIxNCwgMjglLCA4NCUsIDEpIgogICAgLz4KICA8L3N2Zz4KICA=);
   background-size: 2px 6px;
-  background-position: right;
-  background-repeat: repeat-y;
+  background-position: top;
+  background-repeat: no-repeat round;
   visibility: hidden;
 }
 
