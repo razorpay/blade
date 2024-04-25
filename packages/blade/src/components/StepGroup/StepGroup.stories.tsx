@@ -124,7 +124,7 @@ const stepsSampleData: StepItemProps[] = [
   {
     title: 'Introduction',
     timestamp: 'Mon, 15th Oct’23 | 12:00pm',
-    description: 'Introduction to Payment Gateway',
+    description: 'Introduction to Razorpay Payment Gateway',
   },
   {
     title: 'Personal Details',
@@ -137,12 +137,9 @@ const stepsSampleData: StepItemProps[] = [
     description: 'Fill your Business Details for onboarding',
   },
   {
-    title: 'Compliance Details',
-    timestamp: 'Mon, 19th Oct’23 | 12:00pm',
-    description: 'Provide documentation or reports',
-  },
-  {
     title: 'Complete Onboarding',
+    timestamp: 'Mon, 20th Oct’23 | 12:00pm',
+    description: 'Complete your onboarding before 20th October',
   },
 ];
 
