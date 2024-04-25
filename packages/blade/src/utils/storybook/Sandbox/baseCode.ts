@@ -181,10 +181,10 @@ export const Logger = () => {
           right="spacing.0"
           padding="spacing.3"
           margin="spacing.4"
-          elevation="midRaised"
+          elevation="none"
           borderRadius="round"
           backgroundColor="surface.background.gray.moderate"
-          borderColor="surface.border.gray.normal"
+          borderColor="surface.border.gray.muted"
           display={showLogger ? 'inline-block' : 'none'}
         >
           <IconButton
@@ -202,14 +202,14 @@ export const Logger = () => {
           padding={['spacing.4', 'spacing.7']}
           overflow="auto"
           height="30vh"
-          elevation="highRaised"
+          elevation="midRaised"
           backgroundColor="surface.background.gray.intense"
           id="log-console"
           ref={consoleRef}
           display={showLogger ? 'block' : 'none'}
           textAlign="left"
           borderTopWidth="thin"
-          borderTopColor="surface.border.gray.normal"
+          borderTopColor="surface.border.gray.muted"
         />
       </Box>
     </>
@@ -279,7 +279,9 @@ root.render(
         display="flex"
         flexDirection="column"
       >
-        <App />
+        <Box>
+          <App />
+        </Box>
         ${showConsole ? '<Logger />' : ''}
       </Box>
     </BladeProvider>
