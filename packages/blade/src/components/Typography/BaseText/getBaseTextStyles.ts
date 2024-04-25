@@ -41,6 +41,7 @@ const getBaseTextStyles = ({
         'line-clamp': `${numberOfLines}`,
         '-webkit-line-clamp': `${numberOfLines}`,
         '-webkit-box-orient': 'vertical',
+        overflowWrap: 'break-word',
       };
     }
   }

@@ -106,6 +106,7 @@ exports[`<Text /> should render Text with variant "body" 1`] = `
   line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -139,6 +140,7 @@ exports[`<Text /> should render Text with variant "body" and contrast "high" 1`]
   line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -172,6 +174,7 @@ exports[`<Text /> should render Text with variant "body" and size "small" 1`] = 
   line-clamp: 3;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>

@@ -90,6 +90,7 @@ exports[`<BaseInput /> should render 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -523,6 +524,7 @@ exports[`<BaseInput /> should render with icons 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1038,6 +1040,7 @@ exports[`<BaseInput /> should render with large size input 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1594,6 +1597,7 @@ exports[`<BaseInput /> should render with trailingButton 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {

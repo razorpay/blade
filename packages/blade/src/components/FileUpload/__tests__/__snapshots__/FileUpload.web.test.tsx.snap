@@ -212,6 +212,7 @@ exports[`<FileUpload /> should render FileUpload 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -764,6 +765,7 @@ exports[`<FileUpload /> should render FileUpload with size="large" 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1312,6 +1314,7 @@ exports[`<FileUpload /> should set disabled state with isDisabled 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {

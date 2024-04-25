@@ -92,6 +92,13 @@ const CountrySelector = ({
           accessibilityLabel={`${countryNameFormatter.of(selectedCountry)} - Select Country`}
           icon={isDropdownOpen ? ChevronUpIcon : ChevronDownIcon}
           iconPosition="right"
+          // We need to prevent the click event from propagating to the BaseInputWrapper,
+          // Because the BaseInputWrapper is listening for click events to focus the input.
+          // We don't want that to happen when the user clicks on the dropdown button
+          // otherwise the dropdown will close immediately after opening
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
         >
           {/* @ts-expect-error */}
           <img

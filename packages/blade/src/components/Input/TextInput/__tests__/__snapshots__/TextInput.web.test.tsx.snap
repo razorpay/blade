@@ -90,6 +90,7 @@ exports[`<TextInput /> should render 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -556,6 +557,7 @@ exports[`<TextInput /> should render large size 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
@@ -1188,6 +1190,7 @@ exports[`<TextInput /> should render with icon, prefix, suffix 1`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {

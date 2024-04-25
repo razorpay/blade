@@ -51,13 +51,11 @@ exports[`<Tag /> should render tag 1`] = `
         data-blade-component="box"
         display="flex"
         flexDirection="row"
-        maxWidth="100px"
         style={
           [
             {
               "display": "flex",
               "flexDirection": "row",
-              "maxWidth": 100,
             },
           ]
         }
