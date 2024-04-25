@@ -2,12 +2,12 @@ import type { ReactChild, ReactElement } from 'react';
 import { Fragment, useState } from 'react';
 
 import { StyledAlert } from './StyledAlert';
+import type { IconComponent } from '~components/Icons';
 import {
   AlertOctagonIcon,
   AlertTriangleIcon,
   CheckCircleIcon,
   CloseIcon,
-  IconComponent,
   InfoIcon,
 } from '~components/Icons';
 import { castNativeType, castWebType, useBreakpoint, getPlatformType } from '~utils';
