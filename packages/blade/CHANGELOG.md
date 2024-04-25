@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.14.0
+
+### Minor Changes
+
+- 23a8364b: feat(blade): add leading prop in Alert
+
 ## 11.13.1
 
 ### Patch Changes
