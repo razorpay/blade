@@ -23,9 +23,9 @@
   {
     "name": "Alert",
     "passed": true,
-    "size": 33535,
+    "size": 33550,
     "sizeLimit": 2000000,
-    "loading": 0.65498046875
+    "loading": 0.6552734375
   },
   {
     "name": "Amount",
