@@ -144,7 +144,7 @@ const Alert = ({
   const isDesktop = matchedDeviceType === 'desktop';
   const isMobile = !isDesktop;
 
-  const Icon = icon || intentIconMap[color];
+  const Icon = icon ?? intentIconMap[color];
   let iconOffset: DotNotationSpacingStringToken = 'spacing.1';
 
   // certain special cases below needs special care for near perfect alignment
