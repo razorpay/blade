@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import React from 'react';
 import userEvents from '@testing-library/user-event';
 import { StepGroup, StepItem, StepItemIndicator } from '../';
