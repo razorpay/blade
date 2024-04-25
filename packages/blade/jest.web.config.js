@@ -1,4 +1,4 @@
-const ignores = ['/node_modules/'];
+const ignores = ['/node_modules/', 'e2e.test'];
 
 const baseConfig = {
   testPathIgnorePatterns: [...ignores, 'native.test'],
