@@ -249,6 +249,7 @@ const getAllProps = (
       breakpoint,
       Boolean(hasBorder),
     ) as CSSObject['borderStyle'],
+    cursor: getResponsiveValue(props.cursor, breakpoint),
     // Since we only allow 'solid', we can use the same value for all borders if hasBorder is true
     // If hasBorder is false, we need to check each border individually
     ...(!hasBorder && {

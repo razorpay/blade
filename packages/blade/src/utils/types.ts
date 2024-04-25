@@ -131,6 +131,8 @@ type BladeElementRef = Platform.Select<{
   native: View;
 }>;
 
+type BladeElementRefWithValue = BladeElementRef & { value: string };
+
 type ContainerElementType = Platform.Select<{
   web: HTMLDivElement;
   native: View;
@@ -147,6 +149,7 @@ export type {
   PickIfExist,
   PickCSSByPlatform,
   BladeElementRef,
+  BladeElementRefWithValue,
   RemoveUndefinedFromUnion,
   ContainerElementType,
 };

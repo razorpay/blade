@@ -173,7 +173,9 @@ const _StyledBaseInput: React.ForwardRefRenderFunction<
       type={type === 'telephone' ? 'tel' : type}
       required={isRequired}
       maxLength={maxCharacters}
-      rows={numberOfLines}
+      // In Tagged TextArea, tags take up their own space so we need to define height instead of relying on HTML rows
+      rows={props.isTextArea && props.isDropdownTrigger ? 1 : numberOfLines}
+      numberOfLines={numberOfLines}
       inputMode={keyboardType === 'telephone' ? 'tel' : keyboardType}
       onChange={(event: React.ChangeEvent<HTMLInputElement>): void =>
         handleOnChange?.({ name, value: event })

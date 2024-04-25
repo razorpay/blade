@@ -9,7 +9,7 @@ import {
 import { baseInputHeight, baseInputWrapperMaxHeight } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { motion } from '~tokens/global';
-import { castWebType, makeMotionTime, makeSize } from '~utils';
+import { castWebType, makeMotionTime, makeSize, makeSpace } from '~utils';
 import type { BladeElementRef } from '~utils/types';
 
 const StyledBaseInputWrapper = styled(BaseBox)<
@@ -39,6 +39,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDisabled: props.isDisabled,
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
+      isTextArea: props.isTextArea,
     }),
     transitionProperty: 'background-color',
     transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
@@ -51,6 +52,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDisabled: props.isDisabled,
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
+      isTextArea: props.isTextArea,
     }),
   },
 }));
@@ -130,6 +132,12 @@ to {
           ? expandTransition
           : collapseTransition
       }
+      height={
+        rest.isTextArea && isDropdownTrigger
+          ? makeSpace((rest.numberOfLines ?? 0) * baseInputHeight[rest.size])
+          : undefined
+      }
+      cursor={rest.isTextArea && isDropdownTrigger ? 'text' : undefined}
       isDropdownTrigger={isDropdownTrigger}
       showAllTags={showAllTags}
       maxTagRows={maxTagRows}

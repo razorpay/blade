@@ -12,10 +12,14 @@ Step Group visualises sequential processes with a consistent structure. It can b
 
 ### StepGroup
 
-| **Props**   | **Description**          | **Type**                   | **Default Value** |
-| ----------- | ------------------------ | -------------------------- | ----------------- |
-| size        | Size of StepGroup        | 'medium' \| 'large'        | 'medium'          |
-| orientation | Orientation of StepGroup | 'horizontal' \| 'vertical' | 'vertical'        |
+| **Props**   | **Description**            | **Type**                   | **Default Value**     |
+| ----------- | -------------------------- | -------------------------- | --------------------- |
+| size        | Size of StepGroup          | 'medium' \| 'large'        | 'medium'              |
+| orientation | Orientation of StepGroup   | 'horizontal' \| 'vertical' | 'vertical'            |
+| children    | Children slot for StepItem | ReactNode                  | undefined             |
+| width       | width of StepGroup         | BoxProps['width']          | Takes content's width |
+| minWidth    | Minimum width of StepGroup | BoxProps['minWidth']       | undefined             |
+| maxWidth    | Maximum width of StepGroup | BoxProps['maxWidth']       | 100%                  |
 
 ### StepItem
 
@@ -25,12 +29,12 @@ Step Group visualises sequential processes with a consistent structure. It can b
 | timestamp    | A string that renders in italic font. Made for adding timestamp values                            | string                                                             |                                       |
 | description  | Description of StepItem                                                                           | string                                                             |                                       |
 | stepProgress | Progress line of step. When its `start` only starting part is highlighted and rest is kept dotted | 'start' \| 'end' \| 'full' \| 'none'                               | 'none'                                |
-| leading      | Leading element                                                                                   | ReactElement (StepItemIcon or StepItemIndicator components as JSX) | <StepItemIndicator color="neutral" /> |
+| marker       | JSX for Marker element                                                                            | ReactElement (StepItemIcon or StepItemIndicator components as JSX) | <StepItemIndicator color="neutral" /> |
 | trailing     | Trailing element                                                                                  | ReactElement (Badge components as JSX)                             | undefined                             |
 | isSelected   | Selected state of item                                                                            | boolean                                                            | undefined                             |
 | href         | Anchor tag's href value. Turns StepItem into interactive item and render it as anchor             | string                                                             | undefined                             |
 | onClick      | StepItem's click handler. Turns StepItem into interactive item and render it as button tag        | () => void                                                         | undefined                             |
-| children     | Children slot for StepItem                                                                        | ReactNode                                                          | undefined                             |
+| children     | Slot                                                                                              | ReactNode                                                          | undefined                             |
 
 ### StepItemIcon
 
@@ -56,13 +60,13 @@ Static StepGroup does not have any hover, focus, and active states. It can't be 
 ```jsx
 <StepGroup>
   <StepItem
-    leading={<StepItemIndicator color="positive" />}
+    marker={<StepItemIndicator color="positive" />}
     title="Disputes Raised"
     timestamp="Thu, 11th Oct23 | 12:00pm"
     stepProgress="full"
   />
   <StepItem
-    leading={<StepItemIndicator color="notice" />}
+    marker={<StepItemIndicator color="notice" />}
     title="Needs Response"
     timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
     description="Description"
@@ -71,7 +75,7 @@ Static StepGroup does not have any hover, focus, and active states. It can't be 
     <Button variant="secondary">Submit Documents</Button>
   </StepItem>
   <StepItem
-    leading={<StepItemIndicator color="neutral" />}
+    marker={<StepItemIndicator color="neutral" />}
     title="Decision from Bank"
     trailing={<Badge color="neutral">Pending</Badge>}
   />
@@ -91,7 +95,7 @@ const InteractiveStepGroup = () => {
   return (
     <StepGroup>
       <StepItem
-        leading={<StepItemIcon icon={CheckIcon} color="positive" />}
+        marker={<StepItemIcon icon={CheckIcon} color="positive" />}
         title="Introduction"
         timestamp="Thu, 11th Oct23 | 12:00pm"
         isSelected={selectedIndex === 0}
@@ -101,7 +105,7 @@ const InteractiveStepGroup = () => {
         }}
       />
       <StepItem
-        leading={<StepItemIcon icon={ClockIcon} color="primary" />}
+        marker={<StepItemIcon icon={ClockIcon} color="primary" />}
         title="Compliance Details"
         description="Provide documentation of reports"
         isSelected={selectedIndex === 1}
@@ -121,7 +125,7 @@ const InteractiveStepGroup = () => {
 ```jsx
 <StepGroup>
   <StepItem
-    leading={<StepItemIcon icon={CheckIcon} color="positive" />}
+    marker={<StepItemIcon icon={CheckIcon} color="positive" />}
     title="Disputes Raised"
     timestamp="Thu, 11th Oct23 | 12:00pm"
     stepProgress="full"
@@ -130,21 +134,21 @@ const InteractiveStepGroup = () => {
   {/* Nested StepGroup */}
   <StepGroup>
     <StepItem
-      leading={<StepItemIcon icon={CheckIcon} color="primary" />}
+      marker={<StepItemIcon icon={CheckIcon} color="primary" />}
       title="Needs Response"
       timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
       description="Description"
       stepProgress="start"
     />
     <StepItem
-      leading={<StepItemIcon icon={CheckIcon} color="neutral" />}
+      marker={<StepItemIcon icon={CheckIcon} color="neutral" />}
       title="Needs Response"
       timestamp="Respond latest by Tue, 23rd Oct'24 | 12:00pm"
       description="Description"
     />
   </StepGroup>
   <StepItem
-    leading={<StepItemIcon icon={CheckIcon} color="neutral" />}
+    marker={<StepItemIcon icon={CheckIcon} color="neutral" />}
     title="Decision from Bank"
     trailing={<Badge color="neutral">Pending</Badge>}
   />
@@ -180,13 +184,14 @@ All follow a similar compound API.
 
   In the proposed API, I have proposed that we can turn item into interactive or static based on whether it has `onClick` or `href` or nothing. Is it intuitive enough? or should we add more explict prop called `isInteractive` like we have in design
 
+  - **Ans:** We decided to go with `onClick` and `href` to decide interactivity of item without isInteractive prop. We follow similar thing in interactive Card as well as its intuitive that hover interactions will be added when item is actually interactive with click and href
+
 - ### Alternative to `leading`
 
   Currently I have proposed `leading` prop where we can add Icon or indicator. Although in horizontal orientation, its not exactly "leading". It comes on top. Its also not very equivalent to leading we have in other components.
 
-  Alternatives
-
-  - `marker={<StepItemIndicator color="positive" />}`
+  - Alternative: `marker={<StepItemIndicator color="positive" />}`
+  - **Ans:** We decided to go with `marker` since `leading` represents something that is leading the title. Marker is more intuitive as this is what it is.
 
 - ### onClick and isSelected on StepItem vs selected and onItemClick on StepGroup
 
@@ -218,3 +223,9 @@ All follow a similar compound API.
   ```
 
   Q. Should we go with 1st, 2nd, or 3rd approach?
+
+  - **Ans:** We decided to go with 1st approach only because the approach 2 and 3 become less intuitive in case of nested StepGroup.
+    - It raises questions like, in nested StepGroup, should earlier StepGroup child handle clicks on its items. Or should parent StepGroup handle clicks on all the items including items from nested StepGroup
+    - The same confusion also happens in selections. Should parent StepGroup handle selection for all items inside of it. Or should closest StepGroup handle selection
+    - If parent StepGroup handles all selections, how would the nested items be represented
+    - To avoid such confusions, we went with 1st approach where selection and click states are isolated to StepItem which also provides more flexibility to consumers on how they want to handle state

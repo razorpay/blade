@@ -195,6 +195,7 @@ type BaseBoxVisualProps = MakeObjectResponsive<
     | 'borderBottom'
     | 'opacity'
     | 'pointerEvents'
+    | 'cursor'
   >
 >;
 

@@ -83,7 +83,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 30px;
+  min-width: 60px;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -502,6 +502,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -542,6 +543,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c51.c51.c51.c51.c51 {
@@ -564,6 +566,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c59.c59.c59.c59.c59 {
@@ -1859,7 +1862,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 30px;
+  min-width: 60px;
 }
 
 .c16.c16.c16.c16.c16 {
@@ -2079,6 +2082,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render autocomplete with larg
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -2797,7 +2801,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 30px;
+  min-width: 60px;
 }
 
 .c16.c16.c16.c16.c16 {
@@ -3169,6 +3173,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -3244,6 +3249,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c20.c20.c20.c20.c20 {
