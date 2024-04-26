@@ -29,12 +29,12 @@ const tableFooter = {
 
 const tableRow = {
   paddingLeft: {
-    compact: 'spacing.4', // TODO: Confirm with design
+    compact: 'spacing.4',
     normal: 'spacing.4',
     comfortable: 'spacing.4',
   },
   paddingRight: {
-    compact: 'spacing.4', // TODO: Confirm with design
+    compact: 'spacing.4',
     normal: 'spacing.4',
     comfortable: 'spacing.4',
   },
