@@ -176,10 +176,9 @@ exports[`<Table /> should render table 1`] = `
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
-  padding-top: 16px;
-  padding-bottom: 16px;
   padding-left: 12px;
   padding-right: 12px;
+  min-height: 48px;
   height: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
@@ -1552,10 +1551,861 @@ exports[`<Table /> should render table with comfortable rowDensity 1`] = `
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
-  padding-top: 20px;
-  padding-bottom: 20px;
   padding-left: 12px;
   padding-right: 12px;
+  min-height: 60px;
+  height: 100%;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5 {
+  background-color: transparent;
+}
+
+.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5.c5:focus {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
+  background-color: hsla(211,20%,52%,0.09);
+}
+
+.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 tr:last-child th {
+  border-bottom: none;
+}
+
+.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+}
+
+.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 > div {
+  background-color: hsla(211,20%,52%,0.09);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1.c1 tr:first-child th {
+  border-top: none;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+  border-bottom-width: 1px;
+  border-top-width: 1px;
+  border-bottom-color: hsla(211,20%,52%,0.18);
+  border-top-color: hsla(211,20%,52%,0.18);
+  border-bottom-style: solid;
+  border-top-style: solid;
+  cursor: auto;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 > div {
+  background-color: hsla(211,20%,52%,0.09);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+@media screen and (min-width:320px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:480px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:768px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1024px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+@media screen and (min-width:1200px) {
+  .c8.c8.c8.c8.c8 {
+    pointer-events: auto;
+  }
+}
+
+<div>
+  <div
+    class="c0"
+    data-blade-component="table"
+  >
+    <table
+      class="css-8lcbdy-Table"
+      data-blade-component="table"
+      data-table-library_table=""
+      role="table"
+      style="--data-table-library_grid-template-columns: 150px 150px 150px 150px 150px 150px;"
+    >
+      <thead
+        class="c1 css-1a28xfp-Header"
+        data-blade-component="table-header"
+        role="rowgroup"
+      >
+        <tr
+          class="tr tr-header css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
+          data-blade-component="table-header-row"
+          data-table-library_tr-header=""
+          role="rowheader"
+        >
+          <th
+            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                Payment ID
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                Amount
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                Status
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                Type
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                Method
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c2 css-96zqc6-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-header-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnheader"
+            tabindex="0"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                Name
+              </p>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="c4 css-8eb0m3-Body"
+        data-blade-component="table-body"
+        data-table-library_body=""
+      >
+        <tr
+          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    rzp01
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  100
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    Netbanking
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    John Doe
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr
+          class="tr tr-body c5 clickable css-1rzx1gz-getRowContainerStyle-Row"
+          data-blade-component="table-row"
+          data-table-library_tr-body=""
+          role="row"
+        >
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    rzp02
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  240
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    pending
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    credit
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    UPI
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td
+            class="td c6 css-11eh3e4-CELL_CONTAINER_STYLE-Cell"
+            data-blade-component="table-cell"
+            data-table-library_td=""
+            role="cell"
+            tabindex="0"
+          >
+            <div>
+              <div
+                class="c7 cell-wrapper-base"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8 c9 cell-wrapper"
+                  data-blade-component="base-box"
+                  pointer-events="auto"
+                >
+                  <p
+                    class="c10"
+                    data-blade-component="text"
+                  >
+                    Jane Doe
+                  </p>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot
+        class="c11 css-1a28xfp-Header"
+        data-blade-component="table-footer"
+        role="rowgroup"
+      >
+        <tr
+          class="tr tr-footer css-19bs4cg-getHeaderRowContainerStyle-HeaderRow"
+          data-blade-component="table-footer-row"
+          data-table-library_tr-header=""
+          role="rowfooter"
+        >
+          <th
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+          <th
+            class="th c12 css-1mmxnzc-HEADER_CELL_CONTAINER_STYLE-HeaderCell"
+            data-blade-component="table-footer-cell"
+            data-hide="false"
+            data-resize-min-width="75"
+            data-table-library_th=""
+            role="columnfooter"
+          >
+            <div>
+              <p
+                class="c3"
+                data-blade-component="text"
+              >
+                -
+              </p>
+            </div>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`<Table /> should render table with compact rowDensity 1`] = `
+.c0.c0.c0.c0.c0 {
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  position: relative;
+}
+
+.c7.c7.c7.c7.c7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.c3.c3.c3.c3.c3 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c10.c10.c10.c10.c10 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 {
+  border: none;
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 tr:last-child .cell-wrapper {
+  border-bottom: none;
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected .cell-wrapper-base,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:hover:not(.disabled-row) .cell-wrapper-base,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:hover:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:focus:not(.disabled-row) .cell-wrapper-base,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:focus:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.09);
+}
+
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-single-selected:active:not(.disabled-row) .cell-wrapper-base,
+.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4.c4 .row-select-selected:active:not(.disabled-row) .cell-wrapper-base {
+  background-color: hsla(227,100%,59%,0.18);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 {
+  height: 100%;
+  background-color: hsla(0,0%,100%,1);
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6 > div:first-child {
+  -webkit-align-self: stretch;
+  -ms-flex-item-align: stretch;
+  align-self: stretch;
+}
+
+.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6.c6:focus-visible {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: -4px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+}
+
+.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9.c9 {
+  -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
+  background-color: transparent;
+  padding-left: 12px;
+  padding-right: 12px;
+  min-height: 36px;
   height: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
@@ -2556,10 +3406,9 @@ exports[`<Table /> should render table with isRefreshing 1`] = `
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
-  padding-top: 16px;
-  padding-bottom: 16px;
   padding-left: 12px;
   padding-right: 12px;
+  min-height: 48px;
   height: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
@@ -3465,10 +4314,9 @@ exports[`<Table /> should render table with showStripedRows 1`] = `
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
-  padding-top: 16px;
-  padding-bottom: 16px;
   padding-left: 12px;
   padding-right: 12px;
+  min-height: 48px;
   height: 100%;
 }
 
@@ -4319,10 +5167,9 @@ exports[`<Table /> should render table with sticky header, footer & first column
   -webkit-transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   transition: background-color 150ms cubic-bezier(0.3,0,0.2,1);
   background-color: transparent;
-  padding-top: 16px;
-  padding-bottom: 16px;
   padding-left: 12px;
   padding-right: 12px;
+  min-height: 48px;
   height: 100%;
   border-bottom-width: 1px;
   border-bottom-color: hsla(211,20%,52%,0.18);
