@@ -97,6 +97,7 @@ const _StepGroup = ({
         maxWidth={maxWidth ?? '100%'}
         minWidth={minWidth}
         width={width ?? defaultWidth}
+        padding="spacing.4"
         overflowX={orientation === 'horizontal' ? 'auto' : undefined}
         flexDirection={orientation === 'vertical' ? 'column' : 'row'}
       >
