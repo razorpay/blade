@@ -139,7 +139,7 @@ const stepsSampleData: StepItemProps[] = [
   {
     title: 'Complete Onboarding',
     timestamp: 'Mon, 20th Oct’23 | 12:00pm',
-    description: 'Complete your onboarding before 20th October',
+    description: 'Complete your onboarding to start',
   },
 ];
 
