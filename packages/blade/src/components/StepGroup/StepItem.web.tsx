@@ -168,7 +168,7 @@ const _StepItem = ({
       className={`step-item step-index-${_index} step-nesting-level-${_nestingLevel}`}
       textAlign={isVertical ? 'left' : 'center'}
       alignItems={isVertical ? undefined : 'center'}
-      minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['240'])}, 100%)`}
+      minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['120'])}, 100%)`}
       width={isVertical ? '100%' : undefined}
       flex={isVertical ? undefined : '1'}
       {...metaAttribute({ name: MetaConstants.StepItem })}
