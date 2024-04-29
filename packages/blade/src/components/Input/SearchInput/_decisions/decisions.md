@@ -21,31 +21,34 @@ This document serves as an overview of the API for the `SearchInput` component.
 The `SearchInput` component extends the `BaseInput` and shares common props:
 
 ```ts
-type CommonProps = Pick<
+type SearchInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
-  | 'name'
-  | 'value'
   | 'helpText'
-  | 'isDisabled'
+  | 'placeholder'
+  | 'defaultValue'
+  | 'name'
   | 'onChange'
   | 'onFocus'
   | 'onBlur'
+  | 'value'
+  | 'isDisabled'
+  | 'autoFocus'
   | 'onSubmit'
->;
-
-type SearchInputProps = CommonProps & {
+  | 'autoCapitalize'
+  | 'testID'
+  | 'onClick'
+  | 'size'
+> & {
   /**
-   * The size of the input field.
-   *
-   * @default medium
+   * Event handler to handle the onClick event for clear button.
    */
-  size?: 'medium' | 'large';
+  onClearButtonClick?: () => void;
+
   /**
-   * Toggles the loading state of the component
-   *
-   * @default false
+   * Decides whether to show a loading spinner for the input field.
    */
   isLoading?: boolean;
   /**
@@ -54,10 +57,38 @@ type SearchInputProps = CommonProps & {
    * @default true
    */
   showSearchIcon?: boolean;
+} & StyledPropsBlade;
+
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type SearchInputPropsWithA11yLabel = {
   /**
-   * Callback that is called when the clear button is clicked.
+   * Label to be shown for the input field
    */
-  onClearButtonClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type SearchInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type SearchInputProps = (SearchInputPropsWithA11yLabel | SearchInputPropsWithLabel) &
+  SearchInputCommonProps;
 };
 ```
 
