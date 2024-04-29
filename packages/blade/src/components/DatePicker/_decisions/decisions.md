@@ -21,8 +21,9 @@ The Date Picker component lets users select a date from a calendar. It is used t
 
 ```jsx
 <DatePickerInput
-  valueFormat="DD/MM/YYYY"
   label="Pick date"
+  selectionType="single"
+  valueFormat="DD/MM/YYYY"
   defaultValue={new Date()}
   onChange={(date) => {
     console.log('date selected', date);
@@ -164,9 +165,12 @@ type CalendarProps = {
 };
 ```
 
-## Composition
+<details>
 
-## Calendar + Dropdown
+<summary>Alternative Approaches</summary>
+
+
+## Calendar + Dropdown Composition
 
 The `Calendar` component is used to select a date or range of dates. It can be used standalone or in conjunction with the `Dropdown` component to select a date/date range.
 
@@ -266,6 +270,13 @@ Pros:
 - We can provide out of the box mobile support (eg turning popover into bottomsheet on mobile)
 - State management of the DatePickerInput can be handled by us
 
+### Conclusion
+
+Given the issues with the Dropdown component composition and the complexity of handling many edgecases and the scope of the DatePicker component only being used with an Input component we should go with the `<DatePickerInput />` component approach, where we have total control over the UX/behaviour of the component & can automatically handle the focus management, accessibility, mobile bottomsheet etc.
+
+But still we could expose Calendar as a standalone component for advanced usecases.
+
+</details>
 
 ## Accessibility
 
@@ -299,5 +310,5 @@ https://github.com/iamkun/dayjs/issues/1041
 
 ## References
 
-- [DatePickerLibrary Exploration](https://docs.google.com/document/d/1PJ9gT-P38vHufKDzxEzPvDY5IjsI_HeBGg-9gVaC7vU/edit?usp=sharing)
+- [DatePicker Library Exploration](https://docs.google.com/document/d/1PJ9gT-P38vHufKDzxEzPvDY5IjsI_HeBGg-9gVaC7vU/edit?usp=sharing)
 - https://mantine.dev/dates/date-picker-input/
