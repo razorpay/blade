@@ -45,9 +45,15 @@ type SearchInputProps = CommonProps & {
   /**
    * Toggles the loading state of the component
    *
-   * @default true
+   * @default false
    */
   isLoading?: boolean;
+  /**
+   * Toggle the visibility of the search icon.
+   *
+   * @default true
+   */
+  showSearchIcon?: boolean;
   /**
    * Callback that is called when the clear button is clicked.
    */
