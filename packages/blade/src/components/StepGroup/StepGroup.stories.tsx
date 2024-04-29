@@ -429,7 +429,7 @@ const ReactRouterExample = (args: StepGroupProps): React.ReactElement => {
   };
 
   return (
-    <Box display="flex" flexDirection="row">
+    <Box display="flex" flexDirection="row" minHeight="500px">
       <Box
         backgroundColor="surface.background.gray.intense"
         padding="spacing.7"
