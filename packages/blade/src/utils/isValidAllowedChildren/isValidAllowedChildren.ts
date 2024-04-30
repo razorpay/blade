@@ -8,7 +8,6 @@ import React from 'react';
 const getComponentId = (component: React.ReactNode): string | null => {
   if (!React.isValidElement(component)) return null;
 
-  console.log('🚀 ~ getComponentId ~ component:', component);
   // Storybook wraps MDX components in a wrapper component, so we need to get componentId from originalType
   if (component?.props?.mdxType && component?.props?.originalType?.componentId) {
     return component.props.originalType.componentId;
