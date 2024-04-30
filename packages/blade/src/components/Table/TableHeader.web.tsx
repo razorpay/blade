@@ -116,7 +116,13 @@ const StyledHeaderCell = styled(HeaderCell)<{
 }));
 
 const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.ReactElement => {
-  const { toggleSort, currentSortedState, backgroundColor, rowDensity } = useTableContext();
+  const {
+    toggleSort,
+    currentSortedState,
+    backgroundColor,
+    rowDensity,
+    headerRowDensity,
+  } = useTableContext();
   const isChildrenString = typeof children === 'string';
   const isSortable =
     headerKey && Boolean(currentSortedState.sortableColumns?.find((key) => key === headerKey));
@@ -125,7 +131,7 @@ const _TableHeaderCell = ({ children, headerKey }: TableHeaderCellProps): React.
       tabIndex={0}
       $isSortable={isSortable}
       $backgroundColor={backgroundColor}
-      $rowDensity={rowDensity}
+      $rowDensity={headerRowDensity ?? rowDensity}
       onClick={() => {
         if (isSortable) {
           toggleSort(headerKey);
@@ -174,11 +180,20 @@ const TableHeaderCellCheckbox = ({
   );
 };
 
-const _TableHeaderRow = ({ children }: TableHeaderRowProps): React.ReactElement => {
-  const { selectionType, selectedRows, totalItems, toggleAllRowsSelection } = useTableContext();
+const _TableHeaderRow = ({ children, rowDensity }: TableHeaderRowProps): React.ReactElement => {
+  const {
+    selectionType,
+    selectedRows,
+    totalItems,
+    toggleAllRowsSelection,
+    setHeaderRowDensity,
+  } = useTableContext();
   const isMultiSelect = selectionType === 'multiple';
   const isAllSelected = selectedRows && selectedRows.length === totalItems;
   const isIndeterminate = selectedRows && selectedRows.length > 0 && !isAllSelected;
+  if (rowDensity) {
+    setHeaderRowDensity(rowDensity);
+  }
   return (
     <HeaderRow role="rowheader" {...metaAttribute({ name: MetaConstants.TableHeaderRow })}>
       {isMultiSelect && (

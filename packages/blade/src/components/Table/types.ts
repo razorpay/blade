@@ -39,6 +39,12 @@ type TableHeaderRowProps = {
    * </TableHeader>
    **/
   children: React.ReactNode;
+  /**
+   * The rowDensity prop determines the density of the table.
+   * The rowDensity prop can be 'compact', 'normal', or'comfortable'.
+   * The default value is `normal`.
+   **/
+  rowDensity?: TableProps<unknown>['rowDensity'];
 };
 
 type TableHeaderCellProps = {
@@ -94,7 +100,7 @@ type TableProps<Item> = {
   isFirstColumnSticky?: boolean;
   /**
    * The rowDensity prop determines the density of the table.
-   * The rowDensity prop can be 'normal' or 'comfortable'.
+   * The rowDensity prop can be 'compact', 'normal', or'comfortable'.
    * The default value is `normal`.
    **/
   rowDensity?: 'compact' | 'normal' | 'comfortable';
