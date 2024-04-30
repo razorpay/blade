@@ -123,7 +123,13 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   const textInputRef = React.useRef<BladeElementRefWithValue>(null);
   const mergedRef = useMergeRefs(ref, textInputRef);
   const [shouldShowClearButton, setShouldShowClearButton] = useState(false);
-  const { triggererWrapperRef, onTriggerKeydown, onTriggerClick } = useDropdown();
+  const {
+    triggererWrapperRef,
+    onTriggerKeydown,
+    onTriggerClick,
+    dropdownTriggerer,
+  } = useDropdown();
+  const isDropdownUsed = dropdownTriggerer === 'SearchInput';
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));
@@ -172,9 +178,13 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         componentName={MetaConstants.SearchInput}
         ref={mergedRef}
         isDropdownTrigger={true}
-        setInputWrapperRef={(wrapperNode) => {
-          triggererWrapperRef.current = wrapperNode;
-        }}
+        setInputWrapperRef={
+          isDropdownUsed
+            ? (wrapperNode) => {
+                triggererWrapperRef.current = wrapperNode;
+              }
+            : undefined
+        }
         label={label as string}
         accessibilityLabel={accessibilityLabel}
         hideLabelText={!Boolean(label)}
@@ -183,7 +193,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         defaultValue={defaultValue}
         value={value}
         name={name}
-        onKeyDown={onTriggerKeydown}
+        onKeyDown={isDropdownUsed ? onTriggerKeydown : undefined}
         onChange={({ name, value }) => {
           if (value?.length) {
             // show the clear button when the user starts typing in
@@ -199,7 +209,9 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         }}
         onClick={(e) => {
           if (isDisabled) return;
-          onTriggerClick();
+          if (isDropdownUsed) {
+            onTriggerClick();
+          }
           onClick?.(e);
         }}
         onFocus={onFocus}
