@@ -220,7 +220,7 @@ export default {
 } as Meta<SearchInputProps>;
 
 const SearchInputTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
-  return <SearchInputComponent {...args} onChange={({ value }) => console.log(value)} />;
+  return <SearchInputComponent {...args} />;
 };
 
 export const Default = SearchInputTemplate.bind({});
@@ -319,7 +319,7 @@ const SearchInputWithDropdownTemplate: StoryFn<typeof SearchInputComponent> = (a
 export const SearchInputWithDropdown = SearchInputWithDropdownTemplate.bind({});
 SearchInputWithDropdown.storyName = 'With Dropdown';
 
-const SearchInputWithTableTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
+const SearchInputWithTableTemplate: StoryFn<typeof SearchInputComponent> = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
 
   type Item = {
