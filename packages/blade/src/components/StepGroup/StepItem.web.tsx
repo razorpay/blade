@@ -20,10 +20,7 @@ import { size as sizeTokens } from '~tokens/global';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
-<<<<<<< HEAD
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
-=======
->>>>>>> 58cb910c47a7a275e27c2a99af03b9d9e186847b
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
