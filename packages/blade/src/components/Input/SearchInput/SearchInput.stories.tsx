@@ -220,7 +220,7 @@ export default {
 } as Meta<SearchInputProps>;
 
 const SearchInputTemplate: StoryFn<typeof SearchInputComponent> = (args) => {
-  return <SearchInputComponent {...args} />;
+  return <SearchInputComponent {...args} onChange={({ value }) => console.log(value)} />;
 };
 
 export const Default = SearchInputTemplate.bind({});
