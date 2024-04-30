@@ -3,7 +3,6 @@
 exports[`<SearchInput /> should hide search icon 1`] = `
 .c0.c0.c0.c0.c0 {
   position: relative;
-  width: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -391,7 +390,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
         >
           <label
             data-blade-component="form-label"
-            for="searchinput-637-input-638"
+            for="searchinput-649-input-650"
             style="width: auto; flex-shrink: 0; margin-right: 0px;"
           >
             <div
@@ -446,7 +445,7 @@ exports[`<SearchInput /> should hide search icon 1`] = `
                   class="c14"
                   data-blade-component="styled-base-input"
                   enterkeyhint="search"
-                  id="searchinput-637-input-638"
+                  id="searchinput-649-input-650"
                   inputmode="search"
                   type="text"
                   value=""
@@ -473,7 +472,6 @@ exports[`<SearchInput /> should hide search icon 1`] = `
 exports[`<SearchInput /> should render 1`] = `
 .c0.c0.c0.c0.c0 {
   position: relative;
-  width: 100%;
 }
 
 .c1.c1.c1.c1.c1 {
@@ -1001,7 +999,6 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 
 .c1.c1.c1.c1.c1 {
   position: relative;
-  width: 100%;
 }
 
 .c2.c2.c2.c2.c2 {
@@ -1714,7 +1711,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
             >
               <label
                 data-blade-component="form-label"
-                for="searchinput-656-input-657"
+                for="searchinput-668-input-669"
                 style="width: auto; flex-shrink: 0; margin-right: 0px;"
               >
                 <div
@@ -1796,7 +1793,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
                       class="c17"
                       data-blade-component="styled-base-input"
                       enterkeyhint="search"
-                      id="searchinput-656-input-657"
+                      id="searchinput-668-input-669"
                       inputmode="search"
                       placeholder="Search payment products, settings, and more"
                       type="text"
@@ -1821,7 +1818,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
       <div
         class="c20"
         data-blade-component="base-box"
-        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); min-width: 240px; max-width: 400px;"
+        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); width: 0px;"
       >
         <div
           class="c21 c22"
@@ -1885,10 +1882,10 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
             </div>
           </div>
           <div
-            aria-labelledby="dropdown-655-label"
+            aria-labelledby="dropdown-667-label"
             class=""
             data-blade-component="action-list"
-            id="dropdown-655-actionlist"
+            id="dropdown-667-actionlist"
             role="menu"
           >
             <div
@@ -1900,7 +1897,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
                 data-blade-component="action-list-item"
                 data-index="0"
                 data-value="apple"
-                id="dropdown-655-0"
+                id="dropdown-667-0"
                 role="menuitem"
                 tabindex="-1"
                 type="button"
@@ -1939,7 +1936,7 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
                 data-blade-component="action-list-item"
                 data-index="1"
                 data-value="mango"
-                id="dropdown-655-1"
+                id="dropdown-667-1"
                 role="menuitem"
                 tabindex="-1"
                 type="button"
@@ -1985,7 +1982,6 @@ exports[`<SearchInput /> should render dropdown and make it visible on click 1`]
 exports[`<SearchInput /> should render large size 1`] = `
 .c0.c0.c0.c0.c0 {
   position: relative;
-  width: 100%;
 }
 
 .c1.c1.c1.c1.c1 {

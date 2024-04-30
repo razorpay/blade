@@ -15,11 +15,9 @@ exports[`<SearchInput /> should render 1`] = `
       [
         {
           "position": "relative",
-          "width": "100%",
         },
       ]
     }
-    width="100%"
   >
     <View
       data-blade-component="search-input"
