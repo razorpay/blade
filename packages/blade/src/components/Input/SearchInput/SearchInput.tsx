@@ -129,7 +129,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
     onTriggerClick,
     dropdownTriggerer,
   } = useDropdown();
-  const isDropdownUsed = dropdownTriggerer === 'SearchInput';
+  const isInsideDropdown = dropdownTriggerer === 'SearchInput';
 
   React.useEffect(() => {
     setShouldShowClearButton(Boolean(defaultValue ?? value));
@@ -179,7 +179,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         ref={mergedRef}
         isDropdownTrigger={true}
         setInputWrapperRef={
-          isDropdownUsed
+          isInsideDropdown
             ? (wrapperNode) => {
                 triggererWrapperRef.current = wrapperNode;
               }
@@ -193,7 +193,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         defaultValue={defaultValue}
         value={value}
         name={name}
-        onKeyDown={isDropdownUsed ? onTriggerKeydown : undefined}
+        onKeyDown={isInsideDropdown ? onTriggerKeydown : undefined}
         onChange={({ name, value }) => {
           if (value?.length) {
             // show the clear button when the user starts typing in
@@ -209,7 +209,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
         }}
         onClick={(e) => {
           if (isDisabled) return;
-          if (isDropdownUsed) {
+          if (isInsideDropdown) {
             onTriggerClick();
           }
           onClick?.(e);
