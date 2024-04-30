@@ -1,5 +1,13 @@
 # @razorpay/blade
 
+## 11.15.0
+
+### Minor Changes
+
+- ada461c8: feat(StepGroup): add StepGroup component
+
+  Documentation: https://blade.razorpay.com/?path=/docs/components-stepgroup--docs
+
 ## 11.14.0
 
 ### Minor Changes
