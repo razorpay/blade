@@ -20,6 +20,7 @@ import { size as sizeTokens } from '~tokens/global';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 import getIn from '~utils/lodashButBetter/get';
 import { throwBladeError } from '~utils/logger';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 
 type GetStepTypeFromIndexProps = {
   _index: StepItemProps['_index'];
@@ -119,6 +120,13 @@ const _StepItem = ({
         moduleName: 'StepItem',
       });
     }
+
+    if (_nestingLevel >= 1 && orientation === 'horizontal') {
+      throwBladeError({
+        message: 'Nested StepGroup components are not allowed in horizontal orientation',
+        moduleName: 'StepItem',
+      });
+    }
   }
 
   const stepItemHeaderJSX = (
@@ -160,9 +168,10 @@ const _StepItem = ({
       className={`step-item step-index-${_index} step-nesting-level-${_nestingLevel}`}
       textAlign={isVertical ? 'left' : 'center'}
       alignItems={isVertical ? undefined : 'center'}
-      minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['240'])}, 100%)`}
+      minWidth={isVertical ? undefined : `min(${makeSize(sizeTokens['120'])}, 100%)`}
       width={isVertical ? '100%' : undefined}
       flex={isVertical ? undefined : '1'}
+      {...metaAttribute({ name: MetaConstants.StepItem })}
       ref={itemRef}
     >
       <StepLine

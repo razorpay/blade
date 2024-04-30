@@ -139,7 +139,7 @@ const stepsSampleData: StepItemProps[] = [
   {
     title: 'Complete Onboarding',
     timestamp: 'Mon, 20th Oct’23 | 12:00pm',
-    description: 'Complete your onboarding before 20th October',
+    description: 'Complete your onboarding to start',
   },
 ];
 
@@ -429,7 +429,7 @@ const ReactRouterExample = (args: StepGroupProps): React.ReactElement => {
   };
 
   return (
-    <Box display="flex" flexDirection="row">
+    <Box display="flex" flexDirection="row" minHeight="500px">
       <Box
         backgroundColor="surface.background.gray.intense"
         padding="spacing.7"
