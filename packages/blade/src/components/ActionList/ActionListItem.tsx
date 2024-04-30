@@ -31,7 +31,7 @@ import { dropdownComponentIds } from '~components/Dropdown/dropdownComponentIds'
 type ActionListItemProps = {
   title: string;
   description?: string;
-  onClick?: (clickProps: { name: string; value?: boolean }) => void;
+  onClick?: (clickProps: { name: string; value?: boolean; event: React.MouseEvent }) => void;
   /**
    * value that you get from `onChange` event on SelectInput or in form submissions.
    */
@@ -437,7 +437,7 @@ const _ActionListItem = (props: ActionListItemProps): React.ReactElement => {
         {...makeActionListItemClickable((e: React.MouseEvent<HTMLButtonElement>): void => {
           if (typeof props._index === 'number') {
             onOptionClick(e, props._index);
-            props.onClick?.({ name: props.value, value: isSelected });
+            props.onClick?.({ name: props.value, value: isSelected, event: e });
           }
         })}
         {...metaAttribute({ name: MetaConstants.ActionListItem, testID: props.testID })}
