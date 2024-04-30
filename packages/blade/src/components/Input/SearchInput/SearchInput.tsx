@@ -166,7 +166,7 @@ const _SearchInput: React.ForwardRefRenderFunction<BladeElementRef, SearchInputP
   };
 
   return (
-    <BaseBox position="relative" width="100%">
+    <BaseBox position="relative">
       <BaseInput
         id="searchinput"
         componentName={MetaConstants.SearchInput}

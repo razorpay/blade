@@ -46,6 +46,7 @@ const _DropdownOverlay = ({
 
   const isMenu =
     dropdownTriggerer !== dropdownComponentIds.triggers.SelectInput &&
+    dropdownTriggerer !== dropdownComponentIds.triggers.SearchInput &&
     dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete &&
     referenceRef == undefined;
 
