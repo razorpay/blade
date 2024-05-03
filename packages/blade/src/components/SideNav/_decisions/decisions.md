@@ -11,25 +11,35 @@ The side navigation is positioned along the left side of the screen that provide
 ## API
 
 ```jsx
-<SideNav>
-  <SideNavItem as={NavLink} title="Home" icon={HomeIcon} href="/" />
-  <SideNavItem as={NavLink} title="Accounts" icon={AccountsIcon} href="/accounts/profile">
+import { NavLink } from 'react-router-dom';
+
+<SideNav routerLink={NavLink}>
+  <SideNavLink title="Home" icon={HomeIcon} href="/" />
+  <Tooltip placement="top" content="Check your Payouts (Cmd + P)">
+    <SideNavLink
+      title="Payouts"
+      trailing={<Button icon={PlusIcon} variant="tertiary" />}
+      icon={HomeIcon}
+      href="/"
+    />
+  </Tooltip>
+  <SideNavLink title="Accounts" icon={AccountsIcon} href="/accounts/profile">
     {/* L2 */}
     <SideNavLevel title="Accounts">
-      <SideNavItem as={NavLink} title="Profile" icon={UserIcon} href="/accounts/profile" />
-      <SideNavItem as={NavLink} title="Settings" icon={UserIcon} href="/accounts/settings" />
-      <SideNavItem as={NavLink} title="Edit" icon={UserIcon} href="/accounts/settings">
+      <SideNavLink title="Profile" icon={UserIcon} href="/accounts/profile" />
+      <SideNavLink title="Settings" icon={UserIcon} href="/accounts/settings" />
+      <SideNavLink title="Edit" icon={UserIcon} href="/accounts/settings">
         {/* L3 */}
         <SideNavLevel>
-          <SideNavItem as={NavLink} title="Password" icon={PassIcon} href="/accounts/edit/pass" />
-          <SideNavItem as={NavLink} title="Email" icon={EmailIcon} href="/accounts/edit/email" />
+          <SideNavLink title="Password" icon={PassIcon} href="/accounts/edit/pass" />
+          <SideNavLink title="Email" icon={EmailIcon} href="/accounts/edit/email" />
         </SideNavLevel>
-      </SideNavItem>
+      </SideNavLink>
     </SideNavLevel>
-  </SideNavItem>
+  </SideNavLink>
   <SideNavSection title="Products" maxItemsDisplayed={3}>
-    <SideNavItem as={NavLink} href="/payment-gateway" title="Payment Gateway" />
-    <SideNavItem as={NavLink} href="/payment-pages" title="Payment Pages" />
+    <SideNavLink href="/payment-gateway" title="Payment Gateway" />
+    <SideNavLink href="/payment-pages" title="Payment Pages" />
   </SideNavSection>
 
   {/* Footer */}
@@ -41,9 +51,9 @@ The side navigation is positioned along the left side of the screen that provide
       </Box>
       <Switch />
     </Box>
-    <SideNavItem as={NavLink} href="/settings" title="Settings" />
+    <SideNavLink href="/settings" title="Settings" />
   </SideNavFooter>
-</SideNav>
+</SideNav>;
 ```
 
 ## Alternate APIs
@@ -106,18 +116,18 @@ const accountsL2Ref = React.useRef(null);
 
 <SideNav>
   <SideNavL1>
-    <SideNavItem title="Home" icon={HomeIcon} href="/" />
-    <SideNavItem l2Ref={accountsL2Ref} title="Accounts" icon={UserIcon} href="/accounts" />
+    <SideNavLink title="Home" icon={HomeIcon} href="/" />
+    <SideNavLink l2Ref={accountsL2Ref} title="Accounts" icon={UserIcon} href="/accounts" />
   </SideNavL1>
 
   <SideNavL2 ref={accountsL2Ref}>
-    <SideNavItem title="Profile" icon={ProfileIcon} href="/accounts/profile" />
-    <SideNavItem title="Business Profile" icon={BusinessIcon} href="/accounts/business">
+    <SideNavLink title="Profile" icon={ProfileIcon} href="/accounts/profile" />
+    <SideNavLink title="Business Profile" icon={BusinessIcon} href="/accounts/business">
       <SideNavL3>
-        <SideNavItem title="Business Info" icon={ProfileIcon} href="/accounts/profile" />
-        <SideNavItem title="Business Details" icon={ProfileIcon} href="/accounts/profile" />
+        <SideNavLink title="Business Info" icon={ProfileIcon} href="/accounts/profile" />
+        <SideNavLink title="Business Details" icon={ProfileIcon} href="/accounts/profile" />
       </SideNavL3>
-    </SideNavItem>
+    </SideNavLink>
   </SideNavL2>
 </SideNav>;
 ```
@@ -133,9 +143,157 @@ const accountsL2Ref = React.useRef(null);
 
 ### SideNav
 
-### SideNavItem
+| **Props**  | **Description**                                                              | **Type**             | **Default Value** |
+| ---------- | ---------------------------------------------------------------------------- | -------------------- | ----------------- |
+| routerLink | Prop for passing NavLink of React Router                                     | NavLinkComponentType |                   |
+| children   | children slot of SideNav, accepts SideNavLink, SideNavSection, SideNavFooter | JSX                  |                   |
+
+```jsx
+import { NavLink } from 'react-router-dom';
+
+<SideNav routerLink={NavLink}>{/* children */}</SideNav>;
+```
+
+### SideNavLink
+
+| **Props**   | **Description**                                                                                                              | **Type**                                                            | **Default Value**                                            |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------ |
+| title       | title of SideNavLink                                                                                                         | string                                                              |                                                              |
+| href        | URL to navigate to. Internally links to `to` attribute of router                                                             | string                                                              |                                                              |
+| target      | anchor tag target attribute [target - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target) | AnchorTargetType                                                    | \_self                                                       |
+| rel         | anchor tag rel attribute [rel - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#rel)          | AnchorRelType                                                       | target === ' \_blank ' ? ' noreferrer noopener ' : undefined |
+| icon        | Blade's Icon Component                                                                                                       | IconComponent                                                       |                                                              |
+| trailing    | Trailing Slot of Item. Can be used for adding Quick Shortcut Button, Trailing Text                                           | JSX                                                                 |                                                              |
+| titleSuffix | Slot after the title to add Badge, Counter                                                                                   | JSX                                                                 |                                                              |
+| ref         | Forwards the given ref. This also allows it to be a trigger for Tooltip                                                      | idk man ref types are hard.<br/> I'll figure out while implementing |                                                              |
+| children    | SideNavLink children slot. Items inside children turn into next level item with parent as a trigger                          | JSX                                                                 | undefined                                                    |
+
+#### Example Nav Links
+
+<table>
+<tr><th>Code</th><th>Preview</th></tr>
+
+<tr>
+<td>
+
+<!-- prettier-ignore -->
+```jsx
+<SideNavLink
+  icon={BillIcon}
+  title="Vendor Payments"
+  href="/vendor-payments"
+/>
+```
+
+</td>
+<td><img src="image-2.png" width="200px" /></td>
+</tr>
+
+<tr>
+<td>
+
+<!-- prettier-ignore -->
+```jsx
+<SideNavLink
+  icon={PayoutIcon}
+  title="Create Payouts"
+  href="/payouts"
+  trailing={
+    <Button
+      href="/payouts/create"
+      icon={PlusIcon}
+      size="xsmall"
+      variant="tertiary"
+    />
+  }
+/>
+```
+
+</td>
+<td><img src="image-3.png" width="200px" /></td>
+</tr>
+
+<tr>
+<td>
+
+<!-- prettier-ignore -->
+```jsx
+<SideNavLink
+  icon={LayoutIcon}
+  title="L1 Item Name"
+  href="/new-item-link"
+  titleSuffix={
+    <Badge color="positive">New</Badge>
+  }
+/>
+```
+
+</td>
+<td><img src="image-4.png" width="200px" /></td>
+</tr>
+
+tr>
+
+<td>
+
+<!-- prettier-ignore -->
+```jsx
+<Tooltip content="Action Name (Cmd + P)">
+  <SideNavLink
+    icon={LayoutIcon}
+    title="L1 Item Name"
+    href="/new-item-link"
+  />
+</Tooltip>
+```
+
+</td>
+<td><img src="image-5.png" width="240px" /></td>
+</tr>
+
+</table>
 
 ### SideNavLevel
+
+Nested SideNavLevel components create new levels. This can be used to create L1 - L2 - L3 levels in your navbar
+
+| **Props** | **Description**                                       | **Type** | **Default Value** |
+| --------- | ----------------------------------------------------- | -------- | ----------------- |
+| title     | Only applicable in L2. Becomes the title of the Level | string   |                   |
+| children  | children slot. Accepts SideNavLink as children        | JSX      |                   |
+
+<table>
+<tr>
+<td>
+
+```jsx
+<SideNav>
+  {/* L1 Items */}
+  <SideNavItem title="L1 Item" />
+
+  <SideNavItem title="L2 Trigger">
+    {/* L2 Level */}
+    <SideNavLevel title="L2 Trigger">
+      <SideNavItem />
+      <SideNavItem />
+      <SideNavItem title="L3 Trigger">
+        {/* L3 Level */}
+        <SideNavLevel>
+          <SideNavItem />
+          <SideNavItem />
+        </SideNavLevel>
+      </SideNavItem>
+    </SideNavLevel>
+</SideNav>
+```
+
+</td>
+
+<td>
+<img width="500px" src="image-6.png" />
+</td>
+</tr>
+</table>
 
 ### SideNavSection
 
