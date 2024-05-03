@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.15.1
+
+### Patch Changes
+
+- 989172ab: fix(blade): tab item button type
+
 ## 11.15.0
 
 ### Minor Changes
