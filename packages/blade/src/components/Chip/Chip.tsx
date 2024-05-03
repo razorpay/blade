@@ -56,6 +56,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     }
   }
 
+  const hasError = groupProps?.validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
   const _isRequired = groupProps?.isRequired || groupProps?.necessityIndicator === 'required';
   const _name = groupProps?.name;
@@ -83,6 +84,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     isChecked: _isChecked,
     isDisabled: _isDisabled,
     isRequired: _isRequired,
+    hasError,
     name: _name,
     value,
     onChange: handleChange,
@@ -161,6 +163,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
               isChecked={state.isChecked}
               isDisabled={_isDisabled}
               inputProps={inputProps}
+              hasError={hasError}
               ref={ref}
             />
             <AnimatedChip

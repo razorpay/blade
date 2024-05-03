@@ -42,6 +42,8 @@ const ChipGroup = ({
     color,
     selectionType,
     isRequired,
+    validationState,
+    necessityIndicator,
   });
   const showError = validationState === 'error' && errorText;
   const showHelpText = !showError && helpText;

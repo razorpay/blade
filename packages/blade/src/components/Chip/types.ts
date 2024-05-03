@@ -35,15 +35,7 @@ type ChipProps = {
 } & TestID &
   StyledPropsBlade;
 
-type ChipGroupProps = {
-  /**
-   * Accessibility label for the ChipGroup
-   */
-  accessibilityLabel: string;
-  /**
-   * Renders the label of the chip group
-   */
-  label?: string;
+type ChipGroupCommonProps = {
   /**
    * Sets the position of the label
    *
@@ -131,6 +123,37 @@ type ChipGroupProps = {
 } & TestID &
   StyledPropsBlade;
 
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type ChipGroupPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type ChipGroupPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type ChipGroupProps = (ChipGroupPropsWithA11yLabel | ChipGroupPropsWithLabel) &
+  ChipGroupCommonProps;
+
 type State = {
   value: string[];
   isChecked(value: string): boolean;
@@ -143,6 +166,7 @@ type ChipGroupContextType = Pick<
   | 'isDisabled'
   | 'isRequired'
   | 'necessityIndicator'
+  | 'validationState'
   | 'name'
   | 'defaultValue'
   | 'value'

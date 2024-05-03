@@ -8,6 +8,8 @@ type UseChipGroupProps = Pick<
   ChipGroupProps,
   | 'isDisabled'
   | 'isRequired'
+  | 'necessityIndicator'
+  | 'validationState'
   | 'name'
   | 'value'
   | 'defaultValue'
@@ -32,10 +34,11 @@ const useChipGroup = ({
   size,
   color,
   selectionType,
+  necessityIndicator,
+  validationState,
 }: UseChipGroupProps): UseChipGroupReturn => {
   const idBase = useId('chip-group');
   const labelId = `${idBase}-label`;
-
   const fallbackName = name ?? idBase;
   const [checkedValues, setValues] = useControllableState({
     value: (value && selectionType === 'single' ? [value] : value) as string[] | undefined,
@@ -89,13 +92,25 @@ const useChipGroup = ({
     return {
       isDisabled,
       isRequired,
+      necessityIndicator,
+      validationState,
       name,
       state,
       size,
       color,
       selectionType,
     };
-  }, [isDisabled, isRequired, name, state, size, color, selectionType]);
+  }, [
+    isDisabled,
+    isRequired,
+    necessityIndicator,
+    validationState,
+    name,
+    state,
+    size,
+    color,
+    selectionType,
+  ]);
 
   return { state, contextValue, ids: { labelId } };
 };
