@@ -193,7 +193,7 @@ import { NavLink } from 'react-router-dom';
 ```
 
 </td>
-<td><img src="image-2.png" width="200px" /></td>
+<td><img src="navlink-eg-1.png" width="200px" /></td>
 </tr>
 
 <tr>
@@ -217,7 +217,7 @@ import { NavLink } from 'react-router-dom';
 ```
 
 </td>
-<td><img src="image-3.png" width="200px" /></td>
+<td><img src="navlink-eg-2.png" width="200px" /></td>
 </tr>
 
 <tr>
@@ -236,7 +236,7 @@ import { NavLink } from 'react-router-dom';
 ```
 
 </td>
-<td><img src="image-4.png" width="200px" /></td>
+<td><img src="navlink-eg-3.png" width="200px" /></td>
 </tr>
 
 <tr>
@@ -255,7 +255,7 @@ import { NavLink } from 'react-router-dom';
 ```
 
 </td>
-<td><img src="image-5.png" width="240px" /></td>
+<td><img src="navlink-eg-4.png" width="240px" /></td>
 </tr>
 
 </table>
@@ -297,7 +297,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 </td>
 
 <td>
-<img width="500px" src="image-6.png" />
+<img width="500px" src="navlevels-eg.png" />
 </td>
 </tr>
 </table>
@@ -329,7 +329,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 </td>
 
 <td>
-<img width="200px" src="image-7.png" />
+<img width="200px" src="navsection-eg.png" />
 </td>
 </tr>
 </table>
@@ -375,7 +375,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 </td>
 
 <td>
-<img width="300px" src="image-8.png" />
+<img width="300px" src="navfooter-eg.png" />
 </td>
 </tr>
 </table>
