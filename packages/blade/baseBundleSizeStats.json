@@ -14,18 +14,18 @@
     "loading": 0.57525390625
   },
   {
-    "name": "Alert",
-    "passed": true,
-    "size": 33673,
-    "sizeLimit": 2000000,
-    "loading": 0.65767578125
-  },
-  {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
     "passed": true,
     "size": 34760,
     "sizeLimit": 2000000,
     "loading": 0.67890625
+  },
+  {
+    "name": "Alert",
+    "passed": true,
+    "size": 33673,
+    "sizeLimit": 2000000,
+    "loading": 0.65767578125
   },
   {
     "name": "Amount",
@@ -135,9 +135,9 @@
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
     "passed": true,
-    "size": 45187,
+    "size": 45186,
     "sizeLimit": 2000000,
-    "loading": 0.88255859375
+    "loading": 0.8825390625
   },
   {
     "name": "FileUpload",
@@ -163,9 +163,9 @@
   {
     "name": "Modal",
     "passed": true,
-    "size": 34961,
+    "size": 34960,
     "sizeLimit": 2000000,
-    "loading": 0.68283203125
+    "loading": 0.6828125
   },
   {
     "name": "Popover, PopoverInteractiveWrapper",
@@ -275,9 +275,9 @@
   {
     "name": "SelectInput, AutoComplete",
     "passed": true,
-    "size": 41215,
+    "size": 41214,
     "sizeLimit": 2000000,
-    "loading": 0.80498046875
+    "loading": 0.8049609375
   },
   {
     "name": "OTPInput",
