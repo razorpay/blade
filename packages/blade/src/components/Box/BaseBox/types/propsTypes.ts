@@ -152,6 +152,11 @@ type CommonBoxVisualProps = MakeObjectResponsive<
     | 'transform'
     | 'transformOrigin'
     | 'clipPath'
+    | 'borderStyle'
+    | 'borderTopStyle'
+    | 'borderBottomStyle'
+    | 'borderLeftStyle'
+    | 'borderRightStyle'
   > & {
       /**
        * Sets the elevation for Box
@@ -218,7 +223,8 @@ type StyledPropsBlade = Partial<
         | 'gridColumnEnd'
         | 'gridArea'
       > &
-      Pick<LayoutProps, 'display'>,
+      Pick<LayoutProps, 'display'> &
+      Pick<CommonBoxVisualProps, 'visibility'>,
     '__brand__'
   >
 >;

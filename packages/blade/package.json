@@ -1,7 +1,7 @@
 {
   "name": "@razorpay/blade",
   "description": "The Design System that powers Razorpay",
-  "version": "11.14.0",
+  "version": "11.15.1",
   "license": "MIT",
   "engines": {
     "node": ">=18.12.1"
@@ -141,7 +141,8 @@
     "react-hot-toast": "2.4.1",
     "@emotion/react": "11.11.1",
     "@table-library/react-table-library": "4.1.7",
-    "tinycolor2": "1.6.0"
+    "tinycolor2": "1.6.0",
+    "universal-base64": "2.1.0"
   },
   "devDependencies": {
     "http-server": "14.1.1",

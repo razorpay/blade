@@ -136,6 +136,7 @@ const TabItem = ({
     <CompositeItem
       render={
         <StyledTabButton
+          type="button"
           as={href ? 'a' : 'button'}
           href={href}
           isVertical={isVertical}

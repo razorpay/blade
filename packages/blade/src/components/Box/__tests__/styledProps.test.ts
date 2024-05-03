@@ -38,6 +38,7 @@ describe('getStyledProps', () => {
         "position": undefined,
         "right": undefined,
         "top": undefined,
+        "visibility": undefined,
         "zIndex": undefined,
       }
     `);
