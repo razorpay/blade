@@ -14,18 +14,18 @@
     "loading": 0.57525390625
   },
   {
-    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
-    "passed": true,
-    "size": 34760,
-    "sizeLimit": 2000000,
-    "loading": 0.67890625
-  },
-  {
     "name": "Alert",
     "passed": true,
     "size": 33673,
     "sizeLimit": 2000000,
     "loading": 0.65767578125
+  },
+  {
+    "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
+    "passed": true,
+    "size": 34760,
+    "sizeLimit": 2000000,
+    "loading": 0.67890625
   },
   {
     "name": "Amount",
@@ -135,9 +135,9 @@
   {
     "name": "Dropdown, DropdownOverlay, DropdownButton, DropdownLink, DropdownFooter, DropdownHeader",
     "passed": true,
-    "size": 45186,
+    "size": 45187,
     "sizeLimit": 2000000,
-    "loading": 0.8825390625
+    "loading": 0.88255859375
   },
   {
     "name": "FileUpload",
@@ -163,9 +163,9 @@
   {
     "name": "Modal",
     "passed": true,
-    "size": 34960,
+    "size": 34961,
     "sizeLimit": 2000000,
-    "loading": 0.6828125
+    "loading": 0.68283203125
   },
   {
     "name": "Popover, PopoverInteractiveWrapper",
@@ -226,9 +226,9 @@
   {
     "name": "Tabs, TabItem, TabList, TabPanel",
     "passed": true,
-    "size": 28784,
+    "size": 28786,
     "sizeLimit": 2000000,
-    "loading": 0.5621875
+    "loading": 0.5622265625
   },
   {
     "name": "Tag",
