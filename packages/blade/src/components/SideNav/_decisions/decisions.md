@@ -2,7 +2,7 @@
 
 The side navigation is positioned along the left side of the screen that provides quick access to different sections or functionalities of the application.
 
-![alt text](nav-header.png)
+<img src="nav-header.png" width="600px" />
 
 ## Design
 
@@ -15,13 +15,11 @@ The side navigation is positioned along the left side of the screen that provide
   <SideNavItem as={NavLink} title="Home" icon={HomeIcon} href="/" />
   <SideNavItem as={NavLink} title="Accounts" icon={AccountsIcon} href="/accounts/profile">
     {/* L2 */}
-    {/* Alternate Name - SideNavL2 */}
     <SideNavLevel title="Accounts">
       <SideNavItem as={NavLink} title="Profile" icon={UserIcon} href="/accounts/profile" />
       <SideNavItem as={NavLink} title="Settings" icon={UserIcon} href="/accounts/settings" />
       <SideNavItem as={NavLink} title="Edit" icon={UserIcon} href="/accounts/settings">
         {/* L3 */}
-        {/* Alternate Name - SideNavL3 */}
         <SideNavLevel>
           <SideNavItem as={NavLink} title="Password" icon={PassIcon} href="/accounts/edit/pass" />
           <SideNavItem as={NavLink} title="Email" icon={EmailIcon} href="/accounts/edit/email" />
