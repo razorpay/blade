@@ -6,7 +6,15 @@ import { useId } from '~utils/useId';
 
 type UseChipGroupProps = Pick<
   ChipGroupProps,
-  'isDisabled' | 'name' | 'value' | 'defaultValue' | 'onChange' | 'size' | 'color' | 'selectionType'
+  | 'isDisabled'
+  | 'isRequired'
+  | 'name'
+  | 'value'
+  | 'defaultValue'
+  | 'onChange'
+  | 'size'
+  | 'color'
+  | 'selectionType'
 >;
 type UseChipGroupReturn = {
   state: State;
@@ -18,6 +26,7 @@ const useChipGroup = ({
   value,
   defaultValue,
   isDisabled,
+  isRequired,
   onChange,
   name,
   size,
@@ -79,13 +88,14 @@ const useChipGroup = ({
   const contextValue = React.useMemo<ChipGroupContextType>(() => {
     return {
       isDisabled,
+      isRequired,
       name,
       state,
       size,
       color,
       selectionType,
     };
-  }, [isDisabled, name, state, size, color, selectionType]);
+  }, [isDisabled, isRequired, name, state, size, color, selectionType]);
 
   return { state, contextValue, ids: { labelId } };
 };

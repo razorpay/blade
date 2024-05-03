@@ -49,8 +49,8 @@ const Page = (): React.ReactElement => {
           function App(): React.ReactElement {
             return (
               <Box>
-                <Text> Select Business type: </Text>
                 <ChipGroup
+                  label="Select Business type:"
                   accessibilityLabel="Choose one business type from the options below"
                   defaultValue="proprietorship"
                   onChange={({name, values}) => console.log({name, values})}
@@ -83,6 +83,18 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     // ChipGroup props
+    label: {
+      description: 'Label for the `ChipGroup`.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: 'string',
+        },
+      },
+    },
     accessibilityLabel: {
       description: 'Accessibility label for the `ChipGroup`.',
       control: {
@@ -95,9 +107,84 @@ export default {
         },
       },
     },
+    labelPosition: {
+      description: 'Sets the position of the label',
+      options: ['top', 'left'],
+      control: {
+        type: 'select',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: '"top" | "left"',
+        },
+      },
+    },
+    helpText: {
+      description: 'Help text for the `ChipGroup`.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    errorText: {
+      description: 'Error text for the `ChipGroup`.',
+      control: {
+        type: 'text',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: 'string',
+        },
+      },
+    },
+    validationState: {
+      description: 'Sets the validation state of the ChipGroup.',
+      options: ['error', 'none'],
+      control: {
+        type: 'select',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: '"error" | "none"',
+        },
+      },
+    },
+    necessityIndicator: {
+      description: 'Renders a necessity indicator after ChipGroup label.',
+      options: ['required', 'optional', 'none'],
+      control: {
+        type: 'select',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: '"required" | "optional" | "none"',
+        },
+      },
+    },
     isDisabled: {
       description:
         'Disables or enables `ChipGroup`, it will propagate down to all the children `Chip` components.',
+      control: {
+        type: 'boolean',
+      },
+      table: {
+        category: propsCategory.CHIP_GROUP,
+        type: {
+          summary: 'boolean',
+        },
+      },
+    },
+    isRequired: {
+      description: 'Sets the required state of the ChipGroup component.',
       control: {
         type: 'boolean',
       },
@@ -130,6 +217,10 @@ export default {
     },
     selectionType: {
       description: `Defines the selection behavior within the ChipGroup component. When set to 'single', only one Chip can be selected at a time, akin to a radio button group. When set to 'multiple', multiple Chips can be concurrently selected, simulating checkbox-like behavior within the group.`,
+      options: ['single', 'multiple'],
+      control: {
+        type: 'select',
+      },
       table: {
         category: propsCategory.CHIP_GROUP,
         type: {
@@ -212,10 +303,6 @@ const ChipTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ...args })
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   return (
     <Box>
-      <Text marginBottom="spacing.3" marginTop="spacing.3">
-        Select Business type:
-      </Text>
-
       <ChipGroupComponent {...args}>
         {chipValues.map((chipValue: string, index) => (
           <ChipComponent key={index} value={chipValue} icon={args.icon}>
@@ -231,6 +318,7 @@ export const SingleSelection = ChipTemplate.bind({});
 SingleSelection.storyName = 'Single Selection';
 SingleSelection.args = {
   selectionType: 'single',
+  label: 'Select Business type:',
 };
 SingleSelection.argTypes = {
   value: {
@@ -256,10 +344,6 @@ const MultiSelectChipTemplate: StoryFn<typeof ChipGroupComponent> = ({ children,
 
   return (
     <Box>
-      <Text marginBottom="spacing.3" marginTop="spacing.3">
-        What other capabilities are you looking for?
-      </Text>
-
       <ChipGroupComponent selectionType="multiple" {...args}>
         {chipValues.map((chipValue: string) => (
           <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
@@ -274,6 +358,7 @@ const MultiSelectChipTemplate: StoryFn<typeof ChipGroupComponent> = ({ children,
 export const MultiSelection = MultiSelectChipTemplate.bind({});
 MultiSelection.storyName = 'Multi Selection';
 MultiSelection.args = {
+  label: 'What other capabilities are you looking for?',
   accessibilityLabel: 'Select other capabilities you are looking for from the options below',
   selectionType: 'multiple',
 };
@@ -295,6 +380,7 @@ DefaultSelectedSingle.storyName = 'Uncontrolled Single Selection with Default Va
 DefaultSelectedSingle.args = {
   defaultValue: 'Proprietorship',
   selectionType: 'single',
+  label: 'Select Business type:',
 };
 DefaultSelectedSingle.argTypes = {
   defaultValue: {
@@ -309,6 +395,7 @@ export const DefaultMultiSelected = MultiSelectChipTemplate.bind({});
 DefaultMultiSelected.storyName = 'Uncontrolled Multiple Selection with Default Value';
 DefaultMultiSelected.args = {
   defaultValue: ['Automated Payment Links'],
+  label: 'What other capabilities are you looking for?',
   accessibilityLabel: 'Select other capabilities you are looking for from the options below',
   selectionType: 'multiple',
 };
@@ -427,15 +514,12 @@ Disabled.storyName = 'Disabled';
 Disabled.args = {
   isDisabled: true,
   selectionType: 'single',
+  label: 'Select Business type:',
 };
 
 const ChipWithIconTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ...args }) => {
   return (
     <Box>
-      <Text marginBottom="spacing.3" marginTop="spacing.3">
-        What other capabilities are you looking for?
-      </Text>
-
       <ChipGroupComponent defaultValue="payment-links" {...args}>
         <ChipComponent value="payment-links" icon={PaymentLinksIcon}>
           Automated Payment Links
@@ -455,6 +539,7 @@ export const ChipWithIcon = ChipWithIconTemplate.bind({});
 ChipWithIcon.storyName = 'With Icon';
 ChipWithIcon.args = {
   selectionType: 'single',
+  label: 'What other capabilities are you looking for?',
   accessibilityLabel: 'Choose one business type from the options below',
 };
 ChipWithIcon.parameters = {
@@ -498,11 +583,7 @@ const TextTransformationTemplate: StoryFn<typeof ChipGroupComponent> = ({ childr
   const chipValues = ['Proprietorship', 'Public', 'Small Business'];
   return (
     <Box>
-      <Text marginBottom="spacing.3" marginTop="spacing.3">
-        Select Business type:
-      </Text>
-
-      <ChipGroupComponent defaultValue="Proprietorship" {...args}>
+      <ChipGroupComponent defaultValue="Proprietorship" label="Select Business Type:" {...args}>
         {chipValues.map((chipValue: string) => (
           <ChipComponent key={chipValue} value={chipValue} icon={args.icon}>
             {chipValue.toUpperCase()}
@@ -533,13 +614,10 @@ const AllChipSizesTemplate: StoryFn<typeof ChipGroupComponent> = ({ children, ..
           <Heading marginBottom="spacing.3" size="small">
             {size}
           </Heading>
-          <Box marginBottom="spacing.3">
-            <Text marginBottom="spacing.3" marginTop="spacing.3" size="medium">
-              What other capabilities are you looking for?
-            </Text>
-
+          <Box marginBottom="spacing.4">
             <ChipGroupComponent
               defaultValue="payment-links"
+              label="What other capabilities are you looking for?"
               size={size as ChipGroupProps['size']}
               {...args}
             >

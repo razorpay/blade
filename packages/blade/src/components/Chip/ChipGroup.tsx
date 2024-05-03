@@ -1,9 +1,10 @@
 import React from 'react';
-import { chipGroupGapTokens } from './chipTokens';
+import { chipGroupGapTokens, chipGroupLabelSizeTokens } from './chipTokens';
 import { ChipGroupProvider } from './ChipGroupContext';
 import { useChipGroup } from './useChipGroup';
 import type { ChipGroupProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
+import { FormHint, FormLabel } from '~components/Form';
 import { SelectorGroupField } from '~components/Form/Selector/SelectorGroupField';
 import { getStyledProps } from '~components/Box/styledProps';
 import { VisuallyHidden } from '~components/VisuallyHidden';
@@ -12,6 +13,13 @@ import { throwBladeError } from '~utils/logger';
 
 const ChipGroup = ({
   accessibilityLabel,
+  label,
+  labelPosition = 'top',
+  necessityIndicator = 'none',
+  validationState = 'none',
+  errorText,
+  helpText,
+  isRequired = false,
   children,
   isDisabled = false,
   name,
@@ -33,7 +41,11 @@ const ChipGroup = ({
     size,
     color,
     selectionType,
+    isRequired,
   });
+  const showError = validationState === 'error' && errorText;
+  const showHelpText = !showError && helpText;
+  const accessibilityText = `${showError ? errorText : ''} ${showHelpText ? helpText : ''}`.trim();
 
   if (__DEV__) {
     if (selectionType === 'single' && Array.isArray(defaultValue)) {
@@ -54,11 +66,24 @@ const ChipGroup = ({
     <ChipGroupProvider value={contextValue}>
       <BaseBox {...getStyledProps(styledProps)}>
         <SelectorGroupField
+          position={labelPosition}
           accessibilityRole={selectionType === 'single' ? 'radiogroup' : 'group'}
           labelledBy={ids.labelId}
           componentName="chip-group"
           testID={testID}
         >
+          {label ? (
+            <FormLabel
+              as="span"
+              necessityIndicator={necessityIndicator}
+              position={labelPosition}
+              id={ids.labelId}
+              accessibilityText={accessibilityText && `,${accessibilityText}`}
+              size={chipGroupLabelSizeTokens[size]}
+            >
+              {label}
+            </FormLabel>
+          ) : null}
           <BaseBox>
             <VisuallyHidden>
               <Text>{accessibilityLabel}</Text>
@@ -76,6 +101,12 @@ const ChipGroup = ({
                 );
               })}
             </BaseBox>
+            <FormHint
+              size={chipGroupLabelSizeTokens[size]}
+              type={validationState === 'error' ? 'error' : 'help'}
+              errorText={errorText}
+              helpText={helpText}
+            />
           </BaseBox>
         </SelectorGroupField>
       </BaseBox>

@@ -41,6 +41,37 @@ type ChipGroupProps = {
    */
   accessibilityLabel: string;
   /**
+   * Renders the label of the chip group
+   */
+  label?: string;
+  /**
+   * Sets the position of the label
+   *
+   * @default 'top'
+   */
+  labelPosition?: 'top' | 'left';
+  /**
+   * Help text of the chip group
+   */
+  helpText?: string;
+  /**
+   * Error text of the chip group
+   * Renders when `validationState` is set to 'error'
+   *
+   * Overrides helpText
+   */
+  errorText?: string;
+  /**
+   * Sets the validation state of the ChipGroup
+   */
+  validationState?: 'error' | 'none';
+  /**
+   * Renders a necessity indicator after ChipGroup label
+   *
+   * If set to `undefined` it renders nothing.
+   */
+  necessityIndicator?: 'required' | 'optional' | 'none';
+  /**
    * Accepts multiple Chip components as children
    */
   children: React.ReactNode;
@@ -56,6 +87,11 @@ type ChipGroupProps = {
    */
   isDisabled?: boolean;
   /**
+   * Sets the required state of the ChipGroup component.
+   * @default false
+   */
+  isRequired?: boolean;
+  /**
    * Specifies the name attribute for the ChipGroup component.
    * When provided, this attribute ensures that the Chip elements within the group are semantically associated, allowing them to be grouped logically for form submission.
    * This can be particularly useful in scenarios where the ChipGroup is part of a larger form and needs to be identified as a distinct entity when the form is submitted.
@@ -68,7 +104,7 @@ type ChipGroupProps = {
   onChange?: ({ name, values }: { name: string; values: string[] }) => void;
   /**
    * Defines the selection behavior within the ChipGroup component.
-   * When set to 'single', only one Chip can be selected at a time, akin to a radio button group.
+   * When set to 'single', only one Chip can be selected at a time, akin to a chip button group.
    * When set to 'multiple', multiple Chips can be concurrently selected, simulating checkbox-like behavior within the group.
    *
    * @default "single"
@@ -104,7 +140,16 @@ type State = {
 
 type ChipGroupContextType = Pick<
   ChipGroupProps,
-  'isDisabled' | 'name' | 'defaultValue' | 'value' | 'onChange' | 'size' | 'color' | 'selectionType'
+  | 'isDisabled'
+  | 'isRequired'
+  | 'necessityIndicator'
+  | 'name'
+  | 'defaultValue'
+  | 'value'
+  | 'onChange'
+  | 'size'
+  | 'color'
+  | 'selectionType'
 > & { state?: State };
 
 type InteractiveBackgroundColors<

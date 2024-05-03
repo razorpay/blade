@@ -57,6 +57,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
   }
 
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
+  const _isRequired = groupProps?.isRequired || groupProps?.necessityIndicator === 'required';
   const _name = groupProps?.name;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const _isChecked = groupProps?.state?.isChecked(value!);
@@ -81,6 +82,7 @@ const _Chip: React.ForwardRefRenderFunction<BladeElementRef, ChipProps> = (
     defaultChecked,
     isChecked: _isChecked,
     isDisabled: _isDisabled,
+    isRequired: _isRequired,
     name: _name,
     value,
     onChange: handleChange,
