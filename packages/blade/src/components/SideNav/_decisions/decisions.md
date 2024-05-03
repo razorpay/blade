@@ -14,15 +14,15 @@ The side navigation is positioned along the left side of the screen that provide
 import { NavLink } from 'react-router-dom';
 
 <SideNav routerLink={NavLink}>
+  {/* L1 Items */}
   <SideNavLink title="Home" icon={HomeIcon} href="/" />
-  <Tooltip placement="top" content="Check your Payouts (Cmd + P)">
-    <SideNavLink
-      title="Payouts"
-      trailing={<Button icon={PlusIcon} variant="tertiary" />}
-      icon={HomeIcon}
-      href="/"
-    />
-  </Tooltip>
+  <SideNavLink
+    title="Create Payouts"
+    trailing={<Button icon={PlusIcon} variant="tertiary" />}
+    icon={HomeIcon}
+    href="/create-payouts"
+  />
+
   <SideNavLink title="Accounts" icon={AccountsIcon} href="/accounts/profile">
     {/* L2 */}
     <SideNavLevel title="Accounts">
@@ -37,9 +37,14 @@ import { NavLink } from 'react-router-dom';
       </SideNavLink>
     </SideNavLevel>
   </SideNavLink>
+
+  {/* Section Heading */}
   <SideNavSection title="Products" maxItemsDisplayed={3}>
     <SideNavLink href="/payment-gateway" title="Payment Gateway" />
     <SideNavLink href="/payment-pages" title="Payment Pages" />
+    <SideNavLink href="/payment-links" title="Payment Links" />
+    <SideNavLink href="/qr-codes" title="QR Codes" />
+    <SideNavLink href="/subscriptions" title="Subscriptions" />
   </SideNavSection>
 
   {/* Footer */}
@@ -162,6 +167,7 @@ import { NavLink } from 'react-router-dom';
 | href        | URL to navigate to. Internally links to `to` attribute of router                                                             | string                                                              |                                                              |
 | target      | anchor tag target attribute [target - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target) | AnchorTargetType                                                    | \_self                                                       |
 | rel         | anchor tag rel attribute [rel - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#rel)          | AnchorRelType                                                       | target === ' \_blank ' ? ' noreferrer noopener ' : undefined |
+| onClick     | Click handler on item                                                                                                        | (e: React.MouseEvent) => void                                       |                                                              |
 | icon        | Blade's Icon Component                                                                                                       | IconComponent                                                       |                                                              |
 | trailing    | Trailing Slot of Item. Can be used for adding Quick Shortcut Button, Trailing Text                                           | JSX                                                                 |                                                              |
 | titleSuffix | Slot after the title to add Badge, Counter                                                                                   | JSX                                                                 |                                                              |
