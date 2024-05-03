@@ -4,9 +4,12 @@ The side navigation is positioned along the left side of the screen that provide
 
 <img src="nav-header.png" height="630px" width="600px" />
 
-## Design
+## Links
 
 - [Figma - Side Navigation](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=87921-138309&mode=dev)
+- [Product Concept Note - Connected Navigation](https://docs.google.com/document/d/1MyCgIS8i3hfhYPiU94oNT0BwqFyNSa8fhVZLT1FlS3s/edit?usp=sharing) (Internal)
+- [Stackblitz - One Nav Levels POC](https://stackblitz.com/edit/one-nav-poc?file=App.tsx)
+- [Stackblitz - One Nav Router POC](https://stackblitz.com/edit/one-nav-poc-router?file=App.tsx,NavSubComponents.tsx,package.json,SideNav.tsx)
 
 ## API
 
@@ -390,7 +393,6 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
 - [RazorpayX Navigation Bar](https://github.com/razorpay/x/blob/master/src/js/views/Home/ActionCenter/index.js#L21) (Internal)
 - [Razorpay Merchant Dashboard Navigation Bar](https://github.com/razorpay/dashboard/blob/6f61a5909c5311c3be08a3ea28b920ed302f1e64/web/js/merchant/components/SidebarV2/Sidebar.tsx) (Internal)
-- [Product Concept Note - Connected Navigation](https://docs.google.com/document/d/1MyCgIS8i3hfhYPiU94oNT0BwqFyNSa8fhVZLT1FlS3s/edit?usp=sharing) (Internal)
 - [SideNavigation - Atlassian DS](https://atlassian.design/components/side-navigation/examples)
 - [SideNav - Primer / GitHub](https://primer.style/react/deprecated/SideNav#url)
 - [SideNav - Carbon DS](https://react.carbondesignsystem.com/?path=/story/components-ui-shell-sidenav--fixed-side-nav)
