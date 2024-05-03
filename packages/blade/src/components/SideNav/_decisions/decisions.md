@@ -171,7 +171,8 @@ import { NavLink } from 'react-router-dom';
 #### Example Nav Links
 
 <table>
-<tr><th>Code</th><th>Preview</th></tr>
+
+<tr><td>Code</td><td>Preview</td></tr>
 
 <tr>
 <td>
@@ -232,7 +233,7 @@ import { NavLink } from 'react-router-dom';
 <td><img src="image-4.png" width="200px" /></td>
 </tr>
 
-tr>
+<tr>
 
 <td>
 
@@ -297,14 +298,110 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
 ### SideNavSection
 
+| **Props**         | **Description**                                              | **Type** | **Default Value** |
+| ----------------- | ------------------------------------------------------------ | -------- | ----------------- |
+| title             | title of the section                                         | string   |                   |
+| maxItemsDisplayed | Number of items visible (rest go inside +x more collapsible) | number   | undefined         |
+| children          | Children slot. For SideNavLink children items                | JSX      |                   |
+
+<table>
+<tr>
+<td>
+
+<!-- prettier-ignore -->
+```jsx
+<SideNav>
+  <SideNavSection 
+    title="OFFERINGS SECTION" 
+    maxItemsDisplayed={3}
+  >
+    {/* All SideNavLink items */}
+  </SideNavSection>
+</SideNav>
+```
+
+</td>
+
+<td>
+<img width="120px" src="image-7.png" />
+</td>
+</tr>
+</table>
+
 ### SideNavFooter
 
-## Examples
+| **Props** | **Description** | **Type** | **Default Value** |
+| --------- | --------------- | -------- | ----------------- |
+| children  | Children slot   | JSX      |                   |
+
+<table>
+<tr>
+<td>
+
+<!-- prettier-ignore -->
+```jsx
+<SideNav>
+  {/* ... Other Items */}
+  <SideNavFooter>
+    <Box 
+      display="flex" 
+      paddingY="spacing.4" 
+      paddingX="spacing.3" 
+      justifyContent="spacing-between"
+    >
+      <Box display="flex" gap="spacing.3">
+        <Indicator color="positive" />
+        <Text>Test Mode</Text>
+      </Box>
+      <Switch />
+    </Box>
+    <SideNavLink 
+      icon={GearIcon}
+      href="/settings" 
+      title="Settings" 
+    >
+      {/* L2 SideNavLink items */}
+    </SideNavLink>
+  </SideNavFooter>
+</SideNav>
+```
+
+</td>
+
+<td>
+<img width="200px" src="image-8.png" />
+</td>
+</tr>
+</table>
 
 ## Accessibility
 
+1. All items should be accessible by `TAB`. Including going between levels L1, L2, L3
+2. We should use Blade's `SkipNav` utility to provide option of skipping nav and going to content
+3. React Router automatically handles `aria-current="page"`. Verify that it is working as expected.
+
 ## References
 
-- [SideNav - Primer](https://primer.style/react/deprecated/SideNav#url)
+- [RazorpayX Navigation Bar](https://github.com/razorpay/x/blob/master/src/js/views/Home/ActionCenter/index.js#L21) (Internal)
+- [Razorpay Merchant Dashboard Navigation Bar](https://github.com/razorpay/dashboard/blob/6f61a5909c5311c3be08a3ea28b920ed302f1e64/web/js/merchant/components/SidebarV2/Sidebar.tsx) (Internal)
+
+- [SideNavigation - Atlassian DS](https://atlassian.design/components/side-navigation/examples)
+- [SideNav - Primer / GitHub](https://primer.style/react/deprecated/SideNav#url)
+- [SideNav - Carbon DS](https://react.carbondesignsystem.com/?path=/story/components-ui-shell-sidenav--fixed-side-nav)
+- [SideNav - BaseWeb DS / Uber](https://baseweb.design/components/side-nav/#colors)
+- [sidenav - Spectrum / Adobe](https://opensource.adobe.com/spectrum-web-components/components/sidenav/)
 
 ## Open Questions
+
+### Dev
+
+- Parent Component Name: `SideNav` vs `Sidebar` vs `Navbar` vs `Nav`
+- Navigation Item Naming Decision: `SideNavLink` vs `SideNavItem`
+
+### Design
+
+None
+
+### Product
+
+[Product Questions Discussion - Slack Thread](https://razorpay.slack.com/archives/C06F9MYVBR7/p1714635586127469?thread_ts=1713943186.663279&cid=C06F9MYVBR7)
