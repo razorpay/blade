@@ -1,4 +1,4 @@
-# SideNav
+# SideNav - One Navigation Bar
 
 The side navigation is positioned along the left side of the screen that provides quick access to different sections or functionalities of the application.
 
@@ -384,7 +384,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
 - [RazorpayX Navigation Bar](https://github.com/razorpay/x/blob/master/src/js/views/Home/ActionCenter/index.js#L21) (Internal)
 - [Razorpay Merchant Dashboard Navigation Bar](https://github.com/razorpay/dashboard/blob/6f61a5909c5311c3be08a3ea28b920ed302f1e64/web/js/merchant/components/SidebarV2/Sidebar.tsx) (Internal)
-
+- [Product Concept Note - Connected Navigation](https://docs.google.com/document/d/1MyCgIS8i3hfhYPiU94oNT0BwqFyNSa8fhVZLT1FlS3s/edit?usp=sharing) (Internal)
 - [SideNavigation - Atlassian DS](https://atlassian.design/components/side-navigation/examples)
 - [SideNav - Primer / GitHub](https://primer.style/react/deprecated/SideNav#url)
 - [SideNav - Carbon DS](https://react.carbondesignsystem.com/?path=/story/components-ui-shell-sidenav--fixed-side-nav)
