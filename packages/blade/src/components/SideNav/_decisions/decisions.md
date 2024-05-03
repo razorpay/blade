@@ -42,7 +42,7 @@ import { NavLink } from 'react-router-dom';
   </SideNavLink>
 
   {/* Section Heading */}
-  <SideNavSection title="Products" maxItemsDisplayed={3}>
+  <SideNavSection title="Products" maxVisibleItems={3}>
     <SideNavLink href="/payment-gateway" title="Payment Gateway" />
     <SideNavLink href="/payment-pages" title="Payment Pages" />
     <SideNavLink href="/payment-links" title="Payment Links" />
@@ -307,11 +307,11 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
 ### SideNavSection
 
-| **Props**         | **Description**                                              | **Type** | **Default Value** |
-| ----------------- | ------------------------------------------------------------ | -------- | ----------------- |
-| title             | title of the section                                         | string   |                   |
-| maxItemsDisplayed | Number of items visible (rest go inside +x more collapsible) | number   | undefined         |
-| children          | Children slot. For SideNavLink children items                | JSX      |                   |
+| **Props**       | **Description**                                              | **Type** | **Default Value** |
+| --------------- | ------------------------------------------------------------ | -------- | ----------------- |
+| title           | title of the section                                         | string   |                   |
+| maxVisibleItems | Number of items visible (rest go inside +x more collapsible) | number   | undefined         |
+| children        | Children slot. For SideNavLink children items                | JSX      |                   |
 
 <table>
 <tr>
@@ -322,7 +322,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 <SideNav>
   <SideNavSection 
     title="OFFERINGS SECTION" 
-    maxItemsDisplayed={3}
+    maxVisibleItems={3}
   >
     {/* All SideNavLink items */}
   </SideNavSection>
@@ -405,6 +405,9 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
 - Parent Component Name: `SideNav` vs `Sidebar` vs `Navbar` vs `Nav`
 - Navigation Item Naming Decision: `SideNavLink` vs `SideNavItem`
+- `<SideNav routerLink={NavLink} />` vs `<SideNavLink as={NavLink} />`
+
+  2nd one is more common and intuitive but requires consumers to add `as={NavLink}` to every single item in Navbar
 
 ### Design
 
