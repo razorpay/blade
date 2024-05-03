@@ -2,7 +2,7 @@
 
 The side navigation is positioned along the left side of the screen that provides quick access to different sections or functionalities of the application.
 
-<img src="nav-header.png" width="600px" />
+<img src="nav-header.png" height="630px" />
 
 ## Design
 
