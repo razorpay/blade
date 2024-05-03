@@ -329,7 +329,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 </td>
 
 <td>
-<img width="120px" src="image-7.png" />
+<img width="200px" src="image-7.png" />
 </td>
 </tr>
 </table>
@@ -375,7 +375,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 </td>
 
 <td>
-<img width="200px" src="image-8.png" />
+<img width="300px" src="image-8.png" />
 </td>
 </tr>
 </table>
