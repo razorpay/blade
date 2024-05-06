@@ -2,10 +2,16 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
 import { NavLink, Route, Switch } from 'react-router-dom';
-import { SideNav, SideNavLink } from './SideNav';
+import { SideNav, SideNavLink } from './';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
-import { ArrowUpRightIcon, HomeIcon } from '~components/Icons';
+import {
+  ArrowUpRightIcon,
+  HomeIcon,
+  SettingsIcon,
+  SubscriptionsIcon,
+  UserIcon,
+} from '~components/Icons';
 import { Heading } from '~components/Typography';
 
 export default {
@@ -19,6 +25,7 @@ export default {
   decorators: [StoryRouter(undefined, { initialEntries: ['/app'] })] as unknown,
 } as Meta<typeof SideNav>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Page = ({ match }: { match: any }): React.ReactElement => (
   <Box>
     <Heading>ID: {JSON.stringify(match)}</Heading>
@@ -32,6 +39,16 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
         <SideNavLink icon={HomeIcon} title="Home" href="/app" />
         <SideNavLink icon={ArrowUpRightIcon} title="Payouts" href="/app/payouts" />
         <SideNavLink icon={ArrowUpRightIcon} title="Nice" href="/nice" />
+        <SideNavLink icon={SettingsIcon} title="Settings" href="/settings">
+          <Box>
+            <SideNavLink icon={UserIcon} title="User Settings" href="/settings/user" />
+            <SideNavLink
+              icon={SubscriptionsIcon}
+              title="Subscriptions"
+              href="/settings/subscriptions"
+            />
+          </Box>
+        </SideNavLink>
       </SideNav>
 
       <Box marginLeft="300px">

@@ -1,3 +1,4 @@
+import type React from 'react';
 import type { IconComponent } from '~components/Icons';
 
 type SideNavProps = {
@@ -10,10 +11,12 @@ type SideNavLinkProps = {
   title: string;
   href: string;
   icon: IconComponent;
+  children?: React.ReactElement;
 };
 
 type SideNavContextType = {
   RouterLink?: SideNavProps['routerLink'];
+  l2PortalContainerRef?: React.RefObject<HTMLDivElement>;
 };
 
 export type { SideNavProps, SideNavContextType, SideNavLinkProps };
