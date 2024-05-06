@@ -324,9 +324,9 @@
   {
     "name": "RadioGroup",
     "passed": true,
-    "size": 26271,
+    "size": 26269,
     "sizeLimit": 2000000,
-    "loading": 0.51310546875
+    "loading": 0.51306640625
   },
   {
     "name": "Spinner",
