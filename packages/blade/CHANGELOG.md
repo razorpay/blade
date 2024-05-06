@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.15.2
+
+### Patch Changes
+
+- 102dc873: fix: i18nify-react version upgraded to resolve duplicate i18nify-js copies
+
 ## 11.15.1
 
 ### Patch Changes
