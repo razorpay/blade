@@ -2,7 +2,7 @@ name: Blade PR Title Check
 
 on:
   pull_request_target:
-    types: [open, edited, synchronize]
+    types: [opened, edited, synchronize]
 
 concurrency: # cancel previously running workflows when a new workflow is re-run
   group: ${{ github.workflow }}-${{ github.ref }}

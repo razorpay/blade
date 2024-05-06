@@ -317,6 +317,7 @@ exports[`Tabs should render 1`] = `
                 id="tabs-1-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -333,6 +334,7 @@ exports[`Tabs should render 1`] = `
                 id="tabs-1-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c8"
@@ -825,6 +827,7 @@ exports[`Tabs should render with filled variant 1`] = `
                 id="tabs-4-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -846,6 +849,7 @@ exports[`Tabs should render with filled variant 1`] = `
                 id="tabs-4-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c11"
@@ -1219,6 +1223,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 id="tabs-5-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -1235,6 +1240,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 id="tabs-5-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c8"
@@ -1612,6 +1618,7 @@ exports[`Tabs should render with size 1`] = `
                 id="tabs-6-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -1628,6 +1635,7 @@ exports[`Tabs should render with size 1`] = `
                 id="tabs-6-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c8"
@@ -2033,6 +2041,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
                 id="tabs-3-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -2049,6 +2058,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
                 id="tabs-3-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c9"

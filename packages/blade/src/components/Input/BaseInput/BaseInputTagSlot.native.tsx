@@ -95,6 +95,8 @@ const BaseInputTagSlot = ({
   isDropdownTrigger,
   labelPrefix,
   isDisabled,
+  numberOfLines,
+  isTextArea,
   size,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   const hasTags = tags && tags.length > 0;
@@ -112,6 +114,11 @@ const BaseInputTagSlot = ({
       paddingY="spacing.1"
       paddingX="spacing.4"
       minHeight={makeSize(baseInputHeight[size])}
+      height={
+        isTextArea && isDropdownTrigger
+          ? makeSize(baseInputHeight[size] * (numberOfLines ?? 1))
+          : undefined
+      }
       display="flex"
       flexDirection="row"
       position="relative"

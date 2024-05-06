@@ -7,7 +7,7 @@ import { useTheme } from '~components/BladeProvider';
 
 const AnimatedButtonContent: React.ForwardRefRenderFunction<
   TextInput,
-  AnimatedButtonContentProps
+  AnimatedButtonContentProps & { children: React.ReactNode }
 > = ({ motionDuration, motionEasing, children, isPressed }) => {
   const { theme } = useTheme();
   const duration = getIn(theme.motion, motionDuration);

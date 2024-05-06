@@ -64,7 +64,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 30px;
+  min-width: 60px;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -436,6 +436,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -476,6 +477,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c33.c33.c33.c33.c33 {
@@ -516,6 +518,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c49.c49.c49.c49.c49 {
@@ -1348,7 +1351,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 .c14.c14.c14.c14.c14 {
   margin-top: -4px;
   width: 100%;
-  min-width: 30px;
+  min-width: 60px;
 }
 
 .c17.c17.c17.c17.c17 {
@@ -1603,6 +1606,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c8.c8.c8.c8.c8 {
@@ -1643,6 +1647,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c33.c33.c33.c33.c33 {
@@ -1683,6 +1688,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c20.c20.c20.c20.c20 {

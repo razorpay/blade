@@ -48,7 +48,7 @@ const ProgressBarFilled = ({
   motionEasing,
   pulseMotionDuration,
   pulseMotionDelay,
-  variant,
+  type,
   isIndeterminate,
   indeterminateMotionDuration,
 }: ProgressBarFilledProps): React.ReactElement => {
@@ -83,7 +83,7 @@ const ProgressBarFilled = ({
 
   // Trigger animation for indeterminate progress bar
   useEffect(() => {
-    if (variant === 'progress' && isIndeterminate) {
+    if (type === 'progress' && isIndeterminate) {
       const indeterminateDuration = castNativeType(
         makeMotionTime(getIn(theme.motion, indeterminateMotionDuration)),
       );
@@ -118,7 +118,7 @@ const ProgressBarFilled = ({
       cancelAnimation(animatedLeft);
       cancelAnimation(animatedScaleX);
     };
-  }, [animatedLeft, animatedScaleX, indeterminateMotionDuration, isIndeterminate, theme, variant]);
+  }, [animatedLeft, animatedScaleX, indeterminateMotionDuration, isIndeterminate, theme, type]);
 
   // Animated styles for indeterminate animation
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -136,7 +136,7 @@ const ProgressBarFilled = ({
       duration: pulseDuration,
       easing: fillAndPulseEasing,
     };
-    if (variant === 'progress') {
+    if (type === 'progress') {
       animatedOpacity.value = withDelay(
         castNativeType(makeMotionTime(getIn(theme.motion, pulseMotionDelay))),
         withRepeat(
@@ -152,7 +152,7 @@ const ProgressBarFilled = ({
     return () => {
       cancelAnimation(animatedOpacity);
     };
-  }, [animatedOpacity, fillAndPulseEasing, pulseDuration, pulseMotionDelay, theme, variant]);
+  }, [animatedOpacity, fillAndPulseEasing, pulseDuration, pulseMotionDelay, theme, type]);
 
   // Animated styles for pulse animation
   const pulseAnimatedStyle = useAnimatedStyle(() => {

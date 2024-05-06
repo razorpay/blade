@@ -3,6 +3,8 @@ import React from 'react';
 import type { TextInput as TextInputReactNative } from 'react-native';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
+import type { TaggedInputProps } from '../BaseInput/useTaggedInput';
+import { useTaggedInput } from '../BaseInput/useTaggedInput';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { CloseIcon } from '~components/Icons';
 import { IconButton } from '~components/Button/IconButton';
@@ -13,7 +15,7 @@ import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getPlatformType } from '~utils';
 import { useMergeRefs } from '~utils/useMergeRefs';
-import type { BladeElementRef } from '~utils/types';
+import type { BladeElementRef, BladeElementRefWithValue } from '~utils/types';
 import { hintMarginTop } from '~components/Form/formTokens';
 
 type TextAreaCommonProps = Pick<
@@ -50,7 +52,8 @@ type TextAreaCommonProps = Pick<
    * Event handler to handle the onClick event for clear button. Used when `showClearButton` is `true`
    */
   onClearButtonClick?: () => void;
-} & StyledPropsBlade;
+} & TaggedInputProps &
+  StyledPropsBlade;
 
 /*
   Mandatory accessibilityLabel prop when label is not provided
@@ -115,12 +118,33 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     numberOfLines = 2,
     testID,
     size = 'medium',
+    isTaggedInput,
+    tags,
+    onTagChange,
     ...styledProps
   },
   ref,
 ) => {
-  const inputRef = React.useRef<BladeElementRef>(null);
+  const inputRef = React.useRef<BladeElementRefWithValue>(null);
   const mergedRef = useMergeRefs(ref, inputRef);
+  const [isInputFocussed, setIsInputFocussed] = React.useState(autoFocus ?? false);
+  const {
+    activeTagIndex,
+    setActiveTagIndex,
+    getTags,
+    handleTaggedInputKeydown,
+    handleTaggedInputChange,
+    handleTagsClear,
+  } = useTaggedInput({
+    tags,
+    onTagChange,
+    isDisabled,
+    inputRef,
+    isTaggedInput,
+    name,
+    value,
+    onChange,
+  });
 
   const [shouldShowClearButton, setShouldShowClearButton] = React.useState(false);
 
@@ -146,6 +170,7 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
                   inputRef.current.focus();
                 }
               }
+              handleTagsClear();
               // if the input field is controlled just call the click handler and the value change shall be left upto the consumer
               onClearButtonClick?.();
               inputRef?.current?.focus();
@@ -163,10 +188,16 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
     <BaseInput
       as="textarea"
       id="textarea"
+      maxTagRows="multiple"
       componentName={MetaConstants.TextArea}
       autoFocus={autoFocus}
       ref={mergedRef}
       label={label as string}
+      tags={isTaggedInput ? getTags({ size }) : undefined}
+      activeTagIndex={activeTagIndex}
+      setActiveTagIndex={setActiveTagIndex}
+      isDropdownTrigger={isTaggedInput}
+      showAllTags={isInputFocussed}
       accessibilityLabel={accessibilityLabel}
       hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
@@ -195,10 +226,20 @@ const _TextArea: React.ForwardRefRenderFunction<BladeElementRef, TextAreaProps> 
           setShouldShowClearButton(false);
         }
 
+        handleTaggedInputChange({ name, value });
         onChange?.({ name, value });
       }}
-      onFocus={onFocus}
-      onBlur={onBlur}
+      onFocus={(e) => {
+        setIsInputFocussed(true);
+        onFocus?.(e);
+      }}
+      onBlur={(e) => {
+        setIsInputFocussed(false);
+        onBlur?.(e);
+      }}
+      onKeyDown={(e) => {
+        handleTaggedInputKeydown(e);
+      }}
       onSubmit={onSubmit}
       trailingFooterSlot={(value) => {
         return maxCharacters ? (

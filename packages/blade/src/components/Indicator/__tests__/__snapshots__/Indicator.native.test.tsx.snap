@@ -80,7 +80,12 @@ exports[`<Indicator /> should render 1`] = `
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4281287254}
+            fill={
+              {
+                "payload": 4281287254,
+                "type": 0,
+              }
+            }
             propList={
               [
                 "fill",
@@ -220,7 +225,12 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4293486604}
+            fill={
+              {
+                "payload": 4293486604,
+                "type": 0,
+              }
+            }
             propList={
               [
                 "fill",
@@ -349,7 +359,12 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4278231890}
+            fill={
+              {
+                "payload": 4278231890,
+                "type": 0,
+              }
+            }
             propList={
               [
                 "fill",
@@ -478,7 +493,12 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4292422944}
+            fill={
+              {
+                "payload": 4292422944,
+                "type": 0,
+              }
+            }
             propList={
               [
                 "fill",
@@ -607,7 +627,12 @@ exports[`<Indicator /> should render different variants for size and color 1`] =
           <RNSVGCircle
             cx="5"
             cy="5"
-            fill={4279406798}
+            fill={
+              {
+                "payload": 4279406798,
+                "type": 0,
+              }
+            }
             propList={
               [
                 "fill",

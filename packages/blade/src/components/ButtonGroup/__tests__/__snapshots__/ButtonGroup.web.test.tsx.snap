@@ -456,6 +456,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c4.c4.c4.c4.c4 {

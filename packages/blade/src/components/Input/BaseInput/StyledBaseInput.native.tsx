@@ -96,14 +96,14 @@ const getInputHeight = ({
   isTextArea,
   hasTags,
   numberOfLines,
-  lineHeight,
+  isDropdownTrigger,
   size,
-}: Pick<StyledBaseInputProps, 'hasTags' | 'isTextArea' | 'numberOfLines'> & {
-  lineHeight: number;
+}: Pick<StyledBaseInputProps, 'hasTags' | 'isTextArea' | 'numberOfLines' | 'isDropdownTrigger'> & {
   size: NonNullable<BaseInputProps['size']>;
 }): string | undefined => {
   if (isTextArea) {
-    return `${lineHeight * (numberOfLines ?? 0)}px`;
+    const lines = isDropdownTrigger ? 1 : numberOfLines ?? 0;
+    return `${baseInputHeight[size] * lines}px`;
   }
 
   if (hasTags) {
@@ -145,7 +145,7 @@ const getRNInputStyles = (
       isTextArea: props.isTextArea,
       hasTags: props.hasTags,
       numberOfLines: props.numberOfLines,
-      lineHeight: props.theme.typography.lineHeights[300],
+      isDropdownTrigger: props.isDropdownTrigger,
       size: props.$size,
     }),
   };

@@ -75,6 +75,7 @@ const makeStyledProps = (props: StyledPropsInputType): KeysRequired<StyledPropsB
     right: props.right,
     bottom: props.bottom,
     left: props.left,
+    visibility: props.visibility,
   };
 };
 

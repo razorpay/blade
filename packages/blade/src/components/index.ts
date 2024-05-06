@@ -39,6 +39,7 @@ export * from './Skeleton';
 export * from './SkipNav';
 export * from './Spinner';
 export * from './SpotlightPopoverTour';
+export * from './StepGroup';
 export * from './Switch';
 export * from './Table';
 export * from './Tabs';

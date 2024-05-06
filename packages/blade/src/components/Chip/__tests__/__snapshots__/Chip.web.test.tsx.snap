@@ -246,6 +246,7 @@ exports[`<Chip /> should render chip 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 @media screen and (min-width:320px) {
@@ -705,6 +706,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 @media screen and (min-width:320px) {
@@ -1326,6 +1328,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c20.c20.c20.c20.c20 {
@@ -1348,6 +1351,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 @media screen and (min-width:320px) {

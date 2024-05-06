@@ -9,4 +9,4 @@ export type SvgProps = {
   width: string;
   fillOpacity?: number;
 } & TestID &
-  Omit<StyledPropsBlade, 'order'>; // Order prop on SVG has different meaning so removing this prop from styledProps
+  Omit<StyledPropsBlade, 'order' | 'visibility'>; // Order prop on SVG has different meaning so removing this prop from styledProps

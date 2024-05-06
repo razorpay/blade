@@ -1,5 +1,101 @@
 # @razorpay/blade
 
+## 11.15.1
+
+### Patch Changes
+
+- 989172ab: fix(blade): tab item button type
+
+## 11.15.0
+
+### Minor Changes
+
+- ada461c8: feat(StepGroup): add StepGroup component
+
+  Documentation: https://blade.razorpay.com/?path=/docs/components-stepgroup--docs
+
+## 11.14.0
+
+### Minor Changes
+
+- 23a8364b: feat(blade): add leading prop in Alert
+
+## 11.13.1
+
+### Patch Changes
+
+- 2f0d96fb: fix(blade): phone number input dropdown not opening
+
+## 11.13.0
+
+### Minor Changes
+
+- 410cfb55: feat: add `circular` variant for the `ProgressBar` component
+
+  #### Changes
+
+  - The `"meter"` & `"progress"` values for the `variant` prop are deprecated in favor of the new `type?: "meter" | "progress"` prop.
+  - The `variant` prop now accepts `"linear"` & `"circular"` values.
+  - **Usage:**
+
+    ```js
+      <ProgressBar variant="circular" value={20}> label="Label" />
+    ```
+
+  #### Migration with Codemod
+
+  - The codemod will automatically update the `ProgressBar` component. Execute the codemod on the file/directory that needs to be migrated for the page via the following command:
+
+    > Need help? Check out [jscodeshift docs](https://github.com/facebook/jscodeshift) for CLI usage tips.
+
+    ```sh
+    npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/migrate-progressbar/transformers/index.ts --ignore-pattern="**/node_modules/**"
+    ```
+
+  - There might be some situations where the codemod falls short, If you encounter errors, refer the following examples to migrate the component manually:
+
+    ```diff
+    - <ProgressBar value={20}> label="Label" />
+    + <ProgressBar type="progress" value={20}> label="Label" />
+
+    - <ProgressBar variant="progress" value={20}> label="Label" />
+    + <ProgressBar type="progress" variant="linear" value={20}> label="Label" />
+
+    - <ProgressBar variant="meter" value={20}> label="Label" />
+    + <ProgressBar type="meter" variant="linear" value={20}> label="Label" />
+    ```
+
+## 11.12.0
+
+### Minor Changes
+
+- c5f24eae: feat(TextArea, TextInput): Support Tagged Inputs with `tags` and `isTaggedInput` prop
+  feat(Tag): max-width is removed from Tag component
+
+## 11.11.1
+
+### Patch Changes
+
+- cc69004a: fix: additional parameters added to retain fraction digits in humanize Amount figure
+
+## 11.11.0
+
+### Minor Changes
+
+- 8c5231d4: feat: add large size in FileUpload component
+
+  #### Usage
+
+  ```js
+  <FileUpload
+    size="large"
+    uploadType="single"
+    label="Upload GST certificate"
+    helpText="Upload .jpg, .jpeg, or .png file only"
+    accept="image/*"
+  />
+  ```
+
 ## 11.10.0
 
 ### Minor Changes

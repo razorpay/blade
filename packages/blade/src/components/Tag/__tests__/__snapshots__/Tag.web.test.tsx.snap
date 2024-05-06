@@ -35,7 +35,6 @@ exports[`<Tag /> should render tag 1`] = `
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  max-width: 100px;
 }
 
 .c4.c4.c4.c4.c4 {
@@ -124,6 +123,7 @@ exports[`<Tag /> should render tag 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
   margin-right: 4px;
 }
 
