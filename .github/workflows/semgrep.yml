@@ -1,0 +1,19 @@
+name: Security
+on:
+  workflow_call:
+    secrets:
+      SEMGREP_APP_TOKEN:
+        description: 'needed for semgrep'
+        required: true
+jobs:
+  semgrep:
+    name: Semgrep
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - uses: actions/checkout@v4.0.0
+      - name: Run semgrep
+        run: semgrep ci &> /dev/null
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}

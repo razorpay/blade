@@ -1,0 +1,11 @@
+name: Security Checks (Public)
+on:
+  pull_request: {}
+  push:
+    branches: ["master"]
+  schedule:
+    - cron: "0 17 * * *"
+jobs:
+  Security-Scan:
+    uses: razorpay/blade/.github/workflows/semgrep.yml@master
+    secrets: inherit
