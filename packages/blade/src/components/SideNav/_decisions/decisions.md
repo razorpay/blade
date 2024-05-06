@@ -283,7 +283,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
   <SideNavItem title="L2 Trigger">
     {/* L2 Level */}
-    <SideNavLevel title="L2 Trigger">
+    <SideNavLevel title="L2 Menu Heading">
       <SideNavItem />
       <SideNavItem />
       <SideNavItem title="L3 Trigger">
