@@ -279,20 +279,20 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 ```jsx
 <SideNav>
   {/* L1 Items */}
-  <SideNavItem title="L1 Item" />
+  <SideNavLink title="L1 Item" />
 
-  <SideNavItem title="L2 Trigger">
+  <SideNavLink title="L2 Trigger">
     {/* L2 Level */}
     <SideNavLevel title="L2 Menu Heading">
-      <SideNavItem />
-      <SideNavItem />
-      <SideNavItem title="L3 Trigger">
+      <SideNavLink />
+      <SideNavLink />
+      <SideNavLink title="L3 Trigger">
         {/* L3 Level */}
         <SideNavLevel>
-          <SideNavItem />
-          <SideNavItem />
+          <SideNavLink />
+          <SideNavLink />
         </SideNavLevel>
-      </SideNavItem>
+      </SideNavLink>
     </SideNavLevel>
 </SideNav>
 ```
@@ -404,7 +404,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 ### Dev
 
 - Parent Component Name: `SideNav` vs `Sidebar` vs `Navbar` vs `Nav`
-- Navigation Item Naming Decision: `SideNavLink` vs `SideNavItem`
+- Navigation Item Naming Decision: `SideNavLink` vs `SideNavLink`
 - `<SideNav routerLink={NavLink} />` vs `<SideNavLink as={NavLink} />`
 
   2nd one is more common and intuitive but requires consumers to add `as={NavLink}` to every single item in Navbar
