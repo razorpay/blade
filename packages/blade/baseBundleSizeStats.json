@@ -14,18 +14,18 @@
     "loading": 0.57525390625
   },
   {
-    "name": "Alert",
-    "passed": true,
-    "size": 33673,
-    "sizeLimit": 2000000,
-    "loading": 0.65767578125
-  },
-  {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
     "passed": true,
     "size": 34760,
     "sizeLimit": 2000000,
     "loading": 0.67890625
+  },
+  {
+    "name": "Alert",
+    "passed": true,
+    "size": 33673,
+    "sizeLimit": 2000000,
+    "loading": 0.65767578125
   },
   {
     "name": "Amount",
