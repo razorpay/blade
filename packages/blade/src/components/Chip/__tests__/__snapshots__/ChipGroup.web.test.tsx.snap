@@ -105,13 +105,8 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   border-style: solid;
 }
 
-<<<<<<< HEAD
 .c13.c13.c13.c13.c13 {
-  background-color: hsla(0,0%,100%,1);
-=======
-.c11.c11.c11.c11.c11 {
   background-color: transparent;
->>>>>>> 8dd2c347a (test: update snaps)
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
   border-width: 1px;
@@ -157,7 +152,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
 }
 
 .c15.c15.c15.c15.c15:hover {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
@@ -218,15 +213,9 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-<<<<<<< HEAD
 .c11.c11.c11.c11.c11:hover + div {
-  border-color: hsla(211,27%,76%,1);
-  background-color: hsla(0,0%,100%,1);
-=======
-.c9.c9.c9.c9.c9:hover + div {
   border-color: hsla(211,20%,52%,0.18);
   background-color: hsla(0,0%,100%,0);
->>>>>>> 8dd2c347a (test: update snaps)
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -683,13 +672,8 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   border-style: solid;
 }
 
-<<<<<<< HEAD
 .c13.c13.c13.c13.c13 {
-  background-color: hsla(0,0%,100%,1);
-=======
-.c11.c11.c11.c11.c11 {
   background-color: transparent;
->>>>>>> 8dd2c347a (test: update snaps)
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
   border-width: 1px;
@@ -735,7 +719,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
 }
 
 .c15.c15.c15.c15.c15:hover {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
@@ -796,15 +780,9 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-<<<<<<< HEAD
 .c11.c11.c11.c11.c11:hover + div {
-  border-color: hsla(211,27%,76%,1);
-  background-color: hsla(0,0%,100%,1);
-=======
-.c9.c9.c9.c9.c9:hover + div {
   border-color: hsla(211,20%,52%,0.18);
   background-color: hsla(0,0%,100%,0);
->>>>>>> 8dd2c347a (test: update snaps)
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
