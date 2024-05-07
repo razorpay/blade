@@ -13,9 +13,6 @@ import { Code } from '~components/Typography';
 import { Badge } from '~components/Badge';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Button } from '~components/Button';
-import { Dropdown, DropdownOverlay } from '~components/Dropdown';
-import { SelectInput } from '~components/Input/DropdownInputTriggers';
-import { ActionList, ActionListItem } from '~components/ActionList';
 
 export default {
   title: 'Components/Table',
@@ -112,7 +109,6 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
       <TableComponent
         {...args}
         data={data}
-        isFirstColumnSticky
         toolbar={
           <TableToolbar title="Showing 1-10 [Items]" selectedTitle="Showing 1-10 [Items]">
             <TableToolbarActions>
@@ -156,16 +152,7 @@ const TableTemplate: StoryFn<typeof TableComponent> = ({ ...args }) => {
               {tableData.map((tableItem, index) => (
                 <TableRow key={index} item={tableItem}>
                   <TableCell>
-                    <Dropdown>
-                      <SelectInput label="" />
-                      <DropdownOverlay zIndex={9999}>
-                        <ActionList>
-                          <ActionListItem title="Home" value="home" />
-                          <ActionListItem title="Settings" value="settings" />
-                          <ActionListItem title="New Page" value="new-page" />
-                        </ActionList>
-                      </DropdownOverlay>
-                    </Dropdown>
+                    <Code size="medium">{tableItem.paymentId}</Code>
                   </TableCell>
                   <TableCell>
                     <Amount value={tableItem.amount} />

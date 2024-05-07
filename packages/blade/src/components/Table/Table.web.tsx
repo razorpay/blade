@@ -188,14 +188,12 @@ const _Table = <Item,>({
   &:nth-of-type(1) {
     left: 0 !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
   }
   ${
     selectionType === 'multiple' &&
     `&:nth-of-type(2) {
     left: ${checkboxCellWidth}px !important;
     position: sticky !important;
-    z-index: ${firstColumnStickyHeaderFooterZIndex} !important;
   }
   `
   }`
