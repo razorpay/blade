@@ -191,6 +191,7 @@ type ChipBackgroundColors =
   | InteractiveBackgroundColors<'negative'>
   | InteractiveBackgroundColors<'primary'>
   | 'transparent'
+  | 'surface.background.gray.intense'
   | 'interactive.background.gray.faded';
 
 type ChipBorderColors =

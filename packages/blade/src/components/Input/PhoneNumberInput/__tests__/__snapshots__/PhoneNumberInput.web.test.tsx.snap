@@ -11790,7 +11790,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
                                 data-blade-component="base-box"
                               >
                                 <img
-                                  alt="Turkey"
+                                  alt="Türkiye"
                                   height="12"
                                   src="https://unpkg.com/@razorpay/i18nify-js/lib/assets/flags/TR.svg"
                                   width="16"
@@ -11804,7 +11804,7 @@ exports[`<PhoneNumberInput /> should render 1`] = `
                                   class="c27"
                                   data-blade-component="text"
                                 >
-                                  Turkey
+                                  Türkiye
                                 </p>
                               </div>
                               <div
@@ -24620,7 +24620,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
                                 data-blade-component="base-box"
                               >
                                 <img
-                                  alt="Turkey"
+                                  alt="Türkiye"
                                   height="12"
                                   src="https://unpkg.com/@razorpay/i18nify-js/lib/assets/flags/TR.svg"
                                   width="16"
@@ -24634,7 +24634,7 @@ exports[`<PhoneNumberInput /> should render large size 1`] = `
                                   class="c27"
                                   data-blade-component="text"
                                 >
-                                  Turkey
+                                  Türkiye
                                 </p>
                               </div>
                               <div
