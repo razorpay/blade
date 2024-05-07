@@ -1,10 +1,10 @@
 import type { ReactElement } from 'react';
+import { indicatorDotSizes, textSizeMapping } from './indicatorTokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
-import { size as sizeToken } from '~tokens/global';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
 import type { StringChildrenType, TestID } from '~utils/types';
 import type { FeedbackColors } from '~tokens/theme/theme';
@@ -65,43 +65,6 @@ type IndicatorWithA11yLabel = {
 };
 
 type IndicatorProps = IndicatorCommonProps & (IndicatorWithA11yLabel | IndicatorWithoutA11yLabel);
-
-const textSizeMapping = {
-  small: 'small',
-  large: 'medium',
-  medium: 'medium',
-} as const;
-
-const indicatorDotSizes = {
-  subtle: {
-    small: {
-      outer: 0,
-      inner: sizeToken[6],
-    },
-    medium: {
-      outer: 0,
-      inner: sizeToken[8],
-    },
-    large: {
-      outer: 0,
-      inner: sizeToken[10],
-    },
-  },
-  intense: {
-    small: {
-      outer: sizeToken[16],
-      inner: sizeToken[8],
-    },
-    medium: {
-      outer: sizeToken[20],
-      inner: sizeToken[10],
-    },
-    large: {
-      outer: sizeToken[24],
-      inner: sizeToken[12],
-    },
-  },
-} as const;
 
 const Indicator = ({
   accessibilityLabel,
