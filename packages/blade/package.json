@@ -163,6 +163,7 @@
     "@babel/preset-react": "7.16.5",
     "@babel/preset-typescript": "7.16.5",
     "@codesandbox/sandpack-react": "1.16.0",
+    "@figma/code-connect": "0.1.1",
     "@gorhom/bottom-sheet": "4.4.6",
     "@gorhom/portal": "1.0.14",
     "@floating-ui/react-native": "0.10.0",

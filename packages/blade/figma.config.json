@@ -1,0 +1,13 @@
+{
+  "codeConnect": {
+    "include": ["src/components/**"],
+    "react": {
+      "importPaths": {
+        "src/components/*": "@razorpay/blade/components"
+      },
+      "paths": {
+        "~components/*": ["src/components/*"]
+      }
+    }
+  }
+}
