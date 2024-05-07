@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Indicator /> should have role and a11y label when text label is passed 1`] = `"<div id="root"><div aria-label="Active" role="status" data-blade-component="indicator" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(211, 29%, 26%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text">Active</p></div></div></div></div>"`;
+exports[`<Indicator /> should have role and a11y label when text label is passed 1`] = `"<div id="root"><div aria-label="Active" role="status" data-blade-component="indicator" class="BaseBox-bmPWx ePenKG"><div data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="8" viewBox="0 0 10 10" width="8" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><circle cx="5" cy="5" r="5" fill="hsla(211, 33%, 21%, 1)" data-blade-component="svg-circle"></circle></svg><div data-blade-component="base-box" class="BaseBox-bmPWx CzMgf"><p class="StyledBaseText-dVBfTO eBbcwN" data-blade-component="text">Active</p></div></div></div></div>"`;
 
 exports[`<Indicator /> should have role and a11y label when text label is passed 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -72,7 +72,7 @@ exports[`<Indicator /> should have role and a11y label when text label is passed
           cx="5"
           cy="5"
           data-blade-component="svg-circle"
-          fill="hsla(211, 29%, 26%, 1)"
+          fill="hsla(211, 33%, 21%, 1)"
           r="5"
         />
       </svg>
