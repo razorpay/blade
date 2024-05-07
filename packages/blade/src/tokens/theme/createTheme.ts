@@ -84,10 +84,10 @@ const generateChromaticBrandColors = (baseColorInput: ColorInput): ColorChromati
     '800': colorPalette[8],
     '900': colorPalette[9],
     '1000': colorPalette[10],
-    a50: getColorWithOpacity(brandPrimaryColor, opacity[1]),
-    a150: getColorWithOpacity(brandPrimaryColor, opacity[1]),
-    a100: getColorWithOpacity(brandPrimaryColor, opacity[2]),
-    a200: getColorWithOpacity(brandPrimaryColor, opacity[3]),
+    a50: getColorWithOpacity(brandPrimaryColor, opacity[100]),
+    a150: getColorWithOpacity(brandPrimaryColor, opacity[100]),
+    a100: getColorWithOpacity(brandPrimaryColor, opacity[200]),
+    a200: getColorWithOpacity(brandPrimaryColor, opacity[300]),
   };
 
   return brandColors;

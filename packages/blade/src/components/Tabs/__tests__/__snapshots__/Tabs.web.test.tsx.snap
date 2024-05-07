@@ -577,7 +577,7 @@ exports[`Tabs should render with filled variant 1`] = `
 
 .c6.c6.c6.c6.c6:hover {
   border-bottom-color: hsla(211,27%,76%,1);
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
 }
 
 .c6.c6.c6.c6.c6:disabled {
@@ -588,7 +588,7 @@ exports[`Tabs should render with filled variant 1`] = `
 .c6.c6.c6.c6.c6:focus-visible {
   border-radius: 4px;
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
 }
 
 .c6.c6.c6.c6.c6 * {

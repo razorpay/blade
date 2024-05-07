@@ -4236,7 +4236,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
     buttonPaddingTop="0px"
     collapsable={false}
     data-blade-component="button"
-    defaultBackgroundColor="hsla(211, 20%, 52%, 0.09)"
+    defaultBackgroundColor="hsla(211, 20%, 52%, 0.12)"
     defaultBorderColor="hsla(211, 27%, 76%, 1)"
     focusBackgroundColor="hsla(211, 20%, 52%, 0.18)"
     focusBorderColor="hsla(211, 27%, 76%, 1)"
@@ -4271,7 +4271,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
         {
           "alignItems": "center",
           "alignSelf": "center",
-          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+          "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
           "borderColor": "hsla(211, 27%, 76%, 1)",
           "borderRadius": 4,
           "borderStyle": "solid",
@@ -4292,7 +4292,7 @@ exports[`<Button /> should render primary color tertiary button 1`] = `
           "width": "auto",
         },
         {
-          "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+          "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
         },
       ]
     }

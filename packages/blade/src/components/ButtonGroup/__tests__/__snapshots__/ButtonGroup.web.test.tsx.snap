@@ -529,7 +529,7 @@ exports[`<ButtonGroup /> should render ButtonGroup with dropdown 1`] = `
 }
 
 .c13.c13.c13.c13.c13:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
 }
 
 .c13.c13.c13.c13.c13[aria-selected=true] {
@@ -5163,7 +5163,7 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
   border-color: hsla(211,27%,76%,1);
   border-width: 0px;
   border-radius: 4px;
@@ -5265,7 +5265,7 @@ exports[`<ButtonGroup /> should render primary color tertiary button 1`] = `
   border-width: 1px;
   border-radius: 4px;
   border-style: solid;
-  border-color: hsla(211,20%,52%,0.09);
+  border-color: hsla(211,20%,52%,0.12);
 }
 
 .c0.c0.c0.c0.c0 button[role="button"] {

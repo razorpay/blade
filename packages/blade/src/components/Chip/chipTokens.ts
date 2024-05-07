@@ -108,7 +108,7 @@ const chipColorTokens: ChipColorTokens = {
   },
   background: {
     unchecked: {
-      default: 'transparent',
+      default: 'surface.background.gray.intense',
       hover: 'interactive.background.gray.faded',
       disabled: 'transparent',
     },
@@ -131,6 +131,7 @@ const chipColorTokens: ChipColorTokens = {
   border: {
     unchecked: {
       default: 'interactive.border.gray.faded',
+      hover: 'interactive.border.gray.faded',
       disabled: 'interactive.border.gray.disabled',
     },
     primary: {
@@ -155,12 +156,12 @@ const getChipInputHoverTokens = (color: ChipGroupProps['color']): SelectorInputH
   return {
     default: {
       background: {
-        checked: 'colors.interactive.background.staticWhite.default',
-        unchecked: 'colors.interactive.background.staticWhite.default',
+        checked: 'colors.transparent',
+        unchecked: 'colors.transparent',
       },
       border: {
         checked: `colors.${chipColorTokens.border[color || 'default'].hover}` as never,
-        unchecked: 'colors.interactive.border.gray.default',
+        unchecked: 'colors.interactive.border.gray.faded',
       },
     },
   };
