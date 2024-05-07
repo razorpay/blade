@@ -827,7 +827,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = 
 }
 
 .c38.c38.c38.c38.c38:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
 }
 
 .c38.c38.c38.c38.c38[aria-selected=true] {
@@ -1975,7 +1975,7 @@ exports[`<Dropdown /> should render dropdown with large size select input 1`] = 
 }
 
 .c38.c38.c38.c38.c38:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
 }
 
 .c38.c38.c38.c38.c38[aria-selected=true] {

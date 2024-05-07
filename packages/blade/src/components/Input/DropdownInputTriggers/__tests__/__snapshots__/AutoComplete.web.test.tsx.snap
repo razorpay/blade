@@ -1122,7 +1122,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
 }
 
 .c47.c47.c47.c47.c47:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
 }
 
 .c47.c47.c47.c47.c47[aria-selected=true] {
@@ -1175,7 +1175,7 @@ exports[`<BottomSheet /> & <Dropdown /> with <AutoComplete /> should render Bott
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   border-radius: 16px;
 }
 
@@ -3540,7 +3540,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render dropdown and make it v
 }
 
 .c37.c37.c37.c37.c37:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
 }
 
 .c37.c37.c37.c37.c37[aria-selected=true] {

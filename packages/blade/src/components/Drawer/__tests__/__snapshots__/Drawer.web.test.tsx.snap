@@ -385,7 +385,7 @@ exports[`Drawer renders a Drawer 1`] = `
   height: 28px;
   width: 28px;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
   border-color: hsla(211,27%,76%,1);
   border-width: 0px;
   border-radius: 4px;

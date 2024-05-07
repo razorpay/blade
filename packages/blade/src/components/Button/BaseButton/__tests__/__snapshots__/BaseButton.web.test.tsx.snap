@@ -5859,7 +5859,7 @@ exports[`<BaseButton /> should render primary color tertiary button 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
   border-color: hsla(211,27%,76%,1);
   border-width: 0px;
   border-radius: 4px;

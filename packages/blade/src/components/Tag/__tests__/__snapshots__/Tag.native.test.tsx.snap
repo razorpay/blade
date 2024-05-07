@@ -32,7 +32,7 @@ exports[`<Tag /> should render tag 1`] = `
         [
           {
             "alignSelf": "center",
-            "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
+            "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
             "borderRadius": 9999,
             "display": "flex",
             "flexDirection": "row",
