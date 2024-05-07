@@ -2,19 +2,17 @@
 
 Used to represent users or things, supporting the display of images, icons, or characters.
 
-This document serves as an overview of the API for the `SearchInput` component.
+This document serves as an overview of the API for the `Avatar` component.
 
-<img src="./searchinput-thumbnail.png" width="50%" alt="Thumbnail" />
-
-<img src="./searchinput-dropdown.png" width="50%" alt="Input with results in dropdown" />
+<img src="./avatar-thumbnail.png" width="50%" alt="Thumbnail" />
 
 ## Design
 
-- [Explore the design in Figma: SearchInput](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=85072%3A160345&mode=design&t=Pv93G8LK6OtL4wwk-1)
+- [Explore the design in Figma: Avatar](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=88229-1518352&mode=design&t=Gp3eolSGw8SybZkM-11)
 
 ## Anatomy
 
-<img src="./searchinput-anatomy.png" width="50%" alt="Anatomy" />
+<img src="./avatar-anatomy.png" width="50%" alt="Anatomy" />
 
 ## API
 
@@ -23,52 +21,88 @@ The `Avatar` & `AvatarGroup` components would have the following props:
 ```ts
 type AvatarGroupProps = {
   /**
-   * The avatars to stack.
+   * Children elements representing the avatars to stack.
    */
   children: React.ReactNode;
   /**
-   * The size of the avatar
+   * The size of each avatar within the group. Propagates to all avatars.
    */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /**
-   * The color of the avatar
+   * The color theme of the avatars within the group. Propagates to all avatars.
    */
   color?: 'primary' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   /**
-   * The maximum number of avatars to be displayed
+   * The maximum number of avatars to display before truncating.
    */
   maxAvatars?: number;
-  /**
-   * The total number of avatars. Used for calculating the number of extra avatars.
-   */
-  totalAvatars: number;
 };
 
 type AvatarProps = {
   /**
-   * The children of the avatar
+   * The content or children of the avatar.
    */
   children?: StringChildrenType;
   /**
-   * The size of the avatar
+   * The size of the avatar.
    */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /**
-   * The color of the avatar
+   * The visual variant of the avatar.
+   */
+  variant?: 'rounded' | 'square';
+  /**
+   * The color theme of the avatar.
    */
   color?: 'primary' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   /**
-   * Custom icon type for an icon avatar
+   * Custom icon component to use as the avatar.
    */
-  icon?: React.ReactNode;
+  icon?: IconComponent;
   /**
-   * Custom image source for an image avatar
+   * The name of the avatar, used to generate initials.
+   * If src has loaded, the name will be used as the alt attribute of the img. If src is not loaded, the name will be used to create the initials.
+   */
+  name?: string;
+  /**
+   * Custom image source for an image avatar.
    */
   src?: string;
   /**
-   * The `srcSet` attribute for the `img` element. Use this attribute for responsive image display.
+   * The `srcSet` attribute for the `img` element, useful for responsive images.
    */
   srcSet?: string;
+  /**
+   * The `alt` attribute for the `img` element
+   */
+  alt?: string;
+  /**
+   * CORS settings attributes
+   */
+  crossOrigin?: 'anonymous' | 'use-credentials' | '';
+  /**
+   * Automatically renders button with `a` tag with `href` on web
+   */
+  href?: ButtonProps['href'];
+  /**
+   * anchor target attribute
+   *
+   * Should only be used alongside `href`
+   */
+  target?: ButtonProps['target'];
+  /**
+   * anchor rel attribute
+   *
+   * Should only be used alongside `href`
+   */
+  rel?: ButtonProps['rel'];
+  /**
+   * Click handler for the avatar.
+   */
+  onClick?: Platform.Select<{
+    native: (event: GestureResponderEvent) => void;
+    web: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  }>;
 };
 ```
 
@@ -77,19 +111,26 @@ type AvatarProps = {
 ### Image Avatars
 
 ```tsx
-<Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-<Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-<Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+<Avatar name="Remy Sharp" src="/static/images/avatar/1.jpg" />
+<Avatar name="Travis Howard" src="/static/images/avatar/2.jpg" />
+<Avatar name="Cindy Baker" src="/static/images/avatar/3.jpg" />
 ```
+
+#### Avatar Fallbacks
+
+If there is an error loading the src of the avatar, there will be 2 fallbacks:
+
+- If there's a `name` prop, we use it to generate the initials.
+- If there's no `name` prop, we use a default avatar.
 
 ### Letter avatars
 
-`Avatars` containing simple characters can be created by passing a string as children.
+By default, we will merge the first characters of first & last word in the `name`` prop.
 
 ```tsx
-<Avatar color="primary">H</Avatar>
-<Avatar color="positive">N</Avatar>
-<Avatar color="information">OP</Avatar>
+<Avatar color="primary" name="Nitin Kumar" />
+<Avatar color="positive" name="Anurag" />
+<Avatar color="negative" name="Saurabh Daware" />
 ```
 
 ### Icon Avatars
@@ -109,12 +150,12 @@ type AvatarProps = {
 import { Avatar, AvatarGroup } from '@razorpay/blade/components';
 
 const App = () => (
-  <AvatarGroup maxAvatars={3} totalAvatars={5} size="medium">
-    <Avatar color="primary">N</Avatar>
-    <Avatar color="positive">I</Avatar>
-    <Avatar color="negative">T</Avatar>
-    <Avatar color="information">I</Avatar>
-    <Avatar color="notice">N</Avatar>
+  <AvatarGroup maxAvatars={3} size="medium">
+    <Avatar color="primary" name="Nitin Kumar" />
+    <Avatar color="positive" name="Anurag" />
+    <Avatar color="negative" name="Saurabh Daware" />
+    <Avatar color="information" name="Rama Krushna" />
+    <Avatar color="notice" name="Sachin Tendulkar" />
   </AvatarGroup>
 );
 ```
