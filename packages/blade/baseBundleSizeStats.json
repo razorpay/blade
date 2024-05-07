@@ -100,9 +100,9 @@
   {
     "name": "Chip, ChipGroup",
     "passed": true,
-    "size": 27488,
+    "size": 29734,
     "sizeLimit": 2000000,
-    "loading": 0.536875
+    "loading": 0.5807421875
   },
   {
     "name": "Collapsible, CollapsibleLink, CollapsibleButton, CollapsibleBody",
@@ -324,9 +324,9 @@
   {
     "name": "RadioGroup",
     "passed": true,
-    "size": 26269,
+    "size": 26271,
     "sizeLimit": 2000000,
-    "loading": 0.51306640625
+    "loading": 0.51310546875
   },
   {
     "name": "Spinner",
