@@ -10,9 +10,9 @@ const getAnimatedChipStyles = ({
   borderColor,
 }: AnimatedChipProps): CSSObject => {
   return {
-    backgroundColor: isDisabled
-      ? 'transparent'
-      : getIn(theme.colors, 'interactive.background.staticWhite.default'),
+    // backgroundColor: isDisabled
+    //   ? 'transparent'
+    //   : getIn(theme.colors, 'interactive.background.staticWhite.default'),
     borderRadius: makeBorderSize(theme.border.radius.max),
     borderColor: getIn(theme.colors, borderColor),
     borderWidth: getIn(theme, 'border.width.thin'),

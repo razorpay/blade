@@ -108,7 +108,8 @@ const chipColorTokens: ChipColorTokens = {
   },
   background: {
     unchecked: {
-      default: 'transparent',
+      // @ts-ignore  changed this to gray intense
+      default: 'surface.background.gray.intense',
       hover: 'interactive.background.gray.faded',
       disabled: 'transparent',
     },
