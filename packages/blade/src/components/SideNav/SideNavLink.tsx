@@ -7,6 +7,7 @@ import { Box } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
+import { useSideNavLevel } from './SideNavLevel';
 
 const StyledNavLink = styled.a((props) => {
   return {
@@ -61,6 +62,12 @@ const StyledNavLink = styled.a((props) => {
   };
 });
 
+const NavLinkContext = React.createContext({});
+const useNavLink = () => {
+  const value = React.useContext(NavLinkContext);
+  return value;
+};
+
 const SideNavLink = ({
   title,
   href,
@@ -69,35 +76,61 @@ const SideNavLink = ({
 }: SideNavLinkProps): React.ReactElement => {
   const { RouterLink, l2PortalContainerRef, setIsL2Open, isL2Open } = useSideNav();
   // const [isExpanded, setIsExpanded] = React.useState(false);
+  const {
+    setIsChildActive: parentSetIsChildActive,
+    isChildActive: parentIsChildActive,
+  } = useNavLink();
+  const [isChildActive, setIsChildActive] = React.useState(false);
+  // const prevLevel = _prevLevel ?? 0;
+  // const currentLevel = prevLevel + 1;
+  // console.log(title, isChildActive);
+  const { level, setIsSideNavLevelActive, isSideNavLevelActive } = useSideNavLevel();
+  console.log(title, level);
 
   return (
-    <StyledNavLink
-      as={RouterLink}
-      to={href}
-      // for react router v5
-      exact={true}
-      // for react router v6
-      end={true}
-      onClick={() => {
-        if (children) {
-          setIsL2Open(true);
-        }
-      }}
-    >
-      <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
-        <Icon size="medium" color="currentColor" />
-      </Box>
-      <BaseText
-        truncateAfterLines={1}
-        color="currentColor"
-        fontWeight="medium"
-        fontSize={100}
-        lineHeight={100}
+    <NavLinkContext.Provider value={{ setIsChildActive, isChildActive }}>
+      <StyledNavLink
+        as={RouterLink}
+        to={href}
+        // for react router v5
+        exact={true}
+        // for react router v6
+        end={true}
+        onClick={() => {
+          if (children) {
+            setIsL2Open(true);
+          }
+        }}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        isActive={(args: Record<string, any>): boolean => {
+          const isCurrentItemActive = Boolean(args);
+
+          if (level === 2 && isCurrentItemActive) {
+            parentSetIsChildActive?.(true);
+          }
+
+          if (children && parentIsChildActive) {
+            return true;
+          }
+
+          return isCurrentItemActive;
+        }}
       >
-        {title}
-      </BaseText>
-      {children ? <FloatingPortal root={l2PortalContainerRef}>{children}</FloatingPortal> : null}
-    </StyledNavLink>
+        <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+          <Icon size="medium" color="currentColor" />
+        </Box>
+        <BaseText
+          truncateAfterLines={1}
+          color="currentColor"
+          fontWeight="medium"
+          fontSize={100}
+          lineHeight={100}
+        >
+          {title}
+        </BaseText>
+        {children ? <FloatingPortal root={l2PortalContainerRef}>{children}</FloatingPortal> : null}
+      </StyledNavLink>
+    </NavLinkContext.Provider>
   );
 };
 

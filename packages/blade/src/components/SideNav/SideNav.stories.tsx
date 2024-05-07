@@ -13,6 +13,7 @@ import {
   UserIcon,
 } from '~components/Icons';
 import { Heading } from '~components/Typography';
+import { SideNavLevel } from './SideNavLevel';
 
 export default {
   title: 'Components/SideNav',
@@ -40,14 +41,14 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
         <SideNavLink icon={ArrowUpRightIcon} title="Payouts" href="/app/payouts" />
         <SideNavLink icon={ArrowUpRightIcon} title="Nice" href="/nice" />
         <SideNavLink icon={SettingsIcon} title="Settings" href="/settings">
-          <Box>
+          <SideNavLevel>
             <SideNavLink icon={UserIcon} title="User Settings" href="/settings/user" />
             <SideNavLink
               icon={SubscriptionsIcon}
               title="Subscriptions"
               href="/settings/subscriptions"
             />
-          </Box>
+          </SideNavLevel>
         </SideNavLink>
       </SideNav>
 
@@ -56,6 +57,9 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
           <Route path="/app" component={Page} />
           <Route path="/app/payouts" component={Page} />
           <Route path="/nice" component={Page} />
+          <Route path="/settings" exact component={Page} />
+          <Route path="/settings/user" exact component={Page} />
+          <Route path="/settings/subscriptions" exact component={Page} />
         </Switch>
       </Box>
     </Box>
