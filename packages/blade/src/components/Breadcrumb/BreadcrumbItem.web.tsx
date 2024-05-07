@@ -41,7 +41,7 @@ const BreadcrumbItem = ({
     <BaseLink
       size={size}
       color={color}
-      opacity={color !== 'primary' ? opacity[7] : 1}
+      opacity={color !== 'primary' ? opacity[700] : 1}
       icon={Icon}
       href={href}
       onClick={onClick}
