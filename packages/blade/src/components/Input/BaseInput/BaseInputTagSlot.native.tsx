@@ -1,10 +1,10 @@
 import React from 'react';
 import { ScrollView, TouchableWithoutFeedback } from 'react-native';
 import type { BaseInputTagSlotProps } from './types';
-import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
+import { baseInputHeight } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeSize } from '~utils';
-import { size } from '~tokens/global';
+import { size as sizeToken } from '~tokens/global';
 import { Text } from '~components/Typography';
 import type { StringChildrenType } from '~utils/types';
 
@@ -25,6 +25,7 @@ const ScrollableTagSlotContainer = ({
         position: 'relative',
         flexDirection: 'row',
         flexGrow: 1,
+        alignItems: 'center',
       }}
       onScrollBeginDrag={() => {
         setIsScrolling(true);
@@ -94,6 +95,9 @@ const BaseInputTagSlot = ({
   isDropdownTrigger,
   labelPrefix,
   isDisabled,
+  numberOfLines,
+  isTextArea,
+  size,
 }: BaseInputTagSlotProps): React.ReactElement | null => {
   const hasTags = tags && tags.length > 0;
   const initialVisibleTags = maxTagRows === 'multiple' ? 6 : 1;
@@ -109,7 +113,12 @@ const BaseInputTagSlot = ({
       justifyContent="flex-start"
       paddingY="spacing.1"
       paddingX="spacing.4"
-      minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
+      minHeight={makeSize(baseInputHeight[size])}
+      height={
+        isTextArea && isDropdownTrigger
+          ? makeSize(baseInputHeight[size] * (numberOfLines ?? 1))
+          : undefined
+      }
       display="flex"
       flexDirection="row"
       position="relative"
@@ -158,7 +167,7 @@ const BaseInputTagSlot = ({
             ) : null}
           </>
         ) : null}
-        <BaseBox width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}>
+        <BaseBox width={hasTags && renderAs === 'button' ? makeSize(sizeToken['1']) : '100%'}>
           {children}
         </BaseBox>
       </ScrollableTagSlotContainer>

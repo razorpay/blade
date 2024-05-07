@@ -21,7 +21,7 @@ type IndicatorCommonProps = {
    *
    * @default neutral
    */
-  color?: FeedbackColors;
+  color?: FeedbackColors | 'primary';
 
   /**
    * Size of the indicator
@@ -74,7 +74,10 @@ const Indicator = ({
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
 
-  const fillColor = theme.colors.feedback.background[color].intense;
+  const fillColor =
+    color === 'primary'
+      ? theme.colors.surface.background.primary.intense
+      : theme.colors.feedback.background[color].intense;
   const getDimension = useCallback((): Dimensions => {
     switch (size) {
       case 'small':

@@ -33,6 +33,13 @@ const chipHeightTokens: Record<NonNullable<ChipGroupProps['size']>, number> = {
   large: size[48],
 };
 
+const chipGroupLabelSizeTokens = {
+  xsmall: 'small',
+  small: 'medium',
+  medium: 'large',
+  large: 'large',
+} as const;
+
 type ChipHorizontalPaddingTokens = {
   withoutIcon: Record<
     'left' | 'right',
@@ -199,4 +206,5 @@ export {
   chipTextSizes,
   chipIconSizes,
   chipMotionTokens,
+  chipGroupLabelSizeTokens,
 };

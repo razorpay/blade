@@ -6,6 +6,7 @@ import type { ComponentStatuses } from './componentStatusData';
 import { componentData } from './componentStatusData';
 import type { IconComponent } from '~components/Icons';
 import {
+  CloseIcon,
   StampIcon,
   EditIcon,
   CheckIcon,
@@ -169,11 +170,17 @@ const ComponentStatusTable = (): React.ReactElement => {
               <th align="left">
                 <Text weight="semibold">Component</Text>
               </th>
-              <th align="left">
+              <th style={{ width: '30%' }} align="right">
                 <Text weight="semibold">Status</Text>
               </th>
               <th style={{ width: '50%' }} align="left">
                 <Text weight="semibold">Description</Text>
+              </th>
+              <th style={{ width: '10%' }} align="center">
+                <Text weight="semibold">Web</Text>
+              </th>
+              <th style={{ width: '10%' }} align="center">
+                <Text weight="semibold">RN</Text>
               </th>
               <th align="right">
                 <Text weight="semibold">Released In</Text>
@@ -182,6 +189,10 @@ const ComponentStatusTable = (): React.ReactElement => {
           </thead>
           <tbody>
             {sortedData.map((data) => {
+              const isAvailableOnWeb = data.platform === 'web';
+              const isAvailableOnMobile = data.platform === 'mobile';
+              const isAvailableOnAll = data.platform === 'all';
+
               return (
                 <tr key={data.name}>
                   <td align="left">
@@ -191,13 +202,27 @@ const ComponentStatusTable = (): React.ReactElement => {
                       <Text>{data.name}</Text>
                     )}
                   </td>
-                  <td align="left">
+                  <td align="right">
                     <ComponentStatusBadge status={data.status} />
                   </td>
                   <td align="left">
                     <Text size="medium" color="surface.text.gray.subtle">
                       {data.description}
                     </Text>
+                  </td>
+                  <td align="center">
+                    {isAvailableOnWeb || isAvailableOnAll ? (
+                      <CheckIcon color="feedback.icon.positive.intense" />
+                    ) : (
+                      <CloseIcon color="feedback.icon.negative.intense" />
+                    )}
+                  </td>
+                  <td align="center">
+                    {isAvailableOnMobile || isAvailableOnAll ? (
+                      <CheckIcon color="feedback.icon.positive.intense" />
+                    ) : (
+                      <CloseIcon color="feedback.icon.negative.intense" />
+                    )}
                   </td>
                   <td align="right">
                     <ReleasedInLink version={data.releasedIn} />

@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
 import type { OnChange } from './useRadio';
 import { useRadio } from './useRadio';
 import { RadioIcon } from './RadioIcon/RadioIcon';
 import { useRadioGroupContext } from './RadioGroup/RadioContext';
-import { radioHoverTokens } from './radioTokens';
+import { radioHoverTokens, radioSizes } from './radioTokens';
 import isEmpty from '~utils/lodashButBetter/isEmpty';
 import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import BaseBox from '~components/Box/BaseBox';
@@ -15,7 +16,7 @@ import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import type { BladeElementRef, StringChildrenType, TestID } from '~utils/types';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { getPlatformType } from '~utils';
+import { getPlatformType, makeSize, useTheme } from '~utils';
 import { MetaConstants } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
 
@@ -44,7 +45,7 @@ type RadioProps = {
    *
    * @default "medium"
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & TestID &
   StyledPropsBlade;
 
@@ -52,6 +53,7 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   { value, children, helpText, isDisabled, size = 'medium', testID, ...styledProps },
   ref,
 ) => {
+  const { theme } = useTheme();
   const groupProps = useRadioGroupContext();
   const isInsideGroup = !isEmpty(groupProps);
 
@@ -75,7 +77,6 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
   const showHelpText = !hasError && helpText;
   const isReactNative = getPlatformType() === 'react-native';
   const _size = groupProps.size ?? size;
-  const isSmall = _size === 'small';
 
   const handleChange: OnChange = ({ isChecked, value }) => {
     if (isChecked) {
@@ -95,6 +96,9 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
     value,
     onChange: handleChange,
   });
+
+  // radio icon's size & margin + margin-left of SelectorTitle which is 2
+  const helpTextLeftSpacing = makeSize(radioSizes.icon[size].width + theme.spacing[3]);
 
   return (
     <BaseBox {...getStyledProps(styledProps)}>
@@ -126,8 +130,8 @@ const _Radio: React.ForwardRefRenderFunction<BladeElementRef, RadioProps> = (
             ) : null}
           </BaseBox>
           {showHelpText && (
-            <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-              <SelectorSupportText isNegative={true} id={ids?.helpTextId}>
+            <BaseBox marginLeft={helpTextLeftSpacing}>
+              <SelectorSupportText size={_size} isNegative={true} id={ids?.helpTextId}>
                 {helpText}
               </SelectorSupportText>
             </BaseBox>

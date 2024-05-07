@@ -25,6 +25,7 @@ import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeSpace } from '~utils/makeSpace';
 import { getComponentId } from '~utils/isValidAllowedChildren';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const BottomSheetSurface = styled(BaseBox)(({ theme }) => {
   return {
@@ -51,6 +52,7 @@ const _BottomSheet = ({
   isOpen,
   onDismiss,
   initialFocusRef,
+  zIndex = componentZIndices.bottomSheet,
 }: BottomSheetProps): React.ReactElement => {
   const bottomSheetAndDropdownGlue = useBottomSheetAndDropdownGlue();
   const defaultInitialFocusRef = React.useRef<any>(null);
@@ -77,7 +79,7 @@ const _BottomSheet = ({
     getTopOfTheStack,
   } = useBottomSheetStack();
   const currentStackIndex = getCurrentStackIndexById(id);
-  const zIndex = 100 - currentStackIndex;
+  const bottomSheetZIndex = zIndex - currentStackIndex;
 
   // if bottomSheet height is >35% & <50% then set initial snapPoint to 35%
   useIsomorphicLayoutEffect(() => {
@@ -150,7 +152,7 @@ const _BottomSheet = ({
   }, [children]);
 
   const renderFooter = React.useCallback(
-    (props): React.ReactElement => {
+    (props: any): React.ReactElement => {
       return (
         <GorhomBottomSheetFooter {...props}>
           <View
@@ -169,10 +171,10 @@ const _BottomSheet = ({
   );
 
   const renderBackdrop = React.useCallback(
-    (props): React.ReactElement => {
-      return <BottomSheetBackdrop {...props} zIndex={zIndex} />;
+    (props: any): React.ReactElement => {
+      return <BottomSheetBackdrop {...props} zIndex={bottomSheetZIndex} />;
     },
-    [zIndex],
+    [bottomSheetZIndex],
   );
 
   const renderHandle = React.useCallback((): React.ReactElement => {
@@ -186,13 +188,13 @@ const _BottomSheet = ({
           setHeaderHeight(nativeEvent.layout.height);
         }}
       >
-        <BaseBox zIndex={zIndex}>
+        <BaseBox zIndex={bottomSheetZIndex}>
           <BottomSheetGrabHandle />
         </BaseBox>
         {header}
       </BaseBox>
     );
-  }, [isHeaderEmpty, zIndex, header]);
+  }, [isHeaderEmpty, bottomSheetZIndex, header]);
 
   const isHeaderFloating = !hasBodyPadding && isHeaderEmpty;
   const contextValue = React.useMemo<BottomSheetContextProps>(
@@ -280,7 +282,7 @@ const _BottomSheet = ({
             // on initial render if _isOpen is true we want to render the sheet at initialSnapPoint
             // otherwise we want to render it at -1 so that it is not visible
             index={_isOpen ? initialSnapPoint.current : -1}
-            containerStyle={{ zIndex }}
+            containerStyle={{ zIndex: bottomSheetZIndex }}
             animateOnMount={true}
             handleComponent={renderHandle}
             backgroundComponent={BottomSheetSurface}

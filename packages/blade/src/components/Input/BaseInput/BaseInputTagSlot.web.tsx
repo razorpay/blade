@@ -1,17 +1,18 @@
 import React from 'react';
+import styled from 'styled-components';
 import type { BaseInputTagSlotProps } from './types';
-import { BASEINPUT_DEFAULT_HEIGHT } from './baseInputConfig';
+import { baseInputHeight } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
 import { castWebType, makeSize } from '~utils';
 import { useIsomorphicLayoutEffect } from '~utils/useIsomorphicLayoutEffect';
 import { useIsMobile } from '~utils/useIsMobile';
 import { MetaConstants } from '~utils/metaAttribute';
-import { size } from '~tokens/global';
+import { size as sizeToken } from '~tokens/global';
 
-const MINUMUM_INPUT_SPACE = 30;
+const MINUMUM_INPUT_SPACE = 60;
 const PLUS_X_MORE_TEXT_WIDTH = 60;
-const TAG_MAX_WIDTH: number = size['140'];
+const TAG_MAX_WIDTH: number = sizeToken['140'];
 
 const useVisibleTagsCount = ({
   slotRef,
@@ -97,6 +98,17 @@ const getSelectedTextWithoutTags = ({
   return `${items} Selected`;
 };
 
+const TagSlotContainer = styled(BaseBox)(() => {
+  return {
+    // hides the scrollbar of tagslot
+    '::-webkit-scrollbar': {
+      display: 'none',
+    },
+    '-ms-overflow-style': 'none',
+    'scrollbar-width': 'none',
+  };
+});
+
 const BaseInputTagSlot = ({
   renderAs,
   children,
@@ -109,6 +121,9 @@ const BaseInputTagSlot = ({
   visibleTagsCountRef,
   labelPrefix,
   isDisabled,
+  numberOfLines,
+  isTextArea,
+  size,
 }: BaseInputTagSlotProps): React.ReactElement => {
   const hasTags = tags && tags.length > 0;
   const slotRef = React.useRef<HTMLDivElement>(null);
@@ -135,6 +150,13 @@ const BaseInputTagSlot = ({
       slotRef.current?.scrollTo?.({
         top: 0,
         left: 0,
+        behavior: 'smooth',
+      });
+    } else if (maxTagRows === 'single') {
+      // when its single line input and showAllTags is true, we scroll till item on focus
+      slotRef.current?.scrollTo?.({
+        top: 0,
+        left: maxTagRows === 'single' ? slotRef.current.scrollWidth : 0,
         behavior: 'smooth',
       });
     }
@@ -165,7 +187,7 @@ const BaseInputTagSlot = ({
   const paddingYWithTags = isMobile ? 'spacing.1' : 'spacing.2';
 
   return (
-    <BaseBox
+    <TagSlotContainer
       ref={slotRef}
       className="tags-slot"
       paddingY={paddingYWithTags}
@@ -175,7 +197,13 @@ const BaseInputTagSlot = ({
       flexWrap={maxTagRows === 'single' ? 'nowrap' : 'wrap'}
       overflowX="auto"
       overflowY={showAllTags || maxTagRows === 'multiple' ? 'auto' : 'hidden'}
-      minHeight={makeSize(BASEINPUT_DEFAULT_HEIGHT)}
+      minHeight={makeSize(baseInputHeight[size])}
+      maxHeight={
+        // In TextArea with tagged input, we explicitly define maxHeight based on maxHeight so that tags dont overflow out of textarea
+        isDropdownTrigger && isTextArea
+          ? makeSize(baseInputHeight[size] * (numberOfLines ?? 1))
+          : undefined
+      }
       onMouseDown={() => {
         setShouldIgnoreBlurAnimation?.(true);
       }}
@@ -210,11 +238,11 @@ const BaseInputTagSlot = ({
       <BaseBox
         marginTop="-4px"
         minWidth={hasTags && renderAs === 'button' ? undefined : makeSize(MINUMUM_INPUT_SPACE)}
-        width={hasTags && renderAs === 'button' ? makeSize(size['1']) : '100%'}
+        width={hasTags && renderAs === 'button' ? makeSize(sizeToken['1']) : '100%'}
       >
         {children}
       </BaseBox>
-    </BaseBox>
+    </TagSlotContainer>
   );
 };
 

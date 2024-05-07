@@ -623,7 +623,7 @@ const WithAutoPositioningSelectStory = `
       <Box>
         <Box
           padding="spacing.5"
-          backgroundColor="surface.background.level3.lowContrast"
+          backgroundColor="surface.background.gray.moderate"
           width="100%"
           minHeight="100px"
           overflow="scroll"
@@ -640,7 +640,7 @@ const WithAutoPositioningSelectStory = `
         </Box>
         <Box
           padding="spacing.5"
-          backgroundColor="surface.background.level3.lowContrast"
+          backgroundColor="surface.background.gray.moderate"
           width="100%"
           position="fixed"
           bottom="spacing.0"
@@ -1014,6 +1014,70 @@ const WithAutoPositioningMenuStory = `
   export default App;
 `;
 
+const WithSizesStory = `
+import {
+  Dropdown,
+  DropdownOverlay,
+  SelectInput,
+  ActionList,
+  ActionListItem,
+  Box,
+  Heading,
+} from '@razorpay/blade/components';
+
+function App(): React.ReactElement {
+  return (
+    <Box>
+      <Heading size="medium" marginBottom="spacing.3">
+        Medium:
+      </Heading>
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="City"
+          placeholder="Select your City"
+          name="action"
+          onChange={({ name, values }) => {
+            console.log({ name, values });
+          }}
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Mysore" value="mysore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+      <Heading size="medium" marginBottom="spacing.3" marginTop="spacing.5">
+        Large:
+      </Heading>
+      <Dropdown selectionType="multiple">
+        <SelectInput
+          label="City"
+          placeholder="Select your City"
+          name="action"
+          onChange={({ name, values }) => {
+            console.log({ name, values });
+          }}
+          size="large"
+        />
+        <DropdownOverlay>
+          <ActionList>
+            <ActionListItem title="Mumbai" value="mumbai" />
+            <ActionListItem title="Pune" value="pune" />
+            <ActionListItem title="Bangalore" value="bangalore" />
+            <ActionListItem title="Mysore" value="mysore" />
+          </ActionList>
+        </DropdownOverlay>
+      </Dropdown>
+    </Box>
+  );
+}
+
+export default App;
+`;
+
 export {
   Playground,
   getSimpleSelectCode,
@@ -1031,4 +1095,5 @@ export {
   WithControlledMultiSelectMenuStory,
   WithAutoPositioningSelectStory,
   WithAutoPositioningMenuStory,
+  WithSizesStory,
 };

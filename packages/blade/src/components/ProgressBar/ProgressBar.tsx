@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 import { ProgressBarFilled } from './ProgressBarFilled';
+import { CircularProgressBarFilled } from './CircularProgressBar';
 import clamp from '~utils/lodashButBetter/clamp';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { Text } from '~components/Typography/Text';
@@ -27,14 +28,20 @@ type ProgressBarCommonProps = {
    */
   color?: FeedbackColors;
   /**
+   * Sets the type of the progress bar.
+   * @default 'progress'
+   */
+  type?: 'meter' | 'progress';
+  /**
    * Sets the label to be rendered for the progress bar. This value will also be used as default for `accessibilityLabel`.
    */
   label?: string;
   /**
    * Sets the size of the progress bar.
+   * Note: 'large' size isn't available when the variant is 'linear'.
    * @default 'small'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Sets the progress value of the progress bar.
    * @default 'small'
@@ -53,14 +60,14 @@ type ProgressBarCommonProps = {
 } & TestID &
   StyledPropsBlade;
 
-type ProgressBarVariant = 'progress' | 'meter';
+type ProgressBarVariant = 'progress' | 'meter' | 'linear' | 'circular';
 
 type ProgressBarProgressProps = ProgressBarCommonProps & {
   /**
    * Sets the variant to be rendered for the progress bar.
    * @default 'progress'
    */
-  variant?: Extract<ProgressBarVariant, 'progress'>;
+  variant?: Extract<ProgressBarVariant, 'progress' | 'linear' | 'circular'>;
   /**
    * Sets whether the progress bar is in an indeterminate state.
    * @default false
@@ -78,7 +85,7 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
    * Sets the variant to be rendered for thr progress bar.
    * @default 'progress'
    */
-  variant?: Extract<ProgressBarVariant, 'meter'>;
+  variant?: Extract<ProgressBarVariant, 'meter' | 'linear' | 'circular'>;
   /**
    * Sets whether the progress bar is in an indeterminate state.
    * @default false
@@ -93,14 +100,17 @@ type ProgressBarMeterProps = ProgressBarCommonProps & {
 
 type ProgressBarProps = ProgressBarProgressProps | ProgressBarMeterProps;
 
-const progressBarHeight: Record<NonNullable<ProgressBarCommonProps['size']>, 2 | 4> = {
+const progressBarHeight: Record<NonNullable<ProgressBarProps['size']>, 2 | 4 | 0> = {
   small: size[2],
   medium: size[4],
+  // Large size isn't available when variant is 'linear'
+  large: size[0],
 };
 
 const ProgressBar = ({
   accessibilityLabel,
   color,
+  type,
   isIndeterminate = false,
   label,
   showPercentage = true,
@@ -113,13 +123,36 @@ const ProgressBar = ({
   ...styledProps
 }: ProgressBarProps): ReactElement => {
   const { theme } = useTheme();
-  const id = useId(variant);
+  const progressType = !type && (variant === 'meter' || variant === 'progress') ? variant : type;
+  const progressVariant = variant === 'meter' || variant === 'progress' ? 'linear' : variant;
+  const id = useId(`${progressType}-${progressVariant}`);
 
   if (__DEV__) {
-    if (variant === 'meter' && isIndeterminate) {
+    if (progressType === 'meter' && isIndeterminate) {
       throwBladeError({
         moduleName: 'ProgressBar',
-        message: `Cannot set 'isIndeterminate' when 'variant' is 'meter'.`,
+        message: `Cannot set 'isIndeterminate' when 'type' or 'variant' is 'meter'.`,
+      });
+    }
+
+    if (progressVariant === 'circular' && isIndeterminate) {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `Cannot set 'isIndeterminate' when 'variant' is 'circular'.`,
+      });
+    }
+
+    if (progressVariant === 'linear' && size === 'large') {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `Large size isn't available when 'variant' is 'linear'.`,
+      });
+    }
+
+    if (type && (variant === 'progress' || variant === 'meter')) {
+      throwBladeError({
+        moduleName: 'ProgressBar',
+        message: `variant can only be 'linear' or 'circular' when 'type=${type}'.`,
       });
     }
   }
@@ -130,7 +163,8 @@ const ProgressBar = ({
     ? theme.colors.feedback.background[color].intense
     : theme.colors.surface.background.primary.intense;
   const hasLabel = label && label.trim()?.length > 0;
-  const isMeter = variant === 'meter';
+  const isMeter = progressType === 'meter';
+  const isCircular = progressVariant === 'circular';
   const progressValue = clamp(value, min, max);
   const percentageProgressValue = Math.floor(((progressValue - min) * 100) / (max - min));
   const shouldShowPercentage = showPercentage && !isMeter && !isIndeterminate;
@@ -165,26 +199,29 @@ const ProgressBar = ({
       {...metaAttribute({ name: MetaConstants.ProgressBar, testID })}
     >
       <BaseBox display="flex" flexDirection="column" width="100%">
-        <BaseBox
-          display="flex"
-          flexDirection="row"
-          justifyContent={hasLabel ? 'space-between' : 'flex-end'}
-        >
-          {hasLabel ? (
-            <Text as="label" variant="body" size="small" color="surface.text.gray.subtle">
-              {label}
-            </Text>
-          ) : null}
-          {shouldShowPercentage ? (
-            <BaseBox marginBottom="spacing.2">
-              <Text
-                variant="body"
-                size="small"
-                color="surface.text.gray.subtle"
-              >{`${percentageProgressValue}%`}</Text>
-            </BaseBox>
-          ) : null}
-        </BaseBox>
+        {!isCircular ? (
+          <BaseBox
+            display="flex"
+            flexDirection="row"
+            justifyContent={hasLabel ? 'space-between' : 'flex-end'}
+          >
+            {hasLabel ? (
+              <Text as="label" variant="body" size="small" color="surface.text.gray.subtle">
+                {label}
+              </Text>
+            ) : null}
+            {shouldShowPercentage ? (
+              <BaseBox marginBottom="spacing.2">
+                <Text
+                  variant="body"
+                  size="small"
+                  color="surface.text.gray.subtle"
+                >{`${percentageProgressValue}%`}</Text>
+              </BaseBox>
+            ) : null}
+          </BaseBox>
+        ) : null}
+
         <BaseBox
           id={id}
           {...makeAccessible({
@@ -196,24 +233,40 @@ const ProgressBar = ({
             valueMax: accessibilityProps.valueMax,
           })}
         >
-          <BaseBox
-            backgroundColor={unfilledBackgroundColor}
-            height={makeSize(progressBarHeight[size])}
-            overflow="hidden"
-            position="relative"
-          >
-            <ProgressBarFilled
-              backgroundColor={filledBackgroundColor}
-              progress={percentageProgressValue}
-              fillMotionDuration="duration.2xgentle"
+          {isCircular ? (
+            <CircularProgressBarFilled
+              size={size}
+              label={label}
+              progressPercent={percentageProgressValue}
+              isMeter={isMeter}
+              showPercentage={shouldShowPercentage}
+              backgroundColor={unfilledBackgroundColor as string}
+              fillColor={filledBackgroundColor}
               pulseMotionDuration="duration.2xgentle"
-              indeterminateMotionDuration="duration.2xgentle"
+              fillMotionDuration="duration.2xgentle"
               pulseMotionDelay="delay.long"
               motionEasing="easing.standard.revealing"
-              variant={variant}
-              isIndeterminate={isIndeterminate}
             />
-          </BaseBox>
+          ) : (
+            <BaseBox
+              backgroundColor={unfilledBackgroundColor}
+              height={makeSize(progressBarHeight[size])}
+              overflow="hidden"
+              position="relative"
+            >
+              <ProgressBarFilled
+                backgroundColor={filledBackgroundColor}
+                progress={percentageProgressValue}
+                fillMotionDuration="duration.2xgentle"
+                pulseMotionDuration="duration.2xgentle"
+                indeterminateMotionDuration="duration.2xgentle"
+                pulseMotionDelay="delay.long"
+                motionEasing="easing.standard.revealing"
+                type={progressType}
+                isIndeterminate={isIndeterminate}
+              />
+            </BaseBox>
+          )}
         </BaseBox>
       </BaseBox>
     </BaseBox>

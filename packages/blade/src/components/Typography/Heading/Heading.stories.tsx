@@ -18,7 +18,7 @@ const Page = (): ReactElement => {
       componentDescription="The Heading Component is usually used for headings of each major section of a page."
       componentName="Heading"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11770%3A147140"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71123-52743&t=DaKuYvkYnno4qVsq-1&scaling=min-zoom&page-id=3%3A0&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -47,15 +47,12 @@ const getHeadingArgTypes = (): Meta['argTypes'] => {
   };
 };
 
-const HeadingStoryMeta: Meta<HeadingProps<{ variant: 'regular' | 'subheading' }>> = {
+const HeadingStoryMeta: Meta<HeadingProps> = {
   title: 'Components/Typography/Heading',
   component: HeadingComponent,
   args: {
-    variant: 'regular',
-    type: 'normal',
     children: 'Get Started With Payment Gateway',
-    weight: 'bold',
-    contrast: 'low',
+    weight: 'semibold',
     as: undefined,
   },
   tags: ['autodocs'],
@@ -75,7 +72,7 @@ export default HeadingStoryMeta;
 export const Heading = HeadingTemplate.bind({});
 export const WithColor = HeadingTemplate.bind({});
 WithColor.args = {
-  color: 'feedback.notice.action.text.primary.default.lowContrast',
+  color: 'surface.text.primary.normal',
 };
 
 const Sup = isReactNative() ? HeadingComponent : 'sup';
@@ -84,13 +81,13 @@ const WithMixedColorsTemplate: StoryFn<typeof HeadingComponent> = () => {
     <Box>
       <HeadingComponent>
         Supercharge your business with the all‑powerful{' '}
-        <HeadingComponent as="span" color="brand.primary.600">
+        <HeadingComponent as="span" color="surface.text.primary.normal">
           Payment Gateway
         </HeadingComponent>
       </HeadingComponent>
       <HeadingComponent marginTop="spacing.5">
         Start accepting{' '}
-        <HeadingComponent as="span" color="feedback.text.information.lowContrast">
+        <HeadingComponent as="span" color="feedback.text.information.intense">
           payments
         </HeadingComponent>{' '}
         at just 2% <Sup>*</Sup>
@@ -106,12 +103,12 @@ const AsPropTemplate: StoryFn<typeof HeadingComponent> = (args) => {
     <Box>
       <Text>
         By default{' '}
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Heading
         </Text>{' '}
         component automatically renders the respective <Code size="medium">h*</Code> tag based on
         the{' '}
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           size prop
         </Text>{' '}
         passed

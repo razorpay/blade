@@ -103,6 +103,7 @@ const Tag = ({
         alignSelf={isReactNative() ? 'center' : undefined}
         flexDirection="row"
         flexWrap="nowrap"
+        flexShrink={0}
         backgroundColor={backgroundColor}
         borderRadius="max"
         padding={size === 'medium' ? mediumPadding : largePadding}
@@ -116,13 +117,14 @@ const Tag = ({
         ) : null}
 
         {/* Tag Text */}
-        <Box
-          display="flex"
-          flexDirection="row"
-          alignItems="center"
-          maxWidth={makeSize(globalSizeTokens['100'])}
-        >
-          <Text truncateAfterLines={1} marginRight="spacing.2" color={textColor} size={assetSize}>
+        <Box display="flex" flexDirection="row">
+          <Text
+            textAlign="center"
+            truncateAfterLines={1}
+            marginRight="spacing.2"
+            color={textColor}
+            size="small"
+          >
             {children}
           </Text>
         </Box>

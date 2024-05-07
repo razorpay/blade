@@ -21,6 +21,7 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
     ...getStyledBaseButtonStyles(props),
     alignSelf: 'center',
     display: 'flex',
+    flexDirection: 'row',
     ...styledPropsCSSObject,
   };
 });
@@ -144,6 +145,8 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseBut
       motionEasing={motionEasing}
       testID={testID}
     >
+      {/* eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error */}
+      {/* @ts-ignore */}
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;
         return children;

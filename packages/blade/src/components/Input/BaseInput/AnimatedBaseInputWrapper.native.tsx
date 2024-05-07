@@ -7,10 +7,22 @@ import Animated, {
 } from 'react-native-reanimated';
 import styled from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
-import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
-import { BASEINPUT_WRAPPER_MAX_HEIGHT, BASEINPUT_WRAPPER_MIN_HEIGHT } from './baseInputConfig';
-import { castNativeType } from '~utils';
+import {
+  getAnimatedBaseInputWrapperMaxHeight,
+  getBaseInputState,
+  getInputBackgroundAndBorderStyles,
+} from './baseInputStyles';
+import {
+  baseInputBackgroundColor,
+  baseInputBorderBackgroundMotion,
+  baseInputBorderColor,
+  baseInputHeight,
+  baseInputWrapperMaxHeight,
+} from './baseInputTokens';
+import { castNativeType, makeMotionTime } from '~utils';
 import { useTheme } from '~components/BladeProvider';
+import getIn from '~utils/lodashButBetter/get';
+import type { EasingFactoryFn } from '~tokens/global';
 
 const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -21,23 +33,8 @@ const StyledBaseInputWrapper = styled(Animated.View)<BaseInputWrapperProps>((pro
     isTextArea: props.isTextArea,
     isDropdownTrigger: props.isDropdownTrigger,
   }),
+  backgroundColor: 'yellow',
 }));
-
-const getMaxHeight = ({
-  maxTagRows,
-  showAllTags,
-}: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags'>): number => {
-  if (maxTagRows === 'single') {
-    return BASEINPUT_WRAPPER_MIN_HEIGHT;
-  }
-
-  if (maxTagRows === 'multiple') {
-    return BASEINPUT_WRAPPER_MAX_HEIGHT;
-  }
-
-  // In expandable, max-height depends on the state
-  return showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT;
-};
 
 const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   HTMLDivElement,
@@ -46,11 +43,20 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
   }
 > = (
-  { showAllTags, setShowAllTagsWithAnimation, children, maxTagRows, isDropdownTrigger, ...rest },
+  {
+    showAllTags,
+    isTextArea,
+    numberOfLines,
+    setShowAllTagsWithAnimation,
+    children,
+    maxTagRows,
+    isDropdownTrigger,
+    ...rest
+  },
   ref,
 ): React.ReactElement => {
   const { theme } = useTheme();
-  const sharedHeight = useSharedValue(BASEINPUT_WRAPPER_MIN_HEIGHT); // Initial max-width value
+  const sharedHeight = useSharedValue<number>(baseInputHeight[rest.size]); // Initial max-width value
 
   React.useEffect(() => {
     if (!isDropdownTrigger) {
@@ -58,7 +64,7 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
     }
 
     sharedHeight.value = withTiming(
-      showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT,
+      showAllTags ? baseInputWrapperMaxHeight[rest.size] : baseInputHeight[rest.size],
       {
         duration: theme.motion.duration.xquick,
         easing: castNativeType(theme.motion.easing.exit.effective),
@@ -80,25 +86,78 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
   const animatedStyleObject = maxTagRows === 'expandable' ? animatedStyle : {};
   const maxHeightStyleObject = {
-    maxHeight: getMaxHeight({
-      showAllTags,
+    maxHeight: getAnimatedBaseInputWrapperMaxHeight({
       maxTagRows,
+      showAllTags,
+      size: rest.size,
     }),
   };
+
+  const baseInputState = getBaseInputState({
+    isFocused: rest.currentInteraction === 'focus',
+    isHovered: rest.currentInteraction === 'hover',
+    isDisabled: Boolean(rest.isDisabled),
+  });
+
+  let borderColor = getIn(theme.colors, baseInputBorderColor[baseInputState]);
+  const backgroundColor = getIn(theme.colors, baseInputBackgroundColor[baseInputState]);
+
+  if (rest.validationState === 'error') {
+    borderColor = getIn(theme.colors, baseInputBorderColor.error);
+  } else if (rest.validationState === 'success') {
+    borderColor = getIn(theme.colors, baseInputBorderColor.success);
+  }
+
+  const motionConfig: {
+    duration: number;
+    easing: EasingFactoryFn;
+  } = {
+    duration: castNativeType(
+      makeMotionTime(
+        getIn(
+          theme.motion.duration,
+          baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
+            .duration,
+        ),
+      ),
+    ),
+    easing: castNativeType(
+      getIn(
+        theme.motion.easing,
+        baseInputBorderBackgroundMotion[rest.currentInteraction === 'focus' ? 'enter' : 'exit']
+          .easing,
+      ),
+    ),
+  };
+
+  const animatedBorderAndBackgroundStyle = useAnimatedStyle(
+    () => ({
+      borderWidth: theme.border.width.thin,
+      borderRadius: theme.border.radius.medium,
+      borderStyle: 'solid',
+      backgroundColor: withTiming(backgroundColor, motionConfig),
+      borderColor: withTiming(borderColor, motionConfig),
+    }),
+    [borderColor, backgroundColor, motionConfig],
+  );
 
   return (
     <StyledBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ref={ref as any}
-      style={
-        isDropdownTrigger
+      style={[
+        // We only want to define height in tagged inputs except height for TextArea is set on TextArea based on numberOfLines prop
+        isDropdownTrigger && !isTextArea
           ? {
               ...maxHeightStyleObject,
               ...animatedStyleObject,
             }
-          : {}
-      }
+          : {},
+        animatedBorderAndBackgroundStyle,
+      ]}
       isDropdownTrigger={isDropdownTrigger}
+      numberOfLines={numberOfLines}
+      setShowAllTagsWithAnimation={setShowAllTagsWithAnimation}
       {...rest}
     >
       {children}

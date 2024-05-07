@@ -52,6 +52,11 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
+    size: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     defaultValue: {
       table: {
         category: propsCategory.BASE_PROPS,
@@ -179,7 +184,7 @@ export default {
           componentName="SelectInput"
           apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Dropdown/_decisions/decisions.md"
           note="SelectInput is meant to be used only inside the Dropdown component. Things will not work as expected if you are using this without Dropdown"
-          figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13590-171090'"
+          figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76077-123374&t=GIOMai1UREfFBA0F-1&scaling=min-zoom&page-id=13590%3A171038&mode=design"
         >
           <Title>Usage</Title>
           <Sandbox showConsole>

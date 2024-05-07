@@ -20,7 +20,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentName="Link"
       componentDescription="This is the Link component which can be used for showing external or internal Links to the user. The Link component can also be used as an inline button in certain cases with the `button` variant"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=59519-143186&mode=design&t=Qm80tBqhFBFB5BvZ-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=80952-9051&t=ozxGdqCDqI9hRYY8-1&scaling=min-zoom&page-id=614%3A1&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -162,7 +162,7 @@ const LinkColorsTemplate: StoryFn<typeof LinkComponent> = ({ icon, children = ''
           {children}
         </LinkComponent>
       </BaseBox>
-      <BaseBox padding="spacing.2" backgroundColor="brand.gray.700.lowContrast">
+      <BaseBox padding="spacing.2" backgroundColor="surface.background.cloud.intense">
         <LinkComponent {...args} color="white">
           {children}
         </LinkComponent>

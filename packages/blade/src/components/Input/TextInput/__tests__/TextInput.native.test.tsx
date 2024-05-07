@@ -1,10 +1,19 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import type { ReactElement } from 'react';
-import { fireEvent } from '@testing-library/react-native';
+import { fireEvent, screen } from '@testing-library/react-native';
 import React, { useState } from 'react';
+import type { ReactTestInstance } from 'react-test-renderer';
 import { TextInput } from '../';
 import { InfoIcon } from '~components/Icons';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+import { Button } from '~components/Button';
+
+const getTag = (tagName: string): ReactTestInstance => {
+  return screen.queryAllByLabelText(`Close ${tagName} tag`)?.[0];
+};
+
+const bladeEmail = 'blade@gmail.com';
+const tagEmail = 'tag@gmail.com';
 
 describe('<TextInput />', () => {
   it('should render', () => {
@@ -451,6 +460,75 @@ describe('<TextInput />', () => {
 
     renderWithTheme(<Example />);
     expect(refValue).toHaveProperty('focus');
+  });
+
+  it(`should add tags in uncontrolled API`, () => {
+    const label = 'Enter Name';
+    const placeholder = 'Enter your name';
+    const tagChangeCallback = jest.fn();
+
+    const { getByPlaceholderText } = renderWithTheme(
+      <TextInput
+        label={label}
+        placeholder={placeholder}
+        isTaggedInput={true}
+        onTagChange={tagChangeCallback}
+      />,
+    );
+
+    const input = getByPlaceholderText(placeholder);
+
+    expect(getTag(bladeEmail)).toBeUndefined();
+    fireEvent.changeText(input, bladeEmail);
+    fireEvent(input, 'onKeyPress', { nativeEvent: { key: ',' } });
+    expect(getTag(bladeEmail)).toBeOnTheScreen();
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail] });
+
+    expect(getTag(tagEmail)).toBeUndefined();
+    fireEvent.changeText(input, tagEmail);
+    fireEvent(input, 'onKeyPress', { nativeEvent: { key: ',' } });
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail, tagEmail] });
+  });
+
+  it(`should add tags in controlled API`, () => {
+    const label = 'Enter Name';
+    const placeholder = 'Enter your name';
+
+    const Example = (): React.ReactElement => {
+      const [tags, setTags] = React.useState<string[]>([]);
+      return (
+        <>
+          <TextInput
+            label={label}
+            isTaggedInput={true}
+            tags={tags}
+            onTagChange={({ tags }) => setTags(tags)}
+            placeholder={placeholder}
+          />
+          <Button
+            onClick={() => {
+              setTags([...tags, 'saurabh@razorpay.com', 'chaitanya@razorpay.com']);
+            }}
+          >
+            Add More
+          </Button>
+        </>
+      );
+    };
+
+    const { getByRole, getByText, getByPlaceholderText } = renderWithTheme(<Example />);
+
+    const input = getByPlaceholderText(placeholder);
+
+    expect(getTag(bladeEmail)).toBeUndefined();
+    fireEvent.changeText(input, bladeEmail);
+    fireEvent(input, 'onKeyPress', { nativeEvent: { key: ',' } });
+    expect(getTag(bladeEmail)).toBeOnTheScreen();
+
+    fireEvent.press(getByRole('button', { name: 'Add More' }));
+
+    expect(getTag(bladeEmail)).toBeOnTheScreen();
+    expect(getByText('+ 2 More')).toBeOnTheScreen();
   });
 
   it('should accept testID', () => {

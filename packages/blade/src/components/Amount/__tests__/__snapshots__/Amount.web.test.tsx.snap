@@ -28,7 +28,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -47,7 +47,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -64,7 +64,7 @@ exports[`<Amount /> should render AED currency Amount 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -143,7 +143,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -162,7 +162,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -179,7 +179,7 @@ exports[`<Amount /> should render Amount with default props 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -258,7 +258,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -277,7 +277,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -294,7 +294,7 @@ exports[`<Amount /> should render MYR currency Amount 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -373,7 +373,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -392,7 +392,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -409,7 +409,7 @@ exports[`<Amount /> should render USD currency Amount 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -488,7 +488,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 2.5rem;
   font-weight: 400;
   font-style: normal;
@@ -507,7 +507,7 @@ exports[`<Amount /> should render amount with Humanize value 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 3.5rem;
   font-weight: 400;
   font-style: normal;
@@ -577,7 +577,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -596,7 +596,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -613,7 +613,7 @@ exports[`<Amount /> should render body-medium size Amount 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -692,7 +692,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -711,7 +711,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -728,7 +728,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -746,7 +746,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
@@ -765,7 +765,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -782,7 +782,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c7.c7.c7.c7.c7 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
@@ -800,7 +800,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -817,7 +817,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -834,7 +834,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c10.c10.c10.c10.c10 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -853,7 +853,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.5rem;
   font-weight: 400;
   font-style: normal;
@@ -870,7 +870,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c12.c12.c12.c12.c12 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 400;
   font-style: normal;
@@ -888,7 +888,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c13.c13.c13.c13.c13 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -907,7 +907,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c14.c14.c14.c14.c14 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.5rem;
   font-weight: 600;
   font-style: normal;
@@ -924,7 +924,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c15.c15.c15.c15.c15 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -942,7 +942,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c16.c16.c16.c16.c16 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -961,7 +961,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c17.c17.c17.c17.c17 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 400;
   font-style: normal;
@@ -978,7 +978,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c18.c18.c18.c18.c18 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -996,7 +996,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c19.c19.c19.c19.c19 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -1015,7 +1015,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c20.c20.c20.c20.c20 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 1.125rem;
   font-weight: 600;
   font-style: normal;
@@ -1032,7 +1032,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c21.c21.c21.c21.c21 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -1050,7 +1050,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c22.c22.c22.c22.c22 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 2.5rem;
   font-weight: 400;
   font-style: normal;
@@ -1069,7 +1069,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c23.c23.c23.c23.c23 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 3.5rem;
   font-weight: 400;
   font-style: normal;
@@ -1086,7 +1086,7 @@ exports[`<Amount /> should render body-medium-bold size Amount 1`] = `
 
 .c24.c24.c24.c24.c24 {
   color: hsla(212,39%,16%,1);
-  font-family: "TASA Orbiter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "TASA Orbiter","TASA Orbiter Fallback Arial",Arial;
   font-size: 2.5rem;
   font-weight: 400;
   font-style: normal;
@@ -1413,7 +1413,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -1432,7 +1432,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -1449,7 +1449,7 @@ exports[`<Amount /> should render body-small size Amount 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -1528,7 +1528,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
@@ -1547,7 +1547,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -1564,7 +1564,7 @@ exports[`<Amount /> should render body-small-bold size Amount 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 600;
   font-style: normal;
@@ -1643,7 +1643,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -1662,7 +1662,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1679,7 +1679,7 @@ exports[`<Amount /> should render currencyIndicator="currency-code" 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -1758,7 +1758,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -1777,7 +1777,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1794,7 +1794,7 @@ exports[`<Amount /> should render currencyIndicator="currency-symbol" 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -1882,7 +1882,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -1901,7 +1901,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1918,7 +1918,7 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -1932,36 +1932,6 @@ exports[`<Amount /> should render isStrikethrough={true} 1`] = `
   margin: 0;
   padding: 0;
   opacity: 0.64;
-}
-
-@media screen and (min-width:320px) {
-  .c5.c5.c5.c5.c5 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:480px) {
-  .c5.c5.c5.c5.c5 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:768px) {
-  .c5.c5.c5.c5.c5 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .c5.c5.c5.c5.c5 {
-    border-bottom-style: solid;
-  }
-}
-
-@media screen and (min-width:1200px) {
-  .c5.c5.c5.c5.c5 {
-    border-bottom-style: solid;
-  }
 }
 
 <div>
@@ -2031,7 +2001,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -2050,7 +2020,7 @@ exports[`<Amount /> should render negative intent Amount  1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -2120,7 +2090,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
@@ -2139,7 +2109,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 
 .c3.c3.c3.c3.c3 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -2156,7 +2126,7 @@ exports[`<Amount /> should render positive intent Amount  1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;

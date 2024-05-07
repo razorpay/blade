@@ -18,6 +18,7 @@ const filterProps = [
   // none of them are currently supported in Box
   'width',
   'height',
+  'visibility',
 ];
 
 type shouldForwardProp = <O extends object>(

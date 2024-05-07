@@ -138,14 +138,19 @@ const makeBoxProps = (
     // Border
     borderWidth: props.borderWidth,
     borderColor: props.borderColor,
+    borderStyle: props.borderStyle,
     borderTopWidth: props.borderTopWidth,
     borderTopColor: props.borderTopColor,
+    borderTopStyle: props.borderTopStyle,
     borderRightWidth: props.borderRightWidth,
     borderRightColor: props.borderRightColor,
+    borderRightStyle: props.borderRightStyle,
     borderBottomWidth: props.borderBottomWidth,
     borderBottomColor: props.borderBottomColor,
+    borderBottomStyle: props.borderBottomStyle,
     borderLeftWidth: props.borderLeftWidth,
     borderLeftColor: props.borderLeftColor,
+    borderLeftStyle: props.borderLeftStyle,
     borderRadius: props.borderRadius,
     borderTopLeftRadius: props.borderTopLeftRadius,
     borderTopRightRadius: props.borderTopRightRadius,
@@ -256,6 +261,7 @@ const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) 
 
 const Box = assignWithoutSideEffects(React.forwardRef(_Box), {
   displayName: 'Box',
+  componentId: 'Box',
 });
 
 export { Box, makeBoxProps };

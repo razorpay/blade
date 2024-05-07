@@ -23,7 +23,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="List displays a set of related items that are composed of text/links."
       componentName="List"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=23205-446933&mode=design&t=jyVG8aXFc1Dlw2Se-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74881-74522&t=8BTDBesZFpcSIj8v-1&scaling=min-zoom&page-id=22049%3A455845&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -299,7 +299,7 @@ const ListWithListItemTextTemplate: StoryFn<typeof List> = () => {
             <ListItem>
               <ListItemText>
                 You will receive an invoice after a
-                <ListItemText as="span" weight="bold" color="feedback.text.positive.lowContrast">
+                <ListItemText as="span" weight="semibold" color="feedback.text.positive.intense">
                   {' successful '}
                 </ListItemText>
                 payment
@@ -307,7 +307,7 @@ const ListWithListItemTextTemplate: StoryFn<typeof List> = () => {
             </ListItem>
             <ListItem>
               You will receive a mail with further instruction after a
-              <ListItemText as="span" weight="bold" color="feedback.text.negative.lowContrast">
+              <ListItemText as="span" weight="semibold" color="feedback.text.negative.intense">
                 {' failed '}
               </ListItemText>{' '}
               payment

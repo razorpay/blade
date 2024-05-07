@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Popover /> should render 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -23,11 +23,11 @@ exports[`<Popover /> should render 1`] = `
   z-index: 1;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   z-index: 1100;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39,7 +39,7 @@ exports[`<Popover /> should render 1`] = `
   gap: 12px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -48,7 +48,7 @@ exports[`<Popover /> should render 1`] = `
   border-radius: 9999px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   width: 100%;
   max-width: 328px;
   position: relative;
@@ -65,7 +65,7 @@ exports[`<Popover /> should render 1`] = `
   transition-duration: 200ms;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -92,11 +92,11 @@ exports[`<Popover /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:hover {
+.c9.c9.c9.c9.c9:hover {
   color: hsla(211,26%,34%,1);
 }
 
-.c8.c8.c8.c8.c8:focus-visible {
+.c9.c9.c9.c9.c9:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -108,13 +108,13 @@ exports[`<Popover /> should render 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
-.c8.c8.c8.c8.c8:active {
+.c9.c9.c9.c9.c9:active {
   color: hsla(211,26%,34%,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -130,9 +130,9 @@ exports[`<Popover /> should render 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -210,7 +210,17 @@ exports[`<Popover /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -229,14 +239,19 @@ exports[`<Popover /> should render 1`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <div
-          class="c3"
-          data-blade-component="base-text"
+          class="c2 c3"
+          data-blade-component="base-box"
         >
-          Click me
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            Click me
+          </div>
         </div>
       </div>
     </button>
@@ -256,7 +271,7 @@ exports[`<Popover /> should render 1`] = `
     />
     <div
       aria-labelledby="popover-title-1"
-      class="c4"
+      class="c5"
       data-blade-component="popover"
       id=":r0:"
       role="dialog"
@@ -264,20 +279,20 @@ exports[`<Popover /> should render 1`] = `
       tabindex="-1"
     >
       <div
-        class=" c5"
+        class=" c6"
         data-blade-component="base-box"
       >
         <div
-          class="c6"
+          class="c7"
           data-blade-component="base-box"
         >
           <div
-            class="c7"
+            class="c8"
             data-blade-component="base-box"
           >
             <button
               aria-label="Close"
-              class="c8"
+              class="c9"
               data-blade-component="icon-button"
               type="button"
             >
@@ -303,7 +318,7 @@ exports[`<Popover /> should render 1`] = `
             data-blade-component="base-box"
           >
             <p
-              class="c9"
+              class="c10"
               data-blade-component="text"
             >
               Hello world
@@ -356,7 +371,7 @@ exports[`<Popover /> should render 1`] = `
 `;
 
 exports[`<Popover /> should render popover with custom zIndex 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -378,11 +393,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   z-index: 1;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   z-index: 9999;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -394,7 +409,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   gap: 12px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -403,7 +418,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   border-radius: 9999px;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   width: 100%;
   max-width: 328px;
   position: relative;
@@ -419,7 +434,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transform: translateY(4px);
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -446,11 +461,11 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c8.c8.c8.c8.c8:hover {
+.c9.c9.c9.c9.c9:hover {
   color: hsla(211,26%,34%,1);
 }
 
-.c8.c8.c8.c8.c8:focus-visible {
+.c9.c9.c9.c9.c9:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -462,13 +477,13 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
-.c8.c8.c8.c8.c8:active {
+.c9.c9.c9.c9.c9:active {
   color: hsla(211,26%,34%,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -484,9 +499,9 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -564,7 +579,17 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -583,14 +608,19 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <div
-          class="c3"
-          data-blade-component="base-text"
+          class="c2 c3"
+          data-blade-component="base-box"
         >
-          Click me
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            Click me
+          </div>
         </div>
       </div>
     </button>
@@ -610,7 +640,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
     />
     <div
       aria-labelledby="popover-title-18"
-      class="c4"
+      class="c5"
       data-blade-component="popover"
       id=":r8:"
       role="dialog"
@@ -618,20 +648,20 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
       tabindex="-1"
     >
       <div
-        class=" c5"
+        class=" c6"
         data-blade-component="base-box"
       >
         <div
-          class="c6"
+          class="c7"
           data-blade-component="base-box"
         >
           <div
-            class="c7"
+            class="c8"
             data-blade-component="base-box"
           >
             <button
               aria-label="Close"
-              class="c8"
+              class="c9"
               data-blade-component="icon-button"
               type="button"
             >
@@ -657,7 +687,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
             data-blade-component="base-box"
           >
             <p
-              class="c9"
+              class="c10"
               data-blade-component="text"
             >
               Hello world
@@ -710,7 +740,7 @@ exports[`<Popover /> should render popover with custom zIndex 1`] = `
 `;
 
 exports[`<Popover /> should render with title,footer 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -732,11 +762,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
   z-index: 1;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   z-index: 1100;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -748,7 +778,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   gap: 12px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -766,15 +796,15 @@ exports[`<Popover /> should render with title,footer 1`] = `
   gap: 8px;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   padding-right: 12px;
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   margin-left: auto;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   width: 100%;
   max-width: 328px;
   position: relative;
@@ -790,7 +820,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transform: translateY(4px);
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -817,11 +847,11 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c11.c11.c11.c11.c11:hover {
+.c12.c12.c12.c12.c12:hover {
   color: hsla(211,26%,34%,1);
 }
 
-.c11.c11.c11.c11.c11:focus-visible {
+.c12.c12.c12.c12.c12:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -833,13 +863,13 @@ exports[`<Popover /> should render with title,footer 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
-.c11.c11.c11.c11.c11:active {
+.c12.c12.c12.c12.c12:active {
   color: hsla(211,26%,34%,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -855,9 +885,9 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -872,9 +902,9 @@ exports[`<Popover /> should render with title,footer 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -952,7 +982,17 @@ exports[`<Popover /> should render with title,footer 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -971,14 +1011,19 @@ exports[`<Popover /> should render with title,footer 1`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <div
-          class="c3"
-          data-blade-component="base-text"
+          class="c2 c3"
+          data-blade-component="base-box"
         >
-          Click me
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            Click me
+          </div>
         </div>
       </div>
     </button>
@@ -998,7 +1043,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
     />
     <div
       aria-labelledby="popover-title-11"
-      class="c4"
+      class="c5"
       data-blade-component="popover"
       id=":r4:"
       role="dialog"
@@ -1006,36 +1051,36 @@ exports[`<Popover /> should render with title,footer 1`] = `
       tabindex="-1"
     >
       <div
-        class=" c5"
+        class=" c6"
         data-blade-component="base-box"
       >
         <div
-          class="c6"
+          class="c7"
           data-blade-component="base-box"
         >
           <div
-            class="c7"
+            class="c8"
             data-blade-component="base-box"
           >
             <div
-              class="c8"
+              class="c9"
               data-blade-component="base-box"
               id="popover-title-11"
             >
               <p
-                class="c9"
+                class="c10"
                 data-blade-component="text"
               >
                 This is title
               </p>
             </div>
             <div
-              class="c10"
+              class="c11"
               data-blade-component="base-box"
             >
               <button
                 aria-label="Close"
-                class="c11"
+                class="c12"
                 data-blade-component="icon-button"
                 type="button"
               >
@@ -1062,7 +1107,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
             data-blade-component="base-box"
           >
             <p
-              class="c12"
+              class="c13"
               data-blade-component="text"
             >
               Hello world
@@ -1073,7 +1118,7 @@ exports[`<Popover /> should render with title,footer 1`] = `
             data-blade-component="base-box"
           >
             <p
-              class="c12"
+              class="c13"
               data-blade-component="text"
             >
               Footer

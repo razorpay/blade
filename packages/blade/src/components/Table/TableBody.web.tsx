@@ -234,6 +234,7 @@ const TableCheckboxCell = ({
         justifyContent="center"
         flex={1}
         width={makeSize(checkboxCellWidth)}
+        onClick={(e) => e.stopPropagation()}
       >
         <Checkbox isDisabled={isDisabled} isChecked={isChecked} onChange={onChange} />
       </BaseBox>

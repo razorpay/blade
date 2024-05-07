@@ -1,5 +1,299 @@
 # @razorpay/blade
 
+## 11.15.2
+
+### Patch Changes
+
+- 102dc873: fix: i18nify-react version upgraded to resolve duplicate i18nify-js copies
+
+## 11.15.1
+
+### Patch Changes
+
+- 989172ab: fix(blade): tab item button type
+
+## 11.15.0
+
+### Minor Changes
+
+- ada461c8: feat(StepGroup): add StepGroup component
+
+  Documentation: https://blade.razorpay.com/?path=/docs/components-stepgroup--docs
+
+## 11.14.0
+
+### Minor Changes
+
+- 23a8364b: feat(blade): add leading prop in Alert
+
+## 11.13.1
+
+### Patch Changes
+
+- 2f0d96fb: fix(blade): phone number input dropdown not opening
+
+## 11.13.0
+
+### Minor Changes
+
+- 410cfb55: feat: add `circular` variant for the `ProgressBar` component
+
+  #### Changes
+
+  - The `"meter"` & `"progress"` values for the `variant` prop are deprecated in favor of the new `type?: "meter" | "progress"` prop.
+  - The `variant` prop now accepts `"linear"` & `"circular"` values.
+  - **Usage:**
+
+    ```js
+      <ProgressBar variant="circular" value={20}> label="Label" />
+    ```
+
+  #### Migration with Codemod
+
+  - The codemod will automatically update the `ProgressBar` component. Execute the codemod on the file/directory that needs to be migrated for the page via the following command:
+
+    > Need help? Check out [jscodeshift docs](https://github.com/facebook/jscodeshift) for CLI usage tips.
+
+    ```sh
+    npx jscodeshift ./PATH_TO_YOUR_DIR --extensions=tsx,ts,jsx,js -t ./node_modules/@razorpay/blade/codemods/migrate-progressbar/transformers/index.ts --ignore-pattern="**/node_modules/**"
+    ```
+
+  - There might be some situations where the codemod falls short, If you encounter errors, refer the following examples to migrate the component manually:
+
+    ```diff
+    - <ProgressBar value={20}> label="Label" />
+    + <ProgressBar type="progress" value={20}> label="Label" />
+
+    - <ProgressBar variant="progress" value={20}> label="Label" />
+    + <ProgressBar type="progress" variant="linear" value={20}> label="Label" />
+
+    - <ProgressBar variant="meter" value={20}> label="Label" />
+    + <ProgressBar type="meter" variant="linear" value={20}> label="Label" />
+    ```
+
+## 11.12.0
+
+### Minor Changes
+
+- c5f24eae: feat(TextArea, TextInput): Support Tagged Inputs with `tags` and `isTaggedInput` prop
+  feat(Tag): max-width is removed from Tag component
+
+## 11.11.1
+
+### Patch Changes
+
+- cc69004a: fix: additional parameters added to retain fraction digits in humanize Amount figure
+
+## 11.11.0
+
+### Minor Changes
+
+- 8c5231d4: feat: add large size in FileUpload component
+
+  #### Usage
+
+  ```js
+  <FileUpload
+    size="large"
+    uploadType="single"
+    label="Upload GST certificate"
+    helpText="Upload .jpg, .jpeg, or .png file only"
+    accept="image/*"
+  />
+  ```
+
+## 11.10.0
+
+### Minor Changes
+
+- a75d2e3c: feat(blade): add PhoneNumber input
+
+## 11.9.1
+
+### Patch Changes
+
+- 38d97633: fix(Table): selection toggle for multiselect table
+
+## 11.9.0
+
+### Minor Changes
+
+- 015e6828: feat: Redesign all `Input` components
+
+  > Note: No breaking changes to the existing API. The Input components will continue to work as before but with an updated design.
+
+  ## Changes
+
+  ### TextInput
+
+  - Redesigned UI
+  - Add `leadingIcon` prop
+  - ⚠️ Deprecate `icon` prop in favour of `leadingIcon` which will be removed in the next major version
+  - Add `trailingIcon` prop
+  - Add `trailingLinkButton` prop
+  - Add `size` prop
+
+  ### TextArea
+
+  - Redesigned UI
+  - Add `size` prop
+
+  ### PasswordInput
+
+  - Redesigned UI
+  - Adds `size` prop
+
+  ### OTPInput
+
+  - Redesigned UI
+  - Add `size` prop
+
+  ### SelectInput
+
+  - Redesigned UI
+  - Add `size` prop
+
+  ### Autocomplete
+
+  - Redesigned UI
+  - Add `size` prop
+
+  ### Radio
+
+  - Add `size` prop
+
+  ### Checkbox
+
+  - Add `size` prop
+
+## 11.8.2
+
+### Patch Changes
+
+- 5be1dedb: fix: update ButtonGroup focus ring styles
+
+## 11.8.1
+
+### Patch Changes
+
+- 9dcc2914: fix(Button): use height and width to fix sizes in Icon Only Button
+
+## 11.8.0
+
+### Minor Changes
+
+- fd304e47: feat: add the `ButtonGroup` component
+
+## 11.7.0
+
+### Minor Changes
+
+- 524fa924: feat(Accordion): add new `filled` variant
+
+  New variant can be used to build individual filled Accordions like these
+
+  <img width="400" alt="image" src="https://github.com/razorpay/blade/assets/30949385/7f3d737f-149a-42b0-be1b-1c86d5a0fd83">
+
+  > [!Warning]
+  >
+  > Accordion has a new API and the current API will be deprecated and removed in next major version
+
+  #### Migration from existing API
+
+  We have added `AccordionItemHeader` and `AccordionItemBody` components.
+
+  Props like `icon`, `title`, `description` from AccordionItem are deprecated.
+
+  - `icon` on AccordionItem can be replicated with `leading` on AccordionItemHeader
+  - `title` moves from AccordionItem to AccordionItemHeader
+  - `description` from AccordionItem can be passed to AccordionItemBody as children
+
+  ##### Diff
+
+  ```diff
+  <Accordion>
+    <AccordionItem
+  -    icon={StarIcon}
+  -    title="This is title"
+  -    description="Body content of Accordion"
+    />
+  </Accordion>
+  ```
+
+  ```diff
+  <Accordion>
+    <AccordionItem>
+  +    <AccordionItemHeader leading={<StarIcon size="large" />} title="This is title" />
+  +    <AccordionItemBody>Body content of Accordion</AccordionItemBody>
+    </AccordionItem>
+  </Accordion>
+  ```
+
+  Checkout full documentation at https://blade.razorpay.com/?path=/docs/components-accordion--docs
+
+## 11.6.3
+
+### Patch Changes
+
+- 2c64f181: feat: support `defaultPlacement` prop on `DropdownOverlay`
+- ef68789a: fix(DropdownButton): scroll handling issues on keyboard navigations
+
+## 11.6.2
+
+### Patch Changes
+
+- a6a59686: fix: cover more cases with codemod
+- 902e28b4: fix: i18nify-js dependency updated
+
+## 11.6.1
+
+### Patch Changes
+
+- af39cab2: fix: add FileUpload exports
+- 26317e0e: feat: add adjusted font fallbacks for Inter and TASA
+
+## 11.6.0
+
+### Minor Changes
+
+- 9ebaf986: feat: add `FileUpload` component
+
+## 11.5.0
+
+### Minor Changes
+
+- bb7466e7: feat(blade): add `Breadcrumb` component
+
+## 11.4.0
+
+### Minor Changes
+
+- 51208914: feat(Drawer): add Drawer component
+
+  Checkout https://blade.razorpay.com/?path=/docs/components-drawer--docs
+
+### Patch Changes
+
+- ab028b6c: fix(Tag): tag truncation in Select and AutoComplete
+
+## 11.3.1
+
+### Patch Changes
+
+- 85f229d0: refactor(blade): add meta attributes to Toast
+
+## 11.3.0
+
+### Minor Changes
+
+- 497799df: feat(blade): add toast component
+
+## 11.2.1
+
+### Patch Changes
+
+- 16a0e737: fix(Dropdown): remove scrollbar on tag slot and allow clicks on DropdownLink and DropdownButton chevron icons
+
 ## 11.2.0
 
 ### Minor Changes

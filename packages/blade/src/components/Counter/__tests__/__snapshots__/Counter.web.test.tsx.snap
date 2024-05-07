@@ -52,7 +52,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -71,6 +71,7 @@ exports[`<Counter /> should render Counter with default props 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -150,7 +151,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 1`
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -169,6 +170,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 1`
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -248,7 +250,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 2`
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -267,6 +269,7 @@ exports[`<Counter /> should render intense emphasis information color Counter 2`
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -346,7 +349,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 1`] =
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -365,6 +368,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 1`] =
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -444,7 +448,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 2`] =
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -463,6 +467,7 @@ exports[`<Counter /> should render intense emphasis negative color Counter 2`] =
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -542,7 +547,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = 
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -561,6 +566,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -640,7 +646,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = 
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -659,6 +665,7 @@ exports[`<Counter /> should render intense emphasis neutral color Counter 2`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -738,7 +745,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -757,6 +764,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -836,7 +844,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -855,6 +863,7 @@ exports[`<Counter /> should render intense emphasis notice color Counter 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -934,7 +943,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 1`] =
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -953,6 +962,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 1`] =
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1032,7 +1042,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 2`] =
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1051,6 +1061,7 @@ exports[`<Counter /> should render intense emphasis positive color Counter 2`] =
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1130,7 +1141,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 1`] = 
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1149,6 +1160,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1228,7 +1240,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 2`] = 
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1247,6 +1259,7 @@ exports[`<Counter /> should render intense emphasis primary color Counter 2`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1326,7 +1339,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -1345,6 +1358,7 @@ exports[`<Counter /> should render large size Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1424,7 +1438,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1443,6 +1457,7 @@ exports[`<Counter /> should render medium size Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1522,7 +1537,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 500;
   font-style: normal;
@@ -1541,6 +1556,7 @@ exports[`<Counter /> should render small size Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1620,7 +1636,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 1`]
 
 .c4.c4.c4.c4.c4 {
   color: hsla(200,84%,37%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1639,6 +1655,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 1`]
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1718,7 +1735,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 2`]
 
 .c4.c4.c4.c4.c4 {
   color: hsla(200,84%,37%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1737,6 +1754,7 @@ exports[`<Counter /> should render subtle emphasis information color Counter 2`]
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1816,7 +1834,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = 
 
 .c4.c4.c4.c4.c4 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1835,6 +1853,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1914,7 +1933,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = 
 
 .c4.c4.c4.c4.c4 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1933,6 +1952,7 @@ exports[`<Counter /> should render subtle emphasis negative color Counter 2`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2012,7 +2032,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2031,6 +2051,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2110,7 +2131,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2129,6 +2150,7 @@ exports[`<Counter /> should render subtle emphasis neutral color Counter 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2208,7 +2230,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(25,85%,42%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2227,6 +2249,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2306,7 +2329,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(25,85%,42%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2325,6 +2348,7 @@ exports[`<Counter /> should render subtle emphasis notice color Counter 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2404,7 +2428,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = 
 
 .c4.c4.c4.c4.c4 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2423,6 +2447,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 1`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2502,7 +2527,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = 
 
 .c4.c4.c4.c4.c4 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2521,6 +2546,7 @@ exports[`<Counter /> should render subtle emphasis positive color Counter 2`] = 
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2600,7 +2626,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2619,6 +2645,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2698,7 +2725,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2717,6 +2744,7 @@ exports[`<Counter /> should render subtle emphasis primary color Counter 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>

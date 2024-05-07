@@ -6,9 +6,9 @@ exports[`<Chip /> should render chip 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -41,16 +41,6 @@ exports[`<Chip /> should render chip 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c8.c8.c8.c8.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -60,12 +50,12 @@ exports[`<Chip /> should render chip 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -92,7 +82,7 @@ exports[`<Chip /> should render chip 1`] = `
   border-style: solid;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
@@ -130,7 +120,7 @@ exports[`<Chip /> should render chip 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -138,7 +128,7 @@ exports[`<Chip /> should render chip 1`] = `
   border-color: transparent;
 }
 
-.c13.c13.c13.c13.c13:hover {
+.c12.c12.c12.c12.c12:hover {
   background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -172,7 +162,7 @@ exports[`<Chip /> should render chip 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -189,7 +179,7 @@ exports[`<Chip /> should render chip 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9:focus-visible + div {
+.c8.c8.c8.c8.c8:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -200,7 +190,7 @@ exports[`<Chip /> should render chip 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover + div {
+.c8.c8.c8.c8.c8:hover + div {
   border-color: hsla(211,27%,76%,1);
   background-color: hsla(0,0%,100%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -211,7 +201,7 @@ exports[`<Chip /> should render chip 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -226,9 +216,9 @@ exports[`<Chip /> should render chip 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -246,64 +236,65 @@ exports[`<Chip /> should render chip 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 @media screen and (min-width:320px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
@@ -352,11 +343,11 @@ exports[`<Chip /> should render chip 1`] = `
                 style="cursor: pointer;"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -365,21 +356,21 @@ exports[`<Chip /> should render chip 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c9"
+                      class="c8"
                       role="radio"
                       type="radio"
                       value="apple"
                     />
                     <div
-                      class="c10 c11"
+                      class="c9 c10"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c12 c13"
+                        class="c11 c12"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c14"
+                          class="c13"
                           data-blade-component="text"
                         >
                           Apple
@@ -405,11 +396,11 @@ exports[`<Chip /> should render chip 1`] = `
                 style="cursor: pointer;"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -418,21 +409,21 @@ exports[`<Chip /> should render chip 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c9"
+                      class="c8"
                       role="radio"
                       type="radio"
                       value="mango"
                     />
                     <div
-                      class="c10 c11"
+                      class="c9 c10"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c12 c13"
+                        class="c11 c12"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c14"
+                          class="c13"
                           data-blade-component="text"
                         >
                           Mango
@@ -457,9 +448,9 @@ exports[`<Chip /> should render chip with icon 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -492,16 +483,6 @@ exports[`<Chip /> should render chip with icon 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c8.c8.c8.c8.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -511,12 +492,12 @@ exports[`<Chip /> should render chip with icon 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
-.c12.c12.c12.c12.c12 {
+.c11.c11.c11.c11.c11 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -543,7 +524,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   border-style: solid;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -551,7 +532,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   padding-right: 8px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c10.c10.c10.c10.c10 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
@@ -589,7 +570,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -597,7 +578,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   border-color: transparent;
 }
 
-.c13.c13.c13.c13.c13:hover {
+.c12.c12.c12.c12.c12:hover {
   background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -631,7 +612,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -648,7 +629,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9:focus-visible + div {
+.c8.c8.c8.c8.c8:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -659,7 +640,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c9.c9.c9.c9.c9:hover + div {
+.c8.c8.c8.c8.c8:hover + div {
   border-color: hsla(211,27%,76%,1);
   background-color: hsla(0,0%,100%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -670,7 +651,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -685,9 +666,9 @@ exports[`<Chip /> should render chip with icon 1`] = `
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -705,64 +686,65 @@ exports[`<Chip /> should render chip with icon 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 @media screen and (min-width:320px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
@@ -811,11 +793,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                 style="cursor: pointer;"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -824,21 +806,21 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c9"
+                      class="c8"
                       role="radio"
                       type="radio"
                       value="apple"
                     />
                     <div
-                      class="c10 c11"
+                      class="c9 c10"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c12 c13"
+                        class="c11 c12"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c14"
+                          class="c13"
                           data-blade-component="base-box"
                         >
                           <svg
@@ -870,7 +852,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           </svg>
                         </div>
                         <p
-                          class="c15"
+                          class="c14"
                           data-blade-component="text"
                         >
                           Apple
@@ -896,11 +878,11 @@ exports[`<Chip /> should render chip with icon 1`] = `
                 style="cursor: pointer;"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -909,21 +891,21 @@ exports[`<Chip /> should render chip with icon 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c9"
+                      class="c8"
                       role="radio"
                       type="radio"
                       value="mango"
                     />
                     <div
-                      class="c10 c11"
+                      class="c9 c10"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c12 c13"
+                        class="c11 c12"
                         data-blade-component="base-box"
                       >
                         <div
-                          class="c14"
+                          class="c13"
                           data-blade-component="base-box"
                         >
                           <svg
@@ -955,7 +937,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
                           </svg>
                         </div>
                         <p
-                          class="c15"
+                          class="c14"
                           data-blade-component="text"
                         >
                           Mango
@@ -980,9 +962,9 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .c3.c3.c3.c3.c3 {
@@ -1015,16 +997,6 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.c8.c8.c8.c8.c8 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
@@ -1034,71 +1006,71 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   align-items: center;
 }
 
-.c10.c10.c10.c10.c10 {
+.c9.c9.c9.c9.c9 {
   border-color: hsla(214,40%,92%,1);
-  border-style: solid;
-}
-
-.c12.c12.c12.c12.c12 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
-  height: 28px;
-  background-color: hsla(0,0%,100%,0);
-  border-radius: 9999px;
-  border-width: 0.5px;
-  border-color: hsla(214,40%,92%,1);
-  border-style: solid;
-}
-
-.c16.c16.c16.c16.c16 {
-  border-color: hsla(211,20%,52%,0.18);
-  border-style: solid;
-}
-
-.c18.c18.c18.c18.c18 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  padding-right: 12px;
-  padding-left: 12px;
-  height: 28px;
-  background-color: hsla(0,0%,100%,0);
-  border-radius: 9999px;
-  border-width: 0.5px;
-  border-color: hsla(211,20%,52%,0.18);
   border-style: solid;
 }
 
 .c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 12px;
+  padding-left: 12px;
+  height: 28px;
+  background-color: hsla(0,0%,100%,0);
+  border-radius: 9999px;
+  border-width: 0.5px;
+  border-color: hsla(214,40%,92%,1);
+  border-style: solid;
+}
+
+.c15.c15.c15.c15.c15 {
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
+}
+
+.c17.c17.c17.c17.c17 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding-right: 12px;
+  padding-left: 12px;
+  height: 28px;
+  background-color: hsla(0,0%,100%,0);
+  border-radius: 9999px;
+  border-width: 0.5px;
+  border-color: hsla(211,20%,52%,0.18);
+  border-style: solid;
+}
+
+.c10.c10.c10.c10.c10 {
   background-color: transparent;
   border-radius: 9999px;
   border-color: hsla(214,40%,92%,1);
@@ -1136,7 +1108,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c17.c17.c17.c17.c17 {
+.c16.c16.c16.c16.c16 {
   background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
@@ -1174,7 +1146,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c13.c13.c13.c13.c13 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1182,7 +1154,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   border-color: transparent;
 }
 
-.c19.c19.c19.c19.c19 {
+.c18.c18.c18.c18.c18 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1190,7 +1162,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   border-color: transparent;
 }
 
-.c19.c19.c19.c19.c19:hover {
+.c18.c18.c18.c18.c18:hover {
   background-color: hsla(211,20%,52%,0.12);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1224,7 +1196,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9 {
+.c8.c8.c8.c8.c8 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1241,7 +1213,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c9.c9.c9.c9.c9:focus-visible + div {
+.c8.c8.c8.c8.c8:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1252,7 +1224,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15 {
+.c14.c14.c14.c14.c14 {
   border: 0;
   -webkit-clip: rect(0 0 0 0);
   clip: rect(0 0 0 0);
@@ -1269,7 +1241,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   word-wrap: normal;
 }
 
-.c15.c15.c15.c15.c15:focus-visible + div {
+.c14.c14.c14.c14.c14:focus-visible + div {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -1280,7 +1252,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c15.c15.c15.c15.c15:hover + div {
+.c14.c14.c14.c14.c14:hover + div {
   border-color: hsla(211,27%,76%,1);
   background-color: hsla(0,0%,100%,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
@@ -1291,7 +1263,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 
 .c2.c2.c2.c2.c2 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1306,9 +1278,9 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   padding: 0;
 }
 
-.c14.c14.c14.c14.c14 {
+.c13.c13.c13.c13.c13 {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1326,11 +1298,12 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
-.c20.c20.c20.c20.c20 {
+.c19.c19.c19.c19.c19 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1348,124 +1321,125 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 @media screen and (min-width:320px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c10.c10.c10.c10.c10 {
+  .c9.c9.c9.c9.c9 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c12.c12.c12.c12.c12 {
+  .c11.c11.c11.c11.c11 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c16.c16.c16.c16.c16 {
+  .c15.c15.c15.c15.c15 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c16.c16.c16.c16.c16 {
+  .c15.c15.c15.c15.c15 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c16.c16.c16.c16.c16 {
+  .c15.c15.c15.c15.c15 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c16.c16.c16.c16.c16 {
+  .c15.c15.c15.c15.c15 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c16.c16.c16.c16.c16 {
+  .c15.c15.c15.c15.c15 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:320px) {
-  .c18.c18.c18.c18.c18 {
+  .c17.c17.c17.c17.c17 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c18.c18.c18.c18.c18 {
+  .c17.c17.c17.c17.c17 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c18.c18.c18.c18.c18 {
+  .c17.c17.c17.c17.c17 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c18.c18.c18.c18.c18 {
+  .c17.c17.c17.c17.c17 {
     border-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c18.c18.c18.c18.c18 {
+  .c17.c17.c17.c17.c17 {
     border-style: solid;
   }
 }
@@ -1514,11 +1488,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                 style="cursor: not-allowed;"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -1527,22 +1501,22 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       aria-disabled="true"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c9"
+                      class="c8"
                       disabled=""
                       role="radio"
                       type="radio"
                       value="apple"
                     />
                     <div
-                      class="c10 c11"
+                      class="c9 c10"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c12 c13"
+                        class="c11 c12"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c14"
+                          class="c13"
                           data-blade-component="text"
                         >
                           Apple
@@ -1568,11 +1542,11 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                 style="cursor: pointer;"
               >
                 <div
-                  class="c7"
+                  class="c0"
                   data-blade-component="base-box"
                 >
                   <div
-                    class="c8"
+                    class="c7"
                     data-blade-component="base-box"
                   >
                     <input
@@ -1581,21 +1555,21 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
                       aria-disabled="false"
                       aria-invalid="false"
                       aria-required="false"
-                      class="c15"
+                      class="c14"
                       role="radio"
                       type="radio"
                       value="mango"
                     />
                     <div
-                      class="c16 c17"
+                      class="c15 c16"
                       data-blade-component="base-box"
                     >
                       <div
-                        class="c18 c19"
+                        class="c17 c18"
                         data-blade-component="base-box"
                       >
                         <p
-                          class="c20"
+                          class="c19"
                           data-blade-component="text"
                         >
                           Mango

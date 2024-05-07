@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Tour /> should render 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -23,11 +23,11 @@ exports[`<Tour /> should render 1`] = `
   z-index: 1;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   z-index: 1100;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -39,7 +39,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 12px;
 }
 
-.c9.c9.c9.c9.c9 {
+.c10.c10.c10.c10.c10 {
   position: absolute;
   z-index: 1;
   padding: 4px;
@@ -48,7 +48,7 @@ exports[`<Tour /> should render 1`] = `
   border-radius: 9999px;
 }
 
-.c11.c11.c11.c11.c11 {
+.c12.c12.c12.c12.c12 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -64,7 +64,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 24px;
 }
 
-.c13.c13.c13.c13.c13 {
+.c14.c14.c14.c14.c14 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -72,7 +72,7 @@ exports[`<Tour /> should render 1`] = `
   gap: 12px;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   width: 100%;
   max-width: 328px;
   position: relative;
@@ -88,7 +88,7 @@ exports[`<Tour /> should render 1`] = `
   transform: translateY(-4px);
 }
 
-.c10.c10.c10.c10.c10 {
+.c11.c11.c11.c11.c11 {
   border: none;
   cursor: pointer;
   padding: 0;
@@ -115,11 +115,11 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c10.c10.c10.c10.c10:hover {
+.c11.c11.c11.c11.c11:hover {
   color: hsla(211,26%,34%,1);
 }
 
-.c10.c10.c10.c10.c10:focus-visible {
+.c11.c11.c11.c11.c11:focus-visible {
   outline: 4px solid hsla(227,100%,59%,0.18);
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
@@ -131,13 +131,13 @@ exports[`<Tour /> should render 1`] = `
   color: hsla(211,26%,34%,1);
 }
 
-.c10.c10.c10.c10.c10:active {
+.c11.c11.c11.c11.c11:active {
   color: hsla(211,26%,34%,1);
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -153,9 +153,9 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -170,9 +170,9 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c12.c12.c12.c12.c12 {
+.c13.c13.c13.c13.c13 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -187,9 +187,9 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c15.c15.c15.c15.c15 {
+.c16.c16.c16.c16.c16 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 500;
   font-style: normal;
@@ -205,7 +205,7 @@ exports[`<Tour /> should render 1`] = `
   padding: 0;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   -webkit-animation: iNqBts-450290765 2s;
   animation: iNqBts-450290765 2s;
   -webkit-animation-iteration-count: infinite;
@@ -278,7 +278,7 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c14.c14.c14.c14.c14 {
+.c15.c15.c15.c15.c15 {
   min-height: 32px;
   width: auto;
   cursor: pointer;
@@ -315,24 +315,24 @@ exports[`<Tour /> should render 1`] = `
   position: relative;
 }
 
-.c14.c14.c14.c14.c14:hover {
+.c15.c15.c15.c15.c15:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c14.c14.c14.c14.c14:active {
+.c15.c15.c15.c15.c15:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c14.c14.c14.c14.c14:focus-visible {
+.c15.c15.c15.c15.c15:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c14.c14.c14.c14.c14 * {
+.c15.c15.c15.c15.c15 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
@@ -341,7 +341,17 @@ exports[`<Tour /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
@@ -363,14 +373,19 @@ exports[`<Tour /> should render 1`] = `
         type="button"
       >
         <div
-          class="c1 c2"
+          class=" c1"
           data-blade-component="base-box"
         >
           <div
-            class="c3"
-            data-blade-component="base-text"
+            class="c2 c3"
+            data-blade-component="base-box"
           >
-            Open Tour
+            <div
+              class="c4"
+              data-blade-component="base-text"
+            >
+              Open Tour
+            </div>
           </div>
         </div>
       </button>
@@ -379,7 +394,7 @@ exports[`<Tour /> should render 1`] = `
         data-blade-component="box"
       >
         <p
-          class="c4"
+          class="c5"
           data-blade-component="text"
         >
           Trigger 1
@@ -390,7 +405,7 @@ exports[`<Tour /> should render 1`] = `
         data-blade-component="box"
       >
         <p
-          class="c4"
+          class="c5"
           data-blade-component="text"
         >
           Trigger 2
@@ -412,7 +427,7 @@ exports[`<Tour /> should render 1`] = `
       viewBox="0 0 1024 768"
     >
       <rect
-        class="c5"
+        class="c6"
         fill="transparent"
         height="10"
         opacity="0"
@@ -461,7 +476,7 @@ exports[`<Tour /> should render 1`] = `
     />
     <div
       aria-labelledby="popover-title-1"
-      class="c6"
+      class="c7"
       data-blade-component="tour-popover"
       id=":r1:"
       role="dialog"
@@ -469,20 +484,20 @@ exports[`<Tour /> should render 1`] = `
       tabindex="-1"
     >
       <div
-        class=" c7"
+        class=" c8"
         data-blade-component="base-box"
       >
         <div
-          class="c8"
+          class="c9"
           data-blade-component="base-box"
         >
           <div
-            class="c9"
+            class="c10"
             data-blade-component="base-box"
           >
             <button
               aria-label="Close"
-              class="c10"
+              class="c11"
               data-blade-component="icon-button"
               type="button"
             >
@@ -508,7 +523,7 @@ exports[`<Tour /> should render 1`] = `
             data-blade-component="base-box"
           >
             <p
-              class="c4"
+              class="c5"
               data-blade-component="text"
             >
               Step 1
@@ -519,11 +534,11 @@ exports[`<Tour /> should render 1`] = `
             data-blade-component="base-box"
           >
             <div
-              class="c11"
+              class="c12"
               data-blade-component="box"
             >
               <p
-                class="c12"
+                class="c13"
                 data-blade-component="text"
               >
                 1
@@ -531,24 +546,29 @@ exports[`<Tour /> should render 1`] = `
                 2
               </p>
               <div
-                class="c13"
+                class="c14"
                 data-blade-component="box"
               >
                 <button
-                  class="c14"
+                  class="c15"
                   data-blade-component="button"
                   role="button"
                   type="button"
                 >
                   <div
-                    class="c1 c2"
+                    class=" c1"
                     data-blade-component="base-box"
                   >
                     <div
-                      class="c15"
-                      data-blade-component="base-text"
+                      class="c2 c3"
+                      data-blade-component="base-box"
                     >
-                      Next
+                      <div
+                        class="c16"
+                        data-blade-component="base-text"
+                      >
+                        Next
+                      </div>
                     </div>
                   </div>
                 </button>

@@ -10,7 +10,7 @@ import { castWebType } from '~utils';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) => {
-  const { theme, isExpanded } = props;
+  const { theme, isExpanded, disabled } = props;
   const commonStyles = getCommonAccordionButtonStyles(props);
   return {
     ...commonStyles,
@@ -18,7 +18,7 @@ const StyledAccordionButton = styled.button<StyledAccordionButtonProps>((props) 
     transitionProperty: 'background-color, box-shadow, border-radius, color',
     transitionDuration: castWebType(getTransitionDuration(theme)),
     transitionTimingFunction: castWebType(getTransitionEasing(theme)),
-    cursor: 'pointer',
+    cursor: disabled ? 'not-allowed' : 'pointer',
     color: theme.colors.interactive.icon.gray[isExpanded ? 'subtle' : 'muted'],
     width: '100%',
     border: 'none',

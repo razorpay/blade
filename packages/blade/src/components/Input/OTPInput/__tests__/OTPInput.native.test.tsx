@@ -14,6 +14,12 @@ describe('<OTPInput />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
+  it('should render large size', () => {
+    const { toJSON } = renderWithTheme(<OTPInput label="Enter OTP" value="1234" size="large" />);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('should be focussed when autoFocus flag is passed', () => {
     const label = 'Enter OTP';
     // eslint-disable-next-line jsx-a11y/no-autofocus

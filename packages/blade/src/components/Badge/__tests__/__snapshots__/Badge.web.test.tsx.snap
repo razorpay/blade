@@ -60,7 +60,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -78,6 +78,7 @@ exports[`<Badge /> should render Badge with Icon 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -189,7 +190,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -207,6 +208,7 @@ exports[`<Badge /> should render Badge with default props 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -286,7 +288,7 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -304,6 +306,7 @@ exports[`<Badge /> should render high emphasis information color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -383,7 +386,7 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -401,6 +404,7 @@ exports[`<Badge /> should render high emphasis information color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -480,7 +484,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -498,6 +502,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -577,7 +582,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -595,6 +600,7 @@ exports[`<Badge /> should render high emphasis negative color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -674,7 +680,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -692,6 +698,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -771,7 +778,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -789,6 +796,7 @@ exports[`<Badge /> should render high emphasis neutral color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -868,7 +876,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -886,6 +894,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -965,7 +974,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -983,6 +992,7 @@ exports[`<Badge /> should render high emphasis notice color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1062,7 +1072,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1080,6 +1090,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1159,7 +1170,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1177,6 +1188,7 @@ exports[`<Badge /> should render high emphasis positive color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1256,7 +1268,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1274,6 +1286,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1353,7 +1366,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1371,6 +1384,7 @@ exports[`<Badge /> should render high emphasis primary color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1450,7 +1464,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1468,6 +1482,7 @@ exports[`<Badge /> should render large size Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1547,7 +1562,7 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(200,84%,37%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1565,6 +1580,7 @@ exports[`<Badge /> should render low emphasis information color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1644,7 +1660,7 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(200,84%,37%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1662,6 +1678,7 @@ exports[`<Badge /> should render low emphasis information color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1741,7 +1758,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1759,6 +1776,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1838,7 +1856,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(4,74%,49%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1856,6 +1874,7 @@ exports[`<Badge /> should render low emphasis negative color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -1935,7 +1954,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -1953,6 +1972,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2032,7 +2052,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2050,6 +2070,7 @@ exports[`<Badge /> should render low emphasis neutral color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2129,7 +2150,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(25,85%,42%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2147,6 +2168,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2226,7 +2248,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(25,85%,42%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2244,6 +2266,7 @@ exports[`<Badge /> should render low emphasis notice color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2323,7 +2346,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2341,6 +2364,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2420,7 +2444,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2438,6 +2462,7 @@ exports[`<Badge /> should render low emphasis positive color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2517,7 +2542,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2535,6 +2560,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2614,7 +2640,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2632,6 +2658,7 @@ exports[`<Badge /> should render low emphasis primary color Badge 2`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2711,7 +2738,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -2729,6 +2756,7 @@ exports[`<Badge /> should render medium size Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>
@@ -2808,7 +2836,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,33%,21%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 500;
   font-style: normal;
@@ -2826,6 +2854,7 @@ exports[`<Badge /> should render small size Badge 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 <div>

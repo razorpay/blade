@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<BaseInput /> should display success validation state 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx jaAmIu"><label for="name-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:16px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO itNENY" data-blade-component="text">Enter name</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO lXtvZ" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kEPOL"><input type="text" id="name-undefined-input-undefined" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="name-undefined-successtext-undefined" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 keHBlw"/><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInputAnimatedBorderweb__BaseInputStyledAnimatedBorder-sc-2cepod-0  HaFJL"></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx ePSvGO"><div id="name-undefined-successtext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span style="word-break:break-all" data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M20.7071 5.29289C21.0976 5.68342 21.0976 6.31658 20.7071 6.70711L9.70711 17.7071C9.31658 18.0976 8.68342 18.0976 8.29289 17.7071L3.29289 12.7071C2.90237 12.3166 2.90237 11.6834 3.29289 11.2929C3.68342 10.9024 4.31658 10.9024 4.70711 11.2929L9 15.5858L19.2929 5.29289C19.6834 4.90237 20.3166 4.90237 20.7071 5.29289Z" clip-rule="evenodd" fill="hsla(150, 100%, 27%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><div data-blade-component="base-box" class="BaseBox-bmPWx eLBOzs"></div><span class="StyledBaseText-dVBfTO eBAxAv" data-blade-component="text">Success</span></span></div></div></div></div></div>"`;
+exports[`<BaseInput /> should display success validation state 1`] = `"<div id="root"><div data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx jaAmIu"><label for="name-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:0px" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO kCEKIT" data-blade-component="text">Enter name</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  iIoIGQ"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  kjPsHx"><input type="text" id="name-undefined-input-undefined" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="name-undefined-successtext-undefined" class="StyledBaseInputweb__StyledBaseNativeInput-hsusrk-0 ickwiI"/></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx ePSvGO"><div id="name-undefined-successtext-undefined" data-blade-component="base-box" class="BaseBox-bmPWx kzOBQv"><span style="word-break:break-all" data-blade-component="base-box" class="BaseBox-bmPWx fAEwZa"><svg aria-hidden="true" data-blade-component="icon" height="12px" viewBox="0 0 24 24" width="12px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0"><path d="M20.7071 5.29289C21.0976 5.68342 21.0976 6.31658 20.7071 6.70711L9.70711 17.7071C9.31658 18.0976 8.68342 18.0976 8.29289 17.7071L3.29289 12.7071C2.90237 12.3166 2.90237 11.6834 3.29289 11.2929C3.68342 10.9024 4.31658 10.9024 4.70711 11.2929L9 15.5858L19.2929 5.29289C19.6834 4.90237 20.3166 4.90237 20.7071 5.29289Z" clip-rule="evenodd" fill="hsla(150, 100%, 27%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><div data-blade-component="base-box" class="BaseBox-bmPWx eLBOzs"></div><span class="StyledBaseText-dVBfTO jnVJao" data-blade-component="text">Success</span></span></div></div></div></div></div>"`;
 
 exports[`<BaseInput /> should display success validation state 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -96,7 +96,7 @@ exports[`<BaseInput /> should display success validation state 2`] = `
 
 .c4.c4.c4.c4.c4 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 600;
   font-style: normal;
@@ -114,11 +114,12 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   line-clamp: 2;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c6.c6.c6.c6.c6 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -135,7 +136,7 @@ exports[`<BaseInput /> should display success validation state 2`] = `
 
 .c15.c15.c15.c15.c15 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.6875rem;
   font-weight: 400;
   font-style: italic;
@@ -150,9 +151,9 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(211,26%,34%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -182,9 +183,9 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   cursor: auto;
 }
 
-.c8.c8.c8.c8.c8::-webkit-input-placeholder {
+.c9.c9.c9.c9.c9::-webkit-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -199,9 +200,9 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8::-moz-placeholder {
+.c9.c9.c9.c9.c9::-moz-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -216,9 +217,9 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8:-ms-input-placeholder {
+.c9.c9.c9.c9.c9:-ms-input-placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -233,9 +234,9 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8::placeholder {
+.c9.c9.c9.c9.c9::placeholder {
   color: hsla(211,20%,52%,0.32);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -250,28 +251,14 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8:focus {
+.c9.c9.c9.c9.c9:focus {
   outline: none;
 }
 
-.c9.c9.c9.c9.c9 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  opacity: 0;
-  background-color: hsla(227,100%,59%,1);
-  border-width: 1px;
-  height: 1px;
-}
-
-.c7.c7.c7.c7.c7 {
-  background-color: hsla(150,100%,32%,0.09);
-  border-bottom-color: hsla(150,100%,32%,1);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+.c8.c8.c8.c8.c8 {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -281,15 +268,21 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(150,100%,32%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7.c7.c7.c7.c7:hover {
-  background-color: hsla(150,100%,32%,0.09);
-  border-bottom-color: hsla(150,100%,32%,1);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+.c8.c8.c8.c8.c8:hover {
+  background-color: hsla(210,40%,98%,1);
+  border-radius: 4px;
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -299,21 +292,23 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(150,100%,32%,1) 0px 0px 0px 1.5px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c7.c7.c7.c7.c7:focus-within {
-  background-color: hsla(150,100%,32%,0.09);
-  border-bottom-color: hsla(150,100%,32%,1);
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
+.c8.c8.c8.c8.c8:focus-within {
+  background-color: hsla(0,0%,100%,1);
+  border-radius: 4px;
+  border-style: solid;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -323,6 +318,15 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   flex-direction: row;
   width: 100%;
   position: relative;
+  border: none;
+  border-width: 0px;
+  box-shadow: hsla(150,100%,32%,1) 0px 0px 0px 1.5px;
+  -webkit-transition-property: box-shadow,background-color;
+  transition-property: box-shadow,background-color;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c5.c5.c5.c5.c5 {
@@ -340,6 +344,22 @@ exports[`<BaseInput /> should display success validation state 2`] = `
   left: -10000px;
   white-space: nowrap;
   word-wrap: normal;
+}
+
+.c7.c7.c7.c7.c7 {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.c7.c7.c7.c7.c7:focus-within {
+  outline: 4px solid hsla(227,100%,59%,0.18);
+  outline-offset: 1px;
+  -webkit-transition-property: outline-width;
+  transition-property: outline-width;
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 <div
@@ -360,7 +380,7 @@ exports[`<BaseInput /> should display success validation state 2`] = `
         <label
           data-blade-component="form-label"
           for="name-1-input-2"
-          style="width:auto;flex-shrink:0;margin-right:16px"
+          style="width:auto;flex-shrink:0;margin-right:0px"
         >
           <div
             class="c2"
@@ -390,24 +410,25 @@ exports[`<BaseInput /> should display success validation state 2`] = `
         </label>
       </div>
       <div
-        class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c7"
+        class=" c7"
         data-blade-component="base-box"
       >
-        <input
-          aria-describedby="name-1-successtext-5"
-          aria-disabled="false"
-          aria-invalid="false"
-          aria-required="false"
-          class="c8"
-          data-blade-component="styled-base-input"
-          id="name-1-input-2"
-          type="text"
-          value=""
-        />
         <div
-          class=" c9"
+          class="AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  c8"
           data-blade-component="base-box"
-        />
+        >
+          <input
+            aria-describedby="name-1-successtext-5"
+            aria-disabled="false"
+            aria-invalid="false"
+            aria-required="false"
+            class="c9"
+            data-blade-component="styled-base-input"
+            id="name-1-input-2"
+            type="text"
+            value=""
+          />
+        </div>
       </div>
     </div>
     <div

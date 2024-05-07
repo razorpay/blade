@@ -189,6 +189,8 @@ export const formatAmountWithSuffix = ({
         const formatted = formatNumber(value, {
           intlOptions: {
             notation: 'compact',
+            maximumFractionDigits: 2,
+            trailingZeroDisplay: 'stripIfInteger',
           },
         });
         return {
@@ -342,8 +344,11 @@ const _Amount = ({
           </BaseText>
         )}
         {isStrikethrough && (
+          // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+          // @ts-ignore: the borderBottomColor error below is thrown here as well
           <BaseBox
-            // @ts-expect-error - intentionally setting the border color to the color prop for this hacky strikethrough
+            // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
+            // @ts-ignore- intentionally setting the border color to the color prop for this hacky strikethrough
             borderBottomColor={amountValueColor}
             borderBottomWidth={type === 'body' ? 'thin' : 'thicker'}
             borderBottomStyle="solid"

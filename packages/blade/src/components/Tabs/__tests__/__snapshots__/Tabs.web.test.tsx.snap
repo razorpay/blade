@@ -85,7 +85,7 @@ exports[`Tabs should render 1`] = `
 
 .c7.c7.c7.c7.c7 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -102,7 +102,7 @@ exports[`Tabs should render 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -119,7 +119,7 @@ exports[`Tabs should render 1`] = `
 
 .c13.c13.c13.c13.c13 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -317,6 +317,7 @@ exports[`Tabs should render 1`] = `
                 id="tabs-1-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -333,6 +334,7 @@ exports[`Tabs should render 1`] = `
                 id="tabs-1-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c8"
@@ -484,7 +486,7 @@ exports[`Tabs should render with filled variant 1`] = `
 
 .c7.c7.c7.c7.c7 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -501,7 +503,7 @@ exports[`Tabs should render with filled variant 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -518,7 +520,7 @@ exports[`Tabs should render with filled variant 1`] = `
 
 .c15.c15.c15.c15.c15 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -825,6 +827,7 @@ exports[`Tabs should render with filled variant 1`] = `
                 id="tabs-4-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -846,6 +849,7 @@ exports[`Tabs should render with filled variant 1`] = `
                 id="tabs-4-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c11"
@@ -986,7 +990,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 
 .c7.c7.c7.c7.c7 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -1003,7 +1007,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -1020,7 +1024,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
 
 .c13.c13.c13.c13.c13 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1219,6 +1223,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 id="tabs-5-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -1235,6 +1240,7 @@ exports[`Tabs should render with isFullWidthTabItem 1`] = `
                 id="tabs-5-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c8"
@@ -1380,7 +1386,7 @@ exports[`Tabs should render with size 1`] = `
 
 .c7.c7.c7.c7.c7 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -1397,7 +1403,7 @@ exports[`Tabs should render with size 1`] = `
 
 .c8.c8.c8.c8.c8 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -1414,7 +1420,7 @@ exports[`Tabs should render with size 1`] = `
 
 .c13.c13.c13.c13.c13 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -1612,6 +1618,7 @@ exports[`Tabs should render with size 1`] = `
                 id="tabs-6-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -1628,6 +1635,7 @@ exports[`Tabs should render with size 1`] = `
                 id="tabs-6-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c8"
@@ -1767,7 +1775,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
 
 .c7.c7.c7.c7.c7 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -1784,7 +1792,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
 
 .c9.c9.c9.c9.c9 {
   color: hsla(227,100%,59%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -1801,7 +1809,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
 
 .c11.c11.c11.c11.c11 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -2033,6 +2041,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
                 id="tabs-3-payments-tabitem"
                 role="tab"
                 tabindex="0"
+                type="button"
               >
                 <p
                   class="c7"
@@ -2049,6 +2058,7 @@ exports[`Tabs should render with vertical orientation 1`] = `
                 id="tabs-3-refunds-tabitem"
                 role="tab"
                 tabindex="-1"
+                type="button"
               >
                 <p
                   class="c9"

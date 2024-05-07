@@ -1,8 +1,18 @@
 import { setState } from '@razorpay/i18nify-js';
+import { I18nProvider } from '@razorpay/i18nify-react';
 import type { AmountProps } from '../Amount';
 import { Amount, formatAmountWithSuffix } from '../Amount';
 
+import { AMOUNT_SUFFIX_TEST_SET } from './mock';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+const I18nAmountWrapper = (args: AmountProps & { locale?: string }): JSX.Element => {
+  return (
+    <I18nProvider initData={{ locale: args.locale }}>
+      <Amount {...args} />
+    </I18nProvider>
+  );
+};
 
 describe('<Amount />', () => {
   it('should render Amount with default props', () => {
@@ -167,6 +177,21 @@ describe('<Amount />', () => {
         { type: 'decimal', value: '.' },
         { type: 'fraction', value: '30' },
       ],
+    });
+  });
+
+  AMOUNT_SUFFIX_TEST_SET.forEach((item) => {
+    it(`should render ${item.output} in Amount for value:${item.value} & suffix:${item.suffix}`, () => {
+      const { getByTestId } = renderWithTheme(
+        <I18nAmountWrapper
+          value={item.value}
+          suffix={item.suffix}
+          testID="amount-test"
+          locale={item.locale}
+        />,
+      );
+
+      expect(getByTestId('amount-test')).toHaveTextContent(item.output);
     });
   });
 });

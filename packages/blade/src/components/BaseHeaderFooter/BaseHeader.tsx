@@ -11,9 +11,10 @@ import type { BoxProps } from '~components/Box';
 import { Box } from '~components/Box';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId } from '~utils/isValidAllowedChildren';
-import { isReactNative } from '~utils';
+import { isReactNative, makeSize } from '~utils';
 import { metaAttribute } from '~utils/metaAttribute';
 import { logger, throwBladeError } from '~utils/logger';
+import { size as sizeToken } from '~tokens/global';
 
 type BaseHeaderProps = {
   title?: string;
@@ -38,18 +39,41 @@ type BaseHeaderProps = {
    * @default false
    */
   showBackButton?: boolean;
+
+  /**
+   * Slot for rendering any trailing interaction element into BaseHeader.
+   *
+   * E.g. Used in accordion to render CollapsibleChevronIcon
+   */
+  trailingInteractionElement?: React.ReactNode;
+
+  /**
+   * Decides size of the Header
+   */
+  size?: 'large' | 'medium';
   /**
    * @default true
    */
   showCloseButton?: boolean;
+
+  /**
+   * Disabled state of BaseHeader
+   *
+   * @default false
+   */
+  isDisabled?: boolean;
+
+  paddingX?: BoxProps['paddingX'];
+  marginY?: BoxProps['marginY'];
   onCloseButtonClick?: () => void;
   onBackButtonClick?: () => void;
   closeButtonRef?: React.MutableRefObject<any>;
+  backButtonRef?: React.MutableRefObject<any>;
   metaComponentName?: string;
   /**
    * inner child of BottomSheetHeader. Meant to be used for AutoComplete only
    */
-  children?: React.ReactElement;
+  children?: React.ReactElement | React.ReactElement[];
 } & Pick<
   ReactDOMAttributes,
   | 'onClickCapture'
@@ -65,40 +89,87 @@ type BaseHeaderProps = {
 
 type TrailingComponents = 'Button' | 'Badge' | 'Link' | 'Text' | 'Amount';
 
-const centerBoxProps: BoxProps = {
+const commonCenterBoxProps: BoxProps = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  // We want to align title, icon, titleSuffix, trailing, closeButton to baseline
-  // But we also want to keep them center aligned to each other
-  // So we add a virtual Box around these slots with 28px and center align them to that box
-  // We have done similar thing in figma as well (which is where this 28px comes from)
-  height: '28px',
 };
 
-// prop restriction map for corresponding sub components
-const propRestrictionMap = {
-  Button: {
-    size: 'xsmall',
-    variant: 'tertiary',
+const centerBoxProps: { large: BoxProps; medium: BoxProps } = {
+  large: {
+    ...commonCenterBoxProps,
+    // We want to align title, icon, titleSuffix, trailing, closeButton to baseline
+    // But we also want to keep them center aligned to each other
+    // So we add a virtual Box around these slots with 28px and center align them to that box
+    // We have done similar thing in figma as well (which is where this 28px comes from)
+    height: '28px',
   },
-  Badge: {
-    size: 'medium',
+  medium: {
+    ...commonCenterBoxProps,
+    height: '20px',
   },
-  Link: {
-    size: 'medium',
+};
+
+const sizeTokensMapping = {
+  large: {
+    title: 'large',
   },
-  Text: {
-    size: 'medium',
-    variant: 'body',
-  },
-  Amount: {
-    type: 'body',
-    size: 'medium',
+  medium: {
+    title: 'medium',
   },
 } as const;
 
-const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
+// prop restriction map for corresponding sub components
+const propRestrictionMap = {
+  large: {
+    Button: {
+      size: 'xsmall',
+      variant: 'tertiary',
+    },
+    Badge: {
+      size: 'medium',
+    },
+    Link: {
+      size: 'medium',
+    },
+    Text: {
+      size: 'medium',
+      variant: 'body',
+    },
+    Amount: {
+      type: 'body',
+      size: 'medium',
+    },
+  },
+  medium: {
+    Button: {
+      size: 'xsmall',
+      variant: 'tertiary',
+    },
+    Badge: {
+      size: 'small',
+    },
+    Link: {
+      size: 'small',
+    },
+    Text: {
+      size: 'small',
+      variant: 'body',
+    },
+    Amount: {
+      type: 'body',
+      size: 'small',
+    },
+  },
+} as const;
+
+const useTrailingRestriction = ({
+  trailing,
+  size,
+}: {
+  size: NonNullable<BaseHeaderProps['size']>;
+  trailing: BaseHeaderProps['trailing'];
+}): React.ReactNode => {
   const [
     validatedTrailingComponent,
     setValidatedTrailingComponent,
@@ -108,8 +179,8 @@ const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
   React.useEffect(() => {
     if (React.isValidElement(trailing)) {
       const trailingComponentType = getComponentId(trailing) as TrailingComponents;
-      const restrictedProps = propRestrictionMap[trailingComponentType];
-      const allowedComponents = Object.keys(propRestrictionMap);
+      const restrictedProps = propRestrictionMap[size][trailingComponentType];
+      const allowedComponents = Object.keys(propRestrictionMap[size]);
       if (__DEV__) {
         if (!restrictedProps) {
           throwBladeError({
@@ -121,7 +192,7 @@ const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
         }
       }
 
-      const restrictedPropKeys = Object.keys(propRestrictionMap[trailingComponentType]);
+      const restrictedPropKeys = Object.keys(propRestrictionMap[size][trailingComponentType]);
       for (const prop of restrictedPropKeys) {
         if (trailing?.props?.hasOwnProperty(prop)) {
           logger({
@@ -135,7 +206,7 @@ const useTrailingRestriction = (trailing: React.ReactNode): React.ReactNode => {
         React.cloneElement(trailing as React.ReactElement, restrictedProps),
       );
     }
-  }, [trailing]);
+  }, [trailing, size]);
 
   return validatedTrailingComponent;
 };
@@ -152,6 +223,7 @@ const _BaseHeader = ({
   onBackButtonClick,
   onCloseButtonClick,
   closeButtonRef,
+  backButtonRef,
   testID,
   onClickCapture,
   onKeyDown,
@@ -162,9 +234,14 @@ const _BaseHeader = ({
   onPointerMove,
   onPointerUp,
   metaComponentName,
+  paddingX,
+  marginY,
+  size = 'large',
+  isDisabled,
   children,
+  trailingInteractionElement,
 }: BaseHeaderProps): React.ReactElement => {
-  const validatedTrailingComponent = useTrailingRestriction(trailing);
+  const validatedTrailingComponent = useTrailingRestriction({ trailing, size });
   const shouldWrapTitle = titleSuffix && trailing && showBackButton && showCloseButton;
 
   const webOnlyEventHandlers: Record<string, any> = isReactNative()
@@ -183,16 +260,17 @@ const _BaseHeader = ({
   return (
     <BaseBox {...metaAttribute({ name: metaComponentName, testID })}>
       <BaseBox
-        marginY={{ base: 'spacing.5', m: 'spacing.6' }}
-        paddingX={{ base: 'spacing.5', m: 'spacing.6' }}
+        marginY={marginY ?? { base: 'spacing.5', m: 'spacing.6' }}
+        paddingX={paddingX ?? { base: 'spacing.5', m: 'spacing.6' }}
         touchAction="none"
         {...webOnlyEventHandlers}
       >
         <BaseBox display="flex" flexDirection="row" userSelect="none">
           {showBackButton ? (
             <BaseBox overflow="visible" marginRight="spacing.5">
-              <Box {...centerBoxProps}>
+              <Box {...centerBoxProps[size]}>
                 <IconButton
+                  ref={backButtonRef}
                   size="large"
                   icon={ChevronLeftIcon}
                   onClick={() => onBackButtonClick?.()}
@@ -210,12 +288,7 @@ const _BaseHeader = ({
             alignItems="flex-start"
           >
             {leading ? (
-              <BaseBox
-                width="spacing.8"
-                height="spacing.8"
-                marginRight="spacing.3"
-                {...centerBoxProps}
-              >
+              <BaseBox marginRight="spacing.3" {...centerBoxProps[size]}>
                 {leading}
               </BaseBox>
             ) : null}
@@ -230,18 +303,28 @@ const _BaseHeader = ({
                 flexDirection="row"
               >
                 {title ? (
-                  <Text size="large" weight="semibold" color="surface.text.gray.normal">
+                  <Text
+                    size={sizeTokensMapping[size].title}
+                    marginTop={makeSize(sizeToken['1'])}
+                    weight="semibold"
+                    color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.normal'}
+                  >
                     {title}
                   </Text>
                 ) : null}
                 {titleSuffix && (
                   <BaseBox marginLeft="spacing.3">
-                    <Box {...centerBoxProps}>{titleSuffix}</Box>
+                    <Box {...centerBoxProps[size]}>{titleSuffix}</Box>
                   </BaseBox>
                 )}
               </BaseBox>
               {subtitle ? (
-                <Text variant="body" size="small" weight="regular" color="surface.text.gray.muted">
+                <Text
+                  variant="body"
+                  size="small"
+                  weight="regular"
+                  color={isDisabled ? 'surface.text.gray.disabled' : 'surface.text.gray.muted'}
+                >
                   {subtitle}
                 </Text>
               ) : null}
@@ -249,11 +332,11 @@ const _BaseHeader = ({
           </BaseBox>
           {validatedTrailingComponent ? (
             <BaseBox marginRight="spacing.5">
-              <Box {...centerBoxProps}>{validatedTrailingComponent}</Box>
+              <Box {...centerBoxProps[size]}>{validatedTrailingComponent}</Box>
             </BaseBox>
           ) : null}
           {showCloseButton ? (
-            <Box {...centerBoxProps}>
+            <Box {...centerBoxProps[size]}>
               <IconButton
                 ref={closeButtonRef}
                 size="large"
@@ -263,8 +346,24 @@ const _BaseHeader = ({
               />
             </Box>
           ) : null}
+          {trailingInteractionElement && !children ? (
+            <Box {...centerBoxProps[size]}>{trailingInteractionElement}</Box>
+          ) : null}
         </BaseBox>
-        {children}
+        <BaseBox
+          display="flex"
+          width="100%"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Box>{children}</Box>
+          {trailingInteractionElement && children ? (
+            <Box alignSelf="flex-start" {...centerBoxProps[size]}>
+              {trailingInteractionElement}
+            </Box>
+          ) : null}
+        </BaseBox>
       </BaseBox>
       {showDivider ? <Divider /> : null}
     </BaseBox>

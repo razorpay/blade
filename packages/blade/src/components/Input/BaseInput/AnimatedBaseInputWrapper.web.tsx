@@ -2,50 +2,25 @@ import React from 'react';
 import type { FlattenSimpleInterpolation } from 'styled-components';
 import styled, { css, keyframes } from 'styled-components';
 import type { BaseInputWrapperProps } from './types';
-import { getInputBackgroundAndBorderStyles } from './baseInputStyles';
-import { BASEINPUT_WRAPPER_MIN_HEIGHT, BASEINPUT_WRAPPER_MAX_HEIGHT } from './baseInputConfig';
+import {
+  getAnimatedBaseInputWrapperMaxHeight,
+  getInputBackgroundAndBorderStyles,
+} from './baseInputStyles';
+import { baseInputHeight, baseInputWrapperMaxHeight } from './baseInputTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { motion } from '~tokens/global';
-import { castWebType, makeMotionTime, makeSize } from '~utils';
+import { castWebType, makeMotionTime, makeSize, makeSpace } from '~utils';
 import type { BladeElementRef } from '~utils/types';
-
-// Define the animation keyframes
-const expandAnimation = keyframes`
-  from {
-    max-height: ${makeSize(BASEINPUT_WRAPPER_MIN_HEIGHT)};
-  }
-  to {
-    max-height: ${makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)};
-  }
-`;
-
-const collapseAnimation = keyframes`
-  from {
-    max-height: ${makeSize(BASEINPUT_WRAPPER_MAX_HEIGHT)};
-  }
-  to {
-    max-height: ${makeSize(BASEINPUT_WRAPPER_MIN_HEIGHT)};
-  }
-`;
-
-const expandTransition = css`
-  animation: ${expandAnimation} ${makeMotionTime(motion.duration.quick)}
-    ${String(motion.easing.entrance.effective)};
-`;
-
-const collapseTransition = css`
-  animation: ${collapseAnimation} ${makeMotionTime(motion.duration.quick)}
-    ${String(motion.easing.exit.effective)};
-`;
-
-const noTransition = css`
-  animation: none;
-`;
 
 const StyledBaseInputWrapper = styled(BaseBox)<
   Pick<
     BaseInputWrapperProps,
-    'currentInteraction' | 'isDisabled' | 'validationState' | 'isTextArea' | 'isDropdownTrigger'
+    | 'currentInteraction'
+    | 'isDisabled'
+    | 'validationState'
+    | 'isTextArea'
+    | 'isDropdownTrigger'
+    | 'maxTagRows'
   >
 >((props) => ({
   ...getInputBackgroundAndBorderStyles({
@@ -64,6 +39,7 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDisabled: props.isDisabled,
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
+      isTextArea: props.isTextArea,
     }),
     transitionProperty: 'background-color',
     transitionDuration: castWebType(makeMotionTime(props.theme.motion.duration.xquick)),
@@ -76,25 +52,10 @@ const StyledBaseInputWrapper = styled(BaseBox)<
       isDisabled: props.isDisabled,
       validationState: props.validationState,
       isDropdownTrigger: props.isDropdownTrigger,
+      isTextArea: props.isTextArea,
     }),
   },
 }));
-
-const getMaxHeight = ({
-  maxTagRows,
-  showAllTags,
-}: Pick<BaseInputWrapperProps, 'maxTagRows' | 'showAllTags'>): number => {
-  if (maxTagRows === 'single') {
-    return BASEINPUT_WRAPPER_MIN_HEIGHT;
-  }
-
-  if (maxTagRows === 'multiple') {
-    return BASEINPUT_WRAPPER_MAX_HEIGHT;
-  }
-
-  // In expandable, max-height depends on the state
-  return showAllTags ? BASEINPUT_WRAPPER_MAX_HEIGHT : BASEINPUT_WRAPPER_MIN_HEIGHT;
-};
 
 // Styled component with animation
 const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
@@ -102,12 +63,17 @@ const StyledAnimatedBaseInputWrapper = styled(StyledBaseInputWrapper)<{
   maxTagRows: BaseInputWrapperProps['maxTagRows'];
   showAllTags: BaseInputWrapperProps['showAllTags'];
   isDropdownTrigger: BaseInputWrapperProps['isDropdownTrigger'];
+  size: NonNullable<BaseInputWrapperProps['size']>;
 }>((props) =>
   props.isDropdownTrigger
     ? css`
         ${props.transition};
         max-height: ${makeSize(
-          getMaxHeight({ maxTagRows: props.maxTagRows, showAllTags: props.showAllTags }),
+          getAnimatedBaseInputWrapperMaxHeight({
+            maxTagRows: props.maxTagRows,
+            showAllTags: props.showAllTags,
+            size: props.size,
+          }),
         )};
       `
     : undefined,
@@ -122,6 +88,38 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
   { showAllTags, setShowAllTagsWithAnimation, maxTagRows, isDropdownTrigger, ...rest },
   ref,
 ): React.ReactElement => {
+  // Define the animation keyframes
+  const expandAnimation = keyframes`
+from {
+  max-height: ${makeSize(baseInputHeight[rest.size])};
+}
+to {
+  max-height: ${makeSize(baseInputWrapperMaxHeight[rest.size])};
+}
+`;
+
+  const collapseAnimation = keyframes`
+from {
+  max-height: ${makeSize(baseInputWrapperMaxHeight[rest.size])};
+}
+to {
+  max-height: ${makeSize(baseInputHeight[rest.size])};
+}
+`;
+
+  const expandTransition = css`
+    animation: ${expandAnimation} ${makeMotionTime(motion.duration.quick)}
+      ${String(motion.easing.entrance.effective)};
+  `;
+
+  const collapseTransition = css`
+    animation: ${collapseAnimation} ${makeMotionTime(motion.duration.quick)}
+      ${String(motion.easing.exit.effective)};
+  `;
+
+  const noTransition = css`
+    animation: none;
+  `;
   return (
     <StyledAnimatedBaseInputWrapper
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -134,15 +132,18 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
           ? expandTransition
           : collapseTransition
       }
+      height={
+        rest.isTextArea && isDropdownTrigger
+          ? makeSpace((rest.numberOfLines ?? 0) * baseInputHeight[rest.size])
+          : undefined
+      }
+      cursor={rest.isTextArea && isDropdownTrigger ? 'text' : undefined}
       isDropdownTrigger={isDropdownTrigger}
       showAllTags={showAllTags}
       maxTagRows={maxTagRows}
       onAnimationEnd={(e) => {
         if (!showAllTags && e.animationName === collapseAnimation.getName()) {
-          setShowAllTagsWithAnimation?.(false);
-        }
-
-        if (maxTagRows !== 'expandable' && !showAllTags) {
+          // Triggered for the collapse animation
           setShowAllTagsWithAnimation?.(false);
         }
       }}
@@ -152,4 +153,4 @@ const _AnimatedBaseInputWrapper: React.ForwardRefRenderFunction<
 
 const AnimatedBaseInputWrapper = React.forwardRef(_AnimatedBaseInputWrapper);
 
-export { AnimatedBaseInputWrapper, expandAnimation, collapseAnimation };
+export { AnimatedBaseInputWrapper };

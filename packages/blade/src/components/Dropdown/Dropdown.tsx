@@ -17,6 +17,8 @@ import type { ContainerElementType } from '~utils/types';
 import { useControllableState } from '~utils/useControllable';
 
 const validDropdownChildren = [
+  // TODO: Remove Box once CountrySelector's button sizing is fixed
+  dropdownComponentIds.BaseBox,
   dropdownComponentIds.triggers.SelectInput,
   dropdownComponentIds.triggers.DropdownButton,
   dropdownComponentIds.triggers.DropdownLink,
@@ -227,7 +229,10 @@ const _Dropdown = ({
           return;
         }
 
-        const isOutsideClick = !dropdown.contains(target) && !isTagDismissedRef.current?.value;
+        const isOutsideClick =
+          !dropdown.contains(target) &&
+          !isTagDismissedRef.current?.value &&
+          document.body.contains(target);
 
         const isDropdownOpenState = isDropdownOpenRef.current;
         if (isOutsideClick && isDropdownOpenState) {

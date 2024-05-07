@@ -186,104 +186,107 @@ exports[`<TextArea /> should render 1`] = `
       </View>
       <View
         currentInteraction="default"
-        isTextArea={true}
+        data-blade-component="base-box"
         style={
           [
+            {},
             {
-              "alignItems": "flex-start",
-              "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-              "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-              "borderBottomStyle": "solid",
-              "borderBottomWidth": 1,
-              "borderTopLeftRadius": 2,
-              "borderTopRightRadius": 2,
-              "display": "flex",
-              "flexDirection": "row",
-              "position": "relative",
+              "borderRadius": 4,
               "width": "100%",
             },
-            {},
           ]
         }
       >
-        <TextInput
-          accessibilityDescribedBy=""
-          accessibilityInvalid={false}
-          accessibilityRequired={false}
-          accessibilityState={
-            {
-              "disabled": false,
-              "expanded": undefined,
-            }
-          }
-          accessible={true}
-          data-blade-component="styled-base-input"
-          editable={true}
-          hasTags={false}
-          id="textarea-1-input-2"
-          interactionElement={null}
-          isFocused={false}
-          isTextArea={true}
-          keyboardType="default"
-          multiline={true}
+        <View
+          currentInteraction="default"
           numberOfLines={2}
-          onBlur={[Function]}
-          onChangeText={[Function]}
-          onEndEditing={[Function]}
-          onFocus={[Function]}
-          onKeyPress={[Function]}
-          onSubmitEditing={[Function]}
-          placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
-          secureTextEntry={false}
+          onClick={[Function]}
+          setShowAllTagsWithAnimation={[Function]}
+          size="medium"
           style={
             [
               {
-                "backgroundColor": "transparent",
-                "color": "hsla(211, 26%, 34%, 1)",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "fontFamily": "Inter",
-                "fontSize": 14,
-                "fontStyle": "normal",
-                "fontWeight": "400",
-                "height": 44,
-                "letterSpacing": 0,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "minHeight": 36,
-                "paddingBottom": 8,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
-                "textAlignVertical": "top",
-                "textDecorationLine": "none",
+                "backgroundColor": "yellow",
+                "borderColor": "hsla(211, 27%, 76%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 0,
+                "display": "flex",
+                "flexDirection": "row",
+                "position": "relative",
                 "width": "100%",
               },
-            ]
-          }
-        />
-        <View
-          style={
-            [
+              {},
               {
-                "backgroundColor": "hsla(227, 100%, 59%, 1)",
-                "bottom": 0,
-                "height": 1,
-                "left": 0,
-                "opacity": 1,
-                "position": "absolute",
-                "right": 0,
-              },
-              {
-                "opacity": undefined,
-                "width": "undefined%",
+                "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                "borderColor": "hsla(211, 27%, 76%, 1)",
+                "borderRadius": 4,
+                "borderStyle": "solid",
+                "borderWidth": 1,
               },
             ]
           }
-        />
+        >
+          <TextInput
+            accessibilityDescribedBy=""
+            accessibilityInvalid={false}
+            accessibilityRequired={false}
+            accessibilityState={
+              {
+                "disabled": false,
+                "expanded": undefined,
+              }
+            }
+            accessible={true}
+            data-blade-component="styled-base-input"
+            editable={true}
+            hasTags={false}
+            id="textarea-1-input-2"
+            isFocused={false}
+            isTextArea={true}
+            keyboardType="default"
+            multiline={true}
+            numberOfLines={2}
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onEndEditing={[Function]}
+            onFocus={[Function]}
+            onKeyPress={[Function]}
+            onSubmitEditing={[Function]}
+            placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+            secureTextEntry={false}
+            style={
+              [
+                {
+                  "backgroundColor": "transparent",
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontStyle": "normal",
+                  "fontWeight": "400",
+                  "height": 72,
+                  "letterSpacing": 0,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 8,
+                  "paddingLeft": 12,
+                  "paddingRight": 12,
+                  "paddingTop": 8,
+                  "textAlignVertical": "top",
+                  "textDecorationLine": "none",
+                  "width": "100%",
+                },
+              ]
+            }
+            trailingInteractionElement={null}
+            valueComponentType="text"
+          />
+        </View>
       </View>
     </View>
     <View

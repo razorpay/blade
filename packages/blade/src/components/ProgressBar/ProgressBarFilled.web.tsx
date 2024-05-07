@@ -73,16 +73,13 @@ const IndeterminateFilledContainer = styled(BoxWithIndeterminateAnimation)<
 }));
 
 const IndeterminatePulseAnimation = styled(BoxWithIndeterminateAnimation)<
-  Pick<
-    ProgressBarFilledProps,
-    'pulseMotionDuration' | 'pulseMotionDelay' | 'motionEasing' | 'variant'
-  >
->(({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, variant }) => {
+  Pick<ProgressBarFilledProps, 'pulseMotionDuration' | 'pulseMotionDelay' | 'motionEasing' | 'type'>
+>(({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, type }) => {
   const duration = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDuration)));
   const easing = castWebType(getIn(theme.motion, motionEasing));
   const delay = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDelay)));
 
-  return variant === 'progress' ? getPulseAnimationStyles({ duration, easing, delay }) : '';
+  return type === 'progress' ? getPulseAnimationStyles({ duration, easing, delay }) : '';
 });
 
 const BoxWithProgressFillTransition = styled(BaseBox)<
@@ -102,16 +99,13 @@ const DeterminateFilledContainer = styled(BoxWithProgressFillTransition)<
 }));
 
 const DeterminatePulseAnimation = styled(BoxWithProgressFillTransition)<
-  Pick<
-    ProgressBarFilledProps,
-    'pulseMotionDuration' | 'pulseMotionDelay' | 'motionEasing' | 'variant'
-  >
->(({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, variant }) => {
+  Pick<ProgressBarFilledProps, 'pulseMotionDuration' | 'pulseMotionDelay' | 'motionEasing' | 'type'>
+>(({ theme, pulseMotionDuration, pulseMotionDelay, motionEasing, type }) => {
   const duration = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDuration)));
   const easing = castWebType(getIn(theme.motion, motionEasing));
   const delay = castWebType(makeMotionTime(getIn(theme.motion, pulseMotionDelay)));
 
-  return variant === 'progress' ? getPulseAnimationStyles({ duration, easing, delay }) : '';
+  return type === 'progress' ? getPulseAnimationStyles({ duration, easing, delay }) : '';
 });
 
 const ProgressBarFilled = ({
@@ -122,7 +116,7 @@ const ProgressBarFilled = ({
   pulseMotionDelay,
   pulseMotionDuration,
   indeterminateMotionDuration,
-  variant,
+  type,
   isIndeterminate,
 }: ProgressBarFilledProps): React.ReactElement => {
   const ProgressBarFilledContainer = isIndeterminate
@@ -142,7 +136,7 @@ const ProgressBarFilled = ({
       <ProgressBarPulseAnimation
         fillMotionDuration={fillMotionDuration}
         motionEasing={motionEasing}
-        variant={variant}
+        type={type}
         pulseMotionDelay={pulseMotionDelay}
         pulseMotionDuration={pulseMotionDuration}
       />

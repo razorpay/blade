@@ -1,13 +1,18 @@
 import { applyTransform } from '@hypermod/utils';
 import * as transformer from '..';
 
-it('should update the lineHeight & fontSize tokens', async () => {
+it('should update the color tokens', async () => {
   const result = await applyTransform(
     transformer,
     `
         const CustomBox = styled(Box)\`
             color: \${theme.colors.feedback.notice.action.background.primary.default.lowContrast};
             backgroundColor: \${getIn(theme.colors, 'surface.background.level3.lowContrast')};
+
+            span {
+              color: \${theme.colors.brand.primary[500]};
+              backgroundColor: \${theme.colors.brand.gray[200].lowContrast};
+            }
         \`  
         const App = () => (
             <>
@@ -24,6 +29,11 @@ it('should update the lineHeight & fontSize tokens', async () => {
     "const CustomBox = styled(Box)\`
                 color: \${theme.colors.interactive.background.notice.faded};
                 backgroundColor: \${getIn(theme.colors, 'surface.background.gray.moderate')};
+
+                span {
+                  color: \${theme.colors.surface.background.primary.intense};
+                  backgroundColor: \${theme.colors.surface.background.gray.moderate};
+                }
             \`  
             const App = () => (
                 <>

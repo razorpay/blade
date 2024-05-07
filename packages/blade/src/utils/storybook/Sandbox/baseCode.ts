@@ -57,8 +57,7 @@ export const getReactScriptsJSDependencies = (): Dependencies => {
       'react-scripts': '4.0.3',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
-      '@emotion/react': '11.11.1',
-      '@table-library/react-table-library': '4.1.7',
+      '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
     },
   };
 };
@@ -72,8 +71,7 @@ const getViteReactTSDependencies = (): Dependencies => {
       '@types/react-dom': '^18',
       '@razorpay/blade': getBladeVersion(),
       'styled-components': packageJson.peerDependencies['styled-components'],
-      '@emotion/react': '11.11.1',
-      '@table-library/react-table-library': '4.1.7',
+      '@razorpay/i18nify-js': packageJson.peerDependencies['@razorpay/i18nify-js'],
     },
     devDependencies: {
       vite: '4.5.0',
@@ -183,10 +181,10 @@ export const Logger = () => {
           right="spacing.0"
           padding="spacing.3"
           margin="spacing.4"
-          elevation="midRaised"
+          elevation="none"
           borderRadius="round"
-          backgroundColor="surface.background.level3.lowContrast"
-          borderColor="surface.border.normal.lowContrast"
+          backgroundColor="surface.background.gray.moderate"
+          borderColor="surface.border.gray.muted"
           display={showLogger ? 'inline-block' : 'none'}
         >
           <IconButton
@@ -204,14 +202,14 @@ export const Logger = () => {
           padding={['spacing.4', 'spacing.7']}
           overflow="auto"
           height="30vh"
-          elevation="highRaised"
-          backgroundColor="surface.background.level2.lowContrast"
+          elevation="midRaised"
+          backgroundColor="surface.background.gray.intense"
           id="log-console"
           ref={consoleRef}
           display={showLogger ? 'block' : 'none'}
           textAlign="left"
           borderTopWidth="thin"
-          borderTopColor="surface.border.normal.lowContrast"
+          borderTopColor="surface.border.gray.muted"
         />
       </Box>
     </>
@@ -275,13 +273,15 @@ root.render(
     <BladeProvider themeTokens={getTheme()} colorScheme="${colorScheme}">
       <GlobalStyles />
       <Box 
-        backgroundColor="surface.background.level1.lowContrast"
+        backgroundColor="surface.background.gray.subtle"
         minHeight="100vh"
         padding={['spacing.4', 'spacing.7']}
         display="flex"
         flexDirection="column"
       >
-        <App />
+        <Box>
+          <App />
+        </Box>
         ${showConsole ? '<Logger />' : ''}
       </Box>
     </BladeProvider>

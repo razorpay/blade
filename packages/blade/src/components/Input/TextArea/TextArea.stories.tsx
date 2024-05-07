@@ -8,6 +8,8 @@ import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -54,6 +56,11 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    size: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     placeholder: {
       table: {
         category: propsCategory.BASE_PROPS,
@@ -87,6 +94,19 @@ export default {
       },
     },
     autoFocus: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    testID: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onSubmit: {
+      control: {
+        disable: true,
+      },
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -170,7 +190,7 @@ export default {
           componentDescription="The TextArea component lets you enter long form text which spans over multiple lines."
           componentName="TextArea"
           apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/TextArea/_decisions/decisions.md"
-          figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=11115-166804&mode=design&t=jyVG8aXFc1Dlw2Se-4"
+          figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76077-93900&t=2ZLEEt6A65Rona3N-1&scaling=min-zoom&page-id=11115%3A166743&mode=design"
         >
           <Title>Usage</Title>
           <Sandbox>
@@ -252,6 +272,22 @@ const TextAreaMaxCharactersTemplate: StoryFn<typeof TextAreaComponent> = () => {
   );
 };
 export const TextAreaMaxCharacters = TextAreaMaxCharactersTemplate.bind({});
+
+const TextAreaSizesTemplate: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <Text size="large" marginBottom="spacing.2">
+        Medium Size:
+      </Text>
+      <TextAreaComponent {...args} size="medium" />
+      <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
+        Large Size:
+      </Text>
+      <TextAreaComponent {...args} size="large" />
+    </Box>
+  );
+};
+export const TextAreaSizes = TextAreaSizesTemplate.bind({});
 
 const TextAreaUncontrolledTemplate: StoryFn<typeof TextAreaComponent> = () => {
   return (
@@ -406,4 +442,121 @@ inputRef.parameters = {
         'TextArea component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
+};
+
+export const TextAreaWithTags: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        numberOfLines={3}
+        isTaggedInput={true}
+        tags={tags}
+        onTagChange={({ tags }) => {
+          console.log({ tags });
+          setTags(tags);
+        }}
+      />
+    </Box>
+  );
+};
+
+export const TextAreaWithControlledTags: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        tags={tags}
+        onTagChange={({ tags }) => {
+          setTags(tags);
+        }}
+      />
+    </Box>
+  );
+};
+
+TextAreaWithControlledTags.args = {
+  isTaggedInput: true,
+  showClearButton: false,
+};
+
+export const TextAreaWithUncontrolledTags: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tagValues, setTagValues] = React.useState<string[]>([]);
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        onTagChange={({ tags }) => {
+          console.log('new tags', tags);
+          setTagValues(tags);
+        }}
+      />
+      <Box>
+        <Text>{tagValues.join(', ')}</Text>
+      </Box>
+    </Box>
+  );
+};
+
+TextAreaWithUncontrolledTags.args = {
+  isTaggedInput: true,
+  showClearButton: true,
+};
+
+// Don't copy email regex from here. This is just an example regex for basic emails. Make sure to use email validation as per usecase
+const isValidEmail = (email: string): boolean => {
+  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(email);
+};
+
+export const TextAreaWithTagsValidation: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+  const [inputValue, setInputValue] = React.useState('');
+  const [errorText, setErrorText] = React.useState('');
+  // we use ref because onTagChange and onChange is called in same render
+  // So if we want to set error in onTagChange, and use its value in onChange, its not possible with useState
+  const isErrorRef = React.useRef(false);
+
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        value={inputValue}
+        onChange={({ value }) => {
+          if (!isErrorRef.current) {
+            setInputValue(value ?? '');
+            setErrorText('');
+          }
+
+          isErrorRef.current = false;
+        }}
+        tags={tags}
+        onTagChange={({ tags: newTags }) => {
+          const isTagRemoved = newTags.length < tags.length;
+          if (isTagRemoved) {
+            // we don't validate while removing tags
+            setTags(newTags);
+            return;
+          }
+
+          if (isValidEmail(inputValue)) {
+            setTags(newTags);
+          } else {
+            isErrorRef.current = true;
+            setErrorText(`Invalid email ${inputValue}. Try with different email`);
+          }
+        }}
+        errorText={errorText}
+        validationState={errorText ? 'error' : undefined}
+      />
+    </Box>
+  );
+};
+
+TextAreaWithTagsValidation.args = {
+  isTaggedInput: true,
+  showClearButton: false,
 };

@@ -86,7 +86,7 @@ describe('<Text />', () => {
     expect(toJSON()).toMatchSnapshot();
   });
 
-  it('should throw error when variant is "caption" and size "medium" is passed', () => {
+  it('should throw error when variant is "caption" and size "large" is passed', () => {
     const mockConsoleError = jest.spyOn(console, 'error').mockImplementation();
     const displayText = 'Displaying some text';
     expect(() =>
@@ -96,12 +96,12 @@ describe('<Text />', () => {
           variant="caption"
           truncateAfterLines={3}
           // @ts-expect-error testing failure case when size='medium' is passed with variant='caption'
-          size="medium"
+          size="large"
         >
           {displayText}
         </Text>,
       ),
-    ).toThrow(`[Blade: Text]: size cannot be 'medium' when variant is 'caption'`);
+    ).toThrow(`[Blade: Text]: size cannot be 'large' when variant is 'caption'`);
     mockConsoleError.mockRestore();
   });
 

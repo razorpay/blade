@@ -1,6 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import type { ReactElement } from 'react';
+import { waitFor, screen } from '@testing-library/react';
 import { TextArea } from '../TextArea';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import assertAccessible from '~utils/testing/assertAccessible.web';
@@ -9,9 +10,24 @@ import { Button } from '~components/Button';
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
 
+const getTag = (tagName: string): HTMLElement => {
+  return screen.queryAllByLabelText(`Close ${tagName} tag`)?.[0];
+};
+
+const bladeEmail = 'blade@gmail.com';
+const tagEmail = 'tag@gmail.com';
+
 describe('<TextArea />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(<TextArea label="Enter name" />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render large size', () => {
+    const { container } = renderWithTheme(
+      <TextArea label="Enter name" size="large" maxCharacters={100} />,
+    );
 
     expect(container).toMatchSnapshot();
   });
@@ -346,6 +362,84 @@ describe('<TextArea />', () => {
 
     await userEvent.click(button);
     expect(input).toHaveFocus();
+  });
+
+  it(`should add tags in uncontrolled API`, async () => {
+    const label = 'Enter Name';
+    const tagChangeCallback = jest.fn();
+
+    const { getByLabelText } = renderWithTheme(
+      <TextArea label={label} isTaggedInput={true} onTagChange={tagChangeCallback} />,
+    );
+
+    const input = getByLabelText(label);
+
+    expect(getTag(bladeEmail)).toBeUndefined();
+    await userEvent.type(input, bladeEmail);
+    await userEvent.type(input, ',');
+    expect(getTag(bladeEmail)).toBeVisible();
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail] });
+
+    expect(getTag(tagEmail)).toBeUndefined();
+    await userEvent.type(input, tagEmail);
+    await userEvent.keyboard('{ENTER}');
+    expect(getTag(tagEmail)).toBeVisible();
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail, tagEmail] });
+
+    await userEvent.keyboard('{Backspace}');
+    expect(getTag(tagEmail)).toBeUndefined();
+    expect(tagChangeCallback).toBeCalledWith({ tags: [bladeEmail] });
+
+    await userEvent.click(getTag(bladeEmail));
+    await waitFor(() => expect(getTag(bladeEmail)).not.toBeVisible());
+  });
+
+  it(`should add tags in controlled API`, async () => {
+    const label = 'Enter Name';
+
+    const Example = (): React.ReactElement => {
+      const [tags, setTags] = React.useState<string[]>([]);
+      return (
+        <>
+          <TextArea
+            label={label}
+            isTaggedInput={true}
+            tags={tags}
+            onTagChange={({ tags }) => setTags(tags)}
+          />
+          <Button
+            onClick={() => {
+              setTags([...tags, 'saurabh@razorpay.com', 'chaitanya@razorpay.com']);
+            }}
+          >
+            Add More
+          </Button>
+        </>
+      );
+    };
+
+    const { getByLabelText, getByRole } = renderWithTheme(<Example />);
+
+    const input = getByLabelText(label);
+
+    expect(getTag(bladeEmail)).toBeUndefined();
+    await userEvent.type(input, bladeEmail);
+    await userEvent.type(input, ',');
+    expect(getTag(bladeEmail)).toBeVisible();
+
+    expect(getTag(tagEmail)).toBeUndefined();
+    await userEvent.type(input, tagEmail);
+    await userEvent.keyboard('{ENTER}');
+    expect(getTag(tagEmail)).toBeVisible();
+
+    await userEvent.keyboard('{Backspace}');
+    expect(getTag(tagEmail)).toBeUndefined();
+
+    await userEvent.click(getByRole('button', { name: 'Add More' }));
+
+    expect(getTag(bladeEmail)).toBeVisible();
+    expect(getTag('saurabh@razorpay.com')).toBeVisible();
+    expect(getTag('chaitanya@razorpay.com')).toBeVisible();
   });
 
   it('should accept testID', () => {

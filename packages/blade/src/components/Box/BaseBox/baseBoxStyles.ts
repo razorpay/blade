@@ -107,6 +107,30 @@ export const getElevationValue = (
       getIn(theme, `elevation.${responsiveElevationValue!}`);
 };
 
+type GetBorderStyleValueReturnType =
+  | CSSObject['borderStyle']
+  | CSSObject['borderTopStyle']
+  | CSSObject['borderBottomStyle']
+  | CSSObject['borderLeftStyle']
+  | CSSObject['borderRightStyle'];
+const getBorderStyleValue = (
+  borderStyle: BaseBoxProps['borderStyle'],
+  breakpoint?: keyof Breakpoints,
+  hasBorder?: boolean,
+  // Using any as return type because borderStyle's type is incompatible with borderBottomStyle. There are ways to fix it but anyway since its internal function. Taking an easy way out
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): GetBorderStyleValueReturnType => {
+  if (borderStyle) {
+    return getResponsiveValue(borderStyle, breakpoint);
+  }
+
+  if (hasBorder) {
+    return 'solid';
+  }
+
+  return undefined;
+};
+
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   breakpoint?: keyof Breakpoints,
@@ -220,16 +244,36 @@ const getAllProps = (
       props.theme,
       breakpoint,
     ),
-    borderStyle: hasBorder ? 'solid' : undefined,
+    borderStyle: getBorderStyleValue(
+      props.borderStyle,
+      breakpoint,
+      Boolean(hasBorder),
+    ) as CSSObject['borderStyle'],
+    cursor: getResponsiveValue(props.cursor, breakpoint),
     // Since we only allow 'solid', we can use the same value for all borders if hasBorder is true
     // If hasBorder is false, we need to check each border individually
     ...(!hasBorder && {
-      borderTopStyle: hasBorderTop ? 'solid' : undefined,
-      borderBottomStyle: hasBorderBottom ? 'solid' : undefined,
-      borderLeftStyle: hasBorderLeft ? 'solid' : undefined,
-      borderRightStyle: hasBorderRight ? 'solid' : undefined,
+      borderTopStyle: getBorderStyleValue(
+        props.borderTopStyle,
+        breakpoint,
+        Boolean(hasBorderTop),
+      ) as CSSObject['borderTopStyle'],
+      borderBottomStyle: getBorderStyleValue(
+        props.borderBottomStyle,
+        breakpoint,
+        Boolean(hasBorderBottom),
+      ) as CSSObject['borderBottomStyle'],
+      borderLeftStyle: getBorderStyleValue(
+        props.borderLeftStyle,
+        breakpoint,
+        Boolean(hasBorderLeft),
+      ) as CSSObject['borderLeftStyle'],
+      borderRightStyle: getBorderStyleValue(
+        props.borderRightStyle,
+        breakpoint,
+        Boolean(hasBorderRight),
+      ) as CSSObject['borderRightStyle'],
     }),
-
     touchAction: getResponsiveValue(props.touchAction, breakpoint),
     userSelect: getResponsiveValue(props.userSelect, breakpoint),
     pointerEvents: getResponsiveValue(props.pointerEvents),

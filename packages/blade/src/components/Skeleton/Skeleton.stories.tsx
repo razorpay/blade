@@ -29,7 +29,7 @@ const Page = (): React.ReactElement => {
     <StoryPageWrapper
       componentName="Skeleton"
       componentDescription="Skeleton Loader is a static / animated placeholder for the information that is still loading. It mimic the structure and look of the entire view."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=73282-409843&mode=design&t=Qm80tBqhFBFB5BvZ-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85414&t=R6i97c0Mf28p8ZvY-1&scaling=min-zoom&page-id=16498%3A256331&mode=design"
     >
       <Heading size="large">Usage</Heading>{' '}
       <Sandbox>

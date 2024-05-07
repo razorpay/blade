@@ -19,10 +19,10 @@ import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useBottomSheetAndDropdownGlue } from '~components/BottomSheet/BottomSheetContext';
 import BaseBox from '~components/Box/BaseBox';
+import { componentZIndices } from '~utils/componentZIndices';
 
 const OVERLAY_OFFSET: number = size['8'];
 const OVERLAY_PADDING: number = size['12']; // doesn't have to be exact. Just rough padding for floating ui to decide to show overlay on top or bottom
-const OVERLAY_ZINDEX = 1001;
 
 /**
  * Overlay of dropdown
@@ -32,8 +32,10 @@ const OVERLAY_ZINDEX = 1001;
 const _DropdownOverlay = ({
   children,
   testID,
-  zIndex = OVERLAY_ZINDEX,
+  zIndex = componentZIndices.dropdownOverlay,
   width,
+  referenceRef,
+  defaultPlacement = 'bottom-start',
 }: DropdownOverlayProps): React.ReactElement | null => {
   const { isOpen, triggererRef, triggererWrapperRef, dropdownTriggerer, setIsOpen } = useDropdown();
   const { theme } = useTheme();
@@ -41,18 +43,21 @@ const _DropdownOverlay = ({
 
   const isMenu =
     dropdownTriggerer !== dropdownComponentIds.triggers.SelectInput &&
-    dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete;
+    dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete &&
+    referenceRef == undefined;
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     strategy: 'fixed',
-    placement: 'bottom-start',
+    placement: defaultPlacement,
     elements: {
       // Input triggers have their ref on internal input element but we want width height of overall visible input hence wrapperRef is needed
       // We fallback to use `triggererRef` for triggers like button and link where wrapper is not needed
       // Checkout: https://github.com/razorpay/blade/pull/1559#discussion_r1305438920
-      reference: triggererWrapperRef.current ?? triggererRef.current,
+      reference: (referenceRef?.current ??
+        triggererWrapperRef.current ??
+        triggererRef.current) as Element,
     },
     middleware: [
       offset({

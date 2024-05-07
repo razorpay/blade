@@ -17,7 +17,7 @@ const Page = (): ReactElement => {
       componentDescription="The Display component adds a strong visual touch. Utilize it to create eye-catching sections on your landing pages."
       componentName="Display"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Typography/_decisions/decisions.md"
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?type=design&node-id=13708%3A180902&mode=design&t=1sYKFDyXDXlugu2m-1"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71114-259648&t=DaKuYvkYnno4qVsq-1&scaling=min-zoom&page-id=3%3A0&mode=design"
     >
       <StorybookTitle>Usage</StorybookTitle>
       <Sandbox>
@@ -42,9 +42,7 @@ const DisplayStoryMeta: Meta<DisplayProps> = {
   component: DisplayComponent,
   args: {
     size: 'small',
-    type: 'normal',
     children: 'Power your finance, grow your business',
-    contrast: 'low',
     as: undefined,
   },
   tags: ['autodocs'],
@@ -77,7 +75,7 @@ export default DisplayStoryMeta;
 export const Display = DisplayTemplate.bind({});
 export const WithColor = DisplayTemplate.bind({});
 WithColor.args = {
-  color: 'brand.primary.500',
+  color: 'surface.text.primary.normal',
 };
 
 const Sup = isReactNative() ? DisplayComponent : 'sup';
@@ -86,13 +84,13 @@ const WithMixedColorsTemplate: StoryFn<typeof DisplayComponent> = (args) => {
     <Box>
       <DisplayComponent {...args}>
         Supercharge your business with the all‑powerful{' '}
-        <DisplayComponent {...args} as="span" color="brand.primary.500">
+        <DisplayComponent {...args} as="span" color="surface.text.primary.normal">
           Payment Gateway
         </DisplayComponent>
       </DisplayComponent>
       <DisplayComponent marginTop="spacing.5" {...args}>
         Start accepting{' '}
-        <DisplayComponent {...args} as="span" color="feedback.text.information.lowContrast">
+        <DisplayComponent {...args} as="span" color="feedback.text.information.intense">
           payments
         </DisplayComponent>{' '}
         at just 2% <Sup>*</Sup>
@@ -108,7 +106,7 @@ const AsPropTemplate: StoryFn<typeof DisplayComponent> = (args) => {
     <Box>
       <Text>
         By default{' '}
-        <Text as="span" weight="bold">
+        <Text as="span" weight="semibold">
           Display
         </Text>{' '}
         component automatically renders the <Code size="medium">h1</Code> tag.

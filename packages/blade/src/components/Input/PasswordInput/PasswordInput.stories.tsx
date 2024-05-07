@@ -10,6 +10,8 @@ import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Text } from '~components/Typography';
+import { Box } from '~components/Box';
 
 const Page = (): ReactElement => {
   return (
@@ -17,7 +19,7 @@ const Page = (): ReactElement => {
       componentName="PasswordInput"
       apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/PasswordInput/_decisions/decisions.md"
       componentDescription="PasswordInput is an input field for entering passwords. The input is masked by default. On mobile devices the last typed letter is shown for a brief moment. The masking can be toggled using an optional reveal button."
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=10953-180381&mode=design&t=jyVG8aXFc1Dlw2Se-4"
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76077-85891&t=09RYuDrnHwIebYMZ-1&scaling=min-zoom&page-id=10953%3A110156&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -50,18 +52,21 @@ const meta: Meta<PasswordInputProps> = {
   title: 'Components/Input/PasswordInput',
   component: PasswordInput,
   args: {
-    label: 'Enter password',
     name: 'password',
+    label: 'Enter password',
     helpText: 'We recommend having at least 8 characters in your password',
     placeholder: 'Enter a strong password',
   },
   tags: ['autodocs'],
   argTypes: {
+    accessibilityLabel: { table: { category: propsCategory.BASE_PROPS } },
+    testID: { table: { category: propsCategory.BASE_PROPS } },
     autoFocus: { table: { category: propsCategory.BASE_PROPS } },
     label: { table: { category: propsCategory.LABEL_PROPS } },
     labelPosition: { table: { category: propsCategory.LABEL_PROPS } },
     name: { table: { category: propsCategory.BASE_PROPS } },
     placeholder: { table: { category: propsCategory.BASE_PROPS } },
+    size: { table: { category: propsCategory.BASE_PROPS } },
     maxCharacters: { table: { category: propsCategory.BASE_PROPS } },
     isDisabled: { table: { category: propsCategory.BASE_PROPS } },
     isRequired: { table: { category: propsCategory.BASE_PROPS } },
@@ -75,9 +80,10 @@ const meta: Meta<PasswordInputProps> = {
     value: { table: { category: propsCategory.BASE_PROPS } },
     keyboardReturnKeyType: { table: { category: propsCategory.BASE_PROPS } },
     autoCompleteSuggestionType: { table: { category: propsCategory.BASE_PROPS } },
-    onChange: { action: 'Changed', table: { category: propsCategory.BASE_PROPS } },
-    onFocus: { action: 'Focussed', table: { category: propsCategory.BASE_PROPS } },
-    onBlur: { action: 'Blurred', table: { category: propsCategory.BASE_PROPS } },
+    onChange: { control: { disable: true }, table: { category: propsCategory.BASE_PROPS } },
+    onSubmit: { control: { disable: true }, table: { category: propsCategory.BASE_PROPS } },
+    onFocus: { control: { disable: true }, table: { category: propsCategory.BASE_PROPS } },
+    onBlur: { control: { disable: true }, table: { category: propsCategory.BASE_PROPS } },
     ...getStyledPropsArgTypes(),
   },
   parameters: {
@@ -192,6 +198,22 @@ Required.parameters = {
     },
   },
 };
+
+const PasswordInputSizesTemplate: StoryFn<typeof PasswordInput> = ({ ...args }) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <Text size="large" marginBottom="spacing.2">
+        Medium Size:
+      </Text>
+      <PasswordInput {...args} size="medium" />
+      <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
+        Large Size:
+      </Text>
+      <PasswordInput {...args} size="large" />
+    </Box>
+  );
+};
+export const PasswordInputSizes = PasswordInputSizesTemplate.bind({});
 
 export const ControlledInput = (): ReactElement => {
   const [state, setState] = useState<string | undefined>('');

@@ -10,7 +10,6 @@ import { useBottomSheetContext } from '~components/BottomSheet/BottomSheetContex
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { makeAccessible } from '~utils/makeAccessible';
 import { Divider } from '~components/Divider';
-import { makeSize } from '~utils';
 
 type ActionListBoxProps = {
   childrenWithId?: React.ReactNode[] | null;
@@ -24,17 +23,17 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
   ({ sectionData, actionListItemWrapperRole, isMultiSelectable, isInBottomSheet }, ref) => {
     const { footerHeight, setContentHeight } = useBottomSheetContext();
 
-    const renderActionListItem = React.useCallback(({ item }) => {
+    const renderActionListItem = React.useCallback(({ item }: any) => {
       return <ActionListItem {...item} />;
     }, []);
 
-    const renderActionListSectionHeader = React.useCallback(({ section: { title } }) => {
+    const renderActionListSectionHeader = React.useCallback(({ section: { title } }: any) => {
       if (!title) return null;
       return <ActionListSection title={title} _hideDivider={true} children={undefined} />;
     }, []);
 
     const renderActionListSectionDivider = React.useCallback(
-      ({ section: { title, hideDivider } }) => {
+      ({ section: { title, hideDivider } }: any) => {
         if (!title) return null;
         if (hideDivider) return null;
         return <Divider />;
@@ -50,7 +49,7 @@ const _ActionListBox = React.forwardRef<SectionList, ActionListBoxProps>(
         isInBottomSheet={Boolean(isInBottomSheet)}
         // Setting footerHeight as bottom margin for ActionListBox
         // otherwise the footer hides few list items under it, this will offset it
-        marginBottom={makeSize(footerHeight)}
+        marginBottom={footerHeight}
         sections={sectionData}
         windowSize={5}
         keyExtractor={(item: any) => {

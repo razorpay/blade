@@ -216,258 +216,216 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
             </View>
             <View
               currentInteraction="default"
-              isDropdownTrigger={true}
-              isTextArea={false}
+              data-blade-component="base-box"
               style={
                 [
+                  {},
                   {
-                    "backgroundColor": "hsla(211, 20%, 52%, 0.09)",
-                    "borderBottomColor": "hsla(211, 20%, 52%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "height": "auto",
-                    "position": "relative",
+                    "borderRadius": 4,
                     "width": "100%",
-                  },
-                  {
-                    "maxHeight": 37,
                   },
                 ]
               }
             >
               <View
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                justifyContent="flex-start"
-                minHeight="36px"
-                onLayout={[Function]}
-                position="relative"
+                currentInteraction="default"
+                isDropdownTrigger={true}
+                onClick={[Function]}
+                setShowAllTagsWithAnimation={[Function]}
+                size="medium"
                 style={
                   [
                     {
+                      "backgroundColor": "yellow",
+                      "borderColor": "hsla(211, 27%, 76%, 1)",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 0,
                       "display": "flex",
-                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "flex-start",
-                      "minHeight": 36,
-                      "paddingBottom": 2,
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                      "paddingTop": 2,
+                      "height": "auto",
                       "position": "relative",
+                      "width": "100%",
+                    },
+                    {
+                      "maxHeight": 36,
+                    },
+                    {
+                      "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                      "borderColor": "hsla(211, 27%, 76%, 1)",
+                      "borderRadius": 4,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
                     },
                   ]
                 }
               >
-                <RCTScrollView
-                  contentContainerStyle={
-                    {
-                      "flexDirection": "row",
-                      "flexGrow": 1,
-                      "flexWrap": "nowrap",
-                      "position": "relative",
-                    }
+                <View
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  justifyContent="flex-start"
+                  minHeight="36px"
+                  onLayout={[Function]}
+                  position="relative"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                        "flexBasis": 0,
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "flex-start",
+                        "minHeight": 36,
+                        "paddingBottom": 2,
+                        "paddingLeft": 12,
+                        "paddingRight": 12,
+                        "paddingTop": 2,
+                        "position": "relative",
+                      },
+                    ]
                   }
-                  horizontal={true}
-                  onContentSizeChange={[Function]}
-                  onScrollBeginDrag={[Function]}
-                  onScrollEndDrag={[Function]}
-                  showsHorizontalScrollIndicator={true}
                 >
-                  <View>
-                    <View
-                      accessibilityState={
-                        {
-                          "busy": undefined,
-                          "checked": undefined,
-                          "disabled": undefined,
-                          "expanded": undefined,
-                          "selected": undefined,
-                        }
+                  <RCTScrollView
+                    contentContainerStyle={
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                        "flexGrow": 1,
+                        "flexWrap": "nowrap",
+                        "position": "relative",
                       }
-                      accessible={true}
-                      data-blade-component="base-box"
-                      focusable={true}
-                      height="100%"
-                      onClick={[Function]}
-                      onResponderGrant={[Function]}
-                      onResponderMove={[Function]}
-                      onResponderRelease={[Function]}
-                      onResponderTerminate={[Function]}
-                      onResponderTerminationRequest={[Function]}
-                      onStartShouldSetResponder={[Function]}
-                      position="absolute"
-                      style={
-                        [
-                          {
-                            "height": "100%",
-                            "position": "absolute",
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      width="100%"
-                    />
-                    <View
-                      data-blade-component="base-box"
-                      style={
-                        [
-                          {
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      width="100%"
-                    >
-                      <TextInput
-                        accessibilityActiveDescendant="dropdown-7-0"
-                        accessibilityControls="dropdown-7-actionlist"
-                        accessibilityDescribedBy=""
-                        accessibilityHasPopup="menu"
-                        accessibilityInvalid={false}
-                        accessibilityRequired={false}
-                        accessibilityRole="combobox"
+                    }
+                    horizontal={true}
+                    onContentSizeChange={[Function]}
+                    onScrollBeginDrag={[Function]}
+                    onScrollEndDrag={[Function]}
+                    showsHorizontalScrollIndicator={true}
+                  >
+                    <View>
+                      <View
                         accessibilityState={
                           {
-                            "disabled": false,
-                            "expanded": true,
+                            "busy": undefined,
+                            "checked": undefined,
+                            "disabled": undefined,
+                            "expanded": undefined,
+                            "selected": undefined,
                           }
                         }
                         accessible={true}
-                        autoCompleteType="off"
-                        data-blade-component="styled-base-input"
-                        editable={true}
-                        hasTags={false}
-                        id="dropdown-7-trigger-1-input-2"
-                        interactionElement={
-                          <InputChevronIcon
-                            isOpen={true}
-                            onClick={[Function]}
-                          />
-                        }
-                        isDropdownTrigger={true}
-                        isFocused={false}
-                        isTextArea={false}
-                        keyboardType="default"
-                        multiline={false}
-                        onBlur={[Function]}
-                        onChangeText={[Function]}
-                        onEndEditing={[Function]}
-                        onFocus={[Function]}
-                        onKeyPress={[Function]}
-                        onSubmitEditing={[Function]}
-                        placeholder="Select Option"
-                        placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
-                        secureTextEntry={false}
+                        data-blade-component="base-box"
+                        focusable={true}
+                        height="100%"
+                        onClick={[Function]}
+                        onResponderGrant={[Function]}
+                        onResponderMove={[Function]}
+                        onResponderRelease={[Function]}
+                        onResponderTerminate={[Function]}
+                        onResponderTerminationRequest={[Function]}
+                        onStartShouldSetResponder={[Function]}
+                        position="absolute"
                         style={
                           [
                             {
-                              "backgroundColor": "transparent",
-                              "color": "hsla(211, 26%, 34%, 1)",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "fontFamily": "Inter",
-                              "fontSize": 14,
-                              "fontStyle": "normal",
-                              "fontWeight": "400",
-                              "height": 36,
-                              "letterSpacing": 0,
-                              "marginBottom": 0,
-                              "marginLeft": 0,
-                              "marginRight": 0,
-                              "marginTop": 0,
-                              "minHeight": 36,
-                              "paddingBottom": 8,
-                              "paddingLeft": 0,
-                              "paddingRight": 8,
-                              "paddingTop": 8,
-                              "textAlignVertical": "top",
-                              "textDecorationLine": "none",
+                              "height": "100%",
+                              "position": "absolute",
                               "width": "100%",
                             },
                           ]
                         }
-                        textAlign="left"
-                        textContentType="none"
-                        value=""
+                        width="100%"
                       />
+                      <View
+                        data-blade-component="base-box"
+                        style={
+                          [
+                            {
+                              "width": "100%",
+                            },
+                          ]
+                        }
+                        width="100%"
+                      >
+                        <TextInput
+                          accessibilityActiveDescendant="dropdown-7-0"
+                          accessibilityControls="dropdown-7-actionlist"
+                          accessibilityDescribedBy=""
+                          accessibilityHasPopup="menu"
+                          accessibilityInvalid={false}
+                          accessibilityRequired={false}
+                          accessibilityRole="combobox"
+                          accessibilityState={
+                            {
+                              "disabled": false,
+                              "expanded": true,
+                            }
+                          }
+                          accessible={true}
+                          autoCompleteType="off"
+                          data-blade-component="styled-base-input"
+                          editable={true}
+                          hasTags={false}
+                          id="dropdown-7-trigger-1-input-2"
+                          isDropdownTrigger={true}
+                          isFocused={false}
+                          isTextArea={false}
+                          keyboardType="default"
+                          multiline={false}
+                          onBlur={[Function]}
+                          onChangeText={[Function]}
+                          onEndEditing={[Function]}
+                          onFocus={[Function]}
+                          onKeyPress={[Function]}
+                          onSubmitEditing={[Function]}
+                          placeholder="Select Option"
+                          placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                          secureTextEntry={false}
+                          style={
+                            [
+                              {
+                                "backgroundColor": "transparent",
+                                "color": "hsla(211, 26%, 34%, 1)",
+                                "flexBasis": 0,
+                                "flexGrow": 1,
+                                "flexShrink": 1,
+                                "fontFamily": "Inter",
+                                "fontSize": 14,
+                                "fontStyle": "normal",
+                                "fontWeight": "400",
+                                "height": 36,
+                                "letterSpacing": 0,
+                                "marginBottom": 0,
+                                "marginLeft": 0,
+                                "marginRight": 0,
+                                "marginTop": 0,
+                                "minHeight": 36,
+                                "paddingBottom": 8,
+                                "paddingLeft": 0,
+                                "paddingRight": 8,
+                                "paddingTop": 8,
+                                "textAlignVertical": "top",
+                                "textDecorationLine": "none",
+                                "width": "100%",
+                              },
+                            ]
+                          }
+                          textAlign="left"
+                          textContentType="none"
+                          trailingInteractionElement={
+                            <InputChevronIcon
+                              isOpen={true}
+                              onClick={[Function]}
+                            />
+                          }
+                          value=""
+                          valueComponentType="text"
+                        />
+                      </View>
                     </View>
-                  </View>
-                </RCTScrollView>
-                <View
-                  accessibilityState={
-                    {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessible={true}
-                  data-blade-component="base-box"
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                alignItems="center"
-                alignSelf="center"
-                data-blade-component="base-box"
-                display="flex"
-                flexDirection="row"
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "alignSelf": "center",
-                      "display": "flex",
-                      "flexDirection": "row",
-                    },
-                  ]
-                }
-              >
-                <View
-                  alignItems="stretch"
-                  alignSelf="stretch"
-                  data-blade-component="base-box"
-                  display="flex"
-                  style={
-                    [
-                      {
-                        "alignItems": "stretch",
-                        "alignSelf": "stretch",
-                        "display": "flex",
-                        "paddingRight": 12,
-                      },
-                    ]
-                  }
-                >
+                  </RCTScrollView>
                   <View
-                    accessibilityLabel="Chevron Icon"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -477,16 +435,8 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         "selected": undefined,
                       }
                     }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
                     accessible={true}
-                    collapsable={false}
+                    data-blade-component="base-box"
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -496,156 +446,220 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  alignItems="center"
+                  alignSelf="center"
+                  data-blade-component="base-box"
+                  display="flex"
+                  flexDirection="row"
+                  style={
+                    [
                       {
+                        "alignItems": "center",
+                        "alignSelf": "center",
                         "display": "flex",
-                        "justifyContent": "center",
-                        "marginBottom": "auto",
-                        "marginLeft": "auto",
-                        "marginRight": "auto",
-                        "marginTop": "auto",
-                        "opacity": 1,
-                      }
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    alignItems="stretch"
+                    alignSelf="stretch"
+                    data-blade-component="base-box"
+                    display="flex"
+                    style={
+                      [
+                        {
+                          "alignItems": "stretch",
+                          "alignSelf": "stretch",
+                          "display": "flex",
+                          "paddingRight": 12,
+                        },
+                      ]
                     }
                   >
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="16px"
-                      bbWidth="16px"
-                      data-blade-component="icon"
-                      display="none"
-                      fill="none"
-                      focusable={false}
-                      height="16px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
-                          [
-                            {
-                              "display": "none",
-                            },
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 16,
-                            "width": 16,
-                          },
-                        ]
+                    <View
+                      accessibilityLabel="Chevron Icon"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": undefined,
+                          "disabled": undefined,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
                       }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="16px"
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        {
+                          "display": "flex",
+                          "justifyContent": "center",
+                          "marginBottom": "auto",
+                          "marginLeft": "auto",
+                          "marginRight": "auto",
+                          "marginTop": "auto",
+                          "opacity": 1,
+                        }
+                      }
                     >
-                      <RNSVGGroup
+                      <RNSVGSvgView
+                        accessibilityElementsHidden={true}
+                        align="xMidYMid"
+                        bbHeight="16px"
+                        bbWidth="16px"
+                        data-blade-component="icon"
                         display="none"
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
-                          ]
-                        }
-                      >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
-                          propList={
-                            [
-                              "fill",
-                              "fillRule",
-                            ]
-                          }
-                        />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
-                    <RNSVGSvgView
-                      accessibilityElementsHidden={true}
-                      align="xMidYMid"
-                      bbHeight="16px"
-                      bbWidth="16px"
-                      data-blade-component="icon"
-                      display="flex"
-                      fill="none"
-                      focusable={false}
-                      height="16px"
-                      importantForAccessibility="no-hide-descendants"
-                      meetOrSlice={0}
-                      minX={0}
-                      minY={0}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "transparent",
-                            "borderWidth": 0,
-                          },
+                        fill="none"
+                        focusable={false}
+                        height="16px"
+                        importantForAccessibility="no-hide-descendants"
+                        meetOrSlice={0}
+                        minX={0}
+                        minY={0}
+                        style={
                           [
                             {
-                              "display": "flex",
+                              "backgroundColor": "transparent",
+                              "borderWidth": 0,
                             },
-                          ],
-                          {
-                            "flex": 0,
-                            "height": 16,
-                            "width": 16,
-                          },
-                        ]
-                      }
-                      vbHeight={24}
-                      vbWidth={24}
-                      width="16px"
-                    >
-                      <RNSVGGroup
-                        fill={null}
-                        propList={
-                          [
-                            "fill",
+                            [
+                              {
+                                "display": "none",
+                              },
+                            ],
+                            {
+                              "flex": 0,
+                              "height": 16,
+                              "width": 16,
+                            },
                           ]
                         }
+                        vbHeight={24}
+                        vbWidth={24}
+                        width="16px"
                       >
-                        <RNSVGPath
-                          clipRule={0}
-                          d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
-                          fill={4285959847}
-                          fillRule={0}
+                        <RNSVGGroup
+                          fill={null}
                           propList={
                             [
                               "fill",
-                              "fillRule",
                             ]
                           }
-                        />
-                      </RNSVGGroup>
-                    </RNSVGSvgView>
+                        >
+                          <RNSVGPath
+                            clipRule={0}
+                            d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z"
+                            fill={
+                              {
+                                "payload": 4285959847,
+                                "type": 0,
+                              }
+                            }
+                            fillRule={0}
+                            propList={
+                              [
+                                "fill",
+                                "fillRule",
+                              ]
+                            }
+                          />
+                        </RNSVGGroup>
+                      </RNSVGSvgView>
+                      <RNSVGSvgView
+                        accessibilityElementsHidden={true}
+                        align="xMidYMid"
+                        bbHeight="16px"
+                        bbWidth="16px"
+                        data-blade-component="icon"
+                        display="flex"
+                        fill="none"
+                        focusable={false}
+                        height="16px"
+                        importantForAccessibility="no-hide-descendants"
+                        meetOrSlice={0}
+                        minX={0}
+                        minY={0}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "transparent",
+                              "borderWidth": 0,
+                            },
+                            [
+                              {
+                                "display": "flex",
+                              },
+                            ],
+                            {
+                              "flex": 0,
+                              "height": 16,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                        vbHeight={24}
+                        vbWidth={24}
+                        width="16px"
+                      >
+                        <RNSVGGroup
+                          fill={null}
+                          propList={
+                            [
+                              "fill",
+                            ]
+                          }
+                        >
+                          <RNSVGPath
+                            clipRule={0}
+                            d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z"
+                            fill={
+                              {
+                                "payload": 4285959847,
+                                "type": 0,
+                              }
+                            }
+                            fillRule={0}
+                            propList={
+                              [
+                                "fill",
+                                "fillRule",
+                              ]
+                            }
+                          />
+                        </RNSVGGroup>
+                      </RNSVGSvgView>
+                    </View>
                   </View>
                 </View>
               </View>
-              <View
-                style={
-                  [
-                    {
-                      "backgroundColor": "hsla(227, 100%, 59%, 1)",
-                      "bottom": 0,
-                      "height": 1,
-                      "left": 0,
-                      "opacity": 1,
-                      "position": "absolute",
-                      "right": 0,
-                    },
-                    {
-                      "opacity": undefined,
-                      "width": "undefined%",
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
           <View
@@ -815,7 +829,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 getItemCount={[Function]}
                 isInBottomSheet={false}
                 keyExtractor={[Function]}
-                marginBottom="0px"
+                marginBottom={0}
                 onContentSizeChange={[Function]}
                 onLayout={[Function]}
                 onMomentumScrollBegin={[Function]}
@@ -829,7 +843,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                 style={
                   [
                     {
-                      "marginBottom": "0pxpx",
+                      "marginBottom": 0,
                       "maxHeight": 300,
                       "paddingBottom": 8,
                       "paddingLeft": 8,
@@ -1800,18 +1814,25 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   hoverBorderColor="hsla(227, 100%, 59%, 1)"
                   isFullWidth={false}
                   isLoading={false}
+                  isPressed={false}
                   minHeight="36px"
                   motionDuration="duration.xquick"
                   motionEasing="easing.standard.effective"
                   onBlur={[Function]}
                   onClick={[Function]}
                   onFocus={[Function]}
+                  onKeyUp={[Function]}
+                  onMouseDown={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseUp={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
                   onResponderRelease={[Function]}
                   onResponderTerminate={[Function]}
                   onResponderTerminationRequest={[Function]}
                   onStartShouldSetResponder={[Function]}
+                  onTouchEnd={[Function]}
+                  onTouchStart={[Function]}
                   role="button"
                   style={
                     [
@@ -1825,6 +1846,7 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                         "borderWidth": 0,
                         "cursor": "pointer",
                         "display": "flex",
+                        "flexDirection": "row",
                         "justifyContent": "center",
                         "minHeight": 36,
                         "overflow": "hidden",
@@ -1846,65 +1868,77 @@ exports[`<Dropdown /> with <AutoComplete /> should render AutoComplete 1`] = `
                   type="button"
                 >
                   <View
-                    alignItems="center"
-                    data-blade-component="base-box"
-                    display="flex"
-                    flexDirection="row"
-                    isHidden={false}
-                    justifyContent="center"
                     style={
-                      [
-                        {
-                          "alignItems": "center",
-                          "display": "flex",
-                          "flexBasis": 0,
-                          "flexDirection": "row",
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "justifyContent": "center",
-                          "zIndex": 1,
-                        },
-                        {
-                          "opacity": 1,
-                        },
-                      ]
+                      {
+                        "transform": [
+                          {
+                            "scale": 1,
+                          },
+                        ],
+                      }
                     }
-                    zIndex={1}
                   >
-                    <Text
-                      accessible={true}
-                      color="interactive.text.onPrimary.normal"
-                      data-blade-component="base-text"
-                      fontSize={100}
-                      fontWeight="medium"
-                      lineHeight={100}
+                    <View
+                      alignItems="center"
+                      data-blade-component="base-box"
+                      display="flex"
+                      flexDirection="row"
+                      isHidden={false}
+                      justifyContent="center"
                       style={
                         [
                           {
-                            "color": "hsla(0, 0%, 100%, 1)",
-                            "fontFamily": "Inter",
-                            "fontSize": 14,
-                            "fontStyle": "normal",
-                            "fontWeight": "500",
-                            "letterSpacing": 0,
-                            "lineHeight": 20,
-                            "marginBottom": 0,
-                            "marginLeft": 0,
-                            "marginRight": 0,
-                            "marginTop": 0,
-                            "paddingBottom": 0,
-                            "paddingLeft": 0,
-                            "paddingRight": 0,
-                            "paddingTop": 0,
-                            "textAlign": "center",
-                            "textDecorationLine": "none",
+                            "alignItems": "center",
+                            "display": "flex",
+                            "flexBasis": 0,
+                            "flexDirection": "row",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "zIndex": 1,
+                          },
+                          {
+                            "opacity": 1,
                           },
                         ]
                       }
-                      textAlign="center"
+                      zIndex={1}
                     >
-                      Apply
-                    </Text>
+                      <Text
+                        accessible={true}
+                        color="interactive.text.onPrimary.normal"
+                        data-blade-component="base-text"
+                        fontSize={100}
+                        fontWeight="medium"
+                        lineHeight={100}
+                        style={
+                          [
+                            {
+                              "color": "hsla(0, 0%, 100%, 1)",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontStyle": "normal",
+                              "fontWeight": "500",
+                              "letterSpacing": 0,
+                              "lineHeight": 20,
+                              "marginBottom": 0,
+                              "marginLeft": 0,
+                              "marginRight": 0,
+                              "marginTop": 0,
+                              "paddingBottom": 0,
+                              "paddingLeft": 0,
+                              "paddingRight": 0,
+                              "paddingTop": 0,
+                              "textAlign": "center",
+                              "textDecorationLine": "none",
+                            },
+                          ]
+                        }
+                        textAlign="center"
+                      >
+                        Apply
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>

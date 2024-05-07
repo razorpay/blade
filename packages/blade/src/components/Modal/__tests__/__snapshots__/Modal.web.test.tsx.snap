@@ -139,21 +139,40 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c23.c23.c23.c23.c23 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c24.c24.c24.c24.c24 {
   border-bottom-color: hsla(211,20%,52%,0.18);
   border-bottom-style: solid;
 }
 
-.c25.c25.c25.c25.c25 {
+.c26.c26.c26.c26.c26 {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 20px;
 }
 
-.c27.c27.c27.c27.c27 {
+.c28.c28.c28.c28.c28 {
   padding: 16px;
 }
 
-.c29.c29.c29.c29.c29 {
+.c31.c31.c31.c31.c31 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -185,7 +204,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   background-color: hsla(25,90%,48%,0.09);
 }
 
-.c24.c24.c24.c24.c24 {
+.c25.c25.c25.c25.c25 {
   border-width: 0;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -197,7 +216,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 .c9.c9.c9.c9.c9 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 1rem;
   font-weight: 600;
   font-style: normal;
@@ -210,11 +229,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   letter-spacing: 0px;
   margin: 0;
   padding: 0;
+  margin-top: 1px;
 }
 
 .c16.c16.c16.c16.c16 {
   color: hsla(150,100%,27%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -233,11 +253,12 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c17.c17.c17.c17.c17 {
   color: hsla(211,22%,56%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -252,9 +273,9 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c26.c26.c26.c26.c26 {
+.c27.c27.c27.c27.c27 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -269,9 +290,9 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   padding: 0;
 }
 
-.c31.c31.c31.c31.c31 {
+.c33.c33.c33.c33.c33 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -289,7 +310,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 
 .c21.c21.c21.c21.c21 {
   color: hsla(25,85%,42%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 500;
   font-style: normal;
@@ -307,6 +328,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .c22.c22.c22.c22.c22 {
@@ -409,7 +431,7 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   width: fit-content;
 }
 
-.c28.c28.c28.c28.c28 {
+.c29.c29.c29.c29.c29 {
   min-height: 36px;
   width: auto;
   cursor: pointer;
@@ -446,24 +468,24 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
   position: relative;
 }
 
-.c28.c28.c28.c28.c28:hover {
+.c29.c29.c29.c29.c29:hover {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c28.c28.c28.c28.c28:active {
+.c29.c29.c29.c29.c29:active {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
 }
 
-.c28.c28.c28.c28.c28:focus-visible {
+.c29.c29.c29.c29.c29:focus-visible {
   background-color: hsla(227,71%,51%,1);
   border-color: hsla(227,100%,59%,1);
   outline: 1px solid hsla(227,100%,59%,0.09);
   box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
 }
 
-.c28.c28.c28.c28.c28 * {
+.c29.c29.c29.c29.c29 * {
   -webkit-transition-property: color,fill,opacity;
   transition-property: color,fill,opacity;
   -webkit-transition-duration: 150ms;
@@ -473,6 +495,16 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 .c30.c30.c30.c30.c30 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c32.c32.c32.c32.c32 {
   opacity: 1;
 }
 
@@ -486,37 +518,37 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
 }
 
 @media screen and (min-width:320px) {
-  .c23.c23.c23.c23.c23 {
+  .c24.c24.c24.c24.c24 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c23.c23.c23.c23.c23 {
+  .c24.c24.c24.c24.c24 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c23.c23.c23.c23.c23 {
+  .c24.c24.c24.c24.c24 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c23.c23.c23.c23.c23 {
+  .c24.c24.c24.c24.c24 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c23.c23.c23.c23.c23 {
+  .c24.c24.c24.c24.c24 {
     border-bottom-style: solid;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c27.c27.c27.c27.c27 {
+  .c28.c28.c28.c28.c28 {
     padding: 20px;
   }
 }
@@ -671,19 +703,28 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
             </button>
           </div>
         </div>
+        <div
+          class="c23"
+          data-blade-component="base-box"
+        >
+          <div
+            class=""
+            data-blade-component="box"
+          />
+        </div>
       </div>
       <div
-        class="c23 c24"
+        class="c24 c25"
         data-blade-component="divider"
         role="separator"
       />
     </div>
     <div
-      class="c25"
+      class="c26"
       data-blade-component="modal-body"
     >
       <p
-        class="c26"
+        class="c27"
         data-blade-component="text"
       >
         Test Content
@@ -694,29 +735,34 @@ exports[`Modal renders a Modal with Header and Footer 1`] = `
       data-blade-component="box"
     >
       <div
-        class="c23 c24"
+        class="c24 c25"
         data-blade-component="divider"
         role="separator"
       />
       <div
-        class="c27"
+        class="c28"
         data-blade-component="modal-footer"
       >
         <button
-          class="c28"
+          class="c29"
           data-blade-component="button"
           role="button"
           type="button"
         >
           <div
-            class="c29 c30"
+            class=" c30"
             data-blade-component="base-box"
           >
             <div
-              class="c31"
-              data-blade-component="base-text"
+              class="c31 c32"
+              data-blade-component="base-box"
             >
-              Save
+              <div
+                class="c33"
+                data-blade-component="base-text"
+              >
+                Save
+              </div>
             </div>
           </div>
         </button>
@@ -759,7 +805,7 @@ exports[`Modal renders a basic Modal 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -865,7 +911,7 @@ exports[`Modal renders a basic Modal of large size 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
@@ -971,7 +1017,7 @@ exports[`Modal renders a basic Modal of medium size 1`] = `
 
 .c5.c5.c5.c5.c5 {
   color: hsla(212,39%,16%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;

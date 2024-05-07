@@ -10,6 +10,9 @@ import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Tag } from '~components/Tag';
+import { Text } from '~components/Typography';
+import { Box } from '~components/Box';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'Base Input Props',
@@ -65,6 +68,11 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     id: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    size: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -301,7 +309,10 @@ BaseInputSuccess.args = {
   successText: 'Name validated',
 };
 
-const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({ maxCharacters }) => {
+const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({
+  maxCharacters,
+  size,
+}) => {
   return (
     <BaseInput
       id="base-input"
@@ -309,11 +320,17 @@ const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({ ma
       defaultValue="John Ives"
       name="fullName"
       maxCharacters={maxCharacters}
+      size={size}
       trailingFooterSlot={(value) => (
-        <BaseBox marginTop="spacing.2">
-          <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters ?? 0} />
+        <BaseBox marginTop={size === 'medium' ? 'spacing.2' : 'spacing.3'}>
+          <CharacterCounter
+            size={size}
+            currentCount={value?.length ?? 0}
+            maxCount={maxCharacters ?? 0}
+          />
         </BaseBox>
       )}
+      helpText="Help Text"
       onChange={({ name, value }): void => console.log({ name, value })}
     />
   );
@@ -361,7 +378,7 @@ const BaseInputControlledWithTagsTemplate: StoryFn<typeof BaseInputComponent> = 
     return currentTags.map((currentTag, tagIndex) => {
       return (
         <Tag
-          _isVirtuallyFocussed={tagIndex === activeTagIndex}
+          _isVirtuallyFocused={tagIndex === activeTagIndex}
           _isTagInsideInput={true}
           key={tagIndex}
           marginRight="spacing.3"
@@ -380,10 +397,14 @@ const BaseInputControlledWithTagsTemplate: StoryFn<typeof BaseInputComponent> = 
     <BaseInput
       id="base-input"
       label="First Name"
+      as="textarea"
+      maxTagRows="multiple"
       value={inputValue}
       autoCompleteSuggestionType="none"
       tags={getTags()}
       activeTagIndex={activeTagIndex}
+      showAllTags={true}
+      isDropdownTrigger={true}
       setActiveTagIndex={setActiveTagIndex}
       name="fullName"
       onChange={({ name, value }): void => {
@@ -406,3 +427,39 @@ const BaseInputControlledWithTagsTemplate: StoryFn<typeof BaseInputComponent> = 
 };
 
 export const BaseInputControlledWithTags = BaseInputControlledWithTagsTemplate.bind({});
+
+const BaseInputSizesTemplate: StoryFn<typeof BaseInputComponent> = ({
+  leadingIcon,
+  trailingIcon,
+  ...args
+}) => {
+  const LeadingIcon = iconMap[(leadingIcon as unknown) as string];
+  const TrailingIcon = iconMap[(trailingIcon as unknown) as string];
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <Text size="large" marginBottom="spacing.1">
+        Medium Size:
+      </Text>
+      <BaseInputComponent
+        {...args}
+        leadingIcon={LeadingIcon}
+        trailingIcon={TrailingIcon}
+        size="medium"
+        trailingButton={<Link onClick={() => console.log('Clicked Apply')}>Apply</Link>}
+      />
+      <Text size="large" marginBottom="spacing.1">
+        Large Size:
+      </Text>
+      <BaseInputComponent
+        {...args}
+        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        size="large"
+        trailingButton={<Link onClick={() => console.log('Clicked Apply')}>Apply</Link>}
+      />
+    </Box>
+  );
+};
+
+export const BaseInputSizes = BaseInputSizesTemplate.bind({});

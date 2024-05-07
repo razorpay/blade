@@ -11,7 +11,7 @@ exports[`<Tooltip /> should not override trigger's aria-label attribute 1`] = `
 `;
 
 exports[`<Tooltip /> should render 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -33,12 +33,12 @@ exports[`<Tooltip /> should render 1`] = `
   z-index: 1;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   z-index: 1100;
   pointer-events: none;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   position: relative;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -47,7 +47,7 @@ exports[`<Tooltip /> should render 1`] = `
   max-width: 200px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(211,29%,26%,1);
   border-width: 1px;
   border-radius: 4px;
@@ -60,9 +60,9 @@ exports[`<Tooltip /> should render 1`] = `
   transform: translateY(4px);
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -78,9 +78,9 @@ exports[`<Tooltip /> should render 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(0,0%,100%,0.88);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -159,36 +159,46 @@ exports[`<Tooltip /> should render 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
 @media screen and (min-width:320px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
@@ -203,14 +213,19 @@ exports[`<Tooltip /> should render 1`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <div
-          class="c3"
-          data-blade-component="base-text"
+          class="c2 c3"
+          data-blade-component="base-box"
         >
-          Hover me
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            Hover me
+          </div>
         </div>
       </div>
     </button>
@@ -220,7 +235,7 @@ exports[`<Tooltip /> should render 1`] = `
     id=":r2:"
   >
     <div
-      class="c4"
+      class="c5"
       data-blade-component="tooltip"
       id=":r0:"
       pointer-events="none"
@@ -229,11 +244,11 @@ exports[`<Tooltip /> should render 1`] = `
       tabindex="-1"
     >
       <div
-        class="c5 c6"
+        class="c6 c7"
         data-blade-component="base-box"
       >
         <p
-          class="c7"
+          class="c8"
           data-blade-component="text"
         >
           Hello world
@@ -275,7 +290,7 @@ exports[`<Tooltip /> should render 1`] = `
 `;
 
 exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -297,12 +312,12 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   z-index: 1;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   z-index: 9999;
   pointer-events: none;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   position: relative;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -311,7 +326,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   max-width: 200px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(211,29%,26%,1);
   border-width: 1px;
   border-radius: 4px;
@@ -324,9 +339,9 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   transform: translateY(4px);
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -342,9 +357,9 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(0,0%,100%,0.88);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -423,36 +438,46 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
 @media screen and (min-width:320px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
@@ -467,14 +492,19 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <div
-          class="c3"
-          data-blade-component="base-text"
+          class="c2 c3"
+          data-blade-component="base-box"
         >
-          Hover me
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            Hover me
+          </div>
         </div>
       </div>
     </button>
@@ -484,7 +514,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
     id=":ra:"
   >
     <div
-      class="c4"
+      class="c5"
       data-blade-component="tooltip"
       id=":r8:"
       pointer-events="none"
@@ -493,11 +523,11 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
       tabindex="-1"
     >
       <div
-        class="c5 c6"
+        class="c6 c7"
         data-blade-component="base-box"
       >
         <p
-          class="c7"
+          class="c8"
           data-blade-component="text"
         >
           Hello world
@@ -539,7 +569,7 @@ exports[`<Tooltip /> should render tooltip with custom zIndex 1`] = `
 `;
 
 exports[`<Tooltip /> should render with title 1`] = `
-.c1.c1.c1.c1.c1 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -561,12 +591,12 @@ exports[`<Tooltip /> should render with title 1`] = `
   z-index: 1;
 }
 
-.c4.c4.c4.c4.c4 {
+.c5.c5.c5.c5.c5 {
   z-index: 1100;
   pointer-events: none;
 }
 
-.c5.c5.c5.c5.c5 {
+.c6.c6.c6.c6.c6 {
   position: relative;
   padding-top: 8px;
   padding-bottom: 8px;
@@ -575,7 +605,7 @@ exports[`<Tooltip /> should render with title 1`] = `
   max-width: 200px;
 }
 
-.c6.c6.c6.c6.c6 {
+.c7.c7.c7.c7.c7 {
   background-color: hsla(211,29%,26%,1);
   border-width: 1px;
   border-radius: 4px;
@@ -588,9 +618,9 @@ exports[`<Tooltip /> should render with title 1`] = `
   transform: translateY(4px);
 }
 
-.c3.c3.c3.c3.c3 {
+.c4.c4.c4.c4.c4 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 500;
   font-style: normal;
@@ -606,9 +636,9 @@ exports[`<Tooltip /> should render with title 1`] = `
   padding: 0;
 }
 
-.c7.c7.c7.c7.c7 {
+.c8.c8.c8.c8.c8 {
   color: hsla(0,0%,100%,1);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 600;
   font-style: normal;
@@ -623,9 +653,9 @@ exports[`<Tooltip /> should render with title 1`] = `
   padding: 0;
 }
 
-.c8.c8.c8.c8.c8 {
+.c9.c9.c9.c9.c9 {
   color: hsla(0,0%,100%,0.88);
-  font-family: "Inter",-apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
@@ -704,36 +734,46 @@ exports[`<Tooltip /> should render with title 1`] = `
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
-.c2.c2.c2.c2.c2 {
+.c1.c1.c1.c1.c1 {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
+  transition-duration: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-timing-function: 150px;
+  transition-timing-function: 150px;
+}
+
+.c3.c3.c3.c3.c3 {
   opacity: 1;
 }
 
 @media screen and (min-width:320px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:480px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:768px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1024px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
 
 @media screen and (min-width:1200px) {
-  .c4.c4.c4.c4.c4 {
+  .c5.c5.c5.c5.c5 {
     pointer-events: none;
   }
 }
@@ -748,14 +788,19 @@ exports[`<Tooltip /> should render with title 1`] = `
       type="button"
     >
       <div
-        class="c1 c2"
+        class=" c1"
         data-blade-component="base-box"
       >
         <div
-          class="c3"
-          data-blade-component="base-text"
+          class="c2 c3"
+          data-blade-component="base-box"
         >
-          Hover me
+          <div
+            class="c4"
+            data-blade-component="base-text"
+          >
+            Hover me
+          </div>
         </div>
       </div>
     </button>
@@ -765,7 +810,7 @@ exports[`<Tooltip /> should render with title 1`] = `
     id=":r6:"
   >
     <div
-      class="c4"
+      class="c5"
       data-blade-component="tooltip"
       id=":r4:"
       pointer-events="none"
@@ -774,17 +819,17 @@ exports[`<Tooltip /> should render with title 1`] = `
       tabindex="-1"
     >
       <div
-        class="c5 c6"
+        class="c6 c7"
         data-blade-component="base-box"
       >
         <p
-          class="c7"
+          class="c8"
           data-blade-component="text"
         >
           Tooltip title
         </p>
         <p
-          class="c8"
+          class="c9"
           data-blade-component="text"
         >
           Hello world

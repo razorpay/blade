@@ -6,7 +6,17 @@ import { useId } from '~utils/useId';
 
 type UseChipGroupProps = Pick<
   ChipGroupProps,
-  'isDisabled' | 'name' | 'value' | 'defaultValue' | 'onChange' | 'size' | 'color' | 'selectionType'
+  | 'isDisabled'
+  | 'isRequired'
+  | 'necessityIndicator'
+  | 'validationState'
+  | 'name'
+  | 'value'
+  | 'defaultValue'
+  | 'onChange'
+  | 'size'
+  | 'color'
+  | 'selectionType'
 >;
 type UseChipGroupReturn = {
   state: State;
@@ -18,15 +28,17 @@ const useChipGroup = ({
   value,
   defaultValue,
   isDisabled,
+  isRequired,
   onChange,
   name,
   size,
   color,
   selectionType,
+  necessityIndicator,
+  validationState,
 }: UseChipGroupProps): UseChipGroupReturn => {
   const idBase = useId('chip-group');
   const labelId = `${idBase}-label`;
-
   const fallbackName = name ?? idBase;
   const [checkedValues, setValues] = useControllableState({
     value: (value && selectionType === 'single' ? [value] : value) as string[] | undefined,
@@ -79,13 +91,26 @@ const useChipGroup = ({
   const contextValue = React.useMemo<ChipGroupContextType>(() => {
     return {
       isDisabled,
+      isRequired,
+      necessityIndicator,
+      validationState,
       name,
       state,
       size,
       color,
       selectionType,
     };
-  }, [isDisabled, name, state, size, color, selectionType]);
+  }, [
+    isDisabled,
+    isRequired,
+    necessityIndicator,
+    validationState,
+    name,
+    state,
+    size,
+    color,
+    selectionType,
+  ]);
 
   return { state, contextValue, ids: { labelId } };
 };
