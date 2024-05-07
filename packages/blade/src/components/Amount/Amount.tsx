@@ -124,7 +124,7 @@ const AmountValue = ({
           fontFamily={numberFontFamily}
           color={amountValueColor}
           as={isReactNative ? undefined : 'span'}
-          opacity={isAffixSubtle ? opacity[8] : 1}
+          opacity={isAffixSubtle ? opacity[800] : 1}
         >
           {amount.decimal}
           {amount.fraction}
@@ -316,7 +316,7 @@ const _Amount = ({
             fontSize={currencyFontSize}
             color={amountValueColor}
             as={isReactNative ? undefined : 'span'}
-            opacity={isAffixSubtle ? opacity[8] : 1}
+            opacity={isAffixSubtle ? opacity[800] : 1}
           >
             {currencySymbolOrCode}
           </BaseText>
@@ -338,7 +338,7 @@ const _Amount = ({
             fontSize={currencyFontSize}
             color={amountValueColor}
             as={isReactNative ? undefined : 'span'}
-            opacity={isAffixSubtle ? opacity[8] : 1}
+            opacity={isAffixSubtle ? opacity[800] : 1}
           >
             {currencySymbolOrCode}
           </BaseText>

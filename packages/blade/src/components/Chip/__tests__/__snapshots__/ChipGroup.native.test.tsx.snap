@@ -350,7 +350,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -374,7 +374,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -391,7 +391,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -556,7 +556,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -580,7 +580,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -597,7 +597,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -762,7 +762,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -786,7 +786,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -803,7 +803,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -1224,7 +1224,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -1248,7 +1248,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -1265,7 +1265,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -1431,7 +1431,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -1455,7 +1455,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -1472,7 +1472,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -1638,7 +1638,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -1662,7 +1662,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -1679,7 +1679,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",

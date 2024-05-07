@@ -481,7 +481,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly 1`] = `
                   [
                     {},
                     {
-                      "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
+                      "backgroundColor": "hsla(211, 20%, 52%, 0.06)",
                       "borderRadius": 16,
                       "content": "''",
                       "height": 4,
@@ -1571,7 +1571,7 @@ exports[`<BottomSheet /> should render empty header 1`] = `
                   [
                     {},
                     {
-                      "backgroundColor": "hsla(211, 20%, 52%, 0.12)",
+                      "backgroundColor": "hsla(211, 20%, 52%, 0.06)",
                       "borderRadius": 16,
                       "content": "''",
                       "height": 4,

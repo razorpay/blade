@@ -75,7 +75,7 @@ exports[`<Chip /> should render chip 1`] = `
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
-  background-color: hsla(0,0%,100%,0);
+  background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-width: 0.5px;
   border-color: hsla(211,20%,52%,0.18);
@@ -83,7 +83,7 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  background-color: hsla(0,0%,100%,1);
+  background-color: transparent;
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
   border-width: 1px;
@@ -129,7 +129,7 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c12.c12.c12.c12.c12:hover {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
@@ -191,8 +191,8 @@ exports[`<Chip /> should render chip 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover + div {
-  border-color: hsla(211,27%,76%,1);
-  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -517,7 +517,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
-  background-color: hsla(0,0%,100%,0);
+  background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-width: 0.5px;
   border-color: hsla(211,20%,52%,0.18);
@@ -533,7 +533,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c10.c10.c10.c10.c10 {
-  background-color: hsla(0,0%,100%,1);
+  background-color: transparent;
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
   border-width: 1px;
@@ -579,7 +579,7 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c12.c12.c12.c12.c12:hover {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
@@ -641,8 +641,8 @@ exports[`<Chip /> should render chip with icon 1`] = `
 }
 
 .c8.c8.c8.c8.c8:hover + div {
-  border-color: hsla(211,27%,76%,1);
-  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
@@ -1063,7 +1063,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
   padding-right: 12px;
   padding-left: 12px;
   height: 28px;
-  background-color: hsla(0,0%,100%,0);
+  background-color: hsla(0,0%,100%,1);
   border-radius: 9999px;
   border-width: 0.5px;
   border-color: hsla(211,20%,52%,0.18);
@@ -1109,7 +1109,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c16.c16.c16.c16.c16 {
-  background-color: hsla(0,0%,100%,1);
+  background-color: transparent;
   border-radius: 9999px;
   border-color: hsla(211,20%,52%,0.18);
   border-width: 1px;
@@ -1163,7 +1163,7 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c18.c18.c18.c18.c18:hover {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 150ms;
@@ -1253,8 +1253,8 @@ exports[`<Chip /> should set disabled state with isDisabled 1`] = `
 }
 
 .c14.c14.c14.c14.c14:hover + div {
-  border-color: hsla(211,27%,76%,1);
-  background-color: hsla(0,0%,100%,1);
+  border-color: hsla(211,20%,52%,0.18);
+  background-color: hsla(0,0%,100%,0);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-duration: 70ms;
