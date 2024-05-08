@@ -301,10 +301,9 @@ import { NavLink } from 'react-router-dom';
 
 Nested SideNavLevel components create new levels. This can be used to create L1 - L2 - L3 levels in your navbar
 
-| **Props** | **Description**                                       | **Type** | **Default Value** |
-| --------- | ----------------------------------------------------- | -------- | ----------------- |
-| title     | Only applicable in L2. Becomes the title of the Level | string   |                   |
-| children  | children slot. Accepts SideNavLink as children        | JSX      |                   |
+| **Props** | **Description**                                | **Type** | **Default Value** |
+| --------- | ---------------------------------------------- | -------- | ----------------- |
+| children  | children slot. Accepts SideNavLink as children | JSX      |                   |
 
 <table>
 <tr>
@@ -317,7 +316,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
   <SideNavLink title="L2 Trigger">
     {/* L2 Level */}
-    <SideNavLevel title="L2 Menu Heading">
+    <SideNavLevel>
       <SideNavLink />
       <SideNavLink />
       <SideNavLink title="L3 Trigger">
