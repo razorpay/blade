@@ -334,11 +334,12 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
 ### SideNavSection
 
-| **Props**       | **Description**                                              | **Type** | **Default Value** |
-| --------------- | ------------------------------------------------------------ | -------- | ----------------- |
-| title           | title of the section                                         | string   |                   |
-| maxVisibleItems | Number of items visible (rest go inside +x more collapsible) | number   | undefined         |
-| children        | Children slot. For SideNavLink children items                | JSX      |                   |
+| **Props**              | **Description**                                              | **Type**                      | **Default Value** |
+| ---------------------- | ------------------------------------------------------------ | ----------------------------- | ----------------- |
+| title                  | title of the section                                         | string                        |                   |
+| maxVisibleItems        | Number of items visible (rest go inside +x more collapsible) | number                        | undefined         |
+| onToggleCollapsedItems | Callback when collapsed items are expanded or collapsed back | (isExpanded: boolean) => void | undefined         |
+| children               | Children slot. For SideNavLink children items                | JSX                           |                   |
 
 <table>
 <tr>
@@ -350,6 +351,9 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
   <SideNavSection 
     title="OFFERINGS SECTION" 
     maxVisibleItems={3}
+    onToggleCollapsedItems={() => {
+      console.log("When +13 More is clicked")
+    }}
   >
     {/* All SideNavLink items */}
   </SideNavSection>
