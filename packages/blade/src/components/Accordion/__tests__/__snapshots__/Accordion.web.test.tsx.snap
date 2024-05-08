@@ -252,7 +252,7 @@ exports[`<Accordion /> should render 1`] = `
 
 .c3.c3.c3.c3.c3:hover,
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   color: hsla(211,26%,34%,1);
 }
 
@@ -1039,7 +1039,7 @@ exports[`Deprecated <Accordion /> should render 1`] = `
 
 .c3.c3.c3.c3.c3:hover,
 .c3.c3.c3.c3.c3:focus-visible {
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   color: hsla(211,26%,34%,1);
 }
 

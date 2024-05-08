@@ -1,5 +1,21 @@
 # @razorpay/blade
 
+## 11.16.0
+
+### Minor Changes
+
+- afddbf27: feat: add label & validation related props to ChipGroup
+
+### Patch Changes
+
+- ef0fb059: feat(tokens): update dark mode tokens
+
+## 11.15.2
+
+### Patch Changes
+
+- 102dc873: fix: i18nify-react version upgraded to resolve duplicate i18nify-js copies
+
 ## 11.15.1
 
 ### Patch Changes

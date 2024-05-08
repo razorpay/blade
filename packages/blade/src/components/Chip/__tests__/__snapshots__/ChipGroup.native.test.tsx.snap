@@ -17,7 +17,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
     }
   >
     <View
-      accessibilityLabelledBy="chip-group-141-label"
+      accessibilityLabelledBy="chip-group-167-label"
       accessible={true}
       data-blade-component="chip-group"
       display="flex"
@@ -31,6 +31,137 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
         ]
       }
     >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          gap="spacing.0"
+          maxHeight="36px"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="semibold"
+            lineHeight={75}
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Select fruits
+          </Text>
+          <View
+            data-blade-component="visually-hidden"
+            style={
+              [
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
       <View
         data-blade-component="base-box"
         style={
@@ -99,9 +230,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                 },
               ]
             }
-          >
-            Select fruits
-          </Text>
+          />
         </View>
         <View
           data-blade-component="base-box"
@@ -221,7 +350,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -245,7 +374,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -262,7 +391,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -427,7 +556,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -451,7 +580,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -468,7 +597,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -633,7 +762,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -657,7 +786,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -674,7 +803,7 @@ exports[`<ChipGroup /> selectionType="multiple" should render with selectionType
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -779,6 +908,137 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
         data-blade-component="base-box"
         style={
           [
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          gap="spacing.0"
+          maxHeight="36px"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="semibold"
+            lineHeight={75}
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Select fruits
+          </Text>
+          <View
+            data-blade-component="visually-hidden"
+            style={
+              [
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        data-blade-component="base-box"
+        style={
+          [
             {},
           ]
         }
@@ -843,9 +1103,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                 },
               ]
             }
-          >
-            Select fruits
-          </Text>
+          />
         </View>
         <View
           data-blade-component="base-box"
@@ -966,7 +1224,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -990,7 +1248,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -1007,7 +1265,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -1173,7 +1431,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -1197,7 +1455,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -1214,7 +1472,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",
@@ -1380,7 +1638,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           {
                             "alignItems": "center",
                             "alignSelf": "center",
-                            "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                            "backgroundColor": "transparent",
                             "borderColor": "hsla(211, 20%, 52%, 0.18)",
                             "borderRadius": 9999,
                             "borderWidth": 1,
@@ -1404,7 +1662,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                     >
                       <View
                         alignItems="center"
-                        backgroundColor="transparent"
+                        backgroundColor="surface.background.gray.intense"
                         borderColor="interactive.border.gray.faded"
                         borderRadius="max"
                         borderWidth="thinner"
@@ -1421,7 +1679,7 @@ exports[`<ChipGroup /> selectionType="single" should render with selectionType="
                           [
                             {
                               "alignItems": "center",
-                              "backgroundColor": "hsla(0, 0%, 100%, 0)",
+                              "backgroundColor": "hsla(0, 0%, 100%, 1)",
                               "borderColor": "hsla(211, 20%, 52%, 0.18)",
                               "borderRadius": 9999,
                               "borderStyle": "solid",

@@ -315,7 +315,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   border-radius: 16px;
 }
 
@@ -357,7 +357,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
   min-height: 36px;
   width: auto;
   cursor: pointer;
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
   border-color: hsla(211,27%,76%,1);
   border-width: 0px;
   border-radius: 4px;
@@ -451,7 +451,7 @@ exports[`<BottomSheet /> should compose with DropdownButton 1`] = `
 }
 
 .c18.c18.c18.c18.c18:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
 }
 
 .c18.c18.c18.c18.c18[aria-selected=true] {
@@ -1186,7 +1186,7 @@ exports[`<BottomSheet /> should render Header/Footer/Body properly on opened sta
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   border-radius: 16px;
 }
 
@@ -1801,7 +1801,7 @@ exports[`<BottomSheet /> should render empty header with padding 0 1`] = `
   content: '';
   width: 56px;
   height: 4px;
-  background-color: hsla(211,20%,52%,0.12);
+  background-color: hsla(211,20%,52%,0.06);
   border-radius: 16px;
 }
 
