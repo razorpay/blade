@@ -81,7 +81,7 @@ module.exports = (plop) => {
       actions.push({
         type: 'add',
         path: './src/components/Icons/iconMap.ts',
-        templateFile: 'plop/icon/iconMap.ts.hbs',
+        templateFile: 'plop/iconMap.ts.hbs',
         data: {
           iconMap: map,
           iconImports: imports,
@@ -92,7 +92,7 @@ module.exports = (plop) => {
       actions.push({
         type: 'add',
         path: './src/components/Icons/index.ts',
-        templateFile: 'plop/icon/iconReexports.ts.hbs',
+        templateFile: 'plop/iconReexports.ts.hbs',
         data: {
           iconReexports: reexports,
         },
