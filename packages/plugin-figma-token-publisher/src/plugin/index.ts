@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import getIcons from './getIcons';
 import makeColorTokens from './makeColorTokens';
