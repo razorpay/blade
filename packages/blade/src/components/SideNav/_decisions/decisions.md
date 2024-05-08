@@ -475,7 +475,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
 ### Design
 
-None
+- Should L2 trigger also change the route?
 
 ### Product
 
