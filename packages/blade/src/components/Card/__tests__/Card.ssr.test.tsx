@@ -13,7 +13,7 @@ import {
   CardHeaderCounter,
   CardHeaderBadge,
 } from '../';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { InfoIcon } from '~components/Icons';
 import { Text } from '~components/Typography';
 
@@ -27,7 +27,7 @@ describe('<Card />', () => {
     const footerTitle = 'Card Footer';
     const footerSubtitle = 'Card footer subtitle';
     const { getByText, container } = renderWithSSR(
-      <Card surfaceLevel={2}>
+      <Card>
         <CardHeader>
           <CardHeaderLeading
             title={cardTitle}
@@ -62,6 +62,30 @@ describe('<Card />', () => {
     expect(getByText(cardSubtitle)).toBeInTheDocument();
     expect(getByText(footerTitle)).toBeInTheDocument();
     expect(getByText(footerSubtitle)).toBeInTheDocument();
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render a Interactive Card with onClick', () => {
+    const { container } = renderWithSSR(
+      <Card onClick={() => console.log('hello world')}>
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+      </Card>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render a Interactive Card with href', () => {
+    const { container } = renderWithSSR(
+      <Card href="https://google.com">
+        <CardBody>
+          <Text>Plain Card</Text>
+        </CardBody>
+      </Card>,
+    );
+
     expect(container).toMatchSnapshot();
   });
 });

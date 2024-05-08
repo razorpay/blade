@@ -1,35 +1,36 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
-import type { BadgeProps } from '../Badge';
-import { Badge } from '../Badge';
-import type { LinkProps } from '../Link';
-import { Link } from '../Link';
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button';
-import { Divider } from './Divider';
-import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import { useVerifyInsideCard } from './CardContext';
 import { ComponentIds } from './Card';
+import type { CardSpacingValueType } from './types';
+import type { BadgeProps } from '~components/Badge';
+import { Badge } from '~components/Badge';
+import type { LinkProps } from '~components/Link';
+import { Link } from '~components/Link';
+import type { ButtonProps } from '~components/Button';
+import { Button } from '~components/Button';
+import { Counter } from '~components/Counter';
+import type { CounterProps } from '~components/Counter';
+import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import type { TextProps, TextVariant } from '~components/Typography';
-import { Heading, Text } from '~components/Typography';
+import { Text } from '~components/Typography';
 import type { IconComponent } from '~components/Icons';
-import type { CounterProps } from '~components/Counter';
-import { Counter } from '~components/Counter';
 import { minHeight } from '~components/Button/BaseButton/buttonTokens';
-import {
-  metaAttribute,
-  MetaConstants,
-  getComponentId,
-  isValidAllowedChildren,
-  makeSpace,
-} from '~utils';
-import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSpace } from '~utils/makeSpace';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
+import type { AmountProps } from '~components/Amount';
+import { Amount } from '~components/Amount';
 
 const _CardHeaderIcon = ({ icon: Icon }: { icon: IconComponent }): React.ReactElement => {
   useVerifyInsideCard('CardHeaderIcon');
 
-  return <Icon color="surface.text.normal.lowContrast" size="xlarge" />;
+  return <Icon color="surface.icon.gray.normal" size="large" />;
 };
 const CardHeaderIcon = assignWithoutSideEffects(_CardHeaderIcon, {
   componentId: ComponentIds.CardHeaderIcon,
@@ -53,10 +54,20 @@ const CardHeaderBadge = assignWithoutSideEffects(_CardHeaderBadge, {
   componentId: ComponentIds.CardHeaderBadge,
 });
 
+const _CardHeaderAmount = (props: AmountProps): React.ReactElement => {
+  useVerifyInsideCard('CardHeaderAmount');
+
+  return <Amount {...props} />;
+};
+
+const CardHeaderAmount = assignWithoutSideEffects(_CardHeaderAmount, {
+  componentId: ComponentIds.CardHeaderAmount,
+});
+
 const _CardHeaderText = (props: TextProps<{ variant: TextVariant }>): React.ReactElement => {
   useVerifyInsideCard('CardHeaderText');
 
-  return <Text {...props} />;
+  return <Text textAlign="left" {...props} />;
 };
 const CardHeaderText = assignWithoutSideEffects(_CardHeaderText, {
   componentId: ComponentIds.CardHeaderText,
@@ -93,29 +104,48 @@ const CardHeaderIconButton = assignWithoutSideEffects(_CardHeaderIconButton, {
 
 type CardHeaderProps = {
   children?: React.ReactNode;
+  /**
+   * For spacing between divider and header title
+   */
+  paddingBottom?: CardSpacingValueType;
+  /**
+   * For spacing between body content and divider
+   */
+  marginBottom?: CardSpacingValueType;
+  /**
+   * @default true
+   */
+  showDivider?: boolean;
 } & TestID;
 
-const _CardHeader = ({ children, testID }: CardHeaderProps): React.ReactElement => {
+const _CardHeader = ({
+  children,
+  testID,
+  marginBottom = 'spacing.4',
+  paddingBottom = 'spacing.4',
+  showDivider = true,
+}: CardHeaderProps): React.ReactElement => {
   useVerifyInsideCard('CardHeader');
-  useVerifyAllowedComponents(children, 'CardHeader', [
-    ComponentIds.CardHeaderLeading,
-    ComponentIds.CardHeaderTrailing,
-  ]);
+  useVerifyAllowedChildren({
+    children,
+    componentName: 'CardHeader',
+    allowedComponents: [ComponentIds.CardHeaderLeading, ComponentIds.CardHeaderTrailing],
+  });
 
   return (
     <BaseBox
-      marginBottom="spacing.7"
+      marginBottom={marginBottom}
       {...metaAttribute({ name: MetaConstants.CardHeader, testID })}
     >
       <BaseBox
-        marginBottom="spacing.7"
+        paddingBottom={paddingBottom}
         display="flex"
         flexDirection="row"
         justifyContent="space-between"
       >
         {children}
       </BaseBox>
-      <Divider />
+      {showDivider ? <Divider /> : null}
     </BaseBox>
   );
 };
@@ -145,16 +175,20 @@ const _CardHeaderLeading = ({
 }: CardHeaderLeadingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderLeading');
 
-  if (prefix && !isValidAllowedChildren(prefix, ComponentIds.CardHeaderIcon)) {
-    throw new Error(
-      `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderIcon}\` component is accepted in prefix`,
-    );
-  }
+  if (__DEV__) {
+    if (prefix && !isValidAllowedChildren(prefix, ComponentIds.CardHeaderIcon)) {
+      throwBladeError({
+        message: `Only \`${ComponentIds.CardHeaderIcon}\` component is accepted in prefix`,
+        moduleName: 'CardHeaderLeading',
+      });
+    }
 
-  if (suffix && !isValidAllowedChildren(suffix, ComponentIds.CardHeaderCounter)) {
-    throw new Error(
-      `[Blade CardHeaderLeading]: Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
-    );
+    if (suffix && !isValidAllowedChildren(suffix, ComponentIds.CardHeaderCounter)) {
+      throwBladeError({
+        message: `Only \`${ComponentIds.CardHeaderCounter}\` component is accepted in prefix`,
+        moduleName: 'CardHeaderLeading',
+      });
+    }
   }
 
   return (
@@ -162,15 +196,15 @@ const _CardHeaderLeading = ({
       <BaseBox marginRight="spacing.3" alignSelf="center" display="flex">
         {prefix}
       </BaseBox>
-      <BaseBox>
+      <BaseBox marginRight="spacing.5">
         <BaseBox display="flex" flexDirection="row" alignItems="center" flexWrap="wrap">
-          <Heading size="small" variant="regular" type="normal">
+          <Text color="surface.text.gray.normal" size="large" weight="semibold">
             {title}
-          </Heading>
+          </Text>
           <BaseBox marginLeft="spacing.3">{suffix}</BaseBox>
         </BaseBox>
         {subtitle && (
-          <Text variant="body" size="small" weight="regular">
+          <Text color="surface.text.gray.subtle" textAlign="left" size="small">
             {subtitle}
           </Text>
         )}
@@ -196,17 +230,21 @@ const headerTrailingAllowedComponents = [
   ComponentIds.CardHeaderText,
   ComponentIds.CardHeaderIconButton,
   ComponentIds.CardHeaderBadge,
+  ComponentIds.CardHeaderAmount,
 ];
 
 const _CardHeaderTrailing = ({ visual }: CardHeaderTrailingProps): React.ReactElement => {
   useVerifyInsideCard('CardHeaderTrailing');
 
-  if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
-    throw new Error(
-      `[Blade CardHeaderTrailing]: Only one of \`${headerTrailingAllowedComponents.join(
-        ', ',
-      )}\` component is accepted in visual`,
-    );
+  if (__DEV__) {
+    if (visual && !headerTrailingAllowedComponents.includes(getComponentId(visual)!)) {
+      throwBladeError({
+        message: `Only one of \`${headerTrailingAllowedComponents.join(
+          ', ',
+        )}\` component is accepted in visual`,
+        moduleName: 'CardHeaderTrailing',
+      });
+    }
   }
 
   return <BaseBox alignSelf="center">{visual}</BaseBox>;
@@ -224,5 +262,6 @@ export {
   CardHeaderCounter,
   CardHeaderText,
   CardHeaderLink,
+  CardHeaderAmount,
   CardHeaderIconButton,
 };

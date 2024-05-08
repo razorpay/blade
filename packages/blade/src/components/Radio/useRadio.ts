@@ -2,9 +2,11 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from 'react';
 import type { GestureResponderEvent } from 'react-native';
-import { useControllableState } from '~src/hooks/useControllable';
-import { useId } from '~src/hooks/useId';
-import { getPlatformType, makeAccessible } from '~src/utils';
+import { useControllableState } from '~utils/useControllable';
+import { useId } from '~utils/useId';
+import { getPlatformType } from '~src/utils';
+import { makeAccessible } from '~utils/makeAccessible';
+import { throwBladeError } from '~utils/logger';
 
 export type OnChange = ({
   isChecked,
@@ -73,10 +75,13 @@ const useRadio = ({
   const inputRef = React.useRef<HTMLInputElement>(null);
 
   const isReactNative = getPlatformType() === 'react-native';
-  if (isChecked && defaultChecked) {
-    throw new Error(
-      `[Blade: Radio]: Do not provide both 'isChecked' and 'defaultChecked' to useRadio. Consider if you want this component to be controlled or uncontrolled.`,
-    );
+  if (__DEV__) {
+    if (isChecked && defaultChecked) {
+      throwBladeError({
+        message: `Do not provide both 'isChecked' and 'defaultChecked' to useRadio. Consider if you want this component to be controlled or uncontrolled.`,
+        moduleName: 'Radio',
+      });
+    }
   }
 
   const [radioState, setRadioState] = useControllableState({

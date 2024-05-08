@@ -1,10 +1,10 @@
 import SunIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SunIcon />', () => {
   it('should render SunIcon', () => {
     const { container } = renderWithTheme(
-      <SunIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <SunIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

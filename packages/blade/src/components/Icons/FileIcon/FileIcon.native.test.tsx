@@ -1,10 +1,10 @@
 import FileIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<FileIcon />', () => {
   it('should render FileIcon', () => {
     const renderTree = renderWithTheme(
-      <FileIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <FileIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

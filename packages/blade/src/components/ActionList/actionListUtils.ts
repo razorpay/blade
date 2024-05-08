@@ -2,8 +2,10 @@ import React from 'react';
 import { componentIds } from './componentIds';
 import type { ActionListItemProps } from './ActionListItem';
 import type { OptionsType } from '~components/Dropdown/useDropdown';
-import { getComponentId, isReactNative, isValidAllowedChildren } from '~utils';
+import { isReactNative } from '~utils';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
+import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 /**
  * Returns if there is ActionListItem after ActionListSection
@@ -38,12 +40,7 @@ const getActionListSectionPosition = (
   };
 };
 
-const actionListAllowedChildren = [
-  componentIds.ActionListFooter,
-  componentIds.ActionListHeader,
-  componentIds.ActionListItem,
-  componentIds.ActionListSection,
-];
+const actionListAllowedChildren = [componentIds.ActionListItem, componentIds.ActionListSection];
 
 export type SectionData = {
   title: string;
@@ -60,16 +57,10 @@ const getActionListProperties = (
   sectionData: SectionData;
   childrenWithId?: React.ReactNode[] | null;
   actionListOptions: OptionsType;
-  defaultSelectedIndices: number[];
-  actionListHeaderChild: React.ReactElement | null;
-  actionListFooterChild: React.ReactElement | null;
 } => {
   const sectionData: SectionData = [];
   let currentSection: string | null = null;
   const actionListOptions: OptionsType = [];
-  const defaultSelectedIndices: number[] = [];
-  let actionListHeaderChild: React.ReactElement | null = null;
-  let actionListFooterChild: React.ReactElement | null = null;
 
   const getActionListItemWithId = (
     child: React.ReactNode,
@@ -79,7 +70,21 @@ const getActionListProperties = (
       actionListOptions.push({
         title: child.props.title,
         value: child.props.value,
-        href: child.props.href,
+        onClickTrigger: (value) => {
+          const anchorLink = child.props.href;
+          child.props.onClick?.({
+            name: child.props.value,
+            value: child.props.isSelected ?? value,
+          });
+
+          if (anchorLink && !isReactNative()) {
+            const target = child.props.target ?? '_self';
+            window.open(anchorLink, target);
+            if (window.top) {
+              window.top.open(anchorLink, target);
+            }
+          }
+        },
       });
       const currentIndex = actionListOptions.length - 1;
 
@@ -102,10 +107,6 @@ const getActionListProperties = (
             },
           ],
         });
-      }
-
-      if (child.props.isDefaultSelected) {
-        defaultSelectedIndices.push(currentIndex);
       }
 
       const clonedChild = React.cloneElement(child, {
@@ -136,23 +137,15 @@ const getActionListProperties = (
   // Looping through ActionListItems to add index to them and get an options array for moving focus between items
   const childrenWithId = React.Children.map(children, (child, index) => {
     if (React.isValidElement(child)) {
-      if (isValidAllowedChildren(child, componentIds.ActionListHeader)) {
-        actionListHeaderChild = child;
-        return null;
-      }
-
-      if (isValidAllowedChildren(child, componentIds.ActionListFooter)) {
-        actionListFooterChild = child;
-        return null;
-      }
-
       if (isValidAllowedChildren(child, componentIds.ActionListSection)) {
         const shouldHideDivider =
           index === lastActionListSectionIndex && !isActionListItemPresentAfterSection;
+        const sectionChildValues: string[] = [];
         return React.cloneElement(child, {
           // @ts-expect-error: TS doesn't understand the child's props
           children: React.Children.map(child.props.children, (childInSection) => {
             currentSection = child.props.title;
+            sectionChildValues.push(childInSection.props.value);
             if (isValidAllowedChildren(childInSection, componentIds.ActionListItem)) {
               return getActionListItemWithId(childInSection, shouldHideDivider);
             }
@@ -161,6 +154,7 @@ const getActionListProperties = (
           }),
           // On web, we handle it with descendant styling in css so no need of JS there
           _hideDivider: isReactNative() ? shouldHideDivider : undefined,
+          _sectionChildValues: sectionChildValues,
         });
       }
 
@@ -168,9 +162,12 @@ const getActionListProperties = (
         return getActionListItemWithId(child, true);
       }
 
-      throw new Error(
-        `[ActionList]: Only ${actionListAllowedChildren.join(', ')} supported inside ActionList`,
-      );
+      if (__DEV__) {
+        throwBladeError({
+          message: `Only ${actionListAllowedChildren.join(', ')} supported inside ActionList`,
+          moduleName: 'ActionList',
+        });
+      }
     }
     return child;
   });
@@ -178,42 +175,57 @@ const getActionListProperties = (
   return {
     sectionData,
     childrenWithId,
-    actionListFooterChild,
-    actionListHeaderChild,
     actionListOptions,
-    defaultSelectedIndices,
   };
 };
 
 const validateActionListItemProps = ({
   leading,
   trailing,
+  titleSuffix,
 }: {
   leading: ActionListItemProps['leading'];
   trailing: ActionListItemProps['trailing'];
+  titleSuffix: ActionListItemProps['titleSuffix'];
 }): void => {
-  React.Children.map(trailing, (child) => {
-    if (
-      !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
-      !isValidAllowedChildren(child, componentIds.ActionListItemText)
-    ) {
-      throw new Error(
-        `[ActionListItem]: Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
-      );
-    }
-  });
+  if (__DEV__) {
+    React.Children.map(trailing, (child) => {
+      if (
+        !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemText)
+      ) {
+        throwBladeError({
+          message: `Only ${componentIds.ActionListItemIcon} and ${componentIds.ActionListItemText} are allowed in trailing prop`,
+          moduleName: 'ActionListItem',
+        });
+      }
+    });
 
-  React.Children.map(leading, (child) => {
-    if (
-      !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
-      !isValidAllowedChildren(child, componentIds.ActionListItemText) &&
-      !isValidAllowedChildren(child, componentIds.ActionListItemAsset)
-    ) {
-      throw new Error(
-        `[ActionListItem]: Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
-      );
-    }
-  });
+    React.Children.map(titleSuffix, (child) => {
+      if (
+        !isValidAllowedChildren(child, componentIds.ActionListItemBadge) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemBadgeGroup)
+      ) {
+        throwBladeError({
+          message: `Only ${componentIds.ActionListItemBadge} and ${componentIds.ActionListItemBadgeGroup} are allowed in titleSuffix prop`,
+          moduleName: 'ActionListItem',
+        });
+      }
+    });
+
+    React.Children.map(leading, (child) => {
+      if (
+        !isValidAllowedChildren(child, componentIds.ActionListItemIcon) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemText) &&
+        !isValidAllowedChildren(child, componentIds.ActionListItemAsset)
+      ) {
+        throwBladeError({
+          message: `Only ${componentIds.ActionListItemIcon}, ${componentIds.ActionListItemAsset}, and ${componentIds.ActionListItemText} are allowed in leading prop`,
+          moduleName: 'ActionListItem',
+        });
+      }
+    });
+  }
 };
 
 const getNormalTextColor = (
@@ -221,19 +233,17 @@ const getNormalTextColor = (
   { isMuted }: { isMuted?: boolean } = {},
 ): Extract<
   BaseTextProps['color'],
-  | 'surface.text.placeholder.lowContrast'
-  | 'surface.text.muted.lowContrast'
-  | 'surface.text.normal.lowContrast'
+  'interactive.text.gray.disabled' | 'interactive.text.gray.muted' | 'interactive.text.gray.normal'
 > => {
   if (isDisabled) {
-    return 'surface.text.placeholder.lowContrast';
+    return 'interactive.text.gray.disabled';
   }
 
   if (isMuted) {
-    return 'surface.text.muted.lowContrast';
+    return 'interactive.text.gray.muted';
   }
 
-  return 'surface.text.normal.lowContrast';
+  return 'interactive.text.gray.normal';
 };
 
 export { getActionListProperties, validateActionListItemProps, getNormalTextColor };

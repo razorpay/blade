@@ -1,13 +1,18 @@
+const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
+
 /**
- * Metro configuration for React Native
- * https://github.com/facebook/react-native
+ * Metro configuration
+ * https://facebook.github.io/metro/docs/configuration
  *
- * @format
+ * @type {import('metro-config').MetroConfig}
  */
 
-module.exports = {
+// eslint-disable-next-line import/no-extraneous-dependencies
+
+const config = {
   resetCache: true,
   transformer: {
+    unstable_allowRequireContext: true,
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
@@ -16,6 +21,8 @@ module.exports = {
     }),
   },
   resolver: {
-    resolverMainFields: ['sbmodern', 'browser', 'main'],
+    resolverMainFields: ['browser', 'main'],
   },
 };
+
+module.exports = mergeConfig(getDefaultConfig(__dirname), config);

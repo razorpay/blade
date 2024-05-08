@@ -1,4 +1,4 @@
-import { makeAccessible } from '~utils';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type CheckboxAccessibilityProps = { isDisabled?: boolean; isChecked?: boolean };
 

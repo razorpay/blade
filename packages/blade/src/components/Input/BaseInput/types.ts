@@ -1,11 +1,50 @@
+import type React from 'react';
 import type { Dispatch, SetStateAction } from 'react';
 import type { BaseInputProps } from './BaseInput';
 import type { FormInputHandleOnEvent } from '~components/Form';
-import type { ActionStates } from '~tokens/theme/theme';
 import type {
   FormInputHandleOnClickEvent,
   FormInputHandleOnKeyDownEvent,
+  FormInputOnClickEvent,
 } from '~components/Form/FormTypes';
+import type { ContainerElementType } from '~utils/types';
+import type { ActionStates } from '~utils/useInteraction';
+
+export type InputWrapperRef = React.MutableRefObject<ContainerElementType | null>;
+
+export type BaseInputTagSlotProps = {
+  tags?: BaseInputProps['tags'];
+  isDisabled?: BaseInputProps['isDisabled'];
+  renderAs?: BaseInputProps['as'];
+  showAllTags: BaseInputProps['showAllTags'];
+  setFocusOnInput: () => void;
+  setShouldIgnoreBlurAnimation: BaseInputProps['setShouldIgnoreBlurAnimation'];
+  handleOnInputClick: (e?: FormInputOnClickEvent['value']) => void;
+  maxTagRows: BaseInputProps['maxTagRows'];
+  visibleTagsCountRef: React.MutableRefObject<number>;
+  children: React.ReactElement;
+  isDropdownTrigger: BaseInputProps['isDropdownTrigger'];
+  inputWrapperRef: InputWrapperRef;
+  labelPrefix?: string;
+  size: NonNullable<BaseInputProps['size']>;
+  isTextArea?: boolean;
+  numberOfLines: BaseInputProps['numberOfLines'];
+};
+
+export type BaseInputWrapperProps = Pick<
+  BaseInputProps,
+  'isDisabled' | 'validationState' | 'showAllTags' | 'maxTagRows' | 'isDropdownTrigger'
+> & {
+  isFocused?: boolean;
+  isLabelLeftPositioned?: boolean;
+  currentInteraction: ActionStates;
+  isTextArea?: boolean;
+  setShowAllTagsWithAnimation: (showAllTagsWithAnimation: boolean) => void;
+  children: React.ReactNode;
+  size: NonNullable<BaseInputProps['size']>;
+  numberOfLines: BaseInputProps['numberOfLines'];
+  onClick?: () => void;
+};
 
 export type StyledBaseInputProps = {
   handleOnFocus?: FormInputHandleOnEvent;
@@ -18,9 +57,12 @@ export type StyledBaseInputProps = {
   hasLeadingIcon?: boolean;
   hasTrailingIcon?: boolean;
   accessibilityProps: Record<string, unknown>;
-  currentInteraction: keyof ActionStates;
-  setCurrentInteraction: Dispatch<SetStateAction<keyof ActionStates>>;
+  currentInteraction: ActionStates;
+  setCurrentInteraction: Dispatch<SetStateAction<ActionStates>>;
   isTextArea?: boolean;
+  hasTags?: boolean;
+  $size: NonNullable<BaseInputProps['size']>;
+  valueComponentType: NonNullable<BaseInputProps['valueComponentType']>;
 } & Pick<
   BaseInputProps,
   | 'as'
@@ -36,7 +78,8 @@ export type StyledBaseInputProps = {
   | 'validationState'
   | 'leadingIcon'
   | 'prefix'
-  | 'interactionElement'
+  | 'trailingInteractionElement'
+  | 'leadingInteractionElement'
   | 'suffix'
   | 'trailingIcon'
   | 'maxCharacters'
@@ -50,5 +93,7 @@ export type StyledBaseInputProps = {
   | 'isPopupExpanded'
   | 'shouldIgnoreBlurAnimation'
   | 'autoCapitalize'
+  | 'isDropdownTrigger'
 >;
+
 export { StyledBaseInput } from './StyledBaseInput.web';

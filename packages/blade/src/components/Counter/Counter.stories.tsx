@@ -1,12 +1,12 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { CounterProps } from './Counter';
 import { Counter as CounterComponent } from './Counter';
 import BaseBox from '~components/Box/BaseBox';
 import { Text as BladeText } from '~components/Typography';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
@@ -14,19 +14,14 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentName="Counter"
       componentDescription="Counters are visual indicators that contains numerical values, tallies or counts in regards to some context. It can be used to show non-interactive numerical data."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=8222%3A70827',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=8222%3A70827',
-      }}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74858-52172&t=LY9ssuVTANWMEksF-1&scaling=min-zoom&page-id=8222%3A70410&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
         {`
           import { Counter } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               // Change values to anything less than 99 to see change
               <Counter max={99} value={140} />
@@ -43,6 +38,7 @@ const Page = (): ReactElement => {
 export default {
   title: 'Components/Counter',
   component: CounterComponent,
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
   parameters: {
     docs: {
@@ -51,15 +47,15 @@ export default {
   },
 } as Meta<CounterProps>;
 
-const CounterTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) => {
+const CounterTemplate: StoryFn<typeof CounterComponent> = ({ ...args }) => {
   return <CounterComponent {...args} />;
 };
 
 export const Counter = CounterTemplate.bind({});
 Counter.args = {
   value: 20,
-  intent: 'neutral',
-  contrast: 'low',
+  color: 'neutral',
+  emphasis: 'subtle',
 };
 Counter.storyName = 'Default';
 
@@ -67,17 +63,17 @@ export const Max = CounterTemplate.bind({});
 Max.args = {
   value: 120,
   max: 99,
-  intent: 'neutral',
-  contrast: 'high',
+  color: 'neutral',
+  emphasis: 'intense',
 };
 Max.storyName = 'Max';
 
-const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ ...args }) => {
-  const intents = ['positive', 'negative', 'notice', 'information', 'neutral'] as const;
+const CountersWithColorTemplate: StoryFn<typeof CounterComponent> = ({ ...args }) => {
+  const colors = ['positive', 'negative', 'notice', 'information', 'neutral', 'primary'] as const;
 
   return (
     <BaseBox display="flex" flexDirection="column">
-      <BladeText>Low Contrast</BladeText>
+      <BladeText>Subtle Emphasis</BladeText>
       <BaseBox
         display="flex"
         flexDirection="row"
@@ -85,18 +81,18 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         paddingBottom="spacing.5"
         flexWrap="wrap"
       >
-        {intents.map((intent) => (
+        {colors.map((color) => (
           <CounterComponent
             {...args}
-            key={intent}
+            key={color}
             marginRight="spacing.3"
             marginTop="spacing.2"
-            intent={intent}
-            contrast="low"
+            color={color}
+            emphasis="subtle"
           />
         ))}
       </BaseBox>
-      <BladeText>High Contrast</BladeText>
+      <BladeText>Intense Emphasis</BladeText>
       <BaseBox
         display="flex"
         flexDirection="row"
@@ -104,14 +100,14 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
         paddingBottom="spacing.5"
         flexWrap="wrap"
       >
-        {intents.map((intent) => (
+        {colors.map((color) => (
           <CounterComponent
             {...args}
-            key={intent}
+            key={color}
             marginRight="spacing.3"
             marginTop="spacing.2"
-            intent={intent}
-            contrast="high"
+            color={color}
+            emphasis="intense"
           />
         ))}
       </BaseBox>
@@ -119,21 +115,21 @@ const CountersWithVariantTemplate: ComponentStory<typeof CounterComponent> = ({ 
   );
 };
 
-export const CounterSmallSize = CountersWithVariantTemplate.bind({});
+export const CounterSmallSize = CountersWithColorTemplate.bind({});
 CounterSmallSize.args = {
   value: 20,
   size: 'small',
 };
 CounterSmallSize.storyName = 'Small Size';
 
-export const CounterMediumSize = CountersWithVariantTemplate.bind({});
+export const CounterMediumSize = CountersWithColorTemplate.bind({});
 CounterMediumSize.args = {
   value: 20,
   size: 'medium',
 };
 CounterMediumSize.storyName = 'Medium Size';
 
-export const CounterLargeSize = CountersWithVariantTemplate.bind({});
+export const CounterLargeSize = CountersWithColorTemplate.bind({});
 CounterLargeSize.args = {
   value: 20,
   size: 'large',

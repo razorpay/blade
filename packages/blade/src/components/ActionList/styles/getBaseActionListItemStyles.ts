@@ -4,7 +4,8 @@ import type { TouchableOpacity } from 'react-native';
 import type { ActionListItemProps } from '../ActionListItem';
 import type { Theme } from '~components/BladeProvider';
 import type { DropdownContextType } from '~components/Dropdown/useDropdown';
-import { isReactNative, makeSize } from '~utils';
+import { isReactNative } from '~utils';
+import { makeSize } from '~utils/makeSize';
 
 type StyledActionListItemProps = {
   selectionType: DropdownContextType['selectionType'];
@@ -13,6 +14,8 @@ type StyledActionListItemProps = {
   onPress?: (e: React.TouchEvent<TouchableOpacity>) => void;
   isSelected?: boolean;
   isKeydownPressed: boolean;
+  isMobile: boolean;
+  isVisible?: boolean;
 };
 
 const getBaseActionListItemStyles = (
@@ -25,7 +28,7 @@ const getBaseActionListItemStyles = (
     borderColor: 'transparent',
     textAlign: isReactNative() ? undefined : 'left',
     backgroundColor: 'transparent',
-    padding: makeSize(props.theme.spacing[2]),
+    padding: makeSize(props.isMobile ? props.theme.spacing[3] : props.theme.spacing[2]),
     borderRadius: makeSize(props.theme.border.radius.medium),
     textDecoration: 'none',
     cursor: 'pointer',
@@ -33,4 +36,5 @@ const getBaseActionListItemStyles = (
   };
 };
 
-export { getBaseActionListItemStyles, StyledActionListItemProps };
+export type { StyledActionListItemProps };
+export { getBaseActionListItemStyles };

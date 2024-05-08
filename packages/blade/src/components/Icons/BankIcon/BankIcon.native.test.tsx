@@ -1,10 +1,10 @@
 import BankIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BankIcon />', () => {
   it('should render CloseIcon', () => {
     const renderTree = renderWithTheme(
-      <BankIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <BankIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

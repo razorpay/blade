@@ -6,10 +6,11 @@ import { getBaseActionListItemStyles } from './getBaseActionListItemStyles';
 const StyledActionListItem = styled(TouchableOpacity)<StyledActionListItemProps>((props) => {
   return {
     ...getBaseActionListItemStyles(props),
+    display: props.isVisible ? 'flex' : 'none',
     // React Native specific styles
     backgroundColor:
       props.isSelected && props.selectionType === 'single'
-        ? props.theme.colors.brand.primary[300]
+        ? props.theme.colors.interactive.background.primary.faded
         : undefined,
   };
 });

@@ -1,8 +1,8 @@
-import get from 'lodash/get';
 import type { IconProps } from '..';
+import get from '~utils/lodashButBetter/get';
 import { useTheme } from '~components/BladeProvider';
-import { makeSize } from '~utils';
-import size from '~tokens/global/size';
+import { size } from '~tokens/global';
+import { makeSize } from '~utils/makeSize';
 
 const iconSize = {
   xsmall: size[8],
@@ -14,8 +14,8 @@ const iconSize = {
 } as const;
 
 function useIconProps({
-  size,
-  color,
+  size = 'medium',
+  color = 'surface.icon.gray.normal',
 }: IconProps): {
   height: `${typeof iconSize[keyof typeof iconSize]}px`;
   width: `${typeof iconSize[keyof typeof iconSize]}px`;

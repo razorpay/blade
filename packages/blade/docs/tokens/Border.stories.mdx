@@ -1,27 +1,21 @@
 import { Meta, DocsContainer } from '@storybook/addon-docs';
-import { useTheme, BladeProvider } from '../../src/components';
-import { paymentTheme, bankingTheme } from '../../src/tokens';
+import { BladeProvider, useTheme } from '../../src/components';
+import { makeBorderSize } from '../../src/utils';
+import { bladeTheme } from '../../src/tokens';
 
 <Meta
   title="Tokens/Border"
   parameters={{
     docs: {
       container: ({ children, context }) => {
-        const getThemeTokens = () => {
-          if (context.globals.themeTokenName === 'paymentTheme') {
-            return paymentTheme;
-          }
-          if (context.globals.themeTokenName === 'bankingTheme') {
-            return bankingTheme;
-          }
-          return null;
-        };
+        const colorScheme = context.store.globals.globals.colorScheme;
+        
         return (
           <DocsContainer context={context}>
             <BladeProvider
-              key={`${context.globals.themeTokenName}-${context.globals.colorScheme}`}
-              themeTokens={getThemeTokens()}
-              colorScheme={context.globals.colorScheme}
+              key={colorScheme}
+              themeTokens={bladeTheme}
+              colorScheme={colorScheme}
             >
               {children}
             </BladeProvider>
@@ -33,6 +27,8 @@ import { paymentTheme, bankingTheme } from '../../src/tokens';
 />
 
 # ─ Border
+
+> These tokens should be used along with the [makeBorderSize util](?path=/story/utils-makebordersize--page).
 
 export const Border = () => {
   const { theme } = useTheme();
@@ -51,9 +47,9 @@ export const Border = () => {
                     style={{
                       width: '64px',
                       height: '64px',
-                      backgroundColor: '#e8e8eb',
-                      borderRadius: `${value}`,
-                      border: '1px solid #c2c2c2',
+                      backgroundColor: 'hsla(220, 30%, 96%, 1)',
+                      borderRadius: `${makeBorderSize(value)}`,
+                      border: '1px solid hsla(216, 15%, 54%, 0.18)',
                     }}
                   />
                 ) : (
@@ -61,9 +57,9 @@ export const Border = () => {
                     style={{
                       width: '96px',
                       height: '64px',
-                      backgroundColor: '#e8e8eb',
-                      borderRadius: `${value}px`,
-                      border: '1px solid #c2c2c2',
+                      backgroundColor: 'hsla(220, 30%, 96%, 1)',
+                      borderRadius: `${makeBorderSize(value)}`,
+                      border: '1px solid hsla(216, 15%, 54%, 0.18)',
                     }}
                   />
                 )}
@@ -84,9 +80,9 @@ export const Border = () => {
                   style={{
                     width: '64px',
                     height: '64px',
-                    backgroundColor: '#e8e8eb',
-                    borderRadius: `4px`,
-                    border: `${value}px solid #c2c2c2`,
+                    backgroundColor: 'hsla(220, 30%, 96%, 1)',
+                    borderRadius: `${makeBorderSize(theme.border.radius.medium)}`,
+                    border: `${value}px solid hsla(216, 15%, 54%, 0.18)`,
                   }}
                 />
               </td>

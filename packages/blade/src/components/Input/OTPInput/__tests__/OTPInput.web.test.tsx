@@ -1,10 +1,10 @@
 import userEvent from '@testing-library/user-event';
 
 import type { ReactElement } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { OTPInput } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -12,6 +12,12 @@ afterAll(() => jest.restoreAllMocks());
 describe('<OTPInput />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(<OTPInput label="Enter OTP" />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render large size', () => {
+    const { container } = renderWithTheme(<OTPInput label="Enter OTP" value="1234" size="large" />);
 
     expect(container).toMatchSnapshot();
   });
@@ -134,6 +140,37 @@ describe('<OTPInput />', () => {
       name: 'otp',
       value: otp[otp.length - 2], // -2 because the last input will remain focused and the last blurred input would be 2nd last
       inputIndex: otp.length - 2,
+    });
+  });
+
+  it('should handle ref focus', async () => {
+    const label = 'Enter OTP';
+    const onFocus = jest.fn();
+    const user = userEvent.setup();
+
+    const Example = (): ReactElement => {
+      const inputRef = React.useRef<HTMLInputElement[]>([]);
+      const handleClick = (): void => {
+        inputRef.current[1].focus();
+      };
+
+      return (
+        <>
+          <OTPInput label={label} name="otp" onFocus={onFocus} ref={inputRef} />
+          <button onClick={handleClick}>Focus</button>
+        </>
+      );
+    };
+
+    const { getByRole } = renderWithTheme(<Example />);
+
+    await user.click(getByRole('button', { name: 'Focus' }));
+
+    expect(onFocus).toHaveBeenCalledTimes(1);
+    expect(onFocus).toHaveBeenLastCalledWith({
+      name: 'otp',
+      value: '',
+      inputIndex: 1,
     });
   });
 

@@ -1,10 +1,8 @@
 export const componentIds = {
   ActionList: 'ActionList',
-  ActionListHeader: 'ActionListHeader',
-  ActionListHeaderIcon: 'ActionListHeaderIcon',
-  ActionListFooter: 'ActionListFooter',
-  ActionListFooterIcon: 'ActionListFooterIcon',
   ActionListItem: 'ActionListItem',
+  ActionListItemBadge: 'ActionListItemBadge',
+  ActionListItemBadgeGroup: 'ActionListItemBadgeGroup',
   ActionListItemAsset: 'ActionListItemAsset',
   ActionListItemIcon: 'ActionListItemIcon',
   ActionListItemText: 'ActionListItemText',

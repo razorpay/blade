@@ -12,10 +12,12 @@ exports[`<ClipPath /> should render html clipPath component 1`] = `
     width="40px"
   >
     <clippath
+      data-blade-component="svg-clippath"
       id="clip0"
     >
       <path
         d="M2 2h2v2H2V2"
+        data-blade-component="svg-path"
         fill="#000"
       />
     </clippath>

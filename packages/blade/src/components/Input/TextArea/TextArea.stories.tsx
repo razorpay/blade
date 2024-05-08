@@ -1,14 +1,15 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
 import type { TextAreaProps } from './TextArea';
 import { TextArea as TextAreaComponent } from './TextArea';
 import BaseBox from '~components/Box/BaseBox';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Button } from '~components/Button';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { Text } from '~components/Typography';
 
 const propsCategory = {
   BASE_PROPS: 'TextArea Props',
@@ -48,8 +49,14 @@ export default {
     showClearButton: undefined,
     numberOfLines: 2,
   },
+  tags: ['autodocs'],
   argTypes: {
     defaultValue: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    size: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -91,6 +98,19 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    testID: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onSubmit: {
+      control: {
+        disable: true,
+      },
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     onChange: {
       table: {
         category: propsCategory.BASE_PROPS,
@@ -107,6 +127,11 @@ export default {
       },
     },
     label: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    accessibilityLabel: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -164,19 +189,15 @@ export default {
         <StoryPageWrapper
           componentDescription="The TextArea component lets you enter long form text which spans over multiple lines."
           componentName="TextArea"
-          figmaURL={{
-            paymentTheme:
-              'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=11115%3A166804',
-            bankingTheme:
-              'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10050%3A180805',
-          }}
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/TextArea/_decisions/decisions.md"
+          figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76077-93900&t=2ZLEEt6A65Rona3N-1&scaling=min-zoom&page-id=11115%3A166743&mode=design"
         >
           <Title>Usage</Title>
           <Sandbox>
             {`
               import { TextArea } from '@razorpay/blade/components';
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   <TextArea 
                     label="Description" 
@@ -196,7 +217,7 @@ export default {
   },
 } as Meta<TextAreaProps>;
 
-const TextAreaTemplate: ComponentStory<typeof TextAreaComponent> = ({ ...args }) => {
+const TextAreaTemplate: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
   return <TextAreaComponent {...args} />;
 };
 
@@ -225,13 +246,21 @@ TextAreaSuccess.args = {
   successText: 'Validated',
 };
 
+export const TextAreaWithoutLabel = TextAreaTemplate.bind({});
+TextAreaWithoutLabel.storyName = 'TextArea without Label';
+TextAreaWithoutLabel.args = {
+  label: undefined,
+  accessibilityLabel: 'Description',
+  helpText: 'Add a message here',
+};
+
 export const TextAreaNumberOfLines = TextAreaTemplate.bind({});
 TextAreaNumberOfLines.storyName = 'TextArea number of lines';
 TextAreaNumberOfLines.args = {
   numberOfLines: 4,
 };
 
-const TextAreaMaxCharactersTemplate: ComponentStory<typeof TextAreaComponent> = () => {
+const TextAreaMaxCharactersTemplate: StoryFn<typeof TextAreaComponent> = () => {
   return (
     <TextArea
       label="Description"
@@ -244,7 +273,23 @@ const TextAreaMaxCharactersTemplate: ComponentStory<typeof TextAreaComponent> = 
 };
 export const TextAreaMaxCharacters = TextAreaMaxCharactersTemplate.bind({});
 
-const TextAreaUncontrolledTemplate: ComponentStory<typeof TextAreaComponent> = () => {
+const TextAreaSizesTemplate: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  return (
+    <Box display="flex" flexDirection="column">
+      <Text size="large" marginBottom="spacing.2">
+        Medium Size:
+      </Text>
+      <TextAreaComponent {...args} size="medium" />
+      <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
+        Large Size:
+      </Text>
+      <TextAreaComponent {...args} size="large" />
+    </Box>
+  );
+};
+export const TextAreaSizes = TextAreaSizesTemplate.bind({});
+
+const TextAreaUncontrolledTemplate: StoryFn<typeof TextAreaComponent> = () => {
   return (
     <TextArea
       label="Description"
@@ -257,7 +302,7 @@ const TextAreaUncontrolledTemplate: ComponentStory<typeof TextAreaComponent> = (
 };
 export const TextAreaUncontrolled = TextAreaUncontrolledTemplate.bind({});
 
-const TextAreaControlledTemplate: ComponentStory<typeof TextAreaComponent> = () => {
+const TextAreaControlledTemplate: StoryFn<typeof TextAreaComponent> = () => {
   const [inputValue, setInputValue] = React.useState('');
 
   return (
@@ -275,7 +320,7 @@ const TextAreaControlledTemplate: ComponentStory<typeof TextAreaComponent> = () 
 };
 export const TextAreaControlled = TextAreaControlledTemplate.bind({});
 
-const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = () => {
+const TextAreaKitchenSinkTemplate: StoryFn<typeof TextAreaComponent> = () => {
   return (
     <>
       <BaseBox display="flex" gap="spacing.5">
@@ -353,15 +398,26 @@ const TextAreaKitchenSinkTemplate: ComponentStory<typeof TextAreaComponent> = ()
           validationState="none"
           helpText="Write your message"
         />
+        <TextArea
+          necessityIndicator="required"
+          accessibilityLabel="Description"
+          placeholder="Enter Description"
+          name="description"
+          labelPosition="left"
+          numberOfLines={3}
+          maxCharacters={100}
+          validationState="none"
+          helpText="Write your message"
+        />
       </BaseBox>
     </>
   );
 };
 export const TextAreaKitchenSink = TextAreaKitchenSinkTemplate.bind({});
 
-export const inputRef: ComponentStory<typeof TextAreaComponent> = () => {
+export const inputRef: StoryFn<typeof TextAreaComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const inputRef = React.useRef<BladeElementRef>(null);
+  const inputRef = React.useRef<HTMLTextAreaElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="end">
@@ -386,4 +442,121 @@ inputRef.parameters = {
         'TextArea component exposes the `ref` prop. The `ref` exposes two methods `focus` & `scrollIntoView` which can be used to programatically control the DOM element',
     },
   },
+};
+
+export const TextAreaWithTags: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        numberOfLines={3}
+        isTaggedInput={true}
+        tags={tags}
+        onTagChange={({ tags }) => {
+          console.log({ tags });
+          setTags(tags);
+        }}
+      />
+    </Box>
+  );
+};
+
+export const TextAreaWithControlledTags: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        tags={tags}
+        onTagChange={({ tags }) => {
+          setTags(tags);
+        }}
+      />
+    </Box>
+  );
+};
+
+TextAreaWithControlledTags.args = {
+  isTaggedInput: true,
+  showClearButton: false,
+};
+
+export const TextAreaWithUncontrolledTags: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tagValues, setTagValues] = React.useState<string[]>([]);
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        onTagChange={({ tags }) => {
+          console.log('new tags', tags);
+          setTagValues(tags);
+        }}
+      />
+      <Box>
+        <Text>{tagValues.join(', ')}</Text>
+      </Box>
+    </Box>
+  );
+};
+
+TextAreaWithUncontrolledTags.args = {
+  isTaggedInput: true,
+  showClearButton: true,
+};
+
+// Don't copy email regex from here. This is just an example regex for basic emails. Make sure to use email validation as per usecase
+const isValidEmail = (email: string): boolean => {
+  const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return regex.test(email);
+};
+
+export const TextAreaWithTagsValidation: StoryFn<typeof TextAreaComponent> = ({ ...args }) => {
+  const [tags, setTags] = React.useState<string[]>([]);
+  const [inputValue, setInputValue] = React.useState('');
+  const [errorText, setErrorText] = React.useState('');
+  // we use ref because onTagChange and onChange is called in same render
+  // So if we want to set error in onTagChange, and use its value in onChange, its not possible with useState
+  const isErrorRef = React.useRef(false);
+
+  return (
+    <Box display="flex" flexDirection="column">
+      <TextAreaComponent
+        {...args}
+        value={inputValue}
+        onChange={({ value }) => {
+          if (!isErrorRef.current) {
+            setInputValue(value ?? '');
+            setErrorText('');
+          }
+
+          isErrorRef.current = false;
+        }}
+        tags={tags}
+        onTagChange={({ tags: newTags }) => {
+          const isTagRemoved = newTags.length < tags.length;
+          if (isTagRemoved) {
+            // we don't validate while removing tags
+            setTags(newTags);
+            return;
+          }
+
+          if (isValidEmail(inputValue)) {
+            setTags(newTags);
+          } else {
+            isErrorRef.current = true;
+            setErrorText(`Invalid email ${inputValue}. Try with different email`);
+          }
+        }}
+        errorText={errorText}
+        validationState={errorText ? 'error' : undefined}
+      />
+    </Box>
+  );
+};
+
+TextAreaWithTagsValidation.args = {
+  isTaggedInput: true,
+  showClearButton: false,
 };

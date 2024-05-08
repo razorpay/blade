@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-ts-expect-error */
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 import type { CSSObject } from 'styled-components';
 import type {
   BaseBoxProps,
@@ -5,86 +7,19 @@ import type {
   SpacingValueType,
   ArrayOfMaxLength4,
 } from './types';
-import type { Breakpoints } from '~tokens/global/breakpoints';
-import breakpoints from '~tokens/global/breakpoints';
-import { getMediaQuery } from '~src/utils/getMediaQuery';
-import { isReactNative, isEmpty, getIn, makeSpace, makeBorderSize } from '~utils';
+import { getResponsiveValue } from './getResponsiveValue';
+import getIn from '~utils/lodashButBetter/get';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
+import type { Breakpoints } from '~tokens/global';
+import { breakpoints } from '~tokens/global';
+import { isReactNative, getMediaQuery } from '~utils';
 import type { Theme } from '~components/BladeProvider';
+import { makeSpace } from '~utils/makeSpace';
+import { makeBorderSize } from '~utils/makeBorderSize';
+import type { DotNotationSpacingStringToken } from '~utils/types';
 
-/**
- * A helper function that returns the exact value for that breakpoint on passing the prop and breakpoint
- *
- * ## Usage
- *
- * ### Get base value of prop
- *
- * ```ts
- * getResponsiveValue(props.yourProp, 'base');
- * // yourProp="hi" -> "hi"
- * // yourProp={{ base: 'hello', m: 'hi' }} -> "hello"
- * // yourProp={{ m: 'hi' }} -> undefined
- * ```
- *
- * ### Get value of particular breakpoint
- *
- *
- * ```ts
- * getResponsiveValue(props.yourProp, 'm');
- * // yourProp="hi" -> undefined
- * // yourProp={{ base: 'hello', m: 'hi' }} -> "hi"
- * // yourProp={{ m: 'hi' }} -> "hi"
- * ```
- */
-const getResponsiveValue = <T extends string | number | string[]>(
-  value: MakeValueResponsive<T> | undefined,
-  breakpoint: keyof Breakpoints = 'base',
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-): any | undefined => {
-  if (value === undefined || value === null) {
-    return undefined;
-  }
-
-  if (typeof value === 'string' || typeof value === 'number' || Array.isArray(value)) {
-    /**
-     * Flat values like string or number should only be added in `base` styles.
-     *
-     * E.g. if you pass `display="block"`, it should only put that style in base style and not in media queries
-     * ```js
-     * // Output should be just this-
-     * display: block;
-     *
-     * // And not this-
-     * display: block;
-     * media (min-width: s) {
-     *   display: block;
-     * }
-     *
-     * media (min-width: m) {
-     *   display: block
-     * }
-     * //  and more ...
-     * ```
-     */
-    if (breakpoint === 'base') {
-      return value;
-    }
-
-    return undefined;
-  }
-
-  if (isEmpty(value)) {
-    return undefined;
-  }
-
-  if (isReactNative()) {
-    // In React Native, we map the value `s` token on priority (since the breakpoint maps to mobiles in useBreakpoint hook).
-    // We further look into smaller sizes, then we check base size.
-    // Then we return the first non-undefined value in this priority
-    const priorityArray = [value.s, value.xs, value.base];
-    return priorityArray.find((val) => val !== undefined);
-  }
-
-  return value[breakpoint];
+const isSpacingToken = (value: string): value is DotNotationSpacingStringToken => {
+  return typeof value === 'string' && value.startsWith('spacing.');
 };
 
 const getSpacingValue = (
@@ -98,8 +33,8 @@ const getSpacingValue = (
     return undefined;
   }
 
-  const responsiveSpacingValue: SpacingValueType | SpacingValueType[] = getResponsiveValue(
-    spacingValue as MakeValueResponsive<string | string[]>,
+  const responsiveSpacingValue = getResponsiveValue(
+    spacingValue as MakeValueResponsive<SpacingValueType | SpacingValueType[]>,
     breakpoint,
   );
 
@@ -115,21 +50,22 @@ const getSpacingValue = (
     return responsiveSpacingValue.map((value) => getSpacingValue(value, theme)).join(' ');
   }
 
-  if (typeof responsiveSpacingValue === 'string' && responsiveSpacingValue.startsWith('spacing.')) {
+  if (isSpacingToken(responsiveSpacingValue)) {
     const spacingReturnValue = getIn(theme, responsiveSpacingValue);
-    return isEmpty(spacingReturnValue) ? makeSpace(spacingReturnValue) : undefined;
+    return isEmpty(spacingReturnValue) ? makeSpace(spacingReturnValue!) : undefined;
   }
 
   // pixel or with unit values
   return responsiveSpacingValue;
 };
 
-const getBackgroundValue = (
-  backgroundColor: BaseBoxProps['backgroundColor'],
+const getColorValue = (
+  color: BaseBoxProps['backgroundColor'] | BaseBoxProps['borderColor'],
   theme: Theme,
   breakpoint?: keyof Breakpoints,
 ): string => {
-  const responsiveBackgroundValue = getResponsiveValue(backgroundColor, breakpoint);
+  const responsiveBackgroundValue = getResponsiveValue(color, breakpoint);
+  // @ts-expect-error: We always return any from getResponsiveValue so value can't be inferred here
   const tokenValue = getIn(theme, `colors.${responsiveBackgroundValue}`);
   return tokenValue ?? responsiveBackgroundValue;
 };
@@ -142,18 +78,76 @@ const getBorderRadiusValue = (
   const responsiveBorderRadiusValue = getResponsiveValue(borderRadius, breakpoint);
   return isEmpty(responsiveBorderRadiusValue)
     ? undefined
-    : makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
+    : // @ts-ignore: intentionally set to any since figuring out types of responsive props is complex
+      makeBorderSize(getIn(theme, `border.radius.${responsiveBorderRadiusValue}`));
+};
+
+const getBorderWidthValue = (
+  borderWidth: BaseBoxProps['borderWidth'],
+  theme: Theme,
+  breakpoint?: keyof Breakpoints,
+): string | undefined => {
+  const responsiveBorderWidthValue = getResponsiveValue(borderWidth, breakpoint);
+  return isEmpty(responsiveBorderWidthValue)
+    ? undefined
+    : // @ts-ignore: intentionally set to any since figuring out types of responsive props is complex
+      makeBorderSize(getIn(theme, `border.width.${responsiveBorderWidthValue}`));
+};
+
+export const getElevationValue = (
+  elevation: BaseBoxProps['elevation'],
+  theme: Theme,
+  breakpoint?: keyof Breakpoints,
+): string | undefined => {
+  const responsiveElevationValue = getResponsiveValue(elevation, breakpoint);
+  return isEmpty(responsiveElevationValue)
+    ? undefined
+    : // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+      // @ts-ignore: intentionally set to any since figuring out types of responsive props is complex
+      getIn(theme, `elevation.${responsiveElevationValue!}`);
+};
+
+type GetBorderStyleValueReturnType =
+  | CSSObject['borderStyle']
+  | CSSObject['borderTopStyle']
+  | CSSObject['borderBottomStyle']
+  | CSSObject['borderLeftStyle']
+  | CSSObject['borderRightStyle'];
+const getBorderStyleValue = (
+  borderStyle: BaseBoxProps['borderStyle'],
+  breakpoint?: keyof Breakpoints,
+  hasBorder?: boolean,
+  // Using any as return type because borderStyle's type is incompatible with borderBottomStyle. There are ways to fix it but anyway since its internal function. Taking an easy way out
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): GetBorderStyleValueReturnType => {
+  if (borderStyle) {
+    return getResponsiveValue(borderStyle, breakpoint);
+  }
+
+  if (hasBorder) {
+    return 'solid';
+  }
+
+  return undefined;
 };
 
 const getAllProps = (
   props: BaseBoxProps & { theme: Theme },
   breakpoint?: keyof Breakpoints,
 ): CSSObject => {
+  const hasBorder = props.borderWidth || props.borderColor;
+  const hasBorderRight = props.borderRight || props.borderRightColor || props.borderRightWidth;
+  const hasBorderLeft = props.borderLeft || props.borderLeftColor || props.borderLeftWidth;
+  const hasBorderTop = props.borderTop || props.borderTopColor || props.borderTopWidth;
+  const hasBorderBottom = props.borderBottom || props.borderBottomColor || props.borderBottomWidth;
+
   return {
     display: getResponsiveValue(props.display, breakpoint),
     overflow: getResponsiveValue(props.overflow, breakpoint),
     overflowX: getResponsiveValue(props.overflowX, breakpoint),
     overflowY: getResponsiveValue(props.overflowY, breakpoint),
+    textAlign: getResponsiveValue(props.textAlign, breakpoint),
+    whiteSpace: getResponsiveValue(props.whiteSpace, breakpoint),
 
     // Flex
     flex: getResponsiveValue(props.flex, breakpoint),
@@ -168,6 +162,8 @@ const getAllProps = (
     justifyItems: getResponsiveValue(props.justifyItems, breakpoint),
     justifyContent: getResponsiveValue(props.justifyContent, breakpoint),
     justifySelf: getResponsiveValue(props.justifySelf, breakpoint),
+    placeSelf: getResponsiveValue(props.placeSelf, breakpoint),
+    placeItems: getResponsiveValue(props.placeItems, breakpoint),
     order: getResponsiveValue(props.order, breakpoint),
     position: getResponsiveValue(props.position, breakpoint),
     zIndex: getResponsiveValue(props.zIndex, breakpoint),
@@ -213,7 +209,12 @@ const getAllProps = (
     left: getSpacingValue(props.left, props.theme, breakpoint),
 
     // Visual props
-    backgroundColor: getBackgroundValue(props.backgroundColor, props.theme, breakpoint),
+    backgroundColor: getColorValue(props.backgroundColor, props.theme, breakpoint),
+    backgroundImage: getResponsiveValue(props.backgroundImage, breakpoint),
+    backgroundSize: getResponsiveValue(props.backgroundSize, breakpoint),
+    backgroundPosition: getResponsiveValue(props.backgroundPosition, breakpoint),
+    backgroundOrigin: getResponsiveValue(props.backgroundOrigin, breakpoint),
+    backgroundRepeat: getResponsiveValue(props.backgroundRepeat, breakpoint),
     borderRadius: getBorderRadiusValue(props.borderRadius, props.theme, breakpoint),
     lineHeight: getSpacingValue(props.lineHeight, props.theme, breakpoint),
     border: getResponsiveValue(props.border, breakpoint),
@@ -221,6 +222,71 @@ const getAllProps = (
     borderRight: getResponsiveValue(props.borderRight, breakpoint),
     borderBottom: getResponsiveValue(props.borderBottom, breakpoint),
     borderLeft: getResponsiveValue(props.borderLeft, breakpoint),
+    borderWidth: getBorderWidthValue(props.borderWidth, props.theme, breakpoint),
+    borderColor: getColorValue(props.borderColor, props.theme, breakpoint),
+    borderTopWidth: getBorderWidthValue(props.borderTopWidth, props.theme, breakpoint),
+    borderTopColor: getColorValue(props.borderTopColor, props.theme, breakpoint),
+    borderRightWidth: getBorderWidthValue(props.borderRightWidth, props.theme, breakpoint),
+    borderRightColor: getColorValue(props.borderRightColor, props.theme, breakpoint),
+    borderBottomWidth: getBorderWidthValue(props.borderBottomWidth, props.theme, breakpoint),
+    borderBottomColor: getColorValue(props.borderBottomColor, props.theme, breakpoint),
+    borderLeftWidth: getBorderWidthValue(props.borderLeftWidth, props.theme, breakpoint),
+    borderLeftColor: getColorValue(props.borderLeftColor, props.theme, breakpoint),
+    borderTopLeftRadius: getBorderRadiusValue(props.borderTopLeftRadius, props.theme, breakpoint),
+    borderTopRightRadius: getBorderRadiusValue(props.borderTopRightRadius, props.theme, breakpoint),
+    borderBottomRightRadius: getBorderRadiusValue(
+      props.borderBottomRightRadius,
+      props.theme,
+      breakpoint,
+    ),
+    borderBottomLeftRadius: getBorderRadiusValue(
+      props.borderBottomLeftRadius,
+      props.theme,
+      breakpoint,
+    ),
+    borderStyle: getBorderStyleValue(
+      props.borderStyle,
+      breakpoint,
+      Boolean(hasBorder),
+    ) as CSSObject['borderStyle'],
+    cursor: getResponsiveValue(props.cursor, breakpoint),
+    // Since we only allow 'solid', we can use the same value for all borders if hasBorder is true
+    // If hasBorder is false, we need to check each border individually
+    ...(!hasBorder && {
+      borderTopStyle: getBorderStyleValue(
+        props.borderTopStyle,
+        breakpoint,
+        Boolean(hasBorderTop),
+      ) as CSSObject['borderTopStyle'],
+      borderBottomStyle: getBorderStyleValue(
+        props.borderBottomStyle,
+        breakpoint,
+        Boolean(hasBorderBottom),
+      ) as CSSObject['borderBottomStyle'],
+      borderLeftStyle: getBorderStyleValue(
+        props.borderLeftStyle,
+        breakpoint,
+        Boolean(hasBorderLeft),
+      ) as CSSObject['borderLeftStyle'],
+      borderRightStyle: getBorderStyleValue(
+        props.borderRightStyle,
+        breakpoint,
+        Boolean(hasBorderRight),
+      ) as CSSObject['borderRightStyle'],
+    }),
+    touchAction: getResponsiveValue(props.touchAction, breakpoint),
+    userSelect: getResponsiveValue(props.userSelect, breakpoint),
+    pointerEvents: getResponsiveValue(props.pointerEvents),
+    opacity: getResponsiveValue(props.opacity, breakpoint),
+    visibility: getResponsiveValue(props.visibility, breakpoint),
+    ...(!isReactNative() && {
+      boxShadow: getElevationValue(props.elevation, props.theme, breakpoint),
+    }),
+
+    // Polygon support
+    transform: getResponsiveValue(props.transform as string, breakpoint),
+    transformOrigin: getResponsiveValue(props.transformOrigin, breakpoint),
+    clipPath: getResponsiveValue(props.clipPath, breakpoint),
   };
 };
 
@@ -262,9 +328,8 @@ const getBaseBoxStyles = (props: BaseBoxProps & { theme: Theme }): CSSObject => 
 
 export {
   getBaseBoxStyles,
-  getResponsiveValue,
   getSpacingValue,
-  getBackgroundValue,
+  getColorValue,
   getBorderRadiusValue,
   shouldAddBreakpoint,
   getAllMediaQueries,

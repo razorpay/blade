@@ -1,10 +1,10 @@
 import PhoneIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PhoneIcon />', () => {
   it('should render PhoneIcon', () => {
     const renderTree = renderWithTheme(
-      <PhoneIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <PhoneIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

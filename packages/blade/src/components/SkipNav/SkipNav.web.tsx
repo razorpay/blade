@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { metaAttribute, MetaConstants, testID as testIDWebAndNative } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { screenReaderStyles } from '~components/VisuallyHidden/ScreenReaderStyles';
 import { BaseLink } from '~components/Link/BaseLink';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import type { StringChildrenType, TestID } from '~utils/types';
 
 const fallbackId = 'blade-skip-nav';
 type SkipNavLinkProps = {
@@ -27,7 +27,7 @@ const StyledLink = styled(BaseLink)(({ theme }) => ({
 const SkipNavLink = ({
   id = fallbackId,
   children = 'Skip to content',
-}: SkipNavLinkProps): JSX.Element => {
+}: SkipNavLinkProps): React.ReactElement => {
   return <StyledLink href={`#${id}`}>{children}</StyledLink>;
 };
 
@@ -38,14 +38,13 @@ type SkipNavContentProps = {
 const SkipNavContent = ({
   id = fallbackId,
   testID = 'skipnav-content',
-}: SkipNavContentProps): JSX.Element => {
+}: SkipNavContentProps): React.ReactElement => {
   return (
     <div
       tabIndex={-1}
       id={id}
       style={{ outline: 0 }}
-      {...testIDWebAndNative(testID)}
-      {...metaAttribute({ name: MetaConstants.SkipNav })}
+      {...metaAttribute({ name: MetaConstants.SkipNav, testID })}
     />
   );
 };

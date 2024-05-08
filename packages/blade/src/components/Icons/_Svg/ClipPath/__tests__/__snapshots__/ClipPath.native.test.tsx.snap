@@ -1,59 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ClipPath /> should render react-native-svg ClipPath component 1`] = `
-<RNSVGSvgView
-  accessibilityElementsHidden={true}
-  align="xMidYMid"
-  bbHeight="40px"
-  bbWidth="40px"
-  fill="none"
-  focusable={false}
-  height="40px"
-  importantForAccessibility="no-hide-descendants"
-  meetOrSlice={0}
-  minX={0}
-  minY={0}
+<View
   style={
-    Array [
-      Object {
-        "backgroundColor": "transparent",
-        "borderWidth": 0,
-      },
-      Array [
-        Object {},
-      ],
-      Object {
-        "flex": 0,
-        "height": 40,
-        "width": 40,
-      },
-    ]
+    {
+      "flex": 1,
+    }
   }
-  vbHeight={6}
-  vbWidth={6}
-  width="40px"
 >
-  <RNSVGGroup
-    fill={null}
-    propList={
-      Array [
-        "fill",
+  <RNSVGSvgView
+    accessibilityElementsHidden={true}
+    align="xMidYMid"
+    bbHeight="40px"
+    bbWidth="40px"
+    data-blade-component="icon"
+    fill="none"
+    focusable={false}
+    height="40px"
+    importantForAccessibility="no-hide-descendants"
+    meetOrSlice={0}
+    minX={0}
+    minY={0}
+    style={
+      [
+        {
+          "backgroundColor": "transparent",
+          "borderWidth": 0,
+        },
+        [
+          {},
+        ],
+        {
+          "flex": 0,
+          "height": 40,
+          "width": 40,
+        },
       ]
     }
+    vbHeight={6}
+    vbWidth={6}
+    width="40px"
   >
-    <RNSVGClipPath
-      name="clip0"
+    <RNSVGGroup
+      fill={null}
+      propList={
+        [
+          "fill",
+        ]
+      }
     >
-      <RNSVGPath
-        d="M2 2h2v2H2V2"
-        fill={4278190080}
-        propList={
-          Array [
-            "fill",
-          ]
+      <RNSVGClipPath
+        fill={
+          {
+            "payload": 4278190080,
+            "type": 0,
+          }
         }
-      />
-    </RNSVGClipPath>
-  </RNSVGGroup>
-</RNSVGSvgView>
+        name="clip0"
+      >
+        <RNSVGPath
+          d="M2 2h2v2H2V2"
+          fill={
+            {
+              "payload": 4278190080,
+              "type": 0,
+            }
+          }
+          propList={
+            [
+              "fill",
+            ]
+          }
+        />
+      </RNSVGClipPath>
+    </RNSVGGroup>
+  </RNSVGSvgView>
+</View>
 `;

@@ -1,10 +1,10 @@
 import ChevronDownIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ChevronDownIcon />', () => {
   it('should render ChevronDownIcon', () => {
     const renderTree = renderWithTheme(
-      <ChevronDownIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <ChevronDownIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

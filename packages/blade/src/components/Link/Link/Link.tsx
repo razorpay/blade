@@ -1,13 +1,19 @@
 import type { ReactElement, SyntheticEvent } from 'react';
+import React from 'react';
+import type { BaseLinkProps } from '../BaseLink';
 import { BaseLink } from '../BaseLink';
 import type { IconComponent } from '~components/Icons';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
+import { getStyledProps } from '~components/Box/styledProps';
+import type { StringChildrenType, TestID, BladeElementRef } from '~utils/types';
 import type { Platform } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import type { BladeCommonEvents } from '~components/types';
 
 type LinkCommonProps = {
   variant?: 'anchor' | 'button';
   icon?: IconComponent;
+  color?: 'primary' | 'white' | 'neutral';
   iconPosition?: 'left' | 'right';
   isDisabled?: boolean;
   onClick?: (event: SyntheticEvent) => void;
@@ -16,13 +22,21 @@ type LinkCommonProps = {
   accessibilityLabel?: string;
 
   /**
+   * It is exposed for internal usage with tooltip.
+   *
+   * @private
+   */
+  'aria-describedby'?: string;
+
+  /**
    * Sets the size of the link
    *
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: BaseLinkProps['size'];
 } & TestID &
   StyledPropsBlade &
+  BladeCommonEvents &
   Platform.Select<{
     native: {
       /**
@@ -88,7 +102,7 @@ type LinkAnchorVariantProps = LinkPropsWithOrWithoutIcon & {
 /*
   Link Props when variant is button
 */
-type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
+export type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
   variant?: 'button';
   isDisabled?: boolean;
   href?: undefined;
@@ -101,37 +115,64 @@ type LinkButtonVariantProps = LinkPropsWithOrWithoutIcon & {
 */
 export type LinkProps = LinkAnchorVariantProps | LinkButtonVariantProps;
 
-const Link = ({
-  children,
-  icon,
-  iconPosition = 'left',
-  isDisabled = false,
-  onClick,
-  variant = 'anchor',
-  href,
-  target,
-  rel,
-  accessibilityLabel,
-  size = 'medium',
-  testID,
-  hitSlop,
-  htmlTitle,
-  ...styledProps
-}: LinkProps): ReactElement => {
+const _Link: React.ForwardRefRenderFunction<BladeElementRef, LinkProps> = (
+  {
+    children,
+    icon,
+    iconPosition = 'left',
+    isDisabled = false,
+    onClick,
+    variant = 'anchor',
+    color = 'primary',
+    href,
+    target,
+    rel,
+    accessibilityLabel,
+    size = 'medium',
+    testID,
+    hitSlop,
+    htmlTitle,
+    onBlur,
+    onFocus,
+    onMouseLeave,
+    onMouseMove,
+    onPointerDown,
+    onPointerEnter,
+    onTouchStart,
+    onTouchEnd,
+    ...rest
+  },
+  ref,
+): ReactElement => {
   return (
     <BaseLink
       {...(icon ? { icon, children } : { children })}
       {...(variant === 'anchor' ? { variant, href, target, rel } : { variant, isDisabled })}
+      ref={ref as never}
       iconPosition={iconPosition}
       onClick={onClick}
-      accessibilityLabel={accessibilityLabel}
+      accessibilityProps={{ label: accessibilityLabel, describedBy: rest['aria-describedby'] }}
       size={size}
+      color={color}
       testID={testID}
       hitSlop={hitSlop}
       htmlTitle={htmlTitle}
-      {...styledProps}
+      onBlur={onBlur}
+      onFocus={onFocus}
+      onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
+      onPointerEnter={onPointerEnter}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+      {...getStyledProps(rest)}
     />
   );
 };
+
+const Link = assignWithoutSideEffects(React.forwardRef(_Link), {
+  displayName: 'Link',
+  componentId: 'Link',
+});
 
 export default Link;

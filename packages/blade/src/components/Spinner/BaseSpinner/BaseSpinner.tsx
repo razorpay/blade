@@ -2,18 +2,26 @@ import React from 'react';
 import { dimensions } from './spinnerTokens';
 import SpinnerIcon from './SpinnerIcon';
 import { SpinningBox } from './SpinningBox';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { metaAttribute, getIn, makeAccessible, makeSize, MetaConstants } from '~utils';
-import type { ColorContrastTypes, Feedback } from '~tokens/theme/theme';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { FeedbackColors } from '~tokens/theme/theme';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { makeSize } from '~utils/makeSize';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type BaseSpinnerProps = {
-  intent?: Feedback;
+  /**
+   * Sets the color of the spinner.
+   *
+   * @default 'default'
+   */
+  color?: 'primary' | 'white' | FeedbackColors;
   /**
    * Sets the label of the spinner.
    *
@@ -25,12 +33,6 @@ type BaseSpinnerProps = {
    *
    */
   labelPosition?: 'right' | 'bottom';
-  /**
-   * Sets the contrast of the spinner.
-   *
-   * @default 'low'
-   */
-  contrast?: ColorContrastTypes;
   /**
    * Sets the size of the spinner.
    *
@@ -45,33 +47,21 @@ type BaseSpinnerProps = {
 } & TestID &
   StyledPropsBlade;
 
-const getColor = ({
-  contrast,
-  intent,
-  theme,
-}: {
-  contrast: NonNullable<BaseSpinnerProps['contrast']>;
-  intent: BaseSpinnerProps['intent'];
-  theme: Theme;
-}): string => {
-  if (intent) {
-    return getIn(
-      theme.colors,
-      `feedback.${intent}.action.icon.primary.disabled.${contrast}Contrast`,
-    );
-  } else if (contrast == 'low') {
-    return getIn(theme.colors, 'brand.gray.700.lowContrast');
-  } else {
-    return getIn(theme.colors, 'brand.gray.700.highContrast');
+const getColor = ({ color, theme }: { color: BaseSpinnerProps['color']; theme: Theme }): string => {
+  if (color && color === 'white') {
+    return getIn(theme.colors, 'surface.background.gray.intense');
   }
+  if (color && color !== 'primary') {
+    return getIn(theme.colors, `feedback.background.${color}.intense`);
+  }
+  return getIn(theme.colors, 'surface.background.primary.intense');
 };
 
 const BaseSpinner = ({
   label,
   labelPosition = 'right',
   accessibilityLabel,
-  contrast = 'low',
-  intent,
+  color = 'neutral',
   size = 'medium',
   testID,
   ...styledProps
@@ -79,7 +69,6 @@ const BaseSpinner = ({
   const { theme } = useTheme();
   return (
     <BaseBox
-      display="flex"
       {...metaAttribute({ name: MetaConstants.Spinner, testID })}
       {...getStyledProps(styledProps)}
     >
@@ -93,17 +82,14 @@ const BaseSpinner = ({
         })}
       >
         <SpinningBox>
-          <SpinnerIcon
-            dimensions={makeSize(dimensions[size])}
-            color={getColor({ contrast, intent, theme })}
-          />
+          <SpinnerIcon dimensions={makeSize(dimensions[size])} color={getColor({ color, theme })} />
         </SpinningBox>
         {label && label.trim().length > 0 ? (
           <BaseBox
             marginLeft={labelPosition === 'right' ? 'spacing.3' : 'spacing.0'}
             marginTop={labelPosition === 'bottom' ? 'spacing.3' : 'spacing.0'}
           >
-            <Text variant="body" weight="regular" type="subdued" size="small" contrast={contrast}>
+            <Text variant="body" weight="regular" size="small" color="surface.text.gray.muted">
               {label}
             </Text>
           </BaseBox>
@@ -113,4 +99,5 @@ const BaseSpinner = ({
   );
 };
 
-export { BaseSpinner, BaseSpinnerProps };
+export type { BaseSpinnerProps };
+export { BaseSpinner };

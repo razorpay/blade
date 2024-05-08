@@ -1,10 +1,10 @@
 import RotateCounterClockWiseIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<RotateCounterClockWiseIcon />', () => {
   it('should render RotateCounterClockWiseIcon', () => {
     const { container } = renderWithTheme(
-      <RotateCounterClockWiseIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <RotateCounterClockWiseIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

@@ -5,10 +5,10 @@ import { EyeIcon, EyeOffIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { IconButton } from '~components/Button/IconButton';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute';
+import type { BladeElementRef } from '~utils/types';
 
 type PasswordInputExtraProps = {
   /**
@@ -46,9 +46,10 @@ type PasswordInputExtraProps = {
   >;
 };
 
-type PasswordInputProps = Pick<
+type PasswordInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
   | 'maxCharacters'
   | 'validationState'
@@ -69,13 +70,46 @@ type PasswordInputProps = Pick<
   | 'keyboardReturnKeyType'
   | 'autoCompleteSuggestionType'
   | 'testID'
+  | 'size'
 > &
   PasswordInputExtraProps &
   StyledPropsBlade;
 
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type PasswordInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type PasswordInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type PasswordInputProps = (PasswordInputPropsWithA11yLabel | PasswordInputPropsWithLabel) &
+  PasswordInputCommonProps;
+
 const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordInputProps> = (
   {
     label,
+    accessibilityLabel,
     labelPosition = 'top',
     showRevealButton = true,
     maxCharacters,
@@ -98,11 +132,11 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
     keyboardReturnKeyType = 'done',
     autoCompleteSuggestionType,
     testID,
+    size = 'medium',
     ...styledProps
   },
   ref,
 ) => {
-  const inputRef = useBladeInnerRef(ref);
   const [isRevealed, setIsRevealed] = React.useState(false);
   const isEnabled = !isDisabled;
 
@@ -110,7 +144,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
   const isRevealedAndEnabled = isRevealed && isEnabled;
 
   const toggleIsRevealed = (): void => setIsRevealed((revealed) => !revealed);
-  const accessibilityLabel = isRevealedAndEnabled ? 'Hide password' : 'Show password';
+  const iconAccessibilityLabel = isRevealedAndEnabled ? 'Hide password' : 'Show password';
   const type = isRevealedAndEnabled ? 'text' : 'password';
 
   const revealButtonIcon = isRevealedAndEnabled ? EyeOffIcon : EyeIcon;
@@ -120,7 +154,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
         size="medium"
         icon={revealButtonIcon}
         onClick={toggleIsRevealed}
-        accessibilityLabel={accessibilityLabel}
+        accessibilityLabel={iconAccessibilityLabel}
       />
     ) : null;
 
@@ -133,13 +167,15 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
 
   return (
     <BaseInput
-      ref={inputRef as React.Ref<HTMLInputElement>}
-      componentName="password-input"
+      ref={ref}
+      componentName={MetaConstants.PasswordInput}
       id="password-field"
-      label={label}
+      label={label as string}
+      accessibilityLabel={accessibilityLabel}
+      hideLabelText={!Boolean(label)}
       labelPosition={labelPosition}
       type={type}
-      interactionElement={revealButton}
+      trailingInteractionElement={revealButton}
       trailingFooterSlot={trailingFooterSlot}
       maxCharacters={maxCharacters}
       validationState={validationState}
@@ -163,6 +199,7 @@ const _PasswordInput: React.ForwardRefRenderFunction<BladeElementRef, PasswordIn
       keyboardReturnKeyType={keyboardReturnKeyType}
       autoCapitalize="none"
       testID={testID}
+      size={size}
       {...styledProps}
     />
   );
@@ -173,4 +210,5 @@ const PasswordInput = assignWithoutSideEffects(React.forwardRef(_PasswordInput),
   displayName: 'PasswordInput',
 });
 
-export { PasswordInputProps, PasswordInput };
+export type { PasswordInputProps };
+export { PasswordInput };

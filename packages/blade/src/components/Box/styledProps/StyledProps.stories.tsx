@@ -4,8 +4,8 @@ import { getStyledPropsArgTypes } from '../BaseBox/storybookArgTypes';
 import type { BoxProps } from '..';
 import { Box } from '..';
 import type { StyledPropsBlade as StyledPropsType } from './getStyledProps';
-import { Text, Title } from '~components/Typography';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Text, Heading } from '~components/Typography';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { Link } from '~components/Link';
 import { Button } from '~components/Button';
 import { Alert } from '~components/Alert';
@@ -34,7 +34,7 @@ const BoxStoryMeta = {
             marginBottom="spacing.8"
           />
           <Box paddingBottom="spacing.8">
-            <Title size="medium">Layout Primitives Documentation</Title>
+            <Heading size="xlarge">Layout Primitives Documentation</Heading>
             <Text marginTop="spacing.3">
               Check Out{' '}
               <Link href="/?path=/docs/components-layout-primitives-box-how-to-create-layouts--page#styled-props">
@@ -50,9 +50,9 @@ const BoxStoryMeta = {
   },
 } as Meta<BoxProps>;
 
-export const StyledProps = (args: StyledPropsType): JSX.Element => {
+export const StyledProps = (args: StyledPropsType): React.ReactElement => {
   return (
-    <Box backgroundColor="surface.background.level2.lowContrast">
+    <Box backgroundColor="surface.background.gray.moderate">
       <Button {...args}>Blade Button</Button>
     </Box>
   );

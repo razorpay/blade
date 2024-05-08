@@ -1,5 +1,5 @@
 import Link from '../Link';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<Link />', () => {
   it('should render link with a default rel set when target is _blank', () => {

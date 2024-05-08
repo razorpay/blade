@@ -2,8 +2,8 @@ import userEvent from '@testing-library/user-event';
 import type { ReactElement } from 'react';
 import { useRef, useState } from 'react';
 import { PasswordInput } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 import { Button } from '~components/Button';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
@@ -12,6 +12,12 @@ afterAll(() => jest.restoreAllMocks());
 describe('<PasswordInput />', () => {
   it('should render', () => {
     const { container } = renderWithTheme(<PasswordInput label="Enter password" />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render large size', () => {
+    const { container } = renderWithTheme(<PasswordInput label="Enter password" size="large" />);
 
     expect(container).toMatchSnapshot();
   });
@@ -79,6 +85,13 @@ describe('<PasswordInput />', () => {
     expect(input).toHaveFocus();
   });
 
+  it('should be disabled when isDisabled flag is passed', () => {
+    const label = 'Enter password';
+    const { getByLabelText } = renderWithTheme(<PasswordInput label={label} isDisabled />);
+
+    const input = getByLabelText(label);
+    expect(input).toBeDisabled();
+  });
   it('should be disabled when isDisabled flag is passed', () => {
     const label = 'Enter password';
     const { getByLabelText } = renderWithTheme(<PasswordInput label={label} isDisabled />);

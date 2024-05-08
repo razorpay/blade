@@ -1,24 +1,21 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 
 import type { IconButtonProps } from './IconButton';
 import { IconButton as IconButtonComponent } from './IconButton';
 import iconMap from '~components/Icons/iconMap';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { getBladeCommonEventArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
   return (
     <StoryPageWrapper
       componentName="IconButton"
       componentDescription="Useful for making clickable icons. For example - close button for modals, inputs, etc."
-      figmaURL={{
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=10564%3A195699&t=b5e9P6qSqxDsq2rz-4',
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=12702%3A149930&t=IyyhF89aEgTcRBzk-4',
-      }}
+      apiDecisionLink={null}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=71108-309592&t=ozxGdqCDqI9hRYY8-1&scaling=min-zoom&page-id=614%3A1&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox showConsole>
@@ -47,14 +44,16 @@ const meta: Meta<IconButtonProps> = {
   component: IconButtonComponent,
   args: {
     size: 'medium',
-    contrast: 'low',
+    emphasis: 'intense',
     accessibilityLabel: 'Close',
   },
+  tags: ['autodocs'],
   argTypes: {
+    ...getBladeCommonEventArgTypes(),
     onClick: { action: 'onClick' },
     icon: {
       name: 'icon',
-      type: 'select',
+      type: 'select' as 'string',
       options: Object.keys(iconMap),
     },
   },
@@ -65,7 +64,7 @@ const meta: Meta<IconButtonProps> = {
   },
 };
 
-const IconButtonTemplate: ComponentStory<typeof IconButtonComponent> = ({
+const IconButtonTemplate: StoryFn<typeof IconButtonComponent> = ({
   icon = 'CloseIcon',
   ...args
 }) => {

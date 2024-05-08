@@ -1,4 +1,4 @@
-import type { StringChildrenType } from '~src/_helpers/types';
+import type { StringChildrenType } from '~utils/types';
 
 type SkipNavLinkProps = {
   id?: string;

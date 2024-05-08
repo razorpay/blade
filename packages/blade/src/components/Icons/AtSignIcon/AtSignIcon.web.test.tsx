@@ -1,10 +1,10 @@
 import AtSignIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<AtSignIcon />', () => {
   it('should render AtSignIcon', () => {
     const { container } = renderWithTheme(
-      <AtSignIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <AtSignIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

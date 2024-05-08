@@ -1,11 +1,17 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import React from 'react';
+import { SelectInput } from '../DropdownInputTriggers';
 import type { OTPInputProps } from './OTPInput';
 import { OTPInput as OTPInputComponent } from './OTPInput';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Box } from '~components/Box';
+import { Button } from '~components/Button';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
+import { ActionList, ActionListItem } from '~components/ActionList';
+import { Text } from '~components/Typography';
 
 const propsCategory = {
   BASE_PROPS: 'OTPInput Props',
@@ -43,6 +49,7 @@ export default {
     errorText: undefined,
     successText: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     placeholder: {
       table: {
@@ -79,12 +86,37 @@ export default {
         category: propsCategory.BASE_PROPS,
       },
     },
+    onBlur: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    onFocus: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
     onOTPFilled: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
     },
     label: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    size: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    testID: {
+      table: {
+        category: propsCategory.LABEL_PROPS,
+      },
+    },
+    accessibilityLabel: {
       table: {
         category: propsCategory.LABEL_PROPS,
       },
@@ -141,20 +173,16 @@ export default {
       page: () => (
         <StoryPageWrapper
           componentName="OTPInput"
+          apiDecisionLink="https://github.com/razorpay/blade/blob/master/packages/blade/src/components/Input/OTPInput/_decisions/_decisions.md"
           componentDescription="A one-time password (OTP), also known as a one-time PIN, one-time authorization code (OTAC) or dynamic password, is a password that is valid for only one login session or a transaction. These are a group of inputs and can be either 4 or 6 characters long."
-          figmaURL={{
-            paymentTheme:
-              'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=10953%3A191059',
-            bankingTheme:
-              'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=9941%3A193027',
-          }}
+          figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=76077-81363&t=kxYCFAmMWz6sMy04-1&scaling=min-zoom&page-id=10953%3A180623&mode=design"
         >
           <Title>Usage</Title>
           <Sandbox showConsole>
             {`
               import { OTPInput } from '@razorpay/blade/components';
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   // Fill OTP and check console
                   <OTPInput 
@@ -173,8 +201,13 @@ export default {
   },
 } as Meta<OTPInputProps>;
 
-const OTPInputTemplate: ComponentStory<typeof OTPInputComponent> = ({ ...args }) => {
-  return <OTPInputComponent {...args} />;
+const OTPInputTemplate: StoryFn<typeof OTPInputComponent> = ({ ...args }) => {
+  const maxWidth = args.otpLength === 4 ? '376px' : '568px';
+  return (
+    <Box maxWidth={maxWidth}>
+      <OTPInputComponent {...args} />
+    </Box>
+  );
 };
 
 export const OTPInput = OTPInputTemplate.bind({});
@@ -190,6 +223,14 @@ OTPInput4Fields.args = {
 export const OTPInputHelpText = OTPInputTemplate.bind({});
 OTPInputHelpText.storyName = 'OTPInput with Help Text';
 OTPInputHelpText.args = {
+  helpText: 'Add a message here',
+};
+
+export const OTPInputWithoutLabel = OTPInputTemplate.bind({});
+OTPInputWithoutLabel.storyName = 'OTPInput without Label';
+OTPInputWithoutLabel.args = {
+  label: undefined,
+  accessibilityLabel: 'Enter OTP',
   helpText: 'Add a message here',
 };
 
@@ -215,7 +256,28 @@ OTPInputSuccess.args = {
   successText: 'Validated',
 };
 
-const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = () => {
+const OTPInputSizesTemplate: StoryFn<typeof OTPInputComponent> = ({ ...args }) => {
+  const maxWidth = args.otpLength === 4 ? '376px' : '568px';
+
+  return (
+    <Box display="flex" flexDirection="column" maxWidth={maxWidth}>
+      <Text size="large" marginBottom="spacing.2">
+        Medium Size:
+      </Text>
+      <OTPInputComponent {...args} size="medium" />
+      <Text size="large" marginTop="spacing.4" marginBottom="spacing.2">
+        Large Size:
+      </Text>
+      <OTPInputComponent {...args} size="large" />
+    </Box>
+  );
+};
+export const OTPInputSizes = OTPInputSizesTemplate.bind({});
+OTPInputSizes.args = {
+  helpText: 'Help Text',
+};
+
+const OTPInputUncontrolledTemplate: StoryFn<typeof OTPInputComponent> = () => {
   return (
     <OTPInput
       label="Enter OTP"
@@ -226,7 +288,74 @@ const OTPInputUncontrolledTemplate: ComponentStory<typeof OTPInputComponent> = (
 };
 export const OTPInputUncontrolled = OTPInputUncontrolledTemplate.bind({});
 
-const OTPInputControlledTemplate: ComponentStory<typeof OTPInputComponent> = () => {
+const OTPInputControlledTemplate: StoryFn<typeof OTPInputComponent> = () => {
   return <OTPInput label="Enter OTP" value="123456" name="otp" />;
 };
 export const OTPInputControlled = OTPInputControlledTemplate.bind({});
+
+export const OTPInputRef: StoryFn<typeof OTPInputComponent> = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [focusOn, setFocusOn] = React.useState(0);
+  const inputRef = React.useRef<HTMLInputElement[]>([]);
+
+  return (
+    <Box gap="spacing.3" display="flex" flexDirection="column">
+      <Box
+        maxWidth="200px"
+        display="flex"
+        flexDirection="row"
+        alignItems="flex-end"
+        gap="spacing.3"
+      >
+        <Dropdown selectionType="single">
+          <SelectInput
+            label="Item to focus"
+            placeholder="Select Item To Focus"
+            name="action"
+            value={`${focusOn}`}
+            onChange={({ values }) => {
+              setFocusOn(Number(values[0]));
+            }}
+          />
+          <DropdownOverlay>
+            <ActionList>
+              <ActionListItem title="0" value="0" />
+              <ActionListItem title="1" value="1" />
+              <ActionListItem title="2" value="2" />
+              <ActionListItem title="3" value="3" />
+            </ActionList>
+          </DropdownOverlay>
+        </Dropdown>
+        <Box>
+          <Button
+            onClick={() => {
+              console.log(inputRef);
+              inputRef?.current[focusOn].focus();
+            }}
+          >
+            Focus
+          </Button>
+        </Box>
+      </Box>
+      <Box maxWidth="376px">
+        <OTPInputComponent
+          ref={inputRef}
+          label="Enter OTP"
+          name="otp"
+          otpLength={4}
+          onChange={({ name, value }): void => console.log({ name, value })}
+        />
+      </Box>
+    </Box>
+  );
+};
+
+OTPInputRef.storyName = 'OTP Input Ref';
+OTPInputRef.parameters = {
+  docs: {
+    description: {
+      story:
+        'The OTP component offers a `ref` prop for programmatically focusing on its input fields. This prop exposes an array of individual refs for each input, allowing you to focus on a particular field using `inputRef.current[index].focus()`.',
+    },
+  },
+};

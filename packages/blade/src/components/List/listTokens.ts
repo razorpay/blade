@@ -1,10 +1,10 @@
-import type { CodeProps } from '../Typography';
 import type { ListProps } from './List';
-import type { TypographyPlatforms } from '~tokens/global/typography';
-import type { DotNotationSpacingStringToken } from '~src/_helpers/types';
+import type { CodeProps } from '~components/Typography';
+import type { TypographyPlatforms } from '~tokens/global';
+import type { DotNotationSpacingStringToken } from '~utils/types';
 import type { SpacingValueType } from '~components/Box/BaseBox';
-import { makeSize } from '~utils';
-import size from '~tokens/global/size';
+import { makeSize } from '~utils/makeSize';
+import { size } from '~tokens/global';
 
 const listItemMarginLeft: Record<
   NonNullable<ListProps['variant'] | 'unorderedWithIcon'>,
@@ -49,30 +49,36 @@ const listItemBulletMarginTop: Record<
     onDesktop: {
       small: makeSize(6),
       medium: makeSize(7),
+      large: makeSize(10),
     },
     onMobile: {
       small: makeSize(6),
       medium: makeSize(7),
+      large: makeSize(10),
     },
   },
   unorderedWithIcon: {
     onDesktop: {
       small: 'spacing.2',
       medium: 'spacing.1',
+      large: makeSize(5),
     },
     onMobile: {
       small: 'spacing.2',
       medium: 'spacing.1',
+      large: makeSize(5),
     },
   },
   ordered: {
     onDesktop: {
       small: makeSize(0),
       medium: makeSize(0),
+      large: makeSize(0),
     },
     onMobile: {
       small: makeSize(0),
       medium: makeSize(0),
+      large: makeSize(0),
     },
   },
   'ordered-filled': {
@@ -80,10 +86,12 @@ const listItemBulletMarginTop: Record<
     onDesktop: {
       small: makeSize(0),
       medium: makeSize(0),
+      large: makeSize(0),
     },
     onMobile: {
       small: makeSize(0),
       medium: makeSize(0),
+      large: makeSize(0),
     },
   },
 };
@@ -95,19 +103,16 @@ const listItemUnorderedBulletSize: Record<
   onDesktop: {
     small: makeSize(size[6]),
     medium: makeSize(size[6]),
+    large: makeSize(size[6]),
   },
   onMobile: {
     small: makeSize(size[5]),
     medium: makeSize(size[6]),
+    large: makeSize(size[6]),
   },
 };
 
 const listItemMarginBottom: DotNotationSpacingStringToken = 'spacing.3';
-
-const ComponentIds = {
-  List: 'List',
-  ListItem: 'ListItem',
-};
 
 const listItemOrderedBulletBoxSize: Record<
   string,
@@ -118,20 +123,24 @@ const listItemOrderedBulletBoxSize: Record<
     onDesktop: {
       small: makeSize(size[16]),
       medium: makeSize(size[20]),
+      large: makeSize(size[24]),
     },
     onMobile: {
       small: makeSize(size[16]),
       medium: makeSize(size[24]),
+      large: makeSize(size[24]),
     },
   },
   'ordered-filled': {
     onDesktop: {
       small: makeSize(size[18]),
       medium: makeSize(size[20]),
+      large: makeSize(size[24]),
     },
     onMobile: {
       small: makeSize(size[16]),
       medium: makeSize(size[20]),
+      large: makeSize(size[24]),
     },
   },
 };
@@ -139,11 +148,11 @@ const listItemOrderedBulletBoxSize: Record<
 const listItemCodeSize: Record<NonNullable<ListProps['size']>, NonNullable<CodeProps['size']>> = {
   small: 'small',
   medium: 'small',
+  large: 'medium',
 };
 
 export {
   listItemMarginLeft,
-  ComponentIds,
   listItemMarginBottom,
   listItemBulletMarginRight,
   listItemBulletMarginTop,

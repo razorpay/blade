@@ -1,10 +1,10 @@
 import MinusSquareIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<MinusSquareIcon />', () => {
   it('should render MinusSquareIcon', () => {
     const { container } = renderWithTheme(
-      <MinusSquareIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <MinusSquareIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

@@ -1,12 +1,12 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
 import type { SpinnerProps } from './Spinner';
 import { Spinner as SpinnerComponent } from './Spinner';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { useTheme } from '~components/BladeProvider';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
@@ -15,12 +15,7 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentDescription="A spinner is an element with a looping animation that indicates loading is in process."
       componentName="Spinner"
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=14825%3A203592',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11506%3A284715',
-      }}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=74864-85575&t=493DSapGGbdA42Lb-1&scaling=min-zoom&page-id=14825%3A203537&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox>
@@ -28,7 +23,7 @@ const Page = (): ReactElement => {
           import { useEffect, useState } from 'react';
           import { Spinner, Text } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             const [isLoading, setIsLoading] = useState(true);
 
             useEffect(() => {
@@ -57,17 +52,18 @@ export default {
       page: Page,
     },
   },
+  tags: ['autodocs'],
   argTypes: getStyledPropsArgTypes(),
 } as Meta<SpinnerProps>;
 
-const SpinnerTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   return <SpinnerComponent {...args} />;
 };
 
 export const Spinner = SpinnerTemplate.bind({});
 Spinner.storyName = 'Default';
 
-const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerSizesTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   return (
     <BaseBox>
       <BaseBox marginBottom="spacing.3">
@@ -92,7 +88,7 @@ const SpinnerSizesTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args
 export const SpinnerSizes = SpinnerSizesTemplate.bind({});
 SpinnerSizes.storyName = 'Sizes';
 
-const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...args }) => {
+const SpinnerColorTemplate: StoryFn<typeof SpinnerComponent> = ({ ...args }) => {
   const { theme } = useTheme();
 
   return (
@@ -103,11 +99,11 @@ const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...a
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         paddingLeft="spacing.3"
-        backgroundColor={theme.colors.surface.background.level2.lowContrast}
+        backgroundColor={theme.colors.surface.background.gray.subtle}
       >
-        <Text>Low Contrast</Text>
+        <Text>Primary Color</Text>
         <BaseBox marginBottom="spacing.2" />
-        <SpinnerComponent {...args} contrast="low" />
+        <SpinnerComponent {...args} color="primary" />
       </BaseBox>
       <BaseBox
         marginBottom="spacing.3"
@@ -115,15 +111,15 @@ const SpinnerContrastTemplate: ComponentStory<typeof SpinnerComponent> = ({ ...a
         paddingTop="spacing.3"
         paddingBottom="spacing.3"
         paddingLeft="spacing.3"
-        backgroundColor={theme.colors.surface.background.level1.highContrast}
+        backgroundColor={theme.colors.surface.background.gray.subtle}
       >
-        <Text contrast="high">High Contrast</Text>
+        <Text contrast="high">White Color</Text>
         <BaseBox marginBottom="spacing.2" />
-        <SpinnerComponent {...args} contrast="high" />
+        <SpinnerComponent {...args} color="white" />
       </BaseBox>
     </BaseBox>
   );
 };
 
-export const SpinnerContrasts = SpinnerContrastTemplate.bind({});
-SpinnerContrasts.storyName = 'Contrasts';
+export const SpinnerContrasts = SpinnerColorTemplate.bind({});
+SpinnerContrasts.storyName = 'Colors';

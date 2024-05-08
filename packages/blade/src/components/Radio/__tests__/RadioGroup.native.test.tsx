@@ -3,9 +3,10 @@
 import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Text } from 'react-native';
-import renderWithTheme from '../../../_helpers/testing/renderWithTheme.native';
+import type { ReactTestInstance } from 'react-test-renderer';
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 beforeAll(() => jest.spyOn(console, 'error').mockImplementation());
 afterAll(() => jest.restoreAllMocks());
@@ -41,7 +42,7 @@ describe('<RadioGroup />', () => {
 
   it('should propagate isDisabled prop to child radios', () => {
     const labelText = 'Select fruits';
-    const { getAllByA11yRole } = renderWithTheme(
+    const { getAllByRole } = renderWithTheme(
       <RadioGroup isDisabled label={labelText}>
         <Radio value="apple">Apple</Radio>
         <Radio value="mango">Mango</Radio>
@@ -49,7 +50,7 @@ describe('<RadioGroup />', () => {
       </RadioGroup>,
     );
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     radios.forEach((radio) => {
       expect(radio.props.accessibilityState.disabled).toBeTruthy();
     });
@@ -57,7 +58,7 @@ describe('<RadioGroup />', () => {
 
   it('should propagate name prop to child radios', () => {
     const labelText = 'Select fruits';
-    const { getAllByA11yRole } = renderWithTheme(
+    const { getAllByRole } = renderWithTheme(
       <RadioGroup isDisabled label={labelText} name="fruits">
         <Radio value="apple">Apple</Radio>
         <Radio value="mango">Mango</Radio>
@@ -65,7 +66,7 @@ describe('<RadioGroup />', () => {
       </RadioGroup>,
     );
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     radios.forEach((radio) => {
       expect(radio.props.name).toBe('fruits');
     });
@@ -96,7 +97,7 @@ describe('<RadioGroup />', () => {
     const helpText = 'Select one';
     const errorText = 'Invalid selection';
 
-    const { getAllByA11yRole, queryByText } = renderWithTheme(
+    const { getAllByRole, queryByText } = renderWithTheme(
       <RadioGroup
         helpText={helpText}
         errorText={errorText}
@@ -112,7 +113,7 @@ describe('<RadioGroup />', () => {
     expect(queryByText(helpText)).toBeFalsy();
     expect(queryByText(errorText)).toBeTruthy();
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     radios.forEach((radio) => {
       expect(radio.props.accessibilityInvalid).toBeTruthy();
     });
@@ -121,7 +122,7 @@ describe('<RadioGroup />', () => {
   it('should work in uncontrolled mode', () => {
     const labelText = 'Select fruits';
     const onChange = jest.fn();
-    const { getByA11yState, getAllByA11yRole } = renderWithTheme(
+    const { getByA11yState, getAllByRole } = renderWithTheme(
       <RadioGroup name="fruits" label={labelText} defaultValue="apple" onChange={onChange}>
         <Radio value="apple">Apple</Radio>
         <Radio value="mango">Mango</Radio>
@@ -132,20 +133,20 @@ describe('<RadioGroup />', () => {
     const radio = getByA11yState({ checked: true });
     expect(radio.props.value).toBe('apple');
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     const apple = radios.find((radio) => radio.props.value === 'apple');
     const mango = radios.find((radio) => radio.props.value === 'mango');
     const orange = radios.find((radio) => radio.props.value === 'orange');
 
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).not.toBeCalled();
-    fireEvent.press(mango!);
+    fireEvent.press(mango as ReactTestInstance);
     expect(mango?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith({ value: 'mango', name: 'fruits' });
-    fireEvent.press(orange!);
+    fireEvent.press(orange as ReactTestInstance);
     expect(orange?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith({ value: 'orange', name: 'fruits' });
-    fireEvent.press(apple!);
+    fireEvent.press(apple as ReactTestInstance);
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith({ value: 'apple', name: 'fruits' });
   });
@@ -173,25 +174,25 @@ describe('<RadioGroup />', () => {
         </>
       );
     };
-    const { getByA11yState, getAllByA11yRole, getByTestId } = renderWithTheme(<Example />);
+    const { getByA11yState, getAllByRole, getByTestId } = renderWithTheme(<Example />);
 
     const radio = getByA11yState({ checked: true });
     expect(radio.props.value).toBe('apple');
 
-    const radios = getAllByA11yRole('radio');
+    const radios = getAllByRole('radio');
     const apple = radios.find((radio) => radio.props.value === 'apple');
     const mango = radios.find((radio) => radio.props.value === 'mango');
     const orange = radios.find((radio) => radio.props.value === 'orange');
 
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).not.toBeCalled();
-    fireEvent.press(mango!);
+    fireEvent.press(mango as ReactTestInstance);
     expect(mango?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith('mango');
-    fireEvent.press(orange!);
+    fireEvent.press(orange as ReactTestInstance);
     expect(orange?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith('orange');
-    fireEvent.press(apple!);
+    fireEvent.press(apple as ReactTestInstance);
     expect(apple?.props.accessibilityState.checked).toBeTruthy();
     expect(onChange).toBeCalledWith('apple');
     expect(getByTestId('values').children[0]).toBe('apple');

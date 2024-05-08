@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ReactElement } from 'react';
 import type { GestureResponderEvent } from 'react-native';
 import { Linking } from 'react-native';
@@ -5,6 +6,9 @@ import styled from 'styled-components/native';
 import type { StyledBaseLinkProps } from './types';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import { useStyledProps } from '~components/Box/styledProps';
+import type { BladeElementRef } from '~utils/types';
+import { castNativeType } from '~utils';
+import { logger } from '~utils/logger';
 
 const StyledNativeLink = styled.Pressable((props) => {
   const styledPropsCSSObject = useStyledProps(props);
@@ -22,23 +26,37 @@ const openURL = async (href: string): Promise<void> => {
       await Linking.openURL(href);
     }
   } catch {
-    console.warn(`[Blade: BaseLink]: Could not open the link "href=${href}"`);
+    if (__DEV__) {
+      logger({
+        message: `Could not open the link "href=${href}"`,
+        moduleName: 'BaseLink',
+        type: 'warn',
+      });
+    }
   }
 };
 
-const StyledLink = ({
-  variant,
-  disabled,
-  href,
-  onClick,
-  children,
-  setCurrentInteraction,
-  accessibilityProps,
-  // @ts-expect-error avoid exposing to public
-  style,
-  testID,
-  hitSlop,
-}: StyledBaseLinkProps & { children: React.ReactNode }): ReactElement => {
+const _StyledLink: React.ForwardRefRenderFunction<
+  BladeElementRef,
+  StyledBaseLinkProps & { children: React.ReactNode }
+> = (
+  {
+    variant,
+    disabled,
+    href,
+    onClick,
+    children,
+    setCurrentInteraction,
+    accessibilityProps,
+    // @ts-expect-error avoid exposing to public
+    style,
+    testID,
+    hitSlop,
+    onTouchStart,
+    onTouchEnd,
+  },
+  ref,
+): ReactElement => {
   const handleOnPress = (event: GestureResponderEvent): void => {
     if (href && variant === 'anchor') {
       void openURL(href);
@@ -57,11 +75,15 @@ const StyledLink = ({
 
   return (
     <StyledNativeLink
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
       {...accessibilityProps}
       disabled={disabled}
       onPress={handleOnPress}
-      onPressIn={(): void => setCurrentInteraction('active')}
+      onPressIn={(): void => setCurrentInteraction('focus')}
       onPressOut={(): void => setCurrentInteraction('default')}
+      onTouchStart={castNativeType(onTouchStart)}
+      onTouchEnd={castNativeType(onTouchEnd)}
       style={style}
       testID={testID}
       hitSlop={hitSlop}
@@ -70,5 +92,7 @@ const StyledLink = ({
     </StyledNativeLink>
   );
 };
+
+const StyledLink = React.forwardRef(_StyledLink);
 
 export default StyledLink;

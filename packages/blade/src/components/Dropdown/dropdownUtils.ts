@@ -8,7 +8,8 @@
  */
 
 import type { DropdownContextType, OptionsType } from './useDropdown';
-import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
+import { dropdownComponentIds } from './dropdownComponentIds';
+import type { SpacingValueType } from '~components/Box/BaseBox';
 
 export type SelectActionsType =
   | 'Close'
@@ -22,11 +23,6 @@ export type SelectActionsType =
   | 'Previous'
   | 'Select'
   | 'Type';
-
-export const componentIds = {
-  DropdownOverlay: 'DropdownOverlay',
-  Dropdown: 'Dropdown',
-};
 
 // Save a list of named combobox actions, for future readability
 const SelectActions: Record<SelectActionsType, SelectActionsType> = {
@@ -65,6 +61,7 @@ export function filterOptions(
 export function getActionFromKey(
   e: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
   isOpen: boolean,
+  dropdownTriggerer: DropdownContextType['dropdownTriggerer'],
 ): SelectActionsType | undefined {
   if (!e) {
     return undefined;
@@ -113,7 +110,11 @@ export function getActionFromKey(
       return SelectActions.PageDown;
     } else if (key === 'Escape') {
       return SelectActions.Close;
-    } else if (key === 'Enter' || key === ' ') {
+    } else if (
+      key === 'Enter' ||
+      // we ignore the spacebar select in autocomplete since hitting spacebar might be expected while typing
+      (dropdownTriggerer !== dropdownComponentIds.triggers.AutoComplete && key === ' ')
+    ) {
       return SelectActions.CloseSelect;
     }
   }
@@ -151,16 +152,20 @@ export function getIndexByLetter(options: string[], filter: string, startIndex =
 /**
  * This functions makes sure the optionsIndex is not going out of possible options
  */
-export function getUpdatedIndex(
-  currentIndex: number,
-  maxIndex: number,
-  action: SelectActionsType,
-): number {
+export function getUpdatedIndex({
+  currentIndex,
+  maxIndex,
+  actionType,
+}: {
+  currentIndex: number;
+  maxIndex: number;
+  actionType: SelectActionsType;
+}): number {
   // On PageUP or PageDown, we jump focus by 10 items or to the first or last element
   // Details: https://www.w3.org/WAI/ARIA/apg/example-index/combobox/combobox-select-only.html#:~:text=PageUp,to%20last%20option).
   const pageSize = 10;
 
-  switch (action) {
+  switch (actionType) {
     case SelectActions.First:
       return 0;
     case SelectActions.Last:
@@ -193,6 +198,19 @@ export function isElementVisibleOnScreen(element: HTMLElement): boolean {
 }
 
 /**
+ * Checks if element is visible inside the given container
+ */
+function isElementVisible(container: HTMLElement, element: HTMLElement): boolean {
+  const containerRect = container.getBoundingClientRect();
+  const elementRect = element.getBoundingClientRect();
+
+  const isVerticalVisible =
+    elementRect.top >= containerRect.top && elementRect.bottom <= containerRect.bottom;
+
+  return isVerticalVisible;
+}
+
+/**
  * Checks if the dropdown is scrollable
  */
 export function isScrollable(element: HTMLElement): boolean {
@@ -201,6 +219,7 @@ export function isScrollable(element: HTMLElement): boolean {
 
 type ActionsType = {
   setIsOpen: DropdownContextType['setIsOpen'];
+  close: DropdownContextType['close'];
   selectCurrentOption: () => void;
   onOptionChange: (action: SelectActionsType) => void;
   onComboType: (letter: string, action: SelectActionsType) => void;
@@ -212,10 +231,12 @@ type ActionsType = {
  */
 export const performAction = (
   action: SelectActionsType,
-  e: FormInputOnKeyDownEvent,
+  payload: {
+    event: React.KeyboardEvent<HTMLInputElement | HTMLButtonElement>;
+  },
   actions: ActionsType,
 ): boolean => {
-  const { event } = e;
+  const { event } = payload;
 
   switch (action) {
     case SelectActions.Last:
@@ -236,7 +257,7 @@ export const performAction = (
       return true;
     case SelectActions.Close:
       event.preventDefault();
-      actions.setIsOpen(false);
+      actions.close();
       return true;
     case SelectActions.Type:
       actions.onComboType(event.key, action);
@@ -266,21 +287,19 @@ export const ensureScrollVisiblity = (
   // ensure the new option is in view
   if (containerElement) {
     if (isScrollable(containerElement)) {
-      const optionEl = containerElement.querySelectorAll<HTMLElement>('[role="option"]');
+      const optionEl = containerElement.querySelectorAll<HTMLElement>(
+        '[role="option"], [role="menuitem"]',
+      );
       // Making sure its the same element as the one from options state
       if (
         newActiveIndex >= 0 &&
         optionEl[newActiveIndex].dataset.value === options[newActiveIndex]
       ) {
         const activeElement = optionEl[newActiveIndex];
-        const bodyRect = containerElement.getBoundingClientRect().top;
-        const elementRect = activeElement.getBoundingClientRect().top;
-        const elementPosition = elementRect - bodyRect;
-        const offsetPosition = elementPosition;
 
-        containerElement.scrollTo({
-          top: offsetPosition,
-        });
+        if (!isElementVisible(containerElement, activeElement)) {
+          activeElement.scrollIntoView({ inline: 'nearest' });
+        }
 
         if (!isElementVisibleOnScreen(optionEl[newActiveIndex])) {
           activeElement.scrollIntoView({ behavior: 'smooth' });
@@ -311,9 +330,16 @@ export const makeInputDisplayValue = (selectedIndices: number[], options: Option
 
   // When one item is selected, we display that item's title in input
   if (selectedIndices.length === 1) {
-    return options[selectedIndices[0]].title;
+    return options[selectedIndices[0]]?.title;
   }
 
   // When more than one item is selected, we display the count of items
   return `${selectedIndices.length} items selected`;
+};
+
+export type DropdownPosition = {
+  top?: SpacingValueType;
+  bottom?: SpacingValueType;
+  left?: SpacingValueType;
+  right?: SpacingValueType;
 };

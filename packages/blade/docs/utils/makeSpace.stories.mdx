@@ -1,0 +1,27 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Utils/makeSpace" />
+
+## `makeSpace`
+
+Spacing tokens in our theme are stored as plain numbers but they need to be converted into px units before we can use them.
+`makeSpace` converts spacing tokens into `px` units for web as well as react native.
+
+For example, `makeSpace(10)` will return `10px` for web as well as react native.
+
+> Should be used only with Blade's [Spacing tokens](?path=/story/tokens-spacing--page)
+
+```tsx
+const makeSpace = (size: number) => string;
+```
+
+### Example
+
+```tsx
+import { makeSpace } from '@razorpay/blade/utils';
+import styled from 'styled-components';
+
+const CustomComponent = styled.div`
+  padding: ${({ theme }) => makeSpace(theme.spacing[2])}; // 4px
+`;
+```

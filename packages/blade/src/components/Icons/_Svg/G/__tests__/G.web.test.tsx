@@ -1,7 +1,7 @@
 import G from '..';
 import Path from '../../Path';
 import Svg from '../../Svg';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<G />', () => {
   it('should render html g component', () => {

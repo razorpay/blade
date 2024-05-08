@@ -4,7 +4,7 @@ import { fireEvent } from '@testing-library/react-native';
 import React from 'react';
 import { Radio } from '../Radio';
 import { RadioGroup } from '../RadioGroup/RadioGroup';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<Radio />', () => {
   it('should render radio with label', () => {
@@ -43,7 +43,7 @@ describe('<Radio />', () => {
     expect(toJSON()).toMatchSnapshot();
     const radio = queryByA11yState({ disabled: true });
     expect(radio).toBeTruthy();
-    expect(radio?.props?.accessibilityState).toStrictEqual({ checked: false, disabled: true });
+    expect(radio).toHaveAccessibilityState({ checked: false, disabled: true });
   });
 
   test('user should be able to set checked state', () => {

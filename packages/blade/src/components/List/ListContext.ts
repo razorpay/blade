@@ -1,6 +1,6 @@
 import React from 'react';
-import type { IconComponent } from '../Icons';
 import type { ListProps } from './List';
+import type { IconComponent } from '~components/Icons';
 
 export type ListContextType = {
   level?: number;

@@ -1,10 +1,10 @@
 import TwitterIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TwitterIcon />', () => {
   it('should render TwitterIcon', () => {
     const renderTree = renderWithTheme(
-      <TwitterIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <TwitterIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

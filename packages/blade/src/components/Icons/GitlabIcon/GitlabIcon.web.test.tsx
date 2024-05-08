@@ -1,10 +1,10 @@
 import GitlabIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<GitlabIcon />', () => {
   it('should render GitlabIcon', () => {
     const { container } = renderWithTheme(
-      <GitlabIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <GitlabIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

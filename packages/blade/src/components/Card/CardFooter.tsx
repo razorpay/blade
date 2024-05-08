@@ -1,17 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
+import type { ReactElement } from 'react';
 import React from 'react';
-import type { ButtonProps } from '../Button';
-import { Button } from '../Button';
-import { Divider } from './Divider';
-import { useVerifyInsideCard, useVerifyAllowedComponents } from './CardContext';
+import { useVerifyInsideCard } from './CardContext';
 import { ComponentIds } from './Card';
+import type { CardSpacingValueType } from './types';
+import type { ButtonProps } from '~components/Button';
+import { Button } from '~components/Button';
+import { Divider } from '~components/Divider';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
-import { metaAttribute, MetaConstants, useBreakpoint } from '~utils';
-
-import { useTheme } from '~components/BladeProvider';
-import type { TestID } from '~src/_helpers/types';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { useIsMobile } from '~utils/useIsMobile';
+import { throwBladeError } from '~utils/logger';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren/useVerifyAllowedChildren';
 
 export type CardFooterAction = Pick<
   ButtonProps,
@@ -22,33 +25,62 @@ export type CardFooterAction = Pick<
 
 type CardFooterProps = {
   children?: React.ReactNode;
+  /**
+   * For spacing between divider and footer title
+   */
+  paddingTop?: CardSpacingValueType;
+  /**
+   * For spacing between body content and divider
+   */
+  marginTop?: CardSpacingValueType;
+  /**
+   * @default true
+   */
+  showDivider?: boolean;
 } & TestID;
 
-const useIsMobile = (): boolean => {
-  const { theme } = useTheme();
-  const { matchedDeviceType } = useBreakpoint({
-    breakpoints: theme.breakpoints,
-  });
-  return matchedDeviceType === 'mobile';
-};
-
-const _CardFooter = ({ children, testID }: CardFooterProps): React.ReactElement => {
+const _CardFooter = ({
+  children,
+  testID,
+  marginTop = 'spacing.4',
+  paddingTop = 'spacing.4',
+  showDivider = true,
+}: CardFooterProps): React.ReactElement => {
   const isMobile = useIsMobile();
   useVerifyInsideCard('CardFooter');
-  useVerifyAllowedComponents(children, 'CardFooter', [
-    ComponentIds.CardFooterLeading,
-    ComponentIds.CardFooterTrailing,
-  ]);
+  useVerifyAllowedChildren({
+    children,
+    componentName: 'CardFooter',
+    allowedComponents: [ComponentIds.CardFooterLeading, ComponentIds.CardFooterTrailing],
+  });
+
+  const footerChildrensArray = React.Children.toArray(children);
+  if (__DEV__) {
+    if (!React.isValidElement(footerChildrensArray[0])) {
+      throwBladeError({
+        message: `Invalid React Element ${footerChildrensArray}`,
+        moduleName: 'CardFooter',
+      });
+    }
+  }
+
+  // the reason why we are checking for actions here is, because we want the footerTrailing
+  // to always be aligned to the right
+  // if we don't check for action here, and if we do not have footerTrailing and only footerLeading
+  // then the content of footerLeading will be justified to the end.
+  const baseBoxJustifyContent =
+    footerChildrensArray.length === 2 || !(footerChildrensArray[0] as ReactElement)?.props?.actions
+      ? 'space-between'
+      : 'flex-end';
 
   return (
-    <BaseBox marginTop="auto" {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
-      <BaseBox marginTop="spacing.7" />
-      <Divider />
+    <BaseBox marginTop={marginTop} {...metaAttribute({ name: MetaConstants.CardFooter, testID })}>
+      {showDivider ? <Divider /> : null}
       <BaseBox
-        marginTop="spacing.7"
+        paddingTop={paddingTop}
         display="flex"
         flexDirection={isMobile ? 'column' : 'row'}
-        justifyContent="space-between"
+        justifyContent={baseBoxJustifyContent}
         alignItems={isMobile ? 'stretch' : 'center'}
       >
         {children}
@@ -66,14 +98,14 @@ const _CardFooterLeading = ({ title, subtitle }: CardFooterLeadingProps): React.
   useVerifyInsideCard('CardFooterLeading');
 
   return (
-    <BaseBox>
+    <BaseBox textAlign={'left' as never}>
       {title && (
-        <Text variant="body" size="medium" weight="bold">
+        <Text color="surface.text.gray.normal" size="medium" weight="semibold">
           {title}
         </Text>
       )}
       {subtitle && (
-        <Text variant="body" size="small" weight="regular">
+        <Text color="surface.text.gray.subtle" size="small" weight="regular">
           {subtitle}
         </Text>
       )}

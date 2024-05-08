@@ -11,6 +11,7 @@ exports[`<Rect /> should render html rect component 1`] = `
     width="400"
   >
     <rect
+      data-blade-component="svg-rect"
       height="100"
       rx="4"
       ry="4"

@@ -1,15 +1,17 @@
 import { StyledCounter } from './StyledCounter';
 import type { StyledCounterProps } from './types';
-import { horizontalPadding, verticalPadding } from './counterTokens';
-import type { Feedback } from '~tokens/theme/theme';
+import { counterHeight, horizontalPadding } from './counterTokens';
+import type { FeedbackColors, SubtleOrIntense } from '~tokens/theme/theme';
 import { Text } from '~components/Typography';
 import BaseBox from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import type { BaseTextProps } from '~components/Typography/BaseText/types';
-import { metaAttribute, MetaConstants } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
+import { isReactNative, makeSize } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 export type CounterProps = {
   /**
@@ -22,17 +24,17 @@ export type CounterProps = {
    */
   max?: number;
   /**
-   * Sets the intent of the counter.
+   * Sets the color of the counter.
    *
    * @default 'neutral'
    */
-  intent?: Feedback;
+  color?: FeedbackColors | 'primary';
   /**
    * Sets the contrast of the counter.
    *
-   * @default 'low'
+   * @default 'subtle'
    */
-  contrast?: 'high' | 'low';
+  emphasis?: SubtleOrIntense;
   /**
    * Sets the size of the counter.
    *
@@ -48,24 +50,36 @@ type ColorProps = {
 };
 
 const getColorProps = ({
-  intent = 'neutral',
-  contrast = 'low',
+  color = 'neutral',
+  emphasis = 'subtle',
 }: {
-  intent: NonNullable<CounterProps['intent']>;
-  contrast: NonNullable<CounterProps['contrast']>;
+  color: NonNullable<CounterProps['color']>;
+  emphasis: NonNullable<CounterProps['emphasis']>;
 }): ColorProps => {
   const props: ColorProps = {
-    textColor: `feedback.text.${intent}.${contrast}Contrast`,
-    backgroundColor: `feedback.background.${intent}.${contrast}Contrast`,
+    textColor: 'feedback.text.neutral.intense',
+    backgroundColor: 'feedback.background.neutral.subtle',
   };
+
+  if (color === 'primary') {
+    // primary color badge
+    props.textColor =
+      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `surface.text.primary.normal`;
+    props.backgroundColor = `surface.background.primary.${emphasis}`;
+  } else {
+    // feedback colors badge
+    props.textColor =
+      emphasis === 'intense' ? `surface.text.staticWhite.normal` : `feedback.text.${color}.intense`;
+    props.backgroundColor = `feedback.background.${color}.${emphasis}`;
+  }
   return props;
 };
 
-const Counter = ({
+const _Counter = ({
   value,
   max,
-  intent = 'neutral',
-  contrast = 'low',
+  color = 'neutral',
+  emphasis = 'subtle',
   size = 'medium',
   testID,
   ...styledProps
@@ -77,8 +91,8 @@ const Counter = ({
 
   const { platform } = useTheme();
   const { backgroundColor, textColor } = getColorProps({
-    intent,
-    contrast,
+    color,
+    emphasis,
   });
 
   const counterTextSizes = {
@@ -97,36 +111,43 @@ const Counter = ({
   } as const;
 
   return (
-    <StyledCounter
-      backgroundColor={backgroundColor}
-      size={size}
-      platform={platform}
+    <BaseBox
+      display={(isReactNative() ? 'flex' : 'inline-flex') as never}
+      {...metaAttribute({ name: MetaConstants.Counter, testID })}
       {...getStyledProps(styledProps)}
     >
-      <BaseBox
-        paddingRight={horizontalPadding[size]}
-        paddingLeft={horizontalPadding[size]}
-        paddingTop={verticalPadding[size]}
-        paddingBottom={verticalPadding[size]}
-        display="flex"
-        flexDirection="row"
-        justifyContent="center"
-        alignItems="center"
-        overflow="hidden"
-        {...metaAttribute({ name: MetaConstants.Counter, testID })}
+      <StyledCounter
+        minHeight={makeSize(counterHeight[size])}
+        backgroundColor={backgroundColor}
+        size={size}
+        platform={platform}
       >
-        <Text
-          {...counterTextSizes[size]}
-          type="normal"
-          weight="regular"
-          truncateAfterLines={1}
-          color={textColor}
+        <BaseBox
+          paddingX={horizontalPadding[size]}
+          display="flex"
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          overflow="hidden"
         >
-          {content}
-        </Text>
-      </BaseBox>
-    </StyledCounter>
+          <Text
+            {...counterTextSizes[size]}
+            textAlign="center"
+            weight="medium"
+            truncateAfterLines={1}
+            color={textColor}
+          >
+            {content}
+          </Text>
+        </BaseBox>
+      </StyledCounter>
+    </BaseBox>
   );
 };
+
+const Counter = assignWithoutSideEffects(_Counter, {
+  displayName: 'Counter',
+  componentId: 'Counter',
+});
 
 export { Counter };

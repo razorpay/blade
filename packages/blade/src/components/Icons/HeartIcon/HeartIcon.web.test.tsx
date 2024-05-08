@@ -1,10 +1,10 @@
 import HeartIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<HeartIcon />', () => {
   it('should render HeartIcon', () => {
     const { container } = renderWithTheme(
-      <HeartIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <HeartIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

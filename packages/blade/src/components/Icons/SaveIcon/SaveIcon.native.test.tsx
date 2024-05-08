@@ -1,10 +1,10 @@
 import SaveIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SaveIcon />', () => {
   it('should render SaveIcon', () => {
     const renderTree = renderWithTheme(
-      <SaveIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <SaveIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

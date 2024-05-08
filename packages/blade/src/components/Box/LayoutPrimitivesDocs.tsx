@@ -2,13 +2,18 @@ import { SandpackCodeEditor, SandpackLayout, SandpackPreview } from '@codesandbo
 import type { BaseBoxProps } from './BaseBox';
 import BaseBox from './BaseBox';
 import { Box } from '.';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
-import { Code, Heading, Text, Title } from '~components/Typography';
-import { Sandbox, SandboxProvider, SandboxHighlighter } from '~src/_helpers/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
+import { Code, Heading, Text } from '~components/Typography';
+import {
+  Sandbox,
+  SandboxProvider,
+  SandboxHighlighter,
+} from '~utils/storybook/Sandbox/SandpackEditor';
 import { List, ListItem, ListItemCode, ListItemLink } from '~components/List';
 import { Link } from '~components/Link';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import { castWebType } from '~utils';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { MetaConstants } from '~utils/metaAttribute';
 
 if (window.top) {
   document.getElementById(window.top.location.hash)?.scrollIntoView();
@@ -22,7 +27,7 @@ const _ScrollIntoViewLink = ({
 }: {
   href: string;
   children: string;
-}): JSX.Element => (
+}): React.ReactElement => (
   <ListItemLink
     variant="button"
     onClick={() => {
@@ -35,14 +40,19 @@ const _ScrollIntoViewLink = ({
 
 // lmao. sorry
 const ScrollIntoViewLink = assignWithoutSideEffects(_ScrollIntoViewLink, {
-  componentId: 'ListItemLink',
+  componentId: MetaConstants.ListItemLink,
 });
 
-const Section = (props: BaseBoxProps): JSX.Element => {
+const Section = ({
+  ...props
+}: Omit<
+  BaseBoxProps,
+  'onTouchEnd' | 'onTouchStart' | 'onPointerDown' | 'onPointerEnter' | 'pointerEvents'
+>): React.ReactElement => {
   return <BaseBox paddingY="spacing.6" {...props} />;
 };
 
-function LayoutPrimitivesDocs(): JSX.Element {
+function LayoutPrimitivesDocs(): React.ReactElement {
   return (
     <StoryPageWrapper
       componentName="Layout Primitives"
@@ -51,7 +61,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
       showStorybookControls={false}
     >
       <hr />
-      <Title size="small">Table of Content</Title>
+      <Heading size="large">Table of Content</Heading>
       <List marginY="spacing.6" marginBottom="spacing.8">
         <ListItem>
           <ScrollIntoViewLink href="#playground">Playground</ScrollIntoViewLink>
@@ -103,12 +113,12 @@ function LayoutPrimitivesDocs(): JSX.Element {
       </List>
       <hr />
       <Section id="playground">
-        <Title size="small">Playground</Title>
+        <Heading size="large">Playground</Heading>
         <Sandbox padding="spacing.0">
           {`
             import { Box, Text } from '@razorpay/blade/components'
 
-            function App(): JSX.Element {
+            function App(): React.ReactElement {
               return (
                 <Box 
                   as="section" // renders as <section> tag instead of <div>
@@ -117,16 +127,16 @@ function LayoutPrimitivesDocs(): JSX.Element {
                   padding={{ base: ['spacing.1', '9px'], m: 'spacing.3' }}
                 >
                   <Box 
-                    backgroundColor="surface.background.level3.highContrast" 
+                    backgroundColor="surface.background.cloud.intense" 
                     flex="1" 
                   >
-                    <Text margin="spacing.4" contrast="high">Box1</Text>
+                    <Text margin="spacing.4" color="surface.text.onCloud.onIntense">Box1</Text>
                   </Box>
                   <Box 
-                    backgroundColor="surface.background.level2.highContrast" 
+                    backgroundColor="surface.background.sea.intense" 
                     flex="1" 
                   >
-                    <Text margin="spacing.4" contrast="high">Box2</Text>
+                    <Text margin="spacing.4" color="surface.text.onSea.onIntense">Box2</Text>
                   </Box>
                 </Box>
               )
@@ -144,9 +154,9 @@ function LayoutPrimitivesDocs(): JSX.Element {
         </Text>
       </Section>
       <Section id="box-usage">
-        <Title size="small" marginBottom="spacing.3">
+        <Heading size="large" marginBottom="spacing.3">
           📦 Box Usage
-        </Title>
+        </Heading>
         <Text>
           Box is a primitive Layout component which can be used for creating different responsive
           layouts in UI. You might have used <Code>Box</Code> in other component libraries as well
@@ -175,14 +185,14 @@ function LayoutPrimitivesDocs(): JSX.Element {
             {`
               import { Box, Text } from '@razorpay/blade/components'
 
-              function App(): JSX.Element {
+              function App(): React.ReactElement {
                 return (
                   <>
                     <Box 
                       // Uncomment next lines to see padding and margin in action
                       // padding="spacing.4"
                       // marginTop="32px"
-                      backgroundColor="surface.background.level2.lowContrast"
+                      backgroundColor="surface.background.gray.intense"
                     >
                       <Text>Some Text</Text>
                     </Box>
@@ -191,7 +201,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
                         // Uncomment this block to see padding shorthands in action
                         padding={["spacing.3", "35px"]} // We also support padding and margin shorthands similar to CSS
                         marginX="spacing.5" // adds horizontal margin
-                        backgroundColor='surface.background.level3.lowContrast'
+                        backgroundColor='surface.background.gray.moderate'
                       >
                         <Text>More Text</Text>
                       </Box>
@@ -228,7 +238,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
             code={`
              import { Box, Text } from '@razorpay/blade/components';
 
-             function App(): JSX.Element {
+             function App(): React.ReactElement {
                return (
                 <>
                   <Box display={{ base: 'none', m: 'block' }}><Text>🖥 Desktop View</Text></Box>
@@ -242,17 +252,17 @@ function LayoutPrimitivesDocs(): JSX.Element {
                   >
                     <Box
                       flex="1"
-                      backgroundColor="surface.background.level2.highContrast"
+                      backgroundColor="surface.background.cloud.intense"
                       padding="spacing.4" 
                     >
-                      <Text contrast="high">Box1</Text>
+                      <Text color="surface.text.onCloud.onIntense">Box1</Text>
                     </Box>
                     <Box 
                       flex="1" 
-                      backgroundColor="surface.background.level3.highContrast" 
+                      backgroundColor="surface.background.sea.intense" 
                       padding="spacing.4" 
                     >
-                      <Text contrast="high">Box2</Text>
+                      <Text color="surface.text.onSea.onIntense">Box2</Text>
                     </Box>
                   </Box>
                 </>
@@ -279,9 +289,9 @@ function LayoutPrimitivesDocs(): JSX.Element {
       </Section>
 
       <Section id="styled-props" paddingBottom="spacing.0">
-        <Title size="small" marginBottom="spacing.3">
+        <Heading size="large" marginBottom="spacing.3">
           💅🏼 Styled Props for Blade Components
-        </Title>
+        </Heading>
         <Text>
           Want to add spacing between 2 elements? add layout props directly on the Blade components
           ✨
@@ -300,7 +310,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
           {`
                 import { Text } from '@razorpay/blade/components'
 
-                function App(): JSX.Element {
+                function App(): React.ReactElement {
                   return (
                     <>
                       {/** ❌ No need of Box wrappers */}
@@ -347,9 +357,9 @@ function LayoutPrimitivesDocs(): JSX.Element {
       </Section>
 
       <Section id="questions-you-might-have" paddingTop="spacing.0">
-        <Title size="small" marginBottom="spacing.3" marginTop="spacing.6">
+        <Heading size="large" marginBottom="spacing.3" marginTop="spacing.6">
           🧐 Questions you might have
-        </Title>
+        </Heading>
         <Text>
           This is a summary and some questions you might have regarding API. You can check out
           complete API decisions at{' '}
@@ -463,7 +473,7 @@ function LayoutPrimitivesDocs(): JSX.Element {
         </BaseBox>
       </Section>
       <Section id="references">
-        <Title size="small">References</Title>
+        <Heading size="large">References</Heading>
         <List marginTop="spacing.4">
           <ListItem>
             <ListItemLink href="/?path=/docs/components-layout-primitives-box-box--default&globals=measureEnabled:false">

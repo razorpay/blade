@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useState } from 'react';
 import type { BaseInputProps } from '../BaseInput';
 import { BaseInput } from '../BaseInput';
 import { getHintType } from '../BaseInput/BaseInput';
-import type { FormInputOnEvent } from '../../Form';
-import { FormHint, FormLabel } from '../../Form';
-import { useFormId } from '../../Form/useFormId';
-import type { FormInputOnKeyDownEvent } from '../../Form/FormTypes';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
+import type { FormInputOnEvent } from '~components/Form';
+import { FormHint, FormLabel } from '~components/Form';
+import { useFormId } from '~components/Form/useFormId';
+import type { FormInputOnKeyDownEvent } from '~components/Form/FormTypes';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { metaAttribute, getPlatformType, MetaConstants, isEmpty, makeSize } from '~utils';
-import { useTheme } from '~components/BladeProvider';
-import size from '~tokens/global/size';
+import { getPlatformType } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { makeSize } from '~utils/makeSize';
 
 type FormInputOnEventWithIndex = ({
   name,
@@ -23,9 +24,10 @@ type FormInputOnEventWithIndex = ({
   inputIndex: number;
 }) => void;
 
-export type OTPInputProps = Pick<
+export type OTPInputCommonProps = Pick<
   BaseInputProps,
   | 'label'
+  | 'accessibilityLabel'
   | 'labelPosition'
   | 'validationState'
   | 'helpText'
@@ -40,6 +42,7 @@ export type OTPInputProps = Pick<
   | 'keyboardType'
   | 'placeholder'
   | 'testID'
+  | 'size'
 > & {
   /**
    * Determines the number of input fields to show for the OTP
@@ -81,6 +84,36 @@ export type OTPInputProps = Pick<
   onBlur?: FormInputOnEventWithIndex;
 } & StyledPropsBlade;
 
+/*
+  Mandatory accessibilityLabel prop when label is not provided
+*/
+type OTPInputPropsWithA11yLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label?: undefined;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel: string;
+};
+
+/*
+  Optional accessibilityLabel prop when label is provided
+*/
+type OTPInputPropsWithLabel = {
+  /**
+   * Label to be shown for the input field
+   */
+  label: string;
+  /**
+   * Accessibility label for the input
+   */
+  accessibilityLabel?: string;
+};
+
+type OTPInputProps = (OTPInputPropsWithA11yLabel | OTPInputPropsWithLabel) & OTPInputCommonProps;
+
 const isReactNative = getPlatformType() === 'react-native';
 
 /**
@@ -102,36 +135,48 @@ const otpToArray = (code?: string): string[] => code?.split('') ?? Array(6).fill
  *   />
  * ```
  */
-const OTPInput = ({
-  autoFocus,
-  errorText,
-  helpText,
-  isDisabled,
-  keyboardReturnKeyType,
-  keyboardType = 'decimal',
-  label,
-  labelPosition,
-  name,
-  onChange,
-  onFocus,
-  onBlur,
-  onOTPFilled,
-  otpLength = 6,
-  placeholder,
-  successText,
-  validationState,
-  value: inputValue,
-  isMasked,
-  autoCompleteSuggestionType = 'oneTimeCode',
-  testID,
-  ...styledProps
-}: OTPInputProps): React.ReactElement => {
+const _OTPInput: React.ForwardRefRenderFunction<HTMLInputElement[], OTPInputProps> = (
+  {
+    autoFocus,
+    errorText,
+    helpText,
+    isDisabled,
+    keyboardReturnKeyType,
+    keyboardType = 'decimal',
+    label,
+    accessibilityLabel,
+    labelPosition,
+    name,
+    onChange,
+    onFocus,
+    onBlur,
+    onOTPFilled,
+    otpLength = 6,
+    placeholder,
+    successText,
+    validationState,
+    value: inputValue,
+    isMasked,
+    autoCompleteSuggestionType = 'oneTimeCode',
+    testID,
+    size = 'medium',
+    ...styledProps
+  },
+  incomingRef,
+) => {
   const inputRefs: React.RefObject<HTMLInputElement>[] = [];
   const [otpValue, setOtpValue] = useState<string[]>(otpToArray(inputValue));
   const [inputType, setInputType] = useState<('password' | undefined)[]>([]);
   const isLabelLeftPositioned = labelPosition === 'left';
   const { inputId, helpTextId, errorTextId, successTextId } = useFormId('otp');
-  const { platform } = useTheme();
+
+  useImperativeHandle(
+    incomingRef,
+    () => {
+      return inputRefs.map((ref) => ref.current!);
+    },
+    [inputRefs],
+  );
 
   useEffect(() => {
     // Effect for calling `onOTPFilled` callback
@@ -291,17 +336,18 @@ const OTPInput = ({
           flex={1}
           marginLeft={index == 0 ? 'spacing.0' : 'spacing.3'}
           key={`${inputId}-${index}`}
-          maxWidth={platform === 'onDesktop' ? makeSize(size[36]) : makeSize(size[40])}
         >
           <BaseInput
             // eslint-disable-next-line jsx-a11y/no-autofocus
             autoFocus={autoFocus && index === 0}
-            accessibilityLabel={`${index === 0 ? label : ''} character ${index + 1}`}
+            accessibilityLabel={`${index === 0 ? label || accessibilityLabel : ''} character ${
+              index + 1
+            }`}
             label={label}
             hideLabelText={true}
             id={`${inputId}-${index}`}
             textAlign="center"
-            ref={ref}
+            ref={ref as never}
             name={name}
             value={currentValue}
             maxCharacters={otpValue[index]?.length > 0 ? 1 : undefined}
@@ -324,6 +370,8 @@ const OTPInput = ({
             helpText={helpText}
             hideFormHint={true}
             type={currentInputType}
+            size={size}
+            valueComponentType="heading"
           />
         </BaseBox>,
       );
@@ -342,9 +390,11 @@ const OTPInput = ({
         alignItems={isLabelLeftPositioned ? 'center' : undefined}
         position="relative"
       >
-        <FormLabel as="label" position={labelPosition} htmlFor={inputId}>
-          {label}
-        </FormLabel>
+        {Boolean(label) && (
+          <FormLabel as="label" position={labelPosition} htmlFor={inputId} size={size}>
+            {label}
+          </FormLabel>
+        )}
         <BaseBox display="flex" flexDirection="row">
           {getHiddenInput()}
           {getOTPInputFields()}
@@ -361,10 +411,14 @@ const OTPInput = ({
           helpTextId={helpTextId}
           errorTextId={errorTextId}
           successTextId={successTextId}
+          size={size}
         />
       </BaseBox>
     </BaseBox>
   );
 };
 
+const OTPInput = React.forwardRef<HTMLInputElement[], OTPInputProps>(_OTPInput);
+
+export type { OTPInputProps };
 export { OTPInput };

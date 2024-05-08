@@ -1,5 +1,5 @@
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import type { TestID } from '~src/_helpers/types';
+import type { TestID } from '~utils/types';
 
 export type SvgProps = {
   children: React.ReactNode;
@@ -7,5 +7,6 @@ export type SvgProps = {
   height: string;
   viewBox: string;
   width: string;
+  fillOpacity?: number;
 } & TestID &
-  Omit<StyledPropsBlade, 'order'>; // Order prop on SVG has different meaning so removing this prop from styledProps
+  Omit<StyledPropsBlade, 'order' | 'visibility'>; // Order prop on SVG has different meaning so removing this prop from styledProps

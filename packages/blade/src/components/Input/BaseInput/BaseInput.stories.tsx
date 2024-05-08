@@ -1,4 +1,4 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title, Subtitle, Primary, ArgsTable, Stories, PRIMARY_STORY } from '@storybook/addon-docs';
 import { Highlight } from '@storybook/design-system';
 import React from 'react';
@@ -9,6 +9,10 @@ import iconMap from '~components/Icons/iconMap';
 import BaseBox from '~components/Box/BaseBox';
 import { CharacterCounter } from '~components/Form/CharacterCounter';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
+import { Tag } from '~components/Tag';
+import { Text } from '~components/Typography';
+import { Box } from '~components/Box';
+import { Link } from '~components/Link';
 
 const propsCategory = {
   BASE_PROPS: 'Base Input Props',
@@ -61,8 +65,14 @@ export default {
     autoCompleteSuggestionType: undefined,
     autoCapitalize: undefined,
   },
+  tags: ['autodocs'],
   argTypes: {
     id: {
+      table: {
+        category: propsCategory.BASE_PROPS,
+      },
+    },
+    size: {
       table: {
         category: propsCategory.BASE_PROPS,
       },
@@ -260,7 +270,7 @@ export default {
   },
 } as Meta<BaseInputProps>;
 
-const BaseInputTemplate: ComponentStory<typeof BaseInputComponent> = ({
+const BaseInputTemplate: StoryFn<typeof BaseInputComponent> = ({
   leadingIcon,
   trailingIcon,
   ...args
@@ -299,8 +309,9 @@ BaseInputSuccess.args = {
   successText: 'Name validated',
 };
 
-const BaseInputMaxCharactersTemplate: ComponentStory<typeof BaseInputComponent> = ({
+const BaseInputMaxCharactersTemplate: StoryFn<typeof BaseInputComponent> = ({
   maxCharacters,
+  size,
 }) => {
   return (
     <BaseInput
@@ -309,18 +320,24 @@ const BaseInputMaxCharactersTemplate: ComponentStory<typeof BaseInputComponent> 
       defaultValue="John Ives"
       name="fullName"
       maxCharacters={maxCharacters}
+      size={size}
       trailingFooterSlot={(value) => (
-        <BaseBox marginTop="spacing.2">
-          <CharacterCounter currentCount={value?.length ?? 0} maxCount={maxCharacters ?? 0} />
+        <BaseBox marginTop={size === 'medium' ? 'spacing.2' : 'spacing.3'}>
+          <CharacterCounter
+            size={size}
+            currentCount={value?.length ?? 0}
+            maxCount={maxCharacters ?? 0}
+          />
         </BaseBox>
       )}
+      helpText="Help Text"
       onChange={({ name, value }): void => console.log({ name, value })}
     />
   );
 };
 export const BaseInputMaxCharacters = BaseInputMaxCharactersTemplate.bind({});
 
-const BaseInputUncontrolledTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+const BaseInputUncontrolledTemplate: StoryFn<typeof BaseInputComponent> = () => {
   return (
     <BaseInput
       id="base-input"
@@ -333,7 +350,7 @@ const BaseInputUncontrolledTemplate: ComponentStory<typeof BaseInputComponent> =
 };
 export const BaseInputUncontrolled = BaseInputUncontrolledTemplate.bind({});
 
-const BaseInputControlledTemplate: ComponentStory<typeof BaseInputComponent> = () => {
+const BaseInputControlledTemplate: StoryFn<typeof BaseInputComponent> = () => {
   const [inputValue, setInputValue] = React.useState('');
 
   return (
@@ -349,4 +366,100 @@ const BaseInputControlledTemplate: ComponentStory<typeof BaseInputComponent> = (
     />
   );
 };
+
 export const BaseInputControlled = BaseInputControlledTemplate.bind({});
+
+const BaseInputControlledWithTagsTemplate: StoryFn<typeof BaseInputComponent> = () => {
+  const [inputValue, setInputValue] = React.useState('');
+  const [activeTagIndex, setActiveTagIndex] = React.useState(-1);
+  const [currentTags, setCurrentTags] = React.useState<string[]>([]);
+
+  const getTags = (): React.ReactElement[] => {
+    return currentTags.map((currentTag, tagIndex) => {
+      return (
+        <Tag
+          _isVirtuallyFocused={tagIndex === activeTagIndex}
+          _isTagInsideInput={true}
+          key={tagIndex}
+          marginRight="spacing.3"
+          marginY="spacing.2"
+          onDismiss={() => {
+            setCurrentTags([...currentTags.slice(0, tagIndex), ...currentTags.slice(tagIndex + 1)]);
+          }}
+        >
+          {currentTag}
+        </Tag>
+      );
+    });
+  };
+
+  return (
+    <BaseInput
+      id="base-input"
+      label="First Name"
+      as="textarea"
+      maxTagRows="multiple"
+      value={inputValue}
+      autoCompleteSuggestionType="none"
+      tags={getTags()}
+      activeTagIndex={activeTagIndex}
+      showAllTags={true}
+      isDropdownTrigger={true}
+      setActiveTagIndex={setActiveTagIndex}
+      name="fullName"
+      onChange={({ name, value }): void => {
+        console.log(`sending ${name}:${value} to analytics service`);
+        setInputValue(value ?? '');
+      }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          setCurrentTags([...currentTags, inputValue]);
+          setInputValue('');
+          setActiveTagIndex(-1);
+        }
+
+        if (e.key === 'Backspace' && !inputValue && activeTagIndex < 0) {
+          setCurrentTags(currentTags.slice(0, -1));
+        }
+      }}
+    />
+  );
+};
+
+export const BaseInputControlledWithTags = BaseInputControlledWithTagsTemplate.bind({});
+
+const BaseInputSizesTemplate: StoryFn<typeof BaseInputComponent> = ({
+  leadingIcon,
+  trailingIcon,
+  ...args
+}) => {
+  const LeadingIcon = iconMap[(leadingIcon as unknown) as string];
+  const TrailingIcon = iconMap[(trailingIcon as unknown) as string];
+
+  return (
+    <Box display="flex" flexDirection="column" gap="spacing.5">
+      <Text size="large" marginBottom="spacing.1">
+        Medium Size:
+      </Text>
+      <BaseInputComponent
+        {...args}
+        leadingIcon={LeadingIcon}
+        trailingIcon={TrailingIcon}
+        size="medium"
+        trailingButton={<Link onClick={() => console.log('Clicked Apply')}>Apply</Link>}
+      />
+      <Text size="large" marginBottom="spacing.1">
+        Large Size:
+      </Text>
+      <BaseInputComponent
+        {...args}
+        leadingIcon={iconMap[(leadingIcon as unknown) as string]}
+        trailingIcon={iconMap[(trailingIcon as unknown) as string]}
+        size="large"
+        trailingButton={<Link onClick={() => console.log('Clicked Apply')}>Apply</Link>}
+      />
+    </Box>
+  );
+};
+
+export const BaseInputSizes = BaseInputSizesTemplate.bind({});

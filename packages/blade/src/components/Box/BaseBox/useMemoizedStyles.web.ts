@@ -5,6 +5,7 @@ import type { BaseBoxProps } from './types';
 import type { Theme } from '~components/BladeProvider';
 import { useTheme } from '~components/BladeProvider';
 import type { ColorSchemeNames } from '~tokens/theme';
+import { logger } from '~utils/logger';
 
 const getMemoDependency = (
   props: BaseBoxProps & { theme?: Theme } & { colorScheme: ColorSchemeNames },
@@ -18,10 +19,13 @@ const getMemoDependency = (
     // Hence we JSON.strinfigy and pass the string as dependency prop. React handles this way better.
     dependencyPropString = `${JSON.stringify(rest)}-${theme?.name}-${colorScheme}`;
   } catch (err: unknown) {
-    console.warn(
-      '[Blade - BaseBox]: stringification of props failed in BaseBox so falling back to re-calculations on all changes\n\n If you see this warning, please create issue on https://github.com/razorpay/blade as this could degrade runtime styling performance',
-      err,
-    );
+    if (__DEV__) {
+      logger({
+        message: `stringification of props failed in BaseBox so falling back to re-calculations on all changes\n\n If you see this warning, please create issue on https://github.com/razorpay/blade as this could degrade runtime styling performance ${err}`,
+        moduleName: 'BaseBox',
+        type: 'warn',
+      });
+    }
 
     dependencyPropString = rest;
   }

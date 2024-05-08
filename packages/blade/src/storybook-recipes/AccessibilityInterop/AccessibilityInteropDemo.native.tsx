@@ -1,9 +1,9 @@
 import React from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { getCheckboxAccessibilityProps } from './getCheckboxA11yProps';
-import { makeAccessible } from '~utils';
 import { CloseIcon, EyeIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: boolean }> = ({
   label,
@@ -24,9 +24,9 @@ const CheckboxItem: React.FC<{ label: string; checked?: boolean; disabled?: bool
   return (
     <BaseBox display="flex" alignItems="center" flexDirection="row" gap="spacing.3">
       {isChecked ? (
-        <EyeIcon color="action.icon.link.active" size="small" />
+        <EyeIcon color="interactive.icon.primary.normal" size="small" />
       ) : (
-        <CloseIcon color="action.icon.link.active" size="small" />
+        <CloseIcon color="interactive.icon.primary.normal" size="small" />
       )}
       <Pressable onPress={toggleChecked} {...checkboxAccessibilityProps} focusable>
         <Text>{label}</Text>

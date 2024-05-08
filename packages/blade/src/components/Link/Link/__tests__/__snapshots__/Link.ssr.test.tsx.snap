@@ -1,35 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Link /> should render link with a default rel set when target is _blank 1`] = `"<div id=\\"root\\" data-reactroot=\\"\\"><a data-blade-component=\\"link\\" href=\\"https://www.google.com/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\" cursor=\\"pointer\\" class=\\"StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf\\" role=\\"link\\" aria-disabled=\\"false\\"><div display=\\"flex\\" class=\\"BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf content-container\\"><div color=\\"action.text.link.default\\" font-size=\\"100\\" font-weight=\\"bold\\" class=\\"BaseTextweb__StyledBaseText-sc-1ob51ew-0 bWvucQ\\">Learn More</div></div></a></div>"`;
+exports[`<Link /> should render link with a default rel set when target is _blank 1`] = `"<div id="root"><a data-blade-component="link" href="https://www.google.com/" target="_blank" rel="noreferrer noopener" class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 eEDbkf" role="link" aria-disabled="false"><span class="BaseBox-bmPWx fAEwZa content-container" data-blade-component="base-box"><span class="StyledBaseText-dVBfTO dDCWUZ" data-blade-component="base-text">Learn More</span></span></a></div>"`;
 
 exports[`<Link /> should render link with a default rel set when target is _blank 2`] = `
+.c0.c0.c0.c0.c0 {
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  border-radius: 2px;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c0.c0.c0.c0.c0 .content-container {
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 2px;
+}
+
+.c0.c0.c0.c0.c0:focus-visible .content-container {
+  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.09);
+}
+
+.c0.c0.c0.c0.c0 * {
+  -webkit-transition-property: color,fill;
+  transition-property: color,fill;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  -webkit-transition-duration: 70ms;
+  transition-duration: 70ms;
+}
+
+.c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.c2.c2.c2.c2.c2 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 <div
-  data-reactroot=""
   id="root"
 >
   <a
     aria-disabled="false"
-    class="StyledBaseLinkweb__StyledLink-sc-1yj1z8h-0 kzvYbf"
-    cursor="pointer"
+    class="c0"
     data-blade-component="link"
     href="https://www.google.com/"
     rel="noreferrer noopener"
     role="link"
     target="_blank"
   >
-    <div
-      class="BaseBoxweb__BaseBox-sc-1icfu8j-0 ePjSmf content-container"
-      display="flex"
+    <span
+      class="c1 content-container"
+      data-blade-component="base-box"
     >
-      <div
-        class="BaseTextweb__StyledBaseText-sc-1ob51ew-0 bWvucQ"
-        color="action.text.link.default"
-        font-size="100"
-        font-weight="bold"
+      <span
+        class="c2"
+        data-blade-component="base-text"
       >
         Learn More
-      </div>
-    </div>
+      </span>
+    </span>
   </a>
 </div>
 `;

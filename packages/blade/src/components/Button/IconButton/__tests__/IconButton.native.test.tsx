@@ -4,7 +4,7 @@
 import { fireEvent } from '@testing-library/react-native';
 
 import { IconButton } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 import { CloseIcon } from '~components/Icons';
 
 describe('<IconButton />', () => {
@@ -31,10 +31,10 @@ describe('<IconButton />', () => {
   it('should have a11y label', () => {
     const noop = () => {};
     const a11yLabel = 'Close modal';
-    const { getByA11yLabel } = renderWithTheme(
+    const { getByLabelText } = renderWithTheme(
       <IconButton accessibilityLabel={a11yLabel} icon={CloseIcon} onClick={noop} />,
     );
-    const iconButton = getByA11yLabel(a11yLabel);
+    const iconButton = getByLabelText(a11yLabel);
 
     expect(iconButton).toBeTruthy();
   });

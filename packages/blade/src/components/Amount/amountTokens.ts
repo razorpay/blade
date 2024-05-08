@@ -1,102 +1,103 @@
-import type { FontSize, Typography } from './../../tokens/global/typography';
-import type { AmountProps } from './Amount';
+import type { FontSize, Typography } from '~tokens/global';
+import type { BaseTextProps } from '~components/Typography/BaseText/types';
 
-const affixFontSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> = {
-  'body-small': 75,
-  'body-small-bold': 75,
-  'body-medium': 75,
-  'body-medium-bold': 75,
-  'heading-small': 75,
-  'heading-small-bold': 75,
-  'heading-large': 100,
-  'heading-large-bold': 100,
-  'title-small': 300,
-  'title-medium': 400,
-} as const;
+type AmountSizes = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge';
 
-const amountFontSizes: Record<NonNullable<AmountProps['size']>, keyof FontSize> = {
-  'body-small': 75,
-  'body-small-bold': 75,
-  'body-medium': 100,
-  'body-medium-bold': 100,
-  'heading-small': 200,
-  'heading-small-bold': 200,
-  'heading-large': 400,
-  'heading-large-bold': 400,
-  'title-small': 600,
-  'title-medium': 700,
-} as const;
+type AmountDisplayProps = {
+  type?: 'display';
+  size?: Extract<AmountSizes, 'small' | 'medium' | 'large' | 'xlarge'>;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
+};
+
+type AmountHeadingProps = {
+  type?: 'heading';
+  size?: Extract<AmountSizes, 'small' | 'medium' | 'large' | 'xlarge' | '2xlarge'>;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'semibold'>;
+};
+
+type AmountBodyProps = {
+  type?: 'body';
+  size?: Extract<AmountSizes, 'xsmall' | 'small' | 'medium' | 'large'>;
+  weight?: Extract<BaseTextProps['fontWeight'], 'regular' | 'medium' | 'semibold'>;
+};
+
+type AmountTypeProps = AmountDisplayProps | AmountHeadingProps | AmountBodyProps;
+
+const normalAmountSizes: Record<
+  'body' | 'heading' | 'display',
+  Partial<Record<NonNullable<AmountTypeProps['size']>, keyof FontSize>>
+> = {
+  body: {
+    xsmall: 25,
+    small: 75,
+    medium: 100,
+    large: 200,
+  },
+  heading: {
+    small: 300,
+    medium: 400,
+    large: 500,
+    xlarge: 600,
+    '2xlarge': 700,
+  },
+  display: {
+    small: 800,
+    medium: 900,
+    large: 1000,
+    xlarge: 1100,
+  },
+};
+
+const subtleFontSizes: Record<
+  'body' | 'heading' | 'display',
+  Partial<Record<NonNullable<AmountTypeProps['size']>, keyof FontSize>>
+> = {
+  body: {
+    xsmall: normalAmountSizes.body.xsmall,
+    small: normalAmountSizes.body.xsmall,
+    medium: normalAmountSizes.body.xsmall,
+    large: normalAmountSizes.body.small,
+  },
+  heading: {
+    small: normalAmountSizes.body.small,
+    medium: normalAmountSizes.body.medium,
+    large: normalAmountSizes.body.large,
+    xlarge: normalAmountSizes.heading.medium,
+    '2xlarge': normalAmountSizes.heading.large,
+  },
+  display: {
+    small: normalAmountSizes.heading.xlarge,
+    medium: normalAmountSizes.heading['2xlarge'],
+    large: normalAmountSizes.heading['2xlarge'],
+    xlarge: normalAmountSizes.display.small,
+  },
+};
 
 const amountLineHeights: Record<
-  NonNullable<AmountProps['size']>,
-  keyof Typography['lineHeights']
+  'body' | 'heading' | 'display',
+  Partial<Record<NonNullable<AmountTypeProps['size']>, keyof Typography['lineHeights']>>
 > = {
-  'body-small': 50,
-  'body-small-bold': 50,
-  'body-medium': 100,
-  'body-medium-bold': 100,
-  'heading-small': 300,
-  'heading-small-bold': 300,
-  'heading-large': 400,
-  'heading-large-bold': 400,
-  'title-small': 500,
-  'title-medium': 600,
-} as const;
-
-type CurrencyPrefixMapping = {
-  [key: string]: {
-    'currency-symbol': string;
-    'currency-code': string;
-  };
-};
-
-const currencyPrefixMapping: CurrencyPrefixMapping = {
-  INR: {
-    'currency-symbol': '₹',
-    'currency-code': 'INR',
+  body: {
+    xsmall: 25,
+    small: 75,
+    medium: 100,
+    large: 200,
   },
-  MYR: {
-    'currency-symbol': 'RM',
-    'currency-code': 'MYR',
+  heading: {
+    small: 300,
+    medium: 400,
+    large: 500,
+    xlarge: 600,
+    '2xlarge': 700,
+  },
+  display: {
+    small: 800,
+    medium: 900,
+    large: 1000,
+    xlarge: 1100,
   },
 };
 
-type CurrencyLocaleMapping = {
-  [key: string]: string;
-};
+export { subtleFontSizes, normalAmountSizes, amountLineHeights };
 
-const currencyLocaleMapping: CurrencyLocaleMapping = {
-  INR: 'en-IN',
-  MYR: 'en-MY',
-};
-
-type CurrencyAbbreviation = {
-  value: number;
-  symbol: string;
-};
-
-type CurrencyAbbreviationsMapping = {
-  [key: keyof CurrencyLocaleMapping]: CurrencyAbbreviation[];
-};
-
-const currencyAbbreviationsMapping: CurrencyAbbreviationsMapping = {
-  INR: [
-    { value: 1e7, symbol: 'Cr' },
-    { value: 1e5, symbol: 'L' },
-    { value: 1e3, symbol: 'k' },
-  ],
-  MYR: [
-    { value: 1e9, symbol: 'B' },
-    { value: 1e6, symbol: 'M' },
-    { value: 1e3, symbol: 'K' },
-  ],
-};
-
-export {
-  amountFontSizes,
-  amountLineHeights,
-  affixFontSizes,
-  currencyPrefixMapping,
-  currencyLocaleMapping,
-  currencyAbbreviationsMapping,
-};
+export type { AmountBodyProps, AmountDisplayProps, AmountHeadingProps, AmountTypeProps };

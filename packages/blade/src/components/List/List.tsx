@@ -1,24 +1,21 @@
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
-import type { IconComponent } from '../Icons';
 import { ListProvider, useListContext } from './ListContext';
 import { UnorderedList } from './UnorderedList';
 import { OrderedList } from './OrderedList';
-import { ComponentIds } from './listTokens';
 import type { ListItemProps } from './ListItem';
-import {
-  getIn,
-  isValidAllowedChildren,
-  makeAccessible,
-  makeSpace,
-  metaAttribute,
-  MetaConstants,
-} from '~utils';
-import type { DotNotationSpacingStringToken, TestID } from '~src/_helpers/types';
+import getIn from '~utils/lodashButBetter/get';
+import type { IconComponent } from '~components/Icons';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import type { DotNotationSpacingStringToken, TestID } from '~utils/types';
 import BaseBox from '~components/Box/BaseBox';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeSpace } from '~utils/makeSpace';
+import { makeAccessible } from '~utils/makeAccessible';
+import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
+import { throwBladeError } from '~utils/logger';
 
 type ListCommonProps = {
   /**
@@ -37,7 +34,7 @@ type ListCommonProps = {
    *
    * @default 'medium'
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
 } & TestID &
   StyledPropsBlade;
 
@@ -105,18 +102,22 @@ const _List = ({
 
   const childrenArray = React.Children.toArray(children);
   const childListItems = childrenArray.filter((child) => {
-    if (isValidAllowedChildren(child, 'ListItem')) {
+    if (isValidAllowedChildren(child, MetaConstants.ListItem)) {
       return child;
-    } else {
-      throw new Error('[Blade List]: You can only pass a ListItem as a child to List.');
     }
+    if (__DEV__) {
+      throwBladeError({
+        message: 'You can only pass a ListItem as a child to List.',
+        moduleName: 'List',
+      });
+    }
+    return null;
   });
 
   return (
     <ListProvider value={listContextValue}>
       <BaseBox {...getStyledProps(styledProps)}>
         <ListElement
-          marginTop={level ? undefined : 'spacing.3'}
           {...metaAttribute({ name: MetaConstants.List, testID })}
           {...makeAccessible({ role: 'list' })} // Role needed for react-native
         >
@@ -132,7 +133,7 @@ const _List = ({
   );
 };
 
-const List = assignWithoutSideEffects(_List, { componentId: ComponentIds.List });
+const List = assignWithoutSideEffects(_List, { componentId: MetaConstants.List });
 
 export { List };
 export type { ListProps };

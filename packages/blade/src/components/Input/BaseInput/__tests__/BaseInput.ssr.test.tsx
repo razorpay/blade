@@ -1,5 +1,5 @@
 import { BaseInput } from '..';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 
 describe('<BaseInput />', () => {
   it('should display success validation state', () => {

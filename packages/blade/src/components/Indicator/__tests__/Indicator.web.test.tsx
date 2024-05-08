@@ -1,6 +1,6 @@
 import { Indicator } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
-import assertAccessible from '~src/_helpers/testing/assertAccessible.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
+import assertAccessible from '~utils/testing/assertAccessible.web';
 
 describe('<Indicator />', () => {
   it('should render', () => {
@@ -9,14 +9,24 @@ describe('<Indicator />', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('should render different variants for size and intent', () => {
+  it('should render different variants for size and color', () => {
     const { container } = renderWithTheme(
       <>
-        <Indicator accessibilityLabel="Warning" size="small" intent="notice" />
-        <Indicator accessibilityLabel="Success" size="medium" intent="positive" />
-        <Indicator accessibilityLabel="Error" size="large" intent="negative" />
-        <Indicator accessibilityLabel="Info" intent="information" />
+        <Indicator accessibilityLabel="Warning" size="small" color="notice" />
+        <Indicator accessibilityLabel="Success" size="medium" color="positive" />
+        <Indicator accessibilityLabel="Error" size="large" color="negative" />
+        <Indicator accessibilityLabel="Info" color="information" />
       </>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('should render with intense emphasis', () => {
+    const { container } = renderWithTheme(
+      <Indicator emphasis="intense" size="small" color="positive">
+        Success
+      </Indicator>,
     );
 
     expect(container).toMatchSnapshot();

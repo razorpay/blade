@@ -1,49 +1,67 @@
 import React from 'react';
 import BaseBox from './BaseBox';
-import type { BoxProps, MakeValueResponsive } from './BaseBox/types';
+import type { BoxProps, BoxRefType, MakeValueResponsive } from './BaseBox/types';
 import { validBoxAsValues } from './BaseBox/types/propsTypes';
-import type { KeysRequired } from '~src/_helpers/types';
-import { isReactNative, metaAttribute, MetaConstants } from '~utils';
+import type { KeysRequired } from '~utils/types';
+import { isReactNative } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
 
 const validateBackgroundString = (stringBackgroundColorValue: string): void => {
-  if (!stringBackgroundColorValue.startsWith('surface.background')) {
-    throw new Error(
-      `[Blade - Box]: Oops! Currently you can only use \`surface.background.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
-    );
+  if (__DEV__) {
+    if (
+      !stringBackgroundColorValue.startsWith('surface.background') &&
+      !stringBackgroundColorValue.startsWith('brand.') &&
+      stringBackgroundColorValue !== 'transparent'
+    ) {
+      throwBladeError({
+        message: `Oops! Currently you can only use \`transparent\`, \`surface.background.*\`, and \`brand.*\` tokens with backgroundColor property but we received \`${stringBackgroundColorValue}\` instead.\n\n Do you have a usecase of using other values? Create an issue on https://github.com/razorpay/blade repo to let us know and we can discuss ✨`,
+        moduleName: 'Box',
+      });
+    }
   }
 };
 
 const validateBackgroundProp = (
   responsiveBackgroundColor: MakeValueResponsive<string | undefined>,
 ): void => {
-  if (responsiveBackgroundColor) {
-    if (typeof responsiveBackgroundColor === 'string') {
-      validateBackgroundString(responsiveBackgroundColor);
-      return;
-    }
+  if (__DEV__) {
+    if (responsiveBackgroundColor) {
+      if (typeof responsiveBackgroundColor === 'string') {
+        validateBackgroundString(responsiveBackgroundColor);
+        return;
+      }
 
-    Object.values(responsiveBackgroundColor).forEach((backgroundColor) => {
-      validateBackgroundString(backgroundColor);
-    });
+      Object.values(responsiveBackgroundColor).forEach((backgroundColor) => {
+        if (typeof backgroundColor === 'string') {
+          validateBackgroundString(backgroundColor);
+        }
+      });
+    }
   }
 };
 
 /**
  * This function is to filter out any unexpected props passed by the user
  */
-const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '__brand__'>> => {
+const makeBoxProps = (
+  props: BoxProps,
+): KeysRequired<Omit<BoxProps, 'testID' | 'id' | '__brand__'>> => {
   return {
     // Layout
     display: props.display,
     overflow: props.overflow,
     overflowX: props.overflowX,
     overflowY: props.overflowY,
+    whiteSpace: props.whiteSpace,
     height: props.height,
     minHeight: props.minHeight,
     maxHeight: props.maxHeight,
     width: props.width,
     minWidth: props.minWidth,
     maxWidth: props.maxWidth,
+    textAlign: props.textAlign,
 
     // Flex
     flex: props.flex,
@@ -59,6 +77,7 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
     justifyContent: props.justifyContent,
     justifySelf: props.justifySelf,
     placeSelf: props.placeSelf,
+    placeItems: props.placeItems,
     order: props.order,
 
     // Grid
@@ -107,7 +126,60 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
 
     // Visual
     backgroundColor: props.backgroundColor,
+    backgroundImage: props.backgroundImage,
+    backgroundSize: props.backgroundSize,
+    backgroundPosition: props.backgroundPosition,
+    backgroundOrigin: props.backgroundOrigin,
+    backgroundRepeat: props.backgroundRepeat,
+    elevation: props.elevation,
+    opacity: props.opacity,
+    visibility: props.visibility,
+
+    // Border
+    borderWidth: props.borderWidth,
+    borderColor: props.borderColor,
+    borderStyle: props.borderStyle,
+    borderTopWidth: props.borderTopWidth,
+    borderTopColor: props.borderTopColor,
+    borderTopStyle: props.borderTopStyle,
+    borderRightWidth: props.borderRightWidth,
+    borderRightColor: props.borderRightColor,
+    borderRightStyle: props.borderRightStyle,
+    borderBottomWidth: props.borderBottomWidth,
+    borderBottomColor: props.borderBottomColor,
+    borderBottomStyle: props.borderBottomStyle,
+    borderLeftWidth: props.borderLeftWidth,
+    borderLeftColor: props.borderLeftColor,
+    borderLeftStyle: props.borderLeftStyle,
+    borderRadius: props.borderRadius,
+    borderTopLeftRadius: props.borderTopLeftRadius,
+    borderTopRightRadius: props.borderTopRightRadius,
+    borderBottomRightRadius: props.borderBottomRightRadius,
+    borderBottomLeftRadius: props.borderBottomLeftRadius,
+
+    // Polygon Support
+    transform: props.transform,
+    transformOrigin: props.transformOrigin,
+    clipPath: props.clipPath,
+
+    // callbacks
+    onMouseEnter: props.onMouseEnter,
+    onMouseLeave: props.onMouseLeave,
+    onMouseOver: props.onMouseOver,
+    onScroll: props.onScroll,
+
+    // Drag and Drop
+    draggable: props.draggable,
+    onDragStart: props.onDragStart,
+    onDragEnd: props.onDragEnd,
+    onDragEnter: props.onDragEnter,
+    onDragLeave: props.onDragLeave,
+    onDragOver: props.onDragOver,
+    onDrop: props.onDrop,
+
+    pointerEvents: props.pointerEvents,
     children: props.children,
+    tabIndex: props.tabIndex,
     as: isReactNative() ? undefined : props.as, // as is not supported on react-native
   };
 };
@@ -147,33 +219,49 @@ const makeBoxProps = (props: BoxProps): KeysRequired<Omit<BoxProps, 'testID' | '
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-box Box Documentation}
  * 
  */
-const Box = (props: BoxProps): JSX.Element => {
+const _Box: React.ForwardRefRenderFunction<BoxRefType, BoxProps> = (props, ref) => {
   React.useEffect(() => {
-    validateBackgroundProp(props.backgroundColor);
+    if (__DEV__) {
+      validateBackgroundProp(props.backgroundColor);
+    }
   }, [props.backgroundColor]);
 
   React.useEffect(() => {
-    if (props.as) {
-      if (isReactNative()) {
-        throw new Error('[Blade - Box]: `as` prop is not supported on React Native');
-      }
+    if (__DEV__) {
+      if (props.as) {
+        if (isReactNative()) {
+          throwBladeError({
+            message: '`as` prop is not supported on React Native',
+            moduleName: 'Box',
+          });
+        }
 
-      if (!validBoxAsValues.includes(props.as)) {
-        throw new Error(
-          `[Blade - Box]: Invalid \`as\` prop value - ${props.as}. Only ${validBoxAsValues.join(
-            ', ',
-          )} are valid values`,
-        );
+        if (!validBoxAsValues.includes(props.as)) {
+          throwBladeError({
+            message: `Invalid \`as\` prop value - ${props.as}. Only ${validBoxAsValues.join(
+              ', ',
+            )} are valid values`,
+            moduleName: 'Box',
+          });
+        }
       }
     }
   }, [props.as]);
 
   return (
     <BaseBox
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ref={ref as any}
+      id={props.id}
       {...metaAttribute({ name: MetaConstants.Box, testID: props.testID })}
       {...makeBoxProps(props)}
     />
   );
 };
+
+const Box = assignWithoutSideEffects(React.forwardRef(_Box), {
+  displayName: 'Box',
+  componentId: 'Box',
+});
 
 export { Box, makeBoxProps };

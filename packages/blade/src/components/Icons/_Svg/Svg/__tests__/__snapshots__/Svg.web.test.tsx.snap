@@ -13,6 +13,7 @@ exports[`<Svg /> should render html svg component 1`] = `
   >
     <path
       d="M2 2h2v2H2V2"
+      data-blade-component="svg-path"
       fill="#000"
     />
   </svg>

@@ -1,8 +1,13 @@
+import type { View } from 'react-native';
+import type { CSSObject } from 'styled-components';
 import type { MarginProps, PaddingProps, SpacingValueType } from './spacingTypes';
 import type { MakeObjectResponsive } from './responsiveTypes';
 import type { Theme } from '~components/BladeProvider';
-import type { Border } from '~tokens/global';
-import type { DotNotationColorStringToken, PickCSSByPlatform, TestID } from '~src/_helpers/types';
+import type { Border, Elevation } from '~tokens/global';
+import type { PickCSSByPlatform, TestID } from '~utils/types';
+import type { Platform } from '~utils';
+import type { BladeCommonEvents } from '~components/types';
+import type { DotNotationToken } from '~utils/lodashButBetter/get';
 
 type LayoutProps = MakeObjectResponsive<
   {
@@ -12,7 +17,9 @@ type LayoutProps = MakeObjectResponsive<
     width: SpacingValueType;
     minWidth: SpacingValueType;
     maxWidth: SpacingValueType;
-  } & PickCSSByPlatform<'display' | 'overflow' | 'overflowX' | 'overflowY'>
+  } & PickCSSByPlatform<
+    'display' | 'overflow' | 'overflowX' | 'overflowY' | 'textAlign' | 'whiteSpace'
+  >
 >;
 
 type FlexboxProps = MakeObjectResponsive<
@@ -57,6 +64,7 @@ type FlexboxProps = MakeObjectResponsive<
     | 'justifyContent'
     | 'justifySelf'
     | 'placeSelf'
+    | 'placeItems'
     | 'order'
   >
 >;
@@ -90,9 +98,13 @@ type GridProps = MakeObjectResponsive<
   >
 >;
 
-type ColorObjects = 'feedback' | 'surface' | 'action';
-type BackgroundColorString<T extends ColorObjects> = `${T}.background.${DotNotationColorStringToken<
-  Theme['colors'][T]['background']
+type ColorObjects = 'feedback' | 'surface' | 'interactive';
+type BackgroundOnlyColorObjects = 'popup' | 'overlay';
+type BackgroundColorString<
+  T extends ColorObjects | BackgroundOnlyColorObjects
+> = `${T}.background.${DotNotationToken<Theme['colors'][T]['background']>}`;
+type BorderColorString<T extends ColorObjects> = `${T}.border.${DotNotationToken<
+  Theme['colors'][T]['border']
 >}`;
 
 // Created this as an array so I can reuse it for runtime validation
@@ -105,24 +117,91 @@ const validBoxAsValues = [
   'aside',
   'nav',
   'span',
+  'label',
 ] as const;
 
 type BoxAsType = typeof validBoxAsValues[number];
 
-type BaseBoxVisualProps = MakeObjectResponsive<
+// Visual props that are common for both Box and BaseBox
+type CommonBoxVisualProps = MakeObjectResponsive<
   {
     borderRadius: keyof Border['radius'];
+    borderWidth: keyof Border['width'];
+    borderColor: BorderColorString<'surface'>;
+    borderTopWidth: keyof Border['width'];
+    borderTopColor: BorderColorString<'surface'>;
+    borderRightWidth: keyof Border['width'];
+    borderRightColor: BorderColorString<'surface'>;
+    borderBottomWidth: keyof Border['width'];
+    borderBottomColor: BorderColorString<'surface'>;
+    borderLeftWidth: keyof Border['width'];
+    borderLeftColor: BorderColorString<'surface'>;
+    borderTopLeftRadius: keyof Border['radius'];
+    borderTopRightRadius: keyof Border['radius'];
+    borderBottomRightRadius: keyof Border['radius'];
+    borderBottomLeftRadius: keyof Border['radius'];
+  } & PickCSSByPlatform<
+    | 'backgroundImage'
+    | 'backgroundSize'
+    | 'backgroundPosition'
+    | 'backgroundOrigin'
+    | 'backgroundRepeat'
+    | 'pointerEvents'
+    | 'opacity'
+    | 'visibility'
+    | 'transform'
+    | 'transformOrigin'
+    | 'clipPath'
+    | 'borderStyle'
+    | 'borderTopStyle'
+    | 'borderBottomStyle'
+    | 'borderLeftStyle'
+    | 'borderRightStyle'
+  > & {
+      /**
+       * Sets the elevation for Box
+       *
+       * eg: `theme.elevation.midRaised`
+       *
+       * @default `theme.elevation.lowRaised`
+       *
+       * **Links:**
+       * - Docs: https://blade.razorpay.com/?path=/docs/tokens-elevation--page
+       */
+      elevation?: keyof Elevation;
+    }
+>;
+
+// Visual props that are specific BaseBox
+// This is used to ensure some of the more flexible BaseBox props are not passed to Box
+type BaseBoxVisualProps = MakeObjectResponsive<
+  {
     backgroundColor:
       | BackgroundColorString<'feedback'>
       | BackgroundColorString<'surface'>
-      | BackgroundColorString<'action'>
+      | BackgroundColorString<'interactive'>
+      | BackgroundColorString<'overlay'>
+      | BackgroundColorString<'popup'>
+      | 'transparent'
       | (string & Record<never, never>);
     lineHeight: SpacingValueType;
-  } & PickCSSByPlatform<'border' | 'borderLeft' | 'borderRight' | 'borderTop' | 'borderBottom'>
+    touchAction: CSSObject['touchAction'];
+    userSelect: CSSObject['userSelect'];
+  } & PickCSSByPlatform<
+    | 'border'
+    | 'borderLeft'
+    | 'borderRight'
+    | 'borderTop'
+    | 'borderBottom'
+    | 'opacity'
+    | 'pointerEvents'
+    | 'cursor'
+  >
 >;
 
+// Visual props that are specific to Box
 type BoxVisualProps = MakeObjectResponsive<{
-  backgroundColor: BackgroundColorString<'surface'>;
+  backgroundColor: BackgroundColorString<'surface'> | 'transparent';
 }> & {
   // Intentionally keeping this outside of MakeObjectResponsive since we only want as to be string and not responsive object
   // styled-components do not support passing `as` prop as an object
@@ -143,9 +222,73 @@ type StyledPropsBlade = Partial<
         | 'gridColumnStart'
         | 'gridColumnEnd'
         | 'gridArea'
-      >,
+      > &
+      Pick<LayoutProps, 'display'> &
+      Pick<CommonBoxVisualProps, 'visibility'>,
     '__brand__'
   >
+>;
+
+type BoxCallbackProps = Omit<
+  Platform.Select<{
+    web: {
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseOver: React.MouseEventHandler<HTMLElement>;
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseEnter: React.MouseEventHandler<HTMLElement>;
+      /**
+       * **Warning**
+       *
+       * Make sure to not use Box when you want to create a trigger that performs action on hover.
+       * You would probably want to render it as `button` using `styled.button` instead.
+       *
+       * Use this for hoverable containers in cases like custom menus.
+       */
+      onMouseLeave: React.MouseEventHandler<HTMLElement>;
+      onScroll: React.UIEventHandler<HTMLElement>;
+    };
+    native: Record<'onMouseOver' | 'onMouseEnter' | 'onMouseLeave' | 'onScroll', undefined>;
+  }>,
+  '__brand__'
+>;
+
+type BoxDragAndDropProps = Omit<
+  Platform.Select<{
+    web: {
+      draggable: boolean;
+      onDragStart: React.DragEventHandler<HTMLElement>;
+      onDragEnter: React.DragEventHandler<HTMLElement>;
+      onDragLeave: React.DragEventHandler<HTMLElement>;
+      onDragOver: React.DragEventHandler<HTMLElement>;
+      onDragEnd: React.DragEventHandler<HTMLElement>;
+      onDrop: React.DragEventHandler<HTMLElement>;
+    };
+    native: Record<
+      | 'draggable'
+      | 'onDragStart'
+      | 'onDragEnter'
+      | 'onDragLeave'
+      | 'onDragOver'
+      | 'onDragEnd'
+      | 'onDrop',
+      undefined
+    >;
+  }>,
+  '__brand__'
 >;
 
 type BoxProps = Partial<
@@ -155,7 +298,14 @@ type BoxProps = Partial<
     FlexboxProps &
     PositionProps &
     GridProps &
-    BoxVisualProps & { children?: React.ReactNode | React.ReactNode[] } & TestID
+    BoxCallbackProps &
+    BoxDragAndDropProps &
+    CommonBoxVisualProps &
+    BoxVisualProps & {
+      children?: React.ReactNode | React.ReactNode[];
+      tabIndex?: number;
+      id?: string;
+    } & TestID
 >;
 
 // Visual props have different types for BaseBox and Box. BaseBox has more flexible types and more props exposed.
@@ -166,7 +316,16 @@ type BaseBoxProps = Omit<BoxProps, keyof BoxVisualProps> &
     BaseBoxVisualProps & {
       className?: string;
       id?: string;
+      tabIndex?: number;
     }
-  >;
+  > &
+  BladeCommonEvents;
 
-export { BaseBoxProps, BoxProps, StyledPropsBlade, validBoxAsValues };
+// ref prop type
+type BoxRefType = Platform.Select<{
+  web: Omit<HTMLElement, 'style'>;
+  native: View;
+}>;
+
+export type { BaseBoxProps, BoxProps, BoxRefType, StyledPropsBlade, FlexboxProps };
+export { validBoxAsValues };

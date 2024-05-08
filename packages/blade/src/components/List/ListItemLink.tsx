@@ -1,7 +1,8 @@
-import type { LinkProps } from '../Link';
-import { Link } from '../Link';
 import { useListContext } from './ListContext';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import type { LinkProps } from '~components/Link';
+import { Link } from '~components/Link';
+import { MetaConstants } from '~utils/metaAttribute';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 
 type ListItemLinkProps = Exclude<LinkProps, 'size' | 'variant' | 'isDisabled'>;
 
@@ -34,6 +35,9 @@ const _ListItemLink = ({
   );
 };
 
-const ListItemLink = assignWithoutSideEffects(_ListItemLink, { componentId: 'ListItemLink' });
+const ListItemLink = assignWithoutSideEffects(_ListItemLink, {
+  componentId: MetaConstants.ListItemLink,
+});
 
-export { ListItemLink, ListItemLinkProps };
+export type { ListItemLinkProps };
+export { ListItemLink };

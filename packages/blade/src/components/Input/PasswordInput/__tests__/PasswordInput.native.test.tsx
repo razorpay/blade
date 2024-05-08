@@ -4,11 +4,17 @@ import type { ReactElement } from 'react';
 import React, { useState } from 'react';
 
 import { PasswordInput } from '..';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PasswordInput />', () => {
   it('should render', () => {
     const { toJSON } = renderWithTheme(<PasswordInput label="Enter password" />);
+
+    expect(toJSON()).toMatchSnapshot();
+  });
+
+  it('should render large size', () => {
+    const { toJSON } = renderWithTheme(<PasswordInput label="Enter password" size="large" />);
 
     expect(toJSON()).toMatchSnapshot();
   });

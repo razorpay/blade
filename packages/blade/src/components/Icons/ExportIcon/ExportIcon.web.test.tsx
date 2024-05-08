@@ -1,10 +1,10 @@
 import ExportIcon from '.';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ExportIcon />', () => {
   it('should render ExportIcon', () => {
     const { container } = renderWithTheme(
-      <ExportIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <ExportIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

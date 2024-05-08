@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<List /> should render List with default properties 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -22,7 +22,7 @@ exports[`<List /> should render List with default properties 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -34,51 +34,52 @@ exports[`<List /> should render List with default properties 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
   margin-left: 4px;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   margin-left: 16px;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="List__StyledUnorderedList-bqf6r7-1 c0"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
+            class="c3"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -92,42 +93,40 @@ exports[`<List /> should render List with default properties 1`] = `
               <circle
                 cx="3px"
                 cy="3px"
-                fill="hsla(214, 18%, 69%, 1)"
+                data-blade-component="svg-circle"
+                fill="hsla(211, 22%, 56%, 1)"
+                fill-opacity="0.48"
                 r="3px"
               />
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c4"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 1
           </p>
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
-            class="c0"
+            class="List__StyledUnorderedList-bqf6r7-1 c0"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c6"
+              class=" c5"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
-                display="flex"
+                class="c2"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c4"
-                  display="flex"
+                  class="c3"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -141,42 +140,39 @@ exports[`<List /> should render List with default properties 1`] = `
                     <circle
                       cx="3px"
                       cy="3px"
+                      data-blade-component="svg-circle"
                       r="2.5px"
-                      stroke="hsla(214, 18%, 69%, 1)"
+                      stroke="hsla(211, 22%, 56%, 1)"
                     />
                   </svg>
                 </div>
                 <p
-                  class="c5 Text__StyledText-wkh56f-0"
-                  color="surface.text.normal.lowContrast"
+                  class="c4"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Level 2
                 </p>
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
-                  class="c0"
+                  class="List__StyledUnorderedList-bqf6r7-1 c0"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c6"
+                    class=" c5"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
-                      display="flex"
+                      class="c2"
+                      data-blade-component="base-box"
                     >
                       <div
-                        class="c4"
-                        display="flex"
+                        class="c3"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -188,7 +184,9 @@ exports[`<List /> should render List with default properties 1`] = `
                           width="6px"
                         >
                           <rect
-                            fill="hsla(214, 18%, 69%, 1)"
+                            data-blade-component="svg-rect"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -196,13 +194,8 @@ exports[`<List /> should render List with default properties 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5 Text__StyledText-wkh56f-0"
-                        color="surface.text.normal.lowContrast"
+                        class="c4"
                         data-blade-component="text"
-                        font-family="text"
-                        font-size="100"
-                        font-style="normal"
-                        font-weight="regular"
                       >
                         Level 3
                       </p>
@@ -220,13 +213,13 @@ exports[`<List /> should render List with default properties 1`] = `
 `;
 
 exports[`<List /> should render List with inline ListItemCode 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -241,7 +234,7 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -253,69 +246,74 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c7 {
-  color: hsla(216,27%,36%,1);
-  font-family: monospace;
+.c6.c6.c6.c6.c6 {
+  color: hsla(211,26%,34%,1);
+  font-family: "Menlo",San Francisco Mono,Courier New,Roboto Mono,monospace;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   padding: 0px 4px;
-  background-color: hsla(216,15%,54%,0.09);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
   line-height: 0rem;
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
   margin-left: 4px;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="List__StyledUnorderedList-bqf6r7-1 c0"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
+            class="c3"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -329,31 +327,25 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               <circle
                 cx="3px"
                 cy="3px"
-                fill="hsla(214, 18%, 69%, 1)"
+                data-blade-component="svg-circle"
+                fill="hsla(211, 22%, 56%, 1)"
+                fill-opacity="0.48"
                 r="3px"
               />
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c4"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 1 
             <span
-              class=" c6"
+              class=" c5"
               data-blade-component="code"
             >
               <code
-                class="c7"
-                color="surface.text.subtle.lowContrast"
-                font-family="code"
-                font-size="25"
-                font-weight="regular"
+                class="c6"
+                data-blade-component="base-text"
               >
                 Google
               </code>
@@ -362,16 +354,16 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
         </div>
       </li>
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
+            class="c3"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -385,19 +377,16 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
               <circle
                 cx="3px"
                 cy="3px"
-                fill="hsla(214, 18%, 69%, 1)"
+                data-blade-component="svg-circle"
+                fill="hsla(211, 22%, 56%, 1)"
+                fill-opacity="0.48"
                 r="3px"
               />
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c4"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 2
           </p>
@@ -408,20 +397,14 @@ exports[`<List /> should render List with inline ListItemCode 1`] = `
 </div>
 `;
 
-exports[`<List /> should render medium ordered List 1`] = `
-.c7 {
+exports[`<List /> should render List with inline ListItemText 1`] = `
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c0 {
-  list-style-type: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-.c3 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -436,7 +419,794 @@ exports[`<List /> should render medium ordered List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-top: 7px;
+  margin-right: 8px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(227,71%,51%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  margin-left: 4px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <ul
+      class="List__StyledUnorderedList-bqf6r7-1 c0"
+      data-blade-component="list"
+      role="list"
+    >
+      <li
+        class=" c1"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="6px"
+              viewBox="0 0 6 6"
+              width="6px"
+            >
+              <circle
+                cx="3px"
+                cy="3px"
+                data-blade-component="svg-circle"
+                fill="hsla(211, 22%, 56%, 1)"
+                fill-opacity="0.48"
+                r="3px"
+              />
+            </svg>
+          </div>
+          <p
+            class="c4"
+            data-blade-component="text"
+          >
+            <span
+              class="c5"
+              data-blade-component="text"
+            >
+              Level 1
+            </span>
+          </p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`<List /> should render large ordered List 1`] = `
+.c6.c6.c6.c6.c6 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c0.c0.c0.c0.c0 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0px;
+  margin-right: 4px;
+  height: 24px;
+  width: 24px;
+}
+
+.c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-right: 8px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  margin-left: 0;
+}
+
+.c7.c7.c7.c7.c7 {
+  margin-left: 16px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <ol
+      class="List__StyledOrderedList-bqf6r7-0 c0"
+      data-blade-component="list"
+      role="list"
+    >
+      <li
+        class=" c1"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              1.
+            </p>
+          </div>
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            Level 1
+          </p>
+        </div>
+        <div
+          class=""
+          data-blade-component="base-box"
+        >
+          <ul
+            class="List__StyledUnorderedList-bqf6r7-1 c6"
+            data-blade-component="list"
+            role="list"
+          >
+            <li
+              class=" c7"
+              data-blade-component="list-item"
+            >
+              <div
+                class="c2"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c8"
+                  data-blade-component="base-box"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="6px"
+                    viewBox="0 0 6 6"
+                    width="6px"
+                  >
+                    <circle
+                      cx="3px"
+                      cy="3px"
+                      data-blade-component="svg-circle"
+                      r="2.5px"
+                      stroke="hsla(211, 22%, 56%, 1)"
+                    />
+                  </svg>
+                </div>
+                <p
+                  class="c5"
+                  data-blade-component="text"
+                >
+                  Level 2
+                </p>
+              </div>
+              <div
+                class=""
+                data-blade-component="base-box"
+              >
+                <ul
+                  class="List__StyledUnorderedList-bqf6r7-1 c6"
+                  data-blade-component="list"
+                  role="list"
+                >
+                  <li
+                    class=" c7"
+                    data-blade-component="list-item"
+                  >
+                    <div
+                      class="c2"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c8"
+                        data-blade-component="base-box"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
+                        >
+                          <rect
+                            data-blade-component="svg-rect"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-opacity="0.48"
+                            height="6px"
+                            rx="1px"
+                            width="6px"
+                          />
+                        </svg>
+                      </div>
+                      <p
+                        class="c5"
+                        data-blade-component="text"
+                      >
+                        Level 3
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+`;
+
+exports[`<List /> should render large ordered-filled List 1`] = `
+.c0.c0.c0.c0.c0 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-top: 0px;
+  margin-right: 8px;
+  height: 24px;
+  width: 24px;
+  background-color: hsla(211,20%,52%,0.09);
+  border-radius: 9999px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 0.625rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  margin-left: 0;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <ol
+      class="List__StyledOrderedList-bqf6r7-0 c0"
+      data-blade-component="list"
+      role="list"
+    >
+      <li
+        class=" c1"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              1
+            </p>
+          </div>
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            Level 1
+          </p>
+        </div>
+      </li>
+      <li
+        class=" c1"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              2
+            </p>
+          </div>
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            Level 2
+          </p>
+        </div>
+      </li>
+      <li
+        class=" c1"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <p
+              class="c4"
+              data-blade-component="text"
+            >
+              3
+            </p>
+          </div>
+          <p
+            class="c5"
+            data-blade-component="text"
+          >
+            Level 3
+          </p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+`;
+
+exports[`<List /> should render large unordered List with icon 1`] = `
+.c0.c0.c0.c0.c0 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.c3.c3.c3.c3.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-top: 5px;
+  margin-right: 8px;
+}
+
+.c6.c6.c6.c6.c6 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-self: flex-start;
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-right: 8px;
+}
+
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  -webkit-text-decoration-line: none;
+  text-decoration-line: none;
+  line-height: 1.5rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
+  margin: 0;
+  padding: 0;
+}
+
+.c1.c1.c1.c1.c1 {
+  margin-left: 0;
+}
+
+.c5.c5.c5.c5.c5 {
+  margin-left: 16px;
+}
+
+<div>
+  <div
+    class=""
+    data-blade-component="base-box"
+  >
+    <ul
+      class="List__StyledUnorderedList-bqf6r7-1 c0"
+      data-blade-component="list"
+      role="list"
+    >
+      <li
+        class=" c1"
+        data-blade-component="list-item"
+      >
+        <div
+          class="c2"
+          data-blade-component="base-box"
+        >
+          <div
+            class="c3"
+            data-blade-component="base-box"
+          >
+            <svg
+              aria-hidden="true"
+              class="Svgweb__StyledSvg-vcmjs8-0"
+              data-blade-component="icon"
+              fill="none"
+              height="20px"
+              viewBox="0 0 24 24"
+              width="20px"
+            >
+              <path
+                d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
+                data-blade-component="svg-path"
+                fill="hsla(211, 22%, 56%, 1)"
+              />
+            </svg>
+          </div>
+          <p
+            class="c4"
+            data-blade-component="text"
+          >
+            Level 1
+          </p>
+        </div>
+        <div
+          class=""
+          data-blade-component="base-box"
+        >
+          <ul
+            class="List__StyledUnorderedList-bqf6r7-1 c0"
+            data-blade-component="list"
+            role="list"
+          >
+            <li
+              class=" c5"
+              data-blade-component="list-item"
+            >
+              <div
+                class="c2"
+                data-blade-component="base-box"
+              >
+                <div
+                  class="c3"
+                  data-blade-component="base-box"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="Svgweb__StyledSvg-vcmjs8-0"
+                    data-blade-component="icon"
+                    fill="none"
+                    height="20px"
+                    viewBox="0 0 24 24"
+                    width="20px"
+                  >
+                    <path
+                      d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
+                      data-blade-component="svg-path"
+                      fill="hsla(211, 22%, 56%, 1)"
+                    />
+                  </svg>
+                </div>
+                <p
+                  class="c4"
+                  data-blade-component="text"
+                >
+                  Level 2
+                </p>
+              </div>
+              <div
+                class=""
+                data-blade-component="base-box"
+              >
+                <ul
+                  class="List__StyledUnorderedList-bqf6r7-1 c0"
+                  data-blade-component="list"
+                  role="list"
+                >
+                  <li
+                    class=" c5"
+                    data-blade-component="list-item"
+                  >
+                    <div
+                      class="c2"
+                      data-blade-component="base-box"
+                    >
+                      <div
+                        class="c6"
+                        data-blade-component="base-box"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="Svgweb__StyledSvg-vcmjs8-0"
+                          data-blade-component="icon"
+                          fill="none"
+                          height="6px"
+                          viewBox="0 0 6 6"
+                          width="6px"
+                        >
+                          <rect
+                            data-blade-component="svg-rect"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-opacity="0.48"
+                            height="6px"
+                            rx="1px"
+                            width="6px"
+                          />
+                        </svg>
+                      </div>
+                      <p
+                        class="c4"
+                        data-blade-component="text"
+                      >
+                        Level 3
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`<List /> should render medium ordered List 1`] = `
+.c6.c6.c6.c6.c6 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c0.c0.c0.c0.c0 {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -461,7 +1231,7 @@ exports[`<List /> should render medium ordered List 1`] = `
   width: 20px;
 }
 
-.c9 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -473,110 +1243,104 @@ exports[`<List /> should render medium ordered List 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
   margin-left: 0;
 }
 
-.c8 {
+.c7.c7.c7.c7.c7 {
   margin-left: 16px;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ol
-      class="c0 c1"
+      class="List__StyledOrderedList-bqf6r7-0 c0"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
-            height="20px"
-            width="20px"
+            class="c3"
+            data-blade-component="base-box"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.subtle.lowContrast"
+              class="c4"
               data-blade-component="text"
-              font-family="text"
-              font-size="100"
-              font-style="normal"
-              font-weight="regular"
             >
               1.
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c5"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 1
           </p>
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
-            class="List__StyledUnorderedList-bqf6r7-1 c7"
+            class="List__StyledUnorderedList-bqf6r7-1 c6"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c8"
+              class=" c7"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
-                display="flex"
+                class="c2"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c9"
-                  display="flex"
+                  class="c8"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -590,42 +1354,39 @@ exports[`<List /> should render medium ordered List 1`] = `
                     <circle
                       cx="3px"
                       cy="3px"
+                      data-blade-component="svg-circle"
                       r="2.5px"
-                      stroke="hsla(214, 18%, 69%, 1)"
+                      stroke="hsla(211, 22%, 56%, 1)"
                     />
                   </svg>
                 </div>
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
-                  color="surface.text.normal.lowContrast"
+                  class="c5"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Level 2
                 </p>
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
-                  class="List__StyledUnorderedList-bqf6r7-1 c7"
+                  class="List__StyledUnorderedList-bqf6r7-1 c6"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c8"
+                    class=" c7"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
-                      display="flex"
+                      class="c2"
+                      data-blade-component="base-box"
                     >
                       <div
-                        class="c9"
-                        display="flex"
+                        class="c8"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -637,7 +1398,9 @@ exports[`<List /> should render medium ordered List 1`] = `
                           width="6px"
                         >
                           <rect
-                            fill="hsla(214, 18%, 69%, 1)"
+                            data-blade-component="svg-rect"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -645,13 +1408,8 @@ exports[`<List /> should render medium ordered List 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c6 Text__StyledText-wkh56f-0"
-                        color="surface.text.normal.lowContrast"
+                        class="c5"
                         data-blade-component="text"
-                        font-family="text"
-                        font-size="100"
-                        font-style="normal"
-                        font-weight="regular"
                       >
                         Level 3
                       </p>
@@ -669,13 +1427,13 @@ exports[`<List /> should render medium ordered List 1`] = `
 `;
 
 exports[`<List /> should render medium ordered-filled List 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -690,7 +1448,7 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -713,165 +1471,134 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
   margin-right: 8px;
   height: 20px;
   width: 20px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
 }
 
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
   margin-left: 0;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ol
-      class="c0 c1"
+      class="List__StyledOrderedList-bqf6r7-0 c0"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
-            height="20px"
-            width="20px"
+            class="c3"
+            data-blade-component="base-box"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.subtle.lowContrast"
+              class="c4"
               data-blade-component="text"
-              font-family="text"
-              font-size="25"
-              font-style="normal"
-              font-weight="regular"
             >
               1
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c5"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 1
           </p>
         </div>
       </li>
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
-            height="20px"
-            width="20px"
+            class="c3"
+            data-blade-component="base-box"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.subtle.lowContrast"
+              class="c4"
               data-blade-component="text"
-              font-family="text"
-              font-size="25"
-              font-style="normal"
-              font-weight="regular"
             >
               2
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c5"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 2
           </p>
         </div>
       </li>
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
-            height="20px"
-            width="20px"
+            class="c3"
+            data-blade-component="base-box"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.subtle.lowContrast"
+              class="c4"
               data-blade-component="text"
-              font-family="text"
-              font-size="25"
-              font-style="normal"
-              font-weight="regular"
             >
               3
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c5"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 3
           </p>
@@ -883,13 +1610,13 @@ exports[`<List /> should render medium ordered-filled List 1`] = `
 `;
 
 exports[`<List /> should render medium unordered List with icon 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -904,7 +1631,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -916,7 +1643,7 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c7 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -928,51 +1655,52 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.875rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
   line-height: 1.25rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
   margin-left: 0;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   margin-left: 16px;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="List__StyledUnorderedList-bqf6r7-1 c0"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
+            class="c3"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -985,41 +1713,38 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
             >
               <path
                 d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
-                fill="hsla(217, 18%, 45%, 1)"
+                data-blade-component="svg-path"
+                fill="hsla(211, 22%, 56%, 1)"
               />
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c4"
             data-blade-component="text"
-            font-family="text"
-            font-size="100"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 1
           </p>
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
-            class="c0"
+            class="List__StyledUnorderedList-bqf6r7-1 c0"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c6"
+              class=" c5"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
-                display="flex"
+                class="c2"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c4"
-                  display="flex"
+                  class="c3"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -1032,41 +1757,38 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                   >
                     <path
                       d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
-                      fill="hsla(217, 18%, 45%, 1)"
+                      data-blade-component="svg-path"
+                      fill="hsla(211, 22%, 56%, 1)"
                     />
                   </svg>
                 </div>
                 <p
-                  class="c5 Text__StyledText-wkh56f-0"
-                  color="surface.text.normal.lowContrast"
+                  class="c4"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="100"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Level 2
                 </p>
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
-                  class="c0"
+                  class="List__StyledUnorderedList-bqf6r7-1 c0"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c6"
+                    class=" c5"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
-                      display="flex"
+                      class="c2"
+                      data-blade-component="base-box"
                     >
                       <div
-                        class="c7"
-                        display="flex"
+                        class="c6"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -1078,7 +1800,9 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                           width="6px"
                         >
                           <rect
-                            fill="hsla(214, 18%, 69%, 1)"
+                            data-blade-component="svg-rect"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -1086,13 +1810,8 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5 Text__StyledText-wkh56f-0"
-                        color="surface.text.normal.lowContrast"
+                        class="c4"
                         data-blade-component="text"
-                        font-family="text"
-                        font-size="100"
-                        font-style="normal"
-                        font-weight="regular"
                       >
                         Level 3
                       </p>
@@ -1110,19 +1829,19 @@ exports[`<List /> should render medium unordered List with icon 1`] = `
 `;
 
 exports[`<List /> should render small ordered List 1`] = `
-.c7 {
+.c6.c6.c6.c6.c6 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1137,7 +1856,7 @@ exports[`<List /> should render small ordered List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1162,7 +1881,7 @@ exports[`<List /> should render small ordered List 1`] = `
   width: 16px;
 }
 
-.c9 {
+.c8.c8.c8.c8.c8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1174,110 +1893,104 @@ exports[`<List /> should render small ordered List 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
   margin-left: 0;
 }
 
-.c8 {
+.c7.c7.c7.c7.c7 {
   margin-left: 16px;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ol
-      class="c0 c1"
+      class="List__StyledOrderedList-bqf6r7-0 c0"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
-            height="16px"
-            width="16px"
+            class="c3"
+            data-blade-component="base-box"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.subtle.lowContrast"
+              class="c4"
               data-blade-component="text"
-              font-family="text"
-              font-size="75"
-              font-style="normal"
-              font-weight="regular"
             >
               1.
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c5"
             data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 1
           </p>
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
-            class="List__StyledUnorderedList-bqf6r7-1 c7"
+            class="List__StyledUnorderedList-bqf6r7-1 c6"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c8"
+              class=" c7"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
-                display="flex"
+                class="c2"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c9"
-                  display="flex"
+                  class="c8"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -1291,42 +2004,39 @@ exports[`<List /> should render small ordered List 1`] = `
                     <circle
                       cx="3px"
                       cy="3px"
+                      data-blade-component="svg-circle"
                       r="2.5px"
-                      stroke="hsla(214, 18%, 69%, 1)"
+                      stroke="hsla(211, 22%, 56%, 1)"
                     />
                   </svg>
                 </div>
                 <p
-                  class="c6 Text__StyledText-wkh56f-0"
-                  color="surface.text.normal.lowContrast"
+                  class="c5"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="75"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Level 2
                 </p>
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
-                  class="List__StyledUnorderedList-bqf6r7-1 c7"
+                  class="List__StyledUnorderedList-bqf6r7-1 c6"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c8"
+                    class=" c7"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
-                      display="flex"
+                      class="c2"
+                      data-blade-component="base-box"
                     >
                       <div
-                        class="c9"
-                        display="flex"
+                        class="c8"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -1338,7 +2048,9 @@ exports[`<List /> should render small ordered List 1`] = `
                           width="6px"
                         >
                           <rect
-                            fill="hsla(214, 18%, 69%, 1)"
+                            data-blade-component="svg-rect"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -1346,13 +2058,8 @@ exports[`<List /> should render small ordered List 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c6 Text__StyledText-wkh56f-0"
-                        color="surface.text.normal.lowContrast"
+                        class="c5"
                         data-blade-component="text"
-                        font-family="text"
-                        font-size="75"
-                        font-style="normal"
-                        font-weight="regular"
                       >
                         Level 3
                       </p>
@@ -1370,13 +2077,13 @@ exports[`<List /> should render small ordered List 1`] = `
 `;
 
 exports[`<List /> should render small ordered-filled List 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1391,7 +2098,7 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1414,165 +2121,134 @@ exports[`<List /> should render small ordered-filled List 1`] = `
   margin-right: 8px;
   height: 18px;
   width: 18px;
-  background-color: hsla(216,15%,54%,0.18);
+  background-color: hsla(211,20%,52%,0.09);
   border-radius: 9999px;
 }
 
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(216,27%,36%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c4.c4.c4.c4.c4 {
+  color: hsla(211,22%,56%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.625rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 0.875rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c6 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c5.c5.c5.c5.c5 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
   margin-left: 0;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ol
-      class="c0 c1"
+      class="List__StyledOrderedList-bqf6r7-0 c0"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
-            height="18px"
-            width="18px"
+            class="c3"
+            data-blade-component="base-box"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.subtle.lowContrast"
+              class="c4"
               data-blade-component="text"
-              font-family="text"
-              font-size="25"
-              font-style="normal"
-              font-weight="regular"
             >
               1
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c5"
             data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 1
           </p>
         </div>
       </li>
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
-            height="18px"
-            width="18px"
+            class="c3"
+            data-blade-component="base-box"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.subtle.lowContrast"
+              class="c4"
               data-blade-component="text"
-              font-family="text"
-              font-size="25"
-              font-style="normal"
-              font-weight="regular"
             >
               2
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c5"
             data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 2
           </p>
         </div>
       </li>
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
-            height="18px"
-            width="18px"
+            class="c3"
+            data-blade-component="base-box"
           >
             <p
-              class="c5 Text__StyledText-wkh56f-0"
-              color="surface.text.subtle.lowContrast"
+              class="c4"
               data-blade-component="text"
-              font-family="text"
-              font-size="25"
-              font-style="normal"
-              font-weight="regular"
             >
               3
             </p>
           </div>
           <p
-            class="c6 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c5"
             data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 3
           </p>
@@ -1584,13 +2260,13 @@ exports[`<List /> should render small ordered-filled List 1`] = `
 `;
 
 exports[`<List /> should render small unordered List with icon 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1605,7 +2281,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1617,7 +2293,7 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c7 {
+.c6.c6.c6.c6.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1629,51 +2305,52 @@ exports[`<List /> should render small unordered List with icon 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
   margin-left: 0;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   margin-left: 16px;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="List__StyledUnorderedList-bqf6r7-1 c0"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
+            class="c3"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -1686,41 +2363,38 @@ exports[`<List /> should render small unordered List with icon 1`] = `
             >
               <path
                 d="M14.707 5.293a1 1 0 1 0-1.414 1.414L17.586 11H4a1 1 0 1 0 0 2h13.586l-4.293 4.293a1 1 0 0 0 1.414 1.414l6-6a1 1 0 0 0 0-1.414l-6-6Z"
-                fill="hsla(217, 18%, 45%, 1)"
+                data-blade-component="svg-path"
+                fill="hsla(211, 22%, 56%, 1)"
               />
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c4"
             data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 1
           </p>
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
-            class="c0"
+            class="List__StyledUnorderedList-bqf6r7-1 c0"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c6"
+              class=" c5"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
-                display="flex"
+                class="c2"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c4"
-                  display="flex"
+                  class="c3"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -1733,41 +2407,38 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                   >
                     <path
                       d="M12.707 3.293a1 1 0 0 0-1.414 0l-6 6a1 1 0 0 0 1.414 1.414L11 6.414V20a1 1 0 1 0 2 0V6.414l4.293 4.293a1 1 0 0 0 1.414-1.414l-6-6Z"
-                      fill="hsla(217, 18%, 45%, 1)"
+                      data-blade-component="svg-path"
+                      fill="hsla(211, 22%, 56%, 1)"
                     />
                   </svg>
                 </div>
                 <p
-                  class="c5 Text__StyledText-wkh56f-0"
-                  color="surface.text.normal.lowContrast"
+                  class="c4"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="75"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Level 2
                 </p>
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
-                  class="c0"
+                  class="List__StyledUnorderedList-bqf6r7-1 c0"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c6"
+                    class=" c5"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
-                      display="flex"
+                      class="c2"
+                      data-blade-component="base-box"
                     >
                       <div
-                        class="c7"
-                        display="flex"
+                        class="c6"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -1779,7 +2450,9 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                           width="6px"
                         >
                           <rect
-                            fill="hsla(214, 18%, 69%, 1)"
+                            data-blade-component="svg-rect"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -1787,13 +2460,8 @@ exports[`<List /> should render small unordered List with icon 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5 Text__StyledText-wkh56f-0"
-                        color="surface.text.normal.lowContrast"
+                        class="c4"
                         data-blade-component="text"
-                        font-family="text"
-                        font-size="75"
-                        font-style="normal"
-                        font-weight="regular"
                       >
                         Level 3
                       </p>
@@ -1811,13 +2479,13 @@ exports[`<List /> should render small unordered List with icon 1`] = `
 `;
 
 exports[`<List /> should render unordered List of small size 1`] = `
-.c0 {
+.c0.c0.c0.c0.c0 {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
 }
 
-.c3 {
+.c2.c2.c2.c2.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1832,7 +2500,7 @@ exports[`<List /> should render unordered List of small size 1`] = `
   margin-bottom: 8px;
 }
 
-.c4 {
+.c3.c3.c3.c3.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -1844,51 +2512,52 @@ exports[`<List /> should render unordered List of small size 1`] = `
   margin-right: 8px;
 }
 
-.c1 {
-  margin-top: 8px;
-}
-
-.c5 {
-  color: hsla(217,56%,17%,1);
-  font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+.c4.c4.c4.c4.c4 {
+  color: hsla(212,39%,16%,1);
+  font-family: "Inter","Inter Fallback Arial",Arial;
   font-size: 0.75rem;
   font-weight: 400;
   font-style: normal;
   -webkit-text-decoration-line: none;
   text-decoration-line: none;
-  line-height: 1rem;
+  line-height: 1.125rem;
+  -webkit-letter-spacing: 0px;
+  -moz-letter-spacing: 0px;
+  -ms-letter-spacing: 0px;
+  letter-spacing: 0px;
   margin: 0;
   padding: 0;
 }
 
-.c2 {
+.c1.c1.c1.c1.c1 {
   margin-left: 4px;
 }
 
-.c6 {
+.c5.c5.c5.c5.c5 {
   margin-left: 16px;
 }
 
 <div>
   <div
     class=""
+    data-blade-component="base-box"
   >
     <ul
-      class="c0 c1"
+      class="List__StyledUnorderedList-bqf6r7-1 c0"
       data-blade-component="list"
       role="list"
     >
       <li
-        class=" c2"
+        class=" c1"
         data-blade-component="list-item"
       >
         <div
-          class="c3"
-          display="flex"
+          class="c2"
+          data-blade-component="base-box"
         >
           <div
-            class="c4"
-            display="flex"
+            class="c3"
+            data-blade-component="base-box"
           >
             <svg
               aria-hidden="true"
@@ -1902,42 +2571,40 @@ exports[`<List /> should render unordered List of small size 1`] = `
               <circle
                 cx="3px"
                 cy="3px"
-                fill="hsla(214, 18%, 69%, 1)"
+                data-blade-component="svg-circle"
+                fill="hsla(211, 22%, 56%, 1)"
+                fill-opacity="0.48"
                 r="3px"
               />
             </svg>
           </div>
           <p
-            class="c5 Text__StyledText-wkh56f-0"
-            color="surface.text.normal.lowContrast"
+            class="c4"
             data-blade-component="text"
-            font-family="text"
-            font-size="75"
-            font-style="normal"
-            font-weight="regular"
           >
             Level 1
           </p>
         </div>
         <div
           class=""
+          data-blade-component="base-box"
         >
           <ul
-            class="c0"
+            class="List__StyledUnorderedList-bqf6r7-1 c0"
             data-blade-component="list"
             role="list"
           >
             <li
-              class=" c6"
+              class=" c5"
               data-blade-component="list-item"
             >
               <div
-                class="c3"
-                display="flex"
+                class="c2"
+                data-blade-component="base-box"
               >
                 <div
-                  class="c4"
-                  display="flex"
+                  class="c3"
+                  data-blade-component="base-box"
                 >
                   <svg
                     aria-hidden="true"
@@ -1951,42 +2618,39 @@ exports[`<List /> should render unordered List of small size 1`] = `
                     <circle
                       cx="3px"
                       cy="3px"
+                      data-blade-component="svg-circle"
                       r="2.5px"
-                      stroke="hsla(214, 18%, 69%, 1)"
+                      stroke="hsla(211, 22%, 56%, 1)"
                     />
                   </svg>
                 </div>
                 <p
-                  class="c5 Text__StyledText-wkh56f-0"
-                  color="surface.text.normal.lowContrast"
+                  class="c4"
                   data-blade-component="text"
-                  font-family="text"
-                  font-size="75"
-                  font-style="normal"
-                  font-weight="regular"
                 >
                   Level 2
                 </p>
               </div>
               <div
                 class=""
+                data-blade-component="base-box"
               >
                 <ul
-                  class="c0"
+                  class="List__StyledUnorderedList-bqf6r7-1 c0"
                   data-blade-component="list"
                   role="list"
                 >
                   <li
-                    class=" c6"
+                    class=" c5"
                     data-blade-component="list-item"
                   >
                     <div
-                      class="c3"
-                      display="flex"
+                      class="c2"
+                      data-blade-component="base-box"
                     >
                       <div
-                        class="c4"
-                        display="flex"
+                        class="c3"
+                        data-blade-component="base-box"
                       >
                         <svg
                           aria-hidden="true"
@@ -1998,7 +2662,9 @@ exports[`<List /> should render unordered List of small size 1`] = `
                           width="6px"
                         >
                           <rect
-                            fill="hsla(214, 18%, 69%, 1)"
+                            data-blade-component="svg-rect"
+                            fill="hsla(211, 22%, 56%, 1)"
+                            fill-opacity="0.48"
                             height="6px"
                             rx="1px"
                             width="6px"
@@ -2006,13 +2672,8 @@ exports[`<List /> should render unordered List of small size 1`] = `
                         </svg>
                       </div>
                       <p
-                        class="c5 Text__StyledText-wkh56f-0"
-                        color="surface.text.normal.lowContrast"
+                        class="c4"
                         data-blade-component="text"
-                        font-family="text"
-                        font-size="75"
-                        font-style="normal"
-                        font-weight="regular"
                       >
                         Level 3
                       </p>

@@ -1,7 +1,9 @@
 import type { CSSObject } from 'styled-components';
 import { maxWidth } from './counterTokens';
 import type { StyledCounterProps } from './types';
-import { getIn, makeBorderSize, makeSize } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
+import { makeSize } from '~utils/makeSize';
+import { makeBorderSize } from '~utils/makeBorderSize';
 
 const getStyledCounterStyles = ({
   theme,

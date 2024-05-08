@@ -3,128 +3,1170 @@
 exports[`<OTPInput /> should render 1`] = `
 <View
   style={
-    Array [
-      Object {},
-    ]
+    {
+      "flex": 1,
+    }
   }
 >
   <View
-    display="flex"
-    flexDirection="column"
-    position="relative"
+    data-blade-component="otp-input"
     style={
-      Array [
-        Object {
-          "display": "flex",
-          "flexDirection": "column",
-          "position": "relative",
-        },
+      [
+        {},
       ]
     }
   >
     <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      position="relative"
       style={
-        Array [
-          Object {
-            "marginBottom": 4,
-            "marginRight": 16,
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
           },
         ]
       }
     >
       <View
-        alignItems="center"
-        display="flex"
-        flexDirection="row"
-        flexWrap="wrap"
-        gap="spacing.0"
+        data-blade-component="base-box"
         style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "display": "flex",
-              "flexDirection": "row",
-              "flexWrap": "wrap",
-              "gap": 0,
+          [
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
             },
           ]
         }
       >
-        <Text
-          color="surface.text.subdued.lowContrast"
-          fontFamily="text"
-          fontSize={75}
-          fontStyle="normal"
-          fontWeight="bold"
-          lineHeight={50}
-          style={
-            Array [
-              Object {
-                "color": "hsla(217, 18%, 45%, 1)",
-                "fontFamily": "Lato",
-                "fontSize": 12,
-                "fontStyle": "normal",
-                "fontWeight": "700",
-                "lineHeight": 16,
-                "marginBottom": 0,
-                "marginLeft": 0,
-                "marginRight": 0,
-                "marginTop": 0,
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "textDecorationLine": "none",
-              },
-              Object {},
-            ]
-          }
-        >
-          Enter OTP
-        </Text>
         <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          gap="spacing.0"
+          maxHeight="36px"
           style={
-            Array [
-              Object {
-                "borderColor": "black",
-                "borderStyle": "solid",
-                "borderWidth": 0,
-                "clip": "rect(0 0 0 0)",
-                "clipPath": "inset(50%)",
-                "height": 1,
-                "left": -10000,
-                "marginBottom": -1,
-                "marginLeft": 0,
-                "marginRight": -1,
-                "marginTop": 0,
-                "overflow": "hidden",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
-                "position": "absolute",
-                "whiteSpace": "nowrap",
-                "width": 1,
-                "wordWrap": "normal",
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
               },
             ]
           }
         >
           <Text
-            color="surface.text.normal.lowContrast"
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
+            fontFamily="text"
+            fontSize={75}
+            fontStyle="normal"
+            fontWeight="semibold"
+            lineHeight={75}
+            numberOfLines={2}
+            style={
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontStyle": "normal",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
+                  "lineHeight": 18,
+                  "marginBottom": 0,
+                  "marginLeft": 0,
+                  "marginRight": 0,
+                  "marginTop": 0,
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "textDecorationLine": "none",
+                },
+              ]
+            }
+          >
+            Enter OTP
+          </Text>
+          <View
+            data-blade-component="visually-hidden"
+            style={
+              [
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 0,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="medium"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel="Enter OTP character 1"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-0-49-input-50"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="medium"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 2"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-1-55-input-56"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="medium"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 3"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-2-61-input-62"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="medium"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 4"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-3-67-input-68"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="medium"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 5"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-4-73-input-74"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="medium"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 6"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-37-input-38-5-79-input-80"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 18,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 36,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 36,
+                          "paddingBottom": 8,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 8,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+    <View
+      data-blade-component="base-box"
+      style={
+        [
+          {
+            "marginLeft": 0,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`<OTPInput /> should render large size 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    data-blade-component="otp-input"
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View
+      data-blade-component="base-box"
+      display="flex"
+      flexDirection="column"
+      position="relative"
+      style={
+        [
+          {
+            "display": "flex",
+            "flexDirection": "column",
+            "position": "relative",
+          },
+        ]
+      }
+    >
+      <View
+        data-blade-component="base-box"
+        style={
+          [
+            {
+              "marginBottom": 4,
+              "marginRight": 16,
+            },
+          ]
+        }
+      >
+        <View
+          alignItems="center"
+          data-blade-component="base-box"
+          display="flex"
+          flexDirection="row"
+          flexWrap="wrap"
+          gap="spacing.0"
+          maxHeight="36px"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "flexWrap": "wrap",
+                "gap": 0,
+                "maxHeight": 36,
+              },
+            ]
+          }
+        >
+          <Text
+            accessible={true}
+            color="surface.text.gray.subtle"
+            data-blade-component="text"
             fontFamily="text"
             fontSize={100}
             fontStyle="normal"
-            fontWeight="regular"
+            fontWeight="semibold"
             lineHeight={100}
+            numberOfLines={2}
             style={
-              Array [
-                Object {
-                  "color": "hsla(217, 56%, 17%, 1)",
-                  "fontFamily": "Lato",
+              [
+                {
+                  "color": "hsla(211, 26%, 34%, 1)",
+                  "fontFamily": "Inter",
                   "fontSize": 14,
                   "fontStyle": "normal",
-                  "fontWeight": "400",
+                  "fontWeight": "600",
+                  "letterSpacing": 0,
                   "lineHeight": 20,
                   "marginBottom": 0,
                   "marginLeft": 0,
@@ -136,851 +1178,998 @@ exports[`<OTPInput /> should render 1`] = `
                   "paddingTop": 0,
                   "textDecorationLine": "none",
                 },
-                Object {},
               ]
             }
-          />
+          >
+            Enter OTP
+          </Text>
+          <View
+            data-blade-component="visually-hidden"
+            style={
+              [
+                {
+                  "borderColor": "black",
+                  "borderStyle": "solid",
+                  "borderWidth": 0,
+                  "clip": "rect(0 0 0 0)",
+                  "clipPath": "inset(50%)",
+                  "height": 1,
+                  "left": -10000,
+                  "marginBottom": -1,
+                  "marginLeft": 0,
+                  "marginRight": -1,
+                  "marginTop": 0,
+                  "overflow": "hidden",
+                  "paddingBottom": 0,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                  "wordWrap": "normal",
+                },
+              ]
+            }
+          >
+            <Text
+              accessible={true}
+              color="surface.text.gray.normal"
+              data-blade-component="text"
+              fontFamily="text"
+              fontSize={100}
+              fontStyle="normal"
+              fontWeight="regular"
+              lineHeight={100}
+              style={
+                [
+                  {
+                    "color": "hsla(212, 39%, 16%, 1)",
+                    "fontFamily": "Inter",
+                    "fontSize": 14,
+                    "fontStyle": "normal",
+                    "fontWeight": "400",
+                    "letterSpacing": 0,
+                    "lineHeight": 20,
+                    "marginBottom": 0,
+                    "marginLeft": 0,
+                    "marginRight": 0,
+                    "marginTop": 0,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "textDecorationLine": "none",
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+      <View
+        data-blade-component="base-box"
+        display="flex"
+        flexDirection="row"
+        style={
+          [
+            {
+              "display": "flex",
+              "flexDirection": "row",
+            },
+          ]
+        }
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 0,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="large"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel="Enter OTP character 1"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-121-input-122-0-127-input-128"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    maxLength={1}
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 20,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 48,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 48,
+                          "paddingBottom": 12,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 12,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value="1"
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="large"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 2"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-121-input-122-1-133-input-134"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    maxLength={1}
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 20,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 48,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 48,
+                          "paddingBottom": 12,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 12,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value="2"
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="large"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 3"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-121-input-122-2-139-input-140"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    maxLength={1}
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 20,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 48,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 48,
+                          "paddingBottom": 12,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 12,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value="3"
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="large"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 4"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-121-input-122-3-145-input-146"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    maxLength={1}
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 20,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 48,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 48,
+                          "paddingBottom": 12,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 12,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value="4"
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="large"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 5"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-121-input-122-4-151-input-152"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 20,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 48,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 48,
+                          "paddingBottom": 12,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 12,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginLeft": 8,
+              },
+            ]
+          }
+        >
+          <View
+            data-blade-component="base-box"
+            style={
+              [
+                {},
+              ]
+            }
+          >
+            <View
+              data-blade-component="base-box"
+              display="flex"
+              flexDirection="column"
+              position="relative"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "position": "relative",
+                    "width": "100%",
+                  },
+                ]
+              }
+              width="100%"
+            >
+              <View
+                currentInteraction="default"
+                data-blade-component="base-box"
+                style={
+                  [
+                    {},
+                    {
+                      "borderRadius": 4,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View
+                  currentInteraction="default"
+                  onClick={[Function]}
+                  setShowAllTagsWithAnimation={[Function]}
+                  size="large"
+                  style={
+                    [
+                      {
+                        "backgroundColor": "yellow",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 0,
+                        "display": "flex",
+                        "flexDirection": "row",
+                        "position": "relative",
+                        "width": "100%",
+                      },
+                      {},
+                      {
+                        "backgroundColor": "hsla(0, 0%, 100%, 1)",
+                        "borderColor": "hsla(211, 27%, 76%, 1)",
+                        "borderRadius": 4,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                    ]
+                  }
+                >
+                  <TextInput
+                    accessibilityDescribedBy=""
+                    accessibilityInvalid={false}
+                    accessibilityLabel=" character 6"
+                    accessibilityRequired={true}
+                    accessibilityState={
+                      {
+                        "disabled": false,
+                        "expanded": undefined,
+                      }
+                    }
+                    accessible={true}
+                    autoCompleteType="sms-otp"
+                    data-blade-component="styled-base-input"
+                    editable={true}
+                    hasTags={false}
+                    id="otp-121-input-122-5-157-input-158"
+                    isFocused={false}
+                    isTextArea={false}
+                    keyboardType="decimal-pad"
+                    multiline={false}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onEndEditing={[Function]}
+                    onFocus={[Function]}
+                    onKeyPress={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder=""
+                    placeholderTextColor="hsla(211, 20%, 52%, 0.32)"
+                    secureTextEntry={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "color": "hsla(211, 26%, 34%, 1)",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "TASA Orbiter Display",
+                          "fontSize": 20,
+                          "fontStyle": "normal",
+                          "fontWeight": "400",
+                          "height": 48,
+                          "letterSpacing": 0,
+                          "marginBottom": 0,
+                          "marginLeft": 0,
+                          "marginRight": 0,
+                          "marginTop": 0,
+                          "minHeight": 48,
+                          "paddingBottom": 12,
+                          "paddingLeft": 12,
+                          "paddingRight": 12,
+                          "paddingTop": 12,
+                          "textAlignVertical": "top",
+                          "textDecorationLine": "none",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    textAlign="center"
+                    textContentType="oneTimeCode"
+                    value=""
+                    valueComponentType="heading"
+                  />
+                </View>
+              </View>
+            </View>
+          </View>
         </View>
       </View>
     </View>
     <View
-      display="flex"
-      flexDirection="row"
+      data-blade-component="base-box"
       style={
-        Array [
-          Object {
-            "display": "flex",
-            "flexDirection": "row",
+        [
+          {
+            "marginLeft": 0,
           },
         ]
       }
-    >
-      <View
-        maxWidth="40px"
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginLeft": 0,
-              "maxWidth": 40,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <View
-            display="flex"
-            flexDirection="column"
-            position="relative"
-            style={
-              Array [
-                Object {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "position": "relative",
-                },
-              ]
-            }
-          >
-            <View
-              currentInteraction="default"
-              display="flex"
-              flexDirection="row"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
-              }
-              width="100%"
-            >
-              <TextInput
-                accessibilityDescribedBy=""
-                accessibilityInvalid={false}
-                accessibilityLabel="Enter OTP character 1"
-                accessibilityRequired={true}
-                accessibilityState={
-                  Object {
-                    "disabled": false,
-                    "expanded": undefined,
-                  }
-                }
-                autoCompleteType="sms-otp"
-                editable={true}
-                id="otp-37-input-38-0-49-input-50"
-                isFocused={false}
-                isTextArea={false}
-                keyboardType="decimal-pad"
-                multiline={false}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onEndEditing={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                onSubmitEditing={[Function]}
-                placeholder=""
-                secureTextEntry={false}
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "height": 36,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 8,
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                      "paddingTop": 8,
-                      "textAlignVertical": "top",
-                      "textDecorationLine": "none",
-                      "width": "100%",
-                    },
-                  ]
-                }
-                textAlign="center"
-                textContentType="oneTimeCode"
-                value=""
-              />
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                    "bottom": 0,
-                    "height": 1,
-                    "left": 0,
-                    "opacity": 1,
-                    "position": "absolute",
-                    "right": 0,
-                  },
-                  Object {
-                    "opacity": undefined,
-                    "width": "undefined%",
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        maxWidth="40px"
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginLeft": 8,
-              "maxWidth": 40,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <View
-            display="flex"
-            flexDirection="column"
-            position="relative"
-            style={
-              Array [
-                Object {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "position": "relative",
-                },
-              ]
-            }
-          >
-            <View
-              currentInteraction="default"
-              display="flex"
-              flexDirection="row"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
-              }
-              width="100%"
-            >
-              <TextInput
-                accessibilityDescribedBy=""
-                accessibilityInvalid={false}
-                accessibilityLabel=" character 2"
-                accessibilityRequired={true}
-                accessibilityState={
-                  Object {
-                    "disabled": false,
-                    "expanded": undefined,
-                  }
-                }
-                autoCompleteType="sms-otp"
-                editable={true}
-                id="otp-37-input-38-1-55-input-56"
-                isFocused={false}
-                isTextArea={false}
-                keyboardType="decimal-pad"
-                multiline={false}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onEndEditing={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                onSubmitEditing={[Function]}
-                placeholder=""
-                secureTextEntry={false}
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "height": 36,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 8,
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                      "paddingTop": 8,
-                      "textAlignVertical": "top",
-                      "textDecorationLine": "none",
-                      "width": "100%",
-                    },
-                  ]
-                }
-                textAlign="center"
-                textContentType="oneTimeCode"
-                value=""
-              />
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                    "bottom": 0,
-                    "height": 1,
-                    "left": 0,
-                    "opacity": 1,
-                    "position": "absolute",
-                    "right": 0,
-                  },
-                  Object {
-                    "opacity": undefined,
-                    "width": "undefined%",
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        maxWidth="40px"
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginLeft": 8,
-              "maxWidth": 40,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <View
-            display="flex"
-            flexDirection="column"
-            position="relative"
-            style={
-              Array [
-                Object {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "position": "relative",
-                },
-              ]
-            }
-          >
-            <View
-              currentInteraction="default"
-              display="flex"
-              flexDirection="row"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
-              }
-              width="100%"
-            >
-              <TextInput
-                accessibilityDescribedBy=""
-                accessibilityInvalid={false}
-                accessibilityLabel=" character 3"
-                accessibilityRequired={true}
-                accessibilityState={
-                  Object {
-                    "disabled": false,
-                    "expanded": undefined,
-                  }
-                }
-                autoCompleteType="sms-otp"
-                editable={true}
-                id="otp-37-input-38-2-61-input-62"
-                isFocused={false}
-                isTextArea={false}
-                keyboardType="decimal-pad"
-                multiline={false}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onEndEditing={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                onSubmitEditing={[Function]}
-                placeholder=""
-                secureTextEntry={false}
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "height": 36,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 8,
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                      "paddingTop": 8,
-                      "textAlignVertical": "top",
-                      "textDecorationLine": "none",
-                      "width": "100%",
-                    },
-                  ]
-                }
-                textAlign="center"
-                textContentType="oneTimeCode"
-                value=""
-              />
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                    "bottom": 0,
-                    "height": 1,
-                    "left": 0,
-                    "opacity": 1,
-                    "position": "absolute",
-                    "right": 0,
-                  },
-                  Object {
-                    "opacity": undefined,
-                    "width": "undefined%",
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        maxWidth="40px"
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginLeft": 8,
-              "maxWidth": 40,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <View
-            display="flex"
-            flexDirection="column"
-            position="relative"
-            style={
-              Array [
-                Object {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "position": "relative",
-                },
-              ]
-            }
-          >
-            <View
-              currentInteraction="default"
-              display="flex"
-              flexDirection="row"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
-              }
-              width="100%"
-            >
-              <TextInput
-                accessibilityDescribedBy=""
-                accessibilityInvalid={false}
-                accessibilityLabel=" character 4"
-                accessibilityRequired={true}
-                accessibilityState={
-                  Object {
-                    "disabled": false,
-                    "expanded": undefined,
-                  }
-                }
-                autoCompleteType="sms-otp"
-                editable={true}
-                id="otp-37-input-38-3-67-input-68"
-                isFocused={false}
-                isTextArea={false}
-                keyboardType="decimal-pad"
-                multiline={false}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onEndEditing={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                onSubmitEditing={[Function]}
-                placeholder=""
-                secureTextEntry={false}
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "height": 36,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 8,
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                      "paddingTop": 8,
-                      "textAlignVertical": "top",
-                      "textDecorationLine": "none",
-                      "width": "100%",
-                    },
-                  ]
-                }
-                textAlign="center"
-                textContentType="oneTimeCode"
-                value=""
-              />
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                    "bottom": 0,
-                    "height": 1,
-                    "left": 0,
-                    "opacity": 1,
-                    "position": "absolute",
-                    "right": 0,
-                  },
-                  Object {
-                    "opacity": undefined,
-                    "width": "undefined%",
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        maxWidth="40px"
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginLeft": 8,
-              "maxWidth": 40,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <View
-            display="flex"
-            flexDirection="column"
-            position="relative"
-            style={
-              Array [
-                Object {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "position": "relative",
-                },
-              ]
-            }
-          >
-            <View
-              currentInteraction="default"
-              display="flex"
-              flexDirection="row"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
-              }
-              width="100%"
-            >
-              <TextInput
-                accessibilityDescribedBy=""
-                accessibilityInvalid={false}
-                accessibilityLabel=" character 5"
-                accessibilityRequired={true}
-                accessibilityState={
-                  Object {
-                    "disabled": false,
-                    "expanded": undefined,
-                  }
-                }
-                autoCompleteType="sms-otp"
-                editable={true}
-                id="otp-37-input-38-4-73-input-74"
-                isFocused={false}
-                isTextArea={false}
-                keyboardType="decimal-pad"
-                multiline={false}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onEndEditing={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                onSubmitEditing={[Function]}
-                placeholder=""
-                secureTextEntry={false}
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "height": 36,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 8,
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                      "paddingTop": 8,
-                      "textAlignVertical": "top",
-                      "textDecorationLine": "none",
-                      "width": "100%",
-                    },
-                  ]
-                }
-                textAlign="center"
-                textContentType="oneTimeCode"
-                value=""
-              />
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                    "bottom": 0,
-                    "height": 1,
-                    "left": 0,
-                    "opacity": 1,
-                    "position": "absolute",
-                    "right": 0,
-                  },
-                  Object {
-                    "opacity": undefined,
-                    "width": "undefined%",
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-      <View
-        maxWidth="40px"
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "marginLeft": 8,
-              "maxWidth": 40,
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            Array [
-              Object {},
-            ]
-          }
-        >
-          <View
-            display="flex"
-            flexDirection="column"
-            position="relative"
-            style={
-              Array [
-                Object {
-                  "display": "flex",
-                  "flexDirection": "column",
-                  "position": "relative",
-                },
-              ]
-            }
-          >
-            <View
-              currentInteraction="default"
-              display="flex"
-              flexDirection="row"
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(216, 15%, 54%, 0.09)",
-                    "borderBottomColor": "hsla(216, 15%, 54%, 0.18)",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": 1,
-                    "borderTopLeftRadius": 2,
-                    "borderTopRightRadius": 2,
-                    "display": "flex",
-                    "flexDirection": "row",
-                    "width": "100%",
-                  },
-                ]
-              }
-              width="100%"
-            >
-              <TextInput
-                accessibilityDescribedBy=""
-                accessibilityInvalid={false}
-                accessibilityLabel=" character 6"
-                accessibilityRequired={true}
-                accessibilityState={
-                  Object {
-                    "disabled": false,
-                    "expanded": undefined,
-                  }
-                }
-                autoCompleteType="sms-otp"
-                editable={true}
-                id="otp-37-input-38-5-79-input-80"
-                isFocused={false}
-                isTextArea={false}
-                keyboardType="decimal-pad"
-                multiline={false}
-                onBlur={[Function]}
-                onChangeText={[Function]}
-                onEndEditing={[Function]}
-                onFocus={[Function]}
-                onKeyPress={[Function]}
-                onSubmitEditing={[Function]}
-                placeholder=""
-                secureTextEntry={false}
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "transparent",
-                      "color": "hsla(216, 27%, 36%, 1)",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Lato",
-                      "fontSize": 14,
-                      "fontStyle": "normal",
-                      "fontWeight": "400",
-                      "height": 36,
-                      "marginBottom": 0,
-                      "marginLeft": 0,
-                      "marginRight": 0,
-                      "marginTop": 0,
-                      "paddingBottom": 8,
-                      "paddingLeft": 12,
-                      "paddingRight": 12,
-                      "paddingTop": 8,
-                      "textAlignVertical": "top",
-                      "textDecorationLine": "none",
-                      "width": "100%",
-                    },
-                  ]
-                }
-                textAlign="center"
-                textContentType="oneTimeCode"
-                value=""
-              />
-            </View>
-            <View
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "hsla(213, 89%, 56%, 1)",
-                    "bottom": 0,
-                    "height": 1,
-                    "left": 0,
-                    "opacity": 1,
-                    "position": "absolute",
-                    "right": 0,
-                  },
-                  Object {
-                    "opacity": undefined,
-                    "width": "undefined%",
-                  },
-                ]
-              }
-            />
-          </View>
-        </View>
-      </View>
-    </View>
+    />
   </View>
-  <View
-    style={
-      Array [
-        Object {
-          "marginLeft": 0,
-        },
-      ]
-    }
-  />
 </View>
 `;

@@ -1,10 +1,10 @@
 import BatteryIcon from './';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BatteryIcon />', () => {
   it('should render BatteryIcon', () => {
     const renderTree = renderWithTheme(
-      <BatteryIcon color="feedback.icon.neutral.lowContrast" size="large" />,
+      <BatteryIcon color="feedback.icon.neutral.intense" size="large" />,
     ).toJSON();
     expect(renderTree).toMatchSnapshot();
   });

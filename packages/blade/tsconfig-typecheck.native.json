@@ -8,7 +8,8 @@
     "**/**.web.ts",
     "**/**.web.tsx",
     "**/**.web.test.ts",
-    "**/**.web.test.tsx"
+    "**/**.web.test.tsx",
+    "**/ThemePlayground/**/**.tsx"
   ],
   "compilerOptions": {
     "noEmit": true,

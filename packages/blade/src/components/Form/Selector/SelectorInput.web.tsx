@@ -3,84 +3,71 @@
 import type { CSSObject } from 'styled-components';
 import React from 'react';
 import styled from 'styled-components';
+import type { HoverProps, SelectorInputProps } from './types';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
-import { castWebType, getIn, makeMotionTime } from '~utils';
+import { castWebType } from '~utils';
 import { screenReaderStyles } from '~components/VisuallyHidden';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { useBladeInnerRef } from '~src/hooks/useBladeInnerRef';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-
-type HoverProps = {
-  isChecked?: boolean;
-  isDisabled?: boolean;
-  hasError?: boolean;
-};
-
-const variants = {
-  default: {
-    background: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.a50.lowContrast',
-    },
-    border: {
-      checked: 'colors.brand.primary.600',
-      unchecked: 'colors.brand.gray.500.lowContrast',
-    },
-  },
-};
+import type { BladeElementRef } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { makeMotionTime } from '~utils/makeMotionTime';
+import { makeAccessible } from '~utils/makeAccessible';
+import { useMergeRefs } from '~utils/useMergeRefs';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
 
 const getHoverStyles = ({
   theme,
   isDisabled,
   hasError,
   isChecked,
+  hoverTokens,
 }: { theme: Theme } & HoverProps): CSSObject => {
   if (isDisabled || hasError) return {};
 
   const checked = isChecked ? 'checked' : 'unchecked';
-  const backgroundColor = variants.default.background[checked];
-  const borderColor = variants.default.border[checked];
+  const backgroundColor = hoverTokens.default.background[checked];
+  const borderColor = hoverTokens.default.border?.[checked];
 
   return {
-    borderColor: getIn(theme, borderColor),
+    borderColor: borderColor ? getIn(theme, borderColor) : undefined,
     backgroundColor: getIn(theme, backgroundColor),
     transitionTimingFunction: theme.motion.easing.standard.effective as string,
     transitionDuration: castWebType(makeMotionTime(theme.motion.duration['2xquick'])),
   };
 };
 
-const StyledInput = styled.input<HoverProps>(({ theme, isChecked, isDisabled, hasError }) => ({
-  ...screenReaderStyles,
-  '&:focus + div': {
-    // TODO: Replace with focus outline token
-    outline: '1px solid white',
-    boxShadow: `0px 0px 0px 4px ${theme.colors.brand.primary[400]}`,
-  },
-  '&:hover + div, &:focus + div': {
-    ...getHoverStyles({ theme, isChecked, isDisabled, hasError }),
-  },
-}));
+const StyledInput = styled.input<HoverProps>(
+  ({ theme, isChecked, isDisabled, hasError, hoverTokens }) => ({
+    ...screenReaderStyles,
+    '&:focus-visible + div': {
+      ...getFocusRingStyles({ theme }),
+    },
+    '&:hover + div': {
+      ...getHoverStyles({ theme, isChecked, isDisabled, hasError, hoverTokens }),
+    },
+  }),
+);
 
-const _SelectorInput: React.ForwardRefRenderFunction<
-  BladeElementRef,
-  HoverProps & { inputProps: any; tabIndex?: number }
-> = ({ inputProps, isChecked, isDisabled, hasError, tabIndex }, ref) => {
-  const inputRef = useBladeInnerRef(ref);
+const _SelectorInput: React.ForwardRefRenderFunction<BladeElementRef, SelectorInputProps> = (
+  { id, inputProps, isChecked, isDisabled, hasError, hoverTokens, tabIndex, accessibilityLabel },
+  ref,
+) => {
+  // merging both refs because inputProps.ref needs to have access to indeterminate state
+  // to be able to set the mixed value via setMixed() function
+  // TODO: replace with a generic `mergeRefs()` util if we do this in other places
+  const mergedRef = useMergeRefs(ref, inputProps.ref);
 
   return (
     <StyledInput
+      id={id}
       isChecked={isChecked}
       isDisabled={isDisabled}
       hasError={hasError}
       tabIndex={tabIndex}
+      hoverTokens={hoverTokens}
       {...inputProps}
-      // merging both refs because inputProps.ref needs to have access to indeterminate state
-      // to be able to set the mixed value via setMixed() function
-      // TODO: replace with a generic `mergeRefs()` util if we do this in other places
-      ref={(value) => {
-        inputProps.ref.current = value;
-        (inputRef as React.MutableRefObject<any>).current = value;
-      }}
+      {...makeAccessible({ label: accessibilityLabel })}
+      ref={mergedRef}
     />
   );
 };

@@ -1,8 +1,11 @@
 import type { CSSObject } from 'styled-components';
 import { checkboxIconColors, checkboxSizes } from '../checkboxTokens';
 import type { CheckboxIconProps } from './CheckboxIcon';
+import getIn from '~utils/lodashButBetter/get';
 import type { Theme } from '~components/BladeProvider';
-import { getIn, makeBorderSize, makeSize, makeSpace } from '~utils';
+import { makeSpace } from '~utils/makeSpace';
+import { makeSize } from '~utils/makeSize';
+import { makeBorderSize } from '~utils/makeBorderSize';
 
 export type CheckboxRectProps = Omit<CheckboxIconProps, 'state'> & {
   isChecked: boolean;
@@ -21,14 +24,15 @@ const getCheckboxIconWrapperStyles = ({
   const checked = isChecked ? 'checked' : 'unchecked';
   const background = checkboxIconColors.variants[variant].background[checked];
   const border = checkboxIconColors.variants[variant].border[checked];
-  const backgroundColor = background === 'transparent' ? background : getIn(theme, background);
-  const borderColor = border === 'transparent' ? border : getIn(theme, border);
+  const backgroundColor = getIn(theme, background);
+  const borderColor = getIn(theme, border);
 
   return {
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flexShrink: 0,
     width: makeSpace(checkboxSizes.icon[size].width),
     height: makeSpace(checkboxSizes.icon[size].height),
     borderWidth: makeBorderSize(theme.border.width.thick),

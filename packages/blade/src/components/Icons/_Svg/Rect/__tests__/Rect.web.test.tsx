@@ -1,6 +1,6 @@
 import Rect from '..';
 import Svg from '../../Svg';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<Rect />', () => {
   it('should render html rect component', () => {

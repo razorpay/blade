@@ -1,18 +1,18 @@
 import type { ReactElement } from 'react';
-import { useCallback } from 'react';
+import { indicatorDotSizes, textSizeMapping } from './indicatorTokens';
 import { useTheme } from '~components/BladeProvider';
 import BaseBox from '~components/Box/BaseBox';
 import Svg from '~components/Icons/_Svg';
 import Circle from '~components/Icons/_Svg/Circle';
 import { Text } from '~components/Typography';
-import sizeTokens from '~tokens/global/size';
 import { getStringFromReactText } from '~src/utils/getStringChildren';
-import type { StringChildrenType, TestID } from '~src/_helpers/types';
-
-import type { Feedback } from '~tokens/theme/theme';
-import { metaAttribute, getPlatformType, makeAccessible, MetaConstants } from '~utils';
+import type { StringChildrenType, TestID } from '~utils/types';
+import type { FeedbackColors } from '~tokens/theme/theme';
+import { isReactNative } from '~utils';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
+import { makeAccessible } from '~utils/makeAccessible';
 
 type IndicatorCommonProps = {
   /**
@@ -20,7 +20,16 @@ type IndicatorCommonProps = {
    *
    * @default neutral
    */
-  intent?: Feedback;
+  color?: FeedbackColors | 'primary';
+
+  /**
+   * Sets the emphasis of the indicator
+   *
+   * If set to intense it will show a background circle
+   *
+   * @default subtle
+   */
+  emphasis?: 'subtle' | 'intense';
 
   /**
    * Size of the indicator
@@ -57,68 +66,69 @@ type IndicatorWithA11yLabel = {
 
 type IndicatorProps = IndicatorCommonProps & (IndicatorWithA11yLabel | IndicatorWithoutA11yLabel);
 
-type Dimensions = {
-  svgSize: number;
-  textSize: 'small' | 'medium';
-};
-
 const Indicator = ({
   accessibilityLabel,
   children,
   size = 'medium',
-  intent = 'neutral',
+  color = 'neutral',
+  emphasis = 'subtle',
   testID,
   ...styledProps
 }: IndicatorProps): ReactElement => {
   const { theme } = useTheme();
   const childrenString = getStringFromReactText(children);
+  const isIntense = emphasis === 'intense';
+  const isPrimary = color === 'primary';
 
-  const fillColor = theme.colors.feedback.background[intent].highContrast;
-  const strokeColor = theme.colors.brand.gray.a100.highContrast;
-  const getDimension = useCallback((): Dimensions => {
-    switch (size) {
-      case 'small':
-        return { svgSize: sizeTokens[6], textSize: 'small' };
-      case 'large':
-        return { svgSize: sizeTokens[10], textSize: 'medium' };
-      default:
-        return { svgSize: sizeTokens[8], textSize: 'medium' };
-    }
-  }, [size]);
-  const dimensions = getDimension();
+  const fillColorOuter = isPrimary
+    ? theme.colors.surface.background.primary.subtle
+    : theme.colors.feedback.background[color].subtle;
+  const fillColorInner = isPrimary
+    ? theme.colors.surface.icon.primary.normal
+    : theme.colors.feedback.icon[color].intense;
 
-  const isReactNative = getPlatformType() === 'react-native';
-  const isWeb = !isReactNative;
+  const isWeb = !isReactNative();
   const a11yProps = makeAccessible({
     label: accessibilityLabel ?? childrenString,
     ...(isWeb && { role: 'status' }),
   });
 
+  const svgSize = isIntense
+    ? indicatorDotSizes[emphasis][size].outer
+    : indicatorDotSizes[emphasis][size].inner;
+
   return (
     <BaseBox
-      display="flex"
-      flexDirection="row"
-      alignItems="center"
+      display={(isWeb ? 'inline-flex' : 'flex') as never}
       {...a11yProps}
       {...metaAttribute({ name: MetaConstants.Indicator, testID })}
       {...getStyledProps(styledProps)}
     >
-      <Svg
-        width={String(dimensions.svgSize)}
-        height={String(dimensions.svgSize)}
-        viewBox="0 0 10 10"
-        fill="none"
-      >
-        <Circle cx="5" cy="5" r="5" fill={fillColor} />
-        <Circle cx="5" cy="5" r="4.75" stroke={strokeColor} strokeWidth="0.5" />
-      </Svg>
-      <BaseBox marginLeft="spacing.2">
-        <Text contrast="low" type="subtle" size={dimensions.textSize}>
-          {children}
-        </Text>
+      <BaseBox display="flex" flexDirection="row" alignItems="center">
+        <Svg width={String(svgSize)} height={String(svgSize)} viewBox="0 0 10 10" fill="none">
+          {isIntense ? (
+            <>
+              <Circle cx="5" cy="5" r="5" fill={fillColorOuter} />
+              <Circle cx="5" cy="5" r="2.5" fill={fillColorInner} />
+            </>
+          ) : (
+            <Circle cx="5" cy="5" r="5" fill={fillColorInner} />
+          )}
+        </Svg>
+        <BaseBox marginLeft="spacing.2">
+          <Text
+            weight="medium"
+            color="surface.text.gray.subtle"
+            textAlign="left"
+            size={textSizeMapping[size]}
+          >
+            {children}
+          </Text>
+        </BaseBox>
       </BaseBox>
     </BaseBox>
   );
 };
 
-export { IndicatorProps, Indicator };
+export type { IndicatorProps };
+export { Indicator };

@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 /* eslint-disable @typescript-eslint/no-shadow */
 import React from 'react';
-import isUndefined from 'lodash/isUndefined';
 import { useCheckboxGroupContext } from './CheckboxGroup/CheckboxGroupContext';
 import { CheckboxIcon } from './CheckboxIcon';
 import { useCheckbox } from './useCheckbox';
-import { metaAttribute, isEmpty, MetaConstants } from '~utils';
+import { checkboxHoverTokens, checkboxSizes } from './checkboxTokens';
+import isEmpty from '~utils/lodashButBetter/isEmpty';
+import isUndefined from '~utils/lodashButBetter/isUndefined';
+import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { getStyledProps } from '~components/Box/styledProps';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
@@ -13,9 +16,10 @@ import { SelectorLabel } from '~components/Form/Selector/SelectorLabel';
 import { SelectorTitle } from '~components/Form/Selector/SelectorTitle';
 import { SelectorSupportText } from '~components/Form/Selector/SelectorSupportText';
 import { SelectorInput } from '~components/Form/Selector/SelectorInput';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
-import type { TestID } from '~src/_helpers/types';
+import type { BladeElementRef, TestID } from '~utils/types';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { throwBladeError } from '~utils/logger';
+import { makeSize, useTheme } from '~utils';
 
 type OnChange = ({
   isChecked,
@@ -48,7 +52,7 @@ type CheckboxProps = {
   /**
    * Sets the label of the checkbox
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * Help text for the checkbox
    */
@@ -99,7 +103,7 @@ type CheckboxProps = {
    *
    * @default "medium"
    */
-  size?: 'small' | 'medium';
+  size?: 'small' | 'medium' | 'large';
   /**
    * Sets the tab-index property on checkbox element
    *
@@ -137,45 +141,57 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
   const hasDefaultChecked = !isUndefined(defaultChecked);
   const hasIsChecked = !isUndefined(isChecked);
   const hasOnChange = !isUndefined(onChange);
-  if (
-    (hasValidationState || hasName || hasDefaultChecked || hasIsChecked || hasOnChange) &&
-    !isEmpty(groupProps)
-  ) {
-    const props = [
-      hasValidationState ? 'validationState' : undefined,
-      hasName ? 'name' : undefined,
-      hasDefaultChecked ? 'defaultChecked' : undefined,
-      hasIsChecked ? 'isChecked' : undefined,
-      hasOnChange ? 'onChange' : undefined,
-    ]
-      .filter(Boolean)
-      .join(',');
 
-    throw new Error(
-      `[Blade Checkbox]: Cannot set \`${props}\` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself`,
-    );
-  }
+  if (__DEV__) {
+    if (
+      (hasValidationState || hasName || hasDefaultChecked || hasIsChecked || hasOnChange) &&
+      !isEmpty(groupProps)
+    ) {
+      const props = [
+        hasValidationState ? 'validationState' : undefined,
+        hasName ? 'name' : undefined,
+        hasDefaultChecked ? 'defaultChecked' : undefined,
+        hasIsChecked ? 'isChecked' : undefined,
+        hasOnChange ? 'onChange' : undefined,
+      ]
+        .filter(Boolean)
+        .join(',');
 
-  // mandate value prop when using inside group
-  if (!value && !isEmpty(groupProps)) {
-    throw new Error(
-      `[Blade Checkbox]: <CheckboxGroup /> requires that you pass unique "value" prop to each <Checkbox />
+      throwBladeError({
+        message: `Cannot set \`${props}\` on <Checkbox /> when it's inside <CheckboxGroup />, Please set it on the <CheckboxGroup /> itself`,
+        moduleName: 'Checkbox',
+      });
+    }
+
+    // mandate value prop when using inside group
+    if (!value && !isEmpty(groupProps)) {
+      throw new Error(
+        `[Blade Checkbox]: <CheckboxGroup /> requires that you pass unique "value" prop to each <Checkbox />
       <CheckboxGroup>
         <Checkbox value="apple">Apple</Checkbox>
         <Checkbox value="mango">Mango</Checkbox>
       </CheckboxGroup>
       `,
-    );
+      );
+    }
   }
 
   const _validationState = validationState ?? groupProps?.validationState;
   const _hasError = _validationState === 'error';
   const _isDisabled = isDisabled ?? groupProps?.isDisabled;
+  const _isRequired = Boolean(
+    isRequired || groupProps?.isRequired || groupProps?.necessityIndicator === 'required',
+  );
   const _name = name ?? groupProps?.name;
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
   const _isChecked = isChecked ?? groupProps?.state?.isChecked(value!);
   const _size = groupProps.size ?? size;
-  const isSmall = _size === 'small';
+  const { theme } = useTheme();
+  const formHintSize = {
+    small: 'medium',
+    medium: 'medium',
+    large: 'large',
+  } as const;
 
   // only show error when the self validation is set to error
   // Since we don't want to show errorText inside the group
@@ -198,21 +214,28 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
     hasError: _hasError,
     hasHelperText: Boolean(showSupportingText),
     isDisabled: _isDisabled,
-    isRequired,
+    isRequired: _isRequired,
     name: _name,
     value,
     onChange: handleChange,
   });
+
+  // Checkbox icon's size & margin + margin-left of SelectorTitle which is 2
+  const helpTextLeftSpacing = makeSize(checkboxSizes.icon[size].width + theme.spacing[3]);
 
   return (
     <BaseBox
       {...metaAttribute({ name: MetaConstants.Checkbox, testID })}
       {...getStyledProps(styledProps)}
     >
-      <SelectorLabel inputProps={state.isReactNative ? inputProps : {}}>
+      <SelectorLabel
+        componentName={MetaConstants.CheckboxLabel}
+        inputProps={state.isReactNative ? inputProps : {}}
+      >
         <BaseBox display="flex" flexDirection="column">
-          <BaseBox display="flex" alignItems="center" flexDirection="row">
+          <BaseBox display="flex" flexDirection="row">
             <SelectorInput
+              hoverTokens={checkboxHoverTokens}
               isChecked={state.isChecked || Boolean(isIndeterminate)}
               isDisabled={_isDisabled}
               hasError={_hasError}
@@ -227,18 +250,23 @@ const _Checkbox: React.ForwardRefRenderFunction<BladeElementRef, CheckboxProps> 
               isDisabled={_isDisabled}
               isNegative={_hasError}
             />
-            <SelectorTitle size={_size} isDisabled={_isDisabled}>
-              {children}
-            </SelectorTitle>
+            {children ? (
+              <SelectorTitle size={_size} isDisabled={_isDisabled}>
+                {children}
+              </SelectorTitle>
+            ) : null}
           </BaseBox>
-          <BaseBox marginLeft={isSmall ? 'spacing.6' : 'spacing.7'}>
-            {showSupportingText && (
-              <SelectorSupportText id={ids?.helpTextId}>{helpText}</SelectorSupportText>
-            )}
-          </BaseBox>
+          {showSupportingText ? (
+            <BaseBox marginLeft={helpTextLeftSpacing}>
+              <SelectorSupportText size={_size} id={ids?.helpTextId}>
+                {helpText}
+              </SelectorSupportText>
+            </BaseBox>
+          ) : null}
         </BaseBox>
       </SelectorLabel>
       <FormHint
+        size={formHintSize[_size]}
         errorText={errorText}
         errorTextId={ids?.errorTextId}
         type={validationState === 'error' ? 'error' : 'help'}
@@ -251,4 +279,5 @@ const Checkbox = assignWithoutSideEffects(React.forwardRef(_Checkbox), {
   displayName: 'Checkbox',
 });
 
-export { Checkbox, CheckboxProps };
+export type { CheckboxProps };
+export { Checkbox };

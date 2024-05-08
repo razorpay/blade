@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import BaseBox from '../BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useStyledProps, getStyledProps } from '~components/Box/styledProps';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.native';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 type MyComponentWithStyledProps = {
   test: 'working???';
 } & StyledPropsBlade;
 
-const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): JSX.Element => {
+const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): React.ReactElement => {
   return <BaseBox {...getStyledProps(props)} />;
 };
 
@@ -31,16 +31,25 @@ describe('styledProps with getStyledProps', () => {
     expect(toJSON()).toMatchInlineSnapshot(`
       <View
         style={
-          Array [
-            Object {
-              "marginBottom": 0,
-              "marginLeft": 48,
-              "marginRight": 48,
-              "marginTop": 0,
-            },
-          ]
+          {
+            "flex": 1,
+          }
         }
-      />
+      >
+        <View
+          data-blade-component="base-box"
+          style={
+            [
+              {
+                "marginBottom": 0,
+                "marginLeft": 48,
+                "marginRight": 48,
+                "marginTop": 0,
+              },
+            ]
+          }
+        />
+      </View>
     `);
   });
 });
@@ -52,26 +61,34 @@ describe('styledProps with useStyledProps', () => {
     );
 
     expect(toJSON()).toMatchInlineSnapshot(`
-      <Text
-        margin={
-          Array [
-            "spacing.0",
-            "spacing.10",
-          ]
-        }
+      <View
         style={
-          Array [
-            Object {
-              "display": "flex",
-              "marginBottom": 0,
-              "marginLeft": 48,
-              "marginRight": 48,
-              "marginTop": 0,
-            },
-          ]
+          {
+            "flex": 1,
+          }
         }
-        test="working???"
-      />
+      >
+        <Text
+          margin={
+            [
+              "spacing.0",
+              "spacing.10",
+            ]
+          }
+          style={
+            [
+              {
+                "display": "flex",
+                "marginBottom": 0,
+                "marginLeft": 48,
+                "marginRight": 48,
+                "marginTop": 0,
+              },
+            ]
+          }
+          test="working???"
+        />
+      </View>
     `);
   });
 });

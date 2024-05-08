@@ -1,12 +1,12 @@
 import { Badge } from '../';
-import renderWithSSR from '~src/_helpers/testing/renderWithSSR.web';
+import renderWithSSR from '~utils/testing/renderWithSSR.web';
 import { InfoIcon } from '~components/Icons';
 
 describe('<Badge />', () => {
   it('should render Badge on server', () => {
     const label = 'Label';
     const { container } = renderWithSSR(
-      <Badge icon={InfoIcon} contrast="low" size="large" fontWeight="bold">
+      <Badge icon={InfoIcon} emphasis="subtle" size="large">
         {label}
       </Badge>,
     );

@@ -1,15 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import React from 'react';
 import { Title } from '@storybook/addon-docs';
-import { Text } from '../Typography';
 import type { RadioGroupProps } from './RadioGroup/RadioGroup';
 import { RadioGroup as RadioGroupComponent } from './RadioGroup/RadioGroup';
 import { Radio as RadioComponent } from './Radio';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Text } from '~components/Typography';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import BaseBox from '~components/Box/BaseBox';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
 import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
@@ -19,19 +18,14 @@ const Page = (): React.ReactElement => {
       componentDescription="Radio & RadioGroup can be used in forms when a user needs to single value from several options."
       componentName="Radio"
       imports={`import { Radio, RadioGroup } from '@razorpay/blade/components';\nimport type { RadioProps, RadioGroupProps } from '@razorpay/blade/components';`}
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=13133%3A160709',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11314%3A278927',
-      }}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=75857-146071&t=8df9lRjFiAYVTKc4-1&scaling=min-zoom&page-id=13133%3A160667&mode=design"
     >
       <Title>Usage</Title>
-      <Sandbox showConsole editorHeight={400} editorWidthPercentage={60}>
+      <Sandbox showConsole editorHeight={400}>
         {`
           import { RadioGroup, Radio } from '@razorpay/blade/components';
 
-          function App(): JSX.Element {
+          function App(): React.ReactElement {
             return (
               <RadioGroup
                 helpText="Select only one"
@@ -68,6 +62,7 @@ export default {
     label: 'Radio example',
     helpText: undefined,
     isDisabled: false,
+    isRequired: false,
     necessityIndicator: 'none',
     labelPosition: undefined,
     validationState: undefined,
@@ -78,6 +73,7 @@ export default {
     value: undefined,
     size: 'medium',
   },
+  tags: ['autodocs'],
   argTypes: {
     value: {
       options: ['apple', 'mango', 'orange'],
@@ -100,7 +96,7 @@ export default {
   },
 } as Meta<RadioGroupProps>;
 
-const RadioTemplate: ComponentStory<typeof RadioGroupComponent> = ({ children, ...args }) => {
+const RadioTemplate: StoryFn<typeof RadioGroupComponent> = ({ children, ...args }) => {
   return (
     <RadioGroupComponent {...args}>
       <RadioComponent value="apple">Apple</RadioComponent>
@@ -138,9 +134,9 @@ Optional.args = {
   necessityIndicator: 'optional',
 };
 
-export const Required = RadioTemplate.bind({});
-Required.storyName = 'Required';
-Required.args = {
+export const RequiredRadio = RadioTemplate.bind({});
+RequiredRadio.storyName = 'Required';
+RequiredRadio.args = {
   necessityIndicator: 'required',
 };
 
@@ -148,6 +144,12 @@ export const Small = RadioTemplate.bind({});
 Small.storyName = 'Small';
 Small.args = {
   size: 'small',
+};
+
+export const Large = RadioTemplate.bind({});
+Large.storyName = 'Large';
+Large.args = {
+  size: 'large',
 };
 
 export const LabelPositionLeft = RadioTemplate.bind({});
@@ -261,9 +263,9 @@ export const KitchenSink = (): React.ReactElement => {
   );
 };
 
-export const radioRef: ComponentStory<typeof RadioComponent> = () => {
+export const radioRef: StoryFn<typeof RadioComponent> = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const radioRef = React.useRef<BladeElementRef>(null);
+  const radioRef = React.useRef<HTMLInputElement>(null);
 
   return (
     <BaseBox gap="spacing.3" display="flex" alignItems="center">

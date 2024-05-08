@@ -1,15 +1,16 @@
-import { Pressable } from 'react-native';
+import { Linking, Pressable } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import React from 'react';
-import type { TextInput } from 'react-native';
+import type { TextInput, GestureResponderEvent } from 'react-native';
 import getStyledBaseButtonStyles from './getStyledBaseButtonStyles';
 import type { StyledBaseButtonProps } from './types';
-import { getIn } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
 import { useStyledProps } from '~components/Box/styledProps';
 import { useTheme } from '~components/BladeProvider';
-import type { BladeElementRef } from '~src/hooks/useBladeInnerRef';
-import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import { logger } from '~utils/logger';
+import { castNativeType } from '~utils';
 
 const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   Omit<StyledBaseButtonProps, 'accessibilityProps'>
@@ -19,14 +20,37 @@ const StyledPressable = styled(Animated.createAnimatedComponent(Pressable))<
   return {
     ...getStyledBaseButtonStyles(props),
     alignSelf: 'center',
+    display: 'flex',
+    flexDirection: 'row',
     ...styledPropsCSSObject,
   };
 });
 
-const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledBaseButtonProps> = (
+const openURL = async (href: string): Promise<void> => {
+  try {
+    const canOpen = await Linking.canOpenURL(href);
+    if (canOpen) {
+      await Linking.openURL(href);
+    }
+  } catch {
+    if (__DEV__) {
+      logger({
+        type: 'warn',
+        message: `Could not open the link "href=${href}"`,
+        moduleName: 'BaseButton',
+      });
+    }
+  }
+};
+
+const _StyledBaseButton: React.ForwardRefRenderFunction<TextInput, StyledBaseButtonProps> = (
   {
     onClick,
+    href,
+    onBlur,
+    onKeyDown,
     children,
+    variant,
     minHeight,
     buttonPaddingTop,
     buttonPaddingBottom,
@@ -37,11 +61,9 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
     defaultBackgroundColor,
     defaultBorderColor,
     hoverBackgroundColor,
-    activeBackgroundColor,
     focusBackgroundColor,
     focusRingColor,
     hoverBorderColor,
-    activeBorderColor,
     focusBorderColor,
     borderWidth,
     borderRadius,
@@ -50,6 +72,11 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
     isLoading,
     accessibilityProps,
     testID,
+    onTouchStart,
+    onTouchEnd,
+    onPointerEnter,
+    onPointerDown,
+    onFocus,
     ...styledProps
   },
   ref,
@@ -58,29 +85,45 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
   const isPressed = useSharedValue(false);
   const duration = getIn(theme.motion, motionDuration);
   const easing = getIn(theme.motion, motionEasing);
+
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      backgroundColor: withTiming(
-        isPressed.value ? activeBackgroundColor : defaultBackgroundColor,
-        {
-          duration,
-          easing,
-        },
-      ),
-      borderColor: withTiming(isPressed.value ? activeBorderColor : defaultBorderColor, {
+      backgroundColor: withTiming(isPressed.value ? focusBackgroundColor : defaultBackgroundColor, {
         duration,
         easing,
       }),
+      ...(variant !== 'tertiary' && {
+        borderColor: withTiming(isPressed.value ? focusBorderColor : defaultBorderColor, {
+          duration,
+          easing,
+        }),
+      }),
     };
   });
+
+  const handleOnPress = (event: GestureResponderEvent): void => {
+    if (href) {
+      void openURL(href);
+    }
+
+    if (onClick) {
+      onClick(event);
+    }
+  };
 
   return (
     <StyledPressable
       {...styledProps}
       {...accessibilityProps}
-      ref={ref as React.RefObject<TextInput>}
+      ref={ref}
+      role="button"
+      onTouchStart={castNativeType(onTouchStart)}
+      onTouchEnd={castNativeType(onTouchEnd)}
+      onPointerEnter={castNativeType(onPointerEnter)}
+      onPointerDown={castNativeType(onPointerDown)}
+      onFocus={castNativeType(onFocus)}
       isLoading={isLoading}
-      onPress={onClick}
+      onPress={handleOnPress}
       style={animatedStyles}
       minHeight={minHeight}
       buttonPaddingTop={buttonPaddingTop}
@@ -92,11 +135,9 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
       defaultBackgroundColor={defaultBackgroundColor}
       defaultBorderColor={defaultBorderColor}
       hoverBackgroundColor={hoverBackgroundColor}
-      activeBackgroundColor={activeBackgroundColor}
       focusBackgroundColor={focusBackgroundColor}
       focusRingColor={focusRingColor}
       hoverBorderColor={hoverBorderColor}
-      activeBorderColor={activeBorderColor}
       focusBorderColor={focusBorderColor}
       borderWidth={borderWidth}
       borderRadius={borderRadius}
@@ -104,6 +145,8 @@ const _StyledBaseButton: React.ForwardRefRenderFunction<BladeElementRef, StyledB
       motionEasing={motionEasing}
       testID={testID}
     >
+      {/* eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error */}
+      {/* @ts-ignore */}
       {({ pressed }): React.ReactNode => {
         isPressed.value = pressed;
         return children;

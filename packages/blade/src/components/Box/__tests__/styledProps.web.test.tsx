@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import BaseBox from '../BaseBox';
 import type { StyledPropsBlade } from '~components/Box/styledProps';
 import { useStyledProps, getStyledProps } from '~components/Box/styledProps';
-import renderWithTheme from '~src/_helpers/testing/renderWithTheme.web';
+import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 type MyComponentWithStyledProps = {
   test: 'working???';
 } & StyledPropsBlade;
 
-const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): JSX.Element => {
+const ComponentWithGetStyledProps = (props: MyComponentWithStyledProps): React.ReactElement => {
   return <BaseBox {...getStyledProps(props)}>Hello!</BaseBox>;
 };
 
@@ -29,13 +29,14 @@ describe('styledProps with getStyledProps', () => {
     );
 
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         margin: 0px 48px;
       }
 
       <div>
         <div
           class="c0"
+          data-blade-component="base-box"
         >
           Hello!
         </div>
@@ -53,7 +54,7 @@ describe('styledProps with useStyledProps', () => {
     );
 
     expect(container).toMatchInlineSnapshot(`
-      .c0 {
+      .c0.c0.c0.c0.c0 {
         margin: 0px 48px;
         display: inline-block;
       }

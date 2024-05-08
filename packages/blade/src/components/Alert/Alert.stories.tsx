@@ -1,12 +1,11 @@
-import type { ComponentStory, Meta } from '@storybook/react';
+import type { StoryFn, Meta } from '@storybook/react';
 import { Title } from '@storybook/addon-docs';
 import type { ReactElement } from 'react';
-
 import type { AlertProps } from './Alert';
 import { Alert as AlertComponent } from './Alert';
 import BaseBox from '~components/Box/BaseBox';
-import { Sandbox } from '~src/_helpers/storybook/Sandbox';
-import StoryPageWrapper from '~src/_helpers/storybook/StoryPageWrapper';
+import { Sandbox } from '~utils/storybook/Sandbox';
+import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 
 const Page = (): ReactElement => {
@@ -14,53 +13,37 @@ const Page = (): ReactElement => {
     <StoryPageWrapper
       componentName="Alert"
       componentDescription="Alerts are messages that communicate information to users about any significant changes or explanations inside the system in a prominent way."
-      figmaURL={{
-        paymentTheme:
-          'https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade---Payment-Light?node-id=6922%3A17789',
-        bankingTheme:
-          'https://www.figma.com/file/sAdplk2uYnI2ILnDKUxycW/Blade---Banking-Dark?node-id=11098%3A286031',
-      }}
+      figmaURL="https://www.figma.com/proto/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=6824-100&t=G19TEPr7l1vIpcWY-1&scaling=min-zoom&page-id=6824%3A0&mode=design"
     >
       <Title>Usage</Title>
       <Sandbox editorHeight={500}>
         {`
-        import { useState } from 'react';
-        import { Alert, Button, Box } from '@razorpay/blade/components';
+        import { Alert } from '@razorpay/blade/components';
 
         function App() {
-          const [showAlert, setShowAlert] = useState(false);
           return (
-            <Box>
-              <Button onClick={() => setShowAlert(!showAlert)}>
-                Click to be alerted!
-              </Button>
-              { 
-                showAlert 
-                ? <Alert 
-                    title="The Button is Clicked 👀" 
-                    description="Click the Button again to hide alert"
-                    marginTop="spacing.4"
-                    actions={{
-                      primary: {
-                        onClick: () => {
-                          alert('Alert from the alert hehe')
-                        },
-                        text: 'Primary Action'
-                      },
-                      secondary: {
-                        href: 'https://razorpay.com',
-                        target: '_blank',
-                        text: 'Go to Razorpay.com'
-                      }
-                    }}
-                  /> 
-                : null 
-              }
-            </Box>
-          )
+            <Alert
+              title="Alert Title"
+              description="Add your description message here"
+              marginTop="spacing.4"
+              actions={{
+                primary: {
+                  onClick: () => {
+                    alert('Alert from the alert hehe');
+                  },
+                  text: 'Primary Action',
+                },
+                secondary: {
+                  href: 'https://razorpay.com',
+                  target: '_blank',
+                  text: 'Go to Razorpay.com',
+                },
+              }}
+            />
+          );
         }
-
-        export default App;
+        
+        export default App;        
         `}
       </Sandbox>
     </StoryPageWrapper>
@@ -76,8 +59,8 @@ const meta: Meta<AlertProps> = {
       'Currently you can only accept payments in international currencies using PayPal. You cannot accept payments in INR (₹) using PayPal.',
     isFullWidth: false,
     isDismissible: true,
-    contrast: 'low',
-    intent: 'information',
+    emphasis: 'subtle',
+    color: 'information',
     actions: {
       primary: {
         text: 'Primary Action',
@@ -95,6 +78,7 @@ const meta: Meta<AlertProps> = {
       },
     },
   },
+  tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
     onDismiss: { action: 'Dismissed' },
@@ -106,21 +90,21 @@ const meta: Meta<AlertProps> = {
   },
 };
 
-const AlertTemplate: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+const AlertTemplate: StoryFn<typeof AlertComponent> = ({ ...args }) => {
   return <AlertComponent {...args} />;
 };
 
 export const Default = AlertTemplate.bind({});
 
-export const HighContrast = AlertTemplate.bind({});
-HighContrast.args = {
-  contrast: 'high',
-  intent: 'notice',
+export const HighEmphasis = AlertTemplate.bind({});
+HighEmphasis.args = {
+  emphasis: 'intense',
+  color: 'notice',
 };
-HighContrast.parameters = {
+HighEmphasis.parameters = {
   docs: {
     description: {
-      story: 'A high contrast Alert for more prominent look',
+      story: 'A high emphasis Alert for more prominent look',
     },
   },
 };
@@ -153,7 +137,7 @@ export const DescriptionOnly = AlertTemplate.bind({});
 DescriptionOnly.args = {
   description:
     'The payment was made 6 months ago, therefore you can’t issue refund to this merchant.',
-  intent: 'notice',
+  color: 'notice',
   actions: undefined,
   title: undefined,
 };
@@ -169,7 +153,7 @@ export const PrimaryActionOnly = AlertTemplate.bind({});
 PrimaryActionOnly.args = {
   description:
     'There was some internal error while fetching the merchants list, this might also be due to the poor internet connection.',
-  intent: 'negative',
+  color: 'negative',
   actions: {
     primary: {
       text: 'Try Refetching',
@@ -188,7 +172,7 @@ PrimaryActionOnly.parameters = {
   },
 };
 
-export const FullWidth: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+export const FullWidth: StoryFn<typeof AlertComponent> = ({ ...args }) => {
   return (
     <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">
@@ -199,7 +183,7 @@ export const FullWidth: ComponentStory<typeof AlertComponent> = ({ ...args }) =>
 };
 FullWidth.args = {
   description: 'Currently you can only accept payments in international currencies using PayPal.',
-  intent: 'notice',
+  color: 'notice',
   actions: undefined,
   title: undefined,
   isFullWidth: true,
@@ -213,7 +197,7 @@ FullWidth.parameters = {
   },
 };
 
-export const FullWidthWithActions: ComponentStory<typeof AlertComponent> = ({ ...args }) => {
+export const FullWidthWithActions: StoryFn<typeof AlertComponent> = ({ ...args }) => {
   return (
     <BaseBox height="200px" position="relative">
       <BaseBox position="absolute" width="100%">
@@ -224,7 +208,7 @@ export const FullWidthWithActions: ComponentStory<typeof AlertComponent> = ({ ..
 };
 FullWidthWithActions.args = {
   description: 'Currently you can only accept payments in international currencies using PayPal.',
-  intent: 'negative',
+  color: 'negative',
   isFullWidth: true,
 };
 FullWidthWithActions.parameters = {

@@ -1,12 +1,21 @@
 import styled from 'styled-components';
 import getStyledLinkStyles from './getStyledLinkStyles';
 import type { StyledBaseLinkProps } from './types';
-import { castWebType, getIn, makeBorderSize, makeMotionTime } from '~utils';
+import getIn from '~utils/lodashButBetter/get';
+import { castWebType } from '~utils';
 import { useStyledProps } from '~components/Box/styledProps';
+import { makeBorderSize } from '~utils/makeBorderSize';
+import { makeMotionTime } from '~utils/makeMotionTime';
+import { omitPropsFromHTML } from '~utils/omitPropsFromHTML';
 
-const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
-  ...props.accessibilityProps,
-}))<StyledBaseLinkProps>((props) => {
+const StyledLink = styled.button
+  .withConfig({
+    shouldForwardProp: omitPropsFromHTML,
+    displayName: 'StyledLink',
+  })
+  .attrs<StyledBaseLinkProps>((props: StyledBaseLinkProps) => ({
+    ...props.accessibilityProps,
+  }))<StyledBaseLinkProps>((props) => {
   const styledPropsCSSObject = useStyledProps(props);
   return {
     ...getStyledLinkStyles(props),
@@ -21,7 +30,7 @@ const StyledLink = styled.button.attrs<StyledBaseLinkProps>((props: StyledBaseLi
       width: 'max-content',
       borderRadius: makeBorderSize(props.theme.border.radius.small),
     },
-    '&:focus': {
+    '&:focus-visible': {
       '.content-container': {
         boxShadow: `0px 0px 0px 4px ${props.focusRingColor}`,
       },
