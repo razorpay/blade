@@ -1,5 +1,6 @@
 /* eslint-disable prefer-const */
 /* eslint-disable import/no-extraneous-dependencies */
+const fs = require('fs');
 const { stringify, parseSync } = require('svgson');
 const { startCase } = require('lodash');
 const prettier = require('prettier');
@@ -37,7 +38,72 @@ const transformSvgNode = (node, components = new Set()) => {
  * @param {import("plop").NodePlopAPI} plop
  */
 module.exports = (plop) => {
-  plop.setGenerator('icon', {
+  plop.setGenerator('generate-reexports', {
+    description: 'Generates re-exports for all icon components',
+    prompts: [],
+    actions: () => {
+      const actions = [];
+
+      // get all icon components
+      const iconsFolder = './src/components/Icons';
+      const icons = fs.readdirSync(iconsFolder);
+      const allIcons = icons
+        .map((icon) => {
+          if (!fs.statSync(`${iconsFolder}/${icon}`).isDirectory()) return null;
+          const files = fs.readdirSync(`${iconsFolder}/${icon}`);
+          if (files.length === 0) return null;
+          if (icon.endsWith('Icon')) {
+            return icon;
+          }
+          return null;
+        })
+        .filter(Boolean)
+        .sort();
+
+      const imports = allIcons
+        .map((icon) => {
+          return `import ${icon}Component from './${icon}';`;
+        })
+        .join('\n');
+
+      const map = allIcons
+        .map((icon) => {
+          return `  ${icon}: ${icon}Component,`;
+        })
+        .join('\n');
+
+      const reexports = allIcons
+        .map((icon) => {
+          return `export { default as ${icon} } from './${icon}';`;
+        })
+        .join('\n');
+
+      actions.push({
+        type: 'add',
+        path: './src/components/Icons/iconMap.ts',
+        templateFile: 'plop/icon/iconMap.ts.hbs',
+        data: {
+          iconMap: map,
+          iconImports: imports,
+        },
+        force: true,
+      });
+
+      actions.push({
+        type: 'add',
+        path: './src/components/Icons/index.ts',
+        templateFile: 'plop/icon/iconReexports.ts.hbs',
+        data: {
+          iconReexports: reexports,
+        },
+        force: true,
+      });
+
+      return actions;
+    },
+  });
+
+  plop.setGenerator('generate-icons', {
     description: 'Generates a icon component',
     prompts: [
       {
@@ -69,37 +135,10 @@ module.exports = (plop) => {
         force: true,
       });
 
-      // add barell import in index.ts
-      actions.push({
-        type: 'modify',
-        path: 'src/components/Icons/index.tsx',
-        pattern: /(\/\/ # append_icon_export)/gi,
-        template: "export { default as {{name}}Icon } from './{{name}}Icon';\n$1",
-        data: { name },
-      });
-
-      // modify iconMap imports
-      actions.push({
-        type: 'modify',
-        path: 'src/components/Icons/iconMap.ts',
-        pattern: /(\/\/ # append_icon_import)/gi,
-        template: "import {{name}}IconComponent from './{{name}}Icon';\n$1",
-        data: { name },
-      });
-
-      // modify iconMap map
-      actions.push({
-        type: 'modify',
-        path: 'src/components/Icons/iconMap.ts',
-        pattern: /(\/\/ # append_icon_map)/gi,
-        template: '{{name}}Icon: {{name}}IconComponent,\r\t$1',
-        data: { name },
-      });
-
       // modify svg -> jsx
       actions.push({
         type: 'modify',
-        path: `src/components/Icons/{{name}}Icon/{{name}}Icon.tsx`,
+        path: `./src/components/Icons/{{name}}Icon/{{name}}Icon.tsx`,
         data: { name },
         transform(fileContents) {
           let final = fileContents;

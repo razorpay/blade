@@ -4,16 +4,21 @@ import nodePlop from 'node-plop';
 
 const generateIcons = async () => {
   const plop = await nodePlop('./plopfile.js');
-  const iconGenerator = plop.getGenerator('icon');
-
+  const iconGenerator = plop.getGenerator('generate-icons');
+  const indexGenerator = plop.getGenerator('generate-reexports');
   const iconsJsonFile = JSON.parse(fs.readFileSync('./scripts/icons.json', 'utf-8'));
 
-  iconsJsonFile.forEach((icon) => {
+  const processedIcons = iconsJsonFile.map((icon) => {
     const name = Object.keys(icon)[0];
     const svg = icon[name];
-    iconGenerator.runActions({ iconName: name, svgContents: svg }).then((results) => {
+    return iconGenerator.runActions({ iconName: name, svgContents: svg }).then((results) => {
       console.log(results);
     });
+  });
+
+  Promise.all(processedIcons);
+  await indexGenerator.runActions({}).then((results) => {
+    console.log(results);
   });
 };
 
