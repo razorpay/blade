@@ -20,6 +20,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+import { size } from '~tokens/global';
 
 const StyledBody = styled(Body)<{ $isSelectable: boolean; $showStripedRows: boolean }>(
   ({ theme, $showStripedRows, $isSelectable }) => {
@@ -168,10 +169,9 @@ const CellWrapper = styled(BaseBox)<{
     '&&&': {
       transition: rowBackgroundTransition,
       backgroundColor: tableRow.nonStripeWrapper.backgroundColor,
-      paddingTop: makeSpace(getIn(theme, tableRow.paddingTop[rowDensity])),
-      paddingBottom: makeSpace(getIn(theme, tableRow.paddingBottom[rowDensity])),
       paddingLeft: makeSpace(getIn(theme, tableRow.paddingLeft[rowDensity])),
       paddingRight: makeSpace(getIn(theme, tableRow.paddingRight[rowDensity])),
+      minHeight: makeSize(getIn(size, tableRow.minHeight[rowDensity])),
       height: '100%',
       ...(!showStripedRows && {
         borderBottomWidth: makeSpace(getIn(theme.border.width, tableRow.borderBottomWidth)),
