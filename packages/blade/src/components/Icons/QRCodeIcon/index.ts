@@ -1,1 +1,1 @@
-export { default } from './QRCodeIcon';
+export { default } from './QrCodeIcon';

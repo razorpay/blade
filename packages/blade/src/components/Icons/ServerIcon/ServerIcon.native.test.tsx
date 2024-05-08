@@ -1,4 +1,4 @@
-import ServerIcon from './';
+import ServerIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ServerIcon />', () => {

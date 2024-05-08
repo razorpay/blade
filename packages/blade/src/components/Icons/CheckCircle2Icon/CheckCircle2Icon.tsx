@@ -6,7 +6,7 @@ const CheckCircle2Icon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none" {...styledProps}>
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M16.9571 10.4571C17.3476 10.0666 17.3476 9.43342 16.9571 9.04289C16.5666 8.65237 15.9334 8.65237 15.5429 9.04289L11 13.5858L9.45711 12.0429C9.06658 11.6524 8.43342 11.6524 8.04289 12.0429C7.65237 12.4334 7.65237 13.0666 8.04289 13.4571L10.2929 15.7071C10.6834 16.0976 11.3166 16.0976 11.7071 15.7071L16.9571 10.4571Z"
         fill={iconColor}

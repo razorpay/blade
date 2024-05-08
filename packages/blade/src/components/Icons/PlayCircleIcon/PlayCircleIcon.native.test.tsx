@@ -1,4 +1,4 @@
-import PlayCircleIcon from './';
+import PlayCircleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PlayCircleIcon />', () => {

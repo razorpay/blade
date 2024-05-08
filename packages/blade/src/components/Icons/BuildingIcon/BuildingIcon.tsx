@@ -6,7 +6,7 @@ const BuildingIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none" {...styledProps}>
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M10.25 10.1914C10.8023 10.1914 11.25 10.6391 11.25 11.1914V12.6914C11.25 13.2437 10.8023 13.6914 10.25 13.6914C9.69771 13.6914 9.25 13.2437 9.25 12.6914V11.1914C9.25 10.6391 9.69771 10.1914 10.25 10.1914Z"
         fill={iconColor}

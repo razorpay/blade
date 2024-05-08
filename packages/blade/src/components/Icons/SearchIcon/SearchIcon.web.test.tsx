@@ -1,4 +1,4 @@
-import SearchIcon from '.';
+import SearchIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SearchIcon />', () => {

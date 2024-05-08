@@ -1,4 +1,4 @@
-import SettlementsIcon from '.';
+import SettlementsIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SettlementsIcon />', () => {

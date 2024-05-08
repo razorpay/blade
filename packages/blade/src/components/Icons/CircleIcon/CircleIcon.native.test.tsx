@@ -1,4 +1,4 @@
-import CircleIcon from './';
+import CircleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CircleIcon />', () => {

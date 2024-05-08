@@ -6,7 +6,7 @@ const ContactlessPaymentIcon: IconComponent = ({ size, color, ...styledProps }) 
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none" {...styledProps}>
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M13.3421 5.86784C13.8294 5.60795 14.4352 5.7923 14.6951 6.27961C15.634 8.0402 16.1252 10.0049 16.1252 12.0002C16.1252 13.9955 15.634 15.9602 14.6951 17.7208C14.4352 18.2081 13.8294 18.3924 13.3421 18.1325C12.8548 17.8727 12.6704 17.2669 12.9303 16.7796C13.7148 15.3087 14.1252 13.6673 14.1252 12.0002C14.1252 10.3331 13.7148 8.69172 12.9303 7.22079C12.6704 6.73348 12.8548 6.12774 13.3421 5.86784Z"
         fill={iconColor}

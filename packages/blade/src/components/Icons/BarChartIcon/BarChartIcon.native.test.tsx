@@ -1,4 +1,4 @@
-import BarChartIcon from './';
+import BarChartIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BarChartIcon />', () => {

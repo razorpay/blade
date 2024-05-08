@@ -1,4 +1,4 @@
-import AnchorIcon from './';
+import AnchorIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<AnchorIcon />', () => {

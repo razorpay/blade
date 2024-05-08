@@ -1,4 +1,4 @@
-import ChevronLeftIcon from '.';
+import ChevronLeftIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ChevronLeftIcon />', () => {

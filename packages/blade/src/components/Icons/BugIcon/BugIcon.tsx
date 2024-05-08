@@ -6,7 +6,7 @@ const BugIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none" {...styledProps}>
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M9.875 9.75C10.7034 9.75 11.375 9.07843 11.375 8.25C11.375 7.42157 10.7034 6.75 9.875 6.75C9.04657 6.75 8.375 7.42157 8.375 8.25C8.375 9.07843 9.04657 9.75 9.875 9.75Z"
         fill={iconColor}

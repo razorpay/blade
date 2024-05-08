@@ -1,4 +1,4 @@
-import MessageCircleIcon from './';
+import MessageCircleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MessageCircleIcon />', () => {

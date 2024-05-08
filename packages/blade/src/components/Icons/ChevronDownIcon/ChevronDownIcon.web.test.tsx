@@ -1,4 +1,4 @@
-import ChevronDownIcon from '.';
+import ChevronDownIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ChevronDownIcon />', () => {

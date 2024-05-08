@@ -6,7 +6,7 @@ const BarCodeIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none" {...styledProps}>
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M16.375 4.875C16.375 4.32272 16.8227 3.875 17.375 3.875H21.125C21.6773 3.875 22.125 4.32272 22.125 4.875V8.625C22.125 9.17728 21.6773 9.625 21.125 9.625C20.5727 9.625 20.125 9.17728 20.125 8.625V5.875H17.375C16.8227 5.875 16.375 5.42728 16.375 4.875Z"
         fill={iconColor}

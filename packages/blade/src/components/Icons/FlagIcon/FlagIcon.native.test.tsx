@@ -1,4 +1,4 @@
-import FlagIcon from './';
+import FlagIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<FlagIcon />', () => {

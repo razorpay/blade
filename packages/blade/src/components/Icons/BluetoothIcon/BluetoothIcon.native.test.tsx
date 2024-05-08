@@ -1,4 +1,4 @@
-import BluetoothIcon from './';
+import BluetoothIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BluetoothIcon />', () => {

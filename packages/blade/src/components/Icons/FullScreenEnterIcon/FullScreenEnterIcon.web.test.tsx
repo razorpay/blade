@@ -1,4 +1,4 @@
-import FullScreenEnterIcon from '.';
+import FullScreenEnterIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<FullScreenEnterIcon />', () => {

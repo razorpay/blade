@@ -1,4 +1,4 @@
-import SidebarIcon from './';
+import SidebarIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SidebarIcon />', () => {

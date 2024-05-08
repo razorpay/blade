@@ -1,4 +1,4 @@
-import UsersIcon from '.';
+import UsersIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<UsersIcon />', () => {

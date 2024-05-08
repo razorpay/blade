@@ -1,4 +1,4 @@
-import SunsetIcon from './';
+import SunsetIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SunsetIcon />', () => {

@@ -1,4 +1,4 @@
-import ThermometerIcon from './';
+import ThermometerIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ThermometerIcon />', () => {

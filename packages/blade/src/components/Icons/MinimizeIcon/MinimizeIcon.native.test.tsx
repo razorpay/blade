@@ -1,4 +1,4 @@
-import MinimizeIcon from './';
+import MinimizeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MinimizeIcon />', () => {

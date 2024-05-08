@@ -6,7 +6,7 @@ const CreditCardIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none" {...styledProps}>
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M15.875 14.375C15.3227 14.375 14.875 14.8227 14.875 15.375C14.875 15.9273 15.3227 16.375 15.875 16.375H18.875C19.4273 16.375 19.875 15.9273 19.875 15.375C19.875 14.8227 19.4273 14.375 18.875 14.375H15.875Z"
         fill={iconColor}

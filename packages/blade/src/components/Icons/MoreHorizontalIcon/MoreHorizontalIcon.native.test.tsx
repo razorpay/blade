@@ -1,4 +1,4 @@
-import MoreHorizontalIcon from './';
+import MoreHorizontalIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MoreHorizontalIcon />', () => {

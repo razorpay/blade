@@ -6,7 +6,7 @@ const CookieIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 24 24" fill="none" {...styledProps}>
+    <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path
         d="M9.875 10.125C9.875 10.9534 9.20343 11.625 8.375 11.625C7.54657 11.625 6.875 10.9534 6.875 10.125C6.875 9.29657 7.54657 8.625 8.375 8.625C9.20343 8.625 9.875 9.29657 9.875 10.125Z"
         fill={iconColor}

@@ -1,4 +1,4 @@
-import UnlockIcon from './';
+import UnlockIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<UnlockIcon />', () => {

@@ -1,4 +1,4 @@
-import HeartIcon from './';
+import HeartIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<HeartIcon />', () => {

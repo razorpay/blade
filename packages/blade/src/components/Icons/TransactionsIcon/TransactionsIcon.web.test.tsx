@@ -1,4 +1,4 @@
-import TransactionsIcon from '.';
+import TransactionsIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<TransactionsIcon />', () => {

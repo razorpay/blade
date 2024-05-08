@@ -1,4 +1,4 @@
-import TrendingUpIcon from './';
+import TrendingUpIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TrendingUpIcon />', () => {

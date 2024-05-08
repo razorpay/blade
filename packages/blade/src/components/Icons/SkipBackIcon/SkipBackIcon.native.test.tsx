@@ -1,4 +1,4 @@
-import SkipBackIcon from './';
+import SkipBackIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SkipBackIcon />', () => {

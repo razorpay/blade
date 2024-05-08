@@ -1,4 +1,4 @@
-import LoaderIcon from './';
+import LoaderIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<LoaderIcon />', () => {

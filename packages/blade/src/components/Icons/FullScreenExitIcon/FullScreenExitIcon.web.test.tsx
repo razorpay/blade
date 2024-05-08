@@ -1,4 +1,4 @@
-import FullScreenExitIcon from '.';
+import FullScreenExitIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<FullScreenExitIcon />', () => {

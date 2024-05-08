@@ -1,4 +1,4 @@
-import ClockIcon from './';
+import ClockIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ClockIcon />', () => {

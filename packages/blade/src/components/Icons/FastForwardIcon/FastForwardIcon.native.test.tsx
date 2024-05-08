@@ -1,4 +1,4 @@
-import FastForwardIcon from './';
+import FastForwardIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<FastForwardIcon />', () => {

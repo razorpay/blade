@@ -1,4 +1,4 @@
-import TabletIcon from './';
+import TabletIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TabletIcon />', () => {
