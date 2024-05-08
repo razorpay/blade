@@ -7,6 +7,8 @@ import {
   useTransitionStyles,
   flip,
   FloatingPortal,
+  useDismiss,
+  useInteractions,
 } from '@floating-ui/react';
 import { useDropdown } from './useDropdown';
 import { StyledDropdownOverlay } from './StyledDropdownOverlay';
@@ -82,6 +84,9 @@ const _DropdownOverlay = ({
     whileElementsMounted: autoUpdate,
   });
 
+  const dismiss = useDismiss(context);
+  const { getFloatingProps } = useInteractions([dismiss]);
+
   const { isMounted, styles } = useTransitionStyles(context, {
     duration: theme.motion.duration.quick,
     initial: () => ({
@@ -106,6 +111,7 @@ const _DropdownOverlay = ({
         style={floatingStyles}
         zIndex={zIndex}
         display={isMounted ? 'flex' : 'none'}
+        {...getFloatingProps()}
       >
         <StyledDropdownOverlay
           isInBottomSheet={bottomSheetAndDropdownGlue?.dropdownHasBottomSheet}
