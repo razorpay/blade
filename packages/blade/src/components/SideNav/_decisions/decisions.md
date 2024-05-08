@@ -261,6 +261,33 @@ import { NavLink } from 'react-router-dom';
 <td><img src="navlink-eg-4.png" width="240px" /></td>
 </tr>
 
+<tr>
+
+<td>
+
+<!-- prettier-ignore -->
+```jsx
+<SideNavLink
+  icon={ArrowUpRightIcon}
+  title="Create Payout"
+  href="/payouts"
+  trailing={
+    <Tooltip content="Action Name (Cmd + P)">
+      <Button
+        href="/payouts/create"
+        icon={PlusIcon}
+        size="xsmall"
+        variant="tertiary"
+      />
+    </Tooltip>
+  }
+/>
+```
+
+</td>
+<td><img src="navlink-eg-tooltip.png" width="300px" /></td>
+</tr>
+
 </table>
 
 ### SideNavLevel
