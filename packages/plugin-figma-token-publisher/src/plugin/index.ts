@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import getIcons from './getIcons';
 import makeColorTokens from './makeColorTokens';
 import makeDevTokenNames from './makeDevTokenNames';
 import showNotification from './showNotification';
@@ -8,6 +9,8 @@ if (figma.command === 'colorTokens') {
   makeColorTokens();
 } else if (figma.command === 'devTokenNames') {
   makeDevTokenNames();
+} else if (figma.command === 'exportIcons') {
+  getIcons();
 }
 
 figma.ui.onmessage = (message: any): void => {
