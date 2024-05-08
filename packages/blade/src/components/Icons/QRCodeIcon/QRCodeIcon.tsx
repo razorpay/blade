@@ -2,7 +2,7 @@ import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
-const QrCodeIcon: IconComponent = ({ size, color, ...styledProps }) => {
+const QRCodeIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
 
   return (
@@ -15,4 +15,4 @@ const QrCodeIcon: IconComponent = ({ size, color, ...styledProps }) => {
   );
 };
 
-export default QrCodeIcon;
+export default QRCodeIcon;

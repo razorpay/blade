@@ -1,10 +1,10 @@
-import QrCodeIcon from './';
+import QRCodeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
-describe('<QrCodeIcon />', () => {
-  it('should render QrCodeIcon', () => {
+describe('<QRCodeIcon />', () => {
+  it('should render QRCodeIcon', () => {
     const { container } = renderWithTheme(
-      <QrCodeIcon color="feedback.icon.neutral.intense" size="large" />,
+      <QRCodeIcon color="feedback.icon.neutral.intense" size="large" />,
     );
     expect(container).toMatchSnapshot();
   });

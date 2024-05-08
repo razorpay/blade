@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DotIcon /> should render DotIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
+  >
+    <circle
+      cx="12"
+      cy="12"
+      data-blade-component="svg-circle"
+      fill="hsla(211, 33%, 21%, 1)"
+      r="8"
+    />
+  </svg>
+</div>
+`;
