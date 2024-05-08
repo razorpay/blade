@@ -10,6 +10,7 @@ type SideNavProps = {
 type ActiveLinkType =
   | {
       ref: React.MutableRefObject<HTMLAnchorElement | null>;
+      parentLinkRef: React.MutableRefObject<HTMLAnchorElement | null>;
       level: number;
     }
   | undefined;

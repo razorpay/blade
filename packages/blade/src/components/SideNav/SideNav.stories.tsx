@@ -50,6 +50,16 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
             />
           </SideNavLevel>
         </SideNavLink>
+        <SideNavLink icon={SettingsIcon} title="Settings 2" href="/settings/user-2">
+          <SideNavLevel>
+            <SideNavLink icon={UserIcon} title="User Settings 2" href="/settings/user-2" />
+            <SideNavLink
+              icon={SubscriptionsIcon}
+              title="Subscriptions 2"
+              href="/settings/subscriptions-2"
+            />
+          </SideNavLevel>
+        </SideNavLink>
       </SideNav>
 
       <Box marginLeft="300px">

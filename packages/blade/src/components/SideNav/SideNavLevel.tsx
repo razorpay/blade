@@ -1,4 +1,5 @@
 import React from 'react';
+import BaseBox from '~components/Box/BaseBox';
 
 type SideNavLevelContextType = {
   level: number;
@@ -28,7 +29,11 @@ const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactE
   );
 
   return (
-    <SideNavLevelContext.Provider value={contextValue}>{children}</SideNavLevelContext.Provider>
+    <SideNavLevelContext.Provider value={contextValue}>
+      <BaseBox marginLeft="52px" padding={['spacing.3', 'spacing.4']}>
+        {children}
+      </BaseBox>
+    </SideNavLevelContext.Provider>
   );
 };
 

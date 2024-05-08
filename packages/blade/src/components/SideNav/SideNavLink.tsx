@@ -76,12 +76,13 @@ const SideNavLink = ({
 }: SideNavLinkProps): React.ReactElement => {
   const { RouterLink, l2PortalContainerRef, setActiveLink } = useSideNav();
   const navLinkRef = React.useRef<HTMLAnchorElement>(null);
-  const { level: _prevLevel, ref: parentRef } = useNavLink();
+  const { level: _prevLevel, ref: parentLinkRef } = useNavLink();
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
+  const isL2Trigger = Boolean(children);
 
   return (
-    <NavLinkContext.Provider value={{ level: currentLevel }}>
+    <NavLinkContext.Provider value={{ level: currentLevel, ref: isL2Trigger ? navLinkRef : null }}>
       <StyledNavLink
         ref={navLinkRef}
         as={RouterLink}
@@ -93,16 +94,17 @@ const SideNavLink = ({
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         isActive={(args: Record<string, any>): boolean => {
           const isCurrentItemActive = Boolean(args);
-          console.count(`${title} isActive`);
           if (isCurrentItemActive) {
             setActiveLink({
               ref: navLinkRef,
+              parentLinkRef,
               level: currentLevel,
             });
           }
           return isCurrentItemActive;
         }}
         data-level={currentLevel}
+        data-l2Trigger={isL2Trigger}
       >
         <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
           <Icon size="medium" color="currentColor" />
