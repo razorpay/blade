@@ -449,7 +449,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
   - Example
     ```jsx
-    <SideNav routerNavLink={NavLink}>
+    <SideNav routerLink={NavLink}>
       <SideNavLink />
       <SideNavLink />
     </SideNav>
