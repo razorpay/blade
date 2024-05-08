@@ -10,7 +10,6 @@ import { getStyledProps } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
-// import { isReactNative } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
 import type { ContainerElementType } from '~utils/types';
