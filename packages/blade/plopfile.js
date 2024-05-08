@@ -16,7 +16,7 @@ const transformSvgNode = (node, components = new Set()) => {
   }
 
   // title case component names
-  node.name = startCase(node.name);
+  node.name = startCase(node.name).replace(/\s/g, '');
   // gather imported components
   components.add(node.name);
 
@@ -70,28 +70,31 @@ module.exports = (plop) => {
       });
 
       // add barell import in index.ts
-      // actions.push({
-      //   type: 'modify',
-      //   path: 'src/components/Icons/index.tsx',
-      //   pattern: /(\/\/ # append_icon_export)/gi,
-      //   template: "export { default as {{name}}Icon } from './{{name}}Icon';\n$1",
-      // });
+      actions.push({
+        type: 'modify',
+        path: 'src/components/Icons/index.tsx',
+        pattern: /(\/\/ # append_icon_export)/gi,
+        template: "export { default as {{name}}Icon } from './{{name}}Icon';\n$1",
+        data: { name },
+      });
 
-      // // modify iconMap imports
-      // actions.push({
-      //   type: 'modify',
-      //   path: 'src/components/Icons/iconMap.ts',
-      //   pattern: /(\/\/ # append_icon_import)/gi,
-      //   template: "import {{name}}IconComponent from './{{name}}Icon';\n$1",
-      // });
+      // modify iconMap imports
+      actions.push({
+        type: 'modify',
+        path: 'src/components/Icons/iconMap.ts',
+        pattern: /(\/\/ # append_icon_import)/gi,
+        template: "import {{name}}IconComponent from './{{name}}Icon';\n$1",
+        data: { name },
+      });
 
-      // // modify iconMap map
-      // actions.push({
-      //   type: 'modify',
-      //   path: 'src/components/Icons/iconMap.ts',
-      //   pattern: /(\/\/ # append_icon_map)/gi,
-      //   template: '{{name}}Icon: {{name}}IconComponent,\r\t$1',
-      // });
+      // modify iconMap map
+      actions.push({
+        type: 'modify',
+        path: 'src/components/Icons/iconMap.ts',
+        pattern: /(\/\/ # append_icon_map)/gi,
+        template: '{{name}}Icon: {{name}}IconComponent,\r\t$1',
+        data: { name },
+      });
 
       // modify svg -> jsx
       actions.push({
