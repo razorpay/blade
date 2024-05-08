@@ -164,18 +164,18 @@ import { NavLink } from 'react-router-dom';
 
 ### SideNavLink
 
-| **Props**   | **Description**                                                                                                              | **Type**                                                            | **Default Value**                                            |
-| ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------ |
-| title       | title of SideNavLink                                                                                                         | string                                                              |                                                              |
-| href        | URL to navigate to. Internally links to `to` attribute of router                                                             | string                                                              |                                                              |
-| target      | anchor tag target attribute [target - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target) | AnchorTargetType                                                    | \_self                                                       |
-| rel         | anchor tag rel attribute [rel - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#rel)          | AnchorRelType                                                       | target === ' \_blank ' ? ' noreferrer noopener ' : undefined |
-| onClick     | Click handler on item                                                                                                        | (e: React.MouseEvent) => void                                       |                                                              |
-| icon        | Blade's Icon Component                                                                                                       | IconComponent                                                       |                                                              |
-| trailing    | Trailing Slot of Item. Can be used for adding Quick Shortcut Button, Trailing Text                                           | JSX                                                                 |                                                              |
-| titleSuffix | Slot after the title to add Badge, Counter                                                                                   | JSX                                                                 |                                                              |
-| ref         | Forwards the given ref. This also allows it to be a trigger for Tooltip                                                      | idk man ref types are hard.<br/> I'll figure out while implementing |                                                              |
-| children    | SideNavLink children slot. Items inside children turn into next level item with parent as a trigger                          | JSX                                                                 | undefined                                                    |
+| **Props**   | **Description**                                                                                                              | **Type**                      | **Default Value**                                            |
+| ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------ |
+| title       | title of SideNavLink                                                                                                         | string                        |                                                              |
+| href        | URL to navigate to. Internally links to `to` attribute of router                                                             | string                        |                                                              |
+| target      | anchor tag target attribute [target - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target) | AnchorTargetType              | \_self                                                       |
+| rel         | anchor tag rel attribute [rel - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#rel)          | AnchorRelType                 | target === ' \_blank ' ? ' noreferrer noopener ' : undefined |
+| onClick     | Click handler on item                                                                                                        | (e: React.MouseEvent) => void |                                                              |
+| icon        | Blade's Icon Component                                                                                                       | IconComponent                 |                                                              |
+| trailing    | Trailing Slot of Item. Can be used for adding Quick Shortcut Button, Trailing Text                                           | JSX                           |                                                              |
+| titleSuffix | Slot after the title to add Badge, Counter                                                                                   | JSX                           |                                                              |
+| tooltip     | Object with props that are forwarded to tooltip                                                                              | TooltipProps                  | undefined                                                    |
+| children    | SideNavLink children slot. Items inside children turn into next level item with parent as a trigger                          | JSX                           | undefined                                                    |
 
 #### Example Nav Links
 
@@ -248,13 +248,14 @@ import { NavLink } from 'react-router-dom';
 
 <!-- prettier-ignore -->
 ```jsx
-<Tooltip content="Action Name (Cmd + P)">
-  <SideNavLink
-    icon={LayoutIcon}
-    title="L1 Item Name"
-    href="/new-item-link"
-  />
-</Tooltip>
+<SideNavLink
+  icon={LayoutIcon}
+  title="L1 Item Name"
+  href="/new-item-link"
+  tooltip={{
+    content: "Action Name (Cmd + P)"
+  }}
+/>
 ```
 
 </td>
@@ -434,11 +435,43 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
 ### Dev
 
-- Parent Component Name: `SideNav` vs `Sidebar` vs `Navbar` vs `Nav`
-- Navigation Item Naming Decision: `SideNavLink` vs `SideNavLink`
-- `<SideNav routerLink={NavLink} />` vs `<SideNavLink as={NavLink} />`
+- #### Parent Component Name: `SideNav` vs `Sidebar` vs `Navbar` vs `Nav`
 
-  2nd one is more common and intuitive but requires consumers to add `as={NavLink}` to every single item in Navbar
+  TBD
+
+- #### Navigation Item Naming Decision: `SideNavLink` vs `SideNavItem` vs `SideNavItemLink`
+
+  TBD
+
+- #### `<SideNav routerLink={NavLink} />` vs `<SideNavLink as={NavLink} />`
+
+  1. We pass react router on parent SideNav component
+
+  - Example
+    ```jsx
+    <SideNav routerNavLink={NavLink}>
+      <SideNavLink />
+      <SideNavLink />
+    </SideNav>
+    ```
+  - Pros: Router Link defined at one place on top so less likely to be missed / changed between multiple items
+  - Cons: Uncommon pattern
+
+  2. We pass it from as prop on SideNavLink component
+
+  - Example
+    ```jsx
+    <SideNav>
+      <SideNavLink as={NavLink} />
+      <SideNavLink as={NavLink} />
+    </SideNav>
+    ```
+  - Pros: Common pattern
+  - Cons: Requires defining NavLink at each item (for projects not part of One Dashboard like Admin Dashboard, Bank Portals, etc)
+
+  ##### Conclusion
+
+  TBD
 
 ### Design
 
