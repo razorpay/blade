@@ -1,17 +1,18 @@
 import React from 'react';
 import { SideNavContext } from './SideNavContext';
-import type { SideNavProps } from './types';
+import type { ActiveLinkType, SideNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
 
 const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
-  const [isL2Open, setIsL2Open] = React.useState(false);
+  const [activeLink, setActiveLink] = React.useState<ActiveLinkType>(undefined);
+
   const contextValue = React.useMemo(
-    () => ({ RouterLink, l2PortalContainerRef, isL2Open, setIsL2Open }),
+    () => ({ RouterLink, l2PortalContainerRef, setActiveLink }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isL2Open],
+    [],
   );
 
   return (
@@ -35,7 +36,7 @@ const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.Reac
         height="100%"
         top="spacing.0"
         left="spacing.0"
-        width={isL2Open ? '52px' : makeSize(size['256'])}
+        width={activeLink?.level === 2 ? '52px' : makeSize(size['256'])}
         padding="spacing.4"
         borderRightWidth="thin"
         borderRightColor="surface.border.gray.muted"

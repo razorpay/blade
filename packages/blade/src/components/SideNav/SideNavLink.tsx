@@ -74,47 +74,35 @@ const SideNavLink = ({
   children,
   icon: Icon,
 }: SideNavLinkProps): React.ReactElement => {
-  const { RouterLink, l2PortalContainerRef, setIsL2Open, isL2Open } = useSideNav();
-  // const [isExpanded, setIsExpanded] = React.useState(false);
-  const {
-    setIsChildActive: parentSetIsChildActive,
-    isChildActive: parentIsChildActive,
-  } = useNavLink();
-  const [isChildActive, setIsChildActive] = React.useState(false);
-  // const prevLevel = _prevLevel ?? 0;
-  // const currentLevel = prevLevel + 1;
-  // console.log(title, isChildActive);
-  const { level, setIsSideNavLevelActive, isSideNavLevelActive } = useSideNavLevel();
-  console.log(title, level);
+  const { RouterLink, l2PortalContainerRef, setActiveLink } = useSideNav();
+  const navLinkRef = React.useRef<HTMLAnchorElement>(null);
+  const { level: _prevLevel, ref: parentRef } = useNavLink();
+  const prevLevel = _prevLevel ?? 0;
+  const currentLevel = prevLevel + 1;
 
   return (
-    <NavLinkContext.Provider value={{ setIsChildActive, isChildActive }}>
+    <NavLinkContext.Provider value={{ level: currentLevel }}>
       <StyledNavLink
+        ref={navLinkRef}
         as={RouterLink}
         to={href}
         // for react router v5
         exact={true}
         // for react router v6
         end={true}
-        onClick={() => {
-          if (children) {
-            setIsL2Open(true);
-          }
-        }}
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         isActive={(args: Record<string, any>): boolean => {
           const isCurrentItemActive = Boolean(args);
-
-          if (level === 2 && isCurrentItemActive) {
-            parentSetIsChildActive?.(true);
+          console.count(`${title} isActive`);
+          if (isCurrentItemActive) {
+            setActiveLink({
+              ref: navLinkRef,
+              level: currentLevel,
+            });
           }
-
-          if (children && parentIsChildActive) {
-            return true;
-          }
-
           return isCurrentItemActive;
         }}
+        data-level={currentLevel}
       >
         <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
           <Icon size="medium" color="currentColor" />

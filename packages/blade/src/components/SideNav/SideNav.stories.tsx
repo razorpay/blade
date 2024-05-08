@@ -40,7 +40,7 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
         <SideNavLink icon={HomeIcon} title="Home" href="/app" />
         <SideNavLink icon={ArrowUpRightIcon} title="Payouts" href="/app/payouts" />
         <SideNavLink icon={ArrowUpRightIcon} title="Nice" href="/nice" />
-        <SideNavLink icon={SettingsIcon} title="Settings" href="/settings">
+        <SideNavLink icon={SettingsIcon} title="Settings" href="/settings/user">
           <SideNavLevel>
             <SideNavLink icon={UserIcon} title="User Settings" href="/settings/user" />
             <SideNavLink

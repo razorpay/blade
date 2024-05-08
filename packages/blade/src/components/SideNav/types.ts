@@ -7,6 +7,13 @@ type SideNavProps = {
   routerLink: React.ComponentType<any>;
 };
 
+type ActiveLinkType =
+  | {
+      ref: React.MutableRefObject<HTMLAnchorElement | null>;
+      level: number;
+    }
+  | undefined;
+
 type SideNavLinkProps = {
   title: string;
   href: string;
@@ -17,6 +24,8 @@ type SideNavLinkProps = {
 type SideNavContextType = {
   RouterLink?: SideNavProps['routerLink'];
   l2PortalContainerRef?: React.RefObject<HTMLDivElement>;
+  activeLink?: ActiveLinkType;
+  setActiveLink: (activeLink: ActiveLinkType) => void;
 };
 
-export type { SideNavProps, SideNavContextType, SideNavLinkProps };
+export type { SideNavProps, SideNavContextType, SideNavLinkProps, ActiveLinkType };
