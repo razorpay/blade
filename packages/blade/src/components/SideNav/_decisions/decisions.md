@@ -16,26 +16,27 @@ The side navigation is positioned along the left side of the screen that provide
 ```jsx
 import { NavLink } from 'react-router-dom';
 
-<SideNav routerLink={NavLink}>
+<SideNav>
   {/* L1 Items */}
-  <SideNavLink title="Home" icon={HomeIcon} href="/" />
+  <SideNavLink as={NavLink} title="Home" icon={HomeIcon} href="/" />
   <SideNavLink
+    as={NavLink}
     title="Create Payouts"
     trailing={<Button icon={PlusIcon} variant="tertiary" />}
     icon={HomeIcon}
     href="/create-payouts"
   />
 
-  <SideNavLink title="Accounts" icon={AccountsIcon} href="/accounts/profile">
+  <SideNavLink as={NavLink} title="Accounts" icon={AccountsIcon} href="/accounts/profile">
     {/* L2 */}
-    <SideNavLevel title="Accounts">
-      <SideNavLink title="Profile" icon={UserIcon} href="/accounts/profile" />
-      <SideNavLink title="Settings" icon={UserIcon} href="/accounts/settings" />
-      <SideNavLink title="Edit" icon={UserIcon} href="/accounts/settings">
+    <SideNavLevel as={NavLink} title="Accounts">
+      <SideNavLink as={NavLink} title="Profile" icon={UserIcon} href="/accounts/profile" />
+      <SideNavLink as={NavLink} title="Settings" icon={UserIcon} href="/accounts/settings" />
+      <SideNavLink as={NavLink} title="Edit" icon={UserIcon} href="/accounts/settings">
         {/* L3 */}
         <SideNavLevel>
-          <SideNavLink title="Password" icon={PassIcon} href="/accounts/edit/pass" />
-          <SideNavLink title="Email" icon={EmailIcon} href="/accounts/edit/email" />
+          <SideNavLink as={NavLink} title="Password" icon={PassIcon} href="/accounts/edit/pass" />
+          <SideNavLink as={NavLink} title="Email" icon={EmailIcon} href="/accounts/edit/email" />
         </SideNavLevel>
       </SideNavLink>
     </SideNavLevel>
@@ -43,11 +44,11 @@ import { NavLink } from 'react-router-dom';
 
   {/* Section Heading */}
   <SideNavSection title="Products" maxVisibleItems={3}>
-    <SideNavLink href="/payment-gateway" title="Payment Gateway" />
-    <SideNavLink href="/payment-pages" title="Payment Pages" />
-    <SideNavLink href="/payment-links" title="Payment Links" />
-    <SideNavLink href="/qr-codes" title="QR Codes" />
-    <SideNavLink href="/subscriptions" title="Subscriptions" />
+    <SideNavLink as={NavLink} href="/payment-gateway" title="Payment Gateway" />
+    <SideNavLink as={NavLink} href="/payment-pages" title="Payment Pages" />
+    <SideNavLink as={NavLink} href="/payment-links" title="Payment Links" />
+    <SideNavLink as={NavLink} href="/qr-codes" title="QR Codes" />
+    <SideNavLink as={NavLink} href="/subscriptions" title="Subscriptions" />
   </SideNavSection>
 
   {/* Footer */}
@@ -59,7 +60,7 @@ import { NavLink } from 'react-router-dom';
       </Box>
       <Switch />
     </Box>
-    <SideNavLink href="/settings" title="Settings" />
+    <SideNavLink as={NavLink} href="/settings" title="Settings" />
   </SideNavFooter>
 </SideNav>;
 ```
@@ -151,15 +152,14 @@ const accountsL2Ref = React.useRef(null);
 
 ### SideNav
 
-| **Props**  | **Description**                                                              | **Type**             | **Default Value** |
-| ---------- | ---------------------------------------------------------------------------- | -------------------- | ----------------- |
-| routerLink | Prop for passing NavLink of React Router                                     | NavLinkComponentType |                   |
-| children   | children slot of SideNav, accepts SideNavLink, SideNavSection, SideNavFooter | JSX                  |                   |
+| **Props** | **Description**                                                              | **Type** | **Default Value** |
+| --------- | ---------------------------------------------------------------------------- | -------- | ----------------- |
+| children  | children slot of SideNav, accepts SideNavLink, SideNavSection, SideNavFooter | JSX      |                   |
 
 ```jsx
 import { NavLink } from 'react-router-dom';
 
-<SideNav routerLink={NavLink}>{/* children */}</SideNav>;
+<SideNav>{/* children */}</SideNav>;
 ```
 
 ### SideNavLink
@@ -167,6 +167,7 @@ import { NavLink } from 'react-router-dom';
 | **Props**   | **Description**                                                                                                              | **Type**                      | **Default Value**                                            |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------- | ----------------------------- | ------------------------------------------------------------ |
 | title       | title of SideNavLink                                                                                                         | string                        |                                                              |
+| as          | as prop for passing React Router's NavLink                                                                                   | NavLinkComponentType          |                                                              |
 | href        | URL to navigate to. Internally links to `to` attribute of router                                                             | string                        |                                                              |
 | target      | anchor tag target attribute [target - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target) | AnchorTargetType              | \_self                                                       |
 | rel         | anchor tag rel attribute [rel - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#rel)          | AnchorRelType                 | target === ' \_blank ' ? ' noreferrer noopener ' : undefined |
@@ -189,6 +190,7 @@ import { NavLink } from 'react-router-dom';
 <!-- prettier-ignore -->
 ```jsx
 <SideNavLink
+  as={NavLink}
   icon={BillIcon}
   title="Vendor Payments"
   href="/vendor-payments"
@@ -205,6 +207,7 @@ import { NavLink } from 'react-router-dom';
 <!-- prettier-ignore -->
 ```jsx
 <SideNavLink
+  as={NavLink}
   icon={PayoutIcon}
   title="Create Payouts"
   href="/payouts"
@@ -229,6 +232,7 @@ import { NavLink } from 'react-router-dom';
 <!-- prettier-ignore -->
 ```jsx
 <SideNavLink
+  as={NavLink}
   icon={LayoutIcon}
   title="L1 Item Name"
   href="/new-item-link"
@@ -249,6 +253,7 @@ import { NavLink } from 'react-router-dom';
 <!-- prettier-ignore -->
 ```jsx
 <SideNavLink
+  as={NavLink}
   icon={LayoutIcon}
   title="L1 Item Name"
   href="/new-item-link"
@@ -269,6 +274,7 @@ import { NavLink } from 'react-router-dom';
 <!-- prettier-ignore -->
 ```jsx
 <SideNavLink
+  as={NavLink}
   icon={ArrowUpRightIcon}
   title="Create Payout"
   href="/payouts"
@@ -397,6 +403,7 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
       <Switch />
     </Box>
     <SideNavLink 
+      as={NavLink}
       icon={GearIcon}
       href="/settings" 
       title="Settings" 
