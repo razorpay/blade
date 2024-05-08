@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = `"<div id="root"><div data-blade-component="dropdown" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kUMlmJ"><div data-blade-component="base-box" class="BaseBox-bmPWx jjDQyK"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><input tabindex="-1" aria-hidden="true" value=""/></div><div data-blade-component="select-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx jaAmIu"><label for="dropdown-undefined-trigger-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:0px" id="dropdown-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO kCEKIT" data-blade-component="text">Fruits</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  iIoIGQ"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  gSCKJx hZVkky"><div class="BaseBox-bmPWx BaseInputTagSlotweb__TagSlotContainer-sc-1bt1h3t-0 eRtEHm dUNBKx tags-slot" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx fhrYRb"><button type="button" autoComplete="off" id="dropdown-undefined-trigger-undefined-input-undefined" value="" placeholder="Select Option" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-haspopup="listbox" aria-expanded="false" aria-controls="dropdown-undefined-actionlist" role="combobox" class="StyledBaseInputweb__StyledBaseNativeButton-hsusrk-1 jLxJaB"><p class="StyledBaseText-dVBfTO kpQZgj" data-blade-component="text">Select Option</p></button></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx fTNRoG"><div data-blade-component="base-box" class="BaseBox-bmPWx dxquVw"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 lmEfDF"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="hsla(211, 22%, 56%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 fDSHXQ"><path d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z" clip-rule="evenodd" fill="hsla(211, 22%, 56%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div><div style="position:fixed;left:0;top:0" data-blade-component="base-box" class="BaseBox-bmPWx vaNBM"><div elevation="midRaised" style="transform:translateY(-8px);opacity:0" data-blade-component="dropdown-overlay" class="BaseBox-bmPWx StyledDropdownOverlay-sc-1dik5mo-0 qogZr hBPEVn"><div data-blade-component="base-box" class="BaseBox-bmPWx cZtflA"><div data-blade-component="dropdown-header" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx djABsd"><div data-blade-component="base-box" class="BaseBox-bmPWx hJkrmV"><div data-blade-component="base-box" class="BaseBox-bmPWx hXjMxV"><div data-blade-component="base-box" class="BaseBox-bmPWx jxfNRL"><div data-blade-component="base-box" class="BaseBox-bmPWx kDqSNs"><p class="StyledBaseText-dVBfTO ibEuPD" data-blade-component="text">Recent Searches</p></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx gJhLSN"><div data-blade-component="box" class="BaseBox-bmPWx"></div></div></div><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 bWVnPN WrXok"></div></div></div><div id="dropdown-undefined-actionlist" role="listbox" aria-multiselectable="false" aria-labelledby="dropdown-undefined-label" data-blade-component="action-list" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx StyledListBoxWrapperweb__StyledListBoxWrapper-sc-1eo4pr6-0  eqjJNO"><button id="dropdown-undefined-0" type="button" tabindex="-1" class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  kNhTCc" aria-selected="false" role="option" data-blade-component="action-list-item" data-value="apple" data-index="0"><div data-blade-component="base-box" class="BaseBox-bmPWx kCHCkj"><div data-blade-component="base-box" class="BaseBox-bmPWx ieaOju"></div><div data-blade-component="base-box" class="BaseBox-bmPWx bSRMqp"><p class="StyledBaseText-dVBfTO hZoZrV" data-blade-component="text">Apple</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx gAZVjQ"></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx"></div></button><button id="dropdown-undefined-1" type="button" tabindex="-1" class="BaseBox-bmPWx StyledActionListItemweb__StyledActionListItem-sc-1okp9u4-0  kNhTCc" aria-selected="false" role="option" data-blade-component="action-list-item" data-value="mango" data-index="1"><div data-blade-component="base-box" class="BaseBox-bmPWx kCHCkj"><div data-blade-component="base-box" class="BaseBox-bmPWx ieaOju"></div><div data-blade-component="base-box" class="BaseBox-bmPWx bSRMqp"><p class="StyledBaseText-dVBfTO hZoZrV" data-blade-component="text">Mango</p></div><div data-blade-component="base-box" class="BaseBox-bmPWx gAZVjQ"></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx"></div></button></div></div><div role="group" data-blade-component="base-box" class="BaseBox-bmPWx"><div data-blade-component="divider" role="separator" class="BaseBox-bmPWx Divider__StyledDivider-sc-8k3avj-0 bWVnPN WrXok"></div><div data-blade-component="dropdown-footer" class="BaseBox-bmPWx dJEYFx"></div></div></div></div></div></div></div>"`;
+exports[`<Dropdown /> should render dropdown and make it visible on click 1`] = `"<div id="root"><div data-blade-component="dropdown" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx kUMlmJ"><div data-blade-component="base-box" class="BaseBox-bmPWx jjDQyK"><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><input tabindex="-1" aria-hidden="true" value=""/></div><div data-blade-component="select-input" class="BaseBox-bmPWx"><div data-blade-component="base-box" class="BaseBox-bmPWx hqusWt"><div data-blade-component="base-box" class="BaseBox-bmPWx jaAmIu"><label for="dropdown-undefined-trigger-undefined-input-undefined" style="width:auto;flex-shrink:0;margin-right:0px" id="dropdown-undefined-label" data-blade-component="form-label"><div data-blade-component="base-box" class="BaseBox-bmPWx fZlcZT"><div data-blade-component="base-box" class="BaseBox-bmPWx ikPXAQ"><p class="StyledBaseText-dVBfTO kCEKIT" data-blade-component="text">Fruits</p><div data-blade-component="visually-hidden" class="VisuallyHiddenweb__StyledVisuallyHidden-g3hls3-0 Fuolv"><p class="StyledBaseText-dVBfTO fAQkza" data-blade-component="text"></p></div></div></div></label></div><div data-blade-component="base-box" class="BaseBox-bmPWx BaseInput__FocusRingWrapper-sc-177qd3e-0  iIoIGQ"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedBaseInputWrapperweb__StyledBaseInputWrapper-e1vobd-0 AnimatedBaseInputWrapperweb__StyledAnimatedBaseInputWrapper-e1vobd-1  gSCKJx hZVkky"><div class="BaseBox-bmPWx BaseInputTagSlotweb__TagSlotContainer-sc-1bt1h3t-0 eRtEHm dUNBKx tags-slot" data-blade-component="base-box"><div data-blade-component="base-box" class="BaseBox-bmPWx fhrYRb"><button type="button" autoComplete="off" id="dropdown-undefined-trigger-undefined-input-undefined" value="" placeholder="Select Option" data-blade-component="styled-base-input" aria-required="false" aria-disabled="false" aria-invalid="false" aria-describedby="" aria-haspopup="listbox" aria-expanded="false" aria-controls="dropdown-undefined-actionlist" role="combobox" class="StyledBaseInputweb__StyledBaseNativeButton-hsusrk-1 jLxJaB"><p class="StyledBaseText-dVBfTO kpQZgj" data-blade-component="text">Select Option</p></button></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx hGaCmA"><div data-blade-component="base-box" class="BaseBox-bmPWx fTNRoG"><div data-blade-component="base-box" class="BaseBox-bmPWx dxquVw"><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 lmEfDF"><path d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" clip-rule="evenodd" fill="hsla(211, 22%, 56%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg><svg aria-hidden="true" data-blade-component="icon" height="16px" viewBox="0 0 24 24" width="16px" fill="none" class="Svgweb__StyledSvg-vcmjs8-0 fDSHXQ"><path d="M11.2929 8.29289C11.6834 7.90237 12.3166 7.90237 12.7071 8.29289L18.7071 14.2929C19.0976 14.6834 19.0976 15.3166 18.7071 15.7071C18.3166 16.0976 17.6834 16.0976 17.2929 15.7071L12 10.4142L6.70711 15.7071C6.31658 16.0976 5.68342 16.0976 5.29289 15.7071C4.90237 15.3166 4.90237 14.6834 5.29289 14.2929L11.2929 8.29289Z" clip-rule="evenodd" fill="hsla(211, 22%, 56%, 1)" fill-rule="evenodd" data-blade-component="svg-path"></path></svg></div></div></div></div></div></div><div data-blade-component="base-box" class="BaseBox-bmPWx iARoiz"><div data-blade-component="base-box" class="BaseBox-bmPWx qIbA"></div></div></div></div></div></div></div>"`;
 
 exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -61,6 +61,25 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
   align-items: center;
   max-height: 36px;
   gap: 0px;
+}
+
+.c12.c12.c12.c12.c12 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  min-height: 36px;
 }
 
 .c14.c14.c14.c14.c14 {
@@ -135,289 +154,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
   justify-content: flex-end;
 }
 
-.c25.c25.c25.c25.c25 {
-  width: 100%;
-  box-shadow: 0px 8px 24px 0px hsla(217,56%,17%,0.12);
-}
-
-.c27.c27.c27.c27.c27 {
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c28.c28.c28.c28.c28 {
-  padding-right: 16px;
-  padding-left: 16px;
-  margin-bottom: 16px;
-  margin-top: 16px;
-  touch-action: none;
-}
-
-.c29.c29.c29.c29.c29 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.c30.c30.c30.c30.c30 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: flex-start;
-  -webkit-box-align: flex-start;
-  -ms-flex-align: flex-start;
-  align-items: flex-start;
-  padding-right: 16px;
-  margin-right: auto;
-}
-
-.c31.c31.c31.c31.c31 {
-  -webkit-flex: auto;
-  -ms-flex: auto;
-  flex: auto;
-}
-
-.c32.c32.c32.c32.c32 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-}
-
-.c34.c34.c34.c34.c34 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.c35.c35.c35.c35.c35 {
-  border-bottom-color: hsla(211,20%,52%,0.18);
-  border-bottom-style: solid;
-}
-
-.c39.c39.c39.c39.c39 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  max-height: 20px;
-}
-
-.c40.c40.c40.c40.c40 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.c41.c41.c41.c41.c41 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-right: 8px;
-  padding-left: 0px;
-}
-
-.c43.c43.c43.c43.c43 {
-  margin-left: auto;
-}
-
-.c44.c44.c44.c44.c44 {
-  padding: 16px;
-}
-
-.c24.c24.c24.c24.c24 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  z-index: 1002;
-}
-
-.c47.c47.c47.c47.c47 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  z-index: 1;
-}
-
-.c12.c12.c12.c12.c12 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow-x: auto;
-  overflow-y: auto;
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
-  flex-wrap: nowrap;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 12px;
-  min-height: 36px;
-}
-
-.c26.c26.c26.c26.c26 {
-  background-color: hsla(0,0%,100%,1);
-  border-width: 1px;
-  border-color: hsla(211,20%,52%,0.18);
-  border-style: solid;
-  border-radius: 4px;
-}
-
-.c45.c45.c45.c45.c45 {
-  min-height: 36px;
-  width: 100%;
-  cursor: pointer;
-  background-color: hsla(227,100%,59%,1);
-  border-color: hsla(227,100%,59%,1);
-  border-width: 0px;
-  border-radius: 4px;
-  border-style: solid;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  overflow: hidden;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-transition-property: background-color,border-color,box-shadow;
-  transition-property: background-color,border-color,box-shadow;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  position: relative;
-}
-
-.c45.c45.c45.c45.c45:hover {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c45.c45.c45.c45.c45:active {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-}
-
-.c45.c45.c45.c45.c45:focus-visible {
-  background-color: hsla(227,71%,51%,1);
-  border-color: hsla(227,100%,59%,1);
-  outline: 1px solid hsla(227,100%,59%,0.09);
-  box-shadow: 0px 0px 0px 4px hsla(227,100%,59%,0.18);
-}
-
-.c45.c45.c45.c45.c45 * {
-  -webkit-transition-property: color,fill,opacity;
-  transition-property: color,fill,opacity;
-  -webkit-transition-duration: 150ms;
-  transition-duration: 150ms;
-  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
-}
-
-.c46.c46.c46.c46.c46 {
-  -webkit-transform: scale(1);
-  -ms-transform: scale(1);
-  transform: scale(1);
-  -webkit-transition-duration: cubic-bezier(0.3,0,0.2,1);
-  transition-duration: cubic-bezier(0.3,0,0.2,1);
-  -webkit-transition-timing-function: 150px;
-  transition-timing-function: 150px;
-}
-
 .c7.c7.c7.c7.c7 {
   color: hsla(211,26%,34%,1);
   font-family: "Inter","Inter Fallback Arial",Arial;
@@ -482,88 +218,15 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
   overflow-wrap: break-word;
 }
 
-.c33.c33.c33.c33.c33 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 1rem;
-  font-weight: 600;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.5rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  margin-top: 1px;
-}
-
-.c42.c42.c42.c42.c42 {
-  color: hsla(212,39%,16%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 400;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  line-clamp: 1;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow-wrap: break-word;
-}
-
-.c49.c49.c49.c49.c49 {
-  color: hsla(0,0%,100%,1);
-  font-family: "Inter","Inter Fallback Arial",Arial;
-  font-size: 0.875rem;
-  font-weight: 500;
-  font-style: normal;
-  -webkit-text-decoration-line: none;
-  text-decoration-line: none;
-  line-height: 1.25rem;
-  -webkit-letter-spacing: 0px;
-  -moz-letter-spacing: 0px;
-  -ms-letter-spacing: 0px;
-  letter-spacing: 0px;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-}
-
-.c21.c21.c21.c21.c21 {
+.c20.c20.c20.c20.c20 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
 }
 
-.c20.c20.c20.c20.c20 {
+.c21.c21.c21.c21.c21 {
   display: none;
-}
-
-.c48.c48.c48.c48.c48 {
-  opacity: 1;
-}
-
-.c36.c36.c36.c36.c36 {
-  border-width: 0;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
 }
 
 .c15.c15.c15.c15.c15 {
@@ -676,7 +339,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
 }
 
 .c10.c10.c10.c10.c10 {
-  background-color: hsla(210,40%,98%,1);
+  background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
@@ -691,13 +354,13 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10:hover {
@@ -716,19 +379,19 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 150ms;
   transition-duration: 150ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
   -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
   transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c10.c10.c10.c10.c10:focus-within {
-  background-color: hsla(210,40%,98%,1);
+  background-color: hsla(0,0%,100%,1);
   border-radius: 4px;
   border-style: solid;
   display: -webkit-box;
@@ -743,13 +406,13 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
   height: auto;
   border: none;
   border-width: 0px;
-  box-shadow: hsla(227,100%,59%,1) 0px 0px 0px 1.5px;
+  box-shadow: hsla(211,27%,76%,1) 0px 0px 0px 1px;
   -webkit-transition-property: box-shadow,background-color;
   transition-property: box-shadow,background-color;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
-  -webkit-transition-easing: cubic-bezier(0.5,0,0,1);
-  transition-easing: cubic-bezier(0.5,0,0,1);
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-easing: cubic-bezier(0.3,0,0.2,1);
+  transition-easing: cubic-bezier(0.3,0,0.2,1);
 }
 
 .c11.c11.c11.c11.c11 {
@@ -797,92 +460,38 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
   outline-offset: 1px;
   -webkit-transition-property: outline-width;
   transition-property: outline-width;
-  -webkit-transition-duration: 600ms;
-  transition-duration: 600ms;
-  -webkit-transition-timing-function: cubic-bezier(0.5,0,0,1);
-  transition-timing-function: cubic-bezier(0.5,0,0,1);
-}
-
-.c37.c37.c37.c37.c37 {
-  overflow-y: auto;
-  max-height: 300px;
-  padding: 8px;
-}
-
-.c37.c37.c37.c37.c37 [role=group]:last-child > [role=separator]:last-child {
-  display: none;
-}
-
-.c38.c38.c38.c38.c38 {
-  border-width: 4px;
-  border-style: solid;
-  border-color: transparent;
-  text-align: left;
-  background-color: transparent;
-  padding: 4px;
-  border-radius: 4px;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  cursor: pointer;
-  width: 100%;
-  display: block;
-}
-
-.c38.c38.c38.c38.c38:hover:not([aria-disabled=true]) {
-  background-color: hsla(211,20%,52%,0.09);
-}
-
-.c38.c38.c38.c38.c38[aria-selected=true] {
-  background-color: hsla(227,100%,59%,0.09);
-}
-
-.c38.c38.c38.c38.c38[aria-selected=true]:hover {
-  background-color: hsla(227,100%,59%,0.18);
+  -webkit-transition-duration: 400ms;
+  transition-duration: 400ms;
+  -webkit-transition-timing-function: cubic-bezier(0.3,0,0.2,1);
+  transition-timing-function: cubic-bezier(0.3,0,0.2,1);
 }
 
 @media screen and (min-width:768px) {
-  .c28.c28.c28.c28.c28 {
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
+
 }
 
 @media screen and (min-width:320px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:480px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:768px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:1024px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:1200px) {
-  .c35.c35.c35.c35.c35 {
-    border-bottom-style: solid;
-  }
+
 }
 
 @media screen and (min-width:768px) {
-  .c44.c44.c44.c44.c44 {
-    padding: 20px;
-  }
+
 }
 
 <div
@@ -975,7 +584,7 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
                       aria-controls="dropdown-7-actionlist"
                       aria-describedby=""
                       aria-disabled="false"
-                      aria-expanded="true"
+                      aria-expanded="false"
                       aria-haspopup="dialog"
                       aria-invalid="false"
                       aria-required="false"
@@ -1057,208 +666,6 @@ exports[`<Dropdown /> should render dropdown and make it visible on click 2`] = 
               class="c23"
               data-blade-component="base-box"
             />
-          </div>
-        </div>
-      </div>
-      <div
-        class="c24"
-        data-blade-component="base-box"
-        style="position: fixed; left: 0px; top: 0px; transform: translate(0px, 8px); width: 0px;"
-      >
-        <div
-          class="c25 c26"
-          data-blade-component="dropdown-overlay"
-          elevation="midRaised"
-          style="transition-property: transform,opacity; transition-duration: 200ms;"
-        >
-          <div
-            class="c27"
-            data-blade-component="base-box"
-          >
-            <div
-              class=""
-              data-blade-component="dropdown-header"
-            >
-              <div
-                class="c28"
-                data-blade-component="base-box"
-              >
-                <div
-                  class="c29"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c30"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c31"
-                      data-blade-component="base-box"
-                    >
-                      <div
-                        class="c32"
-                        data-blade-component="base-box"
-                      >
-                        <p
-                          class="c33"
-                          data-blade-component="text"
-                        >
-                          Recent Searches
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="c34"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class=""
-                    data-blade-component="box"
-                  />
-                </div>
-              </div>
-              <div
-                class="c35 c36"
-                data-blade-component="divider"
-                role="separator"
-              />
-            </div>
-          </div>
-          <div
-            aria-labelledby="dropdown-7-label"
-            class=""
-            data-blade-component="action-list"
-            id="dropdown-7-actionlist"
-            role="dialog"
-          >
-            <div
-              aria-multiselectable="false"
-              class=" c37"
-              data-blade-component="base-box"
-              role="listbox"
-            >
-              <button
-                aria-selected="false"
-                class=" c38"
-                data-blade-component="action-list-item"
-                data-index="0"
-                data-value="apple"
-                id="dropdown-7-0"
-                role="option"
-                tabindex="-1"
-                type="button"
-              >
-                <div
-                  class="c39"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c40"
-                    data-blade-component="base-box"
-                  />
-                  <div
-                    class="c41"
-                    data-blade-component="base-box"
-                  >
-                    <p
-                      class="c42"
-                      data-blade-component="text"
-                    >
-                      Apple
-                    </p>
-                  </div>
-                  <div
-                    class="c43"
-                    data-blade-component="base-box"
-                  />
-                </div>
-                <div
-                  class=""
-                  data-blade-component="base-box"
-                />
-              </button>
-              <button
-                aria-selected="false"
-                class=" c38"
-                data-blade-component="action-list-item"
-                data-index="1"
-                data-value="mango"
-                id="dropdown-7-1"
-                role="option"
-                tabindex="-1"
-                type="button"
-              >
-                <div
-                  class="c39"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c40"
-                    data-blade-component="base-box"
-                  />
-                  <div
-                    class="c41"
-                    data-blade-component="base-box"
-                  >
-                    <p
-                      class="c42"
-                      data-blade-component="text"
-                    >
-                      Mango
-                    </p>
-                  </div>
-                  <div
-                    class="c43"
-                    data-blade-component="base-box"
-                  />
-                </div>
-                <div
-                  class=""
-                  data-blade-component="base-box"
-                />
-              </button>
-            </div>
-          </div>
-          <div
-            class=""
-            data-blade-component="base-box"
-            role="group"
-          >
-            <div
-              class="c35 c36"
-              data-blade-component="divider"
-              role="separator"
-            />
-            <div
-              class="c44"
-              data-blade-component="dropdown-footer"
-            >
-              <button
-                class="c45"
-                data-blade-component="button"
-                role="button"
-                type="button"
-              >
-                <div
-                  class=" c46"
-                  data-blade-component="base-box"
-                >
-                  <div
-                    class="c47 c48"
-                    data-blade-component="base-box"
-                  >
-                    <div
-                      class="c49"
-                      data-blade-component="base-text"
-                    >
-                      Apply
-                    </div>
-                  </div>
-                </div>
-              </button>
-            </div>
           </div>
         </div>
       </div>
