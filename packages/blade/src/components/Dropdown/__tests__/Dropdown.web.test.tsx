@@ -395,7 +395,7 @@ describe('<Dropdown /> with <DropdownButton />', () => {
     const user = userEvent.setup();
     const profileClickHandler = jest.fn();
 
-    const { container, getByRole, queryByRole } = renderWithTheme(
+    const { getByRole, queryByRole } = renderWithTheme(
       <Dropdown>
         <DropdownButton>My Account</DropdownButton>
         <DropdownOverlay>
