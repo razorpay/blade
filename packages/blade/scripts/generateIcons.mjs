@@ -17,6 +17,9 @@ const generateIcons = async () => {
   });
 
   Promise.all(processedIcons);
+  // wait 1 second
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  // generate re-exports
   await indexGenerator.runActions({}).then((results) => {
     console.log(results);
   });
