@@ -90,7 +90,8 @@ const SideNavLink = ({
       for (const mutation of mutationsList) {
         if (mutation.type === 'attributes' && mutation.attributeName === 'aria-current') {
           const isCurrentItemActive =
-            (mutation.target as HTMLAnchorElement).getAttribute('aria-current') === 'page';
+            (mutation.target as HTMLAnchorElement).getAttribute('aria-current') === 'page' &&
+            navLinkRef.current === mutation.target;
           if (isCurrentItemActive && currentLevel === 2) {
             setActiveLink({
               ref: navLinkRef,
