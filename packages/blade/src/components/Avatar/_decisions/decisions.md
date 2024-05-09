@@ -36,10 +36,6 @@ type AvatarGroupProps = {
 
 type AvatarProps = {
   /**
-   * The content or children of the avatar.
-   */
-  children?: StringChildrenType;
-  /**
    * The size of the avatar.
    */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
@@ -123,6 +119,8 @@ If there is an error loading the src of the avatar, there will be 2 fallbacks:
   - `Anurag Hazra` - `AH`
 - If there's no `name` prop, we use a default avatar.
 
+    <img width="50%" alt="Default Fallback Avatars" src="https://github.com/razorpay/blade/assets/46647141/6382a20f-2624-4671-aaf1-c2ef94bcc2bd">
+
 ### Letter avatars
 
 By default, we will merge the first characters of first & last word in the `name`` prop.
@@ -158,6 +156,45 @@ const App = () => (
     <Avatar color="notice" name="Sachin Tendulkar" />
   </AvatarGroup>
 );
+```
+
+### With Dropdown
+
+`Avatar` can also act as a dropdown trigger:
+
+```tsx
+import React from 'react';
+import {
+  Dropdown,
+  DropdownOverlay,
+  Avatar,
+  ActionList,
+  ActionListItem,
+  Box,
+} from '@razorpay/blade/components';
+
+const App = () => {
+  const menuItems = [
+    'Settings',
+    'Profile',
+    'Transactions',
+    'Help',
+    'Refunds',
+    'Settlements',
+    'Payouts',
+  ];
+
+  return (
+    <Dropdown>
+      <Avatar name="Nitin Kumar" src="https://api.rzp.com/user/snitin315" />
+      <DropdownOverlay>
+        <ActionList>
+          {menuItems.map((item, index) => <ActionListItem key={index} title={item} value={item} />)}
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
+  );
+};
 ```
 
 ## Accessibility
