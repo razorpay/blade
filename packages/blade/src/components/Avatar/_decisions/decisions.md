@@ -114,7 +114,7 @@ If there is an error loading the src of the avatar, there will be 2 fallbacks:
 
 - If there's a `name` prop, we use it to generate the initials.
   - Avatar will always have 2 letters as initials.
-  - `Rama Krushna Behra` - `RK`
+  - `Rama Krushna Behra` - `RB`
   - `Nitin` - `NI`
   - `Anurag Hazra` - `AH`
 - If there's no `name` prop, we use a default avatar.
