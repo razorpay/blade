@@ -4,15 +4,16 @@ Used to represent users or things, supporting the display of images, icons, or c
 
 This document serves as an overview of the API for the `Avatar` component.
 
-<img src="./avatar-thumbnail.png" width="50%" alt="Thumbnail" />
+
+<img width="50%" alt="Avatar Thumbnail" src="https://github.com/razorpay/blade/assets/46647141/6e89d932-602f-435f-9519-c46a41ddb4d5">
+
+
+<img width="50%" alt="AvatarGroup Thumbnail" src="https://github.com/razorpay/blade/assets/46647141/e54260e8-7f8c-4343-b5f9-8b332d65161f">
+
 
 ## Design
 
 - [Explore the design in Figma: Avatar](https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=88229-1518352&mode=design&t=Gp3eolSGw8SybZkM-11)
-
-## Anatomy
-
-<img src="./avatar-anatomy.png" width="50%" alt="Anatomy" />
 
 ## API
 
@@ -121,6 +122,10 @@ type AvatarProps = {
 If there is an error loading the src of the avatar, there will be 2 fallbacks:
 
 - If there's a `name` prop, we use it to generate the initials.
+  - Avatar will always have 2 letters as initials.
+  - `Rama Krushna Behra` - `RK`
+  - `Nitin` - `NI`
+  - `Anurag Hazra` - `AH`
 - If there's no `name` prop, we use a default avatar.
 
 ### Letter avatars
