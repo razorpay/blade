@@ -28,21 +28,20 @@ const tableFooter = {
 } as const;
 
 const tableRow = {
-  paddingTop: {
-    normal: 'spacing.5',
-    comfortable: 'spacing.6',
-  },
-  paddingBottom: {
-    normal: 'spacing.5',
-    comfortable: 'spacing.6',
-  },
   paddingLeft: {
+    compact: 'spacing.4',
     normal: 'spacing.4',
     comfortable: 'spacing.4',
   },
   paddingRight: {
+    compact: 'spacing.4',
     normal: 'spacing.4',
     comfortable: 'spacing.4',
+  },
+  minHeight: {
+    compact: '36',
+    normal: '48',
+    comfortable: '60',
   },
   nonStripe: {
     backgroundColor: 'transparent',
