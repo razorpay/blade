@@ -37,26 +37,26 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
   return (
     <Box>
       <SideNav routerLink={NavLink}>
-        <SideNavLink icon={HomeIcon} title="Home" href="/app" />
-        <SideNavLink icon={ArrowUpRightIcon} title="Payouts" href="/app/payouts" />
-        <SideNavLink icon={ArrowUpRightIcon} title="Nice" href="/nice" />
-        <SideNavLink icon={SettingsIcon} title="Settings" href="/settings/user">
+        <SideNavLink icon={HomeIcon} title="Home" href="/payments/dashboard" />
+        <SideNavLink icon={ArrowUpRightIcon} title="Payouts" href="/payments/payouts" />
+        <SideNavLink icon={ArrowUpRightIcon} title="Nice" href="/payments/nice" />
+        <SideNavLink icon={SettingsIcon} title="Settings" href="/payments/settings/user">
           <SideNavLevel>
-            <SideNavLink icon={UserIcon} title="User Settings" href="/settings/user" />
+            <SideNavLink icon={UserIcon} title="User Settings" href="/payments/settings/user" />
             <SideNavLink
               icon={SubscriptionsIcon}
               title="Subscriptions"
-              href="/settings/subscriptions"
+              href="/payments/settings/subscriptions"
             />
           </SideNavLevel>
         </SideNavLink>
-        <SideNavLink icon={SettingsIcon} title="Settings 2" href="/settings/user-2">
+        <SideNavLink icon={SettingsIcon} title="Accounts" href="/payments/accounts/user">
           <SideNavLevel>
-            <SideNavLink icon={UserIcon} title="User Settings 2" href="/settings/user-2" />
+            <SideNavLink icon={UserIcon} title="User Accounts" href="/payments/accounts/user" />
             <SideNavLink
               icon={SubscriptionsIcon}
-              title="Subscriptions 2"
-              href="/settings/subscriptions-2"
+              title="Subscriptions Accounts"
+              href="/payments/accounts/subscriptions"
             />
           </SideNavLevel>
         </SideNavLink>

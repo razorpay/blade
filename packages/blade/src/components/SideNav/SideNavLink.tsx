@@ -77,91 +77,35 @@ const SideNavLink = ({
 }: SideNavLinkProps): React.ReactElement => {
   const [shouldShowL2Menu, setShouldShowL2Menu] = React.useState(false);
   // const [isCurrentItemActive, setIsCurrentItemActive] = React.useState(false);
-  const { RouterLink, l2PortalContainerRef, setActiveLink } = useSideNav();
+  const { RouterLink, l2PortalContainerRef, setLinkIds } = useSideNav();
   const navLinkRef = React.useRef<HTMLAnchorElement>(null);
   const { level: _prevLevel, ref: parentLinkRef } = useNavLink();
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
   const isL2Trigger = Boolean(children);
-  const navItemId = useId('nav-item');
+  const navLinkId = useId('navlink-id');
 
   React.useEffect(() => {
-    const observer = new MutationObserver((mutationsList) => {
-      for (const mutation of mutationsList) {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'aria-current') {
-          const isCurrentItemActive =
-            (mutation.target as HTMLAnchorElement).getAttribute('aria-current') === 'page' &&
-            navLinkRef.current === mutation.target;
-          if (isCurrentItemActive && currentLevel === 2) {
-            setActiveLink({
-              ref: navLinkRef,
-              parentLinkRef,
-              level: currentLevel,
-            });
-          }
-
-          if (isCurrentItemActive && currentLevel === 1 && isL2Trigger) {
-            setShouldShowL2Menu(true);
-          } else if (!isCurrentItemActive && currentLevel === 1 && isL2Trigger) {
-            setShouldShowL2Menu(false);
-          }
-        }
+    setLinkIds((prev) => {
+      if (!prev.includes(navLinkId)) {
+        return [...prev, navLinkId];
       }
     });
-
-    if (navLinkRef.current) {
-      observer.observe(navLinkRef.current, { attributes: true });
-    }
-
-    return () => {
-      if (navLinkRef.current) {
-        observer.disconnect();
-      }
-    };
   }, []);
-
-  // React.useEffect(() => {
-  //   if (isCurrentItemActive && currentLevel === 2) {
-  //     setActiveLink({
-  //       ref: navLinkRef,
-  //       parentLinkRef,
-  //       level: currentLevel,
-  //     });
-  //   }
-
-  //   if (isCurrentItemActive && currentLevel === 1 && isL2Trigger) {
-  //     setShouldShowL2Menu(true);
-  //   } else if (!isCurrentItemActive && currentLevel === 1 && isL2Trigger) {
-  //     setShouldShowL2Menu(false);
-  //   }
-  // }, [isCurrentItemActive]);
 
   return (
     <NavLinkContext.Provider value={{ level: currentLevel, ref: isL2Trigger ? navLinkRef : null }}>
       <StyledNavLink
         ref={navLinkRef}
+        id={navLinkId}
         as={RouterLink}
         to={href}
-        // for react router v5
-        exact={true}
-        // for react router v6
-        end={true}
-        onClick={() => {
-          // const hasAriaCurrent = navLinkRef.current?.hasAttribute('aria-current');
-          // const _shouldShowL2Menu = (isL2Trigger && hasAriaCurrent) ?? false;
-          // // console.log({ _shouldShowL2Menu, isL2Trigger, hasAriaCurrent });
-          // setShouldShowL2Menu(_shouldShowL2Menu);
-        }}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        isActive={(args: Record<string, any>): boolean => {
-          // console.log({ fun: 'onActiveChange', title, args });
-          const _isCurrentItemActive = Boolean(args);
-          // setIsCurrentItemActive(_isCurrentItemActive);
-          return _isCurrentItemActive;
-        }}
+        // this className is used for observing attribute changes on DOM
+        className="side-nav-link"
         data-level={currentLevel}
-        data-l2Trigger={isL2Trigger}
-        data-navItemId={navItemId}
+        data-parentId={currentLevel === 2 ? parentLinkRef?.current.id : undefined}
+        data-l2trigger={isL2Trigger}
+        data-submenuId={`${navLinkId}-submenu`}
       >
         <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
           <Icon size="medium" color="currentColor" />
@@ -176,8 +120,8 @@ const SideNavLink = ({
           {title}
         </BaseText>
         {children ? (
-          <FloatingPortal root={l2PortalContainerRef}>
-            {shouldShowL2Menu ? children : null}
+          <FloatingPortal root={l2PortalContainerRef} id={`${navLinkId}-submenu`}>
+            {children}
           </FloatingPortal>
         ) : null}
       </StyledNavLink>
