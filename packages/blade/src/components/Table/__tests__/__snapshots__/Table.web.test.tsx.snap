@@ -2432,7 +2432,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
 }
 
 .c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11.c11 tr:last-child th {
@@ -2451,7 +2451,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 }
 
 .c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12.c12 > div {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -2486,7 +2486,7 @@ exports[`<Table /> should render table with compact rowDensity 1`] = `
 }
 
 .c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2.c2 > div {
-  background-color: hsla(211,20%,52%,0.09);
+  background-color: hsla(211,20%,52%,0.12);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
