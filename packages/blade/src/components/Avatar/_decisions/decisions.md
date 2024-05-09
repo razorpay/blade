@@ -5,10 +5,9 @@ Used to represent users or things, supporting the display of images, icons, or c
 This document serves as an overview of the API for the `Avatar` component.
 
 
-<img width="50%" alt="Avatar Thumbnail" src="https://github.com/razorpay/blade/assets/46647141/6e89d932-602f-435f-9519-c46a41ddb4d5">
+<img width="50%" alt="Avatar Thumbnail" src="https://github.com/razorpay/blade/assets/46647141/6e89d932-602f-435f-9519-c46a41ddb4d5" />
 
-
-<img width="50%" alt="AvatarGroup Thumbnail" src="https://github.com/razorpay/blade/assets/46647141/e54260e8-7f8c-4343-b5f9-8b332d65161f">
+<img width="50%" alt="AvatarGroup Thumbnail" src="https://github.com/razorpay/blade/assets/46647141/e54260e8-7f8c-4343-b5f9-8b332d65161f" />
 
 
 ## Design
