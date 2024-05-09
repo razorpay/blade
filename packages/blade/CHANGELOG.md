@@ -1,5 +1,12 @@
 # @razorpay/blade
 
+## 11.16.1
+
+### Patch Changes
+
+- 51c04c81: feat(Table): add compact rowDensity & update existing densities
+- 906e7f4f: fix(DropdownOverlay): Fix DropdownOverlay getting cropped in Sticky Table Column
+
 ## 11.16.0
 
 ### Minor Changes
