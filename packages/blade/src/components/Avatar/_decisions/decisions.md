@@ -1,6 +1,6 @@
 # Avatar
 
-Used to represent users or things, supporting the display of images, icons, or characters.
+An avatar component is a standardized visual representation of a user or entity. This reusable element, often manifesting as a profile picture, icon, or initials, facilitates user recognition and streamlines interface navigation.
 
 This document serves as an overview of the API for the `Avatar` component.
 
