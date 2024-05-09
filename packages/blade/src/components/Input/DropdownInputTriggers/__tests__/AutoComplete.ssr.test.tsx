@@ -14,7 +14,7 @@ import { Box } from '~components/Box';
  */
 
 describe('<Dropdown /> with <AutoComplete />', () => {
-  it('should render dropdown and make it visible on click', async () => {
+  it('should render dropdown and make it visible on click', () => {
     const { container, getByRole } = renderWithSSR(
       <Dropdown>
         <AutoComplete label="Fruits" />
