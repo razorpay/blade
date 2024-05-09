@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
-import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom';
+import { NavLink, Route, Switch, useRouteMatch, matchPath, useLocation } from 'react-router-dom';
 import { SideNavLevel } from './SideNavLevel';
 import type { SideNavLinkProps } from './';
 import { SideNav, SideNavLink } from './';
@@ -86,22 +86,21 @@ const navItems = [
   },
 ];
 
-const useRouteMatchL2Trigger = (hrefs: string[]) => {
-  console.log({ hrefs });
-  const match = useRouteMatch(hrefs);
-  return match;
-};
 const NavItem = (
   props: Omit<SideNavLinkProps, 'as'> & {
     subItems?: Omit<SideNavLinkProps, 'as'>[];
   },
 ): React.ReactElement => {
-  const match = useRouteMatch(props.href);
-  const matches = useRouteMatchL2Trigger(props.subItems?.map((l2Item) => l2Item.href) ?? []);
-  if (props.subItems) {
-    console.log({ matches, s: props.subItems });
-  }
-  return <SideNavLink {...props} as={NavLink} isCurrentPage={match?.isExact} />;
+  const location = useLocation();
+  const isSubItemActive = props.subItems?.map((i) => i.href).includes(location.pathname);
+
+  return (
+    <SideNavLink
+      {...props}
+      as={NavLink}
+      isCurrentPage={location.pathname === props.href || isSubItemActive}
+    />
+  );
 };
 
 const SideNavTemplate: StoryFn<typeof SideNav> = () => {

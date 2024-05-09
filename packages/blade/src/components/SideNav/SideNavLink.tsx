@@ -115,7 +115,11 @@ const SideNavLink = ({
         >
           {title}
         </BaseText>
-        {children ? <FloatingPortal root={l2PortalContainerRef}>{children}</FloatingPortal> : null}
+        {children ? (
+          <FloatingPortal root={l2PortalContainerRef}>
+            {isCurrentPage ? children : null}
+          </FloatingPortal>
+        ) : null}
       </StyledNavLink>
     </NavLinkContext.Provider>
   );

@@ -55,7 +55,7 @@ const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.Reac
           height="100%"
           top="spacing.0"
           left="spacing.0"
-          width={activeLink?.level === 2 ? '52px' : '100%'}
+          width={activeLink?.level === 2 ? '52px' : '50%'}
           padding="spacing.4"
           borderRightWidth="thin"
           borderRightColor="surface.border.gray.muted"
