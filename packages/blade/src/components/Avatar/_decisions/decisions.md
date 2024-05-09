@@ -29,10 +29,6 @@ type AvatarGroupProps = {
    */
   size?: 'xsmall' | 'small' | 'medium' | 'large';
   /**
-   * The color theme of the avatars within the group. Propagates to all avatars.
-   */
-  color?: 'primary' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
-  /**
    * The maximum number of avatars to display before truncating.
    */
   maxAvatars?: number;
