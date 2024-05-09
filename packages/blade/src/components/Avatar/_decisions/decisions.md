@@ -50,7 +50,7 @@ type AvatarProps = {
   /**
    * The visual variant of the avatar.
    */
-  variant?: 'rounded' | 'square';
+  variant?: 'circle' | 'square';
   /**
    * The color theme of the avatar.
    */
