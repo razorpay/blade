@@ -19,16 +19,17 @@ const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.Reac
   React.useEffect(() => {
     if (activeLink?.level === 2) {
       const activeL2TriggerItems = l1ContainerRef.current?.querySelectorAll(
-        '[aria-current="true"][data-l2Trigger="true"]',
+        '[aria-current="page"][data-l2Trigger="true"]',
       );
       activeL2TriggerItems?.forEach((el) => {
         el.removeAttribute('aria-current');
         el.classList.remove('active');
       });
 
-      activeLink.parentLinkRef.current?.setAttribute('aria-current', 'true');
+      activeLink.parentLinkRef.current?.setAttribute('aria-current', 'page');
       activeLink.parentLinkRef.current?.classList.add('active');
     }
+    console.log({ activeLink });
   }, [activeLink]);
 
   return (

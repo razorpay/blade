@@ -3,8 +3,6 @@ import type { IconComponent } from '~components/Icons';
 
 type SideNavProps = {
   children: React.ReactNode;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  routerLink: React.ComponentType<any>;
 };
 
 type ActiveLinkType =
@@ -18,12 +16,14 @@ type ActiveLinkType =
 type SideNavLinkProps = {
   title: string;
   href: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  as: React.ComponentType<any>;
+  isCurrentPage?: boolean;
   icon: IconComponent;
   children?: React.ReactElement;
 };
 
 type SideNavContextType = {
-  RouterLink?: SideNavProps['routerLink'];
   l2PortalContainerRef?: React.RefObject<HTMLDivElement>;
   activeLink?: ActiveLinkType;
   setActiveLink: (activeLink: ActiveLinkType) => void;

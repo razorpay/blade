@@ -1,7 +1,9 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
-import { NavLink, Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch, useRouteMatch } from 'react-router-dom';
+import { SideNavLevel } from './SideNavLevel';
+import type { SideNavLinkProps } from './';
 import { SideNav, SideNavLink } from './';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
@@ -13,7 +15,6 @@ import {
   UserIcon,
 } from '~components/Icons';
 import { Heading } from '~components/Typography';
-import { SideNavLevel } from './SideNavLevel';
 
 export default {
   title: 'Components/SideNav',
@@ -33,33 +34,94 @@ const Page = ({ match }: { match: any }): React.ReactElement => (
   </Box>
 );
 
+const navItems = [
+  {
+    icon: HomeIcon,
+    title: 'Home',
+    href: '/app',
+  },
+  {
+    icon: ArrowUpRightIcon,
+    title: 'Payouts',
+    href: '/app/payouts',
+  },
+  {
+    icon: ArrowUpRightIcon,
+    title: 'Nice',
+    href: '/nice',
+  },
+  {
+    icon: SettingsIcon,
+    title: 'Settings',
+    href: '/settings/user',
+    children: [
+      {
+        icon: UserIcon,
+        title: 'User Settings',
+        href: '/settings/user',
+      },
+      {
+        icon: SubscriptionsIcon,
+        title: 'Subscriptions',
+        href: '/settings/subscriptions',
+      },
+    ],
+  },
+  {
+    icon: SettingsIcon,
+    title: 'Settings 2',
+    href: '/settings/user-2',
+    children: [
+      {
+        icon: UserIcon,
+        title: 'User Settings 2',
+        href: '/settings/user-2',
+      },
+      {
+        icon: SubscriptionsIcon,
+        title: 'Subscriptions 2',
+        href: '/settings/subscriptions-2',
+      },
+    ],
+  },
+];
+
+const useRouteMatchL2Trigger = (hrefs: string[]) => {
+  console.log({ hrefs });
+  const match = useRouteMatch(hrefs);
+  return match;
+};
+const NavItem = (
+  props: Omit<SideNavLinkProps, 'as'> & {
+    subItems?: Omit<SideNavLinkProps, 'as'>[];
+  },
+): React.ReactElement => {
+  const match = useRouteMatch(props.href);
+  const matches = useRouteMatchL2Trigger(props.subItems?.map((l2Item) => l2Item.href) ?? []);
+  if (props.subItems) {
+    console.log({ matches, s: props.subItems });
+  }
+  return <SideNavLink {...props} as={NavLink} isCurrentPage={match?.isExact} />;
+};
+
 const SideNavTemplate: StoryFn<typeof SideNav> = () => {
   return (
     <Box>
-      <SideNav routerLink={NavLink}>
-        <SideNavLink icon={HomeIcon} title="Home" href="/app" />
-        <SideNavLink icon={ArrowUpRightIcon} title="Payouts" href="/app/payouts" />
-        <SideNavLink icon={ArrowUpRightIcon} title="Nice" href="/nice" />
-        <SideNavLink icon={SettingsIcon} title="Settings" href="/settings/user">
-          <SideNavLevel>
-            <SideNavLink icon={UserIcon} title="User Settings" href="/settings/user" />
-            <SideNavLink
-              icon={SubscriptionsIcon}
-              title="Subscriptions"
-              href="/settings/subscriptions"
-            />
-          </SideNavLevel>
-        </SideNavLink>
-        <SideNavLink icon={SettingsIcon} title="Settings 2" href="/settings/user-2">
-          <SideNavLevel>
-            <SideNavLink icon={UserIcon} title="User Settings 2" href="/settings/user-2" />
-            <SideNavLink
-              icon={SubscriptionsIcon}
-              title="Subscriptions 2"
-              href="/settings/subscriptions-2"
-            />
-          </SideNavLevel>
-        </SideNavLink>
+      <SideNav>
+        {navItems.map((navItem) => {
+          if (navItem.children) {
+            return (
+              <NavItem key={navItem.title} {...navItem} subItems={navItem.children}>
+                <SideNavLevel>
+                  {navItem.children.map((l2Item) => (
+                    <NavItem key={l2Item.title} {...l2Item} />
+                  ))}
+                </SideNavLevel>
+              </NavItem>
+            );
+          }
+          return <NavItem key={navItem.title} {...navItem} />;
+        })}
       </SideNav>
 
       <Box marginLeft="300px">
