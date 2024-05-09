@@ -250,10 +250,8 @@ import RepeatIconComponent from './RepeatIcon';
 import ReportsIconComponent from './ReportsIcon';
 import ResizerIconComponent from './ResizerIcon';
 import RewindIconComponent from './RewindIcon';
-import RotateCcwIconComponent from './RotateCcwIcon';
 import RotateClockWiseIconComponent from './RotateClockWiseIcon';
 import RotateCounterClockWiseIconComponent from './RotateCounterClockWiseIcon';
-import RotateCwIconComponent from './RotateCwIcon';
 import RouteIconComponent from './RouteIcon';
 import RoutesIconComponent from './RoutesIcon';
 import RupeeIconComponent from './RupeeIcon';
@@ -598,10 +596,8 @@ const iconMap: Record<string, IconComponent> = {
   ReportsIcon: ReportsIconComponent,
   ResizerIcon: ResizerIconComponent,
   RewindIcon: RewindIconComponent,
-  RotateCcwIcon: RotateCcwIconComponent,
   RotateClockWiseIcon: RotateClockWiseIconComponent,
   RotateCounterClockWiseIcon: RotateCounterClockWiseIconComponent,
-  RotateCwIcon: RotateCwIconComponent,
   RouteIcon: RouteIconComponent,
   RoutesIcon: RoutesIconComponent,
   RupeeIcon: RupeeIconComponent,
