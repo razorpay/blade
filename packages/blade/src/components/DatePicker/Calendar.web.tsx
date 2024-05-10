@@ -102,7 +102,6 @@ const Calendar = <Type extends DateSelectionType>({
       firstDayOfWeek={firstDayOfWeek}
       backgroundColor="surface.background.gray.intense"
       padding="spacing.6"
-      borderRadius="medium"
     >
       <CalendarHeader
         isRange={isRange}

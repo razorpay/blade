@@ -4,9 +4,8 @@ import dayjs from 'dayjs';
 import type { PickerType } from './types';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
-import { IconButton } from '~components/Button/IconButton';
 import { Text } from '~components/Typography';
-import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
+import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon } from '~components/Icons';
 
 type CalendarHeaderProps = {
   isRange: boolean;
@@ -76,7 +75,13 @@ const CalendarHeader = ({
 
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center">
-      <IconButton onClick={handlePrevious} accessibilityLabel="Previous" icon={ChevronLeftIcon} />
+      <Button
+        size="xsmall"
+        variant="tertiary"
+        onClick={handlePrevious}
+        accessibilityLabel="Previous"
+        icon={ArrowLeftIcon}
+      />
       <Box flexShrink={0} display="flex" gap={isRange ? '190px' : 'spacing.4'} alignItems="center">
         {isRange ? (
           <>
@@ -114,7 +119,13 @@ const CalendarHeader = ({
           </>
         )}
       </Box>
-      <IconButton onClick={handleNext} accessibilityLabel="Next" icon={ChevronRightIcon} />
+      <Button
+        size="xsmall"
+        variant="tertiary"
+        onClick={handleNext}
+        accessibilityLabel="Next"
+        icon={ArrowRightIcon}
+      />
     </Box>
   );
 };

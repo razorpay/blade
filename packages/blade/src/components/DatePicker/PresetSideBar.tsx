@@ -37,13 +37,16 @@ const PresetSideBar = ({
       gap="spacing.5"
       backgroundColor="surface.background.gray.moderate"
       width={makeSpace(155)}
+      borderRightColor="surface.border.gray.muted"
+      borderRightStyle="solid"
+      borderRightWidth="thin"
     >
       {presets.map((preset, index) => {
         const isSelected = isSamePreset(selectedPreset, preset.value(date));
         return (
           <Link
-            size="medium"
             key={index}
+            size="medium"
             variant="button"
             color={isSelected ? 'primary' : 'neutral'}
             onClick={() => onSelection(preset.value)}
