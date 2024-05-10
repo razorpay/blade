@@ -287,7 +287,7 @@ We will just need to make sure if we provide composition capabilities like Dropd
 
 - How should we approach locale?
 - What should we do about the triggers? will be have buttons/inputs both?
-  - Depending on what sort of features we are aiming for we can decide on the best API for the DatePicker component.
+  - We will only have inputs as triggers
 
 ## Integration with i18nify
 
