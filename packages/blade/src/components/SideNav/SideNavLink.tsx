@@ -7,7 +7,6 @@ import { Box } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
-import { useSideNavLevel } from './SideNavLevel';
 import { useId } from '~utils/useId';
 
 const StyledNavLink = styled.a((props) => {
@@ -28,6 +27,24 @@ const StyledNavLink = styled.a((props) => {
     border: `${makeBorderSize(props.theme.border.width.thinner)} solid ${
       props.theme.colors.transparent
     }`,
+
+    '.collapsed &': {
+      width: '36px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      transition: 'width .3s ease',
+      overflow: 'hidden',
+      '& p': {
+        display: 'none',
+      },
+      '&[aria-current]': {
+        '&::before': {
+          opacity: 0,
+          transition: 'opacity .3s ease',
+        },
+      },
+    },
     ':hover': {
       color: props.theme.colors.interactive.text.gray.normal,
       backgroundColor: props.theme.colors.interactive.background.gray.default,
@@ -121,6 +138,7 @@ const SideNavLink = ({
           fontWeight="medium"
           fontSize={100}
           lineHeight={100}
+          as="p"
         >
           {title}
         </BaseText>

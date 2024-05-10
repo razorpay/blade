@@ -9,12 +9,13 @@ import styled from 'styled-components';
 const StyledL1Container = styled(BaseBox)((props) => {
   return {
     width: '100%',
+    transition: 'width .3s ease',
+    padding: '12px',
     '&.collapsed': {
       width: '52px',
+      transition: 'width .2s ease',
+      padding: '12px 8px',
     },
-    // '&.collapsed:hover': {
-    //   width: '100%',
-    // },
   };
 });
 
@@ -23,11 +24,16 @@ const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.Reac
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
+  const [isTransitioning, setIsTransitioning] = React.useState(false);
 
   const onLinkActiveChange = (args) => {
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
       setIsL1Collapsed(true);
       setIsCollapsedHover(false);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 500);
     }
 
     if (args.level === 1 && !args.isL2Trigger && args.isActive) {
@@ -66,12 +72,10 @@ const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.Reac
           overflow="hidden"
           top="spacing.0"
           left="spacing.0"
-          // width={isL1Collapsed ? '52px' : '100%'}
-          padding="spacing.4"
           borderRightWidth="thin"
           borderRightColor="surface.border.gray.muted"
           onMouseOver={() => {
-            if (isL1Collapsed) {
+            if (isL1Collapsed && !isTransitioning) {
               setIsCollapsedHover(true);
             }
           }}
