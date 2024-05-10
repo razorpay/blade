@@ -159,8 +159,8 @@ const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
         })}
       </SideNav>
 
+      <Button onClick={() => setIsSideNavOpen(true)}>Open Nav</Button>
       <Box>
-        <Button onClick={() => setIsSideNavOpen(true)}>Open Nav</Button>
         <Switch>
           <Route path="/app" component={Page} />
           <Route path="/app/payouts" component={Page} />

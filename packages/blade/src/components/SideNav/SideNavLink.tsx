@@ -120,6 +120,14 @@ const SideNavLink = ({
         ref={navLinkRef}
         as={as}
         to={href}
+        onClick={() => {
+          onLinkActiveChange?.({
+            id: navItemId,
+            level: currentLevel,
+            isActive: Boolean(isCurrentPage),
+            isL2Trigger,
+          });
+        }}
         aria-current={isCurrentPage ? 'page' : undefined}
         data-level={currentLevel}
         data-l2Trigger={isL2Trigger}

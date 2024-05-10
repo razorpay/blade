@@ -30,12 +30,13 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
   const [isTransitioning, setIsTransitioning] = React.useState(false);
-  const isMobile = true;
+  const isMobile = false;
   const onLinkActiveChange: SideNavContextType['onLinkActiveChange'] = (args) => {
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
       setIsL1Collapsed(true);
       setIsCollapsedHover(false);
       setIsTransitioning(true);
+      // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
       setTimeout(() => {
         setIsTransitioning(false);
       }, 500);
@@ -57,37 +58,38 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
 
   return (
     <SideNavContext.Provider value={contextValue}>
-      <BaseBox
-        position="fixed"
-        backgroundColor="surface.background.gray.intense"
-        height="100%"
-        top="spacing.0"
-        left="spacing.0"
-        width={makeSize(size['256'])}
-      >
-        {isMobile ? (
-          <Drawer isOpen={isL2Open} onDismiss={() => setIsL2Open(false)} isLazy={false}>
-            <DrawerHeader title="" />
-            <DrawerBody>
-              <BaseBox ref={l2PortalContainerRef} />
-            </DrawerBody>
-          </Drawer>
-        ) : (
-          <BaseBox
-            position="absolute"
-            backgroundColor="surface.background.gray.intense"
-            width="100%"
-            ref={l2PortalContainerRef}
-          />
-        )}
-        {isMobile && onDismiss ? (
+      {isMobile && onDismiss ? (
+        <>
+          {/* L1 */}
           <Drawer isOpen={isOpen ?? false} onDismiss={onDismiss}>
             <DrawerHeader title="" />
             <DrawerBody>
               <BaseBox>{children}</BaseBox>
             </DrawerBody>
           </Drawer>
-        ) : (
+          {/* L2 */}
+          <Drawer isOpen={isL2Open} onDismiss={() => setIsL2Open(false)} isLazy={false}>
+            <DrawerHeader title="" />
+            <DrawerBody>
+              <BaseBox ref={l2PortalContainerRef} />
+            </DrawerBody>
+          </Drawer>
+        </>
+      ) : (
+        <BaseBox
+          position="fixed"
+          backgroundColor="surface.background.gray.intense"
+          height="100%"
+          top="spacing.0"
+          left="spacing.0"
+          width={makeSize(size['256'])}
+        >
+          <BaseBox
+            position="absolute"
+            backgroundColor="surface.background.gray.intense"
+            width="100%"
+            ref={l2PortalContainerRef}
+          />
           <StyledL1Container
             ref={l1ContainerRef}
             className={isL1Collapsed ? (isCollapsedHover ? '' : 'collapsed') : ''}
@@ -112,8 +114,8 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
           >
             {children}
           </StyledL1Container>
-        )}
-      </BaseBox>
+        </BaseBox>
+      )}
     </SideNavContext.Provider>
   );
 };
