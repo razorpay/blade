@@ -8,14 +8,16 @@ import { size } from '~tokens/global';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { useId } from '~utils/useId';
+import { ChevronRightIcon } from '~components/Icons';
+import BaseBox from '~components/Box/BaseBox';
 
 const StyledNavLink = styled.a((props) => {
   return {
     position: 'relative',
     display: 'flex',
     flexDirection: 'row',
-    gap: makeSpace(props.theme.spacing[3]),
     alignItems: 'center',
+    justifyContent: 'space-between',
     height: makeSize(size['36']),
     width: '100%',
     textDecoration: 'none',
@@ -30,12 +32,10 @@ const StyledNavLink = styled.a((props) => {
 
     '.collapsed &': {
       width: '36px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      transition: 'width .3s ease',
+      padding: '0px 10px',
+      transition: 'all .3s ease',
       overflow: 'hidden',
-      '& p': {
+      '& .hide-when-collapsed': {
         display: 'none',
       },
       '&[aria-current]': {
@@ -129,25 +129,33 @@ const SideNavLink = ({
         data-l2Trigger={isL2Trigger}
         data-navItemId={navItemId}
       >
-        <Box display="flex" flexDirection="row" alignItems="center" justifyContent="center">
-          <Icon size="medium" color="currentColor" />
+        <Box display="flex" flexDirection="row" gap="spacing.3">
+          <BaseBox display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+            <Icon size="medium" color="currentColor" />
+          </BaseBox>
+          <BaseText
+            truncateAfterLines={1}
+            color="currentColor"
+            fontWeight="medium"
+            fontSize={100}
+            lineHeight={100}
+            as="p"
+            className="hide-when-collapsed"
+          >
+            {title}
+          </BaseText>
         </Box>
-        <BaseText
-          truncateAfterLines={1}
-          color="currentColor"
-          fontWeight="medium"
-          fontSize={100}
-          lineHeight={100}
-          as="p"
-        >
-          {title}
-        </BaseText>
-        {children ? (
-          <FloatingPortal root={l2PortalContainerRef}>
-            {isCurrentPage ? children : null}
-          </FloatingPortal>
+        {isL2Trigger ? (
+          <BaseBox className="hide-when-collapsed">
+            <ChevronRightIcon size="medium" color="currentColor" />
+          </BaseBox>
         ) : null}
       </StyledNavLink>
+      {children ? (
+        <FloatingPortal root={l2PortalContainerRef}>
+          {isCurrentPage ? children : null}
+        </FloatingPortal>
+      ) : null}
     </NavLinkContext.Provider>
   );
 };

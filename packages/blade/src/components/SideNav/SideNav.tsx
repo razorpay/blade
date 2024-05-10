@@ -1,19 +1,23 @@
 import React from 'react';
+import styled from 'styled-components';
 import { SideNavContext } from './SideNavContext';
-import type { ActiveLinkType, SideNavProps } from './types';
+import type { SideNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
-import { makeSize } from '~utils';
-import styled from 'styled-components';
+import { makeMotionTime, makeSize } from '~utils';
 
 const StyledL1Container = styled(BaseBox)((props) => {
   return {
     width: '100%',
-    transition: 'width .3s ease',
+    transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
+      props.theme.motion.easing.entrance.attentive
+    }`,
     padding: '12px',
     '&.collapsed': {
       width: '52px',
-      transition: 'width .2s ease',
+      transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
+        props.theme.motion.easing.exit.attentive
+      }`,
       padding: '12px 8px',
     },
   };
