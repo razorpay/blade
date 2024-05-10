@@ -165,6 +165,44 @@ type CalendarProps = {
 };
 ```
 
+## Examples
+
+### Controlled DatePicker
+
+```jsx
+function ControlledDatePicker() {
+  const [selectedDate, setSelectedDate] = React.useState<DateValue>(new Date());
+
+  return (
+    <DatePicker
+      label="Pick date"
+      selectionType="single"
+      valueFormat="DD/MM/YYYY"
+      value={selectedDate}
+      onChange={setSelectedDate}
+    />
+  );
+}
+```
+
+### DatePicker Presets
+
+```jsx
+function DatePickerWithPresets() {
+  return (
+    <DatePicker
+      label="Pick date"
+      selectionType="range"
+      valueFormat="DD/MM/YYYY"
+      presets={[
+        { label: 'Past 7 days', value: [dayjs().subtract(7, 'day'), dayjs()] },
+        { label: 'Past month', value: [dayjs().subtract(1, 'month'), dayjs()] },
+      ]}
+    />
+  );
+}
+```
+
 <details>
 
 <summary>Alternative Approaches</summary>
