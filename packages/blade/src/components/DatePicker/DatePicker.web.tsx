@@ -19,6 +19,7 @@ const DatePicker = <Type extends DateSelectionType>({
   date,
   ...props
 }: CalendarProps<Type>): React.ReactElement => {
+  const isSingle = selectionType === 'single';
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
   const {
     onDateChange,
@@ -28,14 +29,14 @@ const DatePicker = <Type extends DateSelectionType>({
     setValue,
   } = useDatesState({
     level: 'day',
-    type: selectionType === 'single' ? 'default' : 'range',
+    type: isSingle ? 'default' : 'range',
     allowDeselect: false,
     allowSingleDateInRange,
     value,
     defaultValue,
     onChange: (date) => {
       onChange?.(date as any);
-      if (selectionType === 'single') return;
+      if (isSingle) return;
       setSelectedPreset(date as DatesRangeValue);
     },
   });
@@ -46,16 +47,18 @@ const DatePicker = <Type extends DateSelectionType>({
 
   return (
     <BaseBox display="flex" flexDirection="row">
-      <PresetSideBar
-        presets={presets}
-        date={currentDate}
-        selectedPreset={selectedPreset}
-        onSelection={(preset) => {
-          const presetValue = preset?.(currentDate);
-          setValue(presetValue);
-          setSelectedPreset(presetValue);
-        }}
-      />
+      {!isSingle ? (
+        <PresetSideBar
+          presets={presets}
+          date={currentDate}
+          selectedPreset={selectedPreset}
+          onSelection={(preset) => {
+            const presetValue = preset?.(currentDate);
+            setValue(presetValue);
+            setSelectedPreset(presetValue);
+          }}
+        />
+      ) : null}
       <Calendar
         selectionType={selectionType}
         defaultValue={defaultValue}

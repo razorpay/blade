@@ -98,7 +98,7 @@ const CalendarHeader = ({
               onClick={() => {
                 onLevelChange('year');
               }}
-              size="small"
+              size="xsmall"
               variant="tertiary"
               iconPosition="right"
               icon={ChevronDownIcon}
@@ -109,7 +109,7 @@ const CalendarHeader = ({
               onClick={() => {
                 onLevelChange('decade');
               }}
-              size="small"
+              size="xsmall"
               variant="tertiary"
               iconPosition="right"
               icon={ChevronDownIcon}

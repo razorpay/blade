@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-plus-operands */
 import type { DayOfWeek } from '@mantine/dates';
 import { getEndOfWeek, getStartOfWeek } from '@mantine/dates';
 import styled from 'styled-components';
@@ -6,8 +7,23 @@ import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { size } from '~tokens/global';
 import { makeSpace } from '~utils';
 import getIn from '~utils/lodashButBetter/get';
+import { useIsMobile } from '~utils/useIsMobile';
 
 const cell = {
+  gap: {
+    desktop: {
+      x: size[6],
+      y: size[2],
+    },
+    mobile: {
+      x: size[0],
+      y: size[0],
+    },
+  },
+  size: {
+    desktop: size[32],
+    mobile: size[48],
+  },
   background: {
     default: 'transparent',
     hover: 'interactive.background.gray.highlighted',
@@ -65,6 +81,16 @@ const inRangeCell = {
 const CalendarStyles = styled(BaseBox)<{
   firstDayOfWeek: DayOfWeek;
 }>(({ theme, firstDayOfWeek }) => {
+  // Calculate the index of the first and last day of the week, so we can style them differently
+  const startOfWeek = getStartOfWeek(new Date(), firstDayOfWeek).getDay();
+  const endOfWeek = getEndOfWeek(new Date(), firstDayOfWeek).getDay();
+  const indexOfSunday = 7 - startOfWeek;
+  const indexOfSaturday = 7 - endOfWeek;
+  const device = useIsMobile() ? 'mobile' : 'desktop';
+  const gapx = makeSpace(cell.gap[device].x);
+  const gapy = makeSpace(cell.gap[device].y);
+  const borderSpacing = `${gapx} ${gapy}`;
+
   const today = {
     '&[data-today]': {
       outlineWidth: theme.border.width.thin,
@@ -104,8 +130,8 @@ const CalendarStyles = styled(BaseBox)<{
         content: '""',
         position: 'absolute',
         top: 0,
-        left: '-4px',
-        width: '4px',
+        left: `-${makeSpace(cell.gap[device].x)}`,
+        width: makeSpace(cell.gap[device].x),
         height: '100%',
         pointerEvents: 'none',
         backgroundColor: getIn(theme.colors, inRangeCell.background.default),
@@ -132,22 +158,22 @@ const CalendarStyles = styled(BaseBox)<{
     },
   } as const;
 
-  // Calculate the index of the first and last day of the week, so we can style them differently
-  const startOfWeek = getStartOfWeek(new Date(), firstDayOfWeek).getDay();
-  const endOfWeek = getEndOfWeek(new Date(), firstDayOfWeek).getDay();
-  const indexOfSunday = 7 - startOfWeek;
-  const indexOfSaturday = 7 - endOfWeek;
-
   return {
     width: 'min-content',
     '.DatePicker-levelsGroup': {
       display: 'flex',
-      gap: makeSpace(theme.spacing[6]),
+      gap: makeSpace(theme.spacing[7]),
       div: {
         minWidth: '252px',
       },
       table: {
-        width: '100%',
+        borderCollapse: 'separate',
+        borderSpacing,
+        width: `calc(100% + ${makeSpace(cell.gap[device].x * 2)})`,
+        marginLeft: `-${makeSpace(cell.gap[device].x)}`,
+      },
+      td: {
+        padding: '0px !important',
       },
     },
     '.DatePicker-row': {
@@ -157,7 +183,7 @@ const CalendarStyles = styled(BaseBox)<{
       display: 'none',
     },
     '.DatePicker-weekday': {
-      ...getTextStyles({ theme, variant: 'body', size: 'small', weight: 'semibold' }),
+      ...getTextStyles({ theme, variant: 'body', size: 'small', weight: 'medium' }),
       color: theme.colors.surface.text.gray.subtle,
       paddingBottom: makeSpace(theme.spacing[2]),
       [`&:nth-child(${indexOfSunday}), &:nth-child(${indexOfSaturday})`]: {
@@ -167,12 +193,12 @@ const CalendarStyles = styled(BaseBox)<{
     '.DatePicker-cell': {
       cursor: 'pointer',
       width: '100%',
-      minWidth: size[32],
-      minHeight: size[32],
+      minWidth: makeSpace(cell.size[device]),
+      minHeight: makeSpace(cell.size[device]),
       borderRadius: theme.border.radius.medium,
       backgroundColor: getIn(theme.colors, cell.background.default),
       border: 'none',
-      ...getTextStyles({ theme, variant: 'body', size: 'medium' }),
+      ...getTextStyles({ theme, variant: 'body', size: 'medium', weight: 'regular' }),
 
       '&:hover': {
         backgroundColor: getIn(theme.colors, cell.background.hover),

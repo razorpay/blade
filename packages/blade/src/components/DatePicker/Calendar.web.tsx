@@ -116,6 +116,7 @@ const Calendar = <Type extends DateSelectionType>({
         onPreviousYear={handlePreviousYear}
       />
       <DatePicker
+        withCellSpacing={false}
         type={selectionType === 'single' ? 'default' : 'range'}
         date={_date}
         locale={locale}
