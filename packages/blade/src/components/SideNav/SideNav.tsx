@@ -4,33 +4,42 @@ import type { ActiveLinkType, SideNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import { makeSize } from '~utils';
+import styled from 'styled-components';
+
+const StyledL1Container = styled(BaseBox)((props) => {
+  return {
+    width: '100%',
+    '&.collapsed': {
+      width: '52px',
+    },
+    // '&.collapsed:hover': {
+    //   width: '100%',
+    // },
+  };
+});
 
 const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
-  const [activeLink, setActiveLink] = React.useState<ActiveLinkType>(undefined);
+  const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
+  const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
+
+  const onLinkActiveChange = (args) => {
+    if (args.level === 1 && args.isL2Trigger && args.isActive) {
+      setIsL1Collapsed(true);
+      setIsCollapsedHover(false);
+    }
+
+    if (args.level === 1 && !args.isL2Trigger && args.isActive) {
+      setIsL1Collapsed(false);
+    }
+  };
 
   const contextValue = React.useMemo(
-    () => ({ RouterLink, l2PortalContainerRef, setActiveLink }),
+    () => ({ RouterLink, l2PortalContainerRef, onLinkActiveChange }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
-
-  React.useEffect(() => {
-    if (activeLink?.level === 2) {
-      const activeL2TriggerItems = l1ContainerRef.current?.querySelectorAll(
-        '[aria-current="page"][data-l2Trigger="true"]',
-      );
-      activeL2TriggerItems?.forEach((el) => {
-        el.removeAttribute('aria-current');
-        el.classList.remove('active');
-      });
-
-      activeLink.parentLinkRef.current?.setAttribute('aria-current', 'page');
-      activeLink.parentLinkRef.current?.classList.add('active');
-    }
-    console.log({ activeLink });
-  }, [activeLink]);
 
   return (
     <SideNavContext.Provider value={contextValue}>
@@ -48,36 +57,33 @@ const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.Reac
           width="100%"
           ref={l2PortalContainerRef}
         />
-        <BaseBox
+        <StyledL1Container
           ref={l1ContainerRef}
+          className={isL1Collapsed ? (isCollapsedHover ? '' : 'collapsed') : ''}
           position="absolute"
           backgroundColor="surface.background.gray.intense"
           height="100%"
+          overflow="hidden"
           top="spacing.0"
           left="spacing.0"
-          width={activeLink?.level === 2 ? '52px' : '50%'}
+          // width={isL1Collapsed ? '52px' : '100%'}
           padding="spacing.4"
           borderRightWidth="thin"
           borderRightColor="surface.border.gray.muted"
-          // onMouseOver={() => {
-          //   setIsL2Open(false);
-          // }}
-          // onMouseOut={() => {
-          //   setIsL2Open(true);
-          // }}
+          onMouseOver={() => {
+            if (isL1Collapsed) {
+              setIsCollapsedHover(true);
+            }
+          }}
+          onMouseOut={() => {
+            if (isL1Collapsed) {
+              setIsCollapsedHover(false);
+            }
+          }}
         >
           {children}
-        </BaseBox>
+        </StyledL1Container>
       </BaseBox>
-
-      {/* <BaseBox
-        position="absolute"
-        padding="spacing.4"
-        borderRightWidth="thin"
-        borderRightColor="surface.border.gray.muted"
-      >
-        <BaseBox ref={l2PortalContainerRef} marginLeft="52px" />
-      </BaseBox> */}
     </SideNavContext.Provider>
   );
 };

@@ -56,7 +56,7 @@ const StyledNavLink = styled.a((props) => {
         )}`,
       },
     },
-    '&[aria-current]:hover': {
+    '&[aria-current]:`hover`': {
       color: props.theme.colors.interactive.text.primary.normal,
       backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
     },
@@ -79,13 +79,22 @@ const SideNavLink = ({
 }: SideNavLinkProps): React.ReactElement => {
   const [shouldShowL2Menu, setShouldShowL2Menu] = React.useState(false);
   // const [isCurrentItemActive, setIsCurrentItemActive] = React.useState(false);
-  const { l2PortalContainerRef, setActiveLink } = useSideNav();
+  const { l2PortalContainerRef, onLinkActiveChange } = useSideNav();
   const navLinkRef = React.useRef<HTMLAnchorElement>(null);
   const { level: _prevLevel, ref: parentLinkRef } = useNavLink();
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
   const isL2Trigger = Boolean(children);
   const navItemId = useId('nav-item');
+
+  React.useEffect(() => {
+    onLinkActiveChange({
+      id: navItemId,
+      level: currentLevel,
+      isActive: isCurrentPage,
+      isL2Trigger,
+    });
+  }, [isCurrentPage]);
 
   return (
     <NavLinkContext.Provider value={{ level: currentLevel, ref: isL2Trigger ? navLinkRef : null }}>

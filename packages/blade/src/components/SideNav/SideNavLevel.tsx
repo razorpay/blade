@@ -30,7 +30,16 @@ const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactE
 
   return (
     <SideNavLevelContext.Provider value={contextValue}>
-      <BaseBox marginLeft="52px" padding={['spacing.3', 'spacing.4']}>
+      <BaseBox
+        marginLeft="52px"
+        padding={['spacing.3', 'spacing.4']}
+        onMouseOver={(e) => {
+          e.stopPropagation();
+        }}
+        onMouseOut={(e) => {
+          e.stopPropagation();
+        }}
+      >
         {children}
       </BaseBox>
     </SideNavLevelContext.Provider>
