@@ -15,12 +15,12 @@ The Date Picker component lets users select a date from a calendar. It is used t
 ## Components
 
 - Calendar
-- DatePickerInput
+- DatePicker
 
 ## Basic Usage
 
 ```jsx
-<DatePickerInput
+<DatePicker
   label="Pick date"
   selectionType="single"
   valueFormat="DD/MM/YYYY"
@@ -33,7 +33,7 @@ The Date Picker component lets users select a date from a calendar. It is used t
 
 ## API
 
-### DatePickerInput API
+### DatePicker API
 
 ```ts
 type InputProps = Pick<
@@ -54,7 +54,7 @@ type InputProps = Pick<
   | 'autoFocus'
 >;
 
-type DatePickerInputProps = InputProps &
+type DatePickerProps = InputProps &
   CalendarProps & {
     /**
      * Sets the format of the date value
@@ -272,7 +272,7 @@ Pros:
 
 ### Conclusion
 
-Given the issues with the Dropdown component composition and the complexity of handling many edgecases and the scope of the DatePicker component only being used with an Input component we should go with the `<DatePickerInput />` component approach, where we have total control over the UX/behaviour of the component & can automatically handle the focus management, accessibility, mobile bottomsheet etc.
+Given the issues with the Dropdown component composition and the complexity of handling many edgecases and the scope of the DatePicker component only being used with an Input component we should go with the `<DatePicker />` component approach, where we have total control over the UX/behaviour of the component & can automatically handle the focus management, accessibility, mobile bottomsheet etc.
 
 But still we could expose Calendar as a standalone component for advanced usecases.
 
