@@ -1,4 +1,4 @@
-import UnderlineIcon from './';
+import UnderlineIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<UnderlineIcon />', () => {

@@ -1,4 +1,4 @@
-import DiscIcon from './';
+import DiscIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<DiscIcon />', () => {

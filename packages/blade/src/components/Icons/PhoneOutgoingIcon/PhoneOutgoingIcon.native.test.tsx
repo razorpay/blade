@@ -1,4 +1,4 @@
-import PhoneOutgoingIcon from './';
+import PhoneOutgoingIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PhoneOutgoingIcon />', () => {

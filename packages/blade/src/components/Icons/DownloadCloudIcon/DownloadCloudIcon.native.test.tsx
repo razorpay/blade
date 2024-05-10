@@ -1,4 +1,4 @@
-import DownloadCloudIcon from './';
+import DownloadCloudIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<DownloadCloudIcon />', () => {

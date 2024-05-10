@@ -1,4 +1,4 @@
-import SquareIcon from './';
+import SquareIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SquareIcon />', () => {

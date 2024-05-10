@@ -8,11 +8,11 @@ const prettier = require('prettier');
 const transformSvgNode = (node, components = new Set()) => {
   if (node.name === 'svg') {
     node.attributes = {
+      styledProps: '',
       width: '{width}',
       height: '{height}',
       viewBox: '0 0 24 24',
       fill: 'none',
-      styledProps: '',
     };
   }
 

@@ -1,4 +1,4 @@
-import ClipboardIcon from './';
+import ClipboardIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ClipboardIcon />', () => {

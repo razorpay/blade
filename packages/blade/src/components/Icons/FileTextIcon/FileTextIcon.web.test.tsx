@@ -1,4 +1,4 @@
-import FileTextIcon from '.';
+import FileTextIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<FileTextIcon />', () => {

@@ -1,4 +1,4 @@
-import ShareIcon from './';
+import ShareIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ShareIcon />', () => {

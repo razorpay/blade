@@ -1,4 +1,4 @@
-import WifiOffIcon from './';
+import WifiOffIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<WifiOffIcon />', () => {

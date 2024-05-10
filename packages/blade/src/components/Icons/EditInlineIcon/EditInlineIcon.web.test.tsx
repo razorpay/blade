@@ -1,4 +1,4 @@
-import EditInlineIcon from '.';
+import EditInlineIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<EditInlineIcon />', () => {

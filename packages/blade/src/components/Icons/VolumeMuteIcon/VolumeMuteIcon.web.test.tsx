@@ -1,4 +1,4 @@
-import VolumeMuteIcon from '.';
+import VolumeMuteIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<VolumeMuteIcon />', () => {

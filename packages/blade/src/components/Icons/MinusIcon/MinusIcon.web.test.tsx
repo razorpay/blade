@@ -1,4 +1,4 @@
-import MinusIcon from '.';
+import MinusIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<MinusIcon />', () => {

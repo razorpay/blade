@@ -1,4 +1,4 @@
-import SmartCollectIcon from '.';
+import SmartCollectIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SmartCollectIcon />', () => {

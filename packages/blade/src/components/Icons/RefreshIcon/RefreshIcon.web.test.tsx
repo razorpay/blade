@@ -1,4 +1,4 @@
-import RefreshIcon from '.';
+import RefreshIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<RefreshIcon />', () => {

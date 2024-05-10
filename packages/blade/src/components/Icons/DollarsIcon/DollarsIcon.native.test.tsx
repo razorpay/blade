@@ -1,4 +1,4 @@
-import DollarsIcon from './';
+import DollarsIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<DollarsIcon />', () => {

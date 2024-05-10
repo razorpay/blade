@@ -1,4 +1,4 @@
-import CalendarIcon from './';
+import CalendarIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CalendarIcon />', () => {

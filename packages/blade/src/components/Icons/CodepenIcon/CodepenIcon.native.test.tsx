@@ -1,4 +1,4 @@
-import CodepenIcon from './';
+import CodepenIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CodepenIcon />', () => {

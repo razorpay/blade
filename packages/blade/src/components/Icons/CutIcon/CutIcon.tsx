@@ -1,4 +1,4 @@
-import { Svg, G, Path, Defs, ClipPath, Rect } from '../_Svg';
+import { Svg, Path } from '../_Svg';
 import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
 
@@ -7,52 +7,12 @@ const CutIcon: IconComponent = ({ size, color, ...styledProps }) => {
 
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
-      <G clipPath="url(#clip0_60_191)">
-        <Path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M6 9C7.65685 9 9 7.65685 9 6C9 4.34315 7.65685 3 6 3C4.34315 3 3 4.34315 3 6C3 7.65685 4.34315 9 6 9Z"
-          stroke={iconColor}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <Path
-          fillRule="evenodd"
-          clipRule="evenodd"
-          d="M6 21C7.65685 21 9 19.6569 9 18C9 16.3431 7.65685 15 6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21Z"
-          stroke={iconColor}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <Path
-          d="M20 4L8.12 15.88"
-          stroke={iconColor}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <Path
-          d="M14.47 14.48L20 20"
-          stroke={iconColor}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        <Path
-          d="M8.12 8.12L12 12"
-          stroke={iconColor}
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </G>
-      <Defs>
-        <ClipPath id="clip0_60_191">
-          <Rect width="24" height="24" fill={iconColor} />
-        </ClipPath>
-      </Defs>
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M2 6C2 3.79086 3.79086 2 6 2C8.20914 2 10 3.79086 10 6C10 6.74181 9.79807 7.43645 9.44618 8.03197L12 10.5858L19.2929 3.29289C19.6834 2.90237 20.3166 2.90237 20.7071 3.29289C21.0976 3.68342 21.0976 4.31658 20.7071 4.70711L12.7071 12.7071L9.44618 15.968C9.79807 16.5635 10 17.2582 10 18C10 20.2091 8.20914 22 6 22C3.79086 22 2 20.2091 2 18C2 15.7909 3.79086 14 6 14C6.74181 14 7.43645 14.2019 8.03196 14.5538L10.5858 12L8.03197 9.44618C7.43645 9.79807 6.74181 10 6 10C3.79086 10 2 8.20914 2 6ZM7.44936 7.37818C7.43698 7.38939 7.42482 7.40095 7.41289 7.41289C7.40095 7.42482 7.38939 7.43698 7.37818 7.44936C7.01945 7.79058 6.53418 8 6 8C4.89543 8 4 7.10457 4 6C4 4.89543 4.89543 4 6 4C7.10457 4 8 4.89543 8 6C8 6.53418 7.79058 7.01945 7.44936 7.37818ZM7.37821 16.5507C7.38941 16.563 7.40097 16.5752 7.41289 16.5871C7.42481 16.599 7.43696 16.6106 7.44932 16.6218C7.79056 16.9805 8 17.4658 8 18C8 19.1046 7.10457 20 6 20C4.89543 20 4 19.1046 4 18C4 16.8954 4.89543 16 6 16C6.5342 16 7.01948 16.2094 7.37821 16.5507ZM13.7622 13.7735C14.1524 13.3826 14.7856 13.3821 15.1764 13.7722L20.7064 19.2922C21.0973 19.6824 21.0979 20.3156 20.7077 20.7064C20.3175 21.0973 19.6844 21.0979 19.2935 20.7077L13.7635 15.1877C13.3726 14.7976 13.3721 14.1644 13.7622 13.7735Z"
+        fill={iconColor}
+      />
     </Svg>
   );
 };

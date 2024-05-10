@@ -1,4 +1,4 @@
-import PrinterIcon from './';
+import PrinterIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PrinterIcon />', () => {

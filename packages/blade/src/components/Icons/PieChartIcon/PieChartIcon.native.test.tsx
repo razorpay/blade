@@ -1,4 +1,4 @@
-import PieChartIcon from './';
+import PieChartIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PieChartIcon />', () => {

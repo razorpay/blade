@@ -1,4 +1,4 @@
-import BriefcaseIcon from './';
+import BriefcaseIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BriefcaseIcon />', () => {

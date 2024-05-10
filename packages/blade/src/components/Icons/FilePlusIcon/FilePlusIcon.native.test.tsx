@@ -1,4 +1,4 @@
-import FilePlusIcon from './';
+import FilePlusIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<FilePlusIcon />', () => {

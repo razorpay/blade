@@ -1,4 +1,4 @@
-import MoveIcon from './';
+import MoveIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MoveIcon />', () => {

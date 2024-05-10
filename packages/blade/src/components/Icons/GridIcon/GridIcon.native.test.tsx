@@ -1,4 +1,4 @@
-import GridIcon from './';
+import GridIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<GridIcon />', () => {

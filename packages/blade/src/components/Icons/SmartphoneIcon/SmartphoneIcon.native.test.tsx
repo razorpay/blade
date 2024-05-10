@@ -1,4 +1,4 @@
-import SmartphoneIcon from './';
+import SmartphoneIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SmartphoneIcon />', () => {

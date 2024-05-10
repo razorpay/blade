@@ -1,4 +1,4 @@
-import PauseIcon from '.';
+import PauseIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<PauseIcon />', () => {

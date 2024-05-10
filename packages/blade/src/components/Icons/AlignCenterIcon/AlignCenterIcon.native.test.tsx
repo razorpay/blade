@@ -1,4 +1,4 @@
-import AlignCenterIcon from './';
+import AlignCenterIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<AlignCenterIcon />', () => {

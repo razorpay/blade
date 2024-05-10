@@ -1,4 +1,4 @@
-import ZoomInIcon from './';
+import ZoomInIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ZoomInIcon />', () => {

@@ -1,4 +1,4 @@
-import UploadCloudIcon from './';
+import UploadCloudIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<UploadCloudIcon />', () => {

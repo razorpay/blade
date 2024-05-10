@@ -1,4 +1,4 @@
-import ThumbsUpIcon from './';
+import ThumbsUpIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ThumbsUpIcon />', () => {

@@ -1,4 +1,4 @@
-import FeatherIcon from './';
+import FeatherIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<FeatherIcon />', () => {

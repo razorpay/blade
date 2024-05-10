@@ -1,4 +1,4 @@
-import PlusIcon from '.';
+import PlusIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<PlusIcon />', () => {

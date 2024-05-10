@@ -1,4 +1,4 @@
-import TrashIcon from '.';
+import TrashIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<TrashIcon />', () => {

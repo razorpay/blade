@@ -1,4 +1,4 @@
-import BookIcon from '.';
+import BookIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<BookIcon />', () => {

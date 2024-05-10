@@ -1,4 +1,4 @@
-import LogInIcon from './';
+import LogInIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<LogInIcon />', () => {

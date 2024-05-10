@@ -1,4 +1,4 @@
-import ChromeIcon from './';
+import ChromeIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ChromeIcon />', () => {
