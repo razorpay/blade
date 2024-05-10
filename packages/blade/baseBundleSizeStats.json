@@ -14,18 +14,18 @@
     "loading": 0.57923828125
   },
   {
-    "name": "Alert",
-    "passed": true,
-    "size": 33527,
-    "sizeLimit": 2000000,
-    "loading": 0.65482421875
-  },
-  {
     "name": "ActionList, ActionListItem, ActionListItemBadge, ActionListItemBadgeGroup, ActionListItemIcon, ActionListItemText, ActionListSection",
     "passed": true,
     "size": 35058,
     "sizeLimit": 2000000,
     "loading": 0.6847265625
+  },
+  {
+    "name": "Alert",
+    "passed": true,
+    "size": 33527,
+    "sizeLimit": 2000000,
+    "loading": 0.65482421875
   },
   {
     "name": "Amount",
@@ -273,6 +273,13 @@
     "loading": 0.517421875
   },
   {
+    "name": "Link",
+    "passed": true,
+    "size": 24405,
+    "sizeLimit": 2000000,
+    "loading": 0.47666015625
+  },
+  {
     "name": "SelectInput, AutoComplete",
     "passed": true,
     "size": 41367,
@@ -313,13 +320,6 @@
     "size": 39588,
     "sizeLimit": 2000000,
     "loading": 0.773203125
-  },
-  {
-    "name": "Link",
-    "passed": true,
-    "size": 24405,
-    "sizeLimit": 2000000,
-    "loading": 0.47666015625
   },
   {
     "name": "RadioGroup",
