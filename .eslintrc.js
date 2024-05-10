@@ -50,7 +50,11 @@ module.exports = {
     ],
     'react/display-name': 'off',
     'import/no-named-as-default': 'off',
-    'import/no-cycle': ['error', { maxDepth: '∞' }],
+    // Some bug with import/no-cycle where the ignoreExternal is not working as expected
+    // Setting ignoreExternal: true is slowing things down
+    // https://github.com/import-js/eslint-plugin-import/issues/2348
+    'import/no-cycle': ['error', { maxDepth: 4, ignoreExternal: false }],
+    'import/no-deprecated': 'off',
   },
   env: {
     browser: true,
@@ -132,7 +136,8 @@ module.exports = {
       plugins: ['@typescript-eslint', 'jsx-a11y', 'no-only-tests', 'blade'],
       rules: {
         'blade/no-cross-platform-imports': ['error', { ignoreImportsPattern: 'renderWithSSR' }],
-        'import/no-cycle': ['error', { maxDepth: '∞' }],
+        'import/no-cycle': ['error', { maxDepth: 4, ignoreExternal: false }],
+        'import/no-deprecated': 'off',
         'react/jsx-uses-react': 'off',
         'react/react-in-jsx-scope': 'off',
         'no-use-before-define': 'off',
@@ -190,6 +195,8 @@ module.exports = {
       files: ['**/*.stories.{ts,tsx}', '**/*.stories.internal.{ts,tsx}'],
       rules: {
         'react/display-name': ['off'],
+        'import/no-deprecated': 'off',
+        'import/no-cycle': 'off',
       },
     },
   ],
