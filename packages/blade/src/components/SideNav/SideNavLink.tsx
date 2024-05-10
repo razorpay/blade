@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FloatingPortal } from '@floating-ui/react';
 import { useSideNav } from './SideNavContext';
-import type { SideNavLinkProps } from './types';
+import type { NavLinkContextType, SideNavLinkProps } from './types';
 import { Box } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
@@ -82,8 +82,8 @@ const StyledNavLink = styled.a((props) => {
   };
 });
 
-const NavLinkContext = React.createContext({});
-const useNavLink = () => {
+const NavLinkContext = React.createContext<NavLinkContextType>({});
+const useNavLink = (): NavLinkContextType => {
   const value = React.useContext(NavLinkContext);
   return value;
 };
@@ -96,27 +96,26 @@ const SideNavLink = ({
   icon: Icon,
   as,
 }: SideNavLinkProps): React.ReactElement => {
-  const [shouldShowL2Menu, setShouldShowL2Menu] = React.useState(false);
-  // const [isCurrentItemActive, setIsCurrentItemActive] = React.useState(false);
   const { l2PortalContainerRef, onLinkActiveChange } = useSideNav();
   const navLinkRef = React.useRef<HTMLAnchorElement>(null);
-  const { level: _prevLevel, ref: parentLinkRef } = useNavLink();
+  const { level: _prevLevel } = useNavLink();
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
   const isL2Trigger = Boolean(children);
   const navItemId = useId('nav-item');
 
   React.useEffect(() => {
-    onLinkActiveChange({
+    onLinkActiveChange?.({
       id: navItemId,
       level: currentLevel,
-      isActive: isCurrentPage,
+      isActive: Boolean(isCurrentPage),
       isL2Trigger,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCurrentPage]);
 
   return (
-    <NavLinkContext.Provider value={{ level: currentLevel, ref: isL2Trigger ? navLinkRef : null }}>
+    <NavLinkContext.Provider value={{ level: currentLevel }}>
       <StyledNavLink
         ref={navLinkRef}
         as={as}

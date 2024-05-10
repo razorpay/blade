@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { SideNavContext } from './SideNavContext';
-import type { SideNavProps } from './types';
+import type { SideNavContextType, SideNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import { makeMotionTime, makeSize } from '~utils';
@@ -23,14 +23,14 @@ const StyledL1Container = styled(BaseBox)((props) => {
   };
 });
 
-const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.ReactElement => {
+const SideNav = ({ children }: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
   const [isTransitioning, setIsTransitioning] = React.useState(false);
 
-  const onLinkActiveChange = (args) => {
+  const onLinkActiveChange: SideNavContextType['onLinkActiveChange'] = (args) => {
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
       setIsL1Collapsed(true);
       setIsCollapsedHover(false);
@@ -46,7 +46,7 @@ const SideNav = ({ children, routerLink: RouterLink }: SideNavProps): React.Reac
   };
 
   const contextValue = React.useMemo(
-    () => ({ RouterLink, l2PortalContainerRef, onLinkActiveChange }),
+    () => ({ l2PortalContainerRef, onLinkActiveChange }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );

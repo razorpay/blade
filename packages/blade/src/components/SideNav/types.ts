@@ -23,10 +23,26 @@ type SideNavLinkProps = {
   children?: React.ReactElement;
 };
 
-type SideNavContextType = {
-  l2PortalContainerRef?: React.RefObject<HTMLDivElement>;
-  activeLink?: ActiveLinkType;
-  setActiveLink: (activeLink: ActiveLinkType) => void;
+type OnLinkActiveChangeArgs = {
+  id: string;
+  level: number;
+  isActive: boolean;
+  isL2Trigger: boolean;
 };
 
-export type { SideNavProps, SideNavContextType, SideNavLinkProps, ActiveLinkType };
+type SideNavContextType = {
+  l2PortalContainerRef?: React.RefObject<HTMLDivElement>;
+  onLinkActiveChange?: (args: OnLinkActiveChangeArgs) => void;
+};
+
+type NavLinkContextType = {
+  level?: number;
+};
+
+export type {
+  SideNavProps,
+  SideNavContextType,
+  NavLinkContextType,
+  SideNavLinkProps,
+  ActiveLinkType,
+};
