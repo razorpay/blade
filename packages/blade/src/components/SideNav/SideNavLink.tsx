@@ -5,7 +5,7 @@ import { useSideNav } from './SideNavContext';
 import type { SideNavLinkProps } from './types';
 import { Box } from '~components/Box';
 import { size } from '~tokens/global';
-import { makeBorderSize, makeSize, makeSpace } from '~utils';
+import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { useId } from '~utils/useId';
 import { ChevronRightIcon } from '~components/Icons';
@@ -32,6 +32,9 @@ const StyledNavLink = styled.a((props) => {
 
     '.collapsed &': {
       width: '36px',
+      transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
+        props.theme.motion.easing.exit.attentive
+      }`,
       padding: '0px 10px',
       overflow: 'hidden',
       '& .hide-when-collapsed': {

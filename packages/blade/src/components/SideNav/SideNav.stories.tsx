@@ -124,22 +124,6 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
       </SideNav>
 
       <Box marginLeft="300px">
-        <NavLink
-          onChange={(...args) => {
-            console.log({ args });
-          }}
-          to="/app"
-        >
-          Hi
-        </NavLink>
-        <NavLink
-          onChange={(...args) => {
-            console.log({ args });
-          }}
-          to="/app/payouts"
-        >
-          Payouts
-        </NavLink>
         <Switch>
           <Route path="/app" component={Page} />
           <Route path="/app/payouts" component={Page} />
