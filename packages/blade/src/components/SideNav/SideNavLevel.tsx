@@ -4,8 +4,8 @@ import BaseBox from '~components/Box/BaseBox';
 const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   return (
     <BaseBox
-      marginLeft="52px"
-      padding={['spacing.3', 'spacing.4']}
+      marginLeft={{ base: 'spacing.0', m: '52px' }}
+      padding={{ base: 'spacing.0', m: ['spacing.3', 'spacing.4'] }}
       onMouseOver={(e) => {
         e.stopPropagation();
       }}

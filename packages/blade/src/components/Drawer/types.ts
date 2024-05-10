@@ -38,6 +38,14 @@ type DrawerProps = {
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   initialFocusRef?: React.MutableRefObject<any>;
+
+  /**
+   * If `true`, the DrawerBody will be rendered only when it becomes active.
+   * Set to `false` to keep DrawerBody in DOM
+   *
+   * @default true
+   */
+  isLazy?: boolean;
 } & TestID;
 
 type DrawerHeaderProps = {

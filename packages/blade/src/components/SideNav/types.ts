@@ -1,8 +1,21 @@
 import type React from 'react';
+import type { DrawerProps } from '~components/Drawer';
 import type { IconComponent } from '~components/Icons';
 
 type SideNavProps = {
   children: React.ReactNode;
+  /**
+   * **Only applicable in mobile**
+   *
+   * State for opening / closing the SideNav in mobile
+   */
+  isOpen?: DrawerProps['isOpen'];
+  /**
+   * **Only applicable in mobile**
+   *
+   * Callback when SideNav is closed
+   */
+  onDismiss?: DrawerProps['onDismiss'];
 };
 
 type ActiveLinkType =

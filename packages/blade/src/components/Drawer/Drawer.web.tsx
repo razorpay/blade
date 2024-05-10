@@ -72,6 +72,7 @@ const _Drawer = ({
   accessibilityLabel,
   showOverlay = true,
   initialFocusRef,
+  isLazy = true,
   testID,
 }: DrawerProps): React.ReactElement => {
   const closeButtonRef = React.useRef<HTMLDivElement>(null);
@@ -126,9 +127,10 @@ const _Drawer = ({
   return (
     <DrawerContext.Provider value={{ close: onDismiss, closeButtonRef }}>
       <FloatingPortal>
-        {isMounted ? (
+        {isMounted || !isLazy ? (
           <FloatingFocusManager context={context} initialFocus={initialFocusRef ?? closeButtonRef}>
             <BaseBox
+              display={isLazy ? undefined : isMounted ? 'block' : 'none'}
               position="fixed"
               {...metaAttribute({
                 name: MetaConstants.Drawer,

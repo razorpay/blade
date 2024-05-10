@@ -120,12 +120,7 @@ const SideNavLink = ({
         ref={navLinkRef}
         as={as}
         to={href}
-        // for react router v5
-        exact={true}
-        // for react router v6
-        end={true}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        isActive={(): boolean => isCurrentPage ?? false}
+        aria-current={isCurrentPage ? 'page' : undefined}
         data-level={currentLevel}
         data-l2Trigger={isL2Trigger}
         data-navItemId={navItemId}

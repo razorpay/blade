@@ -5,6 +5,7 @@ import type { SideNavContextType, SideNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import { makeMotionTime, makeSize } from '~utils';
+import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 
 const StyledL1Container = styled(BaseBox)((props) => {
   return {
@@ -23,13 +24,13 @@ const StyledL1Container = styled(BaseBox)((props) => {
   };
 });
 
-const SideNav = ({ children }: SideNavProps): React.ReactElement => {
+const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
   const [isTransitioning, setIsTransitioning] = React.useState(false);
-
+  const isMobile = true;
   const onLinkActiveChange: SideNavContextType['onLinkActiveChange'] = (args) => {
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
       setIsL1Collapsed(true);
@@ -51,6 +52,9 @@ const SideNav = ({ children }: SideNavProps): React.ReactElement => {
     [],
   );
 
+  const isL2Open = isL1Collapsed;
+  const setIsL2Open = setIsL1Collapsed;
+
   return (
     <SideNavContext.Provider value={contextValue}>
       <BaseBox
@@ -61,36 +65,54 @@ const SideNav = ({ children }: SideNavProps): React.ReactElement => {
         left="spacing.0"
         width={makeSize(size['256'])}
       >
-        <BaseBox
-          position="absolute"
-          backgroundColor="surface.background.gray.intense"
-          width="100%"
-          ref={l2PortalContainerRef}
-        />
-        <StyledL1Container
-          ref={l1ContainerRef}
-          className={isL1Collapsed ? (isCollapsedHover ? '' : 'collapsed') : ''}
-          position="absolute"
-          backgroundColor="surface.background.gray.intense"
-          height="100%"
-          overflow="hidden"
-          top="spacing.0"
-          left="spacing.0"
-          borderRightWidth="thin"
-          borderRightColor="surface.border.gray.muted"
-          onMouseOver={() => {
-            if (isL1Collapsed && !isTransitioning) {
-              setIsCollapsedHover(true);
-            }
-          }}
-          onMouseOut={() => {
-            if (isL1Collapsed) {
-              setIsCollapsedHover(false);
-            }
-          }}
-        >
-          {children}
-        </StyledL1Container>
+        {isMobile ? (
+          <Drawer isOpen={isL2Open} onDismiss={() => setIsL2Open(false)} isLazy={false}>
+            <DrawerHeader title="" />
+            <DrawerBody>
+              <BaseBox ref={l2PortalContainerRef} />
+            </DrawerBody>
+          </Drawer>
+        ) : (
+          <BaseBox
+            position="absolute"
+            backgroundColor="surface.background.gray.intense"
+            width="100%"
+            ref={l2PortalContainerRef}
+          />
+        )}
+        {isMobile && onDismiss ? (
+          <Drawer isOpen={isOpen ?? false} onDismiss={onDismiss}>
+            <DrawerHeader title="" />
+            <DrawerBody>
+              <BaseBox>{children}</BaseBox>
+            </DrawerBody>
+          </Drawer>
+        ) : (
+          <StyledL1Container
+            ref={l1ContainerRef}
+            className={isL1Collapsed ? (isCollapsedHover ? '' : 'collapsed') : ''}
+            position="absolute"
+            backgroundColor="surface.background.gray.intense"
+            height="100%"
+            overflow="hidden"
+            top="spacing.0"
+            left="spacing.0"
+            borderRightWidth="thin"
+            borderRightColor="surface.border.gray.muted"
+            onMouseOver={() => {
+              if (isL1Collapsed && !isTransitioning) {
+                setIsCollapsedHover(true);
+              }
+            }}
+            onMouseOut={() => {
+              if (isL1Collapsed) {
+                setIsCollapsedHover(false);
+              }
+            }}
+          >
+            {children}
+          </StyledL1Container>
+        )}
       </BaseBox>
     </SideNavContext.Provider>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
-import { NavLink, Route, Switch, useRouteMatch, matchPath, useLocation } from 'react-router-dom';
+import { Link, Route, Switch, useRouteMatch, matchPath, useLocation } from 'react-router-dom';
 import { SideNavLevel } from './SideNavLevel';
 import type { SideNavLinkProps } from './';
 import { SideNav, SideNavLink } from './';
@@ -15,6 +15,7 @@ import {
   UserIcon,
 } from '~components/Icons';
 import { Heading } from '~components/Typography';
+import { Button } from '~components/Button';
 
 export default {
   title: 'Components/SideNav',
@@ -38,7 +39,7 @@ const navItems = [
   {
     icon: HomeIcon,
     title: 'Home',
-    href: '/app',
+    href: '/app/dashboard',
   },
   {
     icon: ArrowUpRightIcon,
@@ -97,7 +98,7 @@ const NavItem = (
   return (
     <SideNavLink
       {...props}
-      as={NavLink}
+      as={Link}
       isCurrentPage={location.pathname === props.href || isSubItemActive}
     />
   );
@@ -137,4 +138,41 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
   );
 };
 
+const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
+  const [isSideNavOpen, setIsSideNavOpen] = React.useState(false);
+  return (
+    <Box>
+      <SideNav isOpen={isSideNavOpen} onDismiss={() => setIsSideNavOpen(false)}>
+        {navItems.map((navItem) => {
+          if (navItem.children) {
+            return (
+              <NavItem key={navItem.title} {...navItem} subItems={navItem.children}>
+                <SideNavLevel>
+                  {navItem.children.map((l2Item) => (
+                    <NavItem key={l2Item.title} {...l2Item} />
+                  ))}
+                </SideNavLevel>
+              </NavItem>
+            );
+          }
+          return <NavItem key={navItem.title} {...navItem} />;
+        })}
+      </SideNav>
+
+      <Box>
+        <Button onClick={() => setIsSideNavOpen(true)}>Open Nav</Button>
+        <Switch>
+          <Route path="/app" component={Page} />
+          <Route path="/app/payouts" component={Page} />
+          <Route path="/nice" component={Page} />
+          <Route path="/settings" exact component={Page} />
+          <Route path="/settings/user" exact component={Page} />
+          <Route path="/settings/subscriptions" exact component={Page} />
+        </Switch>
+      </Box>
+    </Box>
+  );
+};
+
 export const Default = SideNavTemplate.bind({});
+export const Mobile = SideNavTemplateMobile.bind({});
