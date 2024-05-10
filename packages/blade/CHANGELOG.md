@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.17.0
+
+### Minor Changes
+
+- 64108d77: feat(blade): add new icons and add figma icon importer script
+
 ## 11.16.1
 
 ### Patch Changes
