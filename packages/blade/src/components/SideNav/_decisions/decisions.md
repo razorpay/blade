@@ -13,9 +13,11 @@ The side navigation is positioned along the left side of the screen that provide
 
 ## API
 
+<!-- prettier-ignore -->
 ```jsx
 import { NavLink } from 'react-router-dom';
 
+// Component
 <SideNav>
   {/* L1 Items */}
   <SideNavLink as={NavLink} title="Home" icon={HomeIcon} href="/" />
@@ -27,11 +29,25 @@ import { NavLink } from 'react-router-dom';
     href="/create-payouts"
   />
 
-  <SideNavLink as={NavLink} title="Accounts" icon={AccountsIcon} href="/accounts/profile">
+  <SideNavLink 
+    as={NavLink} 
+    title="Accounts" 
+    icon={AccountsIcon} 
+    // sets the submenu as active
+    isActive={true}
+    href="/accounts"
+  >
     {/* L2 */}
-    <SideNavLevel as={NavLink} title="Accounts">
+    <SideNavLevel title="Accounts">
       <SideNavLink as={NavLink} title="Profile" icon={UserIcon} href="/accounts/profile" />
-      <SideNavLink as={NavLink} title="Settings" icon={UserIcon} href="/accounts/settings" />
+      <SideNavLink 
+        as={NavLink} 
+        title="Settings" 
+        icon={UserIcon} 
+        // sets the link as active 
+        isActive={true} 
+        href="/accounts/settings" 
+      />
       <SideNavLink as={NavLink} title="Edit" icon={UserIcon} href="/accounts/settings">
         {/* L3 */}
         <SideNavLevel>
@@ -169,6 +185,7 @@ import { NavLink } from 'react-router-dom';
 | title       | title of SideNavLink                                                                                                         | string                        |                                                              |
 | as          | as prop for passing React Router's NavLink                                                                                   | NavLinkComponentType          |                                                              |
 | href        | URL to navigate to. Internally links to `to` attribute of router                                                             | string                        |                                                              |
+| isActive    | Sets the link as selected / active                                                                                           | boolean                       | undefined                                                    |
 | target      | anchor tag target attribute [target - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target) | AnchorTargetType              | \_self                                                       |
 | rel         | anchor tag rel attribute [rel - MDN Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#rel)          | AnchorRelType                 | target === ' \_blank ' ? ' noreferrer noopener ' : undefined |
 | onClick     | Click handler on item                                                                                                        | (e: React.MouseEvent) => void |                                                              |
@@ -201,6 +218,25 @@ import { NavLink } from 'react-router-dom';
 <td><img src="navlink-eg-1.png" width="200px" /></td>
 </tr>
 
+<tr>
+<td>
+
+<!-- prettier-ignore -->
+```jsx
+<SideNavLink
+  as={NavLink}
+  icon={LayoutIcon}
+  title="L1 Item Name"
+  href="/l1-item"
+  // This will be controlled on consumer
+  // depending on react-router active state
+  isActive={true}
+/>
+```
+
+</td>
+<td><img src="navlink-eg-active.png" width="200px" /></td>
+</tr>
 <tr>
 <td>
 
@@ -314,11 +350,14 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
   {/* L1 Items */}
   <SideNavLink title="L1 Item" />
 
-  <SideNavLink title="L2 Trigger">
+
+  {/* isActive marks this submenu as active */}
+  <SideNavLink title="L2 Trigger" isActive>
     {/* L2 Level */}
     <SideNavLevel>
       <SideNavLink />
-      <SideNavLink />
+      {/* isActive marks this link as active */}
+      <SideNavLink isActive />
       <SideNavLink title="L3 Trigger">
         {/* L3 Level */}
         <SideNavLevel>
@@ -443,11 +482,11 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
 - #### Parent Component Name: `SideNav` vs `Sidebar` vs `Navbar` vs `Nav`
 
-  TBD
+  SideNav
 
 - #### Navigation Item Naming Decision: `SideNavLink` vs `SideNavItem` vs `SideNavItemLink`
 
-  TBD
+  SideNavLink
 
 - #### `<SideNav routerLink={NavLink} />` vs `<SideNavLink as={NavLink} />`
 
@@ -477,12 +516,30 @@ Nested SideNavLevel components create new levels. This can be used to create L1 
 
   ##### Conclusion
 
-  TBD
+  We are going with `as={NavLink}`
+
+- #### Why `isActive` prop? Why not handle active state internally
+
+  Earlier we started the API by saying that marking of the link as active based on route will be handled internally in blade component. There are some implemetation constraints when we go with this approach of handling active link internally
+
+  1. We don't have access to hooks like `useLocation` or utilities like `matchPath` inside Blade since blade is library indepedent of the routing logic
+  2. Although React Router's NavLink automatically adds `aria-current="page"` to active link which can be used to change colors in CSS, it doesn't give us access to handling state internally for our L1 -> L2 navigations [Here's the related proposal I created in React Router's Repo](https://github.com/remix-run/react-router/discussions/11543).
+  3. Overall there's no stable way to manage the `isActive` state internally in React x React Router setup currently.
 
 ### Design
 
 - Should L2 trigger also change the route?
+  - Conclusion: Yes
 
 ### Product
 
-[Product Questions Discussion - Slack Thread](https://razorpay.slack.com/archives/C06F9MYVBR7/p1714635586127469?thread_ts=1713943186.663279&cid=C06F9MYVBR7)
+- [Product Questions Discussion - Slack Thread](https://razorpay.slack.com/archives/C06F9MYVBR7/p1714635586127469?thread_ts=1713943186.663279&cid=C06F9MYVBR7)
+- #### Should URLs follow the nesting defined by navigation?
+
+  - ##### Problem
+
+    Problem and Ideal state is documented in [Doc - URL Patterns Based on Navigation](https://docs.google.com/document/d/1pOwpHVaGQak7AyCzvVWOFTRVnYnWlDSd-dKEtD3yc5Y/edit?usp=sharing) (Internal)
+
+  - Conclusion:
+    - While we discussed this internally (in engineering), it becomes out of scope for Blade since [we can't handle active state internally anyways](#why-isactive-prop-why-not-handle-active-state-internally)
+    - Although its a problem that we'll have to solve on product level hence documented this as we had good insights on what are pros of having nested routing
