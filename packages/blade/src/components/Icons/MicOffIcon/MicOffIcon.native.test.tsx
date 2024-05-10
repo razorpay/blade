@@ -1,4 +1,4 @@
-import MicOffIcon from './';
+import MicOffIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MicOffIcon />', () => {

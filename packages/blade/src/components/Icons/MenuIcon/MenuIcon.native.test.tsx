@@ -1,4 +1,4 @@
-import MenuIcon from './';
+import MenuIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MenuIcon />', () => {

@@ -1,4 +1,4 @@
-import EyeOffIcon from '.';
+import EyeOffIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<EyeOffIcon />', () => {

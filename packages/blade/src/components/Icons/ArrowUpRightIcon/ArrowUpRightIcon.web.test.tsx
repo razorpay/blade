@@ -1,4 +1,4 @@
-import ArrowUpRightIcon from '.';
+import ArrowUpRightIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ArrowUpRightIcon />', () => {

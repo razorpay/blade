@@ -1,4 +1,4 @@
-import SlidersIcon from './';
+import SlidersIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SlidersIcon />', () => {

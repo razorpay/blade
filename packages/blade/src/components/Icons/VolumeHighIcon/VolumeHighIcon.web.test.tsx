@@ -1,4 +1,4 @@
-import VolumeHighIcon from '.';
+import VolumeHighIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<VolumeHighIcon />', () => {

@@ -1,0 +1,13 @@
+import { IMPORTED_SVG_COMPONENTS } from '../_Svg';
+import type { IconComponent } from '..';
+import useIconProps from '../useIconProps';
+
+const {{name}}Icon: IconComponent = ({ size, color, ...styledProps }) => {
+  const { height, width, iconColor } = useIconProps({ size, color });
+
+  return (
+    REPLACE_SVG
+  );
+};
+
+export default {{name}}Icon;

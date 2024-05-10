@@ -1,4 +1,4 @@
-import InboxIcon from './';
+import InboxIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<InboxIcon />', () => {

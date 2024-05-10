@@ -1,4 +1,4 @@
-import AnnouncementIcon from './';
+import AnnouncementIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<AnnouncementIcon />', () => {

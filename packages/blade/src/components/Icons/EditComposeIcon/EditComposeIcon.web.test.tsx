@@ -1,4 +1,4 @@
-import EditComposeIcon from '.';
+import EditComposeIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<EditComposeIcon />', () => {

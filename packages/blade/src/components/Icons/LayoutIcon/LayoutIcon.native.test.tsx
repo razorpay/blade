@@ -1,4 +1,4 @@
-import LayoutIcon from './';
+import LayoutIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<LayoutIcon />', () => {

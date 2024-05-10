@@ -1,4 +1,4 @@
-import LayersIcon from './';
+import LayersIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<LayersIcon />', () => {

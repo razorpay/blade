@@ -1,4 +1,4 @@
-import MailOpenIcon from './';
+import MailOpenIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MailOpenIcon />', () => {

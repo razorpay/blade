@@ -1,4 +1,4 @@
-import MinusCircleIcon from './';
+import MinusCircleIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<MinusCircleIcon />', () => {

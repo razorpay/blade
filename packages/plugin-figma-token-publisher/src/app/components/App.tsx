@@ -8,6 +8,7 @@ import { uploadTokens } from '../api/api';
 const App = (): ReactElement => {
   const [colorTokens, setColorTokens] = useState({});
   const [personalAccessToken, setPersonalAccessToken] = useState('');
+  const [svgString, setSvgString] = React.useState('');
 
   const handlePersonalAccessTokenChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setPersonalAccessToken(event.target.value);
@@ -33,6 +34,11 @@ const App = (): ReactElement => {
       const { type, data } = event.data.pluginMessage;
       if (type === 'export-color-tokens') {
         setColorTokens(data);
+      }
+      if (type === 'export-svg-icons') {
+        const svg = data;
+        console.log(data);
+        setSvgString(JSON.stringify(svg, null, 2));
       }
     };
   }, []);
@@ -72,6 +78,12 @@ const App = (): ReactElement => {
           Cancel
         </button>
       </section>
+      <p className="section-title">Exported Icons:</p>
+      <textarea
+        className="input__field input__field--margin"
+        style={{ width: '100%', height: 200 }}
+        value={svgString}
+      />
     </section>
   );
 };

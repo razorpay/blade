@@ -1,4 +1,4 @@
-import CrosshairIcon from './';
+import CrosshairIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CrosshairIcon />', () => {

@@ -2,7 +2,17 @@ import type { ReactElement } from 'react';
 import type { RectProps } from './types';
 import { metaAttribute } from '~utils/metaAttribute';
 
-const Rect = ({ height, width, rx, ry, x, y, fill, fillOpacity }: RectProps): ReactElement => {
+const Rect = ({
+  height,
+  width,
+  rx,
+  ry,
+  x,
+  y,
+  fill,
+  fillOpacity,
+  transform,
+}: RectProps): ReactElement => {
   return (
     <rect
       {...metaAttribute({ name: 'svg-rect' })}
@@ -14,6 +24,7 @@ const Rect = ({ height, width, rx, ry, x, y, fill, fillOpacity }: RectProps): Re
       y={y}
       fill={fill}
       fillOpacity={fillOpacity}
+      transform={transform}
     />
   );
 };

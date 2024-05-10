@@ -1,4 +1,4 @@
-import ListIcon from './';
+import ListIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ListIcon />', () => {

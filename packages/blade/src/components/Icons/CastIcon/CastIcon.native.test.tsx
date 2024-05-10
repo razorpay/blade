@@ -1,4 +1,4 @@
-import CastIcon from './';
+import CastIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CastIcon />', () => {

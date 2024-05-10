@@ -1,4 +1,4 @@
-import UmbrellaIcon from './';
+import UmbrellaIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<UmbrellaIcon />', () => {

@@ -1,4 +1,4 @@
-import VideoIcon from './';
+import VideoIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<VideoIcon />', () => {

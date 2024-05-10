@@ -1,4 +1,4 @@
-import ActivityIcon from './';
+import ActivityIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ActivityIcon />', () => {

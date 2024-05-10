@@ -1,4 +1,4 @@
-import AlertTriangleIcon from '.';
+import AlertTriangleIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<AlertTriangleIcon />', () => {

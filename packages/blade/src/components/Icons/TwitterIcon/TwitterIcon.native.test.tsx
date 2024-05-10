@@ -1,4 +1,4 @@
-import TwitterIcon from './';
+import TwitterIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<TwitterIcon />', () => {

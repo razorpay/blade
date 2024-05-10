@@ -1,4 +1,4 @@
-import CpuIcon from './';
+import CpuIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CpuIcon />', () => {

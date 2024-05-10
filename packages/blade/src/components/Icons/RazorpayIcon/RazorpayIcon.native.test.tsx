@@ -1,4 +1,4 @@
-import RazorpayIcon from './';
+import RazorpayIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<RazorpayIcon />', () => {

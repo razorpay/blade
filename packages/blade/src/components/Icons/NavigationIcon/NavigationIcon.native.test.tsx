@@ -1,4 +1,4 @@
-import NavigationIcon from './';
+import NavigationIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<NavigationIcon />', () => {
