@@ -10,7 +10,6 @@ import { getStyledProps } from '~components/Box/styledProps';
 import BaseBox from '~components/Box/BaseBox';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
-import { isReactNative } from '~utils';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { throwBladeError } from '~utils/logger';
 import type { ContainerElementType } from '~utils/types';
@@ -217,58 +216,6 @@ const _Dropdown = ({
       onBottomSheetDismiss: close,
     };
   }, [dropdownHasBottomSheet, hasAutoCompleteInBottomSheetHeader, isDropdownOpen, close]);
-
-  React.useEffect((): (() => void) | undefined => {
-    if (!isReactNative()) {
-      const dropdown = dropdownContainerRef.current;
-
-      const documentClickHandler = (e: MouseEvent): void => {
-        const target = e.target as HTMLDivElement;
-
-        if (!target || !dropdown) {
-          return;
-        }
-
-        const isOutsideClick =
-          !dropdown.contains(target) &&
-          !isTagDismissedRef.current?.value &&
-          document.body.contains(target);
-
-        const isDropdownOpenState = isDropdownOpenRef.current;
-        if (isOutsideClick && isDropdownOpenState) {
-          close();
-        }
-
-        if (isTagDismissedRef.current?.value) {
-          isTagDismissedRef.current.value = false;
-        }
-      };
-
-      const documentFocusHandler = (e: FocusEvent): void => {
-        const target = e.relatedTarget as HTMLDivElement;
-        setActiveIndex(-1);
-
-        if (!dropdown || !target) {
-          return;
-        }
-
-        if (!dropdown.contains(target)) {
-          close();
-        }
-      };
-
-      document.addEventListener('click', documentClickHandler);
-      document.addEventListener('focusout', documentFocusHandler);
-
-      return (): void => {
-        document.removeEventListener('click', documentClickHandler);
-        document.removeEventListener('focusout', documentFocusHandler);
-      };
-    }
-
-    return undefined;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <BottomSheetAndDropdownGlueContext.Provider value={BottomSheetAndDropdownGlueContextValue}>
