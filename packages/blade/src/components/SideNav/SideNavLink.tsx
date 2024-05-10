@@ -33,7 +33,6 @@ const StyledNavLink = styled.a((props) => {
     '.collapsed &': {
       width: '36px',
       padding: '0px 10px',
-      transition: 'all .3s ease',
       overflow: 'hidden',
       '& .hide-when-collapsed': {
         display: 'none',
