@@ -169,6 +169,7 @@ const CalendarStyles = styled(BaseBox)<{
       table: {
         borderCollapse: 'separate',
         borderSpacing,
+        // https://stackoverflow.com/a/19773171/24065671
         width: `calc(100% + ${makeSpace(cell.gap[device].x * 2)})`,
         marginLeft: `-${makeSpace(cell.gap[device].x)}`,
       },

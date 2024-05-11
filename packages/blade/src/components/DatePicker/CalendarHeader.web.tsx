@@ -74,52 +74,57 @@ const CalendarHeader = ({
   };
 
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center">
+    <Box
+      display={isRange ? 'grid' : 'flex'}
+      gridTemplateColumns="auto 1fr 1fr auto"
+      justifyContent="space-between"
+      alignItems="center"
+    >
       <Button
+        justifySelf="start"
         size="xsmall"
         variant="tertiary"
         onClick={handlePrevious}
         accessibilityLabel="Previous"
         icon={ArrowLeftIcon}
       />
-      <Box flexShrink={0} display="flex" gap={isRange ? '190px' : 'spacing.4'} alignItems="center">
-        {isRange ? (
-          <>
-            <Text>
-              {month} {year}
-            </Text>
-            <Text>
-              {nextMonth} {nextYear}
-            </Text>
-          </>
-        ) : (
-          <>
-            <Button
-              onClick={() => {
-                onLevelChange('year');
-              }}
-              size="xsmall"
-              variant="tertiary"
-              iconPosition="right"
-              icon={ChevronDownIcon}
-            >
-              {month}
-            </Button>
-            <Button
-              onClick={() => {
-                onLevelChange('decade');
-              }}
-              size="xsmall"
-              variant="tertiary"
-              iconPosition="right"
-              icon={ChevronDownIcon}
-            >
-              {year}
-            </Button>
-          </>
-        )}
-      </Box>
+      {isRange ? (
+        <>
+          <Text size="medium" weight="medium" marginRight="spacing.7" justifySelf="center">
+            {month} {year}
+          </Text>
+          <Text size="medium" weight="medium" marginLeft="spacing.7" justifySelf="center">
+            {nextMonth} {nextYear}
+          </Text>
+        </>
+      ) : (
+        <Box display="flex" gap="spacing.5" alignItems="center">
+          <Button
+            onClick={() => {
+              onLevelChange('year');
+            }}
+            size="xsmall"
+            variant="tertiary"
+            iconPosition="right"
+            icon={ChevronDownIcon}
+          >
+            {month}
+          </Button>
+          <Button
+            onClick={() => {
+              onLevelChange('decade');
+            }}
+            size="xsmall"
+            variant="tertiary"
+            iconPosition="right"
+            icon={ChevronDownIcon}
+          >
+            {year}
+          </Button>
+        </Box>
+      )}
       <Button
+        justifySelf="end"
         size="xsmall"
         variant="tertiary"
         onClick={handleNext}
