@@ -7,6 +7,28 @@ import { PresetSideBar } from './PresetSideBar';
 import type { CalendarProps, DateSelectionType } from './types';
 import { useDatesState } from './useDatesState';
 import BaseBox from '~components/Box/BaseBox';
+import { Button } from '~components/Button';
+import { Divider } from '~components/Divider';
+
+type DatePickerFooterProps = {
+  onApply: () => void;
+  onCancel: () => void;
+};
+const DatePickerFooter = ({ onApply, onCancel }: DatePickerFooterProps): React.ReactElement => {
+  return (
+    <BaseBox display="flex" flexDirection="column" gap="spacing.4">
+      <Divider />
+      <BaseBox marginLeft="auto" display="flex" flexDirection="row" gap="spacing.4">
+        <Button variant="tertiary" size="small" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button variant="primary" size="small" onClick={onApply}>
+          Apply
+        </Button>
+      </BaseBox>
+    </BaseBox>
+  );
+};
 
 const DatePicker = <Type extends DateSelectionType>({
   selectionType,
@@ -45,6 +67,14 @@ const DatePicker = <Type extends DateSelectionType>({
   const today = shiftTimezone('add', new Date(), ctx.getTimezone());
   const currentDate = date ?? today;
 
+  const handleApply = (): void => {
+    console.log('apply');
+  };
+
+  const handleCancel = (): void => {
+    console.log('cancel');
+  };
+
   return (
     <BaseBox display="flex" flexDirection="row">
       {!isSingle ? (
@@ -59,21 +89,30 @@ const DatePicker = <Type extends DateSelectionType>({
           }}
         />
       ) : null}
-      <Calendar
-        selectionType={selectionType}
-        defaultValue={defaultValue}
-        onMouseLeave={onRootMouseLeave}
-        __onDayMouseEnter={(_event, date) => {
-          onHoveredDateChange(date);
-        }}
-        __onDayClick={(_event, date) => {
-          onDateChange(date);
-        }}
-        getDayProps={(date) => ({
-          ...getControlProps(date),
-        })}
-        {...props}
-      />
+      <BaseBox
+        display="flex"
+        flexDirection="column"
+        gap="spacing.6"
+        padding="spacing.6"
+        backgroundColor="surface.background.gray.intense"
+      >
+        <Calendar
+          selectionType={selectionType}
+          defaultValue={defaultValue}
+          onMouseLeave={onRootMouseLeave}
+          __onDayMouseEnter={(_event, date) => {
+            onHoveredDateChange(date);
+          }}
+          __onDayClick={(_event, date) => {
+            onDateChange(date);
+          }}
+          getDayProps={(date) => ({
+            ...getControlProps(date),
+          })}
+          {...props}
+        />
+        <DatePickerFooter onApply={handleApply} onCancel={handleCancel} />
+      </BaseBox>
     </BaseBox>
   );
 };

@@ -44,11 +44,6 @@ export const Calendar: StoryFn<typeof CalendarComponent> = ({ ...args }) => {
           />
         </DatesProvider>
       </HeadlessMantineProvider>
-
-      <br />
-      {/* <CalendarComponent {...args} picker="month" />
-      <br />
-      <CalendarComponent {...args} picker="year" /> */}
     </Box>
   );
 };

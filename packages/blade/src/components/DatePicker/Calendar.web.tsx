@@ -100,8 +100,6 @@ const Calendar = <Type extends DateSelectionType>({
       flexDirection="column"
       gap="spacing.6"
       firstDayOfWeek={firstDayOfWeek}
-      backgroundColor="surface.background.gray.intense"
-      padding="spacing.6"
     >
       <CalendarHeader
         isRange={isRange}
