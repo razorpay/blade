@@ -72,7 +72,7 @@ type DropdownContextType = {
   /** common baseId which is prepended to multiple other ids inside this dropdown  */
   dropdownBaseId: string;
   /** Which element has triggered the dropdown */
-  dropdownTriggerer?: 'SelectInput' | 'DropdownButton' | 'AutoComplete' | 'DropdownLink';
+  dropdownTriggerer?: 'SelectInput' | 'DropdownButton' | 'AutoComplete' | 'DropdownLink' | 'Avatar';
   /** ref of triggerer. Used to call focus in certain places */
   triggererRef: React.MutableRefObject<HTMLButtonElement | null>;
   triggererWrapperRef: React.MutableRefObject<ContainerElementType | null>;

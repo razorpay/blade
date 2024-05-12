@@ -17,7 +17,7 @@ import type { BaseTextProps } from '~components/Typography/BaseText/types';
 export type IconColor = Exclude<IconProps['color'], 'currentColor'>;
 
 export type BaseButtonStyleProps = {
-  iconSize: IconSize;
+  defaultIconSize: IconSize;
   spinnerSize: BaseSpinnerProps['size'];
   fontSize: keyof Theme['typography']['fonts']['size'];
   lineHeight: keyof Theme['typography']['lineHeights'];
