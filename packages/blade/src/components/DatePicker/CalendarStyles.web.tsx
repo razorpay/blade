@@ -9,14 +9,8 @@ import { useIsMobile } from '~utils/useIsMobile';
 
 const cell = {
   gap: {
-    desktop: {
-      x: size[0],
-      y: size[2],
-    },
-    mobile: {
-      x: size[0],
-      y: size[0],
-    },
+    x: size[0],
+    y: size[2],
   },
   size: {
     desktop: size[40],
@@ -77,10 +71,8 @@ const inRangeCell = {
 } as const;
 
 const CalendarStyles = styled(BaseBox)(({ theme }) => {
-  const device = useIsMobile() ? 'mobile' : 'desktop';
-  const gapx = makeSpace(cell.gap[device].x);
-  const gapy = makeSpace(cell.gap[device].y);
-  const borderSpacing = `${gapx} ${gapy}`;
+  const isMobile = useIsMobile();
+  const device = isMobile ? 'mobile' : 'desktop';
 
   const today = {
     '&[data-today]': {
@@ -152,22 +144,28 @@ const CalendarStyles = styled(BaseBox)(({ theme }) => {
   return {
     width: '100%',
     '.DatePicker-levelsGroup': {
+      width: '100%',
       display: 'flex',
-      gap: makeSpace(theme.spacing[8]),
+      justifyContent: 'space-between',
       table: {
-        borderCollapse: 'separate',
-        borderSpacing,
-        // https://stackoverflow.com/a/19773171/24065671
-        width: `calc(100% + ${makeSpace(cell.gap[device].x * 2)})`,
-        marginLeft: `-${makeSpace(cell.gap[device].x)}`,
+        borderCollapse: 'collapse',
+        width: '100%',
       },
-      div: { width: '100%' },
+      '> div': { width: isMobile ? '100%' : undefined },
+      th: {
+        flex: 1,
+      },
+      tr: {
+        marginBottom: makeSpace(cell.gap.y),
+      },
       td: {
+        flex: 1,
         padding: '0px !important',
       },
     },
     '.DatePicker-row': {
       textAlign: 'center',
+      display: 'flex',
     },
     '.DatePicker-header': {
       display: 'none',
@@ -184,9 +182,9 @@ const CalendarStyles = styled(BaseBox)(({ theme }) => {
     },
     '.DatePicker-cell': {
       cursor: 'pointer',
-      width: '100%',
-      minWidth: makeSpace(cell.size[device]),
-      minHeight: makeSpace(cell.size[device]),
+      width: isMobile ? '100%' : makeSpace(cell.size[device]),
+      height: isMobile ? undefined : makeSpace(cell.size[device]),
+      aspectRatio: isMobile ? '1 / 1' : undefined,
       borderRadius: theme.border.radius.medium,
       backgroundColor: getIn(theme.colors, cell.background.default),
       border: 'none',

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { DatesRangeValue } from '@mantine/dates';
@@ -16,6 +17,13 @@ import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
 import { useId } from '~utils/useId';
 import { makeAccessible } from '~utils/makeAccessible';
+import { useIsMobile } from '~utils/useIsMobile';
+import {
+  BottomSheet,
+  BottomSheetBody,
+  BottomSheetFooter,
+  BottomSheetHeader,
+} from '~components/BottomSheet';
 
 const DatePicker = <Type extends DateSelectionType>({
   selectionType,
@@ -34,6 +42,7 @@ const DatePicker = <Type extends DateSelectionType>({
   const { theme } = useTheme();
   const ctx = useDatesContext();
   const isSingle = selectionType === 'single';
+  const [_, forceRerenderBottomSheet] = React.useReducer((x: number) => x + 1, 0);
 
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
   const {
@@ -85,6 +94,7 @@ const DatePicker = <Type extends DateSelectionType>({
     close();
   };
 
+  const isMobile = useIsMobile();
   const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
   const titleId = useId('datepicker-title');
   const referenceRef = React.useRef<HTMLButtonElement>(null);
@@ -97,6 +107,7 @@ const DatePicker = <Type extends DateSelectionType>({
     getReferenceProps,
     getFloatingProps,
   } = usePopup({
+    enabled: !isMobile,
     placement: 'bottom-start',
     open: controllableIsOpen,
     onOpenChange: (isOpen, _, reason) => {
@@ -108,6 +119,65 @@ const DatePicker = <Type extends DateSelectionType>({
     referenceRef,
   });
 
+  const shouldRenderPresets = !isSingle && !isMobile;
+
+  const content = (
+    <>
+      {shouldRenderPresets ? (
+        <PresetSideBar
+          presets={presets}
+          date={currentDate}
+          selectedPreset={selectedPreset}
+          onSelection={(preset) => {
+            const presetValue = preset?.(currentDate);
+            setControlledValue(presetValue);
+            setSelectedPreset(presetValue);
+          }}
+        />
+      ) : null}
+      <BaseBox
+        width="100%"
+        display="flex"
+        flexDirection="column"
+        gap="spacing.5"
+        data-nice
+        padding={{ m: 'spacing.6', s: 'spacing.0' }}
+        backgroundColor="surface.background.gray.intense"
+      >
+        <Calendar
+          selectionType={selectionType}
+          defaultValue={defaultValue}
+          onMouseLeave={onRootMouseLeave}
+          __onDayMouseEnter={(_event, date) => {
+            onHoveredDateChange(date);
+          }}
+          __onDayClick={(_event, date) => {
+            onDateChange(date);
+          }}
+          getDayProps={(date) => {
+            return {
+              ...getControlProps(date),
+            };
+          }}
+          onNext={(date) => {
+            props?.onNext?.(date);
+            forceRerenderBottomSheet();
+          }}
+          onPrevious={(date) => {
+            props?.onPrevious?.(date);
+            forceRerenderBottomSheet();
+          }}
+          onPickerChange={(date) => {
+            props?.onPickerChange?.(date);
+            forceRerenderBottomSheet();
+          }}
+          {...props}
+        />
+        {isMobile ? null : <CalendarFooter onApply={handleApply} onCancel={handleCancel} />}
+      </BaseBox>
+    </>
+  );
+
   return (
     <BaseBox width="100%">
       <DatePickerInput
@@ -116,71 +186,51 @@ const DatePicker = <Type extends DateSelectionType>({
         inputRef={refs.setReference}
         referenceProps={getReferenceProps()}
       />
-      {isMounted && (
-        <FloatingPortal>
-          <FloatingFocusManager
-            initialFocus={defaultInitialFocusRef}
-            context={context}
-            guards={true}
-          >
-            <BaseBox
-              ref={refs.setFloating}
-              style={floatingStyles}
-              {...getFloatingProps()}
-              {...makeAccessible({ labelledBy: titleId })}
+      {isMobile ? (
+        <BottomSheet
+          snapPoints={[0.9, 0.9, 1]}
+          isOpen={controllableIsOpen}
+          onDismiss={() => {
+            handleCancel();
+          }}
+        >
+          <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
+          <BottomSheetBody overflow="hidden">{content}</BottomSheetBody>
+          <BottomSheetFooter>
+            <CalendarFooter onCancel={handleCancel} onApply={handleApply} isMobile />
+          </BottomSheetFooter>
+        </BottomSheet>
+      ) : (
+        isMounted && (
+          <FloatingPortal>
+            <FloatingFocusManager
+              initialFocus={defaultInitialFocusRef}
+              context={context}
+              guards={true}
             >
               <BaseBox
-                display="flex"
-                flexDirection="row"
-                borderColor="surface.border.gray.subtle"
-                borderWidth="thin"
-                borderStyle="solid"
-                borderRadius="medium"
-                overflow="hidden"
-                minWidth="320px"
-                style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
+                ref={refs.setFloating}
+                style={floatingStyles}
+                {...getFloatingProps()}
+                {...makeAccessible({ labelledBy: titleId })}
               >
-                {!isSingle ? (
-                  <PresetSideBar
-                    presets={presets}
-                    date={currentDate}
-                    selectedPreset={selectedPreset}
-                    onSelection={(preset) => {
-                      const presetValue = preset?.(currentDate);
-                      setControlledValue(presetValue);
-                      setSelectedPreset(presetValue);
-                    }}
-                  />
-                ) : null}
                 <BaseBox
-                  width="100%"
                   display="flex"
-                  flexDirection="column"
-                  gap="spacing.5"
-                  padding="spacing.6"
-                  backgroundColor="surface.background.gray.intense"
+                  flexDirection="row"
+                  borderColor="surface.border.gray.subtle"
+                  borderWidth="thin"
+                  borderStyle="solid"
+                  borderRadius="medium"
+                  overflow="hidden"
+                  minWidth="320px"
+                  style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
                 >
-                  <Calendar
-                    selectionType={selectionType}
-                    defaultValue={defaultValue}
-                    onMouseLeave={onRootMouseLeave}
-                    __onDayMouseEnter={(_event, date) => {
-                      onHoveredDateChange(date);
-                    }}
-                    __onDayClick={(_event, date) => {
-                      onDateChange(date);
-                    }}
-                    getDayProps={(date) => ({
-                      ...getControlProps(date),
-                    })}
-                    {...props}
-                  />
-                  <CalendarFooter onApply={handleApply} onCancel={handleCancel} />
+                  {content}
                 </BaseBox>
               </BaseBox>
-            </BaseBox>
-          </FloatingFocusManager>
-        </FloatingPortal>
+            </FloatingFocusManager>
+          </FloatingPortal>
+        )
       )}
     </BaseBox>
   );

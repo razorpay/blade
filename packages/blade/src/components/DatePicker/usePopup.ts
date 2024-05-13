@@ -17,13 +17,20 @@ import { useTheme } from '~utils';
 import { getFloatingPlacementParts } from '~utils/getFloatingPlacementParts';
 
 type UsePopupProps = {
+  enabled?: boolean;
   open?: boolean;
   placement: UseFloatingOptions['placement'];
   onOpenChange?: UseFloatingOptions['onOpenChange'];
   referenceRef: React.RefObject<HTMLButtonElement>;
 };
 
-const usePopup = ({ placement, open, onOpenChange, referenceRef }: UsePopupProps) => {
+const usePopup = ({
+  enabled = true,
+  placement,
+  open,
+  onOpenChange,
+  referenceRef,
+}: UsePopupProps) => {
   const GAP = spacing[4];
   const { theme } = useTheme();
   const [side] = getFloatingPlacementParts(placement!);
@@ -65,7 +72,7 @@ const usePopup = ({ placement, open, onOpenChange, referenceRef }: UsePopupProps
 
   // remove click handler if popover is controlled
   const click = useClick(context);
-  const dismiss = useDismiss(context);
+  const dismiss = useDismiss(context, { enabled });
   const role = useRole(context);
   const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
 

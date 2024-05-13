@@ -10,6 +10,7 @@ import { CalendarStyles } from './CalendarStyles.web';
 import { useUncontrolledDates } from './useControlledDates';
 import { levelToPicker, pickerToLevel } from './utils';
 import { useControllableState } from '~utils/useControllable';
+import { useIsMobile } from '~utils/useIsMobile';
 
 const Calendar = <Type extends DateSelectionType>({
   firstDayOfWeek = 0,
@@ -22,6 +23,8 @@ const Calendar = <Type extends DateSelectionType>({
   defaultDate,
   onDateChange,
   locale,
+  onNext,
+  onPrevious,
   onNextMonth,
   onNextYear,
   onNextDecade,
@@ -49,31 +52,36 @@ const Calendar = <Type extends DateSelectionType>({
   });
 
   const ctx = useDatesContext();
+  const isMobile = useIsMobile();
   const currentDate = _date || shiftTimezone('add', new Date(), ctx.getTimezone());
-  const numberOfColumns = isRange ? 2 : 1;
+  const numberOfColumns = isMobile ? 1 : isRange ? 2 : 1;
   const columnsToScroll = numberOfColumns || 1;
 
   const handleNextMonth = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'month').toDate();
     onNextMonth?.(nextDate);
+    onNext?.(nextDate);
     setDate(nextDate);
   };
 
   const handlePreviousMonth = () => {
     const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'month').toDate();
     onPreviousMonth?.(nextDate);
+    onPrevious?.(nextDate);
     setDate(nextDate);
   };
 
   const handleNextYear = () => {
     const nextDate = dayjs(currentDate).add(columnsToScroll, 'year').toDate();
     onNextYear?.(nextDate);
+    onNext?.(nextDate);
     setDate(nextDate);
   };
 
   const handlePreviousYear = () => {
     const nextDate = dayjs(currentDate).subtract(columnsToScroll, 'year').toDate();
     onPreviousYear?.(nextDate);
+    onPrevious?.(nextDate);
     setDate(nextDate);
   };
 
@@ -82,6 +90,7 @@ const Calendar = <Type extends DateSelectionType>({
       .add(10 * columnsToScroll, 'year')
       .toDate();
     onNextDecade?.(nextDate);
+    onNext?.(nextDate);
     setDate(nextDate);
   };
 
@@ -90,6 +99,7 @@ const Calendar = <Type extends DateSelectionType>({
       .subtract(10 * columnsToScroll, 'year')
       .toDate();
     onPreviousDecade?.(nextDate);
+    onNext?.(nextDate);
     setDate(nextDate);
   };
 

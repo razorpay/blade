@@ -6,16 +6,27 @@ import { Divider } from '~components/Divider';
 type CalendarFooterProps = {
   onApply: () => void;
   onCancel: () => void;
+  isMobile?: boolean;
 };
-const CalendarFooter = ({ onApply, onCancel }: CalendarFooterProps): React.ReactElement => {
+const CalendarFooter = ({
+  onApply,
+  onCancel,
+  isMobile = false,
+}: CalendarFooterProps): React.ReactElement => {
   return (
     <BaseBox display="flex" flexDirection="column" gap="spacing.5">
-      <Divider />
-      <BaseBox marginLeft="auto" display="flex" flexDirection="row" gap="spacing.4">
-        <Button variant="tertiary" size="medium" onClick={onCancel}>
+      {isMobile ? null : <Divider />}
+      <BaseBox
+        width={isMobile ? '100%' : undefined}
+        marginLeft="auto"
+        display="flex"
+        flexDirection="row"
+        gap="spacing.4"
+      >
+        <Button isFullWidth={isMobile} variant="tertiary" size="medium" onClick={onCancel}>
           Cancel
         </Button>
-        <Button variant="primary" size="medium" onClick={onApply}>
+        <Button isFullWidth={isMobile} variant="primary" size="medium" onClick={onApply}>
           Apply
         </Button>
       </BaseBox>

@@ -80,7 +80,7 @@ const CalendarHeader = ({
   return (
     <Box
       display={isRange ? 'grid' : 'flex'}
-      gridTemplateColumns="auto 1fr 1fr auto"
+      gridTemplateColumns={{ base: 'auto  1fr auto', m: 'auto 1fr 1fr auto' }}
       justifyContent="space-between"
       alignItems="center"
     >
@@ -94,11 +94,31 @@ const CalendarHeader = ({
       />
       {isRange ? (
         <>
-          <Text size="medium" weight="medium" marginRight="spacing.7" justifySelf="center">
+          <Text
+            display={{ base: 'none', m: 'block' }}
+            size="medium"
+            weight="medium"
+            marginRight="spacing.7"
+            justifySelf="center"
+          >
             {month} {year}
           </Text>
-          <Text size="medium" weight="medium" marginLeft="spacing.7" justifySelf="center">
+          <Text
+            display={{ base: 'none', m: 'block' }}
+            size="medium"
+            weight="medium"
+            marginLeft="spacing.7"
+            justifySelf="center"
+          >
             {nextMonth} {nextYear}
+          </Text>
+          <Text
+            display={{ base: 'block', m: 'none' }}
+            size="medium"
+            weight="medium"
+            justifySelf="center"
+          >
+            {month} {year}
           </Text>
         </>
       ) : (

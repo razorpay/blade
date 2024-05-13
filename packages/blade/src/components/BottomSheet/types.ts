@@ -2,7 +2,7 @@
 import type { SnapPoints } from './utils';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import type { BaseFooterProps } from '~components/BaseHeaderFooter/BaseFooter';
-import type { SpacingValueType } from '~components/Box/BaseBox';
+import type { BaseBoxProps, SpacingValueType } from '~components/Box/BaseBox';
 
 type BottomSheetProps = {
   /**
@@ -69,6 +69,7 @@ type BottomSheetBodyProps = {
    * - Docs: https://blade.razorpay.com/?path=/docs/tokens-spacing--page
    */
   padding?: Extract<SpacingValueType, 'spacing.0' | 'spacing.5'>;
+  overflow?: BaseBoxProps['overflow'];
 };
 
 export type {
