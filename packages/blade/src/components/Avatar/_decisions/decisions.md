@@ -39,14 +39,17 @@ type AvatarGroupProps = {
 type AvatarProps = {
   /**
    * The size of the avatar.
+   * @default "xsmall"
    */
   size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   /**
    * The visual variant of the avatar.
+   * @default "circle"
    */
   variant?: 'circle' | 'square';
   /**
    * The color theme of the avatar.
+   * @default "neutral"
    */
   color?: 'primary' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   /**
