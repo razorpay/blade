@@ -148,7 +148,6 @@ const SideNavLink = ({
   const { level: _prevLevel } = useNavLink();
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
-  console.log({ currentLevel, title });
   const isL2Trigger = Boolean(children) && currentLevel === 1;
   const navItemId = useId('nav-item');
   const isL3Trigger = Boolean(children) && currentLevel === 2;

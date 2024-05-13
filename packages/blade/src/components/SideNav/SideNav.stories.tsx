@@ -35,7 +35,12 @@ const Page = ({ match }: { match: any }): React.ReactElement => (
   </Box>
 );
 
-const navItems = [
+type SideNavWithoutAsChildren = Omit<SideNavLinkProps, 'as' | 'children'>;
+type SideNavJSONChildrenType = {
+  children?: (SideNavWithoutAsChildren & SideNavJSONChildrenType)[];
+};
+type SideNavLinkItemsJSONType = (SideNavWithoutAsChildren & SideNavJSONChildrenType)[];
+const navItems: SideNavLinkItemsJSONType = [
   {
     icon: HomeIcon,
     title: 'Home',
@@ -99,13 +104,28 @@ const navItems = [
   },
 ];
 
+const getAllChildHrefs = (
+  l1ItemChildren?: (SideNavWithoutAsChildren & SideNavJSONChildrenType)[],
+): string[] => {
+  const hrefs: string[] = [];
+  l1ItemChildren?.forEach((l2Item) => {
+    hrefs.push(l2Item.href);
+
+    l2Item.children?.forEach((l3Item) => {
+      hrefs.push(l3Item.href);
+    });
+  });
+
+  return hrefs;
+};
+
 const NavItem = (
   props: Omit<SideNavLinkProps, 'as'> & {
-    subItems?: Omit<SideNavLinkProps, 'as' | 'children'>[];
+    subItems?: string[];
   },
 ): React.ReactElement => {
   const location = useLocation();
-  const isSubItemActive = props.subItems?.map((i) => i.href).includes(location.pathname);
+  const isSubItemActive = props.subItems?.includes(location.pathname);
 
   return (
     <SideNavLink
@@ -120,21 +140,20 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
   return (
     <Box>
       <SideNav>
-        {navItems.map((navItem) => {
-          if (navItem.children) {
+        {navItems.map(({ children: l1Children, ...navItem }) => {
+          if (l1Children) {
             return (
-              <NavItem key={navItem.title} {...navItem} subItems={navItem.children}>
+              <NavItem key={navItem.title} {...navItem} subItems={getAllChildHrefs(l1Children)}>
                 <SideNavLevel>
-                  {navItem.children.map((l2Item) => {
-                    if (!l2Item.children) {
+                  {l1Children.map(({ children: l2Children, ...l2Item }) => {
+                    if (!l2Children) {
                       return <NavItem key={l2Item.title} {...l2Item} />;
                     }
 
-                    const { children, ...l3Trigger } = l2Item;
                     return (
-                      <NavItem key={l3Trigger.title} {...l3Trigger}>
+                      <NavItem key={l2Item.title} {...l2Item}>
                         <SideNavLevel>
-                          {children.map((l3Item) => (
+                          {l2Children.map(({ children: l3Children, ...l3Item }) => (
                             <NavItem key={l3Item.title} {...l3Item} />
                           ))}
                         </SideNavLevel>
@@ -170,14 +189,26 @@ const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
   return (
     <Box>
       <SideNav isOpen={isSideNavOpen} onDismiss={() => setIsSideNavOpen(false)}>
-        {navItems.map((navItem) => {
-          if (navItem.children) {
+        {navItems.map(({ children: l1Children, ...navItem }) => {
+          if (l1Children) {
             return (
-              <NavItem key={navItem.title} {...navItem} subItems={navItem.children}>
+              <NavItem key={navItem.title} {...navItem} subItems={getAllChildHrefs(l1Children)}>
                 <SideNavLevel>
-                  {navItem.children.map(({ children, ...l2Item }) => (
-                    <NavItem key={l2Item.title} {...l2Item} />
-                  ))}
+                  {l1Children.map(({ children: l2Children, ...l2Item }) => {
+                    if (!l2Children) {
+                      return <NavItem key={l2Item.title} {...l2Item} />;
+                    }
+
+                    return (
+                      <NavItem key={l2Item.title} {...l2Item}>
+                        <SideNavLevel>
+                          {l2Children.map(({ children: l3Children, ...l3Item }) => (
+                            <NavItem key={l3Item.title} {...l3Item} />
+                          ))}
+                        </SideNavLevel>
+                      </NavItem>
+                    );
+                  })}
                 </SideNavLevel>
               </NavItem>
             );
