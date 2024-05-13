@@ -8,30 +8,15 @@ import {
 } from './avatarTokens';
 import BaseBox from '~components/Box/BaseBox';
 import { makeBorderSize, makeSize } from '~utils';
-import { getBackgroundColorToken } from '~components/Button/BaseButton/BaseButton';
 import getIn from '~utils/lodashButBetter/get';
 import getBaseTextStyles from '~components/Typography/BaseText/getBaseTextStyles';
 import { getTextProps, getHeadingProps } from '~components/Typography';
 
 const StyledAvatar = styled(BaseBox)<StyledAvatarProps>(({ theme, variant, color, size }) => {
   return {
-    width: 'fit-content',
-    minHeight: makeSize(avatarSizeTokens[size]),
+    width: makeSize(avatarSizeTokens[size]),
     height: makeSize(avatarSizeTokens[size]),
-
-    // borderWidth: makeBorderSize(theme.border.width.thinner),
     borderRadius: makeBorderSize(theme.border.radius[avatarBorderRadiusTokens[variant]]),
-    // borderColor: getIn(theme.colors, 'surface.border.gray.subtle'),
-    // borderStyle: 'solid',
-
-    // '&:hover': {
-    //   borderColor: getIn(theme.colors, 'surface.border.gray.muted'),
-
-    //   'button[role="button"]': {
-    //     borderColor: getIn(theme.colors, 'surface.border.gray.muted'),
-    //     backgroundColor: getIn(theme.colors, avatarColorTokens.background[color]),
-    //   },
-    // },
 
     'div[data-blade-component="base-text"]': {
       ...getBaseTextStyles({
@@ -59,10 +44,12 @@ const StyledAvatar = styled(BaseBox)<StyledAvatarProps>(({ theme, variant, color
       minHeight: makeSize(avatarSizeTokens[size]),
       height: makeSize(avatarSizeTokens[size]),
       width: makeSize(avatarSizeTokens[size]),
-      borderWidth: makeBorderSize(theme.border.width.thin),
+      borderWidth: makeBorderSize(theme.border.width.thinner),
       borderRadius: makeBorderSize(theme.border.radius[avatarBorderRadiusTokens[variant]]),
-      borderColor: getIn(theme.colors, 'transparent'),
+      borderColor: theme.colors.surface.border.gray.subtle,
+      outline: 'none',
       backgroundColor: getIn(theme.colors, avatarColorTokens.background[color]),
+      transition: `border-color ${theme.motion.duration.xquick} ${theme.motion.easing.standard.effective}, outline ${theme.motion.duration.xquick} ${theme.motion.easing.standard.effective}`,
 
       img: {
         display: 'block',
@@ -73,20 +60,11 @@ const StyledAvatar = styled(BaseBox)<StyledAvatarProps>(({ theme, variant, color
       },
 
       '&:hover': {
-        borderColor: getIn(theme.colors, 'surface.border.gray.muted'),
+        outline: `${makeBorderSize(theme.border.width.thick)} solid ${
+          theme.colors.surface.border.gray.muted
+        }`,
+        border: theme.colors.surface.border.gray.muted,
         backgroundColor: getIn(theme.colors, avatarColorTokens.background[color]),
-      },
-
-      '&:focus': {
-        backgroundColor: getIn(
-          theme.colors,
-          getBackgroundColorToken({
-            property: 'background',
-            variant: 'secondary',
-            color,
-            state: 'default',
-          }),
-        ),
       },
     },
   };
