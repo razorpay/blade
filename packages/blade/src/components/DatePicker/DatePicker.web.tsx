@@ -1,34 +1,21 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { DatesRangeValue } from '@mantine/dates';
 import { shiftTimezone, useDatesContext } from '@mantine/dates';
 import React from 'react';
+import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { Calendar } from './Calendar';
 import { PresetSideBar } from './PresetSideBar';
 import type { CalendarProps, DateSelectionType } from './types';
 import { useDatesState } from './useDatesState';
+import { DatePickerInput } from './DateInput.web';
+import { usePopup } from './usePopup';
+import { CalendarFooter } from './CalendarFooter.web';
 import BaseBox from '~components/Box/BaseBox';
-import { Button } from '~components/Button';
-import { Divider } from '~components/Divider';
-
-type DatePickerFooterProps = {
-  onApply: () => void;
-  onCancel: () => void;
-};
-const DatePickerFooter = ({ onApply, onCancel }: DatePickerFooterProps): React.ReactElement => {
-  return (
-    <BaseBox display="flex" flexDirection="column" gap="spacing.4">
-      <Divider />
-      <BaseBox marginLeft="auto" display="flex" flexDirection="row" gap="spacing.4">
-        <Button variant="tertiary" size="small" onClick={onCancel}>
-          Cancel
-        </Button>
-        <Button variant="primary" size="small" onClick={onApply}>
-          Apply
-        </Button>
-      </BaseBox>
-    </BaseBox>
-  );
-};
+import { useControllableState } from '~utils/useControllable';
+import { useTheme } from '~utils';
+import { useId } from '~utils/useId';
+import { makeAccessible } from '~utils/makeAccessible';
 
 const DatePicker = <Type extends DateSelectionType>({
   selectionType,
@@ -39,16 +26,24 @@ const DatePicker = <Type extends DateSelectionType>({
   onChange,
   presets,
   date,
+  isOpen,
+  defaultIsOpen,
+  onOpenChange,
   ...props
 }: CalendarProps<Type>): React.ReactElement => {
+  const { theme } = useTheme();
+  const ctx = useDatesContext();
   const isSingle = selectionType === 'single';
+
   const [selectedPreset, setSelectedPreset] = React.useState<DatesRangeValue | null>(null);
   const {
     onDateChange,
     onRootMouseLeave,
     onHoveredDateChange,
     getControlProps,
-    setValue,
+    setPickedDate,
+    controlledValue,
+    setControlledValue,
   } = useDatesState({
     level: 'day',
     type: isSingle ? 'default' : 'range',
@@ -57,62 +52,136 @@ const DatePicker = <Type extends DateSelectionType>({
     value,
     defaultValue,
     onChange: (date) => {
-      onChange?.(date as any);
+      onChange?.(date as never);
       if (isSingle) return;
+      // sync selected preset with value
       setSelectedPreset(date as DatesRangeValue);
     },
   });
 
-  const ctx = useDatesContext();
+  const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
+    value: isOpen,
+    defaultValue: defaultIsOpen,
+    onChange: (isOpen) => onOpenChange?.({ isOpen }),
+  });
+
   const today = shiftTimezone('add', new Date(), ctx.getTimezone());
   const currentDate = date ?? today;
+  const [oldValue, setOldValue] = React.useState<DatesRangeValue | null>(controlledValue);
+
+  const close = React.useCallback(() => {
+    controllableSetIsOpen(() => false);
+  }, [controllableSetIsOpen]);
 
   const handleApply = (): void => {
-    console.log('apply');
+    onChange?.(controlledValue);
+    setOldValue(controlledValue);
+    close();
   };
 
   const handleCancel = (): void => {
-    console.log('cancel');
+    setControlledValue(oldValue);
+    setPickedDate(null);
+    close();
   };
 
+  const defaultInitialFocusRef = React.useRef<HTMLButtonElement>(null);
+  const titleId = useId('datepicker-title');
+  const referenceRef = React.useRef<HTMLButtonElement>(null);
+  const {
+    context,
+    refs,
+    isMounted,
+    floatingStyles,
+    animationStyles,
+    getReferenceProps,
+    getFloatingProps,
+  } = usePopup({
+    placement: 'bottom-start',
+    open: controllableIsOpen,
+    onOpenChange: (isOpen, _, reason) => {
+      controllableSetIsOpen(() => isOpen);
+      if (reason === 'escape-key' || reason === 'outside-press') {
+        handleCancel();
+      }
+    },
+    referenceRef,
+  });
+
   return (
-    <BaseBox display="flex" flexDirection="row">
-      {!isSingle ? (
-        <PresetSideBar
-          presets={presets}
-          date={currentDate}
-          selectedPreset={selectedPreset}
-          onSelection={(preset) => {
-            const presetValue = preset?.(currentDate);
-            setValue(presetValue);
-            setSelectedPreset(presetValue);
-          }}
-        />
-      ) : null}
-      <BaseBox
-        display="flex"
-        flexDirection="column"
-        gap="spacing.6"
-        padding="spacing.6"
-        backgroundColor="surface.background.gray.intense"
-      >
-        <Calendar
-          selectionType={selectionType}
-          defaultValue={defaultValue}
-          onMouseLeave={onRootMouseLeave}
-          __onDayMouseEnter={(_event, date) => {
-            onHoveredDateChange(date);
-          }}
-          __onDayClick={(_event, date) => {
-            onDateChange(date);
-          }}
-          getDayProps={(date) => ({
-            ...getControlProps(date),
-          })}
-          {...props}
-        />
-        <DatePickerFooter onApply={handleApply} onCancel={handleCancel} />
-      </BaseBox>
+    <BaseBox width="100%">
+      <DatePickerInput
+        date={controlledValue}
+        ref={referenceRef}
+        inputRef={refs.setReference}
+        referenceProps={getReferenceProps()}
+      />
+      {isMounted && (
+        <FloatingPortal>
+          <FloatingFocusManager
+            initialFocus={defaultInitialFocusRef}
+            context={context}
+            guards={true}
+          >
+            <BaseBox
+              ref={refs.setFloating}
+              style={floatingStyles}
+              {...getFloatingProps()}
+              {...makeAccessible({ labelledBy: titleId })}
+            >
+              <BaseBox
+                display="flex"
+                flexDirection="row"
+                borderColor="surface.border.gray.subtle"
+                borderWidth="thin"
+                borderStyle="solid"
+                borderRadius="medium"
+                overflow="hidden"
+                minWidth="320px"
+                style={{ ...animationStyles, boxShadow: `${theme.elevation.lowRaised}` }}
+              >
+                {!isSingle ? (
+                  <PresetSideBar
+                    presets={presets}
+                    date={currentDate}
+                    selectedPreset={selectedPreset}
+                    onSelection={(preset) => {
+                      const presetValue = preset?.(currentDate);
+                      setControlledValue(presetValue);
+                      setSelectedPreset(presetValue);
+                    }}
+                  />
+                ) : null}
+                <BaseBox
+                  width="100%"
+                  display="flex"
+                  flexDirection="column"
+                  gap="spacing.5"
+                  padding="spacing.6"
+                  backgroundColor="surface.background.gray.intense"
+                >
+                  <Calendar
+                    selectionType={selectionType}
+                    defaultValue={defaultValue}
+                    onMouseLeave={onRootMouseLeave}
+                    __onDayMouseEnter={(_event, date) => {
+                      onHoveredDateChange(date);
+                    }}
+                    __onDayClick={(_event, date) => {
+                      onDateChange(date);
+                    }}
+                    getDayProps={(date) => ({
+                      ...getControlProps(date),
+                    })}
+                    {...props}
+                  />
+                  <CalendarFooter onApply={handleApply} onCancel={handleCancel} />
+                </BaseBox>
+              </BaseBox>
+            </BaseBox>
+          </FloatingFocusManager>
+        </FloatingPortal>
+      )}
     </BaseBox>
   );
 };

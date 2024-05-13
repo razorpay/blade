@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import dayjs from 'dayjs';
+import React from 'react';
 import type { CalendarLevel } from '@mantine/dates';
 import { shiftTimezone, useDatesContext, DatePicker } from '@mantine/dates';
-import React from 'react';
 import type { CalendarProps, DateSelectionType, PickerType } from './types';
 import { CalendarHeader } from './CalendarHeader';
 import { CalendarStyles } from './CalendarStyles.web';
@@ -46,7 +46,6 @@ const Calendar = <Type extends DateSelectionType>({
     value: date,
     defaultValue: defaultDate,
     onChange: onDateChange as any,
-    // applyTimezone: !__timezoneApplied,
   });
 
   const ctx = useDatesContext();
@@ -95,12 +94,7 @@ const Calendar = <Type extends DateSelectionType>({
   };
 
   return (
-    <CalendarStyles
-      display="flex"
-      flexDirection="column"
-      gap="spacing.6"
-      firstDayOfWeek={firstDayOfWeek}
-    >
+    <CalendarStyles display="flex" flexDirection="column" gap="spacing.5">
       <CalendarHeader
         isRange={isRange}
         date={currentDate}

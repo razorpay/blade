@@ -137,7 +137,7 @@
     "ts-deepmerge": "6.2.0",
     "use-presence": "1.1.0",
     "@use-gesture/react": "10.2.24",
-    "@floating-ui/react": "0.25.4",
+    "@floating-ui/react": "0.26.13",
     "react-hot-toast": "2.4.1",
     "@emotion/react": "11.11.1",
     "@table-library/react-table-library": "4.1.7",

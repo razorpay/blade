@@ -5,7 +5,8 @@ import type { PickerType } from './types';
 import { Box } from '~components/Box';
 import { Button } from '~components/Button';
 import { Text } from '~components/Typography';
-import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon } from '~components/Icons';
+import { ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon } from '~components/Icons';
+import { Link } from '~components/Link';
 
 type CalendarHeaderProps = {
   isRange: boolean;
@@ -34,6 +35,9 @@ const CalendarHeader = ({
 }: CalendarHeaderProps): React.ReactElement => {
   const month = dayjs(date as Date).format('MMMM');
   const year = dayjs(date as Date).format('YYYY');
+  const currentYear = dayjs(date as Date).year();
+  const startYearOfDecade = Math.floor(currentYear / 10) * 10;
+  const endYearOfDecade = startYearOfDecade + 9;
   const nextMonth = dayjs(date as Date)
     .add(1, 'month')
     .format('MMMM');
@@ -82,11 +86,11 @@ const CalendarHeader = ({
     >
       <Button
         justifySelf="start"
-        size="xsmall"
+        size="small"
         variant="tertiary"
         onClick={handlePrevious}
         accessibilityLabel="Previous"
-        icon={ArrowLeftIcon}
+        icon={ChevronLeftIcon}
       />
       {isRange ? (
         <>
@@ -99,37 +103,48 @@ const CalendarHeader = ({
         </>
       ) : (
         <Box display="flex" gap="spacing.5" alignItems="center">
-          <Button
-            onClick={() => {
-              onLevelChange('year');
-            }}
-            size="xsmall"
-            variant="tertiary"
-            iconPosition="right"
-            icon={ChevronDownIcon}
-          >
-            {month}
-          </Button>
-          <Button
-            onClick={() => {
-              onLevelChange('decade');
-            }}
-            size="xsmall"
-            variant="tertiary"
-            iconPosition="right"
-            icon={ChevronDownIcon}
-          >
-            {year}
-          </Button>
+          {pickerType === 'day' && (
+            <Link
+              onClick={() => {
+                onLevelChange('year');
+              }}
+              size="medium"
+              variant="button"
+              color="neutral"
+              iconPosition="right"
+              icon={ChevronDownIcon}
+            >
+              {month}
+            </Link>
+          )}
+          {pickerType === 'month' && (
+            <Link
+              onClick={() => {
+                onLevelChange('decade');
+              }}
+              size="medium"
+              variant="button"
+              color="neutral"
+              iconPosition="right"
+              icon={ChevronDownIcon}
+            >
+              {year}
+            </Link>
+          )}
+          {pickerType === 'year' && (
+            <Text size="medium" weight="medium" color="interactive.text.neutral.normal">
+              {startYearOfDecade} - {endYearOfDecade}
+            </Text>
+          )}
         </Box>
       )}
       <Button
         justifySelf="end"
-        size="xsmall"
+        size="small"
         variant="tertiary"
         onClick={handleNext}
         accessibilityLabel="Next"
-        icon={ArrowRightIcon}
+        icon={ChevronRightIcon}
       />
     </Box>
   );

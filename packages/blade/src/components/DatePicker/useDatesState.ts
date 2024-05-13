@@ -163,7 +163,8 @@ export function useDatesState<Type extends DatePickerType = 'default'>({
     onHoveredDateChange,
     getControlProps,
     setPickedDate,
-    _value,
-    setValue,
-  };
+    pickedDate,
+    controlledValue: _value,
+    setControlledValue: setValue,
+  } as const;
 }

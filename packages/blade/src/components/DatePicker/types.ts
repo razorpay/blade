@@ -46,6 +46,9 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   onPickerChange?: (picker: PickerType) => void;
 
   // Standard controlled/uncontrolled state props
+  isOpen?: boolean;
+  defaultIsOpen?: boolean;
+  onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
   date?: Date;
   defaultDate?: Date;
   onDateChange?: (date: Date) => void;

@@ -17,7 +17,7 @@ interface UseUncontrolledDates<Type extends DatePickerType = 'default'> {
 const getEmptyValue = <Type extends DatePickerType = 'default'>(type: Type) =>
   type === 'range' ? [null, null] : type === 'multiple' ? [] : null;
 
-export function useUncontrolledDates<Type extends DatePickerType = 'default'>({
+function useUncontrolledDates<Type extends DatePickerType = 'default'>({
   type,
   value,
   defaultValue,
@@ -78,3 +78,5 @@ export function useUncontrolledDates<Type extends DatePickerType = 'default'>({
 
   return [_finalValue, _setValue, controlled];
 }
+
+export { useUncontrolledDates };

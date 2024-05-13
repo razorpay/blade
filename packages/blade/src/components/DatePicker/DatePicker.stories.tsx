@@ -1,27 +1,38 @@
 import type { StoryFn, Meta } from '@storybook/react';
+import type { DatesRangeValue } from '@mantine/dates';
 import { DatesProvider } from '@mantine/dates';
 import { HeadlessMantineProvider } from '@mantine/core';
 import dayjs from 'dayjs';
+import React from 'react';
 import type { CalendarProps } from './types';
-import { Calendar as CalendarComponent, DatePicker } from './';
+import { DatePicker } from './';
 import { Box } from '~components/Box';
 
 export default {
   title: 'Components/DatePicker',
-  component: CalendarComponent,
+  component: DatePicker,
   tags: ['autodocs'],
 } as Meta<CalendarProps<'single' | 'range'>>;
 
-export const Calendar: StoryFn<typeof CalendarComponent> = ({ ...args }) => {
+export const Calendar: StoryFn<typeof DatePicker> = ({ ...args }) => {
+  const [isOpen, setIsOpen] = React.useState(true);
+  const [date, setDate] = React.useState<DatesRangeValue>([
+    new Date(),
+    dayjs().add(3, 'day').toDate(),
+  ]);
+
   return (
     <Box>
       <HeadlessMantineProvider>
         <DatesProvider settings={{ locale: 'en-US' }}>
           <DatePicker
-            {...args}
+            isOpen={isOpen}
+            onOpenChange={({ isOpen }) => setIsOpen(isOpen)}
             selectionType="range"
+            value={date}
             onChange={(date) => {
               console.log(date);
+              setDate(date);
             }}
             presets={[
               {
