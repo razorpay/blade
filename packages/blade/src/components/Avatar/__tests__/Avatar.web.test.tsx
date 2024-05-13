@@ -26,16 +26,17 @@ describe('<Avatar />', () => {
   });
 
   it('should render avatar with correct name initials', () => {
-    const { container } = renderWithTheme(
+    const { getAllByRole } = renderWithTheme(
       <Box>
         <Avatar name="Nitin Kumar" />
         <Avatar name="Anurag" />
         <Avatar name="Rama Krushna Behra" />
       </Box>,
     );
-    expect(container).toHaveTextContent('NK');
-    expect(container).toHaveTextContent('AN');
-    expect(container).toHaveTextContent('RB');
+    const [avatar1, avatar2, avatar3] = getAllByRole('button');
+    expect(avatar1).toHaveTextContent('NK');
+    expect(avatar2).toHaveTextContent('AN');
+    expect(avatar3).toHaveTextContent('RB');
   });
 
   it('should render avatar with img', () => {
@@ -48,18 +49,30 @@ describe('<Avatar />', () => {
     expect(img).toHaveAttribute('alt', 'Nitin Kumar');
   });
 
-  it('should respect alt text while rendering avatar with img', () => {
+  it('should respect img attributes while rendering avatar with img', () => {
+    const alt = 'Avatar for Nitin Kumar';
+    const src = 'https://avatars.githubusercontent.com/u/46647141?v=4';
+    const srcSet =
+      'https://avatars.githubusercontent.com/u/46647141?v=4 1x, https://avatars.githubusercontent.com/u/46647141?v=4 2x';
+    const crossOrigin = 'anonymous';
+    const referrerPolicy = 'no-referrer';
     const { getByRole } = renderWithTheme(
       <Avatar
         name="Nitin Kumar"
-        alt="Avatar for Nitin Kumar"
-        src="https://avatars.githubusercontent.com/u/46647141?v=4"
+        alt={alt}
+        src={src}
+        srcSet={srcSet}
+        crossOrigin={crossOrigin}
+        referrerPolicy={referrerPolicy}
       />,
     );
 
     const img = getByRole('img');
-    expect(img).toHaveAttribute('src', 'https://avatars.githubusercontent.com/u/46647141?v=4');
-    expect(img).toHaveAttribute('alt', 'Avatar for Nitin Kumar');
+    expect(img).toHaveAttribute('src', src);
+    expect(img).toHaveAttribute('srcSet', srcSet);
+    expect(img).toHaveAttribute('alt', alt);
+    expect(img).toHaveAttribute('crossOrigin', crossOrigin);
+    expect(img).toHaveAttribute('referrerPolicy', referrerPolicy);
   });
 
   it('should render avatar with icon', () => {
@@ -108,6 +121,28 @@ describe('<Avatar />', () => {
     expect(queryByRole('menu')).toBeNull();
     await user.click(dropdownTrigger);
     await waitFor(() => expect(getByRole('menu')).toBeVisible());
+  });
+
+  it('should render avatar as link', () => {
+    const { getByRole } = renderWithTheme(
+      <Avatar href="https://youtu.be/iPaBUhIsslA" target="_blank" name="Nitin Kumar" />,
+    );
+    expect(getByRole('link').tagName).toBe('A');
+    expect(getByRole('link')).toHaveAttribute('href', 'https://youtu.be/iPaBUhIsslA');
+    expect(getByRole('link')).toHaveAttribute('target', '_blank');
+    expect(getByRole('link')).toHaveAttribute('rel', 'noreferrer noopener');
+  });
+
+  it('should be able to override rel prop', () => {
+    const { getByRole } = renderWithTheme(
+      <Avatar
+        href="https://youtu.be/iPaBUhIsslA"
+        target="_blank"
+        name="Nitin Kumar"
+        rel="noopener"
+      />,
+    );
+    expect(getByRole('link')).toHaveAttribute('rel', 'noopener');
   });
 
   it('should throw error if alt or name prop is not provided with src prop', () => {
