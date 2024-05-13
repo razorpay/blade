@@ -1,15 +1,13 @@
 import type { StoryFn, Meta } from '@storybook/react';
-import type { AvatarProps } from '../Avatar.web';
-import { Avatar as AvatarComponent } from '../Avatar.web';
-import { AvatarGroup as AvatarGroupComponent } from '../AvatarGroup.web';
+import type { AvatarProps } from '../Avatar';
+import { Avatar as AvatarComponent } from '../Avatar';
 import { Heading } from '~components/Typography/Heading';
 import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
-import { Button } from '~components/Button';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import { RefreshIcon, ShareIcon, DownloadIcon, ChevronDownIcon, PlusIcon } from '~components/Icons';
-import { Dropdown, DropdownButton, DropdownOverlay } from '~components/Dropdown';
+import { BuildingIcon } from '~components/Icons';
+import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { ActionList, ActionListItem } from '~components/ActionList';
 import iconMap from '~components/Icons/iconMap';
 
@@ -50,7 +48,7 @@ const Page = (): React.ReactElement => {
 };
 
 export default {
-  title: 'Components/Avatar',
+  title: 'Components/Avatar/Avatar',
   component: AvatarComponent,
   tags: ['autodocs'],
   argTypes: {
@@ -75,6 +73,37 @@ const AvatarTemplate: StoryFn<typeof AvatarComponent> = (args) => {
 
 export const Default = AvatarTemplate.bind({});
 Default.storyName = 'Default';
+
+const AvatarTypeTemplate: StoryFn<typeof AvatarComponent> = (args) => {
+  const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.5">
+      {sizes.map((size) => (
+        <AvatarComponent key={size} {...args} size={size} />
+      ))}
+    </Box>
+  );
+};
+
+export const ImageAvatars = AvatarTypeTemplate.bind({});
+ImageAvatars.storyName = 'Image Avatars';
+ImageAvatars.args = {
+  src: 'https://avatars.githubusercontent.com/u/46647141?v=4',
+  name: 'Nitin Kumar',
+};
+
+export const LetterAvatars = AvatarTypeTemplate.bind({});
+LetterAvatars.storyName = 'Letter Avatars';
+LetterAvatars.args = {
+  name: 'Nitin Kumar',
+};
+
+export const IconAvatars = AvatarTypeTemplate.bind({});
+IconAvatars.storyName = 'Icon Avatars';
+IconAvatars.args = {
+  icon: BuildingIcon,
+  variant: 'square',
+};
 
 const AvatarSizesTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   const sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'] as const;
@@ -169,117 +198,21 @@ const AvatarVariantsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
 export const AllVariants = AvatarVariantsTemplate.bind({});
 AllVariants.storyName = 'All Variants';
 
-const AvatarGroupTemplate: StoryFn<typeof AvatarGroupComponent> = (args) => {
-  // const variants = ['circle', 'square'] as const;
+const AvatarDropdownTemplate: StoryFn<typeof AvatarComponent> = (args) => {
   return (
-    <Box display="flex" flexDirection="column" gap="spacing.5">
-      {/* {variants.map((variant) => (
-        <Box
-          key={variant}
-          display="flex"
-          flex="1 1 auto"
-          alignItems="center"
-          justifyItems="center"
-          alignContent="center"
-          gap="spacing.5"
-          flexWrap="nowrap"
-          width="120px"
-        >
-          <Box width="40px">
-            <Heading>{variant}</Heading>
-          </Box>
-          <Box display="flex" flex="1 1 auto" justifyContent="center">
-            <AvatarComponent size="medium" {...args} variant={variant} />
-          </Box>
-        </Box>
-      ))} */}
-      <AvatarGroupComponent>
-        <AvatarComponent name="Nitin Kumar" />
-        <AvatarComponent name="Nitin Kumar" />
-        <AvatarComponent name="Nitin Kumar" />
-        <AvatarComponent name="Nitin Kumar" />
-      </AvatarGroupComponent>
-    </Box>
+    <Dropdown>
+      <AvatarComponent size="large" {...args} />
+      <DropdownOverlay>
+        <ActionList>
+          <ActionListItem title="Payouts" value="payout" />
+          <ActionListItem title="Transactions" value="transactions" />
+          <ActionListItem title="Settings" value="settings" />
+          <ActionListItem title="Logout" value="logout" />
+        </ActionList>
+      </DropdownOverlay>
+    </Dropdown>
   );
 };
 
-export const AvatarGroup = AvatarGroupTemplate.bind({});
-AvatarGroup.storyName = 'AvatarGroup';
-// const AvatarDropdownTemplate: StoryFn<typeof AvatarComponent> = (args) => {
-//   return (
-//     <Box display="flex" alignItems="center" justifyContent="center">
-//       <AvatarComponent {...args}>
-//         <Button icon={PlusIcon}>Payout</Button>
-//         <Dropdown>
-//           <DropdownButton icon={ChevronDownIcon} />
-//           <DropdownOverlay defaultPlacement="bottom-end">
-//             <ActionList>
-//               <ActionListItem title="Bulk Payout" value="bulk-payout" />
-//               <ActionListItem title="Upload Invoice" value="upload-invoice" />
-//               <ActionListItem title="Add Contact" value="add-contact" />
-//               <ActionListItem title="Team Member" value="team-member" />
-//             </ActionList>
-//           </DropdownOverlay>
-//         </Dropdown>
-//       </AvatarComponent>
-//     </Box>
-//   );
-// };
-
-// export const WithDropdown = AvatarDropdownTemplate.bind({});
-// WithDropdown.storyName = 'With Dropdown';
-
-// const AvatarVariantsTemplate: StoryFn<typeof AvatarComponent> = (args) => {
-//   const variants: AvatarProps['variant'][] = ['primary', 'secondary', 'tertiary'];
-//   return (
-//     <>
-//       {variants.map((variant) => (
-//         <Box key={variant} marginBottom="spacing.8">
-//           <Heading marginBottom="spacing.3">{variant}</Heading>
-//           <AvatarComponent {...args} variant={variant}>
-//             <Button icon={RefreshIcon}>Sync</Button>
-//             <Button icon={ShareIcon}>Share</Button>
-//             <Button icon={DownloadIcon}>Download</Button>
-//           </AvatarComponent>
-//         </Box>
-//       ))}
-//     </>
-//   );
-// };
-
-// export const AllVariants = AvatarVariantsTemplate.bind({});
-// AllVariants.storyName = 'All Variants';
-
-// const AvatarSizesTemplate: StoryFn<typeof AvatarComponent> = (args) => {
-//   const sizes: AvatarProps['size'][] = ['xsmall', 'small', 'medium', 'large'];
-//   return (
-//     <>
-//       {sizes.map((size) => (
-//         <Box key={size} marginBottom="spacing.8">
-//           <Heading marginBottom="spacing.3">{size}</Heading>
-//           <AvatarComponent {...args} size={size}>
-//             <Button icon={RefreshIcon}>Sync</Button>
-//             <Button icon={ShareIcon}>Share</Button>
-//             <Button icon={DownloadIcon}>Download</Button>
-//           </AvatarComponent>
-//         </Box>
-//       ))}
-//     </>
-//   );
-// };
-
-// export const AllSizes = AvatarSizesTemplate.bind({});
-// AllSizes.storyName = 'All Sizes';
-
-// const AvatarIconOnlyTemplate: StoryFn<typeof AvatarComponent> = (args) => {
-//   return (
-//     <AvatarComponent {...args}>
-//       <Button icon={RefreshIcon} />
-//       <Button icon={ShareIcon} />
-//       <Button icon={DownloadIcon} />
-//     </AvatarComponent>
-//   );
-// };
-
-// export const IconsOnly = AvatarIconOnlyTemplate.bind({});
-// IconsOnly.storyName = 'Icons Only';
+export const WithDropdown = AvatarDropdownTemplate.bind({});
+WithDropdown.storyName = 'With Dropdown';
