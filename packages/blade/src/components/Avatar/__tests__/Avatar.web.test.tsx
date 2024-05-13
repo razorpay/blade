@@ -1,7 +1,8 @@
 import React from 'react';
 import userEvent from '@testing-library/user-event';
 import { waitFor } from '@testing-library/react';
-import { Avatar, AvatarProps } from '../Avatar.web';
+import type { AvatarProps } from '../Avatar.web';
+import { Avatar } from '../Avatar.web';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 import { InfoIcon } from '~components/Icons';
 import assertAccessible from '~utils/testing/assertAccessible.native';
