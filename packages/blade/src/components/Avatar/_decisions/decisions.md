@@ -26,28 +26,27 @@ type AvatarGroupProps = {
   children: React.ReactNode;
   /**
    * The size of each avatar within the group. Propagates to all avatars.
+   * @default "xsmall"
    */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   /**
    * The maximum number of avatars to display before truncating.
    */
-  maxAvatars?: number;
+  maxCount?: number;
+  testID?: string;
 };
 
 type AvatarProps = {
   /**
    * The size of the avatar.
-   * @default 'xsmall'
    */
-  size?: 'xsmall' | 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
   /**
    * The visual variant of the avatar.
-   * @default 'circle'
    */
   variant?: 'circle' | 'square';
   /**
    * The color theme of the avatar.
-   * @default 'neutral'
    */
   color?: 'primary' | 'positive' | 'negative' | 'notice' | 'information' | 'neutral';
   /**
@@ -64,17 +63,21 @@ type AvatarProps = {
    */
   src?: string;
   /**
-   * The `srcSet` attribute for the `img` element, useful for responsive images.
-   */
-  srcSet?: string;
-  /**
    * The `alt` attribute for the `img` element
    */
   alt?: string;
   /**
+   * The `srcSet` attribute for the `img` element, useful for responsive images.
+   */
+  srcSet?: string;
+  /**
    * CORS settings attributes
    */
   crossOrigin?: 'anonymous' | 'use-credentials' | '';
+  /**
+   * Defines which referrer is sent when fetching the resource.
+   */
+  referrerPolicy?: HTMLAttributeReferrerPolicy;
   /**
    * Automatically renders button with `a` tag with `href` on web
    */
@@ -94,10 +97,8 @@ type AvatarProps = {
   /**
    * Click handler for the avatar.
    */
-  onClick?: Platform.Select<{
-    native: (event: GestureResponderEvent) => void;
-    web: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  }>;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  testID?: string;
 };
 ```
 
@@ -151,7 +152,7 @@ By default, we will merge the first characters of first & last word in the `name
 import { Avatar, AvatarGroup } from '@razorpay/blade/components';
 
 const App = () => (
-  <AvatarGroup maxAvatars={3} size="medium">
+  <AvatarGroup maxCount={3} size="medium">
     <Avatar color="primary" name="Nitin Kumar" />
     <Avatar color="positive" name="Anurag" />
     <Avatar color="negative" name="Saurabh Daware" />
