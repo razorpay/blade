@@ -46,6 +46,7 @@ type OnLinkActiveChangeArgs = {
 type SideNavContextType = {
   l2PortalContainerRef?: React.RefObject<HTMLDivElement>;
   onLinkActiveChange?: (args: OnLinkActiveChangeArgs) => void;
+  closeMobileNav?: () => void;
 };
 
 type NavLinkContextType = {

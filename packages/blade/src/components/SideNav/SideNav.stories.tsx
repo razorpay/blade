@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
-import { Link, Route, Switch, useRouteMatch, matchPath, useLocation } from 'react-router-dom';
+import { Link, Route, Switch, useLocation } from 'react-router-dom';
 import { SideNavLevel } from './SideNavLevel';
 import type { SideNavLinkProps } from './';
 import { SideNav, SideNavLink } from './';
@@ -25,7 +25,7 @@ export default {
     ...getStyledPropsArgTypes(),
   },
   // eslint-disable-next-line babel/new-cap
-  decorators: [StoryRouter(undefined, { initialEntries: ['/app'] })] as unknown,
+  decorators: [StoryRouter(undefined, { initialEntries: ['/app/dashboard'] })] as unknown,
 } as Meta<typeof SideNav>;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -60,6 +60,18 @@ const navItems = [
         icon: UserIcon,
         title: 'User Settings',
         href: '/settings/user',
+        children: [
+          {
+            icon: HomeIcon,
+            title: 'Address',
+            href: '/settings/user/home',
+          },
+          {
+            icon: UserIcon,
+            title: 'Account',
+            href: '/settings/user/account',
+          },
+        ],
       },
       {
         icon: SubscriptionsIcon,
@@ -89,7 +101,7 @@ const navItems = [
 
 const NavItem = (
   props: Omit<SideNavLinkProps, 'as'> & {
-    subItems?: Omit<SideNavLinkProps, 'as'>[];
+    subItems?: Omit<SideNavLinkProps, 'as' | 'children'>[];
   },
 ): React.ReactElement => {
   const location = useLocation();
@@ -113,9 +125,22 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
             return (
               <NavItem key={navItem.title} {...navItem} subItems={navItem.children}>
                 <SideNavLevel>
-                  {navItem.children.map((l2Item) => (
-                    <NavItem key={l2Item.title} {...l2Item} />
-                  ))}
+                  {navItem.children.map((l2Item) => {
+                    if (!l2Item.children) {
+                      return <NavItem key={l2Item.title} {...l2Item} />;
+                    }
+
+                    const { children, ...l3Trigger } = l2Item;
+                    return (
+                      <NavItem key={l3Trigger.title} {...l3Trigger}>
+                        <SideNavLevel>
+                          {children.map((l3Item) => (
+                            <NavItem key={l3Item.title} {...l3Item} />
+                          ))}
+                        </SideNavLevel>
+                      </NavItem>
+                    );
+                  })}
                 </SideNavLevel>
               </NavItem>
             );
@@ -131,6 +156,8 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
           <Route path="/nice" component={Page} />
           <Route path="/settings" exact component={Page} />
           <Route path="/settings/user" exact component={Page} />
+          <Route path="/settings/user/home" exact component={Page} />
+          <Route path="/settings/user/account" exact component={Page} />
           <Route path="/settings/subscriptions" exact component={Page} />
         </Switch>
       </Box>
@@ -148,7 +175,7 @@ const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
             return (
               <NavItem key={navItem.title} {...navItem} subItems={navItem.children}>
                 <SideNavLevel>
-                  {navItem.children.map((l2Item) => (
+                  {navItem.children.map(({ children, ...l2Item }) => (
                     <NavItem key={l2Item.title} {...l2Item} />
                   ))}
                 </SideNavLevel>

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FloatingPortal } from '@floating-ui/react';
-import { useSideNav } from './SideNavContext';
-import type { NavLinkContextType, SideNavLinkProps } from './types';
+import { NavLinkContext, useNavLink, useSideNav } from './SideNavContext';
+import type { SideNavLinkProps } from './types';
 import { Box } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
@@ -10,8 +10,11 @@ import { BaseText } from '~components/Typography/BaseText';
 import { useId } from '~utils/useId';
 import { ChevronRightIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
+import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
+import { Collapsible, CollapsibleBody } from '~components/Collapsible';
+import { makeAccessible } from '~utils/makeAccessible';
 
-const StyledNavLink = styled.a((props) => {
+const StyledNavLinkContainer = styled.a((props) => {
   return {
     position: 'relative',
     display: 'flex',
@@ -23,6 +26,7 @@ const StyledNavLink = styled.a((props) => {
     textDecoration: 'none',
     overflow: 'hidden',
     flexWrap: 'nowrap',
+    cursor: 'pointer',
     padding: `${makeSpace(props.theme.spacing[0])} ${makeSpace(props.theme.spacing[4])}`,
     color: props.theme.colors.interactive.text.gray.subtle,
     borderRadius: props.theme.border.radius.medium,
@@ -82,10 +86,53 @@ const StyledNavLink = styled.a((props) => {
   };
 });
 
-const NavLinkContext = React.createContext<NavLinkContextType>({});
-const useNavLink = (): NavLinkContextType => {
-  const value = React.useContext(NavLinkContext);
-  return value;
+const NavLinkIconTitle = ({
+  icon: Icon,
+  title,
+  isL1Item,
+}: {
+  icon: SideNavLinkProps['icon'];
+  title: SideNavLinkProps['title'];
+  isL1Item: boolean;
+}): React.ReactElement => {
+  return (
+    <Box display="flex" flexDirection="row" gap="spacing.3">
+      <BaseBox display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+        <Icon size="medium" color="currentColor" />
+      </BaseBox>
+      <BaseText
+        truncateAfterLines={1}
+        color="currentColor"
+        fontWeight="medium"
+        fontSize={100}
+        lineHeight={100}
+        as="p"
+        className={isL1Item ? 'hide-when-collapsed' : ''}
+      >
+        {title}
+      </BaseText>
+    </Box>
+  );
+};
+
+const L3Trigger = ({
+  title,
+  icon,
+}: Pick<SideNavLinkProps, 'title' | 'icon'>): React.ReactElement => {
+  const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
+
+  const toggleCollapse = (): void => onExpandChange(!isExpanded);
+  const onL3TriggerClick = (): void => toggleCollapse();
+
+  return (
+    <StyledNavLinkContainer
+      as="button"
+      onClick={onL3TriggerClick}
+      {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
+    >
+      <NavLinkIconTitle title={title} icon={icon} isL1Item={false} />
+    </StyledNavLinkContainer>
+  );
 };
 
 const SideNavLink = ({
@@ -93,16 +140,18 @@ const SideNavLink = ({
   href,
   children,
   isCurrentPage,
-  icon: Icon,
+  icon,
   as,
 }: SideNavLinkProps): React.ReactElement => {
-  const { l2PortalContainerRef, onLinkActiveChange } = useSideNav();
+  const { l2PortalContainerRef, onLinkActiveChange, closeMobileNav } = useSideNav();
   const navLinkRef = React.useRef<HTMLAnchorElement>(null);
   const { level: _prevLevel } = useNavLink();
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
-  const isL2Trigger = Boolean(children);
+  console.log({ currentLevel, title });
+  const isL2Trigger = Boolean(children) && currentLevel === 1;
   const navItemId = useId('nav-item');
+  const isL3Trigger = Boolean(children) && currentLevel === 2;
 
   React.useEffect(() => {
     onLinkActiveChange?.({
@@ -116,50 +165,51 @@ const SideNavLink = ({
 
   return (
     <NavLinkContext.Provider value={{ level: currentLevel }}>
-      <StyledNavLink
-        ref={navLinkRef}
-        as={as}
-        to={href}
-        onClick={() => {
-          onLinkActiveChange?.({
-            id: navItemId,
-            level: currentLevel,
-            isActive: Boolean(isCurrentPage),
-            isL2Trigger,
-          });
-        }}
-        aria-current={isCurrentPage ? 'page' : undefined}
-        data-level={currentLevel}
-        data-l2Trigger={isL2Trigger}
-        data-navItemId={navItemId}
-      >
-        <Box display="flex" flexDirection="row" gap="spacing.3">
-          <BaseBox display="flex" flexDirection="row" alignItems="center" justifyContent="center">
-            <Icon size="medium" color="currentColor" />
-          </BaseBox>
-          <BaseText
-            truncateAfterLines={1}
-            color="currentColor"
-            fontWeight="medium"
-            fontSize={100}
-            lineHeight={100}
-            as="p"
-            className="hide-when-collapsed"
+      {isL3Trigger ? (
+        <Collapsible _dangerouslyDisableValidations={true} _shouldApplyWidthRestrictions={false}>
+          <L3Trigger title={title} icon={icon} />
+          <CollapsibleBody width="100%">{children}</CollapsibleBody>
+        </Collapsible>
+      ) : (
+        <>
+          <StyledNavLinkContainer
+            ref={navLinkRef}
+            as={as}
+            to={href}
+            onClick={() => {
+              // Close the mobile nav when item is clicked and its not trigger for next menu
+              if (!isL2Trigger) {
+                closeMobileNav?.();
+              }
+
+              if (isCurrentPage && isL2Trigger) {
+                onLinkActiveChange?.({
+                  id: navItemId,
+                  level: currentLevel,
+                  isActive: Boolean(isCurrentPage),
+                  isL2Trigger,
+                });
+              }
+            }}
+            aria-current={isCurrentPage ? 'page' : undefined}
+            data-level={currentLevel}
+            data-l2trigger={isL2Trigger}
+            data-navitemid={navItemId}
           >
-            {title}
-          </BaseText>
-        </Box>
-        {isL2Trigger ? (
-          <BaseBox className="hide-when-collapsed">
-            <ChevronRightIcon size="medium" color="currentColor" />
-          </BaseBox>
-        ) : null}
-      </StyledNavLink>
-      {children ? (
-        <FloatingPortal root={l2PortalContainerRef}>
-          {isCurrentPage ? children : null}
-        </FloatingPortal>
-      ) : null}
+            <NavLinkIconTitle icon={icon} title={title} isL1Item={currentLevel === 1} />
+            {isL2Trigger ? (
+              <BaseBox className="hide-when-collapsed">
+                <ChevronRightIcon size="medium" color="currentColor" />
+              </BaseBox>
+            ) : null}
+          </StyledNavLinkContainer>
+          {children ? (
+            <FloatingPortal root={l2PortalContainerRef}>
+              {isCurrentPage ? children : null}
+            </FloatingPortal>
+          ) : null}
+        </>
+      )}
     </NavLinkContext.Provider>
   );
 };

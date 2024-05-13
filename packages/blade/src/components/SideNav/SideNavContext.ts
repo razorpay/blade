@@ -1,5 +1,5 @@
 import React from 'react';
-import type { SideNavContextType } from './types';
+import type { NavLinkContextType, SideNavContextType } from './types';
 import { throwBladeError } from '~utils/logger';
 
 const SideNavContext = React.createContext<SideNavContextType>({});
@@ -12,4 +12,10 @@ const useSideNav = (): SideNavContextType => {
   return value;
 };
 
-export { SideNavContext, useSideNav };
+const NavLinkContext = React.createContext<NavLinkContextType>({});
+const useNavLink = (): NavLinkContextType => {
+  const value = React.useContext(NavLinkContext);
+  return value;
+};
+
+export { SideNavContext, useSideNav, NavLinkContext, useNavLink };

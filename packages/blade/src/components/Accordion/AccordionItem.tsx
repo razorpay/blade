@@ -124,6 +124,7 @@ const AccordionItem = ({
           onExpandChange={handleExpandChange}
           // Accordion has its own width restrictions
           _shouldApplyWidthRestrictions={false}
+          _dangerouslyDisableValidations={true}
         >
           <AccordionButton
             index={_index}

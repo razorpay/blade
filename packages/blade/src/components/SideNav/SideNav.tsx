@@ -31,6 +31,14 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
   const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
   const [isTransitioning, setIsTransitioning] = React.useState(false);
   const isMobile = false;
+
+  const closeMobileNav = (): void => {
+    if (isMobile) {
+      setIsL1Collapsed(false);
+      onDismiss?.();
+    }
+  };
+
   const onLinkActiveChange: SideNavContextType['onLinkActiveChange'] = (args) => {
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
       setIsL1Collapsed(true);
@@ -48,7 +56,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
   };
 
   const contextValue = React.useMemo(
-    () => ({ l2PortalContainerRef, onLinkActiveChange }),
+    () => ({ l2PortalContainerRef, onLinkActiveChange, closeMobileNav }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
