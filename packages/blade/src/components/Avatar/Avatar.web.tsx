@@ -2,7 +2,6 @@ import React from 'react';
 import type { AvatarProps } from './types';
 import { StyledAvatar } from './StyledAvatar';
 import { DefaultAvatarIcon } from './DefaultAvatarIcon';
-
 import { useAvatarGroupContext } from './AvatarGroupContext';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
