@@ -78,7 +78,7 @@ const _AvatarGroup = ({
 /**
  * ### AvatarGroup Component
  * 
- * The Avatar component is used to group related buttons together.
+ * The AvatarGroup component is used to group Avatars together.
  * 
  * ---
  * 
@@ -87,18 +87,20 @@ const _AvatarGroup = ({
  * ```jsx
   const App = () => {
     return (
-      <Avatar>
-        <Button icon={RefreshIcon}>Sync</Button>
-        <Button icon={ShareIcon}>Share</Button>
-        <Button icon={DownloadIcon}>Download</Button>
-      </Avatar>
+      <AvatarGroup>
+        <Avatar name="Kamlesh Chandnani" />
+        <Avatar name="Rama Krushna Behera" />
+        <Avatar name="Chaitanya Vikas Deorukhkar" />
+        <Avatar name="Anurag Hazra" />
+        <Avatar name="Nitin Kumar" />
+      </AvatarGroup>
     );
   }
  * ```
  *
  *  ---
  *
- * Checkout {@link https://blade.razorpay.com/?path=/docs/components-buttongroup FileUpload Documentation}
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-avatar-avatargroup AvatarGroup Documentation}
  * 
  */
 const AvatarGroup = assignWithoutSideEffects(_AvatarGroup, {

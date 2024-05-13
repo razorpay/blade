@@ -15,28 +15,18 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="Avatar"
-      componentDescription="The Avatar component is used to group related buttons together."
+      componentDescription="An avatar component is a standardized visual representation of a user or entity. This reusable element, often manifesting as a profile picture, icon, or initials, facilitates user recognition and streamlines interface navigation."
       apiDecisionLink={null}
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=80753%3A108070&mode=design&t=iGYw4ygZL8cErFIL-1"
+      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=88229-1518352&m=dev"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import {
-          Button,
-          Avatar,
-          RefreshIcon,
-          ShareIcon,
-          DownloadIcon,
-        } from '@razorpay/blade/components';
+        import { Avatar } from '@razorpay/blade/components';
         
         function App(): React.ReactElement {
           return (
-            <Avatar>
-              <Button icon={RefreshIcon}>Sync</Button>
-              <Button icon={ShareIcon}>Share</Button>
-              <Button icon={DownloadIcon}>Download</Button>
-            </Avatar>
+            <Avatar name="Nitin Kumar" src="https://avatars.githubusercontent.com/u/46647141?v=4" />
           )
         }
 

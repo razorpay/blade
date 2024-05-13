@@ -1,9 +1,13 @@
 import { composeStories } from '@storybook/react';
-import * as buttonGroupStories from './Avatar.stories';
+import * as avatarGroupStories from './AvatarGroup.stories';
+import * as avatarStories from './Avatar.stories';
 import { Box } from '~components/Box';
 import { Heading } from '~components/Typography';
 
-const allStories = Object.values(composeStories(buttonGroupStories));
+const allStories = [
+  ...Object.values(composeStories(avatarStories)),
+  ...Object.values(composeStories(avatarGroupStories)),
+];
 
 export const Avatar = (): JSX.Element => {
   return (

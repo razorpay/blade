@@ -13,28 +13,24 @@ const Page = (): React.ReactElement => {
   return (
     <StoryPageWrapper
       componentName="AvatarGroup"
-      componentDescription="The Avatar component is used to group related buttons together."
+      componentDescription="The AvatarGroup component is used to group Avatars together."
       apiDecisionLink={null}
-      figmaURL="https://www.figma.com/file/jubmQL9Z8V7881ayUD95ps/Blade-DSL?type=design&node-id=80753%3A108070&mode=design&t=iGYw4ygZL8cErFIL-1"
+      figmaURL="https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=88229-1519025&m=dev"
     >
       <Heading size="large">Usage</Heading>
       <Sandbox showConsole>
         {`
-        import {
-          Button,
-          Avatar,
-          RefreshIcon,
-          ShareIcon,
-          DownloadIcon,
-        } from '@razorpay/blade/components';
+        import { Avatar, AvatarGroup } from '@razorpay/blade/components';
         
         function App(): React.ReactElement {
           return (
-            <Avatar>
-              <Button icon={RefreshIcon}>Sync</Button>
-              <Button icon={ShareIcon}>Share</Button>
-              <Button icon={DownloadIcon}>Download</Button>
-            </Avatar>
+            <AvatarGroup>
+              <Avatar name="Kamlesh Chandnani" />
+              <Avatar name="Rama Krushna Behera" />
+              <Avatar name="Chaitanya Vikas Deorukhkar" />
+              <Avatar name="Anurag Hazra" />
+              <Avatar name="Nitin Kumar" />
+            </AvatarGroup>
           )
         }
 
@@ -51,12 +47,6 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     ...getStyledPropsArgTypes(),
-    icon: {
-      name: 'icon',
-      type: 'select',
-      options: Object.keys(iconMap),
-      mapping: iconMap,
-    },
   },
   parameters: {
     docs: {

@@ -18,7 +18,6 @@ import { useControllableState } from '~utils/useControllable';
 const validDropdownChildren = [
   // TODO: Remove Box once CountrySelector's button sizing is fixed
   dropdownComponentIds.BaseBox,
-  dropdownComponentIds.triggers.Avatar,
   dropdownComponentIds.triggers.SelectInput,
   dropdownComponentIds.triggers.SearchInput,
   dropdownComponentIds.triggers.DropdownButton,
@@ -26,6 +25,7 @@ const validDropdownChildren = [
   dropdownComponentIds.DropdownOverlay,
   dropdownComponentIds.triggers.AutoComplete,
   bottomSheetComponentIds.BottomSheet,
+  dropdownComponentIds.triggers.Avatar,
 ];
 
 /**
@@ -146,6 +146,10 @@ const _Dropdown = ({
 
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.DropdownButton)) {
         dropdownTriggerer.current = 'DropdownButton';
+      }
+
+      if (isValidAllowedChildren(child, dropdownComponentIds.triggers.Avatar)) {
+        dropdownTriggerer.current = 'Avatar';
       }
 
       if (isValidAllowedChildren(child, dropdownComponentIds.triggers.AutoComplete)) {

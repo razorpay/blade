@@ -8,7 +8,6 @@ import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useDropdown } from '~components/Dropdown/useDropdown';
-import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import BaseButton from '~components/Button/BaseButton/BaseButton';
 import { throwBladeError } from '~utils/logger';
 import { DropdownButton } from '~components/Dropdown';
@@ -46,44 +45,19 @@ const _Avatar = ({
       message: '"alt" or "name" prop is required when the "src" prop is provided.',
     });
   }
-  //const accessibilityLabel = alt ?? name;
   const groupProps = useAvatarGroupContext();
-  console.log('🚀 ~ groupProps:', groupProps);
   const avatarSize = groupProps?.size ?? size;
-  console.log('🚀 ~ avatarSize:', avatarSize);
 
-  const {
-    // onTriggerClick,
-    // onTriggerKeydown,
-    // dropdownBaseId,
-    // isOpen,
-    // activeIndex,
-    // hasFooterAction,
-    // triggererRef,
-    dropdownTriggerer,
-  } = useDropdown();
+  const { dropdownTriggerer } = useDropdown();
   const isInsideDropdown = dropdownTriggerer === 'Avatar';
   const AvatarButton = isInsideDropdown ? DropdownButton : BaseButton;
-
-  // const dropDownTriggerProps = isInsideDropdown
-  //   ? {
-  //       ref: triggererRef,
-  //       onClick: onTriggerClick,
-  //       accessibilityProps: {
-  //         label: accessibilityLabel,
-  //         hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
-  //         expanded: isOpen,
-  //         controls: `${dropdownBaseId}-actionlist`,
-  //         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
-  //       },
-  //     }
-  //   : {};
 
   const getChildrenToRender = (): React.ReactElement => {
     if (src) {
       return (
         <AvatarButton
           variant="secondary"
+          // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
           color={color}
           size="xsmall"
           isPressAnimationDisabled={true}
@@ -97,13 +71,6 @@ const _Avatar = ({
           href={href}
           target={target}
           rel={rel}
-          // {...dropDownTriggerProps}
-          // onKeyDown={(e) => {
-          //   if (isInsideDropdown) {
-          //     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-          //     onTriggerKeydown?.({ event: e as any });
-          //   }
-          // }}
         />
       );
     }
@@ -112,6 +79,7 @@ const _Avatar = ({
       return (
         <AvatarButton
           variant="secondary"
+          // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
           color={color}
           size="xsmall"
           iconSize={avatarSize}
@@ -119,13 +87,6 @@ const _Avatar = ({
           href={href}
           target={target}
           rel={rel}
-          // onKeyDown={(e) => {
-          //   if (isInsideDropdown) {
-          //     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-          //     onTriggerKeydown?.({ event: e as any });
-          //   }
-          // }}
-          // {...dropDownTriggerProps}
         >
           {getInitials(name)}
         </AvatarButton>
@@ -135,6 +96,7 @@ const _Avatar = ({
     return (
       <AvatarButton
         variant="secondary"
+        // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
         color={color}
         size="xsmall"
         iconSize={avatarSize}
@@ -143,13 +105,6 @@ const _Avatar = ({
         href={href}
         target={target}
         rel={rel}
-        // onKeyDown={(e) => {
-        //   if (isInsideDropdown) {
-        //     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-        //     onTriggerKeydown?.({ event: e as any });
-        //   }
-        // }}
-        // {...dropDownTriggerProps}
       />
     );
   };
@@ -171,7 +126,7 @@ const _Avatar = ({
 /**
  * ### Avatar Component
  * 
- * The Avatar component is used to group related buttons together.
+ * An avatar component is a standardized visual representation of a user or entity.
  * 
  * ---
  * 
@@ -183,7 +138,7 @@ const _Avatar = ({
  *
  *  ---
  *
- * Checkout {@link https://blade.razorpay.com/?path=/docs/components-avatar Avatar Documentation}
+ * Checkout {@link https://blade.razorpay.com/?path=/docs/components-avatar-avatar Avatar Documentation}
  * 
  */
 const Avatar = assignWithoutSideEffects(_Avatar, {
