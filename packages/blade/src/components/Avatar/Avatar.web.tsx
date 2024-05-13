@@ -11,6 +11,7 @@ import { useDropdown } from '~components/Dropdown/useDropdown';
 import { getActionListContainerRole } from '~components/ActionList/getA11yRoles';
 import BaseButton from '~components/Button/BaseButton/BaseButton';
 import { throwBladeError } from '~utils/logger';
+import { DropdownButton } from '~components/Dropdown';
 
 const getInitials = (name: string): string => {
   // Combine first and last name initials
@@ -22,7 +23,7 @@ const getInitials = (name: string): string => {
 };
 
 const _Avatar = ({
-  name = 'Nitin Kumar',
+  name,
   color = 'neutral',
   size = 'xsmall',
   variant = 'circle',
@@ -45,41 +46,43 @@ const _Avatar = ({
       message: '"alt" or "name" prop is required when the "src" prop is provided.',
     });
   }
-  const accessibilityLabel = alt ?? name;
+  //const accessibilityLabel = alt ?? name;
   const groupProps = useAvatarGroupContext();
   console.log('🚀 ~ groupProps:', groupProps);
   const avatarSize = groupProps?.size ?? size;
+  console.log('🚀 ~ avatarSize:', avatarSize);
 
   const {
-    onTriggerClick,
-    onTriggerKeydown,
-    dropdownBaseId,
-    isOpen,
-    activeIndex,
-    hasFooterAction,
-    triggererRef,
+    // onTriggerClick,
+    // onTriggerKeydown,
+    // dropdownBaseId,
+    // isOpen,
+    // activeIndex,
+    // hasFooterAction,
+    // triggererRef,
     dropdownTriggerer,
   } = useDropdown();
   const isInsideDropdown = dropdownTriggerer === 'Avatar';
+  const AvatarButton = isInsideDropdown ? DropdownButton : BaseButton;
 
-  const dropDownTriggerProps = isInsideDropdown
-    ? {
-        ref: triggererRef,
-        onClick: onTriggerClick,
-        accessibilityProps: {
-          label: accessibilityLabel,
-          hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
-          expanded: isOpen,
-          controls: `${dropdownBaseId}-actionlist`,
-          activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
-        },
-      }
-    : {};
+  // const dropDownTriggerProps = isInsideDropdown
+  //   ? {
+  //       ref: triggererRef,
+  //       onClick: onTriggerClick,
+  //       accessibilityProps: {
+  //         label: accessibilityLabel,
+  //         hasPopup: getActionListContainerRole(hasFooterAction, 'DropdownButton'),
+  //         expanded: isOpen,
+  //         controls: `${dropdownBaseId}-actionlist`,
+  //         activeDescendant: activeIndex >= 0 ? `${dropdownBaseId}-${activeIndex}` : undefined,
+  //       },
+  //     }
+  //   : {};
 
   const getChildrenToRender = (): React.ReactElement => {
     if (src) {
       return (
-        <BaseButton
+        <AvatarButton
           variant="secondary"
           color={color}
           size="xsmall"
@@ -94,20 +97,20 @@ const _Avatar = ({
           href={href}
           target={target}
           rel={rel}
-          {...dropDownTriggerProps}
-          onKeyDown={(e) => {
-            if (isInsideDropdown) {
-              // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-              onTriggerKeydown?.({ event: e as any });
-            }
-          }}
+          // {...dropDownTriggerProps}
+          // onKeyDown={(e) => {
+          //   if (isInsideDropdown) {
+          //     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+          //     onTriggerKeydown?.({ event: e as any });
+          //   }
+          // }}
         />
       );
     }
 
     if (name && !src) {
       return (
-        <BaseButton
+        <AvatarButton
           variant="secondary"
           color={color}
           size="xsmall"
@@ -116,21 +119,21 @@ const _Avatar = ({
           href={href}
           target={target}
           rel={rel}
-          onKeyDown={(e) => {
-            if (isInsideDropdown) {
-              // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-              onTriggerKeydown?.({ event: e as any });
-            }
-          }}
-          {...dropDownTriggerProps}
+          // onKeyDown={(e) => {
+          //   if (isInsideDropdown) {
+          //     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+          //     onTriggerKeydown?.({ event: e as any });
+          //   }
+          // }}
+          // {...dropDownTriggerProps}
         >
           {getInitials(name)}
-        </BaseButton>
+        </AvatarButton>
       );
     }
 
     return (
-      <BaseButton
+      <AvatarButton
         variant="secondary"
         color={color}
         size="xsmall"
@@ -140,13 +143,13 @@ const _Avatar = ({
         href={href}
         target={target}
         rel={rel}
-        onKeyDown={(e) => {
-          if (isInsideDropdown) {
-            // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
-            onTriggerKeydown?.({ event: e as any });
-          }
-        }}
-        {...dropDownTriggerProps}
+        // onKeyDown={(e) => {
+        //   if (isInsideDropdown) {
+        //     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion, @typescript-eslint/no-explicit-any
+        //     onTriggerKeydown?.({ event: e as any });
+        //   }
+        // }}
+        // {...dropDownTriggerProps}
       />
     );
   };

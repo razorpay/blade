@@ -13,7 +13,7 @@ import BaseButton from '~components/Button/BaseButton/BaseButton';
 const _AvatarGroup = ({
   children,
   size = 'xsmall',
-  maxCount = 2,
+  maxCount,
   testID,
   ...styledProps
 }: AvatarGroupProps): React.ReactElement => {

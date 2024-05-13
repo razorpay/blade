@@ -84,7 +84,7 @@ type ButtonImgProps = {
   /**
    * The `alt` attribute for the `img` element
    */
-  alt: string;
+  alt?: string;
   /**
    * The `srcSet` attribute for the `img` element, useful for responsive images.
    */

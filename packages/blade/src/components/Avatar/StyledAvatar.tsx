@@ -16,6 +16,9 @@ import { getTextProps, getHeadingProps } from '~components/Typography';
 const StyledAvatar = styled(BaseBox)<StyledAvatarProps>(({ theme, variant, color, size }) => {
   return {
     width: 'fit-content',
+    minHeight: makeSize(avatarSizeTokens[size]),
+    height: makeSize(avatarSizeTokens[size]),
+
     // borderWidth: makeBorderSize(theme.border.width.thinner),
     borderRadius: makeBorderSize(theme.border.radius[avatarBorderRadiusTokens[variant]]),
     // borderColor: getIn(theme.colors, 'surface.border.gray.subtle'),
