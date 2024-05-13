@@ -59,12 +59,12 @@ const navItems: SideNavLinkItemsJSONType = [
   {
     icon: SettingsIcon,
     title: 'Settings',
-    href: '/settings/user',
+    href: '/settings/user/home',
     children: [
       {
         icon: UserIcon,
         title: 'User Settings',
-        href: '/settings/user',
+        href: '',
         children: [
           {
             icon: HomeIcon,
@@ -151,7 +151,11 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
                     }
 
                     return (
-                      <NavItem key={l2Item.title} {...l2Item}>
+                      <NavItem
+                        key={l2Item.title}
+                        {...l2Item}
+                        subItems={getAllChildHrefs(l2Children)}
+                      >
                         <SideNavLevel>
                           {l2Children.map(({ children: l3Children, ...l3Item }) => (
                             <NavItem key={l3Item.title} {...l3Item} />
@@ -200,7 +204,11 @@ const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
                     }
 
                     return (
-                      <NavItem key={l2Item.title} {...l2Item}>
+                      <NavItem
+                        key={l2Item.title}
+                        {...l2Item}
+                        subItems={getAllChildHrefs(l2Children)}
+                      >
                         <SideNavLevel>
                           {l2Children.map(({ children: l3Children, ...l3Item }) => (
                             <NavItem key={l3Item.title} {...l3Item} />

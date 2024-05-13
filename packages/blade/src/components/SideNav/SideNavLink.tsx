@@ -33,7 +33,7 @@ const StyledNavLinkContainer = styled.a((props) => {
     border: `${makeBorderSize(props.theme.border.width.thinner)} solid ${
       props.theme.colors.transparent
     }`,
-
+    backgroundColor: props.theme.colors.transparent,
     '.collapsed &': {
       width: '36px',
       transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
@@ -118,7 +118,9 @@ const NavLinkIconTitle = ({
 const L3Trigger = ({
   title,
   icon,
-}: Pick<SideNavLinkProps, 'title' | 'icon'>): React.ReactElement => {
+  as,
+  href,
+}: Pick<SideNavLinkProps, 'title' | 'icon' | 'as' | 'href'>): React.ReactElement => {
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
   const toggleCollapse = (): void => onExpandChange(!isExpanded);
@@ -126,7 +128,8 @@ const L3Trigger = ({
 
   return (
     <StyledNavLinkContainer
-      as="button"
+      as={href ? as : 'button'}
+      to={href}
       onClick={onL3TriggerClick}
       {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
     >
@@ -144,7 +147,6 @@ const SideNavLink = ({
   as,
 }: SideNavLinkProps): React.ReactElement => {
   const { l2PortalContainerRef, onLinkActiveChange, closeMobileNav } = useSideNav();
-  const navLinkRef = React.useRef<HTMLAnchorElement>(null);
   const { level: _prevLevel } = useNavLink();
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
@@ -165,14 +167,17 @@ const SideNavLink = ({
   return (
     <NavLinkContext.Provider value={{ level: currentLevel }}>
       {isL3Trigger ? (
-        <Collapsible _dangerouslyDisableValidations={true} _shouldApplyWidthRestrictions={false}>
-          <L3Trigger title={title} icon={icon} />
+        <Collapsible
+          defaultIsExpanded={isCurrentPage}
+          _dangerouslyDisableValidations={true}
+          _shouldApplyWidthRestrictions={false}
+        >
+          <L3Trigger title={title} icon={icon} as={as} href={href} />
           <CollapsibleBody width="100%">{children}</CollapsibleBody>
         </Collapsible>
       ) : (
         <>
           <StyledNavLinkContainer
-            ref={navLinkRef}
             as={as}
             to={href}
             onClick={() => {
