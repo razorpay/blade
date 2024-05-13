@@ -9,6 +9,7 @@ import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { useDropdown } from '~components/Dropdown/useDropdown';
 import BaseButton from '~components/Button/BaseButton/BaseButton';
 import { throwBladeError } from '~utils/logger';
+import type { BladeElementRef } from '~utils/types';
 import { DropdownButton } from '~components/Dropdown';
 
 const getInitials = (name: string): string => {
@@ -20,24 +21,27 @@ const getInitials = (name: string): string => {
   return names[0].substring(0, 1) + names[names.length - 1].substring(0, 1);
 };
 
-const _Avatar = ({
-  name,
-  color = 'neutral',
-  size = 'xsmall',
-  variant = 'circle',
-  icon,
-  href,
-  target,
-  rel,
-  // Image Props
-  src,
-  alt,
-  srcSet,
-  crossOrigin,
-  referrerPolicy,
-  testID,
-  ...styledProps
-}: AvatarProps): React.ReactElement => {
+const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
+  {
+    name,
+    color = 'neutral',
+    size = 'xsmall',
+    variant = 'circle',
+    icon,
+    href,
+    target,
+    rel,
+    // Image Props
+    src,
+    alt,
+    srcSet,
+    crossOrigin,
+    referrerPolicy,
+    testID,
+    ...styledProps
+  },
+  ref,
+) => {
   if (src && !alt && !name) {
     throwBladeError({
       moduleName: 'Avatar',
@@ -51,15 +55,23 @@ const _Avatar = ({
   const isInsideDropdown = dropdownTriggerer === 'Avatar';
   const AvatarButton = isInsideDropdown ? DropdownButton : BaseButton;
 
+  const commonButtonProps = {
+    variant: 'secondary',
+    color,
+    size: 'xsmall',
+    isPressAnimationDisabled: true,
+    href,
+    target,
+    rel,
+    ref: isInsideDropdown ? undefined : ref,
+  };
+
   const getChildrenToRender = (): React.ReactElement => {
     if (src) {
       return (
+        // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
         <AvatarButton
-          variant="secondary"
-          // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
-          color={color}
-          size="xsmall"
-          isPressAnimationDisabled={true}
+          {...commonButtonProps}
           imgProps={{
             src,
             alt: alt ?? name,
@@ -67,44 +79,20 @@ const _Avatar = ({
             crossOrigin,
             referrerPolicy,
           }}
-          href={href}
-          target={target}
-          rel={rel}
         />
       );
     }
 
     if (name && !src) {
       return (
-        <AvatarButton
-          variant="secondary"
-          // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
-          color={color}
-          size="xsmall"
-          iconSize={avatarSize}
-          isPressAnimationDisabled={true}
-          href={href}
-          target={target}
-          rel={rel}
-        >
-          {getInitials(name)}
-        </AvatarButton>
+        // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
+        <AvatarButton {...commonButtonProps}>{getInitials(name)}</AvatarButton>
       );
     }
 
     return (
-      <AvatarButton
-        variant="secondary"
-        // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
-        color={color}
-        size="xsmall"
-        iconSize={avatarSize}
-        icon={icon ?? DefaultAvatarIcon}
-        isPressAnimationDisabled={true}
-        href={href}
-        target={target}
-        rel={rel}
-      />
+      // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
+      <AvatarButton {...commonButtonProps} iconSize={avatarSize} icon={icon ?? DefaultAvatarIcon} />
     );
   };
 
@@ -140,7 +128,7 @@ const _Avatar = ({
  * Checkout {@link https://blade.razorpay.com/?path=/docs/components-avatar-avatar Avatar Documentation}
  * 
  */
-const Avatar = assignWithoutSideEffects(_Avatar, {
+const Avatar = assignWithoutSideEffects(React.forwardRef(_Avatar), {
   displayName: 'Avatar',
   componentId: 'Avatar',
 });
