@@ -1,1 +1,2 @@
-export * from './Avatar.web';
+export * from './Avatar';
+export * from './AvatarGroup';
