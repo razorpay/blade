@@ -1,4 +1,4 @@
-import { Theme } from '~components/BladeProvider';
+import type { Theme } from '~components/BladeProvider';
 import { size } from '~tokens/global';
 import type { DotNotationToken } from '~utils/lodashButBetter/get';
 

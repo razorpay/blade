@@ -7,7 +7,6 @@ import { Box } from '~components/Box';
 import { Sandbox } from '~utils/storybook/Sandbox';
 import StoryPageWrapper from '~utils/storybook/StoryPageWrapper';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
-import iconMap from '~components/Icons/iconMap';
 
 const Page = (): React.ReactElement => {
   return (
