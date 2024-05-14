@@ -8,6 +8,7 @@ const SideNavSection = ({
   children,
   title,
   maxVisibleItems = 999,
+  onToggleVisibleItems,
 }: SideNavSectionProps): React.ReactElement => {
   const [isCurrentItemExpanded, setIsCurrentItemExpanded] = React.useState(false);
   const totalItemsCount = React.Children.count(children);
@@ -26,12 +27,15 @@ const SideNavSection = ({
         _shouldApplyWidthRestrictions={false}
         onExpandChange={({ isExpanded }) => {
           setIsCurrentItemExpanded(isExpanded);
+          onToggleVisibleItems?.({ isExpanded });
         }}
       >
         <CollapsibleLink margin={['spacing.2', 'spacing.4']} size="small" color="neutral">
           {isCurrentItemExpanded ? 'Show Less' : `+${collapsedItemsCount} More`}
         </CollapsibleLink>
-        <CollapsibleBody width="100%">{children.slice(maxVisibleItems)}</CollapsibleBody>
+        <CollapsibleBody width="100%" _hasMargin={false}>
+          {children.slice(maxVisibleItems)}
+        </CollapsibleBody>
       </Collapsible>
     </Box>
   );

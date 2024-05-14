@@ -37,9 +37,13 @@ type SideNavSectionProps = {
   /**
    * Callback when `+x more is clicked`
    */
-  onToggleVisibleItems?: (isExpanded: boolean) => void;
+  onToggleVisibleItems?: ({ isExpanded }: { isExpanded: boolean }) => void;
 
   children: React.ReactElement[];
+};
+
+type SideNavFooterProps = {
+  children: React.ReactElement[] | React.ReactElement;
 };
 
 type OnLinkActiveChangeArgs = {
@@ -50,6 +54,8 @@ type OnLinkActiveChangeArgs = {
 };
 
 type SideNavContextType = {
+  isL1Collapsed?: boolean;
+  setIsL1Collapsed?: (isL1Collapsed: boolean) => void;
   l2PortalContainerRef?: React.RefObject<HTMLDivElement>;
   onLinkActiveChange?: (args: OnLinkActiveChangeArgs) => void;
   closeMobileNav?: () => void;
@@ -65,4 +71,5 @@ export type {
   NavLinkContextType,
   SideNavLinkProps,
   SideNavSectionProps,
+  SideNavFooterProps,
 };

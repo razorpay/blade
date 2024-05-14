@@ -6,20 +6,25 @@ import BaseBox from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
 import { makeMotionTime, makeSize } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
+import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 
-const StyledL1Container = styled(BaseBox)((props) => {
+const StyledL1Level = styled(BaseBox)((props) => {
   return {
     width: '100%',
     transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
       props.theme.motion.easing.entrance.attentive
     }`,
-    padding: '12px',
+    [`& > ${BaseBox}`]: {
+      padding: '12px',
+    },
     '&.collapsed': {
       width: '52px',
       transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
         props.theme.motion.easing.exit.attentive
       }`,
-      padding: '12px 8px',
+      [`& > ${BaseBox}`]: {
+        padding: '12px 8px',
+      },
     },
   };
 });
@@ -56,9 +61,15 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
   };
 
   const contextValue = React.useMemo(
-    () => ({ l2PortalContainerRef, onLinkActiveChange, closeMobileNav }),
+    () => ({
+      l2PortalContainerRef,
+      onLinkActiveChange,
+      closeMobileNav,
+      isL1Collapsed,
+      setIsL1Collapsed,
+    }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+    [isL1Collapsed],
   );
 
   const isL2Open = isL1Collapsed;
@@ -99,10 +110,13 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
             width="100%"
             ref={l2PortalContainerRef}
           />
-          <StyledL1Container
+          <StyledL1Level
             ref={l1ContainerRef}
             className={isL1Collapsed ? (isCollapsedHover ? '' : 'collapsed') : ''}
             position="absolute"
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
             backgroundColor="surface.background.gray.intense"
             height="100%"
             overflow="hidden"
@@ -121,8 +135,19 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
               }
             }}
           >
-            {children}
-          </StyledL1Container>
+            <SkipNavLink id="blade-side-nav-skip" _hasBackground={true} />
+            <BaseBox overflowY="auto">{children}</BaseBox>
+            <BaseBox
+              id="footer-portal-container"
+              alignSelf="end"
+              width="100%"
+              elevation="highRaised"
+              borderTopWidth="thin"
+              borderTopColor="surface.border.gray.muted"
+              backgroundColor="surface.background.gray.intense"
+            />
+          </StyledL1Level>
+          <SkipNavContent id="blade-side-nav-skip" />
         </BaseBox>
       )}
     </SideNavContext.Provider>

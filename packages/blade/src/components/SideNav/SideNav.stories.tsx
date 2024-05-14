@@ -3,7 +3,14 @@ import type { Meta, StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 import type { SideNavLinkProps } from './';
-import { SideNav, SideNavLink, SideNavLevel, SideNavSection } from './';
+import {
+  SideNav,
+  SideNavLink,
+  SideNavLevel,
+  SideNavSection,
+  SideNavFooter,
+  SideNavSwitch,
+} from './';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import {
@@ -30,6 +37,7 @@ export default {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Page = ({ match }: { match: any }): React.ReactElement => (
   <Box>
+    <Button>Hi</Button>
     <Heading>ID: {JSON.stringify(match)}</Heading>
   </Box>
 );
@@ -173,6 +181,9 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
           }
           return <NavItem key={navItem.title} {...navItem} />;
         })}
+        <SideNavFooter>
+          <SideNavSwitch />
+        </SideNavFooter>
       </SideNav>
 
       <Box marginLeft="300px">
@@ -202,7 +213,28 @@ const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
           <NavItem title="Payment Pages" icon={HomeIcon} href="/app/pp" />
           <NavItem title="Payment Amazing" icon={HomeIcon} href="/app/pa" />
           <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
         </SideNavSection>
+
+        <SideNavFooter>
+          <SideNavSwitch />
+          <NavItem title="Settings" icon={SettingsIcon} href="/settings" />
+        </SideNavFooter>
       </SideNav>
 
       <Box marginLeft="300px">

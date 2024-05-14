@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FloatingPortal } from '@floating-ui/react';
+import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import { NavLinkContext, useNavLink, useSideNav } from './SideNavContext';
 import type { SideNavLinkProps } from './types';
 import { Box } from '~components/Box';
@@ -40,7 +40,7 @@ const StyledNavLinkContainer = styled.a((props) => {
         props.theme.motion.easing.exit.attentive
       }`,
       padding: '0px 10px',
-      overflow: 'hidden',
+      // overflow: 'hidden',
       '& .hide-when-collapsed': {
         display: 'none',
       },
@@ -107,7 +107,7 @@ const NavLinkIconTitle = ({
         fontSize={100}
         lineHeight={100}
         as="p"
-        className={isL1Item ? 'hide-when-collapsed' : ''}
+        className={isL1Item ? '' : ''}
       >
         {title}
       </BaseText>
@@ -153,13 +153,23 @@ const SideNavLink = ({
   icon,
   as,
 }: SideNavLinkProps): React.ReactElement => {
-  const { l2PortalContainerRef, onLinkActiveChange, closeMobileNav } = useSideNav();
+  const {
+    l2PortalContainerRef,
+    onLinkActiveChange,
+    closeMobileNav,
+    isL1Collapsed,
+    setIsL1Collapsed,
+  } = useSideNav();
   const { level: _prevLevel } = useNavLink();
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
   const isL2Trigger = Boolean(children) && currentLevel === 1;
   const navItemId = useId('nav-item');
   const isL3Trigger = Boolean(children) && currentLevel === 2;
+
+  const { refs, context } = useFloating({
+    open: isCurrentPage,
+  });
 
   React.useEffect(() => {
     onLinkActiveChange?.({
@@ -189,6 +199,7 @@ const SideNavLink = ({
           <StyledNavLinkContainer
             as={as}
             to={href}
+            ref={refs.setReference}
             onClick={() => {
               // Close the mobile nav when item is clicked and its not trigger for next menu
               if (!isL2Trigger) {
@@ -202,6 +213,11 @@ const SideNavLink = ({
                   isActive: Boolean(isCurrentPage),
                   isL2Trigger,
                 });
+              }
+            }}
+            onFocus={() => {
+              if (isL1Collapsed && currentLevel === 1) {
+                setIsL1Collapsed?.(false);
               }
             }}
             aria-current={isCurrentPage ? 'page' : undefined}
@@ -218,7 +234,11 @@ const SideNavLink = ({
           </StyledNavLinkContainer>
           {children ? (
             <FloatingPortal root={l2PortalContainerRef}>
-              {isCurrentPage ? children : null}
+              {isCurrentPage && isL1Collapsed ? (
+                <FloatingFocusManager modal={false} context={context}>
+                  <BaseBox ref={refs.setFloating}>{children}</BaseBox>
+                </FloatingFocusManager>
+              ) : null}
             </FloatingPortal>
           ) : null}
         </>
