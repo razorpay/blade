@@ -19,15 +19,16 @@ import {
   modalResponsiveScreenGap,
 } from './modalTokens';
 import type { ModalProps } from './types';
+import { componentIds } from './constants';
 import { castWebType, makeMotionTime, makeSize } from '~utils';
 import { BaseBox } from '~components/Box/BaseBox';
 import { useTheme } from '~components/BladeProvider';
 import { Box } from '~components/Box';
-import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
 import { makeAccessible } from '~utils/makeAccessible';
-import { logger, throwBladeError } from '~utils/logger';
+import { logger } from '~utils/logger';
 import { componentZIndices } from '~utils/componentZIndices';
+import { useVerifyAllowedChildren } from '~utils/useVerifyAllowedChildren';
 
 const entry = keyframes`
   from {
@@ -117,20 +118,10 @@ const Modal = ({
   };
 
   // Only allow ModalHeader, ModalBody and ModalFooter as children
-  const validChildren = React.Children.map(children, (child) => {
-    if (
-      isValidAllowedChildren(child, MetaConstants.ModalHeader) ||
-      isValidAllowedChildren(child, MetaConstants.ModalBody) ||
-      isValidAllowedChildren(child, MetaConstants.ModalFooter)
-    ) {
-      return child;
-    } else if (__DEV__) {
-      throwBladeError({
-        message: 'Modal only accepts ModalHeader, ModalBody and ModalFooter as children',
-        moduleName: 'Modal',
-      });
-    }
-    return null;
+  useVerifyAllowedChildren({
+    allowedComponents: [componentIds.ModalHeader, componentIds.ModalBody, componentIds.ModalFooter],
+    children,
+    componentName: 'Modal',
   });
 
   return (
@@ -169,7 +160,7 @@ const Modal = ({
                 isVisible={isVisible}
                 ref={refs.setFloating}
               >
-                {validChildren}
+                {children}
               </ModalContent>
             </Box>
           </FloatingFocusManager>

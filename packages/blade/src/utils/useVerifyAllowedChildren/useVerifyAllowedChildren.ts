@@ -13,6 +13,7 @@ const useVerifyAllowedChildren = (props: {
   const { children, componentName, allowedComponents } = props;
   if (__DEV__) {
     React.Children.forEach(children, (child) => {
+      if (!React.isValidElement(child)) return;
       const isValidChild = child && allowedComponents.includes(getComponentId(child)!);
       if (!isValidChild) {
         throwBladeError({
