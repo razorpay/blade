@@ -11,6 +11,7 @@ import { useUncontrolledDates } from './useControlledDates';
 import { levelToPicker, pickerToLevel } from './utils';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
+import BaseBox from '~components/Box/BaseBox';
 
 const Calendar = <Type extends DateSelectionType>({
   firstDayOfWeek = 0,
@@ -109,6 +110,7 @@ const Calendar = <Type extends DateSelectionType>({
       flexDirection="column"
       gap="spacing.5"
       pickerType={levelToPicker[level]}
+      date={currentDate}
     >
       <CalendarHeader
         isRange={isRange}
@@ -135,6 +137,11 @@ const Calendar = <Type extends DateSelectionType>({
         firstDayOfWeek={firstDayOfWeek}
         // @ts-expect-error unable to narrow props based on `type`
         allowSingleDateInRange={allowSingleDateInRange}
+        renderDay={(date) => {
+          return (
+            <BaseBox data-date={`${date.getMonth()}-${date.getDate()}`}>{date.getDate()}</BaseBox>
+          );
+        }}
         classNames={{
           levelsGroup: 'DatePicker-levelsGroup',
           day: 'DatePicker-cell',
