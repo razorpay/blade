@@ -10,7 +10,7 @@ The Date Picker component lets users select a date from a calendar. It is used t
 
 ## Anatomy
 
-<img src="./datepicker-range-example.png" width="100%" alt="DatePicker Anatomy" />
+<img src="./datepicker-range-example.png" width="60%" alt="DatePicker Anatomy" />
 
 ## Components
 
@@ -190,6 +190,13 @@ function DatePickerWithPresets() {
   );
 }
 ```
+
+### Mobile UX
+
+On mobile the DatePicker will automatically be converted to a BottomSheet, consumers do not need to handle anything manually for this.
+
+<img src="./datepicker-mobile.png" width="200px" alt="Mobile DatePicker" />
+
 
 <details>
 
