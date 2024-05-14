@@ -157,6 +157,20 @@ type CalendarProps = {
 
 ## Examples
 
+### Selection Type
+
+DatePicker support two selection mode, `single` and `range`
+
+```jsx
+<DatePicker
+  selectionType={"single" | "range"}
+/>
+```
+
+<img src="./datepicker-range-example.png" width="600px" alt="DatePicker range" />
+
+<img src="./datepicker-single-example.png" width="300px" alt="DatePicker single" />
+
 ### Controlled DatePicker
 
 ```jsx
