@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import styled from 'styled-components';
+import type { PickerType } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import getTextStyles from '~components/Typography/Text/getTextStyles';
 import { size } from '~tokens/global';
@@ -70,9 +71,10 @@ const inRangeCell = {
   },
 } as const;
 
-const CalendarStyles = styled(BaseBox)(({ theme }) => {
+const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pickerType }) => {
   const isMobile = useIsMobile();
   const device = isMobile ? 'mobile' : 'desktop';
+  const isDayPicker = pickerType === 'day';
 
   const today = {
     '&[data-today]': {
@@ -183,8 +185,8 @@ const CalendarStyles = styled(BaseBox)(({ theme }) => {
     '.DatePicker-cell': {
       cursor: 'pointer',
       width: isMobile ? '100%' : makeSpace(cell.size[device]),
-      height: isMobile ? undefined : makeSpace(cell.size[device]),
-      aspectRatio: isMobile ? '1 / 1' : undefined,
+      height: isDayPicker && isMobile ? undefined : makeSpace(cell.size[device]),
+      aspectRatio: isDayPicker && isMobile ? '1 / 1' : undefined,
       borderRadius: theme.border.radius.medium,
       backgroundColor: getIn(theme.colors, cell.background.default),
       border: 'none',

@@ -104,7 +104,12 @@ const Calendar = <Type extends DateSelectionType>({
   };
 
   return (
-    <CalendarStyles display="flex" flexDirection="column" gap="spacing.5">
+    <CalendarStyles
+      display="flex"
+      flexDirection="column"
+      gap="spacing.5"
+      pickerType={levelToPicker[level]}
+    >
       <CalendarHeader
         isRange={isRange}
         date={currentDate}

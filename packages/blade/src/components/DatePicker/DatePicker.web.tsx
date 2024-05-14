@@ -195,7 +195,20 @@ const DatePicker = <Type extends DateSelectionType>({
           }}
         >
           <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
-          <BottomSheetBody overflow="hidden">{content}</BottomSheetBody>
+          <BottomSheetBody overflow="hidden">
+            {content}
+            <PresetSideBar
+              isMobile
+              presets={presets}
+              date={currentDate}
+              selectedPreset={selectedPreset}
+              onSelection={(preset) => {
+                const presetValue = preset?.(currentDate);
+                setControlledValue(presetValue);
+                setSelectedPreset(presetValue);
+              }}
+            />
+          </BottomSheetBody>
           <BottomSheetFooter>
             <CalendarFooter onCancel={handleCancel} onApply={handleApply} isMobile />
           </BottomSheetFooter>

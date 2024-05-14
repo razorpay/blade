@@ -3,6 +3,8 @@ import type { CalendarProps } from './types';
 import { Box } from '~components/Box';
 import { Link } from '~components/Link';
 import { makeSpace } from '~utils';
+import { Chip, ChipGroup } from '~components/Chip';
+import { Divider } from '~components/Divider';
 
 const isSamePreset = (value1: DatesRangeValue | null, value2: DatesRangeValue | null): boolean => {
   if (!value1?.[0] || !value1?.[1]) return false;
@@ -15,6 +17,7 @@ const isSamePreset = (value1: DatesRangeValue | null, value2: DatesRangeValue | 
 };
 
 type PresetSideBarProps = {
+  isMobile?: boolean;
   date: Date;
   presets: CalendarProps<'single'>['presets'];
   onSelection: (value: (date: Date) => DatesRangeValue) => void;
@@ -26,8 +29,34 @@ const PresetSideBar = ({
   presets,
   selectedPreset,
   onSelection,
+  isMobile,
 }: PresetSideBarProps): React.ReactElement => {
   if (!presets) return <></>;
+
+  if (isMobile) {
+    return (
+      <Box>
+        <Divider marginTop="spacing.4" />
+        <ChipGroup
+          marginTop="spacing.7"
+          size="small"
+          selectionType="single"
+          accessibilityLabel="Select Presets"
+          onChange={({ values }) => {
+            onSelection(presets.find((preset) => preset.label === values[0])!.value);
+          }}
+        >
+          {presets.map((preset, index) => {
+            return (
+              <Chip value={preset.label} key={index}>
+                {preset.label}
+              </Chip>
+            );
+          })}
+        </ChipGroup>
+      </Box>
+    );
+  }
 
   return (
     <Box
