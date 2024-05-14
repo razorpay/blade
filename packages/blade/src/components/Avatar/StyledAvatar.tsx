@@ -14,6 +14,7 @@ import { getTextProps, getHeadingProps } from '~components/Typography';
 
 const StyledAvatar = styled(BaseBox)<StyledAvatarProps>(({ theme, variant, color, size }) => {
   return {
+    display: 'flex',
     width: makeSize(avatarSizeTokens[size]),
     height: makeSize(avatarSizeTokens[size]),
     borderRadius: makeBorderSize(theme.border.radius[avatarBorderRadiusTokens[variant]]),
@@ -44,6 +45,7 @@ const StyledAvatar = styled(BaseBox)<StyledAvatarProps>(({ theme, variant, color
       minHeight: makeSize(avatarSizeTokens[size]),
       height: makeSize(avatarSizeTokens[size]),
       width: makeSize(avatarSizeTokens[size]),
+      padding: 0,
       borderWidth: makeBorderSize(theme.border.width.thinner),
       borderRadius: makeBorderSize(theme.border.radius[avatarBorderRadiusTokens[variant]]),
       borderColor: theme.colors.surface.border.gray.subtle,
