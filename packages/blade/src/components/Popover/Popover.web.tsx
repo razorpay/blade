@@ -54,7 +54,6 @@ const Popover = ({
   const [side] = getFloatingPlacementParts(placement);
   const isHorizontal = side === 'left' || side === 'right';
   const isOppositeAxis = side === 'right' || side === 'bottom';
-  const triggerRef = React.useRef<HTMLButtonElement>(null);
 
   const [controllableIsOpen, controllableSetIsOpen] = useControllableState({
     value: isOpen,
@@ -99,17 +98,11 @@ const Popover = ({
   // remove click handler if popover is controlled
   const isControlled = isOpen !== undefined;
   const click = useClick(context, { enabled: !isControlled });
-  const dismiss = useDismiss(context, {
-    outsidePress: () => {
-      requestAnimationFrame(() => {
-        triggerRef.current?.focus();
-      });
-      return true;
-    },
-  });
+  const dismiss = useDismiss(context);
   const role = useRole(context);
 
   const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
   const mergedRef = useMergeRefs(refs.setReference, triggerRef);
 
   const contextValue = React.useMemo(() => {

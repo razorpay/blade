@@ -152,8 +152,6 @@ type CalendarProps = {
   locale: string;
 
   // Basic selection props
-  onMonthChange: (month: Date) => void;
-  onYearChange: (year: Date) => void;
   onNext: (date: Date) => void;
   onNextMonth: (date: Date) => void;
   onNextYear: (date: Date) => void;
