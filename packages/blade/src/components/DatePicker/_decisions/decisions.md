@@ -6,15 +6,15 @@ The Date Picker component lets users select a date from a calendar. It is used t
 
 ## Design
 
-[Figma Link]() to all variants of the DatePicker component
+[Figma Link](https://www.figma.com/design/jubmQL9Z8V7881ayUD95ps/Blade-DSL?node-id=88832-1749323&m=dev) to all variants of the DatePicker component
 
 ## Anatomy
 
-<img src="./datepicker-anatomy.png" width="100%" alt="DatePicker Anatomy" />
+<img src="./datepicker-range-example.png" width="100%" alt="DatePicker Anatomy" />
 
 ## Components
 
-- Calendar
+- Calendar (internal)
 - DatePicker
 
 ## Basic Usage
@@ -23,7 +23,6 @@ The Date Picker component lets users select a date from a calendar. It is used t
 <DatePicker
   label="Pick date"
   selectionType="single"
-  valueFormat="DD/MM/YYYY"
   defaultValue={new Date()}
   onChange={(date) => {
     console.log('date selected', date);
@@ -38,7 +37,6 @@ The Date Picker component lets users select a date from a calendar. It is used t
 ```ts
 type InputProps = Pick<
   BaseInputProps,
-  | 'label'
   | 'labelPosition'
   | 'name'
   | 'validationState'
@@ -57,12 +55,15 @@ type InputProps = Pick<
 type DatePickerProps = InputProps &
   CalendarProps & {
     /**
-     * Sets the format of the date value
-     *
-     * single selection @default 'DD/MM/YYYY'
-     * range selection @default 'DD/MM/YYYY - DD/MM/YYYY'
+     * Label for the input
+     * 
+     * If labelPosition is set to "left" on range picker,
+     * then we will take the `{ start }` label and render it on the left side of the input ignoring the `{ end }`
      */
-    valueFormat: string;
+    label: string | { start: string, end?: string };
+    isOpen?: boolean;
+    defaultIsOpen?: boolean;
+    onOpenChange?: ({ isOpen }: { isOpen: boolean }) => void;
   };
 ```
 
@@ -79,15 +80,12 @@ type Preset = {
    */
   label: string;
   /**
-   * Value can be a single date or a range of dates
-   *
-   * @example with single selection
-   * dayjs().add(7, 'day')
+   * Value can be a range of dates
    *
    * @example with range selection
-   * [dayjs().subtract(7, 'day'), dayjs()]
+   * (date) => [dayjs().subtract(7, 'day'), dayjs()]
    */
-  value: Date | DateRange;
+  value: (date: Date) => DateRange;
 };
 
 type CalendarProps = {
@@ -109,18 +107,12 @@ type CalendarProps = {
   onChange: (value: Date | DateRange) => void;
 
   /**
-   * Defines presets for the date picker
-   *
-   * @example with single selection
-   * [
-   *   { label: 'In 7 days', value: dayjs().add(7, 'day') },
-   *   { label: 'In a month', value: dayjs().add(1, 'month') },
-   * ]
+   * Defines presets for the date range picker
    *
    * @example with range selection
    * [
-   *   { label: 'Last 7 days', value: [dayjs().subtract(7, 'day'), dayjs()] },
-   *   { label: 'Last month', value: [dayjs().subtract(1, 'month'), dayjs()] },
+   *   { label: 'Last 7 days', value: (date) => [dayjs(date).subtract(7, 'day'), date] },
+   *   { label: 'Last month', value: (date) => [dayjs(date).subtract(1, 'month'), date] },
    * ]
    */
   presets: Preset[];
@@ -149,7 +141,7 @@ type CalendarProps = {
    *
    * @default 'en'
    */
-  locale: string;
+  locale?: string;
 
   // Basic selection props
   onNext: (date: Date) => void;
@@ -175,7 +167,6 @@ function ControlledDatePicker() {
     <DatePicker
       label="Pick date"
       selectionType="single"
-      valueFormat="DD/MM/YYYY"
       value={selectedDate}
       onChange={setSelectedDate}
     />
@@ -191,10 +182,9 @@ function DatePickerWithPresets() {
     <DatePicker
       label="Pick date"
       selectionType="range"
-      valueFormat="DD/MM/YYYY"
       presets={[
-        { label: 'Past 7 days', value: [dayjs().subtract(7, 'day'), dayjs()] },
-        { label: 'Past month', value: [dayjs().subtract(1, 'month'), dayjs()] },
+        { label: 'Past 7 days', value: (date) => [dayjs(date).subtract(7, 'day'), date] },
+        { label: 'Past month', value: (date) => [dayjs(date).subtract(1, 'month'), date] },
       ]}
     />
   );
