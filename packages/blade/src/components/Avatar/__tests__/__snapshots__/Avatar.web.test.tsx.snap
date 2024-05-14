@@ -46,6 +46,10 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -71,6 +75,7 @@ exports[`<Avatar /> should render avatar with color information 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -249,6 +254,10 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -274,6 +283,7 @@ exports[`<Avatar /> should render avatar with color negative 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -452,6 +462,10 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -477,6 +491,7 @@ exports[`<Avatar /> should render avatar with color neutral 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -655,6 +670,10 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -680,6 +699,7 @@ exports[`<Avatar /> should render avatar with color notice 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -858,6 +878,10 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -883,6 +907,7 @@ exports[`<Avatar /> should render avatar with color positive 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -1061,6 +1086,10 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -1086,6 +1115,7 @@ exports[`<Avatar /> should render avatar with color primary 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -1269,6 +1299,10 @@ exports[`<Avatar /> should render avatar with dropdown 1`] = `
 }
 
 .c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -1294,6 +1328,7 @@ exports[`<Avatar /> should render avatar with dropdown 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -1482,6 +1517,10 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -1507,6 +1546,7 @@ exports[`<Avatar /> should render avatar with icon 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -1712,6 +1752,10 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 48px;
   height: 48px;
   border-radius: 9999px;
@@ -1737,6 +1781,7 @@ exports[`<Avatar /> should render avatar with size large 1`] = `
   min-height: 48px;
   height: 48px;
   width: 48px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -1915,6 +1960,10 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 36px;
   height: 36px;
   border-radius: 9999px;
@@ -1940,6 +1989,7 @@ exports[`<Avatar /> should render avatar with size medium 1`] = `
   min-height: 36px;
   height: 36px;
   width: 36px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -2118,6 +2168,10 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 28px;
   height: 28px;
   border-radius: 9999px;
@@ -2143,6 +2197,7 @@ exports[`<Avatar /> should render avatar with size small 1`] = `
   min-height: 28px;
   height: 28px;
   width: 28px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -2321,6 +2376,10 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 56px;
   height: 56px;
   border-radius: 9999px;
@@ -2346,6 +2405,7 @@ exports[`<Avatar /> should render avatar with size xlarge 1`] = `
   min-height: 56px;
   height: 56px;
   width: 56px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -2524,6 +2584,10 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -2549,6 +2613,7 @@ exports[`<Avatar /> should render avatar with size xsmall 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -2724,6 +2789,10 @@ exports[`<Avatar /> should render default avatar 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -2749,6 +2818,7 @@ exports[`<Avatar /> should render default avatar 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -2947,6 +3017,10 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 4px;
@@ -2972,6 +3046,7 @@ exports[`<Avatar /> should render square variant of avatar 1`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 4px;
   border-color: hsla(214,28%,84%,1);

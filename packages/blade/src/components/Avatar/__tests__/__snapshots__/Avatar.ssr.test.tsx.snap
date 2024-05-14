@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Avatar /> should render  avatar 1`] = `"<div id="root"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cYDgxP"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eCQPqy"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO grdmVC" data-blade-component="base-text">NK</div></div></div></button></div></div>"`;
+exports[`<Avatar /> should render  avatar 1`] = `"<div id="root"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG eyfykr"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 eCQPqy"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO grdmVC" data-blade-component="base-text">NK</div></div></div></button></div></div>"`;
 
 exports[`<Avatar /> should render  avatar 2`] = `
 .c0.c0.c0.c0.c0 {
@@ -48,6 +48,10 @@ exports[`<Avatar /> should render  avatar 2`] = `
 }
 
 .c1.c1.c1.c1.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -73,6 +77,7 @@ exports[`<Avatar /> should render  avatar 2`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);

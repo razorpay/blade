@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Avatar /> should render AvatarGroup with  1`] = `"<div id="root"><div data-blade-component="avatar-group" role="group" class="BaseBox-bmPWx StyledAvatarGroup-sc-1fkrhuq-0  kNEUeN"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG ijaPjr"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jZuNbC"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO cEmXIR" data-blade-component="base-text">NK</div></div></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG joVXDb"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jDNDCa"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO dUMczf" data-blade-component="base-text">AN</div></div></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG hWyqyv"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hivrDm"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO jZYDGZ" data-blade-component="base-text">RB</div></div></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG fTmPvH"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iRKUiC"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eNoDQB" data-blade-component="base-text">CH</div></div></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG joVXDb"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jDNDCa"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO dUMczf" data-blade-component="base-text">SA</div></div></div></button></div></div></div>"`;
+exports[`<Avatar /> should render AvatarGroup with  1`] = `"<div id="root"><div data-blade-component="avatar-group" role="group" class="BaseBox-bmPWx StyledAvatarGroup-sc-1fkrhuq-0  kNEUeN"><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG cxJacX"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jZuNbC"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO cEmXIR" data-blade-component="base-text">NK</div></div></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG jaTZij"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jDNDCa"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO dUMczf" data-blade-component="base-text">AN</div></div></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG eBPLYH"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 hivrDm"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO jZYDGZ" data-blade-component="base-text">RB</div></div></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG hmxCPf"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 iRKUiC"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO eNoDQB" data-blade-component="base-text">CH</div></div></div></button></div><div data-blade-component="avatar" class="BaseBox-bmPWx StyledAvatar-sc-127ewkg-0 cQvZJG jaTZij"><button type="button" data-blade-component="button" role="button" class="StyledBaseButtonweb__StyledBaseButton-sc-26bt38-0 jDNDCa"><div data-blade-component="base-box" class="BaseBox-bmPWx AnimatedButtonContentweb__AnimatedButtonContent-sc-1fkx0t6-0  jPBClF"><div data-blade-component="base-box" class="BaseBox-bmPWx BaseButton__ButtonContent-zf1huq-0 LeezU esItiH"><div class="StyledBaseText-dVBfTO dUMczf" data-blade-component="base-text">SA</div></div></div></button></div></div></div>"`;
 
 exports[`<Avatar /> should render AvatarGroup with  2`] = `
 .c1.c1.c1.c1.c1 {
@@ -102,6 +102,10 @@ exports[`<Avatar /> should render AvatarGroup with  2`] = `
 }
 
 .c2.c2.c2.c2.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -127,6 +131,7 @@ exports[`<Avatar /> should render AvatarGroup with  2`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -151,6 +156,10 @@ exports[`<Avatar /> should render AvatarGroup with  2`] = `
 }
 
 .c8.c8.c8.c8.c8 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -176,6 +185,7 @@ exports[`<Avatar /> should render AvatarGroup with  2`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -200,6 +210,10 @@ exports[`<Avatar /> should render AvatarGroup with  2`] = `
 }
 
 .c11.c11.c11.c11.c11 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -225,6 +239,7 @@ exports[`<Avatar /> should render AvatarGroup with  2`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
@@ -249,6 +264,10 @@ exports[`<Avatar /> should render AvatarGroup with  2`] = `
 }
 
 .c14.c14.c14.c14.c14 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   width: 20px;
   height: 20px;
   border-radius: 9999px;
@@ -274,6 +293,7 @@ exports[`<Avatar /> should render AvatarGroup with  2`] = `
   min-height: 20px;
   height: 20px;
   width: 20px;
+  padding: 0;
   border-width: 0.5px;
   border-radius: 9999px;
   border-color: hsla(214,28%,84%,1);
