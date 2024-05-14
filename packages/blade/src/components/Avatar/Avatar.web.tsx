@@ -14,7 +14,7 @@ import { DropdownButton } from '~components/Dropdown';
 
 const getInitials = (name: string): string => {
   // Combine first and last name initials
-  const names = name.split(' ');
+  const names = name.trim().split(' ');
   if (names.length === 1) {
     return name.substring(0, 2);
   }
