@@ -27,7 +27,6 @@ import {
 
 const DatePicker = <Type extends DateSelectionType>({
   selectionType,
-  picker,
   allowSingleDateInRange,
   value,
   defaultValue,
@@ -195,19 +194,21 @@ const DatePicker = <Type extends DateSelectionType>({
           }}
         >
           <BottomSheetHeader title={isSingle ? 'Select Date' : 'Select Date Range'} />
-          <BottomSheetBody overflow="hidden">
+          <BottomSheetBody>
             {content}
-            <PresetSideBar
-              isMobile
-              presets={presets}
-              date={currentDate}
-              selectedPreset={selectedPreset}
-              onSelection={(preset) => {
-                const presetValue = preset?.(currentDate);
-                setControlledValue(presetValue);
-                setSelectedPreset(presetValue);
-              }}
-            />
+            {!isSingle && (
+              <PresetSideBar
+                isMobile
+                presets={presets}
+                date={currentDate}
+                selectedPreset={selectedPreset}
+                onSelection={(preset) => {
+                  const presetValue = preset?.(currentDate);
+                  setControlledValue(presetValue);
+                  setSelectedPreset(presetValue);
+                }}
+              />
+            )}
           </BottomSheetBody>
           <BottomSheetFooter>
             <CalendarFooter onCancel={handleCancel} onApply={handleApply} isMobile />

@@ -12,6 +12,7 @@ import { levelToPicker, pickerToLevel } from './utils';
 import { useControllableState } from '~utils/useControllable';
 import { useIsMobile } from '~utils/useIsMobile';
 import BaseBox from '~components/Box/BaseBox';
+import { throwBladeError } from '~utils/logger';
 
 const Calendar = <Type extends DateSelectionType>({
   firstDayOfWeek = 0,
@@ -44,6 +45,15 @@ const Calendar = <Type extends DateSelectionType>({
       onPickerChange?.(levelToPicker[level]);
     },
   });
+
+  if (__DEV__) {
+    if (isRange && level !== 'month') {
+      throwBladeError({
+        message: `Cannot use range DatePicker with pickerType: ${levelToPicker[level]}, Only "day" is supported`,
+        moduleName: 'DatePicker',
+      });
+    }
+  }
 
   const [_date, setDate] = useUncontrolledDates({
     type: 'default',
@@ -126,7 +136,7 @@ const Calendar = <Type extends DateSelectionType>({
       <CalendarGradientStyles isRange={isRange} date={currentDate}>
         <DatePicker
           withCellSpacing={false}
-          type={selectionType === 'single' ? 'default' : 'range'}
+          type={isRange ? 'range' : 'default'}
           date={_date}
           locale={locale}
           level={level}

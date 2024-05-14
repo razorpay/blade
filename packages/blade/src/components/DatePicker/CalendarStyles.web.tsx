@@ -258,7 +258,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
         borderCollapse: 'collapse',
         width: '100%',
       },
-      '> div': { width: isMobile ? '100%' : undefined },
+      '> div': { width: isMobile || !isDayPicker ? '100%' : undefined },
       th: {
         flex: 1,
       },
@@ -289,7 +289,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pi
     },
     '.DatePicker-cell': {
       cursor: 'pointer',
-      width: isMobile ? '100%' : makeSpace(cell.size[device]),
+      width: isMobile || !isDayPicker ? '100%' : makeSpace(cell.size[device]),
       height: isDayPicker && isMobile ? undefined : makeSpace(cell.size[device]),
       aspectRatio: isDayPicker && isMobile ? '1 / 1' : undefined,
       borderRadius: theme.border.radius.medium,
