@@ -8,7 +8,7 @@ import { size } from '~tokens/global';
 import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { useId } from '~utils/useId';
-import { ChevronRightIcon } from '~components/Icons';
+import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
@@ -125,6 +125,10 @@ const L3Trigger = ({
 
   const toggleCollapse = (): void => onExpandChange(!isExpanded);
   const onL3TriggerClick = (): void => toggleCollapse();
+  const iconProps = {
+    size: 'medium',
+    color: 'currentColor',
+  } as const;
 
   return (
     <StyledNavLinkContainer
@@ -134,6 +138,9 @@ const L3Trigger = ({
       {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
     >
       <NavLinkIconTitle title={title} icon={icon} isL1Item={false} />
+      <BaseBox display="flex" alignItems="center">
+        {isExpanded ? <ChevronUpIcon {...iconProps} /> : <ChevronDownIcon {...iconProps} />}
+      </BaseBox>
     </StyledNavLinkContainer>
   );
 };
@@ -173,7 +180,9 @@ const SideNavLink = ({
           _shouldApplyWidthRestrictions={false}
         >
           <L3Trigger title={title} icon={icon} as={as} href={href} />
-          <CollapsibleBody width="100%">{children}</CollapsibleBody>
+          <CollapsibleBody width="100%" _hasMargin={false}>
+            {children}
+          </CollapsibleBody>
         </Collapsible>
       ) : (
         <>

@@ -94,7 +94,8 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
         >
           <BaseBox
             position="absolute"
-            backgroundColor="surface.background.gray.intense"
+            backgroundColor="surface.background.gray.moderate"
+            height="100%"
             width="100%"
             ref={l2PortalContainerRef}
           />

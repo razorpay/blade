@@ -34,7 +34,10 @@ const AnimatedStyledCollapsibleBodyContent = styled(
   };
 });
 
-const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): ReactElement => {
+const CollapsibleBodyContent = ({
+  children,
+  _hasMargin,
+}: CollapsibleBodyContentProps): ReactElement => {
   const { isExpanded, direction } = useCollapsible();
   const { theme } = useTheme();
 
@@ -125,7 +128,7 @@ const CollapsibleBodyContent = ({ children }: CollapsibleBodyContentProps): Reac
             : nativeStyles.collapsibleBodyCollapsed
         }
       >
-        <Box {...getCollapsibleBodyContentBoxProps({ direction })}>{children}</Box>
+        <Box {...getCollapsibleBodyContentBoxProps({ direction, _hasMargin })}>{children}</Box>
       </View>
     </AnimatedStyledCollapsibleBodyContent>
   );

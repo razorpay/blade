@@ -2,9 +2,8 @@ import React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import StoryRouter from 'storybook-react-router';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
-import { SideNavLevel } from './SideNavLevel';
 import type { SideNavLinkProps } from './';
-import { SideNav, SideNavLink } from './';
+import { SideNav, SideNavLink, SideNavLevel, SideNavSection } from './';
 import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgTypes';
 import { Box } from '~components/Box';
 import {
@@ -59,8 +58,13 @@ const navItems: SideNavLinkItemsJSONType = [
   {
     icon: SettingsIcon,
     title: 'Settings',
-    href: '/settings/user/home',
+    href: '/settings/subscriptions',
     children: [
+      {
+        icon: SubscriptionsIcon,
+        title: 'Subscriptions',
+        href: '/settings/subscriptions',
+      },
       {
         icon: UserIcon,
         title: 'User Settings',
@@ -77,11 +81,6 @@ const navItems: SideNavLinkItemsJSONType = [
             href: '/settings/user/account',
           },
         ],
-      },
-      {
-        icon: SubscriptionsIcon,
-        title: 'Subscriptions',
-        href: '/settings/subscriptions',
       },
     ],
   },
@@ -121,11 +120,11 @@ const getAllChildHrefs = (
 
 const NavItem = (
   props: Omit<SideNavLinkProps, 'as'> & {
-    subItems?: string[];
+    activeOnLinks?: string[];
   },
 ): React.ReactElement => {
   const location = useLocation();
-  const isSubItemActive = props.subItems?.includes(location.pathname);
+  const isSubItemActive = props.activeOnLinks?.includes(location.pathname);
 
   return (
     <SideNavLink
@@ -143,7 +142,11 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
         {navItems.map(({ children: l1Children, ...navItem }) => {
           if (l1Children) {
             return (
-              <NavItem key={navItem.title} {...navItem} subItems={getAllChildHrefs(l1Children)}>
+              <NavItem
+                key={navItem.title}
+                {...navItem}
+                activeOnLinks={getAllChildHrefs(l1Children)}
+              >
                 <SideNavLevel>
                   {l1Children.map(({ children: l2Children, ...l2Item }) => {
                     if (!l2Children) {
@@ -154,7 +157,7 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
                       <NavItem
                         key={l2Item.title}
                         {...l2Item}
-                        subItems={getAllChildHrefs(l2Children)}
+                        activeOnLinks={getAllChildHrefs(l2Children)}
                       >
                         <SideNavLevel>
                           {l2Children.map(({ children: l3Children, ...l3Item }) => (
@@ -174,7 +177,37 @@ const SideNavTemplate: StoryFn<typeof SideNav> = () => {
 
       <Box marginLeft="300px">
         <Switch>
-          <Route path="/app" component={Page} />
+          <Route path="/app/dashboard" component={Page} />
+          <Route path="/app/payouts" component={Page} />
+          <Route path="/nice" component={Page} />
+          <Route path="/settings" exact component={Page} />
+          <Route path="/settings/user" exact component={Page} />
+          <Route path="/settings/user/home" exact component={Page} />
+          <Route path="/settings/user/account" exact component={Page} />
+          <Route path="/settings/subscriptions" exact component={Page} />
+        </Switch>
+      </Box>
+    </Box>
+  );
+};
+
+const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
+  return (
+    <Box>
+      <SideNav>
+        <NavItem title="Home" icon={HomeIcon} href="/app/dashboard" />
+        <SideNavSection title="OFFERINGS SECTION" maxVisibleItems={3}>
+          <NavItem title="Payment Gateway" icon={HomeIcon} href="/app/pg" />
+          <NavItem title="Payment Links" icon={HomeIcon} href="/app/pl" />
+          <NavItem title="Payment Pages" icon={HomeIcon} href="/app/pp" />
+          <NavItem title="Payment Amazing" icon={HomeIcon} href="/app/pa" />
+          <NavItem title="Payment Wow" icon={HomeIcon} href="/app/pw" />
+        </SideNavSection>
+      </SideNav>
+
+      <Box marginLeft="300px">
+        <Switch>
+          <Route path="/app/dashboard" component={Page} />
           <Route path="/app/payouts" component={Page} />
           <Route path="/nice" component={Page} />
           <Route path="/settings" exact component={Page} />
@@ -196,7 +229,11 @@ const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
         {navItems.map(({ children: l1Children, ...navItem }) => {
           if (l1Children) {
             return (
-              <NavItem key={navItem.title} {...navItem} subItems={getAllChildHrefs(l1Children)}>
+              <NavItem
+                key={navItem.title}
+                {...navItem}
+                activeOnLinks={getAllChildHrefs(l1Children)}
+              >
                 <SideNavLevel>
                   {l1Children.map(({ children: l2Children, ...l2Item }) => {
                     if (!l2Children) {
@@ -207,7 +244,7 @@ const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
                       <NavItem
                         key={l2Item.title}
                         {...l2Item}
-                        subItems={getAllChildHrefs(l2Children)}
+                        activeOnLinks={getAllChildHrefs(l2Children)}
                       >
                         <SideNavLevel>
                           {l2Children.map(({ children: l3Children, ...l3Item }) => (
@@ -241,4 +278,5 @@ const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
 };
 
 export const Default = SideNavTemplate.bind({});
+export const Compound = SideNavCompoundTemplate.bind({});
 export const Mobile = SideNavTemplateMobile.bind({});

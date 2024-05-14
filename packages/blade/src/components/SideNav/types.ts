@@ -18,14 +18,6 @@ type SideNavProps = {
   onDismiss?: DrawerProps['onDismiss'];
 };
 
-type ActiveLinkType =
-  | {
-      ref: React.MutableRefObject<HTMLAnchorElement | null>;
-      parentLinkRef: React.MutableRefObject<HTMLAnchorElement | null>;
-      level: number;
-    }
-  | undefined;
-
 type SideNavLinkProps = {
   title: string;
   href: string;
@@ -34,6 +26,20 @@ type SideNavLinkProps = {
   isCurrentPage?: boolean;
   icon: IconComponent;
   children?: React.ReactElement;
+};
+
+type SideNavSectionProps = {
+  title: string;
+  /**
+   * Number of items after which the items are collapsed into `+x more`
+   */
+  maxVisibleItems?: number;
+  /**
+   * Callback when `+x more is clicked`
+   */
+  onToggleVisibleItems?: (isExpanded: boolean) => void;
+
+  children: React.ReactElement[];
 };
 
 type OnLinkActiveChangeArgs = {
@@ -58,5 +64,5 @@ export type {
   SideNavContextType,
   NavLinkContextType,
   SideNavLinkProps,
-  ActiveLinkType,
+  SideNavSectionProps,
 };
