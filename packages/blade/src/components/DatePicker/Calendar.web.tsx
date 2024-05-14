@@ -6,7 +6,7 @@ import type { CalendarLevel } from '@mantine/dates';
 import { shiftTimezone, useDatesContext, DatePicker } from '@mantine/dates';
 import type { CalendarProps, DateSelectionType, PickerType } from './types';
 import { CalendarHeader } from './CalendarHeader';
-import { CalendarStyles } from './CalendarStyles.web';
+import { CalendarGradientStyles, CalendarStyles } from './CalendarStyles';
 import { useUncontrolledDates } from './useControlledDates';
 import { levelToPicker, pickerToLevel } from './utils';
 import { useControllableState } from '~utils/useControllable';
@@ -110,7 +110,6 @@ const Calendar = <Type extends DateSelectionType>({
       flexDirection="column"
       gap="spacing.5"
       pickerType={levelToPicker[level]}
-      date={currentDate}
     >
       <CalendarHeader
         isRange={isRange}
@@ -124,38 +123,40 @@ const Calendar = <Type extends DateSelectionType>({
         onNextYear={handleNextYear}
         onPreviousYear={handlePreviousYear}
       />
-      <DatePicker
-        withCellSpacing={false}
-        type={selectionType === 'single' ? 'default' : 'range'}
-        date={_date}
-        locale={locale}
-        level={level}
-        onDateChange={setDate}
-        onLevelChange={(level) => setLevel(() => level)}
-        numberOfColumns={numberOfColumns}
-        weekdayFormat="ddd"
-        firstDayOfWeek={firstDayOfWeek}
-        // @ts-expect-error unable to narrow props based on `type`
-        allowSingleDateInRange={allowSingleDateInRange}
-        renderDay={(date) => {
-          return (
-            <BaseBox data-date={`${date.getMonth()}-${date.getDate()}`}>{date.getDate()}</BaseBox>
-          );
-        }}
-        classNames={{
-          levelsGroup: 'DatePicker-levelsGroup',
-          day: 'DatePicker-cell',
-          monthsListControl: 'DatePicker-cell',
-          yearsListControl: 'DatePicker-cell',
-          calendarHeader: 'DatePicker-header',
-          monthRow: 'DatePicker-row',
-          yearsListRow: 'DatePicker-row',
-          monthsListRow: 'DatePicker-row',
-          weekdaysRow: 'DatePicker-row',
-          weekday: 'DatePicker-weekday',
-        }}
-        {...props}
-      />
+      <CalendarGradientStyles isRange={isRange} date={currentDate}>
+        <DatePicker
+          withCellSpacing={false}
+          type={selectionType === 'single' ? 'default' : 'range'}
+          date={_date}
+          locale={locale}
+          level={level}
+          onDateChange={setDate}
+          onLevelChange={(level) => setLevel(() => level)}
+          numberOfColumns={numberOfColumns}
+          weekdayFormat="ddd"
+          firstDayOfWeek={firstDayOfWeek}
+          // @ts-expect-error unable to narrow props based on `type`
+          allowSingleDateInRange={allowSingleDateInRange}
+          renderDay={(date) => {
+            return (
+              <BaseBox data-date={`${date.getMonth()}-${date.getDate()}`}>{date.getDate()}</BaseBox>
+            );
+          }}
+          classNames={{
+            levelsGroup: 'DatePicker-levelsGroup',
+            day: 'DatePicker-cell',
+            monthsListControl: 'DatePicker-cell',
+            yearsListControl: 'DatePicker-cell',
+            calendarHeader: 'DatePicker-header',
+            monthRow: 'DatePicker-row',
+            yearsListRow: 'DatePicker-row',
+            monthsListRow: 'DatePicker-row',
+            weekdaysRow: 'DatePicker-row',
+            weekday: 'DatePicker-weekday',
+          }}
+          {...props}
+        />
+      </CalendarGradientStyles>
     </CalendarStyles>
   );
 };

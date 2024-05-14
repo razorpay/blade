@@ -72,11 +72,11 @@ const inRangeCell = {
   },
 } as const;
 
-const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType; date: Date }>(
-  ({ theme, pickerType, date }) => {
+const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>(
+  ({ theme, date, isRange }) => {
     const isMobile = useIsMobile();
-    const device = isMobile ? 'mobile' : 'desktop';
-    const isDayPicker = pickerType === 'day';
+    // Bail out if datepicker is not in range mode or on mobile
+    if (isMobile || !isRange) return {};
 
     const calendar1 = {
       month: dayjs(date),
@@ -97,48 +97,6 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType; date: Date }>(
     const calendar2FirstGradient = `${calendar2.month.month()}-${calendar2.firstDay}`;
     const calendar2LastGradient = `${calendar2.month.month()}-${calendar2.lastDay}`;
 
-    const today = {
-      '&[data-today]': {
-        position: 'relative',
-        ':before': {
-          content: '""',
-          position: 'absolute',
-          left: '50%',
-          bottom: makeSpace(size[5]),
-          transform: 'translate(-50%, -50%)',
-          // TODO use icon level tokens
-          backgroundColor: getIn(theme.colors, todayCell.text.default),
-          width: makeSpace(theme.spacing[2]),
-          height: makeSpace(theme.spacing[2]),
-          borderRadius: theme.border.radius.max,
-        },
-      },
-      '&[data-today]:hover': {
-        backgroundColor: getIn(theme.colors, todayCell.background.hover),
-        outlineColor: getIn(theme.colors, todayCell.border.hover),
-        color: getIn(theme.colors, todayCell.text.hover),
-      },
-    } as const;
-
-    const selected = {
-      '&[data-selected]': {
-        backgroundColor: getIn(theme.colors, selectedCell.background.default),
-        outlineColor: getIn(theme.colors, selectedCell.border.default),
-        color: getIn(theme.colors, selectedCell.text.default),
-        ':before': {
-          backgroundColor: getIn(theme.colors, selectedCell.text.default),
-        },
-      },
-      '&[data-selected] [data-date]': {
-        background: 'none !important',
-      },
-      '&[data-selected]:hover': {
-        backgroundColor: getIn(theme.colors, selectedCell.background.hover),
-        outlineColor: getIn(theme.colors, selectedCell.border.hover),
-        color: getIn(theme.colors, selectedCell.text.hover),
-      },
-    } as const;
-
     const gradientCell = {
       pointerEvents: 'none',
       position: 'relative',
@@ -147,7 +105,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType; date: Date }>(
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-    };
+    } as const;
     const gradientBefore = {
       content: '""',
       position: 'absolute',
@@ -155,7 +113,7 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType; date: Date }>(
       top: 0,
       bottom: 0,
       right: 0,
-    };
+    } as const;
     const rightGradient1 = {
       backgroundColor: 'none',
       background: `linear-gradient(to right, transparent, ${getIn(
@@ -187,125 +145,172 @@ const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType; date: Date }>(
       )})`,
     };
 
-    const inRangeGradients = isMobile
-      ? {}
-      : {
-          [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar1FirstGradient}"]`]: {
-            ...gradientCell,
-            ...(calendar1.isFirstDayStartOfTheWeek ? leftGradient1 : {}),
-            '&:before': calendar1.isFirstDayStartOfTheWeek ? {} : rightGradient2,
-          },
-          [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar1LastGradient}"]`]: {
-            ...gradientCell,
-            ...(calendar1.isLastDayEndOfTheWeek ? rightGradient1 : {}),
-            '&:before': calendar1.isLastDayEndOfTheWeek ? {} : leftGradient2,
-          },
-          // Second calendar column
-          [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar2FirstGradient}"]`]: {
-            ...gradientCell,
-            ...(calendar2.isFirstDayStartOfTheWeek ? leftGradient1 : {}),
-            '&:before': calendar2.isFirstDayStartOfTheWeek ? {} : rightGradient2,
-          },
-          [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar2LastGradient}"]`]: {
-            ...gradientCell,
-            ...(calendar2.isLastDayEndOfTheWeek ? rightGradient1 : {}),
-            '&:before': calendar2.isLastDayEndOfTheWeek ? {} : leftGradient2,
-          },
-        };
-
-    const ranges = {
-      '&[data-in-range]': {
-        borderRadius: 0,
-        backgroundColor: getIn(theme.colors, inRangeCell.background.default),
-        outlineColor: getIn(theme.colors, inRangeCell.border.default),
-        color: getIn(theme.colors, inRangeCell.text.default),
-        position: 'relative',
-      },
-      '&[data-in-range]:hover': {
-        backgroundColor: getIn(theme.colors, inRangeCell.background.hover),
-        outlineColor: getIn(theme.colors, inRangeCell.border.hover),
-        color: getIn(theme.colors, inRangeCell.text.hover),
-      },
-      ...inRangeGradients,
-      '&[data-first-in-range]': {
-        borderRadius: theme.border.radius.medium,
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0,
-      },
-      '&[data-last-in-range]': {
-        borderRadius: theme.border.radius.medium,
-        borderTopLeftRadius: 0,
-        borderBottomLeftRadius: 0,
-      },
-      '&[data-first-in-range][data-last-in-range]': {
-        borderRadius: theme.border.radius.medium,
-      },
-    } as const;
-
     return {
-      width: '100%',
-      '.DatePicker-levelsGroup': {
-        width: '100%',
-        display: 'flex',
-        justifyContent: 'space-between',
-        table: {
-          borderCollapse: 'collapse',
-          width: '100%',
-        },
-        '> div': { width: isMobile ? '100%' : undefined },
-        th: {
-          flex: 1,
-        },
-        tr: {
-          marginBottom: makeSpace(cell.gap.y),
-        },
-        td: {
-          flex: 1,
-          padding: '0px !important',
-        },
-      },
-      '.DatePicker-row': {
-        textAlign: 'center',
-        display: 'flex',
-      },
-      '.DatePicker-header': {
-        display: 'none',
-      },
-      '.DatePicker-weekday': {
-        ...getTextStyles({
-          theme,
-          variant: 'body',
-          size: 'small',
-          weight: 'medium',
-          color: 'surface.text.gray.muted',
-        }),
-        paddingBottom: makeSpace(theme.spacing[4]),
-      },
       '.DatePicker-cell': {
-        cursor: 'pointer',
-        width: isMobile ? '100%' : makeSpace(cell.size[device]),
-        height: isDayPicker && isMobile ? undefined : makeSpace(cell.size[device]),
-        aspectRatio: isDayPicker && isMobile ? '1 / 1' : undefined,
-        borderRadius: theme.border.radius.medium,
-        backgroundColor: getIn(theme.colors, cell.background.default),
-        border: 'none',
-        ...getTextStyles({ theme, variant: 'body', size: 'medium', weight: 'regular' }),
-
-        '&:hover': {
-          backgroundColor: getIn(theme.colors, cell.background.hover),
+        [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar1FirstGradient}"]`]: {
+          ...gradientCell,
+          ...(calendar1.isFirstDayStartOfTheWeek ? leftGradient1 : {}),
+          '&:before': calendar1.isFirstDayStartOfTheWeek ? {} : rightGradient2,
         },
-        '&[data-outside]': {
-          color: theme.colors.interactive.text.gray.muted,
+        [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar1LastGradient}"]`]: {
+          ...gradientCell,
+          ...(calendar1.isLastDayEndOfTheWeek ? rightGradient1 : {}),
+          '&:before': calendar1.isLastDayEndOfTheWeek ? {} : leftGradient2,
         },
-        '&[data-outside]:hover': {
-          color: getIn(theme.colors, cell.text.default),
+        // Second calendar column
+        [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar2FirstGradient}"]`]: {
+          ...gradientCell,
+          ...(calendar2.isFirstDayStartOfTheWeek ? leftGradient1 : {}),
+          '&:before': calendar2.isFirstDayStartOfTheWeek ? {} : rightGradient2,
         },
-        ...ranges,
-        ...today,
-        ...selected,
+        [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar2LastGradient}"]`]: {
+          ...gradientCell,
+          ...(calendar2.isLastDayEndOfTheWeek ? rightGradient1 : {}),
+          '&:before': calendar2.isLastDayEndOfTheWeek ? {} : leftGradient2,
+        },
       },
     };
   },
 );
 
-export { CalendarStyles };
+const CalendarStyles = styled(BaseBox)<{ pickerType?: PickerType }>(({ theme, pickerType }) => {
+  const isMobile = useIsMobile();
+  const device = isMobile ? 'mobile' : 'desktop';
+  const isDayPicker = pickerType === 'day';
+
+  const today = {
+    '&[data-today]': {
+      position: 'relative',
+      ':before': {
+        content: '""',
+        position: 'absolute',
+        left: '50%',
+        bottom: makeSpace(size[5]),
+        transform: 'translate(-50%, -50%)',
+        // TODO use icon level tokens
+        backgroundColor: getIn(theme.colors, todayCell.text.default),
+        width: makeSpace(theme.spacing[2]),
+        height: makeSpace(theme.spacing[2]),
+        borderRadius: theme.border.radius.max,
+      },
+    },
+    '&[data-today]:hover': {
+      backgroundColor: getIn(theme.colors, todayCell.background.hover),
+      outlineColor: getIn(theme.colors, todayCell.border.hover),
+      color: getIn(theme.colors, todayCell.text.hover),
+    },
+  } as const;
+
+  const selected = {
+    '&[data-selected]': {
+      backgroundColor: getIn(theme.colors, selectedCell.background.default),
+      outlineColor: getIn(theme.colors, selectedCell.border.default),
+      color: getIn(theme.colors, selectedCell.text.default),
+      ':before': {
+        backgroundColor: getIn(theme.colors, selectedCell.text.default),
+      },
+    },
+    '&[data-selected] [data-date]': {
+      background: 'none !important',
+    },
+    '&[data-selected]:hover': {
+      backgroundColor: getIn(theme.colors, selectedCell.background.hover),
+      outlineColor: getIn(theme.colors, selectedCell.border.hover),
+      color: getIn(theme.colors, selectedCell.text.hover),
+    },
+  } as const;
+
+  const ranges = {
+    '&[data-in-range]': {
+      borderRadius: 0,
+      backgroundColor: getIn(theme.colors, inRangeCell.background.default),
+      outlineColor: getIn(theme.colors, inRangeCell.border.default),
+      color: getIn(theme.colors, inRangeCell.text.default),
+      position: 'relative',
+    },
+    '&[data-in-range]:hover': {
+      backgroundColor: getIn(theme.colors, inRangeCell.background.hover),
+      outlineColor: getIn(theme.colors, inRangeCell.border.hover),
+      color: getIn(theme.colors, inRangeCell.text.hover),
+    },
+    '&[data-first-in-range]': {
+      borderRadius: theme.border.radius.medium,
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
+    },
+    '&[data-last-in-range]': {
+      borderRadius: theme.border.radius.medium,
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
+    },
+    '&[data-first-in-range][data-last-in-range]': {
+      borderRadius: theme.border.radius.medium,
+    },
+  } as const;
+
+  return {
+    width: '100%',
+    '.DatePicker-levelsGroup': {
+      width: '100%',
+      display: 'flex',
+      justifyContent: 'space-between',
+      table: {
+        borderCollapse: 'collapse',
+        width: '100%',
+      },
+      '> div': { width: isMobile ? '100%' : undefined },
+      th: {
+        flex: 1,
+      },
+      tr: {
+        marginBottom: makeSpace(cell.gap.y),
+      },
+      td: {
+        flex: 1,
+        padding: '0px !important',
+      },
+    },
+    '.DatePicker-row': {
+      textAlign: 'center',
+      display: 'flex',
+    },
+    '.DatePicker-header': {
+      display: 'none',
+    },
+    '.DatePicker-weekday': {
+      ...getTextStyles({
+        theme,
+        variant: 'body',
+        size: 'small',
+        weight: 'medium',
+        color: 'surface.text.gray.muted',
+      }),
+      paddingBottom: makeSpace(theme.spacing[4]),
+    },
+    '.DatePicker-cell': {
+      cursor: 'pointer',
+      width: isMobile ? '100%' : makeSpace(cell.size[device]),
+      height: isDayPicker && isMobile ? undefined : makeSpace(cell.size[device]),
+      aspectRatio: isDayPicker && isMobile ? '1 / 1' : undefined,
+      borderRadius: theme.border.radius.medium,
+      backgroundColor: getIn(theme.colors, cell.background.default),
+      border: 'none',
+      ...getTextStyles({ theme, variant: 'body', size: 'medium', weight: 'regular' }),
+
+      '&:hover': {
+        backgroundColor: getIn(theme.colors, cell.background.hover),
+      },
+      '&[data-outside]': {
+        color: theme.colors.interactive.text.gray.muted,
+      },
+      '&[data-outside]:hover': {
+        color: getIn(theme.colors, cell.text.default),
+      },
+      ...ranges,
+      ...today,
+      ...selected,
+    },
+  };
+});
+
+export { CalendarStyles, CalendarGradientStyles };
