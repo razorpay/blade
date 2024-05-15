@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import { useModalContext } from './ModalContext';
+import { componentIds } from './constants';
 import type { BaseHeaderProps } from '~components/BaseHeaderFooter/BaseHeader';
 import { makeSize } from '~utils';
 import { BaseHeader } from '~components/BaseHeaderFooter/BaseHeader';
@@ -64,7 +65,7 @@ const _ModalHeader = ({
   );
 };
 const ModalHeader = assignWithoutSideEffects(_ModalHeader, {
-  componentId: MetaConstants.ModalHeader,
+  componentId: componentIds.ModalHeader,
 });
 
 export { ModalHeader };
