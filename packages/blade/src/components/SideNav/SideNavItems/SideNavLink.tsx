@@ -5,7 +5,7 @@ import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
 import type { SideNavLinkProps } from '../types';
 import { Box } from '~components/Box';
 import { size } from '~tokens/global';
-import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
 import { useId } from '~utils/useId';
 import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
@@ -35,15 +35,7 @@ const StyledNavLinkContainer = styled.a((props) => {
     }`,
     backgroundColor: props.theme.colors.transparent,
     '.collapsed &': {
-      width: '36px',
-      transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
-        props.theme.motion.easing.exit.attentive
-      }`,
       padding: '0px 10px',
-      // overflow: 'hidden',
-      '& .hide-when-collapsed': {
-        display: 'none',
-      },
       '&[aria-current]': {
         '&::before': {
           opacity: 0,
@@ -126,7 +118,6 @@ const L3Trigger = ({
   const { onExpandChange, isExpanded, collapsibleBodyId } = useCollapsible();
 
   const toggleCollapse = (): void => onExpandChange(!isExpanded);
-  const onL3TriggerClick = (): void => toggleCollapse();
   const iconProps = {
     size: 'medium',
     color: 'currentColor',
@@ -136,7 +127,7 @@ const L3Trigger = ({
     <StyledNavLinkContainer
       as={href ? as : 'button'}
       to={href}
-      onClick={onL3TriggerClick}
+      onClick={toggleCollapse}
       {...makeAccessible({ expanded: isExpanded, controls: collapsibleBodyId })}
     >
       <NavLinkIconTitle title={title} icon={icon} isL1Item={false} />

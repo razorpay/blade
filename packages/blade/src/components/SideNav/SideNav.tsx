@@ -4,7 +4,7 @@ import { SideNavContext } from './SideNavContext';
 import type { SideNavContextType, SideNavProps } from './types';
 import BaseBox from '~components/Box/BaseBox';
 import { size } from '~tokens/global';
-import { makeMotionTime, makeSize } from '~utils';
+import { makeMotionTime, makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 
@@ -15,15 +15,24 @@ const StyledL1Level = styled(BaseBox)((props) => {
       props.theme.motion.easing.entrance.attentive
     }`,
     [`& > ${BaseBox}`]: {
-      padding: '12px',
+      padding: makeSpace(props.theme.spacing[4]),
+    },
+    '.show-when-collapsed': {
+      display: 'none',
     },
     '&.collapsed': {
-      width: '52px',
+      width: makeSize(size['52']),
       transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
         props.theme.motion.easing.exit.attentive
       }`,
       [`& > ${BaseBox}`]: {
-        padding: '12px 8px',
+        padding: `${makeSpace(props.theme.spacing[4])} ${makeSpace(props.theme.spacing[3])}`,
+      },
+      '.hide-when-collapsed': {
+        display: 'none',
+      },
+      '.show-when-collapsed': {
+        display: 'initial',
       },
     },
   };
@@ -112,7 +121,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
           />
           <StyledL1Level
             ref={l1ContainerRef}
-            className={isL1Collapsed ? (isCollapsedHover ? '' : 'collapsed') : ''}
+            className={isL1Collapsed && !isCollapsedHover ? 'collapsed' : ''}
             position="absolute"
             display="flex"
             flexDirection="column"
@@ -124,6 +133,11 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
             left="spacing.0"
             borderRightWidth="thin"
             borderRightColor="surface.border.gray.muted"
+            // onTransitionEnd={(e) => {
+            //   if (isTransitioning && l1ContainerRef.current === e.currentTarget) {
+            //     setIsTransitioning(false);
+            //   }
+            // }}
             onMouseOver={() => {
               if (isL1Collapsed && !isTransitioning) {
                 setIsCollapsedHover(true);
@@ -132,6 +146,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
             onMouseOut={() => {
               if (isL1Collapsed) {
                 setIsCollapsedHover(false);
+                // setIsTransitioning(true);
               }
             }}
           >
