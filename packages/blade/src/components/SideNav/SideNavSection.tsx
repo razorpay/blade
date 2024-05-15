@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import type { SideNavSectionProps } from './types';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
@@ -7,6 +8,7 @@ import BaseBox from '~components/Box/BaseBox';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { Link } from '~components/Link';
 import { ChevronDownIcon, ChevronUpIcon } from '~components/Icons';
+import { Divider } from '~components/Divider';
 
 const ShowMoreLink = ({
   collapsedItemsCount,
@@ -44,6 +46,14 @@ const ShowMoreLink = ({
   );
 };
 
+const StyledSectionTitleContainer = styled(BaseBox)((_props) => {
+  return {
+    '.collapsed:not(.transitioning) & p': {
+      opacity: 0,
+    },
+  };
+});
+
 const SideNavSection = ({
   children,
   title,
@@ -55,11 +65,22 @@ const SideNavSection = ({
 
   return (
     <Box paddingY="spacing.6">
-      <Box padding={['spacing.2', 'spacing.4']}>
+      <StyledSectionTitleContainer position="relative" padding={['spacing.2', 'spacing.4']}>
         <Text size="xsmall" weight="medium" truncateAfterLines={1} color="surface.text.gray.muted">
           {title}
         </Text>
-      </Box>
+        <BaseBox
+          className="show-when-collapsed"
+          position="absolute"
+          top="50%"
+          margin="auto"
+          left="spacing.0"
+          right="spacing.0"
+          transform="translateY(-50%)"
+        >
+          <Divider />
+        </BaseBox>
+      </StyledSectionTitleContainer>
       <Box>{children.slice(0, maxVisibleItems)}</Box>
       <Collapsible
         direction="top"

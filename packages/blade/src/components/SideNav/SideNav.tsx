@@ -28,10 +28,10 @@ const StyledL1Level = styled(BaseBox)((props) => {
       [`& > ${BaseBox}`]: {
         padding: `${makeSpace(props.theme.spacing[4])} ${makeSpace(props.theme.spacing[3])}`,
       },
-      '.hide-when-collapsed': {
+      '&:not(.transitioning) .hide-when-collapsed': {
         display: 'none',
       },
-      '.show-when-collapsed': {
+      '&:not(.transitioning) .show-when-collapsed': {
         display: 'initial',
       },
     },
@@ -43,7 +43,8 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
-  const [isTransitioning, setIsTransitioning] = React.useState(false);
+  const [isHoverAgainEnabled, setIsHoverAgainEnabled] = React.useState(false);
+  const [isHoverTransitioning, setIsHoverTransitioning] = React.useState(false);
   const isMobile = false;
 
   const closeMobileNav = (): void => {
@@ -57,10 +58,11 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
       setIsL1Collapsed(true);
       setIsCollapsedHover(false);
-      setIsTransitioning(true);
+      setIsHoverAgainEnabled(false);
+      setIsHoverTransitioning(true);
       // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
       setTimeout(() => {
-        setIsTransitioning(false);
+        setIsHoverAgainEnabled(true);
       }, 500);
     }
 
@@ -121,7 +123,13 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
           />
           <StyledL1Level
             ref={l1ContainerRef}
-            className={isL1Collapsed && !isCollapsedHover ? 'collapsed' : ''}
+            className={
+              isL1Collapsed && !isCollapsedHover
+                ? isHoverTransitioning
+                  ? 'collapsed transitioning'
+                  : 'collapsed'
+                : ''
+            }
             position="absolute"
             display="flex"
             flexDirection="column"
@@ -133,19 +141,21 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
             left="spacing.0"
             borderRightWidth="thin"
             borderRightColor="surface.border.gray.muted"
-            // onTransitionEnd={(e) => {
-            //   if (isTransitioning && l1ContainerRef.current === e.currentTarget) {
-            //     setIsTransitioning(false);
-            //   }
-            // }}
+            onTransitionEnd={(e) => {
+              if (isHoverTransitioning && l1ContainerRef.current === e.target) {
+                console.log('transitionend', e);
+                setIsHoverTransitioning(false);
+              }
+            }}
             onMouseOver={() => {
-              if (isL1Collapsed && !isTransitioning) {
+              if (isL1Collapsed && isHoverAgainEnabled) {
                 setIsCollapsedHover(true);
               }
             }}
             onMouseOut={() => {
               if (isL1Collapsed) {
                 setIsCollapsedHover(false);
+                setIsHoverTransitioning(true);
                 // setIsTransitioning(true);
               }
             }}
