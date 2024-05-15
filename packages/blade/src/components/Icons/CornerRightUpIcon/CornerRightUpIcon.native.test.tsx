@@ -1,4 +1,4 @@
-import CornerRightUpIcon from './';
+import CornerRightUpIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CornerRightUpIcon />', () => {

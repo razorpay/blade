@@ -1,4 +1,4 @@
-import RewindIcon from './';
+import RewindIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<RewindIcon />', () => {

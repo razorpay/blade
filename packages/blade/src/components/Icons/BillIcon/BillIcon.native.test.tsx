@@ -1,4 +1,4 @@
-import BillIcon from './';
+import BillIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<BillIcon />', () => {

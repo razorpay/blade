@@ -17,7 +17,13 @@ import {
   tableBackgroundColor,
   tablePagination,
 } from './tokens';
-import type { TableProps, TableNode, Identifier, TablePaginationType } from './types';
+import type {
+  TableProps,
+  TableNode,
+  Identifier,
+  TablePaginationType,
+  TableHeaderRowProps,
+} from './types';
 import { makeBorderSize, makeMotionTime } from '~utils';
 import { getComponentId, isValidAllowedChildren } from '~utils/isValidAllowedChildren';
 import { throwBladeError } from '~utils/logger';
@@ -133,6 +139,9 @@ const _Table = <Item,>({
   const [totalItems, setTotalItems] = React.useState(data.nodes.length || 0);
   const [paginationType, setPaginationType] = React.useState<NonNullable<TablePaginationType>>(
     'client',
+  );
+  const [headerRowDensity, setHeaderRowDensity] = React.useState<TableHeaderRowProps['rowDensity']>(
+    undefined,
   );
   // Need to make header is sticky if first column is sticky otherwise the first header cell will not be sticky
   const shouldHeaderBeSticky = isHeaderSticky ?? isFirstColumnSticky;
@@ -388,6 +397,8 @@ const _Table = <Item,>({
       paginationType,
       setPaginationType,
       backgroundColor,
+      headerRowDensity,
+      setHeaderRowDensity,
     }),
     [
       selectionType,
@@ -408,6 +419,8 @@ const _Table = <Item,>({
       paginationType,
       setPaginationType,
       backgroundColor,
+      headerRowDensity,
+      setHeaderRowDensity,
     ],
   );
 

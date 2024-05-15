@@ -1,4 +1,4 @@
-import GitlabIcon from './';
+import GitlabIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<GitlabIcon />', () => {

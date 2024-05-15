@@ -22,6 +22,16 @@ describe('<Indicator />', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('should render with intense emphasis', () => {
+    const { container } = renderWithTheme(
+      <Indicator emphasis="intense" size="small" color="positive">
+        Success
+      </Indicator>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('should render text label', () => {
     const label = 'Active';
     const { getByText } = renderWithTheme(<Indicator>{label}</Indicator>);

@@ -1,4 +1,4 @@
-import CloudRainIcon from './';
+import CloudRainIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CloudRainIcon />', () => {

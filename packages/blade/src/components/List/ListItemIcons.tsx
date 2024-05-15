@@ -13,7 +13,7 @@ type UnorderedIconProps = {
 const UnorderedLevel1Icon = ({ iconDimensions, color }: UnorderedIconProps): React.ReactElement => {
   return (
     <Svg width={iconDimensions} height={iconDimensions} viewBox="0 0 6 6" fill="none">
-      <Circle cx="3px" cy="3px" r="3px" fill={color} fillOpacity={opacity[6]} />
+      <Circle cx="3px" cy="3px" r="3px" fill={color} fillOpacity={opacity[600]} />
     </Svg>
   );
 };
@@ -34,7 +34,7 @@ const UnorderedLevel3Icon = ({ iconDimensions, color }: UnorderedIconProps): Rea
         height={iconDimensions}
         rx="1px"
         fill={color}
-        fillOpacity={opacity[6]}
+        fillOpacity={opacity[600]}
       />
     </Svg>
   );

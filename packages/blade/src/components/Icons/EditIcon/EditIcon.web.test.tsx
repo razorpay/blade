@@ -1,4 +1,4 @@
-import EditIcon from '.';
+import EditIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<EditIcon />', () => {

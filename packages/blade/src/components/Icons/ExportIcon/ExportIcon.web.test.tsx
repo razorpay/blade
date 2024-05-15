@@ -1,4 +1,4 @@
-import ExportIcon from '.';
+import ExportIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<ExportIcon />', () => {

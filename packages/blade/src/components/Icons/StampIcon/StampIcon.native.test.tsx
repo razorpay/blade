@@ -1,4 +1,4 @@
-import StampIcon from './';
+import StampIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<StampIcon />', () => {

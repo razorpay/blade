@@ -1,4 +1,4 @@
-import CheckSquareIcon from './';
+import CheckSquareIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<CheckSquareIcon />', () => {

@@ -1,10 +1,10 @@
-import type { ReactElement } from 'react';
-import type { IconComponent, IconProps } from '..';
+import { Svg, Path } from '../_Svg';
+import type { IconComponent } from '..';
 import useIconProps from '../useIconProps';
-import { Path, Svg } from '../_Svg';
 
-const MailIcon: IconComponent = ({ size, color, ...styledProps }: IconProps): ReactElement => {
+const MailIcon: IconComponent = ({ size, color, ...styledProps }) => {
   const { height, width, iconColor } = useIconProps({ size, color });
+
   return (
     <Svg {...styledProps} width={width} height={height} viewBox="0 0 24 24" fill="none">
       <Path

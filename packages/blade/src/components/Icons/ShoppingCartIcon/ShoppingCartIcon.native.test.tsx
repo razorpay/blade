@@ -1,4 +1,4 @@
-import ShoppingCartIcon from './';
+import ShoppingCartIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ShoppingCartIcon />', () => {

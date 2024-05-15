@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BusinessBankingIcon /> should render BusinessBankingIcon 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="Svgweb__StyledSvg-vcmjs8-0"
+    data-blade-component="icon"
+    fill="none"
+    height="20px"
+    viewBox="0 0 24 24"
+    width="20px"
+  >
+    <path
+      clip-rule="evenodd"
+      d="M20 2H16.5L10.4375 9.76L7.5 6H4L8.6875 12L4 18H7.5L10.4375 14.24L16.5 22H20L12.1875 12L20 2Z"
+      data-blade-component="svg-path"
+      fill="hsla(211, 33%, 21%, 1)"
+      fill-rule="evenodd"
+    />
+  </svg>
+</div>
+`;

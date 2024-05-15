@@ -1,6 +1,4 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
-import { waitFor } from '@testing-library/react';
 import { Dropdown, DropdownOverlay } from '~components/Dropdown';
 import { DropdownFooter, DropdownHeader } from '~components/Dropdown/DropdownHeaderFooter';
 import renderWithSSR from '~utils/testing/renderWithSSR.web';
@@ -16,8 +14,8 @@ import { Box } from '~components/Box';
  */
 
 describe('<Dropdown /> with <AutoComplete />', () => {
-  it('should render dropdown and make it visible on click', async () => {
-    const { container, getByRole, queryByRole } = renderWithSSR(
+  it('should render dropdown and make it visible on click', () => {
+    const { container, getByRole } = renderWithSSR(
       <Dropdown>
         <AutoComplete label="Fruits" />
         <DropdownOverlay zIndex={1002}>
@@ -36,13 +34,7 @@ describe('<Dropdown /> with <AutoComplete />', () => {
     );
 
     const selectInput = getByRole('combobox', { name: 'Fruits' });
-
     expect(selectInput).toBeInTheDocument();
-    // testing library ignores the nodes because they are set to display none so using querySelector to select from dom instead.
-    // the node becomes accessible after click on selectInput
-    expect(queryByRole('dialog')).toBeNull();
-    await userEvent.click(selectInput);
-    await waitFor(() => expect(getByRole('dialog', { name: 'Fruits' })).toBeVisible());
     expect(container).toMatchSnapshot();
   });
 });

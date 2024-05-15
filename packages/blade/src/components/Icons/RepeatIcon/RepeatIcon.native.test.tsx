@@ -1,4 +1,4 @@
-import RepeatIcon from './';
+import RepeatIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<RepeatIcon />', () => {

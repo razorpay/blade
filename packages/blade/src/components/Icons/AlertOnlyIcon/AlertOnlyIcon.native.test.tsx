@@ -1,4 +1,4 @@
-import AlertOnlyIcon from './';
+import AlertOnlyIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<AlertOnlyIcon />', () => {

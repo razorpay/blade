@@ -1,4 +1,4 @@
-import PocketIcon from './';
+import PocketIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PocketIcon />', () => {

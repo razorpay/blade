@@ -1,4 +1,4 @@
-import PaperclipIcon from './';
+import PaperclipIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PaperclipIcon />', () => {

@@ -1,4 +1,4 @@
-import SlackIcon from './';
+import SlackIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<SlackIcon />', () => {

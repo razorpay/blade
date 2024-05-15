@@ -1,4 +1,4 @@
-import BulkPayoutsIcon from '.';
+import BulkPayoutsIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<BulkPayoutsIcon />', () => {

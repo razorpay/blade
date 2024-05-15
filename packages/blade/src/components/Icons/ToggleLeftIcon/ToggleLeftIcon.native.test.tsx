@@ -1,4 +1,4 @@
-import ToggleLeftIcon from './';
+import ToggleLeftIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<ToggleLeftIcon />', () => {

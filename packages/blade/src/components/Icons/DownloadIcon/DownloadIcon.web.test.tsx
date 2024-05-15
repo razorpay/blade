@@ -1,4 +1,4 @@
-import DownloadIcon from '.';
+import DownloadIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<DownloadIcon />', () => {

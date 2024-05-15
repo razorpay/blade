@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
+import { componentIds } from './constants';
 import { assignWithoutSideEffects } from '~src/utils/assignWithoutSideEffects';
 import BaseBox from '~components/Box/BaseBox';
 import { MetaConstants, metaAttribute } from '~utils/metaAttribute';
@@ -34,7 +35,7 @@ const _ModalBody = ({ children, padding = 'spacing.6' }: ModalBodyProps): React.
 };
 
 const ModalBody = assignWithoutSideEffects(_ModalBody, {
-  componentId: MetaConstants.ModalBody,
+  componentId: componentIds.ModalBody,
 });
 
 export { ModalBody };

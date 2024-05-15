@@ -1,4 +1,4 @@
-import PhoneForwardedIcon from './';
+import PhoneForwardedIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<PhoneForwardedIcon />', () => {

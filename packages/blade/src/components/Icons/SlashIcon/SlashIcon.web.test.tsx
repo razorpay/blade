@@ -1,4 +1,4 @@
-import SlashIcon from '.';
+import SlashIcon from './';
 import renderWithTheme from '~utils/testing/renderWithTheme.web';
 
 describe('<SlashIcon />', () => {

@@ -1,5 +1,40 @@
 # @razorpay/blade
 
+## 11.17.1
+
+### Patch Changes
+
+- 3d69bc9d: fix(blade): modal component failing to verify null component
+
+## 11.17.0
+
+### Minor Changes
+
+- 64108d77: feat(blade): add new icons and add figma icon importer script
+
+## 11.16.1
+
+### Patch Changes
+
+- 51c04c81: feat(Table): add compact rowDensity & update existing densities
+- 906e7f4f: fix(DropdownOverlay): Fix DropdownOverlay getting cropped in Sticky Table Column
+
+## 11.16.0
+
+### Minor Changes
+
+- afddbf27: feat: add label & validation related props to ChipGroup
+
+### Patch Changes
+
+- ef0fb059: feat(tokens): update dark mode tokens
+
+## 11.15.2
+
+### Patch Changes
+
+- 102dc873: fix: i18nify-react version upgraded to resolve duplicate i18nify-js copies
+
 ## 11.15.1
 
 ### Patch Changes

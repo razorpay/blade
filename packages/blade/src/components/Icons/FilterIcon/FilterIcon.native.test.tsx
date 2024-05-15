@@ -1,4 +1,4 @@
-import FilterIcon from './';
+import FilterIcon from '.';
 import renderWithTheme from '~utils/testing/renderWithTheme.native';
 
 describe('<FilterIcon />', () => {

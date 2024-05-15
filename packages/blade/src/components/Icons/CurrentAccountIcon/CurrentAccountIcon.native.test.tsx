@@ -1,0 +1,11 @@
+import CurrentAccountIcon from '.';
+import renderWithTheme from '~utils/testing/renderWithTheme.native';
+
+describe('<CurrentAccountIcon />', () => {
+  it('should render CurrentAccountIcon', () => {
+    const renderTree = renderWithTheme(
+      <CurrentAccountIcon color="feedback.icon.neutral.intense" size="large" />,
+    ).toJSON();
+    expect(renderTree).toMatchSnapshot();
+  });
+});

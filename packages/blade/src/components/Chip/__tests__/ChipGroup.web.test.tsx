@@ -13,8 +13,9 @@ describe('<ChipGroup />', () => {
   for (const selectionType of selectionTypes) {
     describe(`selectionType="${selectionType}"`, () => {
       it(`should render with selectionType="${selectionType}"`, () => {
+        const labelText = 'Select fruits';
         const { container, getByRole } = renderWithTheme(
-          <ChipGroup accessibilityLabel="Select fruits" selectionType={selectionType}>
+          <ChipGroup label={labelText} selectionType={selectionType}>
             <Chip value="apple">Apple</Chip>
             <Chip value="mango">Mango</Chip>
             <Chip value="orange">Orange</Chip>
@@ -24,9 +25,52 @@ describe('<ChipGroup />', () => {
         const chipRole = selectionType === 'single' ? 'radio' : 'checkbox';
         const chipGroupRole = selectionType === 'single' ? 'radiogroup' : 'group';
         expect(getByRole(chipGroupRole)).toBeInTheDocument();
+        expect(getByRole(chipGroupRole)).toHaveTextContent(labelText);
         expect(getByRole(chipRole, { name: 'Apple' })).toBeInTheDocument();
         expect(getByRole(chipRole, { name: 'Mango' })).toBeInTheDocument();
         expect(container).toMatchSnapshot();
+      });
+
+      it('should render with help text', () => {
+        const labelText = 'Select fruits';
+        const helpText = 'Select one';
+        const { getByRole } = renderWithTheme(
+          <ChipGroup label={labelText} helpText={helpText} selectionType={selectionType}>
+            <Chip value="apple">Apple</Chip>
+            <Chip value="mango">Mango</Chip>
+            <Chip value="orange">Orange</Chip>
+          </ChipGroup>,
+        );
+
+        const chipGroupRole = selectionType === 'single' ? 'radiogroup' : 'group';
+        expect(getByRole(chipGroupRole)).toHaveTextContent(labelText);
+        expect(getByRole(chipGroupRole)).toHaveTextContent(helpText);
+      });
+
+      it('should render errorText when validationState is set to error', () => {
+        const labelText = 'Select fruits';
+        const helpText = 'Select one';
+        const errorText = 'Invalid selection';
+
+        const { getAllByRole, queryByText } = renderWithTheme(
+          <ChipGroup
+            helpText={helpText}
+            errorText={errorText}
+            label={labelText}
+            validationState="error"
+            selectionType={selectionType}
+          >
+            <Chip value="apple">Apple</Chip>
+            <Chip value="mango">Mango</Chip>
+            <Chip value="orange">Orange</Chip>
+          </ChipGroup>,
+        );
+
+        expect(queryByText(helpText)).not.toBeInTheDocument();
+        expect(queryByText(errorText)).toBeInTheDocument();
+        getAllByRole(selectionType === 'single' ? 'radio' : 'checkbox').forEach((chip) => {
+          expect(chip).toBeInvalid();
+        });
       });
 
       sizes.forEach((size) => {
