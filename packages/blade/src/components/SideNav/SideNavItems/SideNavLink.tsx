@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
-import { NavLinkContext, useNavLink, useSideNav } from './SideNavContext';
-import type { SideNavLinkProps } from './types';
+import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
+import type { SideNavLinkProps } from '../types';
 import { Box } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeBorderSize, makeMotionTime, makeSize, makeSpace } from '~utils';

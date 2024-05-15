@@ -15,6 +15,7 @@ import { getStyledPropsArgTypes } from '~components/Box/BaseBox/storybookArgType
 import { Box } from '~components/Box';
 import {
   ArrowUpRightIcon,
+  BoxIcon,
   HomeIcon,
   SettingsIcon,
   SubscriptionsIcon,
@@ -233,7 +234,17 @@ const SideNavCompoundTemplate: StoryFn<typeof SideNav> = () => {
 
         <SideNavFooter>
           <SideNavSwitch />
-          <NavItem title="Settings" icon={SettingsIcon} href="/settings" />
+          <NavItem
+            title="Settings"
+            icon={SettingsIcon}
+            href="/settings"
+            activeOnLinks={['/settings/user', '/settings/account']}
+          >
+            <SideNavLevel>
+              <NavItem icon={UserIcon} title="User Settings" href="/settings/user" />
+              <NavItem icon={BoxIcon} title="Account Settings" href="/settings/account" />
+            </SideNavLevel>
+          </NavItem>
         </SideNavFooter>
       </SideNav>
 

@@ -17,7 +17,7 @@ const SideNavSection = ({
   return (
     <Box paddingY="spacing.6">
       <Box padding={['spacing.2', 'spacing.4']}>
-        <Text size="xsmall" weight="medium" color="surface.text.gray.muted">
+        <Text size="xsmall" weight="medium" truncateAfterLines={1} color="surface.text.gray.muted">
           {title}
         </Text>
       </Box>
