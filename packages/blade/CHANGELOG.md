@@ -1,5 +1,11 @@
 # @razorpay/blade
 
+## 11.17.1
+
+### Patch Changes
+
+- 3d69bc9d: fix(blade): modal component failing to verify null component
+
 ## 11.17.0
 
 ### Minor Changes
