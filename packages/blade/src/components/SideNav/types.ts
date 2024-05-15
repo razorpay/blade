@@ -48,6 +48,7 @@ type SideNavFooterProps = {
 
 type OnLinkActiveChangeArgs = {
   id: string;
+  title: string;
   level: number;
   isActive: boolean;
   isL2Trigger: boolean;

@@ -168,6 +168,7 @@ const SideNavLink = ({
     onLinkActiveChange?.({
       id: navItemId,
       level: currentLevel,
+      title,
       isActive: Boolean(isCurrentPage),
       isL2Trigger,
     });
@@ -203,6 +204,7 @@ const SideNavLink = ({
                 onLinkActiveChange?.({
                   id: navItemId,
                   level: currentLevel,
+                  title,
                   isActive: Boolean(isCurrentPage),
                   isL2Trigger,
                 });

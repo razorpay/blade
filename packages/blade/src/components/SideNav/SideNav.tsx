@@ -45,7 +45,8 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
   const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
   const [isHoverAgainEnabled, setIsHoverAgainEnabled] = React.useState(false);
   const [isHoverTransitioning, setIsHoverTransitioning] = React.useState(false);
-  const isMobile = false;
+  const [l2DrawerTitle, setL2DrawerTitle] = React.useState('');
+  const isMobile = true;
 
   const closeMobileNav = (): void => {
     if (isMobile) {
@@ -60,6 +61,9 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
       setIsCollapsedHover(false);
       setIsHoverAgainEnabled(false);
       setIsHoverTransitioning(true);
+      if (isMobile) {
+        setL2DrawerTitle(args.title);
+      }
       // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
       setTimeout(() => {
         setIsHoverAgainEnabled(true);
@@ -99,7 +103,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
           </Drawer>
           {/* L2 */}
           <Drawer isOpen={isL2Open} onDismiss={() => setIsL2Open(false)} isLazy={false}>
-            <DrawerHeader title="" />
+            <DrawerHeader title={l2DrawerTitle} />
             <DrawerBody>
               <BaseBox ref={l2PortalContainerRef} />
             </DrawerBody>
