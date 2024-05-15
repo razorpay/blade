@@ -163,9 +163,9 @@
   {
     "name": "Modal",
     "passed": true,
-    "size": 35160,
+    "size": 35089,
     "sizeLimit": 2000000,
-    "loading": 0.68671875
+    "loading": 0.68533203125
   },
   {
     "name": "Popover, PopoverInteractiveWrapper",
@@ -273,13 +273,6 @@
     "loading": 0.517421875
   },
   {
-    "name": "Link",
-    "passed": true,
-    "size": 24405,
-    "sizeLimit": 2000000,
-    "loading": 0.47666015625
-  },
-  {
     "name": "SelectInput, AutoComplete",
     "passed": true,
     "size": 41367,
@@ -320,6 +313,13 @@
     "size": 39588,
     "sizeLimit": 2000000,
     "loading": 0.773203125
+  },
+  {
+    "name": "Link",
+    "passed": true,
+    "size": 24405,
+    "sizeLimit": 2000000,
+    "loading": 0.47666015625
   },
   {
     "name": "RadioGroup",
