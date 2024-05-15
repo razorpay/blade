@@ -31,7 +31,7 @@ const colors: ColorsWithModes = {
       },
       border: {
         gray: {
-          normal: globalColors.neutral.blueGrayLight[500],
+          normal: globalColors.neutral.blueGrayLight[400],
           subtle: globalColors.neutral.blueGrayLight[300],
           muted: globalColors.neutral.blueGrayLight.a100,
         },
@@ -287,8 +287,8 @@ const colors: ColorsWithModes = {
           faded: globalColors.neutral.blueGrayLight.a100,
         },
         gray: {
-          default: globalColors.neutral.blueGrayLight[400],
-          highlighted: globalColors.neutral.blueGrayLight[400],
+          default: globalColors.neutral.blueGrayLight[300],
+          highlighted: globalColors.neutral.blueGrayLight[300],
           disabled: globalColors.neutral.blueGrayLight[200],
           faded: globalColors.neutral.blueGrayLight.a100,
         },
@@ -562,7 +562,7 @@ const colors: ColorsWithModes = {
         },
         neutral: {
           subtle: globalColors.neutral.blueGrayDark.a100,
-          intense: globalColors.neutral.blueGrayDark[800],
+          intense: globalColors.neutral.blueGrayDark[900],
         },
       },
       border: {
@@ -731,8 +731,8 @@ const colors: ColorsWithModes = {
         },
         gray: {
           default: globalColors.neutral.blueGrayDark[600],
-          highlighted: globalColors.neutral.blueGrayDark[800],
-          disabled: globalColors.neutral.blueGrayDark[1000],
+          highlighted: globalColors.neutral.blueGrayDark[600],
+          disabled: globalColors.neutral.blueGrayDark[800],
           faded: globalColors.neutral.blueGrayDark.a100,
         },
         primary: {
