@@ -24,7 +24,7 @@ type SideNavLinkProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   as: React.ComponentType<any>;
   isCurrentPage?: boolean;
-  icon: IconComponent;
+  icon?: IconComponent;
   children?: React.ReactElement;
 };
 
@@ -63,6 +63,7 @@ type SideNavContextType = {
 
 type NavLinkContextType = {
   level?: number;
+  title?: string;
 };
 
 export type {

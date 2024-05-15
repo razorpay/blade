@@ -97,9 +97,11 @@ const NavLinkIconTitle = ({
 }): React.ReactElement => {
   return (
     <Box display="flex" flexDirection="row" gap="spacing.3">
-      <BaseBox display="flex" flexDirection="row" alignItems="center" justifyContent="center">
-        <Icon size="medium" color="currentColor" />
-      </BaseBox>
+      {Icon ? (
+        <BaseBox display="flex" flexDirection="row" alignItems="center" justifyContent="center">
+          <Icon size="medium" color="currentColor" />
+        </BaseBox>
+      ) : null}
       <BaseText
         truncateAfterLines={1}
         color="currentColor"
@@ -182,7 +184,7 @@ const SideNavLink = ({
   }, [isCurrentPage]);
 
   return (
-    <NavLinkContext.Provider value={{ level: currentLevel }}>
+    <NavLinkContext.Provider value={{ level: currentLevel, title }}>
       {isL3Trigger ? (
         <Collapsible
           defaultIsExpanded={isCurrentPage}

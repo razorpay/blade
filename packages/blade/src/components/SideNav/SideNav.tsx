@@ -81,7 +81,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
         <>
           {/* L1 */}
           <Drawer isOpen={isOpen ?? false} onDismiss={onDismiss}>
-            <DrawerHeader title="" />
+            <DrawerHeader title="Main Menu" />
             <DrawerBody>
               <BaseBox>{children}</BaseBox>
             </DrawerBody>

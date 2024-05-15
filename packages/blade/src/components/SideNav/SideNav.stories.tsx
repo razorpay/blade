@@ -80,12 +80,10 @@ const navItems: SideNavLinkItemsJSONType = [
         href: '',
         children: [
           {
-            icon: HomeIcon,
             title: 'Address',
             href: '/settings/user/home',
           },
           {
-            icon: UserIcon,
             title: 'Account',
             href: '/settings/user/account',
           },
