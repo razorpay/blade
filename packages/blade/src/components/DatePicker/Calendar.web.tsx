@@ -118,7 +118,7 @@ const Calendar = <Type extends DateSelectionType>({
     <CalendarStyles
       display="flex"
       flexDirection="column"
-      gap="spacing.5"
+      gap="spacing.7"
       pickerType={levelToPicker[level]}
     >
       <CalendarHeader

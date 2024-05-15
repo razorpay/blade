@@ -96,7 +96,7 @@ const CalendarHeader = ({
         <>
           <Text
             display={{ base: 'none', m: 'block' }}
-            size="medium"
+            size="large"
             weight="medium"
             marginRight="spacing.7"
             justifySelf="center"
@@ -105,7 +105,7 @@ const CalendarHeader = ({
           </Text>
           <Text
             display={{ base: 'none', m: 'block' }}
-            size="medium"
+            size="large"
             weight="medium"
             marginLeft="spacing.7"
             justifySelf="center"
@@ -114,7 +114,7 @@ const CalendarHeader = ({
           </Text>
           <Text
             display={{ base: 'block', m: 'none' }}
-            size="medium"
+            size="large"
             weight="medium"
             justifySelf="center"
           >
@@ -128,13 +128,13 @@ const CalendarHeader = ({
               onClick={() => {
                 onLevelChange('year');
               }}
-              size="medium"
+              size="large"
               variant="button"
               color="neutral"
               iconPosition="right"
               icon={ChevronDownIcon}
             >
-              {month}
+              {month} {year}
             </Link>
           )}
           {pickerType === 'month' && (
@@ -142,7 +142,7 @@ const CalendarHeader = ({
               onClick={() => {
                 onLevelChange('decade');
               }}
-              size="medium"
+              size="large"
               variant="button"
               color="neutral"
               iconPosition="right"
@@ -152,7 +152,7 @@ const CalendarHeader = ({
             </Link>
           )}
           {pickerType === 'year' && (
-            <Text size="medium" weight="medium" color="interactive.text.neutral.normal">
+            <Text size="large" weight="medium" color="interactive.text.neutral.normal">
               {startYearOfDecade} - {endYearOfDecade}
             </Text>
           )}

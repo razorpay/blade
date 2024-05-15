@@ -78,24 +78,22 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
     // Bail out if datepicker is not in range mode or on mobile
     if (isMobile || !isRange) return {};
 
-    const calendar1 = {
-      month: dayjs(date),
-      firstDay: dayjs(date).startOf('month').date(),
-      lastDay: dayjs(date).endOf('month').date(),
-      isFirstDayStartOfTheWeek: dayjs(date).startOf('month').day() === 0,
-      isLastDayEndOfTheWeek: dayjs(date).endOf('month').day() === 6,
-    };
-    const calendar2 = {
-      month: dayjs(date).add(1, 'month'),
-      firstDay: dayjs(date).add(1, 'month').startOf('month').date(),
-      lastDay: dayjs(date).add(1, 'month').endOf('month').date(),
-      isFirstDayStartOfTheWeek: dayjs(date).add(1, 'month').startOf('month').day() === 0,
-      isLastDayEndOfTheWeek: dayjs(date).add(1, 'month').endOf('month').day() === 6,
-    };
-    const calendar1FirstGradient = `${calendar1.month.month()}-${calendar1.firstDay}`;
-    const calendar1LastGradient = `${calendar1.month.month()}-${calendar1.lastDay}`;
-    const calendar2FirstGradient = `${calendar2.month.month()}-${calendar2.firstDay}`;
-    const calendar2LastGradient = `${calendar2.month.month()}-${calendar2.lastDay}`;
+    const cal1 = dayjs(date);
+    const cal1FirstDay = cal1.startOf('month');
+    const cal1LastDay = cal1.endOf('month');
+    const cal1IsFirstDayStartOfTheWeek = cal1FirstDay.day() === 0;
+    const cal1IsLastDayEndOfTheWeek = cal1LastDay.day() === 6;
+
+    const cal2 = dayjs(date).add(1, 'month');
+    const cal2FirstDay = cal2.startOf('month');
+    const cal2LastDay = cal2.endOf('month');
+    const cal2IsFirstDayStartOfTheWeek = cal2FirstDay.day() === 0;
+    const cal2IsLastDayEndOfTheWeek = cal2LastDay.day() === 6;
+
+    const calendar1FirstGradient = `${cal1.month()}-${cal1FirstDay.date()}`;
+    const calendar1LastGradient = `${cal1.month()}-${cal1LastDay.date()}`;
+    const calendar2FirstGradient = `${cal2.month()}-${cal2FirstDay.date()}`;
+    const calendar2LastGradient = `${cal2.month()}-${cal2LastDay.date()}`;
 
     const gradientCell = {
       pointerEvents: 'none',
@@ -114,21 +112,7 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
       bottom: 0,
       right: 0,
     } as const;
-    const rightGradient1 = {
-      backgroundColor: 'none',
-      background: `linear-gradient(to right, transparent, ${getIn(
-        theme.colors,
-        'surface.background.gray.intense',
-      )})`,
-    };
-    const leftGradient1 = {
-      backgroundColor: 'none',
-      background: `linear-gradient(to left, transparent, ${getIn(
-        theme.colors,
-        'surface.background.gray.intense',
-      )})`,
-    };
-    const rightGradient2 = {
+    const rightGradient = {
       ...gradientBefore,
       left: '-100%',
       background: `linear-gradient(to right, transparent, ${getIn(
@@ -136,7 +120,7 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
         inRangeCell.background.default,
       )})`,
     };
-    const leftGradient2 = {
+    const leftGradient = {
       ...gradientBefore,
       left: '100%',
       background: `linear-gradient(to left, transparent, ${getIn(
@@ -149,24 +133,20 @@ const CalendarGradientStyles = styled(BaseBox)<{ date: Date; isRange: boolean }>
       '.DatePicker-cell': {
         [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar1FirstGradient}"]`]: {
           ...gradientCell,
-          ...(calendar1.isFirstDayStartOfTheWeek ? leftGradient1 : {}),
-          '&:before': calendar1.isFirstDayStartOfTheWeek ? {} : rightGradient2,
+          '&:before': cal1IsFirstDayStartOfTheWeek ? {} : rightGradient,
         },
         [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar1LastGradient}"]`]: {
           ...gradientCell,
-          ...(calendar1.isLastDayEndOfTheWeek ? rightGradient1 : {}),
-          '&:before': calendar1.isLastDayEndOfTheWeek ? {} : leftGradient2,
+          '&:before': cal1IsLastDayEndOfTheWeek ? {} : leftGradient,
         },
         // Second calendar column
         [`&[data-in-range]:not(&[data-first-in-range]) [data-date="${calendar2FirstGradient}"]`]: {
           ...gradientCell,
-          ...(calendar2.isFirstDayStartOfTheWeek ? leftGradient1 : {}),
-          '&:before': calendar2.isFirstDayStartOfTheWeek ? {} : rightGradient2,
+          '&:before': cal2IsFirstDayStartOfTheWeek ? {} : rightGradient,
         },
         [`&[data-in-range]:not(&[data-last-in-range]) [data-date="${calendar2LastGradient}"]`]: {
           ...gradientCell,
-          ...(calendar2.isLastDayEndOfTheWeek ? rightGradient1 : {}),
-          '&:before': calendar2.isLastDayEndOfTheWeek ? {} : leftGradient2,
+          '&:before': cal2IsLastDayEndOfTheWeek ? {} : leftGradient,
         },
       },
     };
