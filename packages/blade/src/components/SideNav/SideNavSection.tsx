@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { SideNavSectionProps } from './types';
+import { classes } from './tokens';
 import { Box } from '~components/Box';
 import { Text } from '~components/Typography';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
@@ -27,12 +28,12 @@ const ShowMoreLink = ({
 
   return (
     <>
-      <BaseBox className="show-when-collapsed" width="100%" justifyContent="center">
+      <BaseBox className={classes.SHOW_WHEN_COLLAPSED} width="100%" justifyContent="center">
         <Link {...linkProps} marginX="spacing.3">
           {isExpanded ? `-${collapsedItemsCount}` : `+${collapsedItemsCount}`}
         </Link>
       </BaseBox>
-      <BaseBox className="hide-when-collapsed">
+      <BaseBox className={classes.HIDE_WHEN_COLLAPSED}>
         <Link
           {...linkProps}
           marginX="spacing.4"
@@ -70,7 +71,7 @@ const SideNavSection = ({
           {title}
         </Text>
         <BaseBox
-          className="show-when-collapsed"
+          className={classes.SHOW_WHEN_COLLAPSED}
           position="absolute"
           top="50%"
           margin="auto"

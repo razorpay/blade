@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavLink } from './SideNavContext';
+import { COLLAPSED_L1_WIDTH } from './tokens';
 import BaseBox from '~components/Box/BaseBox';
 import { Text } from '~components/Typography';
+import { makeSize } from '~utils';
 
 const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactElement => {
   const { level: _prevLevel, title: headingTitle } = useNavLink();
@@ -9,7 +11,11 @@ const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactE
   const currentLevel = prevLevel + 1;
   return (
     <BaseBox
-      marginLeft={currentLevel === 3 ? 'spacing.7' : { base: 'spacing.0', m: '52px' }}
+      marginLeft={
+        currentLevel === 3
+          ? { base: 'spacing.7', m: 'spacing.6' }
+          : { base: 'spacing.0', m: makeSize(COLLAPSED_L1_WIDTH) }
+      }
       onMouseOver={(e) => {
         e.stopPropagation();
       }}
@@ -19,6 +25,7 @@ const SideNavLevel = ({ children }: { children: React.ReactNode }): React.ReactE
     >
       {currentLevel === 2 && headingTitle ? (
         <BaseBox
+          // In mobile, we use DrawerHeader for this heading
           display={{ base: 'none', m: 'block' }}
           padding="spacing.4"
           borderBottomWidth="thin"

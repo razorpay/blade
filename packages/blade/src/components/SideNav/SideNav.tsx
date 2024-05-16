@@ -2,52 +2,89 @@ import React from 'react';
 import styled from 'styled-components';
 import { SideNavContext } from './SideNavContext';
 import type { SideNavContextType, SideNavProps } from './types';
+import {
+  classes,
+  COLLAPSED_L1_WIDTH,
+  EXPANDED_L1_WIDTH,
+  SKIP_NAV_ID,
+  useSideNavTransition,
+} from './tokens';
 import BaseBox from '~components/Box/BaseBox';
-import { size } from '~tokens/global';
-import { makeMotionTime, makeSize, makeSpace } from '~utils';
+import { makeSize, makeSpace } from '~utils';
 import { Drawer, DrawerBody, DrawerHeader } from '~components/Drawer';
 import { SkipNavContent, SkipNavLink } from '~components/SkipNav/SkipNav';
 import { useIsMobile } from '~utils/useIsMobile';
+import { getComponentId } from '~utils/isValidAllowedChildren';
 
-const StyledL1Level = styled(BaseBox)((props) => {
+const {
+  COLLAPSED,
+  SHOW_WHEN_COLLAPSED,
+  HIDE_WHEN_COLLAPSED,
+  TRANSITIONING,
+  L1_ITEM_WRAPPER,
+} = classes;
+
+const StyledL1Menu = styled(BaseBox)((props) => {
+  const { l1Collapse, l1Expand } = useSideNavTransition();
+
   return {
     width: '100%',
-    transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
-      props.theme.motion.easing.entrance.attentive
-    }`,
-    [`& > ${BaseBox}`]: {
+    transition: l1Expand,
+    [`& > .${L1_ITEM_WRAPPER}`]: {
       padding: makeSpace(props.theme.spacing[4]),
     },
-    '.show-when-collapsed': {
+    [`.${SHOW_WHEN_COLLAPSED}`]: {
       display: 'none',
     },
-    '&.collapsed': {
-      width: makeSize(size['52']),
-      transition: `width ${makeMotionTime(props.theme.motion.duration.xmoderate)} ${
-        props.theme.motion.easing.exit.attentive
-      }`,
-      [`& > ${BaseBox}`]: {
+    [`&.${COLLAPSED}`]: {
+      width: makeSize(COLLAPSED_L1_WIDTH),
+      transition: l1Collapse,
+      [`& > .${L1_ITEM_WRAPPER}`]: {
         padding: `${makeSpace(props.theme.spacing[4])} ${makeSpace(props.theme.spacing[3])}`,
       },
-      '&:not(.transitioning) .hide-when-collapsed': {
+      [`&:not(.${TRANSITIONING}) .${HIDE_WHEN_COLLAPSED}`]: {
         display: 'none',
       },
-      '&:not(.transitioning) .show-when-collapsed': {
+      [`&:not(.${TRANSITIONING}) .${SHOW_WHEN_COLLAPSED}`]: {
         display: 'initial',
       },
     },
   };
 });
 
+const getL1MenuClassName = ({
+  isL1Collapsed,
+  isL1Hovered,
+  isTransitioning,
+}: {
+  isL1Collapsed: boolean;
+  isL1Hovered: boolean;
+  isTransitioning: boolean;
+}): string => {
+  const isMenuCollapsed = isL1Collapsed && !isL1Hovered;
+
+  if (isMenuCollapsed) {
+    if (isTransitioning) {
+      return `${COLLAPSED} ${TRANSITIONING}`;
+    }
+
+    return COLLAPSED;
+  }
+
+  return '';
+};
+
 const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElement => {
   const l2PortalContainerRef = React.useRef(null);
   const l1ContainerRef = React.useRef<HTMLDivElement>(null);
   const [isL1Collapsed, setIsL1Collapsed] = React.useState(false);
   const [isMobileL2Open, setIsMobileL2Open] = React.useState(false);
-  const [isCollapsedHover, setIsCollapsedHover] = React.useState(false);
-  const [isHoverAgainEnabled, setIsHoverAgainEnabled] = React.useState(false);
-  const [isHoverTransitioning, setIsHoverTransitioning] = React.useState(false);
+  const [isL1Hovered, setIsL1Hovered] = React.useState(false);
+  const [isHoverAgainEnabled, setIsHoverAgainEnabled] = React.useState(true);
+  const [isTransitioning, setIsTransitioning] = React.useState(false);
   const [l2DrawerTitle, setL2DrawerTitle] = React.useState('');
+
+  console.count('SideNav');
   const isMobile = useIsMobile();
 
   const closeMobileNav = (): void => {
@@ -57,22 +94,39 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
     }
   };
 
+  const footerChild: React.ReactNode[] = [];
+  const restChild: React.ReactNode[] = [];
+
+  React.Children.map(children, (child) => {
+    if (getComponentId(child) === 'SideNavFooter') {
+      footerChild.push(child);
+    } else {
+      restChild.push(child);
+    }
+  });
+
   const onLinkActiveChange: SideNavContextType['onLinkActiveChange'] = (args) => {
     if (args.level === 1 && args.isL2Trigger && args.isActive) {
       if (isMobile) {
         setL2DrawerTitle(args.title);
-        setIsMobileL2Open(true);
+        if (!args.isFirstRender) {
+          // we don't want to open sidenav in mobile in first render
+          setIsMobileL2Open(true);
+        }
         return;
       }
 
       setIsL1Collapsed(true);
-      setIsCollapsedHover(false);
-      setIsHoverAgainEnabled(false);
-      setIsHoverTransitioning(true);
-      // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
-      setTimeout(() => {
-        setIsHoverAgainEnabled(true);
-      }, 500);
+
+      if (!args.isFirstRender) {
+        setIsTransitioning(true);
+        setIsL1Hovered(false);
+        setIsHoverAgainEnabled(false);
+        // For some delay, we disable hover to expand behaviour to avoid buggy flicker when cursor is on L1 while its trying to close
+        setTimeout(() => {
+          setIsHoverAgainEnabled(true);
+        }, 500);
+      }
     }
 
     if (args.level === 1 && !args.isL2Trigger && args.isActive) {
@@ -80,7 +134,6 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
         setIsMobileL2Open(false);
         return;
       }
-
       setIsL1Collapsed(false);
     }
   };
@@ -105,7 +158,8 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
           <Drawer isOpen={isOpen ?? false} onDismiss={onDismiss}>
             <DrawerHeader title="Main Menu" />
             <DrawerBody>
-              <BaseBox>{children}</BaseBox>
+              <BaseBox>{restChild}</BaseBox>
+              <BaseBox>{footerChild}</BaseBox>
             </DrawerBody>
           </Drawer>
           {/* L2 */}
@@ -123,7 +177,7 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
           height="100%"
           top="spacing.0"
           left="spacing.0"
-          width={makeSize(size['256'])}
+          width={makeSize(EXPANDED_L1_WIDTH)}
         >
           <BaseBox
             position="absolute"
@@ -132,15 +186,9 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
             width="100%"
             ref={l2PortalContainerRef}
           />
-          <StyledL1Level
+          <StyledL1Menu
             ref={l1ContainerRef}
-            className={
-              isL1Collapsed && !isCollapsedHover
-                ? isHoverTransitioning
-                  ? 'collapsed transitioning'
-                  : 'collapsed'
-                : ''
-            }
+            className={getL1MenuClassName({ isL1Collapsed, isL1Hovered, isTransitioning })}
             position="absolute"
             display="flex"
             flexDirection="column"
@@ -153,37 +201,29 @@ const SideNav = ({ children, isOpen, onDismiss }: SideNavProps): React.ReactElem
             borderRightWidth="thin"
             borderRightColor="surface.border.gray.muted"
             onTransitionEnd={(e) => {
-              if (isHoverTransitioning && l1ContainerRef.current === e.target) {
-                console.log('transitionend', e);
-                setIsHoverTransitioning(false);
+              if (isTransitioning && l1ContainerRef.current === e.target) {
+                setIsTransitioning(false);
               }
             }}
             onMouseOver={() => {
               if (isL1Collapsed && isHoverAgainEnabled) {
-                setIsCollapsedHover(true);
+                setIsL1Hovered(true);
               }
             }}
             onMouseOut={() => {
               if (isL1Collapsed) {
-                setIsCollapsedHover(false);
-                setIsHoverTransitioning(true);
-                // setIsTransitioning(true);
+                setIsL1Hovered(false);
+                setIsTransitioning(true);
               }
             }}
           >
-            <SkipNavLink id="blade-side-nav-skip" _hasBackground={true} />
-            <BaseBox overflowY="auto">{children}</BaseBox>
-            <BaseBox
-              id="footer-portal-container"
-              alignSelf="end"
-              width="100%"
-              elevation="highRaised"
-              borderTopWidth="thin"
-              borderTopColor="surface.border.gray.muted"
-              backgroundColor="surface.background.gray.intense"
-            />
-          </StyledL1Level>
-          <SkipNavContent id="blade-side-nav-skip" />
+            <SkipNavLink id={SKIP_NAV_ID} _hasBackground={true} />
+            <BaseBox className={L1_ITEM_WRAPPER} overflowY="auto">
+              {restChild}
+            </BaseBox>
+            {footerChild}
+          </StyledL1Menu>
+          <SkipNavContent id={SKIP_NAV_ID} />
         </BaseBox>
       )}
     </SideNavContext.Provider>

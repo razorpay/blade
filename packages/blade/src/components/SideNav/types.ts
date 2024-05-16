@@ -26,7 +26,7 @@ type SideNavLinkProps = {
   href: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   as: React.ComponentType<any>;
-  isCurrentPage?: boolean;
+  isActive?: boolean;
   icon?: IconComponent;
   children?: React.ReactElement;
   tooltip?: Pick<TooltipProps, 'title' | 'content' | 'onOpenChange'>;
@@ -51,11 +51,11 @@ type SideNavFooterProps = {
 };
 
 type OnLinkActiveChangeArgs = {
-  id: string;
   title: string;
   level: number;
   isActive: boolean;
   isL2Trigger: boolean;
+  isFirstRender: boolean;
 };
 
 type SideNavContextType = {

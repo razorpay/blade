@@ -140,7 +140,7 @@ const NavItem = (
     <SideNavLink
       {...props}
       as={Link}
-      isCurrentPage={location.pathname === props.href || isSubItemActive}
+      isActive={location.pathname === props.href || isSubItemActive}
     />
   );
 };
@@ -328,6 +328,23 @@ const SideNavTemplateMobile: StoryFn<typeof SideNav> = () => {
           }
           return <NavItem key={navItem.title} {...navItem} />;
         })}
+        <SideNavFooter>
+          <SideNavSwitch />
+          <NavItem
+            title="Settings"
+            icon={SettingsIcon}
+            href="/settings"
+            activeOnLinks={['/settings/user', '/settings/account']}
+            tooltip={{
+              content: 'Open Settings',
+            }}
+          >
+            <SideNavLevel>
+              <NavItem icon={UserIcon} title="User Settings" href="/settings/user" />
+              <NavItem icon={BoxIcon} title="Account Settings" href="/settings/account" />
+            </SideNavLevel>
+          </NavItem>
+        </SideNavFooter>
       </SideNav>
 
       <Button display={{ base: 'initial', m: 'none' }} onClick={() => setIsSideNavOpen(true)}>

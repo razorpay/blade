@@ -3,19 +3,25 @@ import styled from 'styled-components';
 import { FloatingFocusManager, FloatingPortal, useFloating } from '@floating-ui/react';
 import { NavLinkContext, useNavLink, useSideNav } from '../SideNavContext';
 import type { SideNavLinkProps } from '../types';
+import { classes, NAV_ITEM_HEIGHT, useSideNavTransition } from '../tokens';
 import { Box } from '~components/Box';
 import { size } from '~tokens/global';
 import { makeBorderSize, makeSize, makeSpace } from '~utils';
 import { BaseText } from '~components/Typography/BaseText';
-import { useId } from '~utils/useId';
 import { ChevronDownIcon, ChevronRightIcon, ChevronUpIcon } from '~components/Icons';
 import BaseBox from '~components/Box/BaseBox';
 import { useCollapsible } from '~components/Collapsible/CollapsibleContext';
 import { Collapsible, CollapsibleBody } from '~components/Collapsible';
 import { makeAccessible } from '~utils/makeAccessible';
 import { Tooltip } from '~components/Tooltip';
+import { useFirstRender } from '~utils/useFirstRender';
+import { getFocusRingStyles } from '~utils/getFocusRingStyles';
+
+const { SHOW_ON_LINK_HOVER, COLLAPSED, HIDE_WHEN_COLLAPSED } = classes;
 
 const StyledNavLinkContainer = styled.a((props) => {
+  const { notchOpacity, collapseItemPadding } = useSideNavTransition();
+
   return {
     position: 'relative',
     display: 'flex',
@@ -35,24 +41,16 @@ const StyledNavLinkContainer = styled.a((props) => {
       props.theme.colors.transparent
     }`,
     backgroundColor: props.theme.colors.transparent,
-    '.show-on-link-hover': {
+    transition: collapseItemPadding,
+    [`.${SHOW_ON_LINK_HOVER}`]: {
       opacity: 0,
-    },
-    '.collapsed &': {
-      padding: '0px 10px',
-      '&[aria-current]': {
-        '&::before': {
-          opacity: 0,
-          transition: 'opacity .3s ease',
-        },
+      '&:focus-within, &:hover, &:focus-visible': {
+        opacity: 1,
       },
     },
     ':hover': {
       color: props.theme.colors.interactive.text.gray.normal,
       backgroundColor: props.theme.colors.interactive.background.gray.default,
-      '.show-on-link-hover': {
-        opacity: 1,
-      },
     },
     '&[aria-current]': {
       color: props.theme.colors.interactive.text.primary.subtle,
@@ -64,9 +62,9 @@ const StyledNavLinkContainer = styled.a((props) => {
       '&::before': {
         content: '" "',
         position: 'absolute',
-        left: '0px',
-        top: '0px',
-        bottom: '0px',
+        left: makeSpace(props.theme.spacing[0]),
+        top: makeSpace(props.theme.spacing[0]),
+        bottom: makeSpace(props.theme.spacing[0]),
         margin: 'auto',
         width: makeSize(size['4']),
         height: makeSize(size['16']),
@@ -78,9 +76,23 @@ const StyledNavLinkContainer = styled.a((props) => {
         )}`,
       },
     },
-    '&[aria-current]:`hover`': {
+    '&[aria-current]:hover': {
       color: props.theme.colors.interactive.text.primary.normal,
       backgroundColor: props.theme.colors.interactive.background.primary.fadedHighlighted,
+    },
+    '&:focus-visible': {
+      ...getFocusRingStyles({ theme: props.theme }),
+    },
+    [`.${COLLAPSED} &`]: {
+      // Using size tokens because the padding here has to match the overall width of 52px in collapsed state
+      padding: `${makeSize(size['0'])} ${makeSize(size['10'])}`,
+      transition: collapseItemPadding,
+      '&[aria-current]': {
+        '&::before': {
+          opacity: 0,
+          transition: notchOpacity,
+        },
+      },
     },
   };
 });
@@ -125,7 +137,7 @@ const NavLinkIconTitle = ({
         fontSize={100}
         lineHeight={100}
         as="p"
-        className={isL1Item ? 'hide-when-collapsed' : ''}
+        className={isL1Item ? HIDE_WHEN_COLLAPSED : ''}
       >
         {title}
       </BaseText>
@@ -171,12 +183,19 @@ const L3Trigger = ({
 };
 
 const CurvedVerticalLine = styled(BaseBox)((props) => {
-  const borderPrimaryMuted = props.theme.colors.surface.border.primary.muted;
+  const { colors, border, spacing } = props.theme;
   return {
-    borderWidth: '1px',
-    borderColor: `transparent transparent ${borderPrimaryMuted} ${borderPrimaryMuted}`,
+    borderWidth: makeBorderSize(props.theme.border.width.thin),
+    borderColor: `${colors.transparent} ${colors.transparent} ${colors.surface.border.primary.muted} ${colors.surface.border.primary.muted}`,
     borderStyle: 'solid',
-    borderRadius: '0px 0px 0px 4px',
+    borderRadius: `${makeBorderSize(border.radius.none)} ${makeBorderSize(
+      border.radius.none,
+    )} ${makeBorderSize(border.radius.none)} ${makeBorderSize(border.radius.medium)}`,
+    height: '100vh',
+    position: 'absolute',
+    top: `calc(-100vh + ${makeSize(NAV_ITEM_HEIGHT / 2)})`,
+    width: makeSpace(spacing[3]),
+    left: makeSpace(-spacing[3]),
   };
 });
 
@@ -186,7 +205,7 @@ const SideNavLink = ({
   children,
   titleSuffix,
   trailing,
-  isCurrentPage,
+  isActive,
   icon,
   tooltip,
   as,
@@ -202,29 +221,32 @@ const SideNavLink = ({
   const prevLevel = _prevLevel ?? 0;
   const currentLevel = prevLevel + 1;
   const isL2Trigger = Boolean(children) && currentLevel === 1;
-  const navItemId = useId('nav-item');
   const isL3Trigger = Boolean(children) && currentLevel === 2;
 
+  console.count('SideNavLink');
+
+  const isFirstRender = useFirstRender();
+
   const { refs, context } = useFloating({
-    open: isCurrentPage,
+    open: isActive,
   });
 
   React.useLayoutEffect(() => {
     onLinkActiveChange?.({
-      id: navItemId,
       level: currentLevel,
       title,
-      isActive: Boolean(isCurrentPage),
+      isActive: Boolean(isActive),
       isL2Trigger,
+      isFirstRender,
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isCurrentPage]);
+  }, [isActive]);
 
   return (
     <NavLinkContext.Provider value={{ level: currentLevel, title }}>
       {isL3Trigger ? (
         <Collapsible
-          defaultIsExpanded={isCurrentPage}
+          defaultIsExpanded={isActive}
           _dangerouslyDisableValidations={true}
           _shouldApplyWidthRestrictions={false}
         >
@@ -247,13 +269,13 @@ const SideNavLink = ({
                     closeMobileNav?.();
                   }
 
-                  if (isCurrentPage && isL2Trigger) {
+                  if (isActive && isL2Trigger) {
                     onLinkActiveChange?.({
-                      id: navItemId,
                       level: currentLevel,
                       title,
-                      isActive: Boolean(isCurrentPage),
+                      isActive: Boolean(isActive),
                       isL2Trigger,
+                      isFirstRender: false,
                     });
                   }
                 }}
@@ -262,10 +284,9 @@ const SideNavLink = ({
                     setIsL1Collapsed?.(false);
                   }
                 }}
-                aria-current={isCurrentPage ? 'page' : undefined}
+                aria-current={isActive ? 'page' : undefined}
                 data-level={currentLevel}
                 data-l2trigger={isL2Trigger}
-                data-navitemid={navItemId}
               >
                 <NavLinkIconTitle
                   icon={icon}
@@ -274,29 +295,23 @@ const SideNavLink = ({
                   titleSuffix={titleSuffix}
                 />
                 {isL2Trigger ? (
-                  <BaseBox className="hide-when-collapsed">
+                  <BaseBox className={HIDE_WHEN_COLLAPSED}>
                     <ChevronRightIcon size="medium" color="currentColor" />
                   </BaseBox>
                 ) : null}
                 {trailing && !isL2Trigger ? (
-                  <BaseBox className="hide-when-collapsed show-on-link-hover">{trailing}</BaseBox>
+                  <BaseBox className={`${HIDE_WHEN_COLLAPSED} ${SHOW_ON_LINK_HOVER}`}>
+                    {trailing}
+                  </BaseBox>
                 ) : null}
               </StyledNavLinkContainer>
             </TooltipifyNavLink>
-            {currentLevel === 3 && isCurrentPage ? (
-              <CurvedVerticalLine
-                height="100vh"
-                position="absolute"
-                top="calc(-100vh + 18px)"
-                width="7px"
-                left="-7px"
-              />
-            ) : null}
+            {currentLevel === 3 && isActive ? <CurvedVerticalLine /> : null}
           </Box>
 
           {children ? (
             <FloatingPortal root={l2PortalContainerRef}>
-              {isCurrentPage && isL1Collapsed ? (
+              {isActive && isL1Collapsed ? (
                 <FloatingFocusManager modal={false} context={context} initialFocus={-1}>
                   <BaseBox ref={refs.setFloating}>{children}</BaseBox>
                 </FloatingFocusManager>

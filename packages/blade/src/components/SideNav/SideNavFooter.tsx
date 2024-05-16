@@ -1,14 +1,32 @@
 import React from 'react';
-import { FloatingPortal } from '@floating-ui/react';
 import type { SideNavFooterProps } from './types';
-import { Box } from '~components/Box';
+import { classes } from './tokens';
+import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
+import BaseBox from '~components/Box/BaseBox';
 
-const SideNavFooter = ({ children }: SideNavFooterProps): React.ReactElement => {
+const _SideNavFooter = ({ children }: SideNavFooterProps): React.ReactElement => {
   return (
-    <FloatingPortal id="footer-portal-container">
-      <Box>{children}</Box>
-    </FloatingPortal>
+    <BaseBox
+      className={classes.L1_ITEM_WRAPPER}
+      alignSelf="end"
+      width="100%"
+      elevation="highRaised"
+      borderTopWidth="thin"
+      borderTopColor="surface.border.gray.muted"
+      backgroundColor="surface.background.gray.intense"
+      position={{ base: 'absolute', m: 'relative' }}
+      bottom={{ base: 'spacing.0', m: undefined }}
+      left={{ base: 'spacing.0', m: undefined }}
+      // in Desktop, padding is set on SideNav component
+      padding={{ base: 'spacing.4', m: undefined }}
+    >
+      {children}
+    </BaseBox>
   );
 };
+
+const SideNavFooter = assignWithoutSideEffects(_SideNavFooter, {
+  componentId: 'SideNavFooter',
+});
 
 export { SideNavFooter };
