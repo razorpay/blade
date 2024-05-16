@@ -3,12 +3,12 @@ import type { AvatarGroupProps, AvatarGroupContextType } from './types';
 import { StyledAvatarGroup } from './StyledAvatarGroup';
 import { StyledAvatar } from './StyledAvatar';
 import { AvatarGroupProvider } from './AvatarGroupContext';
+import { AvatarButton } from './AvatarButton';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
 import { throwBladeError } from '~utils/logger';
 import { isValidAllowedChildren } from '~utils/isValidAllowedChildren';
-import BaseButton from '~components/Button/BaseButton/BaseButton';
 
 const _AvatarGroup = ({
   children,
@@ -50,15 +50,9 @@ const _AvatarGroup = ({
                   color="neutral"
                   variant="circle"
                 >
-                  <BaseButton
-                    variant="secondary"
-                    color="neutral"
-                    size="xsmall"
-                    iconSize={size}
-                    isPressAnimationDisabled={true}
-                  >
+                  <AvatarButton variant="circle" color="neutral" size={size}>
                     {`+${String(React.Children.count(children) - maxCount)}`}
-                  </BaseButton>
+                  </AvatarButton>
                 </StyledAvatar>
               );
             }

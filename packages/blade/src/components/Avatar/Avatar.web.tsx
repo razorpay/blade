@@ -1,75 +1,68 @@
+import type { ReactElement } from 'react';
 import React from 'react';
 import type { AvatarProps } from './types';
 import { StyledAvatar } from './StyledAvatar';
 import { DefaultAvatarIcon } from './DefaultAvatarIcon';
 import { useAvatarGroupContext } from './AvatarGroupContext';
+import { AvatarButton } from './AvatarButton';
 import { getStyledProps } from '~components/Box/styledProps';
 import { metaAttribute, MetaConstants } from '~utils/metaAttribute';
 import { assignWithoutSideEffects } from '~utils/assignWithoutSideEffects';
-import { useDropdown } from '~components/Dropdown/useDropdown';
-import BaseButton from '~components/Button/BaseButton/BaseButton';
 import { throwBladeError } from '~utils/logger';
-import type { BladeElementRef } from '~utils/types';
-import { DropdownButton } from '~components/Dropdown';
+import type { IconComponent } from '~components/Icons';
 
 const getInitials = (name: string): string => {
   // Combine first and last name initials
-  const names = name.trim().split(' ');
+  const names = name.trim().toUpperCase().split(' ');
+
   if (names.length === 1) {
     return name.substring(0, 2);
   }
-  return names[0].substring(0, 1) + names[names.length - 1].substring(0, 1);
+  return names[0][0] + names[names.length - 1][0];
 };
 
-const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
-  {
-    name,
-    color = 'neutral',
-    size = 'xsmall',
-    variant = 'circle',
-    icon,
-    href,
-    target,
-    rel,
-    // Image Props
-    src,
-    alt,
-    srcSet,
-    crossOrigin,
-    referrerPolicy,
-    testID,
-    ...styledProps
-  },
-  ref,
-) => {
-  if (src && !alt && !name) {
-    throwBladeError({
-      moduleName: 'Avatar',
-      message: '"alt" or "name" prop is required when the "src" prop is provided.',
-    });
+const _Avatar = ({
+  name,
+  color = 'neutral',
+  size = 'xsmall',
+  variant = 'circle',
+  icon,
+  href,
+  target,
+  rel,
+  // Image Props
+  src,
+  alt,
+  srcSet,
+  crossOrigin,
+  referrerPolicy,
+  testID,
+  ...styledProps
+}: AvatarProps): ReactElement => {
+  if (__DEV__) {
+    if (src && !alt && !name) {
+      throwBladeError({
+        moduleName: 'Avatar',
+        message: '"alt" or "name" prop is required when the "src" prop is provided.',
+      });
+    }
   }
+
   const groupProps = useAvatarGroupContext();
   const avatarSize = groupProps?.size ?? size;
 
-  const { dropdownTriggerer } = useDropdown();
-  const isInsideDropdown = dropdownTriggerer === 'Avatar';
-  const AvatarButton = isInsideDropdown ? DropdownButton : BaseButton;
-
   const commonButtonProps = {
-    variant: 'secondary',
+    variant,
     color,
-    size: 'xsmall',
-    isPressAnimationDisabled: true,
+    size: avatarSize,
     href,
     target,
     rel,
-    ref: isInsideDropdown ? undefined : ref,
   };
 
   const getChildrenToRender = (): React.ReactElement => {
     if (src) {
       return (
-        // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
         <AvatarButton
           {...commonButtonProps}
           imgProps={{
@@ -84,15 +77,11 @@ const _Avatar: React.ForwardRefRenderFunction<BladeElementRef, AvatarProps> = (
     }
 
     if (name && !src) {
-      return (
-        // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
-        <AvatarButton {...commonButtonProps}>{getInitials(name)}</AvatarButton>
-      );
+      return <AvatarButton {...commonButtonProps}>{getInitials(name)}</AvatarButton>;
     }
 
     return (
-      // @ts-expect-error -- Color prop mismatch, but works because DropdownButton is also BaseButton internally.
-      <AvatarButton {...commonButtonProps} iconSize={avatarSize} icon={icon ?? DefaultAvatarIcon} />
+      <AvatarButton {...commonButtonProps} icon={(icon ?? DefaultAvatarIcon) as IconComponent} />
     );
   };
 

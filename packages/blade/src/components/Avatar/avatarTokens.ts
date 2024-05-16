@@ -19,26 +19,11 @@ const avatarIconSizeTokens = {
 };
 
 const avatarTextSizeMapping = {
-  xsmall: {
-    variant: 'body',
-    size: 'xsmall',
-  },
-  small: {
-    variant: 'body',
-    size: 'xsmall',
-  },
-  medium: {
-    variant: 'body',
-    size: 'small',
-  },
-  large: {
-    variant: 'body',
-    size: 'medium',
-  },
-  xlarge: {
-    variant: 'heading',
-    size: 'medium',
-  },
+  xsmall: 'xsmall',
+  small: 'xsmall',
+  medium: 'small',
+  large: 'medium',
+  xlarge: 'medium',
 } as const;
 
 type InteractiveTextColors<
