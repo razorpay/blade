@@ -3,6 +3,8 @@ import type {
   DatePickerProps as MantineDatePickerProps,
   DatesRangeValue,
 } from '@mantine/dates';
+import type { DatePickerCommonInputProps } from './DateInput';
+import type { BaseInputProps } from '~components/Input/BaseInput';
 
 type PickerType = 'day' | 'month' | 'year';
 type Preset = {
@@ -31,6 +33,8 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   | 'value'
   | 'defaultValue'
   | 'onChange'
+  | 'onMonthSelect'
+  | 'onYearSelect'
 > & {
   /**
    * Sets the selection mode of the calendar
@@ -97,8 +101,6 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   locale?: string;
 
   // Basic selection props
-  onMonthChange?: (month: Date) => void;
-  onYearChange?: (year: Date) => void;
   onNext?: (date: Date) => void;
   onNextMonth?: (date: Date) => void;
   onNextYear?: (date: Date) => void;
@@ -109,4 +111,10 @@ type CalendarProps<SelectionType extends DateSelectionType> = Pick<
   onPreviousDecade?: (date: Date) => void;
 };
 
-export type { CalendarProps, PickerType, DateSelectionType };
+type DatePickerProps<Type extends DateSelectionType> = CalendarProps<Type> &
+  Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition'> & {
+    label?: Type extends 'single' ? string : { start: string; end?: string };
+    labelPosition?: BaseInputProps['labelPosition'];
+  };
+
+export type { CalendarProps, DatePickerProps, PickerType, DateSelectionType };

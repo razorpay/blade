@@ -7,12 +7,11 @@ import React from 'react';
 import { FloatingFocusManager, FloatingPortal } from '@floating-ui/react';
 import { Calendar } from './Calendar';
 import { PresetSideBar } from './QuickSelection/PresetSideBar';
-import type { CalendarProps, DateSelectionType } from './types';
+import type { DatePickerProps, DateSelectionType } from './types';
 import { useDatesState } from './useDatesState';
 import { DatePickerInput } from './DateInput';
 import { usePopup } from './usePopup';
 import { CalendarFooter } from './CalendarFooter';
-import type { DatePickerCommonInputProps } from './DateInput';
 import BaseBox from '~components/Box/BaseBox';
 import { useControllableState } from '~utils/useControllable';
 import { useTheme } from '~utils';
@@ -25,12 +24,6 @@ import {
   BottomSheetFooter,
   BottomSheetHeader,
 } from '~components/BottomSheet';
-import type { BaseInputProps } from '~components/Input/BaseInput';
-
-type InputProps<Type extends DateSelectionType> = {
-  label?: Type extends 'single' ? string : { start: string; end?: string };
-  labelPosition?: BaseInputProps['labelPosition'];
-} & Omit<DatePickerCommonInputProps, 'inputRef' | 'referenceProps' | 'labelPosition'>;
 
 const DatePicker = <Type extends DateSelectionType = 'single'>({
   selectionType,
@@ -54,7 +47,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
   validationState,
   size,
   ...props
-}: CalendarProps<Type> & InputProps<Type>): React.ReactElement => {
+}: DatePickerProps<Type>): React.ReactElement => {
   const _selectionType = selectionType ?? 'single';
   const { theme } = useTheme();
   const ctx = useDatesContext();
@@ -176,6 +169,14 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
               ...getControlProps(date),
             };
           }}
+          onMonthSelect={(date) => {
+            props?.onMonthSelect?.(date);
+            onDateChange(date);
+          }}
+          onYearSelect={(date) => {
+            props?.onYearSelect?.(date);
+            onDateChange(date);
+          }}
           onNext={(date) => {
             props?.onNext?.(date);
             forceRerenderBottomSheet();
@@ -201,7 +202,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
         selectionType={_selectionType}
         date={controlledValue}
         ref={referenceRef}
-        inputRef={refs.setReference}
+        inputRef={refs.reference}
         referenceProps={getReferenceProps()}
         label={label as never}
         labelPosition={labelPosition}

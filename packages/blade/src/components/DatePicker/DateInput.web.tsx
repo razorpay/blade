@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useDatesContext, getFormattedDate } from '@mantine/dates';
 import React from 'react';
@@ -78,7 +79,7 @@ const _DatePickerInput = (
   if (selectionType == 'single') {
     return (
       <DateInput
-        ref={inputRef as never}
+        ref={ref as never}
         id="start-date"
         labelPosition={labelPosition}
         label={label}
@@ -110,7 +111,7 @@ const _DatePickerInput = (
       >
         <BaseBox flex={1}>
           <DateInput
-            setInputWrapperRef={inputRef as never}
+            setInputWrapperRef={(node) => ((inputRef as any)!.current = node)}
             id="start-date"
             leadingIcon={CalendarIcon}
             label={label?.start}
@@ -137,7 +138,6 @@ const _DatePickerInput = (
         </BaseBox>
         <BaseBox flex={1}>
           <DateInput
-            ref={inputRef as never}
             id="end-date"
             placeholder={format}
             leadingIcon={CalendarIcon}
