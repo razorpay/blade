@@ -155,6 +155,7 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
         backgroundColor="surface.background.gray.intense"
       >
         <Calendar
+          {...props}
           selectionType={_selectionType}
           defaultValue={defaultValue}
           onMouseLeave={onRootMouseLeave}
@@ -189,7 +190,6 @@ const DatePicker = <Type extends DateSelectionType = 'single'>({
             props?.onPickerChange?.(date);
             forceRerenderBottomSheet();
           }}
-          {...props}
         />
         {isMobile ? null : <CalendarFooter onApply={handleApply} onCancel={handleCancel} />}
       </BaseBox>
