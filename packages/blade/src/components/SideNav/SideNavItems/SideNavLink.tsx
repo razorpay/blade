@@ -297,7 +297,7 @@ const SideNavLink = ({
           {children ? (
             <FloatingPortal root={l2PortalContainerRef}>
               {isCurrentPage && isL1Collapsed ? (
-                <FloatingFocusManager modal={false} context={context}>
+                <FloatingFocusManager modal={false} context={context} initialFocus={-1}>
                   <BaseBox ref={refs.setFloating}>{children}</BaseBox>
                 </FloatingFocusManager>
               ) : null}

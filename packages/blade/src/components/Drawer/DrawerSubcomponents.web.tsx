@@ -14,12 +14,13 @@ const _DrawerHeader = ({
   titleSuffix,
 }: DrawerHeaderProps): React.ReactElement => {
   const { close, closeButtonRef } = React.useContext(DrawerContext);
-
   return (
     <BaseHeader
+      showBackButton={false}
       showCloseButton={true}
       closeButtonRef={closeButtonRef}
       onCloseButtonClick={() => close()}
+      onBackButtonClick={() => close()}
       title={title}
       titleSuffix={titleSuffix}
       subtitle={subtitle}
